@@ -5,269 +5,55 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>nix-purifiers</title>
 <meta name="claude:viewport-fit-sides" content="cover">
-<meta name="description" content="Plugins and Nix libraries that lock every download a language build tool makes, then build offline in the Nix sandbox.">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700&family=JetBrains+Mono:wght@400;600&family=Source+Sans+3:ital,wght@0,400;0,600;1,400&display=swap">
+<meta name="description" content="Plugins and Nix libraries that lock every download a build tool makes, then build offline in the Nix sandbox.">
 <style>
-/* Layout: one left-aligned column; the hero pairs the claim with a real lockfile excerpt, which stacks below it on phones. */
+/* Layout: one narrow column of text. */
 :root {
   --paper: #eef2f2;
-  --panel: #f9fbfb;
   --ink: #142228;
   --muted: #50636a;
-  --rule: #c8d4d6;
   --accent: #0a716c;
-  --hash: #8a5300;
-
-  --display: "Bricolage Grotesque", "Avenir Next", "Segoe UI", sans-serif;
-  --body: "Source Sans 3", "Source Sans Pro", "Helvetica Neue", Arial, sans-serif;
-  --mono: "JetBrains Mono", ui-monospace, "SFMono-Regular", Menlo, Consolas, monospace;
-
-  --step--1: 0.875rem;
-  --step-0: 1.0625rem;
-  --step-1: 1.3rem;
-  --step-2: 1.75rem;
-  --step-3: clamp(2.2rem, 5vw, 3.4rem);
+  --body: ui-sans-serif, system-ui, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  --mono: ui-monospace, "SFMono-Regular", Menlo, Consolas, monospace;
 }
 @media (prefers-color-scheme: dark) {
-  :root:not([data-theme="light"]) {
-    --paper: #0c1619;
-    --panel: #111f23;
-    --ink: #dae6e8;
-    --muted: #8ba0a6;
-    --rule: #233439;
-    --accent: #52c3ba;
-    --hash: #e3b45e;
-    color-scheme: dark;
-  }
+  :root:not([data-theme="light"]) { --paper: #0c1619; --ink: #dae6e8; --muted: #8ba0a6; --accent: #52c3ba; color-scheme: dark; }
 }
-:root[data-theme="dark"] {
-  --paper: #0c1619;
-  --panel: #111f23;
-  --ink: #dae6e8;
-  --muted: #8ba0a6;
-  --rule: #233439;
-  --accent: #52c3ba;
-  --hash: #e3b45e;
-  color-scheme: dark;
-}
+:root[data-theme="dark"] { --paper: #0c1619; --ink: #dae6e8; --muted: #8ba0a6; --accent: #52c3ba; color-scheme: dark; }
 
-* { box-sizing: border-box; }
 body {
   margin: 0;
   background: var(--paper);
   color: var(--ink);
   font-family: var(--body);
-  font-size: var(--step-0);
+  font-size: 1.0625rem;
   line-height: 1.6;
 }
-.wrap {
-  max-width: 68rem;
+main {
+  max-width: 38rem;
   margin: 0 auto;
+  padding-block: 4rem;
   padding-left: max(16px, env(safe-area-inset-left, 0px));
   padding-right: max(16px, env(safe-area-inset-right, 0px));
+  display: grid;
+  gap: 1.25rem;
 }
+h1 { margin: 0; font-family: var(--mono); font-size: 1.5rem; }
+p, ul { margin: 0; }
+ul { padding-left: 1.2rem; }
 a { color: var(--accent); text-underline-offset: 0.18em; }
-a:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; border-radius: 2px; }
-code { font-family: var(--mono); font-size: 0.9em; }
-h1, h2, h3 { font-family: var(--display); line-height: 1.15; text-wrap: balance; margin: 0; }
-p { margin: 0; }
-
-/* Header */
-header .wrap {
-  display: flex; flex-wrap: wrap; gap: 0.75rem 2rem;
-  align-items: baseline; justify-content: space-between;
-  padding-block: 1.25rem;
-  border-bottom: 1px solid var(--rule);
-}
-.mark { font-family: var(--display); font-weight: 700; font-size: var(--step-1); color: var(--ink); text-decoration: none; letter-spacing: -0.01em; }
-.mark span { color: var(--accent); }
-nav { display: flex; flex-wrap: wrap; gap: 1.25rem; font-size: var(--step--1); }
-nav a { color: var(--muted); text-decoration: none; }
-nav a:hover { color: var(--ink); }
-
-/* Hero */
-.hero .wrap {
-  display: grid; gap: 2.5rem;
-  grid-template-columns: minmax(0, 1fr) minmax(0, 1.05fr);
-  align-items: start;
-  padding-block: 3.5rem 3rem;
-}
-.hero h1 { font-size: var(--step-3); font-weight: 700; letter-spacing: -0.02em; }
-.lead { margin-top: 1.25rem; max-width: 34rem; font-size: var(--step-1); line-height: 1.5; color: var(--muted); }
-.lead strong { color: var(--ink); font-weight: 600; }
-
-.lock { margin: 0; min-width: 0; }
-.lock figcaption {
-  display: flex; justify-content: space-between; gap: 1rem;
-  font-family: var(--mono); font-size: 0.75rem; letter-spacing: 0.04em; text-transform: uppercase;
-  color: var(--muted); padding-bottom: 0.5rem;
-}
-.lock pre {
-  margin: 0; padding: 1.1rem 1.25rem;
-  background: var(--panel); border: 1px solid var(--rule); border-radius: 6px;
-  overflow-x: auto;
-  font-family: var(--mono); font-size: 0.78rem; line-height: 1.65;
-}
-.k { color: var(--muted); }
-.u { color: var(--ink); }
-.h { color: var(--hash); font-weight: 600; }
-
-/* Sections */
-section { border-top: 1px solid var(--rule); }
-section > .wrap { padding-block: 3rem; display: grid; gap: 1.75rem; }
-.eyebrow { font-family: var(--mono); font-size: 0.75rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--accent); }
-h2 { font-size: var(--step-2); font-weight: 700; letter-spacing: -0.01em; }
-.prose { max-width: 40rem; display: grid; gap: 1rem; }
-
-.steps { list-style: none; margin: 0; padding: 0; display: grid; gap: 1.5rem 2.5rem; grid-template-columns: repeat(3, minmax(0, 1fr)); counter-reset: step; }
-.steps li { counter-increment: step; display: grid; gap: 0.5rem; align-content: start; min-width: 0; }
-.steps li::before {
-  content: counter(step);
-  font-family: var(--display); font-weight: 700; font-size: var(--step-2); line-height: 1; color: var(--accent);
-}
-.steps h3 { font-size: var(--step-1); }
-.steps p { color: var(--muted); }
-
-/* Projects */
-.project {
-  display: grid; gap: 0.75rem; min-width: 0;
-  padding: 1.5rem; border: 1px solid var(--rule); border-radius: 6px; background: var(--panel);
-}
-.project-head { display: flex; flex-wrap: wrap; gap: 0.5rem 1rem; align-items: baseline; }
-.project h3 { font-size: var(--step-1); }
-.status { font-family: var(--mono); font-size: 0.72rem; letter-spacing: 0.06em; text-transform: uppercase; color: var(--accent); }
-.project p { max-width: 42rem; }
-.cmd {
-  display: block; overflow-x: auto; white-space: pre;
-  padding: 0.6rem 0.8rem; border-radius: 4px;
-  background: var(--paper); border: 1px solid var(--rule);
-  font-family: var(--mono); font-size: 0.82rem;
-}
-.planned { display: grid; gap: 0.75rem; }
-.planned h3 { font-size: var(--step-0); font-family: var(--body); font-weight: 600; }
-.planned ul { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: 0.5rem; }
-.planned li {
-  font-family: var(--mono); font-size: 0.82rem;
-  padding: 0.3rem 0.65rem; border: 1px dashed var(--rule); border-radius: 4px; color: var(--muted);
-}
-
-footer .wrap { padding-block: 2rem 3rem; border-top: 1px solid var(--rule); font-size: var(--step--1); color: var(--muted); display: flex; flex-wrap: wrap; gap: 0.5rem 1.5rem; justify-content: space-between; }
-
-@media (max-width: 52rem) {
-  .hero .wrap { grid-template-columns: minmax(0, 1fr); padding-block: 2.5rem 2rem; }
-  .steps { grid-template-columns: minmax(0, 1fr); }
-}
+a:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
+.muted { color: var(--muted); }
 </style>
 </head>
 <body>
-
-<header>
-  <div class="wrap">
-    <a class="mark" href="./">nix<span>-</span>purifiers</a>
-    <nav aria-label="Sections">
-      <a href="#how">How it works</a>
-      <a href="#projects">Projects</a>
-      <a href="#related">Related work</a>
-      <a href="https://github.com/nix-purifiers">GitHub</a>
-    </nav>
-  </div>
-</header>
-
 <main>
-  <div class="hero">
-    <div class="wrap">
-      <div>
-        <h1>Lock every download. Build offline in Nix.</h1>
-        <p class="lead">A purifier is a plugin and a Nix library for one language build tool. <strong>The tool still plans the build.</strong> The purifier records every file the build downloads in a lockfile, and Nix builds the project from that lockfile in its sandbox.</p>
-      </div>
-      <figure class="lock">
-        <figcaption><span>Lockfile excerpt</span><span>sbt</span></figcaption>
-<pre><code>{
-  <span class="k">"sbtVersion":</span> "1.11.7",
-  <span class="k">"launcher":</span> "https/repo1.maven.org/maven2/org/scala-sbt/sbt-launch/1.11.7/sbt-launch-1.11.7.jar",
-  <span class="k">"artifacts":</span> [
-    {
-      <span class="k">"url":</span> <span class="u">"https://repo1.maven.org/maven2/com/eed3si9n/gigahorse-core_2.12/0.9.3/gigahorse-core_2.12-0.9.3.jar"</span>,
-      <span class="k">"hash":</span> <span class="h">"sha256-dKlgKLTrnih8yfGKBozBsVcGe0mS1/aKhCGPevK47XU="</span>
-    },
-    {
-      <span class="k">"url":</span> <span class="u">"https://repo1.maven.org/maven2/com/eed3si9n/gigahorse-apache-http_2.12/0.9.3/gigahorse-apache-http_2.12-0.9.3.jar"</span>,
-      <span class="k">"hash":</span> <span class="h">"sha256-gnU5tJ2u0TiPYSS1Ss58QzAzPvKeRohlZ/B5/mVM4Tc="</span>
-    },
-    …
-  ]
-}</code></pre>
-      </figure>
-    </div>
-  </div>
-
-  <section id="how">
-    <div class="wrap">
-      <p class="eyebrow">How it works</p>
-      <ol class="steps">
-        <li>
-          <h3>Lock</h3>
-          <p>The purifier runs the build once with an empty cache and the network on. Every file the tool fetches goes into the lockfile by URL and SHA-256, including the tool's own launcher and its plugins.</p>
-        </li>
-        <li>
-          <h3>Build</h3>
-          <p>Nix fetches each locked file into the store and runs the build in its sandbox, offline. The project's published artifacts become Nix packages that other flakes can depend on.</p>
-        </li>
-        <li>
-          <h3>Publish</h3>
-          <p>The tool's own publish step sends the artifacts Nix built, with your usual repositories and credentials. Nothing is compiled outside the sandbox.</p>
-        </li>
-      </ol>
-      <div class="prose">
-        <p>Day-to-day work keeps the tool's own incremental compiler. With a lockfile present, resolution reads only the locked files, so interactive builds run offline too and stay in step with what Nix builds.</p>
-      </div>
-    </div>
-  </section>
-
-  <section id="projects">
-    <div class="wrap">
-      <p class="eyebrow">Projects</p>
-      <article class="project">
-        <div class="project-head">
-          <h3><a href="https://github.com/nix-purifiers/sbt-purifier">sbt-purifier</a></h3>
-          <span class="status">Available</span>
-        </div>
-        <p>The purifier for sbt, the Scala build tool. It covers every level of an sbt build: sbt itself, the plugins in <code>project/</code>, compiler bridges and the project's dependencies. Builds can depend on other builds through their flakes.</p>
-        <code class="cmd">nix run github:nix-purifiers/sbt-purifier -- nixLock</code>
-      </article>
-      <div class="planned">
-        <h3>Planned</h3>
-        <ul>
-          <li>Maven</li>
-          <li>Gradle</li>
-          <li>Go modules</li>
-          <li>cargo</li>
-          <li>pnpm</li>
-          <li>npm</li>
-          <li>uv</li>
-        </ul>
-      </div>
-    </div>
-  </section>
-
-  <section id="related">
-    <div class="wrap">
-      <p class="eyebrow">Related work</p>
-      <div class="prose">
-        <p>The purifiers take their model from <a href="https://github.com/nixcloud/cargo">cargo (libnix)</a>, nixcloud's fork of cargo that makes Nix its build backend. In cargo (libnix), Nix compiles each crate as its own derivation. A purifier keeps the tool's own compiler and gives Nix the downloads and the release build.</p>
-      </div>
-    </div>
-  </section>
+  <h1>nix-purifiers</h1>
+  <p>A purifier is a plugin and a Nix library for a build tool. It records every file the build downloads in a lockfile, and Nix builds the project from that lockfile, offline, in its sandbox.</p>
+  <ul>
+    <li><a href="https://github.com/nix-purifiers/sbt-purifier">sbt-purifier</a>, for sbt</li>
+  </ul>
+  <p class="muted">The purifiers take their model from nixcloud's <a href="https://github.com/nixcloud/cargo">cargo (libnix)</a>.</p>
 </main>
-
-<footer>
-  <div class="wrap">
-    <span>nix-purifiers</span>
-    <a href="https://github.com/nix-purifiers">github.com/nix-purifiers</a>
-  </div>
-</footer>
-
 </body>
 </html>
