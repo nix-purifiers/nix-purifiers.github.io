@@ -18,3 +18,8 @@ links keep their original destinations.
 sbt's release workflow merges these documentation files with its Maven
 repository before deploying one combined Pages artifact. Never deploy a
 documentation-only artifact over sbt's published packages.
+
+Code examples use source line breaks where possible and visual wrapping on
+narrow screens. `docs.js` adds copy buttons that copy the underlying text,
+including shell continuations. If clipboard access is denied, it selects
+the example for manual copying. Code remains readable with JavaScript off.

@@ -41,7 +41,7 @@ p, ul, ol, blockquote, pre, table { margin-block: 1.25rem; }
 li + li { margin-top: .4rem; }
 code, pre { font-family: ui-monospace, "SFMono-Regular", Menlo, Consolas, monospace; font-size: .9em; }
 code { background: var(--code); padding: .12em .3em; border-radius: .2rem; }
-pre { padding: 1rem; background: var(--code); border: 1px solid var(--border); border-radius: .35rem; overflow-x: auto; }
+pre { padding: 1rem; background: var(--code); border: 1px solid var(--border); border-radius: .35rem; overflow-x: auto; white-space: pre-wrap; overflow-wrap: anywhere; }
 pre code { padding: 0; font-size: 1em; }
 .highlight { margin: 0; }
 /* Inherit readable foregrounds in both palettes instead of light-only syntax colors. */
@@ -57,3 +57,22 @@ hr { border: 0; border-top: 1px solid var(--border); margin-block: 2rem; }
 @media (max-width: 480px) {
   header, main, footer { padding-inline: 1rem; }
 }
+
+.code-block { position: relative; margin-block: 1.25rem; }
+.code-block pre { margin: 0; padding-top: 3rem; }
+.copy-code {
+  position: absolute;
+  top: .45rem;
+  right: .5rem;
+  padding: .2rem .6rem;
+  border: 1px solid var(--border);
+  border-radius: .25rem;
+  background: var(--paper);
+  color: var(--accent);
+  font: inherit;
+  font-size: .8rem;
+  cursor: pointer;
+}
+.copy-code:hover { border-color: var(--accent); }
+.copy-code:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
+.copy-status { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); }

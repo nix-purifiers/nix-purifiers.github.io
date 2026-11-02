@@ -17,7 +17,8 @@ source = args.output
 (source / 'assets').mkdir(exist_ok=True)
 theme = Path(__file__).parent
 shutil.copyfile(theme / 'layout.html', source / '_layouts/default.html')
-shutil.copyfile(theme / 'docs.css', source / 'assets/docs.css')
+for asset in ('docs.css', 'docs.js'):
+    shutil.copyfile(theme / asset, source / 'assets' / asset)
 text = args.readme.read_text()
 # Keep source links useful outside GitHub, including images.
 text = re.sub(r'\]\((?![a-zA-Z][\w+.-]*:|#|/)([^)]+)\)',
