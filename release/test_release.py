@@ -54,6 +54,7 @@ class ReleaseTests(unittest.TestCase):
             repository.indexes(site)
             self.assertEqual((site / "plugins/purifier.cjs").read_text(), "0.1.10")
             self.assertTrue((site / "plugins/0.1.9/purifier.cjs").exists())
+            self.assertIn("0.1.10/", (site / "plugins/index.html").read_text())
 
     def test_maven_metadata_keeps_all_versions(self):
         with tempfile.TemporaryDirectory() as temporary:
@@ -66,6 +67,7 @@ class ReleaseTests(unittest.TestCase):
             self.assertIn("<latest>0.1.10</latest>", text)
             self.assertIn("<version>0.1.2</version>", text)
             self.assertTrue((artifact / "maven-metadata.xml.sha256").exists())
+            self.assertIn("io/", (site / "maven/index.html").read_text())
 
     def test_release_archive_cannot_escape_site(self):
         with tempfile.TemporaryDirectory() as temporary:

@@ -62,6 +62,19 @@ def indexes(site):
             for algorithm in ("sha1", "sha256", "sha512"):
                 metadata.with_suffix(metadata.suffix + "." + algorithm).write_text(
                     hashlib.new(algorithm, metadata.read_bytes()).hexdigest() + "\n")
+    # Static servers do not provide directory listings. Keep repository
+    # landing links and version browsing useful as well as tool resolution.
+    for base in (plugins, maven):
+        if not base.exists():
+            continue
+        for directory in [base, *[p for p in base.rglob("*") if p.is_dir()]]:
+            links = []
+            for entry in sorted(directory.iterdir()):
+                if entry.name == "index.html":
+                    continue
+                name = html.escape(entry.name, quote=True) + ("/" if entry.is_dir() else "")
+                links.append(f'<a href="{name}">{name}</a><br>')
+            (directory / "index.html").write_text("<!doctype html>\n" + "\n".join(links))
 
 
 def download(repository, site):

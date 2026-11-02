@@ -77,6 +77,8 @@ def main():
             previous = json.loads(Path(temporary, "release-manifest.json").read_text())
         if previous["series"] == args.series and previous["fingerprint"] == identity and previous["kind"] == args.kind:
             print("The latest release already contains these sources and locked dependencies.")
+            if args.kind != "source":
+                subprocess.run(["gh", "workflow", "run", "pages.yml", "--repo", args.repository, "--ref", "main"], check=True)
             return
         break
     version = next_version(args.series, run("git", "tag", "--list").splitlines())
