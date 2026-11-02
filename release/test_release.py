@@ -92,8 +92,12 @@ class ReleaseTests(unittest.TestCase):
             project = site / "maven/io/github/nix-purifiers/ant-purifier"
             for version in ("0.1.1", "0.1.2"):
                 jar = project / version / f"ant-purifier-{version}.jar"
-                self.assertEqual(jar.read_bytes(), expected)
-                self.assertEqual(jar.with_suffix(".jar.sha256").read_text().strip(), hashlib.sha256(expected).hexdigest())
+                with zipfile.ZipFile(jar) as published, zipfile.ZipFile(io.BytesIO(expected)) as original:
+                    for entry in original.namelist():
+                        self.assertEqual(published.read(entry), original.read(entry))
+                    self.assertEqual(published.read("org/nixpurifiers/ant/release.properties").decode(),
+                                     "reference=github:nix-purifiers/ant-purifier/fixture\n")
+                self.assertEqual(jar.with_suffix(".jar.sha256").read_text().strip(), hashlib.sha256(jar.read_bytes()).hexdigest())
                 pom = ET.parse(jar.with_suffix(".pom")).getroot()
                 ns = {"m": "http://maven.apache.org/POM/4.0.0"}
                 self.assertEqual(pom.findtext("m:groupId", namespaces=ns), "io.github.nix-purifiers")

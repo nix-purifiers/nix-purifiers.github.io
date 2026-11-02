@@ -1,5 +1,6 @@
 """Build the native integrations using the repository's locked Nix toolchain."""
 import hashlib
+import io
 import json
 from pathlib import Path
 import shutil
@@ -11,6 +12,19 @@ def nix_build(attribute):
     return Path(subprocess.check_output([
         "nix", "build", "--no-link", "--print-out-paths", "--no-update-lock-file", attribute
     ], text=True).strip())
+
+
+def ant_plugin(source, repository, sha):
+    """Let native Ant activate the runtime from this exact released commit."""
+    target = io.BytesIO()
+    resource = "org/nixpurifiers/ant/release.properties"
+    with zipfile.ZipFile(source) as original, zipfile.ZipFile(target, "w", zipfile.ZIP_DEFLATED) as output:
+        for entry in original.infolist():
+            if entry.filename != resource:
+                output.writestr(entry, original.read(entry.filename))
+        entry = zipfile.ZipInfo(resource, (1980, 1, 1, 0, 0, 0))
+        output.writestr(entry, f"reference=github:{repository}/{sha}\n")
+    return target.getvalue()
 
 
 def poetry_bootstrap(repository, sha):
@@ -87,7 +101,11 @@ def build(root, repository, sha, version, kind, destination):
         project = native / "maven/io/github/nix-purifiers" / artifact / version
         project.mkdir(parents=True)
         jar = project / f"{artifact}-{version}.jar"
-        shutil.copyfile(extension / "share/java" / f"{artifact}.jar", jar)
+        source = extension / "share/java" / f"{artifact}.jar"
+        if kind == "ant":
+            jar.write_bytes(ant_plugin(source, repository, sha))
+        else:
+            shutil.copyfile(source, jar)
         jar.with_suffix(".pom").write_text(
             '<project xmlns="http://maven.apache.org/POM/4.0.0"><modelVersion>4.0.0</modelVersion>'
             f'<groupId>io.github.nix-purifiers</groupId><artifactId>{artifact}</artifactId>'
