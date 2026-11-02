@@ -18,6 +18,7 @@ Native integrations additionally include `native-repository.zip`:
 | python | PDM and Poetry plugins | `simple/<project>/` |
 | yarn | Yarn Berry plugin | `plugins/<version>/purifier.cjs` |
 | maven | Maven recording extension | `maven/` |
+| ant | Ant native integration, consumed by Maven-compatible Ivy resolvers | `maven/` |
 | source | Wrappers and Nix libraries | GitHub release assets |
 
 The native package sites are regenerated from all immutable release assets,

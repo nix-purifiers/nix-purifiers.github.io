@@ -7,6 +7,7 @@ import tempfile
 import unittest
 from unittest.mock import patch
 import zipfile
+import xml.etree.ElementTree as ET
 
 import packages
 import publish
@@ -70,6 +71,36 @@ class ReleaseTests(unittest.TestCase):
             self.assertIn("io/", (site / "maven/index.html").read_text())
             repository.indexes(site)
             self.assertIn("<latest>0.1.10</latest>", (artifact / "maven-metadata.xml").read_text())
+
+    def test_ant_plugin_release_is_consumable_and_retains_previous_versions(self):
+        with tempfile.TemporaryDirectory() as temporary:
+            root = Path(temporary)
+            plugin = root / "plugin/share/java"
+            plugin.mkdir(parents=True)
+            with zipfile.ZipFile(plugin / "ant-purifier.jar", "w") as jar:
+                jar.writestr("META-INF/MANIFEST.MF", "Manifest-Version: 1.0\n")
+                jar.writestr("org/nixpurifiers/ant/antlib.xml", '<antlib/>')
+            site = root / "site"
+            expected = (plugin / "ant-purifier.jar").read_bytes()
+            for version in ("0.1.1", "0.1.2"):
+                destination = root / version
+                destination.mkdir()
+                with patch.object(packages, "nix_build", return_value=plugin.parent.parent):
+                    packages.build(root, "nix-purifiers/ant-purifier", "fixture", version, "ant", destination)
+                repository.extract(destination / "native-repository.zip", site)
+            repository.indexes(site)
+            project = site / "maven/io/github/nix-purifiers/ant-purifier"
+            for version in ("0.1.1", "0.1.2"):
+                jar = project / version / f"ant-purifier-{version}.jar"
+                self.assertEqual(jar.read_bytes(), expected)
+                self.assertEqual(jar.with_suffix(".jar.sha256").read_text().strip(), hashlib.sha256(expected).hexdigest())
+                pom = ET.parse(jar.with_suffix(".pom")).getroot()
+                ns = {"m": "http://maven.apache.org/POM/4.0.0"}
+                self.assertEqual(pom.findtext("m:groupId", namespaces=ns), "io.github.nix-purifiers")
+                self.assertEqual(pom.findtext("m:artifactId", namespaces=ns), "ant-purifier")
+                self.assertEqual(pom.findtext("m:version", namespaces=ns), version)
+            self.assertIn("<latest>0.1.2</latest>", (project / "maven-metadata.xml").read_text())
+            self.assertIn("<version>0.1.1</version>", (project / "maven-metadata.xml").read_text())
 
     def test_release_archive_cannot_escape_site(self):
         with tempfile.TemporaryDirectory() as temporary:

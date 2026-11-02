@@ -51,7 +51,7 @@ def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--repository", required=True)
     parser.add_argument("--sha", required=True)
-    parser.add_argument("--kind", choices=("source", "python", "maven", "yarn"), default="source")
+    parser.add_argument("--kind", choices=("source", "python", "maven", "ant", "yarn"), default="source")
     parser.add_argument("--series", default="0.1")
     args = parser.parse_args()
     root = Path.cwd()

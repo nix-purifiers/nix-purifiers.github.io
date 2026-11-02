@@ -74,18 +74,24 @@ def build(root, repository, sha, version, kind, destination):
             shutil.copyfile(wheel, project / wheel.name)
             # Also provide direct, versioned release downloads.
             shutil.copyfile(wheel, destination / wheel.name)
-    elif kind == "maven":
-        (root / "version.txt").write_text(version + "\n")
-        extension = nix_build(".#extension")
-        artifact = "maven-purifier-extension"
+    elif kind in ("maven", "ant"):
+        if kind == "maven":
+            (root / "version.txt").write_text(version + "\n")
+            extension = nix_build(".#extension")
+            artifact = "maven-purifier-extension"
+            title = "Maven purifier recording extension"
+        else:
+            extension = nix_build(".#plugin")
+            artifact = "ant-purifier"
+            title = "Ant purifier integration"
         project = native / "maven/io/github/nix-purifiers" / artifact / version
         project.mkdir(parents=True)
         jar = project / f"{artifact}-{version}.jar"
-        shutil.copyfile(extension / "share/java/maven-purifier-extension.jar", jar)
+        shutil.copyfile(extension / "share/java" / f"{artifact}.jar", jar)
         jar.with_suffix(".pom").write_text(
             '<project xmlns="http://maven.apache.org/POM/4.0.0"><modelVersion>4.0.0</modelVersion>'
             f'<groupId>io.github.nix-purifiers</groupId><artifactId>{artifact}</artifactId>'
-            f'<version>{version}</version><name>Maven purifier recording extension</name></project>\n')
+            f'<version>{version}</version><name>{title}</name></project>\n')
         for file in list(project.iterdir()):
             for algorithm in ("sha1", "sha256", "sha512"):
                 file.with_suffix(file.suffix + "." + algorithm).write_text(
