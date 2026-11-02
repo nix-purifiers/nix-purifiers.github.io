@@ -1,0 +1,55 @@
+name: Purifier release
+
+on:
+  workflow_call:
+    inputs:
+      infrastructure_ref:
+        required: true
+        type: string
+      sha:
+        required: true
+        type: string
+      kind:
+        default: source
+        type: string
+      series:
+        default: '0.1'
+        type: string
+
+permissions:
+  contents: read
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    timeout-minutes: 60
+    permissions:
+      contents: write
+      actions: write
+    concurrency:
+      group: purifier-release
+      cancel-in-progress: false
+    env:
+      GH_TOKEN: ${{ github.token }}
+      RELEASE_SHA: ${{ inputs.sha }}
+      RELEASE_KIND: ${{ inputs.kind }}
+      RELEASE_SERIES: ${{ inputs.series }}
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
+        with:
+          ref: ${{ inputs.sha }}
+          fetch-depth: 0
+      - name: Check out release infrastructure
+        uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
+        with:
+          repository: nix-purifiers/nix-purifiers.github.io
+          ref: ${{ inputs.infrastructure_ref }}
+          path: .release-infrastructure
+          persist-credentials: false
+      - if: inputs.kind != 'source'
+        uses: cachix/install-nix-action@13d8dd58da0234aa297dedd986986ccb8e7f3e24 # v31
+      - name: Release checked sources and native integrations
+        run: |
+          python3 .release-infrastructure/release/publish.py \
+            --repository "$GITHUB_REPOSITORY" --sha "$RELEASE_SHA" \
+            --kind "$RELEASE_KIND" --series "$RELEASE_SERIES"
