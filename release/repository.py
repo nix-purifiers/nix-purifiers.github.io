@@ -48,6 +48,8 @@ def indexes(site):
     maven = site / "maven"
     if maven.exists():
         for artifact in maven.glob("io/github/nix-purifiers/*"):
+            if not artifact.is_dir():
+                continue
             versions = sorted([p.name for p in artifact.iterdir() if p.is_dir()], key=version_key)
             if not versions:
                 continue

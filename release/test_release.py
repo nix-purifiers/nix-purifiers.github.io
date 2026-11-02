@@ -68,6 +68,8 @@ class ReleaseTests(unittest.TestCase):
             self.assertIn("<version>0.1.2</version>", text)
             self.assertTrue((artifact / "maven-metadata.xml.sha256").exists())
             self.assertIn("io/", (site / "maven/index.html").read_text())
+            repository.indexes(site)
+            self.assertIn("<latest>0.1.10</latest>", (artifact / "maven-metadata.xml").read_text())
 
     def test_release_archive_cannot_escape_site(self):
         with tempfile.TemporaryDirectory() as temporary:
