@@ -7,6 +7,7 @@
     offline.template = lib.mkDefault "scoped";
     editor.template = lib.mkDefault "command";
     nix_builds.template = lib.mkDefault "builder";
+    projections.template = lib.mkDefault "directional";
     scope.template = lib.mkDefault "platforms";
     credits.template = lib.mkDefault "cargo";
   };

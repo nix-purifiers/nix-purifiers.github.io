@@ -210,6 +210,58 @@
       "type": "string",
       "description": "Project-local generated cache directory.",
       "matrix": false
+    },
+    "projection_incoming": {
+      "type": "string",
+      "enum": [
+        "supported",
+        "conditional",
+        "unsupported"
+      ],
+      "label": "Incoming projections",
+      "description": "Consumes other Nix-built projects through native repository projections."
+    },
+    "projection_incoming_formats": {
+      "type": "strings",
+      "description": "Supported native projection formats.",
+      "matrix": true,
+      "label": "Incoming projection formats"
+    },
+    "projection_incoming_interfaces": {
+      "type": "strings",
+      "description": "Nix attributes or arguments used for this projection direction.",
+      "matrix": false
+    },
+    "projection_incoming_limits": {
+      "type": "strings",
+      "description": "Prerequisites, scope restrictions, and unsupported projection paths.",
+      "matrix": false
+    },
+    "projection_outgoing": {
+      "type": "string",
+      "enum": [
+        "supported",
+        "conditional",
+        "unsupported"
+      ],
+      "label": "Outgoing projections",
+      "description": "Exports Nix-built project publications as native repository projections."
+    },
+    "projection_outgoing_formats": {
+      "type": "strings",
+      "description": "Supported native projection formats.",
+      "matrix": true,
+      "label": "Outgoing projection formats"
+    },
+    "projection_outgoing_interfaces": {
+      "type": "strings",
+      "description": "Nix attributes or arguments used for this projection direction.",
+      "matrix": false
+    },
+    "projection_outgoing_limits": {
+      "type": "strings",
+      "description": "Prerequisites, scope restrictions, and unsupported projection paths.",
+      "matrix": false
     }
   }
 }

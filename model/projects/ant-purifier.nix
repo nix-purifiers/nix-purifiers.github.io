@@ -5,6 +5,14 @@ in {
   imports = [ ../operations/ant.nix ];
   repository = "nix-purifiers/ant-purifier";
   facts = {
+    projection_incoming = known "unsupported";
+    projection_incoming_formats = { state = "not-applicable"; reason = "No incoming projection interface is implemented."; };
+    projection_incoming_interfaces = { state = "not-applicable"; reason = "No incoming projection interface is implemented."; };
+    projection_incoming_limits = known [ "Nonempty projectDependencies is explicitly rejected by the builder" ];
+    projection_outgoing = known "conditional";
+    projection_outgoing_formats = known [ "Maven" "Ivy" ];
+    projection_outgoing_interfaces = known [ "projections.maven" "projections.ivy" ];
+    projection_outgoing_limits = known [ "Set publishTarget to expose project publications" "Original Maven POM metadata, including parent and BOM closure, is required; Ivy-only dependency graphs fail projection evaluation" ];
     prefetch_components = known [ "dependency repository" "compiler" "Ant" "plugin" "editor toolchain" ];
     unsupported_features = known [ "inline Ivy resolution" "inherited descriptors" "branches" "multiple project base directories" "custom cache managers" "explicit artifact URLs" "native Nix project dependency inputs" ];
     wrapper_required = known false;

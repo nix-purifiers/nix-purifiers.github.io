@@ -39,6 +39,14 @@ server or native editor adapter belongs in bespoke integration glue; the model
 then records the capabilities it actually provides. Generic editor features
 are useful here insofar as they work with the purified project's environment.
 
+Projection support is directional: incoming means consuming other Nix-built
+projects through native projections; outgoing means exporting such projections
+for consumers. Each direction records support, formats, interfaces, and
+limitations separately. Native artifacts alone do not imply a projection
+interface. Conditional support records its prerequisites, including differences
+between package-level and aggregate outputs. Unsupported directions cannot
+advertise formats or interfaces.
+
 ## Invocation expressions
 
 `invocations.nix` validates each operation. Arguments are literal strings,

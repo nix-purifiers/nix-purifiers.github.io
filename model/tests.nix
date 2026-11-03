@@ -17,6 +17,12 @@ let
     unknownBlockFails = !force (withOverride {
       sections.editor.blocks.typo.extra-explanation = "Unrecognized block.";
     });
+    unsupportedProjectionCannotAdvertiseFormats = !force (withOverride ({ lib, ... }: {
+      facts.projection_incoming_formats = lib.mkForce { state = "known"; value = [ "Maven" ]; };
+    }));
+    supportedProjectionRequiresFormatsAndInterface = !force (withOverride ({ lib, ... }: {
+      facts.projection_incoming.value = lib.mkForce "supported";
+    }));
     inactiveBlockProseFails = !force (withOverride ({ lib, ... }: {
       facts.editor_metadata_format.value = lib.mkForce "none";
     }));

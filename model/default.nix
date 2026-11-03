@@ -8,12 +8,25 @@ let
     if f.state == "known" then { inherit (f) state value sources; }
     else { inherit (f) state reason; }
   ) cfg.facts;
+  validateProjections = cfg:
+    if lib.all (direction:
+      let
+        support = cfg.facts.${"projection_${direction}"};
+        formats = cfg.facts.${"projection_${direction}_formats"};
+        interfaces = cfg.facts.${"projection_${direction}_interfaces"};
+      in support.state != "known" || (
+        if support.value == "unsupported" then
+          formats.state == "not-applicable" && interfaces.state == "not-applicable"
+        else formats.state == "known" && interfaces.state == "known"
+      )
+    ) [ "incoming" "outgoing" ] then cfg
+    else throw "Projection support must agree with declared formats and interfaces";
   evaluate = modules:
-    let cfg = (lib.evalModules { modules = [ ./schema.nix ] ++ modules; }).config;
+    let cfg = validateProjections (lib.evalModules { modules = [ ./schema.nix ] ++ modules; }).config;
     in { version = 1; inherit (cfg) repository operations; facts = exportFacts cfg; };
   evaluateDocumentation = modules:
     let
-      cfg = (lib.evalModules { modules = [ ./schema.nix ./documentation.nix ] ++ modules; }).config;
+      cfg = validateProjections (lib.evalModules { modules = [ ./schema.nix ./documentation.nix ] ++ modules; }).config;
       specifications = lib.listToAttrs (map (s: lib.nameValuePair s.id s) contract.sections);
       expectedSections = builtins.attrNames specifications;
       sections = lib.mapAttrs (key: section:

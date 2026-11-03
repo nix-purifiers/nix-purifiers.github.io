@@ -5,6 +5,14 @@ in {
   imports = [ ../operations/docker.nix ];
   repository = "nix-purifiers/docker-purifier";
   facts = {
+    projection_incoming = known "unsupported";
+    projection_incoming_formats = { state = "not-applicable"; reason = "No incoming projection interface is implemented."; };
+    projection_incoming_interfaces = { state = "not-applicable"; reason = "No incoming projection interface is implemented."; };
+    projection_incoming_limits = known [ "The builder has no projectDependencies or native projection input interface" ];
+    projection_outgoing = known "unsupported";
+    projection_outgoing_formats = { state = "not-applicable"; reason = "No outgoing projection interface is implemented."; };
+    projection_outgoing_interfaces = { state = "not-applicable"; reason = "No outgoing projection interface is implemented."; };
+    projection_outgoing_limits = known [ "packages.image exposes a native OCI layout; no projections interface is exported" ];
     prefetch_components = known [ "image layouts" "Docker client" "Buildx" "resolver" "editor worker" ];
     unsupported_features = known [ "remote ADD" "external syntax frontends" "ONBUILD triggers" "dynamic FROM" "explicit FROM --platform" "RUN mounts and heredocs" "foreign layers" "Compose and Bake builds" "cross-platform host builds" "remote build contexts" ];
     wrapper_required = known true;

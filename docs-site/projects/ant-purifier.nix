@@ -20,8 +20,7 @@ in {
     nix_builds.blocks.main.extra-explanation = ''
       `packages.project` builds the project. `packages.environment` contains
       the locked repository. `publishTarget` enables native Ivy publications
-      through `packages.repository`. Maven projection requires original POM
-      metadata, including parent and BOM closure.
+      through `packages.repository`.
       See [builder examples](${source}#nix-builds).
     '';
   };
