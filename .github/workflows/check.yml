@@ -36,6 +36,8 @@ jobs:
         with:
           source: .catalog-source
           destination: .catalog-site
+      - name: Validate rendered navigation and link destinations
+        run: python3 docs-site/check_links.py --source .catalog-source --site .catalog-site
       - uses: actions/upload-artifact@v4
         with:
           name: purifier-reference

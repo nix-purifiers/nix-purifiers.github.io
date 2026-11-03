@@ -21,6 +21,8 @@ jobs:
         with:
           source: .catalog-source
           destination: .catalog-site
+      - name: Validate rendered navigation and link destinations
+        run: python3 docs-site/check_links.py --source .catalog-source --site .catalog-site
       - uses: actions/upload-pages-artifact@fc324d3547104276b827a68afc52ff2a11cc49c9
         with:
           path: .catalog-site

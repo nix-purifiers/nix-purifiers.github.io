@@ -1,0 +1,80 @@
+"""Check rendered documentation URLs and required navigation before deployment."""
+import argparse
+from html.parser import HTMLParser
+import json
+from pathlib import Path
+import re
+from urllib.parse import unquote, urlsplit
+
+
+class Page(HTMLParser):
+    def __init__(self, text):
+        super().__init__()
+        self.links = []
+        self.ids = set()
+        self.feed(text)
+
+    def handle_starttag(self, tag, attrs):
+        attrs = dict(attrs)
+        if 'id' in attrs:
+            self.ids.add(attrs['id'])
+        if tag == 'a' and 'name' in attrs:
+            self.ids.add(attrs['name'])
+        for key in ('href', 'src'):
+            if attrs.get(key):
+                self.links.append(attrs[key])
+
+
+def check(source, destination):
+    config = json.loads((source / '_config.yml').read_text())
+    root = destination.resolve()
+    prefix = config.get('baseurl', '').rstrip('/')
+    pages = {p.resolve(): Page(p.read_text()) for p in root.rglob('*.html')}
+    failures = []
+    navigation = 0
+    for repository, matrix in config.get('feature_matrices', {}).items():
+        folder = root if prefix else root / repository.split('/')[1]
+        expected = prefix + matrix
+        for name in ('index.html', 'reference.html', 'features.html'):
+            path = folder / name
+            if path not in pages:
+                failures.append(f'{repository}: missing {name}')
+            elif expected not in pages[path].links:
+                failures.append(f'{path.relative_to(root)}: missing matrix link {expected}')
+            else:
+                navigation += 1
+    for path, page in pages.items():
+        for link in page.links:
+            url = urlsplit(link)
+            if re.match(r'https://github\.com/[^/]+/[^/]+/blob/[^/]+/(?:reference|features)\.html(?:[?#]|$)', link):
+                failures.append(f'{path.relative_to(root)}: generated page points into source repository: {link}')
+                continue
+            if url.scheme or url.netloc:
+                continue
+            target = unquote(url.path)
+            if target.startswith('/'):
+                if prefix and not target.startswith(prefix + '/'):
+                    failures.append(f'{path.relative_to(root)}: link escapes project base URL: {link}')
+                    continue
+                target = target[len(prefix):] if prefix else target
+                resolved = root / target.lstrip('/')
+            else:
+                resolved = path.parent / target if target else path
+            resolved = resolved.resolve()
+            if resolved.is_dir():
+                resolved /= 'index.html'
+            if not resolved.is_relative_to(root) or not resolved.exists():
+                failures.append(f'{path.relative_to(root)}: missing local destination: {link}')
+            elif url.fragment and resolved in pages and unquote(url.fragment) not in pages[resolved].ids:
+                failures.append(f'{path.relative_to(root)}: missing fragment: {link}')
+    if failures:
+        raise ValueError('\n'.join(failures))
+    return {'pages': len(pages), 'matrixLinks': navigation}
+
+
+if __name__ == '__main__':
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument('--source', required=True, type=Path)
+    parser.add_argument('--site', required=True, type=Path)
+    args = parser.parse_args()
+    print(json.dumps(check(args.source, args.site)))
