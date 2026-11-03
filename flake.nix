@@ -12,6 +12,7 @@
       contract = model.contract;
       documentation = { catalog = model.documentationCatalog; inherit (model) contract; };
       behaviorContract = model.behaviorContract;
+      library = builtins.fromJSON (builtins.readFile ./model/library.json);
       testPlans = lib.mapAttrs (_: testPlan) model.catalog;
       tests = import ./model/tests.nix { inherit lib model; };
     };

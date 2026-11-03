@@ -1,0 +1,164 @@
+{
+  "repository": "nix-purifiers/cmake-purifier",
+  "reviewedRevision": "b7e2ec857d6114933ab44116b2624ea194ea8801",
+  "facts": {
+    "tool": {
+      "state": "known",
+      "value": "CMake"
+    },
+    "lockfiles": {
+      "state": "known",
+      "value": [
+        "cmake-purifier.lock.json"
+      ]
+    },
+    "integration": {
+      "state": "known",
+      "value": "wrapper"
+    },
+    "platforms": {
+      "state": "known",
+      "value": [
+        "x86_64-linux",
+        "aarch64-linux"
+      ]
+    },
+    "nix_builder": {
+      "state": "known",
+      "value": "pkgs.cmake-purifier.buildCMakeProject"
+    },
+    "build_isolation": {
+      "state": "known",
+      "value": "nix-sandbox"
+    },
+    "build_outputs": {
+      "state": "known",
+      "value": [
+        "packages",
+        "tests",
+        "release",
+        "fetches"
+      ]
+    },
+    "missing_lock": {
+      "state": "known",
+      "value": "warn-and-native"
+    },
+    "projection_incoming": {
+      "state": "known",
+      "value": "unsupported"
+    },
+    "projection_incoming_formats": {
+      "state": "not-applicable",
+      "reason": "No incoming typed projection adapter is exported by this implementation."
+    },
+    "projection_incoming_interfaces": {
+      "state": "not-applicable",
+      "reason": "No incoming typed projection interface is implemented."
+    },
+    "projection_incoming_limits": {
+      "state": "known",
+      "value": [
+        "Native artifacts or caches alone do not provide a typed incoming project projection interface"
+      ]
+    },
+    "projection_outgoing": {
+      "state": "known",
+      "value": "unsupported"
+    },
+    "projection_outgoing_formats": {
+      "state": "not-applicable",
+      "reason": "No outgoing typed projection adapter is exported by this implementation."
+    },
+    "projection_outgoing_interfaces": {
+      "state": "not-applicable",
+      "reason": "No outgoing typed projection interface is implemented."
+    },
+    "projection_outgoing_limits": {
+      "state": "known",
+      "value": [
+        "Native artifacts or caches alone do not provide a typed outgoing project projection interface"
+      ]
+    },
+    "editor_protocol": {
+      "state": "known",
+      "value": "lsp"
+    },
+    "editor_supported": {
+      "state": "known",
+      "value": true
+    },
+    "editor_offline": {
+      "state": "known",
+      "value": true
+    }
+  },
+  "operations": {
+    "lock": {
+      "capability": "cmake-purifier",
+      "arguments": [
+        "lock"
+      ],
+      "sources": [
+        "https://github.com/nix-purifiers/cmake-purifier/blob/b7e2ec857d6114933ab44116b2624ea194ea8801/nix/lib/build-cmake-project.nix"
+      ],
+      "minimumArguments": 0,
+      "environment": {
+        "CMAKE_PURIFIER_LOCKFILE": {
+          "binding": "lockfile"
+        }
+      }
+    },
+    "prefetch": {
+      "capability": "cmake-purifier",
+      "arguments": [
+        "prefetch"
+      ],
+      "sources": [
+        "https://github.com/nix-purifiers/cmake-purifier/blob/b7e2ec857d6114933ab44116b2624ea194ea8801/nix/lib/build-cmake-project.nix"
+      ],
+      "minimumArguments": 0,
+      "environment": {
+        "CMAKE_PURIFIER_LOCKFILE": {
+          "binding": "lockfile"
+        }
+      }
+    },
+    "update": {
+      "state": "unknown",
+      "reason": "The native update selector and invocation have not been normalized; use the reference workflow."
+    },
+    "build": {
+      "capability": "cmake",
+      "arguments": [
+        "-B",
+        "build",
+        "-C",
+        ".cmake-purifier/initial-cache.txt"
+      ],
+      "sources": [
+        "https://github.com/nix-purifiers/cmake-purifier/blob/b7e2ec857d6114933ab44116b2624ea194ea8801/nix/lib/build-cmake-project.nix"
+      ],
+      "environment": {
+        "CMAKE_PURIFIER_LOCKFILE": {
+          "binding": "lockfile"
+        }
+      }
+    },
+    "test": {
+      "capability": "ctest",
+      "arguments": [
+        "--test-dir",
+        "build"
+      ],
+      "sources": [
+        "https://github.com/nix-purifiers/cmake-purifier/blob/b7e2ec857d6114933ab44116b2624ea194ea8801/nix/lib/build-cmake-project.nix"
+      ],
+      "environment": {
+        "CMAKE_PURIFIER_LOCKFILE": {
+          "binding": "lockfile"
+        }
+      }
+    }
+  }
+}

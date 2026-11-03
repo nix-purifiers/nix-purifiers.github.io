@@ -1,0 +1,16 @@
+{
+  "summary": "Locked, Nix-resolved dependencies for pip.",
+  "values": {
+    "quickstart": "nix shell 'github:nix-purifiers/pip-purifier'\npip-purifier lock\npip-purifier prefetch\n. .venv/bin/activate\npython -m pytest"
+  },
+  "sections": {
+    "editor": {
+      "title": "Editor environment integration",
+      "blocks": {
+        "main": {
+          "extra-explanation": "Point the editor at `.venv`, as for any virtual environment. For pyright\nand basedpyright, `prefetch` makes `.venv` in the project root, where they\nlook for it by default. The packages in `.venv` hold their sources, so\ngo-to-definition and type information work offline. The language server\nitself comes from your editor setup, such as nixpkgs' `pyright`."
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,165 @@
+{
+  "repository": "nix-purifiers/go-purifier",
+  "reviewedRevision": "65fa67901d0b867cb2682eeedcb98e42593531a4",
+  "facts": {
+    "tool": {
+      "state": "known",
+      "value": "Go"
+    },
+    "lockfiles": {
+      "state": "known",
+      "value": [
+        "go.sum",
+        "go-purifier.lock.json"
+      ]
+    },
+    "integration": {
+      "state": "known",
+      "value": "wrapper"
+    },
+    "platforms": {
+      "state": "known",
+      "value": [
+        "x86_64-linux",
+        "aarch64-linux",
+        "aarch64-darwin"
+      ]
+    },
+    "nix_builder": {
+      "state": "known",
+      "value": "pkgs.go-purifier.buildGoProject"
+    },
+    "build_isolation": {
+      "state": "known",
+      "value": "nix-sandbox"
+    },
+    "build_outputs": {
+      "state": "known",
+      "value": [
+        "packages",
+        "tests",
+        "release",
+        "fetches"
+      ]
+    },
+    "projection_incoming": {
+      "state": "known",
+      "value": "conditional"
+    },
+    "projection_incoming_formats": {
+      "state": "known",
+      "value": [
+        "go"
+      ]
+    },
+    "projection_incoming_interfaces": {
+      "state": "known",
+      "value": [
+        "dependencies",
+        "--input",
+        "lockfile.projectInputs"
+      ]
+    },
+    "projection_incoming_limits": {
+      "state": "known",
+      "value": [
+        "Inputs must export projections.go with the native Go module catalog",
+        "The wrapper binds supplied modules through temporary native Go workspaces without rewriting the working go.mod"
+      ]
+    },
+    "projection_outgoing": {
+      "state": "known",
+      "value": "conditional"
+    },
+    "projection_outgoing_formats": {
+      "state": "known",
+      "value": [
+        "go"
+      ]
+    },
+    "projection_outgoing_interfaces": {
+      "state": "known",
+      "value": [
+        "projections.go",
+        "all.projections.go",
+        "packages.<command>.projections.go",
+        "release.projections.go"
+      ]
+    },
+    "projection_outgoing_limits": {
+      "state": "known",
+      "value": [
+        "Ordinary Go consumers use GOPROXY with suitable GONOSUMDB policy for Nix-derived module versions",
+        "Publishing Git tags and command archives does not serve the projected module proxy"
+      ]
+    },
+    "editor_protocol": {
+      "state": "known",
+      "value": "lsp"
+    },
+    "editor_supported": {
+      "state": "known",
+      "value": true
+    },
+    "editor_offline": {
+      "state": "known",
+      "value": true
+    },
+    "platform_notes": {
+      "state": "known",
+      "value": [
+        "Apple Silicon macOS support is contributor-reported from unsandboxed builds; no macOS CI is configured",
+        "Sandboxed Darwin --check rebuilds have not been verified"
+      ]
+    }
+  },
+  "operations": {
+    "lock": {
+      "capability": "go-purifier",
+      "arguments": [
+        "lock",
+        {
+          "splice": "arguments"
+        }
+      ],
+      "sources": [
+        "https://github.com/nix-purifiers/go-purifier/blob/65fa67901d0b867cb2682eeedcb98e42593531a4/nix/lib/build-go-project.nix"
+      ],
+      "minimumArguments": 0
+    },
+    "prefetch": {
+      "capability": "go-purifier",
+      "arguments": [
+        "prefetch"
+      ],
+      "sources": [
+        "https://github.com/nix-purifiers/go-purifier/blob/65fa67901d0b867cb2682eeedcb98e42593531a4/nix/lib/build-go-project.nix"
+      ],
+      "minimumArguments": 0
+    },
+    "update": {
+      "state": "unknown",
+      "reason": "The native update selector and invocation have not been normalized; use the reference workflow."
+    },
+    "build": {
+      "capability": "go",
+      "arguments": [
+        "build",
+        "./..."
+      ],
+      "sources": [
+        "https://github.com/nix-purifiers/go-purifier/blob/65fa67901d0b867cb2682eeedcb98e42593531a4/nix/lib/build-go-project.nix"
+      ]
+    },
+    "test": {
+      "capability": "go",
+      "arguments": [
+        "test",
+        "./..."
+      ],
+      "sources": [
+        "https://github.com/nix-purifiers/go-purifier/blob/65fa67901d0b867cb2682eeedcb98e42593531a4/nix/lib/build-go-project.nix"
+      ]
+    }
+  }
+}

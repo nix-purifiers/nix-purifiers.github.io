@@ -1,0 +1,180 @@
+{
+  "repository": "nix-purifiers/maven-purifier",
+  "reviewedRevision": "2bc205774bb96ae44cbd0d813d1810ebd4ee9820",
+  "facts": {
+    "tool": {
+      "state": "known",
+      "value": "Maven"
+    },
+    "lockfiles": {
+      "state": "known",
+      "value": [
+        "maven-purifier.lock.json"
+      ]
+    },
+    "integration": {
+      "state": "known",
+      "value": "wrapper"
+    },
+    "platforms": {
+      "state": "known",
+      "value": [
+        "x86_64-linux",
+        "aarch64-linux"
+      ]
+    },
+    "nix_builder": {
+      "state": "known",
+      "value": "pkgs.maven-purifier.buildMavenProject"
+    },
+    "build_isolation": {
+      "state": "known",
+      "value": "nix-sandbox"
+    },
+    "build_outputs": {
+      "state": "known",
+      "value": [
+        "packages",
+        "tests",
+        "release",
+        "fetches"
+      ]
+    },
+    "missing_lock": {
+      "state": "known",
+      "value": "warn-and-native"
+    },
+    "projection_incoming": {
+      "state": "known",
+      "value": "conditional"
+    },
+    "projection_incoming_formats": {
+      "state": "known",
+      "value": [
+        "maven"
+      ]
+    },
+    "projection_incoming_interfaces": {
+      "state": "known",
+      "value": [
+        "projectDependencies",
+        "lockfile.projectInputs"
+      ]
+    },
+    "projection_incoming_limits": {
+      "state": "known",
+      "value": [
+        "Producer must export the compatible native projection and its inferred catalog; native version requirements still apply"
+      ]
+    },
+    "projection_outgoing": {
+      "state": "known",
+      "value": "conditional"
+    },
+    "projection_outgoing_formats": {
+      "state": "known",
+      "value": [
+        "maven"
+      ]
+    },
+    "projection_outgoing_interfaces": {
+      "state": "known",
+      "value": [
+        "projections.maven"
+      ]
+    },
+    "projection_outgoing_limits": {
+      "state": "known",
+      "value": [
+        "Exported publications depend on the native project package metadata and successful sandboxed builds"
+      ]
+    },
+    "editor_protocol": {
+      "state": "known",
+      "value": "native-build-import"
+    },
+    "editor_supported": {
+      "state": "known",
+      "value": true
+    },
+    "editor_offline": {
+      "state": "known",
+      "value": true
+    }
+  },
+  "operations": {
+    "lock": {
+      "capability": "maven-purifier",
+      "arguments": [
+        "lock"
+      ],
+      "sources": [
+        "https://github.com/nix-purifiers/maven-purifier/blob/2bc205774bb96ae44cbd0d813d1810ebd4ee9820/nix/lib/build-maven-project.nix"
+      ],
+      "minimumArguments": 0,
+      "environment": {
+        "MAVEN_PURIFIER_LOCKFILE": {
+          "binding": "lockfile"
+        }
+      }
+    },
+    "prefetch": {
+      "capability": "maven-purifier",
+      "arguments": [
+        "prefetch"
+      ],
+      "sources": [
+        "https://github.com/nix-purifiers/maven-purifier/blob/2bc205774bb96ae44cbd0d813d1810ebd4ee9820/nix/lib/build-maven-project.nix"
+      ],
+      "minimumArguments": 0,
+      "environment": {
+        "MAVEN_PURIFIER_LOCKFILE": {
+          "binding": "lockfile"
+        }
+      }
+    },
+    "update": {
+      "capability": "maven-purifier",
+      "arguments": [
+        "update"
+      ],
+      "sources": [
+        "https://github.com/nix-purifiers/maven-purifier/blob/2bc205774bb96ae44cbd0d813d1810ebd4ee9820/nix/lib/build-maven-project.nix"
+      ],
+      "minimumArguments": 0,
+      "environment": {
+        "MAVEN_PURIFIER_LOCKFILE": {
+          "binding": "lockfile"
+        }
+      }
+    },
+    "test": {
+      "capability": "mvn",
+      "arguments": [
+        "test"
+      ],
+      "sources": [
+        "https://github.com/nix-purifiers/maven-purifier/blob/2bc205774bb96ae44cbd0d813d1810ebd4ee9820/nix/lib/build-maven-project.nix"
+      ],
+      "environment": {
+        "MAVEN_PURIFIER_LOCKFILE": {
+          "binding": "lockfile"
+        }
+      }
+    },
+    "build": {
+      "capability": "mvn",
+      "arguments": [
+        "package"
+      ],
+      "sources": [
+        "https://github.com/nix-purifiers/maven-purifier/blob/2bc205774bb96ae44cbd0d813d1810ebd4ee9820/nix/lib/build-maven-project.nix"
+      ],
+      "environment": {
+        "MAVEN_PURIFIER_LOCKFILE": {
+          "binding": "lockfile"
+        }
+      }
+    }
+  }
+}

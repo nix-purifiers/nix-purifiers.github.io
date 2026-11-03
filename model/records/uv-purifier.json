@@ -1,0 +1,161 @@
+{
+  "repository": "nix-purifiers/uv-purifier",
+  "reviewedRevision": "94637dca6d9cd0a23a85da39c4623c6958ca251f",
+  "facts": {
+    "tool": {
+      "state": "known",
+      "value": "uv"
+    },
+    "lockfiles": {
+      "state": "known",
+      "value": [
+        "uv.lock",
+        "uv-purifier.lock.json"
+      ]
+    },
+    "integration": {
+      "state": "known",
+      "value": "wrapper"
+    },
+    "platforms": {
+      "state": "known",
+      "value": [
+        "x86_64-linux",
+        "aarch64-linux"
+      ]
+    },
+    "nix_builder": {
+      "state": "known",
+      "value": "pkgs.uv-purifier.buildUvProject"
+    },
+    "build_isolation": {
+      "state": "known",
+      "value": "nix-sandbox"
+    },
+    "build_outputs": {
+      "state": "known",
+      "value": [
+        "packages",
+        "tests",
+        "release",
+        "fetches"
+      ]
+    },
+    "projection_incoming": {
+      "state": "known",
+      "value": "conditional"
+    },
+    "projection_incoming_formats": {
+      "state": "known",
+      "value": [
+        "python"
+      ]
+    },
+    "projection_incoming_interfaces": {
+      "state": "known",
+      "value": [
+        "projectDependencies",
+        "lockfile.projectInputs"
+      ]
+    },
+    "projection_incoming_limits": {
+      "state": "known",
+      "value": [
+        "Producer must export the compatible native projection and its inferred catalog; native version requirements still apply"
+      ]
+    },
+    "projection_outgoing": {
+      "state": "known",
+      "value": "conditional"
+    },
+    "projection_outgoing_formats": {
+      "state": "known",
+      "value": [
+        "python"
+      ]
+    },
+    "projection_outgoing_interfaces": {
+      "state": "known",
+      "value": [
+        "projections.python"
+      ]
+    },
+    "projection_outgoing_limits": {
+      "state": "known",
+      "value": [
+        "Exported publications depend on the native project package metadata and successful sandboxed builds"
+      ]
+    },
+    "editor_protocol": {
+      "state": "known",
+      "value": "project-environment"
+    },
+    "editor_supported": {
+      "state": "known",
+      "value": true
+    },
+    "editor_offline": {
+      "state": "known",
+      "value": true
+    }
+  },
+  "operations": {
+    "lock": {
+      "capability": "uv-purifier",
+      "arguments": [
+        "lock"
+      ],
+      "sources": [
+        "https://github.com/nix-purifiers/uv-purifier/blob/94637dca6d9cd0a23a85da39c4623c6958ca251f/nix/lib/build-uv-project.nix"
+      ],
+      "minimumArguments": 0,
+      "environment": {
+        "UV_PURIFIER_LOCKFILE": {
+          "binding": "lockfile"
+        }
+      }
+    },
+    "prefetch": {
+      "capability": "uv-purifier",
+      "arguments": [
+        "prefetch"
+      ],
+      "sources": [
+        "https://github.com/nix-purifiers/uv-purifier/blob/94637dca6d9cd0a23a85da39c4623c6958ca251f/nix/lib/build-uv-project.nix"
+      ],
+      "minimumArguments": 0,
+      "environment": {
+        "UV_PURIFIER_LOCKFILE": {
+          "binding": "lockfile"
+        }
+      }
+    },
+    "update": {
+      "capability": "uv-purifier",
+      "arguments": [
+        "update"
+      ],
+      "sources": [
+        "https://github.com/nix-purifiers/uv-purifier/blob/94637dca6d9cd0a23a85da39c4623c6958ca251f/nix/lib/build-uv-project.nix"
+      ],
+      "minimumArguments": 0,
+      "environment": {
+        "UV_PURIFIER_LOCKFILE": {
+          "binding": "lockfile"
+        }
+      }
+    },
+    "test": {
+      "capability": "pytest",
+      "arguments": [],
+      "sources": [
+        "https://github.com/nix-purifiers/uv-purifier/blob/94637dca6d9cd0a23a85da39c4623c6958ca251f/nix/lib/build-uv-project.nix"
+      ],
+      "environment": {
+        "UV_PURIFIER_LOCKFILE": {
+          "binding": "lockfile"
+        }
+      }
+    }
+  }
+}

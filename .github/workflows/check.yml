@@ -28,6 +28,8 @@ jobs:
           PURIFIER_DOCKER_SOURCE: ${{ github.workspace }}/.conformance/docker-purifier
         run: python3 -m unittest discover -s harness -v
       - name: Generate the reference and machine-readable catalog
+        run: python3 docs-site/export.py --check
+      - name: Generate all purifier documentation
         run: python3 docs-site/build.py
       - name: Build the generated reference with Jekyll
         uses: actions/jekyll-build-pages@44a6e6beabd48582f863aeeb6cb2151cc1716697 # v1

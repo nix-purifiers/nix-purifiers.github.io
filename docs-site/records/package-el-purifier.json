@@ -1,0 +1,23 @@
+{
+  "summary": "Locked, Nix-resolved dependencies for Emacs package.el.",
+  "values": {
+    "quickstart": "nix shell 'github:nix-purifiers/package-el-purifier'\npackage-el-purifier lock\npackage-el-purifier prefetch\nemacs"
+  },
+  "sections": {
+    "editor": {
+      "title": "Native editor integration",
+      "blocks": {
+        "main": {
+          "extra-explanation": "Emacs itself is the editor. The selected packages, their autoloads and the\ncompiled package quickstart file are installed in a per-configuration Nix\nstore environment. Your configuration and buffers remain in the working\ntree; package byte compilation runs in the Nix sandbox."
+        }
+      }
+    },
+    "quickstart": {
+      "blocks": {
+        "commands": {
+          "before": "In your Emacs configuration directory, put the package declarations in\n`packages.el`, which your `init.el` can load:\n\n```elisp\n(require 'package)\n(setq package-archives\n      '((\"gnu\" . \"https://elpa.gnu.org/packages/\")))\n(setq package-selected-packages '(vertico))\n```\n\nOpen a shell containing the CLI and Emacs wrapper:"
+        }
+      }
+    }
+  }
+}

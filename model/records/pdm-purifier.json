@@ -1,0 +1,154 @@
+{
+  "repository": "nix-purifiers/pdm-purifier",
+  "reviewedRevision": "7eab9f01352ef38a8340f2a7f037ef3b31c0ada2",
+  "facts": {
+    "tool": {
+      "state": "known",
+      "value": "PDM"
+    },
+    "lockfiles": {
+      "state": "known",
+      "value": [
+        "pdm.lock",
+        "pdm-purifier.lock.json"
+      ]
+    },
+    "integration": {
+      "state": "known",
+      "value": "wrapper-and-plugin"
+    },
+    "platforms": {
+      "state": "known",
+      "value": [
+        "x86_64-linux",
+        "aarch64-linux"
+      ]
+    },
+    "nix_builder": {
+      "state": "known",
+      "value": "pkgs.pdm-purifier.buildPdmProject"
+    },
+    "build_isolation": {
+      "state": "known",
+      "value": "nix-sandbox"
+    },
+    "build_outputs": {
+      "state": "known",
+      "value": [
+        "packages",
+        "tests",
+        "release",
+        "fetches"
+      ]
+    },
+    "missing_lock": {
+      "state": "known",
+      "value": "warn-and-native"
+    },
+    "projection_incoming": {
+      "state": "known",
+      "value": "conditional"
+    },
+    "projection_incoming_formats": {
+      "state": "known",
+      "value": [
+        "python"
+      ]
+    },
+    "projection_incoming_interfaces": {
+      "state": "known",
+      "value": [
+        "projectDependencies",
+        "lockfile.projectInputs"
+      ]
+    },
+    "projection_incoming_limits": {
+      "state": "known",
+      "value": [
+        "Producer must export the compatible native projection and its inferred catalog; native version requirements still apply"
+      ]
+    },
+    "projection_outgoing": {
+      "state": "known",
+      "value": "conditional"
+    },
+    "projection_outgoing_formats": {
+      "state": "known",
+      "value": [
+        "python"
+      ]
+    },
+    "projection_outgoing_interfaces": {
+      "state": "known",
+      "value": [
+        "projections.python"
+      ]
+    },
+    "projection_outgoing_limits": {
+      "state": "known",
+      "value": [
+        "Exported publications depend on the native project package metadata and successful sandboxed builds"
+      ]
+    },
+    "editor_protocol": {
+      "state": "known",
+      "value": "project-environment"
+    },
+    "editor_supported": {
+      "state": "known",
+      "value": true
+    },
+    "editor_offline": {
+      "state": "known",
+      "value": true
+    }
+  },
+  "operations": {
+    "lock": {
+      "capability": "pdm-purifier",
+      "arguments": [
+        "lock"
+      ],
+      "sources": [
+        "https://github.com/nix-purifiers/pdm-purifier/blob/7eab9f01352ef38a8340f2a7f037ef3b31c0ada2/nix/lib/build-pdm-project.nix"
+      ],
+      "minimumArguments": 0,
+      "environment": {
+        "PDM_PURIFIER_LOCKFILE": {
+          "binding": "lockfile"
+        }
+      }
+    },
+    "prefetch": {
+      "capability": "pdm-purifier",
+      "arguments": [
+        "prefetch"
+      ],
+      "sources": [
+        "https://github.com/nix-purifiers/pdm-purifier/blob/7eab9f01352ef38a8340f2a7f037ef3b31c0ada2/nix/lib/build-pdm-project.nix"
+      ],
+      "minimumArguments": 0,
+      "environment": {
+        "PDM_PURIFIER_LOCKFILE": {
+          "binding": "lockfile"
+        }
+      }
+    },
+    "update": {
+      "state": "unknown",
+      "reason": "The native update selector and invocation have not been normalized; use the reference workflow."
+    },
+    "test": {
+      "capability": "pytest",
+      "arguments": [],
+      "sources": [
+        "https://github.com/nix-purifiers/pdm-purifier/blob/7eab9f01352ef38a8340f2a7f037ef3b31c0ada2/nix/lib/build-pdm-project.nix"
+      ],
+      "environment": {
+        "PDM_PURIFIER_LOCKFILE": {
+          "binding": "lockfile"
+        }
+      }
+    }
+  }
+}

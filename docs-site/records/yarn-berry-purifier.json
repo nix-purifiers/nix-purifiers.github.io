@@ -1,0 +1,16 @@
+{
+  "summary": "Locked, Nix-resolved dependencies for Yarn Berry.",
+  "values": {
+    "quickstart": "nix shell 'github:nix-purifiers/yarn-berry-purifier#toolchain'\nyarn-berry-purifier lock\nyarn install\nyarn run build\nyarn test"
+  },
+  "sections": {
+    "editor": {
+      "title": "Editor environment integration",
+      "blocks": {
+        "main": {
+          "extra-explanation": "JavaScript editors take their tools from the dependencies that Yarn\ninstalls in the project: TypeScript's language server comes from the\n`typescript` package, and ESLint and Prettier come from their own\npackages. After `yarn-berry-purifier prefetch` and `yarn install`, those\ntools are in place and work offline. A project that uses Plug'n'Play needs\nYarn's editor SDK, which `yarn dlx @yarnpkg/sdks` installs; `@yarnpkg/sdks`\nthen has to be a dev dependency, so that the purifier lockfile records it."
+        }
+      }
+    }
+  }
+}

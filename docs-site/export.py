@@ -1,0 +1,28 @@
+"""Export the validated Nix documentation model for Python-only Pages builders."""
+import argparse
+import json
+from pathlib import Path
+import subprocess
+
+
+if __name__ == '__main__':
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument('--check', action='store_true')
+    args = parser.parse_args()
+    root = Path(__file__).resolve().parent.parent
+    result = subprocess.run(['nix', 'eval', '--json', '.#documentation'], cwd=root,
+                            check=True, capture_output=True, text=True)
+    documentation = json.loads(result.stdout)
+    manifest = json.loads((root / 'model/repositories.json').read_text())
+    expected = set(manifest) - {'purifier'}
+    if set(documentation['catalog']) != expected:
+        raise SystemExit('Every purifier repository must have a modeled documentation page.')
+    for name, page in documentation['catalog'].items():
+        if page.get('reviewedRevision') != manifest[name]['revision']:
+            raise SystemExit(f'{name}: model and source review revisions differ')
+    target = root / 'docs-site/catalog.json'
+    if args.check:
+        if not target.exists() or json.loads(target.read_text()) != documentation:
+            raise SystemExit('Documentation export is stale; run python3 docs-site/export.py')
+    else:
+        target.write_text(json.dumps(documentation, indent=2) + '\n')

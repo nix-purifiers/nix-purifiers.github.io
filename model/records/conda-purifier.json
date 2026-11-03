@@ -1,0 +1,158 @@
+{
+  "repository": "nix-purifiers/conda-purifier",
+  "reviewedRevision": "e7e2225b74b2d642293f3b30d7d1815fab945f3f",
+  "facts": {
+    "tool": {
+      "state": "known",
+      "value": "Conda"
+    },
+    "lockfiles": {
+      "state": "known",
+      "value": [
+        "conda-purifier.lock.json"
+      ]
+    },
+    "integration": {
+      "state": "known",
+      "value": "wrapper"
+    },
+    "platforms": {
+      "state": "known",
+      "value": [
+        "x86_64-linux",
+        "aarch64-linux"
+      ]
+    },
+    "nix_builder": {
+      "state": "known",
+      "value": "pkgs.conda-purifier.buildCondaProject"
+    },
+    "build_isolation": {
+      "state": "known",
+      "value": "nix-sandbox"
+    },
+    "build_outputs": {
+      "state": "known",
+      "value": [
+        "packages",
+        "tests",
+        "release",
+        "fetches"
+      ]
+    },
+    "missing_lock": {
+      "state": "known",
+      "value": "warn-and-native"
+    },
+    "projection_incoming": {
+      "state": "known",
+      "value": "unsupported"
+    },
+    "projection_incoming_formats": {
+      "state": "not-applicable",
+      "reason": "No incoming typed projection adapter is exported by this implementation."
+    },
+    "projection_incoming_interfaces": {
+      "state": "not-applicable",
+      "reason": "No incoming typed projection interface is implemented."
+    },
+    "projection_incoming_limits": {
+      "state": "known",
+      "value": [
+        "Native artifacts or caches alone do not provide a typed incoming project projection interface"
+      ]
+    },
+    "projection_outgoing": {
+      "state": "known",
+      "value": "unsupported"
+    },
+    "projection_outgoing_formats": {
+      "state": "not-applicable",
+      "reason": "No outgoing typed projection adapter is exported by this implementation."
+    },
+    "projection_outgoing_interfaces": {
+      "state": "not-applicable",
+      "reason": "No outgoing typed projection interface is implemented."
+    },
+    "projection_outgoing_limits": {
+      "state": "known",
+      "value": [
+        "Native artifacts or caches alone do not provide a typed outgoing project projection interface"
+      ]
+    },
+    "editor_protocol": {
+      "state": "known",
+      "value": "project-environment"
+    },
+    "editor_supported": {
+      "state": "known",
+      "value": true
+    }
+  },
+  "operations": {
+    "lock": {
+      "capability": "conda-purifier",
+      "arguments": [
+        "lock"
+      ],
+      "sources": [
+        "https://github.com/nix-purifiers/conda-purifier/blob/e7e2225b74b2d642293f3b30d7d1815fab945f3f/nix/lib/build-conda-project.nix"
+      ],
+      "minimumArguments": 0,
+      "environment": {
+        "CONDA_PURIFIER_LOCKFILE": {
+          "binding": "lockfile"
+        }
+      }
+    },
+    "prefetch": {
+      "capability": "conda-purifier",
+      "arguments": [
+        "prefetch"
+      ],
+      "sources": [
+        "https://github.com/nix-purifiers/conda-purifier/blob/e7e2225b74b2d642293f3b30d7d1815fab945f3f/nix/lib/build-conda-project.nix"
+      ],
+      "minimumArguments": 0,
+      "environment": {
+        "CONDA_PURIFIER_LOCKFILE": {
+          "binding": "lockfile"
+        }
+      }
+    },
+    "update": {
+      "state": "unknown",
+      "reason": "The native update selector and invocation have not been normalized; use the reference workflow."
+    },
+    "run": {
+      "capability": "conda",
+      "arguments": [
+        "activate",
+        "./.conda-purifier/env"
+      ],
+      "sources": [
+        "https://github.com/nix-purifiers/conda-purifier/blob/e7e2225b74b2d642293f3b30d7d1815fab945f3f/nix/lib/build-conda-project.nix"
+      ],
+      "environment": {
+        "CONDA_PURIFIER_LOCKFILE": {
+          "binding": "lockfile"
+        }
+      }
+    },
+    "test": {
+      "capability": "python",
+      "arguments": [
+        "-m",
+        "pytest"
+      ],
+      "sources": [
+        "https://github.com/nix-purifiers/conda-purifier/blob/e7e2225b74b2d642293f3b30d7d1815fab945f3f/nix/lib/build-conda-project.nix"
+      ],
+      "environment": {
+        "CONDA_PURIFIER_LOCKFILE": {
+          "binding": "lockfile"
+        }
+      }
+    }
+  }
+}

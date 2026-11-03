@@ -1,0 +1,16 @@
+{
+  "summary": "Locked, Nix-resolved dependencies for the .NET SDK.",
+  "values": {
+    "quickstart": "nix shell 'github:nix-purifiers/dotnet-purifier'\ndotnet-purifier lock\ndotnet-purifier dotnet build\ndotnet-purifier dotnet test"
+  },
+  "sections": {
+    "editor": {
+      "title": "Language server integration (LSP)",
+      "blocks": {
+        "main": {
+          "extra-explanation": "After a prefetch, the packages are in your NuGet package folder and every\nproject is restored, so a language server that reads a project through\nMSBuild (the Roslyn language server, csharp-ls or OmniSharp) works with no\nnetwork. Run it with the locked SDK, which `prefetch` links at\n`.dotnet-purifier/sdk` next to the lockfile: put `.dotnet-purifier/sdk/bin`\nfirst on its `PATH` and set `DOTNET_ROOT` to\n`.dotnet-purifier/sdk/share/dotnet`. Navigation into\na package's code decompiles it locally; source files that SourceLink\ndownloads need the network."
+        }
+      }
+    }
+  }
+}

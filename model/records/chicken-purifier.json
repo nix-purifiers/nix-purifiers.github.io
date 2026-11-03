@@ -1,0 +1,126 @@
+{
+  "repository": "nix-purifiers/chicken-purifier",
+  "reviewedRevision": "13a38865d7461a8b026dcf9a4f6a5ed928074cb6",
+  "facts": {
+    "tool": {
+      "state": "known",
+      "value": "CHICKEN Scheme"
+    },
+    "lockfiles": {
+      "state": "known",
+      "value": [
+        "chicken-purifier.lock.json"
+      ]
+    },
+    "integration": {
+      "state": "known",
+      "value": "wrapper"
+    },
+    "platforms": {
+      "state": "known",
+      "value": [
+        "x86_64-linux",
+        "aarch64-linux"
+      ]
+    },
+    "nix_builder": {
+      "state": "known",
+      "value": "pkgs.chicken-purifier.buildChickenProject"
+    },
+    "build_isolation": {
+      "state": "known",
+      "value": "nix-sandbox"
+    },
+    "build_outputs": {
+      "state": "known",
+      "value": [
+        "packages",
+        "tests",
+        "release",
+        "fetches"
+      ]
+    },
+    "projection_incoming": {
+      "state": "known",
+      "value": "unsupported"
+    },
+    "projection_incoming_formats": {
+      "state": "not-applicable",
+      "reason": "No incoming typed projection adapter is exported by this implementation."
+    },
+    "projection_incoming_interfaces": {
+      "state": "not-applicable",
+      "reason": "No incoming typed projection interface is implemented."
+    },
+    "projection_incoming_limits": {
+      "state": "known",
+      "value": [
+        "Native artifacts or caches alone do not provide a typed incoming project projection interface"
+      ]
+    },
+    "projection_outgoing": {
+      "state": "known",
+      "value": "unsupported"
+    },
+    "projection_outgoing_formats": {
+      "state": "not-applicable",
+      "reason": "No outgoing typed projection adapter is exported by this implementation."
+    },
+    "projection_outgoing_interfaces": {
+      "state": "not-applicable",
+      "reason": "No outgoing typed projection interface is implemented."
+    },
+    "projection_outgoing_limits": {
+      "state": "known",
+      "value": [
+        "Native artifacts or caches alone do not provide a typed outgoing project projection interface"
+      ]
+    }
+  },
+  "operations": {
+    "lock": {
+      "capability": "chicken-purifier",
+      "arguments": [
+        "lock"
+      ],
+      "sources": [
+        "https://github.com/nix-purifiers/chicken-purifier/blob/13a38865d7461a8b026dcf9a4f6a5ed928074cb6/nix/build-project.nix"
+      ],
+      "minimumArguments": 0
+    },
+    "prefetch": {
+      "state": "unknown",
+      "reason": "Preparation is integrated with native activation; consult the reference workflow."
+    },
+    "update": {
+      "capability": "chicken-purifier",
+      "arguments": [
+        "lock",
+        "--update"
+      ],
+      "sources": [
+        "https://github.com/nix-purifiers/chicken-purifier/blob/13a38865d7461a8b026dcf9a4f6a5ed928074cb6/nix/build-project.nix"
+      ],
+      "minimumArguments": 0
+    },
+    "build": {
+      "capability": "chicken-install",
+      "arguments": [
+        "-test"
+      ],
+      "sources": [
+        "https://github.com/nix-purifiers/chicken-purifier/blob/13a38865d7461a8b026dcf9a4f6a5ed928074cb6/nix/build-project.nix"
+      ]
+    },
+    "run": {
+      "capability": "csi",
+      "arguments": [
+        "-s",
+        "tests/run.scm"
+      ],
+      "sources": [
+        "https://github.com/nix-purifiers/chicken-purifier/blob/13a38865d7461a8b026dcf9a4f6a5ed928074cb6/nix/build-project.nix"
+      ]
+    }
+  }
+}

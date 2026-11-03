@@ -1,0 +1,163 @@
+{
+  "repository": "nix-purifiers/elm-purifier",
+  "reviewedRevision": "7daf13dca6410854a85038ffb3b49a7da4a807e1",
+  "facts": {
+    "tool": {
+      "state": "known",
+      "value": "Elm"
+    },
+    "lockfiles": {
+      "state": "known",
+      "value": [
+        "elm-purifier.lock.json"
+      ]
+    },
+    "integration": {
+      "state": "known",
+      "value": "wrapper"
+    },
+    "platforms": {
+      "state": "known",
+      "value": [
+        "x86_64-linux",
+        "aarch64-linux",
+        "aarch64-darwin"
+      ]
+    },
+    "nix_builder": {
+      "state": "known",
+      "value": "pkgs.elm-purifier.buildElmProject"
+    },
+    "build_isolation": {
+      "state": "known",
+      "value": "nix-sandbox"
+    },
+    "build_outputs": {
+      "state": "known",
+      "value": [
+        "packages",
+        "tests",
+        "release",
+        "fetches"
+      ]
+    },
+    "missing_lock": {
+      "state": "known",
+      "value": "warn-and-native"
+    },
+    "projection_incoming": {
+      "state": "known",
+      "value": "unsupported"
+    },
+    "projection_incoming_formats": {
+      "state": "not-applicable",
+      "reason": "No incoming typed projection adapter is exported by this implementation."
+    },
+    "projection_incoming_interfaces": {
+      "state": "not-applicable",
+      "reason": "No incoming typed projection interface is implemented."
+    },
+    "projection_incoming_limits": {
+      "state": "known",
+      "value": [
+        "Native artifacts or caches alone do not provide a typed incoming project projection interface"
+      ]
+    },
+    "projection_outgoing": {
+      "state": "known",
+      "value": "unsupported"
+    },
+    "projection_outgoing_formats": {
+      "state": "not-applicable",
+      "reason": "No outgoing typed projection adapter is exported by this implementation."
+    },
+    "projection_outgoing_interfaces": {
+      "state": "not-applicable",
+      "reason": "No outgoing typed projection interface is implemented."
+    },
+    "projection_outgoing_limits": {
+      "state": "known",
+      "value": [
+        "Native artifacts or caches alone do not provide a typed outgoing project projection interface"
+      ]
+    },
+    "editor_protocol": {
+      "state": "known",
+      "value": "lsp"
+    },
+    "editor_supported": {
+      "state": "known",
+      "value": true
+    },
+    "platform_notes": {
+      "state": "known",
+      "value": [
+        "Apple Silicon macOS support is contributor-reported from unsandboxed builds; no macOS CI is configured",
+        "Sandboxed Darwin --check rebuilds have not been verified"
+      ]
+    }
+  },
+  "operations": {
+    "lock": {
+      "capability": "elm-purifier",
+      "arguments": [
+        "lock"
+      ],
+      "sources": [
+        "https://github.com/nix-purifiers/elm-purifier/blob/7daf13dca6410854a85038ffb3b49a7da4a807e1/nix/lib/build-elm-project.nix"
+      ],
+      "minimumArguments": 0,
+      "environment": {
+        "ELM_PURIFIER_LOCKFILE": {
+          "binding": "lockfile"
+        }
+      }
+    },
+    "prefetch": {
+      "capability": "elm-purifier",
+      "arguments": [
+        "prefetch"
+      ],
+      "sources": [
+        "https://github.com/nix-purifiers/elm-purifier/blob/7daf13dca6410854a85038ffb3b49a7da4a807e1/nix/lib/build-elm-project.nix"
+      ],
+      "minimumArguments": 0,
+      "environment": {
+        "ELM_PURIFIER_LOCKFILE": {
+          "binding": "lockfile"
+        }
+      }
+    },
+    "update": {
+      "state": "unknown",
+      "reason": "The native update selector and invocation have not been normalized; use the reference workflow."
+    },
+    "build": {
+      "capability": "elm",
+      "arguments": [
+        "make",
+        "src/Main.elm"
+      ],
+      "sources": [
+        "https://github.com/nix-purifiers/elm-purifier/blob/7daf13dca6410854a85038ffb3b49a7da4a807e1/nix/lib/build-elm-project.nix"
+      ],
+      "environment": {
+        "ELM_PURIFIER_LOCKFILE": {
+          "binding": "lockfile"
+        }
+      }
+    },
+    "test": {
+      "capability": "elm-test",
+      "arguments": [],
+      "sources": [
+        "https://github.com/nix-purifiers/elm-purifier/blob/7daf13dca6410854a85038ffb3b49a7da4a807e1/nix/lib/build-elm-project.nix"
+      ],
+      "environment": {
+        "ELM_PURIFIER_LOCKFILE": {
+          "binding": "lockfile"
+        }
+      }
+    }
+  }
+}

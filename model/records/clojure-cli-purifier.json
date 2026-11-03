@@ -1,0 +1,170 @@
+{
+  "repository": "nix-purifiers/clojure-cli-purifier",
+  "reviewedRevision": "b9a6456a9be5972614fc046ff05e92aa5b37b9a6",
+  "facts": {
+    "tool": {
+      "state": "known",
+      "value": "Clojure CLI"
+    },
+    "lockfiles": {
+      "state": "known",
+      "value": [
+        "clojure-cli-purifier.lock.json"
+      ]
+    },
+    "integration": {
+      "state": "known",
+      "value": "wrapper"
+    },
+    "platforms": {
+      "state": "known",
+      "value": [
+        "x86_64-linux",
+        "aarch64-linux"
+      ]
+    },
+    "nix_builder": {
+      "state": "known",
+      "value": "pkgs.clojure-cli-purifier.buildClojureCliProject"
+    },
+    "build_isolation": {
+      "state": "known",
+      "value": "nix-sandbox"
+    },
+    "build_outputs": {
+      "state": "known",
+      "value": [
+        "packages",
+        "tests",
+        "release",
+        "fetches"
+      ]
+    },
+    "missing_lock": {
+      "state": "known",
+      "value": "warn-and-native"
+    },
+    "projection_incoming": {
+      "state": "known",
+      "value": "conditional"
+    },
+    "projection_incoming_formats": {
+      "state": "known",
+      "value": [
+        "maven"
+      ]
+    },
+    "projection_incoming_interfaces": {
+      "state": "known",
+      "value": [
+        "projectDependencies",
+        "lockfile.projectInputs"
+      ]
+    },
+    "projection_incoming_limits": {
+      "state": "known",
+      "value": [
+        "Producer must export the compatible native projection and its inferred catalog; native version requirements still apply"
+      ]
+    },
+    "projection_outgoing": {
+      "state": "known",
+      "value": "conditional"
+    },
+    "projection_outgoing_formats": {
+      "state": "known",
+      "value": [
+        "maven"
+      ]
+    },
+    "projection_outgoing_interfaces": {
+      "state": "known",
+      "value": [
+        "projections.maven"
+      ]
+    },
+    "projection_outgoing_limits": {
+      "state": "known",
+      "value": [
+        "Exported publications depend on the native project package metadata and successful sandboxed builds"
+      ]
+    },
+    "editor_protocol": {
+      "state": "known",
+      "value": "lsp"
+    },
+    "editor_supported": {
+      "state": "known",
+      "value": true
+    }
+  },
+  "operations": {
+    "lock": {
+      "capability": "clojure-cli-purifier",
+      "arguments": [
+        "lock",
+        "--build",
+        "-T:build uber",
+        "--test",
+        "-M:test"
+      ],
+      "sources": [
+        "https://github.com/nix-purifiers/clojure-cli-purifier/blob/b9a6456a9be5972614fc046ff05e92aa5b37b9a6/nix/lib/build-clojure-cli-project.nix"
+      ],
+      "minimumArguments": 0,
+      "environment": {
+        "CLOJURE_CLI_PURIFIER_LOCKFILE": {
+          "binding": "lockfile"
+        }
+      }
+    },
+    "prefetch": {
+      "capability": "clojure-cli-purifier",
+      "arguments": [
+        "prefetch"
+      ],
+      "sources": [
+        "https://github.com/nix-purifiers/clojure-cli-purifier/blob/b9a6456a9be5972614fc046ff05e92aa5b37b9a6/nix/lib/build-clojure-cli-project.nix"
+      ],
+      "minimumArguments": 0,
+      "environment": {
+        "CLOJURE_CLI_PURIFIER_LOCKFILE": {
+          "binding": "lockfile"
+        }
+      }
+    },
+    "update": {
+      "state": "unknown",
+      "reason": "The native update selector and invocation have not been normalized; use the reference workflow."
+    },
+    "build": {
+      "capability": "clojure",
+      "arguments": [
+        "-T:build",
+        "uber"
+      ],
+      "sources": [
+        "https://github.com/nix-purifiers/clojure-cli-purifier/blob/b9a6456a9be5972614fc046ff05e92aa5b37b9a6/nix/lib/build-clojure-cli-project.nix"
+      ],
+      "environment": {
+        "CLOJURE_CLI_PURIFIER_LOCKFILE": {
+          "binding": "lockfile"
+        }
+      }
+    },
+    "test": {
+      "capability": "clojure",
+      "arguments": [
+        "-M:test"
+      ],
+      "sources": [
+        "https://github.com/nix-purifiers/clojure-cli-purifier/blob/b9a6456a9be5972614fc046ff05e92aa5b37b9a6/nix/lib/build-clojure-cli-project.nix"
+      ],
+      "environment": {
+        "CLOJURE_CLI_PURIFIER_LOCKFILE": {
+          "binding": "lockfile"
+        }
+      }
+    }
+  }
+}

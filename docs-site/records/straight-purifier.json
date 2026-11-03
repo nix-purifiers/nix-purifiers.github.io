@@ -1,0 +1,16 @@
+{
+  "summary": "Locked, Nix-resolved dependencies for Emacs Straight.",
+  "values": {
+    "quickstart": "nix shell 'github:nix-purifiers/straight-purifier'\nstraight-purifier --project . lock\nstraight-purifier --project . prefetch\nemacs --init-directory \"$PWD\""
+  },
+  "sections": {
+    "editor": {
+      "title": "Native editor integration",
+      "blocks": {
+        "main": {
+          "extra-explanation": "The same environment supplies package autoloads, bytecode and source.\nNormal `find-function`, help and completion use those packages. The sandbox\neditor test follows a real function definition into its Nix store source."
+        }
+      }
+    }
+  }
+}

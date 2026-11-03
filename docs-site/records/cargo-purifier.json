@@ -1,0 +1,16 @@
+{
+  "summary": "Locked, Nix-resolved dependencies for Cargo.",
+  "values": {
+    "quickstart": "nix shell \\\n  'github:nix-purifiers/cargo-purifier#cargo' \\\n  'github:nix-purifiers/cargo-purifier#cargo-purifier'\ncargo-purifier lock\ncargo-purifier prefetch\ncargo build\ncargo test"
+  },
+  "sections": {
+    "editor": {
+      "title": "Language server integration (LSP)",
+      "blocks": {
+        "main": {
+          "extra-explanation": "Point the editor at the `rust-analyzer` of the `cargo-purifier` package,\nfor example `target/cargo-purifier/prefetch/tools/bin/rust-analyzer` after\na prefetch. It runs `cargo metadata` and `cargo check` through the cargo\nwrapper, so it loads the workspace and its dependencies from the vendored\nsources, and it reads the standard library's sources from the package\nset's rust-src."
+        }
+      }
+    }
+  }
+}

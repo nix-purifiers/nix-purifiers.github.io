@@ -3,14 +3,18 @@ let
   known = value: { state = "known"; inherit value; };
 in {
   imports = [ ../operations/ant.nix ];
+  reviewedRevision = "bdbb867cfd38b327ec85fab1d234b7dbd8468cf9";
   repository = "nix-purifiers/ant-purifier";
   facts = {
+    platform_notes = { state = "not-applicable"; reason = "This integration declares Linux targets only."; };
+    editor_protocol = known "lsp";
+    editor_supported = known true;
     projection_incoming = known "conditional";
-    projection_incoming_formats = known [ "Maven" ];
+    projection_incoming_formats = known [ "maven" ];
     projection_incoming_interfaces = known [ "projectDependencies" "--input" "lockfile.projectInputs" ];
     projection_incoming_limits = known [ "The Nix input path requires the producer's projections.maven view; an Ivy-only projection is not accepted" "Keep dependency declarations in ivy.xml; the supplied catalog selects immutable Nix-derived versions" ];
     projection_outgoing = known "conditional";
-    projection_outgoing_formats = known [ "Maven" "Ivy" ];
+    projection_outgoing_formats = known [ "maven" "ivy" ];
     projection_outgoing_interfaces = known [ "projections.maven" "projections.ivy" ];
     projection_outgoing_limits = known [ "Set publishTarget to expose project publications" "Original Maven POM metadata, including parent and BOM closure, is required; Ivy-only dependency graphs fail projection evaluation" ];
     prefetch_components = known [ "dependency repository" "compiler" "Ant" "plugin" "editor toolchain" ];

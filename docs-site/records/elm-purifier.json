@@ -1,0 +1,16 @@
+{
+  "summary": "Locked, Nix-resolved dependencies for Elm.",
+  "values": {
+    "quickstart": "nix shell 'github:nix-purifiers/elm-purifier'\nelm-purifier lock\nelm-purifier prefetch\nexport PATH=\"$PWD/elm-stuff/elm-purifier/bin:$PATH\"\nelm make src/Main.elm\nelm-test"
+  },
+  "sections": {
+    "editor": {
+      "title": "Language server integration (LSP)",
+      "blocks": {
+        "main": {
+          "extra-explanation": "Editors and language servers find `elm`, `elm-test` and `elm-format` on\n`PATH`, and the packages through `ELM_HOME`. The tools in\n`elm-stuff/elm-purifier/bin` set `ELM_HOME` themselves, so putting that\ndirectory first on `PATH` is all an editor needs. The same directory holds\n`elm-language-server`, which runs the language server with that `PATH`:\n\n```zsh\nPATH=\"$PWD/elm-stuff/elm-purifier/bin:$PATH\" code .\n```\n\nWith direnv, the line `PATH_add elm-stuff/elm-purifier/bin` in `.envrc`\ndoes the same. The language server sometimes hangs while it starts, and\nrestarting it from the editor fixes that."
+        }
+      }
+    }
+  }
+}

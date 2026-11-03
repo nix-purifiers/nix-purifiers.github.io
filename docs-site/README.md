@@ -102,6 +102,7 @@ From this repository:
 ```sh
 nix eval --json '.#tests'
 python3 -m unittest discover -s docs-site -v
+python3 docs-site/export.py --check
 python3 docs-site/build.py --output .catalog-source
 jekyll build --source .catalog-source --destination .catalog-site
 ```
@@ -109,17 +110,38 @@ jekyll build --source .catalog-source --destination .catalog-site
 The output preserves the existing family homepage and includes project pages,
 `catalog.json`, per-project `system.json`, and `content-variations.json`.
 Each modeled project page has a subdued footer link to its generated feature
-matrix, with declared behavior and explicit unknowns.
+matrix, with declared behavior and explicit unknowns, and to the retained
+native reference guide. The family homepage remains the entry point.
 The audit records local additions, replacements, omissions, and unresolved
 facts. CI runs the model tests, renderer/integration tests, and Jekyll build,
 and uploads the resulting reference as an artifact.
 
-To add a project, create its behavioral module and add its name to
-`model/default.nix`; add a
-`docs-site/projects/<name>.nix` module when its documentation is ready.
+To add a project, create `model/projects/<name>.nix` and
+`docs-site/projects/<name>.nix`; modules are discovered by filename. Data can
+live in typed Nix modules or JSON records under the corresponding `records/`
+directories. `model/from-record.nix` gives unestablished capabilities an explicit
+unknown state and applies the same Nix option validation.
 Do not infer support from a sibling project.
 
 ### Adopt in an independent project Pages workflow
+
+The bundled export allows Pages builders to use Python alone:
+
+```sh
+python3 .pages-theme/docs-site/prepare.py --repository "$GITHUB_REPOSITORY" \
+  --model --check-source .
+```
+
+`--model` uses `docs-site/catalog.json`, generated with `export.py`. CI checks
+that it agrees with the Nix source model. `--check-source` compares tracked
+implementation files, native guides, and CI configuration with the reviewed
+revision and fingerprints in `model/repositories.json`. Changed, removed, or
+new implementation files require a new source review. Deployment workflow-only
+changes are excluded so pinning this theme does not invalidate that review.
+Each consumer pins the exact shared documentation commit.
+
+`robots.txt` comes from the shared repository and permits all crawling. It is
+copied into the family site and independent project outputs.
 
 Evaluate the shared model once, then pass its export to the existing preparer:
 

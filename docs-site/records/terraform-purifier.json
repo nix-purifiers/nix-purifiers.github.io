@@ -1,0 +1,16 @@
+{
+  "summary": "Locked, Nix-resolved dependencies for Terraform.",
+  "values": {
+    "quickstart": "nix shell 'github:nix-purifiers/terraform-purifier'\nterraform-purifier lock\nterraform-purifier prefetch\nterraform init\nterraform validate\nterraform plan"
+  },
+  "sections": {
+    "editor": {
+      "title": "Language server integration (LSP)",
+      "blocks": {
+        "main": {
+          "extra-explanation": "Start `terraform-ls serve` from the same shell. Prefetch supplies the language\nserver, provider binaries, schemas available from those binaries, and Git\nmodule sources. Native cache metadata lets definition lookup reach the\nlocked modules. The editor check verifies that lookup in the Nix sandbox."
+        }
+      }
+    }
+  }
+}

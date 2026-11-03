@@ -1,0 +1,16 @@
+{
+  "summary": "Locked, Nix-resolved dependencies for SwiftPM.",
+  "values": {
+    "quickstart": "nix shell 'github:nix-purifiers/swiftpm-purifier#toolchain'\nswiftpm-purifier lock\nswift build\nswift test"
+  },
+  "sections": {
+    "editor": {
+      "title": "Language server integration (LSP)",
+      "blocks": {
+        "main": {
+          "extra-explanation": "The toolchain includes sourcekit-lsp, and `prefetch` also writes the\nworkspace state into `.build/index-build`, where sourcekit-lsp builds its\nbackground index. Editor support does not work yet: the sourcekit-lsp 6.3.3\nin nixpkgs cannot find the SourceKit plugin of its toolchain and cannot\ncreate a build server, so it resolves no symbols, with or without\nswiftpm-purifier."
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,16 @@
+{
+  "summary": "Locked, Nix-resolved dependencies for Nimble.",
+  "values": {
+    "quickstart": "nix shell 'github:nix-purifiers/nimble-purifier'\nnimble-purifier lock\nnimble-purifier prefetch\nnimble build\nnimble test"
+  },
+  "sections": {
+    "editor": {
+      "title": "Language server integration (LSP)",
+      "blocks": {
+        "main": {
+          "extra-explanation": "After prefetch, use the normal compiler and editor commands:\n\n```sh\nnim check src/example.nim\nnimlangserver\n```\n\nNim reads the native project configuration and locked dependency paths.\nThe setup preserves custom content in an existing `config.nims`."
+        }
+      }
+    }
+  }
+}

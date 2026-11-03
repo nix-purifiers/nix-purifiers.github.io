@@ -27,8 +27,10 @@ in {
       type = types.addCheck (types.strMatching "[A-Za-z0-9_.-]+/[A-Za-z0-9_.-]+")
         (s: !(builtins.elem (lib.last (lib.splitString "/" s)) [ "." ".." ]));
     };
+    reviewedRevision = mkOption { type = types.nullOr (types.strMatching "[0-9a-f]{40}"); default = null; };
     facts = lib.mapAttrs (_: definition: fact (
       if definition ? enum then types.enum definition.enum
+      else if definition ? itemsEnum then types.addCheck (types.listOf (types.enum definition.itemsEnum)) (xs: xs != [])
       else if definition.type == "string" then text
       else if definition.type == "strings" then strings
       else if definition.type == "boolean" then types.bool

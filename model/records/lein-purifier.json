@@ -1,0 +1,189 @@
+{
+  "repository": "nix-purifiers/lein-purifier",
+  "reviewedRevision": "f89f86536335738a616ca7b5da070ac7a456a32b",
+  "facts": {
+    "tool": {
+      "state": "known",
+      "value": "Leiningen"
+    },
+    "lockfiles": {
+      "state": "known",
+      "value": [
+        "lein-purifier.lock.json"
+      ]
+    },
+    "integration": {
+      "state": "known",
+      "value": "wrapper"
+    },
+    "platforms": {
+      "state": "known",
+      "value": [
+        "x86_64-linux",
+        "aarch64-linux",
+        "aarch64-darwin"
+      ]
+    },
+    "nix_builder": {
+      "state": "known",
+      "value": "pkgs.lein-purifier.buildLeinProject"
+    },
+    "build_isolation": {
+      "state": "known",
+      "value": "nix-sandbox"
+    },
+    "build_outputs": {
+      "state": "known",
+      "value": [
+        "packages",
+        "tests",
+        "release",
+        "fetches"
+      ]
+    },
+    "missing_lock": {
+      "state": "known",
+      "value": "warn-and-native"
+    },
+    "projection_incoming": {
+      "state": "known",
+      "value": "conditional"
+    },
+    "projection_incoming_formats": {
+      "state": "known",
+      "value": [
+        "maven"
+      ]
+    },
+    "projection_incoming_interfaces": {
+      "state": "known",
+      "value": [
+        "projectDependencies",
+        "lockfile.projectInputs"
+      ]
+    },
+    "projection_incoming_limits": {
+      "state": "known",
+      "value": [
+        "Producer must export the compatible native projection and its inferred catalog; native version requirements still apply"
+      ]
+    },
+    "projection_outgoing": {
+      "state": "known",
+      "value": "conditional"
+    },
+    "projection_outgoing_formats": {
+      "state": "known",
+      "value": [
+        "maven"
+      ]
+    },
+    "projection_outgoing_interfaces": {
+      "state": "known",
+      "value": [
+        "projections.maven"
+      ]
+    },
+    "projection_outgoing_limits": {
+      "state": "known",
+      "value": [
+        "Exported publications depend on the native project package metadata and successful sandboxed builds"
+      ]
+    },
+    "editor_protocol": {
+      "state": "known",
+      "value": "lsp"
+    },
+    "editor_supported": {
+      "state": "known",
+      "value": true
+    },
+    "editor_offline": {
+      "state": "known",
+      "value": true
+    },
+    "platform_notes": {
+      "state": "known",
+      "value": [
+        "Apple Silicon macOS support is contributor-reported from unsandboxed builds; no macOS CI is configured",
+        "Sandboxed Darwin --check rebuilds have not been verified",
+        "Darwin offline checks used refusing proxies instead of Linux network namespaces"
+      ]
+    }
+  },
+  "operations": {
+    "lock": {
+      "capability": "lein-purifier",
+      "arguments": [
+        "lock"
+      ],
+      "sources": [
+        "https://github.com/nix-purifiers/lein-purifier/blob/f89f86536335738a616ca7b5da070ac7a456a32b/nix/lib/build-lein-project.nix"
+      ],
+      "minimumArguments": 0,
+      "environment": {
+        "LEIN_PURIFIER_LOCKFILE": {
+          "binding": "lockfile"
+        }
+      }
+    },
+    "prefetch": {
+      "capability": "lein-purifier",
+      "arguments": [
+        "prefetch"
+      ],
+      "sources": [
+        "https://github.com/nix-purifiers/lein-purifier/blob/f89f86536335738a616ca7b5da070ac7a456a32b/nix/lib/build-lein-project.nix"
+      ],
+      "minimumArguments": 0,
+      "environment": {
+        "LEIN_PURIFIER_LOCKFILE": {
+          "binding": "lockfile"
+        }
+      }
+    },
+    "update": {
+      "capability": "lein-purifier",
+      "arguments": [
+        "update"
+      ],
+      "sources": [
+        "https://github.com/nix-purifiers/lein-purifier/blob/f89f86536335738a616ca7b5da070ac7a456a32b/nix/lib/build-lein-project.nix"
+      ],
+      "minimumArguments": 0,
+      "environment": {
+        "LEIN_PURIFIER_LOCKFILE": {
+          "binding": "lockfile"
+        }
+      }
+    },
+    "test": {
+      "capability": "lein",
+      "arguments": [
+        "test"
+      ],
+      "sources": [
+        "https://github.com/nix-purifiers/lein-purifier/blob/f89f86536335738a616ca7b5da070ac7a456a32b/nix/lib/build-lein-project.nix"
+      ],
+      "environment": {
+        "LEIN_PURIFIER_LOCKFILE": {
+          "binding": "lockfile"
+        }
+      }
+    },
+    "build": {
+      "capability": "lein",
+      "arguments": [
+        "uberjar"
+      ],
+      "sources": [
+        "https://github.com/nix-purifiers/lein-purifier/blob/f89f86536335738a616ca7b5da070ac7a456a32b/nix/lib/build-lein-project.nix"
+      ],
+      "environment": {
+        "LEIN_PURIFIER_LOCKFILE": {
+          "binding": "lockfile"
+        }
+      }
+    }
+  }
+}

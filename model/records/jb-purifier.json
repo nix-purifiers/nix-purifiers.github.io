@@ -1,0 +1,160 @@
+{
+  "repository": "nix-purifiers/jb-purifier",
+  "reviewedRevision": "65189f4154c412525ff0172f5e39edfaef521a6e",
+  "facts": {
+    "tool": {
+      "state": "known",
+      "value": "Jsonnet Bundler"
+    },
+    "lockfiles": {
+      "state": "known",
+      "value": [
+        "jsonnetfile.lock.json",
+        "jb-purifier.lock.json"
+      ]
+    },
+    "integration": {
+      "state": "known",
+      "value": "wrapper"
+    },
+    "platforms": {
+      "state": "known",
+      "value": [
+        "x86_64-linux",
+        "aarch64-linux"
+      ]
+    },
+    "nix_builder": {
+      "state": "known",
+      "value": "pkgs.jb-purifier.buildJbProject"
+    },
+    "build_isolation": {
+      "state": "known",
+      "value": "nix-sandbox"
+    },
+    "build_outputs": {
+      "state": "known",
+      "value": [
+        "packages",
+        "tests",
+        "release",
+        "fetches"
+      ]
+    },
+    "missing_lock": {
+      "state": "known",
+      "value": "warn-and-native"
+    },
+    "projection_incoming": {
+      "state": "known",
+      "value": "unsupported"
+    },
+    "projection_incoming_formats": {
+      "state": "not-applicable",
+      "reason": "No incoming typed projection adapter is exported by this implementation."
+    },
+    "projection_incoming_interfaces": {
+      "state": "not-applicable",
+      "reason": "No incoming typed projection interface is implemented."
+    },
+    "projection_incoming_limits": {
+      "state": "known",
+      "value": [
+        "Native artifacts or caches alone do not provide a typed incoming project projection interface"
+      ]
+    },
+    "projection_outgoing": {
+      "state": "known",
+      "value": "unsupported"
+    },
+    "projection_outgoing_formats": {
+      "state": "not-applicable",
+      "reason": "No outgoing typed projection adapter is exported by this implementation."
+    },
+    "projection_outgoing_interfaces": {
+      "state": "not-applicable",
+      "reason": "No outgoing typed projection interface is implemented."
+    },
+    "projection_outgoing_limits": {
+      "state": "known",
+      "value": [
+        "Native artifacts or caches alone do not provide a typed outgoing project projection interface"
+      ]
+    },
+    "editor_protocol": {
+      "state": "known",
+      "value": "lsp"
+    },
+    "editor_supported": {
+      "state": "known",
+      "value": true
+    },
+    "editor_offline": {
+      "state": "known",
+      "value": true
+    }
+  },
+  "operations": {
+    "lock": {
+      "capability": "jb-purifier",
+      "arguments": [
+        "lock"
+      ],
+      "sources": [
+        "https://github.com/nix-purifiers/jb-purifier/blob/65189f4154c412525ff0172f5e39edfaef521a6e/nix/build-project.nix"
+      ],
+      "minimumArguments": 0,
+      "environment": {
+        "JB_PURIFIER_LOCKFILE": {
+          "binding": "lockfile"
+        }
+      }
+    },
+    "prefetch": {
+      "capability": "jb-purifier",
+      "arguments": [
+        "prefetch"
+      ],
+      "sources": [
+        "https://github.com/nix-purifiers/jb-purifier/blob/65189f4154c412525ff0172f5e39edfaef521a6e/nix/build-project.nix"
+      ],
+      "minimumArguments": 0,
+      "environment": {
+        "JB_PURIFIER_LOCKFILE": {
+          "binding": "lockfile"
+        }
+      }
+    },
+    "update": {
+      "capability": "jb-purifier",
+      "arguments": [
+        "update"
+      ],
+      "sources": [
+        "https://github.com/nix-purifiers/jb-purifier/blob/65189f4154c412525ff0172f5e39edfaef521a6e/nix/build-project.nix"
+      ],
+      "minimumArguments": 0,
+      "environment": {
+        "JB_PURIFIER_LOCKFILE": {
+          "binding": "lockfile"
+        }
+      }
+    },
+    "build": {
+      "capability": "jsonnet",
+      "arguments": [
+        "-J",
+        "vendor",
+        "main.jsonnet"
+      ],
+      "sources": [
+        "https://github.com/nix-purifiers/jb-purifier/blob/65189f4154c412525ff0172f5e39edfaef521a6e/nix/build-project.nix"
+      ],
+      "environment": {
+        "JB_PURIFIER_LOCKFILE": {
+          "binding": "lockfile"
+        }
+      }
+    }
+  }
+}

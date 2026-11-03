@@ -1,0 +1,182 @@
+{
+  "repository": "nix-purifiers/tofu-purifier",
+  "reviewedRevision": "25eb1a3aa72a257ea88db1d005fb87320ae10740",
+  "facts": {
+    "tool": {
+      "state": "known",
+      "value": "OpenTofu"
+    },
+    "lockfiles": {
+      "state": "known",
+      "value": [
+        ".terraform.lock.hcl",
+        "tofu-purifier.lock.json"
+      ]
+    },
+    "integration": {
+      "state": "known",
+      "value": "wrapper"
+    },
+    "platforms": {
+      "state": "known",
+      "value": [
+        "x86_64-linux",
+        "aarch64-linux"
+      ]
+    },
+    "nix_builder": {
+      "state": "known",
+      "value": "pkgs.tofu-purifier.buildTofuProject"
+    },
+    "build_isolation": {
+      "state": "known",
+      "value": "nix-sandbox"
+    },
+    "build_outputs": {
+      "state": "known",
+      "value": [
+        "packages",
+        "tests",
+        "release",
+        "fetches"
+      ]
+    },
+    "missing_lock": {
+      "state": "known",
+      "value": "warn-and-native"
+    },
+    "projection_incoming": {
+      "state": "known",
+      "value": "unsupported"
+    },
+    "projection_incoming_formats": {
+      "state": "not-applicable",
+      "reason": "No incoming typed projection adapter is exported by this implementation."
+    },
+    "projection_incoming_interfaces": {
+      "state": "not-applicable",
+      "reason": "No incoming typed projection interface is implemented."
+    },
+    "projection_incoming_limits": {
+      "state": "known",
+      "value": [
+        "Native artifacts or caches alone do not provide a typed incoming project projection interface"
+      ]
+    },
+    "projection_outgoing": {
+      "state": "known",
+      "value": "unsupported"
+    },
+    "projection_outgoing_formats": {
+      "state": "not-applicable",
+      "reason": "No outgoing typed projection adapter is exported by this implementation."
+    },
+    "projection_outgoing_interfaces": {
+      "state": "not-applicable",
+      "reason": "No outgoing typed projection interface is implemented."
+    },
+    "projection_outgoing_limits": {
+      "state": "known",
+      "value": [
+        "Native artifacts or caches alone do not provide a typed outgoing project projection interface"
+      ]
+    },
+    "editor_protocol": {
+      "state": "known",
+      "value": "lsp"
+    },
+    "editor_supported": {
+      "state": "known",
+      "value": true
+    }
+  },
+  "operations": {
+    "lock": {
+      "capability": "tofu-purifier",
+      "arguments": [
+        "lock"
+      ],
+      "sources": [
+        "https://github.com/nix-purifiers/tofu-purifier/blob/25eb1a3aa72a257ea88db1d005fb87320ae10740/nix/build-project.nix"
+      ],
+      "minimumArguments": 0,
+      "environment": {
+        "TOFU_PURIFIER_LOCKFILE": {
+          "binding": "lockfile"
+        }
+      }
+    },
+    "prefetch": {
+      "capability": "tofu-purifier",
+      "arguments": [
+        "prefetch"
+      ],
+      "sources": [
+        "https://github.com/nix-purifiers/tofu-purifier/blob/25eb1a3aa72a257ea88db1d005fb87320ae10740/nix/build-project.nix"
+      ],
+      "minimumArguments": 0,
+      "environment": {
+        "TOFU_PURIFIER_LOCKFILE": {
+          "binding": "lockfile"
+        }
+      }
+    },
+    "update": {
+      "capability": "tofu-purifier",
+      "arguments": [
+        "update"
+      ],
+      "sources": [
+        "https://github.com/nix-purifiers/tofu-purifier/blob/25eb1a3aa72a257ea88db1d005fb87320ae10740/nix/build-project.nix"
+      ],
+      "minimumArguments": 0,
+      "environment": {
+        "TOFU_PURIFIER_LOCKFILE": {
+          "binding": "lockfile"
+        }
+      }
+    },
+    "prepare": {
+      "capability": "tofu",
+      "arguments": [
+        "init"
+      ],
+      "sources": [
+        "https://github.com/nix-purifiers/tofu-purifier/blob/25eb1a3aa72a257ea88db1d005fb87320ae10740/nix/build-project.nix"
+      ],
+      "environment": {
+        "TOFU_PURIFIER_LOCKFILE": {
+          "binding": "lockfile"
+        }
+      }
+    },
+    "check": {
+      "capability": "tofu",
+      "arguments": [
+        "validate"
+      ],
+      "sources": [
+        "https://github.com/nix-purifiers/tofu-purifier/blob/25eb1a3aa72a257ea88db1d005fb87320ae10740/nix/build-project.nix"
+      ],
+      "environment": {
+        "TOFU_PURIFIER_LOCKFILE": {
+          "binding": "lockfile"
+        }
+      }
+    },
+    "plan": {
+      "capability": "tofu",
+      "arguments": [
+        "plan"
+      ],
+      "sources": [
+        "https://github.com/nix-purifiers/tofu-purifier/blob/25eb1a3aa72a257ea88db1d005fb87320ae10740/nix/build-project.nix"
+      ],
+      "environment": {
+        "TOFU_PURIFIER_LOCKFILE": {
+          "binding": "lockfile"
+        }
+      }
+    }
+  }
+}

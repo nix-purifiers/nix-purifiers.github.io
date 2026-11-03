@@ -3,8 +3,12 @@ let
   known = value: { state = "known"; inherit value; };
 in {
   imports = [ ../operations/docker.nix ];
+  reviewedRevision = "186edeb4dd1bb0c9806485368b64cd5c1433fac3";
   repository = "nix-purifiers/docker-purifier";
   facts = {
+    platform_notes = { state = "not-applicable"; reason = "This integration declares Linux targets only."; };
+    editor_protocol = known "lsp";
+    editor_supported = known true;
     projection_incoming = known "unsupported";
     projection_incoming_formats = { state = "not-applicable"; reason = "No incoming projection interface is implemented."; };
     projection_incoming_interfaces = { state = "not-applicable"; reason = "No incoming projection interface is implemented."; };

@@ -1,0 +1,146 @@
+{
+  "repository": "nix-purifiers/rebar3-purifier",
+  "reviewedRevision": "84f7c2454eebfe0c2c67c4abd69e4f94bfde7020",
+  "facts": {
+    "tool": {
+      "state": "known",
+      "value": "rebar3"
+    },
+    "lockfiles": {
+      "state": "known",
+      "value": [
+        "rebar.lock",
+        "rebar3-purifier.lock.json"
+      ]
+    },
+    "integration": {
+      "state": "known",
+      "value": "wrapper"
+    },
+    "platforms": {
+      "state": "known",
+      "value": [
+        "x86_64-linux",
+        "aarch64-linux",
+        "aarch64-darwin"
+      ]
+    },
+    "nix_builder": {
+      "state": "known",
+      "value": "pkgs.rebar3-purifier.buildRebar3Project"
+    },
+    "build_isolation": {
+      "state": "known",
+      "value": "nix-sandbox"
+    },
+    "build_outputs": {
+      "state": "known",
+      "value": [
+        "packages",
+        "tests",
+        "release",
+        "fetches"
+      ]
+    },
+    "projection_incoming": {
+      "state": "known",
+      "value": "unsupported"
+    },
+    "projection_incoming_formats": {
+      "state": "not-applicable",
+      "reason": "No incoming typed projection adapter is exported by this implementation."
+    },
+    "projection_incoming_interfaces": {
+      "state": "not-applicable",
+      "reason": "No incoming typed projection interface is implemented."
+    },
+    "projection_incoming_limits": {
+      "state": "known",
+      "value": [
+        "Native artifacts or caches alone do not provide a typed incoming project projection interface"
+      ]
+    },
+    "projection_outgoing": {
+      "state": "known",
+      "value": "unsupported"
+    },
+    "projection_outgoing_formats": {
+      "state": "not-applicable",
+      "reason": "No outgoing typed projection adapter is exported by this implementation."
+    },
+    "projection_outgoing_interfaces": {
+      "state": "not-applicable",
+      "reason": "No outgoing typed projection interface is implemented."
+    },
+    "projection_outgoing_limits": {
+      "state": "known",
+      "value": [
+        "Native artifacts or caches alone do not provide a typed outgoing project projection interface"
+      ]
+    },
+    "editor_protocol": {
+      "state": "known",
+      "value": "lsp"
+    },
+    "editor_supported": {
+      "state": "known",
+      "value": true
+    },
+    "editor_offline": {
+      "state": "known",
+      "value": true
+    },
+    "platform_notes": {
+      "state": "known",
+      "value": [
+        "Apple Silicon macOS support is contributor-reported from unsandboxed builds; no macOS CI is configured",
+        "Sandboxed Darwin --check rebuilds have not been verified",
+        "Deterministic compilation also changes Linux stack traces: source filenames omit the build-directory path"
+      ]
+    }
+  },
+  "operations": {
+    "lock": {
+      "capability": "rebar3-purifier",
+      "arguments": [
+        "lock"
+      ],
+      "sources": [
+        "https://github.com/nix-purifiers/rebar3-purifier/blob/84f7c2454eebfe0c2c67c4abd69e4f94bfde7020/nix/lib/build-rebar3-project.nix"
+      ],
+      "minimumArguments": 0
+    },
+    "prefetch": {
+      "capability": "rebar3-purifier",
+      "arguments": [
+        "prefetch"
+      ],
+      "sources": [
+        "https://github.com/nix-purifiers/rebar3-purifier/blob/84f7c2454eebfe0c2c67c4abd69e4f94bfde7020/nix/lib/build-rebar3-project.nix"
+      ],
+      "minimumArguments": 0
+    },
+    "update": {
+      "state": "unknown",
+      "reason": "The native update selector and invocation have not been normalized; use the reference workflow."
+    },
+    "build": {
+      "capability": "rebar3",
+      "arguments": [
+        "compile"
+      ],
+      "sources": [
+        "https://github.com/nix-purifiers/rebar3-purifier/blob/84f7c2454eebfe0c2c67c4abd69e4f94bfde7020/nix/lib/build-rebar3-project.nix"
+      ]
+    },
+    "test": {
+      "capability": "rebar3",
+      "arguments": [
+        "eunit"
+      ],
+      "sources": [
+        "https://github.com/nix-purifiers/rebar3-purifier/blob/84f7c2454eebfe0c2c67c4abd69e4f94bfde7020/nix/lib/build-rebar3-project.nix"
+      ]
+    }
+  }
+}

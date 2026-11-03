@@ -1,0 +1,154 @@
+{
+  "repository": "nix-purifiers/cargo-purifier",
+  "reviewedRevision": "9faad3ab9c4371c6ebf88cf609ccd19a2dac10cd",
+  "facts": {
+    "tool": {
+      "state": "known",
+      "value": "Cargo"
+    },
+    "lockfiles": {
+      "state": "known",
+      "value": [
+        "Cargo.lock",
+        "cargo-purifier.lock.json"
+      ]
+    },
+    "integration": {
+      "state": "known",
+      "value": "wrapper"
+    },
+    "platforms": {
+      "state": "known",
+      "value": [
+        "x86_64-linux",
+        "aarch64-linux"
+      ]
+    },
+    "nix_builder": {
+      "state": "known",
+      "value": "pkgs.cargo-purifier.buildCargoProject"
+    },
+    "build_isolation": {
+      "state": "known",
+      "value": "nix-sandbox"
+    },
+    "build_outputs": {
+      "state": "known",
+      "value": [
+        "packages"
+      ]
+    },
+    "missing_lock": {
+      "state": "known",
+      "value": "warn-and-native"
+    },
+    "projection_incoming": {
+      "state": "known",
+      "value": "unsupported"
+    },
+    "projection_incoming_formats": {
+      "state": "not-applicable",
+      "reason": "No incoming typed projection adapter is exported by this implementation."
+    },
+    "projection_incoming_interfaces": {
+      "state": "not-applicable",
+      "reason": "No incoming typed projection interface is implemented."
+    },
+    "projection_incoming_limits": {
+      "state": "known",
+      "value": [
+        "Native artifacts or caches alone do not provide a typed incoming project projection interface"
+      ]
+    },
+    "projection_outgoing": {
+      "state": "known",
+      "value": "unsupported"
+    },
+    "projection_outgoing_formats": {
+      "state": "not-applicable",
+      "reason": "No outgoing typed projection adapter is exported by this implementation."
+    },
+    "projection_outgoing_interfaces": {
+      "state": "not-applicable",
+      "reason": "No outgoing typed projection interface is implemented."
+    },
+    "projection_outgoing_limits": {
+      "state": "known",
+      "value": [
+        "Native artifacts or caches alone do not provide a typed outgoing project projection interface"
+      ]
+    },
+    "editor_protocol": {
+      "state": "known",
+      "value": "lsp"
+    },
+    "editor_supported": {
+      "state": "known",
+      "value": true
+    }
+  },
+  "operations": {
+    "lock": {
+      "capability": "cargo-purifier",
+      "arguments": [
+        "lock"
+      ],
+      "sources": [
+        "https://github.com/nix-purifiers/cargo-purifier/blob/9faad3ab9c4371c6ebf88cf609ccd19a2dac10cd/nix/lib/build-cargo-project.nix"
+      ],
+      "minimumArguments": 0,
+      "environment": {
+        "CARGO_PURIFIER_LOCKFILE": {
+          "binding": "lockfile"
+        }
+      }
+    },
+    "prefetch": {
+      "capability": "cargo-purifier",
+      "arguments": [
+        "prefetch"
+      ],
+      "sources": [
+        "https://github.com/nix-purifiers/cargo-purifier/blob/9faad3ab9c4371c6ebf88cf609ccd19a2dac10cd/nix/lib/build-cargo-project.nix"
+      ],
+      "minimumArguments": 0,
+      "environment": {
+        "CARGO_PURIFIER_LOCKFILE": {
+          "binding": "lockfile"
+        }
+      }
+    },
+    "update": {
+      "state": "unknown",
+      "reason": "The native update selector and invocation have not been normalized; use the reference workflow."
+    },
+    "build": {
+      "capability": "cargo",
+      "arguments": [
+        "build"
+      ],
+      "sources": [
+        "https://github.com/nix-purifiers/cargo-purifier/blob/9faad3ab9c4371c6ebf88cf609ccd19a2dac10cd/nix/lib/build-cargo-project.nix"
+      ],
+      "environment": {
+        "CARGO_PURIFIER_LOCKFILE": {
+          "binding": "lockfile"
+        }
+      }
+    },
+    "test": {
+      "capability": "cargo",
+      "arguments": [
+        "test"
+      ],
+      "sources": [
+        "https://github.com/nix-purifiers/cargo-purifier/blob/9faad3ab9c4371c6ebf88cf609ccd19a2dac10cd/nix/lib/build-cargo-project.nix"
+      ],
+      "environment": {
+        "CARGO_PURIFIER_LOCKFILE": {
+          "binding": "lockfile"
+        }
+      }
+    }
+  }
+}

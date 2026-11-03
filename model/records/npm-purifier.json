@@ -1,0 +1,181 @@
+{
+  "repository": "nix-purifiers/npm-purifier",
+  "reviewedRevision": "1d70b348449535eb5b4fc851b242c386fa5d3790",
+  "facts": {
+    "tool": {
+      "state": "known",
+      "value": "npm"
+    },
+    "lockfiles": {
+      "state": "known",
+      "value": [
+        "package-lock.json",
+        "npm-purifier.lock.json"
+      ]
+    },
+    "integration": {
+      "state": "known",
+      "value": "wrapper"
+    },
+    "platforms": {
+      "state": "known",
+      "value": [
+        "x86_64-linux",
+        "aarch64-linux"
+      ]
+    },
+    "nix_builder": {
+      "state": "known",
+      "value": "pkgs.npm-purifier.buildNpmProject"
+    },
+    "build_isolation": {
+      "state": "known",
+      "value": "nix-sandbox"
+    },
+    "build_outputs": {
+      "state": "known",
+      "value": [
+        "packages",
+        "tests",
+        "release",
+        "fetches"
+      ]
+    },
+    "missing_lock": {
+      "state": "known",
+      "value": "warn-and-native"
+    },
+    "projection_incoming": {
+      "state": "known",
+      "value": "conditional"
+    },
+    "projection_incoming_formats": {
+      "state": "known",
+      "value": [
+        "npm"
+      ]
+    },
+    "projection_incoming_interfaces": {
+      "state": "known",
+      "value": [
+        "dependencies",
+        "lockfile.projectInputs"
+      ]
+    },
+    "projection_incoming_limits": {
+      "state": "known",
+      "value": [
+        "Producer must export the compatible native projection and its inferred catalog; native version requirements still apply"
+      ]
+    },
+    "projection_outgoing": {
+      "state": "known",
+      "value": "conditional"
+    },
+    "projection_outgoing_formats": {
+      "state": "known",
+      "value": [
+        "npm"
+      ]
+    },
+    "projection_outgoing_interfaces": {
+      "state": "known",
+      "value": [
+        "projections.npm"
+      ]
+    },
+    "projection_outgoing_limits": {
+      "state": "known",
+      "value": [
+        "Exported publications depend on the native project package metadata and successful sandboxed builds"
+      ]
+    },
+    "editor_protocol": {
+      "state": "known",
+      "value": "project-environment"
+    },
+    "editor_supported": {
+      "state": "known",
+      "value": true
+    }
+  },
+  "operations": {
+    "lock": {
+      "capability": "npm-purifier",
+      "arguments": [
+        "lock"
+      ],
+      "sources": [
+        "https://github.com/nix-purifiers/npm-purifier/blob/1d70b348449535eb5b4fc851b242c386fa5d3790/nix/lib/build-npm-project.nix"
+      ],
+      "minimumArguments": 0,
+      "environment": {
+        "NPM_PURIFIER_LOCKFILE": {
+          "binding": "lockfile"
+        }
+      }
+    },
+    "prefetch": {
+      "capability": "npm-purifier",
+      "arguments": [
+        "prefetch"
+      ],
+      "sources": [
+        "https://github.com/nix-purifiers/npm-purifier/blob/1d70b348449535eb5b4fc851b242c386fa5d3790/nix/lib/build-npm-project.nix"
+      ],
+      "minimumArguments": 0,
+      "environment": {
+        "NPM_PURIFIER_LOCKFILE": {
+          "binding": "lockfile"
+        }
+      }
+    },
+    "update": {
+      "state": "unknown",
+      "reason": "The native update selector and invocation have not been normalized; use the reference workflow."
+    },
+    "prepare": {
+      "capability": "npm",
+      "arguments": [
+        "ci"
+      ],
+      "sources": [
+        "https://github.com/nix-purifiers/npm-purifier/blob/1d70b348449535eb5b4fc851b242c386fa5d3790/nix/lib/build-npm-project.nix"
+      ],
+      "environment": {
+        "NPM_PURIFIER_LOCKFILE": {
+          "binding": "lockfile"
+        }
+      }
+    },
+    "build": {
+      "capability": "npm",
+      "arguments": [
+        "run",
+        "build"
+      ],
+      "sources": [
+        "https://github.com/nix-purifiers/npm-purifier/blob/1d70b348449535eb5b4fc851b242c386fa5d3790/nix/lib/build-npm-project.nix"
+      ],
+      "environment": {
+        "NPM_PURIFIER_LOCKFILE": {
+          "binding": "lockfile"
+        }
+      }
+    },
+    "test": {
+      "capability": "npm",
+      "arguments": [
+        "test"
+      ],
+      "sources": [
+        "https://github.com/nix-purifiers/npm-purifier/blob/1d70b348449535eb5b4fc851b242c386fa5d3790/nix/lib/build-npm-project.nix"
+      ],
+      "environment": {
+        "NPM_PURIFIER_LOCKFILE": {
+          "binding": "lockfile"
+        }
+      }
+    }
+  }
+}

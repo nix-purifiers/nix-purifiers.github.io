@@ -45,6 +45,19 @@
               "lock_identity": "oci-sha256"
             }
           }
+        ],
+        "reviewed": [
+          {
+            "id": "commands",
+            "text": "```sh\n{values.quickstart}\n```"
+          },
+          {
+            "id": "locks",
+            "text": "Commit the lockfiles: {facts.lockfiles}.",
+            "whenKnown": [
+              "lockfiles"
+            ]
+          }
         ]
       },
       "requires": {}
@@ -77,6 +90,19 @@
             "whenKnown": [
               "named_update_example"
             ]
+          }
+        ],
+        "native": [
+          {
+            "id": "main",
+            "text": "Keep using the native build and test commands in your working tree. After changing dependency declarations, refresh the lock through the native lock workflow shown above. The [full guide](reference.html) covers update selectors, external locks, and project-specific setup."
+          },
+          {
+            "id": "pins",
+            "text": "Relocking retains existing pins.",
+            "when": {
+              "relock": "preserves-pins"
+            }
           }
         ]
       },
@@ -130,6 +156,26 @@
               "native_plugin_bootstrap": "maven-impure"
             }
           }
+        ],
+        "native": [
+          {
+            "id": "main",
+            "text": "The development environment supplies the native tools and their purifier integration. Use that environment for builds, tests, and editor processes so they share the selected dependencies."
+          },
+          {
+            "id": "fallback",
+            "text": "Without an applicable lock, the integration warns and runs the ordinary native tool.",
+            "when": {
+              "missing_lock": "warn-and-native"
+            }
+          },
+          {
+            "id": "preparation",
+            "text": "The native tool reads the prepared project dependencies directly; wrapper activation is not required.",
+            "when": {
+              "integration": "native-preparation"
+            }
+          }
         ]
       },
       "requires": {
@@ -158,6 +204,12 @@
             "whenKnown": [
               "prefetch_components"
             ]
+          }
+        ],
+        "native": [
+          {
+            "id": "main",
+            "text": "Prepare dependencies using the Quickstart workflow before disconnecting. The lock covers the recorded dependency downloads; downloads performed outside that lock need separate inputs. See the [offline and activation details](reference.html) for native caches, environment activation, and toolchain requirements."
           }
         ]
       },
@@ -199,6 +251,19 @@
               "editor_metadata_format": "eclipse"
             }
           }
+        ],
+        "native": [
+          {
+            "id": "main",
+            "text": "Keep your existing editor. The integration described here connects its language tooling or native project import to the prepared dependency environment."
+          },
+          {
+            "id": "unsupported",
+            "text": "This editor integration is currently unavailable; the native limitation and any setup details are below.",
+            "when": {
+              "editor_supported": false
+            }
+          }
         ]
       },
       "requires": {}
@@ -235,6 +300,26 @@
             "whenKnown": [
               "builder_options"
             ]
+          }
+        ],
+        "native": [
+          {
+            "id": "main",
+            "text": "Native development does not require a project Nix build definition. To build the whole project in the Nix sandbox, apply `overlays.default` and call `{facts.nix_builder}`.",
+            "whenKnown": [
+              "nix_builder"
+            ]
+          },
+          {
+            "id": "outputs",
+            "text": "The builder exposes: {facts.build_outputs}.",
+            "whenKnown": [
+              "build_outputs"
+            ]
+          },
+          {
+            "id": "reference",
+            "text": "See the [builder reference](reference.html) for package names, options, toolchain requirements, and examples."
           }
         ]
       },
@@ -369,6 +454,33 @@
             "whenKnown": [
               "unsupported_features"
             ]
+          },
+          {
+            "id": "platform-notes",
+            "whenKnown": [
+              "platform_notes"
+            ],
+            "text": "Platform scope: {facts.platform_notes}."
+          }
+        ],
+        "native": [
+          {
+            "id": "platforms",
+            "text": "Target systems: {facts.platforms}.",
+            "whenKnown": [
+              "platforms"
+            ]
+          },
+          {
+            "id": "main",
+            "text": "The [native reference](reference.html) describes supported registries, authentication, source formats, and limitations. The [feature matrix](features.html) separates declared capabilities from unknown or unavailable integrations."
+          },
+          {
+            "id": "platform-notes",
+            "whenKnown": [
+              "platform_notes"
+            ],
+            "text": "Platform scope: {facts.platform_notes}."
           }
         ]
       },

@@ -1,0 +1,16 @@
+{
+  "summary": "Locked, Nix-resolved dependencies for Soldeer and Forge.",
+  "values": {
+    "quickstart": "nix shell 'github:nix-purifiers/soldeer-purifier'\nsoldeer-purifier lock\nsoldeer-purifier prefetch\nforge build\nforge test"
+  },
+  "sections": {
+    "editor": {
+      "title": "Language server integration (LSP)",
+      "blocks": {
+        "main": {
+          "extra-explanation": "Run `vscode-solidity-server --stdio` from the same shell. The project keeps\nits native remappings, and dependency sources are available in `dependencies`.\nThe language-server check resolves a definition into locked forge-std sources."
+        }
+      }
+    }
+  }
+}

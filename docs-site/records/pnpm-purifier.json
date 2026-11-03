@@ -1,0 +1,16 @@
+{
+  "summary": "Locked, Nix-resolved dependencies for pnpm.",
+  "values": {
+    "quickstart": "nix shell 'github:nix-purifiers/pnpm-purifier'\nalias pnpm=pnpm-purifier\npnpm-purifier lock\npnpm install\npnpm run build\npnpm test"
+  },
+  "sections": {
+    "editor": {
+      "title": "Editor environment integration",
+      "blocks": {
+        "main": {
+          "extra-explanation": "An editor's language server, such as the TypeScript server, reads\n`node_modules`. An offline install writes the same `node_modules` an online\none does, so the editor works as it does with pnpm alone, with the network\ncut off after a prefetch."
+        }
+      }
+    }
+  }
+}

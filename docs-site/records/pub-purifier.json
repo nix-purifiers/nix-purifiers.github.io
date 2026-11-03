@@ -1,0 +1,16 @@
+{
+  "summary": "Locked, Nix-resolved dependencies for Dart pub.",
+  "values": {
+    "quickstart": "nix shell 'github:nix-purifiers/pub-purifier'\npub-purifier lock\npub-purifier prefetch\ndart run bin/main.dart"
+  },
+  "sections": {
+    "editor": {
+      "title": "Language server integration (LSP)",
+      "blocks": {
+        "main": {
+          "extra-explanation": "The wrapper supplies the standard `dart language-server`. Prefetch first,\nthen start the editor from the same shell so it finds that Dart executable.\nThe normal `.dart_tool/package_config.json` points at locked packages;\nthere is no generated Nix development shell. The checks exercise a real\nlanguage server against the fixture's dependency imports offline."
+        }
+      }
+    }
+  }
+}

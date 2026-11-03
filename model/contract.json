@@ -18,7 +18,8 @@
       "enum": [
         "wrapper",
         "plugin",
-        "wrapper-and-plugin"
+        "wrapper-and-plugin",
+        "native-preparation"
       ],
       "description": "Available integration mechanisms, not a statement that they are interchangeable."
     },
@@ -112,7 +113,7 @@
     },
     "editor_offline": {
       "type": "boolean",
-      "description": "The supplied language server works without network access after prefetch.",
+      "description": "Offline operation is available with the integration and setup documented for this project.",
       "label": "Offline language-server use"
     },
     "prefetch_components": {
@@ -225,7 +226,23 @@
       "type": "strings",
       "description": "Supported native projection formats.",
       "matrix": true,
-      "label": "Incoming projection formats"
+      "label": "Incoming projection formats",
+      "itemsEnum": [
+        "maven",
+        "ivy",
+        "python",
+        "rubygems",
+        "go",
+        "npm"
+      ],
+      "itemLabels": {
+        "maven": "Maven",
+        "ivy": "Ivy",
+        "python": "Python",
+        "rubygems": "RubyGems",
+        "go": "Go module proxy",
+        "npm": "npm"
+      }
     },
     "projection_incoming_interfaces": {
       "type": "strings",
@@ -251,7 +268,23 @@
       "type": "strings",
       "description": "Supported native projection formats.",
       "matrix": true,
-      "label": "Outgoing projection formats"
+      "label": "Outgoing projection formats",
+      "itemsEnum": [
+        "maven",
+        "ivy",
+        "python",
+        "rubygems",
+        "go",
+        "npm"
+      ],
+      "itemLabels": {
+        "maven": "Maven",
+        "ivy": "Ivy",
+        "python": "Python",
+        "rubygems": "RubyGems",
+        "go": "Go module proxy",
+        "npm": "npm"
+      }
     },
     "projection_outgoing_interfaces": {
       "type": "strings",
@@ -262,6 +295,29 @@
       "type": "strings",
       "description": "Prerequisites, scope restrictions, and unsupported projection paths.",
       "matrix": false
+    },
+    "editor_protocol": {
+      "type": "string",
+      "enum": [
+        "lsp",
+        "bsp",
+        "native-build-import",
+        "native-editor",
+        "project-environment"
+      ],
+      "label": "Editor integration protocol",
+      "description": "Protocol or native environment used to connect the existing editor."
+    },
+    "editor_supported": {
+      "type": "boolean",
+      "label": "Editor integration",
+      "description": "The reviewed integration supports editor access to the native project environment."
+    },
+    "platform_notes": {
+      "type": "strings",
+      "description": "Platform-specific runtime and validation limits.",
+      "matrix": true,
+      "label": "Platform scope and limitations"
     }
   }
 }

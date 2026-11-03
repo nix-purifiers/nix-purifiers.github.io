@@ -1,0 +1,156 @@
+{
+  "repository": "nix-purifiers/gradle-purifier",
+  "reviewedRevision": "01f52ce128be3008ceebd644378fe2963698e469",
+  "facts": {
+    "tool": {
+      "state": "known",
+      "value": "Gradle"
+    },
+    "lockfiles": {
+      "state": "known",
+      "value": [
+        "gradle-purifier.lock.json"
+      ]
+    },
+    "integration": {
+      "state": "known",
+      "value": "wrapper"
+    },
+    "platforms": {
+      "state": "known",
+      "value": [
+        "x86_64-linux",
+        "aarch64-linux",
+        "aarch64-darwin"
+      ]
+    },
+    "nix_builder": {
+      "state": "known",
+      "value": "pkgs.gradle-purifier.buildGradleProject"
+    },
+    "build_isolation": {
+      "state": "known",
+      "value": "nix-sandbox"
+    },
+    "build_outputs": {
+      "state": "known",
+      "value": [
+        "packages",
+        "tests",
+        "release",
+        "fetches"
+      ]
+    },
+    "projection_incoming": {
+      "state": "known",
+      "value": "conditional"
+    },
+    "projection_incoming_formats": {
+      "state": "known",
+      "value": [
+        "maven"
+      ]
+    },
+    "projection_incoming_interfaces": {
+      "state": "known",
+      "value": [
+        "projectDependencies",
+        "lockfile.projectInputs"
+      ]
+    },
+    "projection_incoming_limits": {
+      "state": "known",
+      "value": [
+        "Producer must export the compatible native projection and its inferred catalog; native version requirements still apply"
+      ]
+    },
+    "projection_outgoing": {
+      "state": "known",
+      "value": "conditional"
+    },
+    "projection_outgoing_formats": {
+      "state": "known",
+      "value": [
+        "maven"
+      ]
+    },
+    "projection_outgoing_interfaces": {
+      "state": "known",
+      "value": [
+        "projections.maven"
+      ]
+    },
+    "projection_outgoing_limits": {
+      "state": "known",
+      "value": [
+        "Exported publications depend on the native project package metadata and successful sandboxed builds"
+      ]
+    },
+    "editor_protocol": {
+      "state": "known",
+      "value": "native-build-import"
+    },
+    "editor_supported": {
+      "state": "known",
+      "value": true
+    },
+    "platform_notes": {
+      "state": "known",
+      "value": [
+        "Apple Silicon macOS support is contributor-reported from unsandboxed builds; no macOS CI is configured",
+        "Sandboxed Darwin --check rebuilds have not been verified",
+        "Reported Darwin validation excludes Kotlin/Native fixtures on ARM64 and the manual lock-real-world job"
+      ]
+    }
+  },
+  "operations": {
+    "lock": {
+      "capability": "gradle-purifier",
+      "arguments": [
+        "lock"
+      ],
+      "sources": [
+        "https://github.com/nix-purifiers/gradle-purifier/blob/01f52ce128be3008ceebd644378fe2963698e469/nix/lib/build-gradle-project.nix"
+      ],
+      "minimumArguments": 0,
+      "environment": {
+        "GRADLE_PURIFIER_LOCKFILE": {
+          "binding": "lockfile"
+        }
+      }
+    },
+    "prefetch": {
+      "capability": "gradle-purifier",
+      "arguments": [
+        "prefetch"
+      ],
+      "sources": [
+        "https://github.com/nix-purifiers/gradle-purifier/blob/01f52ce128be3008ceebd644378fe2963698e469/nix/lib/build-gradle-project.nix"
+      ],
+      "minimumArguments": 0,
+      "environment": {
+        "GRADLE_PURIFIER_LOCKFILE": {
+          "binding": "lockfile"
+        }
+      }
+    },
+    "update": {
+      "state": "unknown",
+      "reason": "The native update selector and invocation have not been normalized; use the reference workflow."
+    },
+    "build": {
+      "capability": "./gradlew",
+      "arguments": [
+        "build"
+      ],
+      "sources": [
+        "https://github.com/nix-purifiers/gradle-purifier/blob/01f52ce128be3008ceebd644378fe2963698e469/nix/lib/build-gradle-project.nix"
+      ],
+      "environment": {
+        "GRADLE_PURIFIER_LOCKFILE": {
+          "binding": "lockfile"
+        }
+      }
+    }
+  }
+}

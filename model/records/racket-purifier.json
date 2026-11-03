@@ -1,0 +1,144 @@
+{
+  "repository": "nix-purifiers/racket-purifier",
+  "reviewedRevision": "998a77664b5e96126467b365afa880a57fc425e1",
+  "facts": {
+    "tool": {
+      "state": "known",
+      "value": "Racket"
+    },
+    "lockfiles": {
+      "state": "known",
+      "value": [
+        "racket-purifier.lock.json"
+      ]
+    },
+    "integration": {
+      "state": "known",
+      "value": "wrapper"
+    },
+    "platforms": {
+      "state": "known",
+      "value": [
+        "x86_64-linux",
+        "aarch64-linux"
+      ]
+    },
+    "nix_builder": {
+      "state": "known",
+      "value": "pkgs.racket-purifier.buildRacketProject"
+    },
+    "build_isolation": {
+      "state": "known",
+      "value": "nix-sandbox"
+    },
+    "build_outputs": {
+      "state": "known",
+      "value": [
+        "packages",
+        "tests",
+        "release",
+        "fetches"
+      ]
+    },
+    "projection_incoming": {
+      "state": "known",
+      "value": "unsupported"
+    },
+    "projection_incoming_formats": {
+      "state": "not-applicable",
+      "reason": "No incoming typed projection adapter is exported by this implementation."
+    },
+    "projection_incoming_interfaces": {
+      "state": "not-applicable",
+      "reason": "No incoming typed projection interface is implemented."
+    },
+    "projection_incoming_limits": {
+      "state": "known",
+      "value": [
+        "Native artifacts or caches alone do not provide a typed incoming project projection interface"
+      ]
+    },
+    "projection_outgoing": {
+      "state": "known",
+      "value": "unsupported"
+    },
+    "projection_outgoing_formats": {
+      "state": "not-applicable",
+      "reason": "No outgoing typed projection adapter is exported by this implementation."
+    },
+    "projection_outgoing_interfaces": {
+      "state": "not-applicable",
+      "reason": "No outgoing typed projection interface is implemented."
+    },
+    "projection_outgoing_limits": {
+      "state": "known",
+      "value": [
+        "Native artifacts or caches alone do not provide a typed outgoing project projection interface"
+      ]
+    }
+  },
+  "operations": {
+    "lock": {
+      "capability": "racket-purifier",
+      "arguments": [
+        "lock"
+      ],
+      "sources": [
+        "https://github.com/nix-purifiers/racket-purifier/blob/998a77664b5e96126467b365afa880a57fc425e1/nix/build-project.nix"
+      ],
+      "minimumArguments": 0
+    },
+    "prefetch": {
+      "capability": "racket-purifier",
+      "arguments": [
+        "prefetch"
+      ],
+      "sources": [
+        "https://github.com/nix-purifiers/racket-purifier/blob/998a77664b5e96126467b365afa880a57fc425e1/nix/build-project.nix"
+      ],
+      "minimumArguments": 0
+    },
+    "update": {
+      "capability": "racket-purifier",
+      "arguments": [
+        "lock",
+        "--update"
+      ],
+      "sources": [
+        "https://github.com/nix-purifiers/racket-purifier/blob/998a77664b5e96126467b365afa880a57fc425e1/nix/build-project.nix"
+      ],
+      "minimumArguments": 0
+    },
+    "prepare": {
+      "capability": "raco",
+      "arguments": [
+        "pkg",
+        "install",
+        "."
+      ],
+      "sources": [
+        "https://github.com/nix-purifiers/racket-purifier/blob/998a77664b5e96126467b365afa880a57fc425e1/nix/build-project.nix"
+      ]
+    },
+    "build": {
+      "capability": "raco",
+      "arguments": [
+        "make",
+        "main.rkt"
+      ],
+      "sources": [
+        "https://github.com/nix-purifiers/racket-purifier/blob/998a77664b5e96126467b365afa880a57fc425e1/nix/build-project.nix"
+      ]
+    },
+    "test": {
+      "capability": "raco",
+      "arguments": [
+        "test",
+        "main.rkt"
+      ],
+      "sources": [
+        "https://github.com/nix-purifiers/racket-purifier/blob/998a77664b5e96126467b365afa880a57fc425e1/nix/build-project.nix"
+      ]
+    }
+  }
+}

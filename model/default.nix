@@ -23,7 +23,8 @@ let
     else throw "Projection support must agree with declared formats and interfaces";
   evaluate = modules:
     let cfg = validateProjections (lib.evalModules { modules = [ ./schema.nix ] ++ modules; }).config;
-    in { version = 1; inherit (cfg) repository operations; facts = exportFacts cfg; };
+    in { version = 1; inherit (cfg) repository operations; facts = exportFacts cfg; }
+      // lib.optionalAttrs (cfg.reviewedRevision != null) { inherit (cfg) reviewedRevision; };
   evaluateDocumentation = modules:
     let
       cfg = validateProjections (lib.evalModules { modules = [ ./schema.nix ./documentation.nix ] ++ modules; }).config;
@@ -61,6 +62,7 @@ let
           ) (builtins.attrNames (specifications.${key}.requires.${section.template} or {}))) then
             throw "${key}: shared template contradicts declared facts"
           else { use = section.template; }
+            // lib.optionalAttrs (section.title != null) { inherit (section) title; }
             // lib.optionalAttrs (section.details != null) { inherit (section) details; }
             // lib.optionalAttrs (section.blocks != {}) {
               blocks = lib.mapAttrs (_: prose: lib.filterAttrs (_: v: v != null) prose) section.blocks;
@@ -76,8 +78,11 @@ let
       facts = exportFacts cfg;
     in if builtins.attrNames cfg.sections != expectedSections then
       throw "Every project must explicitly cover the contract sections: ${lib.concatStringsSep ", " expectedSections}"
-    else { version = 1; inherit (cfg) repository summary operations; inherit facts sections; };
-  catalog = lib.genAttrs [ "ant-purifier" "docker-purifier" "sbt-purifier" ] (name:
+    else { version = 1; inherit (cfg) repository summary operations values; inherit facts sections; }
+      // lib.optionalAttrs (cfg.reviewedRevision != null) { inherit (cfg) reviewedRevision; };
+  names = map (name: lib.removeSuffix ".nix" name) (builtins.filter (name: lib.hasSuffix ".nix" name)
+    (builtins.attrNames (builtins.readDir ./projects)));
+  catalog = lib.genAttrs names (name:
     evaluate [ (./projects + "/${name}.nix") ]);
   documentationCatalog = lib.mapAttrs (name: _: evaluateDocumentation [
     (../docs-site/projects + "/${name}.nix")

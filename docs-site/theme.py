@@ -19,3 +19,4 @@ def install_theme(destination):
         shutil.copyfile(theme / asset, destination / '_includes' / asset)
         # Retain the asset paths used by consumers of earlier shared layouts.
         shutil.copyfile(theme / asset, destination / 'assets' / asset)
+    shutil.copyfile(theme.parent / 'robots.txt', destination / 'robots.txt')

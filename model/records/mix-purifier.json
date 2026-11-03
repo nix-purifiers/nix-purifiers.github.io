@@ -1,0 +1,157 @@
+{
+  "repository": "nix-purifiers/mix-purifier",
+  "reviewedRevision": "1052420bba6c19a36640ff5cf08c38db19cf491f",
+  "facts": {
+    "tool": {
+      "state": "known",
+      "value": "Mix"
+    },
+    "lockfiles": {
+      "state": "known",
+      "value": [
+        "mix.lock",
+        "mix-purifier.lock.json"
+      ]
+    },
+    "integration": {
+      "state": "known",
+      "value": "wrapper"
+    },
+    "platforms": {
+      "state": "known",
+      "value": [
+        "x86_64-linux",
+        "aarch64-linux"
+      ]
+    },
+    "nix_builder": {
+      "state": "known",
+      "value": "pkgs.mix-purifier.buildMixProject"
+    },
+    "build_isolation": {
+      "state": "known",
+      "value": "nix-sandbox"
+    },
+    "build_outputs": {
+      "state": "known",
+      "value": [
+        "packages",
+        "tests",
+        "release",
+        "fetches"
+      ]
+    },
+    "projection_incoming": {
+      "state": "known",
+      "value": "unsupported"
+    },
+    "projection_incoming_formats": {
+      "state": "not-applicable",
+      "reason": "No incoming typed projection adapter is exported by this implementation."
+    },
+    "projection_incoming_interfaces": {
+      "state": "not-applicable",
+      "reason": "No incoming typed projection interface is implemented."
+    },
+    "projection_incoming_limits": {
+      "state": "known",
+      "value": [
+        "Native artifacts or caches alone do not provide a typed incoming project projection interface"
+      ]
+    },
+    "projection_outgoing": {
+      "state": "known",
+      "value": "unsupported"
+    },
+    "projection_outgoing_formats": {
+      "state": "not-applicable",
+      "reason": "No outgoing typed projection adapter is exported by this implementation."
+    },
+    "projection_outgoing_interfaces": {
+      "state": "not-applicable",
+      "reason": "No outgoing typed projection interface is implemented."
+    },
+    "projection_outgoing_limits": {
+      "state": "known",
+      "value": [
+        "Native artifacts or caches alone do not provide a typed outgoing project projection interface"
+      ]
+    },
+    "editor_protocol": {
+      "state": "known",
+      "value": "lsp"
+    },
+    "editor_supported": {
+      "state": "known",
+      "value": true
+    },
+    "editor_offline": {
+      "state": "known",
+      "value": true
+    }
+  },
+  "operations": {
+    "lock": {
+      "capability": "mix-purifier",
+      "arguments": [
+        "lock"
+      ],
+      "sources": [
+        "https://github.com/nix-purifiers/mix-purifier/blob/1052420bba6c19a36640ff5cf08c38db19cf491f/nix/lib/build-mix-project.nix"
+      ],
+      "minimumArguments": 0,
+      "environment": {
+        "MIX_PURIFIER_LOCKFILE": {
+          "binding": "lockfile"
+        }
+      }
+    },
+    "prefetch": {
+      "capability": "mix-purifier",
+      "arguments": [
+        "prefetch"
+      ],
+      "sources": [
+        "https://github.com/nix-purifiers/mix-purifier/blob/1052420bba6c19a36640ff5cf08c38db19cf491f/nix/lib/build-mix-project.nix"
+      ],
+      "minimumArguments": 0,
+      "environment": {
+        "MIX_PURIFIER_LOCKFILE": {
+          "binding": "lockfile"
+        }
+      }
+    },
+    "update": {
+      "state": "unknown",
+      "reason": "The native update selector and invocation have not been normalized; use the reference workflow."
+    },
+    "build": {
+      "capability": "mix",
+      "arguments": [
+        "compile"
+      ],
+      "sources": [
+        "https://github.com/nix-purifiers/mix-purifier/blob/1052420bba6c19a36640ff5cf08c38db19cf491f/nix/lib/build-mix-project.nix"
+      ],
+      "environment": {
+        "MIX_PURIFIER_LOCKFILE": {
+          "binding": "lockfile"
+        }
+      }
+    },
+    "test": {
+      "capability": "mix",
+      "arguments": [
+        "test"
+      ],
+      "sources": [
+        "https://github.com/nix-purifiers/mix-purifier/blob/1052420bba6c19a36640ff5cf08c38db19cf491f/nix/lib/build-mix-project.nix"
+      ],
+      "environment": {
+        "MIX_PURIFIER_LOCKFILE": {
+          "binding": "lockfile"
+        }
+      }
+    }
+  }
+}

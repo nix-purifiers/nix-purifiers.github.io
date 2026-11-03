@@ -1,0 +1,16 @@
+{
+  "summary": "Locked, Nix-resolved dependencies for npm.",
+  "values": {
+    "quickstart": "nix shell 'github:nix-purifiers/npm-purifier#toolchain'\nnpm-purifier lock\nnpm ci\nnpm run build\nnpm test"
+  },
+  "sections": {
+    "editor": {
+      "title": "Editor environment integration",
+      "blocks": {
+        "main": {
+          "extra-explanation": "Editors and language servers read `node_modules`, which `npm ci` through\nthe wrapper fills as plain npm does, so they need no setup of their own.\nAn editor that runs npm itself (task runners, script panels) gets the\nwrapper when it starts from `nix shell` with the toolchain package,\nor from your usual environment configuration with the wrapper on `PATH`."
+        }
+      }
+    }
+  }
+}

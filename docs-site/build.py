@@ -7,6 +7,7 @@ import subprocess
 
 from content import audit, feature_matrix, render, source_links
 from theme import install_theme
+from reference import reference_text
 
 
 def build(documentation, destination):
@@ -40,6 +41,11 @@ def build(documentation, destination):
         frontmatter = ('---\nlayout: default\ntitle: ' + json.dumps(name) +
                        '\nrepository: ' + json.dumps(page['repository']) +
                        '\nfeature_matrix: ' + json.dumps(f'/{name}/features.html') + '\n---\n\n')
+        reference = theme / 'references' / (name + '.md')
+        if reference.exists():
+            frontmatter = frontmatter.replace('\n---\n', '\nreference: ' + json.dumps(f'/{name}/reference.html') + '\n---\n')
+            (target / 'reference.md').write_text('---\nlayout: default\nrepository: ' +
+                json.dumps(page['repository']) + '\n---\n\n' + source_links(reference_text(page['repository'], reference.read_text(), page), page['repository']))
         (target / 'index.md').write_text(frontmatter + source_links(markdown, page['repository']))
         matrix_frontmatter = ('---\nlayout: default\ntitle: ' + json.dumps(name + ' feature matrix') +
                               '\nrepository: ' + json.dumps(page['repository']) + '\n---\n\n')
@@ -47,6 +53,11 @@ def build(documentation, destination):
         (target / 'system.json').write_text(json.dumps(page, indent=2) + '\n')
         reports[name] = audit(page, variations)
     (destination / 'content-variations.json').write_text(json.dumps(reports, indent=2) + '\n')
+    library = theme / 'references/purifier.md'
+    if library.exists():
+        (destination / 'purifier').mkdir(exist_ok=True)
+        (destination / 'purifier/index.md').write_text('---\nlayout: default\nrepository: nix-purifiers/purifier\n---\n\n' +
+            source_links(reference_text('nix-purifiers/purifier', library.read_text()), 'nix-purifiers/purifier'))
 
 
 if __name__ == '__main__':

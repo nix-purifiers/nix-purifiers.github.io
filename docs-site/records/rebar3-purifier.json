@@ -1,0 +1,16 @@
+{
+  "summary": "Locked, Nix-resolved dependencies for rebar3.",
+  "values": {
+    "quickstart": "nix shell 'github:nix-purifiers/rebar3-purifier'\nrebar3-purifier lock\nrebar3 compile\nrebar3 eunit"
+  },
+  "sections": {
+    "editor": {
+      "title": "Language server integration (LSP)",
+      "blocks": {
+        "main": {
+          "extra-explanation": "The toolchain has `elp`, the\n[Erlang Language Platform](https://whatsapp.github.io/erlang-language-platform/),\nwhich loads the project by running rebar3. Run your editor inside\n`nix shell`, or put the toolchain on its `PATH`, and `elp` finds the\nrebar3 of the toolchain, which reads the locked downloads. After a\nprefetch the editor needs no network."
+        }
+      }
+    }
+  }
+}

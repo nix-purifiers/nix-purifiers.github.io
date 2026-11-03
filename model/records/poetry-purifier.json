@@ -1,0 +1,182 @@
+{
+  "repository": "nix-purifiers/poetry-purifier",
+  "reviewedRevision": "caef0950f4a654a8e277b45ecd10856c72a87c10",
+  "facts": {
+    "tool": {
+      "state": "known",
+      "value": "Poetry"
+    },
+    "lockfiles": {
+      "state": "known",
+      "value": [
+        "poetry.lock",
+        "poetry-purifier.lock.json"
+      ]
+    },
+    "integration": {
+      "state": "known",
+      "value": "wrapper-and-plugin"
+    },
+    "platforms": {
+      "state": "known",
+      "value": [
+        "x86_64-linux",
+        "aarch64-linux"
+      ]
+    },
+    "nix_builder": {
+      "state": "known",
+      "value": "pkgs.poetry-purifier.buildPoetryProject"
+    },
+    "build_isolation": {
+      "state": "known",
+      "value": "nix-sandbox"
+    },
+    "build_outputs": {
+      "state": "known",
+      "value": [
+        "packages",
+        "tests",
+        "release",
+        "fetches"
+      ]
+    },
+    "missing_lock": {
+      "state": "known",
+      "value": "warn-and-native"
+    },
+    "projection_incoming": {
+      "state": "known",
+      "value": "conditional"
+    },
+    "projection_incoming_formats": {
+      "state": "known",
+      "value": [
+        "python"
+      ]
+    },
+    "projection_incoming_interfaces": {
+      "state": "known",
+      "value": [
+        "projectDependencies",
+        "lockfile.projectInputs"
+      ]
+    },
+    "projection_incoming_limits": {
+      "state": "known",
+      "value": [
+        "Producer must export the compatible native projection and its inferred catalog; native version requirements still apply"
+      ]
+    },
+    "projection_outgoing": {
+      "state": "known",
+      "value": "conditional"
+    },
+    "projection_outgoing_formats": {
+      "state": "known",
+      "value": [
+        "python"
+      ]
+    },
+    "projection_outgoing_interfaces": {
+      "state": "known",
+      "value": [
+        "projections.python"
+      ]
+    },
+    "projection_outgoing_limits": {
+      "state": "known",
+      "value": [
+        "Exported publications depend on the native project package metadata and successful sandboxed builds"
+      ]
+    },
+    "editor_protocol": {
+      "state": "known",
+      "value": "project-environment"
+    },
+    "editor_supported": {
+      "state": "known",
+      "value": true
+    },
+    "editor_offline": {
+      "state": "known",
+      "value": true
+    }
+  },
+  "operations": {
+    "lock": {
+      "capability": "poetry",
+      "arguments": [
+        "purifier",
+        "lock"
+      ],
+      "sources": [
+        "https://github.com/nix-purifiers/poetry-purifier/blob/caef0950f4a654a8e277b45ecd10856c72a87c10/nix/lib/build-poetry-project.nix"
+      ],
+      "minimumArguments": 0,
+      "environment": {
+        "POETRY_PURIFIER_LOCKFILE": {
+          "binding": "lockfile"
+        }
+      }
+    },
+    "prefetch": {
+      "capability": "poetry",
+      "arguments": [
+        "purifier",
+        "prefetch"
+      ],
+      "sources": [
+        "https://github.com/nix-purifiers/poetry-purifier/blob/caef0950f4a654a8e277b45ecd10856c72a87c10/nix/lib/build-poetry-project.nix"
+      ],
+      "minimumArguments": 0,
+      "environment": {
+        "POETRY_PURIFIER_LOCKFILE": {
+          "binding": "lockfile"
+        }
+      }
+    },
+    "update": {
+      "capability": "poetry",
+      "arguments": [
+        "purifier",
+        "update"
+      ],
+      "sources": [
+        "https://github.com/nix-purifiers/poetry-purifier/blob/caef0950f4a654a8e277b45ecd10856c72a87c10/nix/lib/build-poetry-project.nix"
+      ],
+      "minimumArguments": 0,
+      "environment": {
+        "POETRY_PURIFIER_LOCKFILE": {
+          "binding": "lockfile"
+        }
+      }
+    },
+    "prepare": {
+      "capability": "poetry",
+      "arguments": [
+        "install"
+      ],
+      "sources": [
+        "https://github.com/nix-purifiers/poetry-purifier/blob/caef0950f4a654a8e277b45ecd10856c72a87c10/nix/lib/build-poetry-project.nix"
+      ],
+      "environment": {
+        "POETRY_PURIFIER_LOCKFILE": {
+          "binding": "lockfile"
+        }
+      }
+    },
+    "test": {
+      "capability": "pytest",
+      "arguments": [],
+      "sources": [
+        "https://github.com/nix-purifiers/poetry-purifier/blob/caef0950f4a654a8e277b45ecd10856c72a87c10/nix/lib/build-poetry-project.nix"
+      ],
+      "environment": {
+        "POETRY_PURIFIER_LOCKFILE": {
+          "binding": "lockfile"
+        }
+      }
+    }
+  }
+}

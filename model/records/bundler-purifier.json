@@ -1,0 +1,142 @@
+{
+  "repository": "nix-purifiers/bundler-purifier",
+  "reviewedRevision": "67ddb584b8270db7bcbf9cdc7a415d86255447bc",
+  "facts": {
+    "tool": {
+      "state": "known",
+      "value": "Bundler"
+    },
+    "lockfiles": {
+      "state": "known",
+      "value": [
+        "Gemfile.lock",
+        "bundler-purifier.lock.json"
+      ]
+    },
+    "integration": {
+      "state": "known",
+      "value": "wrapper"
+    },
+    "platforms": {
+      "state": "known",
+      "value": [
+        "x86_64-linux",
+        "aarch64-linux"
+      ]
+    },
+    "nix_builder": {
+      "state": "known",
+      "value": "pkgs.bundler-purifier.buildBundlerProject"
+    },
+    "build_isolation": {
+      "state": "known",
+      "value": "nix-sandbox"
+    },
+    "build_outputs": {
+      "state": "known",
+      "value": [
+        "packages",
+        "tests",
+        "release",
+        "fetches"
+      ]
+    },
+    "missing_lock": {
+      "state": "known",
+      "value": "warn-and-native"
+    },
+    "projection_incoming": {
+      "state": "known",
+      "value": "conditional"
+    },
+    "projection_incoming_formats": {
+      "state": "known",
+      "value": [
+        "rubygems"
+      ]
+    },
+    "projection_incoming_interfaces": {
+      "state": "known",
+      "value": [
+        "dependencies",
+        "lockfile.projectInputs"
+      ]
+    },
+    "projection_incoming_limits": {
+      "state": "known",
+      "value": [
+        "Producer must export the compatible native projection and its inferred catalog; native version requirements still apply"
+      ]
+    },
+    "projection_outgoing": {
+      "state": "known",
+      "value": "conditional"
+    },
+    "projection_outgoing_formats": {
+      "state": "known",
+      "value": [
+        "rubygems"
+      ]
+    },
+    "projection_outgoing_interfaces": {
+      "state": "known",
+      "value": [
+        "projections.rubygems"
+      ]
+    },
+    "projection_outgoing_limits": {
+      "state": "known",
+      "value": [
+        "Exported publications depend on the native project package metadata and successful sandboxed builds"
+      ]
+    },
+    "editor_protocol": {
+      "state": "known",
+      "value": "lsp"
+    },
+    "editor_supported": {
+      "state": "known",
+      "value": true
+    },
+    "editor_offline": {
+      "state": "known",
+      "value": true
+    }
+  },
+  "operations": {
+    "lock": {
+      "capability": "bundler-purifier",
+      "arguments": [
+        "lock"
+      ],
+      "sources": [
+        "https://github.com/nix-purifiers/bundler-purifier/blob/67ddb584b8270db7bcbf9cdc7a415d86255447bc/nix/lib/build-bundler-project.nix"
+      ],
+      "minimumArguments": 0
+    },
+    "prefetch": {
+      "capability": "bundler-purifier",
+      "arguments": [
+        "prefetch"
+      ],
+      "sources": [
+        "https://github.com/nix-purifiers/bundler-purifier/blob/67ddb584b8270db7bcbf9cdc7a415d86255447bc/nix/lib/build-bundler-project.nix"
+      ],
+      "minimumArguments": 0
+    },
+    "update": {
+      "state": "unknown",
+      "reason": "The native update selector and invocation have not been normalized; use the reference workflow."
+    },
+    "run": {
+      "capability": "bundle",
+      "arguments": [
+        "exec",
+        "rake"
+      ],
+      "sources": [
+        "https://github.com/nix-purifiers/bundler-purifier/blob/67ddb584b8270db7bcbf9cdc7a415d86255447bc/nix/lib/build-bundler-project.nix"
+      ]
+    }
+  }
+}

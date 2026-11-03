@@ -1,0 +1,174 @@
+{
+  "repository": "nix-purifiers/stack-purifier",
+  "reviewedRevision": "9bc83ac949ad57d2be5a4a4dd34c4a7170772d76",
+  "facts": {
+    "tool": {
+      "state": "known",
+      "value": "Stack"
+    },
+    "lockfiles": {
+      "state": "known",
+      "value": [
+        "stack.yaml.lock",
+        "stack-purifier.lock.json"
+      ]
+    },
+    "integration": {
+      "state": "known",
+      "value": "wrapper"
+    },
+    "platforms": {
+      "state": "known",
+      "value": [
+        "x86_64-linux",
+        "aarch64-linux"
+      ]
+    },
+    "nix_builder": {
+      "state": "known",
+      "value": "pkgs.stack-purifier.buildStackProject"
+    },
+    "build_isolation": {
+      "state": "known",
+      "value": "nix-sandbox"
+    },
+    "build_outputs": {
+      "state": "known",
+      "value": [
+        "packages",
+        "tests",
+        "release",
+        "fetches"
+      ]
+    },
+    "missing_lock": {
+      "state": "known",
+      "value": "warn-and-native"
+    },
+    "projection_incoming": {
+      "state": "known",
+      "value": "unsupported"
+    },
+    "projection_incoming_formats": {
+      "state": "not-applicable",
+      "reason": "No incoming typed projection adapter is exported by this implementation."
+    },
+    "projection_incoming_interfaces": {
+      "state": "not-applicable",
+      "reason": "No incoming typed projection interface is implemented."
+    },
+    "projection_incoming_limits": {
+      "state": "known",
+      "value": [
+        "Native artifacts or caches alone do not provide a typed incoming project projection interface"
+      ]
+    },
+    "projection_outgoing": {
+      "state": "known",
+      "value": "unsupported"
+    },
+    "projection_outgoing_formats": {
+      "state": "not-applicable",
+      "reason": "No outgoing typed projection adapter is exported by this implementation."
+    },
+    "projection_outgoing_interfaces": {
+      "state": "not-applicable",
+      "reason": "No outgoing typed projection interface is implemented."
+    },
+    "projection_outgoing_limits": {
+      "state": "known",
+      "value": [
+        "Native artifacts or caches alone do not provide a typed outgoing project projection interface"
+      ]
+    }
+  },
+  "operations": {
+    "lock": {
+      "capability": "stack-purifier",
+      "arguments": [
+        "lock"
+      ],
+      "sources": [
+        "https://github.com/nix-purifiers/stack-purifier/blob/9bc83ac949ad57d2be5a4a4dd34c4a7170772d76/nix/build-project.nix"
+      ],
+      "minimumArguments": 0,
+      "environment": {
+        "STACK_PURIFIER_LOCKFILE": {
+          "binding": "lockfile"
+        }
+      }
+    },
+    "prefetch": {
+      "capability": "stack-purifier",
+      "arguments": [
+        "prefetch"
+      ],
+      "sources": [
+        "https://github.com/nix-purifiers/stack-purifier/blob/9bc83ac949ad57d2be5a4a4dd34c4a7170772d76/nix/build-project.nix"
+      ],
+      "minimumArguments": 0,
+      "environment": {
+        "STACK_PURIFIER_LOCKFILE": {
+          "binding": "lockfile"
+        }
+      }
+    },
+    "update": {
+      "capability": "stack-purifier",
+      "arguments": [
+        "update"
+      ],
+      "sources": [
+        "https://github.com/nix-purifiers/stack-purifier/blob/9bc83ac949ad57d2be5a4a4dd34c4a7170772d76/nix/build-project.nix"
+      ],
+      "minimumArguments": 0,
+      "environment": {
+        "STACK_PURIFIER_LOCKFILE": {
+          "binding": "lockfile"
+        }
+      }
+    },
+    "build": {
+      "capability": "stack",
+      "arguments": [
+        "build"
+      ],
+      "sources": [
+        "https://github.com/nix-purifiers/stack-purifier/blob/9bc83ac949ad57d2be5a4a4dd34c4a7170772d76/nix/build-project.nix"
+      ],
+      "environment": {
+        "STACK_PURIFIER_LOCKFILE": {
+          "binding": "lockfile"
+        }
+      }
+    },
+    "test": {
+      "capability": "stack",
+      "arguments": [
+        "test"
+      ],
+      "sources": [
+        "https://github.com/nix-purifiers/stack-purifier/blob/9bc83ac949ad57d2be5a4a4dd34c4a7170772d76/nix/build-project.nix"
+      ],
+      "environment": {
+        "STACK_PURIFIER_LOCKFILE": {
+          "binding": "lockfile"
+        }
+      }
+    },
+    "run": {
+      "capability": "stack",
+      "arguments": [
+        "repl"
+      ],
+      "sources": [
+        "https://github.com/nix-purifiers/stack-purifier/blob/9bc83ac949ad57d2be5a4a4dd34c4a7170772d76/nix/build-project.nix"
+      ],
+      "environment": {
+        "STACK_PURIFIER_LOCKFILE": {
+          "binding": "lockfile"
+        }
+      }
+    }
+  }
+}

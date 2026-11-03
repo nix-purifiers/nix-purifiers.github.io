@@ -1,0 +1,16 @@
+{
+  "summary": "Locked, Nix-resolved dependencies for Helm.",
+  "values": {
+    "quickstart": "nix shell 'github:nix-purifiers/helm-purifier'\nhelm-purifier lock\nhelm-purifier prefetch\nhelm template development .\nhelm lint ."
+  },
+  "sections": {
+    "editor": {
+      "title": "Language server integration (LSP)",
+      "blocks": {
+        "main": {
+          "extra-explanation": "Start the supplied language server from the chart root:\n\n```sh\nhelm_ls serve\n```\n\nIt uses prepared dependency charts for template and values completion.\nThe package includes `yaml-language-server`. For offline YAML features,\nconfigure its settings through Helm Language Server:\n\n```json\n{\n  \"helm-ls\": {\n    \"yamlls\": {\n      \"path\": \"yaml-language-server\",\n      \"config\": {\n        \"schemas\": {},\n        \"schemaStore\": { \"enable\": false },\n        \"schemaDownload\": { \"enable\": false }\n      }\n    }\n  }\n}\n```\n\nYou can associate locally provided schemas instead. This avoids asking the\neditor to download remote Kubernetes or SchemaStore schemas."
+        }
+      }
+    }
+  }
+}

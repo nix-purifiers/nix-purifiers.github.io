@@ -1,0 +1,16 @@
+{
+  "summary": "Locked, Nix-resolved dependencies for Jsonnet Bundler.",
+  "values": {
+    "quickstart": "nix shell 'github:nix-purifiers/jb-purifier'\njb-purifier lock\njb-purifier prefetch\njsonnet -J vendor main.jsonnet"
+  },
+  "sections": {
+    "editor": {
+      "title": "Language server integration (LSP)",
+      "blocks": {
+        "main": {
+          "extra-explanation": "Use the packaged language server with the same import directory:\n\n```sh\njsonnet-language-server -J vendor --eval-diags\n```\n\nConfigure your editor to start that command from the project root. After\nprefetch, evaluating imports needs no network. The compiler still needs\n`-J vendor`, as in jb's ordinary workflow."
+        }
+      }
+    }
+  }
+}

@@ -5,6 +5,8 @@ from pathlib import Path
 import re
 from content import audit, feature_matrix, render, source_links
 from theme import install_theme
+from review import verify
+from reference import reference_text
 
 parser = argparse.ArgumentParser(description=__doc__)
 parser.add_argument('--repository', required=True)
@@ -14,10 +16,19 @@ parser.add_argument('--content', type=Path,
                     help='Structured project JSON (defaults to docs-site/page.json beside README)')
 parser.add_argument('--catalog', type=Path,
                     help='Nix documentation export containing catalog and contract')
+parser.add_argument('--model', action='store_true', help='Use the bundled, validated model export')
+parser.add_argument('--check-source', type=Path, help='Verify this checkout matches the reviewed implementation')
 args = parser.parse_args()
 if not re.fullmatch(r'[\w.-]+/[\w.-]+', args.repository):
     parser.error('repository must be owner/name')
 theme = Path(__file__).parent
+if args.check_source:
+    try:
+        verify(args.repository, args.check_source)
+    except ValueError as error:
+        parser.error(str(error))
+if args.model and args.repository != 'nix-purifiers/purifier':
+    args.catalog = args.catalog or theme / 'catalog.json'
 content_path = args.content or args.readme.parent / 'docs-site' / 'page.json'
 differences = None
 if args.catalog or args.content is not None or content_path.exists():
@@ -40,6 +51,8 @@ if args.catalog or args.content is not None or content_path.exists():
         parser.error(str(error))
 else:
     text = args.readme.read_text()
+    if args.repository == 'nix-purifiers/purifier':
+        text = reference_text(args.repository, text)
 source = args.output
 install_theme(source)
 if differences is not None:
@@ -47,12 +60,17 @@ if differences is not None:
     (source / 'content-variations.json').write_text(json.dumps(report, indent=2) + '\n')
     (source / 'system.json').write_text(json.dumps(page, indent=2) + '\n')
     (source / 'features.md').write_text('---\nlayout: default\n---\n\n' + feature_matrix(page, contract))
+    reference = theme / 'references' / (args.repository.split('/')[1] + '.md')
+    if reference.exists():
+        (source / 'reference.md').write_text('---\nlayout: default\n---\n\n' + source_links(reference_text(args.repository, reference.read_text(), page), args.repository))
 else:
-    for filename in ('content-variations.json', 'system.json', 'features.md'):
+    for filename in ('content-variations.json', 'system.json', 'features.md', 'reference.md'):
         (source / filename).unlink(missing_ok=True)
 # Keep source links useful outside GitHub, including images.
 text = source_links(text, args.repository)
 matrix_metadata = '\nfeature_matrix: /features.html' if differences is not None else ''
+if differences is not None and (source / 'reference.md').exists():
+    matrix_metadata += '\nreference: /reference.html'
 (source / 'index.md').write_text('---\nlayout: default' + matrix_metadata + '\n---\n\n' + text)
 (source / '_config.yml').write_text(json.dumps({
     'title': args.repository.split('/')[1],

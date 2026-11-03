@@ -1,0 +1,16 @@
+{
+  "summary": "Locked, Nix-resolved dependencies for Maven.",
+  "values": {
+    "quickstart": "nix shell 'github:nix-purifiers/maven-purifier'\nmaven-purifier lock\nmaven-purifier prefetch\nmvn test\nmvn package"
+  },
+  "sections": {
+    "editor": {
+      "title": "Editor build imports",
+      "blocks": {
+        "main": {
+          "extra-explanation": "An editor that imports a Maven build, such as VS Code or Neovim through\njdtls, or IntelliJ IDEA, runs a Maven of its own. After a prefetch, make\n`.maven-purifier/settings.xml` the editor's Maven user settings,\n`java.configuration.maven.userSettings` for jdtls or *User settings file*\nin IntelliJ IDEA, and the editor resolves from the locked files without the\nnetwork: dependencies, their source jars, and the plugins of its own Maven.\n\nThe lock holds the default plugins of the Maven that jdtls embeds, which\nthe lock run reads from the jdtls of maven-purifier's nixpkgs. An editor whose Maven has other\ndefault plugin versions finds them missing offline, unless the build pins\nthe version of every plugin it uses in `<pluginManagement>`, as we\nrecommend; then every Maven asks for the locked versions."
+        }
+      }
+    }
+  }
+}

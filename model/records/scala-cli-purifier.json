@@ -1,0 +1,173 @@
+{
+  "repository": "nix-purifiers/scala-cli-purifier",
+  "reviewedRevision": "9575469899ed074a80b6ba2b7dd59b93db58f62f",
+  "facts": {
+    "tool": {
+      "state": "known",
+      "value": "Scala CLI"
+    },
+    "lockfiles": {
+      "state": "known",
+      "value": [
+        "scala-cli-purifier.lock.json"
+      ]
+    },
+    "integration": {
+      "state": "known",
+      "value": "wrapper"
+    },
+    "platforms": {
+      "state": "known",
+      "value": [
+        "x86_64-linux",
+        "aarch64-linux"
+      ]
+    },
+    "nix_builder": {
+      "state": "known",
+      "value": "pkgs.scala-cli-purifier.buildScalaCliProject"
+    },
+    "build_isolation": {
+      "state": "known",
+      "value": "nix-sandbox"
+    },
+    "build_outputs": {
+      "state": "known",
+      "value": [
+        "packages",
+        "tests",
+        "release",
+        "fetches"
+      ]
+    },
+    "missing_lock": {
+      "state": "known",
+      "value": "warn-and-native"
+    },
+    "projection_incoming": {
+      "state": "known",
+      "value": "conditional"
+    },
+    "projection_incoming_formats": {
+      "state": "known",
+      "value": [
+        "maven"
+      ]
+    },
+    "projection_incoming_interfaces": {
+      "state": "known",
+      "value": [
+        "projectDependencies",
+        "lockfile.projectInputs"
+      ]
+    },
+    "projection_incoming_limits": {
+      "state": "known",
+      "value": [
+        "Producer must export the compatible native projection and its inferred catalog; native version requirements still apply"
+      ]
+    },
+    "projection_outgoing": {
+      "state": "known",
+      "value": "conditional"
+    },
+    "projection_outgoing_formats": {
+      "state": "known",
+      "value": [
+        "maven"
+      ]
+    },
+    "projection_outgoing_interfaces": {
+      "state": "known",
+      "value": [
+        "projections.maven"
+      ]
+    },
+    "projection_outgoing_limits": {
+      "state": "known",
+      "value": [
+        "Lock with --publish to record publication artifacts and publisher dependencies",
+        "Only a Maven projection is exported; native local Ivy repository support is a separate input path"
+      ]
+    },
+    "editor_protocol": {
+      "state": "known",
+      "value": "bsp"
+    },
+    "editor_supported": {
+      "state": "known",
+      "value": true
+    },
+    "editor_offline": {
+      "state": "known",
+      "value": true
+    }
+  },
+  "operations": {
+    "lock": {
+      "capability": "scala-cli-purifier",
+      "arguments": [
+        "lock",
+        "--test"
+      ],
+      "sources": [
+        "https://github.com/nix-purifiers/scala-cli-purifier/blob/9575469899ed074a80b6ba2b7dd59b93db58f62f/nix/lib/build-scala-cli-project.nix"
+      ],
+      "minimumArguments": 0,
+      "environment": {
+        "SCALA_CLI_PURIFIER_LOCKFILE": {
+          "binding": "lockfile"
+        }
+      }
+    },
+    "prefetch": {
+      "capability": "scala-cli-purifier",
+      "arguments": [
+        "prefetch"
+      ],
+      "sources": [
+        "https://github.com/nix-purifiers/scala-cli-purifier/blob/9575469899ed074a80b6ba2b7dd59b93db58f62f/nix/lib/build-scala-cli-project.nix"
+      ],
+      "minimumArguments": 0,
+      "environment": {
+        "SCALA_CLI_PURIFIER_LOCKFILE": {
+          "binding": "lockfile"
+        }
+      }
+    },
+    "update": {
+      "state": "unknown",
+      "reason": "The native update selector and invocation have not been normalized; use the reference workflow."
+    },
+    "run": {
+      "capability": "scala-cli",
+      "arguments": [
+        "run",
+        "."
+      ],
+      "sources": [
+        "https://github.com/nix-purifiers/scala-cli-purifier/blob/9575469899ed074a80b6ba2b7dd59b93db58f62f/nix/lib/build-scala-cli-project.nix"
+      ],
+      "environment": {
+        "SCALA_CLI_PURIFIER_LOCKFILE": {
+          "binding": "lockfile"
+        }
+      }
+    },
+    "test": {
+      "capability": "scala-cli",
+      "arguments": [
+        "test",
+        "."
+      ],
+      "sources": [
+        "https://github.com/nix-purifiers/scala-cli-purifier/blob/9575469899ed074a80b6ba2b7dd59b93db58f62f/nix/lib/build-scala-cli-project.nix"
+      ],
+      "environment": {
+        "SCALA_CLI_PURIFIER_LOCKFILE": {
+          "binding": "lockfile"
+        }
+      }
+    }
+  }
+}

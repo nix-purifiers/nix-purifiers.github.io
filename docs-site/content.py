@@ -33,6 +33,8 @@ def feature_matrix(page, contract):
         fact = page['facts'][key]
         if fact['state'] == 'known':
             value = fact['value']
+            if isinstance(value, list):
+                value = [definition.get('itemLabels', {}).get(item, item) for item in value]
             behavior = ('Supported' if value else 'Not supported') if isinstance(value, bool) else (
                 ', '.join(value) if isinstance(value, list) else value)
         else:
@@ -56,7 +58,8 @@ def render(page, contract):
     Shared prose is selected by name; local prose cannot silently overwrite it.
     Every contract section requires an explicit decision from the project.
     """
-    if set(page) != {'version', 'repository', 'summary', 'facts', 'sections', 'operations'} or page['version'] != 1:
+    required = {'version', 'repository', 'summary', 'facts', 'sections', 'operations'}
+    if not required <= set(page) or set(page) - required - {'values', 'reviewedRevision'} or page['version'] != 1:
         raise ValueError('expected version 1, repository, summary, facts, sections and operations')
     repository = nonempty(page['repository'], 'repository')
     if not re.fullmatch(r'[\w.-]+/[\w.-]+', repository):
@@ -84,6 +87,8 @@ def render(page, contract):
                     raise ValueError(f'{key}: expected a nonempty list')
                 for item in value:
                     nonempty(item, key)
+                    if 'itemsEnum' in definition and item not in definition['itemsEnum']:
+                        raise ValueError(f'{key}: unknown item {item!r}')
             elif definition['type'] == 'boolean':
                 if not isinstance(value, bool):
                     raise ValueError(f'{key}: expected a boolean')
@@ -107,6 +112,8 @@ def render(page, contract):
         if key not in facts or facts[key]['state'] != 'known':
             raise ValueError(f'cannot render unknown or missing fact {key}')
         value = facts[key]['value']
+        if isinstance(value, list):
+            value = [definitions[key].get('itemLabels', {}).get(item, item) for item in value]
         if isinstance(value, bool):
             return 'supported' if value else 'not supported'
         return ', '.join(value) if isinstance(value, list) else value
@@ -140,7 +147,7 @@ def render(page, contract):
         if len(modes) != 1:
             raise ValueError(f'{key}: choose exactly one of use, replace, omit')
         mode = next(iter(modes))
-        allowed = {'use', 'details', 'blocks'} if mode == 'use' else (
+        allowed = {'use', 'details', 'blocks', 'title'} if mode == 'use' else (
             {'replace', 'reason'} if mode == 'replace' else {'omit'})
         if set(entry) - allowed:
             raise ValueError(f'{key}: unexpected fields {sorted(set(entry) - allowed)}')
@@ -205,7 +212,14 @@ def render(page, contract):
         body = body.replace('{project}', project).replace('{repository}', repository)
         body = re.sub(r'\{facts\.([a-z_]+)\}', substitute, body)
         body = re.sub(r'\{commands\.([a-z_-]+)\}', command, body)
+        def inject_value(match):
+            name = match[1]
+            if name not in page.get('values', {}):
+                raise ValueError(f'{key}: missing presentation value {name}')
+            return nonempty(page['values'][name], f'values.{name}')
+        body = re.sub(r'\{values\.([a-z_]+)\}', inject_value, body)
         if re.search(r'^#{1,2}\s', body, re.MULTILINE):
             raise ValueError(f'{key}: use level-three headings inside sections')
-        output.append(f'## {spec["title"]}\n\n{body}')
+        if body.strip():
+            output.append(f'## {entry.get("title", spec["title"])}\n\n{body}')
     return '\n\n'.join(output) + '\n', differences

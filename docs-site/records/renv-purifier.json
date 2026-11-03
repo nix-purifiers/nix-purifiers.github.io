@@ -1,0 +1,16 @@
+{
+  "summary": "Locked, Nix-resolved dependencies for renv.",
+  "values": {
+    "quickstart": "nix shell 'github:nix-purifiers/renv-purifier'\nrenv-purifier lock\nrenv-purifier prefetch\n.renv-purifier/prefetch/R/bin/R"
+  },
+  "sections": {
+    "editor": {
+      "title": "Editor environment integration",
+      "blocks": {
+        "main": {
+          "extra-explanation": "R's language server is the R package languageserver, which editors such as\nVS Code, Emacs and Neovim start for completion and diagnostics. Add it to the\nproject with renv like any other package. `prefetch` then installs it with\nthe rest of the library: point the editor's R at\n`.renv-purifier/prefetch/R/bin/R`, or start it from `packages.env`. RStudio\nand Emacs Speaks Statistics run an ordinary R session, which works the same\nway."
+        }
+      }
+    }
+  }
+}

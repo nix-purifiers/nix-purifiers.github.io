@@ -1,0 +1,16 @@
+{
+  "summary": "Locked, Nix-resolved dependencies for Bundler.",
+  "values": {
+    "quickstart": "nix shell 'github:nix-purifiers/bundler-purifier'\nbundler-purifier lock\nbundler-purifier prefetch\nbundle exec rake"
+  },
+  "sections": {
+    "editor": {
+      "title": "Language server integration (LSP)",
+      "blocks": {
+        "main": {
+          "extra-explanation": "Ruby LSP works offline when the project locks it like any other gem:\n\n```ruby\ngroup :development do\n  gem \"ruby-lsp\", require: false\nend\n```\n\nThen run `bundler-purifier lock` and `bundler-purifier prefetch`, and start\nthe editor from the `nix shell` environment. Run the language server\nthrough `bundle exec ruby-lsp`. Ruby LSP uses the project's bundle when the\nGemfile has it, and needs no download of its own."
+        }
+      }
+    }
+  }
+}

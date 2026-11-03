@@ -1,0 +1,170 @@
+{
+  "repository": "nix-purifiers/dotnet-purifier",
+  "reviewedRevision": "32649f5663a7e8f3390e567a03da02cf86994ec7",
+  "facts": {
+    "tool": {
+      "state": "known",
+      "value": "the .NET SDK"
+    },
+    "lockfiles": {
+      "state": "known",
+      "value": [
+        "packages.lock.json",
+        "dotnet-purifier.lock.json"
+      ]
+    },
+    "integration": {
+      "state": "known",
+      "value": "wrapper"
+    },
+    "platforms": {
+      "state": "known",
+      "value": [
+        "x86_64-linux",
+        "aarch64-linux"
+      ]
+    },
+    "nix_builder": {
+      "state": "known",
+      "value": "pkgs.dotnet-purifier.buildDotnetProject"
+    },
+    "build_isolation": {
+      "state": "known",
+      "value": "nix-sandbox"
+    },
+    "build_outputs": {
+      "state": "known",
+      "value": [
+        "packages",
+        "tests",
+        "release",
+        "fetches"
+      ]
+    },
+    "missing_lock": {
+      "state": "known",
+      "value": "warn-and-native"
+    },
+    "projection_incoming": {
+      "state": "known",
+      "value": "unsupported"
+    },
+    "projection_incoming_formats": {
+      "state": "not-applicable",
+      "reason": "No incoming typed projection adapter is exported by this implementation."
+    },
+    "projection_incoming_interfaces": {
+      "state": "not-applicable",
+      "reason": "No incoming typed projection interface is implemented."
+    },
+    "projection_incoming_limits": {
+      "state": "known",
+      "value": [
+        "Native artifacts or caches alone do not provide a typed incoming project projection interface"
+      ]
+    },
+    "projection_outgoing": {
+      "state": "known",
+      "value": "unsupported"
+    },
+    "projection_outgoing_formats": {
+      "state": "not-applicable",
+      "reason": "No outgoing typed projection adapter is exported by this implementation."
+    },
+    "projection_outgoing_interfaces": {
+      "state": "not-applicable",
+      "reason": "No outgoing typed projection interface is implemented."
+    },
+    "projection_outgoing_limits": {
+      "state": "known",
+      "value": [
+        "Native artifacts or caches alone do not provide a typed outgoing project projection interface"
+      ]
+    },
+    "editor_protocol": {
+      "state": "known",
+      "value": "lsp"
+    },
+    "editor_supported": {
+      "state": "known",
+      "value": true
+    }
+  },
+  "operations": {
+    "lock": {
+      "capability": "dotnet-purifier",
+      "arguments": [
+        "lock"
+      ],
+      "sources": [
+        "https://github.com/nix-purifiers/dotnet-purifier/blob/32649f5663a7e8f3390e567a03da02cf86994ec7/nix/lib/build-dotnet-project.nix"
+      ],
+      "minimumArguments": 0,
+      "environment": {
+        "DOTNET_PURIFIER_LOCKFILE": {
+          "binding": "lockfile"
+        }
+      }
+    },
+    "prefetch": {
+      "capability": "dotnet-purifier",
+      "arguments": [
+        "prefetch"
+      ],
+      "sources": [
+        "https://github.com/nix-purifiers/dotnet-purifier/blob/32649f5663a7e8f3390e567a03da02cf86994ec7/nix/lib/build-dotnet-project.nix"
+      ],
+      "minimumArguments": 0,
+      "environment": {
+        "DOTNET_PURIFIER_LOCKFILE": {
+          "binding": "lockfile"
+        }
+      }
+    },
+    "update": {
+      "capability": "dotnet-purifier",
+      "arguments": [
+        "update"
+      ],
+      "sources": [
+        "https://github.com/nix-purifiers/dotnet-purifier/blob/32649f5663a7e8f3390e567a03da02cf86994ec7/nix/lib/build-dotnet-project.nix"
+      ],
+      "minimumArguments": 0,
+      "environment": {
+        "DOTNET_PURIFIER_LOCKFILE": {
+          "binding": "lockfile"
+        }
+      }
+    },
+    "build": {
+      "capability": "dotnet-purifier",
+      "arguments": [
+        "dotnet",
+        "build"
+      ],
+      "sources": [
+        "https://github.com/nix-purifiers/dotnet-purifier/blob/32649f5663a7e8f3390e567a03da02cf86994ec7/nix/lib/build-dotnet-project.nix"
+      ],
+      "environment": {
+        "DOTNET_PURIFIER_LOCKFILE": {
+          "binding": "lockfile"
+        }
+      }
+    },
+    "test": {
+      "capability": "dotnet-purifier",
+      "arguments": [
+        "dotnet",
+        "test"
+      ],
+      "sources": [
+        "https://github.com/nix-purifiers/dotnet-purifier/blob/32649f5663a7e8f3390e567a03da02cf86994ec7/nix/lib/build-dotnet-project.nix"
+      ],
+      "environment": {
+        "DOTNET_PURIFIER_LOCKFILE": {
+          "binding": "lockfile"
+        }
+      }
+    }
+  }
+}

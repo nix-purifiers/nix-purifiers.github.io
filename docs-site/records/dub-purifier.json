@@ -1,0 +1,16 @@
+{
+  "summary": "Locked, Nix-resolved dependencies for DUB.",
+  "values": {
+    "quickstart": "nix shell 'github:nix-purifiers/dub-purifier'\ndub-purifier lock\ndub-purifier prefetch\ndub run\ndub test"
+  },
+  "sections": {
+    "editor": {
+      "title": "Language server integration (LSP)",
+      "blocks": {
+        "main": {
+          "extra-explanation": "Run `serve-d` from the same shell as DUB. Its wrapper activates the locked\nsource paths and completion tools. A project session in `.dub-purifier/sessions/` holds writable\napplication caches and GC roots for its immutable dependencies and SDK.\n\n```sh\ndub-purifier shell\nserve-d\n```\n\nIgnore `.dub/`, `.dub-purifier/` and generated application binaries in Git.\nThere is no generated Nix devshell."
+        }
+      }
+    }
+  }
+}

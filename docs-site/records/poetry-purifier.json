@@ -1,0 +1,16 @@
+{
+  "summary": "Locked, Nix-resolved dependencies for Poetry.",
+  "values": {
+    "quickstart": "nix shell 'github:nix-purifiers/poetry-purifier'\npoetry purifier lock\npoetry purifier prefetch\npoetry install\neval \"$(poetry env activate)\"\npytest"
+  },
+  "sections": {
+    "editor": {
+      "title": "Editor environment integration",
+      "blocks": {
+        "main": {
+          "extra-explanation": "Editors and language servers, such as pyright, read the project's virtual\nenvironment, which the offline install fills like any other `poetry\ninstall`. They download nothing.\n\nsetuptools installs an editable path dependency through an import hook by\ndefault, which pyright and other type checkers do not follow. This happens\nwith or without the purifier. Poetry can ask setuptools for its compat mode\ninstead, which writes a plain path entry, in the project's `poetry.toml`:\n\n```toml\n[installer.build-config-settings.<package>]\neditable_mode = \"compat\"\n```"
+        }
+      }
+    }
+  }
+}

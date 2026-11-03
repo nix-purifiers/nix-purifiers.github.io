@@ -16,7 +16,7 @@ and invocation. It owns native details such as installing an sbt plugin,
 constructing a repository configuration, selecting the appropriate JDK, or
 binding an existing wrapper. The model does not generate those implementations.
 
-For example, `operations/sbt.nix` says that `lock` invokes the supplied `sbt`
+For example, `records/sbt-purifier.json` says that `lock` invokes the supplied `sbt`
 capability with `-batch`, optional forwarded arguments, then `nixLock`, from
 the project root, with `SBT_PURIFIER_LOCKFILE` bound to the selected lockfile.
 The provider is responsible for supplying an sbt installation with the purifier
@@ -26,6 +26,14 @@ provided `sbt-purifier` capability.
 
 The same mechanism works for Ant and Docker. The executor has no branch
 selecting behavior by tool name.
+
+Reviewed revisions and source fingerprints live in `repositories.json`.
+They bind the declared capabilities to implementation and CI scope without
+using generated prose as supporting evidence. A target system is separate
+from a validation guarantee: `platform_notes` records restrictions such as
+contributor-only unsandboxed Darwin testing or unsupported downloaded JVMs.
+The shared library has its own scope in `library.json`; downstream tools do
+not inherit its platform support automatically.
 
 Language server integration (LSP) connects the user's existing editor to the
 purified development environment. The model records language-server

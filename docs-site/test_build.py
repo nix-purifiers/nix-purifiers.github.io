@@ -32,6 +32,7 @@ class CatalogTests(unittest.TestCase):
             self.assertIn('## Development loop', ant)
             self.assertEqual((output / 'index.html').read_bytes(), (self.root / 'index.html').read_bytes())
             self.assertFalse((output / 'index.md').exists())
+            self.assertEqual((output / 'robots.txt').read_text(), 'User-agent: *\nAllow: /\n')
             self.assertIn('feature_matrix: "/ant-purifier/features.html"', ant)
             matrix = (output / 'ant-purifier/features.md').read_text()
             self.assertIn('ivy.lock.xml, ant-purifier.lock.json', matrix)
