@@ -6,6 +6,9 @@ The behavior catalog lives in `model/projects/*.nix`. It uses typed Nix
 modules, with a locked dependency on `nixpkgs.lib` alone. Jekyll remains
 the final Markdown renderer. The model is independent of Jekyll and exports
 ordinary JSON for other tools.
+It also drives the operational harness and shared behavioral tests;
+see [the model and harness](../model/README.md) for the integration boundary.
+Per-project prose and presentation choices live in `docs-site/projects/`.
 
 Each project explicitly records inputs, lockfiles, integration, relocking,
 missing/stale-lock behavior, native build and editor commands, platforms,
@@ -32,18 +35,22 @@ facts.credentials = {
 };
 ```
 
-The vocabulary, types, section order, shared text, and template applicability
-conditions are defined once in `contract.json`. `model/schema.nix` derives
-the Nix option types from that contract. The renderer independently validates
-exports at the JSON boundary.
+The behavioral vocabulary and fact types live in `model/contract.json`.
+`model/schema.nix` derives the Nix option types from it. Section order,
+shared text, and template applicability conditions live in the separate
+documentation `contract.json`. The documentation export combines the two
+contracts for validation at the JSON boundary.
 
-`model/profiles/locked-wrapper.nix` shares section selections with overridable
+`docs-site/profiles/locked-wrapper.nix` shares section selections with overridable
 Nix module defaults. Profiles do not assume behavioral facts. Shared templates
 have fact requirements: the pin-preserving development loop cannot be used
 when `facts.relock` is unknown or says `re-resolves`.
 The alternative `fresh` workflow template requires `re-resolves`. Select it
 with `sections.workflow.template = "fresh"` when that matches the facts;
 its wording remains shared across projects with the same behavior.
+Command examples use `{commands.lock}`, `{commands.build}`, and related tokens
+from the actual invocation recipes; changing a task in the model changes both
+the harness invocation and the generated example.
 
 Use `sections.<name>.details` to add project-specific instructions below
 shared prose. To replace or omit a section, record why:
@@ -86,9 +93,12 @@ The audit records local additions, replacements, omissions, and unresolved
 facts. CI runs the model tests, renderer/integration tests, and Jekyll build,
 and uploads the resulting reference as an artifact.
 
-The initial catalog covers Ant and Docker, whose wrapper/plugin and sandbox/VM
-differences exercise the model. To add a project, create its Nix module and add
-its name to `model/default.nix`. Do not infer support from a sibling project.
+The initial documentation covers Ant and Docker, whose wrapper/plugin and
+sandbox/VM differences exercise the model. The operational catalog also models
+sbt invocations without requiring a documentation page. To add a project,
+create its behavioral module and add its name to `model/default.nix`; add a
+`docs-site/projects/<name>.nix` module when its documentation is ready.
+Do not infer support from a sibling project.
 
 ### Adopt in an independent project Pages workflow
 

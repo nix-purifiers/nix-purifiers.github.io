@@ -1,9 +1,19 @@
 { lib }:
 let
-  contract = builtins.fromJSON (builtins.readFile ../docs-site/contract.json);
+  behaviorContract = builtins.fromJSON (builtins.readFile ./contract.json);
+  contract = (builtins.fromJSON (builtins.readFile ../docs-site/contract.json)) // {
+    inherit (behaviorContract) facts;
+  };
+  exportFacts = cfg: lib.mapAttrs (_: f:
+    if f.state == "known" then { inherit (f) state value sources; }
+    else { inherit (f) state reason; }
+  ) cfg.facts;
   evaluate = modules:
+    let cfg = (lib.evalModules { modules = [ ./schema.nix ] ++ modules; }).config;
+    in { version = 1; inherit (cfg) repository operations; facts = exportFacts cfg; };
+  evaluateDocumentation = modules:
     let
-      cfg = (lib.evalModules { modules = [ ./schema.nix ] ++ modules; }).config;
+      cfg = (lib.evalModules { modules = [ ./schema.nix ./documentation.nix ] ++ modules; }).config;
       specifications = lib.listToAttrs (map (s: lib.nameValuePair s.id s) contract.sections);
       expectedSections = builtins.attrNames specifications;
       sections = lib.mapAttrs (key: section:
@@ -29,13 +39,13 @@ let
           throw "Omissions require a reason and cannot contain copy"
         else { omit = section.reason; }
       ) cfg.sections;
-      facts = lib.mapAttrs (_: f:
-        if f.state == "known" then { inherit (f) state value sources; }
-        else { inherit (f) state reason; }
-      ) cfg.facts;
+      facts = exportFacts cfg;
     in if builtins.attrNames cfg.sections != expectedSections then
       throw "Every project must explicitly cover the contract sections: ${lib.concatStringsSep ", " expectedSections}"
-    else { version = 1; inherit (cfg) repository summary; inherit facts sections; };
-  catalog = lib.genAttrs [ "ant-purifier" "docker-purifier" ] (name:
+    else { version = 1; inherit (cfg) repository summary operations; inherit facts sections; };
+  catalog = lib.genAttrs [ "ant-purifier" "docker-purifier" "sbt-purifier" ] (name:
     evaluate [ (./projects + "/${name}.nix") ]);
-in { inherit evaluate catalog contract; }
+  documentationCatalog = lib.mapAttrs (name: _: evaluateDocumentation [
+    (../docs-site/projects + "/${name}.nix")
+  ]) (lib.filterAttrs (name: _: builtins.pathExists (../docs-site/projects + "/${name}.nix")) catalog);
+in { inherit evaluate evaluateDocumentation catalog documentationCatalog contract behaviorContract; }

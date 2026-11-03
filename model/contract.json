@@ -1,0 +1,98 @@
+{
+  "version": 1,
+  "facts": {
+    "tool": {
+      "type": "string",
+      "description": "Native tool or ecosystem integrated by this purifier."
+    },
+    "inputs": {
+      "type": "strings",
+      "description": "Project files required by the documented quickstart."
+    },
+    "lockfiles": {
+      "type": "strings",
+      "description": "Lockfiles users must commit; ancillary modified files belong in project instructions."
+    },
+    "integration": {
+      "type": "string",
+      "enum": [
+        "wrapper",
+        "plugin",
+        "wrapper-and-plugin"
+      ],
+      "description": "Available integration mechanisms, not a statement that they are interchangeable."
+    },
+    "relock": {
+      "type": "string",
+      "enum": [
+        "preserves-pins",
+        "re-resolves"
+      ],
+      "description": "Whether running lock again retains already selected versions or digests."
+    },
+    "missing_lock": {
+      "type": "string",
+      "enum": [
+        "warn-and-native",
+        "fail"
+      ],
+      "description": "Wrapper behavior when no applicable lock is present."
+    },
+    "stale_lock": {
+      "type": "string",
+      "enum": [
+        "fail-with-repair",
+        "re-resolve"
+      ],
+      "description": "Wrapper behavior for invalid or stale locks."
+    },
+    "editor": {
+      "type": "string",
+      "description": "Runnable editor server or launcher command."
+    },
+    "platforms": {
+      "type": "strings",
+      "description": "Documented supported Nix systems; does not imply cross-compilation support."
+    },
+    "dependency_sources": {
+      "type": "strings",
+      "description": "Dependency repository protocols or services covered by this lock."
+    },
+    "credentials": {
+      "type": "string",
+      "enum": [
+        "anonymous-only",
+        "authenticated"
+      ],
+      "description": "Authentication supported by the default CLI transport; builder fetcher overrides are separate."
+    },
+    "offline_scope": {
+      "type": "string",
+      "enum": [
+        "locked-dependencies",
+        "whole-build"
+      ],
+      "description": "Scope of the offline claim after prefetch, not an assertion about unrelated downloads."
+    },
+    "offline_limits": {
+      "type": "strings",
+      "description": "Inputs or operations outside the lock and prefetch guarantee."
+    },
+    "nix_builder": {
+      "type": "string",
+      "description": "Nix attribute path of the project builder."
+    },
+    "build_isolation": {
+      "type": "string",
+      "enum": [
+        "nix-sandbox",
+        "networkless-vm"
+      ],
+      "description": "Isolation mechanism used by the Nix project builder, not native host builds."
+    },
+    "build_outputs": {
+      "type": "strings",
+      "description": "Documented attributes exposed by the project builder result."
+    }
+  }
+}

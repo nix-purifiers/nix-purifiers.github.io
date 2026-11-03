@@ -31,6 +31,7 @@ if args.catalog or args.content is not None or content_path.exists():
     else:
         page = json.loads(content_path.read_text())
         contract = json.loads((theme / 'contract.json').read_text())
+        contract['facts'] = json.loads((theme.parent / 'model/contract.json').read_text())['facts']
     if page.get('repository') != args.repository:
         parser.error('content repository does not match --repository')
     try:

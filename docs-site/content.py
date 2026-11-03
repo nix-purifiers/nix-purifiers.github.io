@@ -1,5 +1,6 @@
 """Validate and render structured project copy using the shared section contract."""
 import re
+import shlex
 
 
 def source_links(text, repository):
@@ -29,8 +30,8 @@ def render(page, contract):
     Shared prose is selected by name; local prose cannot silently overwrite it.
     Every contract section requires an explicit decision from the project.
     """
-    if set(page) != {'version', 'repository', 'summary', 'facts', 'sections'} or page['version'] != 1:
-        raise ValueError('expected version 1, repository, summary, facts and sections')
+    if set(page) != {'version', 'repository', 'summary', 'facts', 'sections', 'operations'} or page['version'] != 1:
+        raise ValueError('expected version 1, repository, summary, facts, sections and operations')
     repository = nonempty(page['repository'], 'repository')
     if not re.fullmatch(r'[\w.-]+/[\w.-]+', repository):
         raise ValueError('repository must be owner/name')
@@ -78,6 +79,21 @@ def render(page, contract):
             raise ValueError(f'cannot render unknown or missing fact {key}')
         value = facts[key]['value']
         return ', '.join(value) if isinstance(value, list) else value
+
+    def command(match):
+        name = match[1]
+        recipe = page['operations'].get(name)
+        if recipe is None or recipe['state'] != 'available':
+            raise ValueError(f'cannot document unavailable operation {name}')
+        arguments = [recipe['capability']]
+        for argument in recipe['arguments']:
+            if isinstance(argument, str):
+                arguments.append(argument)
+            elif set(argument) == {'binding'}:
+                arguments.append('<' + argument['binding'] + '>')
+            elif argument != {'splice': 'arguments'}:
+                raise ValueError(f'{name}: invalid command argument')
+        return shlex.join(arguments)
     sections = page['sections']
     expected = {s['id'] for s in contract['sections']}
     if not isinstance(sections, dict) or set(sections) != expected:
@@ -122,6 +138,7 @@ def render(page, contract):
                 body += '\n\n' + details
                 differences.append({'section': key, 'kind': 'extended', 'details': details})
         body = re.sub(r'\{facts\.([a-z_]+)\}', substitute, body)
+        body = re.sub(r'\{commands\.([a-z_-]+)\}', command, body)
         if re.search(r'^#{1,2}\s', body, re.MULTILINE):
             raise ValueError(f'{key}: use level-three headings inside sections')
         output.append(f'## {spec["title"]}\n\n{body}')

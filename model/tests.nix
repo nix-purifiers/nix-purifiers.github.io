@@ -1,12 +1,12 @@
 { lib, model }:
 let
   force = value: (builtins.tryEval (builtins.deepSeq value true)).success;
-  sample = ./projects/ant-purifier.nix;
-  withOverride = module: model.evaluate [ sample module ];
+  sample = ../docs-site/projects/ant-purifier.nix;
+  withOverride = module: model.evaluateDocumentation [ sample module ];
   checks = {
     realProjectsEvaluate = force model.catalog;
     missingFactFails = !force (model.evaluate [ {
-      repository = "example/missing"; summary = "Missing facts."; sections = {};
+      repository = "example/missing";
     } ]);
     wrongTypeFails = !force (withOverride ({ lib, ... }: {
       facts.lockfiles.value = lib.mkForce true;
@@ -53,6 +53,25 @@ let
       facts.relock.value = lib.mkForce "re-resolves";
       sections.workflow.template = "fresh";
     })).sections.workflow.use == "fresh";
+    behaviorNeedsNoDocumentation = force (model.evaluate [ ./projects/ant-purifier.nix ]);
+    behaviorHasNoPresentationFields = !(model.catalog.ant-purifier ? sections)
+      && !(model.catalog.ant-purifier ? summary);
+    operationRequiresCapability = !force (withOverride ({ lib, ... }: {
+      operations.lock.capability = lib.mkForce null;
+    }));
+    operationRequiresEvidence = !force (withOverride ({ lib, ... }: {
+      operations.lock.sources = lib.mkForce [];
+    }));
+    duplicateSplicesFail = !force (withOverride ({ lib, ... }: {
+      operations.lock.arguments = lib.mkForce [ { splice = "arguments"; } { splice = "arguments"; } ];
+    }));
+    unknownExpressionFails = !force (withOverride ({ lib, ... }: {
+      operations.lock.arguments = lib.mkForce [ { shell = "arbitrary code"; } ];
+    }));
+    unsupportedOperationCannotHaveRecipe = !force (withOverride {
+      operations.lock.state = "unsupported";
+      operations.lock.reason = "Unavailable.";
+    });
   };
 in if builtins.all (x: x) (builtins.attrValues checks) then checks
 else throw "Failed model tests: ${lib.concatStringsSep ", " (builtins.attrNames (lib.filterAttrs (_: v: !v) checks))}"

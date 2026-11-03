@@ -27,7 +27,7 @@ class CatalogTests(unittest.TestCase):
             ant = (output / 'ant-purifier/index.md').read_text()
             docker = (output / 'docker-purifier/index.md').read_text()
             self.assertIn('ivy.lock.xml, ant-purifier.lock.json', ant)
-            self.assertIn('docker build -t my-app .', docker)
+            self.assertIn('docker build .', docker)
             self.assertIn('networkless software VM', docker)
             self.assertIn('## Development loop', ant)
             self.assertIn('networkless-vm', (output / 'index.md').read_text())
@@ -52,6 +52,12 @@ class CatalogTests(unittest.TestCase):
         markdown, _ = render(page, self.documentation['contract'])
         self.assertIn('does not retain existing pins', markdown)
         self.assertNotIn('Relocking retains existing pins.', markdown)
+
+    def test_documented_commands_come_from_the_operational_recipe(self):
+        page = copy.deepcopy(self.documentation['catalog']['ant-purifier'])
+        page['operations']['lock']['arguments'] = ['new-lock-command']
+        markdown, _ = render(page, self.documentation['contract'])
+        self.assertIn('ant-purifier new-lock-command', markdown)
 
     def test_export_prepares_independent_project_without_touching_packages(self):
         with tempfile.TemporaryDirectory() as directory:

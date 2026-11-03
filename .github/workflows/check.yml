@@ -16,6 +16,17 @@ jobs:
         run: nix eval --json '.#tests'
       - run: python3 -m unittest discover -s release -v
       - run: python3 -m unittest discover -s docs-site -v
+      - name: Check out the Docker integration for shared conformance tests
+        uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
+        with:
+          repository: nix-purifiers/docker-purifier
+          ref: 186edeb4dd1bb0c9806485368b64cd5c1433fac3
+          path: .conformance/docker-purifier
+          persist-credentials: false
+      - name: Test modeled invocation and shared behavioral tests
+        env:
+          PURIFIER_DOCKER_SOURCE: ${{ github.workspace }}/.conformance/docker-purifier
+        run: python3 -m unittest discover -s harness -v
       - name: Generate the reference and machine-readable catalog
         run: python3 docs-site/build.py
       - name: Build the generated reference with Jekyll

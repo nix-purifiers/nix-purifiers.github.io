@@ -12,7 +12,7 @@ class ContentTests(unittest.TestCase):
             {'id': 'editor', 'title': 'Editor', 'shared': {}},
         ]}
         self.page = {'version': 1, 'repository': 'nix-purifiers/example-purifier',
-                     'summary': 'Example.', 'facts': {}, 'sections': {
+                     'summary': 'Example.', 'facts': {}, 'operations': {}, 'sections': {
                          'workflow': {'use': 'standard', 'details': 'Commit the lock.'},
                          'editor': {'omit': 'No editor integration is provided.'}}}
 
