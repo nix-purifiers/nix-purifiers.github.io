@@ -4,10 +4,10 @@ import shlex
 from html import escape
 
 
-def source_links(text, repository):
+def source_links(text, repository, revision='main'):
     """Resolve README-relative links against the source repository."""
     return re.sub(r'\]\((?![a-zA-Z][\w+.-]*:|#|/|(?:reference|features)\.html(?:[#?)]|$))([^)]+)\)',
-                  lambda m: f'](https://github.com/{repository}/blob/main/{m[1]})', text)
+                  lambda m: f'](https://github.com/{repository}/blob/{revision}/{m[1]})', text)
 
 
 def audit(page, variations):
