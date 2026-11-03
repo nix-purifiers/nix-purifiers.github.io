@@ -167,7 +167,8 @@
       "state": "known",
       "value": [
         "dependencies",
-        "lockfile.projectInputs"
+        "lockfile.projectInputs",
+        "--input"
       ]
     },
     "projection_incoming_limits": {
@@ -279,7 +280,10 @@
     },
     "lock": {
       "arguments": [
-        "lock"
+        "lock",
+        {
+          "splice": "arguments"
+        }
       ],
       "capability": "cargo-purifier",
       "directory": {
@@ -293,7 +297,7 @@
       "minimumArguments": 0,
       "reason": null,
       "sources": [
-        "https://github.com/nix-purifiers/cargo-purifier/blob/9faad3ab9c4371c6ebf88cf609ccd19a2dac10cd/nix/lib/build-cargo-project.nix"
+        "https://github.com/nix-purifiers/cargo-purifier/blob/efc9e91c5878dd8472f8f8bd064d3b4ac10377e5/pkgs/cargo-purifier/cargo_purifier.py"
       ],
       "state": "available"
     },
@@ -338,16 +342,27 @@
       "state": "available"
     },
     "update": {
-      "arguments": [],
-      "capability": null,
+      "arguments": [
+        "update",
+        {
+          "splice": "arguments"
+        }
+      ],
+      "capability": "cargo-purifier",
       "directory": {
         "binding": "project_root"
       },
-      "environment": {},
+      "environment": {
+        "CARGO_PURIFIER_LOCKFILE": {
+          "binding": "lockfile"
+        }
+      },
       "minimumArguments": 0,
-      "reason": "The native update selector and invocation have not been normalized; use the reference workflow.",
-      "sources": [],
-      "state": "unknown"
+      "reason": null,
+      "sources": [
+        "https://github.com/nix-purifiers/cargo-purifier/blob/efc9e91c5878dd8472f8f8bd064d3b4ac10377e5/pkgs/cargo-purifier/cargo_purifier.py"
+      ],
+      "state": "available"
     }
   },
   "repository": "nix-purifiers/cargo-purifier",

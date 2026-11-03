@@ -169,7 +169,8 @@
       "state": "known",
       "value": [
         "dependencies",
-        "lockfile.projectInputs"
+        "lockfile.projectInputs",
+        "--input"
       ]
     },
     "projection_incoming_limits": {
@@ -262,7 +263,10 @@
   "operations": {
     "lock": {
       "arguments": [
-        "lock"
+        "lock",
+        {
+          "splice": "arguments"
+        }
       ],
       "capability": "composer-purifier",
       "directory": {
@@ -276,7 +280,7 @@
       "minimumArguments": 0,
       "reason": null,
       "sources": [
-        "https://github.com/nix-purifiers/composer-purifier/blob/464dbd196f15b8da8762ff805660466fc371bc59/nix/lib/build-composer-project.nix"
+        "https://github.com/nix-purifiers/composer-purifier/blob/d344991f418565399648c9681bb2dc4776f23350/tools/composer_cli.py"
       ],
       "state": "available"
     },
@@ -341,16 +345,27 @@
       "state": "available"
     },
     "update": {
-      "arguments": [],
-      "capability": null,
+      "arguments": [
+        "update",
+        {
+          "splice": "arguments"
+        }
+      ],
+      "capability": "composer-purifier",
       "directory": {
         "binding": "project_root"
       },
-      "environment": {},
+      "environment": {
+        "COMPOSER_PURIFIER_LOCKFILE": {
+          "binding": "lockfile"
+        }
+      },
       "minimumArguments": 0,
-      "reason": "The native update selector and invocation have not been normalized; use the reference workflow.",
-      "sources": [],
-      "state": "unknown"
+      "reason": null,
+      "sources": [
+        "https://github.com/nix-purifiers/composer-purifier/blob/d344991f418565399648c9681bb2dc4776f23350/tools/composer_cli.py"
+      ],
+      "state": "available"
     }
   },
   "repository": "nix-purifiers/composer-purifier",
