@@ -179,6 +179,26 @@ or use `--content FILE` for a record conforming to the shared contract.
 With neither a catalog nor a project record, the preparer retains the existing
 README path.
 
+## Reviewed source variants
+
+Reviewed PR source variants can render independently of the main catalog.
+Store each under `docs-site/reviews/<repository-name>/<review-id>/`:
+
+- `source.json`: the same repository, revision and file-fingerprint record
+  used by `model/repositories.json`.
+- `page.json`: the validated Nix documentation export for that reviewed
+  source, with matching `repository` and `reviewedRevision`.
+- `reference.md`: its reviewed full guide source.
+- `guide.json`, when its source sections differ from main: an explicit
+  full-guide plan using the same shared guide contract.
+
+`prepare.py --model --check-source <checkout>` first checks the canonical
+source, then selects a unique matching reviewed variant. It uses that
+variant's model and guide together, and links source files to its reviewed
+revision. Unknown source, mismatched model revisions, missing guides and
+ambiguous reviews fail. Variants do not alter the canonical catalog or the
+combined main site; promoting merged behavior remains an explicit model update.
+
 ## Existing README preparation
 
 `prepare.py` turns a purifier's README into Jekyll source using the shared
