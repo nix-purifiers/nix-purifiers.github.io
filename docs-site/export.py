@@ -3,6 +3,7 @@ import argparse
 import json
 from pathlib import Path
 import subprocess
+from reference import guide_plan
 
 
 if __name__ == '__main__':
@@ -20,6 +21,7 @@ if __name__ == '__main__':
     for name, page in documentation['catalog'].items():
         if page.get('reviewedRevision') != manifest[name]['revision']:
             raise SystemExit(f'{name}: model and source review revisions differ')
+        guide_plan(page['repository'], (root / 'docs-site/references' / (name + '.md')).read_text())
     target = root / 'docs-site/catalog.json'
     if args.check:
         if not target.exists() or json.loads(target.read_text()) != documentation:

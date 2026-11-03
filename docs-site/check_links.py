@@ -11,6 +11,8 @@ class Page(HTMLParser):
     def __init__(self, text):
         super().__init__()
         self.links = []
+        self.anchors = []
+        self.anchor = None
         self.ids = set()
         self.feed(text)
 
@@ -20,9 +22,20 @@ class Page(HTMLParser):
             self.ids.add(attrs['id'])
         if tag == 'a' and 'name' in attrs:
             self.ids.add(attrs['name'])
+        if tag == 'a' and attrs.get('href'):
+            self.anchor = [attrs['href'], '']
+            self.anchors.append(self.anchor)
         for key in ('href', 'src'):
             if attrs.get(key):
                 self.links.append(attrs[key])
+
+    def handle_data(self, text):
+        if self.anchor is not None:
+            self.anchor[1] += text
+
+    def handle_endtag(self, tag):
+        if tag == 'a':
+            self.anchor = None
 
 
 def check(source, destination):
@@ -43,6 +56,13 @@ def check(source, destination):
                 failures.append(f'{path.relative_to(root)}: missing matrix link {expected}')
             else:
                 navigation += 1
+        overview = pages.get(folder / 'index.html')
+        if overview:
+            guide = expected.replace('features.html', 'reference.html')
+            guide_links = [(url, label) for url, label in overview.anchors
+                           if url in {guide, 'reference.html', './reference.html'}]
+            if len(guide_links) != 1 or guide_links[0][1].strip() != 'Full guide':
+                failures.append(f'{repository}: expected exactly one Full guide navigation link')
     for path, page in pages.items():
         for link in page.links:
             url = urlsplit(link)

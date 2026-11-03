@@ -7,7 +7,7 @@ import subprocess
 
 from content import audit, feature_matrix, render, source_links
 from theme import install_theme
-from reference import reference_text
+from reference import guide_plan, reference_text
 
 
 def build(documentation, destination):
@@ -15,10 +15,13 @@ def build(documentation, destination):
     contract = documentation['contract']
     catalog = documentation['catalog']
     rendered = {}
+    guides = {}
     for name, page in catalog.items():
         if name != page['repository'].split('/')[1]:
             raise ValueError(f'{name}: catalog key must match repository name')
         rendered[name] = render(page, contract)
+        text = (Path(__file__).parent / 'references' / (name + '.md')).read_text()
+        guides[name] = (guide_plan(page['repository'], text), reference_text(page['repository'], text, page))
     theme = Path(__file__).parent
     install_theme(destination)
     (destination / '_config.yml').write_text(json.dumps({
@@ -44,9 +47,9 @@ def build(documentation, destination):
                        '\n---\n\n')
         reference = theme / 'references' / (name + '.md')
         if reference.exists():
-            frontmatter = frontmatter.replace('\n---\n', '\nreference: ' + json.dumps(f'/{name}/reference.html') + '\n---\n')
+            (target / 'guide-structure.json').write_text(json.dumps(guides[name][0], indent=2) + '\n')
             (target / 'reference.md').write_text('---\nlayout: default\nrepository: ' +
-                json.dumps(page['repository']) + '\n---\n\n' + source_links(reference_text(page['repository'], reference.read_text(), page), page['repository']))
+                json.dumps(page['repository']) + '\n---\n\n' + source_links(guides[name][1], page['repository']))
         (target / 'index.md').write_text(frontmatter + source_links(markdown, page['repository']))
         matrix_frontmatter = ('---\nlayout: default\ntitle: ' + json.dumps(name + ' feature matrix') +
                               '\nrepository: ' + json.dumps(page['repository']) + '\n---\n\n')

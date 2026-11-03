@@ -24,7 +24,8 @@ class RenderedLinkTests(unittest.TestCase):
                 'baseurl': '/bun-purifier',
                 'feature_matrices': {'nix-purifiers/bun-purifier': '/features.html'},
             }))
-            navigation = '<a href="/bun-purifier/features.html">Feature matrix</a>'
+            navigation = ('<a href="/bun-purifier/features.html">Feature matrix</a>'
+                          '<a href="/bun-purifier/reference.html">Full guide</a>')
             for name in ('index.html', 'reference.html', 'features.html'):
                 (site / name).write_text(navigation)
             self.assertEqual(check(source, site), {'pages': 3, 'matrixLinks': 3})
@@ -33,6 +34,8 @@ class RenderedLinkTests(unittest.TestCase):
                 navigation + '<a href="reference-missing.html">Native reference</a>',
                 navigation + '<a href="https://github.com/nix-purifiers/bun-purifier/blob/main/features.html">Matrix</a>',
                 navigation + '<a href="/features.html">Matrix</a>',
+                navigation + '<a href="reference.html">Native reference</a>',
+                navigation.replace('Full guide', 'Native reference'),
             ):
                 (site / 'index.html').write_text(broken)
                 with self.subTest(broken=broken), self.assertRaises(ValueError):

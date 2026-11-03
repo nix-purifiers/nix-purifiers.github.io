@@ -6,7 +6,7 @@ import re
 from content import audit, feature_matrix, render, source_links
 from theme import install_theme
 from review import verify
-from reference import reference_text
+from reference import guide_plan, reference_text
 
 parser = argparse.ArgumentParser(description=__doc__)
 parser.add_argument('--repository', required=True)
@@ -62,16 +62,14 @@ if differences is not None:
     (source / 'features.md').write_text('---\nlayout: default\n---\n\n' + feature_matrix(page, contract))
     reference = theme / 'references' / (args.repository.split('/')[1] + '.md')
     if reference.exists():
+        (source / 'guide-structure.json').write_text(json.dumps(guide_plan(args.repository, reference.read_text()), indent=2) + '\n')
         (source / 'reference.md').write_text('---\nlayout: default\n---\n\n' + source_links(reference_text(args.repository, reference.read_text(), page), args.repository))
 else:
-    for filename in ('content-variations.json', 'system.json', 'features.md', 'reference.md'):
+    for filename in ('content-variations.json', 'system.json', 'features.md', 'reference.md', 'guide-structure.json'):
         (source / filename).unlink(missing_ok=True)
 # Keep source links useful outside GitHub, including images.
 text = source_links(text, args.repository)
-matrix_metadata = ''
-if differences is not None and (source / 'reference.md').exists():
-    matrix_metadata += '\nreference: /reference.html'
-(source / 'index.md').write_text('---\nlayout: default' + matrix_metadata + '\n---\n\n' + text)
+(source / 'index.md').write_text('---\nlayout: default\n---\n\n' + text)
 (source / '_config.yml').write_text(json.dumps({
     'title': args.repository.split('/')[1],
     'description': 'Native development with locked, Nix-resolved dependencies',

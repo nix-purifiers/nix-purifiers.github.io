@@ -16,11 +16,18 @@
     {% assign repository = page.repository | default: site.repository %}
     {% if repository %}<a href="https://github.com/{{ repository | escape }}">Source on GitHub</a>{% endif %}
   </nav>
+  {% assign feature_matrix = site.feature_matrices[repository] %}
+  {% if feature_matrix %}
+  {% assign guide = feature_matrix | replace: 'features.html', 'reference.html' %}
+  {% assign overview = feature_matrix | replace: 'features.html', '' %}
+  <nav class="documentation-navigation" aria-label="Project documentation">
+    <a href="{{ overview | relative_url }}">Overview</a>
+    {% if page.url == guide %}<span aria-current="page">Full guide</span>{% else %}<a href="{{ guide | relative_url }}">Full guide</a>{% endif %}
+  </nav>
+  {% endif %}
   <article>{{ content }}</article>
   <footer>
     <a href="https://nix-purifiers.github.io/">Explore the purifier family</a>
-    {% if page.reference %}<a class="secondary-link" href="{{ page.reference | relative_url }}">Full guide</a>{% endif %}
-    {% assign feature_matrix = site.feature_matrices[repository] %}
     {% if feature_matrix %}<a class="secondary-link" href="{{ feature_matrix | relative_url }}">Feature matrix</a>{% endif %}
   </footer>
   </main>

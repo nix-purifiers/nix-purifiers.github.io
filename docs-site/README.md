@@ -46,6 +46,16 @@ protocol differences do not create page-specific sections or headings. Every
 modeled purifier automatically gets feature-matrix navigation on its main page,
 full guide, and matrix, using the shared repository-to-matrix registry.
 
+Full guides use `guide-contract.json` for their section vocabulary and order.
+Every `guides/*.json` plan assigns each reviewed source section to exactly one
+shared section, or records why a shared section is omitted. New source headings
+fail validation until their placement is reviewed. The generated
+`guide-structure.json` records those choices alongside each guide. Native
+explanations remain detailed, but the guide's introduction, contents list,
+navigation, and organization are shared. Exact copies of the overview's initial
+command sequence are removed from the guide's setup section. Original fragment
+identifiers remain usable after reorganization.
+
 `docs-site/profiles/locked-wrapper.nix` shares section selections with overridable
 Nix module defaults. Profiles do not assume behavioral facts. Shared templates
 have fact requirements: the pin-preserving development loop cannot be used

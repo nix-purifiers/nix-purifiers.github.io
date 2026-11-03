@@ -24312,7 +24312,7 @@
           "native": [
             {
               "id": "main",
-              "text": "Keep using the native build and test commands in your working tree. After changing dependency declarations, refresh the lock through the native lock workflow shown above. The [full guide](reference.html) covers update selectors, external locks, and project-specific setup."
+              "text": "Keep using the native build and test commands in your working tree. After changing dependency declarations, refresh the lock through the native lock workflow shown above."
             },
             {
               "id": "pins",
@@ -24410,7 +24410,7 @@
           "native": [
             {
               "id": "main",
-              "text": "Prepare dependencies using the Quickstart workflow before disconnecting. The lock covers the recorded dependency downloads; downloads performed outside that lock need separate inputs. See the [offline and activation details](reference.html) for native caches, environment activation, and toolchain requirements."
+              "text": "Prepare dependencies using the Quickstart workflow before disconnecting. The lock covers the recorded dependency downloads; downloads performed outside that lock need separate inputs."
             }
           ],
           "scoped": [
@@ -24533,10 +24533,6 @@
               "whenKnown": [
                 "build_outputs"
               ]
-            },
-            {
-              "id": "reference",
-              "text": "See the [builder reference](reference.html) for package names, options, toolchain requirements, and examples."
             }
           ]
         },
@@ -24649,13 +24645,23 @@
             },
             {
               "id": "main",
-              "text": "The [native reference](reference.html) describes supported registries, authentication, source formats, and limitations. The [feature matrix](features.html) separates declared capabilities from unknown or unavailable integrations."
+              "text": "Dependency sources: {facts.dependency_sources}.",
+              "whenKnown": [
+                "dependency_sources"
+              ]
             },
             {
               "id": "platform-notes",
               "text": "Platform scope: {facts.platform_notes}.",
               "whenKnown": [
                 "platform_notes"
+              ]
+            },
+            {
+              "id": "unsupported",
+              "text": "Not supported: {facts.unsupported_features}.",
+              "whenKnown": [
+                "unsupported_features"
               ]
             }
           ],
