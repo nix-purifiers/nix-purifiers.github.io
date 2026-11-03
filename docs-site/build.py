@@ -23,6 +23,7 @@ def build(documentation, destination):
     install_theme(destination)
     (destination / '_config.yml').write_text(json.dumps({
         'title': 'Purifier reference', 'description': 'Structured purifier behavior catalog',
+        'feature_matrices': {page['repository']: f'/{name}/features.html' for name, page in catalog.items()},
         'url': 'https://nix-purifiers.github.io', 'baseurl': '',
         'markdown': 'kramdown', 'kramdown': {'input': 'GFM'},
     }))
@@ -40,7 +41,7 @@ def build(documentation, destination):
         # both a combined catalog and a project's independent Pages build.
         frontmatter = ('---\nlayout: default\ntitle: ' + json.dumps(name) +
                        '\nrepository: ' + json.dumps(page['repository']) +
-                       '\nfeature_matrix: ' + json.dumps(f'/{name}/features.html') + '\n---\n\n')
+                       '\n---\n\n')
         reference = theme / 'references' / (name + '.md')
         if reference.exists():
             frontmatter = frontmatter.replace('\n---\n', '\nreference: ' + json.dumps(f'/{name}/reference.html') + '\n---\n')

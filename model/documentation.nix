@@ -13,7 +13,6 @@ in {
           template = mkOption { type = types.nullOr text; default = null; };
           details = mkOption { type = types.nullOr text; default = null; };
           reason = mkOption { type = types.nullOr text; default = null; };
-          title = mkOption { type = types.nullOr text; default = null; };
           blocks = mkOption {
             default = {};
             type = types.attrsOf (types.submodule {

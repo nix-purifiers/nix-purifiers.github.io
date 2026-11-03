@@ -6,7 +6,7 @@ from html import escape
 
 def source_links(text, repository):
     """Resolve README-relative links against the source repository."""
-    return re.sub(r'\]\((?![a-zA-Z][\w+.-]*:|#|/)([^)]+)\)',
+    return re.sub(r'\]\((?![a-zA-Z][\w+.-]*:|#|/|(?:reference|features)\.html(?:[#?)]|$))([^)]+)\)',
                   lambda m: f'](https://github.com/{repository}/blob/main/{m[1]})', text)
 
 
@@ -36,7 +36,7 @@ def feature_matrix(page, contract):
             if isinstance(value, list):
                 value = [definition.get('itemLabels', {}).get(item, item) for item in value]
             behavior = ('Supported' if value else 'Not supported') if isinstance(value, bool) else (
-                ', '.join(value) if isinstance(value, list) else value)
+                ', '.join(value) if isinstance(value, list) else definition.get('valueLabels', {}).get(value, value))
         else:
             behavior = ('Unknown' if fact['state'] == 'unknown' else 'Not applicable') + ': ' + fact['reason']
         label = definition.get('label', key.replace('_', ' ').capitalize())
@@ -116,7 +116,7 @@ def render(page, contract):
             value = [definitions[key].get('itemLabels', {}).get(item, item) for item in value]
         if isinstance(value, bool):
             return 'supported' if value else 'not supported'
-        return ', '.join(value) if isinstance(value, list) else value
+        return ', '.join(value) if isinstance(value, list) else definitions[key].get('valueLabels', {}).get(value, value)
 
     def command(match):
         name = match[1]
@@ -147,7 +147,7 @@ def render(page, contract):
         if len(modes) != 1:
             raise ValueError(f'{key}: choose exactly one of use, replace, omit')
         mode = next(iter(modes))
-        allowed = {'use', 'details', 'blocks', 'title'} if mode == 'use' else (
+        allowed = {'use', 'details', 'blocks'} if mode == 'use' else (
             {'replace', 'reason'} if mode == 'replace' else {'omit'})
         if set(entry) - allowed:
             raise ValueError(f'{key}: unexpected fields {sorted(set(entry) - allowed)}')
@@ -221,5 +221,5 @@ def render(page, contract):
         if re.search(r'^#{1,2}\s', body, re.MULTILINE):
             raise ValueError(f'{key}: use level-three headings inside sections')
         if body.strip():
-            output.append(f'## {entry.get("title", spec["title"])}\n\n{body}')
+            output.append(f'## {spec["title"]}\n\n{body}')
     return '\n\n'.join(output) + '\n', differences

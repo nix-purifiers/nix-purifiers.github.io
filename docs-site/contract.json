@@ -221,12 +221,19 @@
     },
     {
       "id": "editor",
-      "title": "Language server integration (LSP)",
+      "title": "Language tooling integration",
       "shared": {
         "command": [
           {
+            "id": "mechanism",
+            "text": "Integration mechanism: {facts.editor_protocol}.",
+            "whenKnown": [
+              "editor_protocol"
+            ]
+          },
+          {
             "id": "main",
-            "text": "Configure your existing editor's Language Server Protocol (LSP) client to launch `{commands.editor}` from the development shell. This puts its language tooling in the same environment as the native build."
+            "text": "Configure the Language Server Protocol (LSP) client to launch `{commands.editor}` from the development shell. This puts its language tooling in the same environment as the native build."
           },
           {
             "id": "navigation",
@@ -254,15 +261,15 @@
         ],
         "native": [
           {
-            "id": "main",
-            "text": "Keep your existing editor. The integration described here connects its language tooling or native project import to the prepared dependency environment."
+            "id": "mechanism",
+            "text": "Integration mechanism: {facts.editor_protocol}.",
+            "whenKnown": [
+              "editor_protocol"
+            ]
           },
           {
-            "id": "unsupported",
-            "text": "This editor integration is currently unavailable; the native limitation and any setup details are below.",
-            "when": {
-              "editor_supported": false
-            }
+            "id": "main",
+            "text": "{values.language_tooling_setup}"
           }
         ]
       },

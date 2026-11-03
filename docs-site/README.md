@@ -38,6 +38,14 @@ shared text, and template applicability conditions live in the separate
 documentation `contract.json`. The documentation export combines the two
 contracts for validation at the JSON boundary.
 
+Section titles belong exclusively to the shared contract; project records cannot
+override them. The language-tooling section reports its mechanism from
+`facts.editor_protocol`, including LSP, BSP, native build imports, and prepared
+dependency environments. Setup instructions are injected into that shared section;
+protocol differences do not create page-specific sections or headings. Every
+modeled purifier automatically gets feature-matrix navigation on its main page,
+full guide, and matrix, using the shared repository-to-matrix registry.
+
 `docs-site/profiles/locked-wrapper.nix` shares section selections with overridable
 Nix module defaults. Profiles do not assume behavioral facts. Shared templates
 have fact requirements: the pin-preserving development loop cannot be used

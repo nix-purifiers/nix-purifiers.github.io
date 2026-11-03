@@ -1,16 +1,10 @@
 {
   "summary": "Locked, Nix-resolved dependencies for Lean and Lake.",
   "values": {
-    "quickstart": "nix shell 'github:nix-purifiers/lake-purifier'\nlake-purifier lock\nlake build\nlake exe your-program"
+    "quickstart": "nix shell 'github:nix-purifiers/lake-purifier'\nlake-purifier lock\nlake build\nlake exe your-program",
+    "language_tooling_setup": "```sh\nlake env lean MyModule.lean\nlake serve\n```\n\nLake's environment and language server use the same Nix dependency paths as the\ncompiler. Dependency source remains available for navigation. An existing local\npackage checkout or cache does not select dependencies in a locked session."
   },
   "sections": {
-    "editor": {
-      "title": "Language server integration (LSP)",
-      "blocks": {
-        "main": {
-          "extra-explanation": "```sh\nlake env lean MyModule.lean\nlake serve\n```\n\nLake's environment and language server use the same Nix dependency paths as the\ncompiler. Dependency source remains available for navigation. An existing local\npackage checkout or cache does not select dependencies in a locked session."
-        }
-      }
-    }
+    "editor": {}
   }
 }

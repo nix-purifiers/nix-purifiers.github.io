@@ -29,6 +29,7 @@ let
     unsupportedEnumFails = !force (withOverride ({ lib, ... }: {
       facts.relock.value = lib.mkForce "sometimes";
     }));
+    sectionTitleOverrideFails = !force (withOverride { sections.editor.title = "Editor"; });
     unknownOptionFails = !force (withOverride { facts.relcok = {}; });
     knownWithoutEvidenceWorks = force (withOverride ({ lib, ... }: {
       facts.relock.sources = lib.mkForce [];

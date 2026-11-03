@@ -1,16 +1,10 @@
 {
   "summary": "Locked, Nix-resolved dependencies for Xmake.",
   "values": {
-    "quickstart": "nix shell 'github:nix-purifiers/xmake-purifier'\nxmake-purifier lock\nxmake-purifier prefetch\nxmake\nxmake test"
+    "quickstart": "nix shell 'github:nix-purifiers/xmake-purifier'\nxmake-purifier lock\nxmake-purifier prefetch\nxmake\nxmake test",
+    "language_tooling_setup": "Generate the normal compilation database, then start clangd from the same shell:\n\n```sh\nxmake project -k compile_commands\nclangd\n```\n\nThe compilation database contains the Nix library include paths. The integration\nretains the environment and SDK with GC roots in the project session.\nA project shell is also available with `xmake-purifier shell`.\n\nIgnore `.xmake/`, `.xmake-purifier/`, `build/` and `compile_commands.json` in Git."
   },
   "sections": {
-    "editor": {
-      "title": "Language server integration (LSP)",
-      "blocks": {
-        "main": {
-          "extra-explanation": "Generate the normal compilation database, then start clangd from the same shell:\n\n```sh\nxmake project -k compile_commands\nclangd\n```\n\nThe compilation database contains the Nix library include paths. The integration\nretains the environment and SDK with GC roots in the project session.\nA project shell is also available with `xmake-purifier shell`.\n\nIgnore `.xmake/`, `.xmake-purifier/`, `build/` and `compile_commands.json` in Git."
-        }
-      }
-    }
+    "editor": {}
   }
 }

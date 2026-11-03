@@ -1,16 +1,10 @@
 {
   "summary": "Locked, Nix-resolved dependencies for Mill.",
   "values": {
-    "quickstart": "nix shell 'github:nix-purifiers/mill-purifier'\nmill-purifier lock\nmill-purifier mill core.compile\nmill-purifier mill core.test"
+    "quickstart": "nix shell 'github:nix-purifiers/mill-purifier'\nmill-purifier lock\nmill-purifier mill core.compile\nmill-purifier mill core.test",
+    "language_tooling_setup": "Editors such as Metals (in VS Code) and IntelliJ IDEA talk to Mill through\nthe Build Server Protocol (BSP), and start Mill with the command in\n`.bsp/mill-bsp.json`. Write that file through the purifier:\n\n```zsh\nmill-purifier mill mill.bsp.BSP/install\n```\n\nThe command it names is a script under `~/.cache/mill-purifier` that runs\n`mill-purifier mill` in the build, so the editor's Mill also runs offline\nfrom the lockfile. The lock run starts Mill's BSP server and asks it what\nan editor asks first (the build targets and the sources of their\ndependencies), so the server's own libraries and the source jars an editor\nshows are in the lock. The script names the mill-purifier package it was\nwritten by; run the install again after updating mill-purifier."
   },
   "sections": {
-    "editor": {
-      "title": "Build server integration (BSP)",
-      "blocks": {
-        "main": {
-          "extra-explanation": "Editors such as Metals (in VS Code) and IntelliJ IDEA talk to Mill through\nthe Build Server Protocol (BSP), and start Mill with the command in\n`.bsp/mill-bsp.json`. Write that file through the purifier:\n\n```zsh\nmill-purifier mill mill.bsp.BSP/install\n```\n\nThe command it names is a script under `~/.cache/mill-purifier` that runs\n`mill-purifier mill` in the build, so the editor's Mill also runs offline\nfrom the lockfile. The lock run starts Mill's BSP server and asks it what\nan editor asks first (the build targets and the sources of their\ndependencies), so the server's own libraries and the source jars an editor\nshows are in the lock. The script names the mill-purifier package it was\nwritten by; run the install again after updating mill-purifier."
-        }
-      }
-    }
+    "editor": {}
   }
 }

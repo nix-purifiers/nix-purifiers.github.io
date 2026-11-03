@@ -68,7 +68,7 @@ else:
         (source / filename).unlink(missing_ok=True)
 # Keep source links useful outside GitHub, including images.
 text = source_links(text, args.repository)
-matrix_metadata = '\nfeature_matrix: /features.html' if differences is not None else ''
+matrix_metadata = ''
 if differences is not None and (source / 'reference.md').exists():
     matrix_metadata += '\nreference: /reference.html'
 (source / 'index.md').write_text('---\nlayout: default' + matrix_metadata + '\n---\n\n' + text)
@@ -76,6 +76,7 @@ if differences is not None and (source / 'reference.md').exists():
     'title': args.repository.split('/')[1],
     'description': 'Native development with locked, Nix-resolved dependencies',
     'repository': args.repository,
+    'feature_matrices': {args.repository: '/features.html'} if differences is not None else {},
     'url': 'https://nix-purifiers.github.io',
     'baseurl': '/' + args.repository.split('/')[1],
     'markdown': 'kramdown',

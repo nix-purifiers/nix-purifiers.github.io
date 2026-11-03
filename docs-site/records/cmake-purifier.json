@@ -1,16 +1,10 @@
 {
   "summary": "Locked, Nix-resolved dependencies for CMake.",
   "values": {
-    "quickstart": "nix shell 'github:nix-purifiers/cmake-purifier#toolchain'\ncmake-purifier lock\ncmake-purifier prefetch\ncmake -B build -C .cmake-purifier/initial-cache.txt\ncmake --build build\nctest --test-dir build"
+    "quickstart": "nix shell 'github:nix-purifiers/cmake-purifier#toolchain'\ncmake-purifier lock\ncmake-purifier prefetch\ncmake -B build -C .cmake-purifier/initial-cache.txt\ncmake --build build\nctest --test-dir build",
+    "language_tooling_setup": "The initial cache sets `CMAKE_EXPORT_COMPILE_COMMANDS`, so the configure\nwrites `build/compile_commands.json`. clangd and other tools that read it\nfind every dependency's headers in the prefetched sources, offline. The\ndevelopment shell of this flake has clangd; a project's own shell takes\n`clang-tools` from nixpkgs."
   },
   "sections": {
-    "editor": {
-      "title": "Language server integration (LSP)",
-      "blocks": {
-        "main": {
-          "extra-explanation": "The initial cache sets `CMAKE_EXPORT_COMPILE_COMMANDS`, so the configure\nwrites `build/compile_commands.json`. clangd and other tools that read it\nfind every dependency's headers in the prefetched sources, offline. The\ndevelopment shell of this flake has clangd; a project's own shell takes\n`clang-tools` from nixpkgs."
-        }
-      }
-    }
+    "editor": {}
   }
 }

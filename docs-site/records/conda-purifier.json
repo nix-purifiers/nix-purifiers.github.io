@@ -1,16 +1,10 @@
 {
   "summary": "Locked, Nix-resolved dependencies for Conda.",
   "values": {
-    "quickstart": "nix shell 'github:nix-purifiers/conda-purifier'\nconda-purifier lock\nconda-purifier prefetch\nconda activate ./.conda-purifier/env\npython -m pytest"
+    "quickstart": "nix shell 'github:nix-purifiers/conda-purifier'\nconda-purifier lock\nconda-purifier prefetch\nconda activate ./.conda-purifier/env\npython -m pytest",
+    "language_tooling_setup": "Point the editor at `.conda-purifier/env/bin/python`, the way you would\npoint it at a conda environment. In VS Code, run \"Python: Select\nInterpreter\". For pyright, pass\n`--pythonpath .conda-purifier/env/bin/python`. Run\n`conda-purifier prefetch` first, so that the interpreter exists."
   },
   "sections": {
-    "editor": {
-      "title": "Editor environment integration",
-      "blocks": {
-        "main": {
-          "extra-explanation": "Point the editor at `.conda-purifier/env/bin/python`, the way you would\npoint it at a conda environment. In VS Code, run \"Python: Select\nInterpreter\". For pyright, pass\n`--pythonpath .conda-purifier/env/bin/python`. Run\n`conda-purifier prefetch` first, so that the interpreter exists."
-        }
-      }
-    }
+    "editor": {}
   }
 }

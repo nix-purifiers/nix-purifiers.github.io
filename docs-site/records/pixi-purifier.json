@@ -1,16 +1,10 @@
 {
   "summary": "Locked, Nix-resolved dependencies for Pixi.",
   "values": {
-    "quickstart": "nix shell 'github:nix-purifiers/pixi-purifier'\npixi-purifier lock\npixi-purifier prefetch\npixi run check"
+    "quickstart": "nix shell 'github:nix-purifiers/pixi-purifier'\npixi-purifier lock\npixi-purifier prefetch\npixi run check",
+    "language_tooling_setup": "For a Python environment, select `.pixi/envs/default/bin/python` as the\neditor's interpreter. For another environment, substitute its name.\nPrefetch supplies `pyright` and `pyright-langserver` in the wrapper package;\nstart the editor from the same `nix shell` so those workers are available.\nLanguage servers declared as environment dependencies are available through\n`pixi shell` as well.\n\nThe editor check starts a real language server and verifies that its\ndefinition lookup reaches the locked `idna` package in the environment."
   },
   "sections": {
-    "editor": {
-      "title": "Editor environment integration",
-      "blocks": {
-        "main": {
-          "extra-explanation": "For a Python environment, select `.pixi/envs/default/bin/python` as the\neditor's interpreter. For another environment, substitute its name.\nPrefetch supplies `pyright` and `pyright-langserver` in the wrapper package;\nstart the editor from the same `nix shell` so those workers are available.\nLanguage servers declared as environment dependencies are available through\n`pixi shell` as well.\n\nThe editor check starts a real language server and verifies that its\ndefinition lookup reaches the locked `idna` package in the environment."
-        }
-      }
-    }
+    "editor": {}
   }
 }

@@ -20,7 +20,8 @@
   <footer>
     <a href="https://nix-purifiers.github.io/">Explore the purifier family</a>
     {% if page.reference %}<a class="secondary-link" href="{{ page.reference | relative_url }}">Full guide</a>{% endif %}
-    {% if page.feature_matrix %}<a class="secondary-link" href="{{ page.feature_matrix | relative_url }}">Feature matrix</a>{% endif %}
+    {% assign feature_matrix = site.feature_matrices[repository] %}
+    {% if feature_matrix %}<a class="secondary-link" href="{{ feature_matrix | relative_url }}">Feature matrix</a>{% endif %}
   </footer>
   </main>
   <script>{% include docs.js %}</script>

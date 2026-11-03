@@ -1,16 +1,10 @@
 {
   "summary": "Locked, Nix-resolved dependencies for LuaRocks.",
   "values": {
-    "quickstart": "nix shell 'github:nix-purifiers/luarocks-purifier'\nluarocks-purifier lock\nluarocks-purifier prefetch\nluarocks-purifier luarocks make\nluarocks-purifier luarocks test"
+    "quickstart": "nix shell 'github:nix-purifiers/luarocks-purifier'\nluarocks-purifier lock\nluarocks-purifier prefetch\nluarocks-purifier luarocks make\nluarocks-purifier luarocks test",
+    "language_tooling_setup": "After `prefetch`, `lua_modules` holds every dependency as a standard\nLuaRocks tree. Point the language server at it. For\n[lua-language-server](https://luals.github.io), a `.luarc.json` in the\nproject root sets its library path:\n\n```json\n{\n  \"runtime.version\": \"Lua 5.4\",\n  \"workspace.library\": [\"lua_modules/share/lua/5.4\"]\n}\n```\n\nFor LuaJIT and Lua 5.1, the directory is `lua_modules/share/lua/5.1`.\n\n`prefetch` realizes the rocks, and the language server comes from your own\neditor setup, such as the nixpkgs package `lua-language-server`."
   },
   "sections": {
-    "editor": {
-      "title": "Editor environment integration",
-      "blocks": {
-        "main": {
-          "extra-explanation": "After `prefetch`, `lua_modules` holds every dependency as a standard\nLuaRocks tree. Point the language server at it. For\n[lua-language-server](https://luals.github.io), a `.luarc.json` in the\nproject root sets its library path:\n\n```json\n{\n  \"runtime.version\": \"Lua 5.4\",\n  \"workspace.library\": [\"lua_modules/share/lua/5.4\"]\n}\n```\n\nFor LuaJIT and Lua 5.1, the directory is `lua_modules/share/lua/5.1`.\n\n`prefetch` realizes the rocks, and the language server comes from your own\neditor setup, such as the nixpkgs package `lua-language-server`."
-        }
-      }
-    }
+    "editor": {}
   }
 }

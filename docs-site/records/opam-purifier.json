@@ -1,16 +1,10 @@
 {
   "summary": "Locked, Nix-resolved dependencies for opam.",
   "values": {
-    "quickstart": "nix shell 'github:nix-purifiers/opam-purifier'\nopam-purifier lock\nopam-purifier prefetch\nsource .opam-purifier/env.sh\ndune build\ndune test"
+    "quickstart": "nix shell 'github:nix-purifiers/opam-purifier'\nopam-purifier lock\nopam-purifier prefetch\nsource .opam-purifier/env.sh\ndune build\ndune test",
+    "language_tooling_setup": "Lock the language server and the formatter as tools:\n\n```zsh\nopam-purifier lock --tool ocaml-lsp-server --tool ocamlformat\nopam-purifier prefetch\n```\n\nopam solves the tools together with the project, so they agree on shared\nversions, and the Nix build leaves them out. `prefetch` installs them into\n`_opam`, and `source .opam-purifier/env.sh` puts `ocamllsp` and\n`ocamlformat` on `PATH`. Start the editor from that environment, or from\ndirenv. The server runs offline."
   },
   "sections": {
-    "editor": {
-      "title": "Language server integration (LSP)",
-      "blocks": {
-        "main": {
-          "extra-explanation": "Lock the language server and the formatter as tools:\n\n```zsh\nopam-purifier lock --tool ocaml-lsp-server --tool ocamlformat\nopam-purifier prefetch\n```\n\nopam solves the tools together with the project, so they agree on shared\nversions, and the Nix build leaves them out. `prefetch` installs them into\n`_opam`, and `source .opam-purifier/env.sh` puts `ocamllsp` and\n`ocamlformat` on `PATH`. Start the editor from that environment, or from\ndirenv. The server runs offline."
-        }
-      }
-    }
+    "editor": {}
   }
 }

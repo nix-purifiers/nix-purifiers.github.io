@@ -1,16 +1,10 @@
 {
   "summary": "Locked, Nix-resolved dependencies for PDM.",
   "values": {
-    "quickstart": "nix shell 'github:nix-purifiers/pdm-purifier'\npdm-purifier lock\npdm-purifier prefetch\neval \"$(pdm venv activate)\"\npytest"
+    "quickstart": "nix shell 'github:nix-purifiers/pdm-purifier'\npdm-purifier lock\npdm-purifier prefetch\neval \"$(pdm venv activate)\"\npytest",
+    "language_tooling_setup": "`prefetch` installs the project into `.venv`, with the development groups.\nPoint the editor's Python interpreter at `.venv/bin/python`, and its\nlanguage server finds every dependency there with no network. Install the\nlanguage server itself from Nix."
   },
   "sections": {
-    "editor": {
-      "title": "Editor environment integration",
-      "blocks": {
-        "main": {
-          "extra-explanation": "`prefetch` installs the project into `.venv`, with the development groups.\nPoint the editor's Python interpreter at `.venv/bin/python`, and its\nlanguage server finds every dependency there with no network. Install the\nlanguage server itself from Nix."
-        }
-      }
-    }
+    "editor": {}
   }
 }

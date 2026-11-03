@@ -1,16 +1,10 @@
 {
   "summary": "Locked, Nix-resolved dependencies for Clojure CLI.",
   "values": {
-    "quickstart": "nix shell \\\n  'github:nix-purifiers/clojure-cli-purifier#clojure' \\\n  'github:nix-purifiers/clojure-cli-purifier#cli'\nclojure-cli-purifier lock \\\n  --build '-T:build uber' --test '-M:test'\nclojure-cli-purifier prefetch\nexport PATH=\"$PWD/.clojure-cli-purifier/bin:$PATH\"\nclojure -T:build uber\nclojure -M:test"
+    "quickstart": "nix shell \\\n  'github:nix-purifiers/clojure-cli-purifier#clojure' \\\n  'github:nix-purifiers/clojure-cli-purifier#cli'\nclojure-cli-purifier lock \\\n  --build '-T:build uber' --test '-M:test'\nclojure-cli-purifier prefetch\nexport PATH=\"$PWD/.clojure-cli-purifier/bin:$PATH\"\nclojure -T:build uber\nclojure -M:test",
+    "language_tooling_setup": "[clojure-lsp](https://clojure-lsp.io) computes the classpath with\n`clojure -Spath`, so it reads the locked downloads when the editor's\nenvironment has `.clojure-cli-purifier/bin` first on `PATH`, such as\nthrough direnv. In a project with a `bb.edn`, clojure-lsp asks babashka for\nthe classpath, and `.lsp/config.edn` points it at `deps.edn`:\n\n```clojure\n{:project-specs [{:project-path \"deps.edn\"\n                  :classpath-cmd [\"clojure\" \"-A:test\" \"-Spath\"]}]}\n```\n\nclojure-lsp analyzes the jars on the classpath, which hold the Clojure\nsources, and needs no other download."
   },
   "sections": {
-    "editor": {
-      "title": "Language server integration (LSP)",
-      "blocks": {
-        "main": {
-          "extra-explanation": "[clojure-lsp](https://clojure-lsp.io) computes the classpath with\n`clojure -Spath`, so it reads the locked downloads when the editor's\nenvironment has `.clojure-cli-purifier/bin` first on `PATH`, such as\nthrough direnv. In a project with a `bb.edn`, clojure-lsp asks babashka for\nthe classpath, and `.lsp/config.edn` points it at `deps.edn`:\n\n```clojure\n{:project-specs [{:project-path \"deps.edn\"\n                  :classpath-cmd [\"clojure\" \"-A:test\" \"-Spath\"]}]}\n```\n\nclojure-lsp analyzes the jars on the classpath, which hold the Clojure\nsources, and needs no other download."
-        }
-      }
-    }
+    "editor": {}
   }
 }

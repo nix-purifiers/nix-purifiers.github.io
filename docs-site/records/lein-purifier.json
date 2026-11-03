@@ -1,16 +1,10 @@
 {
   "summary": "Locked, Nix-resolved dependencies for Leiningen.",
   "values": {
-    "quickstart": "nix shell 'github:nix-purifiers/lein-purifier'\nlein-purifier lock\nlein test\nlein uberjar"
+    "quickstart": "nix shell 'github:nix-purifiers/lein-purifier'\nlein-purifier lock\nlein test\nlein uberjar",
+    "language_tooling_setup": "clojure-lsp works with no configuration. It finds the classpath with\n`lein with-profile +test,+dev classpath`, and with lein-purifier's `lein`\non the `PATH` of the editor, that runs offline on the prefetched files.\nEvery dependency of the `dev` and `test` profiles is locked, so the\neditor sees the same jars as the build. Start the editor from the shell\nthat has lein-purifier, or from a development shell with the `cli`\npackage."
   },
   "sections": {
-    "editor": {
-      "title": "Language server integration (LSP)",
-      "blocks": {
-        "main": {
-          "extra-explanation": "clojure-lsp works with no configuration. It finds the classpath with\n`lein with-profile +test,+dev classpath`, and with lein-purifier's `lein`\non the `PATH` of the editor, that runs offline on the prefetched files.\nEvery dependency of the `dev` and `test` profiles is locked, so the\neditor sees the same jars as the build. Start the editor from the shell\nthat has lein-purifier, or from a development shell with the `cli`\npackage."
-        }
-      }
-    }
+    "editor": {}
   }
 }

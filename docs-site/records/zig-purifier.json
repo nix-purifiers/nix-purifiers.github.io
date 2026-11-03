@@ -1,16 +1,10 @@
 {
   "summary": "Locked, Nix-resolved dependencies for Zig.",
   "values": {
-    "quickstart": "nix shell 'github:nix-purifiers/zig-purifier#toolchain-zig_0_15'\nzig-purifier lock\nzig build\nzig build test"
+    "quickstart": "nix shell 'github:nix-purifiers/zig-purifier#toolchain-zig_0_15'\nzig-purifier lock\nzig build\nzig build test",
+    "language_tooling_setup": "The toolchains include ZLS. After a `prefetch`, ZLS finds every package\nwhere zig would, also offline, so go-to-definition on an `@import` of a\ndependency opens the locked package. Point the editor at the `zls` of the\ntoolchain, so it matches the zig version of the lock."
   },
   "sections": {
-    "editor": {
-      "title": "Language server integration (LSP)",
-      "blocks": {
-        "main": {
-          "extra-explanation": "The toolchains include ZLS. After a `prefetch`, ZLS finds every package\nwhere zig would, also offline, so go-to-definition on an `@import` of a\ndependency opens the locked package. Point the editor at the `zls` of the\ntoolchain, so it matches the zig version of the lock."
-        }
-      }
-    }
+    "editor": {}
   }
 }

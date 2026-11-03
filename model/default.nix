@@ -62,7 +62,6 @@ let
           ) (builtins.attrNames (specifications.${key}.requires.${section.template} or {}))) then
             throw "${key}: shared template contradicts declared facts"
           else { use = section.template; }
-            // lib.optionalAttrs (section.title != null) { inherit (section) title; }
             // lib.optionalAttrs (section.details != null) { inherit (section) details; }
             // lib.optionalAttrs (section.blocks != {}) {
               blocks = lib.mapAttrs (_: prose: lib.filterAttrs (_: v: v != null) prose) section.blocks;

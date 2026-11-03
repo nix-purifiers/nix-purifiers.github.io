@@ -1,16 +1,10 @@
 {
   "summary": "Locked, Nix-resolved dependencies for Meson.",
   "values": {
-    "quickstart": "nix shell 'github:nix-purifiers/meson-purifier'\nmeson-purifier lock .\nmeson setup build\nmeson compile -C build\nmeson test -C build"
+    "quickstart": "nix shell 'github:nix-purifiers/meson-purifier'\nmeson-purifier lock .\nmeson setup build\nmeson compile -C build\nmeson test -C build",
+    "language_tooling_setup": "Editors and language servers read the build directory as usual.\n`compile_commands.json` points into the subprojects Meson extracted from the\npackage cache, so clangd finds every header offline."
   },
   "sections": {
-    "editor": {
-      "title": "Language server integration (LSP)",
-      "blocks": {
-        "main": {
-          "extra-explanation": "Editors and language servers read the build directory as usual.\n`compile_commands.json` points into the subprojects Meson extracted from the\npackage cache, so clangd finds every header offline."
-        }
-      }
-    }
+    "editor": {}
   }
 }

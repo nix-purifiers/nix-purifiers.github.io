@@ -1,16 +1,10 @@
 {
   "summary": "Locked, Nix-resolved dependencies for Deno.",
   "values": {
-    "quickstart": "nix shell 'github:nix-purifiers/deno-purifier'\ndeno-purifier lock\ndeno test\ndeno task"
+    "quickstart": "nix shell 'github:nix-purifiers/deno-purifier'\ndeno-purifier lock\ndeno test\ndeno task",
+    "language_tooling_setup": "An editor that starts `deno lsp` from the `PATH` of the development shell\ngets the wrapper, so the language server reads the locked downloads. An\nimport the lock covers resolves, and one it does not is reported as an\nuncached URL, as Deno reports any module missing from its cache. The\nlanguage server needs what `prefetch` realizes."
   },
   "sections": {
-    "editor": {
-      "title": "Language server integration (LSP)",
-      "blocks": {
-        "main": {
-          "extra-explanation": "An editor that starts `deno lsp` from the `PATH` of the development shell\ngets the wrapper, so the language server reads the locked downloads. An\nimport the lock covers resolves, and one it does not is reported as an\nuncached URL, as Deno reports any module missing from its cache. The\nlanguage server needs what `prefetch` realizes."
-        }
-      }
-    }
+    "editor": {}
   }
 }

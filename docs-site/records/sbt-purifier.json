@@ -1,16 +1,10 @@
 {
   "summary": "Locked, Nix-resolved dependencies for sbt.",
   "values": {
-    "quickstart": "nix shell 'github:nix-purifiers/sbt-purifier#sbt'\nsbt nixLock\nsbt compile\nsbt test"
+    "quickstart": "nix shell 'github:nix-purifiers/sbt-purifier#sbt'\nsbt nixLock\nsbt compile\nsbt test",
+    "language_tooling_setup": "An editor imports the build through sbt's build server, and asks it for\nthe sources of every dependency (`buildTarget/dependencySources`, which\nruns `updateClassifiers`). The lock run resolves what a\n`dependencySources` request needs: it runs `updateClassifiers` for every\nproject at its default Scala version, unpublished projects included, and\n`updateSbtClassifiers` for the sources of sbt and of the build's plugins.\nAn editor that imports the build then resolves those sources from the\nlock, with the network cut off."
   },
   "sections": {
-    "editor": {
-      "title": "Build server integration (BSP)",
-      "blocks": {
-        "main": {
-          "extra-explanation": "An editor imports the build through sbt's build server, and asks it for\nthe sources of every dependency (`buildTarget/dependencySources`, which\nruns `updateClassifiers`). The lock run resolves what a\n`dependencySources` request needs: it runs `updateClassifiers` for every\nproject at its default Scala version, unpublished projects included, and\n`updateSbtClassifiers` for the sources of sbt and of the build's plugins.\nAn editor that imports the build then resolves those sources from the\nlock, with the network cut off."
-        }
-      }
-    }
+    "editor": {}
   }
 }

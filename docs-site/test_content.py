@@ -21,6 +21,12 @@ class ContentTests(unittest.TestCase):
         self.contract['sections'][0]['shared']['standard'] = 'Updated shared copy.'
         self.assertIn('Updated shared copy.', render(self.page, self.contract)[0])
 
+    def test_shared_heading_updates_every_consumer(self):
+        self.contract['sections'][0]['title'] = 'Shared heading'
+        markdown, _ = render(self.page, self.contract)
+        self.assertIn('## Shared heading', markdown)
+        self.assertNotIn('## Development loop', markdown)
+
     def test_differences_are_recorded(self):
         self.page['sections']['workflow'] = {
             'replace': 'Different workflow.', 'reason': 'No native lock command.'}
@@ -33,6 +39,7 @@ class ContentTests(unittest.TestCase):
     def test_rejects_missing_unknown_and_unexplained_sections(self):
         for edit in (
             lambda p: p['sections'].pop('editor'),
+            lambda p: p['sections'].update(workflow={'use': 'standard', 'title': 'Different heading'}),
             lambda p: p['sections'].update(typo={'replace': 'Oops', 'reason': 'Oops'}),
             lambda p: p['sections'].update(editor={'replace': 'Custom'}),
             lambda p: p['sections'].update(workflow={'use': 'typo'}),

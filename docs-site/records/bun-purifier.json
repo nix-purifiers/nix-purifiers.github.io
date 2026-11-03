@@ -1,16 +1,10 @@
 {
   "summary": "Locked, Nix-resolved dependencies for Bun.",
   "values": {
-    "quickstart": "nix shell 'github:nix-purifiers/bun-purifier'\nbun-purifier lock\nbun-purifier prefetch\nbun run build\nbun test"
+    "quickstart": "nix shell 'github:nix-purifiers/bun-purifier'\nbun-purifier lock\nbun-purifier prefetch\nbun run build\nbun test",
+    "language_tooling_setup": "`prefetch` leaves `node_modules` with ordinary files, so an editor's\nTypeScript server, and `tsc`, read the installed types as after a plain\n`bun install`. bun projects bring TypeScript and their `@types` packages\nas dependencies, so `bun.lock` holds what the editor reads, and it is\nthere after `prefetch`."
   },
   "sections": {
-    "editor": {
-      "title": "Editor environment integration",
-      "blocks": {
-        "main": {
-          "extra-explanation": "`prefetch` leaves `node_modules` with ordinary files, so an editor's\nTypeScript server, and `tsc`, read the installed types as after a plain\n`bun install`. bun projects bring TypeScript and their `@types` packages\nas dependencies, so `bun.lock` holds what the editor reads, and it is\nthere after `prefetch`."
-        }
-      }
-    }
+    "editor": {}
   }
 }

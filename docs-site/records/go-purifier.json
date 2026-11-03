@@ -1,16 +1,10 @@
 {
   "summary": "Locked, Nix-resolved dependencies for Go.",
   "values": {
-    "quickstart": "nix shell 'github:nix-purifiers/go-purifier'\ngo-purifier lock\ngo build ./...\ngo test ./..."
+    "quickstart": "nix shell 'github:nix-purifiers/go-purifier'\ngo-purifier lock\ngo build ./...\ngo test ./...",
+    "language_tooling_setup": "The development shell has gopls. gopls runs the `go` on its `PATH`, so an\neditor that starts gopls from the shell resolves from the same locked\ndownloads, offline after a prefetch. An editor that starts gopls itself\nneeds the shell's `PATH`, such as through direnv with `use flake`."
   },
   "sections": {
-    "editor": {
-      "title": "Language server integration (LSP)",
-      "blocks": {
-        "main": {
-          "extra-explanation": "The development shell has gopls. gopls runs the `go` on its `PATH`, so an\neditor that starts gopls from the shell resolves from the same locked\ndownloads, offline after a prefetch. An editor that starts gopls itself\nneeds the shell's `PATH`, such as through direnv with `use flake`."
-        }
-      }
-    }
+    "editor": {}
   }
 }

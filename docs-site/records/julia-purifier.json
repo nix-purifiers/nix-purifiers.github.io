@@ -1,16 +1,10 @@
 {
   "summary": "Locked, Nix-resolved dependencies for Julia.",
   "values": {
-    "quickstart": "nix shell 'github:nix-purifiers/julia-purifier'\njulia-purifier lock\njulia-purifier prefetch\neval \"$(julia-purifier env)\"\njulia --project -e 'using Pkg; Pkg.test()'"
+    "quickstart": "nix shell 'github:nix-purifiers/julia-purifier'\njulia-purifier lock\njulia-purifier prefetch\neval \"$(julia-purifier env)\"\njulia --project -e 'using Pkg; Pkg.test()'",
+    "language_tooling_setup": "`julia-purifier language-server` runs [LanguageServer.jl](https://github.com/julia-vscode/LanguageServer.jl)\non standard input and output for the project, from the environment that\n`prefetch` realized. Point the Julia language-server setting of the editor at\nthis command, in the directory of the project. The server finds the\ndependencies in the prefetched depot and needs no network; its index goes\nunder `$XDG_CACHE_HOME/julia-purifier`.\n\nFor a tool that wants to start Julia itself, `eval \"$(julia-purifier env)\"`\nputs the locked environment on its `PATH`."
   },
   "sections": {
-    "editor": {
-      "title": "Language server integration (LSP)",
-      "blocks": {
-        "main": {
-          "extra-explanation": "`julia-purifier language-server` runs [LanguageServer.jl](https://github.com/julia-vscode/LanguageServer.jl)\non standard input and output for the project, from the environment that\n`prefetch` realized. Point the Julia language-server setting of the editor at\nthis command, in the directory of the project. The server finds the\ndependencies in the prefetched depot and needs no network; its index goes\nunder `$XDG_CACHE_HOME/julia-purifier`.\n\nFor a tool that wants to start Julia itself, `eval \"$(julia-purifier env)\"`\nputs the locked environment on its `PATH`."
-        }
-      }
-    }
+    "editor": {}
   }
 }

@@ -33,7 +33,9 @@ class CatalogTests(unittest.TestCase):
             self.assertEqual((output / 'index.html').read_bytes(), (self.root / 'index.html').read_bytes())
             self.assertFalse((output / 'index.md').exists())
             self.assertEqual((output / 'robots.txt').read_text(), 'User-agent: *\nAllow: /\n')
-            self.assertIn('feature_matrix: "/ant-purifier/features.html"', ant)
+            config = json.loads((output / '_config.yml').read_text())
+            self.assertEqual(config['feature_matrices']['nix-purifiers/ant-purifier'],
+                             '/ant-purifier/features.html')
             matrix = (output / 'ant-purifier/features.md').read_text()
             self.assertIn('ivy.lock.xml, ant-purifier.lock.json', matrix)
             self.assertIn('Unknown:', matrix)
@@ -42,7 +44,20 @@ class CatalogTests(unittest.TestCase):
             self.assertIn('LSP diagnostics</span> | Supported', matrix)
             self.assertIn('LSP definition lookup</span> | Supported', matrix)
             self.assertNotIn('jdtls', matrix)
-            self.assertIn('Language server integration (LSP)', ant)
+            self.assertIn('Language tooling integration', ant)
+            for name in self.documentation['catalog']:
+                page = (output / name / 'index.md').read_text()
+                self.assertNotIn('Keep your existing editor', page)
+                self.assertNotIn('## Editor', page)
+                if '## Language' in page:
+                    self.assertIn('## Language tooling integration', page)
+            helm_guide = (output / 'helm-purifier/reference.md').read_text()
+            self.assertIn('## Language tooling integration', helm_guide)
+            self.assertIn('<a id="editor"></a>', helm_guide)
+            self.assertNotIn('## Editor', helm_guide)
+            bun = (output / 'bun-purifier/index.md').read_text()
+            self.assertIn('node_modules', bun)
+            self.assertIn('TypeScript server', bun)
             self.assertIn('Incoming: supported with limitations.', ant)
             self.assertIn('Incoming formats: Maven.', ant)
             self.assertIn('an Ivy-only projection is not accepted', ant)
@@ -106,7 +121,8 @@ class CatalogTests(unittest.TestCase):
             self.assertEqual(package.read_bytes(), b'published-package')
             self.assertTrue((output / 'system.json').exists())
             self.assertTrue((output / 'features.md').exists())
-            self.assertIn('feature_matrix: /features.html', (output / 'index.md').read_text())
+            self.assertEqual(json.loads((output / '_config.yml').read_text())['feature_matrices'],
+                             {'nix-purifiers/ant-purifier': '/features.html'})
             readme = base / 'README.md'
             readme.write_text('# Legacy\n\n[Example](examples/hello)\n')
             subprocess.run(command + ['--readme', str(readme)], check=True, capture_output=True)

@@ -1,16 +1,10 @@
 {
   "summary": "Locked, Nix-resolved dependencies for Typst.",
   "values": {
-    "quickstart": "nix shell 'github:nix-purifiers/typst-purifier'\ntypst-purifier lock\ntypst compile main.typ"
+    "quickstart": "nix shell 'github:nix-purifiers/typst-purifier'\ntypst-purifier lock\ntypst compile main.typ",
+    "language_tooling_setup": "```sh\ntypst watch main.typ\ntypst eval --in main.typ 'query(heading).len()'\ntinymist lsp\n```\n\nTinymist uses the same Nix package paths for diagnostics and source navigation.\nIts locked registry prevents package downloads and index refreshes. For an\neditor launched from outside the Nix shell:\n\n```sh\ntypst-purifier exec -- your-editor .\n```\n\nThe editor must invoke the supplied `tinymist` wrapper. Compiler rendering uses\nthe pinned embedded fonts. Custom external fonts and editor font overrides are\noutside the current scope."
   },
   "sections": {
-    "editor": {
-      "title": "Language server integration (LSP)",
-      "blocks": {
-        "main": {
-          "extra-explanation": "```sh\ntypst watch main.typ\ntypst eval --in main.typ 'query(heading).len()'\ntinymist lsp\n```\n\nTinymist uses the same Nix package paths for diagnostics and source navigation.\nIts locked registry prevents package downloads and index refreshes. For an\neditor launched from outside the Nix shell:\n\n```sh\ntypst-purifier exec -- your-editor .\n```\n\nThe editor must invoke the supplied `tinymist` wrapper. Compiler rendering uses\nthe pinned embedded fonts. Custom external fonts and editor font overrides are\noutside the current scope."
-        }
-      }
-    }
+    "editor": {}
   }
 }

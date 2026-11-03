@@ -1,16 +1,10 @@
 {
   "summary": "Locked, Nix-resolved dependencies for Scala CLI.",
   "values": {
-    "quickstart": "nix shell 'github:nix-purifiers/scala-cli-purifier'\nscala-cli-purifier lock --test\nscala-cli-purifier prefetch\nscala-cli run .\nscala-cli test ."
+    "quickstart": "nix shell 'github:nix-purifiers/scala-cli-purifier'\nscala-cli-purifier lock --test\nscala-cli-purifier prefetch\nscala-cli run .\nscala-cli test .",
+    "language_tooling_setup": "```zsh\nscala-cli setup-ide .\n```\n\nrun through the wrapper, configures Metals, or any other editor that speaks\nthe Build Server Protocol, to build the project offline on the prefetched\ndownloads: it points the launch command in `.bsp/scala-cli.json` at the\nwrapper, which starts scala-cli's build server with the locked cache and\nthe offline mirror. Run it again after `lock`.\n\nThe lock run opens the project the way an editor does, and compiles it on\nthe Bloop compilation server that serves an editor, so the lockfile holds\nwhat an editor asks for, such as the source jars of the dependencies and\nthe compiler bridge of Bloop. `lock --no-ide` locks without them, for a\nsmaller lockfile."
   },
   "sections": {
-    "editor": {
-      "title": "Build server integration (BSP)",
-      "blocks": {
-        "main": {
-          "extra-explanation": "```zsh\nscala-cli setup-ide .\n```\n\nrun through the wrapper, configures Metals, or any other editor that speaks\nthe Build Server Protocol, to build the project offline on the prefetched\ndownloads: it points the launch command in `.bsp/scala-cli.json` at the\nwrapper, which starts scala-cli's build server with the locked cache and\nthe offline mirror. Run it again after `lock`.\n\nThe lock run opens the project the way an editor does, and compiles it on\nthe Bloop compilation server that serves an editor, so the lockfile holds\nwhat an editor asks for, such as the source jars of the dependencies and\nthe compiler bridge of Bloop. `lock --no-ide` locks without them, for a\nsmaller lockfile."
-        }
-      }
-    }
+    "editor": {}
   }
 }

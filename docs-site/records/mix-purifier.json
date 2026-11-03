@@ -1,16 +1,10 @@
 {
   "summary": "Locked, Nix-resolved dependencies for Mix.",
   "values": {
-    "quickstart": "nix shell \\\n  'github:nix-purifiers/mix-purifier' \\\n  'github:nix-purifiers/mix-purifier#toolchain'\nmix-purifier lock\nmix-purifier prefetch\nexport PATH=\"$PWD/_build/mix-purifier/toolchain/bin:$PATH\"\nmix compile\nmix test"
+    "quickstart": "nix shell \\\n  'github:nix-purifiers/mix-purifier' \\\n  'github:nix-purifiers/mix-purifier#toolchain'\nmix-purifier lock\nmix-purifier prefetch\nexport PATH=\"$PWD/_build/mix-purifier/toolchain/bin:$PATH\"\nmix compile\nmix test",
+    "language_tooling_setup": "Point the editor's Elixir language server at\n`_build/mix-purifier/toolchain/bin/elixir-ls`, which is nixpkgs' ElixirLS\nwith Hex on its code path. ElixirLS fetches its own files when it first\nstarts, so `mix-purifier prefetch` starts it once, with the network, to\nfetch them. Afterwards it starts with no network.\n`mix-purifier prefetch --no-editor` skips that step."
   },
   "sections": {
-    "editor": {
-      "title": "Language server integration (LSP)",
-      "blocks": {
-        "main": {
-          "extra-explanation": "Point the editor's Elixir language server at\n`_build/mix-purifier/toolchain/bin/elixir-ls`, which is nixpkgs' ElixirLS\nwith Hex on its code path. ElixirLS fetches its own files when it first\nstarts, so `mix-purifier prefetch` starts it once, with the network, to\nfetch them. Afterwards it starts with no network.\n`mix-purifier prefetch --no-editor` skips that step."
-        }
-      }
-    }
+    "editor": {}
   }
 }
