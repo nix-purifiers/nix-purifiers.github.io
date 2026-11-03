@@ -23,6 +23,13 @@ let
     supportedProjectionRequiresFormatsAndInterface = !force (withOverride ({ lib, ... }: {
       facts.projection_incoming_formats = lib.mkForce { state = "not-applicable"; reason = "No formats declared."; };
     }));
+    cargoAndComposerProjectionFormatsWork = force (withOverride ({ lib, ... }: {
+      facts.projection_incoming_formats.value = lib.mkForce [ "cargo" "composer" ];
+      facts.projection_outgoing_formats.value = lib.mkForce [ "cargo" "composer" ];
+    }));
+    unknownProjectionFormatFails = !force (withOverride ({ lib, ... }: {
+      facts.projection_incoming_formats.value = lib.mkForce [ "unreviewed-format" ];
+    }));
     inactiveBlockProseFails = !force (withOverride ({ lib, ... }: {
       facts.editor_metadata_format.value = lib.mkForce "none";
     }));
