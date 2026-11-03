@@ -35,6 +35,12 @@ class CoveragePlanTests(unittest.TestCase):
         self.assertEqual(cases['lifecycle.buildable-add']['applicability'], 'needs-review')
         self.assertIn('no-purifier-integration', cases['projection.outgoing-ordinary']['observations'])
         self.assertIn('downstream-own-eviction', cases['graph.republication-evictions']['observations'])
+        self.assertEqual(cases['resolver.maven-managed-override']['applicability'], 'not-applicable')
+        maven = {case['id']: case for case in self.plan['projects']['maven-purifier']['obligations']}
+        constraints = maven['resolver.maven-managed-override']
+        self.assertEqual(constraints['applicability'], 'required')
+        self.assertTrue({'soft-request-preserves-nix', 'incompatible-hard-request-rejected',
+                         'explicit-exclusion-origin-loss-detected'} <= set(constraints['observations']))
 
     def test_candidates_are_directional_and_preserve_interface_and_conditions(self):
         pairs = {(edge['producer'], edge['consumer']) for edge in self.plan['projectionCandidates']}

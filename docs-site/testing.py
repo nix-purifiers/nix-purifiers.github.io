@@ -26,6 +26,9 @@ def build_testing(plan, evidence, destination):
             'Lifecycle transitions, projection directions and both adopter sandwiches have separate obligations.\n\n')
     text += ('No execution evidence is attached to this build.\n\n' if evidence is None else
              'The attached evidence records partial execution; consult each context for remaining gaps.\n\n')
+    if plan.get('formatPolicies', {}).get('maven', {}).get('supportsExactHardVersionRanges'):
+        text += ('Maven publications can encode exact hard version ranges. Coverage distinguishes soft requests, '
+                 'incompatible hard requests and explicit exclusions that remove the transitive constraint.\n\n')
     text += (f'The plan contains {len(plan["projectionCandidates"])} projection candidates awaiting compatibility review. '
              'Native SDK matrices and buildable applicability remain explicit review items.\n\n'
              '[Full plan](plan.json)' + (' · [Execution audit](audit.json)' if evidence is not None else '') + '\n\n'

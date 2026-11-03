@@ -57,6 +57,14 @@ let
       (obligation "graph.republication-evictions" (projection model "outgoing")
         [ "projection_outgoing" ]
         [ "ordinary-publication" "downstream-own-eviction" "transitive-origin" "ordinary-execution" ])
+      ((obligation "resolver.maven-managed-override"
+        (if !(known model "projection_outgoing_formats") then projection model "outgoing"
+         else if builtins.elem "maven" (value model "projection_outgoing_formats" []) then "required" else "not-applicable")
+        [ "projection_outgoing" "projection_outgoing_formats" ]
+        [ "soft-request-preserves-nix" "incompatible-hard-request-rejected" "explicit-exclusion-origin-loss-detected" "same-bytes-native-coordinate" ]) // {
+          expectedOutcome = "hard-constraints-survive-unless-explicitly-excluded";
+          reason = "Soft native requests must respect exact hard ranges in projected POMs; incompatible hard ranges must fail. Explicit exclusion removes the transitive constraint and requires an origin-loss observation.";
+        })
     ];
   };
   # Matching format names generate candidates, never a compatibility claim.
@@ -82,4 +90,10 @@ in {
   scope = "coverage-obligations";
   projects = lib.mapAttrs (_: perProject) catalog;
   projectionCandidates = edges;
+  formatPolicies.maven = {
+    nativeConflictPolicy = "hard-version-requirements-then-nearest-soft-selection";
+    supportsExactHardVersionRanges = true;
+    sources = [ "https://maven.apache.org/pom.html"
+      "https://maven.apache.org/guides/introduction/introduction-to-dependency-mechanism.html" ];
+  };
 }
