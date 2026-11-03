@@ -4,7 +4,7 @@ import json
 from pathlib import Path
 import re
 import shutil
-from content import audit, render, source_links
+from content import audit, feature_matrix, render, source_links
 
 parser = argparse.ArgumentParser(description=__doc__)
 parser.add_argument('--repository', required=True)
@@ -50,12 +50,14 @@ if differences is not None:
     report = {'repository': args.repository, **audit(page, differences)}
     (source / 'content-variations.json').write_text(json.dumps(report, indent=2) + '\n')
     (source / 'system.json').write_text(json.dumps(page, indent=2) + '\n')
+    (source / 'features.md').write_text('---\nlayout: default\n---\n\n' + feature_matrix(page, contract))
 else:
-    for filename in ('content-variations.json', 'system.json'):
+    for filename in ('content-variations.json', 'system.json', 'features.md'):
         (source / filename).unlink(missing_ok=True)
 # Keep source links useful outside GitHub, including images.
 text = source_links(text, args.repository)
-(source / 'index.md').write_text('---\nlayout: default\n---\n\n' + text)
+matrix_metadata = '\nfeature_matrix: /features.html' if differences is not None else ''
+(source / 'index.md').write_text('---\nlayout: default' + matrix_metadata + '\n---\n\n' + text)
 (source / '_config.yml').write_text(json.dumps({
     'title': args.repository.split('/')[1],
     'description': 'Native development with locked, Nix-resolved dependencies',

@@ -1,6 +1,7 @@
 """Validate and render structured project copy using the shared section contract."""
 import re
 import shlex
+from html import escape
 
 
 def source_links(text, repository):
@@ -16,6 +17,34 @@ def audit(page, variations):
         'variations': variations,
         'unresolved': {key: fact for key, fact in page['facts'].items() if fact['state'] != 'known'},
     }
+
+
+def feature_matrix(page, contract):
+    """Render a separate reference table from declared facts and their sources."""
+    project = page['repository'].split('/')[1]
+    lines = [f'# {project} feature matrix',
+             'Declared behavior and capabilities. [Back to documentation](./).',
+             '| Feature | Behavior | Sources |', '| --- | --- | --- |']
+    def cell(value):
+        return escape(value).replace('|', '&#124;').replace('\n', '<br>')
+    for key, definition in contract['facts'].items():
+        fact = page['facts'][key]
+        if fact['state'] == 'known':
+            value = fact['value']
+            behavior = ', '.join(value) if isinstance(value, list) else value
+            sources = []
+            for reference in fact['sources']:
+                url = reference if reference.startswith(('https://', 'http://')) else (
+                    f'https://github.com/{page["repository"]}/blob/main/{reference}')
+                sources.append(f'<a href="{escape(url, quote=True)}">Source {len(sources) + 1}</a>')
+        else:
+            behavior = ('Unknown' if fact['state'] == 'unknown' else 'Not applicable') + ': ' + fact['reason']
+            sources = []
+        label = key.replace('_', ' ').capitalize()
+        description = definition.get('description', '')
+        lines.append(f'| <span title="{escape(description, quote=True)}">{cell(label)}</span> | '
+                     f'{cell(behavior)} | {", ".join(sources)} |')
+    return '\n\n'.join(lines[:2]) + '\n\n' + '\n'.join(lines[2:]) + '\n'
 
 
 def nonempty(value, label):

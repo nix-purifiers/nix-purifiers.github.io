@@ -89,6 +89,8 @@ jekyll build --source .catalog-source --destination .catalog-site
 
 The output preserves the existing family homepage and includes project pages,
 `catalog.json`, per-project `system.json`, and `content-variations.json`.
+Each modeled project page has a subdued footer link to its generated feature
+matrix, with declared behavior, explicit unknowns, and source references.
 The audit records local additions, replacements, omissions, and unresolved
 facts. CI runs the model tests, renderer/integration tests, and Jekyll build,
 and uploads the resulting reference as an artifact.

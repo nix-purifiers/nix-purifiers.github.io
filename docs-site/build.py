@@ -5,7 +5,7 @@ from pathlib import Path
 import shutil
 import subprocess
 
-from content import audit, render, source_links
+from content import audit, feature_matrix, render, source_links
 
 
 def build(documentation, destination):
@@ -41,8 +41,12 @@ def build(documentation, destination):
         # Page-scoped title and repository allow the shared layout to work in
         # both a combined catalog and a project's independent Pages build.
         frontmatter = ('---\nlayout: default\ntitle: ' + json.dumps(name) +
-                       '\nrepository: ' + json.dumps(page['repository']) + '\n---\n\n')
+                       '\nrepository: ' + json.dumps(page['repository']) +
+                       '\nfeature_matrix: ' + json.dumps(f'/{name}/features.html') + '\n---\n\n')
         (target / 'index.md').write_text(frontmatter + source_links(markdown, page['repository']))
+        matrix_frontmatter = ('---\nlayout: default\ntitle: ' + json.dumps(name + ' feature matrix') +
+                              '\nrepository: ' + json.dumps(page['repository']) + '\n---\n\n')
+        (target / 'features.md').write_text(matrix_frontmatter + feature_matrix(page, contract))
         (target / 'system.json').write_text(json.dumps(page, indent=2) + '\n')
         reports[name] = audit(page, variations)
     (destination / 'content-variations.json').write_text(json.dumps(reports, indent=2) + '\n')

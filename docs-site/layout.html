@@ -17,6 +17,9 @@
     {% if repository %}<a href="https://github.com/{{ repository | escape }}">Source on GitHub</a>{% endif %}
   </nav></header>
   <main id="content">{{ content }}</main>
-  <footer><a href="https://nix-purifiers.github.io/">Explore the purifier family</a></footer>
+  <footer>
+    <a href="https://nix-purifiers.github.io/">Explore the purifier family</a>
+    {% if page.feature_matrix %}<a class="secondary-link" href="{{ page.feature_matrix | relative_url }}">Feature matrix</a>{% endif %}
+  </footer>
 </body>
 </html>
