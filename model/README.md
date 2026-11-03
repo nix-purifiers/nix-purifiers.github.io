@@ -27,6 +27,11 @@ provided `sbt-purifier` capability.
 The same mechanism works for Ant and Docker. The executor has no branch
 selecting behavior by tool name.
 
+Editor capabilities are separate behavioral facts: diagnostics, completion,
+navigation, dependency source lookup, and offline use. Each can be supported,
+unsupported, unknown, or not applicable. The server and its launch arguments
+belong to the `editor` invocation recipe, not to a capability's value.
+
 ## Invocation expressions
 
 `invocations.nix` validates each operation. Arguments are literal strings,

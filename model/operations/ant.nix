@@ -9,6 +9,11 @@ let
   };
 in {
   operations = {
+    editor = {
+      capability = "jdtls";
+      environment.ANT_PURIFIER_LOCKFILE.binding = "lockfile";
+      sources = [ source ];
+    };
     lock = resolve [ "lock" ];
     update = resolve [ "update" ];
     named-update = (resolve [ "update" { splice = "arguments"; } ]) // { minimumArguments = 1; };

@@ -31,7 +31,8 @@ def feature_matrix(page, contract):
         fact = page['facts'][key]
         if fact['state'] == 'known':
             value = fact['value']
-            behavior = ', '.join(value) if isinstance(value, list) else value
+            behavior = ('Supported' if value else 'Not supported') if isinstance(value, bool) else (
+                ', '.join(value) if isinstance(value, list) else value)
         else:
             behavior = ('Unknown' if fact['state'] == 'unknown' else 'Not applicable') + ': ' + fact['reason']
         label = key.replace('_', ' ').capitalize()
@@ -81,6 +82,9 @@ def render(page, contract):
                     raise ValueError(f'{key}: expected a nonempty list')
                 for item in value:
                     nonempty(item, key)
+            elif definition['type'] == 'boolean':
+                if not isinstance(value, bool):
+                    raise ValueError(f'{key}: expected a boolean')
             else:
                 raise ValueError(f'{key}: unsupported fact type')
             if 'enum' in definition and value not in definition['enum']:
@@ -101,6 +105,8 @@ def render(page, contract):
         if key not in facts or facts[key]['state'] != 'known':
             raise ValueError(f'cannot render unknown or missing fact {key}')
         value = facts[key]['value']
+        if isinstance(value, bool):
+            return 'supported' if value else 'not supported'
         return ', '.join(value) if isinstance(value, list) else value
 
     def command(match):

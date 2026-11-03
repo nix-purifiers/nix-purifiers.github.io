@@ -46,10 +46,6 @@
       ],
       "description": "Wrapper behavior for invalid or stale locks."
     },
-    "editor": {
-      "type": "string",
-      "description": "Runnable editor server or launcher command."
-    },
     "platforms": {
       "type": "strings",
       "description": "Documented supported Nix systems; does not imply cross-compilation support."
@@ -93,6 +89,26 @@
     "build_outputs": {
       "type": "strings",
       "description": "Documented attributes exposed by the project builder result."
+    },
+    "editor_diagnostics": {
+      "type": "boolean",
+      "description": "Editor reports diagnostics using the project context."
+    },
+    "editor_completion": {
+      "type": "boolean",
+      "description": "Editor provides code completion using the project context."
+    },
+    "editor_navigation": {
+      "type": "boolean",
+      "description": "Editor resolves definitions in the project context."
+    },
+    "editor_dependency_sources": {
+      "type": "boolean",
+      "description": "Editor can retrieve source code for locked dependencies."
+    },
+    "editor_offline": {
+      "type": "boolean",
+      "description": "Editor features work without network access after prefetch."
     }
   }
 }

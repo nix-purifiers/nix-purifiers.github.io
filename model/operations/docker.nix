@@ -9,6 +9,11 @@ let
   };
 in {
   operations = {
+    editor = {
+      capability = "docker-langserver";
+      arguments = [ "--stdio" ];
+      sources = [ "https://github.com/nix-purifiers/docker-purifier/blob/186edeb4dd1bb0c9806485368b64cd5c1433fac3/tests/editor.py" ];
+    };
     lock = resolve [ "lock" ];
     update = resolve [ "update" ];
     named-update = (resolve [ "update" { splice = "arguments"; } ]) // { minimumArguments = 1; };

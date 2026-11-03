@@ -31,6 +31,7 @@ in {
       if definition ? enum then types.enum definition.enum
       else if definition.type == "string" then text
       else if definition.type == "strings" then strings
+      else if definition.type == "boolean" then types.bool
       else throw "Unsupported fact type: ${definition.type}"
     )) definitions;
   };

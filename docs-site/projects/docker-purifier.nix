@@ -28,7 +28,7 @@ in {
       vendor their inputs or prepare caches before using `docker build --network=none`.
     '';
     editor.details = ''
-      Syntax, completion, and stage-definition support work without registry access.
+      Diagnostics and stage-definition lookup work without registry access.
     '';
     nix_builds.details = ''
       The builder uses native Buildah in a networkless software VM, requiring

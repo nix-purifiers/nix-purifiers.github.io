@@ -11,6 +11,9 @@ let
     wrongTypeFails = !force (withOverride ({ lib, ... }: {
       facts.lockfiles.value = lib.mkForce true;
     }));
+    editorCapabilityRequiresBoolean = !force (withOverride ({ lib, ... }: {
+      facts.editor_diagnostics.value = lib.mkForce "jdtls";
+    }));
     unsupportedEnumFails = !force (withOverride ({ lib, ... }: {
       facts.relock.value = lib.mkForce "sometimes";
     }));
