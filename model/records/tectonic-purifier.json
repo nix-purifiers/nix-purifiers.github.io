@@ -1,0 +1,278 @@
+{
+  "repository": "nix-purifiers/tectonic-purifier",
+  "reviewedRevision": "8b3e744ab324c9abe060abf83159f06ffc56dc01",
+  "facts": {
+    "tool": {
+      "state": "known",
+      "value": "Tectonic and TeX"
+    },
+    "inputs": {
+      "state": "known",
+      "value": [
+        "Tectonic.toml workspace or selected .tex entry points"
+      ]
+    },
+    "lockfiles": {
+      "state": "known",
+      "value": [
+        "tectonic-purifier.lock.json"
+      ]
+    },
+    "integration": {
+      "state": "known",
+      "value": "wrapper"
+    },
+    "relock": {
+      "state": "known",
+      "value": "preserves-pins"
+    },
+    "missing_lock": {
+      "state": "known",
+      "value": "warn-and-native"
+    },
+    "stale_lock": {
+      "state": "known",
+      "value": "fail-with-repair"
+    },
+    "platforms": {
+      "state": "known",
+      "value": [
+        "x86_64-linux",
+        "aarch64-linux"
+      ]
+    },
+    "dependency_sources": {
+      "state": "known",
+      "value": [
+        "Public indexed-tar TeX bundles"
+      ]
+    },
+    "offline_scope": {
+      "state": "known",
+      "value": "locked-dependencies"
+    },
+    "offline_limits": {
+      "state": "known",
+      "value": [
+        "The initial integration supports LaTeX and Tectonic 0.17",
+        "Fonts must come from the locked bundle or explicit project files",
+        "Ambient system font collections require additional integration",
+        "User commands retain their normal network access"
+      ]
+    },
+    "unsupported_features": {
+      "state": "known",
+      "value": [
+        "The initial integration supports LaTeX and Tectonic 0.17",
+        "Fonts must come from the locked bundle or explicit project files",
+        "Ambient system font collections require additional integration",
+        "User commands retain their normal network access"
+      ]
+    },
+    "nix_builder": {
+      "state": "known",
+      "value": "pkgs.tectonic-purifier.buildTectonicProject"
+    },
+    "build_isolation": {
+      "state": "known",
+      "value": "nix-sandbox"
+    },
+    "build_outputs": {
+      "state": "known",
+      "value": [
+        "packages",
+        "tests",
+        "release",
+        "fetches"
+      ]
+    },
+    "projection_incoming": {
+      "state": "known",
+      "value": "unsupported"
+    },
+    "projection_incoming_formats": {
+      "state": "not-applicable",
+      "reason": "No typed project projection adapter is exported by this implementation."
+    },
+    "projection_incoming_interfaces": {
+      "state": "not-applicable",
+      "reason": "No typed project projection interface is implemented."
+    },
+    "projection_incoming_limits": {
+      "state": "known",
+      "value": [
+        "Native source bundles and publication do not constitute a typed cross-purifier projection interface"
+      ]
+    },
+    "projection_outgoing": {
+      "state": "known",
+      "value": "unsupported"
+    },
+    "projection_outgoing_formats": {
+      "state": "not-applicable",
+      "reason": "No typed project projection adapter is exported by this implementation."
+    },
+    "projection_outgoing_interfaces": {
+      "state": "not-applicable",
+      "reason": "No typed project projection interface is implemented."
+    },
+    "projection_outgoing_limits": {
+      "state": "known",
+      "value": [
+        "Native source bundles and publication do not constitute a typed cross-purifier projection interface"
+      ]
+    },
+    "runtime_requirements": {
+      "state": "known",
+      "value": [
+        "A Tectonic.toml workspace for the shown -X build command; standalone TeX files can be selected when locking"
+      ]
+    },
+    "builder_options": {
+      "state": "known",
+      "value": [
+        "lockFile",
+        "fetchers",
+        "nativeBuildInputs",
+        "doCheck",
+        "checkCommand"
+      ]
+    },
+    "editor_protocol": {
+      "state": "known",
+      "value": "project-environment"
+    },
+    "editor_supported": {
+      "state": "known",
+      "value": true
+    }
+  },
+  "operations": {
+    "lock": {
+      "capability": "tectonic-purifier",
+      "arguments": [
+        "lock",
+        "--project",
+        {
+          "binding": "project_root"
+        },
+        "--lock",
+        {
+          "binding": "lockfile"
+        },
+        {
+          "splice": "arguments"
+        }
+      ],
+      "sources": [
+        "https://github.com/nix-purifiers/tectonic-purifier/blob/8b3e744ab324c9abe060abf83159f06ffc56dc01/tectonic_purifier/cli.py"
+      ]
+    },
+    "prefetch": {
+      "capability": "tectonic-purifier",
+      "arguments": [
+        "prefetch",
+        "--project",
+        {
+          "binding": "project_root"
+        },
+        "--lock",
+        {
+          "binding": "lockfile"
+        },
+        {
+          "splice": "arguments"
+        }
+      ],
+      "sources": [
+        "https://github.com/nix-purifiers/tectonic-purifier/blob/8b3e744ab324c9abe060abf83159f06ffc56dc01/tectonic_purifier/cli.py"
+      ]
+    },
+    "bundle": {
+      "capability": "tectonic-purifier",
+      "arguments": [
+        "bundle",
+        "--project",
+        {
+          "binding": "project_root"
+        },
+        "--lock",
+        {
+          "binding": "lockfile"
+        },
+        {
+          "splice": "arguments"
+        }
+      ],
+      "sources": [
+        "https://github.com/nix-purifiers/tectonic-purifier/blob/8b3e744ab324c9abe060abf83159f06ffc56dc01/tectonic_purifier/cli.py"
+      ]
+    },
+    "update": {
+      "capability": "tectonic-purifier",
+      "arguments": [
+        "lock",
+        "--update",
+        "--project",
+        {
+          "binding": "project_root"
+        },
+        "--lock",
+        {
+          "binding": "lockfile"
+        },
+        {
+          "splice": "arguments"
+        }
+      ],
+      "sources": [
+        "https://github.com/nix-purifiers/tectonic-purifier/blob/8b3e744ab324c9abe060abf83159f06ffc56dc01/tectonic_purifier/cli.py"
+      ]
+    },
+    "publish": {
+      "capability": "tectonic-purifier",
+      "arguments": [
+        "publish",
+        "--project",
+        {
+          "binding": "project_root"
+        },
+        "--lock",
+        {
+          "binding": "lockfile"
+        },
+        "--tag",
+        {
+          "binding": "tag"
+        },
+        {
+          "splice": "arguments"
+        }
+      ],
+      "sources": [
+        "https://github.com/nix-purifiers/tectonic-purifier/blob/8b3e744ab324c9abe060abf83159f06ffc56dc01/tectonic_purifier/cli.py"
+      ]
+    },
+    "build": {
+      "capability": "tectonic",
+      "arguments": [
+        "-X",
+        "build",
+        {
+          "splice": "arguments"
+        }
+      ],
+      "sources": [
+        "https://github.com/nix-purifiers/tectonic-purifier/blob/8b3e744ab324c9abe060abf83159f06ffc56dc01/tectonic_purifier/cli.py"
+      ],
+      "environment": {
+        "TECTONIC_PURIFIER_PROJECT": {
+          "binding": "project_root"
+        },
+        "TECTONIC_PURIFIER_LOCK": {
+          "binding": "lockfile"
+        }
+      }
+    }
+  }
+}

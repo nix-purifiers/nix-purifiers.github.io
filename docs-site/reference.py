@@ -2,6 +2,7 @@
 import json
 import re
 from pathlib import Path
+from guide_blocks import validate_assignments, select_block
 
 
 def source_sections(text):
@@ -44,7 +45,7 @@ def guide_plan(repository, text, plan=None):
         raise ValueError(f'{name}: invalid introduction placement')
     if introduction['section'] and 'omit' in plan['sections'][introduction['section']]:
         raise ValueError(f'{name}: introduction targets an omitted section')
-    actual = [title for title, _ in source_sections(text)[1]]
+    introduction_text, actual = source_sections(text)
     selected = []
     for identifier, section in plan['sections'].items():
         if 'omit' in section:
@@ -56,8 +57,7 @@ def guide_plan(repository, text, plan=None):
                 raise ValueError(f'{name}.{identifier}: unknown detailed-guide facts')
         else:
             raise ValueError(f'{name}.{identifier}: unexpected guide fields')
-    if len(actual) != len(set(actual)) or sorted(selected) != sorted(actual):
-        raise ValueError(f'{name}: each source section must be assigned exactly once')
+    validate_assignments(introduction_text, actual, plan, selected)
     return plan
 
 
@@ -92,6 +92,8 @@ def detailed_guide(repository, text, page, plan=None):
     if plan['introduction']['omitSummary']:
         introduction = introduction.partition('\n\n')[2].strip()
     name = repository.split('/')[1]
+    source['@introduction'] = introduction
+    aliases = set()
     sections = []
     for specification in contract['sections']:
         identifier = specification['id']
@@ -101,35 +103,40 @@ def detailed_guide(repository, text, page, plan=None):
         title = titles[specification['titleFrom']] if 'titleFrom' in specification else specification['title']
         blocks = []
         if introduction and plan['introduction']['section'] == identifier:
-            blocks.append((contract['introductionHeading'], introduction, False))
-        for original in decision.get('sourceSections', []):
-            body = source[original]
+            blocks.append((contract['introductionHeading'], introduction, False, None))
+        for selector in decision.get('sourceSections', []):
+            original, body, fragment = select_block(source, selector)
+            alias = original if original != '@introduction' else None
+            display = title if fragment else original
             # The overview owns the initial command sequence. Remove it here
             # only when it is exactly the same; retain distinct setup examples.
-            if original == 'Quickstart' and page.get('values', {}).get('quickstart'):
+            if identifier == 'setup' and page.get('values', {}).get('quickstart'):
                 match = re.search(r'(?m)^```[^\n]*\n(.*?)^```\s*$', body, re.DOTALL)
                 if match and match[1].strip() == page['values']['quickstart'].strip():
                     body = body[:match.start()] + contract['quickstartPointer'] + body[match.end():]
                     body = re.sub(r'^From the project root:\s*', '', body)
-            blocks.append((original, body, True))
+            blocks.append((display, body, True, alias))
         for fact_name in decision.get('facts', []):
             fact = page['facts'][fact_name]
             if fact['state'] != 'known':
                 raise ValueError(f'{name}: guide cannot render unknown fact {fact_name}')
             value = fact['value']
             body = ('Target systems: ' + ', '.join(value) + '.') if fact_name == 'platforms' else '\n\n'.join(value)
-            blocks.append((contract['factHeadings'][fact_name], body, False))
+            blocks.append((contract['factHeadings'][fact_name], body, False, None))
         if not blocks:
             raise ValueError(f'{name}.{identifier}: empty detailed-guide section')
         chunks = []
+        if identifier == 'projections' and all(page['facts']['projection_' + direction].get('value') == 'unsupported' for direction in ('incoming', 'outgoing')):
+            chunks.append(contract['nativePublicationNote'])
         canonical = slug(title)
-        for original, body, is_source in blocks:
-            legacy = slug(original)
-            if len(blocks) > 1:
+        for original, body, is_source, alias in blocks:
+            legacy = slug(alias) if alias else None
+            if len(blocks) > 1 and original != title:
                 chunks.append('### ' + original + '\n\n' + deeper_headings(body))
             else:
-                if is_source and legacy != canonical:
+                if is_source and legacy and legacy != canonical and legacy not in aliases:
                     chunks.append(f'<a id="{legacy}"></a>')
+                    aliases.add(legacy)
                 chunks.append(body)
         sections.append((title, '\n\n'.join(chunks)))
     lines = ['# ' + name + ' full guide', contract['introduction'],

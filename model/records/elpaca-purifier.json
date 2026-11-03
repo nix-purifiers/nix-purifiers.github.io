@@ -1,0 +1,284 @@
+{
+  "repository": "nix-purifiers/elpaca-purifier",
+  "reviewedRevision": "ac7972957d583ab368a82aa1bc6eab6e0fcfb018",
+  "facts": {
+    "tool": {
+      "state": "known",
+      "value": "Emacs and Elpaca"
+    },
+    "inputs": {
+      "state": "known",
+      "value": [
+        "An Emacs configuration using Elpaca"
+      ]
+    },
+    "lockfiles": {
+      "state": "known",
+      "value": [
+        "elpaca-lock.el",
+        "elpaca-purifier.lock.json"
+      ]
+    },
+    "integration": {
+      "state": "known",
+      "value": "wrapper"
+    },
+    "relock": {
+      "state": "known",
+      "value": "preserves-pins"
+    },
+    "missing_lock": {
+      "state": "known",
+      "value": "warn-and-native"
+    },
+    "stale_lock": {
+      "state": "known",
+      "value": "fail-with-repair"
+    },
+    "platforms": {
+      "state": "known",
+      "value": [
+        "x86_64-linux",
+        "aarch64-linux"
+      ]
+    },
+    "dependency_sources": {
+      "state": "known",
+      "value": [
+        "Public HTTPS Git package sources"
+      ]
+    },
+    "offline_scope": {
+      "state": "known",
+      "value": "locked-dependencies"
+    },
+    "offline_limits": {
+      "state": "known",
+      "value": [
+        "Standard Elisp builds are supported",
+        "Custom build steps, build variables, shared repositories, submodules and native modules require additional providers",
+        "Capture configuration must work in batch mode and select the same packages as the runtime profile",
+        "External language servers and dependencies downloaded by package code are outside this lock"
+      ]
+    },
+    "unsupported_features": {
+      "state": "known",
+      "value": [
+        "Standard Elisp builds are supported",
+        "Custom build steps, build variables, shared repositories, submodules and native modules require additional providers",
+        "Capture configuration must work in batch mode and select the same packages as the runtime profile",
+        "External language servers and dependencies downloaded by package code are outside this lock"
+      ]
+    },
+    "nix_builder": {
+      "state": "known",
+      "value": "pkgs.elpaca-purifier.buildElpacaProject"
+    },
+    "build_isolation": {
+      "state": "known",
+      "value": "nix-sandbox"
+    },
+    "build_outputs": {
+      "state": "known",
+      "value": [
+        "packages",
+        "tests",
+        "release",
+        "fetches"
+      ]
+    },
+    "projection_incoming": {
+      "state": "known",
+      "value": "unsupported"
+    },
+    "projection_incoming_formats": {
+      "state": "not-applicable",
+      "reason": "No typed project projection adapter is exported by this implementation."
+    },
+    "projection_incoming_interfaces": {
+      "state": "not-applicable",
+      "reason": "No typed project projection interface is implemented."
+    },
+    "projection_incoming_limits": {
+      "state": "known",
+      "value": [
+        "Native source bundles and publication do not constitute a typed cross-purifier projection interface"
+      ]
+    },
+    "projection_outgoing": {
+      "state": "known",
+      "value": "unsupported"
+    },
+    "projection_outgoing_formats": {
+      "state": "not-applicable",
+      "reason": "No typed project projection adapter is exported by this implementation."
+    },
+    "projection_outgoing_interfaces": {
+      "state": "not-applicable",
+      "reason": "No typed project projection interface is implemented."
+    },
+    "projection_outgoing_limits": {
+      "state": "known",
+      "value": [
+        "Native source bundles and publication do not constitute a typed cross-purifier projection interface"
+      ]
+    },
+    "runtime_requirements": {
+      "state": "known",
+      "value": [
+        "An existing Emacs configuration using Elpaca",
+        "A batch-compatible capture configuration selecting the same packages as the editor"
+      ]
+    },
+    "builder_options": {
+      "state": "known",
+      "value": [
+        "lockFile",
+        "nativeLockFile",
+        "configFile",
+        "emacsArgs",
+        "fetchers",
+        "doCheck",
+        "checkCommand"
+      ]
+    },
+    "editor_protocol": {
+      "state": "known",
+      "value": "native-editor"
+    },
+    "editor_supported": {
+      "state": "known",
+      "value": true
+    }
+  },
+  "operations": {
+    "lock": {
+      "capability": "elpaca-purifier",
+      "arguments": [
+        "lock",
+        "--project",
+        {
+          "binding": "project_root"
+        },
+        "--lock",
+        {
+          "binding": "lockfile"
+        },
+        {
+          "splice": "arguments"
+        }
+      ],
+      "sources": [
+        "https://github.com/nix-purifiers/elpaca-purifier/blob/ac7972957d583ab368a82aa1bc6eab6e0fcfb018/elpaca_purifier/cli.py"
+      ]
+    },
+    "prefetch": {
+      "capability": "elpaca-purifier",
+      "arguments": [
+        "prefetch",
+        "--project",
+        {
+          "binding": "project_root"
+        },
+        "--lock",
+        {
+          "binding": "lockfile"
+        },
+        {
+          "splice": "arguments"
+        }
+      ],
+      "sources": [
+        "https://github.com/nix-purifiers/elpaca-purifier/blob/ac7972957d583ab368a82aa1bc6eab6e0fcfb018/elpaca_purifier/cli.py"
+      ]
+    },
+    "bundle": {
+      "capability": "elpaca-purifier",
+      "arguments": [
+        "bundle",
+        "--project",
+        {
+          "binding": "project_root"
+        },
+        "--lock",
+        {
+          "binding": "lockfile"
+        },
+        {
+          "splice": "arguments"
+        }
+      ],
+      "sources": [
+        "https://github.com/nix-purifiers/elpaca-purifier/blob/ac7972957d583ab368a82aa1bc6eab6e0fcfb018/elpaca_purifier/cli.py"
+      ]
+    },
+    "update": {
+      "capability": "elpaca-purifier",
+      "arguments": [
+        "lock",
+        "--update",
+        "--project",
+        {
+          "binding": "project_root"
+        },
+        "--lock",
+        {
+          "binding": "lockfile"
+        },
+        {
+          "splice": "arguments"
+        }
+      ],
+      "sources": [
+        "https://github.com/nix-purifiers/elpaca-purifier/blob/ac7972957d583ab368a82aa1bc6eab6e0fcfb018/elpaca_purifier/cli.py"
+      ]
+    },
+    "publish": {
+      "capability": "elpaca-purifier",
+      "arguments": [
+        "publish",
+        "--project",
+        {
+          "binding": "project_root"
+        },
+        "--lock",
+        {
+          "binding": "lockfile"
+        },
+        "--tag",
+        {
+          "binding": "tag"
+        },
+        {
+          "splice": "arguments"
+        }
+      ],
+      "sources": [
+        "https://github.com/nix-purifiers/elpaca-purifier/blob/ac7972957d583ab368a82aa1bc6eab6e0fcfb018/elpaca_purifier/cli.py"
+      ]
+    },
+    "editor": {
+      "capability": "emacs",
+      "arguments": [
+        "--init-directory",
+        {
+          "binding": "project_root"
+        },
+        {
+          "splice": "arguments"
+        }
+      ],
+      "sources": [
+        "https://github.com/nix-purifiers/elpaca-purifier/blob/ac7972957d583ab368a82aa1bc6eab6e0fcfb018/elpaca_purifier/cli.py"
+      ],
+      "environment": {
+        "ELPACA_PURIFIER_PROJECT": {
+          "binding": "project_root"
+        },
+        "ELPACA_PURIFIER_LOCK": {
+          "binding": "lockfile"
+        }
+      }
+    }
+  }
+}

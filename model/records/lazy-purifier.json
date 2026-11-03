@@ -1,0 +1,279 @@
+{
+  "repository": "nix-purifiers/lazy-purifier",
+  "reviewedRevision": "3ea7f45f1e3e838ec7c9cc5fe363ba82694e70d8",
+  "facts": {
+    "tool": {
+      "state": "known",
+      "value": "Neovim and lazy.nvim"
+    },
+    "inputs": {
+      "state": "known",
+      "value": [
+        "init.lua and the native lazy.nvim dependency specification"
+      ]
+    },
+    "lockfiles": {
+      "state": "known",
+      "value": [
+        "lazy-lock.json",
+        "lazy-purifier.lock.json"
+      ]
+    },
+    "integration": {
+      "state": "known",
+      "value": "wrapper"
+    },
+    "relock": {
+      "state": "known",
+      "value": "preserves-pins"
+    },
+    "missing_lock": {
+      "state": "known",
+      "value": "warn-and-native"
+    },
+    "stale_lock": {
+      "state": "known",
+      "value": "fail-with-repair"
+    },
+    "platforms": {
+      "state": "known",
+      "value": [
+        "x86_64-linux",
+        "aarch64-linux"
+      ]
+    },
+    "dependency_sources": {
+      "state": "known",
+      "value": [
+        "Public HTTPS Git plugin sources"
+      ]
+    },
+    "offline_scope": {
+      "state": "known",
+      "value": "locked-dependencies"
+    },
+    "offline_limits": {
+      "state": "known",
+      "value": [
+        "Lua-only profiles are supported",
+        "Local plugins, build hooks, automatic build scripts, Git submodules and rockspec dependencies require additional providers",
+        "Conditional profiles must select the same dependencies when locked and launched",
+        "External language servers and dependencies fetched by plugin code are outside this lock"
+      ]
+    },
+    "unsupported_features": {
+      "state": "known",
+      "value": [
+        "Lua-only profiles are supported",
+        "Local plugins, build hooks, automatic build scripts, Git submodules and rockspec dependencies require additional providers",
+        "Conditional profiles must select the same dependencies when locked and launched",
+        "External language servers and dependencies fetched by plugin code are outside this lock"
+      ]
+    },
+    "nix_builder": {
+      "state": "known",
+      "value": "pkgs.lazy-purifier.buildLazyProject"
+    },
+    "build_isolation": {
+      "state": "known",
+      "value": "nix-sandbox"
+    },
+    "build_outputs": {
+      "state": "known",
+      "value": [
+        "packages",
+        "tests",
+        "release",
+        "fetches"
+      ]
+    },
+    "projection_incoming": {
+      "state": "known",
+      "value": "unsupported"
+    },
+    "projection_incoming_formats": {
+      "state": "not-applicable",
+      "reason": "No typed project projection adapter is exported by this implementation."
+    },
+    "projection_incoming_interfaces": {
+      "state": "not-applicable",
+      "reason": "No typed project projection interface is implemented."
+    },
+    "projection_incoming_limits": {
+      "state": "known",
+      "value": [
+        "Native source bundles and publication do not constitute a typed cross-purifier projection interface"
+      ]
+    },
+    "projection_outgoing": {
+      "state": "known",
+      "value": "unsupported"
+    },
+    "projection_outgoing_formats": {
+      "state": "not-applicable",
+      "reason": "No typed project projection adapter is exported by this implementation."
+    },
+    "projection_outgoing_interfaces": {
+      "state": "not-applicable",
+      "reason": "No typed project projection interface is implemented."
+    },
+    "projection_outgoing_limits": {
+      "state": "known",
+      "value": [
+        "Native source bundles and publication do not constitute a typed cross-purifier projection interface"
+      ]
+    },
+    "runtime_requirements": {
+      "state": "known",
+      "value": [
+        "An existing Neovim configuration using lazy.nvim",
+        "A Lua-only profile with a consistent dependency selection at capture and startup"
+      ]
+    },
+    "builder_options": {
+      "state": "known",
+      "value": [
+        "lockFile",
+        "nativeLockFile",
+        "fetchers",
+        "doCheck",
+        "checkCommand",
+        "nvimArgs"
+      ]
+    },
+    "editor_protocol": {
+      "state": "known",
+      "value": "native-editor"
+    },
+    "editor_supported": {
+      "state": "known",
+      "value": true
+    }
+  },
+  "operations": {
+    "lock": {
+      "capability": "lazy-purifier",
+      "arguments": [
+        "lock",
+        "--project",
+        {
+          "binding": "project_root"
+        },
+        "--lock",
+        {
+          "binding": "lockfile"
+        },
+        {
+          "splice": "arguments"
+        }
+      ],
+      "sources": [
+        "https://github.com/nix-purifiers/lazy-purifier/blob/3ea7f45f1e3e838ec7c9cc5fe363ba82694e70d8/lazy_purifier/cli.py"
+      ]
+    },
+    "prefetch": {
+      "capability": "lazy-purifier",
+      "arguments": [
+        "prefetch",
+        "--project",
+        {
+          "binding": "project_root"
+        },
+        "--lock",
+        {
+          "binding": "lockfile"
+        },
+        {
+          "splice": "arguments"
+        }
+      ],
+      "sources": [
+        "https://github.com/nix-purifiers/lazy-purifier/blob/3ea7f45f1e3e838ec7c9cc5fe363ba82694e70d8/lazy_purifier/cli.py"
+      ]
+    },
+    "bundle": {
+      "capability": "lazy-purifier",
+      "arguments": [
+        "bundle",
+        "--project",
+        {
+          "binding": "project_root"
+        },
+        "--lock",
+        {
+          "binding": "lockfile"
+        },
+        {
+          "splice": "arguments"
+        }
+      ],
+      "sources": [
+        "https://github.com/nix-purifiers/lazy-purifier/blob/3ea7f45f1e3e838ec7c9cc5fe363ba82694e70d8/lazy_purifier/cli.py"
+      ]
+    },
+    "update": {
+      "capability": "lazy-purifier",
+      "arguments": [
+        "lock",
+        "--update",
+        "--project",
+        {
+          "binding": "project_root"
+        },
+        "--lock",
+        {
+          "binding": "lockfile"
+        },
+        {
+          "splice": "arguments"
+        }
+      ],
+      "sources": [
+        "https://github.com/nix-purifiers/lazy-purifier/blob/3ea7f45f1e3e838ec7c9cc5fe363ba82694e70d8/lazy_purifier/cli.py"
+      ]
+    },
+    "publish": {
+      "capability": "lazy-purifier",
+      "arguments": [
+        "publish",
+        "--project",
+        {
+          "binding": "project_root"
+        },
+        "--lock",
+        {
+          "binding": "lockfile"
+        },
+        "--tag",
+        {
+          "binding": "tag"
+        },
+        {
+          "splice": "arguments"
+        }
+      ],
+      "sources": [
+        "https://github.com/nix-purifiers/lazy-purifier/blob/3ea7f45f1e3e838ec7c9cc5fe363ba82694e70d8/lazy_purifier/cli.py"
+      ]
+    },
+    "editor": {
+      "capability": "nvim",
+      "arguments": [
+        {
+          "splice": "arguments"
+        }
+      ],
+      "sources": [
+        "https://github.com/nix-purifiers/lazy-purifier/blob/3ea7f45f1e3e838ec7c9cc5fe363ba82694e70d8/lazy_purifier/cli.py"
+      ],
+      "environment": {
+        "LAZY_PURIFIER_PROJECT": {
+          "binding": "project_root"
+        },
+        "LAZY_PURIFIER_LOCK": {
+          "binding": "lockfile"
+        }
+      }
+    }
+  }
+}

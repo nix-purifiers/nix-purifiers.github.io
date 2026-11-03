@@ -1,0 +1,271 @@
+{
+  "repository": "nix-purifiers/quarto-purifier",
+  "reviewedRevision": "68c7c4274e97118df03b10383c1abd5ec8207107",
+  "facts": {
+    "tool": {
+      "state": "known",
+      "value": "Quarto extensions"
+    },
+    "inputs": {
+      "state": "known",
+      "value": [
+        "quarto-extensions.json",
+        "Quarto project or document files"
+      ]
+    },
+    "lockfiles": {
+      "state": "known",
+      "value": [
+        "quarto-purifier.lock.json"
+      ]
+    },
+    "integration": {
+      "state": "known",
+      "value": "wrapper"
+    },
+    "relock": {
+      "state": "known",
+      "value": "preserves-pins"
+    },
+    "missing_lock": {
+      "state": "known",
+      "value": "warn-and-native"
+    },
+    "stale_lock": {
+      "state": "known",
+      "value": "fail-with-repair"
+    },
+    "platforms": {
+      "state": "known",
+      "value": [
+        "x86_64-linux",
+        "aarch64-linux"
+      ]
+    },
+    "dependency_sources": {
+      "state": "known",
+      "value": [
+        "Public HTTPS extension archives and GitHub extension targets"
+      ]
+    },
+    "offline_scope": {
+      "state": "known",
+      "value": "locked-dependencies"
+    },
+    "offline_limits": {
+      "state": "known",
+      "value": [
+        "Only extension sources and the Quarto SDK are covered",
+        "Python, R, Julia, TeX, browser downloads, remote document resources and extension-fetched dependencies require their own integrations",
+        "The initial Nix check uses Markdown-to-HTML without a computation engine",
+        "Local and nested _extensions trees cannot override locked declarations"
+      ]
+    },
+    "unsupported_features": {
+      "state": "known",
+      "value": [
+        "Only extension sources and the Quarto SDK are covered",
+        "Python, R, Julia, TeX, browser downloads, remote document resources and extension-fetched dependencies require their own integrations",
+        "The initial Nix check uses Markdown-to-HTML without a computation engine",
+        "Local and nested _extensions trees cannot override locked declarations"
+      ]
+    },
+    "nix_builder": {
+      "state": "known",
+      "value": "pkgs.quarto-purifier.buildQuartoProject"
+    },
+    "build_isolation": {
+      "state": "known",
+      "value": "nix-sandbox"
+    },
+    "build_outputs": {
+      "state": "known",
+      "value": [
+        "packages",
+        "tests",
+        "release",
+        "fetches"
+      ]
+    },
+    "projection_incoming": {
+      "state": "known",
+      "value": "unsupported"
+    },
+    "projection_incoming_formats": {
+      "state": "not-applicable",
+      "reason": "No typed project projection adapter is exported by this implementation."
+    },
+    "projection_incoming_interfaces": {
+      "state": "not-applicable",
+      "reason": "No typed project projection interface is implemented."
+    },
+    "projection_incoming_limits": {
+      "state": "known",
+      "value": [
+        "Native source bundles and publication do not constitute a typed cross-purifier projection interface"
+      ]
+    },
+    "projection_outgoing": {
+      "state": "known",
+      "value": "unsupported"
+    },
+    "projection_outgoing_formats": {
+      "state": "not-applicable",
+      "reason": "No typed project projection adapter is exported by this implementation."
+    },
+    "projection_outgoing_interfaces": {
+      "state": "not-applicable",
+      "reason": "No typed project projection interface is implemented."
+    },
+    "projection_outgoing_limits": {
+      "state": "known",
+      "value": [
+        "Native source bundles and publication do not constitute a typed cross-purifier projection interface"
+      ]
+    },
+    "runtime_requirements": {
+      "state": "known",
+      "value": [
+        "A Quarto project with quarto-extensions.json declaring native extension targets"
+      ]
+    },
+    "builder_options": {
+      "state": "known",
+      "value": [
+        "lockFile",
+        "declarationsFile",
+        "fetchers",
+        "quartoArgs",
+        "doCheck",
+        "checkCommand"
+      ]
+    }
+  },
+  "operations": {
+    "lock": {
+      "capability": "quarto-purifier",
+      "arguments": [
+        "lock",
+        "--project",
+        {
+          "binding": "project_root"
+        },
+        "--lock",
+        {
+          "binding": "lockfile"
+        },
+        {
+          "splice": "arguments"
+        }
+      ],
+      "sources": [
+        "https://github.com/nix-purifiers/quarto-purifier/blob/68c7c4274e97118df03b10383c1abd5ec8207107/quarto_purifier/cli.py"
+      ]
+    },
+    "prefetch": {
+      "capability": "quarto-purifier",
+      "arguments": [
+        "prefetch",
+        "--project",
+        {
+          "binding": "project_root"
+        },
+        "--lock",
+        {
+          "binding": "lockfile"
+        },
+        {
+          "splice": "arguments"
+        }
+      ],
+      "sources": [
+        "https://github.com/nix-purifiers/quarto-purifier/blob/68c7c4274e97118df03b10383c1abd5ec8207107/quarto_purifier/cli.py"
+      ]
+    },
+    "bundle": {
+      "capability": "quarto-purifier",
+      "arguments": [
+        "bundle",
+        "--project",
+        {
+          "binding": "project_root"
+        },
+        "--lock",
+        {
+          "binding": "lockfile"
+        },
+        {
+          "splice": "arguments"
+        }
+      ],
+      "sources": [
+        "https://github.com/nix-purifiers/quarto-purifier/blob/68c7c4274e97118df03b10383c1abd5ec8207107/quarto_purifier/cli.py"
+      ]
+    },
+    "update": {
+      "capability": "quarto-purifier",
+      "arguments": [
+        "lock",
+        "--update",
+        "--project",
+        {
+          "binding": "project_root"
+        },
+        "--lock",
+        {
+          "binding": "lockfile"
+        },
+        {
+          "splice": "arguments"
+        }
+      ],
+      "sources": [
+        "https://github.com/nix-purifiers/quarto-purifier/blob/68c7c4274e97118df03b10383c1abd5ec8207107/quarto_purifier/cli.py"
+      ]
+    },
+    "publish": {
+      "capability": "quarto-purifier",
+      "arguments": [
+        "publish",
+        "--project",
+        {
+          "binding": "project_root"
+        },
+        "--lock",
+        {
+          "binding": "lockfile"
+        },
+        "--tag",
+        {
+          "binding": "tag"
+        },
+        {
+          "splice": "arguments"
+        }
+      ],
+      "sources": [
+        "https://github.com/nix-purifiers/quarto-purifier/blob/68c7c4274e97118df03b10383c1abd5ec8207107/quarto_purifier/cli.py"
+      ]
+    },
+    "build": {
+      "capability": "quarto",
+      "arguments": [
+        "render",
+        {
+          "splice": "arguments"
+        }
+      ],
+      "sources": [
+        "https://github.com/nix-purifiers/quarto-purifier/blob/68c7c4274e97118df03b10383c1abd5ec8207107/quarto_purifier/cli.py"
+      ],
+      "environment": {
+        "QUARTO_PURIFIER_PROJECT": {
+          "binding": "project_root"
+        },
+        "QUARTO_PURIFIER_LOCK": {
+          "binding": "lockfile"
+        }
+      }
+    }
+  }
+}

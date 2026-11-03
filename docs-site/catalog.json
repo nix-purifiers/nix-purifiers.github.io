@@ -282,6 +282,10 @@
         "bundle": {
           "arguments": [
             "bundle",
+            "--project",
+            {
+              "binding": "project_root"
+            },
             "--lock",
             {
               "binding": "lockfile"
@@ -331,6 +335,10 @@
         "lock": {
           "arguments": [
             "lock",
+            "--project",
+            {
+              "binding": "project_root"
+            },
             "--lock",
             {
               "binding": "lockfile"
@@ -354,6 +362,10 @@
         "prefetch": {
           "arguments": [
             "prefetch",
+            "--project",
+            {
+              "binding": "project_root"
+            },
             "--lock",
             {
               "binding": "lockfile"
@@ -377,6 +389,10 @@
         "publish": {
           "arguments": [
             "publish",
+            "--project",
+            {
+              "binding": "project_root"
+            },
             "--lock",
             {
               "binding": "lockfile"
@@ -405,6 +421,10 @@
           "arguments": [
             "lock",
             "--update",
+            "--project",
+            {
+              "binding": "project_root"
+            },
             "--lock",
             {
               "binding": "lockfile"
@@ -742,6 +762,10 @@
         "bundle": {
           "arguments": [
             "bundle",
+            "--project",
+            {
+              "binding": "project_root"
+            },
             "--lock",
             {
               "binding": "lockfile"
@@ -765,6 +789,10 @@
         "lock": {
           "arguments": [
             "lock",
+            "--project",
+            {
+              "binding": "project_root"
+            },
             "--lock",
             {
               "binding": "lockfile"
@@ -788,6 +816,10 @@
         "prefetch": {
           "arguments": [
             "prefetch",
+            "--project",
+            {
+              "binding": "project_root"
+            },
             "--lock",
             {
               "binding": "lockfile"
@@ -811,6 +843,10 @@
         "publish": {
           "arguments": [
             "publish",
+            "--project",
+            {
+              "binding": "project_root"
+            },
             "--lock",
             {
               "binding": "lockfile"
@@ -865,6 +901,10 @@
           "arguments": [
             "lock",
             "--update",
+            "--project",
+            {
+              "binding": "project_root"
+            },
             "--lock",
             {
               "binding": "lockfile"
@@ -921,6 +961,472 @@
       "values": {
         "language_tooling_setup": "GNAT and GPR-based tooling reads the prepared dependency projects and their readonly Nix library paths. Start the editor process with `alire-purifier exec -- your-editor` so it receives the same native project environment as `alr build`. This integration supplies GPR metadata and the GNAT/GPR toolchain; it does not supply a separate LSP launcher.",
         "quickstart": "nix shell 'github:nix-purifiers/alire-purifier'\nalire-purifier lock\nalr build\nalr run"
+      },
+      "version": 1
+    },
+    "ansible-purifier": {
+      "facts": {
+        "build_engine": {
+          "reason": "This capability is not established by the reviewed integration record.",
+          "state": "unknown"
+        },
+        "build_isolation": {
+          "sources": [],
+          "state": "known",
+          "value": "nix-sandbox"
+        },
+        "build_outputs": {
+          "sources": [],
+          "state": "known",
+          "value": [
+            "packages",
+            "tests",
+            "release",
+            "fetches"
+          ]
+        },
+        "builder_options": {
+          "sources": [],
+          "state": "known",
+          "value": [
+            "lockFile",
+            "playbook",
+            "inventory",
+            "fetchers",
+            "nativeBuildInputs",
+            "doCheck",
+            "checkCommand",
+            "version"
+          ]
+        },
+        "credentials": {
+          "reason": "This capability is not established by the reviewed integration record.",
+          "state": "unknown"
+        },
+        "dependency_sources": {
+          "sources": [],
+          "state": "known",
+          "value": [
+            "Public Galaxy collection archives"
+          ]
+        },
+        "editor_completion": {
+          "reason": "This capability is not established by the reviewed integration record.",
+          "state": "unknown"
+        },
+        "editor_dependency_sources": {
+          "reason": "This capability is not established by the reviewed integration record.",
+          "state": "unknown"
+        },
+        "editor_diagnostics": {
+          "reason": "This capability is not established by the reviewed integration record.",
+          "state": "unknown"
+        },
+        "editor_metadata_format": {
+          "reason": "This capability is not established by the reviewed integration record.",
+          "state": "unknown"
+        },
+        "editor_navigation": {
+          "reason": "This capability is not established by the reviewed integration record.",
+          "state": "unknown"
+        },
+        "editor_offline": {
+          "reason": "This capability is not established by the reviewed integration record.",
+          "state": "unknown"
+        },
+        "editor_protocol": {
+          "reason": "This capability is not established by the reviewed integration record.",
+          "state": "unknown"
+        },
+        "editor_supported": {
+          "reason": "This capability is not established by the reviewed integration record.",
+          "state": "unknown"
+        },
+        "generated_cache_directory": {
+          "reason": "This capability is not established by the reviewed integration record.",
+          "state": "unknown"
+        },
+        "inputs": {
+          "sources": [],
+          "state": "known",
+          "value": [
+            "requirements.yml",
+            "ansible.cfg when present"
+          ]
+        },
+        "integration": {
+          "sources": [],
+          "state": "known",
+          "value": "wrapper"
+        },
+        "lock_identity": {
+          "reason": "This capability is not established by the reviewed integration record.",
+          "state": "unknown"
+        },
+        "lockfiles": {
+          "sources": [],
+          "state": "known",
+          "value": [
+            "ansible-purifier.lock.json"
+          ]
+        },
+        "missing_lock": {
+          "sources": [],
+          "state": "known",
+          "value": "warn-and-native"
+        },
+        "named_update_example": {
+          "reason": "This capability is not established by the reviewed integration record.",
+          "state": "unknown"
+        },
+        "native_plugin_bootstrap": {
+          "reason": "This capability is not established by the reviewed integration record.",
+          "state": "unknown"
+        },
+        "native_plugin_coordinate": {
+          "reason": "This capability is not established by the reviewed integration record.",
+          "state": "unknown"
+        },
+        "native_plugin_java_target": {
+          "reason": "This capability is not established by the reviewed integration record.",
+          "state": "unknown"
+        },
+        "native_plugin_repository": {
+          "reason": "This capability is not established by the reviewed integration record.",
+          "state": "unknown"
+        },
+        "nix_builder": {
+          "sources": [],
+          "state": "known",
+          "value": "pkgs.ansible-purifier.buildAnsibleProject"
+        },
+        "offline_limits": {
+          "sources": [],
+          "state": "known",
+          "value": [
+            "Roles, Git collections and private Galaxy servers require additional providers",
+            "Python library dependencies and remote host system packages are not implicitly installed",
+            "Playbook tasks and target hosts retain their normal networking"
+          ]
+        },
+        "offline_scope": {
+          "sources": [],
+          "state": "known",
+          "value": "locked-dependencies"
+        },
+        "platform_notes": {
+          "reason": "This capability is not established by the reviewed integration record.",
+          "state": "unknown"
+        },
+        "platforms": {
+          "sources": [],
+          "state": "known",
+          "value": [
+            "x86_64-linux",
+            "aarch64-linux"
+          ]
+        },
+        "prefetch_components": {
+          "reason": "This capability is not established by the reviewed integration record.",
+          "state": "unknown"
+        },
+        "projection_incoming": {
+          "sources": [],
+          "state": "known",
+          "value": "unsupported"
+        },
+        "projection_incoming_formats": {
+          "reason": "No typed project projection adapter is exported by this implementation.",
+          "state": "not-applicable"
+        },
+        "projection_incoming_interfaces": {
+          "reason": "No typed project projection interface is implemented.",
+          "state": "not-applicable"
+        },
+        "projection_incoming_limits": {
+          "sources": [],
+          "state": "known",
+          "value": [
+            "Native source bundles and publication do not constitute a typed cross-purifier projection interface"
+          ]
+        },
+        "projection_outgoing": {
+          "sources": [],
+          "state": "known",
+          "value": "unsupported"
+        },
+        "projection_outgoing_formats": {
+          "reason": "No typed project projection adapter is exported by this implementation.",
+          "state": "not-applicable"
+        },
+        "projection_outgoing_interfaces": {
+          "reason": "No typed project projection interface is implemented.",
+          "state": "not-applicable"
+        },
+        "projection_outgoing_limits": {
+          "sources": [],
+          "state": "known",
+          "value": [
+            "Native source bundles and publication do not constitute a typed cross-purifier projection interface"
+          ]
+        },
+        "relock": {
+          "sources": [],
+          "state": "known",
+          "value": "preserves-pins"
+        },
+        "runtime_requirements": {
+          "sources": [],
+          "state": "known",
+          "value": [
+            "A project with Galaxy collection requirements in requirements.yml",
+            "An inventory and playbook matching the shown native command"
+          ]
+        },
+        "stale_lock": {
+          "sources": [],
+          "state": "known",
+          "value": "fail-with-repair"
+        },
+        "supported_native_commands": {
+          "reason": "This capability is not established by the reviewed integration record.",
+          "state": "unknown"
+        },
+        "tested_toolchain": {
+          "reason": "This capability is not established by the reviewed integration record.",
+          "state": "unknown"
+        },
+        "tool": {
+          "sources": [],
+          "state": "known",
+          "value": "Ansible and Galaxy collections"
+        },
+        "unsupported_features": {
+          "sources": [],
+          "state": "known",
+          "value": [
+            "Roles, Git collections and private Galaxy servers require additional providers",
+            "Python library dependencies and remote host system packages are not implicitly installed",
+            "Playbook tasks and target hosts retain their normal networking"
+          ]
+        },
+        "updates_ignore_file": {
+          "reason": "This capability is not established by the reviewed integration record.",
+          "state": "unknown"
+        },
+        "wrapper_required": {
+          "reason": "This capability is not established by the reviewed integration record.",
+          "state": "unknown"
+        }
+      },
+      "operations": {
+        "build": {
+          "arguments": [
+            "-i",
+            {
+              "binding": "inventory"
+            },
+            {
+              "binding": "playbook"
+            },
+            {
+              "splice": "arguments"
+            }
+          ],
+          "capability": "ansible-playbook",
+          "directory": {
+            "binding": "project_root"
+          },
+          "environment": {
+            "ANSIBLE_PURIFIER_LOCK": {
+              "binding": "lockfile"
+            },
+            "ANSIBLE_PURIFIER_PROJECT": {
+              "binding": "project_root"
+            }
+          },
+          "minimumArguments": 0,
+          "reason": null,
+          "sources": [
+            "https://github.com/nix-purifiers/ansible-purifier/blob/02fb9a2a124158b24dcfc96c6333e405071a7777/ansible_purifier/cli.py"
+          ],
+          "state": "available"
+        },
+        "bundle": {
+          "arguments": [
+            "bundle",
+            "--project",
+            {
+              "binding": "project_root"
+            },
+            "--lock",
+            {
+              "binding": "lockfile"
+            },
+            {
+              "splice": "arguments"
+            }
+          ],
+          "capability": "ansible-purifier",
+          "directory": {
+            "binding": "project_root"
+          },
+          "environment": {},
+          "minimumArguments": 0,
+          "reason": null,
+          "sources": [
+            "https://github.com/nix-purifiers/ansible-purifier/blob/02fb9a2a124158b24dcfc96c6333e405071a7777/ansible_purifier/cli.py"
+          ],
+          "state": "available"
+        },
+        "lock": {
+          "arguments": [
+            "lock",
+            "--project",
+            {
+              "binding": "project_root"
+            },
+            "--lock",
+            {
+              "binding": "lockfile"
+            },
+            {
+              "splice": "arguments"
+            }
+          ],
+          "capability": "ansible-purifier",
+          "directory": {
+            "binding": "project_root"
+          },
+          "environment": {},
+          "minimumArguments": 0,
+          "reason": null,
+          "sources": [
+            "https://github.com/nix-purifiers/ansible-purifier/blob/02fb9a2a124158b24dcfc96c6333e405071a7777/ansible_purifier/cli.py"
+          ],
+          "state": "available"
+        },
+        "prefetch": {
+          "arguments": [
+            "prefetch",
+            "--project",
+            {
+              "binding": "project_root"
+            },
+            "--lock",
+            {
+              "binding": "lockfile"
+            },
+            {
+              "splice": "arguments"
+            }
+          ],
+          "capability": "ansible-purifier",
+          "directory": {
+            "binding": "project_root"
+          },
+          "environment": {},
+          "minimumArguments": 0,
+          "reason": null,
+          "sources": [
+            "https://github.com/nix-purifiers/ansible-purifier/blob/02fb9a2a124158b24dcfc96c6333e405071a7777/ansible_purifier/cli.py"
+          ],
+          "state": "available"
+        },
+        "publish": {
+          "arguments": [
+            "publish",
+            "--project",
+            {
+              "binding": "project_root"
+            },
+            "--lock",
+            {
+              "binding": "lockfile"
+            },
+            "--tag",
+            {
+              "binding": "tag"
+            },
+            {
+              "splice": "arguments"
+            }
+          ],
+          "capability": "ansible-purifier",
+          "directory": {
+            "binding": "project_root"
+          },
+          "environment": {},
+          "minimumArguments": 0,
+          "reason": null,
+          "sources": [
+            "https://github.com/nix-purifiers/ansible-purifier/blob/02fb9a2a124158b24dcfc96c6333e405071a7777/ansible_purifier/cli.py"
+          ],
+          "state": "available"
+        },
+        "update": {
+          "arguments": [
+            "lock",
+            "--update",
+            "--project",
+            {
+              "binding": "project_root"
+            },
+            "--lock",
+            {
+              "binding": "lockfile"
+            },
+            {
+              "splice": "arguments"
+            }
+          ],
+          "capability": "ansible-purifier",
+          "directory": {
+            "binding": "project_root"
+          },
+          "environment": {},
+          "minimumArguments": 0,
+          "reason": null,
+          "sources": [
+            "https://github.com/nix-purifiers/ansible-purifier/blob/02fb9a2a124158b24dcfc96c6333e405071a7777/ansible_purifier/cli.py"
+          ],
+          "state": "available"
+        }
+      },
+      "repository": "nix-purifiers/ansible-purifier",
+      "reviewedRevision": "02fb9a2a124158b24dcfc96c6333e405071a7777",
+      "sections": {
+        "credits": {
+          "use": "cargo"
+        },
+        "editor": {
+          "omit": "A specific language-tooling integration is not established by the reviewed implementation."
+        },
+        "integration": {
+          "use": "native"
+        },
+        "nix_builds": {
+          "use": "native"
+        },
+        "offline": {
+          "use": "native"
+        },
+        "projections": {
+          "use": "directional"
+        },
+        "quickstart": {
+          "use": "reviewed"
+        },
+        "scope": {
+          "use": "native"
+        },
+        "workflow": {
+          "use": "native"
+        }
+      },
+      "summary": "Locked, Nix-resolved dependencies for Ansible and Galaxy collections.",
+      "values": {
+        "quickstart": "nix shell 'github:nix-purifiers/ansible-purifier'\nansible-purifier lock\nansible-playbook -i inventory playbook.yml"
       },
       "version": 1
     },
@@ -1728,6 +2234,10 @@
         "bundle": {
           "arguments": [
             "bundle",
+            "--project",
+            {
+              "binding": "project_root"
+            },
             "--lock",
             {
               "binding": "lockfile"
@@ -1804,6 +2314,10 @@
         "lock": {
           "arguments": [
             "lock",
+            "--project",
+            {
+              "binding": "project_root"
+            },
             "--lock",
             {
               "binding": "lockfile"
@@ -1827,6 +2341,10 @@
         "prefetch": {
           "arguments": [
             "prefetch",
+            "--project",
+            {
+              "binding": "project_root"
+            },
             "--lock",
             {
               "binding": "lockfile"
@@ -1850,6 +2368,10 @@
         "publish": {
           "arguments": [
             "publish",
+            "--project",
+            {
+              "binding": "project_root"
+            },
             "--lock",
             {
               "binding": "lockfile"
@@ -1878,6 +2400,10 @@
           "arguments": [
             "lock",
             "--update",
+            "--project",
+            {
+              "binding": "project_root"
+            },
             "--lock",
             {
               "binding": "lockfile"
@@ -6081,6 +6607,10 @@
         "bundle": {
           "arguments": [
             "bundle",
+            "--project",
+            {
+              "binding": "project_root"
+            },
             "--lock",
             {
               "binding": "lockfile"
@@ -6131,6 +6661,10 @@
         "lock": {
           "arguments": [
             "lock",
+            "--project",
+            {
+              "binding": "project_root"
+            },
             "--lock",
             {
               "binding": "lockfile"
@@ -6154,6 +6688,10 @@
         "prefetch": {
           "arguments": [
             "prefetch",
+            "--project",
+            {
+              "binding": "project_root"
+            },
             "--lock",
             {
               "binding": "lockfile"
@@ -6177,6 +6715,10 @@
         "publish": {
           "arguments": [
             "publish",
+            "--project",
+            {
+              "binding": "project_root"
+            },
             "--lock",
             {
               "binding": "lockfile"
@@ -6205,6 +6747,10 @@
           "arguments": [
             "lock",
             "--update",
+            "--project",
+            {
+              "binding": "project_root"
+            },
             "--lock",
             {
               "binding": "lockfile"
@@ -6873,6 +7419,10 @@
         "bundle": {
           "arguments": [
             "bundle",
+            "--project",
+            {
+              "binding": "project_root"
+            },
             "--lock",
             {
               "binding": "lockfile"
@@ -6921,6 +7471,10 @@
         "lock": {
           "arguments": [
             "lock",
+            "--project",
+            {
+              "binding": "project_root"
+            },
             "--lock",
             {
               "binding": "lockfile"
@@ -6944,6 +7498,10 @@
         "prefetch": {
           "arguments": [
             "prefetch",
+            "--project",
+            {
+              "binding": "project_root"
+            },
             "--lock",
             {
               "binding": "lockfile"
@@ -6967,6 +7525,10 @@
         "publish": {
           "arguments": [
             "publish",
+            "--project",
+            {
+              "binding": "project_root"
+            },
             "--lock",
             {
               "binding": "lockfile"
@@ -6995,6 +7557,10 @@
           "arguments": [
             "lock",
             "--update",
+            "--project",
+            {
+              "binding": "project_root"
+            },
             "--lock",
             {
               "binding": "lockfile"
@@ -8617,6 +9183,473 @@
       "values": {
         "language_tooling_setup": "Editors and language servers find `elm`, `elm-test` and `elm-format` on\n`PATH`, and the packages through `ELM_HOME`. The tools in\n`elm-stuff/elm-purifier/bin` set `ELM_HOME` themselves, so putting that\ndirectory first on `PATH` is all an editor needs. The same directory holds\n`elm-language-server`, which runs the language server with that `PATH`:\n\n```zsh\nPATH=\"$PWD/elm-stuff/elm-purifier/bin:$PATH\" code .\n```\n\nWith direnv, the line `PATH_add elm-stuff/elm-purifier/bin` in `.envrc`\ndoes the same. The language server sometimes hangs while it starts, and\nrestarting it from the editor fixes that.",
         "quickstart": "nix shell 'github:nix-purifiers/elm-purifier'\nelm-purifier lock\nelm-purifier prefetch\nexport PATH=\"$PWD/elm-stuff/elm-purifier/bin:$PATH\"\nelm make src/Main.elm\nelm-test"
+      },
+      "version": 1
+    },
+    "elpaca-purifier": {
+      "facts": {
+        "build_engine": {
+          "reason": "This capability is not established by the reviewed integration record.",
+          "state": "unknown"
+        },
+        "build_isolation": {
+          "sources": [],
+          "state": "known",
+          "value": "nix-sandbox"
+        },
+        "build_outputs": {
+          "sources": [],
+          "state": "known",
+          "value": [
+            "packages",
+            "tests",
+            "release",
+            "fetches"
+          ]
+        },
+        "builder_options": {
+          "sources": [],
+          "state": "known",
+          "value": [
+            "lockFile",
+            "nativeLockFile",
+            "configFile",
+            "emacsArgs",
+            "fetchers",
+            "doCheck",
+            "checkCommand"
+          ]
+        },
+        "credentials": {
+          "reason": "This capability is not established by the reviewed integration record.",
+          "state": "unknown"
+        },
+        "dependency_sources": {
+          "sources": [],
+          "state": "known",
+          "value": [
+            "Public HTTPS Git package sources"
+          ]
+        },
+        "editor_completion": {
+          "reason": "This capability is not established by the reviewed integration record.",
+          "state": "unknown"
+        },
+        "editor_dependency_sources": {
+          "reason": "This capability is not established by the reviewed integration record.",
+          "state": "unknown"
+        },
+        "editor_diagnostics": {
+          "reason": "This capability is not established by the reviewed integration record.",
+          "state": "unknown"
+        },
+        "editor_metadata_format": {
+          "reason": "This capability is not established by the reviewed integration record.",
+          "state": "unknown"
+        },
+        "editor_navigation": {
+          "reason": "This capability is not established by the reviewed integration record.",
+          "state": "unknown"
+        },
+        "editor_offline": {
+          "reason": "This capability is not established by the reviewed integration record.",
+          "state": "unknown"
+        },
+        "editor_protocol": {
+          "sources": [],
+          "state": "known",
+          "value": "native-editor"
+        },
+        "editor_supported": {
+          "sources": [],
+          "state": "known",
+          "value": true
+        },
+        "generated_cache_directory": {
+          "reason": "This capability is not established by the reviewed integration record.",
+          "state": "unknown"
+        },
+        "inputs": {
+          "sources": [],
+          "state": "known",
+          "value": [
+            "An Emacs configuration using Elpaca"
+          ]
+        },
+        "integration": {
+          "sources": [],
+          "state": "known",
+          "value": "wrapper"
+        },
+        "lock_identity": {
+          "reason": "This capability is not established by the reviewed integration record.",
+          "state": "unknown"
+        },
+        "lockfiles": {
+          "sources": [],
+          "state": "known",
+          "value": [
+            "elpaca-lock.el",
+            "elpaca-purifier.lock.json"
+          ]
+        },
+        "missing_lock": {
+          "sources": [],
+          "state": "known",
+          "value": "warn-and-native"
+        },
+        "named_update_example": {
+          "reason": "This capability is not established by the reviewed integration record.",
+          "state": "unknown"
+        },
+        "native_plugin_bootstrap": {
+          "reason": "This capability is not established by the reviewed integration record.",
+          "state": "unknown"
+        },
+        "native_plugin_coordinate": {
+          "reason": "This capability is not established by the reviewed integration record.",
+          "state": "unknown"
+        },
+        "native_plugin_java_target": {
+          "reason": "This capability is not established by the reviewed integration record.",
+          "state": "unknown"
+        },
+        "native_plugin_repository": {
+          "reason": "This capability is not established by the reviewed integration record.",
+          "state": "unknown"
+        },
+        "nix_builder": {
+          "sources": [],
+          "state": "known",
+          "value": "pkgs.elpaca-purifier.buildElpacaProject"
+        },
+        "offline_limits": {
+          "sources": [],
+          "state": "known",
+          "value": [
+            "Standard Elisp builds are supported",
+            "Custom build steps, build variables, shared repositories, submodules and native modules require additional providers",
+            "Capture configuration must work in batch mode and select the same packages as the runtime profile",
+            "External language servers and dependencies downloaded by package code are outside this lock"
+          ]
+        },
+        "offline_scope": {
+          "sources": [],
+          "state": "known",
+          "value": "locked-dependencies"
+        },
+        "platform_notes": {
+          "reason": "This capability is not established by the reviewed integration record.",
+          "state": "unknown"
+        },
+        "platforms": {
+          "sources": [],
+          "state": "known",
+          "value": [
+            "x86_64-linux",
+            "aarch64-linux"
+          ]
+        },
+        "prefetch_components": {
+          "reason": "This capability is not established by the reviewed integration record.",
+          "state": "unknown"
+        },
+        "projection_incoming": {
+          "sources": [],
+          "state": "known",
+          "value": "unsupported"
+        },
+        "projection_incoming_formats": {
+          "reason": "No typed project projection adapter is exported by this implementation.",
+          "state": "not-applicable"
+        },
+        "projection_incoming_interfaces": {
+          "reason": "No typed project projection interface is implemented.",
+          "state": "not-applicable"
+        },
+        "projection_incoming_limits": {
+          "sources": [],
+          "state": "known",
+          "value": [
+            "Native source bundles and publication do not constitute a typed cross-purifier projection interface"
+          ]
+        },
+        "projection_outgoing": {
+          "sources": [],
+          "state": "known",
+          "value": "unsupported"
+        },
+        "projection_outgoing_formats": {
+          "reason": "No typed project projection adapter is exported by this implementation.",
+          "state": "not-applicable"
+        },
+        "projection_outgoing_interfaces": {
+          "reason": "No typed project projection interface is implemented.",
+          "state": "not-applicable"
+        },
+        "projection_outgoing_limits": {
+          "sources": [],
+          "state": "known",
+          "value": [
+            "Native source bundles and publication do not constitute a typed cross-purifier projection interface"
+          ]
+        },
+        "relock": {
+          "sources": [],
+          "state": "known",
+          "value": "preserves-pins"
+        },
+        "runtime_requirements": {
+          "sources": [],
+          "state": "known",
+          "value": [
+            "An existing Emacs configuration using Elpaca",
+            "A batch-compatible capture configuration selecting the same packages as the editor"
+          ]
+        },
+        "stale_lock": {
+          "sources": [],
+          "state": "known",
+          "value": "fail-with-repair"
+        },
+        "supported_native_commands": {
+          "reason": "This capability is not established by the reviewed integration record.",
+          "state": "unknown"
+        },
+        "tested_toolchain": {
+          "reason": "This capability is not established by the reviewed integration record.",
+          "state": "unknown"
+        },
+        "tool": {
+          "sources": [],
+          "state": "known",
+          "value": "Emacs and Elpaca"
+        },
+        "unsupported_features": {
+          "sources": [],
+          "state": "known",
+          "value": [
+            "Standard Elisp builds are supported",
+            "Custom build steps, build variables, shared repositories, submodules and native modules require additional providers",
+            "Capture configuration must work in batch mode and select the same packages as the runtime profile",
+            "External language servers and dependencies downloaded by package code are outside this lock"
+          ]
+        },
+        "updates_ignore_file": {
+          "reason": "This capability is not established by the reviewed integration record.",
+          "state": "unknown"
+        },
+        "wrapper_required": {
+          "reason": "This capability is not established by the reviewed integration record.",
+          "state": "unknown"
+        }
+      },
+      "operations": {
+        "bundle": {
+          "arguments": [
+            "bundle",
+            "--project",
+            {
+              "binding": "project_root"
+            },
+            "--lock",
+            {
+              "binding": "lockfile"
+            },
+            {
+              "splice": "arguments"
+            }
+          ],
+          "capability": "elpaca-purifier",
+          "directory": {
+            "binding": "project_root"
+          },
+          "environment": {},
+          "minimumArguments": 0,
+          "reason": null,
+          "sources": [
+            "https://github.com/nix-purifiers/elpaca-purifier/blob/ac7972957d583ab368a82aa1bc6eab6e0fcfb018/elpaca_purifier/cli.py"
+          ],
+          "state": "available"
+        },
+        "editor": {
+          "arguments": [
+            "--init-directory",
+            {
+              "binding": "project_root"
+            },
+            {
+              "splice": "arguments"
+            }
+          ],
+          "capability": "emacs",
+          "directory": {
+            "binding": "project_root"
+          },
+          "environment": {
+            "ELPACA_PURIFIER_LOCK": {
+              "binding": "lockfile"
+            },
+            "ELPACA_PURIFIER_PROJECT": {
+              "binding": "project_root"
+            }
+          },
+          "minimumArguments": 0,
+          "reason": null,
+          "sources": [
+            "https://github.com/nix-purifiers/elpaca-purifier/blob/ac7972957d583ab368a82aa1bc6eab6e0fcfb018/elpaca_purifier/cli.py"
+          ],
+          "state": "available"
+        },
+        "lock": {
+          "arguments": [
+            "lock",
+            "--project",
+            {
+              "binding": "project_root"
+            },
+            "--lock",
+            {
+              "binding": "lockfile"
+            },
+            {
+              "splice": "arguments"
+            }
+          ],
+          "capability": "elpaca-purifier",
+          "directory": {
+            "binding": "project_root"
+          },
+          "environment": {},
+          "minimumArguments": 0,
+          "reason": null,
+          "sources": [
+            "https://github.com/nix-purifiers/elpaca-purifier/blob/ac7972957d583ab368a82aa1bc6eab6e0fcfb018/elpaca_purifier/cli.py"
+          ],
+          "state": "available"
+        },
+        "prefetch": {
+          "arguments": [
+            "prefetch",
+            "--project",
+            {
+              "binding": "project_root"
+            },
+            "--lock",
+            {
+              "binding": "lockfile"
+            },
+            {
+              "splice": "arguments"
+            }
+          ],
+          "capability": "elpaca-purifier",
+          "directory": {
+            "binding": "project_root"
+          },
+          "environment": {},
+          "minimumArguments": 0,
+          "reason": null,
+          "sources": [
+            "https://github.com/nix-purifiers/elpaca-purifier/blob/ac7972957d583ab368a82aa1bc6eab6e0fcfb018/elpaca_purifier/cli.py"
+          ],
+          "state": "available"
+        },
+        "publish": {
+          "arguments": [
+            "publish",
+            "--project",
+            {
+              "binding": "project_root"
+            },
+            "--lock",
+            {
+              "binding": "lockfile"
+            },
+            "--tag",
+            {
+              "binding": "tag"
+            },
+            {
+              "splice": "arguments"
+            }
+          ],
+          "capability": "elpaca-purifier",
+          "directory": {
+            "binding": "project_root"
+          },
+          "environment": {},
+          "minimumArguments": 0,
+          "reason": null,
+          "sources": [
+            "https://github.com/nix-purifiers/elpaca-purifier/blob/ac7972957d583ab368a82aa1bc6eab6e0fcfb018/elpaca_purifier/cli.py"
+          ],
+          "state": "available"
+        },
+        "update": {
+          "arguments": [
+            "lock",
+            "--update",
+            "--project",
+            {
+              "binding": "project_root"
+            },
+            "--lock",
+            {
+              "binding": "lockfile"
+            },
+            {
+              "splice": "arguments"
+            }
+          ],
+          "capability": "elpaca-purifier",
+          "directory": {
+            "binding": "project_root"
+          },
+          "environment": {},
+          "minimumArguments": 0,
+          "reason": null,
+          "sources": [
+            "https://github.com/nix-purifiers/elpaca-purifier/blob/ac7972957d583ab368a82aa1bc6eab6e0fcfb018/elpaca_purifier/cli.py"
+          ],
+          "state": "available"
+        }
+      },
+      "repository": "nix-purifiers/elpaca-purifier",
+      "reviewedRevision": "ac7972957d583ab368a82aa1bc6eab6e0fcfb018",
+      "sections": {
+        "credits": {
+          "use": "cargo"
+        },
+        "editor": {
+          "use": "native"
+        },
+        "integration": {
+          "use": "native"
+        },
+        "nix_builds": {
+          "use": "native"
+        },
+        "offline": {
+          "use": "native"
+        },
+        "projections": {
+          "use": "directional"
+        },
+        "quickstart": {
+          "use": "reviewed"
+        },
+        "scope": {
+          "use": "native"
+        },
+        "workflow": {
+          "use": "native"
+        }
+      },
+      "summary": "Locked, Nix-resolved dependencies for Emacs and Elpaca.",
+      "values": {
+        "language_tooling_setup": "Start the supplied `emacs` wrapper with the configuration\u2019s `--init-directory`. It loads the pinned Elpaca manager before user initialization and activates readonly Nix-built packages through the native package queue. Source and documentation navigation use those pinned sources; caches, aliases and editor state remain private.",
+        "quickstart": "nix shell 'github:nix-purifiers/elpaca-purifier'\nelpaca-purifier lock --project .\nemacs --init-directory \"$PWD\""
       },
       "version": 1
     },
@@ -11356,6 +12389,10 @@
         "bundle": {
           "arguments": [
             "bundle",
+            "--project",
+            {
+              "binding": "project_root"
+            },
             "--lock",
             {
               "binding": "lockfile"
@@ -11404,6 +12441,10 @@
         "lock": {
           "arguments": [
             "lock",
+            "--project",
+            {
+              "binding": "project_root"
+            },
             "--lock",
             {
               "binding": "lockfile"
@@ -11427,6 +12468,10 @@
         "prefetch": {
           "arguments": [
             "prefetch",
+            "--project",
+            {
+              "binding": "project_root"
+            },
             "--lock",
             {
               "binding": "lockfile"
@@ -11450,6 +12495,10 @@
         "publish": {
           "arguments": [
             "publish",
+            "--project",
+            {
+              "binding": "project_root"
+            },
             "--lock",
             {
               "binding": "lockfile"
@@ -11504,6 +12553,10 @@
           "arguments": [
             "lock",
             "--update",
+            "--project",
+            {
+              "binding": "project_root"
+            },
             "--lock",
             {
               "binding": "lockfile"
@@ -12594,6 +13647,468 @@
       "values": {
         "language_tooling_setup": "```sh\nlake env lean MyModule.lean\nlake serve\n```\n\nLake's environment and language server use the same Nix dependency paths as the\ncompiler. Dependency source remains available for navigation. An existing local\npackage checkout or cache does not select dependencies in a locked session.",
         "quickstart": "nix shell 'github:nix-purifiers/lake-purifier'\nlake-purifier lock\nlake build\nlake exe your-program"
+      },
+      "version": 1
+    },
+    "lazy-purifier": {
+      "facts": {
+        "build_engine": {
+          "reason": "This capability is not established by the reviewed integration record.",
+          "state": "unknown"
+        },
+        "build_isolation": {
+          "sources": [],
+          "state": "known",
+          "value": "nix-sandbox"
+        },
+        "build_outputs": {
+          "sources": [],
+          "state": "known",
+          "value": [
+            "packages",
+            "tests",
+            "release",
+            "fetches"
+          ]
+        },
+        "builder_options": {
+          "sources": [],
+          "state": "known",
+          "value": [
+            "lockFile",
+            "nativeLockFile",
+            "fetchers",
+            "doCheck",
+            "checkCommand",
+            "nvimArgs"
+          ]
+        },
+        "credentials": {
+          "reason": "This capability is not established by the reviewed integration record.",
+          "state": "unknown"
+        },
+        "dependency_sources": {
+          "sources": [],
+          "state": "known",
+          "value": [
+            "Public HTTPS Git plugin sources"
+          ]
+        },
+        "editor_completion": {
+          "reason": "This capability is not established by the reviewed integration record.",
+          "state": "unknown"
+        },
+        "editor_dependency_sources": {
+          "reason": "This capability is not established by the reviewed integration record.",
+          "state": "unknown"
+        },
+        "editor_diagnostics": {
+          "reason": "This capability is not established by the reviewed integration record.",
+          "state": "unknown"
+        },
+        "editor_metadata_format": {
+          "reason": "This capability is not established by the reviewed integration record.",
+          "state": "unknown"
+        },
+        "editor_navigation": {
+          "reason": "This capability is not established by the reviewed integration record.",
+          "state": "unknown"
+        },
+        "editor_offline": {
+          "reason": "This capability is not established by the reviewed integration record.",
+          "state": "unknown"
+        },
+        "editor_protocol": {
+          "sources": [],
+          "state": "known",
+          "value": "native-editor"
+        },
+        "editor_supported": {
+          "sources": [],
+          "state": "known",
+          "value": true
+        },
+        "generated_cache_directory": {
+          "reason": "This capability is not established by the reviewed integration record.",
+          "state": "unknown"
+        },
+        "inputs": {
+          "sources": [],
+          "state": "known",
+          "value": [
+            "init.lua and the native lazy.nvim dependency specification"
+          ]
+        },
+        "integration": {
+          "sources": [],
+          "state": "known",
+          "value": "wrapper"
+        },
+        "lock_identity": {
+          "reason": "This capability is not established by the reviewed integration record.",
+          "state": "unknown"
+        },
+        "lockfiles": {
+          "sources": [],
+          "state": "known",
+          "value": [
+            "lazy-lock.json",
+            "lazy-purifier.lock.json"
+          ]
+        },
+        "missing_lock": {
+          "sources": [],
+          "state": "known",
+          "value": "warn-and-native"
+        },
+        "named_update_example": {
+          "reason": "This capability is not established by the reviewed integration record.",
+          "state": "unknown"
+        },
+        "native_plugin_bootstrap": {
+          "reason": "This capability is not established by the reviewed integration record.",
+          "state": "unknown"
+        },
+        "native_plugin_coordinate": {
+          "reason": "This capability is not established by the reviewed integration record.",
+          "state": "unknown"
+        },
+        "native_plugin_java_target": {
+          "reason": "This capability is not established by the reviewed integration record.",
+          "state": "unknown"
+        },
+        "native_plugin_repository": {
+          "reason": "This capability is not established by the reviewed integration record.",
+          "state": "unknown"
+        },
+        "nix_builder": {
+          "sources": [],
+          "state": "known",
+          "value": "pkgs.lazy-purifier.buildLazyProject"
+        },
+        "offline_limits": {
+          "sources": [],
+          "state": "known",
+          "value": [
+            "Lua-only profiles are supported",
+            "Local plugins, build hooks, automatic build scripts, Git submodules and rockspec dependencies require additional providers",
+            "Conditional profiles must select the same dependencies when locked and launched",
+            "External language servers and dependencies fetched by plugin code are outside this lock"
+          ]
+        },
+        "offline_scope": {
+          "sources": [],
+          "state": "known",
+          "value": "locked-dependencies"
+        },
+        "platform_notes": {
+          "reason": "This capability is not established by the reviewed integration record.",
+          "state": "unknown"
+        },
+        "platforms": {
+          "sources": [],
+          "state": "known",
+          "value": [
+            "x86_64-linux",
+            "aarch64-linux"
+          ]
+        },
+        "prefetch_components": {
+          "reason": "This capability is not established by the reviewed integration record.",
+          "state": "unknown"
+        },
+        "projection_incoming": {
+          "sources": [],
+          "state": "known",
+          "value": "unsupported"
+        },
+        "projection_incoming_formats": {
+          "reason": "No typed project projection adapter is exported by this implementation.",
+          "state": "not-applicable"
+        },
+        "projection_incoming_interfaces": {
+          "reason": "No typed project projection interface is implemented.",
+          "state": "not-applicable"
+        },
+        "projection_incoming_limits": {
+          "sources": [],
+          "state": "known",
+          "value": [
+            "Native source bundles and publication do not constitute a typed cross-purifier projection interface"
+          ]
+        },
+        "projection_outgoing": {
+          "sources": [],
+          "state": "known",
+          "value": "unsupported"
+        },
+        "projection_outgoing_formats": {
+          "reason": "No typed project projection adapter is exported by this implementation.",
+          "state": "not-applicable"
+        },
+        "projection_outgoing_interfaces": {
+          "reason": "No typed project projection interface is implemented.",
+          "state": "not-applicable"
+        },
+        "projection_outgoing_limits": {
+          "sources": [],
+          "state": "known",
+          "value": [
+            "Native source bundles and publication do not constitute a typed cross-purifier projection interface"
+          ]
+        },
+        "relock": {
+          "sources": [],
+          "state": "known",
+          "value": "preserves-pins"
+        },
+        "runtime_requirements": {
+          "sources": [],
+          "state": "known",
+          "value": [
+            "An existing Neovim configuration using lazy.nvim",
+            "A Lua-only profile with a consistent dependency selection at capture and startup"
+          ]
+        },
+        "stale_lock": {
+          "sources": [],
+          "state": "known",
+          "value": "fail-with-repair"
+        },
+        "supported_native_commands": {
+          "reason": "This capability is not established by the reviewed integration record.",
+          "state": "unknown"
+        },
+        "tested_toolchain": {
+          "reason": "This capability is not established by the reviewed integration record.",
+          "state": "unknown"
+        },
+        "tool": {
+          "sources": [],
+          "state": "known",
+          "value": "Neovim and lazy.nvim"
+        },
+        "unsupported_features": {
+          "sources": [],
+          "state": "known",
+          "value": [
+            "Lua-only profiles are supported",
+            "Local plugins, build hooks, automatic build scripts, Git submodules and rockspec dependencies require additional providers",
+            "Conditional profiles must select the same dependencies when locked and launched",
+            "External language servers and dependencies fetched by plugin code are outside this lock"
+          ]
+        },
+        "updates_ignore_file": {
+          "reason": "This capability is not established by the reviewed integration record.",
+          "state": "unknown"
+        },
+        "wrapper_required": {
+          "reason": "This capability is not established by the reviewed integration record.",
+          "state": "unknown"
+        }
+      },
+      "operations": {
+        "bundle": {
+          "arguments": [
+            "bundle",
+            "--project",
+            {
+              "binding": "project_root"
+            },
+            "--lock",
+            {
+              "binding": "lockfile"
+            },
+            {
+              "splice": "arguments"
+            }
+          ],
+          "capability": "lazy-purifier",
+          "directory": {
+            "binding": "project_root"
+          },
+          "environment": {},
+          "minimumArguments": 0,
+          "reason": null,
+          "sources": [
+            "https://github.com/nix-purifiers/lazy-purifier/blob/3ea7f45f1e3e838ec7c9cc5fe363ba82694e70d8/lazy_purifier/cli.py"
+          ],
+          "state": "available"
+        },
+        "editor": {
+          "arguments": [
+            {
+              "splice": "arguments"
+            }
+          ],
+          "capability": "nvim",
+          "directory": {
+            "binding": "project_root"
+          },
+          "environment": {
+            "LAZY_PURIFIER_LOCK": {
+              "binding": "lockfile"
+            },
+            "LAZY_PURIFIER_PROJECT": {
+              "binding": "project_root"
+            }
+          },
+          "minimumArguments": 0,
+          "reason": null,
+          "sources": [
+            "https://github.com/nix-purifiers/lazy-purifier/blob/3ea7f45f1e3e838ec7c9cc5fe363ba82694e70d8/lazy_purifier/cli.py"
+          ],
+          "state": "available"
+        },
+        "lock": {
+          "arguments": [
+            "lock",
+            "--project",
+            {
+              "binding": "project_root"
+            },
+            "--lock",
+            {
+              "binding": "lockfile"
+            },
+            {
+              "splice": "arguments"
+            }
+          ],
+          "capability": "lazy-purifier",
+          "directory": {
+            "binding": "project_root"
+          },
+          "environment": {},
+          "minimumArguments": 0,
+          "reason": null,
+          "sources": [
+            "https://github.com/nix-purifiers/lazy-purifier/blob/3ea7f45f1e3e838ec7c9cc5fe363ba82694e70d8/lazy_purifier/cli.py"
+          ],
+          "state": "available"
+        },
+        "prefetch": {
+          "arguments": [
+            "prefetch",
+            "--project",
+            {
+              "binding": "project_root"
+            },
+            "--lock",
+            {
+              "binding": "lockfile"
+            },
+            {
+              "splice": "arguments"
+            }
+          ],
+          "capability": "lazy-purifier",
+          "directory": {
+            "binding": "project_root"
+          },
+          "environment": {},
+          "minimumArguments": 0,
+          "reason": null,
+          "sources": [
+            "https://github.com/nix-purifiers/lazy-purifier/blob/3ea7f45f1e3e838ec7c9cc5fe363ba82694e70d8/lazy_purifier/cli.py"
+          ],
+          "state": "available"
+        },
+        "publish": {
+          "arguments": [
+            "publish",
+            "--project",
+            {
+              "binding": "project_root"
+            },
+            "--lock",
+            {
+              "binding": "lockfile"
+            },
+            "--tag",
+            {
+              "binding": "tag"
+            },
+            {
+              "splice": "arguments"
+            }
+          ],
+          "capability": "lazy-purifier",
+          "directory": {
+            "binding": "project_root"
+          },
+          "environment": {},
+          "minimumArguments": 0,
+          "reason": null,
+          "sources": [
+            "https://github.com/nix-purifiers/lazy-purifier/blob/3ea7f45f1e3e838ec7c9cc5fe363ba82694e70d8/lazy_purifier/cli.py"
+          ],
+          "state": "available"
+        },
+        "update": {
+          "arguments": [
+            "lock",
+            "--update",
+            "--project",
+            {
+              "binding": "project_root"
+            },
+            "--lock",
+            {
+              "binding": "lockfile"
+            },
+            {
+              "splice": "arguments"
+            }
+          ],
+          "capability": "lazy-purifier",
+          "directory": {
+            "binding": "project_root"
+          },
+          "environment": {},
+          "minimumArguments": 0,
+          "reason": null,
+          "sources": [
+            "https://github.com/nix-purifiers/lazy-purifier/blob/3ea7f45f1e3e838ec7c9cc5fe363ba82694e70d8/lazy_purifier/cli.py"
+          ],
+          "state": "available"
+        }
+      },
+      "repository": "nix-purifiers/lazy-purifier",
+      "reviewedRevision": "3ea7f45f1e3e838ec7c9cc5fe363ba82694e70d8",
+      "sections": {
+        "credits": {
+          "use": "cargo"
+        },
+        "editor": {
+          "use": "native"
+        },
+        "integration": {
+          "use": "native"
+        },
+        "nix_builds": {
+          "use": "native"
+        },
+        "offline": {
+          "use": "native"
+        },
+        "projections": {
+          "use": "directional"
+        },
+        "quickstart": {
+          "use": "reviewed"
+        },
+        "scope": {
+          "use": "native"
+        },
+        "workflow": {
+          "use": "native"
+        }
+      },
+      "summary": "Locked, Nix-resolved dependencies for Neovim and lazy.nvim.",
+      "values": {
+        "language_tooling_setup": "Start the supplied `nvim` wrapper to activate the pinned lazy.nvim manager and readonly plugin tree. It preserves the normal lazy.nvim bootstrap path while keeping caches and mutable editor state private. `LAZY_PURIFIER_PROJECT` selects the configuration repository; native dependency checks prevent an ambient plugin checkout from replacing a locked dependency.",
+        "quickstart": "nix shell 'github:nix-purifiers/lazy-purifier'\nlazy-purifier lock\nnvim"
       },
       "version": 1
     },
@@ -15808,6 +17323,10 @@
         "bundle": {
           "arguments": [
             "bundle",
+            "--project",
+            {
+              "binding": "project_root"
+            },
             "--lock",
             {
               "binding": "lockfile"
@@ -15831,6 +17350,10 @@
         "lock": {
           "arguments": [
             "lock",
+            "--project",
+            {
+              "binding": "project_root"
+            },
             "--lock",
             {
               "binding": "lockfile"
@@ -15854,6 +17377,10 @@
         "prefetch": {
           "arguments": [
             "prefetch",
+            "--project",
+            {
+              "binding": "project_root"
+            },
             "--lock",
             {
               "binding": "lockfile"
@@ -15877,6 +17404,10 @@
         "publish": {
           "arguments": [
             "publish",
+            "--project",
+            {
+              "binding": "project_root"
+            },
             "--lock",
             {
               "binding": "lockfile"
@@ -15905,6 +17436,10 @@
           "arguments": [
             "lock",
             "--update",
+            "--project",
+            {
+              "binding": "project_root"
+            },
             "--lock",
             {
               "binding": "lockfile"
@@ -17256,6 +18791,10 @@
         "bundle": {
           "arguments": [
             "bundle",
+            "--project",
+            {
+              "binding": "project_root"
+            },
             "--lock",
             {
               "binding": "lockfile"
@@ -17279,6 +18818,10 @@
         "lock": {
           "arguments": [
             "lock",
+            "--project",
+            {
+              "binding": "project_root"
+            },
             "--lock",
             {
               "binding": "lockfile"
@@ -17302,6 +18845,10 @@
         "prefetch": {
           "arguments": [
             "prefetch",
+            "--project",
+            {
+              "binding": "project_root"
+            },
             "--lock",
             {
               "binding": "lockfile"
@@ -17325,6 +18872,10 @@
         "publish": {
           "arguments": [
             "publish",
+            "--project",
+            {
+              "binding": "project_root"
+            },
             "--lock",
             {
               "binding": "lockfile"
@@ -17353,6 +18904,10 @@
           "arguments": [
             "lock",
             "--update",
+            "--project",
+            {
+              "binding": "project_root"
+            },
             "--lock",
             {
               "binding": "lockfile"
@@ -19888,6 +21443,465 @@
       "summary": "Locked, Nix-resolved dependencies for Qlot and Common Lisp.",
       "values": {
         "quickstart": "nix shell 'github:nix-purifiers/qlot-purifier'\nqlot-purifier lock\nqlot install\nqlot exec sbcl"
+      },
+      "version": 1
+    },
+    "quarto-purifier": {
+      "facts": {
+        "build_engine": {
+          "reason": "This capability is not established by the reviewed integration record.",
+          "state": "unknown"
+        },
+        "build_isolation": {
+          "sources": [],
+          "state": "known",
+          "value": "nix-sandbox"
+        },
+        "build_outputs": {
+          "sources": [],
+          "state": "known",
+          "value": [
+            "packages",
+            "tests",
+            "release",
+            "fetches"
+          ]
+        },
+        "builder_options": {
+          "sources": [],
+          "state": "known",
+          "value": [
+            "lockFile",
+            "declarationsFile",
+            "fetchers",
+            "quartoArgs",
+            "doCheck",
+            "checkCommand"
+          ]
+        },
+        "credentials": {
+          "reason": "This capability is not established by the reviewed integration record.",
+          "state": "unknown"
+        },
+        "dependency_sources": {
+          "sources": [],
+          "state": "known",
+          "value": [
+            "Public HTTPS extension archives and GitHub extension targets"
+          ]
+        },
+        "editor_completion": {
+          "reason": "This capability is not established by the reviewed integration record.",
+          "state": "unknown"
+        },
+        "editor_dependency_sources": {
+          "reason": "This capability is not established by the reviewed integration record.",
+          "state": "unknown"
+        },
+        "editor_diagnostics": {
+          "reason": "This capability is not established by the reviewed integration record.",
+          "state": "unknown"
+        },
+        "editor_metadata_format": {
+          "reason": "This capability is not established by the reviewed integration record.",
+          "state": "unknown"
+        },
+        "editor_navigation": {
+          "reason": "This capability is not established by the reviewed integration record.",
+          "state": "unknown"
+        },
+        "editor_offline": {
+          "reason": "This capability is not established by the reviewed integration record.",
+          "state": "unknown"
+        },
+        "editor_protocol": {
+          "reason": "This capability is not established by the reviewed integration record.",
+          "state": "unknown"
+        },
+        "editor_supported": {
+          "reason": "This capability is not established by the reviewed integration record.",
+          "state": "unknown"
+        },
+        "generated_cache_directory": {
+          "reason": "This capability is not established by the reviewed integration record.",
+          "state": "unknown"
+        },
+        "inputs": {
+          "sources": [],
+          "state": "known",
+          "value": [
+            "quarto-extensions.json",
+            "Quarto project or document files"
+          ]
+        },
+        "integration": {
+          "sources": [],
+          "state": "known",
+          "value": "wrapper"
+        },
+        "lock_identity": {
+          "reason": "This capability is not established by the reviewed integration record.",
+          "state": "unknown"
+        },
+        "lockfiles": {
+          "sources": [],
+          "state": "known",
+          "value": [
+            "quarto-purifier.lock.json"
+          ]
+        },
+        "missing_lock": {
+          "sources": [],
+          "state": "known",
+          "value": "warn-and-native"
+        },
+        "named_update_example": {
+          "reason": "This capability is not established by the reviewed integration record.",
+          "state": "unknown"
+        },
+        "native_plugin_bootstrap": {
+          "reason": "This capability is not established by the reviewed integration record.",
+          "state": "unknown"
+        },
+        "native_plugin_coordinate": {
+          "reason": "This capability is not established by the reviewed integration record.",
+          "state": "unknown"
+        },
+        "native_plugin_java_target": {
+          "reason": "This capability is not established by the reviewed integration record.",
+          "state": "unknown"
+        },
+        "native_plugin_repository": {
+          "reason": "This capability is not established by the reviewed integration record.",
+          "state": "unknown"
+        },
+        "nix_builder": {
+          "sources": [],
+          "state": "known",
+          "value": "pkgs.quarto-purifier.buildQuartoProject"
+        },
+        "offline_limits": {
+          "sources": [],
+          "state": "known",
+          "value": [
+            "Only extension sources and the Quarto SDK are covered",
+            "Python, R, Julia, TeX, browser downloads, remote document resources and extension-fetched dependencies require their own integrations",
+            "The initial Nix check uses Markdown-to-HTML without a computation engine",
+            "Local and nested _extensions trees cannot override locked declarations"
+          ]
+        },
+        "offline_scope": {
+          "sources": [],
+          "state": "known",
+          "value": "locked-dependencies"
+        },
+        "platform_notes": {
+          "reason": "This capability is not established by the reviewed integration record.",
+          "state": "unknown"
+        },
+        "platforms": {
+          "sources": [],
+          "state": "known",
+          "value": [
+            "x86_64-linux",
+            "aarch64-linux"
+          ]
+        },
+        "prefetch_components": {
+          "reason": "This capability is not established by the reviewed integration record.",
+          "state": "unknown"
+        },
+        "projection_incoming": {
+          "sources": [],
+          "state": "known",
+          "value": "unsupported"
+        },
+        "projection_incoming_formats": {
+          "reason": "No typed project projection adapter is exported by this implementation.",
+          "state": "not-applicable"
+        },
+        "projection_incoming_interfaces": {
+          "reason": "No typed project projection interface is implemented.",
+          "state": "not-applicable"
+        },
+        "projection_incoming_limits": {
+          "sources": [],
+          "state": "known",
+          "value": [
+            "Native source bundles and publication do not constitute a typed cross-purifier projection interface"
+          ]
+        },
+        "projection_outgoing": {
+          "sources": [],
+          "state": "known",
+          "value": "unsupported"
+        },
+        "projection_outgoing_formats": {
+          "reason": "No typed project projection adapter is exported by this implementation.",
+          "state": "not-applicable"
+        },
+        "projection_outgoing_interfaces": {
+          "reason": "No typed project projection interface is implemented.",
+          "state": "not-applicable"
+        },
+        "projection_outgoing_limits": {
+          "sources": [],
+          "state": "known",
+          "value": [
+            "Native source bundles and publication do not constitute a typed cross-purifier projection interface"
+          ]
+        },
+        "relock": {
+          "sources": [],
+          "state": "known",
+          "value": "preserves-pins"
+        },
+        "runtime_requirements": {
+          "sources": [],
+          "state": "known",
+          "value": [
+            "A Quarto project with quarto-extensions.json declaring native extension targets"
+          ]
+        },
+        "stale_lock": {
+          "sources": [],
+          "state": "known",
+          "value": "fail-with-repair"
+        },
+        "supported_native_commands": {
+          "reason": "This capability is not established by the reviewed integration record.",
+          "state": "unknown"
+        },
+        "tested_toolchain": {
+          "reason": "This capability is not established by the reviewed integration record.",
+          "state": "unknown"
+        },
+        "tool": {
+          "sources": [],
+          "state": "known",
+          "value": "Quarto extensions"
+        },
+        "unsupported_features": {
+          "sources": [],
+          "state": "known",
+          "value": [
+            "Only extension sources and the Quarto SDK are covered",
+            "Python, R, Julia, TeX, browser downloads, remote document resources and extension-fetched dependencies require their own integrations",
+            "The initial Nix check uses Markdown-to-HTML without a computation engine",
+            "Local and nested _extensions trees cannot override locked declarations"
+          ]
+        },
+        "updates_ignore_file": {
+          "reason": "This capability is not established by the reviewed integration record.",
+          "state": "unknown"
+        },
+        "wrapper_required": {
+          "reason": "This capability is not established by the reviewed integration record.",
+          "state": "unknown"
+        }
+      },
+      "operations": {
+        "build": {
+          "arguments": [
+            "render",
+            {
+              "splice": "arguments"
+            }
+          ],
+          "capability": "quarto",
+          "directory": {
+            "binding": "project_root"
+          },
+          "environment": {
+            "QUARTO_PURIFIER_LOCK": {
+              "binding": "lockfile"
+            },
+            "QUARTO_PURIFIER_PROJECT": {
+              "binding": "project_root"
+            }
+          },
+          "minimumArguments": 0,
+          "reason": null,
+          "sources": [
+            "https://github.com/nix-purifiers/quarto-purifier/blob/68c7c4274e97118df03b10383c1abd5ec8207107/quarto_purifier/cli.py"
+          ],
+          "state": "available"
+        },
+        "bundle": {
+          "arguments": [
+            "bundle",
+            "--project",
+            {
+              "binding": "project_root"
+            },
+            "--lock",
+            {
+              "binding": "lockfile"
+            },
+            {
+              "splice": "arguments"
+            }
+          ],
+          "capability": "quarto-purifier",
+          "directory": {
+            "binding": "project_root"
+          },
+          "environment": {},
+          "minimumArguments": 0,
+          "reason": null,
+          "sources": [
+            "https://github.com/nix-purifiers/quarto-purifier/blob/68c7c4274e97118df03b10383c1abd5ec8207107/quarto_purifier/cli.py"
+          ],
+          "state": "available"
+        },
+        "lock": {
+          "arguments": [
+            "lock",
+            "--project",
+            {
+              "binding": "project_root"
+            },
+            "--lock",
+            {
+              "binding": "lockfile"
+            },
+            {
+              "splice": "arguments"
+            }
+          ],
+          "capability": "quarto-purifier",
+          "directory": {
+            "binding": "project_root"
+          },
+          "environment": {},
+          "minimumArguments": 0,
+          "reason": null,
+          "sources": [
+            "https://github.com/nix-purifiers/quarto-purifier/blob/68c7c4274e97118df03b10383c1abd5ec8207107/quarto_purifier/cli.py"
+          ],
+          "state": "available"
+        },
+        "prefetch": {
+          "arguments": [
+            "prefetch",
+            "--project",
+            {
+              "binding": "project_root"
+            },
+            "--lock",
+            {
+              "binding": "lockfile"
+            },
+            {
+              "splice": "arguments"
+            }
+          ],
+          "capability": "quarto-purifier",
+          "directory": {
+            "binding": "project_root"
+          },
+          "environment": {},
+          "minimumArguments": 0,
+          "reason": null,
+          "sources": [
+            "https://github.com/nix-purifiers/quarto-purifier/blob/68c7c4274e97118df03b10383c1abd5ec8207107/quarto_purifier/cli.py"
+          ],
+          "state": "available"
+        },
+        "publish": {
+          "arguments": [
+            "publish",
+            "--project",
+            {
+              "binding": "project_root"
+            },
+            "--lock",
+            {
+              "binding": "lockfile"
+            },
+            "--tag",
+            {
+              "binding": "tag"
+            },
+            {
+              "splice": "arguments"
+            }
+          ],
+          "capability": "quarto-purifier",
+          "directory": {
+            "binding": "project_root"
+          },
+          "environment": {},
+          "minimumArguments": 0,
+          "reason": null,
+          "sources": [
+            "https://github.com/nix-purifiers/quarto-purifier/blob/68c7c4274e97118df03b10383c1abd5ec8207107/quarto_purifier/cli.py"
+          ],
+          "state": "available"
+        },
+        "update": {
+          "arguments": [
+            "lock",
+            "--update",
+            "--project",
+            {
+              "binding": "project_root"
+            },
+            "--lock",
+            {
+              "binding": "lockfile"
+            },
+            {
+              "splice": "arguments"
+            }
+          ],
+          "capability": "quarto-purifier",
+          "directory": {
+            "binding": "project_root"
+          },
+          "environment": {},
+          "minimumArguments": 0,
+          "reason": null,
+          "sources": [
+            "https://github.com/nix-purifiers/quarto-purifier/blob/68c7c4274e97118df03b10383c1abd5ec8207107/quarto_purifier/cli.py"
+          ],
+          "state": "available"
+        }
+      },
+      "repository": "nix-purifiers/quarto-purifier",
+      "reviewedRevision": "68c7c4274e97118df03b10383c1abd5ec8207107",
+      "sections": {
+        "credits": {
+          "use": "cargo"
+        },
+        "editor": {
+          "omit": "A specific language-tooling integration is not established by the reviewed implementation."
+        },
+        "integration": {
+          "use": "native"
+        },
+        "nix_builds": {
+          "use": "native"
+        },
+        "offline": {
+          "use": "native"
+        },
+        "projections": {
+          "use": "directional"
+        },
+        "quickstart": {
+          "use": "reviewed"
+        },
+        "scope": {
+          "use": "native"
+        },
+        "workflow": {
+          "use": "native"
+        }
+      },
+      "summary": "Locked, Nix-resolved dependencies for Quarto extensions.",
+      "values": {
+        "quickstart": "nix shell 'github:nix-purifiers/quarto-purifier'\nquarto-purifier lock\nquarto render"
       },
       "version": 1
     },
@@ -23866,6 +25880,467 @@
       },
       "version": 1
     },
+    "tectonic-purifier": {
+      "facts": {
+        "build_engine": {
+          "reason": "This capability is not established by the reviewed integration record.",
+          "state": "unknown"
+        },
+        "build_isolation": {
+          "sources": [],
+          "state": "known",
+          "value": "nix-sandbox"
+        },
+        "build_outputs": {
+          "sources": [],
+          "state": "known",
+          "value": [
+            "packages",
+            "tests",
+            "release",
+            "fetches"
+          ]
+        },
+        "builder_options": {
+          "sources": [],
+          "state": "known",
+          "value": [
+            "lockFile",
+            "fetchers",
+            "nativeBuildInputs",
+            "doCheck",
+            "checkCommand"
+          ]
+        },
+        "credentials": {
+          "reason": "This capability is not established by the reviewed integration record.",
+          "state": "unknown"
+        },
+        "dependency_sources": {
+          "sources": [],
+          "state": "known",
+          "value": [
+            "Public indexed-tar TeX bundles"
+          ]
+        },
+        "editor_completion": {
+          "reason": "This capability is not established by the reviewed integration record.",
+          "state": "unknown"
+        },
+        "editor_dependency_sources": {
+          "reason": "This capability is not established by the reviewed integration record.",
+          "state": "unknown"
+        },
+        "editor_diagnostics": {
+          "reason": "This capability is not established by the reviewed integration record.",
+          "state": "unknown"
+        },
+        "editor_metadata_format": {
+          "reason": "This capability is not established by the reviewed integration record.",
+          "state": "unknown"
+        },
+        "editor_navigation": {
+          "reason": "This capability is not established by the reviewed integration record.",
+          "state": "unknown"
+        },
+        "editor_offline": {
+          "reason": "This capability is not established by the reviewed integration record.",
+          "state": "unknown"
+        },
+        "editor_protocol": {
+          "sources": [],
+          "state": "known",
+          "value": "project-environment"
+        },
+        "editor_supported": {
+          "sources": [],
+          "state": "known",
+          "value": true
+        },
+        "generated_cache_directory": {
+          "reason": "This capability is not established by the reviewed integration record.",
+          "state": "unknown"
+        },
+        "inputs": {
+          "sources": [],
+          "state": "known",
+          "value": [
+            "Tectonic.toml workspace or selected .tex entry points"
+          ]
+        },
+        "integration": {
+          "sources": [],
+          "state": "known",
+          "value": "wrapper"
+        },
+        "lock_identity": {
+          "reason": "This capability is not established by the reviewed integration record.",
+          "state": "unknown"
+        },
+        "lockfiles": {
+          "sources": [],
+          "state": "known",
+          "value": [
+            "tectonic-purifier.lock.json"
+          ]
+        },
+        "missing_lock": {
+          "sources": [],
+          "state": "known",
+          "value": "warn-and-native"
+        },
+        "named_update_example": {
+          "reason": "This capability is not established by the reviewed integration record.",
+          "state": "unknown"
+        },
+        "native_plugin_bootstrap": {
+          "reason": "This capability is not established by the reviewed integration record.",
+          "state": "unknown"
+        },
+        "native_plugin_coordinate": {
+          "reason": "This capability is not established by the reviewed integration record.",
+          "state": "unknown"
+        },
+        "native_plugin_java_target": {
+          "reason": "This capability is not established by the reviewed integration record.",
+          "state": "unknown"
+        },
+        "native_plugin_repository": {
+          "reason": "This capability is not established by the reviewed integration record.",
+          "state": "unknown"
+        },
+        "nix_builder": {
+          "sources": [],
+          "state": "known",
+          "value": "pkgs.tectonic-purifier.buildTectonicProject"
+        },
+        "offline_limits": {
+          "sources": [],
+          "state": "known",
+          "value": [
+            "The initial integration supports LaTeX and Tectonic 0.17",
+            "Fonts must come from the locked bundle or explicit project files",
+            "Ambient system font collections require additional integration",
+            "User commands retain their normal network access"
+          ]
+        },
+        "offline_scope": {
+          "sources": [],
+          "state": "known",
+          "value": "locked-dependencies"
+        },
+        "platform_notes": {
+          "reason": "This capability is not established by the reviewed integration record.",
+          "state": "unknown"
+        },
+        "platforms": {
+          "sources": [],
+          "state": "known",
+          "value": [
+            "x86_64-linux",
+            "aarch64-linux"
+          ]
+        },
+        "prefetch_components": {
+          "reason": "This capability is not established by the reviewed integration record.",
+          "state": "unknown"
+        },
+        "projection_incoming": {
+          "sources": [],
+          "state": "known",
+          "value": "unsupported"
+        },
+        "projection_incoming_formats": {
+          "reason": "No typed project projection adapter is exported by this implementation.",
+          "state": "not-applicable"
+        },
+        "projection_incoming_interfaces": {
+          "reason": "No typed project projection interface is implemented.",
+          "state": "not-applicable"
+        },
+        "projection_incoming_limits": {
+          "sources": [],
+          "state": "known",
+          "value": [
+            "Native source bundles and publication do not constitute a typed cross-purifier projection interface"
+          ]
+        },
+        "projection_outgoing": {
+          "sources": [],
+          "state": "known",
+          "value": "unsupported"
+        },
+        "projection_outgoing_formats": {
+          "reason": "No typed project projection adapter is exported by this implementation.",
+          "state": "not-applicable"
+        },
+        "projection_outgoing_interfaces": {
+          "reason": "No typed project projection interface is implemented.",
+          "state": "not-applicable"
+        },
+        "projection_outgoing_limits": {
+          "sources": [],
+          "state": "known",
+          "value": [
+            "Native source bundles and publication do not constitute a typed cross-purifier projection interface"
+          ]
+        },
+        "relock": {
+          "sources": [],
+          "state": "known",
+          "value": "preserves-pins"
+        },
+        "runtime_requirements": {
+          "sources": [],
+          "state": "known",
+          "value": [
+            "A Tectonic.toml workspace for the shown -X build command; standalone TeX files can be selected when locking"
+          ]
+        },
+        "stale_lock": {
+          "sources": [],
+          "state": "known",
+          "value": "fail-with-repair"
+        },
+        "supported_native_commands": {
+          "reason": "This capability is not established by the reviewed integration record.",
+          "state": "unknown"
+        },
+        "tested_toolchain": {
+          "reason": "This capability is not established by the reviewed integration record.",
+          "state": "unknown"
+        },
+        "tool": {
+          "sources": [],
+          "state": "known",
+          "value": "Tectonic and TeX"
+        },
+        "unsupported_features": {
+          "sources": [],
+          "state": "known",
+          "value": [
+            "The initial integration supports LaTeX and Tectonic 0.17",
+            "Fonts must come from the locked bundle or explicit project files",
+            "Ambient system font collections require additional integration",
+            "User commands retain their normal network access"
+          ]
+        },
+        "updates_ignore_file": {
+          "reason": "This capability is not established by the reviewed integration record.",
+          "state": "unknown"
+        },
+        "wrapper_required": {
+          "reason": "This capability is not established by the reviewed integration record.",
+          "state": "unknown"
+        }
+      },
+      "operations": {
+        "build": {
+          "arguments": [
+            "-X",
+            "build",
+            {
+              "splice": "arguments"
+            }
+          ],
+          "capability": "tectonic",
+          "directory": {
+            "binding": "project_root"
+          },
+          "environment": {
+            "TECTONIC_PURIFIER_LOCK": {
+              "binding": "lockfile"
+            },
+            "TECTONIC_PURIFIER_PROJECT": {
+              "binding": "project_root"
+            }
+          },
+          "minimumArguments": 0,
+          "reason": null,
+          "sources": [
+            "https://github.com/nix-purifiers/tectonic-purifier/blob/8b3e744ab324c9abe060abf83159f06ffc56dc01/tectonic_purifier/cli.py"
+          ],
+          "state": "available"
+        },
+        "bundle": {
+          "arguments": [
+            "bundle",
+            "--project",
+            {
+              "binding": "project_root"
+            },
+            "--lock",
+            {
+              "binding": "lockfile"
+            },
+            {
+              "splice": "arguments"
+            }
+          ],
+          "capability": "tectonic-purifier",
+          "directory": {
+            "binding": "project_root"
+          },
+          "environment": {},
+          "minimumArguments": 0,
+          "reason": null,
+          "sources": [
+            "https://github.com/nix-purifiers/tectonic-purifier/blob/8b3e744ab324c9abe060abf83159f06ffc56dc01/tectonic_purifier/cli.py"
+          ],
+          "state": "available"
+        },
+        "lock": {
+          "arguments": [
+            "lock",
+            "--project",
+            {
+              "binding": "project_root"
+            },
+            "--lock",
+            {
+              "binding": "lockfile"
+            },
+            {
+              "splice": "arguments"
+            }
+          ],
+          "capability": "tectonic-purifier",
+          "directory": {
+            "binding": "project_root"
+          },
+          "environment": {},
+          "minimumArguments": 0,
+          "reason": null,
+          "sources": [
+            "https://github.com/nix-purifiers/tectonic-purifier/blob/8b3e744ab324c9abe060abf83159f06ffc56dc01/tectonic_purifier/cli.py"
+          ],
+          "state": "available"
+        },
+        "prefetch": {
+          "arguments": [
+            "prefetch",
+            "--project",
+            {
+              "binding": "project_root"
+            },
+            "--lock",
+            {
+              "binding": "lockfile"
+            },
+            {
+              "splice": "arguments"
+            }
+          ],
+          "capability": "tectonic-purifier",
+          "directory": {
+            "binding": "project_root"
+          },
+          "environment": {},
+          "minimumArguments": 0,
+          "reason": null,
+          "sources": [
+            "https://github.com/nix-purifiers/tectonic-purifier/blob/8b3e744ab324c9abe060abf83159f06ffc56dc01/tectonic_purifier/cli.py"
+          ],
+          "state": "available"
+        },
+        "publish": {
+          "arguments": [
+            "publish",
+            "--project",
+            {
+              "binding": "project_root"
+            },
+            "--lock",
+            {
+              "binding": "lockfile"
+            },
+            "--tag",
+            {
+              "binding": "tag"
+            },
+            {
+              "splice": "arguments"
+            }
+          ],
+          "capability": "tectonic-purifier",
+          "directory": {
+            "binding": "project_root"
+          },
+          "environment": {},
+          "minimumArguments": 0,
+          "reason": null,
+          "sources": [
+            "https://github.com/nix-purifiers/tectonic-purifier/blob/8b3e744ab324c9abe060abf83159f06ffc56dc01/tectonic_purifier/cli.py"
+          ],
+          "state": "available"
+        },
+        "update": {
+          "arguments": [
+            "lock",
+            "--update",
+            "--project",
+            {
+              "binding": "project_root"
+            },
+            "--lock",
+            {
+              "binding": "lockfile"
+            },
+            {
+              "splice": "arguments"
+            }
+          ],
+          "capability": "tectonic-purifier",
+          "directory": {
+            "binding": "project_root"
+          },
+          "environment": {},
+          "minimumArguments": 0,
+          "reason": null,
+          "sources": [
+            "https://github.com/nix-purifiers/tectonic-purifier/blob/8b3e744ab324c9abe060abf83159f06ffc56dc01/tectonic_purifier/cli.py"
+          ],
+          "state": "available"
+        }
+      },
+      "repository": "nix-purifiers/tectonic-purifier",
+      "reviewedRevision": "8b3e744ab324c9abe060abf83159f06ffc56dc01",
+      "sections": {
+        "credits": {
+          "use": "cargo"
+        },
+        "editor": {
+          "use": "native"
+        },
+        "integration": {
+          "use": "native"
+        },
+        "nix_builds": {
+          "use": "native"
+        },
+        "offline": {
+          "use": "native"
+        },
+        "projections": {
+          "use": "directional"
+        },
+        "quickstart": {
+          "use": "reviewed"
+        },
+        "scope": {
+          "use": "native"
+        },
+        "workflow": {
+          "use": "native"
+        }
+      },
+      "summary": "Locked, Nix-resolved dependencies for Tectonic and TeX.",
+      "values": {
+        "language_tooling_setup": "Run the supplied `tectonic` wrapper for editor builds. Native PDF and SyncTeX output use the prepared support files and format data. For a standalone document, `tectonic main.tex --synctex` produces the normal editor synchronization output. Launch dependent editor processes through `tectonic-purifier exec -- your-editor` when they need that environment.",
+        "quickstart": "nix shell 'github:nix-purifiers/tectonic-purifier'\ntectonic-purifier lock\ntectonic -X build"
+      },
+      "version": 1
+    },
     "terraform-purifier": {
       "facts": {
         "build_engine": {
@@ -25681,6 +28156,469 @@
       "values": {
         "language_tooling_setup": "Use the supplied `clangd` with the compile commands generated by CMake:\n\n```sh\nclangd --compile-commands-dir=build\n```\n\nThe CMake wrapper supplies the locked dependency paths and SDK. Existing\narguments selecting vcpkg's standard CMake toolchain or the recorded triplet\nare accepted. A different toolchain, feature set, or installed prefix needs\nexplicit integration rather than silently changing the dependency graph.",
         "quickstart": "nix shell 'github:nix-purifiers/vcpkg-purifier'\nvcpkg-purifier lock\nvcpkg-purifier prefetch\ncmake -S . -B build \\\n  -DCMAKE_EXPORT_COMPILE_COMMANDS=ON\ncmake --build build\nctest --test-dir build --output-on-failure"
+      },
+      "version": 1
+    },
+    "west-purifier": {
+      "facts": {
+        "build_engine": {
+          "reason": "This capability is not established by the reviewed integration record.",
+          "state": "unknown"
+        },
+        "build_isolation": {
+          "sources": [],
+          "state": "known",
+          "value": "nix-sandbox"
+        },
+        "build_outputs": {
+          "sources": [],
+          "state": "known",
+          "value": [
+            "packages",
+            "tests",
+            "release",
+            "fetches"
+          ]
+        },
+        "builder_options": {
+          "sources": [],
+          "state": "known",
+          "value": [
+            "lockFile",
+            "command",
+            "nativeBuildInputs",
+            "fetchers",
+            "doCheck",
+            "checkCommand",
+            "version",
+            "installCommand"
+          ]
+        },
+        "credentials": {
+          "reason": "This capability is not established by the reviewed integration record.",
+          "state": "unknown"
+        },
+        "dependency_sources": {
+          "sources": [],
+          "state": "known",
+          "value": [
+            "Public HTTPS Git projects and imported manifests"
+          ]
+        },
+        "editor_completion": {
+          "reason": "This capability is not established by the reviewed integration record.",
+          "state": "unknown"
+        },
+        "editor_dependency_sources": {
+          "reason": "This capability is not established by the reviewed integration record.",
+          "state": "unknown"
+        },
+        "editor_diagnostics": {
+          "reason": "This capability is not established by the reviewed integration record.",
+          "state": "unknown"
+        },
+        "editor_metadata_format": {
+          "reason": "This capability is not established by the reviewed integration record.",
+          "state": "unknown"
+        },
+        "editor_navigation": {
+          "reason": "This capability is not established by the reviewed integration record.",
+          "state": "unknown"
+        },
+        "editor_offline": {
+          "reason": "This capability is not established by the reviewed integration record.",
+          "state": "unknown"
+        },
+        "editor_protocol": {
+          "reason": "This capability is not established by the reviewed integration record.",
+          "state": "unknown"
+        },
+        "editor_supported": {
+          "reason": "This capability is not established by the reviewed integration record.",
+          "state": "unknown"
+        },
+        "generated_cache_directory": {
+          "reason": "This capability is not established by the reviewed integration record.",
+          "state": "unknown"
+        },
+        "inputs": {
+          "sources": [],
+          "state": "known",
+          "value": [
+            "west.yml in an initialized West workspace"
+          ]
+        },
+        "integration": {
+          "sources": [],
+          "state": "known",
+          "value": "wrapper"
+        },
+        "lock_identity": {
+          "reason": "This capability is not established by the reviewed integration record.",
+          "state": "unknown"
+        },
+        "lockfiles": {
+          "sources": [],
+          "state": "known",
+          "value": [
+            "west-purifier.lock.json"
+          ]
+        },
+        "missing_lock": {
+          "sources": [],
+          "state": "known",
+          "value": "warn-and-native"
+        },
+        "named_update_example": {
+          "reason": "This capability is not established by the reviewed integration record.",
+          "state": "unknown"
+        },
+        "native_plugin_bootstrap": {
+          "reason": "This capability is not established by the reviewed integration record.",
+          "state": "unknown"
+        },
+        "native_plugin_coordinate": {
+          "reason": "This capability is not established by the reviewed integration record.",
+          "state": "unknown"
+        },
+        "native_plugin_java_target": {
+          "reason": "This capability is not established by the reviewed integration record.",
+          "state": "unknown"
+        },
+        "native_plugin_repository": {
+          "reason": "This capability is not established by the reviewed integration record.",
+          "state": "unknown"
+        },
+        "nix_builder": {
+          "sources": [],
+          "state": "known",
+          "value": "pkgs.west-purifier.buildWestProject"
+        },
+        "offline_limits": {
+          "sources": [],
+          "state": "known",
+          "value": [
+            "Selected submodules require an additional provider",
+            "History and tags beyond the locked commit are not delivered",
+            "A complete Zephyr SDK, board toolchains and Python extension dependencies require separate providers",
+            "Native extensions must use the manifest API; hardcoded sibling paths need adaptation",
+            "Project paths must remain separate from the manifest repository"
+          ]
+        },
+        "offline_scope": {
+          "sources": [],
+          "state": "known",
+          "value": "locked-dependencies"
+        },
+        "platform_notes": {
+          "reason": "This capability is not established by the reviewed integration record.",
+          "state": "unknown"
+        },
+        "platforms": {
+          "sources": [],
+          "state": "known",
+          "value": [
+            "x86_64-linux",
+            "aarch64-linux"
+          ]
+        },
+        "prefetch_components": {
+          "reason": "This capability is not established by the reviewed integration record.",
+          "state": "unknown"
+        },
+        "projection_incoming": {
+          "sources": [],
+          "state": "known",
+          "value": "unsupported"
+        },
+        "projection_incoming_formats": {
+          "reason": "No typed project projection adapter is exported by this implementation.",
+          "state": "not-applicable"
+        },
+        "projection_incoming_interfaces": {
+          "reason": "No typed project projection interface is implemented.",
+          "state": "not-applicable"
+        },
+        "projection_incoming_limits": {
+          "sources": [],
+          "state": "known",
+          "value": [
+            "Native source bundles and publication do not constitute a typed cross-purifier projection interface"
+          ]
+        },
+        "projection_outgoing": {
+          "sources": [],
+          "state": "known",
+          "value": "unsupported"
+        },
+        "projection_outgoing_formats": {
+          "reason": "No typed project projection adapter is exported by this implementation.",
+          "state": "not-applicable"
+        },
+        "projection_outgoing_interfaces": {
+          "reason": "No typed project projection interface is implemented.",
+          "state": "not-applicable"
+        },
+        "projection_outgoing_limits": {
+          "sources": [],
+          "state": "known",
+          "value": [
+            "Native source bundles and publication do not constitute a typed cross-purifier projection interface"
+          ]
+        },
+        "relock": {
+          "sources": [],
+          "state": "known",
+          "value": "preserves-pins"
+        },
+        "runtime_requirements": {
+          "sources": [],
+          "state": "known",
+          "value": [
+            "An existing workspace initialized with west init",
+            "Any board SDK or Python extension requirements for the project\u2019s native build"
+          ]
+        },
+        "stale_lock": {
+          "sources": [],
+          "state": "known",
+          "value": "fail-with-repair"
+        },
+        "supported_native_commands": {
+          "reason": "This capability is not established by the reviewed integration record.",
+          "state": "unknown"
+        },
+        "tested_toolchain": {
+          "reason": "This capability is not established by the reviewed integration record.",
+          "state": "unknown"
+        },
+        "tool": {
+          "sources": [],
+          "state": "known",
+          "value": "West workspaces"
+        },
+        "unsupported_features": {
+          "sources": [],
+          "state": "known",
+          "value": [
+            "Selected submodules require an additional provider",
+            "History and tags beyond the locked commit are not delivered",
+            "A complete Zephyr SDK, board toolchains and Python extension dependencies require separate providers",
+            "Native extensions must use the manifest API; hardcoded sibling paths need adaptation",
+            "Project paths must remain separate from the manifest repository"
+          ]
+        },
+        "updates_ignore_file": {
+          "reason": "This capability is not established by the reviewed integration record.",
+          "state": "unknown"
+        },
+        "wrapper_required": {
+          "reason": "This capability is not established by the reviewed integration record.",
+          "state": "unknown"
+        }
+      },
+      "operations": {
+        "build": {
+          "arguments": [
+            "build",
+            {
+              "splice": "arguments"
+            }
+          ],
+          "capability": "west",
+          "directory": {
+            "binding": "project_root"
+          },
+          "environment": {
+            "WEST_PURIFIER_LOCK": {
+              "binding": "lockfile"
+            },
+            "WEST_PURIFIER_PROJECT": {
+              "binding": "project_root"
+            }
+          },
+          "minimumArguments": 0,
+          "reason": null,
+          "sources": [
+            "https://github.com/nix-purifiers/west-purifier/blob/5bd28cf919fe15bf8414f2c81b39f4f1deada503/west_purifier/cli.py"
+          ],
+          "state": "available"
+        },
+        "bundle": {
+          "arguments": [
+            "bundle",
+            "--project",
+            {
+              "binding": "project_root"
+            },
+            "--lock",
+            {
+              "binding": "lockfile"
+            },
+            {
+              "splice": "arguments"
+            }
+          ],
+          "capability": "west-purifier",
+          "directory": {
+            "binding": "project_root"
+          },
+          "environment": {},
+          "minimumArguments": 0,
+          "reason": null,
+          "sources": [
+            "https://github.com/nix-purifiers/west-purifier/blob/5bd28cf919fe15bf8414f2c81b39f4f1deada503/west_purifier/cli.py"
+          ],
+          "state": "available"
+        },
+        "lock": {
+          "arguments": [
+            "lock",
+            "--project",
+            {
+              "binding": "project_root"
+            },
+            "--lock",
+            {
+              "binding": "lockfile"
+            },
+            {
+              "splice": "arguments"
+            }
+          ],
+          "capability": "west-purifier",
+          "directory": {
+            "binding": "project_root"
+          },
+          "environment": {},
+          "minimumArguments": 0,
+          "reason": null,
+          "sources": [
+            "https://github.com/nix-purifiers/west-purifier/blob/5bd28cf919fe15bf8414f2c81b39f4f1deada503/west_purifier/cli.py"
+          ],
+          "state": "available"
+        },
+        "prefetch": {
+          "arguments": [
+            "prefetch",
+            "--project",
+            {
+              "binding": "project_root"
+            },
+            "--lock",
+            {
+              "binding": "lockfile"
+            },
+            {
+              "splice": "arguments"
+            }
+          ],
+          "capability": "west-purifier",
+          "directory": {
+            "binding": "project_root"
+          },
+          "environment": {},
+          "minimumArguments": 0,
+          "reason": null,
+          "sources": [
+            "https://github.com/nix-purifiers/west-purifier/blob/5bd28cf919fe15bf8414f2c81b39f4f1deada503/west_purifier/cli.py"
+          ],
+          "state": "available"
+        },
+        "publish": {
+          "arguments": [
+            "publish",
+            "--project",
+            {
+              "binding": "project_root"
+            },
+            "--lock",
+            {
+              "binding": "lockfile"
+            },
+            "--tag",
+            {
+              "binding": "tag"
+            },
+            {
+              "splice": "arguments"
+            }
+          ],
+          "capability": "west-purifier",
+          "directory": {
+            "binding": "project_root"
+          },
+          "environment": {},
+          "minimumArguments": 0,
+          "reason": null,
+          "sources": [
+            "https://github.com/nix-purifiers/west-purifier/blob/5bd28cf919fe15bf8414f2c81b39f4f1deada503/west_purifier/cli.py"
+          ],
+          "state": "available"
+        },
+        "update": {
+          "arguments": [
+            "lock",
+            "--update",
+            "--project",
+            {
+              "binding": "project_root"
+            },
+            "--lock",
+            {
+              "binding": "lockfile"
+            },
+            {
+              "splice": "arguments"
+            }
+          ],
+          "capability": "west-purifier",
+          "directory": {
+            "binding": "project_root"
+          },
+          "environment": {},
+          "minimumArguments": 0,
+          "reason": null,
+          "sources": [
+            "https://github.com/nix-purifiers/west-purifier/blob/5bd28cf919fe15bf8414f2c81b39f4f1deada503/west_purifier/cli.py"
+          ],
+          "state": "available"
+        }
+      },
+      "repository": "nix-purifiers/west-purifier",
+      "reviewedRevision": "5bd28cf919fe15bf8414f2c81b39f4f1deada503",
+      "sections": {
+        "credits": {
+          "use": "cargo"
+        },
+        "editor": {
+          "omit": "A specific language-tooling integration is not established by the reviewed implementation."
+        },
+        "integration": {
+          "use": "native"
+        },
+        "nix_builds": {
+          "use": "native"
+        },
+        "offline": {
+          "use": "native"
+        },
+        "projections": {
+          "use": "directional"
+        },
+        "quickstart": {
+          "use": "reviewed"
+        },
+        "scope": {
+          "use": "native"
+        },
+        "workflow": {
+          "use": "native"
+        }
+      },
+      "summary": "Locked, Nix-resolved dependencies for West workspaces.",
+      "values": {
+        "quickstart": "nix shell 'github:nix-purifiers/west-purifier'\nwest-purifier lock\nwest build"
       },
       "version": 1
     },
@@ -27892,6 +30830,13 @@
             }
           ],
           "reviewed": [
+            {
+              "id": "prerequisites",
+              "text": "Prerequisites: {facts.runtime_requirements}.",
+              "whenKnown": [
+                "runtime_requirements"
+              ]
+            },
             {
               "id": "commands",
               "text": "```sh\n{values.quickstart}\n```"

@@ -1,0 +1,275 @@
+{
+  "repository": "nix-purifiers/west-purifier",
+  "reviewedRevision": "5bd28cf919fe15bf8414f2c81b39f4f1deada503",
+  "facts": {
+    "tool": {
+      "state": "known",
+      "value": "West workspaces"
+    },
+    "inputs": {
+      "state": "known",
+      "value": [
+        "west.yml in an initialized West workspace"
+      ]
+    },
+    "lockfiles": {
+      "state": "known",
+      "value": [
+        "west-purifier.lock.json"
+      ]
+    },
+    "integration": {
+      "state": "known",
+      "value": "wrapper"
+    },
+    "relock": {
+      "state": "known",
+      "value": "preserves-pins"
+    },
+    "missing_lock": {
+      "state": "known",
+      "value": "warn-and-native"
+    },
+    "stale_lock": {
+      "state": "known",
+      "value": "fail-with-repair"
+    },
+    "platforms": {
+      "state": "known",
+      "value": [
+        "x86_64-linux",
+        "aarch64-linux"
+      ]
+    },
+    "dependency_sources": {
+      "state": "known",
+      "value": [
+        "Public HTTPS Git projects and imported manifests"
+      ]
+    },
+    "offline_scope": {
+      "state": "known",
+      "value": "locked-dependencies"
+    },
+    "offline_limits": {
+      "state": "known",
+      "value": [
+        "Selected submodules require an additional provider",
+        "History and tags beyond the locked commit are not delivered",
+        "A complete Zephyr SDK, board toolchains and Python extension dependencies require separate providers",
+        "Native extensions must use the manifest API; hardcoded sibling paths need adaptation",
+        "Project paths must remain separate from the manifest repository"
+      ]
+    },
+    "unsupported_features": {
+      "state": "known",
+      "value": [
+        "Selected submodules require an additional provider",
+        "History and tags beyond the locked commit are not delivered",
+        "A complete Zephyr SDK, board toolchains and Python extension dependencies require separate providers",
+        "Native extensions must use the manifest API; hardcoded sibling paths need adaptation",
+        "Project paths must remain separate from the manifest repository"
+      ]
+    },
+    "nix_builder": {
+      "state": "known",
+      "value": "pkgs.west-purifier.buildWestProject"
+    },
+    "build_isolation": {
+      "state": "known",
+      "value": "nix-sandbox"
+    },
+    "build_outputs": {
+      "state": "known",
+      "value": [
+        "packages",
+        "tests",
+        "release",
+        "fetches"
+      ]
+    },
+    "projection_incoming": {
+      "state": "known",
+      "value": "unsupported"
+    },
+    "projection_incoming_formats": {
+      "state": "not-applicable",
+      "reason": "No typed project projection adapter is exported by this implementation."
+    },
+    "projection_incoming_interfaces": {
+      "state": "not-applicable",
+      "reason": "No typed project projection interface is implemented."
+    },
+    "projection_incoming_limits": {
+      "state": "known",
+      "value": [
+        "Native source bundles and publication do not constitute a typed cross-purifier projection interface"
+      ]
+    },
+    "projection_outgoing": {
+      "state": "known",
+      "value": "unsupported"
+    },
+    "projection_outgoing_formats": {
+      "state": "not-applicable",
+      "reason": "No typed project projection adapter is exported by this implementation."
+    },
+    "projection_outgoing_interfaces": {
+      "state": "not-applicable",
+      "reason": "No typed project projection interface is implemented."
+    },
+    "projection_outgoing_limits": {
+      "state": "known",
+      "value": [
+        "Native source bundles and publication do not constitute a typed cross-purifier projection interface"
+      ]
+    },
+    "runtime_requirements": {
+      "state": "known",
+      "value": [
+        "An existing workspace initialized with west init",
+        "Any board SDK or Python extension requirements for the project\u2019s native build"
+      ]
+    },
+    "builder_options": {
+      "state": "known",
+      "value": [
+        "lockFile",
+        "command",
+        "nativeBuildInputs",
+        "fetchers",
+        "doCheck",
+        "checkCommand",
+        "version",
+        "installCommand"
+      ]
+    }
+  },
+  "operations": {
+    "lock": {
+      "capability": "west-purifier",
+      "arguments": [
+        "lock",
+        "--project",
+        {
+          "binding": "project_root"
+        },
+        "--lock",
+        {
+          "binding": "lockfile"
+        },
+        {
+          "splice": "arguments"
+        }
+      ],
+      "sources": [
+        "https://github.com/nix-purifiers/west-purifier/blob/5bd28cf919fe15bf8414f2c81b39f4f1deada503/west_purifier/cli.py"
+      ]
+    },
+    "prefetch": {
+      "capability": "west-purifier",
+      "arguments": [
+        "prefetch",
+        "--project",
+        {
+          "binding": "project_root"
+        },
+        "--lock",
+        {
+          "binding": "lockfile"
+        },
+        {
+          "splice": "arguments"
+        }
+      ],
+      "sources": [
+        "https://github.com/nix-purifiers/west-purifier/blob/5bd28cf919fe15bf8414f2c81b39f4f1deada503/west_purifier/cli.py"
+      ]
+    },
+    "bundle": {
+      "capability": "west-purifier",
+      "arguments": [
+        "bundle",
+        "--project",
+        {
+          "binding": "project_root"
+        },
+        "--lock",
+        {
+          "binding": "lockfile"
+        },
+        {
+          "splice": "arguments"
+        }
+      ],
+      "sources": [
+        "https://github.com/nix-purifiers/west-purifier/blob/5bd28cf919fe15bf8414f2c81b39f4f1deada503/west_purifier/cli.py"
+      ]
+    },
+    "update": {
+      "capability": "west-purifier",
+      "arguments": [
+        "lock",
+        "--update",
+        "--project",
+        {
+          "binding": "project_root"
+        },
+        "--lock",
+        {
+          "binding": "lockfile"
+        },
+        {
+          "splice": "arguments"
+        }
+      ],
+      "sources": [
+        "https://github.com/nix-purifiers/west-purifier/blob/5bd28cf919fe15bf8414f2c81b39f4f1deada503/west_purifier/cli.py"
+      ]
+    },
+    "publish": {
+      "capability": "west-purifier",
+      "arguments": [
+        "publish",
+        "--project",
+        {
+          "binding": "project_root"
+        },
+        "--lock",
+        {
+          "binding": "lockfile"
+        },
+        "--tag",
+        {
+          "binding": "tag"
+        },
+        {
+          "splice": "arguments"
+        }
+      ],
+      "sources": [
+        "https://github.com/nix-purifiers/west-purifier/blob/5bd28cf919fe15bf8414f2c81b39f4f1deada503/west_purifier/cli.py"
+      ]
+    },
+    "build": {
+      "capability": "west",
+      "arguments": [
+        "build",
+        {
+          "splice": "arguments"
+        }
+      ],
+      "sources": [
+        "https://github.com/nix-purifiers/west-purifier/blob/5bd28cf919fe15bf8414f2c81b39f4f1deada503/west_purifier/cli.py"
+      ],
+      "environment": {
+        "WEST_PURIFIER_PROJECT": {
+          "binding": "project_root"
+        },
+        "WEST_PURIFIER_LOCK": {
+          "binding": "lockfile"
+        }
+      }
+    }
+  }
+}
