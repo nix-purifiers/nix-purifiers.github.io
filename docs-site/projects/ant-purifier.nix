@@ -1,6 +1,6 @@
 { ... }:
 let
-  source = "https://github.com/nix-purifiers/ant-purifier/blob/793373015c1a35f49877d222939b771b1e52aa9b/README.md";
+  source = "https://github.com/nix-purifiers/ant-purifier/blob/bdbb867cfd38b327ec85fab1d234b7dbd8468cf9/README.md";
 in {
   imports = [ ../../model/projects/ant-purifier.nix ../profiles/locked-wrapper.nix ];
   summary = "Locked, Nix-resolved dependencies for Ant and Apache Ivy.";

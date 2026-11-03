@@ -1,6 +1,6 @@
 { ... }:
 let
-  source = "https://github.com/nix-purifiers/ant-purifier/blob/793373015c1a35f49877d222939b771b1e52aa9b/ant_purifier/cli.py";
+  source = "https://github.com/nix-purifiers/ant-purifier/blob/bdbb867cfd38b327ec85fab1d234b7dbd8468cf9/ant_purifier/cli.py";
   resolve = arguments: {
     capability = "ant-purifier";
     inherit arguments;
@@ -14,7 +14,7 @@ in {
       environment.ANT_PURIFIER_LOCKFILE.binding = "lockfile";
       sources = [ source ];
     };
-    lock = resolve [ "lock" ];
+    lock = resolve [ "lock" { splice = "arguments"; } ];
     update = resolve [ "update" ];
     named-update = (resolve [ "update" { splice = "arguments"; } ]) // { minimumArguments = 1; };
     prefetch = resolve [ "prefetch" ];

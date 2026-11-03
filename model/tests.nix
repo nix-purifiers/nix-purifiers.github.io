@@ -18,10 +18,10 @@ let
       sections.editor.blocks.typo.extra-explanation = "Unrecognized block.";
     });
     unsupportedProjectionCannotAdvertiseFormats = !force (withOverride ({ lib, ... }: {
-      facts.projection_incoming_formats = lib.mkForce { state = "known"; value = [ "Maven" ]; };
+      facts.projection_incoming.value = lib.mkForce "unsupported";
     }));
     supportedProjectionRequiresFormatsAndInterface = !force (withOverride ({ lib, ... }: {
-      facts.projection_incoming.value = lib.mkForce "supported";
+      facts.projection_incoming_formats = lib.mkForce { state = "not-applicable"; reason = "No formats declared."; };
     }));
     inactiveBlockProseFails = !force (withOverride ({ lib, ... }: {
       facts.editor_metadata_format.value = lib.mkForce "none";
