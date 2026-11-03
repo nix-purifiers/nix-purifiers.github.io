@@ -17,11 +17,28 @@ let
       specifications = lib.listToAttrs (map (s: lib.nameValuePair s.id s) contract.sections);
       expectedSections = builtins.attrNames specifications;
       sections = lib.mapAttrs (key: section:
+        let
+          template = specifications.${key}.shared.${section.template};
+          blocks = if builtins.isString template then [ { id = "main"; } ] else template;
+          blockNames = map (b: b.id) blocks;
+          active = block:
+            lib.all (k: facts.${k}.state == "known") (block.whenKnown or [])
+            && lib.all (k:
+              let required = block.when.${k};
+              in facts.${k}.state == "known" && builtins.elem facts.${k}.value
+                (if builtins.isList required then required else [ required ])
+            ) (builtins.attrNames (block.when or {}));
+          extraBlocks = builtins.attrNames section.blocks;
+        in
         if section.mode == "shared" then
           if section.template == null || section.reason != null then
             throw "Shared sections require a template and cannot have a replacement reason"
           else if !(builtins.hasAttr section.template specifications.${key}.shared) then
             throw "${key}: unknown shared template ${section.template}"
+          else if !(lib.all (name: builtins.elem name blockNames) extraBlocks) then
+            throw "${key}: prose targets an unknown block"
+          else if !(lib.all (block: !(builtins.elem block.id extraBlocks) || active block) blocks) then
+            throw "${key}: prose targets an inactive conditional block"
           else if !(lib.all (factKey:
             let
               required = specifications.${key}.requires.${section.template}.${factKey};
@@ -30,12 +47,16 @@ let
             in fact.state == "known" && builtins.elem fact.value choices
           ) (builtins.attrNames (specifications.${key}.requires.${section.template} or {}))) then
             throw "${key}: shared template contradicts declared facts"
-          else { use = section.template; } // lib.optionalAttrs (section.details != null) { inherit (section) details; }
+          else { use = section.template; }
+            // lib.optionalAttrs (section.details != null) { inherit (section) details; }
+            // lib.optionalAttrs (section.blocks != {}) {
+              blocks = lib.mapAttrs (_: prose: lib.filterAttrs (_: v: v != null) prose) section.blocks;
+            }
         else if section.mode == "replace" then
-          if section.reason == null || section.details == null || section.template != null then
+          if section.reason == null || section.details == null || section.template != null || section.blocks != {} then
             throw "Replacements require details and reason, without a template"
           else { replace = section.details; inherit (section) reason; }
-        else if section.reason == null || section.details != null || section.template != null then
+        else if section.reason == null || section.details != null || section.template != null || section.blocks != {} then
           throw "Omissions require a reason and cannot contain copy"
         else { omit = section.reason; }
       ) cfg.sections;

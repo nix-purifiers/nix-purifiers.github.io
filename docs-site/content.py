@@ -28,6 +28,8 @@ def feature_matrix(page, contract):
     def cell(value):
         return escape(value).replace('|', '&#124;').replace('\n', '<br>')
     for key, definition in contract['facts'].items():
+        if not definition.get('matrix', True):
+            continue
         fact = page['facts'][key]
         if fact['state'] == 'known':
             value = fact['value']
@@ -138,7 +140,7 @@ def render(page, contract):
         if len(modes) != 1:
             raise ValueError(f'{key}: choose exactly one of use, replace, omit')
         mode = next(iter(modes))
-        allowed = {'use', 'details'} if mode == 'use' else (
+        allowed = {'use', 'details', 'blocks'} if mode == 'use' else (
             {'replace', 'reason'} if mode == 'replace' else {'omit'})
         if set(entry) - allowed:
             raise ValueError(f'{key}: unexpected fields {sorted(set(entry) - allowed)}')
@@ -159,13 +161,48 @@ def render(page, contract):
                 choices = required if isinstance(required, list) else [required]
                 if fact.get('state') != 'known' or fact.get('value') not in choices:
                     raise ValueError(f'{key}: shared copy requires {fact_key} in {choices}')
-            body = nonempty(variants[value], f'{key}.shared.{value}')
-            # Only these explicit tokens are substituted; code braces stay literal.
-            body = body.replace('{project}', project).replace('{repository}', repository)
+            template = variants[value]
+            blocks = [{'id': 'main', 'text': template}] if isinstance(template, str) else template
+            if not isinstance(blocks, list) or not blocks:
+                raise ValueError(f'{key}: expected nonempty template blocks')
+            identifiers = [block['id'] for block in blocks]
+            if len(set(identifiers)) != len(identifiers):
+                raise ValueError(f'{key}: block names must be unique')
+            overrides = entry.get('blocks', {})
+            if not isinstance(overrides, dict) or set(overrides) - set(identifiers):
+                raise ValueError(f'{key}: unknown block names')
+            pieces = []
+            for block in blocks:
+                identifier = block['id']
+                prose = overrides.get(identifier, {})
+                if not isinstance(prose, dict) or set(prose) - {'before', 'extra-explanation', 'after'}:
+                    raise ValueError(f'{key}.{identifier}: unknown prose slots')
+                conditions = block.get('when', {})
+                required_known = block.get('whenKnown', [])
+                if (set(conditions) | set(required_known)) - set(facts):
+                    raise ValueError(f'{key}.{identifier}: unknown condition facts')
+                active = all(facts[k]['state'] == 'known' for k in required_known) and all(facts[k]['state'] == 'known' and facts[k]['value'] in (
+                    expected if isinstance(expected, list) else [expected])
+                    for k, expected in conditions.items())
+                if not active:
+                    if prose:
+                        raise ValueError(f'{key}.{identifier}: prose targets an inactive block')
+                    continue
+                if 'before' in prose:
+                    pieces.append(nonempty(prose['before'], f'{key}.{identifier}.before'))
+                pieces.append(nonempty(block['text'], f'{key}.{identifier}.text'))
+                for slot in ('extra-explanation', 'after'):
+                    if slot in prose:
+                        pieces.append(nonempty(prose[slot], f'{key}.{identifier}.{slot}'))
+                for slot, text in prose.items():
+                    differences.append({'section': key, 'block': identifier, 'kind': slot, 'text': text})
+            body = '\n\n'.join(pieces)
             if 'details' in entry:
                 details = nonempty(entry['details'], f'{key}.details')
                 body += '\n\n' + details
                 differences.append({'section': key, 'kind': 'extended', 'details': details})
+        # Substitute explicit tokens after composing shared and local prose.
+        body = body.replace('{project}', project).replace('{repository}', repository)
         body = re.sub(r'\{facts\.([a-z_]+)\}', substitute, body)
         body = re.sub(r'\{commands\.([a-z_-]+)\}', command, body)
         if re.search(r'^#{1,2}\s', body, re.MULTILINE):

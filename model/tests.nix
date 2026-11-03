@@ -14,6 +14,12 @@ let
     editorCapabilityRequiresBoolean = !force (withOverride ({ lib, ... }: {
       facts.editor_diagnostics.value = lib.mkForce "jdtls";
     }));
+    unknownBlockFails = !force (withOverride {
+      sections.editor.blocks.typo.extra-explanation = "Unrecognized block.";
+    });
+    inactiveBlockProseFails = !force (withOverride ({ lib, ... }: {
+      facts.editor_metadata_format.value = lib.mkForce "none";
+    }));
     unsupportedEnumFails = !force (withOverride ({ lib, ... }: {
       facts.relock.value = lib.mkForce "sometimes";
     }));
@@ -33,6 +39,7 @@ let
       sections.editor = {
         mode = "omit"; reason = "No editor integration.";
         template = lib.mkForce null; details = lib.mkForce null;
+        blocks = lib.mkForce {};
       };
     }));
     unknownTemplateFails = !force (withOverride {

@@ -109,6 +109,102 @@
     "editor_offline": {
       "type": "boolean",
       "description": "Editor features work without network access after prefetch."
+    },
+    "prefetch_components": {
+      "type": "strings",
+      "description": "Components retained by prefetch.",
+      "matrix": false
+    },
+    "unsupported_features": {
+      "type": "strings",
+      "description": "Unsupported native features and configurations.",
+      "matrix": false
+    },
+    "wrapper_required": {
+      "type": "boolean",
+      "description": "Whether native builds require the wrapper.",
+      "matrix": false
+    },
+    "native_plugin_coordinate": {
+      "type": "string",
+      "description": "Published native plugin coordinate.",
+      "matrix": false
+    },
+    "native_plugin_repository": {
+      "type": "string",
+      "description": "Native plugin package repository URL.",
+      "matrix": false
+    },
+    "native_plugin_bootstrap": {
+      "type": "string",
+      "description": "Native plugin bootstrap resolution mode",
+      "matrix": false,
+      "enum": [
+        "maven-impure"
+      ]
+    },
+    "named_update_example": {
+      "type": "string",
+      "description": "A native dependency selector used by the named-update example.",
+      "matrix": false
+    },
+    "runtime_requirements": {
+      "type": "strings",
+      "description": "Prerequisites for native development.",
+      "matrix": false
+    },
+    "supported_native_commands": {
+      "type": "strings",
+      "description": "Native commands handled by the supplied integration.",
+      "matrix": false
+    },
+    "build_engine": {
+      "type": "string",
+      "description": "Native engine used inside the Nix project builder.",
+      "matrix": false
+    },
+    "builder_options": {
+      "type": "strings",
+      "description": "Supported Nix builder argument names.",
+      "matrix": false
+    },
+    "editor_metadata_format": {
+      "type": "string",
+      "description": "Project metadata prepared for the editor",
+      "matrix": false,
+      "enum": [
+        "eclipse",
+        "none"
+      ]
+    },
+    "lock_identity": {
+      "type": "string",
+      "description": "Identity preserved by the native and companion locks",
+      "matrix": false,
+      "enum": [
+        "ivy-revisions",
+        "oci-sha256"
+      ]
+    },
+    "tested_toolchain": {
+      "type": "strings",
+      "description": "Toolchain versions checked by the project.",
+      "matrix": false
+    },
+    "native_plugin_java_target": {
+      "type": "string",
+      "description": "Java release targeted by the native plugin.",
+      "matrix": false
+    },
+    "updates_ignore_file": {
+      "type": "boolean",
+      "description": "Whether locking updates native ignore rules.",
+      "matrix": false
+    },
+    "generated_cache_directory": {
+      "type": "string",
+      "description": "Project-local generated cache directory.",
+      "matrix": false
     }
   }
 }

@@ -5,7 +5,47 @@
       "id": "quickstart",
       "title": "Quickstart",
       "shared": {
-        "native": "From a project containing {facts.inputs}:\n\n```sh\nnix shell 'github:{repository}'\n{commands.lock}\n{commands.prefetch}\n{commands.build}\n```\n\nCommit the lockfiles: {facts.lockfiles}."
+        "native": [
+          {
+            "id": "prerequisites",
+            "text": "Prerequisites: {facts.runtime_requirements}.",
+            "whenKnown": [
+              "runtime_requirements"
+            ]
+          },
+          {
+            "id": "commands",
+            "text": "From a project containing {facts.inputs}:\n\n```sh\nnix shell 'github:{repository}'\n{commands.lock}\n{commands.prefetch}\n{commands.build}\n```"
+          },
+          {
+            "id": "commit",
+            "text": "Commit the lockfiles: {facts.lockfiles}."
+          },
+          {
+            "id": "ignore-file",
+            "text": "Locking excludes `{facts.generated_cache_directory}` from the native build context. Also commit the updated ignore file.",
+            "when": {
+              "updates_ignore_file": true
+            },
+            "whenKnown": [
+              "generated_cache_directory"
+            ]
+          },
+          {
+            "id": "lock-format",
+            "text": "The native lock records exact revisions; its companion records artifact hashes, original metadata, and resolution configuration.",
+            "when": {
+              "lock_identity": "ivy-revisions"
+            }
+          },
+          {
+            "id": "lock-format-oci",
+            "text": "OCI manifest, configuration, and layer identities retain their native SHA-256 digests. The lock adds platform selections and input fingerprints.",
+            "when": {
+              "lock_identity": "oci-sha256"
+            }
+          }
+        ]
       },
       "requires": {}
     },
@@ -13,8 +53,32 @@
       "id": "workflow",
       "title": "Development loop",
       "shared": {
-        "locked": "Run `{commands.lock}` after changing dependency declarations. Relocking retains existing pins.\n\nRun `{commands.update}` to update dependencies, then `{commands.prefetch}`.",
-        "fresh": "Run `{commands.lock}` after changing dependency declarations. Relocking resolves dependencies again; it does not retain existing pins.\n\nRun `{commands.prefetch}` before building."
+        "locked": [
+          {
+            "id": "main",
+            "text": "Run `{commands.lock}` after changing dependency declarations. Relocking retains existing pins.\n\nRun `{commands.update}` to update dependencies, then `{commands.prefetch}`."
+          },
+          {
+            "id": "named-update",
+            "text": "Update one selected dependency with `{commands.named-update} {facts.named_update_example}`. Other selected pins are retained.",
+            "whenKnown": [
+              "named_update_example"
+            ]
+          }
+        ],
+        "fresh": [
+          {
+            "id": "main",
+            "text": "Run `{commands.lock}` after changing dependency declarations. Relocking resolves dependencies again; it does not retain existing pins.\n\nRun `{commands.prefetch}` before building."
+          },
+          {
+            "id": "named-update",
+            "text": "Update one selected dependency with `{commands.named-update} {facts.named_update_example}`. Other selected pins are retained.",
+            "whenKnown": [
+              "named_update_example"
+            ]
+          }
+        ]
       },
       "requires": {
         "locked": {
@@ -29,7 +93,44 @@
       "id": "integration",
       "title": "Native integration",
       "shared": {
-        "wrapper": "The shell supplies a wrapper for the native build tool. Without an applicable lock, it warns and runs the ordinary native tool. A stale or invalid lock fails with a repair command."
+        "wrapper": [
+          {
+            "id": "main",
+            "text": "The shell supplies a wrapper for the native build tool. Without an applicable lock, it warns and runs the ordinary native tool. A stale or invalid lock fails with a repair command."
+          },
+          {
+            "id": "required-wrapper",
+            "text": "The supplied wrapper is required for native builds.",
+            "when": {
+              "wrapper_required": true
+            }
+          },
+          {
+            "id": "native-commands",
+            "text": "The integration handles {facts.supported_native_commands}; other native commands run normally.",
+            "whenKnown": [
+              "supported_native_commands"
+            ]
+          },
+          {
+            "id": "native-plugin",
+            "text": "Alternatively, activate the native plugin in the build. Resolve `{facts.native_plugin_coordinate}` from the [native plugin repository]({facts.native_plugin_repository}). Keep bootstrap dependencies separate from application dependencies.",
+            "when": {
+              "integration": "wrapper-and-plugin"
+            },
+            "whenKnown": [
+              "native_plugin_coordinate",
+              "native_plugin_repository"
+            ]
+          },
+          {
+            "id": "plugin-bootstrap",
+            "text": "Native Maven bootstrap resolution is impure; use the wrapper for pure plugin resolution.",
+            "when": {
+              "native_plugin_bootstrap": "maven-impure"
+            }
+          }
+        ]
       },
       "requires": {
         "wrapper": {
@@ -46,7 +147,19 @@
       "id": "offline",
       "title": "Working offline",
       "shared": {
-        "scoped": "Run `{commands.prefetch}` to prepare the locked dependencies. This does not guarantee that the entire build can run offline.\n\nOutside this lock: {facts.offline_limits}."
+        "scoped": [
+          {
+            "id": "main",
+            "text": "Run `{commands.prefetch}` to prepare the locked dependencies. This does not guarantee that the entire build can run offline.\n\nOutside this lock: {facts.offline_limits}."
+          },
+          {
+            "id": "roots",
+            "text": "Prefetch retains {facts.prefetch_components} through garbage-collector roots beside the selected lockfile.",
+            "whenKnown": [
+              "prefetch_components"
+            ]
+          }
+        ]
       },
       "requires": {
         "scoped": {
@@ -58,7 +171,35 @@
       "id": "editor",
       "title": "Editor",
       "shared": {
-        "command": "Launch `{commands.editor}` from the same development shell."
+        "command": [
+          {
+            "id": "main",
+            "text": "Launch `{commands.editor}` from the same development shell."
+          },
+          {
+            "id": "navigation",
+            "text": "Diagnostics and definition lookup work offline after prefetch.",
+            "when": {
+              "editor_diagnostics": true,
+              "editor_navigation": true,
+              "editor_offline": true
+            }
+          },
+          {
+            "id": "dependency-sources",
+            "text": "Source code for locked dependencies is available to the editor.",
+            "when": {
+              "editor_dependency_sources": true
+            }
+          },
+          {
+            "id": "metadata",
+            "text": "The launcher prepares Eclipse project metadata with immutable dependency and source JAR paths.",
+            "when": {
+              "editor_metadata_format": "eclipse"
+            }
+          }
+        ]
       },
       "requires": {}
     },
@@ -66,7 +207,36 @@
       "id": "nix_builds",
       "title": "Nix builds",
       "shared": {
-        "builder": "Apply `overlays.default` and call `{facts.nix_builder}`.\n\nThe result exposes: {facts.build_outputs}."
+        "builder": [
+          {
+            "id": "main",
+            "text": "Apply `overlays.default` and call `{facts.nix_builder}`.\n\nThe result exposes: {facts.build_outputs}."
+          },
+          {
+            "id": "sandbox",
+            "text": "The project builds in the Nix sandbox.",
+            "when": {
+              "build_isolation": "nix-sandbox"
+            }
+          },
+          {
+            "id": "vm",
+            "text": "The builder runs {facts.build_engine} inside a networkless software VM.",
+            "when": {
+              "build_isolation": "networkless-vm"
+            },
+            "whenKnown": [
+              "build_engine"
+            ]
+          },
+          {
+            "id": "options",
+            "text": "Builder options include {facts.builder_options}.",
+            "whenKnown": [
+              "builder_options"
+            ]
+          }
+        ]
       },
       "requires": {}
     },
@@ -74,7 +244,40 @@
       "id": "scope",
       "title": "Supported scope",
       "shared": {
-        "platforms": "Supported platforms: {facts.platforms}.\n\nDependency sources: {facts.dependency_sources}."
+        "platforms": [
+          {
+            "id": "main",
+            "text": "Supported platforms: {facts.platforms}.\n\nDependency sources: {facts.dependency_sources}."
+          },
+          {
+            "id": "toolchain",
+            "text": "Checked toolchain: {facts.tested_toolchain}.",
+            "whenKnown": [
+              "tested_toolchain"
+            ]
+          },
+          {
+            "id": "java-target",
+            "text": "The native plugin targets Java {facts.native_plugin_java_target}.",
+            "whenKnown": [
+              "native_plugin_java_target"
+            ]
+          },
+          {
+            "id": "transport",
+            "text": "The default CLI transport supports anonymous access. Builder fetcher overrides can integrate corporate transport.",
+            "when": {
+              "credentials": "anonymous-only"
+            }
+          },
+          {
+            "id": "unsupported",
+            "text": "Not supported: {facts.unsupported_features}.",
+            "whenKnown": [
+              "unsupported_features"
+            ]
+          }
+        ]
       },
       "requires": {}
     },

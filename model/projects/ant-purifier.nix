@@ -5,6 +5,23 @@ in {
   imports = [ ../operations/ant.nix ];
   repository = "nix-purifiers/ant-purifier";
   facts = {
+    prefetch_components = known [ "dependency repository" "compiler" "Ant" "plugin" "editor toolchain" ];
+    unsupported_features = known [ "inline Ivy resolution" "inherited descriptors" "branches" "multiple project base directories" "custom cache managers" "explicit artifact URLs" "native Nix project dependency inputs" ];
+    wrapper_required = known false;
+    native_plugin_coordinate = known "io.github.nix-purifiers:ant-purifier";
+    native_plugin_repository = known "https://nix-purifiers.github.io/ant-purifier/maven/";
+    native_plugin_bootstrap = known "maven-impure";
+    named_update_example = known "commons-lang3";
+    supported_native_commands = known [ "Ant targets" ];
+    build_engine = known "Ant";
+    builder_options = known [ "buildTargets" "publishTarget" "lockFile" "ivyLock" "ivyFile" "buildFile" "fetchers" ];
+    editor_metadata_format = known "eclipse";
+    lock_identity = known "ivy-revisions";
+    tested_toolchain = known [ "Ant 1.10.18" "Ivy 2.6.0" "JDK 21" ];
+    native_plugin_java_target = known "11";
+    updates_ignore_file = known false;
+    generated_cache_directory = known ".ant-purifier";
+    runtime_requirements = { state = "not-applicable"; reason = "No additional native prerequisites are declared."; };
     editor_diagnostics = known true;
     editor_navigation = known true;
     editor_completion = { state = "unknown"; reason = "Completion has not been verified through this project integration."; };

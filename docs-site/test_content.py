@@ -74,6 +74,33 @@ class ContentTests(unittest.TestCase):
         with self.assertRaises(ValueError):
             render(self.page, self.contract)
 
+    def test_conditional_blocks_inject_values_and_allow_local_prose(self):
+        self.contract['facts'] = {'offline': {'type': 'boolean'}}
+        self.page['facts'] = {'offline': {'state': 'known', 'value': True}}
+        self.contract['sections'][0]['shared']['standard'] = [
+            {'id': 'offline', 'when': {'offline': True}, 'text': 'Offline use is {facts.offline}.'},
+            {'id': 'next', 'text': 'Next shared paragraph.'},
+        ]
+        self.page['sections']['workflow'] = {'use': 'standard', 'blocks': {
+            'offline': {'before': 'Before prose.', 'extra-explanation': 'Specific explanation.', 'after': 'After prose.'}}}
+        markdown, differences = render(self.page, self.contract)
+        phrases = ['Before prose.', 'Offline use is supported.', 'Specific explanation.', 'After prose.', 'Next shared paragraph.']
+        self.assertEqual(sorted(phrases, key=markdown.index), phrases)
+        self.assertTrue(any(d.get('block') == 'offline' and d['kind'] == 'extra-explanation' for d in differences))
+        self.page['facts']['offline'] = {'state': 'unknown', 'reason': 'Not established.'}
+        with self.assertRaisesRegex(ValueError, 'inactive'):
+            render(self.page, self.contract)
+        self.page['sections']['workflow'].pop('blocks')
+        markdown, _ = render(self.page, self.contract)
+        self.assertNotIn('Offline use', markdown)
+        self.assertIn('Next shared paragraph.', markdown)
+
+    def test_unknown_block_and_prose_slot_names_fail(self):
+        for blocks in ({'typo': {'before': 'Oops'}}, {'main': {'explanation': 'Wrong slot'}}):
+            self.page['sections']['workflow']['blocks'] = blocks
+            with self.subTest(blocks=blocks), self.assertRaises(ValueError):
+                render(self.page, self.contract)
+
 
 if __name__ == '__main__':
     unittest.main()

@@ -49,8 +49,29 @@ Command examples use `{commands.lock}`, `{commands.build}`, and related tokens
 from the actual invocation recipes; changing a task in the model changes both
 the harness invocation and the generated example.
 
-Use `sections.<name>.details` to add project-specific instructions below
-shared prose. To replace or omit a section, record why:
+Shared templates can be ordered, named blocks rather than one string. Each
+block has `id` and `text`, with optional `when` fact-value conditions and
+`whenKnown` prerequisites. Values and command recipes are injected through
+the existing `{facts.name}` and `{commands.name}` tokens. Unknown facts do
+not satisfy conditions. Fact definitions with `matrix = false` supply
+operational or documentation values without becoming feature-matrix rows.
+
+Prefer `extra-explanation` for the remaining project-specific prose:
+
+```nix
+sections.offline.blocks.roots.extra-explanation = ''
+  Additional instructions specific to this integration.
+'';
+```
+
+Each block also accepts `before` and `after` prose as escape hatches. The
+rendering order is before, shared block content, extra explanation, after.
+These slots can be attached to any named block within a section; they do not
+create example sections. Unknown block names, misspelled slots, and prose
+attached to an inactive conditional block fail validation. The older
+section-level `details` field remains supported for compatibility.
+
+To replace or omit a whole section, record why:
 
 ```nix
 sections.workflow = {
@@ -63,6 +84,7 @@ sections.editor = {
   mode = "omit";
   template = lib.mkForce null;
   details = lib.mkForce null;
+  blocks = lib.mkForce {};
   reason = "This tool has no editor integration.";
 };
 ```

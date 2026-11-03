@@ -5,6 +5,23 @@ in {
   imports = [ ../operations/docker.nix ];
   repository = "nix-purifiers/docker-purifier";
   facts = {
+    prefetch_components = known [ "image layouts" "Docker client" "Buildx" "resolver" "editor worker" ];
+    unsupported_features = known [ "remote ADD" "external syntax frontends" "ONBUILD triggers" "dynamic FROM" "explicit FROM --platform" "RUN mounts and heredocs" "foreign layers" "Compose and Bake builds" "cross-platform host builds" "remote build contexts" ];
+    wrapper_required = known true;
+    native_plugin_coordinate = { state = "not-applicable"; reason = "This integration does not publish a native plugin."; };
+    native_plugin_repository = { state = "not-applicable"; reason = "This integration does not publish a native plugin."; };
+    native_plugin_bootstrap = { state = "not-applicable"; reason = "This integration does not publish a native plugin."; };
+    named_update_example = known "quay.io/prometheus/busybox:latest";
+    supported_native_commands = known [ "native-platform, local-context docker build" "docker buildx build" ];
+    build_engine = known "Buildah";
+    builder_options = known [ "lockFile" "dockerfile" "fetchers" "srcFilter" "buildArgs" "testCommand" ];
+    editor_metadata_format = known "none";
+    lock_identity = known "oci-sha256";
+    tested_toolchain = { state = "unknown"; reason = "Exact tested client and Buildx versions are not recorded in this model."; };
+    native_plugin_java_target = { state = "not-applicable"; reason = "This integration does not publish a native plugin."; };
+    updates_ignore_file = known true;
+    generated_cache_directory = known ".docker-purifier";
+    runtime_requirements = known [ "a running Docker daemon" "Buildx with named-context support" ];
     editor_diagnostics = known true;
     editor_navigation = known true;
     editor_completion = { state = "unknown"; reason = "Completion has not been verified through this project integration."; };
