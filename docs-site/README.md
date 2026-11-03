@@ -87,7 +87,7 @@ python3 docs-site/build.py --output .catalog-source
 jekyll build --source .catalog-source --destination .catalog-site
 ```
 
-The output includes standard project pages, a comparison table,
+The output preserves the existing family homepage and includes project pages,
 `catalog.json`, per-project `system.json`, and `content-variations.json`.
 The audit records local additions, replacements, omissions, and unresolved
 facts. CI runs the model tests, renderer/integration tests, and Jekyll build,

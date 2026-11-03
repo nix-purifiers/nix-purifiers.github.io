@@ -20,7 +20,7 @@ class CatalogTests(unittest.TestCase):
                                 cwd=cls.root, check=True, capture_output=True, text=True)
         cls.documentation = json.loads(result.stdout)
 
-    def test_builds_real_pages_comparison_and_audit(self):
+    def test_builds_real_pages_preserves_homepage_and_exports_audit(self):
         with tempfile.TemporaryDirectory() as directory:
             output = Path(directory)
             build(self.documentation, output)
@@ -30,10 +30,19 @@ class CatalogTests(unittest.TestCase):
             self.assertIn('docker build .', docker)
             self.assertIn('networkless software VM', docker)
             self.assertIn('## Development loop', ant)
-            self.assertIn('networkless-vm', (output / 'index.md').read_text())
+            self.assertEqual((output / 'index.html').read_bytes(), (self.root / 'index.html').read_bytes())
+            self.assertFalse((output / 'index.md').exists())
             audit = json.loads((output / 'content-variations.json').read_text())
             self.assertEqual(audit['ant-purifier']['unresolved']['credentials']['state'], 'unknown')
             self.assertEqual(json.loads((output / 'catalog.json').read_text()), self.documentation)
+
+    def test_rebuild_removes_the_previous_generated_tracking_landing_page(self):
+        with tempfile.TemporaryDirectory() as directory:
+            output = Path(directory)
+            (output / 'index.md').write_text('# Purifier reference\n\nCoverage and unresolved facts.\n')
+            build(self.documentation, output)
+            self.assertFalse((output / 'index.md').exists())
+            self.assertEqual((output / 'index.html').read_bytes(), (self.root / 'index.html').read_bytes())
 
     def test_contradictory_copy_rejected_before_output(self):
         documentation = copy.deepcopy(self.documentation)

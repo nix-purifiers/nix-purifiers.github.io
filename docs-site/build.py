@@ -29,23 +29,10 @@ def build(documentation, destination):
         'markdown': 'kramdown', 'kramdown': {'input': 'GFM'},
     }))
     (destination / 'catalog.json').write_text(json.dumps(documentation, indent=2) + '\n')
-    index = ['---\nlayout: default\n---\n', '# Purifier reference',
-             'Generated from the typed behavior catalog. This initial catalog covers '
-             'Ant and Docker; other purifier documentation still uses project READMEs.',
-             '[Machine-readable catalog](catalog.json)']
-    rows = ['| Fact | ' + ' | '.join(catalog) + ' |',
-            '| --- | ' + ' | '.join('---' for _ in catalog) + ' |']
-    for key in contract['facts']:
-        cells = []
-        for page in catalog.values():
-            fact = page['facts'][key]
-            if fact['state'] == 'known':
-                value = fact['value']
-                cell = ', '.join(value) if isinstance(value, list) else value
-            else:
-                cell = f'{fact["state"]}: {fact["reason"]}'
-            cells.append(cell.replace('|', '&#124;').replace('\n', ' '))
-        rows.append('| ' + key + ' | ' + ' | '.join(cells) + ' |')
+    # Preserve the user-facing family homepage, including projects whose
+    # documentation is hosted independently. Audit data is exported separately.
+    (destination / 'index.md').unlink(missing_ok=True)
+    shutil.copyfile(theme.parent / 'index.html', destination / 'index.html')
     reports = {}
     for name, (markdown, variations) in rendered.items():
         page = catalog[name]
@@ -58,10 +45,6 @@ def build(documentation, destination):
         (target / 'index.md').write_text(frontmatter + source_links(markdown, page['repository']))
         (target / 'system.json').write_text(json.dumps(page, indent=2) + '\n')
         reports[name] = audit(page, variations)
-        index.append(f'- [{name}]({name}/)')
-    index.extend(['## Comparison', '\n'.join(rows),
-                  '[Variations and unresolved facts](content-variations.json)'])
-    (destination / 'index.md').write_text('\n\n'.join(index) + '\n')
     (destination / 'content-variations.json').write_text(json.dumps(reports, indent=2) + '\n')
 
 
