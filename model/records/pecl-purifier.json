@@ -1,0 +1,226 @@
+{
+  "repository": "nix-purifiers/pecl-purifier",
+  "reviewedRevision": "49dba2ad1d3946767ee546fffeed4ca87db92d02",
+  "facts": {
+    "tool": {
+      "state": "known",
+      "value": "PHP and PECL"
+    },
+    "inputs": {
+      "state": "known",
+      "value": [
+        "Native PECL requirements",
+        "package.xml when developing an extension"
+      ]
+    },
+    "lockfiles": {
+      "state": "known",
+      "value": [
+        "pecl-purifier.lock.json"
+      ]
+    },
+    "integration": {
+      "state": "known",
+      "value": "wrapper"
+    },
+    "relock": {
+      "state": "known",
+      "value": "preserves-pins"
+    },
+    "missing_lock": {
+      "state": "known",
+      "value": "warn-and-native"
+    },
+    "stale_lock": {
+      "state": "known",
+      "value": "fail-with-repair"
+    },
+    "platforms": {
+      "state": "known",
+      "value": [
+        "x86_64-linux",
+        "aarch64-linux"
+      ]
+    },
+    "dependency_sources": {
+      "state": "known",
+      "value": [
+        "Source extensions from pecl.php.net"
+      ]
+    },
+    "offline_scope": {
+      "state": "known",
+      "value": "locked-dependencies"
+    },
+    "offline_limits": {
+      "state": "known",
+      "value": [
+        "The initial target is PHP 8.5 and PECL source extensions on Linux",
+        "Userland PEAR packages, custom channels and PIE are outside this adapter",
+        "PHP configuration replacing extension search paths is rejected",
+        "New upstream versions may need extension recipe overrides"
+      ]
+    },
+    "unsupported_features": {
+      "state": "known",
+      "value": [
+        "The initial target is PHP 8.5 and PECL source extensions on Linux",
+        "Userland PEAR packages, custom channels and PIE are outside this adapter",
+        "PHP configuration replacing extension search paths is rejected",
+        "New upstream versions may need extension recipe overrides"
+      ]
+    },
+    "nix_builder": {
+      "state": "known",
+      "value": "pkgs.pecl-purifier.buildPeclProject"
+    },
+    "build_isolation": {
+      "state": "known",
+      "value": "nix-sandbox"
+    },
+    "build_outputs": {
+      "state": "known",
+      "value": [
+        "packages",
+        "tests",
+        "release",
+        "fetches"
+      ]
+    },
+    "projection_incoming": {
+      "state": "known",
+      "value": "unsupported"
+    },
+    "projection_incoming_formats": {
+      "state": "not-applicable",
+      "reason": "No typed project projection adapter is exported by this implementation."
+    },
+    "projection_incoming_interfaces": {
+      "state": "not-applicable",
+      "reason": "No typed project projection interface is implemented."
+    },
+    "projection_incoming_limits": {
+      "state": "known",
+      "value": [
+        "Native source bundles and publication do not constitute a typed cross-purifier projection interface"
+      ]
+    },
+    "projection_outgoing": {
+      "state": "known",
+      "value": "unsupported"
+    },
+    "projection_outgoing_formats": {
+      "state": "not-applicable",
+      "reason": "No typed project projection adapter is exported by this implementation."
+    },
+    "projection_outgoing_interfaces": {
+      "state": "not-applicable",
+      "reason": "No typed project projection interface is implemented."
+    },
+    "projection_outgoing_limits": {
+      "state": "known",
+      "value": [
+        "Native source bundles and publication do not constitute a typed cross-purifier projection interface"
+      ]
+    },
+    "builder_options": {
+      "state": "known",
+      "value": [
+        "lockFile",
+        "fetchers",
+        "extensionOverrides",
+        "nativeBuildInputs",
+        "doCheck",
+        "checkCommand",
+        "buildCommand"
+      ]
+    }
+  },
+  "operations": {
+    "lock": {
+      "capability": "pecl-purifier",
+      "arguments": [
+        "lock",
+        "--lock",
+        {
+          "binding": "lockfile"
+        },
+        {
+          "splice": "arguments"
+        }
+      ],
+      "sources": [
+        "https://github.com/nix-purifiers/pecl-purifier/blob/49dba2ad1d3946767ee546fffeed4ca87db92d02/pecl_purifier/cli.py"
+      ]
+    },
+    "prefetch": {
+      "capability": "pecl-purifier",
+      "arguments": [
+        "prefetch",
+        "--lock",
+        {
+          "binding": "lockfile"
+        },
+        {
+          "splice": "arguments"
+        }
+      ],
+      "sources": [
+        "https://github.com/nix-purifiers/pecl-purifier/blob/49dba2ad1d3946767ee546fffeed4ca87db92d02/pecl_purifier/cli.py"
+      ]
+    },
+    "bundle": {
+      "capability": "pecl-purifier",
+      "arguments": [
+        "bundle",
+        "--lock",
+        {
+          "binding": "lockfile"
+        },
+        {
+          "splice": "arguments"
+        }
+      ],
+      "sources": [
+        "https://github.com/nix-purifiers/pecl-purifier/blob/49dba2ad1d3946767ee546fffeed4ca87db92d02/pecl_purifier/cli.py"
+      ]
+    },
+    "update": {
+      "capability": "pecl-purifier",
+      "arguments": [
+        "lock",
+        "--update",
+        "--lock",
+        {
+          "binding": "lockfile"
+        },
+        {
+          "splice": "arguments"
+        }
+      ],
+      "sources": [
+        "https://github.com/nix-purifiers/pecl-purifier/blob/49dba2ad1d3946767ee546fffeed4ca87db92d02/pecl_purifier/cli.py"
+      ]
+    },
+    "publish": {
+      "capability": "pecl-purifier",
+      "arguments": [
+        "publish",
+        "--lock",
+        {
+          "binding": "lockfile"
+        },
+        "--tag",
+        {
+          "binding": "tag"
+        },
+        {
+          "splice": "arguments"
+        }
+      ],
+      "sources": [
+        "https://github.com/nix-purifiers/pecl-purifier/blob/49dba2ad1d3946767ee546fffeed4ca87db92d02/pecl_purifier/cli.py"
+      ]
+    }
+  }
+}

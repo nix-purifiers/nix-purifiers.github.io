@@ -1,0 +1,288 @@
+{
+  "repository": "nix-purifiers/agda-purifier",
+  "reviewedRevision": "679c349e3eeefbb3728aeab416f83b5bf170838e",
+  "facts": {
+    "tool": {
+      "state": "known",
+      "value": "Agda"
+    },
+    "inputs": {
+      "state": "known",
+      "value": [
+        ".agda-lib files",
+        "Native Agda library registry"
+      ]
+    },
+    "lockfiles": {
+      "state": "known",
+      "value": [
+        "agda-purifier.lock.json"
+      ]
+    },
+    "integration": {
+      "state": "known",
+      "value": "wrapper"
+    },
+    "relock": {
+      "state": "known",
+      "value": "preserves-pins"
+    },
+    "missing_lock": {
+      "state": "known",
+      "value": "warn-and-native"
+    },
+    "stale_lock": {
+      "state": "known",
+      "value": "fail-with-repair"
+    },
+    "platforms": {
+      "state": "known",
+      "value": [
+        "x86_64-linux",
+        "aarch64-linux"
+      ]
+    },
+    "dependency_sources": {
+      "state": "known",
+      "value": [
+        "Pinned Git trees from registered native libraries"
+      ]
+    },
+    "offline_scope": {
+      "state": "known",
+      "value": "locked-dependencies"
+    },
+    "offline_limits": {
+      "state": "known",
+      "value": [
+        "Dependency registries require clean Git checkouts with an origin remote",
+        "Mutable current-directory library dependencies and custom registry flags are unsupported",
+        "Dependency source include directories must be included in their Git trees"
+      ]
+    },
+    "unsupported_features": {
+      "state": "known",
+      "value": [
+        "Dependency registries require clean Git checkouts with an origin remote",
+        "Mutable current-directory library dependencies and custom registry flags are unsupported",
+        "Dependency source include directories must be included in their Git trees"
+      ]
+    },
+    "nix_builder": {
+      "state": "known",
+      "value": "pkgs.agda-purifier.buildAgdaProject"
+    },
+    "build_isolation": {
+      "state": "known",
+      "value": "nix-sandbox"
+    },
+    "build_outputs": {
+      "state": "known",
+      "value": [
+        "packages",
+        "tests",
+        "release",
+        "fetches"
+      ]
+    },
+    "projection_incoming": {
+      "state": "known",
+      "value": "unsupported"
+    },
+    "projection_incoming_formats": {
+      "state": "not-applicable",
+      "reason": "No typed project projection adapter is exported by this implementation."
+    },
+    "projection_incoming_interfaces": {
+      "state": "not-applicable",
+      "reason": "No typed project projection interface is implemented."
+    },
+    "projection_incoming_limits": {
+      "state": "known",
+      "value": [
+        "Native source bundles and publication do not constitute a typed cross-purifier projection interface"
+      ]
+    },
+    "projection_outgoing": {
+      "state": "known",
+      "value": "unsupported"
+    },
+    "projection_outgoing_formats": {
+      "state": "not-applicable",
+      "reason": "No typed project projection adapter is exported by this implementation."
+    },
+    "projection_outgoing_interfaces": {
+      "state": "not-applicable",
+      "reason": "No typed project projection interface is implemented."
+    },
+    "projection_outgoing_limits": {
+      "state": "known",
+      "value": [
+        "Native source bundles and publication do not constitute a typed cross-purifier projection interface"
+      ]
+    },
+    "builder_options": {
+      "state": "known",
+      "value": [
+        "lockFile",
+        "fetchers",
+        "libraryOverrides",
+        "nativeBuildInputs",
+        "doCheck",
+        "checkCommand",
+        "buildCommand"
+      ]
+    },
+    "editor_protocol": {
+      "state": "known",
+      "value": "native-editor"
+    },
+    "editor_supported": {
+      "state": "known",
+      "value": true
+    },
+    "editor_diagnostics": {
+      "state": "not-applicable",
+      "reason": "The supplied integration uses Agda\u2019s native interaction protocol, not LSP."
+    },
+    "editor_completion": {
+      "state": "not-applicable",
+      "reason": "The supplied integration uses Agda\u2019s native interaction protocol, not LSP."
+    },
+    "editor_navigation": {
+      "state": "not-applicable",
+      "reason": "The supplied integration uses Agda\u2019s native interaction protocol, not LSP."
+    },
+    "editor_dependency_sources": {
+      "state": "not-applicable",
+      "reason": "The supplied integration uses Agda\u2019s native interaction protocol, not LSP."
+    }
+  },
+  "operations": {
+    "lock": {
+      "capability": "agda-purifier",
+      "arguments": [
+        "lock",
+        "--lock",
+        {
+          "binding": "lockfile"
+        },
+        {
+          "splice": "arguments"
+        }
+      ],
+      "sources": [
+        "https://github.com/nix-purifiers/agda-purifier/blob/679c349e3eeefbb3728aeab416f83b5bf170838e/agda_purifier/cli.py"
+      ]
+    },
+    "prefetch": {
+      "capability": "agda-purifier",
+      "arguments": [
+        "prefetch",
+        "--lock",
+        {
+          "binding": "lockfile"
+        },
+        {
+          "splice": "arguments"
+        }
+      ],
+      "sources": [
+        "https://github.com/nix-purifiers/agda-purifier/blob/679c349e3eeefbb3728aeab416f83b5bf170838e/agda_purifier/cli.py"
+      ]
+    },
+    "bundle": {
+      "capability": "agda-purifier",
+      "arguments": [
+        "bundle",
+        "--lock",
+        {
+          "binding": "lockfile"
+        },
+        {
+          "splice": "arguments"
+        }
+      ],
+      "sources": [
+        "https://github.com/nix-purifiers/agda-purifier/blob/679c349e3eeefbb3728aeab416f83b5bf170838e/agda_purifier/cli.py"
+      ]
+    },
+    "update": {
+      "capability": "agda-purifier",
+      "arguments": [
+        "lock",
+        "--update",
+        "--lock",
+        {
+          "binding": "lockfile"
+        },
+        {
+          "splice": "arguments"
+        }
+      ],
+      "sources": [
+        "https://github.com/nix-purifiers/agda-purifier/blob/679c349e3eeefbb3728aeab416f83b5bf170838e/agda_purifier/cli.py"
+      ]
+    },
+    "publish": {
+      "capability": "agda-purifier",
+      "arguments": [
+        "publish",
+        "--lock",
+        {
+          "binding": "lockfile"
+        },
+        "--tag",
+        {
+          "binding": "tag"
+        },
+        {
+          "splice": "arguments"
+        }
+      ],
+      "sources": [
+        "https://github.com/nix-purifiers/agda-purifier/blob/679c349e3eeefbb3728aeab416f83b5bf170838e/agda_purifier/cli.py"
+      ]
+    },
+    "build": {
+      "capability": "agda",
+      "arguments": [
+        "--build-library",
+        {
+          "splice": "arguments"
+        }
+      ],
+      "sources": [
+        "https://github.com/nix-purifiers/agda-purifier/blob/679c349e3eeefbb3728aeab416f83b5bf170838e/agda_purifier/cli.py"
+      ],
+      "environment": {
+        "AGDA_PURIFIER_PROJECT": {
+          "binding": "project_root"
+        },
+        "AGDA_PURIFIER_LOCK": {
+          "binding": "lockfile"
+        }
+      }
+    },
+    "editor": {
+      "capability": "agda",
+      "arguments": [
+        "--interaction-json",
+        {
+          "splice": "arguments"
+        }
+      ],
+      "sources": [
+        "https://github.com/nix-purifiers/agda-purifier/blob/679c349e3eeefbb3728aeab416f83b5bf170838e/agda_purifier/cli.py"
+      ],
+      "environment": {
+        "AGDA_PURIFIER_PROJECT": {
+          "binding": "project_root"
+        },
+        "AGDA_PURIFIER_LOCK": {
+          "binding": "lockfile"
+        }
+      }
+    }
+  }
+}

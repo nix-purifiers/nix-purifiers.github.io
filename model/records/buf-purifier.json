@@ -1,0 +1,302 @@
+{
+  "repository": "nix-purifiers/buf-purifier",
+  "reviewedRevision": "9777fe7ed52c53254eb0c4d6e932abd43ea6de6a",
+  "facts": {
+    "tool": {
+      "state": "known",
+      "value": "Buf and Protobuf"
+    },
+    "inputs": {
+      "state": "known",
+      "value": [
+        "buf.yaml",
+        "buf.lock"
+      ]
+    },
+    "lockfiles": {
+      "state": "known",
+      "value": [
+        "buf.lock",
+        "buf-purifier.lock.json"
+      ]
+    },
+    "integration": {
+      "state": "known",
+      "value": "wrapper"
+    },
+    "relock": {
+      "state": "known",
+      "value": "preserves-pins"
+    },
+    "missing_lock": {
+      "state": "known",
+      "value": "warn-and-native"
+    },
+    "stale_lock": {
+      "state": "known",
+      "value": "fail-with-repair"
+    },
+    "platforms": {
+      "state": "known",
+      "value": [
+        "x86_64-linux",
+        "aarch64-linux"
+      ]
+    },
+    "dependency_sources": {
+      "state": "known",
+      "value": [
+        "Public Buf Schema Registry modules with b5 digests"
+      ]
+    },
+    "offline_scope": {
+      "state": "known",
+      "value": "locked-dependencies"
+    },
+    "offline_limits": {
+      "state": "known",
+      "value": [
+        "v2 workspaces are supported",
+        "protoc_builtin generators use the supplied Nix Protobuf compiler",
+        "Remote and external generator plugins require additional Nix tool providers",
+        "User root commands retain their normal network access"
+      ]
+    },
+    "unsupported_features": {
+      "state": "known",
+      "value": [
+        "v2 workspaces are supported",
+        "protoc_builtin generators use the supplied Nix Protobuf compiler",
+        "Remote and external generator plugins require additional Nix tool providers",
+        "User root commands retain their normal network access"
+      ]
+    },
+    "nix_builder": {
+      "state": "known",
+      "value": "pkgs.buf-purifier.buildBufProject"
+    },
+    "build_isolation": {
+      "state": "known",
+      "value": "nix-sandbox"
+    },
+    "build_outputs": {
+      "state": "known",
+      "value": [
+        "packages",
+        "tests",
+        "release",
+        "fetches"
+      ]
+    },
+    "projection_incoming": {
+      "state": "known",
+      "value": "unsupported"
+    },
+    "projection_incoming_formats": {
+      "state": "not-applicable",
+      "reason": "No typed project projection adapter is exported by this implementation."
+    },
+    "projection_incoming_interfaces": {
+      "state": "not-applicable",
+      "reason": "No typed project projection interface is implemented."
+    },
+    "projection_incoming_limits": {
+      "state": "known",
+      "value": [
+        "Native source bundles and publication do not constitute a typed cross-purifier projection interface"
+      ]
+    },
+    "projection_outgoing": {
+      "state": "known",
+      "value": "unsupported"
+    },
+    "projection_outgoing_formats": {
+      "state": "not-applicable",
+      "reason": "No typed project projection adapter is exported by this implementation."
+    },
+    "projection_outgoing_interfaces": {
+      "state": "not-applicable",
+      "reason": "No typed project projection interface is implemented."
+    },
+    "projection_outgoing_limits": {
+      "state": "known",
+      "value": [
+        "Native source bundles and publication do not constitute a typed cross-purifier projection interface"
+      ]
+    },
+    "builder_options": {
+      "state": "known",
+      "value": [
+        "lockFile",
+        "fetchers",
+        "nativeBuildInputs",
+        "doCheck",
+        "checkCommand"
+      ]
+    },
+    "editor_protocol": {
+      "state": "known",
+      "value": "lsp"
+    },
+    "editor_supported": {
+      "state": "known",
+      "value": true
+    },
+    "editor_offline": {
+      "state": "known",
+      "value": true
+    },
+    "editor_navigation": {
+      "state": "known",
+      "value": true
+    }
+  },
+  "operations": {
+    "lock": {
+      "capability": "buf-purifier",
+      "arguments": [
+        "lock",
+        "--lock",
+        {
+          "binding": "lockfile"
+        },
+        {
+          "splice": "arguments"
+        }
+      ],
+      "sources": [
+        "https://github.com/nix-purifiers/buf-purifier/blob/9777fe7ed52c53254eb0c4d6e932abd43ea6de6a/buf_purifier/cli.py"
+      ]
+    },
+    "prefetch": {
+      "capability": "buf-purifier",
+      "arguments": [
+        "prefetch",
+        "--lock",
+        {
+          "binding": "lockfile"
+        },
+        {
+          "splice": "arguments"
+        }
+      ],
+      "sources": [
+        "https://github.com/nix-purifiers/buf-purifier/blob/9777fe7ed52c53254eb0c4d6e932abd43ea6de6a/buf_purifier/cli.py"
+      ]
+    },
+    "bundle": {
+      "capability": "buf-purifier",
+      "arguments": [
+        "bundle",
+        "--lock",
+        {
+          "binding": "lockfile"
+        },
+        {
+          "splice": "arguments"
+        }
+      ],
+      "sources": [
+        "https://github.com/nix-purifiers/buf-purifier/blob/9777fe7ed52c53254eb0c4d6e932abd43ea6de6a/buf_purifier/cli.py"
+      ]
+    },
+    "update": {
+      "capability": "buf-purifier",
+      "arguments": [
+        "lock",
+        "--update",
+        "--lock",
+        {
+          "binding": "lockfile"
+        },
+        {
+          "splice": "arguments"
+        }
+      ],
+      "sources": [
+        "https://github.com/nix-purifiers/buf-purifier/blob/9777fe7ed52c53254eb0c4d6e932abd43ea6de6a/buf_purifier/cli.py"
+      ]
+    },
+    "publish": {
+      "capability": "buf-purifier",
+      "arguments": [
+        "publish",
+        "--lock",
+        {
+          "binding": "lockfile"
+        },
+        "--tag",
+        {
+          "binding": "tag"
+        },
+        {
+          "splice": "arguments"
+        }
+      ],
+      "sources": [
+        "https://github.com/nix-purifiers/buf-purifier/blob/9777fe7ed52c53254eb0c4d6e932abd43ea6de6a/buf_purifier/cli.py"
+      ]
+    },
+    "build": {
+      "capability": "buf",
+      "arguments": [
+        "build",
+        {
+          "splice": "arguments"
+        }
+      ],
+      "sources": [
+        "https://github.com/nix-purifiers/buf-purifier/blob/9777fe7ed52c53254eb0c4d6e932abd43ea6de6a/buf_purifier/cli.py"
+      ],
+      "environment": {
+        "BUF_PURIFIER_PROJECT": {
+          "binding": "project_root"
+        },
+        "BUF_PURIFIER_LOCK": {
+          "binding": "lockfile"
+        }
+      }
+    },
+    "check": {
+      "capability": "buf",
+      "arguments": [
+        "lint",
+        {
+          "splice": "arguments"
+        }
+      ],
+      "sources": [
+        "https://github.com/nix-purifiers/buf-purifier/blob/9777fe7ed52c53254eb0c4d6e932abd43ea6de6a/buf_purifier/cli.py"
+      ],
+      "environment": {
+        "BUF_PURIFIER_PROJECT": {
+          "binding": "project_root"
+        },
+        "BUF_PURIFIER_LOCK": {
+          "binding": "lockfile"
+        }
+      }
+    },
+    "editor": {
+      "capability": "buf",
+      "arguments": [
+        "lsp",
+        "serve",
+        {
+          "splice": "arguments"
+        }
+      ],
+      "sources": [
+        "https://github.com/nix-purifiers/buf-purifier/blob/9777fe7ed52c53254eb0c4d6e932abd43ea6de6a/buf_purifier/cli.py"
+      ],
+      "environment": {
+        "BUF_PURIFIER_PROJECT": {
+          "binding": "project_root"
+        },
+        "BUF_PURIFIER_LOCK": {
+          "binding": "lockfile"
+        }
+      }
+    }
+  }
+}
