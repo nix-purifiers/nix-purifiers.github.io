@@ -7,6 +7,38 @@ import subprocess
 import sys
 import tempfile
 import unittest
+import re
+
+from content import render
+from reference import guide_plan
+
+
+class PublishedReviewTests(unittest.TestCase):
+    def test_every_committed_variant_has_a_valid_paired_model_and_guide(self):
+        theme = Path(__file__).resolve().parent
+        documentation = json.loads((theme / 'catalog.json').read_text())
+        fingerprints = set()
+        for source in sorted((theme / 'reviews').glob('*/*/source.json')):
+            with self.subTest(source=source):
+                record = json.loads(source.read_text())
+                self.assertEqual(set(record), {'repository', 'revision', 'files'})
+                self.assertRegex(record['revision'], r'^[a-f0-9]{40}$')
+                self.assertEqual(record['repository'], 'nix-purifiers/' + source.parent.parent.name)
+                self.assertIn(source.parent.parent.name, documentation['catalog'])
+                self.assertTrue(record['files'])
+                for path, digest in record['files'].items():
+                    self.assertFalse(Path(path).is_absolute() or '..' in Path(path).parts)
+                    self.assertTrue(re.fullmatch(r'[a-f0-9]{64}', digest))
+                identity = record['repository'], json.dumps(record['files'], sort_keys=True)
+                self.assertNotIn(identity, fingerprints)
+                fingerprints.add(identity)
+                page = json.loads((source.parent / 'page.json').read_text())
+                self.assertEqual(page['repository'], record['repository'])
+                self.assertEqual(page['reviewedRevision'], record['revision'])
+                render(page, documentation['contract'])
+                plan_file = source.parent / 'guide.json'
+                plan = json.loads(plan_file.read_text()) if plan_file.exists() else None
+                guide_plan(record['repository'], (source.parent / 'reference.md').read_text(), plan)
 
 
 class ReviewedVariantTests(unittest.TestCase):
