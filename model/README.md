@@ -90,7 +90,7 @@ interface, including callbacks for fixture control and observations.
 `harness/conformance.py` executes those plans with the same runtime and native
 invocation recipes used for actual operations.
 
-The initial shared relock test:
+The shared relock test:
 
 1. Invokes the modeled lock operation.
 2. Asks the fixture provider for normalized locked selections.
@@ -106,14 +106,12 @@ also becomes a shared test case.
 Missing capabilities or fixture support produce **blocked** results, never
 passed tests. Every fact without a generated test is listed in
 `uncoveredFacts`, and a report cannot claim complete coverage while those gaps
-remain. The initial coverage is intentionally small; source references are
-review evidence, not proof of behavior.
+remain. Source references are review evidence, not proof of behavior.
 
 The integration test exercises Docker's real CLI and pin-retention algorithm.
 Its bespoke fixture adapter supplies controlled registry metadata, so no Docker
 daemon or external registry is needed. It also checks that a resolver that
-incorrectly advances pins fails the shared test. sbt currently has invocation
-tests, not an end-to-end build/plugin test through this harness.
+incorrectly advances pins fails the shared test.
 
 ```sh
 nix eval --json '.#tests'
@@ -124,12 +122,3 @@ PURIFIER_DOCKER_SOURCE=/path/to/docker-purifier \
 CI checks out the reviewed Docker source revision for this test. Without that
 source supplied, the Docker integration test is explicitly skipped; it does
 not substitute a synthetic resolver and claim the real integration passed.
-
-## Known model gaps
-
-The operational catalog covers Ant, Docker, and sbt; the generated documentation
-still covers Ant and Docker. sbt's remaining facts are explicitly unresolved.
-In particular, its unchanged-lock retention and its different handling of
-changed definitions across execution modes need a richer vocabulary than the
-initial `relock` and `stale_lock` fields. They are not forced into another
-purifier's behavioral profile.

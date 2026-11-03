@@ -93,10 +93,8 @@ The audit records local additions, replacements, omissions, and unresolved
 facts. CI runs the model tests, renderer/integration tests, and Jekyll build,
 and uploads the resulting reference as an artifact.
 
-The initial documentation covers Ant and Docker, whose wrapper/plugin and
-sandbox/VM differences exercise the model. The operational catalog also models
-sbt invocations without requiring a documentation page. To add a project,
-create its behavioral module and add its name to `model/default.nix`; add a
+To add a project, create its behavioral module and add its name to
+`model/default.nix`; add a
 `docs-site/projects/<name>.nix` module when its documentation is ready.
 Do not infer support from a sibling project.
 
@@ -118,8 +116,7 @@ Nix on the rendering host. `build.py --export FILE` uses that export directly.
 Projects can alternatively provide `docs-site/page.json` beside their README
 or use `--content FILE` for a record conforming to the shared contract.
 With neither a catalog nor a project record, the preparer retains the existing
-README path. Migration is explicit; this change does not replace all project
-sites or their package publication workflows.
+README path.
 
 ## Existing README preparation
 
