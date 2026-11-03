@@ -151,3 +151,42 @@ PURIFIER_DOCKER_SOURCE=/path/to/docker-purifier \
 CI checks out the reviewed Docker source revision for this test. Without that
 source supplied, the Docker integration test is explicitly skipped; it does
 not substitute a synthetic resolver and claim the real integration passed.
+
+## Lifecycle and projection coverage
+
+`nix eval --json '.#coveragePlan'` exports obligations separately from the
+existing executable `testPlans`. Every modeled project gets explicit dependency
+add/drop/bump, native ↔ Nix origin, buildable add/drop, transitive eviction,
+multiple-input, outgoing ordinary-consumer, and adopter-sandwich obligations.
+Applicability is `required`, `needs-review`, or `not-applicable`; execution starts
+at `not-run`. Buildable applicability and native SDK matrices remain review
+gaps because the behavior model does not yet specify them.
+
+Projection candidates preserve producer, consumer, format, both interface names,
+the intersection of declared systems, and each side's limitations. Equal format
+names generate candidates awaiting compatibility review. Cases must cover
+purifier → ordinary → purifier and ordinary → purifier → ordinary chains, with
+the middle publisher's own direct and transitive conflicts.
+
+`harness/coverage.py` audits individual observations against independently
+selected source, SDK, system, cache profile and fixture digests. A runner's
+overall success cannot supply missing observations. Stale sources, changed
+plans, duplicate contexts, or a cold result substituted for a warm result
+remain incomplete. A reviewed SDK matrix additionally requires every declared
+system/SDK/cache combination. Fact-to-test coverage from `testPlans` remains
+separate: completing an observation does not exhaust every associated fact.
+
+```sh
+nix eval --json '.#coveragePlan' > coverage-plan.json
+python3 -B harness/coverage.py --plan coverage-plan.json \
+  --evidence evidence.json --expected expected-contexts.json > coverage-audit.json
+python3 -B docs-site/build.py --coverage-plan coverage-plan.json \
+  --coverage-audit coverage-audit.json
+```
+
+Expected contexts must be declared from the selected sources and SDKs,
+independently of the execution report being audited. Missing projects and
+observations stay unrun. The central site publishes `/testing/`, the plan,
+per-project JSON and an optional context-bound execution audit. A build without
+an audit states that no execution evidence is attached and removes any stale
+audit artifact. Evidence from another plan is rejected before publication.
