@@ -11,4 +11,19 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
+      - uses: cachix/install-nix-action@v31
+      - name: Validate the typed behavior model
+        run: nix eval --json '.#tests'
       - run: python3 -m unittest discover -s release -v
+      - run: python3 -m unittest discover -s docs-site -v
+      - name: Generate the reference and machine-readable catalog
+        run: python3 docs-site/build.py
+      - name: Build the generated reference with Jekyll
+        uses: actions/jekyll-build-pages@44a6e6beabd48582f863aeeb6cb2151cc1716697 # v1
+        with:
+          source: .catalog-source
+          destination: .catalog-site
+      - uses: actions/upload-artifact@v4
+        with:
+          name: purifier-reference
+          path: .catalog-site
