@@ -56,6 +56,20 @@ navigation, and organization are shared. Exact copies of the overview's initial
 command sequence are removed from the guide's setup section. Original fragment
 identifiers remain usable after reorganization.
 
+Combined native sections can be partitioned with explicit source-block selections
+(`heading` and zero-based `blocks`), including `@introduction` for unheaded
+README content. Fenced examples remain whole blocks. Every source block must
+be placed exactly once; missing, overlapping, or newly added blocks fail
+validation. This keeps language tooling and platform limitations in their shared
+sections even when a native README combines those topics.
+
+The family export also checks homepage coverage. Adding a purifier homepage link
+without its structured record fails CI and publication. Stage the reviewed model
+and guide before publishing a new project's site; use `--model --check-source`
+and pin the shared source that includes that review. The family repository must
+use GitHub Actions publishing, so raw branch builds cannot overwrite the
+generated site.
+
 `docs-site/profiles/locked-wrapper.nix` shares section selections with overridable
 Nix module defaults. Profiles do not assume behavioral facts. Shared templates
 have fact requirements: the pin-preserving development loop cannot be used
