@@ -21,7 +21,8 @@
   {% assign guide = feature_matrix | replace: 'features.html', 'reference.html' %}
   {% assign overview = feature_matrix | replace: 'features.html', '' %}
   <nav class="documentation-navigation" aria-label="Project documentation">
-    <a href="{{ overview | relative_url }}">Overview</a>
+    {% assign overview_index = overview | append: "index.html" %}
+    {% if page.url == overview or page.url == overview_index %}<span aria-current="page">Overview</span>{% else %}<a href="{{ overview | relative_url }}">Overview</a>{% endif %}
     {% if page.url == guide %}<span aria-current="page">Full guide</span>{% else %}<a href="{{ guide | relative_url }}">Full guide</a>{% endif %}
   </nav>
   {% endif %}
