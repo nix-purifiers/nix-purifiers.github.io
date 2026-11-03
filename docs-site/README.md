@@ -132,7 +132,9 @@ python3 docs-site/prepare.py --repository nix-purifiers/lein-purifier \
 jekyll build --source /tmp/pages-source --destination /tmp/pages-site
 ```
 
-The theme follows the operating system's light/dark preference. Navigation
+Generated pages embed the family homepage's theme, plus documentation styles,
+so they retain the same colors, fonts, column width, and light/dark behavior
+when opened locally as well as when hosted. Navigation
 links keep the same font metrics during hover, focus and activation.
 Source-file links in the README become GitHub links; headings and external
 links keep their original destinations.

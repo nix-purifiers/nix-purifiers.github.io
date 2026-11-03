@@ -1,46 +1,25 @@
-:root {
-  color-scheme: light dark;
-  --paper: #eef2f2;
-  --ink: #142228;
-  --muted: #50636a;
-  --accent: #0a716c;
-  --code: #e2e9e9;
-  --border: #b5c5c8;
-}
+/* Documentation additions to the family homepage theme. */
+:root { --code: #e2e9e9; --border: #b5c5c8; }
 @media (prefers-color-scheme: dark) {
-  :root {
-    --paper: #0c1619;
-    --ink: #dae6e8;
-    --muted: #8ba0a6;
-    --accent: #52c3ba;
-    --code: #142329;
-    --border: #3b535b;
-  }
+  :root:not([data-theme="light"]) { --code: #142329; --border: #3b535b; }
 }
-* { box-sizing: border-box; }
-body {
-  margin: 0;
-  background: var(--paper);
-  color: var(--ink);
-  font: 1.0625rem/1.6 ui-sans-serif, system-ui, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-  overflow-wrap: break-word;
-}
-header, main, footer { max-width: 38rem; margin: auto; padding: 1rem; }
-header { padding-top: 2.5rem; }
-nav { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 1rem; }
-main { padding-top: .5rem; padding-bottom: 3rem; }
-footer { border-top: 1px solid var(--border); padding-bottom: 3rem; color: var(--muted); }
-footer .secondary-link { display: inline-block; margin-left: 1rem; color: var(--muted); font-size: .875rem; }
-a { color: var(--accent); text-underline-offset: .18em; }
+:root[data-theme="dark"] { --code: #142329; --border: #3b535b; }
+body { overflow-wrap: break-word; }
+.project-navigation { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 1rem; font-size: .9rem; }
+.project-navigation a, footer a { color: var(--muted); }
+footer { color: var(--muted); font-size: .875rem; }
+footer .secondary-link { display: inline-block; margin-left: 1rem; }
+article { min-width: 0; }
+article > :first-child { margin-top: 0; }
+article > :last-child { margin-bottom: 0; }
 a:hover { text-decoration-thickness: .12em; }
 a:focus-visible { outline: 2px solid var(--accent); outline-offset: 4px; border-radius: 2px; }
 h1, h2, h3, h4 { line-height: 1.25; scroll-margin-top: 1.5rem; }
-h1 { font-family: ui-monospace, "SFMono-Regular", Menlo, Consolas, monospace; font-size: 1.5rem; }
 h2 { margin-top: 2.5rem; font-size: 1.5rem; }
 h3 { margin-top: 2rem; font-size: 1.2rem; }
 p, ul, ol, blockquote, pre, table { margin-block: 1.25rem; }
 li + li { margin-top: .4rem; }
-code, pre { font-family: ui-monospace, "SFMono-Regular", Menlo, Consolas, monospace; font-size: .9em; }
+code, pre { font-family: var(--mono); font-size: .9em; }
 code { background: var(--code); padding: .12em .3em; border-radius: .2rem; }
 pre { padding: 1rem; background: var(--code); border: 1px solid var(--border); border-radius: .35rem; overflow-x: auto; white-space: pre-wrap; overflow-wrap: anywhere; }
 pre code { padding: 0; font-size: 1em; }
@@ -55,9 +34,6 @@ img { max-width: 100%; height: auto; }
 hr { border: 0; border-top: 1px solid var(--border); margin-block: 2rem; }
 .skip { position: absolute; left: 1rem; top: -10rem; padding: .5rem; background: var(--paper); }
 .skip:focus { top: .5rem; }
-@media (max-width: 480px) {
-  header, main, footer { padding-inline: 1rem; }
-}
 
 .code-block { position: relative; margin-block: 1.25rem; }
 .code-block pre { margin: 0; padding-top: 3rem; }

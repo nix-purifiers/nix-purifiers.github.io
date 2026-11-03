@@ -2,24 +2,26 @@
 <html lang="en">
 <head>
   <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="color-scheme" content="light dark">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
   <title>{{ page.title | default: site.title | escape }} · nix-purifiers</title>
   <meta name="description" content="{{ site.description | escape }}">
-  <link rel="stylesheet" href="{{ '/assets/docs.css' | relative_url }}">
-  <script src="{{ '/assets/docs.js' | relative_url }}" defer></script>
+  <style>{% include base.css %}
+{% include docs.css %}</style>
 </head>
 <body>
   <a class="skip" href="#content">Skip to documentation</a>
-  <header><nav aria-label="Project navigation">
+  <main id="content">
+  <nav class="project-navigation" aria-label="Project navigation">
     <a href="https://nix-purifiers.github.io/">nix-purifiers</a>
     {% assign repository = page.repository | default: site.repository %}
     {% if repository %}<a href="https://github.com/{{ repository | escape }}">Source on GitHub</a>{% endif %}
-  </nav></header>
-  <main id="content">{{ content }}</main>
+  </nav>
+  <article>{{ content }}</article>
   <footer>
     <a href="https://nix-purifiers.github.io/">Explore the purifier family</a>
     {% if page.feature_matrix %}<a class="secondary-link" href="{{ page.feature_matrix | relative_url }}">Feature matrix</a>{% endif %}
   </footer>
+  </main>
+  <script>{% include docs.js %}</script>
 </body>
 </html>

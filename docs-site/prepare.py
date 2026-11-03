@@ -3,8 +3,8 @@ import argparse
 import json
 from pathlib import Path
 import re
-import shutil
 from content import audit, feature_matrix, render, source_links
+from theme import install_theme
 
 parser = argparse.ArgumentParser(description=__doc__)
 parser.add_argument('--repository', required=True)
@@ -41,11 +41,7 @@ if args.catalog or args.content is not None or content_path.exists():
 else:
     text = args.readme.read_text()
 source = args.output
-(source / '_layouts').mkdir(parents=True, exist_ok=True)
-(source / 'assets').mkdir(exist_ok=True)
-shutil.copyfile(theme / 'layout.html', source / '_layouts/default.html')
-for asset in ('docs.css', 'docs.js'):
-    shutil.copyfile(theme / asset, source / 'assets' / asset)
+install_theme(source)
 if differences is not None:
     report = {'repository': args.repository, **audit(page, differences)}
     (source / 'content-variations.json').write_text(json.dumps(report, indent=2) + '\n')

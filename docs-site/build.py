@@ -6,6 +6,7 @@ import shutil
 import subprocess
 
 from content import audit, feature_matrix, render, source_links
+from theme import install_theme
 
 
 def build(documentation, destination):
@@ -18,11 +19,7 @@ def build(documentation, destination):
             raise ValueError(f'{name}: catalog key must match repository name')
         rendered[name] = render(page, contract)
     theme = Path(__file__).parent
-    (destination / '_layouts').mkdir(parents=True, exist_ok=True)
-    (destination / 'assets').mkdir(exist_ok=True)
-    shutil.copyfile(theme / 'layout.html', destination / '_layouts/default.html')
-    for asset in ('docs.css', 'docs.js'):
-        shutil.copyfile(theme / asset, destination / 'assets' / asset)
+    install_theme(destination)
     (destination / '_config.yml').write_text(json.dumps({
         'title': 'Purifier reference', 'description': 'Structured purifier behavior catalog',
         'url': 'https://nix-purifiers.github.io', 'baseurl': '',
