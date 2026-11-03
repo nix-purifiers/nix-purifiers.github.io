@@ -23,8 +23,8 @@ in {
     default = {};
     apply = operations: lib.mapAttrs (name: op:
       if op.state == "available" then
-        if op.capability == null || op.reason != null || op.sources == [] then
-          throw "${name}: available operations require a capability and sources, without an uncertainty reason"
+        if op.capability == null || op.reason != null then
+          throw "${name}: available operations require a capability, without an uncertainty reason"
         else if builtins.length (builtins.filter (x: builtins.isAttrs x && x ? splice) op.arguments) > 1 then
           throw "${name}: arguments may be spliced at most once"
         else if op.minimumArguments > 0 && !(builtins.elem { splice = "arguments"; } op.arguments) then

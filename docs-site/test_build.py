@@ -36,6 +36,8 @@ class CatalogTests(unittest.TestCase):
             matrix = (output / 'ant-purifier/features.md').read_text()
             self.assertIn('ivy.lock.xml, ant-purifier.lock.json', matrix)
             self.assertIn('Unknown:', matrix)
+            self.assertNotIn('| Sources |', matrix)
+            self.assertNotIn('README.md#', matrix)
             audit = json.loads((output / 'content-variations.json').read_text())
             self.assertEqual(audit['ant-purifier']['unresolved']['credentials']['state'], 'unknown')
             self.assertEqual(json.loads((output / 'catalog.json').read_text()), self.documentation)

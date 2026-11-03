@@ -13,11 +13,9 @@ Per-project prose and presentation choices live in `docs-site/projects/`.
 Each project explicitly records inputs, lockfiles, integration, relocking,
 missing/stale-lock behavior, native build and editor commands, platforms,
 dependency sources, CLI authentication, offline scope, builder isolation,
-and outputs. Known values require source references. Use commit-specific
-source links so a claim remains reviewable when the implementation changes.
-Sources establish what was reviewed; they are not an automatic proof that
-the implementation conforms. Add references to implementation tests as those
-claims gain executable checks.
+and outputs. These declarations are authoritative. Optional implementation or
+conformance-test references can record supporting evidence; generated prose
+is not evidence for the facts from which it is generated.
 
 Every field must be addressed. `unknown` and `not-applicable` require a
 reason and cannot carry a value. Do not substitute `false`, an empty list,
@@ -27,7 +25,6 @@ or an inherited family default for an uninvestigated capability.
 facts.relock = {
   state = "known";
   value = "preserves-pins";
-  sources = [ "https://github.com/OWNER/REPO/blob/COMMIT/README.md#workflow" ];
 };
 facts.credentials = {
   state = "unknown";
@@ -90,7 +87,7 @@ jekyll build --source .catalog-source --destination .catalog-site
 The output preserves the existing family homepage and includes project pages,
 `catalog.json`, per-project `system.json`, and `content-variations.json`.
 Each modeled project page has a subdued footer link to its generated feature
-matrix, with declared behavior, explicit unknowns, and source references.
+matrix, with declared behavior and explicit unknowns.
 The audit records local additions, replacements, omissions, and unresolved
 facts. CI runs the model tests, renderer/integration tests, and Jekyll build,
 and uploads the resulting reference as an artifact.

@@ -2,7 +2,6 @@
 import re
 import shlex
 from html import escape
-from urllib.parse import unquote, urlsplit
 
 
 def source_links(text, repository):
@@ -21,11 +20,11 @@ def audit(page, variations):
 
 
 def feature_matrix(page, contract):
-    """Render a separate reference table from declared facts and their sources."""
+    """Render a separate reference table from the authoritative declared facts."""
     project = page['repository'].split('/')[1]
     lines = [f'# {project} feature matrix',
              'Declared behavior and capabilities. [Back to documentation](./).',
-             '| Feature | Behavior | Sources |', '| --- | --- | --- |']
+             '| Feature | Behavior |', '| --- | --- |']
     def cell(value):
         return escape(value).replace('|', '&#124;').replace('\n', '<br>')
     for key, definition in contract['facts'].items():
@@ -33,25 +32,12 @@ def feature_matrix(page, contract):
         if fact['state'] == 'known':
             value = fact['value']
             behavior = ', '.join(value) if isinstance(value, list) else value
-            sources = []
-            for reference in fact['sources']:
-                url = reference if reference.startswith(('https://', 'http://')) else (
-                    f'https://github.com/{page["repository"]}/blob/main/{reference}')
-                location = urlsplit(url)
-                label = unquote(location.path.rstrip('/').rsplit('/', 1)[-1]) or location.netloc
-                if location.fragment:
-                    section = unquote(location.fragment)
-                    if not re.fullmatch(r'L\d+(?:-L\d+)?', section):
-                        section = section.replace('-', ' ').capitalize()
-                    label += ' · ' + section
-                sources.append(f'<a href="{escape(url, quote=True)}">{cell(label)}</a>')
         else:
             behavior = ('Unknown' if fact['state'] == 'unknown' else 'Not applicable') + ': ' + fact['reason']
-            sources = []
         label = key.replace('_', ' ').capitalize()
         description = definition.get('description', '')
         lines.append(f'| <span title="{escape(description, quote=True)}">{cell(label)}</span> | '
-                     f'{cell(behavior)} | {", ".join(sources)} |')
+                     f'{cell(behavior)} |')
     return '\n\n'.join(lines[:2]) + '\n\n' + '\n'.join(lines[2:]) + '\n'
 
 
@@ -85,8 +71,8 @@ def render(page, contract):
         if not isinstance(fact, dict):
             raise ValueError(f'{key}: expected a fact object')
         if fact.get('state') == 'known':
-            if set(fact) != {'state', 'value', 'sources'}:
-                raise ValueError(f'{key}: known facts require value and sources')
+            if not {'state', 'value'} <= set(fact) or set(fact) - {'state', 'value', 'sources'}:
+                raise ValueError(f'{key}: known facts require a value and may include sources')
             value = fact['value']
             if definition['type'] == 'string':
                 nonempty(value, key)
@@ -99,9 +85,9 @@ def render(page, contract):
                 raise ValueError(f'{key}: unsupported fact type')
             if 'enum' in definition and value not in definition['enum']:
                 raise ValueError(f'{key}: expected one of {definition["enum"]}')
-            if not isinstance(fact['sources'], list) or not fact['sources']:
-                raise ValueError(f'{key}: provide source references')
-            for reference in fact['sources']:
+            if not isinstance(fact.get('sources', []), list):
+                raise ValueError(f'{key}: sources must be a list')
+            for reference in fact.get('sources', []):
                 nonempty(reference, f'{key}.sources')
         elif fact.get('state') in {'unknown', 'not-applicable'}:
             if set(fact) != {'state', 'reason'}:

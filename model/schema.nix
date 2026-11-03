@@ -13,8 +13,8 @@ let
     };
     apply = f:
       if f.state == "known" then
-        if f.value != null && f.sources != [] && f.reason == null then f
-        else throw "Known facts require a value and sources, and cannot have an uncertainty reason"
+        if f.value != null && f.reason == null then f
+        else throw "Known facts require a value and cannot have an uncertainty reason"
       else if f.value == null && f.sources == [] && f.reason != null then f
       else throw "Unknown/not-applicable facts require a reason and cannot assert a value or sources";
   };

@@ -49,16 +49,17 @@ class ContentTests(unittest.TestCase):
         markdown, _ = render(self.page, self.contract)
         self.assertLess(markdown.index('## Development loop'), markdown.index('## Editor'))
 
-    def test_facts_drive_copy_and_require_evidence(self):
+    def test_facts_drive_copy_without_requiring_citations(self):
         self.contract['facts'] = {'lockfiles': {'type': 'strings'}}
         self.contract['sections'][0]['shared']['standard'] = 'Commit {facts.lockfiles}.'
         self.page['facts'] = {'lockfiles': {
             'state': 'known', 'value': ['native.lock', 'companion.json'],
-            'sources': ['README.md#quickstart']}}
+            'sources': ['tests/test_lock.py']}}
         self.assertIn('Commit native.lock, companion.json.', render(self.page, self.contract)[0])
         self.page['facts']['lockfiles']['sources'] = []
-        with self.assertRaises(ValueError):
-            render(self.page, self.contract)
+        self.assertIn('Commit native.lock, companion.json.', render(self.page, self.contract)[0])
+        del self.page['facts']['lockfiles']['sources']
+        self.assertIn('Commit native.lock, companion.json.', render(self.page, self.contract)[0])
 
     def test_unknown_facts_cannot_be_silently_used_as_claims(self):
         self.contract['facts'] = {'lockfiles': {'type': 'strings'}}

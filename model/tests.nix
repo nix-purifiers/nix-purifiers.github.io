@@ -15,7 +15,7 @@ let
       facts.relock.value = lib.mkForce "sometimes";
     }));
     unknownOptionFails = !force (withOverride { facts.relcok = {}; });
-    knownWithoutEvidenceFails = !force (withOverride ({ lib, ... }: {
+    knownWithoutEvidenceWorks = force (withOverride ({ lib, ... }: {
       facts.relock.sources = lib.mkForce [];
     }));
     unknownWithValueFails = !force (withOverride ({ lib, ... }: {
@@ -59,7 +59,7 @@ let
     operationRequiresCapability = !force (withOverride ({ lib, ... }: {
       operations.lock.capability = lib.mkForce null;
     }));
-    operationRequiresEvidence = !force (withOverride ({ lib, ... }: {
+    operationWithoutEvidenceWorks = force (withOverride ({ lib, ... }: {
       operations.lock.sources = lib.mkForce [];
     }));
     duplicateSplicesFail = !force (withOverride ({ lib, ... }: {

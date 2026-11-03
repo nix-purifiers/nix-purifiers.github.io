@@ -35,7 +35,8 @@ selecting behavior by tool name.
 literals or bindings. There is no shell interpolation; a task containing
 spaces, quotes, or shell metacharacters remains one argument.
 
-Available operations require a capability and source references. Unsupported
+Available operations require a capability. Optional source references can
+point to implementation or conformance tests. Unsupported
 and unknown operations require a reason and cannot carry an executable recipe.
 `minimumArguments` prevents a named update with no names from turning into an
 update of everything.
@@ -106,7 +107,7 @@ also becomes a shared test case.
 Missing capabilities or fixture support produce **blocked** results, never
 passed tests. Every fact without a generated test is listed in
 `uncoveredFacts`, and a report cannot claim complete coverage while those gaps
-remain. Source references are review evidence, not proof of behavior.
+remain. The structured model declares the behavior; tests verify it.
 
 The integration test exercises Docker's real CLI and pin-retention algorithm.
 Its bespoke fixture adapter supplies controlled registry metadata, so no Docker
