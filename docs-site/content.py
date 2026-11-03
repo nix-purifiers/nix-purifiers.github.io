@@ -2,6 +2,7 @@
 import re
 import shlex
 from html import escape
+from urllib.parse import unquote, urlsplit
 
 
 def source_links(text, repository):
@@ -36,7 +37,14 @@ def feature_matrix(page, contract):
             for reference in fact['sources']:
                 url = reference if reference.startswith(('https://', 'http://')) else (
                     f'https://github.com/{page["repository"]}/blob/main/{reference}')
-                sources.append(f'<a href="{escape(url, quote=True)}">Source {len(sources) + 1}</a>')
+                location = urlsplit(url)
+                label = unquote(location.path.rstrip('/').rsplit('/', 1)[-1]) or location.netloc
+                if location.fragment:
+                    section = unquote(location.fragment)
+                    if not re.fullmatch(r'L\d+(?:-L\d+)?', section):
+                        section = section.replace('-', ' ').capitalize()
+                    label += ' · ' + section
+                sources.append(f'<a href="{escape(url, quote=True)}">{cell(label)}</a>')
         else:
             behavior = ('Unknown' if fact['state'] == 'unknown' else 'Not applicable') + ': ' + fact['reason']
             sources = []
