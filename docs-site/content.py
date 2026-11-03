@@ -37,7 +37,7 @@ def feature_matrix(page, contract):
                 ', '.join(value) if isinstance(value, list) else value)
         else:
             behavior = ('Unknown' if fact['state'] == 'unknown' else 'Not applicable') + ': ' + fact['reason']
-        label = key.replace('_', ' ').capitalize()
+        label = definition.get('label', key.replace('_', ' ').capitalize())
         description = definition.get('description', '')
         lines.append(f'| <span title="{escape(description, quote=True)}">{cell(label)}</span> | '
                      f'{cell(behavior)} |')

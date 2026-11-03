@@ -27,10 +27,17 @@ provided `sbt-purifier` capability.
 The same mechanism works for Ant and Docker. The executor has no branch
 selecting behavior by tool name.
 
-Editor capabilities are separate behavioral facts: diagnostics, completion,
-navigation, dependency source lookup, and offline use. Each can be supported,
-unsupported, unknown, or not applicable. The server and its launch arguments
-belong to the `editor` invocation recipe, not to a capability's value.
+Language server integration (LSP) connects the user's existing editor to the
+purified development environment. The model records language-server
+diagnostics, completion, definition lookup, locked dependency source retrieval,
+and offline use separately from the `editor` launcher recipe. These are server
+capabilities; they do not claim end-to-end verification with every editor client.
+Native source retrieval may require server-specific client extensions.
+
+Additional editor clients can use the same language-server capability. A new
+server or native editor adapter belongs in bespoke integration glue; the model
+then records the capabilities it actually provides. Generic editor features
+are useful here insofar as they work with the purified project's environment.
 
 ## Invocation expressions
 
