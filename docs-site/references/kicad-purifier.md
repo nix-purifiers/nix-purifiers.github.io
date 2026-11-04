@@ -40,6 +40,9 @@ Run from the project or a descendant directory. Set `KICAD_PURIFIER_PROJECT` and
 `KICAD_PURIFIER_LOCK`, or pass `--project` and `--lock` before adapter subcommands,
 to select another project or lockfile.
 
+Dependency preparation reads the selection and lock without copying the working
+tree into Nix. Project files enter the store only for an explicit Nix build.
+
 ## Scope
 
 The initial provider uses KiCad 10.0 on Linux with SWIG Python code plugins from
