@@ -28,9 +28,10 @@ def source_sections(text):
     return introduction, [(title, ''.join(lines).strip()) for title, lines in sections]
 
 
-def guide_plan(repository, text):
+def guide_plan(repository, text, plan=None):
     name = repository.split('/')[1]
-    plan = json.loads((Path(__file__).parent / 'guides' / (name + '.json')).read_text())
+    if plan is None:
+        plan = json.loads((Path(__file__).parent / 'guides' / (name + '.json')).read_text())
     contract = json.loads((Path(__file__).parent / 'guide-contract.json').read_text())
     if set(plan) != {'version', 'repository', 'introduction', 'sections'} or plan['repository'] != repository:
         raise ValueError(f'{name}: invalid full-guide plan')
@@ -80,12 +81,12 @@ def deeper_headings(text):
     return '\n'.join(lines)
 
 
-def detailed_guide(repository, text, page):
+def detailed_guide(repository, text, page, plan=None):
     theme = Path(__file__).parent
     contract = json.loads((theme / 'guide-contract.json').read_text())
     overview = json.loads((theme / 'contract.json').read_text())
     titles = {s['id']: s['title'] for s in overview['sections']}
-    plan = guide_plan(repository, text)
+    plan = guide_plan(repository, text, plan)
     introduction, source = source_sections(text)
     source = dict(source)
     if plan['introduction']['omitSummary']:
@@ -138,9 +139,9 @@ def detailed_guide(repository, text, page):
     return '\n\n'.join(lines) + '\n'
 
 
-def reference_text(repository, text, page=None):
+def reference_text(repository, text, page=None, plan=None):
     if page:
-        return detailed_guide(repository, text, page)
+        return detailed_guide(repository, text, page, plan)
     # Retained guides use the same visible section title as modeled pages.
     # Keep legacy fragment IDs so links into the original guide still work.
     contract = json.loads((Path(__file__).parent / 'contract.json').read_text())
