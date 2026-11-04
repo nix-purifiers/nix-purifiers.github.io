@@ -1,0 +1,22 @@
+{
+  "summary": "FreeCAD with locked, Nix-resolved workbench add-ons.",
+  "values": {
+    "quickstart": "nix shell 'github:nix-purifiers/freecad-purifier'\nfreecad-purifier lock --update\nFreeCAD my-project.FCStd"
+  },
+  "sections": {
+    "editor": {
+      "mode": "omit",
+      "template": null,
+      "reason": "No specific editor protocol integration has been established by the reviewed implementation."
+    },
+    "nix_builds": {
+      "template": "native"
+    },
+    "integration": {
+      "template": "wrapper"
+    },
+    "workflow": {
+      "template": "capture-update"
+    }
+  }
+}
