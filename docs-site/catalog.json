@@ -15062,6 +15062,552 @@
       },
       "version": 1
     },
+    "kicad-purifier": {
+      "compatibility": {
+        "defaults": [
+          {
+            "evidence": [
+              "https://github.com/nix-purifiers/kicad-purifier/blob/548048b3fe357fbfa10ccea03eb97cc7959525c6/flake.lock",
+              "https://github.com/nix-purifiers/kicad-purifier/blob/548048b3fe357fbfa10ccea03eb97cc7959525c6/nix/scope.nix"
+            ],
+            "name": "KiCad",
+            "role": "native-tool",
+            "sourceRevision": "548048b3fe357fbfa10ccea03eb97cc7959525c6",
+            "version": "10.0.7"
+          }
+        ],
+        "limitations": [
+          {
+            "evidence": [
+              "https://github.com/nix-purifiers/kicad-purifier/blob/548048b3fe357fbfa10ccea03eb97cc7959525c6/flake.lock",
+              "https://github.com/nix-purifiers/kicad-purifier/blob/548048b3fe357fbfa10ccea03eb97cc7959525c6/nix/scope.nix",
+              "https://github.com/nix-purifiers/kicad-purifier/blob/548048b3fe357fbfa10ccea03eb97cc7959525c6/native/helper.cpp",
+              "https://github.com/nix-purifiers/kicad-purifier/blob/548048b3fe357fbfa10ccea03eb97cc7959525c6/native/pcbnew.py",
+              "https://github.com/nix-purifiers/kicad-purifier/blob/548048b3fe357fbfa10ccea03eb97cc7959525c6/tests/native.py",
+              "https://github.com/nix-purifiers/kicad-purifier/blob/548048b3fe357fbfa10ccea03eb97cc7959525c6/tests/gui-probe.py",
+              "https://github.com/nix-purifiers/kicad-purifier/blob/548048b3fe357fbfa10ccea03eb97cc7959525c6/tests/capture.py",
+              "https://github.com/nix-purifiers/kicad-purifier/blob/548048b3fe357fbfa10ccea03eb97cc7959525c6/tests/artifacts.py"
+            ],
+            "sourceRevision": "548048b3fe357fbfa10ccea03eb97cc7959525c6",
+            "text": "Only the pinned combination has executed locally. ARM64 evaluates and has native CI configured, but no ARM64 execution is claimed. IPC plugins, their virtual environments and additional Python dependencies need providers."
+          }
+        ],
+        "supportedRanges": [],
+        "testedPoints": [
+          {
+            "components": [
+              {
+                "name": "KiCad",
+                "role": "native-tool",
+                "version": "10.0.7"
+              },
+              {
+                "name": "Python",
+                "role": "native-tool-runtime",
+                "version": "3.14.8"
+              },
+              {
+                "name": "InteractiveHtmlBom",
+                "role": "addon-target",
+                "version": "2.12.0"
+              }
+            ],
+            "evidence": [
+              "https://github.com/nix-purifiers/kicad-purifier/blob/548048b3fe357fbfa10ccea03eb97cc7959525c6/flake.lock",
+              "https://github.com/nix-purifiers/kicad-purifier/blob/548048b3fe357fbfa10ccea03eb97cc7959525c6/nix/scope.nix",
+              "https://github.com/nix-purifiers/kicad-purifier/blob/548048b3fe357fbfa10ccea03eb97cc7959525c6/native/helper.cpp",
+              "https://github.com/nix-purifiers/kicad-purifier/blob/548048b3fe357fbfa10ccea03eb97cc7959525c6/native/pcbnew.py",
+              "https://github.com/nix-purifiers/kicad-purifier/blob/548048b3fe357fbfa10ccea03eb97cc7959525c6/tests/native.py",
+              "https://github.com/nix-purifiers/kicad-purifier/blob/548048b3fe357fbfa10ccea03eb97cc7959525c6/tests/gui-probe.py",
+              "https://github.com/nix-purifiers/kicad-purifier/blob/548048b3fe357fbfa10ccea03eb97cc7959525c6/tests/capture.py",
+              "https://github.com/nix-purifiers/kicad-purifier/blob/548048b3fe357fbfa10ccea03eb97cc7959525c6/tests/artifacts.py"
+            ],
+            "id": "kicad-10.0.7-htmlbom-2.12.0-linux-x86_64",
+            "notes": [
+              "The real PCB editor registers the immutable plugin and ignores mutable scripting code injected during startup. Working-tree 42k/43k/42k board edits, native preferences, normal project HTTP, exact no-lock fallback and reproducible HTML BOM exports pass locally. Publish uses a fake GitHub client to verify exact upload bytes."
+            ],
+            "operations": [
+              "lock",
+              "update",
+              "prefetch",
+              "build",
+              "bundle",
+              "publish"
+            ],
+            "sourceRevision": "548048b3fe357fbfa10ccea03eb97cc7959525c6",
+            "system": "x86_64-linux"
+          }
+        ]
+      },
+      "facts": {
+        "build_engine": {
+          "reason": "This capability is not established by the reviewed integration record.",
+          "state": "unknown"
+        },
+        "build_isolation": {
+          "sources": [],
+          "state": "known",
+          "value": "nix-sandbox"
+        },
+        "build_outputs": {
+          "sources": [],
+          "state": "known",
+          "value": [
+            "packages",
+            "tests",
+            "release",
+            "fetches"
+          ]
+        },
+        "builder_options": {
+          "sources": [],
+          "state": "known",
+          "value": [
+            "lockFile",
+            "script",
+            "fetchers",
+            "doCheck",
+            "checkCommand"
+          ]
+        },
+        "credentials": {
+          "sources": [],
+          "state": "known",
+          "value": "anonymous-only"
+        },
+        "dependency_sources": {
+          "sources": [],
+          "state": "known",
+          "value": [
+            "Official KiCad PCM Python plugin archives",
+            "Pinned KiCad SDK and Nix Python providers"
+          ]
+        },
+        "editor_completion": {
+          "reason": "This capability is not established by the reviewed integration record.",
+          "state": "unknown"
+        },
+        "editor_dependency_sources": {
+          "reason": "This capability is not established by the reviewed integration record.",
+          "state": "unknown"
+        },
+        "editor_diagnostics": {
+          "reason": "This capability is not established by the reviewed integration record.",
+          "state": "unknown"
+        },
+        "editor_metadata_format": {
+          "reason": "This capability is not established by the reviewed integration record.",
+          "state": "unknown"
+        },
+        "editor_navigation": {
+          "reason": "This capability is not established by the reviewed integration record.",
+          "state": "unknown"
+        },
+        "editor_offline": {
+          "reason": "This capability is not established by the reviewed integration record.",
+          "state": "unknown"
+        },
+        "editor_protocol": {
+          "reason": "This capability is not established by the reviewed integration record.",
+          "state": "unknown"
+        },
+        "editor_supported": {
+          "reason": "This capability is not established by the reviewed integration record.",
+          "state": "unknown"
+        },
+        "generated_cache_directory": {
+          "reason": "This capability is not established by the reviewed integration record.",
+          "state": "unknown"
+        },
+        "inputs": {
+          "sources": [],
+          "state": "known",
+          "value": [
+            "kicad-purifier.json",
+            "KiCad boards, projects and Python scripts"
+          ]
+        },
+        "integration": {
+          "sources": [],
+          "state": "known",
+          "value": "wrapper"
+        },
+        "lock_identity": {
+          "reason": "This capability is not established by the reviewed integration record.",
+          "state": "unknown"
+        },
+        "lockfiles": {
+          "sources": [],
+          "state": "known",
+          "value": [
+            "kicad-purifier.lock.json"
+          ]
+        },
+        "missing_lock": {
+          "sources": [],
+          "state": "known",
+          "value": "warn-and-native"
+        },
+        "named_update_example": {
+          "reason": "This capability is not established by the reviewed integration record.",
+          "state": "unknown"
+        },
+        "native_plugin_bootstrap": {
+          "reason": "This capability is not established by the reviewed integration record.",
+          "state": "unknown"
+        },
+        "native_plugin_coordinate": {
+          "reason": "This capability is not established by the reviewed integration record.",
+          "state": "unknown"
+        },
+        "native_plugin_java_target": {
+          "reason": "This capability is not established by the reviewed integration record.",
+          "state": "unknown"
+        },
+        "native_plugin_repository": {
+          "reason": "This capability is not established by the reviewed integration record.",
+          "state": "unknown"
+        },
+        "nix_builder": {
+          "sources": [],
+          "state": "known",
+          "value": "pkgs.kicad-purifier.buildKicadProject"
+        },
+        "offline_limits": {
+          "sources": [],
+          "state": "known",
+          "value": [
+            "Prefetch covers locked plugin archives and the KiCad SDK closure",
+            "Ordinary project networking remains available; whole Nix builds run in the sandbox"
+          ]
+        },
+        "offline_scope": {
+          "sources": [],
+          "state": "known",
+          "value": "locked-dependencies"
+        },
+        "platform_notes": {
+          "sources": [],
+          "state": "known",
+          "value": [
+            "Native Linux x86-64 PCM schema and compatibility checks, immutable archive replay, actual PCB editor plugin registration, working-tree source workflows, native preferences, BOM payload consumption and reproducible rebuilds pass locally. ARM64 evaluates and has native CI configured; that runner has not executed yet."
+          ]
+        },
+        "platforms": {
+          "sources": [],
+          "state": "known",
+          "value": [
+            "x86_64-linux",
+            "aarch64-linux"
+          ]
+        },
+        "prefetch_components": {
+          "reason": "This capability is not established by the reviewed integration record.",
+          "state": "unknown"
+        },
+        "projection_incoming": {
+          "sources": [],
+          "state": "known",
+          "value": "unsupported"
+        },
+        "projection_incoming_formats": {
+          "reason": "No typed project projection adapter is exported by this implementation.",
+          "state": "not-applicable"
+        },
+        "projection_incoming_interfaces": {
+          "reason": "No typed project projection interface is implemented.",
+          "state": "not-applicable"
+        },
+        "projection_incoming_limits": {
+          "reason": "No incoming typed project projection interface is implemented.",
+          "state": "not-applicable"
+        },
+        "projection_outgoing": {
+          "sources": [],
+          "state": "known",
+          "value": "unsupported"
+        },
+        "projection_outgoing_formats": {
+          "reason": "No typed project projection adapter is exported by this implementation.",
+          "state": "not-applicable"
+        },
+        "projection_outgoing_interfaces": {
+          "reason": "No typed project projection interface is implemented.",
+          "state": "not-applicable"
+        },
+        "projection_outgoing_limits": {
+          "reason": "No outgoing typed project projection interface is implemented.",
+          "state": "not-applicable"
+        },
+        "relock": {
+          "sources": [],
+          "state": "known",
+          "value": "preserves-pins"
+        },
+        "runtime_requirements": {
+          "sources": [],
+          "state": "known",
+          "value": [
+            "A KiCad project with a plugin selection file"
+          ]
+        },
+        "stale_lock": {
+          "sources": [],
+          "state": "known",
+          "value": "fail-with-repair"
+        },
+        "supported_native_commands": {
+          "reason": "This capability is not established by the reviewed integration record.",
+          "state": "unknown"
+        },
+        "tested_toolchain": {
+          "reason": "This capability is not established by the reviewed integration record.",
+          "state": "unknown"
+        },
+        "tool": {
+          "sources": [],
+          "state": "known",
+          "value": "KiCad code plugins"
+        },
+        "unsupported_features": {
+          "sources": [],
+          "state": "known",
+          "value": [
+            "Initial integration supports SWIG Python code plugins; IPC plugins and their managed virtual environments need an additional provider",
+            "Additional Python requirements, custom repositories, authenticated downloads and content-only PCM packages need providers",
+            "Stock 3D model libraries are separate from the initial SDK",
+            "Files inside plugin installation directories are immutable; project-local plugin settings can remain beside the project"
+          ]
+        },
+        "updates_ignore_file": {
+          "reason": "This capability is not established by the reviewed integration record.",
+          "state": "unknown"
+        },
+        "wrapper_required": {
+          "sources": [],
+          "state": "known",
+          "value": true
+        }
+      },
+      "operations": {
+        "build": {
+          "arguments": [
+            "build.py",
+            {
+              "splice": "arguments"
+            }
+          ],
+          "capability": "kicad-python",
+          "directory": {
+            "binding": "project_root"
+          },
+          "environment": {
+            "KICAD_PURIFIER_LOCK": {
+              "binding": "lockfile"
+            },
+            "KICAD_PURIFIER_PROJECT": {
+              "binding": "project_root"
+            }
+          },
+          "minimumArguments": 0,
+          "reason": null,
+          "sources": [
+            "https://github.com/nix-purifiers/kicad-purifier/blob/548048b3fe357fbfa10ccea03eb97cc7959525c6/native/pcbnew.py",
+            "https://github.com/nix-purifiers/kicad-purifier/blob/548048b3fe357fbfa10ccea03eb97cc7959525c6/tests/native.py",
+            "https://github.com/nix-purifiers/kicad-purifier/blob/548048b3fe357fbfa10ccea03eb97cc7959525c6/tests/gui-probe.py",
+            "https://github.com/nix-purifiers/kicad-purifier/blob/548048b3fe357fbfa10ccea03eb97cc7959525c6/tests/capture.py",
+            "https://github.com/nix-purifiers/kicad-purifier/blob/548048b3fe357fbfa10ccea03eb97cc7959525c6/tests/artifacts.py"
+          ],
+          "state": "available"
+        },
+        "bundle": {
+          "arguments": [
+            "--project",
+            {
+              "binding": "project_root"
+            },
+            "--lock",
+            {
+              "binding": "lockfile"
+            },
+            "bundle",
+            {
+              "splice": "arguments"
+            }
+          ],
+          "capability": "kicad-purifier",
+          "directory": {
+            "binding": "project_root"
+          },
+          "environment": {},
+          "minimumArguments": 0,
+          "reason": null,
+          "sources": [
+            "https://github.com/nix-purifiers/kicad-purifier/blob/548048b3fe357fbfa10ccea03eb97cc7959525c6/kicad_purifier/main.py",
+            "https://github.com/nix-purifiers/kicad-purifier/blob/548048b3fe357fbfa10ccea03eb97cc7959525c6/tests/native.py",
+            "https://github.com/nix-purifiers/kicad-purifier/blob/548048b3fe357fbfa10ccea03eb97cc7959525c6/tests/gui.py"
+          ],
+          "state": "available"
+        },
+        "lock": {
+          "arguments": [
+            "--project",
+            {
+              "binding": "project_root"
+            },
+            "--lock",
+            {
+              "binding": "lockfile"
+            },
+            "lock",
+            {
+              "splice": "arguments"
+            }
+          ],
+          "capability": "kicad-purifier",
+          "directory": {
+            "binding": "project_root"
+          },
+          "environment": {},
+          "minimumArguments": 0,
+          "reason": null,
+          "sources": [
+            "https://github.com/nix-purifiers/kicad-purifier/blob/548048b3fe357fbfa10ccea03eb97cc7959525c6/kicad_purifier/main.py",
+            "https://github.com/nix-purifiers/kicad-purifier/blob/548048b3fe357fbfa10ccea03eb97cc7959525c6/tests/native.py",
+            "https://github.com/nix-purifiers/kicad-purifier/blob/548048b3fe357fbfa10ccea03eb97cc7959525c6/tests/gui.py"
+          ],
+          "state": "available"
+        },
+        "prefetch": {
+          "arguments": [
+            "--project",
+            {
+              "binding": "project_root"
+            },
+            "--lock",
+            {
+              "binding": "lockfile"
+            },
+            "prefetch",
+            {
+              "splice": "arguments"
+            }
+          ],
+          "capability": "kicad-purifier",
+          "directory": {
+            "binding": "project_root"
+          },
+          "environment": {},
+          "minimumArguments": 0,
+          "reason": null,
+          "sources": [
+            "https://github.com/nix-purifiers/kicad-purifier/blob/548048b3fe357fbfa10ccea03eb97cc7959525c6/kicad_purifier/main.py",
+            "https://github.com/nix-purifiers/kicad-purifier/blob/548048b3fe357fbfa10ccea03eb97cc7959525c6/tests/native.py",
+            "https://github.com/nix-purifiers/kicad-purifier/blob/548048b3fe357fbfa10ccea03eb97cc7959525c6/tests/gui.py"
+          ],
+          "state": "available"
+        },
+        "publish": {
+          "arguments": [
+            "--project",
+            {
+              "binding": "project_root"
+            },
+            "--lock",
+            {
+              "binding": "lockfile"
+            },
+            "publish",
+            "--tag",
+            {
+              "binding": "tag"
+            },
+            {
+              "splice": "arguments"
+            }
+          ],
+          "capability": "kicad-purifier",
+          "directory": {
+            "binding": "project_root"
+          },
+          "environment": {},
+          "minimumArguments": 0,
+          "reason": null,
+          "sources": [
+            "https://github.com/nix-purifiers/kicad-purifier/blob/548048b3fe357fbfa10ccea03eb97cc7959525c6/kicad_purifier/main.py",
+            "https://github.com/nix-purifiers/kicad-purifier/blob/548048b3fe357fbfa10ccea03eb97cc7959525c6/tests/native.py",
+            "https://github.com/nix-purifiers/kicad-purifier/blob/548048b3fe357fbfa10ccea03eb97cc7959525c6/tests/gui.py"
+          ],
+          "state": "available"
+        },
+        "update": {
+          "arguments": [
+            "--project",
+            {
+              "binding": "project_root"
+            },
+            "--lock",
+            {
+              "binding": "lockfile"
+            },
+            "lock",
+            "--update",
+            {
+              "splice": "arguments"
+            }
+          ],
+          "capability": "kicad-purifier",
+          "directory": {
+            "binding": "project_root"
+          },
+          "environment": {},
+          "minimumArguments": 0,
+          "reason": null,
+          "sources": [
+            "https://github.com/nix-purifiers/kicad-purifier/blob/548048b3fe357fbfa10ccea03eb97cc7959525c6/kicad_purifier/main.py",
+            "https://github.com/nix-purifiers/kicad-purifier/blob/548048b3fe357fbfa10ccea03eb97cc7959525c6/tests/native.py",
+            "https://github.com/nix-purifiers/kicad-purifier/blob/548048b3fe357fbfa10ccea03eb97cc7959525c6/tests/gui.py"
+          ],
+          "state": "available"
+        }
+      },
+      "repository": "nix-purifiers/kicad-purifier",
+      "reviewedRevision": "548048b3fe357fbfa10ccea03eb97cc7959525c6",
+      "sections": {
+        "credits": {
+          "use": "cargo"
+        },
+        "editor": {
+          "omit": "No specific editor protocol integration has been established by the reviewed implementation."
+        },
+        "integration": {
+          "use": "wrapper"
+        },
+        "nix_builds": {
+          "use": "native"
+        },
+        "offline": {
+          "use": "native"
+        },
+        "projections": {
+          "use": "directional"
+        },
+        "quickstart": {
+          "use": "reviewed"
+        },
+        "scope": {
+          "use": "native"
+        },
+        "workflow": {
+          "use": "capture-update"
+        }
+      },
+      "summary": "KiCad with locked, Nix-resolved Python code plugins.",
+      "values": {
+        "quickstart": "nix shell 'github:nix-purifiers/kicad-purifier'\nkicad-purifier lock --update\npcbnew board.kicad_pcb"
+      },
+      "version": 1
+    },
     "lake-purifier": {
       "compatibility": {
         "defaults": [],
