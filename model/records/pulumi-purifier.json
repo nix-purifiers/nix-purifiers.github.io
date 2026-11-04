@@ -1,0 +1,304 @@
+{
+  "repository": "nix-purifiers/pulumi-purifier",
+  "reviewedRevision": "4aa988c0b93cc256979582ba49bdeab75f9f4511",
+  "facts": {
+    "tool": {
+      "state": "known",
+      "value": "Pulumi plugins"
+    },
+    "inputs": {
+      "state": "known",
+      "value": [
+        "Pulumi.yaml or Pulumi.yml in a YAML project"
+      ]
+    },
+    "lockfiles": {
+      "state": "known",
+      "value": [
+        "pulumi-purifier.lock.json"
+      ]
+    },
+    "integration": {
+      "state": "known",
+      "value": "wrapper"
+    },
+    "wrapper_required": {
+      "state": "known",
+      "value": true
+    },
+    "relock": {
+      "state": "known",
+      "value": "preserves-pins"
+    },
+    "missing_lock": {
+      "state": "known",
+      "value": "warn-and-native"
+    },
+    "stale_lock": {
+      "state": "known",
+      "value": "fail-with-repair"
+    },
+    "platforms": {
+      "state": "known",
+      "value": [
+        "x86_64-linux",
+        "aarch64-linux"
+      ]
+    },
+    "dependency_sources": {
+      "state": "known",
+      "value": [
+        "Public HTTPS language and resource plugin archives discovered by native Pulumi language hosts"
+      ]
+    },
+    "credentials": {
+      "state": "known",
+      "value": "anonymous-only"
+    },
+    "offline_scope": {
+      "state": "known",
+      "value": "locked-dependencies"
+    },
+    "offline_limits": {
+      "state": "known",
+      "value": [
+        "Prefetch covers locked language and provider plugin archives",
+        "Cloud API access, backend access and program-defined network activity retain their ordinary behavior",
+        "Local-state tests exercise the Random provider; cloud deployments are not exercised by the fixture"
+      ]
+    },
+    "unsupported_features": {
+      "state": "known",
+      "value": [
+        "Initial provider supports Pulumi YAML projects and binary plugins on Linux x86-64 and ARM64",
+        "Source-based plugins and other language runtimes require language dependency providers",
+        "The Nix builder verifies plugin discovery and prepares sources; it does not deploy cloud resources"
+      ]
+    },
+    "runtime_requirements": {
+      "state": "known",
+      "value": [
+        "An existing Pulumi YAML project",
+        "The ordinary backend configuration and credentials needed for the selected Pulumi command"
+      ]
+    },
+    "nix_builder": {
+      "state": "known",
+      "value": "pkgs.pulumi-purifier.buildPulumiProject"
+    },
+    "build_isolation": {
+      "state": "known",
+      "value": "nix-sandbox"
+    },
+    "build_outputs": {
+      "state": "known",
+      "value": [
+        "packages",
+        "tests",
+        "release",
+        "fetches"
+      ]
+    },
+    "builder_options": {
+      "state": "known",
+      "value": [
+        "lockFile",
+        "fetchers",
+        "doCheck",
+        "checkCommand"
+      ]
+    },
+    "platform_notes": {
+      "state": "known",
+      "value": [
+        "Native Linux x86-64 and ARM64 are targeted. The fixture uses a local state backend and the Random provider; it does not create cloud resources."
+      ]
+    },
+    "projection_incoming": {
+      "state": "known",
+      "value": "unsupported"
+    },
+    "projection_incoming_formats": {
+      "state": "not-applicable",
+      "reason": "No typed project projection adapter is exported by this implementation."
+    },
+    "projection_incoming_interfaces": {
+      "state": "not-applicable",
+      "reason": "No typed project projection interface is implemented."
+    },
+    "projection_incoming_limits": {
+      "state": "not-applicable",
+      "reason": "No incoming typed project projection interface is implemented."
+    },
+    "projection_outgoing": {
+      "state": "known",
+      "value": "unsupported"
+    },
+    "projection_outgoing_formats": {
+      "state": "not-applicable",
+      "reason": "No typed project projection adapter is exported by this implementation."
+    },
+    "projection_outgoing_interfaces": {
+      "state": "not-applicable",
+      "reason": "No typed project projection interface is implemented."
+    },
+    "projection_outgoing_limits": {
+      "state": "not-applicable",
+      "reason": "No outgoing typed project projection interface is implemented."
+    }
+  },
+  "operations": {
+    "lock": {
+      "capability": "pulumi-purifier",
+      "arguments": [
+        "lock",
+        "--project",
+        {
+          "binding": "project_root"
+        },
+        "--lock",
+        {
+          "binding": "lockfile"
+        },
+        {
+          "splice": "arguments"
+        }
+      ],
+      "sources": [
+        "https://github.com/nix-purifiers/pulumi-purifier/blob/4aa988c0b93cc256979582ba49bdeab75f9f4511/pulumi_purifier/cli.py",
+        "https://github.com/nix-purifiers/pulumi-purifier/blob/4aa988c0b93cc256979582ba49bdeab75f9f4511/tests/conformance.py"
+      ]
+    },
+    "prefetch": {
+      "capability": "pulumi-purifier",
+      "arguments": [
+        "prefetch",
+        "--project",
+        {
+          "binding": "project_root"
+        },
+        "--lock",
+        {
+          "binding": "lockfile"
+        },
+        {
+          "splice": "arguments"
+        }
+      ],
+      "sources": [
+        "https://github.com/nix-purifiers/pulumi-purifier/blob/4aa988c0b93cc256979582ba49bdeab75f9f4511/pulumi_purifier/cli.py",
+        "https://github.com/nix-purifiers/pulumi-purifier/blob/4aa988c0b93cc256979582ba49bdeab75f9f4511/tests/conformance.py"
+      ]
+    },
+    "bundle": {
+      "capability": "pulumi-purifier",
+      "arguments": [
+        "bundle",
+        "--project",
+        {
+          "binding": "project_root"
+        },
+        "--lock",
+        {
+          "binding": "lockfile"
+        },
+        {
+          "splice": "arguments"
+        }
+      ],
+      "sources": [
+        "https://github.com/nix-purifiers/pulumi-purifier/blob/4aa988c0b93cc256979582ba49bdeab75f9f4511/pulumi_purifier/cli.py",
+        "https://github.com/nix-purifiers/pulumi-purifier/blob/4aa988c0b93cc256979582ba49bdeab75f9f4511/tests/conformance.py"
+      ]
+    },
+    "publish": {
+      "capability": "pulumi-purifier",
+      "arguments": [
+        "publish",
+        "--project",
+        {
+          "binding": "project_root"
+        },
+        "--lock",
+        {
+          "binding": "lockfile"
+        },
+        "--tag",
+        {
+          "binding": "tag"
+        },
+        {
+          "splice": "arguments"
+        }
+      ],
+      "sources": [
+        "https://github.com/nix-purifiers/pulumi-purifier/blob/4aa988c0b93cc256979582ba49bdeab75f9f4511/pulumi_purifier/cli.py",
+        "https://github.com/nix-purifiers/pulumi-purifier/blob/4aa988c0b93cc256979582ba49bdeab75f9f4511/tests/conformance.py"
+      ]
+    },
+    "update": {
+      "capability": "pulumi-purifier",
+      "arguments": [
+        "lock",
+        "--update",
+        "--project",
+        {
+          "binding": "project_root"
+        },
+        "--lock",
+        {
+          "binding": "lockfile"
+        },
+        {
+          "splice": "arguments"
+        }
+      ],
+      "sources": [
+        "https://github.com/nix-purifiers/pulumi-purifier/blob/4aa988c0b93cc256979582ba49bdeab75f9f4511/pulumi_purifier/cli.py",
+        "https://github.com/nix-purifiers/pulumi-purifier/blob/4aa988c0b93cc256979582ba49bdeab75f9f4511/tests/conformance.py"
+      ]
+    },
+    "plan": {
+      "capability": "pulumi",
+      "arguments": [
+        "preview",
+        {
+          "splice": "arguments"
+        }
+      ],
+      "sources": [
+        "https://github.com/nix-purifiers/pulumi-purifier/blob/4aa988c0b93cc256979582ba49bdeab75f9f4511/pulumi_purifier/cli.py",
+        "https://github.com/nix-purifiers/pulumi-purifier/blob/4aa988c0b93cc256979582ba49bdeab75f9f4511/tests/conformance.py"
+      ],
+      "environment": {
+        "PULUMI_PURIFIER_PROJECT": {
+          "binding": "project_root"
+        },
+        "PULUMI_PURIFIER_LOCK": {
+          "binding": "lockfile"
+        }
+      }
+    },
+    "run": {
+      "capability": "pulumi",
+      "arguments": [
+        "up",
+        {
+          "splice": "arguments"
+        }
+      ],
+      "sources": [
+        "https://github.com/nix-purifiers/pulumi-purifier/blob/4aa988c0b93cc256979582ba49bdeab75f9f4511/pulumi_purifier/cli.py",
+        "https://github.com/nix-purifiers/pulumi-purifier/blob/4aa988c0b93cc256979582ba49bdeab75f9f4511/tests/conformance.py"
+      ],
+      "environment": {
+        "PULUMI_PURIFIER_PROJECT": {
+          "binding": "project_root"
+        },
+        "PULUMI_PURIFIER_LOCK": {
+          "binding": "lockfile"
+        }
+      }
+    }
+  }
+}

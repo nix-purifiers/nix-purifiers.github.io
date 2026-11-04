@@ -340,6 +340,29 @@
               "build_outputs"
             ]
           }
+        ],
+        "preparation": [
+          {
+            "id": "main",
+            "text": "Call `{facts.nix_builder}` through `overlays.default` to prepare sources with their native dependency environment. Deployment remains a native tool operation.",
+            "whenKnown": [
+              "nix_builder"
+            ]
+          },
+          {
+            "id": "outputs",
+            "text": "The builder exposes: {facts.build_outputs}.",
+            "whenKnown": [
+              "build_outputs"
+            ]
+          },
+          {
+            "id": "options",
+            "text": "Builder options include {facts.builder_options}.",
+            "whenKnown": [
+              "builder_options"
+            ]
+          }
         ]
       },
       "requires": {}

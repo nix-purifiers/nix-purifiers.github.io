@@ -1,0 +1,325 @@
+{
+  "repository": "nix-purifiers/platformio-purifier",
+  "reviewedRevision": "6914b078c4f9123af28c3673d9ee18cfc66b69af",
+  "facts": {
+    "tool": {
+      "state": "known",
+      "value": "PlatformIO"
+    },
+    "inputs": {
+      "state": "known",
+      "value": [
+        "platformio.ini"
+      ]
+    },
+    "lockfiles": {
+      "state": "known",
+      "value": [
+        "platformio-purifier.lock.json"
+      ]
+    },
+    "integration": {
+      "state": "known",
+      "value": "wrapper"
+    },
+    "wrapper_required": {
+      "state": "known",
+      "value": true
+    },
+    "relock": {
+      "state": "known",
+      "value": "preserves-pins"
+    },
+    "missing_lock": {
+      "state": "known",
+      "value": "warn-and-native"
+    },
+    "stale_lock": {
+      "state": "known",
+      "value": "fail-with-repair"
+    },
+    "platforms": {
+      "state": "known",
+      "value": [
+        "x86_64-linux",
+        "aarch64-linux"
+      ]
+    },
+    "dependency_sources": {
+      "state": "known",
+      "value": [
+        "Public PlatformIO registry archives and HTTPS package archives"
+      ]
+    },
+    "credentials": {
+      "state": "known",
+      "value": "anonymous-only"
+    },
+    "offline_scope": {
+      "state": "known",
+      "value": "locked-dependencies"
+    },
+    "offline_limits": {
+      "state": "known",
+      "value": [
+        "Prefetch covers locked platform, framework, compiler, library, upload, test and analysis archives",
+        "Physical uploads and on-device tests require configured hardware",
+        "Project build scripts and separately provided SDK dependencies retain their ordinary behavior"
+      ]
+    },
+    "unsupported_features": {
+      "state": "known",
+      "value": [
+        "Initial provider supports Arduino AVR on Linux x86-64 and ARM64",
+        "Git and local package sources, other platforms and additional Python dependencies require separate providers",
+        "Nixpkgs GDB and cppcheck replace the registry debugger and analyzer; provider versions are recorded"
+      ]
+    },
+    "runtime_requirements": {
+      "state": "known",
+      "value": [
+        "An Arduino AVR PlatformIO project"
+      ]
+    },
+    "nix_builder": {
+      "state": "known",
+      "value": "pkgs.platformio-purifier.buildPlatformioProject"
+    },
+    "build_isolation": {
+      "state": "known",
+      "value": "nix-sandbox"
+    },
+    "build_outputs": {
+      "state": "known",
+      "value": [
+        "packages",
+        "tests",
+        "release",
+        "fetches"
+      ]
+    },
+    "builder_options": {
+      "state": "known",
+      "value": [
+        "lockFile",
+        "configFile",
+        "fetchers",
+        "doCheck",
+        "checkCommand"
+      ]
+    },
+    "platform_notes": {
+      "state": "known",
+      "value": [
+        "Native Linux x86-64 and ARM64 are supported. PlatformIO firmware compilation and unit-firmware compilation are tested without hardware; physical uploads and on-device test execution are not exercised."
+      ]
+    },
+    "projection_incoming": {
+      "state": "known",
+      "value": "unsupported"
+    },
+    "projection_incoming_formats": {
+      "state": "not-applicable",
+      "reason": "No typed project projection adapter is exported by this implementation."
+    },
+    "projection_incoming_interfaces": {
+      "state": "not-applicable",
+      "reason": "No typed project projection interface is implemented."
+    },
+    "projection_incoming_limits": {
+      "state": "not-applicable",
+      "reason": "No incoming typed project projection interface is implemented."
+    },
+    "projection_outgoing": {
+      "state": "known",
+      "value": "unsupported"
+    },
+    "projection_outgoing_formats": {
+      "state": "not-applicable",
+      "reason": "No typed project projection adapter is exported by this implementation."
+    },
+    "projection_outgoing_interfaces": {
+      "state": "not-applicable",
+      "reason": "No typed project projection interface is implemented."
+    },
+    "projection_outgoing_limits": {
+      "state": "not-applicable",
+      "reason": "No outgoing typed project projection interface is implemented."
+    }
+  },
+  "operations": {
+    "lock": {
+      "capability": "platformio-purifier",
+      "arguments": [
+        "lock",
+        "--project",
+        {
+          "binding": "project_root"
+        },
+        "--lock",
+        {
+          "binding": "lockfile"
+        },
+        {
+          "splice": "arguments"
+        }
+      ],
+      "sources": [
+        "https://github.com/nix-purifiers/platformio-purifier/blob/6914b078c4f9123af28c3673d9ee18cfc66b69af/platformio_purifier/cli.py",
+        "https://github.com/nix-purifiers/platformio-purifier/blob/6914b078c4f9123af28c3673d9ee18cfc66b69af/tests/conformance.py"
+      ]
+    },
+    "prefetch": {
+      "capability": "platformio-purifier",
+      "arguments": [
+        "prefetch",
+        "--project",
+        {
+          "binding": "project_root"
+        },
+        "--lock",
+        {
+          "binding": "lockfile"
+        },
+        {
+          "splice": "arguments"
+        }
+      ],
+      "sources": [
+        "https://github.com/nix-purifiers/platformio-purifier/blob/6914b078c4f9123af28c3673d9ee18cfc66b69af/platformio_purifier/cli.py",
+        "https://github.com/nix-purifiers/platformio-purifier/blob/6914b078c4f9123af28c3673d9ee18cfc66b69af/tests/conformance.py"
+      ]
+    },
+    "bundle": {
+      "capability": "platformio-purifier",
+      "arguments": [
+        "bundle",
+        "--project",
+        {
+          "binding": "project_root"
+        },
+        "--lock",
+        {
+          "binding": "lockfile"
+        },
+        {
+          "splice": "arguments"
+        }
+      ],
+      "sources": [
+        "https://github.com/nix-purifiers/platformio-purifier/blob/6914b078c4f9123af28c3673d9ee18cfc66b69af/platformio_purifier/cli.py",
+        "https://github.com/nix-purifiers/platformio-purifier/blob/6914b078c4f9123af28c3673d9ee18cfc66b69af/tests/conformance.py"
+      ]
+    },
+    "publish": {
+      "capability": "platformio-purifier",
+      "arguments": [
+        "publish",
+        "--project",
+        {
+          "binding": "project_root"
+        },
+        "--lock",
+        {
+          "binding": "lockfile"
+        },
+        "--tag",
+        {
+          "binding": "tag"
+        },
+        {
+          "splice": "arguments"
+        }
+      ],
+      "sources": [
+        "https://github.com/nix-purifiers/platformio-purifier/blob/6914b078c4f9123af28c3673d9ee18cfc66b69af/platformio_purifier/cli.py",
+        "https://github.com/nix-purifiers/platformio-purifier/blob/6914b078c4f9123af28c3673d9ee18cfc66b69af/tests/conformance.py"
+      ]
+    },
+    "update": {
+      "capability": "platformio-purifier",
+      "arguments": [
+        "lock",
+        "--update",
+        "--project",
+        {
+          "binding": "project_root"
+        },
+        "--lock",
+        {
+          "binding": "lockfile"
+        },
+        {
+          "splice": "arguments"
+        }
+      ],
+      "sources": [
+        "https://github.com/nix-purifiers/platformio-purifier/blob/6914b078c4f9123af28c3673d9ee18cfc66b69af/platformio_purifier/cli.py",
+        "https://github.com/nix-purifiers/platformio-purifier/blob/6914b078c4f9123af28c3673d9ee18cfc66b69af/tests/conformance.py"
+      ]
+    },
+    "build": {
+      "capability": "pio",
+      "arguments": [
+        "run",
+        {
+          "splice": "arguments"
+        }
+      ],
+      "sources": [
+        "https://github.com/nix-purifiers/platformio-purifier/blob/6914b078c4f9123af28c3673d9ee18cfc66b69af/platformio_purifier/cli.py",
+        "https://github.com/nix-purifiers/platformio-purifier/blob/6914b078c4f9123af28c3673d9ee18cfc66b69af/tests/conformance.py"
+      ],
+      "environment": {
+        "PLATFORMIO_PURIFIER_PROJECT": {
+          "binding": "project_root"
+        },
+        "PLATFORMIO_PURIFIER_LOCK": {
+          "binding": "lockfile"
+        }
+      }
+    },
+    "check": {
+      "capability": "pio",
+      "arguments": [
+        "check",
+        {
+          "splice": "arguments"
+        }
+      ],
+      "sources": [
+        "https://github.com/nix-purifiers/platformio-purifier/blob/6914b078c4f9123af28c3673d9ee18cfc66b69af/platformio_purifier/cli.py",
+        "https://github.com/nix-purifiers/platformio-purifier/blob/6914b078c4f9123af28c3673d9ee18cfc66b69af/tests/conformance.py"
+      ],
+      "environment": {
+        "PLATFORMIO_PURIFIER_PROJECT": {
+          "binding": "project_root"
+        },
+        "PLATFORMIO_PURIFIER_LOCK": {
+          "binding": "lockfile"
+        }
+      }
+    },
+    "test": {
+      "capability": "pio",
+      "arguments": [
+        "test",
+        {
+          "splice": "arguments"
+        }
+      ],
+      "sources": [
+        "https://github.com/nix-purifiers/platformio-purifier/blob/6914b078c4f9123af28c3673d9ee18cfc66b69af/platformio_purifier/cli.py",
+        "https://github.com/nix-purifiers/platformio-purifier/blob/6914b078c4f9123af28c3673d9ee18cfc66b69af/tests/conformance.py"
+      ],
+      "environment": {
+        "PLATFORMIO_PURIFIER_PROJECT": {
+          "binding": "project_root"
+        },
+        "PLATFORMIO_PURIFIER_LOCK": {
+          "binding": "lockfile"
+        }
+      }
+    }
+  }
+}
