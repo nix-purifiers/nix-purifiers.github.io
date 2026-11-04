@@ -1,0 +1,283 @@
+{
+  "repository": "nix-purifiers/arduino-purifier",
+  "reviewedRevision": "437c48768acf95789f4a72d860d0285c71275b04",
+  "facts": {
+    "tool": {
+      "state": "known",
+      "value": "Arduino CLI"
+    },
+    "inputs": {
+      "state": "known",
+      "value": [
+        "sketch.yaml with pinned native profiles"
+      ]
+    },
+    "lockfiles": {
+      "state": "known",
+      "value": [
+        "arduino-purifier.lock.json"
+      ]
+    },
+    "integration": {
+      "state": "known",
+      "value": "wrapper"
+    },
+    "wrapper_required": {
+      "state": "known",
+      "value": true
+    },
+    "relock": {
+      "state": "known",
+      "value": "preserves-pins"
+    },
+    "missing_lock": {
+      "state": "known",
+      "value": "warn-and-native"
+    },
+    "stale_lock": {
+      "state": "known",
+      "value": "fail-with-repair"
+    },
+    "platforms": {
+      "state": "known",
+      "value": [
+        "x86_64-linux",
+        "aarch64-linux"
+      ]
+    },
+    "dependency_sources": {
+      "state": "known",
+      "value": [
+        "Signed Arduino package and library indexes and their public HTTPS archives"
+      ]
+    },
+    "credentials": {
+      "state": "known",
+      "value": "anonymous-only"
+    },
+    "offline_scope": {
+      "state": "known",
+      "value": "locked-dependencies"
+    },
+    "offline_limits": {
+      "state": "known",
+      "value": [
+        "Prefetch covers the native indexes, core, compiler, libraries, uploader, discovery, monitor and preprocessing tools",
+        "Physical uploads, monitoring and on-device execution require configured hardware",
+        "Project commands retain their ordinary network access"
+      ]
+    },
+    "unsupported_features": {
+      "state": "known",
+      "value": [
+        "Unpinned system platforms and source libraries",
+        "Non-AVR cores and additional external runtimes require providers",
+        "Nixpkgs GDB replaces the obsolete bundled AVR debugger; its provider version is recorded"
+      ]
+    },
+    "runtime_requirements": {
+      "state": "known",
+      "value": [
+        "A sketch with a pinned Arduino AVR profile and matching sketch directory and .ino filename"
+      ]
+    },
+    "nix_builder": {
+      "state": "known",
+      "value": "pkgs.arduino-purifier.buildArduinoProject"
+    },
+    "build_isolation": {
+      "state": "known",
+      "value": "nix-sandbox"
+    },
+    "build_outputs": {
+      "state": "known",
+      "value": [
+        "packages",
+        "tests",
+        "release",
+        "fetches"
+      ]
+    },
+    "builder_options": {
+      "state": "known",
+      "value": [
+        "lockFile",
+        "fetchers",
+        "doCheck",
+        "checkCommand"
+      ]
+    },
+    "platform_notes": {
+      "state": "known",
+      "value": [
+        "Linux x86-64 and ARM64 are target systems. Local native firmware, consumer and reproducibility checks passed on x86-64; native ARM CI is pending.",
+        "Physical uploads, monitoring and on-device execution are not exercised by the fixture."
+      ]
+    },
+    "projection_incoming": {
+      "state": "known",
+      "value": "unsupported"
+    },
+    "projection_incoming_formats": {
+      "state": "not-applicable",
+      "reason": "No typed project projection adapter is exported by this implementation."
+    },
+    "projection_incoming_interfaces": {
+      "state": "not-applicable",
+      "reason": "No typed project projection interface is implemented."
+    },
+    "projection_incoming_limits": {
+      "state": "not-applicable",
+      "reason": "No incoming typed project projection interface is implemented."
+    },
+    "projection_outgoing": {
+      "state": "known",
+      "value": "unsupported"
+    },
+    "projection_outgoing_formats": {
+      "state": "not-applicable",
+      "reason": "No typed project projection adapter is exported by this implementation."
+    },
+    "projection_outgoing_interfaces": {
+      "state": "not-applicable",
+      "reason": "No typed project projection interface is implemented."
+    },
+    "projection_outgoing_limits": {
+      "state": "not-applicable",
+      "reason": "No outgoing typed project projection interface is implemented."
+    }
+  },
+  "operations": {
+    "lock": {
+      "capability": "arduino-purifier",
+      "arguments": [
+        "lock",
+        "--project",
+        {
+          "binding": "project_root"
+        },
+        "--lock",
+        {
+          "binding": "lockfile"
+        },
+        {
+          "splice": "arguments"
+        }
+      ],
+      "sources": [
+        "https://github.com/nix-purifiers/arduino-purifier/blob/437c48768acf95789f4a72d860d0285c71275b04/arduino_purifier/cli.py",
+        "https://github.com/nix-purifiers/arduino-purifier/blob/437c48768acf95789f4a72d860d0285c71275b04/tests/conformance.py"
+      ]
+    },
+    "prefetch": {
+      "capability": "arduino-purifier",
+      "arguments": [
+        "prefetch",
+        "--project",
+        {
+          "binding": "project_root"
+        },
+        "--lock",
+        {
+          "binding": "lockfile"
+        },
+        {
+          "splice": "arguments"
+        }
+      ],
+      "sources": [
+        "https://github.com/nix-purifiers/arduino-purifier/blob/437c48768acf95789f4a72d860d0285c71275b04/arduino_purifier/cli.py",
+        "https://github.com/nix-purifiers/arduino-purifier/blob/437c48768acf95789f4a72d860d0285c71275b04/tests/conformance.py"
+      ]
+    },
+    "bundle": {
+      "capability": "arduino-purifier",
+      "arguments": [
+        "bundle",
+        "--project",
+        {
+          "binding": "project_root"
+        },
+        "--lock",
+        {
+          "binding": "lockfile"
+        },
+        {
+          "splice": "arguments"
+        }
+      ],
+      "sources": [
+        "https://github.com/nix-purifiers/arduino-purifier/blob/437c48768acf95789f4a72d860d0285c71275b04/arduino_purifier/cli.py",
+        "https://github.com/nix-purifiers/arduino-purifier/blob/437c48768acf95789f4a72d860d0285c71275b04/tests/conformance.py"
+      ]
+    },
+    "publish": {
+      "capability": "arduino-purifier",
+      "arguments": [
+        "publish",
+        "--project",
+        {
+          "binding": "project_root"
+        },
+        "--lock",
+        {
+          "binding": "lockfile"
+        },
+        "--tag",
+        {
+          "binding": "tag"
+        },
+        {
+          "splice": "arguments"
+        }
+      ],
+      "sources": [
+        "https://github.com/nix-purifiers/arduino-purifier/blob/437c48768acf95789f4a72d860d0285c71275b04/arduino_purifier/cli.py",
+        "https://github.com/nix-purifiers/arduino-purifier/blob/437c48768acf95789f4a72d860d0285c71275b04/tests/conformance.py"
+      ]
+    },
+    "update": {
+      "capability": "arduino-purifier",
+      "arguments": [
+        "lock",
+        "--update",
+        "--project",
+        {
+          "binding": "project_root"
+        },
+        "--lock",
+        {
+          "binding": "lockfile"
+        },
+        {
+          "splice": "arguments"
+        }
+      ],
+      "sources": [
+        "https://github.com/nix-purifiers/arduino-purifier/blob/437c48768acf95789f4a72d860d0285c71275b04/arduino_purifier/cli.py",
+        "https://github.com/nix-purifiers/arduino-purifier/blob/437c48768acf95789f4a72d860d0285c71275b04/tests/conformance.py"
+      ]
+    },
+    "build": {
+      "capability": "arduino-cli",
+      "arguments": [
+        "compile",
+        {
+          "splice": "arguments"
+        }
+      ],
+      "sources": [
+        "https://github.com/nix-purifiers/arduino-purifier/blob/437c48768acf95789f4a72d860d0285c71275b04/arduino_purifier/cli.py",
+        "https://github.com/nix-purifiers/arduino-purifier/blob/437c48768acf95789f4a72d860d0285c71275b04/tests/conformance.py"
+      ],
+      "environment": {
+        "ARDUINO_PURIFIER_PROJECT": {
+          "binding": "project_root"
+        },
+        "ARDUINO_PURIFIER_LOCK": {
+          "binding": "lockfile"
+        }
+      }
+    }
+  }
+}
