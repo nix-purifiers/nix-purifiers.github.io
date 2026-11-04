@@ -8,6 +8,7 @@ import subprocess
 from content import audit, feature_matrix, render, source_links
 from theme import install_theme
 from reference import guide_plan, reference_text
+from testing import build_testing
 
 
 def build(documentation, destination):
@@ -68,7 +69,11 @@ if __name__ == '__main__':
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--output', type=Path, default=Path('.catalog-source'))
     parser.add_argument('--export', type=Path, help='Use an already evaluated documentation JSON export')
+    parser.add_argument('--coverage-plan', type=Path, help='Coverage obligations exported from .#coveragePlan')
+    parser.add_argument('--coverage-audit', type=Path, help='Context-bound audit from harness/coverage.py')
     args = parser.parse_args()
+    if args.coverage_audit and not args.coverage_plan:
+        parser.error('--coverage-audit requires --coverage-plan')
     if args.export:
         documentation = json.loads(args.export.read_text())
     else:
@@ -78,3 +83,12 @@ if __name__ == '__main__':
             capture_output=True, text=True)
         documentation = json.loads(result.stdout)
     build(documentation, args.output)
+    plan = json.loads(args.coverage_plan.read_text()) if args.coverage_plan else None
+    if plan is None and not args.export:
+        result = subprocess.run(['nix', 'eval', '--json', '.#coveragePlan'],
+                                cwd=Path(__file__).resolve().parent.parent, check=True,
+                                capture_output=True, text=True)
+        plan = json.loads(result.stdout)
+    if plan is not None:
+        audit = json.loads(args.coverage_audit.read_text()) if args.coverage_audit else None
+        build_testing(plan, audit, args.output)
