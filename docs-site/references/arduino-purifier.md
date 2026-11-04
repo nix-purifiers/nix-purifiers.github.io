@@ -10,7 +10,9 @@ arduino-purifier lock
 arduino-cli compile
 ```
 
-Commit `arduino-purifier.lock.json` alongside `sketch.yaml`. Arduino CLI's own
+Commit `arduino-purifier.lock.json` and `arduino-purifier.indexes/` alongside
+`sketch.yaml`. The index directory preserves exact compressed, signed catalog
+snapshots when upstream index URLs change. Arduino CLI's own
 profile parser, platform resolver, signed indexes, and installers select the
 artifacts for Linux x86-64 and ARM64. Nix verifies and replays those downloads
 before the lock is written.
