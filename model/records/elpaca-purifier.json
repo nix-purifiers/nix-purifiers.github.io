@@ -55,19 +55,16 @@
     "offline_limits": {
       "state": "known",
       "value": [
-        "Standard Elisp builds are supported",
-        "Custom build steps, build variables, shared repositories, submodules and native modules require additional providers",
-        "Capture configuration must work in batch mode and select the same packages as the runtime profile",
-        "External language servers and dependencies downloaded by package code are outside this lock"
+        "Prefetch covers recorded dependency artifacts; arbitrary application networking and separately provided runtimes or tools are outside that guarantee."
       ]
     },
     "unsupported_features": {
       "state": "known",
       "value": [
-        "Standard Elisp builds are supported",
-        "Custom build steps, build variables, shared repositories, submodules and native modules require additional providers",
-        "Capture configuration must work in batch mode and select the same packages as the runtime profile",
-        "External language servers and dependencies downloaded by package code are outside this lock"
+        "Custom package build steps and build variables",
+        "Shared Git repositories",
+        "Git submodules and native modules",
+        "External language servers"
       ]
     },
     "nix_builder": {
@@ -149,6 +146,22 @@
     "editor_supported": {
       "state": "known",
       "value": true
+    },
+    "editor_diagnostics": {
+      "state": "not-applicable",
+      "reason": "This integration supplies the native editor/package environment; external language servers are outside the lock."
+    },
+    "editor_completion": {
+      "state": "not-applicable",
+      "reason": "This integration supplies the native editor/package environment; external language servers are outside the lock."
+    },
+    "editor_navigation": {
+      "state": "not-applicable",
+      "reason": "This integration supplies the native editor/package environment; external language servers are outside the lock."
+    },
+    "editor_dependency_sources": {
+      "state": "not-applicable",
+      "reason": "This integration supplies the native editor/package environment; external language servers are outside the lock."
     }
   },
   "operations": {

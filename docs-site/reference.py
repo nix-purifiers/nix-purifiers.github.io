@@ -113,7 +113,7 @@ def detailed_guide(repository, text, page, plan=None):
             if identifier == 'setup' and page.get('values', {}).get('quickstart'):
                 match = re.search(r'(?m)^```[^\n]*\n(.*?)^```\s*$', body, re.DOTALL)
                 if match and match[1].strip() == page['values']['quickstart'].strip():
-                    body = body[:match.start()] + contract['quickstartPointer'] + body[match.end():]
+                    body = body[:match.start()] + contract['quickstartPointer'] + '\n\n' + body[match.end():].lstrip()
                     body = re.sub(r'^From the project root:\s*', '', body)
             blocks.append((display, body, True, alias))
         for fact_name in decision.get('facts', []):

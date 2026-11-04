@@ -141,9 +141,7 @@
           "sources": [],
           "state": "known",
           "value": [
-            "Dependency registries require clean Git checkouts with an origin remote",
-            "Mutable current-directory library dependencies and custom registry flags are unsupported",
-            "Dependency source include directories must be included in their Git trees"
+            "Prefetch covers recorded dependency artifacts; arbitrary application networking and separately provided runtimes or tools are outside that guarantee."
           ]
         },
         "offline_scope": {
@@ -238,9 +236,9 @@
           "sources": [],
           "state": "known",
           "value": [
-            "Dependency registries require clean Git checkouts with an origin remote",
-            "Mutable current-directory library dependencies and custom registry flags are unsupported",
-            "Dependency source include directories must be included in their Git trees"
+            "Mutable current-directory dependencies in registered libraries",
+            "Custom library-registry flags in locked commands",
+            "Rewriting readonly dependency interfaces with --ignore-interfaces"
           ]
         },
         "updates_ignore_file": {
@@ -623,8 +621,7 @@
           "sources": [],
           "state": "known",
           "value": [
-            "Architecture-dependent dependency selection and external system packages need additional integration",
-            "User project build and run commands retain their ordinary network access"
+            "Prefetch covers recorded dependency artifacts; arbitrary application networking and separately provided runtimes or tools are outside that guarantee."
           ]
         },
         "offline_scope": {
@@ -719,8 +716,8 @@
           "sources": [],
           "state": "known",
           "value": [
-            "Architecture-dependent dependency selection and external system packages need additional integration",
-            "User project build and run commands retain their ordinary network access"
+            "Architecture-dependent dependency selection without additional integration",
+            "External system package providers"
           ]
         },
         "updates_ignore_file": {
@@ -1104,9 +1101,7 @@
           "sources": [],
           "state": "known",
           "value": [
-            "Roles, Git collections and private Galaxy servers require additional providers",
-            "Python library dependencies and remote host system packages are not implicitly installed",
-            "Playbook tasks and target hosts retain their normal networking"
+            "Prefetch covers recorded dependency artifacts; arbitrary application networking and separately provided runtimes or tools are outside that guarantee."
           ]
         },
         "offline_scope": {
@@ -1205,9 +1200,8 @@
           "sources": [],
           "state": "known",
           "value": [
-            "Roles, Git collections and private Galaxy servers require additional providers",
-            "Python library dependencies and remote host system packages are not implicitly installed",
-            "Playbook tasks and target hosts retain their normal networking"
+            "Roles, Git collections and private Galaxy servers without separate providers",
+            "Implicit installation of Python libraries or remote host packages"
           ]
         },
         "updates_ignore_file": {
@@ -2091,10 +2085,7 @@
           "sources": [],
           "state": "known",
           "value": [
-            "v2 workspaces are supported",
-            "protoc_builtin generators use the supplied Nix Protobuf compiler",
-            "Remote and external generator plugins require additional Nix tool providers",
-            "User root commands retain their normal network access"
+            "Prefetch covers recorded dependency artifacts; arbitrary application networking and separately provided runtimes or tools are outside that guarantee."
           ]
         },
         "offline_scope": {
@@ -2189,10 +2180,7 @@
           "sources": [],
           "state": "known",
           "value": [
-            "v2 workspaces are supported",
-            "protoc_builtin generators use the supplied Nix Protobuf compiler",
-            "Remote and external generator plugins require additional Nix tool providers",
-            "User root commands retain their normal network access"
+            "Remote and external generator plugins without additional Nix tool providers"
           ]
         },
         "updates_ignore_file": {
@@ -6466,9 +6454,7 @@
           "sources": [],
           "state": "known",
           "value": [
-            "Module replacements need additional integration",
-            "User-defined workflows retain ordinary network access",
-            "Reproducible bundles currently require source: kind: self; Git source selection remains available to ordinary native publication"
+            "Prefetch covers recorded dependency artifacts; arbitrary application networking and separately provided runtimes or tools are outside that guarantee."
           ]
         },
         "offline_scope": {
@@ -6563,9 +6549,8 @@
           "sources": [],
           "state": "known",
           "value": [
-            "Module replacements need additional integration",
-            "User-defined workflows retain ordinary network access",
-            "Reproducible bundles currently require source: kind: self; Git source selection remains available to ordinary native publication"
+            "Module replacements",
+            "Reproducible bundles using Git source selection instead of source: kind: self"
           ]
         },
         "updates_ignore_file": {
@@ -7304,9 +7289,7 @@
           "sources": [],
           "state": "known",
           "value": [
-            "Local code imports must remain inside the project",
-            "Environment imports and custom HTTP headers are unsupported",
-            "--no-cache bypasses the prepared semantic cache; locked tools cannot fetch remote imports"
+            "Prefetch covers recorded dependency artifacts; arbitrary application networking and separately provided runtimes or tools are outside that guarantee."
           ]
         },
         "offline_scope": {
@@ -7401,9 +7384,10 @@
           "sources": [],
           "state": "known",
           "value": [
-            "Local code imports must remain inside the project",
-            "Environment imports and custom HTTP headers are unsupported",
-            "--no-cache bypasses the prepared semantic cache; locked tools cannot fetch remote imports"
+            "Environment imports",
+            "Custom HTTP headers",
+            "Local code imports outside the project",
+            "Fetching remote imports when --no-cache bypasses the prepared semantic cache"
           ]
         },
         "updates_ignore_file": {
@@ -9232,24 +9216,24 @@
           ]
         },
         "editor_completion": {
-          "reason": "This capability is not established by the reviewed integration record.",
-          "state": "unknown"
+          "reason": "This integration supplies the native editor/package environment; external language servers are outside the lock.",
+          "state": "not-applicable"
         },
         "editor_dependency_sources": {
-          "reason": "This capability is not established by the reviewed integration record.",
-          "state": "unknown"
+          "reason": "This integration supplies the native editor/package environment; external language servers are outside the lock.",
+          "state": "not-applicable"
         },
         "editor_diagnostics": {
-          "reason": "This capability is not established by the reviewed integration record.",
-          "state": "unknown"
+          "reason": "This integration supplies the native editor/package environment; external language servers are outside the lock.",
+          "state": "not-applicable"
         },
         "editor_metadata_format": {
           "reason": "This capability is not established by the reviewed integration record.",
           "state": "unknown"
         },
         "editor_navigation": {
-          "reason": "This capability is not established by the reviewed integration record.",
-          "state": "unknown"
+          "reason": "This integration supplies the native editor/package environment; external language servers are outside the lock.",
+          "state": "not-applicable"
         },
         "editor_offline": {
           "reason": "This capability is not established by the reviewed integration record.",
@@ -9327,10 +9311,7 @@
           "sources": [],
           "state": "known",
           "value": [
-            "Standard Elisp builds are supported",
-            "Custom build steps, build variables, shared repositories, submodules and native modules require additional providers",
-            "Capture configuration must work in batch mode and select the same packages as the runtime profile",
-            "External language servers and dependencies downloaded by package code are outside this lock"
+            "Prefetch covers recorded dependency artifacts; arbitrary application networking and separately provided runtimes or tools are outside that guarantee."
           ]
         },
         "offline_scope": {
@@ -9429,10 +9410,10 @@
           "sources": [],
           "state": "known",
           "value": [
-            "Standard Elisp builds are supported",
-            "Custom build steps, build variables, shared repositories, submodules and native modules require additional providers",
-            "Capture configuration must work in batch mode and select the same packages as the runtime profile",
-            "External language servers and dependencies downloaded by package code are outside this lock"
+            "Custom package build steps and build variables",
+            "Shared Git repositories",
+            "Git submodules and native modules",
+            "External language servers"
           ]
         },
         "updates_ignore_file": {
@@ -12248,9 +12229,7 @@
           "sources": [],
           "state": "known",
           "value": [
-            "The mutable root project is supported; other local dependency projects are not",
-            "The initial frontend targets Idris 0.8.0 and TTC ABI 2025081600",
-            "Compiler API and papers core packages, automatic dependency applications and documentation installation are outside this integration"
+            "Prefetch covers recorded dependency artifacts; arbitrary application networking and separately provided runtimes or tools are outside that guarantee."
           ]
         },
         "offline_scope": {
@@ -12345,9 +12324,9 @@
           "sources": [],
           "state": "known",
           "value": [
-            "The mutable root project is supported; other local dependency projects are not",
-            "The initial frontend targets Idris 0.8.0 and TTC ABI 2025081600",
-            "Compiler API and papers core packages, automatic dependency applications and documentation installation are outside this integration"
+            "Local dependency projects other than the mutable root project",
+            "Compiler API and papers core packages",
+            "Automatic dependency applications and documentation installation"
           ]
         },
         "updates_ignore_file": {
@@ -13695,24 +13674,24 @@
           ]
         },
         "editor_completion": {
-          "reason": "This capability is not established by the reviewed integration record.",
-          "state": "unknown"
+          "reason": "This integration supplies the native editor/package environment; external language servers are outside the lock.",
+          "state": "not-applicable"
         },
         "editor_dependency_sources": {
-          "reason": "This capability is not established by the reviewed integration record.",
-          "state": "unknown"
+          "reason": "This integration supplies the native editor/package environment; external language servers are outside the lock.",
+          "state": "not-applicable"
         },
         "editor_diagnostics": {
-          "reason": "This capability is not established by the reviewed integration record.",
-          "state": "unknown"
+          "reason": "This integration supplies the native editor/package environment; external language servers are outside the lock.",
+          "state": "not-applicable"
         },
         "editor_metadata_format": {
           "reason": "This capability is not established by the reviewed integration record.",
           "state": "unknown"
         },
         "editor_navigation": {
-          "reason": "This capability is not established by the reviewed integration record.",
-          "state": "unknown"
+          "reason": "This integration supplies the native editor/package environment; external language servers are outside the lock.",
+          "state": "not-applicable"
         },
         "editor_offline": {
           "reason": "This capability is not established by the reviewed integration record.",
@@ -13790,10 +13769,7 @@
           "sources": [],
           "state": "known",
           "value": [
-            "Lua-only profiles are supported",
-            "Local plugins, build hooks, automatic build scripts, Git submodules and rockspec dependencies require additional providers",
-            "Conditional profiles must select the same dependencies when locked and launched",
-            "External language servers and dependencies fetched by plugin code are outside this lock"
+            "Prefetch covers recorded dependency artifacts; arbitrary application networking and separately provided runtimes or tools are outside that guarantee."
           ]
         },
         "offline_scope": {
@@ -13892,10 +13868,11 @@
           "sources": [],
           "state": "known",
           "value": [
-            "Lua-only profiles are supported",
-            "Local plugins, build hooks, automatic build scripts, Git submodules and rockspec dependencies require additional providers",
-            "Conditional profiles must select the same dependencies when locked and launched",
-            "External language servers and dependencies fetched by plugin code are outside this lock"
+            "Local plugins",
+            "Build hooks and automatic build scripts",
+            "Git submodules",
+            "Rocks and rockspec dependencies",
+            "External language servers"
           ]
         },
         "updates_ignore_file": {
@@ -17206,10 +17183,7 @@
           "sources": [],
           "state": "known",
           "value": [
-            "The initial target is Octave 11 on Linux",
-            "Interpreter versions, module ABI and external C/Fortran libraries must match",
-            "Git development snapshots and unrelated application downloads are outside the adapter",
-            "The native manager does not automatically select missing package requirements"
+            "Prefetch covers recorded dependency artifacts; arbitrary application networking and separately provided runtimes or tools are outside that guarantee."
           ]
         },
         "offline_scope": {
@@ -17304,10 +17278,8 @@
           "sources": [],
           "state": "known",
           "value": [
-            "The initial target is Octave 11 on Linux",
-            "Interpreter versions, module ABI and external C/Fortran libraries must match",
-            "Git development snapshots and unrelated application downloads are outside the adapter",
-            "The native manager does not automatically select missing package requirements"
+            "Git development snapshots",
+            "Implicit selection of missing native package requirements"
           ]
         },
         "updates_ignore_file": {
@@ -18674,10 +18646,7 @@
           "sources": [],
           "state": "known",
           "value": [
-            "The initial target is PHP 8.5 and PECL source extensions on Linux",
-            "Userland PEAR packages, custom channels and PIE are outside this adapter",
-            "PHP configuration replacing extension search paths is rejected",
-            "New upstream versions may need extension recipe overrides"
+            "Prefetch covers recorded dependency artifacts; arbitrary application networking and separately provided runtimes or tools are outside that guarantee."
           ]
         },
         "offline_scope": {
@@ -18772,10 +18741,10 @@
           "sources": [],
           "state": "known",
           "value": [
-            "The initial target is PHP 8.5 and PECL source extensions on Linux",
-            "Userland PEAR packages, custom channels and PIE are outside this adapter",
-            "PHP configuration replacing extension search paths is rejected",
-            "New upstream versions may need extension recipe overrides"
+            "Userland PEAR packages",
+            "Custom PECL channels",
+            "PIE",
+            "PHP configuration replacing extension search paths"
           ]
         },
         "updates_ignore_file": {
@@ -21584,10 +21553,7 @@
           "sources": [],
           "state": "known",
           "value": [
-            "Only extension sources and the Quarto SDK are covered",
-            "Python, R, Julia, TeX, browser downloads, remote document resources and extension-fetched dependencies require their own integrations",
-            "The initial Nix check uses Markdown-to-HTML without a computation engine",
-            "Local and nested _extensions trees cannot override locked declarations"
+            "Prefetch covers recorded dependency artifacts; arbitrary application networking and separately provided runtimes or tools are outside that guarantee."
           ]
         },
         "offline_scope": {
@@ -21685,10 +21651,8 @@
           "sources": [],
           "state": "known",
           "value": [
-            "Only extension sources and the Quarto SDK are covered",
-            "Python, R, Julia, TeX, browser downloads, remote document resources and extension-fetched dependencies require their own integrations",
-            "The initial Nix check uses Markdown-to-HTML without a computation engine",
-            "Local and nested _extensions trees cannot override locked declarations"
+            "Locking computation-engine dependencies through this extension adapter",
+            "Locking browser downloads, remote document resources or downloads performed by extension code"
           ]
         },
         "updates_ignore_file": {
@@ -26018,10 +25982,7 @@
           "sources": [],
           "state": "known",
           "value": [
-            "The initial integration supports LaTeX and Tectonic 0.17",
-            "Fonts must come from the locked bundle or explicit project files",
-            "Ambient system font collections require additional integration",
-            "User commands retain their normal network access"
+            "Prefetch covers recorded dependency artifacts; arbitrary application networking and separately provided runtimes or tools are outside that guarantee."
           ]
         },
         "offline_scope": {
@@ -26119,10 +26080,7 @@
           "sources": [],
           "state": "known",
           "value": [
-            "The initial integration supports LaTeX and Tectonic 0.17",
-            "Fonts must come from the locked bundle or explicit project files",
-            "Ambient system font collections require additional integration",
-            "User commands retain their normal network access"
+            "Ambient system font collections without additional integration"
           ]
         },
         "updates_ignore_file": {
@@ -28298,11 +28256,7 @@
           "sources": [],
           "state": "known",
           "value": [
-            "Selected submodules require an additional provider",
-            "History and tags beyond the locked commit are not delivered",
-            "A complete Zephyr SDK, board toolchains and Python extension dependencies require separate providers",
-            "Native extensions must use the manifest API; hardcoded sibling paths need adaptation",
-            "Project paths must remain separate from the manifest repository"
+            "Prefetch covers recorded dependency artifacts; arbitrary application networking and separately provided runtimes or tools are outside that guarantee."
           ]
         },
         "offline_scope": {
@@ -28401,11 +28355,11 @@
           "sources": [],
           "state": "known",
           "value": [
-            "Selected submodules require an additional provider",
-            "History and tags beyond the locked commit are not delivered",
-            "A complete Zephyr SDK, board toolchains and Python extension dependencies require separate providers",
-            "Native extensions must use the manifest API; hardcoded sibling paths need adaptation",
-            "Project paths must remain separate from the manifest repository"
+            "Selected Git submodules without an additional provider",
+            "History and tags beyond the locked commit",
+            "A complete Zephyr SDK or hardware workflow",
+            "Implicit locking of packages installed into the writable Python virtualenv",
+            "Hardcoded dependency paths outside the prepared workspace"
           ]
         },
         "updates_ignore_file": {

@@ -55,19 +55,14 @@
     "offline_limits": {
       "state": "known",
       "value": [
-        "Only extension sources and the Quarto SDK are covered",
-        "Python, R, Julia, TeX, browser downloads, remote document resources and extension-fetched dependencies require their own integrations",
-        "The initial Nix check uses Markdown-to-HTML without a computation engine",
-        "Local and nested _extensions trees cannot override locked declarations"
+        "Prefetch covers recorded dependency artifacts; arbitrary application networking and separately provided runtimes or tools are outside that guarantee."
       ]
     },
     "unsupported_features": {
       "state": "known",
       "value": [
-        "Only extension sources and the Quarto SDK are covered",
-        "Python, R, Julia, TeX, browser downloads, remote document resources and extension-fetched dependencies require their own integrations",
-        "The initial Nix check uses Markdown-to-HTML without a computation engine",
-        "Local and nested _extensions trees cannot override locked declarations"
+        "Locking computation-engine dependencies through this extension adapter",
+        "Locking browser downloads, remote document resources or downloads performed by extension code"
       ]
     },
     "nix_builder": {
