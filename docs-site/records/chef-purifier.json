@@ -1,0 +1,22 @@
+{
+  "summary": "Locked cookbook dependencies for Chef and Cinc Policyfiles.",
+  "values": {
+    "quickstart": "nix shell 'github:nix-purifiers/chef-purifier'\nchef-purifier lock --update\ncinc-cli install\ncinc-cli export ./policy"
+  },
+  "sections": {
+    "editor": {
+      "mode": "omit",
+      "template": null,
+      "reason": "No specific editor protocol integration has been established by the reviewed implementation."
+    },
+    "nix_builds": {
+      "template": "preparation"
+    },
+    "integration": {
+      "template": "wrapper"
+    },
+    "workflow": {
+      "template": "capture-update"
+    }
+  }
+}
