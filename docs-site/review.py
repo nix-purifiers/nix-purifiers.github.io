@@ -25,6 +25,40 @@ class ReviewedSource:
     library: dict | None = None
 
 
+class SourceDrift(ValueError):
+    """Native source differs; the bundled documentation is still buildable."""
+
+    def __init__(self, repository, revision, changed):
+        self.revision = revision
+        self.changed = changed
+        super().__init__(f'{repository}: documentation model needs source review; changed since '
+                         f'{revision[:12]}: {", ".join(changed)}')
+
+
+def canonical_review(repository):
+    """Load a coherent bundled model and guide, independent of native HEAD."""
+    theme = Path(__file__).parent
+    name = repository.split('/')[1]
+    manifest = json.loads((theme.parent / 'model/repositories.json').read_text())
+    record = manifest[name]
+    if record['repository'] != repository:
+        raise ValueError('canonical repository does not match source review')
+    revision = record['revision']
+    guide = (theme / 'references' / (name + '.md')).read_text()
+    if repository == 'nix-purifiers/purifier':
+        library = validate_library(json.loads((theme.parent / 'model/library.json').read_text()),
+                                   repository, revision)
+        if hashlib.sha256(guide.encode()).hexdigest() != record['files'].get('README.md'):
+            raise ValueError('canonical library reference must match the reviewed README.md')
+        return ReviewedSource(revision, reference=guide, library=library)
+    page = json.loads((theme / 'catalog.json').read_text())['catalog'][name]
+    if page['repository'] != repository or page['reviewedRevision'] != revision:
+        raise ValueError('canonical page repository and revision must match source review')
+    from reference import guide_plan
+    guide_plan(repository, guide)
+    return ReviewedSource(revision, page=page, reference=guide)
+
+
 def validate_library(data, repository, revision):
     """Library scope is independent of the native-tool page contract."""
     if (set(data) != {'repository', 'reviewedRevision', 'platforms', 'limitations', 'validation'}
@@ -104,8 +138,7 @@ def resolve_review(repository, checkout, manifest=None, variants=None):
         from reference import guide_plan
         guide_plan(repository, guide.read_text(), plan)
         return ReviewedSource(snapshot['revision'], page, guide.read_text(), plan)
-    raise ValueError(f'{repository}: documentation model needs source review; changed since '
-                     f'{record["revision"][:12]}: {", ".join(changed)}')
+    raise SourceDrift(repository, record['revision'], changed)
 
 
 def verify(repository, checkout, manifest=None):

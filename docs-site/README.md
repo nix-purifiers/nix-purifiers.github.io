@@ -65,7 +65,7 @@ sections even when a native README combines those topics.
 
 The family export also checks homepage coverage. Adding a purifier homepage link
 without its structured record fails CI and publication. Stage the reviewed model
-and guide before publishing a new project's site; use `--model --check-source`
+and guide before publishing a new project's site; use `--model --source-status .`
 and pin the shared source that includes that review. The family repository must
 use GitHub Actions publishing, so raw branch builds cannot overwrite the
 generated site.
@@ -161,16 +161,27 @@ The bundled export allows Pages builders to use Python alone:
 
 ```sh
 python3 .pages-theme/docs-site/prepare.py --repository "$GITHUB_REPOSITORY" \
-  --model --check-source .
+  --model --source-status .
 ```
 
 `--model` uses `docs-site/catalog.json`, generated with `export.py`. CI checks
-that it agrees with the Nix source model. `--check-source` compares tracked
-implementation files, native guides, and CI configuration with the reviewed
-revision and fingerprints in `model/repositories.json`. Changed, removed, or
-new implementation files require a new source review. Deployment workflow-only
-changes are excluded so pinning this theme does not invalidate that review.
-Each consumer pins the exact shared documentation commit.
+that it agrees with the Nix source model. `--source-status` selects an exact
+reviewed variant when available, otherwise builds the canonical bundled model
+and guide together. The shared library similarly uses its bundled README and
+library scope. Source links identify the documented revision. Native source
+changes do not require a coordinated central-site update to pass PR or main
+Pages builds, and do not automatically change documented capabilities.
+
+The generated `source-review.json` reports `matched` or `update-needed`, the
+documented revision, and changed files. This is a maintenance report, not a
+build failure. Invalid models, missing guides and ambiguous or mismatched
+review records still fail. Each consumer pins the exact shared documentation
+commit; fork PRs need no write token or central-site mutation.
+
+For an explicit strict maintainer audit, use `--model --check-source .` instead.
+It compares tracked source and CI configuration with the reviewed fingerprints
+and rejects changes, removals or new implementation files. This strict command
+is separate from normal documentation build validity.
 
 `robots.txt` comes from the shared repository and permits all crawling. It is
 copied into the family site and independent project outputs.
