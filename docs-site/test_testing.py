@@ -21,7 +21,13 @@ class TestingPublicationTests(unittest.TestCase):
             build_testing(self.plan, self.evidence, root)
             text = (root / 'testing/index.md').read_text()
             self.assertIn('partial execution', text)
-            self.assertIn('| [maven](projects/maven.json) | 1 | 0 | 1 | 1 |', text)
+            self.assertIn('| [maven](projects/maven.html) | 1 | 0 | 1 | 1 |', text)
+            detail = (root / 'testing/projects/maven.md').read_text()
+            self.assertIn('| sandwich | origin | passed |', detail)
+            self.assertIn('| sandwich | runtime | not run |', detail)
+            self.assertIn('Download project data (JSON)', detail)
+            self.assertIn('<details markdown="1">', text)
+            self.assertNotIn('[Full plan]', text)
             exported = json.loads((root / 'testing/projects/maven.json').read_text())
             self.assertEqual(exported['execution'], self.evidence['projects']['maven'])
             build_testing(self.plan, None, root)
@@ -29,6 +35,7 @@ class TestingPublicationTests(unittest.TestCase):
             self.assertIn('No execution evidence', (root / 'testing/index.md').read_text())
             build_testing(dict(self.plan, projects={}), None, root)
             self.assertFalse((root / 'testing/projects/maven.json').exists())
+            self.assertFalse((root / 'testing/projects/maven.md').exists())
 
     def test_stale_or_incomplete_audit_fails_before_publishing(self):
         for evidence in (dict(self.evidence, planDigest='stale'), dict(self.evidence, projects={})):
