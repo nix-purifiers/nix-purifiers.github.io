@@ -35,6 +35,9 @@ Run from the project or a descendant directory. Set `QGIS_PURIFIER_PROJECT` and
 `QGIS_PURIFIER_LOCK`, or pass `--project` and `--lock` before adapter subcommands,
 to select another project or lockfile.
 
+Dependency preparation reads the selection and lock without copying the working
+tree into Nix. Project files enter the store only for an explicit Nix build.
+
 ## Scope
 
 The initial provider uses QGIS 4.2 on Linux and the official stable Python plugin
