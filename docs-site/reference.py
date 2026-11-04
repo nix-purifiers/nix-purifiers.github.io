@@ -3,6 +3,7 @@ import json
 import re
 from pathlib import Path
 from guide_blocks import validate_assignments, select_block
+from compatibility import render_compatibility
 
 
 def source_sections(text):
@@ -139,6 +140,8 @@ def detailed_guide(repository, text, page, plan=None):
                     aliases.add(legacy)
                 chunks.append(body)
         sections.append((title, '\n\n'.join(chunks)))
+    if 'versionCompatibility' in overview:
+        sections.insert(1, (overview['versionCompatibility']['title'], render_compatibility(page, overview, heading=False)))
     lines = ['# ' + name + ' full guide', contract['introduction'],
              '## ' + contract['contentsTitle'],
              '\n'.join(f'- [{title}](#{slug(title)})' for title, _ in sections)]

@@ -3,7 +3,45 @@ let
   force = value: (builtins.tryEval (builtins.deepSeq value true)).success;
   sample = ../docs-site/projects/ant-purifier.nix;
   withOverride = module: model.evaluateDocumentation [ sample module ];
+  compatibilityPoint = {
+    id = "node12";
+    components = [ { role = "project-runtime"; name = "Node.js"; version = "12.22.12"; } ];
+    system = "x86_64-linux";
+    operations = [ "pure-build" ];
+    sourceRevision = "1111111111111111111111111111111111111111";
+    evidence = [ "https://example.test/test-fixture" ];
+  };
   checks = {
+    exactCompatibilityPointWorks = force (withOverride {
+      compatibility.testedPoints = [ compatibilityPoint ];
+    });
+    versionRangeCannotBeATestedPoint = !force (withOverride {
+      compatibility.testedPoints = [ (compatibilityPoint // {
+        components = [ { role = "project-runtime"; name = "Node.js"; version = ">=12"; } ];
+      }) ];
+    });
+    compatibilityRequiresEvidence = !force (withOverride {
+      compatibility.testedPoints = [ (compatibilityPoint // { evidence = []; }) ];
+    });
+    duplicateCompatibilityPointFails = !force (withOverride {
+      compatibility.testedPoints = [ compatibilityPoint compatibilityPoint ];
+    });
+    duplicateCompatibilityComponentFails = !force (withOverride {
+      compatibility.testedPoints = [ (compatibilityPoint // {
+        components = compatibilityPoint.components ++ compatibilityPoint.components;
+      }) ];
+    });
+    compatibilityRangeNeedsExistingTests = !force (withOverride {
+      compatibility.supportedRanges = [ {
+        role = "project-runtime"; name = "Node.js"; range = "12.x";
+        systems = [ "x86_64-linux" ]; operations = [ "pure-build" ];
+        sourceRevision = compatibilityPoint.sourceRevision;
+        evidence = compatibilityPoint.evidence;
+        basis = "Explicit version compatibility review.";
+        supportingTests = [ "absent" ];
+      } ];
+    });
+
     realProjectsEvaluate = force model.catalog;
     missingFactFails = !force (model.evaluate [ {
       repository = "example/missing";

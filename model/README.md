@@ -202,3 +202,22 @@ pins their source links to the reviewed revision, and emits `library.json`.
 Unreviewed changes, multiple matching variants, mismatched models and missing
 or unpaired references fail before output. Canonical library rendering retains
 its existing model and README behavior.
+
+## Version compatibility
+
+`compatibility` is behavior data, independent of page copy. It records packaged
+`defaults`, exact `testedPoints`, explicitly reviewed `supportedRanges`, and
+`limitations`. Empty lists mean that version information has not been recorded;
+they do not assert compatibility or incompatibility.
+
+Every component has a role, name and exact version. Roles distinguish the native
+tool, the runtime running that tool, the project's runtime/compiler, capture or
+build helpers, build/addon targets and native formats. A tested point binds those
+components to one system, named operations, an exact source revision and evidence
+links. Repeating a component with conflicting versions is invalid.
+
+A range requires its own review basis, platform and operation scope, evidence,
+and references to existing tested points. The model does not derive ranges,
+minimum versions or intervening compatibility from tested endpoints. Prerelease
+points remain exact prerelease points. The shared renderer always includes the
+version section in overviews and full guides, and links it from feature matrices.

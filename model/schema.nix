@@ -21,7 +21,7 @@ let
   strings = types.addCheck (types.listOf text) (xs: xs != []);
   definitions = (builtins.fromJSON (builtins.readFile ./contract.json)).facts;
 in {
-  imports = [ ./invocations.nix ];
+  imports = [ ./invocations.nix ./compatibility.nix ];
   options = {
     repository = mkOption {
       type = types.addCheck (types.strMatching "[A-Za-z0-9_.-]+/[A-Za-z0-9_.-]+")

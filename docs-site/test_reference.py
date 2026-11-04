@@ -17,6 +17,7 @@ class FullGuideTests(unittest.TestCase):
         titles = {s['id']: s['title'] for s in self.documentation['contract']['sections']}
         order = [titles[s['titleFrom']] if 'titleFrom' in s else s['title']
                  for s in contract['sections']]
+        order.insert(1, self.documentation['contract']['versionCompatibility']['title'])
         for name, page in self.documentation['catalog'].items():
             with self.subTest(name=name):
                 source = (self.root / 'references' / (name + '.md')).read_text()

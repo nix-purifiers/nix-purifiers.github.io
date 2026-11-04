@@ -361,5 +361,106 @@
       "sources": [],
       "state": "unknown"
     }
+  },
+  "compatibility": {
+    "defaults": [],
+    "supportedRanges": [],
+    "testedPoints": [
+      {
+        "id": "npm6-node12-pure",
+        "components": [
+          {
+            "role": "native-tool",
+            "name": "npm",
+            "version": "6.14.16"
+          },
+          {
+            "role": "native-tool-runtime",
+            "name": "Node.js",
+            "version": "12.22.12"
+          },
+          {
+            "role": "project-runtime",
+            "name": "Node.js",
+            "version": "12.22.12"
+          },
+          {
+            "role": "host-helper",
+            "name": "Node.js",
+            "version": "24.21.0"
+          },
+          {
+            "role": "native-format",
+            "name": "package-lock.json",
+            "version": "1"
+          }
+        ],
+        "system": "x86_64-linux",
+        "operations": [
+          "pure-build",
+          "project-build-scripts",
+          "project-test-scripts",
+          "production-install",
+          "release-pack",
+          "outgoing-capture"
+        ],
+        "sourceRevision": "a2edbacf0d1d0bfcfbd967b4560f705f1a03e3f6",
+        "evidence": [
+          "https://github.com/nix-purifiers/npm-purifier/blob/a2edbacf0d1d0bfcfbd967b4560f705f1a03e3f6/tests/legacy-node.nix",
+          "https://github.com/nix-purifiers/npm-purifier/actions/runs/41765124932"
+        ],
+        "notes": [
+          "Pure-build fixture; this point does not establish the complete native command workflow or native addon compatibility."
+        ]
+      },
+      {
+        "id": "npm6-node12-native",
+        "components": [
+          {
+            "role": "native-tool",
+            "name": "npm",
+            "version": "6.14.16"
+          },
+          {
+            "role": "native-tool-runtime",
+            "name": "Node.js",
+            "version": "12.22.12"
+          },
+          {
+            "role": "project-runtime",
+            "name": "Node.js",
+            "version": "12.22.12"
+          },
+          {
+            "role": "host-helper",
+            "name": "Node.js",
+            "version": "24.21.0"
+          },
+          {
+            "role": "native-format",
+            "name": "package-lock.json",
+            "version": "1"
+          }
+        ],
+        "system": "x86_64-linux",
+        "operations": [
+          "native-lock",
+          "native-prefetch",
+          "native-install-offline",
+          "project-build-scripts",
+          "project-test-scripts",
+          "native-publish",
+          "pure-native-byte-equality",
+          "source-preservation"
+        ],
+        "sourceRevision": "a2edbacf0d1d0bfcfbd967b4560f705f1a03e3f6",
+        "evidence": [
+          "https://github.com/nix-purifiers/npm-purifier/blob/a2edbacf0d1d0bfcfbd967b4560f705f1a03e3f6/tests/legacy-native.py",
+          "https://github.com/nix-purifiers/npm-purifier/actions/runs/41765124932"
+        ],
+        "notes": []
+      }
+    ],
+    "limitations": []
   }
 }

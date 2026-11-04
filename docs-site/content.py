@@ -2,6 +2,7 @@
 import re
 import shlex
 from html import escape
+from compatibility import render_compatibility
 
 
 def source_links(text, repository, revision='main'):
@@ -43,7 +44,7 @@ def feature_matrix(page, contract):
         description = definition.get('description', '')
         lines.append(f'| <span title="{escape(description, quote=True)}">{cell(label)}</span> | '
                      f'{cell(behavior)} |')
-    return '\n\n'.join(lines[:2]) + '\n\n' + '\n'.join(lines[2:]) + '\n'
+    return '\n\n'.join(lines[:2]) + '\n\n' + '\n'.join(lines[2:]) + ('\n\nFor tested versions and requirements, see [Version compatibility](./#version-compatibility).\n' if 'versionCompatibility' in contract else '\n')
 
 
 def nonempty(value, label):
@@ -59,7 +60,7 @@ def render(page, contract):
     Every contract section requires an explicit decision from the project.
     """
     required = {'version', 'repository', 'summary', 'facts', 'sections', 'operations'}
-    if not required <= set(page) or set(page) - required - {'values', 'reviewedRevision'} or page['version'] != 1:
+    if not required <= set(page) or set(page) - required - {'values', 'reviewedRevision', 'compatibility'} or page['version'] != 1:
         raise ValueError('expected version 1, repository, summary, facts, sections and operations')
     repository = nonempty(page['repository'], 'repository')
     if not re.fullmatch(r'[\w.-]+/[\w.-]+', repository):
@@ -222,4 +223,8 @@ def render(page, contract):
             raise ValueError(f'{key}: use level-three headings inside sections')
         if body.strip():
             output.append(f'## {spec["title"]}\n\n{body}')
+    if 'versionCompatibility' in contract:
+        section = render_compatibility(page, contract)
+        position = next((i + 1 for i, block in enumerate(output) if block.startswith('## Quickstart\n')), 2)
+        output.insert(position, section)
     return '\n\n'.join(output) + '\n', differences
