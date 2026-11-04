@@ -1,0 +1,360 @@
+{
+  "repository": "nix-purifiers/inkscape-purifier",
+  "reviewedRevision": "dae945612e8420dce7784067db93facda003b9f5",
+  "facts": {
+    "tool": {
+      "state": "known",
+      "value": "Inkscape extensions"
+    },
+    "inputs": {
+      "state": "known",
+      "value": [
+        "inkscape-purifier.json",
+        "SVG drawings, native Inkscape commands and project scripts"
+      ]
+    },
+    "lockfiles": {
+      "state": "known",
+      "value": [
+        "inkscape-purifier.lock.json"
+      ]
+    },
+    "integration": {
+      "state": "known",
+      "value": "wrapper"
+    },
+    "wrapper_required": {
+      "state": "known",
+      "value": true
+    },
+    "relock": {
+      "state": "known",
+      "value": "preserves-pins"
+    },
+    "missing_lock": {
+      "state": "known",
+      "value": "warn-and-native"
+    },
+    "stale_lock": {
+      "state": "known",
+      "value": "fail-with-repair"
+    },
+    "platforms": {
+      "state": "known",
+      "value": [
+        "x86_64-linux",
+        "aarch64-linux"
+      ]
+    },
+    "dependency_sources": {
+      "state": "known",
+      "value": [
+        "Native inkman gallery queries and extension ZIP archives",
+        "Pinned Inkscape, inkex and Python SDK with an immutable virtual environment"
+      ]
+    },
+    "credentials": {
+      "state": "known",
+      "value": "anonymous-only"
+    },
+    "offline_scope": {
+      "state": "known",
+      "value": "locked-dependencies"
+    },
+    "offline_limits": {
+      "state": "known",
+      "value": [
+        "Prefetch covers selected extension archives, native installer outputs, Python environment and SDK closure",
+        "Ordinary project and extension networking remains available outside the Nix sandbox"
+      ]
+    },
+    "unsupported_features": {
+      "state": "known",
+      "value": [
+        "Only verified gallery ZIP extensions compatible with Inkscape 1.4 and Python INX commands are supported",
+        "Pip packages, extra Python dependencies, external tools and other interpreter types need providers",
+        "Locked sessions freeze native extension installation, removal, pip operations and manager self-update",
+        "Arbitrary project or extension behavior is not sandboxed by the wrapper"
+      ]
+    },
+    "runtime_requirements": {
+      "state": "known",
+      "value": [
+        "A working directory containing the extension selection and lock",
+        "A desktop display for interactive Inkscape; scripted runs provide a private virtual display"
+      ]
+    },
+    "nix_builder": {
+      "state": "known",
+      "value": "pkgs.inkscape-purifier.buildInkscapeProject"
+    },
+    "build_isolation": {
+      "state": "known",
+      "value": "nix-sandbox"
+    },
+    "build_outputs": {
+      "state": "known",
+      "value": [
+        "packages",
+        "tests",
+        "release",
+        "fetches"
+      ]
+    },
+    "builder_options": {
+      "state": "known",
+      "value": [
+        "lockFile",
+        "script",
+        "fetchers",
+        "doCheck",
+        "checkCommand"
+      ]
+    },
+    "platform_notes": {
+      "state": "known",
+      "value": [
+        "Native inkman capture/installation, actual GTK RealScale action, 4/5/4 source edits, immutable virtual environment, saved preferences, shared-path/interpreter positive-negative controls, ordinary HTTP, exact fallback, independent SVG consumption and exact releases pass on x86_64 Linux. ARM is configured but not executed locally."
+      ]
+    },
+    "projection_incoming": {
+      "state": "known",
+      "value": "unsupported"
+    },
+    "projection_incoming_formats": {
+      "state": "not-applicable",
+      "reason": "No typed project projection adapter is exported by this implementation."
+    },
+    "projection_incoming_interfaces": {
+      "state": "not-applicable",
+      "reason": "No typed project projection interface is implemented."
+    },
+    "projection_incoming_limits": {
+      "state": "not-applicable",
+      "reason": "No incoming typed project projection interface is implemented."
+    },
+    "projection_outgoing": {
+      "state": "known",
+      "value": "unsupported"
+    },
+    "projection_outgoing_formats": {
+      "state": "not-applicable",
+      "reason": "No typed project projection adapter is exported by this implementation."
+    },
+    "projection_outgoing_interfaces": {
+      "state": "not-applicable",
+      "reason": "No typed project projection interface is implemented."
+    },
+    "projection_outgoing_limits": {
+      "state": "not-applicable",
+      "reason": "No outgoing typed project projection interface is implemented."
+    }
+  },
+  "operations": {
+    "lock": {
+      "capability": "inkscape-purifier",
+      "arguments": [
+        "--project",
+        {
+          "binding": "project_root"
+        },
+        "--lock",
+        {
+          "binding": "lockfile"
+        },
+        "lock",
+        {
+          "splice": "arguments"
+        }
+      ],
+      "sources": [
+        "https://github.com/nix-purifiers/inkscape-purifier/blob/dae945612e8420dce7784067db93facda003b9f5/inkscape_purifier/main.py",
+        "https://github.com/nix-purifiers/inkscape-purifier/blob/dae945612e8420dce7784067db93facda003b9f5/tests/native.py"
+      ]
+    },
+    "prefetch": {
+      "capability": "inkscape-purifier",
+      "arguments": [
+        "--project",
+        {
+          "binding": "project_root"
+        },
+        "--lock",
+        {
+          "binding": "lockfile"
+        },
+        "prefetch",
+        {
+          "splice": "arguments"
+        }
+      ],
+      "sources": [
+        "https://github.com/nix-purifiers/inkscape-purifier/blob/dae945612e8420dce7784067db93facda003b9f5/inkscape_purifier/main.py",
+        "https://github.com/nix-purifiers/inkscape-purifier/blob/dae945612e8420dce7784067db93facda003b9f5/tests/native.py"
+      ]
+    },
+    "bundle": {
+      "capability": "inkscape-purifier",
+      "arguments": [
+        "--project",
+        {
+          "binding": "project_root"
+        },
+        "--lock",
+        {
+          "binding": "lockfile"
+        },
+        "bundle",
+        {
+          "splice": "arguments"
+        }
+      ],
+      "sources": [
+        "https://github.com/nix-purifiers/inkscape-purifier/blob/dae945612e8420dce7784067db93facda003b9f5/inkscape_purifier/main.py",
+        "https://github.com/nix-purifiers/inkscape-purifier/blob/dae945612e8420dce7784067db93facda003b9f5/tests/native.py"
+      ]
+    },
+    "publish": {
+      "capability": "inkscape-purifier",
+      "arguments": [
+        "--project",
+        {
+          "binding": "project_root"
+        },
+        "--lock",
+        {
+          "binding": "lockfile"
+        },
+        "publish",
+        "--tag",
+        {
+          "binding": "tag"
+        },
+        {
+          "splice": "arguments"
+        }
+      ],
+      "sources": [
+        "https://github.com/nix-purifiers/inkscape-purifier/blob/dae945612e8420dce7784067db93facda003b9f5/inkscape_purifier/main.py",
+        "https://github.com/nix-purifiers/inkscape-purifier/blob/dae945612e8420dce7784067db93facda003b9f5/tests/native.py"
+      ]
+    },
+    "update": {
+      "capability": "inkscape-purifier",
+      "arguments": [
+        "--project",
+        {
+          "binding": "project_root"
+        },
+        "--lock",
+        {
+          "binding": "lockfile"
+        },
+        "lock",
+        "--update",
+        {
+          "splice": "arguments"
+        }
+      ],
+      "sources": [
+        "https://github.com/nix-purifiers/inkscape-purifier/blob/dae945612e8420dce7784067db93facda003b9f5/inkscape_purifier/main.py",
+        "https://github.com/nix-purifiers/inkscape-purifier/blob/dae945612e8420dce7784067db93facda003b9f5/tests/native.py"
+      ]
+    },
+    "build": {
+      "capability": "inkscape-purifier",
+      "arguments": [
+        "--project",
+        {
+          "binding": "project_root"
+        },
+        "--lock",
+        {
+          "binding": "lockfile"
+        },
+        "run",
+        "build.py",
+        {
+          "splice": "arguments"
+        }
+      ],
+      "sources": [
+        "https://github.com/nix-purifiers/inkscape-purifier/blob/dae945612e8420dce7784067db93facda003b9f5/tests/native.py",
+        "https://github.com/nix-purifiers/inkscape-purifier/blob/dae945612e8420dce7784067db93facda003b9f5/examples/minimal/build.py"
+      ]
+    }
+  },
+  "compatibility": {
+    "defaults": [
+      {
+        "role": "native-tool",
+        "name": "Inkscape",
+        "version": "1.4.4",
+        "sourceRevision": "dae945612e8420dce7784067db93facda003b9f5",
+        "evidence": [
+          "https://github.com/nix-purifiers/inkscape-purifier/blob/dae945612e8420dce7784067db93facda003b9f5/flake.lock",
+          "https://github.com/nix-purifiers/inkscape-purifier/blob/dae945612e8420dce7784067db93facda003b9f5/nix/scope.nix"
+        ]
+      }
+    ],
+    "testedPoints": [
+      {
+        "id": "inkscape-1.4.4-inkman-1.0-python-3.14.8-realscale-revision-8-linux-x86_64",
+        "components": [
+          {
+            "role": "native-tool",
+            "name": "Inkscape",
+            "version": "1.4.4"
+          },
+          {
+            "role": "native-tool-runtime",
+            "name": "inkman",
+            "version": "1.0"
+          },
+          {
+            "role": "native-tool-runtime",
+            "name": "Python",
+            "version": "3.14.8"
+          },
+          {
+            "role": "addon-target",
+            "name": "RealScale gallery revision",
+            "version": "8"
+          }
+        ],
+        "system": "x86_64-linux",
+        "operations": [
+          "lock",
+          "update",
+          "prefetch",
+          "build",
+          "bundle",
+          "publish"
+        ],
+        "sourceRevision": "dae945612e8420dce7784067db93facda003b9f5",
+        "evidence": [
+          "https://github.com/nix-purifiers/inkscape-purifier/blob/dae945612e8420dce7784067db93facda003b9f5/flake.lock",
+          "https://github.com/nix-purifiers/inkscape-purifier/blob/dae945612e8420dce7784067db93facda003b9f5/nix/scope.nix",
+          "https://github.com/nix-purifiers/inkscape-purifier/blob/dae945612e8420dce7784067db93facda003b9f5/tests/native.py",
+          "https://github.com/nix-purifiers/inkscape-purifier/blob/dae945612e8420dce7784067db93facda003b9f5/tests/artifacts.py"
+        ],
+        "notes": [
+          "Native gallery/download/INX parsing/installation, actual GTK extension action, 4/5/4 edits, persistent preferences, immutable Python virtual environment, shared-path and interpreter positive-negative controls, ordinary HTTP, exact fallback, original SDK SVG geometry queries and exact release assets pass. Publish uses a fake client."
+        ]
+      }
+    ],
+    "supportedRanges": [],
+    "limitations": [
+      {
+        "text": "Only Linux x86_64 has executed locally; aarch64 Linux is configured. The provider supports verified native gallery ZIP Python extensions with the supplied SDK libraries. Additional runtimes or dependencies need providers. Native Inkscape actions can report errors without a failing status, so projects should check outputs.",
+        "sourceRevision": "dae945612e8420dce7784067db93facda003b9f5",
+        "evidence": [
+          "https://github.com/nix-purifiers/inkscape-purifier/blob/dae945612e8420dce7784067db93facda003b9f5/flake.lock",
+          "https://github.com/nix-purifiers/inkscape-purifier/blob/dae945612e8420dce7784067db93facda003b9f5/nix/scope.nix",
+          "https://github.com/nix-purifiers/inkscape-purifier/blob/dae945612e8420dce7784067db93facda003b9f5/tests/native.py",
+          "https://github.com/nix-purifiers/inkscape-purifier/blob/dae945612e8420dce7784067db93facda003b9f5/tests/artifacts.py"
+        ]
+      }
+    ]
+  }
+}
