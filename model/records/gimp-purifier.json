@@ -1,0 +1,361 @@
+{
+  "repository": "nix-purifiers/gimp-purifier",
+  "reviewedRevision": "206694913535359a3e790cc2dcafb94f66d8315c",
+  "facts": {
+    "tool": {
+      "state": "known",
+      "value": "GIMP plug-ins"
+    },
+    "inputs": {
+      "state": "known",
+      "value": [
+        "gimp-purifier.json",
+        "Images, native GIMP commands and Python batch scripts"
+      ]
+    },
+    "lockfiles": {
+      "state": "known",
+      "value": [
+        "gimp-purifier.lock.json"
+      ]
+    },
+    "integration": {
+      "state": "known",
+      "value": "wrapper"
+    },
+    "wrapper_required": {
+      "state": "known",
+      "value": true
+    },
+    "relock": {
+      "state": "known",
+      "value": "preserves-pins"
+    },
+    "missing_lock": {
+      "state": "known",
+      "value": "warn-and-native"
+    },
+    "stale_lock": {
+      "state": "known",
+      "value": "fail-with-repair"
+    },
+    "platforms": {
+      "state": "known",
+      "value": [
+        "x86_64-linux",
+        "aarch64-linux"
+      ]
+    },
+    "dependency_sources": {
+      "state": "known",
+      "value": [
+        "Hashed plug-in source archives built through native Meson",
+        "Pinned GIMP, GTK, GLib and FFTW SDK"
+      ]
+    },
+    "credentials": {
+      "state": "known",
+      "value": "anonymous-only"
+    },
+    "offline_scope": {
+      "state": "known",
+      "value": "locked-dependencies"
+    },
+    "offline_limits": {
+      "state": "known",
+      "value": [
+        "Prefetch covers locked plug-in sources, compiled outputs and SDK closure",
+        "Ordinary plug-in and project networking remains available outside the Nix sandbox"
+      ]
+    },
+    "unsupported_features": {
+      "state": "known",
+      "value": [
+        "Only Meson source builds with the provided native SDK dependencies are supported",
+        "Other build systems, binary installers and additional build dependencies need providers",
+        "Native extension installation is frozen in locked sessions",
+        "Arbitrary plug-in or batch-script behavior is not sandboxed by the wrapper"
+      ]
+    },
+    "runtime_requirements": {
+      "state": "known",
+      "value": [
+        "A working directory containing the plug-in selection and lock"
+      ]
+    },
+    "nix_builder": {
+      "state": "known",
+      "value": "pkgs.gimp-purifier.buildGimpProject"
+    },
+    "build_isolation": {
+      "state": "known",
+      "value": "nix-sandbox"
+    },
+    "build_outputs": {
+      "state": "known",
+      "value": [
+        "packages",
+        "tests",
+        "release",
+        "fetches"
+      ]
+    },
+    "builder_options": {
+      "state": "known",
+      "value": [
+        "lockFile",
+        "script",
+        "fetchers",
+        "doCheck",
+        "checkCommand"
+      ]
+    },
+    "platform_notes": {
+      "state": "known",
+      "value": [
+        "Native source capture/build/install, GUI image window, persistent preferences, 8/9/8 image edits, ambient code positive/negative controls, HTTP, fallback, original GIMP image consumption and exact releases pass on x86_64 Linux. ARM is configured but not executed locally."
+      ]
+    },
+    "projection_incoming": {
+      "state": "known",
+      "value": "unsupported"
+    },
+    "projection_incoming_formats": {
+      "state": "not-applicable",
+      "reason": "No typed project projection adapter is exported by this implementation."
+    },
+    "projection_incoming_interfaces": {
+      "state": "not-applicable",
+      "reason": "No typed project projection interface is implemented."
+    },
+    "projection_incoming_limits": {
+      "state": "not-applicable",
+      "reason": "No incoming typed project projection interface is implemented."
+    },
+    "projection_outgoing": {
+      "state": "known",
+      "value": "unsupported"
+    },
+    "projection_outgoing_formats": {
+      "state": "not-applicable",
+      "reason": "No typed project projection adapter is exported by this implementation."
+    },
+    "projection_outgoing_interfaces": {
+      "state": "not-applicable",
+      "reason": "No typed project projection interface is implemented."
+    },
+    "projection_outgoing_limits": {
+      "state": "not-applicable",
+      "reason": "No outgoing typed project projection interface is implemented."
+    }
+  },
+  "operations": {
+    "lock": {
+      "capability": "gimp-purifier",
+      "arguments": [
+        "--project",
+        {
+          "binding": "project_root"
+        },
+        "--lock",
+        {
+          "binding": "lockfile"
+        },
+        "lock",
+        {
+          "splice": "arguments"
+        }
+      ],
+      "sources": [
+        "https://github.com/nix-purifiers/gimp-purifier/blob/206694913535359a3e790cc2dcafb94f66d8315c/gimp_purifier/main.py",
+        "https://github.com/nix-purifiers/gimp-purifier/blob/206694913535359a3e790cc2dcafb94f66d8315c/tests/native.py",
+        "https://github.com/nix-purifiers/gimp-purifier/blob/206694913535359a3e790cc2dcafb94f66d8315c/tests/gui.py"
+      ]
+    },
+    "prefetch": {
+      "capability": "gimp-purifier",
+      "arguments": [
+        "--project",
+        {
+          "binding": "project_root"
+        },
+        "--lock",
+        {
+          "binding": "lockfile"
+        },
+        "prefetch",
+        {
+          "splice": "arguments"
+        }
+      ],
+      "sources": [
+        "https://github.com/nix-purifiers/gimp-purifier/blob/206694913535359a3e790cc2dcafb94f66d8315c/gimp_purifier/main.py",
+        "https://github.com/nix-purifiers/gimp-purifier/blob/206694913535359a3e790cc2dcafb94f66d8315c/tests/native.py",
+        "https://github.com/nix-purifiers/gimp-purifier/blob/206694913535359a3e790cc2dcafb94f66d8315c/tests/gui.py"
+      ]
+    },
+    "bundle": {
+      "capability": "gimp-purifier",
+      "arguments": [
+        "--project",
+        {
+          "binding": "project_root"
+        },
+        "--lock",
+        {
+          "binding": "lockfile"
+        },
+        "bundle",
+        {
+          "splice": "arguments"
+        }
+      ],
+      "sources": [
+        "https://github.com/nix-purifiers/gimp-purifier/blob/206694913535359a3e790cc2dcafb94f66d8315c/gimp_purifier/main.py",
+        "https://github.com/nix-purifiers/gimp-purifier/blob/206694913535359a3e790cc2dcafb94f66d8315c/tests/native.py",
+        "https://github.com/nix-purifiers/gimp-purifier/blob/206694913535359a3e790cc2dcafb94f66d8315c/tests/gui.py"
+      ]
+    },
+    "publish": {
+      "capability": "gimp-purifier",
+      "arguments": [
+        "--project",
+        {
+          "binding": "project_root"
+        },
+        "--lock",
+        {
+          "binding": "lockfile"
+        },
+        "publish",
+        "--tag",
+        {
+          "binding": "tag"
+        },
+        {
+          "splice": "arguments"
+        }
+      ],
+      "sources": [
+        "https://github.com/nix-purifiers/gimp-purifier/blob/206694913535359a3e790cc2dcafb94f66d8315c/gimp_purifier/main.py",
+        "https://github.com/nix-purifiers/gimp-purifier/blob/206694913535359a3e790cc2dcafb94f66d8315c/tests/native.py",
+        "https://github.com/nix-purifiers/gimp-purifier/blob/206694913535359a3e790cc2dcafb94f66d8315c/tests/gui.py"
+      ]
+    },
+    "update": {
+      "capability": "gimp-purifier",
+      "arguments": [
+        "--project",
+        {
+          "binding": "project_root"
+        },
+        "--lock",
+        {
+          "binding": "lockfile"
+        },
+        "lock",
+        "--update",
+        {
+          "splice": "arguments"
+        }
+      ],
+      "sources": [
+        "https://github.com/nix-purifiers/gimp-purifier/blob/206694913535359a3e790cc2dcafb94f66d8315c/gimp_purifier/main.py",
+        "https://github.com/nix-purifiers/gimp-purifier/blob/206694913535359a3e790cc2dcafb94f66d8315c/tests/native.py",
+        "https://github.com/nix-purifiers/gimp-purifier/blob/206694913535359a3e790cc2dcafb94f66d8315c/tests/gui.py"
+      ]
+    },
+    "build": {
+      "capability": "gimp-console",
+      "arguments": [
+        "--new-instance",
+        "--no-fonts",
+        "--no-data",
+        "--batch-interpreter=python-fu-eval",
+        "--batch",
+        "__import__('runpy').run_path('build.py')",
+        "--quit",
+        {
+          "splice": "arguments"
+        }
+      ],
+      "environment": {
+        "GIMP_PURIFIER_PROJECT": {
+          "binding": "project_root"
+        },
+        "GIMP_PURIFIER_LOCK": {
+          "binding": "lockfile"
+        }
+      },
+      "sources": [
+        "https://github.com/nix-purifiers/gimp-purifier/blob/206694913535359a3e790cc2dcafb94f66d8315c/tests/native.py",
+        "https://github.com/nix-purifiers/gimp-purifier/blob/206694913535359a3e790cc2dcafb94f66d8315c/examples/minimal/build.py"
+      ]
+    }
+  },
+  "compatibility": {
+    "defaults": [
+      {
+        "role": "native-tool",
+        "name": "GIMP",
+        "version": "3.2.6",
+        "sourceRevision": "206694913535359a3e790cc2dcafb94f66d8315c",
+        "evidence": [
+          "https://github.com/nix-purifiers/gimp-purifier/blob/206694913535359a3e790cc2dcafb94f66d8315c/flake.lock",
+          "https://github.com/nix-purifiers/gimp-purifier/blob/206694913535359a3e790cc2dcafb94f66d8315c/nix/scope.nix"
+        ]
+      }
+    ],
+    "testedPoints": [
+      {
+        "id": "gimp-3.2.6-resynthesizer-3.0-linux-x86_64",
+        "components": [
+          {
+            "role": "native-tool",
+            "name": "GIMP",
+            "version": "3.2.6"
+          },
+          {
+            "role": "addon-target",
+            "name": "Resynthesizer",
+            "version": "3.0"
+          }
+        ],
+        "system": "x86_64-linux",
+        "operations": [
+          "lock",
+          "update",
+          "prefetch",
+          "build",
+          "bundle",
+          "publish"
+        ],
+        "sourceRevision": "206694913535359a3e790cc2dcafb94f66d8315c",
+        "evidence": [
+          "https://github.com/nix-purifiers/gimp-purifier/blob/206694913535359a3e790cc2dcafb94f66d8315c/flake.lock",
+          "https://github.com/nix-purifiers/gimp-purifier/blob/206694913535359a3e790cc2dcafb94f66d8315c/nix/scope.nix",
+          "https://github.com/nix-purifiers/gimp-purifier/blob/206694913535359a3e790cc2dcafb94f66d8315c/tests/native.py",
+          "https://github.com/nix-purifiers/gimp-purifier/blob/206694913535359a3e790cc2dcafb94f66d8315c/tests/gui.py",
+          "https://github.com/nix-purifiers/gimp-purifier/blob/206694913535359a3e790cc2dcafb94f66d8315c/tests/artifacts.py"
+        ],
+        "notes": [
+          "Native Meson source build and install, actual Resynthesizer procedure, GUI image window, persistent preferences, 8/9/8 source edits, ambient native code positive/negative controls, ordinary HTTP, exact fallback, original GIMP image consumption and exact release assets pass. Publish uses a fake client to verify upload bytes."
+        ]
+      }
+    ],
+    "supportedRanges": [],
+    "limitations": [
+      {
+        "text": "Only Linux x86_64 has executed locally; aarch64 Linux is configured. Only Meson source builds with the supplied GIMP/GTK/GLib/FFTW SDK are supported. Other native build dependencies and installers need providers.",
+        "sourceRevision": "206694913535359a3e790cc2dcafb94f66d8315c",
+        "evidence": [
+          "https://github.com/nix-purifiers/gimp-purifier/blob/206694913535359a3e790cc2dcafb94f66d8315c/flake.lock",
+          "https://github.com/nix-purifiers/gimp-purifier/blob/206694913535359a3e790cc2dcafb94f66d8315c/nix/scope.nix",
+          "https://github.com/nix-purifiers/gimp-purifier/blob/206694913535359a3e790cc2dcafb94f66d8315c/tests/native.py",
+          "https://github.com/nix-purifiers/gimp-purifier/blob/206694913535359a3e790cc2dcafb94f66d8315c/tests/gui.py",
+          "https://github.com/nix-purifiers/gimp-purifier/blob/206694913535359a3e790cc2dcafb94f66d8315c/tests/artifacts.py"
+        ]
+      }
+    ]
+  }
+}
