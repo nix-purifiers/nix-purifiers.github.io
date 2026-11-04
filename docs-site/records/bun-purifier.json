@@ -1,10 +1,36 @@
 {
   "summary": "Locked, Nix-resolved dependencies for Bun.",
   "values": {
-    "quickstart": "nix shell 'github:nix-purifiers/bun-purifier'\nbun-purifier lock\nbun-purifier prefetch\nbun run build\nbun test",
-    "language_tooling_setup": "`prefetch` leaves `node_modules` with ordinary files, so an editor's\nTypeScript server, and `tsc`, read the installed types as after a plain\n`bun install`. bun projects bring TypeScript and their `@types` packages\nas dependencies, so `bun.lock` holds what the editor reads, and it is\nthere after `prefetch`."
+    "language_tooling_setup": "`prefetch` leaves `node_modules` with ordinary files, so an editor's\nTypeScript server, and `tsc`, read the installed types as after a plain\n`bun install`. bun projects bring TypeScript and their `@types` packages\nas dependencies, so `bun.lock` holds what the editor reads, and it is\nthere after `prefetch`.",
+    "quickstart": "nix shell 'github:nix-purifiers/bun-purifier'\nbun-purifier lock\nbun-purifier prefetch\nbun run build\nbun test"
   },
   "sections": {
-    "editor": {}
+    "credits": {
+      "template": "cargo"
+    },
+    "editor": {
+      "template": "native"
+    },
+    "integration": {
+      "template": "native"
+    },
+    "nix_builds": {
+      "template": "native"
+    },
+    "offline": {
+      "template": "native"
+    },
+    "projections": {
+      "template": "directional"
+    },
+    "quickstart": {
+      "template": "reviewed"
+    },
+    "scope": {
+      "template": "native"
+    },
+    "workflow": {
+      "template": "native"
+    }
   }
 }

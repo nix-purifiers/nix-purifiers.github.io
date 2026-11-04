@@ -3080,10 +3080,12 @@
           ]
         },
         "projection_incoming_limits": {
-          "sources": [],
+          "sources": [
+            "tests/composition-native.py"
+          ],
           "state": "known",
           "value": [
-            "Producer must export the compatible native projection and its inferred catalog; native version requirements still apply"
+            "Compatible npm projections and catalogs are required. Unambiguous supplied packages override ordinary version requests; multiple versions need a primary package or an exact supplied selection."
           ]
         },
         "projection_outgoing": {
@@ -3106,10 +3108,13 @@
           ]
         },
         "projection_outgoing_limits": {
-          "sources": [],
+          "sources": [
+            "tests/composition-native.py"
+          ],
           "state": "known",
           "value": [
-            "Exported publications depend on the native project package metadata and successful sandboxed builds"
+            "Exported publications require successful native preparation and sandboxed builds.",
+            "Artifacts containing native executables or addons remain specific to the producer target platform."
           ]
         },
         "relock": {
@@ -3170,7 +3175,10 @@
         },
         "lock": {
           "arguments": [
-            "lock"
+            "lock",
+            {
+              "splice": "arguments"
+            }
           ],
           "capability": "bun-purifier",
           "directory": {
@@ -3234,7 +3242,7 @@
         }
       },
       "repository": "nix-purifiers/bun-purifier",
-      "reviewedRevision": "ea28341b88eae2b8d794509a4450a302c45509db",
+      "reviewedRevision": "d2717ea2ec35a78c2852b39324c71ca2bb0c0b99",
       "sections": {
         "credits": {
           "use": "cargo"
@@ -4095,43 +4103,81 @@
           "state": "unknown"
         },
         "projection_incoming": {
-          "sources": [],
+          "sources": [
+            "tests/composition-native.py",
+            "nix/lib/cargo-projections.nix"
+          ],
           "state": "known",
-          "value": "unsupported"
+          "value": "conditional"
         },
         "projection_incoming_formats": {
-          "reason": "No incoming typed projection adapter is exported by this implementation.",
-          "state": "not-applicable"
-        },
-        "projection_incoming_interfaces": {
-          "reason": "No incoming typed projection interface is implemented.",
-          "state": "not-applicable"
-        },
-        "projection_incoming_limits": {
-          "sources": [],
+          "sources": [
+            "tests/composition-native.py",
+            "nix/lib/cargo-projections.nix"
+          ],
           "state": "known",
           "value": [
-            "Native artifacts or caches alone do not provide a typed incoming project projection interface"
+            "cargo"
+          ]
+        },
+        "projection_incoming_interfaces": {
+          "sources": [
+            "tests/composition-native.py",
+            "nix/lib/cargo-projections.nix"
+          ],
+          "state": "known",
+          "value": [
+            "dependencies",
+            "lockfile.projectInputs",
+            "--input"
+          ]
+        },
+        "projection_incoming_limits": {
+          "sources": [
+            "tests/composition-native.py",
+            "nix/lib/cargo-projections.nix"
+          ],
+          "state": "known",
+          "value": [
+            "Unambiguous supplied crates override ordinary version requests; multiple-version inputs use Cargo's native selector."
           ]
         },
         "projection_outgoing": {
-          "sources": [],
+          "sources": [
+            "tests/composition-native.py",
+            "nix/lib/cargo-projections.nix"
+          ],
           "state": "known",
-          "value": "unsupported"
+          "value": "conditional"
         },
         "projection_outgoing_formats": {
-          "reason": "No outgoing typed projection adapter is exported by this implementation.",
-          "state": "not-applicable"
-        },
-        "projection_outgoing_interfaces": {
-          "reason": "No outgoing typed projection interface is implemented.",
-          "state": "not-applicable"
-        },
-        "projection_outgoing_limits": {
-          "sources": [],
+          "sources": [
+            "tests/composition-native.py",
+            "nix/lib/cargo-projections.nix"
+          ],
           "state": "known",
           "value": [
-            "Native artifacts or caches alone do not provide a typed outgoing project projection interface"
+            "cargo"
+          ]
+        },
+        "projection_outgoing_interfaces": {
+          "sources": [
+            "tests/composition-native.py",
+            "nix/lib/cargo-projections.nix"
+          ],
+          "state": "known",
+          "value": [
+            "projections.cargo"
+          ]
+        },
+        "projection_outgoing_limits": {
+          "sources": [
+            "tests/composition-native.py",
+            "nix/lib/cargo-projections.nix"
+          ],
+          "state": "known",
+          "value": [
+            "Ordinary library consumption is validated. cargo install --registry needs a crates.io source replacement for unqualified manifest dependencies."
           ]
         },
         "relock": {
@@ -4195,7 +4241,10 @@
         },
         "lock": {
           "arguments": [
-            "lock"
+            "lock",
+            {
+              "splice": "arguments"
+            }
           ],
           "capability": "cargo-purifier",
           "directory": {
@@ -4209,7 +4258,7 @@
           "minimumArguments": 0,
           "reason": null,
           "sources": [
-            "https://github.com/nix-purifiers/cargo-purifier/blob/9faad3ab9c4371c6ebf88cf609ccd19a2dac10cd/nix/lib/build-cargo-project.nix"
+            "https://github.com/nix-purifiers/cargo-purifier/blob/efc9e91c5878dd8472f8f8bd064d3b4ac10377e5/pkgs/cargo-purifier/cargo_purifier.py"
           ],
           "state": "available"
         },
@@ -4254,20 +4303,31 @@
           "state": "available"
         },
         "update": {
-          "arguments": [],
-          "capability": null,
+          "arguments": [
+            "update",
+            {
+              "splice": "arguments"
+            }
+          ],
+          "capability": "cargo-purifier",
           "directory": {
             "binding": "project_root"
           },
-          "environment": {},
+          "environment": {
+            "CARGO_PURIFIER_LOCKFILE": {
+              "binding": "lockfile"
+            }
+          },
           "minimumArguments": 0,
-          "reason": "The native update selector and invocation have not been normalized; use the reference workflow.",
-          "sources": [],
-          "state": "unknown"
+          "reason": null,
+          "sources": [
+            "https://github.com/nix-purifiers/cargo-purifier/blob/efc9e91c5878dd8472f8f8bd064d3b4ac10377e5/pkgs/cargo-purifier/cargo_purifier.py"
+          ],
+          "state": "available"
         }
       },
       "repository": "nix-purifiers/cargo-purifier",
-      "reviewedRevision": "9faad3ab9c4371c6ebf88cf609ccd19a2dac10cd",
+      "reviewedRevision": "efc9e91c5878dd8472f8f8bd064d3b4ac10377e5",
       "sections": {
         "credits": {
           "use": "cargo"
@@ -5868,43 +5928,82 @@
           "state": "unknown"
         },
         "projection_incoming": {
-          "sources": [],
+          "sources": [
+            "tests/composition-native.py",
+            "nix/lib/composer-projections.nix"
+          ],
           "state": "known",
-          "value": "unsupported"
+          "value": "conditional"
         },
         "projection_incoming_formats": {
-          "reason": "No incoming typed projection adapter is exported by this implementation.",
-          "state": "not-applicable"
-        },
-        "projection_incoming_interfaces": {
-          "reason": "No incoming typed projection interface is implemented.",
-          "state": "not-applicable"
-        },
-        "projection_incoming_limits": {
-          "sources": [],
+          "sources": [
+            "tests/composition-native.py",
+            "nix/lib/composer-projections.nix"
+          ],
           "state": "known",
           "value": [
-            "Native artifacts or caches alone do not provide a typed incoming project projection interface"
+            "composer"
+          ]
+        },
+        "projection_incoming_interfaces": {
+          "sources": [
+            "tests/composition-native.py",
+            "nix/lib/composer-projections.nix"
+          ],
+          "state": "known",
+          "value": [
+            "dependencies",
+            "lockfile.projectInputs",
+            "--input"
+          ]
+        },
+        "projection_incoming_limits": {
+          "sources": [
+            "tests/composition-native.py",
+            "nix/lib/composer-projections.nix"
+          ],
+          "state": "known",
+          "value": [
+            "Compatible Composer projections and catalogs are required; conflicting supplied package names are rejected."
           ]
         },
         "projection_outgoing": {
-          "sources": [],
+          "sources": [
+            "tests/composition-native.py",
+            "nix/lib/composer-projections.nix"
+          ],
           "state": "known",
-          "value": "unsupported"
+          "value": "conditional"
         },
         "projection_outgoing_formats": {
-          "reason": "No outgoing typed projection adapter is exported by this implementation.",
-          "state": "not-applicable"
-        },
-        "projection_outgoing_interfaces": {
-          "reason": "No outgoing typed projection interface is implemented.",
-          "state": "not-applicable"
-        },
-        "projection_outgoing_limits": {
-          "sources": [],
+          "sources": [
+            "tests/composition-native.py",
+            "nix/lib/composer-projections.nix"
+          ],
           "state": "known",
           "value": [
-            "Native artifacts or caches alone do not provide a typed outgoing project projection interface"
+            "composer"
+          ]
+        },
+        "projection_outgoing_interfaces": {
+          "sources": [
+            "tests/composition-native.py",
+            "nix/lib/composer-projections.nix"
+          ],
+          "state": "known",
+          "value": [
+            "projections.composer"
+          ]
+        },
+        "projection_outgoing_limits": {
+          "sources": [
+            "tests/composition-native.py",
+            "nix/lib/composer-projections.nix"
+          ],
+          "state": "known",
+          "value": [
+            "Composer archives use Nix-derived stable versions and exact dependency constraints; the packages must be compatible with the selected PHP toolchain.",
+            "Validation covers numeric releases, virtual providers and metapackages; development branch aliases are not established."
           ]
         },
         "relock": {
@@ -5948,7 +6047,10 @@
       "operations": {
         "lock": {
           "arguments": [
-            "lock"
+            "lock",
+            {
+              "splice": "arguments"
+            }
           ],
           "capability": "composer-purifier",
           "directory": {
@@ -5962,7 +6064,7 @@
           "minimumArguments": 0,
           "reason": null,
           "sources": [
-            "https://github.com/nix-purifiers/composer-purifier/blob/464dbd196f15b8da8762ff805660466fc371bc59/nix/lib/build-composer-project.nix"
+            "https://github.com/nix-purifiers/composer-purifier/blob/d344991f418565399648c9681bb2dc4776f23350/tools/composer_cli.py"
           ],
           "state": "available"
         },
@@ -6027,20 +6129,31 @@
           "state": "available"
         },
         "update": {
-          "arguments": [],
-          "capability": null,
+          "arguments": [
+            "update",
+            {
+              "splice": "arguments"
+            }
+          ],
+          "capability": "composer-purifier",
           "directory": {
             "binding": "project_root"
           },
-          "environment": {},
+          "environment": {
+            "COMPOSER_PURIFIER_LOCKFILE": {
+              "binding": "lockfile"
+            }
+          },
           "minimumArguments": 0,
-          "reason": "The native update selector and invocation have not been normalized; use the reference workflow.",
-          "sources": [],
-          "state": "unknown"
+          "reason": null,
+          "sources": [
+            "https://github.com/nix-purifiers/composer-purifier/blob/d344991f418565399648c9681bb2dc4776f23350/tools/composer_cli.py"
+          ],
+          "state": "available"
         }
       },
       "repository": "nix-purifiers/composer-purifier",
-      "reviewedRevision": "464dbd196f15b8da8762ff805660466fc371bc59",
+      "reviewedRevision": "d344991f418565399648c9681bb2dc4776f23350",
       "sections": {
         "credits": {
           "use": "cargo"
@@ -9236,7 +9349,7 @@
         }
       },
       "repository": "nix-purifiers/dub-purifier",
-      "reviewedRevision": "5ef04f7de4c21ce3c2b06204141162c0ae2d9532",
+      "reviewedRevision": "0576550066aa1e869e6d80855326b21459ae6ddf",
       "sections": {
         "credits": {
           "use": "cargo"
@@ -17283,10 +17396,12 @@
           ]
         },
         "projection_incoming_limits": {
-          "sources": [],
+          "sources": [
+            "tests/composition-native.py"
+          ],
           "state": "known",
           "value": [
-            "Producer must export the compatible native projection and its inferred catalog; native version requirements still apply"
+            "Compatible npm projections and catalogs are required. Unambiguous supplied packages override ordinary version requests; multiple versions need a primary package or an exact supplied selection."
           ]
         },
         "projection_outgoing": {
@@ -17309,10 +17424,13 @@
           ]
         },
         "projection_outgoing_limits": {
-          "sources": [],
+          "sources": [
+            "tests/composition-native.py"
+          ],
           "state": "known",
           "value": [
-            "Exported publications depend on the native project package metadata and successful sandboxed builds"
+            "Exported publications require successful native preparation and sandboxed builds.",
+            "Artifacts containing native executables or addons remain specific to the producer target platform."
           ]
         },
         "relock": {
@@ -17377,7 +17495,10 @@
         },
         "lock": {
           "arguments": [
-            "lock"
+            "lock",
+            {
+              "splice": "arguments"
+            }
           ],
           "capability": "npm-purifier",
           "directory": {
@@ -17469,7 +17590,7 @@
         }
       },
       "repository": "nix-purifiers/npm-purifier",
-      "reviewedRevision": "1d70b348449535eb5b4fc851b242c386fa5d3790",
+      "reviewedRevision": "71309360d5dc7b7fb9f49f21e6264aa94c507253",
       "sections": {
         "credits": {
           "use": "cargo"
@@ -24334,7 +24455,7 @@
         }
       },
       "repository": "nix-purifiers/renv-purifier",
-      "reviewedRevision": "3c02765c01c5a2c4f8fd66f88fe3e28f9e9166bf",
+      "reviewedRevision": "b80fd1e5aa04cd76b721ce5d0d34f403d56f198d",
       "sections": {
         "credits": {
           "use": "cargo"
@@ -24740,7 +24861,7 @@
         }
       },
       "repository": "nix-purifiers/sbt-purifier",
-      "reviewedRevision": "7479395d61e1c056e906e12abfddaca260cfd43b",
+      "reviewedRevision": "fe7062b23a888e23d07aed9f3cd5a269976150a2",
       "sections": {
         "credits": {
           "use": "cargo"

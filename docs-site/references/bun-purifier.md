@@ -6,8 +6,8 @@ working tree; building the project itself in the Nix sandbox is an
 optional next step.
 
 bun still resolves the project and writes `bun.lock`, and Nix reads
-`bun.lock` itself: every package with its URL and integrity hash. Nix
-then fetches every package, lays out bun's install cache and runs
+`bun.lock` for ordinary dependencies and uses its pinned Nix inputs for
+supplied packages. Nix fetches the ordinary dependencies, lays out bun's install cache and runs
 `bun install --offline` in the sandbox. For the few facts `bun.lock`
 cannot hold, bun-purifier writes `bun-purifier.lock.json`, and a project
 that needs none of them has no such file. Nothing generated in Nix needs
@@ -74,7 +74,8 @@ bun test
 
 The producer can use Bun, npm or pnpm. Nix supplies its artifact identities
 and overrides ordinary version requests automatically. `projectInputs`
-pins the Nix sources; supplied artifacts have no download entries.
+pins the Nix sources; supplied artifacts stay out of `bun.lock` and download
+entries. Bun receives a temporary native lock reconstructed from those inputs.
 
 The builder accepts these outputs through `dependencies = [ library ];`
 and exports `projections.npm`. Individual `packages.<name>` and

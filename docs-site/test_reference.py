@@ -49,7 +49,7 @@ class FullGuideTests(unittest.TestCase):
         setup = guide.split('## Setup and activation\n', 1)[1].split('\n## ', 1)[0]
         self.assertNotIn(page['values']['quickstart'], setup)
         self.assertIn('## Native integration', guide)
-        self.assertIn('Nix reads\n`bun.lock` itself', guide)
+        self.assertIn('Nix reads\n`bun.lock`', guide)
         self.assertIn('<a id="building-the-project-with-nix"></a>', guide)
 
 
