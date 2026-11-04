@@ -42,8 +42,11 @@ def next_version(series, tags):
 
 
 def checked(repository, sha):
-    runs = api(repository, f"actions/workflows/check.yml/runs?branch=main&head_sha={sha}&status=success&per_page=100")
+    # Do not rely on a conclusion-filtered list to prove completion.
+    # Read the matching runs and validate their actual fields ourselves.
+    runs = api(repository, f"actions/workflows/check.yml/runs?branch=main&head_sha={sha}&per_page=100")
     return any(r["head_sha"] == sha and r["head_branch"] == "main"
+               and r.get("status") == "completed" and r.get("conclusion") == "success"
                and r["event"] in ("push", "workflow_dispatch") for r in runs["workflow_runs"])
 
 

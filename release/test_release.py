@@ -23,14 +23,32 @@ class ReleaseTests(unittest.TestCase):
 
     def test_ci_gate_rejects_other_commits_and_pull_requests(self):
         with patch.object(publish, "api", return_value={"workflow_runs": [
-            {"head_sha": "older", "head_branch": "main", "event": "push"},
-            {"head_sha": "current", "head_branch": "main", "event": "pull_request"},
+            {"head_sha": "older", "head_branch": "main", "event": "push", "status": "completed", "conclusion": "success"},
+            {"head_sha": "current", "head_branch": "main", "event": "pull_request", "status": "completed", "conclusion": "success"},
         ]}):
             self.assertFalse(publish.checked("owner/repo", "current"))
         with patch.object(publish, "api", return_value={"workflow_runs": [
-            {"head_sha": "current", "head_branch": "main", "event": "push"}
+            {"head_sha": "current", "head_branch": "main", "event": "push", "status": "completed", "conclusion": "success"}
         ]}):
             self.assertTrue(publish.checked("owner/repo", "current"))
+
+    def test_ci_gate_does_not_depend_on_the_remote_status_index(self):
+        success = {"head_sha": "current", "head_branch": "main", "event": "push",
+                   "status": "completed", "conclusion": "success"}
+        def response(repository, suffix):
+            return {"workflow_runs": [] if "status=" in suffix else [success]}
+        with patch.object(publish, "api", side_effect=response):
+            self.assertTrue(publish.checked("owner/repo", "current"))
+
+    def test_ci_gate_explicitly_rejects_unsuccessful_or_unfinished_runs(self):
+        for status, conclusion in (("completed", "failure"), ("completed", "cancelled"),
+                                   ("completed", "skipped"), ("in_progress", None),
+                                   ("queued", None)):
+            with self.subTest(status=status, conclusion=conclusion):
+                run = {"head_sha": "current", "head_branch": "main", "event": "push",
+                       "status": status, "conclusion": conclusion}
+                with patch.object(publish, "api", return_value={"workflow_runs": [run]}):
+                    self.assertFalse(publish.checked("owner/repo", "current"))
 
     def test_python_index_retains_versions_with_exact_hashes(self):
         with tempfile.TemporaryDirectory() as temporary:
