@@ -11,6 +11,7 @@ import re
 
 from content import render
 from reference import guide_plan
+from review import validate_library
 
 
 class PublishedReviewTests(unittest.TestCase):
@@ -24,7 +25,8 @@ class PublishedReviewTests(unittest.TestCase):
                 self.assertEqual(set(record), {'repository', 'revision', 'files'})
                 self.assertRegex(record['revision'], r'^[a-f0-9]{40}$')
                 self.assertEqual(record['repository'], 'nix-purifiers/' + source.parent.parent.name)
-                self.assertIn(source.parent.parent.name, documentation['catalog'])
+                if record['repository'] != 'nix-purifiers/purifier':
+                    self.assertIn(source.parent.parent.name, documentation['catalog'])
                 self.assertTrue(record['files'])
                 for path, digest in record['files'].items():
                     self.assertFalse(Path(path).is_absolute() or '..' in Path(path).parts)
@@ -32,6 +34,12 @@ class PublishedReviewTests(unittest.TestCase):
                 identity = record['repository'], json.dumps(record['files'], sort_keys=True)
                 self.assertNotIn(identity, fingerprints)
                 fingerprints.add(identity)
+                if record['repository'] == 'nix-purifiers/purifier':
+                    validate_library(json.loads((source.parent / 'library.json').read_text()),
+                                     record['repository'], record['revision'])
+                    self.assertEqual(hashlib.sha256((source.parent / 'reference.md').read_bytes()).hexdigest(),
+                                     record['files']['README.md'])
+                    continue
                 page = json.loads((source.parent / 'page.json').read_text())
                 self.assertEqual(page['repository'], record['repository'])
                 self.assertEqual(page['reviewedRevision'], record['revision'])

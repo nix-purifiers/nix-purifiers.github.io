@@ -28,11 +28,13 @@ if args.check_source:
         review = resolve_review(args.repository, args.check_source)
     except ValueError as error:
         parser.error(str(error))
-if review is not None and review.page is not None and not args.model:
+if review is not None and (review.page is not None or review.library is not None) and not args.model:
     parser.error('reviewed source variants require --model')
 if args.model and args.repository != 'nix-purifiers/purifier':
     args.catalog = args.catalog or theme / 'catalog.json'
 content_path = args.content or args.readme.parent / 'docs-site' / 'page.json'
+if review is not None and review.library is not None and (args.catalog or args.content is not None or content_path.exists()):
+    parser.error('reviewed library variants use library.json, not tool page content')
 differences = None
 if args.catalog or args.content is not None or content_path.exists():
     if args.catalog:
@@ -53,9 +55,9 @@ if args.catalog or args.content is not None or content_path.exists():
     except ValueError as error:
         parser.error(str(error))
 else:
-    text = args.readme.read_text()
+    text = review.reference if review is not None and review.library is not None else args.readme.read_text()
     if args.repository == 'nix-purifiers/purifier':
-        text = reference_text(args.repository, text)
+        text = reference_text(args.repository, text, library=review.library if review is not None else None)
 source = args.output
 install_theme(source)
 if differences is not None:
@@ -74,8 +76,12 @@ else:
     for filename in ('content-variations.json', 'system.json', 'features.md', 'reference.md', 'guide-structure.json'):
         (source / filename).unlink(missing_ok=True)
 # Keep source links useful outside GitHub, including images.
-revision = review.revision if review is not None and review.page is not None else 'main'
+revision = review.revision if review is not None and (review.page is not None or review.library is not None) else 'main'
 text = source_links(text, args.repository, revision)
+if review is not None and review.library is not None:
+    (source / 'library.json').write_text(json.dumps(review.library, indent=2) + '\n')
+else:
+    (source / 'library.json').unlink(missing_ok=True)
 (source / 'index.md').write_text('---\nlayout: default\n---\n\n' + text)
 (source / '_config.yml').write_text(json.dumps({
     'title': args.repository.split('/')[1],

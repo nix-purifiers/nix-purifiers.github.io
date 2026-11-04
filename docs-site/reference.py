@@ -146,7 +146,7 @@ def detailed_guide(repository, text, page, plan=None):
     return '\n\n'.join(lines) + '\n'
 
 
-def reference_text(repository, text, page=None, plan=None):
+def reference_text(repository, text, page=None, plan=None, library=None):
     if page:
         return detailed_guide(repository, text, page, plan)
     # Retained guides use the same visible section title as modeled pages.
@@ -158,7 +158,7 @@ def reference_text(repository, text, page=None, plan=None):
         return f'<a id="{old}"></a>\n\n## {title}'
     text = re.sub(r'^## (Editors?(?: and (?:compiler|shells))?)[ \t]*$', heading, text, flags=re.MULTILINE)
     if repository == 'nix-purifiers/purifier':
-        data = json.loads((Path(__file__).parent.parent / 'model/library.json').read_text())
+        data = library if library is not None else json.loads((Path(__file__).parent.parent / 'model/library.json').read_text())
         paragraphs = ['Target systems: ' + ', '.join(data['platforms']) + '.']
         paragraphs += data['limitations'] + data['validation']
     elif page:

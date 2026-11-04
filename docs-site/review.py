@@ -22,6 +22,20 @@ class ReviewedSource:
     page: dict | None = None
     reference: str | None = None
     guide_plan: dict | None = None
+    library: dict | None = None
+
+
+def validate_library(data, repository, revision):
+    """Library scope is independent of the native-tool page contract."""
+    if (set(data) != {'repository', 'reviewedRevision', 'platforms', 'limitations', 'validation'}
+            or data['repository'] != repository or data['reviewedRevision'] != revision):
+        raise ValueError('variant library repository and reviewedRevision must match its source review')
+    for key in ('platforms', 'limitations', 'validation'):
+        if (not isinstance(data[key], list)
+                or any(not isinstance(item, str) or not item.strip() for item in data[key])
+                or (key == 'platforms' and not data[key])):
+            raise ValueError(f'variant library {key}: expected a list of nonempty strings')
+    return data
 
 
 def resolve_review(repository, checkout, manifest=None, variants=None):
@@ -66,6 +80,19 @@ def resolve_review(repository, checkout, manifest=None, variants=None):
     if len(matches) > 1:
         raise ValueError(f'{repository}: multiple reviewed variants match this source')
     for source, snapshot in matches:
+        if repository == 'nix-purifiers/purifier':
+            model = source.parent / 'library.json'
+            if not model.is_file():
+                raise ValueError(f'{source}: reviewed library variant requires library.json')
+            library = validate_library(json.loads(model.read_text()),
+                                       repository, snapshot['revision'])
+            guide = source.parent / 'reference.md'
+            if not guide.is_file():
+                raise ValueError(f'{source}: reviewed library variant requires reference.md')
+            # The library retains its complete README rather than a tool guide plan.
+            if hashlib.sha256(guide.read_bytes()).hexdigest() != snapshot['files'].get('README.md'):
+                raise ValueError(f'{source}: library reference.md must match the reviewed README.md')
+            return ReviewedSource(snapshot['revision'], reference=guide.read_text(), library=library)
         page = json.loads((source.parent / 'page.json').read_text())
         if page.get('repository') != repository or page.get('reviewedRevision') != snapshot['revision']:
             raise ValueError(f'{source}: variant page repository and reviewedRevision must match its source review')

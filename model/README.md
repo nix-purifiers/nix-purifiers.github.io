@@ -190,3 +190,15 @@ observations stay unrun. The central site publishes `/testing/`, the plan,
 per-project JSON and an optional context-bound execution audit. A build without
 an audit states that no execution evidence is attached and removes any stale
 audit artifact. Evidence from another plan is rejected before publication.
+
+Shared-library source variants use
+`docs-site/reviews/purifier/<revision>/{source.json,library.json,reference.md}`.
+They retain the library scope model rather than creating a native-tool catalog
+page. The model repository and reviewed revision must match the source record;
+its platforms, limitations and validation remain explicit string lists. The
+reference must be the exact README bytes fingerprinted by that source record.
+`prepare.py --model --check-source` selects the paired scope and reference,
+pins their source links to the reviewed revision, and emits `library.json`.
+Unreviewed changes, multiple matching variants, mismatched models and missing
+or unpaired references fail before output. Canonical library rendering retains
+its existing model and README behavior.
