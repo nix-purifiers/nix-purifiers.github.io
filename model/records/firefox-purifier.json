@@ -1,0 +1,351 @@
+{
+  "repository": "nix-purifiers/firefox-purifier",
+  "reviewedRevision": "6c20931cc8b5f251d1b041531227d9c7ad1c7cda",
+  "facts": {
+    "tool": {
+      "state": "known",
+      "value": "Firefox WebExtensions"
+    },
+    "inputs": {
+      "state": "known",
+      "value": [
+        "firefox-purifier.json",
+        "Native Firefox commands, web pages and Python project scripts"
+      ]
+    },
+    "lockfiles": {
+      "state": "known",
+      "value": [
+        "firefox-purifier.lock.json"
+      ]
+    },
+    "integration": {
+      "state": "known",
+      "value": "wrapper"
+    },
+    "wrapper_required": {
+      "state": "known",
+      "value": true
+    },
+    "relock": {
+      "state": "known",
+      "value": "preserves-pins"
+    },
+    "missing_lock": {
+      "state": "known",
+      "value": "warn-and-native"
+    },
+    "stale_lock": {
+      "state": "known",
+      "value": "fail-with-repair"
+    },
+    "platforms": {
+      "state": "known",
+      "value": [
+        "x86_64-linux"
+      ]
+    },
+    "dependency_sources": {
+      "state": "known",
+      "value": [
+        "Original Firefox Mozilla Add-ons catalog client, downloads and signed XPI archives",
+        "Pinned Firefox SDK, bundled extensions, Selenium and geckodriver"
+      ]
+    },
+    "credentials": {
+      "state": "known",
+      "value": "anonymous-only"
+    },
+    "offline_scope": {
+      "state": "known",
+      "value": "locked-dependencies"
+    },
+    "offline_limits": {
+      "state": "known",
+      "value": [
+        "Prefetch retains signed archives, original native installer outputs and the browser/driver closure",
+        "Ordinary browser and extension networking remains available outside the Nix sandbox"
+      ]
+    },
+    "unsupported_features": {
+      "state": "known",
+      "value": [
+        "Only compatible Mozilla-signed WebExtensions from the native catalog are supported by the Firefox 159.0 provider",
+        "Native installation, updates, temporary extensions and application overrides are disabled while locked",
+        "Native messaging programs, DRM modules and other downloaded browser components need separate providers"
+      ]
+    },
+    "runtime_requirements": {
+      "state": "known",
+      "value": [
+        "A project selection and lock; default launches use a persistent project profile and explicit native profile flags are supported",
+        "A desktop display for interactive Firefox; scripted projects provide a private headless browser"
+      ]
+    },
+    "nix_builder": {
+      "state": "known",
+      "value": "pkgs.firefox-purifier.buildFirefoxProject"
+    },
+    "build_isolation": {
+      "state": "known",
+      "value": "nix-sandbox"
+    },
+    "build_outputs": {
+      "state": "known",
+      "value": [
+        "packages",
+        "tests",
+        "release",
+        "fetches"
+      ]
+    },
+    "builder_options": {
+      "state": "known",
+      "value": [
+        "lockFile",
+        "script",
+        "fetchers",
+        "doCheck",
+        "checkCommand"
+      ]
+    },
+    "platform_notes": {
+      "state": "known",
+      "value": [
+        "Signed native capture/replay, real Dark Reader rendering, byte-restored 42/43/42 screenshots, native settings/storage persistence, ordinary HTTP, executing cached-code and temporary-install positive/negative controls, retained SDK built-ins, ordinary Selenium wrapper/profile compatibility, native profile exclusion/reopen, independent PNG decoding and exact release assets pass on x86_64 Linux."
+      ]
+    },
+    "projection_incoming": {
+      "state": "known",
+      "value": "unsupported"
+    },
+    "projection_incoming_formats": {
+      "state": "not-applicable",
+      "reason": "No typed project projection adapter is exported by this implementation."
+    },
+    "projection_incoming_interfaces": {
+      "state": "not-applicable",
+      "reason": "No typed project projection interface is implemented."
+    },
+    "projection_incoming_limits": {
+      "state": "not-applicable",
+      "reason": "No incoming typed project projection interface is implemented."
+    },
+    "projection_outgoing": {
+      "state": "known",
+      "value": "unsupported"
+    },
+    "projection_outgoing_formats": {
+      "state": "not-applicable",
+      "reason": "No typed project projection adapter is exported by this implementation."
+    },
+    "projection_outgoing_interfaces": {
+      "state": "not-applicable",
+      "reason": "No typed project projection interface is implemented."
+    },
+    "projection_outgoing_limits": {
+      "state": "not-applicable",
+      "reason": "No outgoing typed project projection interface is implemented."
+    }
+  },
+  "operations": {
+    "lock": {
+      "capability": "firefox-purifier",
+      "arguments": [
+        "--project",
+        {
+          "binding": "project_root"
+        },
+        "--lock",
+        {
+          "binding": "lockfile"
+        },
+        "lock",
+        {
+          "splice": "arguments"
+        }
+      ],
+      "sources": [
+        "https://github.com/nix-purifiers/firefox-purifier/blob/6c20931cc8b5f251d1b041531227d9c7ad1c7cda/firefox_purifier/main.py",
+        "https://github.com/nix-purifiers/firefox-purifier/blob/6c20931cc8b5f251d1b041531227d9c7ad1c7cda/tests/conformance.py"
+      ]
+    },
+    "prefetch": {
+      "capability": "firefox-purifier",
+      "arguments": [
+        "--project",
+        {
+          "binding": "project_root"
+        },
+        "--lock",
+        {
+          "binding": "lockfile"
+        },
+        "prefetch",
+        {
+          "splice": "arguments"
+        }
+      ],
+      "sources": [
+        "https://github.com/nix-purifiers/firefox-purifier/blob/6c20931cc8b5f251d1b041531227d9c7ad1c7cda/firefox_purifier/main.py",
+        "https://github.com/nix-purifiers/firefox-purifier/blob/6c20931cc8b5f251d1b041531227d9c7ad1c7cda/tests/conformance.py"
+      ]
+    },
+    "bundle": {
+      "capability": "firefox-purifier",
+      "arguments": [
+        "--project",
+        {
+          "binding": "project_root"
+        },
+        "--lock",
+        {
+          "binding": "lockfile"
+        },
+        "bundle",
+        {
+          "splice": "arguments"
+        }
+      ],
+      "sources": [
+        "https://github.com/nix-purifiers/firefox-purifier/blob/6c20931cc8b5f251d1b041531227d9c7ad1c7cda/firefox_purifier/main.py",
+        "https://github.com/nix-purifiers/firefox-purifier/blob/6c20931cc8b5f251d1b041531227d9c7ad1c7cda/tests/conformance.py"
+      ]
+    },
+    "publish": {
+      "capability": "firefox-purifier",
+      "arguments": [
+        "--project",
+        {
+          "binding": "project_root"
+        },
+        "--lock",
+        {
+          "binding": "lockfile"
+        },
+        "publish",
+        "--tag",
+        {
+          "binding": "tag"
+        },
+        {
+          "splice": "arguments"
+        }
+      ],
+      "sources": [
+        "https://github.com/nix-purifiers/firefox-purifier/blob/6c20931cc8b5f251d1b041531227d9c7ad1c7cda/firefox_purifier/main.py",
+        "https://github.com/nix-purifiers/firefox-purifier/blob/6c20931cc8b5f251d1b041531227d9c7ad1c7cda/tests/conformance.py"
+      ]
+    },
+    "update": {
+      "capability": "firefox-purifier",
+      "arguments": [
+        "--project",
+        {
+          "binding": "project_root"
+        },
+        "--lock",
+        {
+          "binding": "lockfile"
+        },
+        "lock",
+        "--update",
+        {
+          "splice": "arguments"
+        }
+      ],
+      "sources": [
+        "https://github.com/nix-purifiers/firefox-purifier/blob/6c20931cc8b5f251d1b041531227d9c7ad1c7cda/firefox_purifier/main.py",
+        "https://github.com/nix-purifiers/firefox-purifier/blob/6c20931cc8b5f251d1b041531227d9c7ad1c7cda/tests/conformance.py"
+      ]
+    },
+    "build": {
+      "capability": "firefox-purifier",
+      "arguments": [
+        "--project",
+        {
+          "binding": "project_root"
+        },
+        "--lock",
+        {
+          "binding": "lockfile"
+        },
+        "run",
+        "build.py",
+        {
+          "splice": "arguments"
+        }
+      ],
+      "sources": [
+        "https://github.com/nix-purifiers/firefox-purifier/blob/6c20931cc8b5f251d1b041531227d9c7ad1c7cda/firefox_purifier/main.py",
+        "https://github.com/nix-purifiers/firefox-purifier/blob/6c20931cc8b5f251d1b041531227d9c7ad1c7cda/tests/conformance.py"
+      ]
+    }
+  },
+  "compatibility": {
+    "defaults": [
+      {
+        "role": "native-tool",
+        "name": "Firefox",
+        "version": "159.0",
+        "sourceRevision": "6c20931cc8b5f251d1b041531227d9c7ad1c7cda",
+        "evidence": [
+          "https://github.com/nix-purifiers/firefox-purifier/blob/6c20931cc8b5f251d1b041531227d9c7ad1c7cda/flake.lock",
+          "https://github.com/nix-purifiers/firefox-purifier/blob/6c20931cc8b5f251d1b041531227d9c7ad1c7cda/nix/sdk.nix"
+        ]
+      }
+    ],
+    "testedPoints": [
+      {
+        "id": "firefox-159.0-darkreader-4.9.134-linux-x86_64",
+        "components": [
+          {
+            "role": "native-tool",
+            "name": "Firefox",
+            "version": "159.0"
+          },
+          {
+            "role": "addon-target",
+            "name": "Dark Reader",
+            "version": "4.9.134"
+          }
+        ],
+        "system": "x86_64-linux",
+        "operations": [
+          "lock",
+          "update",
+          "prefetch",
+          "build",
+          "bundle",
+          "publish"
+        ],
+        "sourceRevision": "6c20931cc8b5f251d1b041531227d9c7ad1c7cda",
+        "evidence": [
+          "https://github.com/nix-purifiers/firefox-purifier/blob/6c20931cc8b5f251d1b041531227d9c7ad1c7cda/flake.lock",
+          "https://github.com/nix-purifiers/firefox-purifier/blob/6c20931cc8b5f251d1b041531227d9c7ad1c7cda/nix/sdk.nix",
+          "https://github.com/nix-purifiers/firefox-purifier/blob/6c20931cc8b5f251d1b041531227d9c7ad1c7cda/tests/conformance.py",
+          "https://github.com/nix-purifiers/firefox-purifier/blob/6c20931cc8b5f251d1b041531227d9c7ad1c7cda/tests/native.py",
+          "https://github.com/nix-purifiers/firefox-purifier/blob/6c20931cc8b5f251d1b041531227d9c7ad1c7cda/tests/cache.py",
+          "https://github.com/nix-purifiers/firefox-purifier/blob/6c20931cc8b5f251d1b041531227d9c7ad1c7cda/tests/temporary.py",
+          "https://github.com/nix-purifiers/firefox-purifier/blob/6c20931cc8b5f251d1b041531227d9c7ad1c7cda/tests/artifacts.py",
+          "https://github.com/nix-purifiers/firefox-purifier/blob/6c20931cc8b5f251d1b041531227d9c7ad1c7cda/tests/capture.py",
+          "https://github.com/nix-purifiers/firefox-purifier/blob/6c20931cc8b5f251d1b041531227d9c7ad1c7cda/tests/fallback.py"
+        ],
+        "notes": [
+          "Original catalog/download/install bytes match Nix. Native signing remains enabled and code loads directly from Nix. Actual transformed pages, screenshot restoration, mutable browser/extension settings, bundled extensions, cached-code and temporary replacement controls, ordinary Selenium, profile exclusion/reopen, independent native PNG consumption and exact releases pass. Publish uses a fake client."
+        ]
+      }
+    ],
+    "supportedRanges": [],
+    "limitations": [
+      {
+        "text": "Only Firefox 159.0 on x86_64 Linux is exported and tested. This provider locks signed WebExtensions; native messaging and DRM components require separate providers. Application overrides are unsupported.",
+        "sourceRevision": "6c20931cc8b5f251d1b041531227d9c7ad1c7cda",
+        "evidence": [
+          "https://github.com/nix-purifiers/firefox-purifier/blob/6c20931cc8b5f251d1b041531227d9c7ad1c7cda/flake.lock",
+          "https://github.com/nix-purifiers/firefox-purifier/blob/6c20931cc8b5f251d1b041531227d9c7ad1c7cda/nix/sdk.nix"
+        ]
+      }
+    ]
+  }
+}

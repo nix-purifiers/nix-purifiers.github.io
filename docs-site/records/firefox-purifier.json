@@ -1,0 +1,22 @@
+{
+  "summary": "Firefox with locked, Nix-resolved WebExtensions.",
+  "values": {
+    "quickstart": "nix shell 'github:nix-purifiers/firefox-purifier'\nfirefox-purifier lock --update\nfirefox https://example.org"
+  },
+  "sections": {
+    "editor": {
+      "mode": "omit",
+      "template": null,
+      "reason": "No specific editor protocol integration has been established by the reviewed implementation."
+    },
+    "nix_builds": {
+      "template": "native"
+    },
+    "integration": {
+      "template": "wrapper"
+    },
+    "workflow": {
+      "template": "capture-update"
+    }
+  }
+}
