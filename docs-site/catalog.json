@@ -472,7 +472,7 @@
           "use": "native"
         },
         "workflow": {
-          "use": "native"
+          "use": "capture-update"
         }
       },
       "summary": "Locked, Nix-resolved dependencies for Agda.",
@@ -951,7 +951,7 @@
           "use": "native"
         },
         "workflow": {
-          "use": "native"
+          "use": "capture-update"
         }
       },
       "summary": "Locked, Nix-resolved dependencies for Alire and Ada.",
@@ -1415,7 +1415,7 @@
           "use": "native"
         },
         "workflow": {
-          "use": "native"
+          "use": "capture-update"
         }
       },
       "summary": "Locked, Nix-resolved dependencies for Ansible and Galaxy collections.",
@@ -2441,7 +2441,7 @@
           "use": "native"
         },
         "workflow": {
-          "use": "native"
+          "use": "capture-update"
         }
       },
       "summary": "Locked, Nix-resolved dependencies for Buf and Protobuf.",
@@ -6785,7 +6785,7 @@
           "use": "native"
         },
         "workflow": {
-          "use": "native"
+          "use": "capture-update"
         }
       },
       "summary": "Locked, Nix-resolved dependencies for CUE.",
@@ -7594,7 +7594,7 @@
           "use": "native"
         },
         "workflow": {
-          "use": "native"
+          "use": "capture-update"
         }
       },
       "summary": "Locked, Nix-resolved dependencies for Dhall.",
@@ -9624,7 +9624,7 @@
           "use": "native"
         },
         "workflow": {
-          "use": "native"
+          "use": "capture-update"
         }
       },
       "summary": "Locked, Nix-resolved dependencies for Emacs and Elpaca.",
@@ -12585,7 +12585,7 @@
           "use": "native"
         },
         "workflow": {
-          "use": "native"
+          "use": "capture-update"
         }
       },
       "summary": "Locked, Nix-resolved dependencies for Idris2 and Pack.",
@@ -14079,7 +14079,7 @@
           "use": "native"
         },
         "workflow": {
-          "use": "native"
+          "use": "capture-update"
         }
       },
       "summary": "Locked, Nix-resolved dependencies for Neovim and lazy.nvim.",
@@ -17461,7 +17461,7 @@
           "use": "native"
         },
         "workflow": {
-          "use": "native"
+          "use": "capture-update"
         }
       },
       "summary": "Locked, Nix-resolved dependencies for GNU Octave.",
@@ -18926,7 +18926,7 @@
           "use": "native"
         },
         "workflow": {
-          "use": "native"
+          "use": "capture-update"
         }
       },
       "summary": "Locked, Nix-resolved dependencies for PHP and PECL.",
@@ -21860,7 +21860,7 @@
           "use": "native"
         },
         "workflow": {
-          "use": "native"
+          "use": "capture-update"
         }
       },
       "summary": "Locked, Nix-resolved dependencies for Quarto extensions.",
@@ -26289,7 +26289,7 @@
           "use": "native"
         },
         "workflow": {
-          "use": "native"
+          "use": "capture-update"
         }
       },
       "summary": "Locked, Nix-resolved dependencies for Tectonic and TeX.",
@@ -28567,7 +28567,7 @@
           "use": "native"
         },
         "workflow": {
-          "use": "native"
+          "use": "capture-update"
         }
       },
       "summary": "Locked, Nix-resolved dependencies for West workspaces.",
@@ -30809,6 +30809,9 @@
       {
         "id": "workflow",
         "requires": {
+          "capture-update": {
+            "relock": "preserves-pins"
+          },
           "fresh": {
             "relock": "re-resolves"
           },
@@ -30817,6 +30820,12 @@
           }
         },
         "shared": {
+          "capture-update": [
+            {
+              "id": "main",
+              "text": "Keep using native build and test commands in your working tree. After changing dependency selection, refresh the lock and prepare the selected dependencies:\n\n```sh\n{commands.update}\n{commands.prefetch}\n```\n\nUse the project directory and lockfile from your setup for the placeholders."
+            }
+          ],
           "fresh": [
             {
               "id": "main",

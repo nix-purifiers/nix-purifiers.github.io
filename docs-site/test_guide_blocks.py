@@ -33,3 +33,4 @@ class GuideBlockTests(unittest.TestCase):
         self.assertEqual(validate_coverage({'first-purifier': {}, 'next-purifier': {}}, html),
                          {'first-purifier', 'next-purifier'})
         self.assertEqual(validate_coverage({}, '<a href="https://example.com/other-purifier/">External</a>'), set())
+        self.assertEqual(validate_coverage({'next-purifier': {}}, '<a href="./next-purifier/">Next</a>'), {'next-purifier'})
