@@ -5,7 +5,7 @@ from pathlib import Path
 import re
 from content import audit, feature_matrix, render, source_links
 from theme import install_theme
-from review import resolve_review
+from review import canonical_review, resolve_review, SourceDrift
 from reference import guide_plan, reference_text
 
 parser = argparse.ArgumentParser(description=__doc__)
@@ -17,12 +17,34 @@ parser.add_argument('--content', type=Path,
 parser.add_argument('--catalog', type=Path,
                     help='Nix documentation export containing catalog and contract')
 parser.add_argument('--model', action='store_true', help='Use the bundled, validated model export')
-parser.add_argument('--check-source', type=Path, help='Verify this checkout matches the reviewed implementation')
+source_options = parser.add_mutually_exclusive_group()
+source_options.add_argument('--check-source', type=Path, help='Strict maintainer audit: reject native source drift')
+source_options.add_argument('--source-status', type=Path,
+                            help='Build bundled reviewed documentation and report native source drift')
 args = parser.parse_args()
 if not re.fullmatch(r'[\w.-]+/[\w.-]+', args.repository):
     parser.error('repository must be owner/name')
 theme = Path(__file__).parent
 review = None
+source_status = None
+if args.source_status:
+    if not args.model or args.catalog or args.content:
+        parser.error('--source-status requires --model without --catalog or --content')
+    try:
+        review = resolve_review(args.repository, args.source_status)
+        if review.page is None and review.library is None:
+            review = canonical_review(args.repository)
+        source_status = {'repository': args.repository, 'status': 'matched',
+                         'documentedRevision': review.revision, 'changedFiles': []}
+    except SourceDrift as error:
+        try:
+            review = canonical_review(args.repository)
+        except (ValueError, KeyError, OSError) as invalid:
+            parser.error(str(invalid))
+        source_status = {'repository': args.repository, 'status': 'update-needed',
+                         'documentedRevision': review.revision, 'changedFiles': error.changed}
+    except (ValueError, KeyError, OSError) as error:
+        parser.error(str(error))
 if args.check_source:
     try:
         review = resolve_review(args.repository, args.check_source)
@@ -33,10 +55,11 @@ if review is not None and (review.page is not None or review.library is not None
 if args.model and args.repository != 'nix-purifiers/purifier':
     args.catalog = args.catalog or theme / 'catalog.json'
 content_path = args.content or args.readme.parent / 'docs-site' / 'page.json'
-if review is not None and review.library is not None and (args.catalog or args.content is not None or content_path.exists()):
+content_exists = content_path.exists() and not args.source_status
+if review is not None and review.library is not None and (args.catalog or args.content is not None or content_exists):
     parser.error('reviewed library variants use library.json, not tool page content')
 differences = None
-if args.catalog or args.content is not None or content_path.exists():
+if args.catalog or args.content is not None or content_exists:
     if args.catalog:
         documentation = json.loads(args.catalog.read_text())
         name = args.repository.split('/')[1]
@@ -83,6 +106,12 @@ if review is not None and review.library is not None:
 else:
     (source / 'library.json').unlink(missing_ok=True)
 (source / 'index.md').write_text('---\nlayout: default\n---\n\n' + text)
+if source_status is not None:
+    (source / 'source-review.json').write_text(json.dumps(source_status, indent=2) + '\n')
+    print(f'Documentation source: {source_status["status"]}; '
+          f'documented revision {source_status["documentedRevision"]}')
+else:
+    (source / 'source-review.json').unlink(missing_ok=True)
 (source / '_config.yml').write_text(json.dumps({
     'title': args.repository.split('/')[1],
     'description': 'Native development with locked, Nix-resolved dependencies',
