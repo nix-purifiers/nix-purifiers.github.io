@@ -1,5 +1,6 @@
 """Documentation builds tolerate native drift, not invalid documentation."""
 import json
+import hashlib
 from pathlib import Path
 import shutil
 import subprocess
@@ -79,6 +80,30 @@ class PipelineTests(unittest.TestCase):
     def test_corrupt_library_reference_is_a_hard_failure(self):
         (self.site / 'docs-site/references/purifier.md').write_text('wrong guide')
         self.assertNotEqual(self.run_prepare('nix-purifiers/purifier').returncode, 0)
+
+    def test_matching_variant_is_selected_and_invalid_pairing_is_not_drift(self):
+        repository = 'nix-purifiers/purifier'
+        revision = 'b' * 40
+        variant = self.site / 'docs-site/reviews/purifier' / revision
+        variant.mkdir()
+        snapshot = {'repository': repository, 'revision': revision,
+                    'files': {p.name: hashlib.sha256(p.read_bytes()).hexdigest()
+                              for p in self.checkout.iterdir() if p.is_file()}}
+        (variant / 'source.json').write_text(json.dumps(snapshot))
+        shutil.copyfile(self.checkout / 'README.md', variant / 'reference.md')
+        library = json.loads((self.site / 'model/library.json').read_text())
+        library['reviewedRevision'] = revision
+        (variant / 'library.json').write_text(json.dumps(library))
+        result = self.run_prepare(repository)
+        self.assertEqual(result.returncode, 0, result.stderr)
+        status = json.loads((self.root / 'output/source-review.json').read_text())
+        self.assertEqual(status['status'], 'matched')
+        self.assertEqual(status['documentedRevision'], revision)
+        library['reviewedRevision'] = 'c' * 40
+        (variant / 'library.json').write_text(json.dumps(library))
+        result = self.run_prepare(repository)
+        self.assertNotEqual(result.returncode, 0)
+        self.assertIn('must match', result.stderr)
 
 
 if __name__ == '__main__':
