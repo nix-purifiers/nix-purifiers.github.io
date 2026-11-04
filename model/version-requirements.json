@@ -1,0 +1,402 @@
+{
+  "version": 1,
+  "projects": {
+    "gradle-purifier": {
+      "limitations": [
+        {
+          "text": "Gradle itself comes from the project\u2019s wrapper; the purifier does not bundle a fixed Gradle distribution.",
+          "sourceRevision": "9e0035882868e88d04bec2d80a1ecaa48be0fd5c",
+          "evidence": [
+            "https://github.com/nix-purifiers/gradle-purifier/blob/9e0035882868e88d04bec2d80a1ecaa48be0fd5c/src/gradle-purifier.sh",
+            "https://github.com/nix-purifiers/gradle-purifier/blob/9e0035882868e88d04bec2d80a1ecaa48be0fd5c/pkgs/gradle-purifier/default.nix"
+          ]
+        },
+        {
+          "text": "The recording agent targets Java 17 bytecode. The JVM running it must support Java 17; the supplied fallback JDK is 21. The lock records the selected JVM, which must also satisfy the project\u2019s Gradle version.",
+          "sourceRevision": "9e0035882868e88d04bec2d80a1ecaa48be0fd5c",
+          "evidence": [
+            "https://github.com/nix-purifiers/gradle-purifier/blob/9e0035882868e88d04bec2d80a1ecaa48be0fd5c/src/gradle-purifier.sh",
+            "https://github.com/nix-purifiers/gradle-purifier/blob/9e0035882868e88d04bec2d80a1ecaa48be0fd5c/pkgs/gradle-purifier/default.nix"
+          ]
+        }
+      ],
+      "projectSelections": [
+        {
+          "role": "native-tool",
+          "name": "Gradle",
+          "kind": "project-file",
+          "inputs": [
+            "gradlew",
+            "gradle/wrapper/gradle-wrapper.properties"
+          ],
+          "description": "The project\u2019s Gradle wrapper selects the Gradle distribution.",
+          "sourceRevision": "9e0035882868e88d04bec2d80a1ecaa48be0fd5c",
+          "evidence": [
+            "https://github.com/nix-purifiers/gradle-purifier/blob/9e0035882868e88d04bec2d80a1ecaa48be0fd5c/src/gradle-purifier.sh",
+            "https://github.com/nix-purifiers/gradle-purifier/blob/9e0035882868e88d04bec2d80a1ecaa48be0fd5c/pkgs/gradle-purifier/default.nix"
+          ]
+        },
+        {
+          "role": "native-tool-runtime",
+          "name": "JDK",
+          "kind": "environment",
+          "inputs": [
+            "JAVA_HOME"
+          ],
+          "description": "JAVA_HOME selects the capture JVM when --java is absent; otherwise the packaged fallback is used.",
+          "sourceRevision": "9e0035882868e88d04bec2d80a1ecaa48be0fd5c",
+          "evidence": [
+            "https://github.com/nix-purifiers/gradle-purifier/blob/9e0035882868e88d04bec2d80a1ecaa48be0fd5c/src/gradle-purifier.sh",
+            "https://github.com/nix-purifiers/gradle-purifier/blob/9e0035882868e88d04bec2d80a1ecaa48be0fd5c/pkgs/gradle-purifier/default.nix"
+          ]
+        },
+        {
+          "role": "native-tool-runtime",
+          "name": "JDK",
+          "kind": "command-option",
+          "inputs": [
+            "--java"
+          ],
+          "description": "An explicit --java option selects the JDK major for capture.",
+          "sourceRevision": "9e0035882868e88d04bec2d80a1ecaa48be0fd5c",
+          "evidence": [
+            "https://github.com/nix-purifiers/gradle-purifier/blob/9e0035882868e88d04bec2d80a1ecaa48be0fd5c/src/gradle-purifier.sh",
+            "https://github.com/nix-purifiers/gradle-purifier/blob/9e0035882868e88d04bec2d80a1ecaa48be0fd5c/pkgs/gradle-purifier/default.nix"
+          ]
+        }
+      ]
+    },
+    "mill-purifier": {
+      "limitations": [
+        {
+          "text": "Projects must pin a Mill version. Mill 0.x is rejected; the integration uses Mill 1.x APIs.",
+          "sourceRevision": "5fe02120845491253685bed305d1242b94a2089e",
+          "evidence": [
+            "https://github.com/nix-purifiers/mill-purifier/blob/5fe02120845491253685bed305d1242b94a2089e/pkgs/cli/mill_purifier.py",
+            "https://github.com/nix-purifiers/mill-purifier/blob/5fe02120845491253685bed305d1242b94a2089e/nix/lib/publisher-available.nix"
+          ]
+        },
+        {
+          "text": "Maven publication through release requires Mill 1.1.0 or later. Mill 1.0.x and early 1.1 prereleases can build packages and tests but cannot use this publisher.",
+          "sourceRevision": "5fe02120845491253685bed305d1242b94a2089e",
+          "evidence": [
+            "https://github.com/nix-purifiers/mill-purifier/blob/5fe02120845491253685bed305d1242b94a2089e/pkgs/cli/mill_purifier.py",
+            "https://github.com/nix-purifiers/mill-purifier/blob/5fe02120845491253685bed305d1242b94a2089e/nix/lib/publisher-available.nix"
+          ]
+        }
+      ],
+      "projectSelections": [
+        {
+          "role": "native-tool",
+          "name": "Mill",
+          "kind": "project-file",
+          "inputs": [
+            "build.mill",
+            "build.mill.yaml",
+            ".mill-version",
+            ".config/mill-version"
+          ],
+          "description": "The project\u2019s mill-version setting selects the launcher used for locking and builds.",
+          "sourceRevision": "5fe02120845491253685bed305d1242b94a2089e",
+          "evidence": [
+            "https://github.com/nix-purifiers/mill-purifier/blob/5fe02120845491253685bed305d1242b94a2089e/pkgs/cli/mill_purifier.py",
+            "https://github.com/nix-purifiers/mill-purifier/blob/5fe02120845491253685bed305d1242b94a2089e/nix/lib/publisher-available.nix"
+          ]
+        }
+      ]
+    },
+    "maven-purifier": {
+      "limitations": [
+        {
+          "text": "Maven 2 and 3.0 capture defaults to Java 8; a selected JAVA_HOME can choose a different JVM, which project plugins must support.",
+          "sourceRevision": "d76004928fa0283524e5bca409dd4ffd82d7e22f",
+          "evidence": [
+            "https://github.com/nix-purifiers/maven-purifier/blob/d76004928fa0283524e5bca409dd4ffd82d7e22f/cli/maven_purifier.py",
+            "https://github.com/nix-purifiers/maven-purifier/blob/d76004928fa0283524e5bca409dd4ffd82d7e22f/pkgs/cli/default.nix"
+          ]
+        },
+        {
+          "text": "Maven before 3.3.1 does not read .mvn/maven.config. Use the prefetched .maven-purifier/bin/mvn launcher for locked development with those versions.",
+          "sourceRevision": "d76004928fa0283524e5bca409dd4ffd82d7e22f",
+          "evidence": [
+            "https://github.com/nix-purifiers/maven-purifier/blob/d76004928fa0283524e5bca409dd4ffd82d7e22f/cli/maven_purifier.py",
+            "https://github.com/nix-purifiers/maven-purifier/blob/d76004928fa0283524e5bca409dd4ffd82d7e22f/pkgs/cli/default.nix"
+          ]
+        },
+        {
+          "text": "Incoming purified project dependencies require Maven 3 or newer. The legacy Maven 2/3.0 recording path cannot use authenticated repositories that require Maven-specific transports.",
+          "sourceRevision": "d76004928fa0283524e5bca409dd4ffd82d7e22f",
+          "evidence": [
+            "https://github.com/nix-purifiers/maven-purifier/blob/d76004928fa0283524e5bca409dd4ffd82d7e22f/cli/maven_purifier.py",
+            "https://github.com/nix-purifiers/maven-purifier/blob/d76004928fa0283524e5bca409dd4ffd82d7e22f/pkgs/cli/default.nix"
+          ]
+        },
+        {
+          "text": "The Maven 3 recording classes target Java 8 bytecode; Maven 4-specific recording classes target Java 17. The selected JVM must also meet Maven and project-plugin requirements.",
+          "sourceRevision": "d76004928fa0283524e5bca409dd4ffd82d7e22f",
+          "evidence": [
+            "https://github.com/nix-purifiers/maven-purifier/blob/d76004928fa0283524e5bca409dd4ffd82d7e22f/pkgs/extension/default.nix"
+          ]
+        }
+      ],
+      "projectSelections": [
+        {
+          "role": "native-tool",
+          "name": "Maven",
+          "kind": "project-file",
+          "inputs": [
+            ".mvn/wrapper/maven-wrapper.properties"
+          ],
+          "description": "A Maven wrapper distribution URL selects a version instead of the packaged default.",
+          "sourceRevision": "d76004928fa0283524e5bca409dd4ffd82d7e22f",
+          "evidence": [
+            "https://github.com/nix-purifiers/maven-purifier/blob/d76004928fa0283524e5bca409dd4ffd82d7e22f/cli/maven_purifier.py",
+            "https://github.com/nix-purifiers/maven-purifier/blob/d76004928fa0283524e5bca409dd4ffd82d7e22f/pkgs/cli/default.nix"
+          ]
+        },
+        {
+          "role": "native-tool-runtime",
+          "name": "JDK",
+          "kind": "environment",
+          "inputs": [
+            "JAVA_HOME"
+          ],
+          "description": "Initial capture records the chosen Java major; relocks and Nix builds retain that selection.",
+          "sourceRevision": "d76004928fa0283524e5bca409dd4ffd82d7e22f",
+          "evidence": [
+            "https://github.com/nix-purifiers/maven-purifier/blob/d76004928fa0283524e5bca409dd4ffd82d7e22f/cli/maven_purifier.py",
+            "https://github.com/nix-purifiers/maven-purifier/blob/d76004928fa0283524e5bca409dd4ffd82d7e22f/pkgs/cli/default.nix"
+          ]
+        }
+      ]
+    },
+    "sbt-purifier": {
+      "limitations": [
+        {
+          "text": "The sbt 0.13 launcher supplied by the wrapper is 0.13.18 and uses Java 8. Use the purifier wrapper for this legacy bootstrap.",
+          "sourceRevision": "87efce32058a19fab2bbe5e22ddfc6b18164ced9",
+          "evidence": [
+            "https://github.com/nix-purifiers/sbt-purifier/blob/87efce32058a19fab2bbe5e22ddfc6b18164ced9/pkgs/sbt/default.nix",
+            "https://github.com/nix-purifiers/sbt-purifier/blob/87efce32058a19fab2bbe5e22ddfc6b18164ced9/nix/lib/build-sbt-project.nix"
+          ]
+        },
+        {
+          "text": "The plugin has separate sbt 0.13, sbt 1 and sbt 2 artifacts. A project\u2019s locked sbt and Java selections govern its build; the packaged default is not a minimum version.",
+          "sourceRevision": "87efce32058a19fab2bbe5e22ddfc6b18164ced9",
+          "evidence": [
+            "https://github.com/nix-purifiers/sbt-purifier/blob/87efce32058a19fab2bbe5e22ddfc6b18164ced9/pkgs/sbt/default.nix",
+            "https://github.com/nix-purifiers/sbt-purifier/blob/87efce32058a19fab2bbe5e22ddfc6b18164ced9/nix/lib/build-sbt-project.nix"
+          ]
+        },
+        {
+          "text": "For the sbt 1.x plugin line, the declared version requirement is sbt 1.11 or later within 1.x. This requirement is separate from the packaged sbt 2 launcher and the legacy 0.13 bootstrap.",
+          "sourceRevision": "87efce32058a19fab2bbe5e22ddfc6b18164ced9",
+          "evidence": [
+            "https://github.com/nix-purifiers/sbt-purifier/blob/87efce32058a19fab2bbe5e22ddfc6b18164ced9/pkgs/sbt/default.nix",
+            "https://github.com/nix-purifiers/sbt-purifier/blob/87efce32058a19fab2bbe5e22ddfc6b18164ced9/nix/lib/build-sbt-project.nix",
+            "https://github.com/nix-purifiers/sbt-purifier/blob/87efce32058a19fab2bbe5e22ddfc6b18164ced9/README.md"
+          ]
+        }
+      ],
+      "projectSelections": [
+        {
+          "role": "native-tool",
+          "name": "sbt",
+          "kind": "project-file",
+          "inputs": [
+            "project/build.properties"
+          ],
+          "description": "The project\u2019s sbt.version setting selects its sbt launcher and corresponding plugin artifact.",
+          "sourceRevision": "87efce32058a19fab2bbe5e22ddfc6b18164ced9",
+          "evidence": [
+            "https://github.com/nix-purifiers/sbt-purifier/blob/87efce32058a19fab2bbe5e22ddfc6b18164ced9/pkgs/sbt/default.nix",
+            "https://github.com/nix-purifiers/sbt-purifier/blob/87efce32058a19fab2bbe5e22ddfc6b18164ced9/nix/lib/build-sbt-project.nix"
+          ]
+        }
+      ]
+    },
+    "julia-purifier": {
+      "limitations": [
+        {
+          "text": "Manifest format 2 is required. The builder selects the pinned Julia package matching the manifest\u2019s major/minor version; a version absent from that package set requires an explicit julia override.",
+          "sourceRevision": "8de9b7fd449e214fd39dbb8637cfc33a54ecfbfd",
+          "evidence": [
+            "https://github.com/nix-purifiers/julia-purifier/blob/8de9b7fd449e214fd39dbb8637cfc33a54ecfbfd/nix/lib/build-julia-project.nix",
+            "https://github.com/nix-purifiers/julia-purifier/blob/8de9b7fd449e214fd39dbb8637cfc33a54ecfbfd/nix/lib/lock.nix"
+          ]
+        }
+      ],
+      "projectSelections": [
+        {
+          "role": "project-runtime",
+          "name": "Julia",
+          "kind": "lockfile",
+          "inputs": [
+            "Manifest.toml"
+          ],
+          "description": "The manifest\u2019s julia_version selects the project runtime; the packaged Julia is used when there is no manifest.",
+          "sourceRevision": "8de9b7fd449e214fd39dbb8637cfc33a54ecfbfd",
+          "evidence": [
+            "https://github.com/nix-purifiers/julia-purifier/blob/8de9b7fd449e214fd39dbb8637cfc33a54ecfbfd/nix/lib/build-julia-project.nix",
+            "https://github.com/nix-purifiers/julia-purifier/blob/8de9b7fd449e214fd39dbb8637cfc33a54ecfbfd/nix/lib/lock.nix"
+          ]
+        }
+      ]
+    },
+    "luarocks-purifier": {
+      "limitations": [
+        {
+          "text": "Lua 5.1, 5.2, 5.3, 5.4 and LuaJIT have separate native toolchains. Lua and LuaRocks must come from the same selection; LuaJIT uses the Lua 5.1 module ABI.",
+          "sourceRevision": "6c3e166c8d2826e2b826c770025c9109f118a771",
+          "evidence": [
+            "https://github.com/nix-purifiers/luarocks-purifier/blob/6c3e166c8d2826e2b826c770025c9109f118a771/nix/lib/lua.nix",
+            "https://github.com/nix-purifiers/luarocks-purifier/blob/6c3e166c8d2826e2b826c770025c9109f118a771/pkgs/cli/default.nix"
+          ]
+        }
+      ],
+      "projectSelections": [
+        {
+          "role": "project-runtime",
+          "name": "Lua",
+          "kind": "lockfile",
+          "inputs": [
+            "luarocks-purifier.lock.json"
+          ],
+          "description": "The lock\u2019s lua selection chooses the interpreter, ABI and matching LuaRocks package.",
+          "sourceRevision": "6c3e166c8d2826e2b826c770025c9109f118a771",
+          "evidence": [
+            "https://github.com/nix-purifiers/luarocks-purifier/blob/6c3e166c8d2826e2b826c770025c9109f118a771/nix/lib/lua.nix",
+            "https://github.com/nix-purifiers/luarocks-purifier/blob/6c3e166c8d2826e2b826c770025c9109f118a771/pkgs/cli/default.nix"
+          ]
+        }
+      ]
+    },
+    "swiftpm-purifier": {
+      "limitations": [
+        {
+          "text": "This pinned Swift 6.3 toolchain is exposed for x86_64-linux and aarch64-darwin, not aarch64-linux. The package set marks its ARM64 Linux compiler broken because of its linker.",
+          "sourceRevision": "cd52ed8444afc1561ec1289a7ead04d6a2556ea0",
+          "evidence": [
+            "https://github.com/nix-purifiers/swiftpm-purifier/blob/cd52ed8444afc1561ec1289a7ead04d6a2556ea0/flake.nix",
+            "https://github.com/nix-purifiers/swiftpm-purifier/blob/cd52ed8444afc1561ec1289a7ead04d6a2556ea0/pkgs/toolchain/default.nix"
+          ]
+        },
+        {
+          "text": "macOS uses the pinned Swift and Apple SDK packages rather than Xcode. The pinned macOS Swift package has no XCTest runner, so the project tests output is not run there.",
+          "sourceRevision": "cd52ed8444afc1561ec1289a7ead04d6a2556ea0",
+          "evidence": [
+            "https://github.com/nix-purifiers/swiftpm-purifier/blob/cd52ed8444afc1561ec1289a7ead04d6a2556ea0/flake.nix",
+            "https://github.com/nix-purifiers/swiftpm-purifier/blob/cd52ed8444afc1561ec1289a7ead04d6a2556ea0/pkgs/toolchain/default.nix"
+          ]
+        }
+      ],
+      "projectSelections": []
+    },
+    "dotnet-purifier": {
+      "limitations": [
+        {
+          "text": "Without global.json the command selects SDK major 10. Project SDK selection and target frameworks can require other SDK/runtime versions; the SDK version is not a project runtime requirement.",
+          "sourceRevision": "a9af47ba9e2bb4dfebd75a6bdcf38e7cf2987904",
+          "evidence": [
+            "https://github.com/nix-purifiers/dotnet-purifier/blob/a9af47ba9e2bb4dfebd75a6bdcf38e7cf2987904/pkgs/dotnet-purifier/default.nix",
+            "https://github.com/nix-purifiers/dotnet-purifier/blob/a9af47ba9e2bb4dfebd75a6bdcf38e7cf2987904/nix/lib/build-dotnet-project.nix"
+          ]
+        }
+      ],
+      "projectSelections": [
+        {
+          "role": "native-tool",
+          "name": ".NET SDK",
+          "kind": "project-file",
+          "inputs": [
+            "global.json"
+          ],
+          "description": "global.json selects the project SDK; the configured default SDK major applies when it is absent.",
+          "sourceRevision": "a9af47ba9e2bb4dfebd75a6bdcf38e7cf2987904",
+          "evidence": [
+            "https://github.com/nix-purifiers/dotnet-purifier/blob/a9af47ba9e2bb4dfebd75a6bdcf38e7cf2987904/pkgs/dotnet-purifier/default.nix",
+            "https://github.com/nix-purifiers/dotnet-purifier/blob/a9af47ba9e2bb4dfebd75a6bdcf38e7cf2987904/nix/lib/build-dotnet-project.nix"
+          ]
+        }
+      ]
+    },
+    "straight-purifier": {
+      "limitations": [
+        {
+          "text": "The bootstrap revision applies to a new Straight checkout. Existing project version pins select Straight and its packages instead; the Emacs runtime remains separately recorded.",
+          "sourceRevision": "29cc3cc1933cb511d80027bdf51aa52aa55dbd9f",
+          "evidence": [
+            "https://github.com/nix-purifiers/straight-purifier/blob/29cc3cc1933cb511d80027bdf51aa52aa55dbd9f/straight_purifier/cli.py",
+            "https://github.com/nix-purifiers/straight-purifier/blob/29cc3cc1933cb511d80027bdf51aa52aa55dbd9f/nix/cli.nix"
+          ]
+        }
+      ],
+      "projectSelections": [
+        {
+          "role": "native-tool",
+          "name": "Straight",
+          "kind": "lockfile",
+          "inputs": [
+            "straight/versions/default.el"
+          ],
+          "description": "Existing projects select their Straight revision through their native version pins.",
+          "sourceRevision": "29cc3cc1933cb511d80027bdf51aa52aa55dbd9f",
+          "evidence": [
+            "https://github.com/nix-purifiers/straight-purifier/blob/29cc3cc1933cb511d80027bdf51aa52aa55dbd9f/straight_purifier/cli.py",
+            "https://github.com/nix-purifiers/straight-purifier/blob/29cc3cc1933cb511d80027bdf51aa52aa55dbd9f/nix/cli.nix"
+          ]
+        }
+      ]
+    },
+    "ant-purifier": {
+      "limitations": [
+        {
+          "text": "The bundled Ant plugin is compiled for Java 11 bytecode; the JVM loading it must support that bytecode level. The packaged JVM is listed separately.",
+          "sourceRevision": "74c81970fadede82c6c5f80ff5b6392d40220e59",
+          "evidence": [
+            "https://github.com/nix-purifiers/ant-purifier/blob/74c81970fadede82c6c5f80ff5b6392d40220e59/nix/plugin.nix"
+          ]
+        }
+      ],
+      "projectSelections": []
+    },
+    "arduino-purifier": {
+      "projectSelections": [
+        {
+          "role": "compiler",
+          "name": "Board toolchain",
+          "kind": "project-file",
+          "inputs": [
+            "sketch.yaml",
+            "arduino-purifier.lock.json"
+          ],
+          "description": "The board profile and captured package index select the platform/compiler tool versions retained by the lock.",
+          "sourceRevision": "c28539ac572d25a7ba8ec4eccbdbff3f3b0f4049",
+          "evidence": [
+            "https://github.com/nix-purifiers/arduino-purifier/blob/c28539ac572d25a7ba8ec4eccbdbff3f3b0f4049/nix/build-project.nix"
+          ]
+        }
+      ],
+      "limitations": []
+    },
+    "platformio-purifier": {
+      "projectSelections": [
+        {
+          "role": "compiler",
+          "name": "Board toolchain",
+          "kind": "project-file",
+          "inputs": [
+            "platformio.ini",
+            "platformio-purifier.lock.json"
+          ],
+          "description": "The PlatformIO environment selects its platform, framework and compiler packages, which the lock captures.",
+          "sourceRevision": "dc9f24b256befe669dc6af81da81b6a75a8133ec",
+          "evidence": [
+            "https://github.com/nix-purifiers/platformio-purifier/blob/dc9f24b256befe669dc6af81da81b6a75a8133ec/nix/build-project.nix"
+          ]
+        }
+      ],
+      "limitations": []
+    }
+  }
+}

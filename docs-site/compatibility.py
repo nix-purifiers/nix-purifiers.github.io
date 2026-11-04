@@ -1,5 +1,6 @@
 """Validate version evidence and render the same section on every purifier page."""
 from html import escape
+from urllib.parse import urlsplit
 import re
 
 ROLES = {
@@ -21,12 +22,12 @@ OPERATIONS = {
     'pure-native-byte-equality': 'Matching native/Nix publication bytes',
     'source-preservation': 'Unchanged project sources',
 }
-EMPTY = {'defaults': [], 'testedPoints': [], 'supportedRanges': [], 'limitations': []}
+EMPTY = {'defaults': [], 'testedPoints': [], 'supportedRanges': [], 'limitations': [], 'projectSelections': []}
 
 
 def validate(data):
     if not isinstance(data, dict) or set(data) != set(EMPTY):
-        raise ValueError('compatibility requires defaults, testedPoints, supportedRanges and limitations')
+        raise ValueError('compatibility requires defaults, testedPoints, supportedRanges limitations and projectSelections')
     if any(not isinstance(value, list) for value in data.values()):
         raise ValueError('compatibility fields must be lists')
     def text(value):
@@ -42,9 +43,11 @@ def validate(data):
         if item.get('role') not in ROLES or not text(item.get('name')) or not re.fullmatch(r'[0-9A-Za-z][0-9A-Za-z.+_:-]*', item.get('version', '')):
             raise ValueError('version components require a known role, name and exact version')
     for item in data['defaults']:
-        if set(item) != {'role', 'name', 'version', 'sourceRevision', 'evidence'}:
+        if set(item) != {'role', 'name', 'version', 'selection', 'systems', 'sourceRevision', 'evidence'}:
             raise ValueError('invalid packaged default')
         component(item); proof(item)
+        if not text(item['selection']) or not texts(item['systems']):
+            raise ValueError('packaged versions require a toolchain selection and platform scope')
     ids = set()
     for point in data['testedPoints']:
         if set(point) != {'id', 'components', 'system', 'operations', 'sourceRevision', 'evidence', 'notes'}:
@@ -72,6 +75,13 @@ def validate(data):
                 or not all(texts(item[x]) for x in ('systems', 'operations', 'supportingTests'))
                 or not set(item['supportingTests']) <= ids):
             raise ValueError('supported ranges require explicit review and existing supporting tests')
+    for item in data['projectSelections']:
+        if set(item) != {'role', 'name', 'kind', 'inputs', 'description', 'sourceRevision', 'evidence'}:
+            raise ValueError('invalid project-selected version')
+        proof(item)
+        if (item['role'] not in ROLES or not text(item['name']) or not text(item['description'])
+                or not texts(item['inputs']) or item['kind'] not in {'project-file', 'environment', 'lockfile', 'command-option'}):
+            raise ValueError('project-selected versions require their actual selection inputs')
     for item in data['limitations']:
         if set(item) != {'text', 'sourceRevision', 'evidence'} or not text(item['text']):
             raise ValueError('invalid version limitation')
@@ -85,7 +95,7 @@ def cell(value):
 
 def evidence(item):
     return ' · '.join('[CI run](' + url + ')' if '/actions/runs/' in url else
-                      '[Test fixture](' + url + ')' for url in item['evidence'])
+                      '[Test definition](' + url + ')' for url in item['evidence'])
 
 
 def render_compatibility(page, contract, heading=True):
@@ -97,14 +107,24 @@ def render_compatibility(page, contract, heading=True):
         return '\n\n'.join(lines)
     lines += [spec['introduction']]
     if data['defaults']:
-        lines += ['### Packaged defaults', '| Component | Version |', '|---|---|']
-        lines += [f'| {ROLES[x["role"]]}: {cell(x["name"])} | {cell(x["version"])} |' for x in data['defaults']]
+        lines += ['### Default and selectable versions', spec['defaultsScope'], '| Selection | Component | Version | Platforms |', '|---|---|---|---|']
+        lines += [f'| {cell(x["selection"])} | {ROLES[x["role"]]}: {cell(x["name"])} | {cell(x["version"])} | {cell(", ".join(x["systems"]))} |' for x in data['defaults']]
+    definition_items = data['defaults'] + data['projectSelections'] + data['limitations'] + data['supportedRanges']
+    if definition_items:
+        definitions = list(dict.fromkeys(url for item in definition_items for url in item['evidence']))
+        links = ' · '.join('[' + (url.split('/blob/', 1)[1].split('/', 1)[1] if '/blob/' in url else urlsplit(url).netloc) + '](' + url + ')' for url in definitions)
+        lines.append('<details markdown="1">\n<summary>Version definitions</summary>\n\n' + links + '\n\n</details>')
+    if data['projectSelections']:
+        lines += ['### Project-selected versions', '| Component | Selected by |', '|---|---|']
+        for item in data['projectSelections']:
+            inputs = ', '.join('`' + cell(name) + '`' for name in item['inputs'])
+            lines.append(f'| {ROLES[item["role"]]}: {cell(item["name"])} | {cell(item["description"])}<br>{inputs} |')
     if data['supportedRanges']:
         lines += ['### Supported ranges']
         for item in data['supportedRanges']:
             lines.append(f'{ROLES[item["role"]]} **{cell(item["name"])}**: {cell(item["range"])} '
                          f'({cell(", ".join(item["systems"]))}; {cell(", ".join(item["operations"]))}). '
-                         + cell(item['basis']) + ' ' + evidence(item))
+                         + cell(item['basis']))
     else:
         lines.append(spec['noRanges'])
     if data['testedPoints']:
@@ -116,11 +136,14 @@ def render_compatibility(page, contract, heading=True):
             if point['notes']:
                 operations += '<br>' + ' '.join(cell(note) for note in point['notes'])
             lines.append(f'| {components} | {cell(point["system"])} | {operations} | {evidence(point)} |')
+    elif page.get('facts', {}).get('tested_toolchain', {}).get('state') == 'known':
+        lines += ['### Recorded toolchain checks', cell(', '.join(page['facts']['tested_toolchain']['value'])),
+                  'This earlier check summary does not distinguish a complete platform and operation matrix.']
     else:
         lines.append(spec['noTests'])
     if data['limitations']:
-        lines += ['### Version limitations']
-        lines += ['- ' + cell(item['text']) + ' ' + evidence(item) for item in data['limitations']]
+        lines += ['### Version requirements and limits']
+        lines += ['- ' + cell(item['text']) for item in data['limitations']]
     return '\n\n'.join(_tables(lines))
 
 

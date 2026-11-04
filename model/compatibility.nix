@@ -1,6 +1,10 @@
-{ lib, ... }:
+{ config, lib, ... }:
 let
   inherit (lib) mkOption types;
+  defaultsByProject = (builtins.fromJSON (builtins.readFile ./toolchain-defaults.json)).projects;
+  requirementsByProject = (builtins.fromJSON (builtins.readFile ./version-requirements.json)).projects;
+  requirements = requirementsByProject.${projectName} or {};
+  projectName = lib.last (lib.splitString "/" config.repository);
   text = types.addCheck types.str (s: builtins.match ".*[^ \n\t].*" s != null);
   nonempty = type: types.addCheck (types.listOf type) (xs: xs != []);
   revision = types.strMatching "[0-9a-f]{40}";
@@ -28,7 +32,22 @@ in {
     default = {};
     type = types.submodule {
       options = {
-        defaults = mkOption { default = []; type = types.listOf (types.submodule { options = component // proof; }); };
+        defaults = mkOption { default = defaultsByProject.${projectName} or []; type = types.listOf (types.submodule { options = component // proof // {
+          selection = mkOption { type = text; default = "default"; };
+          systems = mkOption { type = nonempty text; };
+        }; }); };
+        projectSelections = mkOption {
+          default = requirements.projectSelections or [];
+          type = types.listOf (types.submodule {
+            options = proof // {
+              role = component.role;
+              name = component.name;
+              kind = mkOption { type = types.enum [ "project-file" "environment" "lockfile" "command-option" ]; };
+              inputs = mkOption { type = nonempty text; };
+              description = mkOption { type = text; };
+            };
+          });
+        };
         testedPoints = mkOption { default = []; type = types.listOf point; };
         supportedRanges = mkOption {
           default = [];
@@ -45,7 +64,7 @@ in {
           });
         };
         limitations = mkOption {
-          default = [];
+          default = requirements.limitations or [];
           type = types.listOf (types.submodule { options = proof // { text = mkOption { type = text; }; }; });
         };
       };
@@ -53,10 +72,13 @@ in {
     apply = value:
       let
         ids = map (p: p.id) value.testedPoints;
+        defaultKeys = lib.concatMap (p: map (system: "${p.selection}:${p.role}:${p.name}:${system}") p.systems) value.defaults;
         uniqueComponents = p:
           let keys = map (c: "${c.role}:${c.name}") p.components;
           in builtins.length keys == builtins.length (lib.unique keys);
-      in if builtins.length ids != builtins.length (lib.unique ids) then
+      in if builtins.length defaultKeys != builtins.length (lib.unique defaultKeys) then
+        throw "A packaged selection cannot assert two versions of the same component on one platform"
+      else if builtins.length ids != builtins.length (lib.unique ids) then
         throw "Compatibility test IDs must be unique"
       else if !(lib.all uniqueComponents value.testedPoints) then
         throw "A tested combination cannot select two versions of the same component"

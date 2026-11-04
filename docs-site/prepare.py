@@ -7,6 +7,7 @@ from content import audit, feature_matrix, render, source_links
 from theme import install_theme
 from review import canonical_review, resolve_review, SourceDrift
 from reference import guide_plan, reference_text
+from export import validate_version_coverage
 
 parser = argparse.ArgumentParser(description=__doc__)
 parser.add_argument('--repository', required=True)
@@ -36,6 +37,16 @@ if args.source_status:
             review = canonical_review(args.repository)
         source_status = {'repository': args.repository, 'status': 'matched',
                          'documentedRevision': review.revision, 'changedFiles': []}
+        if review.page is not None:
+            # An older complete review may lack newly required metadata, but
+            # malformed reviewed content must still fail rather than fall back.
+            render(review.page, json.loads((theme / 'catalog.json').read_text())['contract'])
+            try:
+                validate_version_coverage({args.repository: review.page})
+            except (KeyError, ValueError):
+                review = canonical_review(args.repository)
+                source_status.update(status='update-needed', documentedRevision=review.revision,
+                                     documentationReview=['packaged-version-metadata'])
     except SourceDrift as error:
         try:
             review = canonical_review(args.repository)

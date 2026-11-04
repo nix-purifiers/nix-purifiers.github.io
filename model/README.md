@@ -221,3 +221,27 @@ and references to existing tested points. The model does not derive ranges,
 minimum versions or intervening compatibility from tested endpoints. Prerelease
 points remain exact prerelease points. The shared renderer always includes the
 version section in overviews and full guides, and links it from feature matrices.
+
+Packaged versions are generated centrally in `toolchain-defaults.json`, from
+reviewed package selectors in `toolchain-selectors.json`. The audit evaluates
+**each purifier's own locked package set and overlay**, rather than assuming that
+its tools match another purifier or the host. It groups identical selections
+across the platforms actually exported by that flake. Bundled npm and PEAR
+version metadata is read from the pinned package; it is not guessed from the
+Node.js or PHP version. This does not execute target-platform tests.
+
+Refresh with:
+
+```sh
+python3 tools/audit-toolchain-versions.py --checkouts /path/to/checkouts \
+  --output /path/to/audit.json --write
+python3 docs-site/export.py
+```
+
+`version-requirements.json` records reviewed project-controlled choices and
+requirements. Gradle, for example, uses its project's wrapper instead of bundling
+a Gradle distribution. Every published purifier must have concrete packaged
+versions plus either a packaged native tool or its explicit project-selection
+mechanism. Missing version records fail the canonical export. Older reviewed
+variants cannot restore empty public version sections; malformed variants remain
+hard failures.

@@ -6,6 +6,7 @@ import unittest
 from compatibility import validate, render_compatibility, EMPTY
 from content import render, feature_matrix
 from reference import reference_text
+from export import validate_version_coverage
 
 
 class CompatibilityTests(unittest.TestCase):
@@ -39,9 +40,37 @@ class CompatibilityTests(unittest.TestCase):
         self.assertIn('Project runtime: Node.js 12.22.12', body)
         self.assertIn('Capture / build helper: Node.js 24.21.0', body)
         self.assertIn('x86_64-linux', body)
-        self.assertNotIn('aarch64-linux', body)
-        self.assertIn('No reviewed version range', body)
+        self.assertNotIn('aarch64-linux', body.split('### Tested combinations', 1)[1])
+        self.assertIn('packaged defaults do not establish a minimum version', body)
         self.assertIn('do not establish a minimum version', body)
+
+    def test_every_published_page_has_real_versions_or_a_project_selection(self):
+        validate_version_coverage(self.documentation['catalog'])
+        for name, page in self.documentation['catalog'].items():
+            with self.subTest(name=name):
+                self.assertTrue(page['compatibility']['defaults'])
+                self.assertNotIn('have not yet been recorded for this purifier', render_compatibility(page, self.contract))
+                for item in page['compatibility']['defaults']:
+                    self.assertTrue(item['systems'])
+                    self.assertEqual(len(item['sourceRevision']), 40)
+
+    def test_empty_framework_cannot_be_published(self):
+        page = dict(self.page, compatibility=copy.deepcopy(EMPTY))
+        with self.assertRaises(ValueError):validate_version_coverage({'npm-purifier': page})
+
+    def test_gradle_is_project_selected_instead_of_a_fictitious_bundled_version(self):
+        page = self.documentation['catalog']['gradle-purifier']
+        self.assertFalse(any(x['name'] == 'Gradle' for x in page['compatibility']['defaults']))
+        choice = next(x for x in page['compatibility']['projectSelections'] if x['name'] == 'Gradle')
+        self.assertIn('gradle/wrapper/gradle-wrapper.properties', choice['inputs'])
+        self.assertIn('Java 17', ' '.join(x['text'] for x in page['compatibility']['limitations']))
+
+    def test_quickstart_zig_selection_is_distinct_from_the_default(self):
+        rows = self.documentation['catalog']['zig-purifier']['compatibility']['defaults']
+        quickstart = [x for x in rows if 'Quickstart' in x['selection']]
+        self.assertTrue(quickstart)
+        self.assertTrue(all(x['version'].startswith('0.15.') for x in quickstart))
+        self.assertTrue(any(x['selection'] == 'default' and x['version'] != quickstart[0]['version'] for x in rows if x['name'] == 'Zig'))
 
     def test_tested_points_require_exact_versions_scope_and_evidence(self):
         for change in ['range-as-version', 'missing-evidence', 'missing-scope', 'duplicate-component']:

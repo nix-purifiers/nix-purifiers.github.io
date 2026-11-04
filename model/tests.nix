@@ -11,7 +11,26 @@ let
     sourceRevision = "1111111111111111111111111111111111111111";
     evidence = [ "https://example.test/test-fixture" ];
   };
+  packagedDefault = {
+    role = "native-tool"; name = "Tool"; version = "1.2.3";
+    selection = "default"; systems = [ "x86_64-linux" ];
+    sourceRevision = compatibilityPoint.sourceRevision;
+    evidence = compatibilityPoint.evidence;
+  };
   checks = {
+    packagedVersionNeedsPlatformScope = !force (withOverride {
+      compatibility.defaults = [ (packagedDefault // { systems = []; }) ];
+    });
+    ambiguousPackagedVersionsFail = !force (withOverride {
+      compatibility.defaults = [ packagedDefault (packagedDefault // { version = "2.0.0"; }) ];
+    });
+    unknownProjectVersionSelectionFails = !force (withOverride {
+      compatibility.projectSelections = [ {
+        role = "native-tool"; name = "Tool"; kind = "guess";
+        inputs = [ "project.conf" ]; description = "Not a known version-selection mechanism.";
+        sourceRevision = compatibilityPoint.sourceRevision; evidence = compatibilityPoint.evidence;
+      } ];
+    });
     exactCompatibilityPointWorks = force (withOverride {
       compatibility.testedPoints = [ compatibilityPoint ];
     });

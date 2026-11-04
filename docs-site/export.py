@@ -7,6 +7,13 @@ from reference import guide_plan
 from inventory import validate_coverage
 
 
+def validate_version_coverage(catalog):
+    for name, page in catalog.items():
+        versions = page['compatibility']
+        if not versions['defaults'] or not any(item['role'] == 'native-tool' for item in versions['defaults'] + versions['projectSelections']):
+            raise ValueError(f'{name}: record packaged versions and the actual native-tool version selection before publishing')
+
+
 if __name__ == '__main__':
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--check', action='store_true')
@@ -19,6 +26,7 @@ if __name__ == '__main__':
     expected = set(manifest) - {'purifier'}
     if set(documentation['catalog']) != expected:
         raise SystemExit('Every purifier repository must have a modeled documentation page.')
+    validate_version_coverage(documentation['catalog'])
     for name, page in documentation['catalog'].items():
         if page.get('reviewedRevision') != manifest[name]['revision']:
             raise SystemExit(f'{name}: model and source review revisions differ')
