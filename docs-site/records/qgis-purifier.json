@@ -1,0 +1,22 @@
+{
+  "summary": "QGIS with locked, Nix-resolved Python plugins.",
+  "values": {
+    "quickstart": "nix shell 'github:nix-purifiers/qgis-purifier'\nqgis-purifier lock --update\nqgis my-project.qgz"
+  },
+  "sections": {
+    "editor": {
+      "mode": "omit",
+      "template": null,
+      "reason": "No specific editor protocol integration has been established by the reviewed implementation."
+    },
+    "nix_builds": {
+      "template": "native"
+    },
+    "integration": {
+      "template": "wrapper"
+    },
+    "workflow": {
+      "template": "capture-update"
+    }
+  }
+}
