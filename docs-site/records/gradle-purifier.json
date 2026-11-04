@@ -1,10 +1,36 @@
 {
   "summary": "Locked, Nix-resolved dependencies for Gradle.",
   "values": {
-    "quickstart": "nix shell 'github:nix-purifiers/gradle-purifier'\ngradle-purifier lock\ngradle-purifier prefetch\n./gradlew build",
-    "language_tooling_setup": "An IDE imports a Gradle build with its own Gradle run, through the Gradle\ntooling API: IntelliJ IDEA, and Eclipse and VS Code through Buildship and\njdtls. The init script that `prefetch` installs applies to those runs too,\nso the import reads the locked downloads. The lock run resolves the\nsources and the javadoc of every library, so an IDE that attaches them\nfinds them in the lock. An IDE set to use the Gradle wrapper finds the\ndistribution that `prefetch` linked. One set to a local distribution can\nuse `.gradle-purifier/distribution` beside the lockfile."
+    "language_tooling_setup": "An IDE imports a Gradle build with its own Gradle run, through the Gradle\ntooling API: IntelliJ IDEA, and Eclipse and VS Code through Buildship and\njdtls. The init script that `prefetch` installs applies to those runs too,\nso the import reads the locked downloads. The lock run resolves the\nsources and the javadoc of every library, so an IDE that attaches them\nfinds them in the lock. An IDE set to use the Gradle wrapper finds the\ndistribution that `prefetch` linked. One set to a local distribution can\nuse `.gradle-purifier/distribution` beside the lockfile.",
+    "quickstart": "nix shell 'github:nix-purifiers/gradle-purifier'\ngradle-purifier lock\ngradle-purifier prefetch\n./gradlew build"
   },
   "sections": {
-    "editor": {}
+    "credits": {
+      "template": "cargo"
+    },
+    "editor": {
+      "template": "native"
+    },
+    "integration": {
+      "template": "native"
+    },
+    "nix_builds": {
+      "template": "native"
+    },
+    "offline": {
+      "template": "native"
+    },
+    "projections": {
+      "template": "directional"
+    },
+    "quickstart": {
+      "template": "reviewed"
+    },
+    "scope": {
+      "template": "native"
+    },
+    "workflow": {
+      "template": "native"
+    }
   }
 }

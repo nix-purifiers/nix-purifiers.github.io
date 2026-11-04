@@ -1,10 +1,36 @@
 {
   "summary": "Locked, Nix-resolved dependencies for Go.",
   "values": {
-    "quickstart": "nix shell 'github:nix-purifiers/go-purifier'\ngo-purifier lock\ngo build ./...\ngo test ./...",
-    "language_tooling_setup": "The development shell has gopls. gopls runs the `go` on its `PATH`, so an\neditor that starts gopls from the shell resolves from the same locked\ndownloads, offline after a prefetch. An editor that starts gopls itself\nneeds the shell's `PATH`, such as through direnv with `use flake`."
+    "language_tooling_setup": "The development shell has gopls. gopls runs the `go` on its `PATH`, so an\neditor that starts gopls from the shell resolves from the same locked\ndownloads, offline after a prefetch. An editor that starts gopls itself\nneeds the shell's `PATH`, such as through direnv with `use flake`.",
+    "quickstart": "nix shell 'github:nix-purifiers/go-purifier'\ngo-purifier lock\ngo build ./...\ngo test ./..."
   },
   "sections": {
-    "editor": {}
+    "credits": {
+      "template": "cargo"
+    },
+    "editor": {
+      "template": "native"
+    },
+    "integration": {
+      "template": "native"
+    },
+    "nix_builds": {
+      "template": "native"
+    },
+    "offline": {
+      "template": "native"
+    },
+    "projections": {
+      "template": "directional"
+    },
+    "quickstart": {
+      "template": "reviewed"
+    },
+    "scope": {
+      "template": "native"
+    },
+    "workflow": {
+      "template": "native"
+    }
   }
 }

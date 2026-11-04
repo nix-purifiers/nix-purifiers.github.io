@@ -1,6 +1,6 @@
 {
   "repository": "nix-purifiers/npm-purifier",
-  "reviewedRevision": "71309360d5dc7b7fb9f49f21e6264aa94c507253",
+  "reviewedRevision": "a2edbacf0d1d0bfcfbd967b4560f705f1a03e3f6",
   "facts": {
     "build_engine": {
       "reason": "This capability is not established by the reviewed integration record.",
@@ -167,12 +167,10 @@
       ]
     },
     "projection_incoming_limits": {
-      "sources": [
-        "tests/composition-native.py"
-      ],
+      "sources": [],
       "state": "known",
       "value": [
-        "Compatible npm projections and catalogs are required. Unambiguous supplied packages override ordinary version requests; multiple versions need a primary package or an exact supplied selection."
+        "Producer must export the compatible native projection and its inferred catalog; native version requirements still apply"
       ]
     },
     "projection_outgoing": {
@@ -195,13 +193,10 @@
       ]
     },
     "projection_outgoing_limits": {
-      "sources": [
-        "tests/composition-native.py"
-      ],
+      "sources": [],
       "state": "known",
       "value": [
-        "Exported publications require successful native preparation and sandboxed builds.",
-        "Artifacts containing native executables or addons remain specific to the producer target platform."
+        "Exported publications depend on the native project package metadata and successful sandboxed builds"
       ]
     },
     "relock": {
@@ -221,8 +216,13 @@
       "state": "unknown"
     },
     "tested_toolchain": {
-      "reason": "This capability is not established by the reviewed integration record.",
-      "state": "unknown"
+      "state": "known",
+      "value": [
+        "Node 12.22.12 with npm 6.14.16: native v1 lock generation, prefetch, offline install, build, test and publication checked on Linux x86_64 and aarch64. This is an individual checked point, not a supported version interval. The committed dependency lock selects shared purifier 15b69e8f27044f50b44d6cd5dc4961c71df1871d; these checks pass without overrides."
+      ],
+      "sources": [
+        "https://github.com/nix-purifiers/npm-purifier/blob/a2edbacf0d1d0bfcfbd967b4560f705f1a03e3f6/README.md"
+      ]
     },
     "tool": {
       "sources": [],
@@ -230,8 +230,13 @@
       "value": "npm"
     },
     "unsupported_features": {
-      "reason": "This capability is not established by the reviewed integration record.",
-      "state": "unknown"
+      "state": "known",
+      "value": [
+        "npm 6 incoming Nix bindings require a separate adapter because the modern Arborist hooks are absent; ordinary registry dependencies are covered by the checked legacy fixture."
+      ],
+      "sources": [
+        "https://github.com/nix-purifiers/npm-purifier/blob/a2edbacf0d1d0bfcfbd967b4560f705f1a03e3f6/README.md"
+      ]
     },
     "updates_ignore_file": {
       "reason": "This capability is not established by the reviewed integration record.",
@@ -260,16 +265,13 @@
       "minimumArguments": 0,
       "reason": null,
       "sources": [
-        "https://github.com/nix-purifiers/npm-purifier/blob/1d70b348449535eb5b4fc851b242c386fa5d3790/nix/lib/build-npm-project.nix"
+        "https://github.com/nix-purifiers/npm-purifier/blob/a2edbacf0d1d0bfcfbd967b4560f705f1a03e3f6/nix/lib/build-npm-project.nix"
       ],
       "state": "available"
     },
     "lock": {
       "arguments": [
-        "lock",
-        {
-          "splice": "arguments"
-        }
+        "lock"
       ],
       "capability": "npm-purifier",
       "directory": {
@@ -283,7 +285,7 @@
       "minimumArguments": 0,
       "reason": null,
       "sources": [
-        "https://github.com/nix-purifiers/npm-purifier/blob/1d70b348449535eb5b4fc851b242c386fa5d3790/nix/lib/build-npm-project.nix"
+        "https://github.com/nix-purifiers/npm-purifier/blob/a2edbacf0d1d0bfcfbd967b4560f705f1a03e3f6/nix/lib/build-npm-project.nix"
       ],
       "state": "available"
     },
@@ -303,7 +305,7 @@
       "minimumArguments": 0,
       "reason": null,
       "sources": [
-        "https://github.com/nix-purifiers/npm-purifier/blob/1d70b348449535eb5b4fc851b242c386fa5d3790/nix/lib/build-npm-project.nix"
+        "https://github.com/nix-purifiers/npm-purifier/blob/a2edbacf0d1d0bfcfbd967b4560f705f1a03e3f6/nix/lib/build-npm-project.nix"
       ],
       "state": "available"
     },
@@ -323,7 +325,7 @@
       "minimumArguments": 0,
       "reason": null,
       "sources": [
-        "https://github.com/nix-purifiers/npm-purifier/blob/1d70b348449535eb5b4fc851b242c386fa5d3790/nix/lib/build-npm-project.nix"
+        "https://github.com/nix-purifiers/npm-purifier/blob/a2edbacf0d1d0bfcfbd967b4560f705f1a03e3f6/nix/lib/build-npm-project.nix"
       ],
       "state": "available"
     },
@@ -343,7 +345,7 @@
       "minimumArguments": 0,
       "reason": null,
       "sources": [
-        "https://github.com/nix-purifiers/npm-purifier/blob/1d70b348449535eb5b4fc851b242c386fa5d3790/nix/lib/build-npm-project.nix"
+        "https://github.com/nix-purifiers/npm-purifier/blob/a2edbacf0d1d0bfcfbd967b4560f705f1a03e3f6/nix/lib/build-npm-project.nix"
       ],
       "state": "available"
     },

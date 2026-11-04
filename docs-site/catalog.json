@@ -11083,8 +11083,9 @@
           "sources": [],
           "state": "known",
           "value": [
-            "Inputs must export projections.go with the native Go module catalog",
-            "The wrapper binds supplied modules through temporary native Go workspaces without rewriting the working go.mod"
+            "Explicit purifier inputs bind supplied modules through native workspaces without changing the user's manifest.",
+            "An ordinary Go consumer can select a higher native requirement through minimal version selection; exported go.mod metadata cannot impose a hard source constraint.",
+            "An explicit purifier input restores the Nix source when the dependency returns to a purified project."
           ]
         },
         "projection_outgoing": {
@@ -11113,8 +11114,8 @@
           "sources": [],
           "state": "known",
           "value": [
-            "Ordinary Go consumers use GOPROXY with suitable GONOSUMDB policy for Nix-derived module versions",
-            "Publishing Git tags and command archives does not serve the projected module proxy"
+            "The native Go proxy exposes module archives and version metadata, but ordinary consumers can select a higher competing version through minimal version selection.",
+            "Exported go.mod files cannot impose a hard source constraint; strict Nix-source preservation through ordinary downstream evictions is blocked."
           ]
         },
         "relock": {
@@ -11239,7 +11240,7 @@
         }
       },
       "repository": "nix-purifiers/go-purifier",
-      "reviewedRevision": "65fa67901d0b867cb2682eeedcb98e42593531a4",
+      "reviewedRevision": "173abcff84f4c216b67e8660a7f72e36dbdcb207",
       "sections": {
         "credits": {
           "use": "cargo"
@@ -11592,7 +11593,7 @@
         }
       },
       "repository": "nix-purifiers/gradle-purifier",
-      "reviewedRevision": "01f52ce128be3008ceebd644378fe2963698e469",
+      "reviewedRevision": "fed57a8422f1068c97f95d771d6233f4a1c752ad",
       "sections": {
         "credits": {
           "use": "cargo"
@@ -15728,7 +15729,7 @@
         }
       },
       "repository": "nix-purifiers/maven-purifier",
-      "reviewedRevision": "2bc205774bb96ae44cbd0d813d1810ebd4ee9820",
+      "reviewedRevision": "20e822558ce637a5c5672d68af667a98e243b300",
       "sections": {
         "credits": {
           "use": "cargo"
@@ -17396,12 +17397,10 @@
           ]
         },
         "projection_incoming_limits": {
-          "sources": [
-            "tests/composition-native.py"
-          ],
+          "sources": [],
           "state": "known",
           "value": [
-            "Compatible npm projections and catalogs are required. Unambiguous supplied packages override ordinary version requests; multiple versions need a primary package or an exact supplied selection."
+            "Producer must export the compatible native projection and its inferred catalog; native version requirements still apply"
           ]
         },
         "projection_outgoing": {
@@ -17424,13 +17423,10 @@
           ]
         },
         "projection_outgoing_limits": {
-          "sources": [
-            "tests/composition-native.py"
-          ],
+          "sources": [],
           "state": "known",
           "value": [
-            "Exported publications require successful native preparation and sandboxed builds.",
-            "Artifacts containing native executables or addons remain specific to the producer target platform."
+            "Exported publications depend on the native project package metadata and successful sandboxed builds"
           ]
         },
         "relock": {
@@ -17450,8 +17446,13 @@
           "state": "unknown"
         },
         "tested_toolchain": {
-          "reason": "This capability is not established by the reviewed integration record.",
-          "state": "unknown"
+          "sources": [
+            "https://github.com/nix-purifiers/npm-purifier/blob/a2edbacf0d1d0bfcfbd967b4560f705f1a03e3f6/README.md"
+          ],
+          "state": "known",
+          "value": [
+            "Node 12.22.12 with npm 6.14.16: native v1 lock generation, prefetch, offline install, build, test and publication checked on Linux x86_64 and aarch64. This is an individual checked point, not a supported version interval. The committed dependency lock selects shared purifier 15b69e8f27044f50b44d6cd5dc4961c71df1871d; these checks pass without overrides."
+          ]
         },
         "tool": {
           "sources": [],
@@ -17459,8 +17460,13 @@
           "value": "npm"
         },
         "unsupported_features": {
-          "reason": "This capability is not established by the reviewed integration record.",
-          "state": "unknown"
+          "sources": [
+            "https://github.com/nix-purifiers/npm-purifier/blob/a2edbacf0d1d0bfcfbd967b4560f705f1a03e3f6/README.md"
+          ],
+          "state": "known",
+          "value": [
+            "npm 6 incoming Nix bindings require a separate adapter because the modern Arborist hooks are absent; ordinary registry dependencies are covered by the checked legacy fixture."
+          ]
         },
         "updates_ignore_file": {
           "reason": "This capability is not established by the reviewed integration record.",
@@ -17489,16 +17495,13 @@
           "minimumArguments": 0,
           "reason": null,
           "sources": [
-            "https://github.com/nix-purifiers/npm-purifier/blob/1d70b348449535eb5b4fc851b242c386fa5d3790/nix/lib/build-npm-project.nix"
+            "https://github.com/nix-purifiers/npm-purifier/blob/a2edbacf0d1d0bfcfbd967b4560f705f1a03e3f6/nix/lib/build-npm-project.nix"
           ],
           "state": "available"
         },
         "lock": {
           "arguments": [
-            "lock",
-            {
-              "splice": "arguments"
-            }
+            "lock"
           ],
           "capability": "npm-purifier",
           "directory": {
@@ -17512,7 +17515,7 @@
           "minimumArguments": 0,
           "reason": null,
           "sources": [
-            "https://github.com/nix-purifiers/npm-purifier/blob/1d70b348449535eb5b4fc851b242c386fa5d3790/nix/lib/build-npm-project.nix"
+            "https://github.com/nix-purifiers/npm-purifier/blob/a2edbacf0d1d0bfcfbd967b4560f705f1a03e3f6/nix/lib/build-npm-project.nix"
           ],
           "state": "available"
         },
@@ -17532,7 +17535,7 @@
           "minimumArguments": 0,
           "reason": null,
           "sources": [
-            "https://github.com/nix-purifiers/npm-purifier/blob/1d70b348449535eb5b4fc851b242c386fa5d3790/nix/lib/build-npm-project.nix"
+            "https://github.com/nix-purifiers/npm-purifier/blob/a2edbacf0d1d0bfcfbd967b4560f705f1a03e3f6/nix/lib/build-npm-project.nix"
           ],
           "state": "available"
         },
@@ -17552,7 +17555,7 @@
           "minimumArguments": 0,
           "reason": null,
           "sources": [
-            "https://github.com/nix-purifiers/npm-purifier/blob/1d70b348449535eb5b4fc851b242c386fa5d3790/nix/lib/build-npm-project.nix"
+            "https://github.com/nix-purifiers/npm-purifier/blob/a2edbacf0d1d0bfcfbd967b4560f705f1a03e3f6/nix/lib/build-npm-project.nix"
           ],
           "state": "available"
         },
@@ -17572,7 +17575,7 @@
           "minimumArguments": 0,
           "reason": null,
           "sources": [
-            "https://github.com/nix-purifiers/npm-purifier/blob/1d70b348449535eb5b4fc851b242c386fa5d3790/nix/lib/build-npm-project.nix"
+            "https://github.com/nix-purifiers/npm-purifier/blob/a2edbacf0d1d0bfcfbd967b4560f705f1a03e3f6/nix/lib/build-npm-project.nix"
           ],
           "state": "available"
         },
@@ -17590,7 +17593,7 @@
         }
       },
       "repository": "nix-purifiers/npm-purifier",
-      "reviewedRevision": "71309360d5dc7b7fb9f49f21e6264aa94c507253",
+      "reviewedRevision": "a2edbacf0d1d0bfcfbd967b4560f705f1a03e3f6",
       "sections": {
         "credits": {
           "use": "cargo"
@@ -29146,7 +29149,8 @@
           "sources": [],
           "state": "known",
           "value": [
-            "Producer must export the compatible native projection and its inferred catalog; native version requirements still apply"
+            "Explicit Nix inputs are selected through uv overrides and can supersede requested native versions.",
+            "Supplied wheels must match the selected project Python and ABI; incompatible native wheels are rejected."
           ]
         },
         "projection_outgoing": {
@@ -29294,7 +29298,7 @@
         }
       },
       "repository": "nix-purifiers/uv-purifier",
-      "reviewedRevision": "94637dca6d9cd0a23a85da39c4623c6958ca251f",
+      "reviewedRevision": "6df81ab679ca382d8ea69b59b8e34c3dcfb7fd8e",
       "sections": {
         "credits": {
           "use": "cargo"
@@ -30720,7 +30724,7 @@
           "state": "unknown"
         },
         "tested_toolchain": {
-          "reason": "This capability is not established by the reviewed integration record.",
+          "reason": "Current default fixture and native composition checks pass. Separating captureNode from the project runtime does not establish historical Berry API compatibility or a version interval.",
           "state": "unknown"
         },
         "tool": {
@@ -30759,7 +30763,7 @@
           "minimumArguments": 0,
           "reason": null,
           "sources": [
-            "https://github.com/nix-purifiers/yarn-berry-purifier/blob/325f78b55553b5404ce6026d457fb1f18c5d90c9/nix/lib/build-yarn-berry-project.nix"
+            "https://github.com/nix-purifiers/yarn-berry-purifier/blob/fa72250eb0e3ad793976856d468f8fc5affce527/nix/lib/build-yarn-berry-project.nix"
           ],
           "state": "available"
         },
@@ -30779,7 +30783,7 @@
           "minimumArguments": 0,
           "reason": null,
           "sources": [
-            "https://github.com/nix-purifiers/yarn-berry-purifier/blob/325f78b55553b5404ce6026d457fb1f18c5d90c9/nix/lib/build-yarn-berry-project.nix"
+            "https://github.com/nix-purifiers/yarn-berry-purifier/blob/fa72250eb0e3ad793976856d468f8fc5affce527/nix/lib/build-yarn-berry-project.nix"
           ],
           "state": "available"
         },
@@ -30799,7 +30803,7 @@
           "minimumArguments": 0,
           "reason": null,
           "sources": [
-            "https://github.com/nix-purifiers/yarn-berry-purifier/blob/325f78b55553b5404ce6026d457fb1f18c5d90c9/nix/lib/build-yarn-berry-project.nix"
+            "https://github.com/nix-purifiers/yarn-berry-purifier/blob/fa72250eb0e3ad793976856d468f8fc5affce527/nix/lib/build-yarn-berry-project.nix"
           ],
           "state": "available"
         },
@@ -30819,7 +30823,7 @@
           "minimumArguments": 0,
           "reason": null,
           "sources": [
-            "https://github.com/nix-purifiers/yarn-berry-purifier/blob/325f78b55553b5404ce6026d457fb1f18c5d90c9/nix/lib/build-yarn-berry-project.nix"
+            "https://github.com/nix-purifiers/yarn-berry-purifier/blob/fa72250eb0e3ad793976856d468f8fc5affce527/nix/lib/build-yarn-berry-project.nix"
           ],
           "state": "available"
         },
@@ -30839,7 +30843,7 @@
           "minimumArguments": 0,
           "reason": null,
           "sources": [
-            "https://github.com/nix-purifiers/yarn-berry-purifier/blob/325f78b55553b5404ce6026d457fb1f18c5d90c9/nix/lib/build-yarn-berry-project.nix"
+            "https://github.com/nix-purifiers/yarn-berry-purifier/blob/fa72250eb0e3ad793976856d468f8fc5affce527/nix/lib/build-yarn-berry-project.nix"
           ],
           "state": "available"
         },
@@ -30857,7 +30861,7 @@
         }
       },
       "repository": "nix-purifiers/yarn-berry-purifier",
-      "reviewedRevision": "325f78b55553b5404ce6026d457fb1f18c5d90c9",
+      "reviewedRevision": "fa72250eb0e3ad793976856d468f8fc5affce527",
       "sections": {
         "credits": {
           "use": "cargo"
@@ -31111,8 +31115,13 @@
           "state": "unknown"
         },
         "tested_toolchain": {
-          "reason": "This capability is not established by the reviewed integration record.",
-          "state": "unknown"
+          "sources": [
+            "https://github.com/nix-purifiers/yarn-classic-purifier/blob/7071d431233872cf8bcb9495c12248c4de73b8c7/README.md"
+          ],
+          "state": "known",
+          "value": [
+            "Pure JavaScript fixture points: Node 0.12.18 (Yarn 1.10.1 hosted on Node 4.9.1), Node 4.9.1/Yarn 1.10.1, Node 12.22.12/Yarn 1.22.22, and Node 26.1.0-rc.0/Yarn 1.22.22 on x86_64 Linux. Native lifecycle and publication checked at Node 12 on x86_64 and aarch64 Linux. The committed dependency lock selects shared purifier 15b69e8f27044f50b44d6cd5dc4961c71df1871d; capture assertions pass without overrides. These points establish no intervening interval or historical native-addon guarantee."
+          ]
         },
         "tool": {
           "sources": [],
@@ -31150,7 +31159,7 @@
           "minimumArguments": 0,
           "reason": null,
           "sources": [
-            "https://github.com/nix-purifiers/yarn-classic-purifier/blob/20854b554af94e4f4b52f4a19700fd0b403ca532/nix/lib/build-yarn-classic-project.nix"
+            "https://github.com/nix-purifiers/yarn-classic-purifier/blob/7071d431233872cf8bcb9495c12248c4de73b8c7/nix/lib/build-yarn-classic-project.nix"
           ],
           "state": "available"
         },
@@ -31170,7 +31179,7 @@
           "minimumArguments": 0,
           "reason": null,
           "sources": [
-            "https://github.com/nix-purifiers/yarn-classic-purifier/blob/20854b554af94e4f4b52f4a19700fd0b403ca532/nix/lib/build-yarn-classic-project.nix"
+            "https://github.com/nix-purifiers/yarn-classic-purifier/blob/7071d431233872cf8bcb9495c12248c4de73b8c7/nix/lib/build-yarn-classic-project.nix"
           ],
           "state": "available"
         },
@@ -31190,7 +31199,7 @@
           "minimumArguments": 0,
           "reason": null,
           "sources": [
-            "https://github.com/nix-purifiers/yarn-classic-purifier/blob/20854b554af94e4f4b52f4a19700fd0b403ca532/nix/lib/build-yarn-classic-project.nix"
+            "https://github.com/nix-purifiers/yarn-classic-purifier/blob/7071d431233872cf8bcb9495c12248c4de73b8c7/nix/lib/build-yarn-classic-project.nix"
           ],
           "state": "available"
         },
@@ -31210,7 +31219,7 @@
           "minimumArguments": 0,
           "reason": null,
           "sources": [
-            "https://github.com/nix-purifiers/yarn-classic-purifier/blob/20854b554af94e4f4b52f4a19700fd0b403ca532/nix/lib/build-yarn-classic-project.nix"
+            "https://github.com/nix-purifiers/yarn-classic-purifier/blob/7071d431233872cf8bcb9495c12248c4de73b8c7/nix/lib/build-yarn-classic-project.nix"
           ],
           "state": "available"
         },
@@ -31230,7 +31239,7 @@
           "minimumArguments": 0,
           "reason": null,
           "sources": [
-            "https://github.com/nix-purifiers/yarn-classic-purifier/blob/20854b554af94e4f4b52f4a19700fd0b403ca532/nix/lib/build-yarn-classic-project.nix"
+            "https://github.com/nix-purifiers/yarn-classic-purifier/blob/7071d431233872cf8bcb9495c12248c4de73b8c7/nix/lib/build-yarn-classic-project.nix"
           ],
           "state": "available"
         },
@@ -31248,7 +31257,7 @@
         }
       },
       "repository": "nix-purifiers/yarn-classic-purifier",
-      "reviewedRevision": "20854b554af94e4f4b52f4a19700fd0b403ca532",
+      "reviewedRevision": "7071d431233872cf8bcb9495c12248c4de73b8c7",
       "sections": {
         "credits": {
           "use": "cargo"
