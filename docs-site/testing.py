@@ -79,7 +79,8 @@ def build_testing(plan, evidence, destination):
                  'incompatible hard requests and explicit exclusions that remove the transitive constraint.\n\n')
     text += (f'The plan contains {len(plan["projectionCandidates"])} projection candidates awaiting compatibility review. '
              'Native SDK matrices and buildable applicability remain explicit review items.\n\n'
-             '| Project | Required checks | Applicability reviews | Recorded contexts | Passing observations |\n'
+             'The final column counts individual assertions that passed across the recorded contexts.\n\n'
+             '| Project | Required checks | Applicability reviews | Recorded contexts | Assertions passed |\n'
              '|---|---:|---:|---:|---:|\n' + '\n'.join(rows) + '\n')
     text += downloads([('full plan', 'plan.json')] + ([('execution audit', 'audit.json')] if evidence is not None else []))
     target = destination / 'testing'
