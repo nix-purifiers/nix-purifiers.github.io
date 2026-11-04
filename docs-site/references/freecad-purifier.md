@@ -37,6 +37,9 @@ lock location, set `FREECAD_PURIFIER_PROJECT` and `FREECAD_PURIFIER_LOCK`, or
 pass `--project` and `--lock` before an adapter subcommand. Native command
 arguments and working directories are preserved.
 
+Dependency preparation reads the selection and lock without copying the working
+tree into Nix. Project files enter the store only for an explicit Nix build.
+
 ## Scope
 
 The initial provider uses FreeCAD 1.1.4 on Linux. It supports workbench add-ons
