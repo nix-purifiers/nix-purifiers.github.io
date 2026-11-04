@@ -1,0 +1,367 @@
+{
+  "repository": "nix-purifiers/fiji-purifier",
+  "reviewedRevision": "ed546b5a94043d02e068c241503b8c5f9440cfca",
+  "facts": {
+    "tool": {
+      "state": "known",
+      "value": "Fiji plugins"
+    },
+    "inputs": {
+      "state": "known",
+      "value": [
+        "fiji-purifier.json",
+        "Images, ImageJ macros and native Fiji commands"
+      ]
+    },
+    "lockfiles": {
+      "state": "known",
+      "value": [
+        "fiji-purifier.lock.json"
+      ]
+    },
+    "integration": {
+      "state": "known",
+      "value": "wrapper"
+    },
+    "wrapper_required": {
+      "state": "known",
+      "value": true
+    },
+    "relock": {
+      "state": "known",
+      "value": "preserves-pins"
+    },
+    "missing_lock": {
+      "state": "known",
+      "value": "warn-and-native"
+    },
+    "stale_lock": {
+      "state": "known",
+      "value": "fail-with-repair"
+    },
+    "platforms": {
+      "state": "known",
+      "value": [
+        "x86_64-linux"
+      ]
+    },
+    "dependency_sources": {
+      "state": "known",
+      "value": [
+        "Native ImageJ/Fiji update sites and timestamped JAR archives",
+        "Pinned Fiji, Java and ImageJ SDK with scoped update guards"
+      ]
+    },
+    "credentials": {
+      "state": "known",
+      "value": "anonymous-only"
+    },
+    "offline_scope": {
+      "state": "known",
+      "value": "locked-dependencies"
+    },
+    "offline_limits": {
+      "state": "known",
+      "value": [
+        "Prefetch covers selected plugin JARs, transitive JAR dependencies and the SDK closure",
+        "Image IO, project macros and normal HTTP remain available outside the Nix sandbox"
+      ]
+    },
+    "unsupported_features": {
+      "state": "known",
+      "value": [
+        "The current provider supports Java 11 and ImageJ 1.54p on Linux x86_64",
+        "Non-JAR dependencies, additional native/JNI libraries, external classpath/runtime overrides and plugin-specific downloaders need providers",
+        "Locked launches use separate instances to avoid forwarding into an ordinary Fiji process"
+      ]
+    },
+    "runtime_requirements": {
+      "state": "known",
+      "value": [
+        "A directory containing the plugin selection and lock; images can live elsewhere"
+      ]
+    },
+    "nix_builder": {
+      "state": "known",
+      "value": "pkgs.fiji-purifier.buildFijiProject"
+    },
+    "build_isolation": {
+      "state": "known",
+      "value": "nix-sandbox"
+    },
+    "build_outputs": {
+      "state": "known",
+      "value": [
+        "packages",
+        "tests",
+        "release",
+        "fetches"
+      ]
+    },
+    "builder_options": {
+      "state": "known",
+      "value": [
+        "lockFile",
+        "script",
+        "fetchers",
+        "doCheck",
+        "checkCommand"
+      ]
+    },
+    "platform_notes": {
+      "state": "known",
+      "value": [
+        "Native Linux x86_64 site capture, graph verification, original installer replay, GUI menu activation, macro source edits, saved preferences, home-plugin rejection, independent TIFF consumption, exact releases and reproducible SDK/environment/project/release builds pass locally. No other platform is advertised."
+      ]
+    },
+    "projection_incoming": {
+      "state": "known",
+      "value": "unsupported"
+    },
+    "projection_incoming_formats": {
+      "state": "not-applicable",
+      "reason": "No typed project projection adapter is exported by this implementation."
+    },
+    "projection_incoming_interfaces": {
+      "state": "not-applicable",
+      "reason": "No typed project projection interface is implemented."
+    },
+    "projection_incoming_limits": {
+      "state": "not-applicable",
+      "reason": "No incoming typed project projection interface is implemented."
+    },
+    "projection_outgoing": {
+      "state": "known",
+      "value": "unsupported"
+    },
+    "projection_outgoing_formats": {
+      "state": "not-applicable",
+      "reason": "No typed project projection adapter is exported by this implementation."
+    },
+    "projection_outgoing_interfaces": {
+      "state": "not-applicable",
+      "reason": "No typed project projection interface is implemented."
+    },
+    "projection_outgoing_limits": {
+      "state": "not-applicable",
+      "reason": "No outgoing typed project projection interface is implemented."
+    }
+  },
+  "operations": {
+    "lock": {
+      "capability": "fiji-purifier",
+      "arguments": [
+        "--project",
+        {
+          "binding": "project_root"
+        },
+        "--lock",
+        {
+          "binding": "lockfile"
+        },
+        "lock",
+        {
+          "splice": "arguments"
+        }
+      ],
+      "sources": [
+        "https://github.com/nix-purifiers/fiji-purifier/blob/ed546b5a94043d02e068c241503b8c5f9440cfca/fiji_purifier/main.py",
+        "https://github.com/nix-purifiers/fiji-purifier/blob/ed546b5a94043d02e068c241503b8c5f9440cfca/tests/native.py",
+        "https://github.com/nix-purifiers/fiji-purifier/blob/ed546b5a94043d02e068c241503b8c5f9440cfca/tests/gui.py"
+      ]
+    },
+    "prefetch": {
+      "capability": "fiji-purifier",
+      "arguments": [
+        "--project",
+        {
+          "binding": "project_root"
+        },
+        "--lock",
+        {
+          "binding": "lockfile"
+        },
+        "prefetch",
+        {
+          "splice": "arguments"
+        }
+      ],
+      "sources": [
+        "https://github.com/nix-purifiers/fiji-purifier/blob/ed546b5a94043d02e068c241503b8c5f9440cfca/fiji_purifier/main.py",
+        "https://github.com/nix-purifiers/fiji-purifier/blob/ed546b5a94043d02e068c241503b8c5f9440cfca/tests/native.py",
+        "https://github.com/nix-purifiers/fiji-purifier/blob/ed546b5a94043d02e068c241503b8c5f9440cfca/tests/gui.py"
+      ]
+    },
+    "bundle": {
+      "capability": "fiji-purifier",
+      "arguments": [
+        "--project",
+        {
+          "binding": "project_root"
+        },
+        "--lock",
+        {
+          "binding": "lockfile"
+        },
+        "bundle",
+        {
+          "splice": "arguments"
+        }
+      ],
+      "sources": [
+        "https://github.com/nix-purifiers/fiji-purifier/blob/ed546b5a94043d02e068c241503b8c5f9440cfca/fiji_purifier/main.py",
+        "https://github.com/nix-purifiers/fiji-purifier/blob/ed546b5a94043d02e068c241503b8c5f9440cfca/tests/native.py",
+        "https://github.com/nix-purifiers/fiji-purifier/blob/ed546b5a94043d02e068c241503b8c5f9440cfca/tests/gui.py"
+      ]
+    },
+    "publish": {
+      "capability": "fiji-purifier",
+      "arguments": [
+        "--project",
+        {
+          "binding": "project_root"
+        },
+        "--lock",
+        {
+          "binding": "lockfile"
+        },
+        "publish",
+        "--tag",
+        {
+          "binding": "tag"
+        },
+        {
+          "splice": "arguments"
+        }
+      ],
+      "sources": [
+        "https://github.com/nix-purifiers/fiji-purifier/blob/ed546b5a94043d02e068c241503b8c5f9440cfca/fiji_purifier/main.py",
+        "https://github.com/nix-purifiers/fiji-purifier/blob/ed546b5a94043d02e068c241503b8c5f9440cfca/tests/native.py",
+        "https://github.com/nix-purifiers/fiji-purifier/blob/ed546b5a94043d02e068c241503b8c5f9440cfca/tests/gui.py"
+      ]
+    },
+    "update": {
+      "capability": "fiji-purifier",
+      "arguments": [
+        "--project",
+        {
+          "binding": "project_root"
+        },
+        "--lock",
+        {
+          "binding": "lockfile"
+        },
+        "lock",
+        "--update",
+        {
+          "splice": "arguments"
+        }
+      ],
+      "sources": [
+        "https://github.com/nix-purifiers/fiji-purifier/blob/ed546b5a94043d02e068c241503b8c5f9440cfca/fiji_purifier/main.py",
+        "https://github.com/nix-purifiers/fiji-purifier/blob/ed546b5a94043d02e068c241503b8c5f9440cfca/tests/native.py",
+        "https://github.com/nix-purifiers/fiji-purifier/blob/ed546b5a94043d02e068c241503b8c5f9440cfca/tests/gui.py"
+      ]
+    },
+    "build": {
+      "capability": "fiji",
+      "arguments": [
+        "--headless",
+        "--console",
+        "-macro",
+        "build.ijm",
+        "output",
+        {
+          "splice": "arguments"
+        }
+      ],
+      "environment": {
+        "FIJI_PURIFIER_PROJECT": {
+          "binding": "project_root"
+        },
+        "FIJI_PURIFIER_LOCK": {
+          "binding": "lockfile"
+        }
+      },
+      "sources": [
+        "https://github.com/nix-purifiers/fiji-purifier/blob/ed546b5a94043d02e068c241503b8c5f9440cfca/tests/native.py",
+        "https://github.com/nix-purifiers/fiji-purifier/blob/ed546b5a94043d02e068c241503b8c5f9440cfca/examples/minimal/build.py"
+      ]
+    }
+  },
+  "compatibility": {
+    "defaults": [
+      {
+        "role": "native-tool",
+        "name": "Fiji",
+        "version": "20250514-1117",
+        "sourceRevision": "ed546b5a94043d02e068c241503b8c5f9440cfca",
+        "evidence": [
+          "https://github.com/nix-purifiers/fiji-purifier/blob/ed546b5a94043d02e068c241503b8c5f9440cfca/flake.lock",
+          "https://github.com/nix-purifiers/fiji-purifier/blob/ed546b5a94043d02e068c241503b8c5f9440cfca/nix/scope.nix"
+        ]
+      }
+    ],
+    "testedPoints": [
+      {
+        "id": "fiji-20250514-1117-imagej-1.54p-java-11-morpholibj-1.6.5-linux-x86_64",
+        "components": [
+          {
+            "role": "native-tool",
+            "name": "Fiji",
+            "version": "20250514-1117"
+          },
+          {
+            "role": "native-tool-runtime",
+            "name": "Java",
+            "version": "11.0.32.1"
+          },
+          {
+            "role": "native-tool-runtime",
+            "name": "ImageJ",
+            "version": "1.54p"
+          },
+          {
+            "role": "addon-target",
+            "name": "MorphoLibJ",
+            "version": "1.6.5"
+          }
+        ],
+        "system": "x86_64-linux",
+        "operations": [
+          "lock",
+          "update",
+          "prefetch",
+          "build",
+          "bundle",
+          "publish"
+        ],
+        "sourceRevision": "ed546b5a94043d02e068c241503b8c5f9440cfca",
+        "evidence": [
+          "https://github.com/nix-purifiers/fiji-purifier/blob/ed546b5a94043d02e068c241503b8c5f9440cfca/flake.lock",
+          "https://github.com/nix-purifiers/fiji-purifier/blob/ed546b5a94043d02e068c241503b8c5f9440cfca/nix/scope.nix",
+          "https://github.com/nix-purifiers/fiji-purifier/blob/ed546b5a94043d02e068c241503b8c5f9440cfca/tests/native.py",
+          "https://github.com/nix-purifiers/fiji-purifier/blob/ed546b5a94043d02e068c241503b8c5f9440cfca/tests/gui.py",
+          "https://github.com/nix-purifiers/fiji-purifier/blob/ed546b5a94043d02e068c241503b8c5f9440cfca/tests/artifacts.py"
+        ],
+        "notes": [
+          "Native GUI menu activation, 3/4/3 macro edits, immutable JARs, saved preferences, real home-plugin positive/negative controls, scoped modern/legacy updater guards, ordinary project HTTP, exact no-lock streams/status, independent TIFF consumption and reproducible rebuilds pass. Publish uses a fake GitHub client to verify exact upload bytes."
+        ]
+      }
+    ],
+    "supportedRanges": [],
+    "limitations": [
+      {
+        "text": "Only the pinned Linux x86_64 combination has executed. ImageJ core versions other than 1.54p, non-JAR/native dependencies and extra Java runtime or plugin-specific dependency providers need additional support. ImageJ macros can report an error without a failing exit status; output checks are provided for the example.",
+        "sourceRevision": "ed546b5a94043d02e068c241503b8c5f9440cfca",
+        "evidence": [
+          "https://github.com/nix-purifiers/fiji-purifier/blob/ed546b5a94043d02e068c241503b8c5f9440cfca/flake.lock",
+          "https://github.com/nix-purifiers/fiji-purifier/blob/ed546b5a94043d02e068c241503b8c5f9440cfca/nix/scope.nix",
+          "https://github.com/nix-purifiers/fiji-purifier/blob/ed546b5a94043d02e068c241503b8c5f9440cfca/tests/native.py",
+          "https://github.com/nix-purifiers/fiji-purifier/blob/ed546b5a94043d02e068c241503b8c5f9440cfca/tests/gui.py",
+          "https://github.com/nix-purifiers/fiji-purifier/blob/ed546b5a94043d02e068c241503b8c5f9440cfca/tests/artifacts.py"
+        ]
+      }
+    ]
+  }
+}
