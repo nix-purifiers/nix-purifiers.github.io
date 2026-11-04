@@ -1,0 +1,285 @@
+{
+  "repository": "nix-purifiers/esp-idf-purifier",
+  "reviewedRevision": "a9c1f89268fefb5b95fa68350d5724108a127511",
+  "facts": {
+    "tool": {
+      "state": "known",
+      "value": "ESP-IDF components"
+    },
+    "inputs": {
+      "state": "known",
+      "value": [
+        "ESP-IDF CMakeLists.txt",
+        "Project component idf_component.yml files",
+        "sdkconfig or sdkconfig.defaults"
+      ]
+    },
+    "lockfiles": {
+      "state": "known",
+      "value": [
+        "esp-idf-purifier.lock.json",
+        "dependencies.lock"
+      ]
+    },
+    "integration": {
+      "state": "known",
+      "value": "wrapper"
+    },
+    "wrapper_required": {
+      "state": "known",
+      "value": true
+    },
+    "relock": {
+      "state": "known",
+      "value": "preserves-pins"
+    },
+    "missing_lock": {
+      "state": "known",
+      "value": "warn-and-native"
+    },
+    "stale_lock": {
+      "state": "known",
+      "value": "fail-with-repair"
+    },
+    "platforms": {
+      "state": "known",
+      "value": [
+        "x86_64-linux",
+        "aarch64-linux"
+      ]
+    },
+    "dependency_sources": {
+      "state": "known",
+      "value": [
+        "Public ESP Component Registry archives",
+        "Pinned ESP-IDF SDK and framework sources"
+      ]
+    },
+    "credentials": {
+      "state": "known",
+      "value": "anonymous-only"
+    },
+    "offline_scope": {
+      "state": "known",
+      "value": "locked-dependencies"
+    },
+    "offline_limits": {
+      "state": "known",
+      "value": [
+        "Prefetch covers locked component archives, native index snapshots and the provided SDK closure",
+        "Root project code retains ordinary network access; a whole Nix build runs in the sandbox"
+      ]
+    },
+    "unsupported_features": {
+      "state": "known",
+      "value": [
+        "Initial target SDK supports ESP32-C3 and Linux; extra hardware toolchains and debug tools are separate providers",
+        "Git and local dependency sources, authenticated registries and dependencies conditional on Kconfig settings require providers",
+        "SDK framework submodules beyond the exercised ESP32-C3 Wi-Fi set, including Bluetooth, need additional SDK providers"
+      ]
+    },
+    "runtime_requirements": {
+      "state": "known",
+      "value": [
+        "An existing ESP-IDF project configured for ESP32-C3 or Linux"
+      ]
+    },
+    "nix_builder": {
+      "state": "known",
+      "value": "pkgs.esp-idf-purifier.buildEspIdfProject"
+    },
+    "build_isolation": {
+      "state": "known",
+      "value": "nix-sandbox"
+    },
+    "build_outputs": {
+      "state": "known",
+      "value": [
+        "packages",
+        "tests",
+        "release",
+        "fetches"
+      ]
+    },
+    "builder_options": {
+      "state": "known",
+      "value": [
+        "lockFile",
+        "fetchers",
+        "doCheck",
+        "checkCommand"
+      ]
+    },
+    "platform_notes": {
+      "state": "known",
+      "value": [
+        "Native Linux x86-64 builds, runtime checks, firmware inspection and reproducibility are exercised locally. ARM64 evaluates and has native CI configured; that runner has not executed yet."
+      ]
+    },
+    "projection_incoming": {
+      "state": "known",
+      "value": "unsupported"
+    },
+    "projection_incoming_formats": {
+      "state": "not-applicable",
+      "reason": "No typed project projection adapter is exported by this implementation."
+    },
+    "projection_incoming_interfaces": {
+      "state": "not-applicable",
+      "reason": "No typed project projection interface is implemented."
+    },
+    "projection_incoming_limits": {
+      "state": "not-applicable",
+      "reason": "No incoming typed project projection interface is implemented."
+    },
+    "projection_outgoing": {
+      "state": "known",
+      "value": "unsupported"
+    },
+    "projection_outgoing_formats": {
+      "state": "not-applicable",
+      "reason": "No typed project projection adapter is exported by this implementation."
+    },
+    "projection_outgoing_interfaces": {
+      "state": "not-applicable",
+      "reason": "No typed project projection interface is implemented."
+    },
+    "projection_outgoing_limits": {
+      "state": "not-applicable",
+      "reason": "No outgoing typed project projection interface is implemented."
+    }
+  },
+  "operations": {
+    "lock": {
+      "capability": "esp-idf-purifier",
+      "arguments": [
+        "lock",
+        "--project",
+        {
+          "binding": "project_root"
+        },
+        "--lock",
+        {
+          "binding": "lockfile"
+        },
+        {
+          "splice": "arguments"
+        }
+      ],
+      "sources": [
+        "https://github.com/nix-purifiers/esp-idf-purifier/blob/a9c1f89268fefb5b95fa68350d5724108a127511/esp_idf_purifier/main.py",
+        "https://github.com/nix-purifiers/esp-idf-purifier/blob/a9c1f89268fefb5b95fa68350d5724108a127511/tests/native.py"
+      ]
+    },
+    "prefetch": {
+      "capability": "esp-idf-purifier",
+      "arguments": [
+        "prefetch",
+        "--project",
+        {
+          "binding": "project_root"
+        },
+        "--lock",
+        {
+          "binding": "lockfile"
+        },
+        {
+          "splice": "arguments"
+        }
+      ],
+      "sources": [
+        "https://github.com/nix-purifiers/esp-idf-purifier/blob/a9c1f89268fefb5b95fa68350d5724108a127511/esp_idf_purifier/main.py",
+        "https://github.com/nix-purifiers/esp-idf-purifier/blob/a9c1f89268fefb5b95fa68350d5724108a127511/tests/native.py"
+      ]
+    },
+    "bundle": {
+      "capability": "esp-idf-purifier",
+      "arguments": [
+        "bundle",
+        "--project",
+        {
+          "binding": "project_root"
+        },
+        "--lock",
+        {
+          "binding": "lockfile"
+        },
+        {
+          "splice": "arguments"
+        }
+      ],
+      "sources": [
+        "https://github.com/nix-purifiers/esp-idf-purifier/blob/a9c1f89268fefb5b95fa68350d5724108a127511/esp_idf_purifier/main.py",
+        "https://github.com/nix-purifiers/esp-idf-purifier/blob/a9c1f89268fefb5b95fa68350d5724108a127511/tests/native.py"
+      ]
+    },
+    "publish": {
+      "capability": "esp-idf-purifier",
+      "arguments": [
+        "publish",
+        "--project",
+        {
+          "binding": "project_root"
+        },
+        "--lock",
+        {
+          "binding": "lockfile"
+        },
+        "--tag",
+        {
+          "binding": "tag"
+        },
+        {
+          "splice": "arguments"
+        }
+      ],
+      "sources": [
+        "https://github.com/nix-purifiers/esp-idf-purifier/blob/a9c1f89268fefb5b95fa68350d5724108a127511/esp_idf_purifier/main.py",
+        "https://github.com/nix-purifiers/esp-idf-purifier/blob/a9c1f89268fefb5b95fa68350d5724108a127511/tests/native.py"
+      ]
+    },
+    "update": {
+      "capability": "esp-idf-purifier",
+      "arguments": [
+        "lock",
+        "--update",
+        "--project",
+        {
+          "binding": "project_root"
+        },
+        "--lock",
+        {
+          "binding": "lockfile"
+        },
+        {
+          "splice": "arguments"
+        }
+      ],
+      "sources": [
+        "https://github.com/nix-purifiers/esp-idf-purifier/blob/a9c1f89268fefb5b95fa68350d5724108a127511/esp_idf_purifier/main.py",
+        "https://github.com/nix-purifiers/esp-idf-purifier/blob/a9c1f89268fefb5b95fa68350d5724108a127511/tests/native.py"
+      ]
+    },
+    "build": {
+      "capability": "idf.py",
+      "arguments": [
+        "build",
+        {
+          "splice": "arguments"
+        }
+      ],
+      "environment": {
+        "ESP_IDF_PURIFIER_PROJECT": {
+          "binding": "project_root"
+        },
+        "ESP_IDF_PURIFIER_LOCK": {
+          "binding": "lockfile"
+        }
+      },
+      "sources": [
+        "https://github.com/nix-purifiers/esp-idf-purifier/blob/a9c1f89268fefb5b95fa68350d5724108a127511/esp_idf_purifier/main.py",
+        "https://github.com/nix-purifiers/esp-idf-purifier/blob/a9c1f89268fefb5b95fa68350d5724108a127511/tests/native.py"
+      ]
+    }
+  }
+}
