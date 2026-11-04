@@ -1,0 +1,22 @@
+{
+  "summary": "Joplin with locked, Nix-resolved plug-ins.",
+  "values": {
+    "quickstart": "nix shell 'github:nix-purifiers/joplin-purifier'\njoplin-purifier lock --update\njoplin-desktop"
+  },
+  "sections": {
+    "editor": {
+      "mode": "omit",
+      "template": null,
+      "reason": "No specific editor protocol integration has been established by the reviewed implementation."
+    },
+    "nix_builds": {
+      "template": "native"
+    },
+    "integration": {
+      "template": "wrapper"
+    },
+    "workflow": {
+      "template": "capture-update"
+    }
+  }
+}

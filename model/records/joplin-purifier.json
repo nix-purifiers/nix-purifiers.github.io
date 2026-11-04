@@ -1,0 +1,349 @@
+{
+  "repository": "nix-purifiers/joplin-purifier",
+  "reviewedRevision": "24660498c294841721be1fa651507b3c46243324",
+  "facts": {
+    "tool": {
+      "state": "known",
+      "value": "Joplin plug-ins"
+    },
+    "inputs": {
+      "state": "known",
+      "value": [
+        "joplin-purifier.json",
+        "Native Joplin profiles, notes and scripted projects"
+      ]
+    },
+    "lockfiles": {
+      "state": "known",
+      "value": [
+        "joplin-purifier.lock.json"
+      ]
+    },
+    "integration": {
+      "state": "known",
+      "value": "wrapper"
+    },
+    "wrapper_required": {
+      "state": "known",
+      "value": true
+    },
+    "relock": {
+      "state": "known",
+      "value": "preserves-pins"
+    },
+    "missing_lock": {
+      "state": "known",
+      "value": "warn-and-native"
+    },
+    "stale_lock": {
+      "state": "known",
+      "value": "fail-with-repair"
+    },
+    "platforms": {
+      "state": "known",
+      "value": [
+        "x86_64-linux"
+      ]
+    },
+    "dependency_sources": {
+      "state": "known",
+      "value": [
+        "Native Joplin official plug-in catalog and release archives",
+        "Pinned Joplin Desktop SDK and its bundled plug-ins"
+      ]
+    },
+    "credentials": {
+      "state": "known",
+      "value": "anonymous-only"
+    },
+    "offline_scope": {
+      "state": "known",
+      "value": "locked-dependencies"
+    },
+    "offline_limits": {
+      "state": "known",
+      "value": [
+        "Prefetch retains selected archives, native installation outputs, bundled plug-ins and SDK closure",
+        "Ordinary application and plug-in networking remains available outside the Nix sandbox"
+      ]
+    },
+    "unsupported_features": {
+      "state": "known",
+      "value": [
+        "The current provider targets the pinned Joplin Desktop 3.7.21 application bundle on x86_64 Linux",
+        "Native plug-in installation, updates, deletion and development paths are frozen in locked sessions",
+        "An occupied native profile must be closed before a locked launch"
+      ]
+    },
+    "runtime_requirements": {
+      "state": "known",
+      "value": [
+        "A working directory containing the plug-in selection and lock",
+        "A desktop display for interactive Joplin; scripted projects use a private virtual display"
+      ]
+    },
+    "nix_builder": {
+      "state": "known",
+      "value": "pkgs.joplin-purifier.buildJoplinProject"
+    },
+    "build_isolation": {
+      "state": "known",
+      "value": "nix-sandbox"
+    },
+    "build_outputs": {
+      "state": "known",
+      "value": [
+        "packages",
+        "tests",
+        "release",
+        "fetches"
+      ]
+    },
+    "builder_options": {
+      "state": "known",
+      "value": [
+        "lockFile",
+        "script",
+        "fetchers",
+        "doCheck",
+        "checkCommand"
+      ]
+    },
+    "platform_notes": {
+      "state": "known",
+      "value": [
+        "Native catalog capture, offline native installation, actual Combine Notes commands and Markdown export/import, 42/43/42 edits, persistent settings/data, development-path controls, profile exclusion, ordinary HTTP and exact fallback pass on x86_64 Linux."
+      ]
+    },
+    "projection_incoming": {
+      "state": "known",
+      "value": "unsupported"
+    },
+    "projection_incoming_formats": {
+      "state": "not-applicable",
+      "reason": "No typed project projection adapter is exported by this implementation."
+    },
+    "projection_incoming_interfaces": {
+      "state": "not-applicable",
+      "reason": "No typed project projection interface is implemented."
+    },
+    "projection_incoming_limits": {
+      "state": "not-applicable",
+      "reason": "No incoming typed project projection interface is implemented."
+    },
+    "projection_outgoing": {
+      "state": "known",
+      "value": "unsupported"
+    },
+    "projection_outgoing_formats": {
+      "state": "not-applicable",
+      "reason": "No typed project projection adapter is exported by this implementation."
+    },
+    "projection_outgoing_interfaces": {
+      "state": "not-applicable",
+      "reason": "No typed project projection interface is implemented."
+    },
+    "projection_outgoing_limits": {
+      "state": "not-applicable",
+      "reason": "No outgoing typed project projection interface is implemented."
+    }
+  },
+  "operations": {
+    "lock": {
+      "capability": "joplin-purifier",
+      "arguments": [
+        "--project",
+        {
+          "binding": "project_root"
+        },
+        "--lock",
+        {
+          "binding": "lockfile"
+        },
+        "lock",
+        {
+          "splice": "arguments"
+        }
+      ],
+      "sources": [
+        "https://github.com/nix-purifiers/joplin-purifier/blob/24660498c294841721be1fa651507b3c46243324/joplin_purifier/main.py",
+        "https://github.com/nix-purifiers/joplin-purifier/blob/24660498c294841721be1fa651507b3c46243324/tests/conformance.py"
+      ]
+    },
+    "prefetch": {
+      "capability": "joplin-purifier",
+      "arguments": [
+        "--project",
+        {
+          "binding": "project_root"
+        },
+        "--lock",
+        {
+          "binding": "lockfile"
+        },
+        "prefetch",
+        {
+          "splice": "arguments"
+        }
+      ],
+      "sources": [
+        "https://github.com/nix-purifiers/joplin-purifier/blob/24660498c294841721be1fa651507b3c46243324/joplin_purifier/main.py",
+        "https://github.com/nix-purifiers/joplin-purifier/blob/24660498c294841721be1fa651507b3c46243324/tests/conformance.py"
+      ]
+    },
+    "bundle": {
+      "capability": "joplin-purifier",
+      "arguments": [
+        "--project",
+        {
+          "binding": "project_root"
+        },
+        "--lock",
+        {
+          "binding": "lockfile"
+        },
+        "bundle",
+        {
+          "splice": "arguments"
+        }
+      ],
+      "sources": [
+        "https://github.com/nix-purifiers/joplin-purifier/blob/24660498c294841721be1fa651507b3c46243324/joplin_purifier/main.py",
+        "https://github.com/nix-purifiers/joplin-purifier/blob/24660498c294841721be1fa651507b3c46243324/tests/conformance.py"
+      ]
+    },
+    "publish": {
+      "capability": "joplin-purifier",
+      "arguments": [
+        "--project",
+        {
+          "binding": "project_root"
+        },
+        "--lock",
+        {
+          "binding": "lockfile"
+        },
+        "publish",
+        "--tag",
+        {
+          "binding": "tag"
+        },
+        {
+          "splice": "arguments"
+        }
+      ],
+      "sources": [
+        "https://github.com/nix-purifiers/joplin-purifier/blob/24660498c294841721be1fa651507b3c46243324/joplin_purifier/main.py",
+        "https://github.com/nix-purifiers/joplin-purifier/blob/24660498c294841721be1fa651507b3c46243324/tests/conformance.py"
+      ]
+    },
+    "update": {
+      "capability": "joplin-purifier",
+      "arguments": [
+        "--project",
+        {
+          "binding": "project_root"
+        },
+        "--lock",
+        {
+          "binding": "lockfile"
+        },
+        "lock",
+        "--update",
+        {
+          "splice": "arguments"
+        }
+      ],
+      "sources": [
+        "https://github.com/nix-purifiers/joplin-purifier/blob/24660498c294841721be1fa651507b3c46243324/joplin_purifier/main.py",
+        "https://github.com/nix-purifiers/joplin-purifier/blob/24660498c294841721be1fa651507b3c46243324/tests/conformance.py"
+      ]
+    },
+    "build": {
+      "capability": "joplin-purifier",
+      "arguments": [
+        "--project",
+        {
+          "binding": "project_root"
+        },
+        "--lock",
+        {
+          "binding": "lockfile"
+        },
+        "run",
+        "build.cjs",
+        {
+          "splice": "arguments"
+        }
+      ],
+      "sources": [
+        "https://github.com/nix-purifiers/joplin-purifier/blob/24660498c294841721be1fa651507b3c46243324/joplin_purifier/main.py",
+        "https://github.com/nix-purifiers/joplin-purifier/blob/24660498c294841721be1fa651507b3c46243324/tests/conformance.py"
+      ]
+    }
+  },
+  "compatibility": {
+    "defaults": [
+      {
+        "role": "native-tool",
+        "name": "Joplin Desktop",
+        "version": "3.7.21",
+        "sourceRevision": "24660498c294841721be1fa651507b3c46243324",
+        "evidence": [
+          "https://github.com/nix-purifiers/joplin-purifier/blob/24660498c294841721be1fa651507b3c46243324/flake.lock",
+          "https://github.com/nix-purifiers/joplin-purifier/blob/24660498c294841721be1fa651507b3c46243324/nix/scope.nix"
+        ]
+      }
+    ],
+    "testedPoints": [
+      {
+        "id": "joplin-3.7.21-combine-notes-1.2.3-linux-x86_64",
+        "components": [
+          {
+            "role": "native-tool",
+            "name": "Joplin Desktop",
+            "version": "3.7.21"
+          },
+          {
+            "role": "addon-target",
+            "name": "Combine Notes",
+            "version": "1.2.3"
+          }
+        ],
+        "system": "x86_64-linux",
+        "operations": [
+          "lock",
+          "update",
+          "prefetch",
+          "build",
+          "bundle",
+          "publish"
+        ],
+        "sourceRevision": "24660498c294841721be1fa651507b3c46243324",
+        "evidence": [
+          "https://github.com/nix-purifiers/joplin-purifier/blob/24660498c294841721be1fa651507b3c46243324/flake.lock",
+          "https://github.com/nix-purifiers/joplin-purifier/blob/24660498c294841721be1fa651507b3c46243324/nix/scope.nix",
+          "https://github.com/nix-purifiers/joplin-purifier/blob/24660498c294841721be1fa651507b3c46243324/tests/conformance.py",
+          "https://github.com/nix-purifiers/joplin-purifier/blob/24660498c294841721be1fa651507b3c46243324/tests/desktop.py",
+          "https://github.com/nix-purifiers/joplin-purifier/blob/24660498c294841721be1fa651507b3c46243324/tests/artifacts.py",
+          "https://github.com/nix-purifiers/joplin-purifier/blob/24660498c294841721be1fa651507b3c46243324/tests/capture.py",
+          "https://github.com/nix-purifiers/joplin-purifier/blob/24660498c294841721be1fa651507b3c46243324/tests/fallback.py"
+        ],
+        "notes": [
+          "Native repository resolution and installer replay, actual note combination/export, independent native import, source restoration, immutable code paths, mutable settings/data, development-path controls, profile exclusion, ordinary HTTP, exact fallback and exact release archives pass. Publish uses a fake client."
+        ]
+      }
+    ],
+    "supportedRanges": [],
+    "limitations": [
+      {
+        "text": "Only x86_64 Linux is exported and tested. The SDK provider patches checked locations in the pinned application bundle; other versions need a validated provider.",
+        "sourceRevision": "24660498c294841721be1fa651507b3c46243324",
+        "evidence": [
+          "https://github.com/nix-purifiers/joplin-purifier/blob/24660498c294841721be1fa651507b3c46243324/flake.lock",
+          "https://github.com/nix-purifiers/joplin-purifier/blob/24660498c294841721be1fa651507b3c46243324/nix/scope.nix"
+        ]
+      }
+    ]
+  }
+}
