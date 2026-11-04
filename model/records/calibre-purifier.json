@@ -1,0 +1,359 @@
+{
+  "repository": "nix-purifiers/calibre-purifier",
+  "reviewedRevision": "a802d8acc97b5f960293242cff4857feeae0c894",
+  "facts": {
+    "tool": {
+      "state": "known",
+      "value": "calibre plugins"
+    },
+    "inputs": {
+      "state": "known",
+      "value": [
+        "calibre-purifier.json",
+        "Book libraries, conversion commands and Python scripts"
+      ]
+    },
+    "lockfiles": {
+      "state": "known",
+      "value": [
+        "calibre-purifier.lock.json"
+      ]
+    },
+    "integration": {
+      "state": "known",
+      "value": "wrapper"
+    },
+    "wrapper_required": {
+      "state": "known",
+      "value": true
+    },
+    "relock": {
+      "state": "known",
+      "value": "preserves-pins"
+    },
+    "missing_lock": {
+      "state": "known",
+      "value": "warn-and-native"
+    },
+    "stale_lock": {
+      "state": "known",
+      "value": "fail-with-repair"
+    },
+    "platforms": {
+      "state": "known",
+      "value": [
+        "x86_64-linux",
+        "aarch64-linux"
+      ]
+    },
+    "dependency_sources": {
+      "state": "known",
+      "value": [
+        "Official calibre plugin archives",
+        "Pinned calibre SDK and bundled native providers"
+      ]
+    },
+    "credentials": {
+      "state": "known",
+      "value": "anonymous-only"
+    },
+    "offline_scope": {
+      "state": "known",
+      "value": "locked-dependencies"
+    },
+    "offline_limits": {
+      "state": "known",
+      "value": [
+        "Prefetch covers locked plugin archives and the calibre SDK closure",
+        "Ordinary project networking remains available; whole Nix builds run in the sandbox"
+      ]
+    },
+    "unsupported_features": {
+      "state": "known",
+      "value": [
+        "Additional native libraries and plugin-managed dependency downloads need separate providers",
+        "Mutable plugin registration and metadata-source Python updates are disabled in locked profiles"
+      ]
+    },
+    "runtime_requirements": {
+      "state": "known",
+      "value": [
+        "A directory containing the plugin selection and lock"
+      ]
+    },
+    "nix_builder": {
+      "state": "known",
+      "value": "pkgs.calibre-purifier.buildCalibreProject"
+    },
+    "build_isolation": {
+      "state": "known",
+      "value": "nix-sandbox"
+    },
+    "build_outputs": {
+      "state": "known",
+      "value": [
+        "packages",
+        "tests",
+        "release",
+        "fetches"
+      ]
+    },
+    "builder_options": {
+      "state": "known",
+      "value": [
+        "lockFile",
+        "script",
+        "fetchers",
+        "doCheck",
+        "checkCommand"
+      ]
+    },
+    "platform_notes": {
+      "state": "known",
+      "value": [
+        "Native Linux x86_64 catalog capture, immutable archive replay, GUI action activation, worker plugin loading, source edits, preferences, native artifact consumption, exact releases, database exclusion and reproducible rebuilds pass locally. ARM64 evaluates with CI configured; native ARM64 has not executed."
+      ]
+    },
+    "projection_incoming": {
+      "state": "known",
+      "value": "unsupported"
+    },
+    "projection_incoming_formats": {
+      "state": "not-applicable",
+      "reason": "No typed project projection adapter is exported by this implementation."
+    },
+    "projection_incoming_interfaces": {
+      "state": "not-applicable",
+      "reason": "No typed project projection interface is implemented."
+    },
+    "projection_incoming_limits": {
+      "state": "not-applicable",
+      "reason": "No incoming typed project projection interface is implemented."
+    },
+    "projection_outgoing": {
+      "state": "known",
+      "value": "unsupported"
+    },
+    "projection_outgoing_formats": {
+      "state": "not-applicable",
+      "reason": "No typed project projection adapter is exported by this implementation."
+    },
+    "projection_outgoing_interfaces": {
+      "state": "not-applicable",
+      "reason": "No typed project projection interface is implemented."
+    },
+    "projection_outgoing_limits": {
+      "state": "not-applicable",
+      "reason": "No outgoing typed project projection interface is implemented."
+    }
+  },
+  "operations": {
+    "lock": {
+      "capability": "calibre-purifier",
+      "arguments": [
+        "--project",
+        {
+          "binding": "project_root"
+        },
+        "--lock",
+        {
+          "binding": "lockfile"
+        },
+        "lock",
+        {
+          "splice": "arguments"
+        }
+      ],
+      "sources": [
+        "https://github.com/nix-purifiers/calibre-purifier/blob/a802d8acc97b5f960293242cff4857feeae0c894/calibre_purifier/main.py",
+        "https://github.com/nix-purifiers/calibre-purifier/blob/a802d8acc97b5f960293242cff4857feeae0c894/tests/native.py",
+        "https://github.com/nix-purifiers/calibre-purifier/blob/a802d8acc97b5f960293242cff4857feeae0c894/tests/gui.py"
+      ]
+    },
+    "prefetch": {
+      "capability": "calibre-purifier",
+      "arguments": [
+        "--project",
+        {
+          "binding": "project_root"
+        },
+        "--lock",
+        {
+          "binding": "lockfile"
+        },
+        "prefetch",
+        {
+          "splice": "arguments"
+        }
+      ],
+      "sources": [
+        "https://github.com/nix-purifiers/calibre-purifier/blob/a802d8acc97b5f960293242cff4857feeae0c894/calibre_purifier/main.py",
+        "https://github.com/nix-purifiers/calibre-purifier/blob/a802d8acc97b5f960293242cff4857feeae0c894/tests/native.py",
+        "https://github.com/nix-purifiers/calibre-purifier/blob/a802d8acc97b5f960293242cff4857feeae0c894/tests/gui.py"
+      ]
+    },
+    "bundle": {
+      "capability": "calibre-purifier",
+      "arguments": [
+        "--project",
+        {
+          "binding": "project_root"
+        },
+        "--lock",
+        {
+          "binding": "lockfile"
+        },
+        "bundle",
+        {
+          "splice": "arguments"
+        }
+      ],
+      "sources": [
+        "https://github.com/nix-purifiers/calibre-purifier/blob/a802d8acc97b5f960293242cff4857feeae0c894/calibre_purifier/main.py",
+        "https://github.com/nix-purifiers/calibre-purifier/blob/a802d8acc97b5f960293242cff4857feeae0c894/tests/native.py",
+        "https://github.com/nix-purifiers/calibre-purifier/blob/a802d8acc97b5f960293242cff4857feeae0c894/tests/gui.py"
+      ]
+    },
+    "publish": {
+      "capability": "calibre-purifier",
+      "arguments": [
+        "--project",
+        {
+          "binding": "project_root"
+        },
+        "--lock",
+        {
+          "binding": "lockfile"
+        },
+        "publish",
+        "--tag",
+        {
+          "binding": "tag"
+        },
+        {
+          "splice": "arguments"
+        }
+      ],
+      "sources": [
+        "https://github.com/nix-purifiers/calibre-purifier/blob/a802d8acc97b5f960293242cff4857feeae0c894/calibre_purifier/main.py",
+        "https://github.com/nix-purifiers/calibre-purifier/blob/a802d8acc97b5f960293242cff4857feeae0c894/tests/native.py",
+        "https://github.com/nix-purifiers/calibre-purifier/blob/a802d8acc97b5f960293242cff4857feeae0c894/tests/gui.py"
+      ]
+    },
+    "update": {
+      "capability": "calibre-purifier",
+      "arguments": [
+        "--project",
+        {
+          "binding": "project_root"
+        },
+        "--lock",
+        {
+          "binding": "lockfile"
+        },
+        "lock",
+        "--update",
+        {
+          "splice": "arguments"
+        }
+      ],
+      "sources": [
+        "https://github.com/nix-purifiers/calibre-purifier/blob/a802d8acc97b5f960293242cff4857feeae0c894/calibre_purifier/main.py",
+        "https://github.com/nix-purifiers/calibre-purifier/blob/a802d8acc97b5f960293242cff4857feeae0c894/tests/native.py",
+        "https://github.com/nix-purifiers/calibre-purifier/blob/a802d8acc97b5f960293242cff4857feeae0c894/tests/gui.py"
+      ]
+    },
+    "build": {
+      "capability": "calibre-debug",
+      "arguments": [
+        "--exec-file",
+        "build.py",
+        {
+          "splice": "arguments"
+        }
+      ],
+      "environment": {
+        "CALIBRE_PURIFIER_PROJECT": {
+          "binding": "project_root"
+        },
+        "CALIBRE_PURIFIER_LOCK": {
+          "binding": "lockfile"
+        }
+      },
+      "sources": [
+        "https://github.com/nix-purifiers/calibre-purifier/blob/a802d8acc97b5f960293242cff4857feeae0c894/tests/native.py",
+        "https://github.com/nix-purifiers/calibre-purifier/blob/a802d8acc97b5f960293242cff4857feeae0c894/examples/minimal/build.py"
+      ]
+    }
+  },
+  "compatibility": {
+    "defaults": [
+      {
+        "role": "native-tool",
+        "name": "calibre",
+        "version": "9.17.0",
+        "sourceRevision": "a802d8acc97b5f960293242cff4857feeae0c894",
+        "evidence": [
+          "https://github.com/nix-purifiers/calibre-purifier/blob/a802d8acc97b5f960293242cff4857feeae0c894/flake.lock",
+          "https://github.com/nix-purifiers/calibre-purifier/blob/a802d8acc97b5f960293242cff4857feeae0c894/nix/scope.nix"
+        ]
+      }
+    ],
+    "testedPoints": [
+      {
+        "id": "calibre-9.17.0-epubmerge-3.3.0-linux-x86_64",
+        "components": [
+          {
+            "role": "native-tool",
+            "name": "calibre",
+            "version": "9.17.0"
+          },
+          {
+            "role": "native-tool-runtime",
+            "name": "Python",
+            "version": "3.14.8"
+          },
+          {
+            "role": "addon-target",
+            "name": "EpubMerge",
+            "version": "3.3.0"
+          }
+        ],
+        "system": "x86_64-linux",
+        "operations": [
+          "lock",
+          "update",
+          "prefetch",
+          "build",
+          "bundle",
+          "publish"
+        ],
+        "sourceRevision": "a802d8acc97b5f960293242cff4857feeae0c894",
+        "evidence": [
+          "https://github.com/nix-purifiers/calibre-purifier/blob/a802d8acc97b5f960293242cff4857feeae0c894/flake.lock",
+          "https://github.com/nix-purifiers/calibre-purifier/blob/a802d8acc97b5f960293242cff4857feeae0c894/nix/scope.nix",
+          "https://github.com/nix-purifiers/calibre-purifier/blob/a802d8acc97b5f960293242cff4857feeae0c894/tests/native.py",
+          "https://github.com/nix-purifiers/calibre-purifier/blob/a802d8acc97b5f960293242cff4857feeae0c894/tests/gui.py",
+          "https://github.com/nix-purifiers/calibre-purifier/blob/a802d8acc97b5f960293242cff4857feeae0c894/tests/artifacts.py"
+        ],
+        "notes": [
+          "Native GUI activation, source edits, immutable plugins, worker loading, saved preferences, normal project HTTP, isolated GUI generation with shared database exclusion, exact no-lock fallback and reproducible text outputs pass locally. Publish uses a fake GitHub client to verify exact upload bytes."
+        ]
+      }
+    ],
+    "supportedRanges": [],
+    "limitations": [
+      {
+        "text": "Only the pinned combination has executed locally. ARM64 evaluates and has CI configured, but no native ARM64 execution is claimed. EPUB timestamps and generated identifiers can vary; the example exports reproducible plain text. Extra plugin dependency providers require separate support.",
+        "sourceRevision": "a802d8acc97b5f960293242cff4857feeae0c894",
+        "evidence": [
+          "https://github.com/nix-purifiers/calibre-purifier/blob/a802d8acc97b5f960293242cff4857feeae0c894/flake.lock",
+          "https://github.com/nix-purifiers/calibre-purifier/blob/a802d8acc97b5f960293242cff4857feeae0c894/nix/scope.nix",
+          "https://github.com/nix-purifiers/calibre-purifier/blob/a802d8acc97b5f960293242cff4857feeae0c894/tests/native.py",
+          "https://github.com/nix-purifiers/calibre-purifier/blob/a802d8acc97b5f960293242cff4857feeae0c894/tests/gui.py",
+          "https://github.com/nix-purifiers/calibre-purifier/blob/a802d8acc97b5f960293242cff4857feeae0c894/tests/artifacts.py"
+        ]
+      }
+    ]
+  }
+}

@@ -4013,6 +4013,542 @@
       },
       "version": 1
     },
+    "calibre-purifier": {
+      "compatibility": {
+        "defaults": [
+          {
+            "evidence": [
+              "https://github.com/nix-purifiers/calibre-purifier/blob/a802d8acc97b5f960293242cff4857feeae0c894/flake.lock",
+              "https://github.com/nix-purifiers/calibre-purifier/blob/a802d8acc97b5f960293242cff4857feeae0c894/nix/scope.nix"
+            ],
+            "name": "calibre",
+            "role": "native-tool",
+            "sourceRevision": "a802d8acc97b5f960293242cff4857feeae0c894",
+            "version": "9.17.0"
+          }
+        ],
+        "limitations": [
+          {
+            "evidence": [
+              "https://github.com/nix-purifiers/calibre-purifier/blob/a802d8acc97b5f960293242cff4857feeae0c894/flake.lock",
+              "https://github.com/nix-purifiers/calibre-purifier/blob/a802d8acc97b5f960293242cff4857feeae0c894/nix/scope.nix",
+              "https://github.com/nix-purifiers/calibre-purifier/blob/a802d8acc97b5f960293242cff4857feeae0c894/tests/native.py",
+              "https://github.com/nix-purifiers/calibre-purifier/blob/a802d8acc97b5f960293242cff4857feeae0c894/tests/gui.py",
+              "https://github.com/nix-purifiers/calibre-purifier/blob/a802d8acc97b5f960293242cff4857feeae0c894/tests/artifacts.py"
+            ],
+            "sourceRevision": "a802d8acc97b5f960293242cff4857feeae0c894",
+            "text": "Only the pinned combination has executed locally. ARM64 evaluates and has CI configured, but no native ARM64 execution is claimed. EPUB timestamps and generated identifiers can vary; the example exports reproducible plain text. Extra plugin dependency providers require separate support."
+          }
+        ],
+        "supportedRanges": [],
+        "testedPoints": [
+          {
+            "components": [
+              {
+                "name": "calibre",
+                "role": "native-tool",
+                "version": "9.17.0"
+              },
+              {
+                "name": "Python",
+                "role": "native-tool-runtime",
+                "version": "3.14.8"
+              },
+              {
+                "name": "EpubMerge",
+                "role": "addon-target",
+                "version": "3.3.0"
+              }
+            ],
+            "evidence": [
+              "https://github.com/nix-purifiers/calibre-purifier/blob/a802d8acc97b5f960293242cff4857feeae0c894/flake.lock",
+              "https://github.com/nix-purifiers/calibre-purifier/blob/a802d8acc97b5f960293242cff4857feeae0c894/nix/scope.nix",
+              "https://github.com/nix-purifiers/calibre-purifier/blob/a802d8acc97b5f960293242cff4857feeae0c894/tests/native.py",
+              "https://github.com/nix-purifiers/calibre-purifier/blob/a802d8acc97b5f960293242cff4857feeae0c894/tests/gui.py",
+              "https://github.com/nix-purifiers/calibre-purifier/blob/a802d8acc97b5f960293242cff4857feeae0c894/tests/artifacts.py"
+            ],
+            "id": "calibre-9.17.0-epubmerge-3.3.0-linux-x86_64",
+            "notes": [
+              "Native GUI activation, source edits, immutable plugins, worker loading, saved preferences, normal project HTTP, isolated GUI generation with shared database exclusion, exact no-lock fallback and reproducible text outputs pass locally. Publish uses a fake GitHub client to verify exact upload bytes."
+            ],
+            "operations": [
+              "lock",
+              "update",
+              "prefetch",
+              "build",
+              "bundle",
+              "publish"
+            ],
+            "sourceRevision": "a802d8acc97b5f960293242cff4857feeae0c894",
+            "system": "x86_64-linux"
+          }
+        ]
+      },
+      "facts": {
+        "build_engine": {
+          "reason": "This capability is not established by the reviewed integration record.",
+          "state": "unknown"
+        },
+        "build_isolation": {
+          "sources": [],
+          "state": "known",
+          "value": "nix-sandbox"
+        },
+        "build_outputs": {
+          "sources": [],
+          "state": "known",
+          "value": [
+            "packages",
+            "tests",
+            "release",
+            "fetches"
+          ]
+        },
+        "builder_options": {
+          "sources": [],
+          "state": "known",
+          "value": [
+            "lockFile",
+            "script",
+            "fetchers",
+            "doCheck",
+            "checkCommand"
+          ]
+        },
+        "credentials": {
+          "sources": [],
+          "state": "known",
+          "value": "anonymous-only"
+        },
+        "dependency_sources": {
+          "sources": [],
+          "state": "known",
+          "value": [
+            "Official calibre plugin archives",
+            "Pinned calibre SDK and bundled native providers"
+          ]
+        },
+        "editor_completion": {
+          "reason": "This capability is not established by the reviewed integration record.",
+          "state": "unknown"
+        },
+        "editor_dependency_sources": {
+          "reason": "This capability is not established by the reviewed integration record.",
+          "state": "unknown"
+        },
+        "editor_diagnostics": {
+          "reason": "This capability is not established by the reviewed integration record.",
+          "state": "unknown"
+        },
+        "editor_metadata_format": {
+          "reason": "This capability is not established by the reviewed integration record.",
+          "state": "unknown"
+        },
+        "editor_navigation": {
+          "reason": "This capability is not established by the reviewed integration record.",
+          "state": "unknown"
+        },
+        "editor_offline": {
+          "reason": "This capability is not established by the reviewed integration record.",
+          "state": "unknown"
+        },
+        "editor_protocol": {
+          "reason": "This capability is not established by the reviewed integration record.",
+          "state": "unknown"
+        },
+        "editor_supported": {
+          "reason": "This capability is not established by the reviewed integration record.",
+          "state": "unknown"
+        },
+        "generated_cache_directory": {
+          "reason": "This capability is not established by the reviewed integration record.",
+          "state": "unknown"
+        },
+        "inputs": {
+          "sources": [],
+          "state": "known",
+          "value": [
+            "calibre-purifier.json",
+            "Book libraries, conversion commands and Python scripts"
+          ]
+        },
+        "integration": {
+          "sources": [],
+          "state": "known",
+          "value": "wrapper"
+        },
+        "lock_identity": {
+          "reason": "This capability is not established by the reviewed integration record.",
+          "state": "unknown"
+        },
+        "lockfiles": {
+          "sources": [],
+          "state": "known",
+          "value": [
+            "calibre-purifier.lock.json"
+          ]
+        },
+        "missing_lock": {
+          "sources": [],
+          "state": "known",
+          "value": "warn-and-native"
+        },
+        "named_update_example": {
+          "reason": "This capability is not established by the reviewed integration record.",
+          "state": "unknown"
+        },
+        "native_plugin_bootstrap": {
+          "reason": "This capability is not established by the reviewed integration record.",
+          "state": "unknown"
+        },
+        "native_plugin_coordinate": {
+          "reason": "This capability is not established by the reviewed integration record.",
+          "state": "unknown"
+        },
+        "native_plugin_java_target": {
+          "reason": "This capability is not established by the reviewed integration record.",
+          "state": "unknown"
+        },
+        "native_plugin_repository": {
+          "reason": "This capability is not established by the reviewed integration record.",
+          "state": "unknown"
+        },
+        "nix_builder": {
+          "sources": [],
+          "state": "known",
+          "value": "pkgs.calibre-purifier.buildCalibreProject"
+        },
+        "offline_limits": {
+          "sources": [],
+          "state": "known",
+          "value": [
+            "Prefetch covers locked plugin archives and the calibre SDK closure",
+            "Ordinary project networking remains available; whole Nix builds run in the sandbox"
+          ]
+        },
+        "offline_scope": {
+          "sources": [],
+          "state": "known",
+          "value": "locked-dependencies"
+        },
+        "platform_notes": {
+          "sources": [],
+          "state": "known",
+          "value": [
+            "Native Linux x86_64 catalog capture, immutable archive replay, GUI action activation, worker plugin loading, source edits, preferences, native artifact consumption, exact releases, database exclusion and reproducible rebuilds pass locally. ARM64 evaluates with CI configured; native ARM64 has not executed."
+          ]
+        },
+        "platforms": {
+          "sources": [],
+          "state": "known",
+          "value": [
+            "x86_64-linux",
+            "aarch64-linux"
+          ]
+        },
+        "prefetch_components": {
+          "reason": "This capability is not established by the reviewed integration record.",
+          "state": "unknown"
+        },
+        "projection_incoming": {
+          "sources": [],
+          "state": "known",
+          "value": "unsupported"
+        },
+        "projection_incoming_formats": {
+          "reason": "No typed project projection adapter is exported by this implementation.",
+          "state": "not-applicable"
+        },
+        "projection_incoming_interfaces": {
+          "reason": "No typed project projection interface is implemented.",
+          "state": "not-applicable"
+        },
+        "projection_incoming_limits": {
+          "reason": "No incoming typed project projection interface is implemented.",
+          "state": "not-applicable"
+        },
+        "projection_outgoing": {
+          "sources": [],
+          "state": "known",
+          "value": "unsupported"
+        },
+        "projection_outgoing_formats": {
+          "reason": "No typed project projection adapter is exported by this implementation.",
+          "state": "not-applicable"
+        },
+        "projection_outgoing_interfaces": {
+          "reason": "No typed project projection interface is implemented.",
+          "state": "not-applicable"
+        },
+        "projection_outgoing_limits": {
+          "reason": "No outgoing typed project projection interface is implemented.",
+          "state": "not-applicable"
+        },
+        "relock": {
+          "sources": [],
+          "state": "known",
+          "value": "preserves-pins"
+        },
+        "runtime_requirements": {
+          "sources": [],
+          "state": "known",
+          "value": [
+            "A directory containing the plugin selection and lock"
+          ]
+        },
+        "stale_lock": {
+          "sources": [],
+          "state": "known",
+          "value": "fail-with-repair"
+        },
+        "supported_native_commands": {
+          "reason": "This capability is not established by the reviewed integration record.",
+          "state": "unknown"
+        },
+        "tested_toolchain": {
+          "reason": "This capability is not established by the reviewed integration record.",
+          "state": "unknown"
+        },
+        "tool": {
+          "sources": [],
+          "state": "known",
+          "value": "calibre plugins"
+        },
+        "unsupported_features": {
+          "sources": [],
+          "state": "known",
+          "value": [
+            "Additional native libraries and plugin-managed dependency downloads need separate providers",
+            "Mutable plugin registration and metadata-source Python updates are disabled in locked profiles"
+          ]
+        },
+        "updates_ignore_file": {
+          "reason": "This capability is not established by the reviewed integration record.",
+          "state": "unknown"
+        },
+        "wrapper_required": {
+          "sources": [],
+          "state": "known",
+          "value": true
+        }
+      },
+      "operations": {
+        "build": {
+          "arguments": [
+            "--exec-file",
+            "build.py",
+            {
+              "splice": "arguments"
+            }
+          ],
+          "capability": "calibre-debug",
+          "directory": {
+            "binding": "project_root"
+          },
+          "environment": {
+            "CALIBRE_PURIFIER_LOCK": {
+              "binding": "lockfile"
+            },
+            "CALIBRE_PURIFIER_PROJECT": {
+              "binding": "project_root"
+            }
+          },
+          "minimumArguments": 0,
+          "reason": null,
+          "sources": [
+            "https://github.com/nix-purifiers/calibre-purifier/blob/a802d8acc97b5f960293242cff4857feeae0c894/tests/native.py",
+            "https://github.com/nix-purifiers/calibre-purifier/blob/a802d8acc97b5f960293242cff4857feeae0c894/examples/minimal/build.py"
+          ],
+          "state": "available"
+        },
+        "bundle": {
+          "arguments": [
+            "--project",
+            {
+              "binding": "project_root"
+            },
+            "--lock",
+            {
+              "binding": "lockfile"
+            },
+            "bundle",
+            {
+              "splice": "arguments"
+            }
+          ],
+          "capability": "calibre-purifier",
+          "directory": {
+            "binding": "project_root"
+          },
+          "environment": {},
+          "minimumArguments": 0,
+          "reason": null,
+          "sources": [
+            "https://github.com/nix-purifiers/calibre-purifier/blob/a802d8acc97b5f960293242cff4857feeae0c894/calibre_purifier/main.py",
+            "https://github.com/nix-purifiers/calibre-purifier/blob/a802d8acc97b5f960293242cff4857feeae0c894/tests/native.py",
+            "https://github.com/nix-purifiers/calibre-purifier/blob/a802d8acc97b5f960293242cff4857feeae0c894/tests/gui.py"
+          ],
+          "state": "available"
+        },
+        "lock": {
+          "arguments": [
+            "--project",
+            {
+              "binding": "project_root"
+            },
+            "--lock",
+            {
+              "binding": "lockfile"
+            },
+            "lock",
+            {
+              "splice": "arguments"
+            }
+          ],
+          "capability": "calibre-purifier",
+          "directory": {
+            "binding": "project_root"
+          },
+          "environment": {},
+          "minimumArguments": 0,
+          "reason": null,
+          "sources": [
+            "https://github.com/nix-purifiers/calibre-purifier/blob/a802d8acc97b5f960293242cff4857feeae0c894/calibre_purifier/main.py",
+            "https://github.com/nix-purifiers/calibre-purifier/blob/a802d8acc97b5f960293242cff4857feeae0c894/tests/native.py",
+            "https://github.com/nix-purifiers/calibre-purifier/blob/a802d8acc97b5f960293242cff4857feeae0c894/tests/gui.py"
+          ],
+          "state": "available"
+        },
+        "prefetch": {
+          "arguments": [
+            "--project",
+            {
+              "binding": "project_root"
+            },
+            "--lock",
+            {
+              "binding": "lockfile"
+            },
+            "prefetch",
+            {
+              "splice": "arguments"
+            }
+          ],
+          "capability": "calibre-purifier",
+          "directory": {
+            "binding": "project_root"
+          },
+          "environment": {},
+          "minimumArguments": 0,
+          "reason": null,
+          "sources": [
+            "https://github.com/nix-purifiers/calibre-purifier/blob/a802d8acc97b5f960293242cff4857feeae0c894/calibre_purifier/main.py",
+            "https://github.com/nix-purifiers/calibre-purifier/blob/a802d8acc97b5f960293242cff4857feeae0c894/tests/native.py",
+            "https://github.com/nix-purifiers/calibre-purifier/blob/a802d8acc97b5f960293242cff4857feeae0c894/tests/gui.py"
+          ],
+          "state": "available"
+        },
+        "publish": {
+          "arguments": [
+            "--project",
+            {
+              "binding": "project_root"
+            },
+            "--lock",
+            {
+              "binding": "lockfile"
+            },
+            "publish",
+            "--tag",
+            {
+              "binding": "tag"
+            },
+            {
+              "splice": "arguments"
+            }
+          ],
+          "capability": "calibre-purifier",
+          "directory": {
+            "binding": "project_root"
+          },
+          "environment": {},
+          "minimumArguments": 0,
+          "reason": null,
+          "sources": [
+            "https://github.com/nix-purifiers/calibre-purifier/blob/a802d8acc97b5f960293242cff4857feeae0c894/calibre_purifier/main.py",
+            "https://github.com/nix-purifiers/calibre-purifier/blob/a802d8acc97b5f960293242cff4857feeae0c894/tests/native.py",
+            "https://github.com/nix-purifiers/calibre-purifier/blob/a802d8acc97b5f960293242cff4857feeae0c894/tests/gui.py"
+          ],
+          "state": "available"
+        },
+        "update": {
+          "arguments": [
+            "--project",
+            {
+              "binding": "project_root"
+            },
+            "--lock",
+            {
+              "binding": "lockfile"
+            },
+            "lock",
+            "--update",
+            {
+              "splice": "arguments"
+            }
+          ],
+          "capability": "calibre-purifier",
+          "directory": {
+            "binding": "project_root"
+          },
+          "environment": {},
+          "minimumArguments": 0,
+          "reason": null,
+          "sources": [
+            "https://github.com/nix-purifiers/calibre-purifier/blob/a802d8acc97b5f960293242cff4857feeae0c894/calibre_purifier/main.py",
+            "https://github.com/nix-purifiers/calibre-purifier/blob/a802d8acc97b5f960293242cff4857feeae0c894/tests/native.py",
+            "https://github.com/nix-purifiers/calibre-purifier/blob/a802d8acc97b5f960293242cff4857feeae0c894/tests/gui.py"
+          ],
+          "state": "available"
+        }
+      },
+      "repository": "nix-purifiers/calibre-purifier",
+      "reviewedRevision": "a802d8acc97b5f960293242cff4857feeae0c894",
+      "sections": {
+        "credits": {
+          "use": "cargo"
+        },
+        "editor": {
+          "omit": "No specific editor protocol integration has been established by the reviewed implementation."
+        },
+        "integration": {
+          "use": "wrapper"
+        },
+        "nix_builds": {
+          "use": "native"
+        },
+        "offline": {
+          "use": "native"
+        },
+        "projections": {
+          "use": "directional"
+        },
+        "quickstart": {
+          "use": "reviewed"
+        },
+        "scope": {
+          "use": "native"
+        },
+        "workflow": {
+          "use": "capture-update"
+        }
+      },
+      "summary": "Locked, Nix-resolved calibre plugins, with writable libraries and preferences.",
+      "values": {
+        "quickstart": "nix shell 'github:nix-purifiers/calibre-purifier'\ncalibre-purifier lock --update\ncalibre"
+      },
+      "version": 1
+    },
     "cargo-purifier": {
       "compatibility": {
         "defaults": [],
