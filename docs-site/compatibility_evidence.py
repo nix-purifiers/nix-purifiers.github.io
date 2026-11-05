@@ -10,7 +10,7 @@ from compatibility import EMPTY, validate
 
 def relevant(path):
     # These change presentation, not the implementation or its selected SDKs.
-    return not (path.startswith(('docs/', 'docs-site/', 'model/')) or
+    return not (path.startswith(('docs/', 'docs-site/')) or
                 path.endswith(('.md', '.rst')) or path in {
                     'LICENSE', 'COPYING', '.gitignore', '.gitattributes',
                     '.github/workflows/pages.yml', '.github/workflows/release.yml'})
