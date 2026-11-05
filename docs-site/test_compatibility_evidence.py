@@ -90,11 +90,13 @@ class Evidence(unittest.TestCase):
             audit_source(self.root, self.review)
 
     def test_remote_ci_must_match_the_recorded_attempt_source_and_successful_job(self):
+        (self.root/'main.py').write_text('different implementation\n'); self.commit()
+        changed_revision = self.git('rev-parse', 'HEAD').strip()
         run = dict(head_sha=self.revision, run_attempt=1)
         job = dict(run_id=123, head_sha=self.revision, name='native',
                    status='completed', conclusion='success')
         original = subprocess.check_output
-        for mutation in ['none', 'cancelled', 'attempt', 'head', 'job-name', 'ci-inputs']:
+        for mutation in ['none', 'cancelled', 'attempt', 'head', 'job-name', 'ci-inputs', 'review-source']:
             observed_run, observed_job = copy.deepcopy(run), copy.deepcopy(job)
             review = copy.deepcopy(self.review)
             if mutation == 'cancelled': observed_job['conclusion'] = 'cancelled'
@@ -102,6 +104,7 @@ class Evidence(unittest.TestCase):
             elif mutation == 'head': observed_run['head_sha'] = '0'*40
             elif mutation == 'job-name': observed_job['name'] = 'unrelated'
             elif mutation == 'ci-inputs': review['inputDigest'] = '0'*64
+            elif mutation == 'review-source': review['sourceRevision'] = changed_revision
             def response(args, **kwargs):
                 if args[0] == 'gh':
                     return json.dumps(observed_job if '/actions/jobs/' in args[-1] else observed_run)

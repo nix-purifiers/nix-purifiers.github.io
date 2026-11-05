@@ -132,6 +132,10 @@ def verify_ci(repository, review, checkout, fetch=False):
     """Read actual GitHub job conclusions and verify the CI source fingerprint."""
     def api(path):
         return json.loads(subprocess.check_output(['gh', 'api', path], text=True))
+    if fetch:
+        subprocess.run(['git', '-C', str(checkout), 'fetch', '-q', 'origin', review['sourceRevision']], check=True)
+    if inputs(checkout, review['sourceRevision']) != review['files']:
+        raise ValueError(f'{repository}: recorded inputs differ from the claimed source revision')
     for evidence in review['ci']:
         run = api(f'repos/{repository}/actions/runs/{evidence["runId"]}')
         if run['head_sha'] != evidence['headRevision'] or run['run_attempt'] != evidence['attempt']:
