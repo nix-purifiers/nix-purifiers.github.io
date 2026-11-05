@@ -24,6 +24,8 @@ OPERATIONS = {
     'ordinary-registry-consumer': 'Ordinary registry consumer',
     'ordinary-source-consumer': 'Ordinary source consumer',
     'ordinary-maven-consumer': 'Ordinary Maven consumer',
+    'ordinary-gradle-consumer': 'Ordinary Gradle consumer',
+    'dependency-conflict-rejection': 'Conflicting dependency rejection',
     'native-input-composition': 'Native Nix input composition',
     'nix-input-composition': 'Nix input composition in the sandbox',
     'lock-reproducibility': 'Deterministic relock',
