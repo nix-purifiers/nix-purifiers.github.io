@@ -5,6 +5,7 @@ from pathlib import Path
 import subprocess
 from reference import guide_plan
 from inventory import validate_coverage
+from compatibility_evidence import validate_registry
 
 
 def validate_version_coverage(catalog):
@@ -27,6 +28,7 @@ if __name__ == '__main__':
     if set(documentation['catalog']) != expected:
         raise SystemExit('Every purifier repository must have a modeled documentation page.')
     validate_version_coverage(documentation['catalog'])
+    validate_registry(json.loads((root / 'model/compatibility-tests.json').read_text()), documentation['catalog'])
     for name, page in documentation['catalog'].items():
         if page.get('reviewedRevision') != manifest[name]['revision']:
             raise SystemExit(f'{name}: model and source review revisions differ')

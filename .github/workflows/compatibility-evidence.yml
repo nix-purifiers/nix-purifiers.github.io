@@ -1,0 +1,25 @@
+name: compatibility evidence
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: '23 8 * * *'
+permissions:
+  contents: read
+jobs:
+  audit:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
+        with:
+          persist-credentials: false
+      - name: Recheck recorded CI and compare current native source
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: python3 tools/audit-compatibility-evidence.py --fetch --verify-ci --output compatibility-audit.json
+      - name: Retain exact drift and evidence failures for review
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: compatibility-audit
+          path: compatibility-audit.json
+          if-no-files-found: error
