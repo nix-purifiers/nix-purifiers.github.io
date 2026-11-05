@@ -251,3 +251,46 @@ Code examples use source line breaks where possible and visual wrapping on
 narrow screens. `docs.js` adds copy buttons that copy the underlying text,
 including shell continuations. If clipboard access is denied, it selects
 the example for manual copying. Code remains readable with JavaScript off.
+
+## Compatibility evidence and drift
+
+`model/compatibility-tests.json` is the source of tested combinations for both
+the Nix model and generated catalog. Each point records exact component roles,
+versions, platform, operations, immutable test definitions and successful CI
+jobs. These are historical observations at the linked revisions, not inferred
+version intervals or a claim that a new default has passed the same tests.
+The existing packaged-default inventory is separate.
+
+When a compatibility PR merges, review its native test definitions and actual
+CI job results before adding points. Record the merged source revision, all
+relevant tracked input fingerprints, CI revision and attempt, and scoped job
+IDs. If merge and CI revisions differ, their complete input manifests must
+match. Include implementation, SDK definitions and lockfiles, fixtures, and
+check workflows; documentation and Pages/release presentation files are
+excluded by `compatibility_evidence.relevant`. Add the exact operations and
+limitations the test establishes. A canceled job, a source-only recipe, an
+unmerged PR, or a projection-format test cannot establish SDK compatibility.
+
+Run `python3 docs-site/export.py` after editing the registry. Export validation
+rejects missing bindings, changed evidence, mismatched platforms, and catalog
+points that differ from the registry. Review the generated catalog diff.
+
+```sh
+python3 tools/audit-compatibility-evidence.py
+python3 tools/audit-compatibility-evidence.py --fetch --verify-ci \
+  --output compatibility-audit.json
+```
+
+The first command checks the committed catalog and registry without network
+access. The second reads public default branches in temporary bare clones,
+rechecks actual GitHub CI jobs and their source inputs, and compares current
+implementation inputs with every recorded review. It requires Git and an
+authenticated `gh`. A scheduled read-only workflow retains the JSON report and
+fails on source drift or unverifiable evidence. It does not change branches,
+pins, registry entries, or publication state, and does not execute native tests.
+
+`inputs-match` only means the reviewed inputs have not changed.
+`review-needed` preserves the historical observation but requires a maintainer
+to rerun or review the affected combinations before claiming current coverage.
+Changes to an older point remain visible even when another point has newer
+passing evidence. Never update a source fingerprint merely to silence drift.

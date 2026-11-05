@@ -3852,7 +3852,125 @@
         "limitations": [],
         "projectSelections": [],
         "supportedRanges": [],
-        "testedPoints": []
+        "testedPoints": [
+          {
+            "components": [
+              {
+                "name": "Bundler",
+                "role": "native-tool",
+                "version": "1.17.3"
+              },
+              {
+                "name": "RubyGems",
+                "role": "native-tool",
+                "version": "3.1.2"
+              },
+              {
+                "name": "Ruby",
+                "role": "native-tool-runtime",
+                "version": "2.5.8"
+              },
+              {
+                "name": "Ruby",
+                "role": "project-runtime",
+                "version": "2.5.8"
+              },
+              {
+                "name": "GCC",
+                "role": "compiler",
+                "version": "9.2.0"
+              },
+              {
+                "name": "JSON",
+                "role": "addon-target",
+                "version": "1.8.6"
+              }
+            ],
+            "evidence": [
+              "https://github.com/nix-purifiers/bundler-purifier/blob/aa54360633eb4d7b5f4f53c0fd1a0e556a789d81/tests/historical-native.py",
+              "https://github.com/nix-purifiers/bundler-purifier/actions/runs/41955690270/job/127009917096"
+            ],
+            "id": "ruby-2.5.8",
+            "notes": [
+              "C locale; compiled JSON extension and ordinary RubyGems registry consumer execute on the selected Ruby. Native publication bytes match the Nix projection."
+            ],
+            "operations": [
+              "pure-build",
+              "native-lock",
+              "native-prefetch",
+              "native-install-offline",
+              "project-build-scripts",
+              "project-test-scripts",
+              "native-publish",
+              "pure-native-byte-equality",
+              "ordinary-registry-consumer",
+              "source-preservation",
+              "native-addon-build",
+              "native-addon-load"
+            ],
+            "sourceRevision": "aa54360633eb4d7b5f4f53c0fd1a0e556a789d81",
+            "system": "x86_64-linux"
+          },
+          {
+            "components": [
+              {
+                "name": "Bundler",
+                "role": "native-tool",
+                "version": "1.17.3"
+              },
+              {
+                "name": "RubyGems",
+                "role": "native-tool",
+                "version": "2.6.14"
+              },
+              {
+                "name": "Ruby",
+                "role": "native-tool-runtime",
+                "version": "1.8.7-p374"
+              },
+              {
+                "name": "Ruby",
+                "role": "project-runtime",
+                "version": "1.8.7-p374"
+              },
+              {
+                "name": "GCC",
+                "role": "compiler",
+                "version": "4.8.3"
+              },
+              {
+                "name": "JSON",
+                "role": "addon-target",
+                "version": "1.8.6"
+              }
+            ],
+            "evidence": [
+              "https://github.com/nix-purifiers/bundler-purifier/blob/aa54360633eb4d7b5f4f53c0fd1a0e556a789d81/tests/historical-native.py",
+              "https://github.com/nix-purifiers/bundler-purifier/actions/runs/41955690270/job/127009917096"
+            ],
+            "id": "ruby-1.8.7-p374",
+            "notes": [
+              "C locale; compiled JSON extension and ordinary RubyGems registry consumer execute on the selected Ruby. Native publication bytes match the Nix projection.",
+              "Independent modern Ruby builds the registry index; incoming Nix composition is not established for Ruby 1.8."
+            ],
+            "operations": [
+              "pure-build",
+              "native-lock",
+              "native-prefetch",
+              "native-install-offline",
+              "project-build-scripts",
+              "project-test-scripts",
+              "native-publish",
+              "pure-native-byte-equality",
+              "ordinary-registry-consumer",
+              "source-preservation",
+              "native-addon-build",
+              "native-addon-load"
+            ],
+            "sourceRevision": "aa54360633eb4d7b5f4f53c0fd1a0e556a789d81",
+            "system": "x86_64-linux"
+          }
+        ]
       },
       "facts": {
         "build_engine": {
@@ -4644,7 +4762,69 @@
         "limitations": [],
         "projectSelections": [],
         "supportedRanges": [],
-        "testedPoints": []
+        "testedPoints": [
+          {
+            "components": [
+              {
+                "name": "Cargo",
+                "role": "native-tool",
+                "version": "1.41.0"
+              },
+              {
+                "name": "Rust",
+                "role": "compiler",
+                "version": "1.41.0"
+              }
+            ],
+            "evidence": [
+              "https://github.com/nix-purifiers/cargo-purifier/blob/db1271af416fcb129575ce32028002e4ccea9e00/tests/historical-rust.nix",
+              "https://github.com/nix-purifiers/cargo-purifier/actions/runs/41803674181/job/126485338865"
+            ],
+            "id": "rust-1.41-build-abi",
+            "notes": [
+              "Rust/Cargo 1.41.0: binary, build.rs, unit tests, cdylib with independent C caller, native crate verification and offline extracted-crate rebuild. No full old-SDK CLI publication, upload or other platform claim."
+            ],
+            "operations": [
+              "pure-build",
+              "project-build-scripts",
+              "project-test-scripts",
+              "cdylib-c-caller",
+              "release-pack",
+              "ordinary-extracted-crate-rebuild"
+            ],
+            "sourceRevision": "db1271af416fcb129575ce32028002e4ccea9e00",
+            "system": "x86_64-linux"
+          },
+          {
+            "components": [
+              {
+                "name": "Cargo",
+                "role": "native-tool",
+                "version": "1.41.0"
+              },
+              {
+                "name": "Rust",
+                "role": "compiler",
+                "version": "1.41.0"
+              }
+            ],
+            "evidence": [
+              "https://github.com/nix-purifiers/cargo-purifier/blob/db1271af416fcb129575ce32028002e4ccea9e00/tests/test_historical_cargo.py",
+              "https://github.com/nix-purifiers/cargo-purifier/actions/runs/41803674181/job/126485338865"
+            ],
+            "id": "cargo-1.41-selection",
+            "notes": [
+              "Native resolver selection and rejection with workspace discovery and unchanged manifests; this is not a complete CLI lifecycle claim."
+            ],
+            "operations": [
+              "native-tool-selection",
+              "workspace-root-discovery",
+              "source-preservation"
+            ],
+            "sourceRevision": "db1271af416fcb129575ce32028002e4ccea9e00",
+            "system": "x86_64-linux"
+          }
+        ]
       },
       "facts": {
         "build_engine": {
@@ -7411,7 +7591,336 @@
         "limitations": [],
         "projectSelections": [],
         "supportedRanges": [],
-        "testedPoints": []
+        "testedPoints": [
+          {
+            "components": [
+              {
+                "name": "Composer",
+                "role": "native-tool",
+                "version": "1.10.27"
+              },
+              {
+                "name": "PHP",
+                "role": "native-tool-runtime",
+                "version": "5.3.28"
+              },
+              {
+                "name": "PHP",
+                "role": "project-runtime",
+                "version": "5.3.28"
+              }
+            ],
+            "evidence": [
+              "https://github.com/nix-purifiers/composer-purifier/blob/2b9e5d4341f399fbb11a09c09bf5e0bdeb6fdb82/tests/historical-native.py",
+              "https://github.com/nix-purifiers/composer-purifier/actions/runs/41952966964/job/127000993063"
+            ],
+            "id": "php-5.3.28-composer-1.10.27",
+            "notes": [
+              "Native published ZIP bytes match the Nix projection; an ordinary Composer HTTP registry consumer installs and executes the package. ZIP extension included; arbitrary extension ABI compatibility is not established."
+            ],
+            "operations": [
+              "pure-build",
+              "native-lock",
+              "native-prefetch",
+              "native-install-offline",
+              "project-build-scripts",
+              "project-test-scripts",
+              "native-publish",
+              "pure-native-byte-equality",
+              "ordinary-registry-consumer",
+              "source-preservation"
+            ],
+            "sourceRevision": "2b9e5d4341f399fbb11a09c09bf5e0bdeb6fdb82",
+            "system": "x86_64-linux"
+          },
+          {
+            "components": [
+              {
+                "name": "Composer",
+                "role": "native-tool",
+                "version": "2.2.26"
+              },
+              {
+                "name": "PHP",
+                "role": "native-tool-runtime",
+                "version": "5.3.28"
+              },
+              {
+                "name": "PHP",
+                "role": "project-runtime",
+                "version": "5.3.28"
+              }
+            ],
+            "evidence": [
+              "https://github.com/nix-purifiers/composer-purifier/blob/2b9e5d4341f399fbb11a09c09bf5e0bdeb6fdb82/tests/historical-native.py",
+              "https://github.com/nix-purifiers/composer-purifier/actions/runs/41952966964/job/127000993063"
+            ],
+            "id": "php-5.3.28-composer-2.2.26",
+            "notes": [
+              "Native published ZIP bytes match the Nix projection; an ordinary Composer HTTP registry consumer installs and executes the package. ZIP extension included; arbitrary extension ABI compatibility is not established."
+            ],
+            "operations": [
+              "pure-build",
+              "native-lock",
+              "native-prefetch",
+              "native-install-offline",
+              "project-build-scripts",
+              "project-test-scripts",
+              "native-publish",
+              "pure-native-byte-equality",
+              "ordinary-registry-consumer",
+              "source-preservation"
+            ],
+            "sourceRevision": "2b9e5d4341f399fbb11a09c09bf5e0bdeb6fdb82",
+            "system": "x86_64-linux"
+          },
+          {
+            "components": [
+              {
+                "name": "Composer",
+                "role": "native-tool",
+                "version": "1.10.27"
+              },
+              {
+                "name": "PHP",
+                "role": "native-tool-runtime",
+                "version": "5.4.44"
+              },
+              {
+                "name": "PHP",
+                "role": "project-runtime",
+                "version": "5.4.44"
+              }
+            ],
+            "evidence": [
+              "https://github.com/nix-purifiers/composer-purifier/blob/2b9e5d4341f399fbb11a09c09bf5e0bdeb6fdb82/tests/historical-native.py",
+              "https://github.com/nix-purifiers/composer-purifier/actions/runs/41952966964/job/127000993063"
+            ],
+            "id": "php-5.4.44-composer-1.10.27",
+            "notes": [
+              "Native published ZIP bytes match the Nix projection; an ordinary Composer HTTP registry consumer installs and executes the package. ZIP extension included; arbitrary extension ABI compatibility is not established."
+            ],
+            "operations": [
+              "pure-build",
+              "native-lock",
+              "native-prefetch",
+              "native-install-offline",
+              "project-build-scripts",
+              "project-test-scripts",
+              "native-publish",
+              "pure-native-byte-equality",
+              "ordinary-registry-consumer",
+              "source-preservation"
+            ],
+            "sourceRevision": "2b9e5d4341f399fbb11a09c09bf5e0bdeb6fdb82",
+            "system": "x86_64-linux"
+          },
+          {
+            "components": [
+              {
+                "name": "Composer",
+                "role": "native-tool",
+                "version": "2.2.26"
+              },
+              {
+                "name": "PHP",
+                "role": "native-tool-runtime",
+                "version": "5.4.44"
+              },
+              {
+                "name": "PHP",
+                "role": "project-runtime",
+                "version": "5.4.44"
+              }
+            ],
+            "evidence": [
+              "https://github.com/nix-purifiers/composer-purifier/blob/2b9e5d4341f399fbb11a09c09bf5e0bdeb6fdb82/tests/historical-native.py",
+              "https://github.com/nix-purifiers/composer-purifier/actions/runs/41952966964/job/127000993063"
+            ],
+            "id": "php-5.4.44-composer-2.2.26",
+            "notes": [
+              "Native published ZIP bytes match the Nix projection; an ordinary Composer HTTP registry consumer installs and executes the package. ZIP extension included; arbitrary extension ABI compatibility is not established."
+            ],
+            "operations": [
+              "pure-build",
+              "native-lock",
+              "native-prefetch",
+              "native-install-offline",
+              "project-build-scripts",
+              "project-test-scripts",
+              "native-publish",
+              "pure-native-byte-equality",
+              "ordinary-registry-consumer",
+              "source-preservation"
+            ],
+            "sourceRevision": "2b9e5d4341f399fbb11a09c09bf5e0bdeb6fdb82",
+            "system": "x86_64-linux"
+          },
+          {
+            "components": [
+              {
+                "name": "Composer",
+                "role": "native-tool",
+                "version": "1.10.27"
+              },
+              {
+                "name": "PHP",
+                "role": "native-tool-runtime",
+                "version": "5.6.26"
+              },
+              {
+                "name": "PHP",
+                "role": "project-runtime",
+                "version": "5.6.26"
+              }
+            ],
+            "evidence": [
+              "https://github.com/nix-purifiers/composer-purifier/blob/2b9e5d4341f399fbb11a09c09bf5e0bdeb6fdb82/tests/historical-native.py",
+              "https://github.com/nix-purifiers/composer-purifier/actions/runs/41952966964/job/127000993063"
+            ],
+            "id": "php-5.6.26-composer-1.10.27",
+            "notes": [
+              "Native published ZIP bytes match the Nix projection; an ordinary Composer HTTP registry consumer installs and executes the package. ZIP extension included; arbitrary extension ABI compatibility is not established."
+            ],
+            "operations": [
+              "pure-build",
+              "native-lock",
+              "native-prefetch",
+              "native-install-offline",
+              "project-build-scripts",
+              "project-test-scripts",
+              "native-publish",
+              "pure-native-byte-equality",
+              "ordinary-registry-consumer",
+              "source-preservation"
+            ],
+            "sourceRevision": "2b9e5d4341f399fbb11a09c09bf5e0bdeb6fdb82",
+            "system": "x86_64-linux"
+          },
+          {
+            "components": [
+              {
+                "name": "Composer",
+                "role": "native-tool",
+                "version": "2.2.26"
+              },
+              {
+                "name": "PHP",
+                "role": "native-tool-runtime",
+                "version": "5.6.26"
+              },
+              {
+                "name": "PHP",
+                "role": "project-runtime",
+                "version": "5.6.26"
+              }
+            ],
+            "evidence": [
+              "https://github.com/nix-purifiers/composer-purifier/blob/2b9e5d4341f399fbb11a09c09bf5e0bdeb6fdb82/tests/historical-native.py",
+              "https://github.com/nix-purifiers/composer-purifier/actions/runs/41952966964/job/127000993063"
+            ],
+            "id": "php-5.6.26-composer-2.2.26",
+            "notes": [
+              "Native published ZIP bytes match the Nix projection; an ordinary Composer HTTP registry consumer installs and executes the package. ZIP extension included; arbitrary extension ABI compatibility is not established."
+            ],
+            "operations": [
+              "pure-build",
+              "native-lock",
+              "native-prefetch",
+              "native-install-offline",
+              "project-build-scripts",
+              "project-test-scripts",
+              "native-publish",
+              "pure-native-byte-equality",
+              "ordinary-registry-consumer",
+              "source-preservation"
+            ],
+            "sourceRevision": "2b9e5d4341f399fbb11a09c09bf5e0bdeb6fdb82",
+            "system": "x86_64-linux"
+          },
+          {
+            "components": [
+              {
+                "name": "Composer",
+                "role": "native-tool",
+                "version": "1.10.27"
+              },
+              {
+                "name": "PHP",
+                "role": "native-tool-runtime",
+                "version": "7.4.29"
+              },
+              {
+                "name": "PHP",
+                "role": "project-runtime",
+                "version": "7.4.29"
+              }
+            ],
+            "evidence": [
+              "https://github.com/nix-purifiers/composer-purifier/blob/2b9e5d4341f399fbb11a09c09bf5e0bdeb6fdb82/tests/historical-native.py",
+              "https://github.com/nix-purifiers/composer-purifier/actions/runs/41952966964/job/127000993063"
+            ],
+            "id": "php-7.4.29-composer-1.10.27",
+            "notes": [
+              "Native published ZIP bytes match the Nix projection; an ordinary Composer HTTP registry consumer installs and executes the package. ZIP extension included; arbitrary extension ABI compatibility is not established."
+            ],
+            "operations": [
+              "pure-build",
+              "native-lock",
+              "native-prefetch",
+              "native-install-offline",
+              "project-build-scripts",
+              "project-test-scripts",
+              "native-publish",
+              "pure-native-byte-equality",
+              "ordinary-registry-consumer",
+              "source-preservation"
+            ],
+            "sourceRevision": "2b9e5d4341f399fbb11a09c09bf5e0bdeb6fdb82",
+            "system": "x86_64-linux"
+          },
+          {
+            "components": [
+              {
+                "name": "Composer",
+                "role": "native-tool",
+                "version": "2.2.26"
+              },
+              {
+                "name": "PHP",
+                "role": "native-tool-runtime",
+                "version": "7.4.29"
+              },
+              {
+                "name": "PHP",
+                "role": "project-runtime",
+                "version": "7.4.29"
+              }
+            ],
+            "evidence": [
+              "https://github.com/nix-purifiers/composer-purifier/blob/2b9e5d4341f399fbb11a09c09bf5e0bdeb6fdb82/tests/historical-native.py",
+              "https://github.com/nix-purifiers/composer-purifier/actions/runs/41952966964/job/127000993063"
+            ],
+            "id": "php-7.4.29-composer-2.2.26",
+            "notes": [
+              "Native published ZIP bytes match the Nix projection; an ordinary Composer HTTP registry consumer installs and executes the package. ZIP extension included; arbitrary extension ABI compatibility is not established."
+            ],
+            "operations": [
+              "pure-build",
+              "native-lock",
+              "native-prefetch",
+              "native-install-offline",
+              "project-build-scripts",
+              "project-test-scripts",
+              "native-publish",
+              "pure-native-byte-equality",
+              "ordinary-registry-consumer",
+              "source-preservation"
+            ],
+            "sourceRevision": "2b9e5d4341f399fbb11a09c09bf5e0bdeb6fdb82",
+            "system": "x86_64-linux"
+          }
+        ]
       },
       "facts": {
         "build_engine": {
@@ -13914,7 +14423,160 @@
         "limitations": [],
         "projectSelections": [],
         "supportedRanges": [],
-        "testedPoints": []
+        "testedPoints": [
+          {
+            "components": [
+              {
+                "name": "Go",
+                "role": "native-tool",
+                "version": "1.0.3"
+              },
+              {
+                "name": "Go",
+                "role": "compiler",
+                "version": "1.0.3"
+              }
+            ],
+            "evidence": [
+              "https://github.com/nix-purifiers/go-purifier/blob/be97475c3586e30c71624ae5c8eb4a0aa1cd6609/tests/gopath-native.py",
+              "https://github.com/nix-purifiers/go-purifier/actions/runs/41962447894/job/127031718105"
+            ],
+            "id": "gopath-1.0.3-x86_64-linux",
+            "notes": [
+              "GOPATH Git dependencies, including test dependencies; CGO=0. Publication is a local tagged dry-run, not a registry upload. Go 1.0.3 uses native go get."
+            ],
+            "operations": [
+              "native-lock",
+              "native-prefetch",
+              "native-install-offline",
+              "project-build-scripts",
+              "project-test-scripts",
+              "pure-build",
+              "release-pack",
+              "local-publish-dry-run",
+              "pure-native-byte-equality",
+              "ordinary-source-consumer",
+              "revision-update-invalidation",
+              "source-preservation"
+            ],
+            "sourceRevision": "be97475c3586e30c71624ae5c8eb4a0aa1cd6609",
+            "system": "x86_64-linux"
+          },
+          {
+            "components": [
+              {
+                "name": "Go",
+                "role": "native-tool",
+                "version": "1.26.10"
+              },
+              {
+                "name": "Go",
+                "role": "compiler",
+                "version": "1.26.10"
+              }
+            ],
+            "evidence": [
+              "https://github.com/nix-purifiers/go-purifier/blob/be97475c3586e30c71624ae5c8eb4a0aa1cd6609/tests/gopath-native.py",
+              "https://github.com/nix-purifiers/go-purifier/actions/runs/41962447894/job/127031718105"
+            ],
+            "id": "gopath-1.26.10-x86_64-linux",
+            "notes": [
+              "GOPATH Git dependencies, including test dependencies; CGO=0. Publication is a local tagged dry-run, not a registry upload. Modern capture clones Git sources because this Go version removed GOPATH go get."
+            ],
+            "operations": [
+              "native-lock",
+              "native-prefetch",
+              "native-install-offline",
+              "project-build-scripts",
+              "project-test-scripts",
+              "pure-build",
+              "release-pack",
+              "local-publish-dry-run",
+              "pure-native-byte-equality",
+              "ordinary-source-consumer",
+              "revision-update-invalidation",
+              "source-preservation"
+            ],
+            "sourceRevision": "be97475c3586e30c71624ae5c8eb4a0aa1cd6609",
+            "system": "x86_64-linux"
+          },
+          {
+            "components": [
+              {
+                "name": "Go",
+                "role": "native-tool",
+                "version": "1.26.10"
+              },
+              {
+                "name": "Go",
+                "role": "compiler",
+                "version": "1.26.10"
+              }
+            ],
+            "evidence": [
+              "https://github.com/nix-purifiers/go-purifier/blob/be97475c3586e30c71624ae5c8eb4a0aa1cd6609/tests/gopath-native.py",
+              "https://github.com/nix-purifiers/go-purifier/actions/runs/41962447894/job/127031717858"
+            ],
+            "id": "gopath-1.26.10-aarch64-linux",
+            "notes": [
+              "GOPATH Git dependencies, including test dependencies; CGO=0. Publication is a local tagged dry-run, not a registry upload. Modern capture clones Git sources because this Go version removed GOPATH go get."
+            ],
+            "operations": [
+              "native-lock",
+              "native-prefetch",
+              "native-install-offline",
+              "project-build-scripts",
+              "project-test-scripts",
+              "pure-build",
+              "release-pack",
+              "local-publish-dry-run",
+              "pure-native-byte-equality",
+              "ordinary-source-consumer",
+              "revision-update-invalidation",
+              "source-preservation"
+            ],
+            "sourceRevision": "be97475c3586e30c71624ae5c8eb4a0aa1cd6609",
+            "system": "aarch64-linux"
+          },
+          {
+            "components": [
+              {
+                "name": "Go",
+                "role": "native-tool",
+                "version": "1.26.10"
+              },
+              {
+                "name": "Go",
+                "role": "compiler",
+                "version": "1.26.10"
+              }
+            ],
+            "evidence": [
+              "https://github.com/nix-purifiers/go-purifier/blob/be97475c3586e30c71624ae5c8eb4a0aa1cd6609/tests/gopath-native.py",
+              "https://github.com/nix-purifiers/go-purifier/actions/runs/41962447894/job/127031718121"
+            ],
+            "id": "gopath-1.26.10-aarch64-darwin",
+            "notes": [
+              "GOPATH Git dependencies, including test dependencies; CGO=0. Publication is a local tagged dry-run, not a registry upload. Modern capture clones Git sources because this Go version removed GOPATH go get."
+            ],
+            "operations": [
+              "native-lock",
+              "native-prefetch",
+              "native-install-offline",
+              "project-build-scripts",
+              "project-test-scripts",
+              "pure-build",
+              "release-pack",
+              "local-publish-dry-run",
+              "pure-native-byte-equality",
+              "ordinary-source-consumer",
+              "revision-update-invalidation",
+              "source-preservation"
+            ],
+            "sourceRevision": "be97475c3586e30c71624ae5c8eb4a0aa1cd6609",
+            "system": "aarch64-darwin"
+          }
+        ]
       },
       "facts": {
         "build_engine": {
@@ -19038,11 +19700,11 @@
         "limitations": [
           {
             "evidence": [
-              "https://github.com/nix-purifiers/luarocks-purifier/blob/6c3e166c8d2826e2b826c770025c9109f118a771/nix/lib/lua.nix",
-              "https://github.com/nix-purifiers/luarocks-purifier/blob/6c3e166c8d2826e2b826c770025c9109f118a771/pkgs/cli/default.nix"
+              "https://github.com/nix-purifiers/luarocks-purifier/blob/e0fa7c040074bfe51e0af26eb52d63fd0a150a82/nix/lib/lua.nix",
+              "https://github.com/nix-purifiers/luarocks-purifier/blob/e0fa7c040074bfe51e0af26eb52d63fd0a150a82/pkgs/cli/default.nix"
             ],
-            "sourceRevision": "6c3e166c8d2826e2b826c770025c9109f118a771",
-            "text": "Lua 5.1, 5.2, 5.3, 5.4 and LuaJIT have separate native toolchains. Lua and LuaRocks must come from the same selection; LuaJIT uses the Lua 5.1 module ABI."
+            "sourceRevision": "e0fa7c040074bfe51e0af26eb52d63fd0a150a82",
+            "text": "Lua 5.1, 5.2, 5.3, 5.4, 5.5 and LuaJIT have separate native toolchains. Lua and LuaRocks must come from the same selection; LuaJIT uses the Lua 5.1 module ABI."
           }
         ],
         "projectSelections": [
@@ -19062,7 +19724,567 @@
           }
         ],
         "supportedRanges": [],
-        "testedPoints": []
+        "testedPoints": [
+          {
+            "components": [
+              {
+                "name": "LuaRocks",
+                "role": "native-tool",
+                "version": "3.13.0"
+              },
+              {
+                "name": "Lua",
+                "role": "native-tool-runtime",
+                "version": "5.1.5"
+              },
+              {
+                "name": "Lua",
+                "role": "project-runtime",
+                "version": "5.1.5"
+              }
+            ],
+            "evidence": [
+              "https://github.com/nix-purifiers/luarocks-purifier/blob/e0fa7c040074bfe51e0af26eb52d63fd0a150a82/tests/sdk-native.py",
+              "https://github.com/nix-purifiers/luarocks-purifier/actions/runs/41962619774/job/127032270448"
+            ],
+            "id": "luarocks-3.13-5.1-x86_64-linux",
+            "notes": [
+              "Compiled C module, native upload capture matching the Nix source rock, and an ordinary source-rock consumer. Exact point only."
+            ],
+            "operations": [
+              "pure-build",
+              "native-lock",
+              "native-prefetch",
+              "native-install-offline",
+              "project-build-scripts",
+              "project-test-scripts",
+              "native-publish",
+              "pure-native-byte-equality",
+              "ordinary-registry-consumer",
+              "source-preservation",
+              "native-addon-build",
+              "native-addon-load"
+            ],
+            "sourceRevision": "e0fa7c040074bfe51e0af26eb52d63fd0a150a82",
+            "system": "x86_64-linux"
+          },
+          {
+            "components": [
+              {
+                "name": "LuaRocks",
+                "role": "native-tool",
+                "version": "3.13.0"
+              },
+              {
+                "name": "Lua",
+                "role": "native-tool-runtime",
+                "version": "5.2.4"
+              },
+              {
+                "name": "Lua",
+                "role": "project-runtime",
+                "version": "5.2.4"
+              }
+            ],
+            "evidence": [
+              "https://github.com/nix-purifiers/luarocks-purifier/blob/e0fa7c040074bfe51e0af26eb52d63fd0a150a82/tests/sdk-native.py",
+              "https://github.com/nix-purifiers/luarocks-purifier/actions/runs/41962619774/job/127032270540"
+            ],
+            "id": "luarocks-3.13-5.2-x86_64-linux",
+            "notes": [
+              "Compiled C module, native upload capture matching the Nix source rock, and an ordinary source-rock consumer. Exact point only."
+            ],
+            "operations": [
+              "pure-build",
+              "native-lock",
+              "native-prefetch",
+              "native-install-offline",
+              "project-build-scripts",
+              "project-test-scripts",
+              "native-publish",
+              "pure-native-byte-equality",
+              "ordinary-registry-consumer",
+              "source-preservation",
+              "native-addon-build",
+              "native-addon-load"
+            ],
+            "sourceRevision": "e0fa7c040074bfe51e0af26eb52d63fd0a150a82",
+            "system": "x86_64-linux"
+          },
+          {
+            "components": [
+              {
+                "name": "LuaRocks",
+                "role": "native-tool",
+                "version": "3.13.0"
+              },
+              {
+                "name": "Lua",
+                "role": "native-tool-runtime",
+                "version": "5.3.6"
+              },
+              {
+                "name": "Lua",
+                "role": "project-runtime",
+                "version": "5.3.6"
+              }
+            ],
+            "evidence": [
+              "https://github.com/nix-purifiers/luarocks-purifier/blob/e0fa7c040074bfe51e0af26eb52d63fd0a150a82/tests/sdk-native.py",
+              "https://github.com/nix-purifiers/luarocks-purifier/actions/runs/41962619774/job/127032270361"
+            ],
+            "id": "luarocks-3.13-5.3-x86_64-linux",
+            "notes": [
+              "Compiled C module, native upload capture matching the Nix source rock, and an ordinary source-rock consumer. Exact point only."
+            ],
+            "operations": [
+              "pure-build",
+              "native-lock",
+              "native-prefetch",
+              "native-install-offline",
+              "project-build-scripts",
+              "project-test-scripts",
+              "native-publish",
+              "pure-native-byte-equality",
+              "ordinary-registry-consumer",
+              "source-preservation",
+              "native-addon-build",
+              "native-addon-load"
+            ],
+            "sourceRevision": "e0fa7c040074bfe51e0af26eb52d63fd0a150a82",
+            "system": "x86_64-linux"
+          },
+          {
+            "components": [
+              {
+                "name": "LuaRocks",
+                "role": "native-tool",
+                "version": "3.13.0"
+              },
+              {
+                "name": "Lua",
+                "role": "native-tool-runtime",
+                "version": "5.4.9"
+              },
+              {
+                "name": "Lua",
+                "role": "project-runtime",
+                "version": "5.4.9"
+              }
+            ],
+            "evidence": [
+              "https://github.com/nix-purifiers/luarocks-purifier/blob/e0fa7c040074bfe51e0af26eb52d63fd0a150a82/tests/sdk-native.py",
+              "https://github.com/nix-purifiers/luarocks-purifier/actions/runs/41962619774/job/127032270287"
+            ],
+            "id": "luarocks-3.13-5.4-x86_64-linux",
+            "notes": [
+              "Compiled C module, native upload capture matching the Nix source rock, and an ordinary source-rock consumer. Exact point only."
+            ],
+            "operations": [
+              "pure-build",
+              "native-lock",
+              "native-prefetch",
+              "native-install-offline",
+              "project-build-scripts",
+              "project-test-scripts",
+              "native-publish",
+              "pure-native-byte-equality",
+              "ordinary-registry-consumer",
+              "source-preservation",
+              "native-addon-build",
+              "native-addon-load"
+            ],
+            "sourceRevision": "e0fa7c040074bfe51e0af26eb52d63fd0a150a82",
+            "system": "x86_64-linux"
+          },
+          {
+            "components": [
+              {
+                "name": "LuaRocks",
+                "role": "native-tool",
+                "version": "3.13.0"
+              },
+              {
+                "name": "Lua",
+                "role": "native-tool-runtime",
+                "version": "5.5.1"
+              },
+              {
+                "name": "Lua",
+                "role": "project-runtime",
+                "version": "5.5.1"
+              }
+            ],
+            "evidence": [
+              "https://github.com/nix-purifiers/luarocks-purifier/blob/e0fa7c040074bfe51e0af26eb52d63fd0a150a82/tests/sdk-native.py",
+              "https://github.com/nix-purifiers/luarocks-purifier/actions/runs/41962619774/job/127032270424"
+            ],
+            "id": "luarocks-3.13-5.5-x86_64-linux",
+            "notes": [
+              "Compiled C module, native upload capture matching the Nix source rock, and an ordinary source-rock consumer. Exact point only."
+            ],
+            "operations": [
+              "pure-build",
+              "native-lock",
+              "native-prefetch",
+              "native-install-offline",
+              "project-build-scripts",
+              "project-test-scripts",
+              "native-publish",
+              "pure-native-byte-equality",
+              "ordinary-registry-consumer",
+              "source-preservation",
+              "native-addon-build",
+              "native-addon-load"
+            ],
+            "sourceRevision": "e0fa7c040074bfe51e0af26eb52d63fd0a150a82",
+            "system": "x86_64-linux"
+          },
+          {
+            "components": [
+              {
+                "name": "LuaRocks",
+                "role": "native-tool",
+                "version": "3.13.0"
+              },
+              {
+                "name": "LuaJIT",
+                "role": "native-tool-runtime",
+                "version": "2.1.1785763465"
+              },
+              {
+                "name": "LuaJIT",
+                "role": "project-runtime",
+                "version": "2.1.1785763465"
+              }
+            ],
+            "evidence": [
+              "https://github.com/nix-purifiers/luarocks-purifier/blob/e0fa7c040074bfe51e0af26eb52d63fd0a150a82/tests/sdk-native.py",
+              "https://github.com/nix-purifiers/luarocks-purifier/actions/runs/41962619774/job/127032270464"
+            ],
+            "id": "luarocks-3.13-luajit-x86_64-linux",
+            "notes": [
+              "Compiled C module, native upload capture matching the Nix source rock, and an ordinary source-rock consumer. Exact point only."
+            ],
+            "operations": [
+              "pure-build",
+              "native-lock",
+              "native-prefetch",
+              "native-install-offline",
+              "project-build-scripts",
+              "project-test-scripts",
+              "native-publish",
+              "pure-native-byte-equality",
+              "ordinary-registry-consumer",
+              "source-preservation",
+              "native-addon-build",
+              "native-addon-load"
+            ],
+            "sourceRevision": "e0fa7c040074bfe51e0af26eb52d63fd0a150a82",
+            "system": "x86_64-linux"
+          },
+          {
+            "components": [
+              {
+                "name": "LuaRocks",
+                "role": "native-tool",
+                "version": "3.13.0"
+              },
+              {
+                "name": "Lua",
+                "role": "native-tool-runtime",
+                "version": "5.1.5"
+              },
+              {
+                "name": "Lua",
+                "role": "project-runtime",
+                "version": "5.1.5"
+              }
+            ],
+            "evidence": [
+              "https://github.com/nix-purifiers/luarocks-purifier/blob/e0fa7c040074bfe51e0af26eb52d63fd0a150a82/tests/sdk-native.py",
+              "https://github.com/nix-purifiers/luarocks-purifier/actions/runs/41962619774/job/127032270547"
+            ],
+            "id": "luarocks-3.13-5.1-aarch64-linux",
+            "notes": [
+              "Compiled C module, native upload capture matching the Nix source rock, and an ordinary source-rock consumer. Exact point only."
+            ],
+            "operations": [
+              "pure-build",
+              "native-lock",
+              "native-prefetch",
+              "native-install-offline",
+              "project-build-scripts",
+              "project-test-scripts",
+              "native-publish",
+              "pure-native-byte-equality",
+              "ordinary-registry-consumer",
+              "source-preservation",
+              "native-addon-build",
+              "native-addon-load"
+            ],
+            "sourceRevision": "e0fa7c040074bfe51e0af26eb52d63fd0a150a82",
+            "system": "aarch64-linux"
+          },
+          {
+            "components": [
+              {
+                "name": "LuaRocks",
+                "role": "native-tool",
+                "version": "3.13.0"
+              },
+              {
+                "name": "Lua",
+                "role": "native-tool-runtime",
+                "version": "5.2.4"
+              },
+              {
+                "name": "Lua",
+                "role": "project-runtime",
+                "version": "5.2.4"
+              }
+            ],
+            "evidence": [
+              "https://github.com/nix-purifiers/luarocks-purifier/blob/e0fa7c040074bfe51e0af26eb52d63fd0a150a82/tests/sdk-native.py",
+              "https://github.com/nix-purifiers/luarocks-purifier/actions/runs/41962619774/job/127032270214"
+            ],
+            "id": "luarocks-3.13-5.2-aarch64-linux",
+            "notes": [
+              "Compiled C module, native upload capture matching the Nix source rock, and an ordinary source-rock consumer. Exact point only."
+            ],
+            "operations": [
+              "pure-build",
+              "native-lock",
+              "native-prefetch",
+              "native-install-offline",
+              "project-build-scripts",
+              "project-test-scripts",
+              "native-publish",
+              "pure-native-byte-equality",
+              "ordinary-registry-consumer",
+              "source-preservation",
+              "native-addon-build",
+              "native-addon-load"
+            ],
+            "sourceRevision": "e0fa7c040074bfe51e0af26eb52d63fd0a150a82",
+            "system": "aarch64-linux"
+          },
+          {
+            "components": [
+              {
+                "name": "LuaRocks",
+                "role": "native-tool",
+                "version": "3.13.0"
+              },
+              {
+                "name": "Lua",
+                "role": "native-tool-runtime",
+                "version": "5.3.6"
+              },
+              {
+                "name": "Lua",
+                "role": "project-runtime",
+                "version": "5.3.6"
+              }
+            ],
+            "evidence": [
+              "https://github.com/nix-purifiers/luarocks-purifier/blob/e0fa7c040074bfe51e0af26eb52d63fd0a150a82/tests/sdk-native.py",
+              "https://github.com/nix-purifiers/luarocks-purifier/actions/runs/41962619774/job/127032270425"
+            ],
+            "id": "luarocks-3.13-5.3-aarch64-linux",
+            "notes": [
+              "Compiled C module, native upload capture matching the Nix source rock, and an ordinary source-rock consumer. Exact point only."
+            ],
+            "operations": [
+              "pure-build",
+              "native-lock",
+              "native-prefetch",
+              "native-install-offline",
+              "project-build-scripts",
+              "project-test-scripts",
+              "native-publish",
+              "pure-native-byte-equality",
+              "ordinary-registry-consumer",
+              "source-preservation",
+              "native-addon-build",
+              "native-addon-load"
+            ],
+            "sourceRevision": "e0fa7c040074bfe51e0af26eb52d63fd0a150a82",
+            "system": "aarch64-linux"
+          },
+          {
+            "components": [
+              {
+                "name": "LuaRocks",
+                "role": "native-tool",
+                "version": "3.13.0"
+              },
+              {
+                "name": "Lua",
+                "role": "native-tool-runtime",
+                "version": "5.4.9"
+              },
+              {
+                "name": "Lua",
+                "role": "project-runtime",
+                "version": "5.4.9"
+              }
+            ],
+            "evidence": [
+              "https://github.com/nix-purifiers/luarocks-purifier/blob/e0fa7c040074bfe51e0af26eb52d63fd0a150a82/tests/sdk-native.py",
+              "https://github.com/nix-purifiers/luarocks-purifier/actions/runs/41962619774/job/127032270245"
+            ],
+            "id": "luarocks-3.13-5.4-aarch64-linux",
+            "notes": [
+              "Compiled C module, native upload capture matching the Nix source rock, and an ordinary source-rock consumer. Exact point only."
+            ],
+            "operations": [
+              "pure-build",
+              "native-lock",
+              "native-prefetch",
+              "native-install-offline",
+              "project-build-scripts",
+              "project-test-scripts",
+              "native-publish",
+              "pure-native-byte-equality",
+              "ordinary-registry-consumer",
+              "source-preservation",
+              "native-addon-build",
+              "native-addon-load"
+            ],
+            "sourceRevision": "e0fa7c040074bfe51e0af26eb52d63fd0a150a82",
+            "system": "aarch64-linux"
+          },
+          {
+            "components": [
+              {
+                "name": "LuaRocks",
+                "role": "native-tool",
+                "version": "3.13.0"
+              },
+              {
+                "name": "Lua",
+                "role": "native-tool-runtime",
+                "version": "5.5.1"
+              },
+              {
+                "name": "Lua",
+                "role": "project-runtime",
+                "version": "5.5.1"
+              }
+            ],
+            "evidence": [
+              "https://github.com/nix-purifiers/luarocks-purifier/blob/e0fa7c040074bfe51e0af26eb52d63fd0a150a82/tests/sdk-native.py",
+              "https://github.com/nix-purifiers/luarocks-purifier/actions/runs/41962619774/job/127032270354"
+            ],
+            "id": "luarocks-3.13-5.5-aarch64-linux",
+            "notes": [
+              "Compiled C module, native upload capture matching the Nix source rock, and an ordinary source-rock consumer. Exact point only."
+            ],
+            "operations": [
+              "pure-build",
+              "native-lock",
+              "native-prefetch",
+              "native-install-offline",
+              "project-build-scripts",
+              "project-test-scripts",
+              "native-publish",
+              "pure-native-byte-equality",
+              "ordinary-registry-consumer",
+              "source-preservation",
+              "native-addon-build",
+              "native-addon-load"
+            ],
+            "sourceRevision": "e0fa7c040074bfe51e0af26eb52d63fd0a150a82",
+            "system": "aarch64-linux"
+          },
+          {
+            "components": [
+              {
+                "name": "LuaRocks",
+                "role": "native-tool",
+                "version": "3.13.0"
+              },
+              {
+                "name": "LuaJIT",
+                "role": "native-tool-runtime",
+                "version": "2.1.1785763465"
+              },
+              {
+                "name": "LuaJIT",
+                "role": "project-runtime",
+                "version": "2.1.1785763465"
+              }
+            ],
+            "evidence": [
+              "https://github.com/nix-purifiers/luarocks-purifier/blob/e0fa7c040074bfe51e0af26eb52d63fd0a150a82/tests/sdk-native.py",
+              "https://github.com/nix-purifiers/luarocks-purifier/actions/runs/41962619774/job/127032270369"
+            ],
+            "id": "luarocks-3.13-luajit-aarch64-linux",
+            "notes": [
+              "Compiled C module, native upload capture matching the Nix source rock, and an ordinary source-rock consumer. Exact point only."
+            ],
+            "operations": [
+              "pure-build",
+              "native-lock",
+              "native-prefetch",
+              "native-install-offline",
+              "project-build-scripts",
+              "project-test-scripts",
+              "native-publish",
+              "pure-native-byte-equality",
+              "ordinary-registry-consumer",
+              "source-preservation",
+              "native-addon-build",
+              "native-addon-load"
+            ],
+            "sourceRevision": "e0fa7c040074bfe51e0af26eb52d63fd0a150a82",
+            "system": "aarch64-linux"
+          },
+          {
+            "components": [
+              {
+                "name": "LuaRocks",
+                "role": "native-tool",
+                "version": "2.2.0-rc1"
+              },
+              {
+                "name": "Lua",
+                "role": "native-tool-runtime",
+                "version": "5.1.5"
+              },
+              {
+                "name": "Lua",
+                "role": "project-runtime",
+                "version": "5.1.5"
+              }
+            ],
+            "evidence": [
+              "https://github.com/nix-purifiers/luarocks-purifier/blob/e0fa7c040074bfe51e0af26eb52d63fd0a150a82/tests/historical-manager.nix",
+              "https://github.com/nix-purifiers/luarocks-purifier/actions/runs/41962619774/job/127032270448"
+            ],
+            "id": "luarocks-2.2.0-rc1-lua51",
+            "notes": [
+              "Pinned 2.2.0-rc1 source reports native version 2.2.0. C locale; separate project Lua and dkjson helper. Project tests invoke Lua directly because this manager has no native test command."
+            ],
+            "operations": [
+              "pure-build",
+              "native-lock",
+              "native-prefetch",
+              "native-install-offline",
+              "project-build-scripts",
+              "project-test-scripts",
+              "native-publish",
+              "pure-native-byte-equality",
+              "ordinary-registry-consumer",
+              "source-preservation",
+              "native-addon-build",
+              "native-addon-load"
+            ],
+            "sourceRevision": "e0fa7c040074bfe51e0af26eb52d63fd0a150a82",
+            "system": "x86_64-linux"
+          }
+        ]
       },
       "facts": {
         "build_engine": {
@@ -21911,6 +23133,912 @@
             ],
             "sourceRevision": "a2edbacf0d1d0bfcfbd967b4560f705f1a03e3f6",
             "system": "x86_64-linux"
+          },
+          {
+            "components": [
+              {
+                "name": "npm",
+                "role": "native-tool",
+                "version": "2.15.11"
+              },
+              {
+                "name": "Node.js",
+                "role": "native-tool-runtime",
+                "version": "4.9.1"
+              },
+              {
+                "name": "Node.js",
+                "role": "project-runtime",
+                "version": "4.9.1"
+              }
+            ],
+            "evidence": [
+              "https://github.com/nix-purifiers/npm-purifier/blob/334ef45c226343447041cffc5aa411e26c0d037a/tests/shrinkwrap-native.py",
+              "https://github.com/nix-purifiers/npm-purifier/actions/runs/41962651827/job/127032371004"
+            ],
+            "id": "native-node-4.9.1-x86_64-linux",
+            "notes": [
+              "Native publication is captured locally and compared with the Nix release; the ordinary consumer uses a prepared HTTP registry. No native addon ABI claim.",
+              "Uses nested, unversioned npm-shrinkwrap.json; no Arborist graph or Git dependency preparation claim."
+            ],
+            "operations": [
+              "pure-build",
+              "native-lock",
+              "native-prefetch",
+              "native-install-offline",
+              "project-build-scripts",
+              "project-test-scripts",
+              "native-publish",
+              "pure-native-byte-equality",
+              "ordinary-registry-consumer",
+              "source-preservation"
+            ],
+            "sourceRevision": "334ef45c226343447041cffc5aa411e26c0d037a",
+            "system": "x86_64-linux"
+          },
+          {
+            "components": [
+              {
+                "name": "npm",
+                "role": "native-tool",
+                "version": "3.10.10"
+              },
+              {
+                "name": "Node.js",
+                "role": "native-tool-runtime",
+                "version": "6.17.1"
+              },
+              {
+                "name": "Node.js",
+                "role": "project-runtime",
+                "version": "6.17.1"
+              }
+            ],
+            "evidence": [
+              "https://github.com/nix-purifiers/npm-purifier/blob/334ef45c226343447041cffc5aa411e26c0d037a/tests/shrinkwrap-native.py",
+              "https://github.com/nix-purifiers/npm-purifier/actions/runs/41962651827/job/127032371004"
+            ],
+            "id": "native-node-6.17.1-x86_64-linux",
+            "notes": [
+              "Native publication is captured locally and compared with the Nix release; the ordinary consumer uses a prepared HTTP registry. No native addon ABI claim.",
+              "Uses nested, unversioned npm-shrinkwrap.json; no Arborist graph or Git dependency preparation claim."
+            ],
+            "operations": [
+              "pure-build",
+              "native-lock",
+              "native-prefetch",
+              "native-install-offline",
+              "project-build-scripts",
+              "project-test-scripts",
+              "native-publish",
+              "pure-native-byte-equality",
+              "ordinary-registry-consumer",
+              "source-preservation"
+            ],
+            "sourceRevision": "334ef45c226343447041cffc5aa411e26c0d037a",
+            "system": "x86_64-linux"
+          },
+          {
+            "components": [
+              {
+                "name": "npm",
+                "role": "native-tool",
+                "version": "6.13.4"
+              },
+              {
+                "name": "Node.js",
+                "role": "native-tool-runtime",
+                "version": "8.17.0"
+              },
+              {
+                "name": "Node.js",
+                "role": "project-runtime",
+                "version": "8.17.0"
+              }
+            ],
+            "evidence": [
+              "https://github.com/nix-purifiers/npm-purifier/blob/334ef45c226343447041cffc5aa411e26c0d037a/tests/node-lts-native.py",
+              "https://github.com/nix-purifiers/npm-purifier/actions/runs/41962651827/job/127032371004"
+            ],
+            "id": "native-node-8.17.0-x86_64-linux",
+            "notes": [
+              "Native publication is captured locally and compared with the Nix release; the ordinary consumer uses a prepared HTTP registry. No native addon ABI claim."
+            ],
+            "operations": [
+              "pure-build",
+              "native-lock",
+              "native-prefetch",
+              "native-install-offline",
+              "project-build-scripts",
+              "project-test-scripts",
+              "native-publish",
+              "pure-native-byte-equality",
+              "ordinary-registry-consumer",
+              "source-preservation"
+            ],
+            "sourceRevision": "334ef45c226343447041cffc5aa411e26c0d037a",
+            "system": "x86_64-linux"
+          },
+          {
+            "components": [
+              {
+                "name": "npm",
+                "role": "native-tool",
+                "version": "6.14.12"
+              },
+              {
+                "name": "Node.js",
+                "role": "native-tool-runtime",
+                "version": "10.24.1"
+              },
+              {
+                "name": "Node.js",
+                "role": "project-runtime",
+                "version": "10.24.1"
+              }
+            ],
+            "evidence": [
+              "https://github.com/nix-purifiers/npm-purifier/blob/334ef45c226343447041cffc5aa411e26c0d037a/tests/node-lts-native.py",
+              "https://github.com/nix-purifiers/npm-purifier/actions/runs/41962651827/job/127032371004"
+            ],
+            "id": "native-node-10.24.1-x86_64-linux",
+            "notes": [
+              "Native publication is captured locally and compared with the Nix release; the ordinary consumer uses a prepared HTTP registry. No native addon ABI claim."
+            ],
+            "operations": [
+              "pure-build",
+              "native-lock",
+              "native-prefetch",
+              "native-install-offline",
+              "project-build-scripts",
+              "project-test-scripts",
+              "native-publish",
+              "pure-native-byte-equality",
+              "ordinary-registry-consumer",
+              "source-preservation"
+            ],
+            "sourceRevision": "334ef45c226343447041cffc5aa411e26c0d037a",
+            "system": "x86_64-linux"
+          },
+          {
+            "components": [
+              {
+                "name": "npm",
+                "role": "native-tool",
+                "version": "6.14.16"
+              },
+              {
+                "name": "Node.js",
+                "role": "native-tool-runtime",
+                "version": "12.22.12"
+              },
+              {
+                "name": "Node.js",
+                "role": "project-runtime",
+                "version": "12.22.12"
+              }
+            ],
+            "evidence": [
+              "https://github.com/nix-purifiers/npm-purifier/blob/334ef45c226343447041cffc5aa411e26c0d037a/tests/node-lts-native.py",
+              "https://github.com/nix-purifiers/npm-purifier/actions/runs/41962651827/job/127032371004"
+            ],
+            "id": "native-node-12.22.12-x86_64-linux",
+            "notes": [
+              "Native publication is captured locally and compared with the Nix release; the ordinary consumer uses a prepared HTTP registry. No native addon ABI claim."
+            ],
+            "operations": [
+              "pure-build",
+              "native-lock",
+              "native-prefetch",
+              "native-install-offline",
+              "project-build-scripts",
+              "project-test-scripts",
+              "native-publish",
+              "pure-native-byte-equality",
+              "ordinary-registry-consumer",
+              "source-preservation"
+            ],
+            "sourceRevision": "334ef45c226343447041cffc5aa411e26c0d037a",
+            "system": "x86_64-linux"
+          },
+          {
+            "components": [
+              {
+                "name": "npm",
+                "role": "native-tool",
+                "version": "6.14.18"
+              },
+              {
+                "name": "Node.js",
+                "role": "native-tool-runtime",
+                "version": "14.21.3"
+              },
+              {
+                "name": "Node.js",
+                "role": "project-runtime",
+                "version": "14.21.3"
+              }
+            ],
+            "evidence": [
+              "https://github.com/nix-purifiers/npm-purifier/blob/334ef45c226343447041cffc5aa411e26c0d037a/tests/node-lts-native.py",
+              "https://github.com/nix-purifiers/npm-purifier/actions/runs/41962651827/job/127032371004"
+            ],
+            "id": "native-node-14.21.3-x86_64-linux",
+            "notes": [
+              "Native publication is captured locally and compared with the Nix release; the ordinary consumer uses a prepared HTTP registry. No native addon ABI claim."
+            ],
+            "operations": [
+              "pure-build",
+              "native-lock",
+              "native-prefetch",
+              "native-install-offline",
+              "project-build-scripts",
+              "project-test-scripts",
+              "native-publish",
+              "pure-native-byte-equality",
+              "ordinary-registry-consumer",
+              "source-preservation"
+            ],
+            "sourceRevision": "334ef45c226343447041cffc5aa411e26c0d037a",
+            "system": "x86_64-linux"
+          },
+          {
+            "components": [
+              {
+                "name": "npm",
+                "role": "native-tool",
+                "version": "8.19.4"
+              },
+              {
+                "name": "Node.js",
+                "role": "native-tool-runtime",
+                "version": "16.20.2"
+              },
+              {
+                "name": "Node.js",
+                "role": "project-runtime",
+                "version": "16.20.2"
+              }
+            ],
+            "evidence": [
+              "https://github.com/nix-purifiers/npm-purifier/blob/334ef45c226343447041cffc5aa411e26c0d037a/tests/node-lts-native.py",
+              "https://github.com/nix-purifiers/npm-purifier/actions/runs/41962651827/job/127032371004"
+            ],
+            "id": "native-node-16.20.2-x86_64-linux",
+            "notes": [
+              "Native publication is captured locally and compared with the Nix release; the ordinary consumer uses a prepared HTTP registry. No native addon ABI claim."
+            ],
+            "operations": [
+              "pure-build",
+              "native-lock",
+              "native-prefetch",
+              "native-install-offline",
+              "project-build-scripts",
+              "project-test-scripts",
+              "native-publish",
+              "pure-native-byte-equality",
+              "ordinary-registry-consumer",
+              "source-preservation"
+            ],
+            "sourceRevision": "334ef45c226343447041cffc5aa411e26c0d037a",
+            "system": "x86_64-linux"
+          },
+          {
+            "components": [
+              {
+                "name": "npm",
+                "role": "native-tool",
+                "version": "10.8.2"
+              },
+              {
+                "name": "Node.js",
+                "role": "native-tool-runtime",
+                "version": "18.20.8"
+              },
+              {
+                "name": "Node.js",
+                "role": "project-runtime",
+                "version": "18.20.8"
+              }
+            ],
+            "evidence": [
+              "https://github.com/nix-purifiers/npm-purifier/blob/334ef45c226343447041cffc5aa411e26c0d037a/tests/node-lts-native.py",
+              "https://github.com/nix-purifiers/npm-purifier/actions/runs/41962651827/job/127032371004"
+            ],
+            "id": "native-node-18.20.8-x86_64-linux",
+            "notes": [
+              "Native publication is captured locally and compared with the Nix release; the ordinary consumer uses a prepared HTTP registry. No native addon ABI claim."
+            ],
+            "operations": [
+              "pure-build",
+              "native-lock",
+              "native-prefetch",
+              "native-install-offline",
+              "project-build-scripts",
+              "project-test-scripts",
+              "native-publish",
+              "pure-native-byte-equality",
+              "ordinary-registry-consumer",
+              "source-preservation"
+            ],
+            "sourceRevision": "334ef45c226343447041cffc5aa411e26c0d037a",
+            "system": "x86_64-linux"
+          },
+          {
+            "components": [
+              {
+                "name": "npm",
+                "role": "native-tool",
+                "version": "10.8.2"
+              },
+              {
+                "name": "Node.js",
+                "role": "native-tool-runtime",
+                "version": "20.19.0"
+              },
+              {
+                "name": "Node.js",
+                "role": "project-runtime",
+                "version": "20.19.0"
+              }
+            ],
+            "evidence": [
+              "https://github.com/nix-purifiers/npm-purifier/blob/334ef45c226343447041cffc5aa411e26c0d037a/tests/node-lts-native.py",
+              "https://github.com/nix-purifiers/npm-purifier/actions/runs/41962651827/job/127032371004"
+            ],
+            "id": "native-node-20.19.0-x86_64-linux",
+            "notes": [
+              "Native publication is captured locally and compared with the Nix release; the ordinary consumer uses a prepared HTTP registry. No native addon ABI claim."
+            ],
+            "operations": [
+              "pure-build",
+              "native-lock",
+              "native-prefetch",
+              "native-install-offline",
+              "project-build-scripts",
+              "project-test-scripts",
+              "native-publish",
+              "pure-native-byte-equality",
+              "ordinary-registry-consumer",
+              "source-preservation"
+            ],
+            "sourceRevision": "334ef45c226343447041cffc5aa411e26c0d037a",
+            "system": "x86_64-linux"
+          },
+          {
+            "components": [
+              {
+                "name": "npm",
+                "role": "native-tool",
+                "version": "10.9.2"
+              },
+              {
+                "name": "Node.js",
+                "role": "native-tool-runtime",
+                "version": "22.14.0"
+              },
+              {
+                "name": "Node.js",
+                "role": "project-runtime",
+                "version": "22.14.0"
+              }
+            ],
+            "evidence": [
+              "https://github.com/nix-purifiers/npm-purifier/blob/334ef45c226343447041cffc5aa411e26c0d037a/tests/node-lts-native.py",
+              "https://github.com/nix-purifiers/npm-purifier/actions/runs/41962651827/job/127032371004"
+            ],
+            "id": "native-node-22.14.0-x86_64-linux",
+            "notes": [
+              "Native publication is captured locally and compared with the Nix release; the ordinary consumer uses a prepared HTTP registry. No native addon ABI claim."
+            ],
+            "operations": [
+              "pure-build",
+              "native-lock",
+              "native-prefetch",
+              "native-install-offline",
+              "project-build-scripts",
+              "project-test-scripts",
+              "native-publish",
+              "pure-native-byte-equality",
+              "ordinary-registry-consumer",
+              "source-preservation"
+            ],
+            "sourceRevision": "334ef45c226343447041cffc5aa411e26c0d037a",
+            "system": "x86_64-linux"
+          },
+          {
+            "components": [
+              {
+                "name": "npm",
+                "role": "native-tool",
+                "version": "11.12.1"
+              },
+              {
+                "name": "Node.js",
+                "role": "native-tool-runtime",
+                "version": "26.0.0"
+              },
+              {
+                "name": "Node.js",
+                "role": "project-runtime",
+                "version": "26.0.0"
+              }
+            ],
+            "evidence": [
+              "https://github.com/nix-purifiers/npm-purifier/blob/334ef45c226343447041cffc5aa411e26c0d037a/tests/node-lts-native.py",
+              "https://github.com/nix-purifiers/npm-purifier/actions/runs/41962651827/job/127032371004"
+            ],
+            "id": "native-node-26.0.0-x86_64-linux",
+            "notes": [
+              "Native publication is captured locally and compared with the Nix release; the ordinary consumer uses a prepared HTTP registry. No native addon ABI claim."
+            ],
+            "operations": [
+              "pure-build",
+              "native-lock",
+              "native-prefetch",
+              "native-install-offline",
+              "project-build-scripts",
+              "project-test-scripts",
+              "native-publish",
+              "pure-native-byte-equality",
+              "ordinary-registry-consumer",
+              "source-preservation"
+            ],
+            "sourceRevision": "334ef45c226343447041cffc5aa411e26c0d037a",
+            "system": "x86_64-linux"
+          },
+          {
+            "components": [
+              {
+                "name": "npm",
+                "role": "native-tool",
+                "version": "2.15.11"
+              },
+              {
+                "name": "Node.js",
+                "role": "native-tool-runtime",
+                "version": "4.9.1"
+              },
+              {
+                "name": "Node.js",
+                "role": "project-runtime",
+                "version": "4.9.1"
+              }
+            ],
+            "evidence": [
+              "https://github.com/nix-purifiers/npm-purifier/blob/334ef45c226343447041cffc5aa411e26c0d037a/tests/shrinkwrap-native.py",
+              "https://github.com/nix-purifiers/npm-purifier/actions/runs/41962651827/job/127032371303"
+            ],
+            "id": "native-node-4.9.1-aarch64-linux",
+            "notes": [
+              "Native publication is captured locally and compared with the Nix release; the ordinary consumer uses a prepared HTTP registry. No native addon ABI claim.",
+              "Uses nested, unversioned npm-shrinkwrap.json; no Arborist graph or Git dependency preparation claim."
+            ],
+            "operations": [
+              "pure-build",
+              "native-lock",
+              "native-prefetch",
+              "native-install-offline",
+              "project-build-scripts",
+              "project-test-scripts",
+              "native-publish",
+              "pure-native-byte-equality",
+              "ordinary-registry-consumer",
+              "source-preservation"
+            ],
+            "sourceRevision": "334ef45c226343447041cffc5aa411e26c0d037a",
+            "system": "aarch64-linux"
+          },
+          {
+            "components": [
+              {
+                "name": "npm",
+                "role": "native-tool",
+                "version": "3.10.10"
+              },
+              {
+                "name": "Node.js",
+                "role": "native-tool-runtime",
+                "version": "6.17.1"
+              },
+              {
+                "name": "Node.js",
+                "role": "project-runtime",
+                "version": "6.17.1"
+              }
+            ],
+            "evidence": [
+              "https://github.com/nix-purifiers/npm-purifier/blob/334ef45c226343447041cffc5aa411e26c0d037a/tests/shrinkwrap-native.py",
+              "https://github.com/nix-purifiers/npm-purifier/actions/runs/41962651827/job/127032371303"
+            ],
+            "id": "native-node-6.17.1-aarch64-linux",
+            "notes": [
+              "Native publication is captured locally and compared with the Nix release; the ordinary consumer uses a prepared HTTP registry. No native addon ABI claim.",
+              "Uses nested, unversioned npm-shrinkwrap.json; no Arborist graph or Git dependency preparation claim."
+            ],
+            "operations": [
+              "pure-build",
+              "native-lock",
+              "native-prefetch",
+              "native-install-offline",
+              "project-build-scripts",
+              "project-test-scripts",
+              "native-publish",
+              "pure-native-byte-equality",
+              "ordinary-registry-consumer",
+              "source-preservation"
+            ],
+            "sourceRevision": "334ef45c226343447041cffc5aa411e26c0d037a",
+            "system": "aarch64-linux"
+          },
+          {
+            "components": [
+              {
+                "name": "npm",
+                "role": "native-tool",
+                "version": "6.13.4"
+              },
+              {
+                "name": "Node.js",
+                "role": "native-tool-runtime",
+                "version": "8.17.0"
+              },
+              {
+                "name": "Node.js",
+                "role": "project-runtime",
+                "version": "8.17.0"
+              }
+            ],
+            "evidence": [
+              "https://github.com/nix-purifiers/npm-purifier/blob/334ef45c226343447041cffc5aa411e26c0d037a/tests/node-lts-native.py",
+              "https://github.com/nix-purifiers/npm-purifier/actions/runs/41962651827/job/127032371303"
+            ],
+            "id": "native-node-8.17.0-aarch64-linux",
+            "notes": [
+              "Native publication is captured locally and compared with the Nix release; the ordinary consumer uses a prepared HTTP registry. No native addon ABI claim."
+            ],
+            "operations": [
+              "pure-build",
+              "native-lock",
+              "native-prefetch",
+              "native-install-offline",
+              "project-build-scripts",
+              "project-test-scripts",
+              "native-publish",
+              "pure-native-byte-equality",
+              "ordinary-registry-consumer",
+              "source-preservation"
+            ],
+            "sourceRevision": "334ef45c226343447041cffc5aa411e26c0d037a",
+            "system": "aarch64-linux"
+          },
+          {
+            "components": [
+              {
+                "name": "npm",
+                "role": "native-tool",
+                "version": "6.14.12"
+              },
+              {
+                "name": "Node.js",
+                "role": "native-tool-runtime",
+                "version": "10.24.1"
+              },
+              {
+                "name": "Node.js",
+                "role": "project-runtime",
+                "version": "10.24.1"
+              }
+            ],
+            "evidence": [
+              "https://github.com/nix-purifiers/npm-purifier/blob/334ef45c226343447041cffc5aa411e26c0d037a/tests/node-lts-native.py",
+              "https://github.com/nix-purifiers/npm-purifier/actions/runs/41962651827/job/127032371303"
+            ],
+            "id": "native-node-10.24.1-aarch64-linux",
+            "notes": [
+              "Native publication is captured locally and compared with the Nix release; the ordinary consumer uses a prepared HTTP registry. No native addon ABI claim."
+            ],
+            "operations": [
+              "pure-build",
+              "native-lock",
+              "native-prefetch",
+              "native-install-offline",
+              "project-build-scripts",
+              "project-test-scripts",
+              "native-publish",
+              "pure-native-byte-equality",
+              "ordinary-registry-consumer",
+              "source-preservation"
+            ],
+            "sourceRevision": "334ef45c226343447041cffc5aa411e26c0d037a",
+            "system": "aarch64-linux"
+          },
+          {
+            "components": [
+              {
+                "name": "npm",
+                "role": "native-tool",
+                "version": "6.14.16"
+              },
+              {
+                "name": "Node.js",
+                "role": "native-tool-runtime",
+                "version": "12.22.12"
+              },
+              {
+                "name": "Node.js",
+                "role": "project-runtime",
+                "version": "12.22.12"
+              }
+            ],
+            "evidence": [
+              "https://github.com/nix-purifiers/npm-purifier/blob/334ef45c226343447041cffc5aa411e26c0d037a/tests/node-lts-native.py",
+              "https://github.com/nix-purifiers/npm-purifier/actions/runs/41962651827/job/127032371303"
+            ],
+            "id": "native-node-12.22.12-aarch64-linux",
+            "notes": [
+              "Native publication is captured locally and compared with the Nix release; the ordinary consumer uses a prepared HTTP registry. No native addon ABI claim."
+            ],
+            "operations": [
+              "pure-build",
+              "native-lock",
+              "native-prefetch",
+              "native-install-offline",
+              "project-build-scripts",
+              "project-test-scripts",
+              "native-publish",
+              "pure-native-byte-equality",
+              "ordinary-registry-consumer",
+              "source-preservation"
+            ],
+            "sourceRevision": "334ef45c226343447041cffc5aa411e26c0d037a",
+            "system": "aarch64-linux"
+          },
+          {
+            "components": [
+              {
+                "name": "npm",
+                "role": "native-tool",
+                "version": "6.14.18"
+              },
+              {
+                "name": "Node.js",
+                "role": "native-tool-runtime",
+                "version": "14.21.3"
+              },
+              {
+                "name": "Node.js",
+                "role": "project-runtime",
+                "version": "14.21.3"
+              }
+            ],
+            "evidence": [
+              "https://github.com/nix-purifiers/npm-purifier/blob/334ef45c226343447041cffc5aa411e26c0d037a/tests/node-lts-native.py",
+              "https://github.com/nix-purifiers/npm-purifier/actions/runs/41962651827/job/127032371303"
+            ],
+            "id": "native-node-14.21.3-aarch64-linux",
+            "notes": [
+              "Native publication is captured locally and compared with the Nix release; the ordinary consumer uses a prepared HTTP registry. No native addon ABI claim."
+            ],
+            "operations": [
+              "pure-build",
+              "native-lock",
+              "native-prefetch",
+              "native-install-offline",
+              "project-build-scripts",
+              "project-test-scripts",
+              "native-publish",
+              "pure-native-byte-equality",
+              "ordinary-registry-consumer",
+              "source-preservation"
+            ],
+            "sourceRevision": "334ef45c226343447041cffc5aa411e26c0d037a",
+            "system": "aarch64-linux"
+          },
+          {
+            "components": [
+              {
+                "name": "npm",
+                "role": "native-tool",
+                "version": "8.19.4"
+              },
+              {
+                "name": "Node.js",
+                "role": "native-tool-runtime",
+                "version": "16.20.2"
+              },
+              {
+                "name": "Node.js",
+                "role": "project-runtime",
+                "version": "16.20.2"
+              }
+            ],
+            "evidence": [
+              "https://github.com/nix-purifiers/npm-purifier/blob/334ef45c226343447041cffc5aa411e26c0d037a/tests/node-lts-native.py",
+              "https://github.com/nix-purifiers/npm-purifier/actions/runs/41962651827/job/127032371303"
+            ],
+            "id": "native-node-16.20.2-aarch64-linux",
+            "notes": [
+              "Native publication is captured locally and compared with the Nix release; the ordinary consumer uses a prepared HTTP registry. No native addon ABI claim."
+            ],
+            "operations": [
+              "pure-build",
+              "native-lock",
+              "native-prefetch",
+              "native-install-offline",
+              "project-build-scripts",
+              "project-test-scripts",
+              "native-publish",
+              "pure-native-byte-equality",
+              "ordinary-registry-consumer",
+              "source-preservation"
+            ],
+            "sourceRevision": "334ef45c226343447041cffc5aa411e26c0d037a",
+            "system": "aarch64-linux"
+          },
+          {
+            "components": [
+              {
+                "name": "npm",
+                "role": "native-tool",
+                "version": "10.8.2"
+              },
+              {
+                "name": "Node.js",
+                "role": "native-tool-runtime",
+                "version": "18.20.8"
+              },
+              {
+                "name": "Node.js",
+                "role": "project-runtime",
+                "version": "18.20.8"
+              }
+            ],
+            "evidence": [
+              "https://github.com/nix-purifiers/npm-purifier/blob/334ef45c226343447041cffc5aa411e26c0d037a/tests/node-lts-native.py",
+              "https://github.com/nix-purifiers/npm-purifier/actions/runs/41962651827/job/127032371303"
+            ],
+            "id": "native-node-18.20.8-aarch64-linux",
+            "notes": [
+              "Native publication is captured locally and compared with the Nix release; the ordinary consumer uses a prepared HTTP registry. No native addon ABI claim."
+            ],
+            "operations": [
+              "pure-build",
+              "native-lock",
+              "native-prefetch",
+              "native-install-offline",
+              "project-build-scripts",
+              "project-test-scripts",
+              "native-publish",
+              "pure-native-byte-equality",
+              "ordinary-registry-consumer",
+              "source-preservation"
+            ],
+            "sourceRevision": "334ef45c226343447041cffc5aa411e26c0d037a",
+            "system": "aarch64-linux"
+          },
+          {
+            "components": [
+              {
+                "name": "npm",
+                "role": "native-tool",
+                "version": "10.8.2"
+              },
+              {
+                "name": "Node.js",
+                "role": "native-tool-runtime",
+                "version": "20.19.0"
+              },
+              {
+                "name": "Node.js",
+                "role": "project-runtime",
+                "version": "20.19.0"
+              }
+            ],
+            "evidence": [
+              "https://github.com/nix-purifiers/npm-purifier/blob/334ef45c226343447041cffc5aa411e26c0d037a/tests/node-lts-native.py",
+              "https://github.com/nix-purifiers/npm-purifier/actions/runs/41962651827/job/127032371303"
+            ],
+            "id": "native-node-20.19.0-aarch64-linux",
+            "notes": [
+              "Native publication is captured locally and compared with the Nix release; the ordinary consumer uses a prepared HTTP registry. No native addon ABI claim."
+            ],
+            "operations": [
+              "pure-build",
+              "native-lock",
+              "native-prefetch",
+              "native-install-offline",
+              "project-build-scripts",
+              "project-test-scripts",
+              "native-publish",
+              "pure-native-byte-equality",
+              "ordinary-registry-consumer",
+              "source-preservation"
+            ],
+            "sourceRevision": "334ef45c226343447041cffc5aa411e26c0d037a",
+            "system": "aarch64-linux"
+          },
+          {
+            "components": [
+              {
+                "name": "npm",
+                "role": "native-tool",
+                "version": "10.9.2"
+              },
+              {
+                "name": "Node.js",
+                "role": "native-tool-runtime",
+                "version": "22.14.0"
+              },
+              {
+                "name": "Node.js",
+                "role": "project-runtime",
+                "version": "22.14.0"
+              }
+            ],
+            "evidence": [
+              "https://github.com/nix-purifiers/npm-purifier/blob/334ef45c226343447041cffc5aa411e26c0d037a/tests/node-lts-native.py",
+              "https://github.com/nix-purifiers/npm-purifier/actions/runs/41962651827/job/127032371303"
+            ],
+            "id": "native-node-22.14.0-aarch64-linux",
+            "notes": [
+              "Native publication is captured locally and compared with the Nix release; the ordinary consumer uses a prepared HTTP registry. No native addon ABI claim."
+            ],
+            "operations": [
+              "pure-build",
+              "native-lock",
+              "native-prefetch",
+              "native-install-offline",
+              "project-build-scripts",
+              "project-test-scripts",
+              "native-publish",
+              "pure-native-byte-equality",
+              "ordinary-registry-consumer",
+              "source-preservation"
+            ],
+            "sourceRevision": "334ef45c226343447041cffc5aa411e26c0d037a",
+            "system": "aarch64-linux"
+          },
+          {
+            "components": [
+              {
+                "name": "npm",
+                "role": "native-tool",
+                "version": "11.12.1"
+              },
+              {
+                "name": "Node.js",
+                "role": "native-tool-runtime",
+                "version": "26.0.0"
+              },
+              {
+                "name": "Node.js",
+                "role": "project-runtime",
+                "version": "26.0.0"
+              }
+            ],
+            "evidence": [
+              "https://github.com/nix-purifiers/npm-purifier/blob/334ef45c226343447041cffc5aa411e26c0d037a/tests/node-lts-native.py",
+              "https://github.com/nix-purifiers/npm-purifier/actions/runs/41962651827/job/127032371303"
+            ],
+            "id": "native-node-26.0.0-aarch64-linux",
+            "notes": [
+              "Native publication is captured locally and compared with the Nix release; the ordinary consumer uses a prepared HTTP registry. No native addon ABI claim."
+            ],
+            "operations": [
+              "pure-build",
+              "native-lock",
+              "native-prefetch",
+              "native-install-offline",
+              "project-build-scripts",
+              "project-test-scripts",
+              "native-publish",
+              "pure-native-byte-equality",
+              "ordinary-registry-consumer",
+              "source-preservation"
+            ],
+            "sourceRevision": "334ef45c226343447041cffc5aa411e26c0d037a",
+            "system": "aarch64-linux"
           }
         ]
       },
@@ -38373,6 +40501,950 @@
             ],
             "sourceRevision": "7071d431233872cf8bcb9495c12248c4de73b8c7",
             "system": "x86_64-linux"
+          },
+          {
+            "components": [
+              {
+                "name": "Yarn Classic",
+                "role": "native-tool",
+                "version": "1.10.1"
+              },
+              {
+                "name": "Node.js",
+                "role": "native-tool-runtime",
+                "version": "4.9.1"
+              },
+              {
+                "name": "Node.js",
+                "role": "project-runtime",
+                "version": "0.12.18"
+              }
+            ],
+            "evidence": [
+              "https://github.com/nix-purifiers/yarn-classic-purifier/blob/927584c7a305884ca1e9725a5eeb231ea0c69c8e/tests/node-lts-native.py",
+              "https://github.com/nix-purifiers/yarn-classic-purifier/actions/runs/41809399661/job/126504553562"
+            ],
+            "id": "native-node-0.12.18-x86_64-linux",
+            "notes": [
+              "Native publication is captured locally and compared with the Nix release; the ordinary consumer uses a prepared HTTP registry. No native addon ABI claim.",
+              "Yarn runs on Node 4.9.1; the project runs on Node 0.12.18."
+            ],
+            "operations": [
+              "pure-build",
+              "native-lock",
+              "native-prefetch",
+              "native-install-offline",
+              "project-build-scripts",
+              "project-test-scripts",
+              "native-publish",
+              "pure-native-byte-equality",
+              "ordinary-registry-consumer",
+              "source-preservation"
+            ],
+            "sourceRevision": "927584c7a305884ca1e9725a5eeb231ea0c69c8e",
+            "system": "x86_64-linux"
+          },
+          {
+            "components": [
+              {
+                "name": "Yarn Classic",
+                "role": "native-tool",
+                "version": "1.10.1"
+              },
+              {
+                "name": "Node.js",
+                "role": "native-tool-runtime",
+                "version": "4.9.1"
+              },
+              {
+                "name": "Node.js",
+                "role": "project-runtime",
+                "version": "4.9.1"
+              }
+            ],
+            "evidence": [
+              "https://github.com/nix-purifiers/yarn-classic-purifier/blob/927584c7a305884ca1e9725a5eeb231ea0c69c8e/tests/node-lts-native.py",
+              "https://github.com/nix-purifiers/yarn-classic-purifier/actions/runs/41809399661/job/126504553562"
+            ],
+            "id": "native-node-4.9.1-x86_64-linux",
+            "notes": [
+              "Native publication is captured locally and compared with the Nix release; the ordinary consumer uses a prepared HTTP registry. No native addon ABI claim."
+            ],
+            "operations": [
+              "pure-build",
+              "native-lock",
+              "native-prefetch",
+              "native-install-offline",
+              "project-build-scripts",
+              "project-test-scripts",
+              "native-publish",
+              "pure-native-byte-equality",
+              "ordinary-registry-consumer",
+              "source-preservation"
+            ],
+            "sourceRevision": "927584c7a305884ca1e9725a5eeb231ea0c69c8e",
+            "system": "x86_64-linux"
+          },
+          {
+            "components": [
+              {
+                "name": "Yarn Classic",
+                "role": "native-tool",
+                "version": "1.22.22"
+              },
+              {
+                "name": "Node.js",
+                "role": "native-tool-runtime",
+                "version": "6.17.1"
+              },
+              {
+                "name": "Node.js",
+                "role": "project-runtime",
+                "version": "6.17.1"
+              }
+            ],
+            "evidence": [
+              "https://github.com/nix-purifiers/yarn-classic-purifier/blob/927584c7a305884ca1e9725a5eeb231ea0c69c8e/tests/node-lts-native.py",
+              "https://github.com/nix-purifiers/yarn-classic-purifier/actions/runs/41809399661/job/126504553562"
+            ],
+            "id": "native-node-6.17.1-x86_64-linux",
+            "notes": [
+              "Native publication is captured locally and compared with the Nix release; the ordinary consumer uses a prepared HTTP registry. No native addon ABI claim."
+            ],
+            "operations": [
+              "pure-build",
+              "native-lock",
+              "native-prefetch",
+              "native-install-offline",
+              "project-build-scripts",
+              "project-test-scripts",
+              "native-publish",
+              "pure-native-byte-equality",
+              "ordinary-registry-consumer",
+              "source-preservation"
+            ],
+            "sourceRevision": "927584c7a305884ca1e9725a5eeb231ea0c69c8e",
+            "system": "x86_64-linux"
+          },
+          {
+            "components": [
+              {
+                "name": "Yarn Classic",
+                "role": "native-tool",
+                "version": "1.22.22"
+              },
+              {
+                "name": "Node.js",
+                "role": "native-tool-runtime",
+                "version": "8.17.0"
+              },
+              {
+                "name": "Node.js",
+                "role": "project-runtime",
+                "version": "8.17.0"
+              }
+            ],
+            "evidence": [
+              "https://github.com/nix-purifiers/yarn-classic-purifier/blob/927584c7a305884ca1e9725a5eeb231ea0c69c8e/tests/node-lts-native.py",
+              "https://github.com/nix-purifiers/yarn-classic-purifier/actions/runs/41809399661/job/126504553562"
+            ],
+            "id": "native-node-8.17.0-x86_64-linux",
+            "notes": [
+              "Native publication is captured locally and compared with the Nix release; the ordinary consumer uses a prepared HTTP registry. No native addon ABI claim."
+            ],
+            "operations": [
+              "pure-build",
+              "native-lock",
+              "native-prefetch",
+              "native-install-offline",
+              "project-build-scripts",
+              "project-test-scripts",
+              "native-publish",
+              "pure-native-byte-equality",
+              "ordinary-registry-consumer",
+              "source-preservation"
+            ],
+            "sourceRevision": "927584c7a305884ca1e9725a5eeb231ea0c69c8e",
+            "system": "x86_64-linux"
+          },
+          {
+            "components": [
+              {
+                "name": "Yarn Classic",
+                "role": "native-tool",
+                "version": "1.22.22"
+              },
+              {
+                "name": "Node.js",
+                "role": "native-tool-runtime",
+                "version": "10.24.1"
+              },
+              {
+                "name": "Node.js",
+                "role": "project-runtime",
+                "version": "10.24.1"
+              }
+            ],
+            "evidence": [
+              "https://github.com/nix-purifiers/yarn-classic-purifier/blob/927584c7a305884ca1e9725a5eeb231ea0c69c8e/tests/node-lts-native.py",
+              "https://github.com/nix-purifiers/yarn-classic-purifier/actions/runs/41809399661/job/126504553562"
+            ],
+            "id": "native-node-10.24.1-x86_64-linux",
+            "notes": [
+              "Native publication is captured locally and compared with the Nix release; the ordinary consumer uses a prepared HTTP registry. No native addon ABI claim."
+            ],
+            "operations": [
+              "pure-build",
+              "native-lock",
+              "native-prefetch",
+              "native-install-offline",
+              "project-build-scripts",
+              "project-test-scripts",
+              "native-publish",
+              "pure-native-byte-equality",
+              "ordinary-registry-consumer",
+              "source-preservation"
+            ],
+            "sourceRevision": "927584c7a305884ca1e9725a5eeb231ea0c69c8e",
+            "system": "x86_64-linux"
+          },
+          {
+            "components": [
+              {
+                "name": "Yarn Classic",
+                "role": "native-tool",
+                "version": "1.22.22"
+              },
+              {
+                "name": "Node.js",
+                "role": "native-tool-runtime",
+                "version": "12.22.12"
+              },
+              {
+                "name": "Node.js",
+                "role": "project-runtime",
+                "version": "12.22.12"
+              }
+            ],
+            "evidence": [
+              "https://github.com/nix-purifiers/yarn-classic-purifier/blob/927584c7a305884ca1e9725a5eeb231ea0c69c8e/tests/node-lts-native.py",
+              "https://github.com/nix-purifiers/yarn-classic-purifier/actions/runs/41809399661/job/126504553562"
+            ],
+            "id": "native-node-12.22.12-x86_64-linux",
+            "notes": [
+              "Native publication is captured locally and compared with the Nix release; the ordinary consumer uses a prepared HTTP registry. No native addon ABI claim."
+            ],
+            "operations": [
+              "pure-build",
+              "native-lock",
+              "native-prefetch",
+              "native-install-offline",
+              "project-build-scripts",
+              "project-test-scripts",
+              "native-publish",
+              "pure-native-byte-equality",
+              "ordinary-registry-consumer",
+              "source-preservation"
+            ],
+            "sourceRevision": "927584c7a305884ca1e9725a5eeb231ea0c69c8e",
+            "system": "x86_64-linux"
+          },
+          {
+            "components": [
+              {
+                "name": "Yarn Classic",
+                "role": "native-tool",
+                "version": "1.22.22"
+              },
+              {
+                "name": "Node.js",
+                "role": "native-tool-runtime",
+                "version": "14.21.3"
+              },
+              {
+                "name": "Node.js",
+                "role": "project-runtime",
+                "version": "14.21.3"
+              }
+            ],
+            "evidence": [
+              "https://github.com/nix-purifiers/yarn-classic-purifier/blob/927584c7a305884ca1e9725a5eeb231ea0c69c8e/tests/node-lts-native.py",
+              "https://github.com/nix-purifiers/yarn-classic-purifier/actions/runs/41809399661/job/126504553562"
+            ],
+            "id": "native-node-14.21.3-x86_64-linux",
+            "notes": [
+              "Native publication is captured locally and compared with the Nix release; the ordinary consumer uses a prepared HTTP registry. No native addon ABI claim."
+            ],
+            "operations": [
+              "pure-build",
+              "native-lock",
+              "native-prefetch",
+              "native-install-offline",
+              "project-build-scripts",
+              "project-test-scripts",
+              "native-publish",
+              "pure-native-byte-equality",
+              "ordinary-registry-consumer",
+              "source-preservation"
+            ],
+            "sourceRevision": "927584c7a305884ca1e9725a5eeb231ea0c69c8e",
+            "system": "x86_64-linux"
+          },
+          {
+            "components": [
+              {
+                "name": "Yarn Classic",
+                "role": "native-tool",
+                "version": "1.22.22"
+              },
+              {
+                "name": "Node.js",
+                "role": "native-tool-runtime",
+                "version": "16.20.2"
+              },
+              {
+                "name": "Node.js",
+                "role": "project-runtime",
+                "version": "16.20.2"
+              }
+            ],
+            "evidence": [
+              "https://github.com/nix-purifiers/yarn-classic-purifier/blob/927584c7a305884ca1e9725a5eeb231ea0c69c8e/tests/node-lts-native.py",
+              "https://github.com/nix-purifiers/yarn-classic-purifier/actions/runs/41809399661/job/126504553562"
+            ],
+            "id": "native-node-16.20.2-x86_64-linux",
+            "notes": [
+              "Native publication is captured locally and compared with the Nix release; the ordinary consumer uses a prepared HTTP registry. No native addon ABI claim."
+            ],
+            "operations": [
+              "pure-build",
+              "native-lock",
+              "native-prefetch",
+              "native-install-offline",
+              "project-build-scripts",
+              "project-test-scripts",
+              "native-publish",
+              "pure-native-byte-equality",
+              "ordinary-registry-consumer",
+              "source-preservation"
+            ],
+            "sourceRevision": "927584c7a305884ca1e9725a5eeb231ea0c69c8e",
+            "system": "x86_64-linux"
+          },
+          {
+            "components": [
+              {
+                "name": "Yarn Classic",
+                "role": "native-tool",
+                "version": "1.22.22"
+              },
+              {
+                "name": "Node.js",
+                "role": "native-tool-runtime",
+                "version": "18.20.8"
+              },
+              {
+                "name": "Node.js",
+                "role": "project-runtime",
+                "version": "18.20.8"
+              }
+            ],
+            "evidence": [
+              "https://github.com/nix-purifiers/yarn-classic-purifier/blob/927584c7a305884ca1e9725a5eeb231ea0c69c8e/tests/node-lts-native.py",
+              "https://github.com/nix-purifiers/yarn-classic-purifier/actions/runs/41809399661/job/126504553562"
+            ],
+            "id": "native-node-18.20.8-x86_64-linux",
+            "notes": [
+              "Native publication is captured locally and compared with the Nix release; the ordinary consumer uses a prepared HTTP registry. No native addon ABI claim."
+            ],
+            "operations": [
+              "pure-build",
+              "native-lock",
+              "native-prefetch",
+              "native-install-offline",
+              "project-build-scripts",
+              "project-test-scripts",
+              "native-publish",
+              "pure-native-byte-equality",
+              "ordinary-registry-consumer",
+              "source-preservation"
+            ],
+            "sourceRevision": "927584c7a305884ca1e9725a5eeb231ea0c69c8e",
+            "system": "x86_64-linux"
+          },
+          {
+            "components": [
+              {
+                "name": "Yarn Classic",
+                "role": "native-tool",
+                "version": "1.22.22"
+              },
+              {
+                "name": "Node.js",
+                "role": "native-tool-runtime",
+                "version": "20.19.0"
+              },
+              {
+                "name": "Node.js",
+                "role": "project-runtime",
+                "version": "20.19.0"
+              }
+            ],
+            "evidence": [
+              "https://github.com/nix-purifiers/yarn-classic-purifier/blob/927584c7a305884ca1e9725a5eeb231ea0c69c8e/tests/node-lts-native.py",
+              "https://github.com/nix-purifiers/yarn-classic-purifier/actions/runs/41809399661/job/126504553562"
+            ],
+            "id": "native-node-20.19.0-x86_64-linux",
+            "notes": [
+              "Native publication is captured locally and compared with the Nix release; the ordinary consumer uses a prepared HTTP registry. No native addon ABI claim."
+            ],
+            "operations": [
+              "pure-build",
+              "native-lock",
+              "native-prefetch",
+              "native-install-offline",
+              "project-build-scripts",
+              "project-test-scripts",
+              "native-publish",
+              "pure-native-byte-equality",
+              "ordinary-registry-consumer",
+              "source-preservation"
+            ],
+            "sourceRevision": "927584c7a305884ca1e9725a5eeb231ea0c69c8e",
+            "system": "x86_64-linux"
+          },
+          {
+            "components": [
+              {
+                "name": "Yarn Classic",
+                "role": "native-tool",
+                "version": "1.22.22"
+              },
+              {
+                "name": "Node.js",
+                "role": "native-tool-runtime",
+                "version": "22.14.0"
+              },
+              {
+                "name": "Node.js",
+                "role": "project-runtime",
+                "version": "22.14.0"
+              }
+            ],
+            "evidence": [
+              "https://github.com/nix-purifiers/yarn-classic-purifier/blob/927584c7a305884ca1e9725a5eeb231ea0c69c8e/tests/node-lts-native.py",
+              "https://github.com/nix-purifiers/yarn-classic-purifier/actions/runs/41809399661/job/126504553562"
+            ],
+            "id": "native-node-22.14.0-x86_64-linux",
+            "notes": [
+              "Native publication is captured locally and compared with the Nix release; the ordinary consumer uses a prepared HTTP registry. No native addon ABI claim."
+            ],
+            "operations": [
+              "pure-build",
+              "native-lock",
+              "native-prefetch",
+              "native-install-offline",
+              "project-build-scripts",
+              "project-test-scripts",
+              "native-publish",
+              "pure-native-byte-equality",
+              "ordinary-registry-consumer",
+              "source-preservation"
+            ],
+            "sourceRevision": "927584c7a305884ca1e9725a5eeb231ea0c69c8e",
+            "system": "x86_64-linux"
+          },
+          {
+            "components": [
+              {
+                "name": "Yarn Classic",
+                "role": "native-tool",
+                "version": "1.22.22"
+              },
+              {
+                "name": "Node.js",
+                "role": "native-tool-runtime",
+                "version": "26.0.0"
+              },
+              {
+                "name": "Node.js",
+                "role": "project-runtime",
+                "version": "26.0.0"
+              }
+            ],
+            "evidence": [
+              "https://github.com/nix-purifiers/yarn-classic-purifier/blob/927584c7a305884ca1e9725a5eeb231ea0c69c8e/tests/node-lts-native.py",
+              "https://github.com/nix-purifiers/yarn-classic-purifier/actions/runs/41809399661/job/126504553562"
+            ],
+            "id": "native-node-26.0.0-x86_64-linux",
+            "notes": [
+              "Native publication is captured locally and compared with the Nix release; the ordinary consumer uses a prepared HTTP registry. No native addon ABI claim."
+            ],
+            "operations": [
+              "pure-build",
+              "native-lock",
+              "native-prefetch",
+              "native-install-offline",
+              "project-build-scripts",
+              "project-test-scripts",
+              "native-publish",
+              "pure-native-byte-equality",
+              "ordinary-registry-consumer",
+              "source-preservation"
+            ],
+            "sourceRevision": "927584c7a305884ca1e9725a5eeb231ea0c69c8e",
+            "system": "x86_64-linux"
+          },
+          {
+            "components": [
+              {
+                "name": "Yarn Classic",
+                "role": "native-tool",
+                "version": "1.10.1"
+              },
+              {
+                "name": "Node.js",
+                "role": "native-tool-runtime",
+                "version": "4.9.1"
+              },
+              {
+                "name": "Node.js",
+                "role": "project-runtime",
+                "version": "4.9.1"
+              }
+            ],
+            "evidence": [
+              "https://github.com/nix-purifiers/yarn-classic-purifier/blob/927584c7a305884ca1e9725a5eeb231ea0c69c8e/tests/node-lts-native.py",
+              "https://github.com/nix-purifiers/yarn-classic-purifier/actions/runs/41809399661/job/126504554418"
+            ],
+            "id": "native-node-4.9.1-aarch64-linux",
+            "notes": [
+              "Native publication is captured locally and compared with the Nix release; the ordinary consumer uses a prepared HTTP registry. No native addon ABI claim."
+            ],
+            "operations": [
+              "pure-build",
+              "native-lock",
+              "native-prefetch",
+              "native-install-offline",
+              "project-build-scripts",
+              "project-test-scripts",
+              "native-publish",
+              "pure-native-byte-equality",
+              "ordinary-registry-consumer",
+              "source-preservation"
+            ],
+            "sourceRevision": "927584c7a305884ca1e9725a5eeb231ea0c69c8e",
+            "system": "aarch64-linux"
+          },
+          {
+            "components": [
+              {
+                "name": "Yarn Classic",
+                "role": "native-tool",
+                "version": "1.22.22"
+              },
+              {
+                "name": "Node.js",
+                "role": "native-tool-runtime",
+                "version": "6.17.1"
+              },
+              {
+                "name": "Node.js",
+                "role": "project-runtime",
+                "version": "6.17.1"
+              }
+            ],
+            "evidence": [
+              "https://github.com/nix-purifiers/yarn-classic-purifier/blob/927584c7a305884ca1e9725a5eeb231ea0c69c8e/tests/node-lts-native.py",
+              "https://github.com/nix-purifiers/yarn-classic-purifier/actions/runs/41809399661/job/126504554418"
+            ],
+            "id": "native-node-6.17.1-aarch64-linux",
+            "notes": [
+              "Native publication is captured locally and compared with the Nix release; the ordinary consumer uses a prepared HTTP registry. No native addon ABI claim."
+            ],
+            "operations": [
+              "pure-build",
+              "native-lock",
+              "native-prefetch",
+              "native-install-offline",
+              "project-build-scripts",
+              "project-test-scripts",
+              "native-publish",
+              "pure-native-byte-equality",
+              "ordinary-registry-consumer",
+              "source-preservation"
+            ],
+            "sourceRevision": "927584c7a305884ca1e9725a5eeb231ea0c69c8e",
+            "system": "aarch64-linux"
+          },
+          {
+            "components": [
+              {
+                "name": "Yarn Classic",
+                "role": "native-tool",
+                "version": "1.22.22"
+              },
+              {
+                "name": "Node.js",
+                "role": "native-tool-runtime",
+                "version": "8.17.0"
+              },
+              {
+                "name": "Node.js",
+                "role": "project-runtime",
+                "version": "8.17.0"
+              }
+            ],
+            "evidence": [
+              "https://github.com/nix-purifiers/yarn-classic-purifier/blob/927584c7a305884ca1e9725a5eeb231ea0c69c8e/tests/node-lts-native.py",
+              "https://github.com/nix-purifiers/yarn-classic-purifier/actions/runs/41809399661/job/126504554418"
+            ],
+            "id": "native-node-8.17.0-aarch64-linux",
+            "notes": [
+              "Native publication is captured locally and compared with the Nix release; the ordinary consumer uses a prepared HTTP registry. No native addon ABI claim."
+            ],
+            "operations": [
+              "pure-build",
+              "native-lock",
+              "native-prefetch",
+              "native-install-offline",
+              "project-build-scripts",
+              "project-test-scripts",
+              "native-publish",
+              "pure-native-byte-equality",
+              "ordinary-registry-consumer",
+              "source-preservation"
+            ],
+            "sourceRevision": "927584c7a305884ca1e9725a5eeb231ea0c69c8e",
+            "system": "aarch64-linux"
+          },
+          {
+            "components": [
+              {
+                "name": "Yarn Classic",
+                "role": "native-tool",
+                "version": "1.22.22"
+              },
+              {
+                "name": "Node.js",
+                "role": "native-tool-runtime",
+                "version": "10.24.1"
+              },
+              {
+                "name": "Node.js",
+                "role": "project-runtime",
+                "version": "10.24.1"
+              }
+            ],
+            "evidence": [
+              "https://github.com/nix-purifiers/yarn-classic-purifier/blob/927584c7a305884ca1e9725a5eeb231ea0c69c8e/tests/node-lts-native.py",
+              "https://github.com/nix-purifiers/yarn-classic-purifier/actions/runs/41809399661/job/126504554418"
+            ],
+            "id": "native-node-10.24.1-aarch64-linux",
+            "notes": [
+              "Native publication is captured locally and compared with the Nix release; the ordinary consumer uses a prepared HTTP registry. No native addon ABI claim."
+            ],
+            "operations": [
+              "pure-build",
+              "native-lock",
+              "native-prefetch",
+              "native-install-offline",
+              "project-build-scripts",
+              "project-test-scripts",
+              "native-publish",
+              "pure-native-byte-equality",
+              "ordinary-registry-consumer",
+              "source-preservation"
+            ],
+            "sourceRevision": "927584c7a305884ca1e9725a5eeb231ea0c69c8e",
+            "system": "aarch64-linux"
+          },
+          {
+            "components": [
+              {
+                "name": "Yarn Classic",
+                "role": "native-tool",
+                "version": "1.22.22"
+              },
+              {
+                "name": "Node.js",
+                "role": "native-tool-runtime",
+                "version": "12.22.12"
+              },
+              {
+                "name": "Node.js",
+                "role": "project-runtime",
+                "version": "12.22.12"
+              }
+            ],
+            "evidence": [
+              "https://github.com/nix-purifiers/yarn-classic-purifier/blob/927584c7a305884ca1e9725a5eeb231ea0c69c8e/tests/node-lts-native.py",
+              "https://github.com/nix-purifiers/yarn-classic-purifier/actions/runs/41809399661/job/126504554418"
+            ],
+            "id": "native-node-12.22.12-aarch64-linux",
+            "notes": [
+              "Native publication is captured locally and compared with the Nix release; the ordinary consumer uses a prepared HTTP registry. No native addon ABI claim."
+            ],
+            "operations": [
+              "pure-build",
+              "native-lock",
+              "native-prefetch",
+              "native-install-offline",
+              "project-build-scripts",
+              "project-test-scripts",
+              "native-publish",
+              "pure-native-byte-equality",
+              "ordinary-registry-consumer",
+              "source-preservation"
+            ],
+            "sourceRevision": "927584c7a305884ca1e9725a5eeb231ea0c69c8e",
+            "system": "aarch64-linux"
+          },
+          {
+            "components": [
+              {
+                "name": "Yarn Classic",
+                "role": "native-tool",
+                "version": "1.22.22"
+              },
+              {
+                "name": "Node.js",
+                "role": "native-tool-runtime",
+                "version": "14.21.3"
+              },
+              {
+                "name": "Node.js",
+                "role": "project-runtime",
+                "version": "14.21.3"
+              }
+            ],
+            "evidence": [
+              "https://github.com/nix-purifiers/yarn-classic-purifier/blob/927584c7a305884ca1e9725a5eeb231ea0c69c8e/tests/node-lts-native.py",
+              "https://github.com/nix-purifiers/yarn-classic-purifier/actions/runs/41809399661/job/126504554418"
+            ],
+            "id": "native-node-14.21.3-aarch64-linux",
+            "notes": [
+              "Native publication is captured locally and compared with the Nix release; the ordinary consumer uses a prepared HTTP registry. No native addon ABI claim."
+            ],
+            "operations": [
+              "pure-build",
+              "native-lock",
+              "native-prefetch",
+              "native-install-offline",
+              "project-build-scripts",
+              "project-test-scripts",
+              "native-publish",
+              "pure-native-byte-equality",
+              "ordinary-registry-consumer",
+              "source-preservation"
+            ],
+            "sourceRevision": "927584c7a305884ca1e9725a5eeb231ea0c69c8e",
+            "system": "aarch64-linux"
+          },
+          {
+            "components": [
+              {
+                "name": "Yarn Classic",
+                "role": "native-tool",
+                "version": "1.22.22"
+              },
+              {
+                "name": "Node.js",
+                "role": "native-tool-runtime",
+                "version": "16.20.2"
+              },
+              {
+                "name": "Node.js",
+                "role": "project-runtime",
+                "version": "16.20.2"
+              }
+            ],
+            "evidence": [
+              "https://github.com/nix-purifiers/yarn-classic-purifier/blob/927584c7a305884ca1e9725a5eeb231ea0c69c8e/tests/node-lts-native.py",
+              "https://github.com/nix-purifiers/yarn-classic-purifier/actions/runs/41809399661/job/126504554418"
+            ],
+            "id": "native-node-16.20.2-aarch64-linux",
+            "notes": [
+              "Native publication is captured locally and compared with the Nix release; the ordinary consumer uses a prepared HTTP registry. No native addon ABI claim."
+            ],
+            "operations": [
+              "pure-build",
+              "native-lock",
+              "native-prefetch",
+              "native-install-offline",
+              "project-build-scripts",
+              "project-test-scripts",
+              "native-publish",
+              "pure-native-byte-equality",
+              "ordinary-registry-consumer",
+              "source-preservation"
+            ],
+            "sourceRevision": "927584c7a305884ca1e9725a5eeb231ea0c69c8e",
+            "system": "aarch64-linux"
+          },
+          {
+            "components": [
+              {
+                "name": "Yarn Classic",
+                "role": "native-tool",
+                "version": "1.22.22"
+              },
+              {
+                "name": "Node.js",
+                "role": "native-tool-runtime",
+                "version": "18.20.8"
+              },
+              {
+                "name": "Node.js",
+                "role": "project-runtime",
+                "version": "18.20.8"
+              }
+            ],
+            "evidence": [
+              "https://github.com/nix-purifiers/yarn-classic-purifier/blob/927584c7a305884ca1e9725a5eeb231ea0c69c8e/tests/node-lts-native.py",
+              "https://github.com/nix-purifiers/yarn-classic-purifier/actions/runs/41809399661/job/126504554418"
+            ],
+            "id": "native-node-18.20.8-aarch64-linux",
+            "notes": [
+              "Native publication is captured locally and compared with the Nix release; the ordinary consumer uses a prepared HTTP registry. No native addon ABI claim."
+            ],
+            "operations": [
+              "pure-build",
+              "native-lock",
+              "native-prefetch",
+              "native-install-offline",
+              "project-build-scripts",
+              "project-test-scripts",
+              "native-publish",
+              "pure-native-byte-equality",
+              "ordinary-registry-consumer",
+              "source-preservation"
+            ],
+            "sourceRevision": "927584c7a305884ca1e9725a5eeb231ea0c69c8e",
+            "system": "aarch64-linux"
+          },
+          {
+            "components": [
+              {
+                "name": "Yarn Classic",
+                "role": "native-tool",
+                "version": "1.22.22"
+              },
+              {
+                "name": "Node.js",
+                "role": "native-tool-runtime",
+                "version": "20.19.0"
+              },
+              {
+                "name": "Node.js",
+                "role": "project-runtime",
+                "version": "20.19.0"
+              }
+            ],
+            "evidence": [
+              "https://github.com/nix-purifiers/yarn-classic-purifier/blob/927584c7a305884ca1e9725a5eeb231ea0c69c8e/tests/node-lts-native.py",
+              "https://github.com/nix-purifiers/yarn-classic-purifier/actions/runs/41809399661/job/126504554418"
+            ],
+            "id": "native-node-20.19.0-aarch64-linux",
+            "notes": [
+              "Native publication is captured locally and compared with the Nix release; the ordinary consumer uses a prepared HTTP registry. No native addon ABI claim."
+            ],
+            "operations": [
+              "pure-build",
+              "native-lock",
+              "native-prefetch",
+              "native-install-offline",
+              "project-build-scripts",
+              "project-test-scripts",
+              "native-publish",
+              "pure-native-byte-equality",
+              "ordinary-registry-consumer",
+              "source-preservation"
+            ],
+            "sourceRevision": "927584c7a305884ca1e9725a5eeb231ea0c69c8e",
+            "system": "aarch64-linux"
+          },
+          {
+            "components": [
+              {
+                "name": "Yarn Classic",
+                "role": "native-tool",
+                "version": "1.22.22"
+              },
+              {
+                "name": "Node.js",
+                "role": "native-tool-runtime",
+                "version": "22.14.0"
+              },
+              {
+                "name": "Node.js",
+                "role": "project-runtime",
+                "version": "22.14.0"
+              }
+            ],
+            "evidence": [
+              "https://github.com/nix-purifiers/yarn-classic-purifier/blob/927584c7a305884ca1e9725a5eeb231ea0c69c8e/tests/node-lts-native.py",
+              "https://github.com/nix-purifiers/yarn-classic-purifier/actions/runs/41809399661/job/126504554418"
+            ],
+            "id": "native-node-22.14.0-aarch64-linux",
+            "notes": [
+              "Native publication is captured locally and compared with the Nix release; the ordinary consumer uses a prepared HTTP registry. No native addon ABI claim."
+            ],
+            "operations": [
+              "pure-build",
+              "native-lock",
+              "native-prefetch",
+              "native-install-offline",
+              "project-build-scripts",
+              "project-test-scripts",
+              "native-publish",
+              "pure-native-byte-equality",
+              "ordinary-registry-consumer",
+              "source-preservation"
+            ],
+            "sourceRevision": "927584c7a305884ca1e9725a5eeb231ea0c69c8e",
+            "system": "aarch64-linux"
+          },
+          {
+            "components": [
+              {
+                "name": "Yarn Classic",
+                "role": "native-tool",
+                "version": "1.22.22"
+              },
+              {
+                "name": "Node.js",
+                "role": "native-tool-runtime",
+                "version": "26.0.0"
+              },
+              {
+                "name": "Node.js",
+                "role": "project-runtime",
+                "version": "26.0.0"
+              }
+            ],
+            "evidence": [
+              "https://github.com/nix-purifiers/yarn-classic-purifier/blob/927584c7a305884ca1e9725a5eeb231ea0c69c8e/tests/node-lts-native.py",
+              "https://github.com/nix-purifiers/yarn-classic-purifier/actions/runs/41809399661/job/126504554418"
+            ],
+            "id": "native-node-26.0.0-aarch64-linux",
+            "notes": [
+              "Native publication is captured locally and compared with the Nix release; the ordinary consumer uses a prepared HTTP registry. No native addon ABI claim."
+            ],
+            "operations": [
+              "pure-build",
+              "native-lock",
+              "native-prefetch",
+              "native-install-offline",
+              "project-build-scripts",
+              "project-test-scripts",
+              "native-publish",
+              "pure-native-byte-equality",
+              "ordinary-registry-consumer",
+              "source-preservation"
+            ],
+            "sourceRevision": "927584c7a305884ca1e9725a5eeb231ea0c69c8e",
+            "system": "aarch64-linux"
           }
         ]
       },
@@ -40548,7 +43620,7 @@
       "introduction": "Packaged versions identify the toolchain selected by the purifier\u2019s pinned definitions. Project runtime/compiler and capture/build helper versions are listed separately.",
       "noRanges": "Broader version compatibility is limited to the explicit requirements and test records below; packaged defaults do not establish a minimum version.",
       "noTests": "No version-specific test combinations are recorded yet.",
-      "pointScope": "These checks cover only the listed versions, platforms and operations. They do not establish a minimum version or compatibility between tested points.",
+      "pointScope": "These checks cover only the listed versions, platforms and operations at the linked source revisions. Later implementation or toolchain changes require review and do not inherit a passing result. They do not establish a minimum version or compatibility between tested points.",
       "title": "Version compatibility",
       "unknown": "The Quickstart uses the purifier\u2019s pinned Nix toolchain. Exact tool, project runtime/compiler and helper versions, and supported version ranges, have not yet been recorded for this purifier."
     }

@@ -21,6 +21,15 @@ OPERATIONS = {
     'outgoing-capture': 'Outgoing package capture', 'native-publish': 'Native publication',
     'pure-native-byte-equality': 'Matching native/Nix publication bytes',
     'source-preservation': 'Unchanged project sources',
+    'ordinary-registry-consumer': 'Ordinary registry consumer',
+    'ordinary-source-consumer': 'Ordinary source consumer',
+    'ordinary-extracted-crate-rebuild': 'Offline extracted-crate rebuild',
+    'native-addon-build': 'Native addon build', 'native-addon-load': 'Native addon execution',
+    'cdylib-c-caller': 'Shared library with independent C caller',
+    'native-tool-selection': 'Native tool selection and rejection',
+    'workspace-root-discovery': 'Workspace root discovery',
+    'local-publish-dry-run': 'Local publication dry-run',
+    'revision-update-invalidation': 'Revision update invalidation',
 }
 EMPTY = {'defaults': [], 'testedPoints': [], 'supportedRanges': [], 'limitations': [], 'projectSelections': []}
 

@@ -35,7 +35,11 @@ class CompatibilityTests(unittest.TestCase):
         self.assertNotIn('>=', body)
 
     def test_tested_roles_remain_distinct_and_do_not_create_a_range(self):
-        body = render_compatibility(self.page, self.contract)
+        page = copy.deepcopy(self.page)
+        # This original fixture is x86-only even after other points gain ARM evidence.
+        page['compatibility']['testedPoints'] = [point for point in page['compatibility']['testedPoints']
+                                                 if point['id'] == 'npm6-node12-pure']
+        body = render_compatibility(page, self.contract)
         self.assertIn('Build tool / package manager: npm 6.14.16', body)
         self.assertIn('Project runtime: Node.js 12.22.12', body)
         self.assertIn('Capture / build helper: Node.js 24.21.0', body)
