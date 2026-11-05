@@ -265,8 +265,8 @@ When a compatibility PR merges, review its native test definitions and actual
 CI job results before adding points. Record the merged source revision, all
 relevant tracked input fingerprints, CI revision and attempt, and scoped job
 IDs. If merge and CI revisions differ, their complete input manifests must
-match. Include implementation, SDK definitions and lockfiles, fixtures, and
-check workflows; documentation and Pages/release presentation files are
+match. Include implementation, structured behavior models, SDK definitions and
+lockfiles, fixtures, and check workflows; documentation and Pages/release presentation files are
 excluded by `compatibility_evidence.relevant`. Add the exact operations and
 limitations the test establishes. A canceled job, a source-only recipe, an
 unmerged PR, or a projection-format test cannot establish SDK compatibility.
