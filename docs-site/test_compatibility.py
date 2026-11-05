@@ -34,6 +34,23 @@ class CompatibilityTests(unittest.TestCase):
         self.assertIn('have not yet been recorded', body)
         self.assertNotIn('>=', body)
 
+    def test_free_threaded_variant_and_independent_republisher_have_visible_identities(self):
+        page = self.documentation['catalog']['uv-purifier']
+        points = page['compatibility']['testedPoints']
+        threaded = [point for point in points if 'Target freeThreaded=true' in point['notes']]
+        self.assertTrue(threaded)
+        for point in threaded:
+            runtime = next(c for c in point['components'] if c['role'] == 'project-runtime')
+            self.assertEqual(runtime['name'], 'Python (free-threaded)')
+        for point in points:
+            if 'ordinary-republisher' in point['operations']:
+                tools = {c['name']: c['version'] for c in point['components'] if c['role'] == 'native-tool'}
+                self.assertIn('uv', tools)
+                self.assertIn('uv (ordinary republisher)', tools)
+        body = render_compatibility(page, self.contract)
+        self.assertIn('Project runtime: Python (free-threaded)', body)
+        self.assertIn('Build tool / package manager: uv (ordinary republisher)', body)
+
     def test_tested_roles_remain_distinct_and_do_not_create_a_range(self):
         page = copy.deepcopy(self.page)
         # This original fixture is x86-only even after other points gain ARM evidence.
