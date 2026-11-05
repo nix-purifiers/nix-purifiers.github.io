@@ -27155,7 +27155,200 @@
         "limitations": [],
         "projectSelections": [],
         "supportedRanges": [],
-        "testedPoints": []
+        "testedPoints": [
+          {
+            "components": [
+              {
+                "name": "pip",
+                "role": "native-tool",
+                "version": "26.1.2"
+              },
+              {
+                "name": "Python",
+                "role": "native-tool-runtime",
+                "version": "3.14.8"
+              },
+              {
+                "name": "Python",
+                "role": "project-runtime",
+                "version": "3.14.8"
+              },
+              {
+                "name": "uv (publisher and ordinary consumer)",
+                "role": "native-tool",
+                "version": "0.13.5"
+              }
+            ],
+            "evidence": [
+              "https://github.com/nix-purifiers/pip-purifier/blob/77c5742ae034a12d2a45b4212290be862e0fa772/tests/composition-native.py",
+              "https://github.com/nix-purifiers/pip-purifier/blob/77c5742ae034a12d2a45b4212290be862e0fa772/pkgs/cli/default.nix",
+              "https://github.com/nix-purifiers/pip-purifier/actions/runs/42060062230/job/127358908188"
+            ],
+            "id": "pip-native-composition-x86_64-linux",
+            "notes": [
+              "Current packaged tuple only; no historical Python or pip interval is established. Exact package versions were evaluated from this repository's own locked definitions.",
+              "Native pip handles capture/relock, editable development, forced requirements reinstall and dependency checks. The separate uv tool uploads to a controlled local HTTP endpoint and installs the ordinary downstream environment.",
+              "Uploaded wheel bytes match the Nix projection, ordinary execution confirms selected immutable package versions, and original pyproject/requirements/synthetic frozen pylock fixture bytes remain unchanged. No public registry upload or compiled-extension ABI claim is credited from this driver."
+            ],
+            "operations": [
+              "native-lock",
+              "lock-reproducibility",
+              "native-prefetch",
+              "native-input-composition",
+              "native-install-offline",
+              "pure-build",
+              "project-test-scripts",
+              "native-publish",
+              "uploaded-projection-byte-equality",
+              "ordinary-consumer",
+              "source-preservation",
+              "frozen-pylock-fixture-preservation"
+            ],
+            "sourceRevision": "77c5742ae034a12d2a45b4212290be862e0fa772",
+            "system": "x86_64-linux"
+          },
+          {
+            "components": [
+              {
+                "name": "pip",
+                "role": "native-tool",
+                "version": "26.1.2"
+              },
+              {
+                "name": "Python",
+                "role": "native-tool-runtime",
+                "version": "3.14.8"
+              },
+              {
+                "name": "Python",
+                "role": "project-runtime",
+                "version": "3.14.8"
+              },
+              {
+                "name": "uv (publisher and ordinary consumer)",
+                "role": "native-tool",
+                "version": "0.13.5"
+              }
+            ],
+            "evidence": [
+              "https://github.com/nix-purifiers/pip-purifier/blob/77c5742ae034a12d2a45b4212290be862e0fa772/tests/composition-native.py",
+              "https://github.com/nix-purifiers/pip-purifier/blob/77c5742ae034a12d2a45b4212290be862e0fa772/pkgs/cli/default.nix",
+              "https://github.com/nix-purifiers/pip-purifier/actions/runs/42060062230/job/127358908736"
+            ],
+            "id": "pip-native-composition-aarch64-linux",
+            "notes": [
+              "Current packaged tuple only; no historical Python or pip interval is established. Exact package versions were evaluated from this repository's own locked definitions.",
+              "Native pip handles capture/relock, editable development, forced requirements reinstall and dependency checks. The separate uv tool uploads to a controlled local HTTP endpoint and installs the ordinary downstream environment.",
+              "Uploaded wheel bytes match the Nix projection, ordinary execution confirms selected immutable package versions, and original pyproject/requirements/synthetic frozen pylock fixture bytes remain unchanged. No public registry upload or compiled-extension ABI claim is credited from this driver."
+            ],
+            "operations": [
+              "native-lock",
+              "lock-reproducibility",
+              "native-prefetch",
+              "native-input-composition",
+              "native-install-offline",
+              "pure-build",
+              "project-test-scripts",
+              "native-publish",
+              "uploaded-projection-byte-equality",
+              "ordinary-consumer",
+              "source-preservation",
+              "frozen-pylock-fixture-preservation"
+            ],
+            "sourceRevision": "77c5742ae034a12d2a45b4212290be862e0fa772",
+            "system": "aarch64-linux"
+          },
+          {
+            "components": [
+              {
+                "name": "pip",
+                "role": "native-tool",
+                "version": "26.1.2"
+              },
+              {
+                "name": "Python",
+                "role": "native-tool-runtime",
+                "version": "3.14.8"
+              },
+              {
+                "name": "Python",
+                "role": "project-runtime",
+                "version": "3.12.15"
+              },
+              {
+                "name": "MarkupSafe source",
+                "role": "addon-target",
+                "version": "3.0.3"
+              }
+            ],
+            "evidence": [
+              "https://github.com/nix-purifiers/pip-purifier/blob/77c5742ae034a12d2a45b4212290be862e0fa772/.github/workflows/check.yml",
+              "https://github.com/nix-purifiers/purifier/blob/79b628f3cc74e814cee9aff05ac5b772316b7287/tests/python/native_composition.py",
+              "https://github.com/nix-purifiers/uv-purifier/blob/0316132adbe05cc9d68fc1bf70d0d8d24f7cfab1/tests/default.nix",
+              "https://github.com/nix-purifiers/pip-purifier/actions/runs/42060062230/job/127358908188"
+            ],
+            "id": "pip-compiled-python312-input-x86_64-linux",
+            "notes": [
+              "Python3.14.8 runs native pip26.1.2 while the existing project virtual environment uses Python3.12.15; lock explicitly selects that project interpreter.",
+              "The immutable UV producer0316132 exports a prebuilt MarkupSafe3.0.3 cp312 wheel and uses Python3.12.15. The consumer imports MarkupSafe._speedups, asserts Python3.12 and verifies a .so file; both Linux jobs emitted the success marker. This is extension loading, not a source-compilation claim.",
+              "Scope is incoming dependency capture/prefetch and actual extension loading. This helper does not prove standalone consumer sandbox tests, publication, republisher chains, historical Python support or an ABI interval.",
+              "MarkupSafe version identifies the upstream fixture source; projected distribution metadata follows the Nix input catalog."
+            ],
+            "operations": [
+              "native-lock",
+              "native-prefetch",
+              "compiled-input-consumption",
+              "native-addon-load"
+            ],
+            "sourceRevision": "77c5742ae034a12d2a45b4212290be862e0fa772",
+            "system": "x86_64-linux"
+          },
+          {
+            "components": [
+              {
+                "name": "pip",
+                "role": "native-tool",
+                "version": "26.1.2"
+              },
+              {
+                "name": "Python",
+                "role": "native-tool-runtime",
+                "version": "3.14.8"
+              },
+              {
+                "name": "Python",
+                "role": "project-runtime",
+                "version": "3.12.15"
+              },
+              {
+                "name": "MarkupSafe source",
+                "role": "addon-target",
+                "version": "3.0.3"
+              }
+            ],
+            "evidence": [
+              "https://github.com/nix-purifiers/pip-purifier/blob/77c5742ae034a12d2a45b4212290be862e0fa772/.github/workflows/check.yml",
+              "https://github.com/nix-purifiers/purifier/blob/79b628f3cc74e814cee9aff05ac5b772316b7287/tests/python/native_composition.py",
+              "https://github.com/nix-purifiers/uv-purifier/blob/0316132adbe05cc9d68fc1bf70d0d8d24f7cfab1/tests/default.nix",
+              "https://github.com/nix-purifiers/pip-purifier/actions/runs/42060062230/job/127358908736"
+            ],
+            "id": "pip-compiled-python312-input-aarch64-linux",
+            "notes": [
+              "Python3.14.8 runs native pip26.1.2 while the existing project virtual environment uses Python3.12.15; lock explicitly selects that project interpreter.",
+              "The immutable UV producer0316132 exports a prebuilt MarkupSafe3.0.3 cp312 wheel and uses Python3.12.15. The consumer imports MarkupSafe._speedups, asserts Python3.12 and verifies a .so file; both Linux jobs emitted the success marker. This is extension loading, not a source-compilation claim.",
+              "Scope is incoming dependency capture/prefetch and actual extension loading. This helper does not prove standalone consumer sandbox tests, publication, republisher chains, historical Python support or an ABI interval.",
+              "MarkupSafe version identifies the upstream fixture source; projected distribution metadata follows the Nix input catalog."
+            ],
+            "operations": [
+              "native-lock",
+              "native-prefetch",
+              "compiled-input-consumption",
+              "native-addon-load"
+            ],
+            "sourceRevision": "77c5742ae034a12d2a45b4212290be862e0fa772",
+            "system": "aarch64-linux"
+          }
+        ]
       },
       "facts": {
         "build_engine": {

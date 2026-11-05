@@ -6586,6 +6586,308 @@
           ]
         }
       ]
+    },
+    "pip-purifier": {
+      "testedPoints": [
+        {
+          "id": "pip-native-composition-x86_64-linux",
+          "components": [
+            {
+              "role": "native-tool",
+              "name": "pip",
+              "version": "26.1.2"
+            },
+            {
+              "role": "native-tool-runtime",
+              "name": "Python",
+              "version": "3.14.8"
+            },
+            {
+              "role": "project-runtime",
+              "name": "Python",
+              "version": "3.14.8"
+            },
+            {
+              "role": "native-tool",
+              "name": "uv (publisher and ordinary consumer)",
+              "version": "0.13.5"
+            }
+          ],
+          "system": "x86_64-linux",
+          "operations": [
+            "native-lock",
+            "lock-reproducibility",
+            "native-prefetch",
+            "native-input-composition",
+            "native-install-offline",
+            "pure-build",
+            "project-test-scripts",
+            "native-publish",
+            "uploaded-projection-byte-equality",
+            "ordinary-consumer",
+            "source-preservation",
+            "frozen-pylock-fixture-preservation"
+          ],
+          "sourceRevision": "77c5742ae034a12d2a45b4212290be862e0fa772",
+          "evidence": [
+            "https://github.com/nix-purifiers/pip-purifier/blob/77c5742ae034a12d2a45b4212290be862e0fa772/tests/composition-native.py",
+            "https://github.com/nix-purifiers/pip-purifier/blob/77c5742ae034a12d2a45b4212290be862e0fa772/pkgs/cli/default.nix",
+            "https://github.com/nix-purifiers/pip-purifier/actions/runs/42060062230/job/127358908188"
+          ],
+          "notes": [
+            "Current packaged tuple only; no historical Python or pip interval is established. Exact package versions were evaluated from this repository's own locked definitions.",
+            "Native pip handles capture/relock, editable development, forced requirements reinstall and dependency checks. The separate uv tool uploads to a controlled local HTTP endpoint and installs the ordinary downstream environment.",
+            "Uploaded wheel bytes match the Nix projection, ordinary execution confirms selected immutable package versions, and original pyproject/requirements/synthetic frozen pylock fixture bytes remain unchanged. No public registry upload or compiled-extension ABI claim is credited from this driver."
+          ]
+        },
+        {
+          "id": "pip-native-composition-aarch64-linux",
+          "components": [
+            {
+              "role": "native-tool",
+              "name": "pip",
+              "version": "26.1.2"
+            },
+            {
+              "role": "native-tool-runtime",
+              "name": "Python",
+              "version": "3.14.8"
+            },
+            {
+              "role": "project-runtime",
+              "name": "Python",
+              "version": "3.14.8"
+            },
+            {
+              "role": "native-tool",
+              "name": "uv (publisher and ordinary consumer)",
+              "version": "0.13.5"
+            }
+          ],
+          "system": "aarch64-linux",
+          "operations": [
+            "native-lock",
+            "lock-reproducibility",
+            "native-prefetch",
+            "native-input-composition",
+            "native-install-offline",
+            "pure-build",
+            "project-test-scripts",
+            "native-publish",
+            "uploaded-projection-byte-equality",
+            "ordinary-consumer",
+            "source-preservation",
+            "frozen-pylock-fixture-preservation"
+          ],
+          "sourceRevision": "77c5742ae034a12d2a45b4212290be862e0fa772",
+          "evidence": [
+            "https://github.com/nix-purifiers/pip-purifier/blob/77c5742ae034a12d2a45b4212290be862e0fa772/tests/composition-native.py",
+            "https://github.com/nix-purifiers/pip-purifier/blob/77c5742ae034a12d2a45b4212290be862e0fa772/pkgs/cli/default.nix",
+            "https://github.com/nix-purifiers/pip-purifier/actions/runs/42060062230/job/127358908736"
+          ],
+          "notes": [
+            "Current packaged tuple only; no historical Python or pip interval is established. Exact package versions were evaluated from this repository's own locked definitions.",
+            "Native pip handles capture/relock, editable development, forced requirements reinstall and dependency checks. The separate uv tool uploads to a controlled local HTTP endpoint and installs the ordinary downstream environment.",
+            "Uploaded wheel bytes match the Nix projection, ordinary execution confirms selected immutable package versions, and original pyproject/requirements/synthetic frozen pylock fixture bytes remain unchanged. No public registry upload or compiled-extension ABI claim is credited from this driver."
+          ]
+        },
+        {
+          "id": "pip-compiled-python312-input-x86_64-linux",
+          "components": [
+            {
+              "role": "native-tool",
+              "name": "pip",
+              "version": "26.1.2"
+            },
+            {
+              "role": "native-tool-runtime",
+              "name": "Python",
+              "version": "3.14.8"
+            },
+            {
+              "role": "project-runtime",
+              "name": "Python",
+              "version": "3.12.15"
+            },
+            {
+              "role": "addon-target",
+              "name": "MarkupSafe source",
+              "version": "3.0.3"
+            }
+          ],
+          "system": "x86_64-linux",
+          "operations": [
+            "native-lock",
+            "native-prefetch",
+            "compiled-input-consumption",
+            "native-addon-load"
+          ],
+          "sourceRevision": "77c5742ae034a12d2a45b4212290be862e0fa772",
+          "evidence": [
+            "https://github.com/nix-purifiers/pip-purifier/blob/77c5742ae034a12d2a45b4212290be862e0fa772/.github/workflows/check.yml",
+            "https://github.com/nix-purifiers/purifier/blob/79b628f3cc74e814cee9aff05ac5b772316b7287/tests/python/native_composition.py",
+            "https://github.com/nix-purifiers/uv-purifier/blob/0316132adbe05cc9d68fc1bf70d0d8d24f7cfab1/tests/default.nix",
+            "https://github.com/nix-purifiers/pip-purifier/actions/runs/42060062230/job/127358908188"
+          ],
+          "notes": [
+            "Python3.14.8 runs native pip26.1.2 while the existing project virtual environment uses Python3.12.15; lock explicitly selects that project interpreter.",
+            "The immutable UV producer0316132 exports a prebuilt MarkupSafe3.0.3 cp312 wheel and uses Python3.12.15. The consumer imports MarkupSafe._speedups, asserts Python3.12 and verifies a .so file; both Linux jobs emitted the success marker. This is extension loading, not a source-compilation claim.",
+            "Scope is incoming dependency capture/prefetch and actual extension loading. This helper does not prove standalone consumer sandbox tests, publication, republisher chains, historical Python support or an ABI interval.",
+            "MarkupSafe version identifies the upstream fixture source; projected distribution metadata follows the Nix input catalog."
+          ]
+        },
+        {
+          "id": "pip-compiled-python312-input-aarch64-linux",
+          "components": [
+            {
+              "role": "native-tool",
+              "name": "pip",
+              "version": "26.1.2"
+            },
+            {
+              "role": "native-tool-runtime",
+              "name": "Python",
+              "version": "3.14.8"
+            },
+            {
+              "role": "project-runtime",
+              "name": "Python",
+              "version": "3.12.15"
+            },
+            {
+              "role": "addon-target",
+              "name": "MarkupSafe source",
+              "version": "3.0.3"
+            }
+          ],
+          "system": "aarch64-linux",
+          "operations": [
+            "native-lock",
+            "native-prefetch",
+            "compiled-input-consumption",
+            "native-addon-load"
+          ],
+          "sourceRevision": "77c5742ae034a12d2a45b4212290be862e0fa772",
+          "evidence": [
+            "https://github.com/nix-purifiers/pip-purifier/blob/77c5742ae034a12d2a45b4212290be862e0fa772/.github/workflows/check.yml",
+            "https://github.com/nix-purifiers/purifier/blob/79b628f3cc74e814cee9aff05ac5b772316b7287/tests/python/native_composition.py",
+            "https://github.com/nix-purifiers/uv-purifier/blob/0316132adbe05cc9d68fc1bf70d0d8d24f7cfab1/tests/default.nix",
+            "https://github.com/nix-purifiers/pip-purifier/actions/runs/42060062230/job/127358908736"
+          ],
+          "notes": [
+            "Python3.14.8 runs native pip26.1.2 while the existing project virtual environment uses Python3.12.15; lock explicitly selects that project interpreter.",
+            "The immutable UV producer0316132 exports a prebuilt MarkupSafe3.0.3 cp312 wheel and uses Python3.12.15. The consumer imports MarkupSafe._speedups, asserts Python3.12 and verifies a .so file; both Linux jobs emitted the success marker. This is extension loading, not a source-compilation claim.",
+            "Scope is incoming dependency capture/prefetch and actual extension loading. This helper does not prove standalone consumer sandbox tests, publication, republisher chains, historical Python support or an ABI interval.",
+            "MarkupSafe version identifies the upstream fixture source; projected distribution metadata follows the Nix input catalog."
+          ]
+        }
+      ],
+      "reviews": [
+        {
+          "sourceRevision": "77c5742ae034a12d2a45b4212290be862e0fa772",
+          "files": {
+            ".github/workflows/check.yml": "95664b54f684c5e41a88782083d0295755f991bb34bccc568f5c449ea2bad8bd",
+            ".github/workflows/pages.yml": "c4c6fe371c9769151e8e7784b98de3cf1cb7c58544a9da9a3e9045fc0c44009b",
+            ".github/workflows/release.yml": "cd4f27462cabcc2dac9d3e2daf080b88d88cb18f5b1e8b774ef53479e799f2b7",
+            ".gitignore": "dced5e3d57cf088bcfbd5247dcde09bfdf9b04b2e884354cb5843a45444629db",
+            "LICENSE": "6bdc2caf8d11ccdbfc05b35d852953ba41150d93ba256ae9615a07d246734a56",
+            "README.md": "7138f4013c66722a4e63cae0964eb5a38e739730c1afec78d77729f5aceeadc2",
+            "configs/flake/pip-purifier/default.nix": "fcd5a4666e85315d86af5ed1cec335b3095790d8e875e7172d8684f38ed66e43",
+            "configs/nixpkgsConfig/default/default.nix": "14023568c5b797942a69c81cbc275d71c9aa663c8c87f0c4e41c4b2da9a375d9",
+            "docs/development/design.md": "8f1cb9469d074f5d98c1fbeb5888f7d142d72f7fe92b0341173ecf3e5e2f4df4",
+            "docs/development/testing.md": "6303ccb3ae830c252dcbdeaab75a5e5bec125a339935c394e939e67ebe23290d",
+            "flake.lock": "fd202b372384f93deaca18186be8a3aec3c696667df590c1d37c251615d5aacb",
+            "flake.nix": "bda0d815e9239da79455c490ca64e694e64af889d495105f4d0784dc23a5cf80",
+            "lib-overlays/default/default.nix": "4f0bffdcecc08aa1843161c5a168dc405b736b5ae0b09df0c10b7bd704b09951",
+            "nix/lib/build-pip-project.nix": "cf4b58f49ea523d0ed5800b1b9d31ee6b1ace5e780b877cabc011f1cb532992f",
+            "nix/lib/cli.nix": "b52f1797a20f6b839cffcf644fde69d779b999406600b7eac70098c7f4d84676",
+            "nix/lib/lock-version.nix": "7af8a90aad508be76caafefa0f163bb9c98a0b1a38e7f0bee074d7e84946d274",
+            "nix/lib/offline.py": "4f82c29bd9ebdf9c0b3cf5b8909b58ff219943df9c4562da1e62192b3f0f7bd8",
+            "nix/lib/pip_inputs.py": "6bc98e62591117b7bbeb6e1797f91b0def4f8ed9c7fd5103e222b3ebbff86b64",
+            "nix/lib/pip_runner.py": "d465d57f1e8a804283cd87f8f26481ac811fb16eb5db04cb98873107be9e02c4",
+            "nix/lib/python_bindings.py": "0d84bad580ce8370e3735b4d6619a7d615967f05aeb88de0a5bf7719d32e638a",
+            "nix/lib/read-lock.nix": "db3a74c7e841ef0357a7afd9a0fc1e616921b5f007b2d3cda7571cd4dd82b9aa",
+            "nix/lib/vcs_shim.py": "8d70378725d4a83b446d83a572fbc14ddbbd684904ff89140b52c6e3b2d2267f",
+            "nix/lib/wheel_scope.py": "3565ce1698f31fcea056574750410ad495c0066888827786b3a7375bd48bf512",
+            "pkg-overlays/default/default.nix": "38c57c01fc0c49a0006ae3fc6ec287db2a62cab7d366d1a78ff3a13ff6c77ee6",
+            "pkgs/cli/default.nix": "d95e087121d3098b0257a63e8ad5d58f4081abd35d13e96e926f8a5518bada7f",
+            "pkgs/default.nix": "ef0e18d712606715e05eab8c67740db15976714e15da0b2bee5a1bb1a7a16d14",
+            "src/pip_purifier.py": "908cf6a31bb65d6c9561ced12a12395ae16a7f4d665828fd53883d6227279ae9",
+            "tests/composition-native.py": "701039ea82a1c5965b9b11df6cdf2d21eb5168ec783427189edc5d8266a6c620",
+            "tests/conformance.nix": "af62c5fe0a6149be20909c25e41a8eb4197c104ccdc54b93f3b4742ea3841320",
+            "tests/default.nix": "825454b84d8ceae6bb9a92596e4d0f20ec43ef59f17f354f6cbbbba0d7ddef01",
+            "tests/dependencies/flake.lock": "fc99ba12ea00273ef645192ee5e189e11b37c8fc781c204c088b21b47b53d9c4",
+            "tests/dependencies/flake.nix": "4f06ccbc1a03e55a45b364e03d75fe4796ed54c5f7b69330c584738b586c68f1",
+            "tests/fixtures/editable-extras/backend.py": "2f1b78a2c28b02aacb9978419f38374e3fd42677b3114c56326b3c58950c9788",
+            "tests/fixtures/editable-extras/editable_extras.py": "9e7ccb20565ec92e80cb58a404dcbe555e72ed31f67c4a578d92bf138edb3b7c",
+            "tests/fixtures/editable-extras/pip-purifier.lock.json": "1602a93cf1425aefa889fa90da2d74df129e393892a5b737738d5157c4ed8e25",
+            "tests/fixtures/editable-extras/pyproject.toml": "2122d199d279a7c21b334110ad9ed138efc52442b8000cdf2c27178b0761fd64",
+            "tests/fixtures/editable-extras/requirements.txt": "aa1796fec6e7c59506fc8517fc70e0f77756cdecac3227c23d5d1015e956fe9e",
+            "tests/fixtures/hashed/pip-purifier.lock.json": "f447591068c4b4759641f2af3a32789c8e8b70d35e93f71df1be3363e53cd4a4",
+            "tests/fixtures/hashed/requirements.txt": "f47472ccbdafa914635a013dd13215586a3a0b8e0ed70c87acb917c9aeda68ff",
+            "tests/fixtures/project/build/lib/greet/__init__.py": "2345b6ebb462c85ca80f38b8f0df37dd580896be3a44a61e8d3497a06751f6ea",
+            "tests/fixtures/project/pip-purifier.lock.json": "e5df2f72524d79ae874c6700d85ba6157f73dd74d77ae40aeed1580a65ca4187",
+            "tests/fixtures/project/pyproject.toml": "02f3633008f28c595bb20938b642c7fcb6fde5eef305b2b9845904025d7a903a",
+            "tests/fixtures/project/requirements.txt": "939cec53d7f3e0a207e836e537101a228b7a6a19ca47426241e38d1aaeadd012",
+            "tests/fixtures/project/src/greet.egg-info/PKG-INFO": "a426135f65f7d2bd1ffd3c216c1a4e1e4535883c59cfa59f603ad23011b91356",
+            "tests/fixtures/project/src/greet.egg-info/SOURCES.txt": "e3e66a352fb3cd7884ba5598b59197cd5f8b4a91f20097269297cb2eac531db2",
+            "tests/fixtures/project/src/greet.egg-info/dependency_links.txt": "a42cf69058e5970e30bffdbb238a053167c23d562dabdf94df9f3bca8d8832d1",
+            "tests/fixtures/project/src/greet.egg-info/entry_points.txt": "784e73b1024c9e3387c74b2271e91dbd09e393e90227d644a56d4988a737919b",
+            "tests/fixtures/project/src/greet.egg-info/requires.txt": "57c5d9b06457d8f866b2092ddd4137f25c2bf6dfadd3de94b562556e8519238f",
+            "tests/fixtures/project/src/greet.egg-info/top_level.txt": "bea5d4c4859d7daa7ff0ce639ecf57b18110998f1efd9098f253d81259aa889f",
+            "tests/fixtures/project/src/greet/__init__.py": "2345b6ebb462c85ca80f38b8f0df37dd580896be3a44a61e8d3497a06751f6ea",
+            "tests/fixtures/pylock/pip-purifier.lock.json": "4524a549eb62d2f14d9cdfe5ad95659211b809f34baa3ca965b899c22f1bdc79",
+            "tests/fixtures/pylock/pylock.toml": "5bc7460e55ffb0b92fafc955eb1a22bbf30e5180e1174852984295bf3022b2bc",
+            "tests/fixtures/script/app.py": "820b85f54bb3f6b3eb557e8826f9278fdaf29ca5d3348d30861842422f671ae6",
+            "tests/fixtures/script/pip-purifier.lock.json": "67a527f1183d80f8d000b4eb54eab482b151c2ffb0b8f09c730f9f5ddc815ec9",
+            "tests/fixtures/sources/more.txt": "7b8363442649999346b9591ffec163265b5f5a9f98251f97e883ebdc72976b52",
+            "tests/fixtures/sources/pip-purifier.lock.json": "a242b4f1de0f4d42e87c8d15466011550121adbb069bb598b5f2d0a4ec724f5c",
+            "tests/fixtures/sources/requirements.txt": "f284e00c9157c0ec37d0b6f3b3b75a3d068954da873042ed508cee52d847afe1",
+            "tests/fixtures/sources/vendor/localdir/pyproject.toml": "e9b4503586fb9190ee245ff62aed578c4b62b7fcdba82640646e93d860056699",
+            "tests/fixtures/sources/vendor/localdir/src/localdir/__init__.py": "5f6d11424437e8357bc1af6043a8f96b6fc8ae50f68d0178a964cbfa5ef836e0",
+            "tests/fixtures/stale-pylock/pylock.toml": "bafbb110bf93154f71582e3133695d88e8e96a9ea87c018265ba74df62119429",
+            "tests/lock-run.sh": "70b21d60d1bea27552d81db3cb08289bcd67935479e420036f07baf519b67f9c",
+            "tests/offline.sh": "e66f38cf2a9736a8465167f62ff536bc9d569727a747fee52c656488f920060e",
+            "tests/real-world.sh": "037bdb9f984c30b6cbf7cf6a99078044db26d4db6716676f7522942f30d10e96",
+            "tests/relock-fixtures.sh": "9001699c3473932cbd7f7d38f415c679e9c2d879dc63aca74daa7be9dd1ac23d",
+            "tests/unit/test_lock_tool.py": "03210b5dd013b835c9099ac00430d1f30509808e3b7ad3ec058c9bac03eaf2d2",
+            "tests/unit/test_offline.py": "a46eab64809457ca54cb6c245f0b86971648307a621d740ee4a916d9f73b6379",
+            "tests/unit/test_pip_inputs.py": "a2a1e240b708bcf1a6ec62ba8dd64414d21c277a5e9ad8bd5800996a7915d1ea",
+            "tests/update.sh": "0e3d959866835595465d3e2b39c1739c663dd049431be767ce4e02e74f245a9e",
+            "tests/upload_server.py": "130c6b20c839eb797b9b68a5912ab962741c2a7d9c945d1b214d7dfecf686f8d",
+            "version.txt": "f3e857b91d18d4bc9aef10d31a248fbcc57d9cf7c77c50b0311ef2ab79d741d1"
+          },
+          "inputDigest": "5b274cc70408adbecf2119702d81091f1294628378d7fab4be61a8e40e9631f2",
+          "pointIds": [
+            "pip-native-composition-x86_64-linux",
+            "pip-native-composition-aarch64-linux",
+            "pip-compiled-python312-input-x86_64-linux",
+            "pip-compiled-python312-input-aarch64-linux"
+          ],
+          "ci": [
+            {
+              "runId": 42060062230,
+              "attempt": 1,
+              "headRevision": "77c5742ae034a12d2a45b4212290be862e0fa772",
+              "inputDigest": "5b274cc70408adbecf2119702d81091f1294628378d7fab4be61a8e40e9631f2",
+              "jobs": [
+                {
+                  "id": 127358908188,
+                  "name": "composition-native (ubuntu-latest)",
+                  "system": "x86_64-linux",
+                  "conclusion": "success"
+                },
+                {
+                  "id": 127358908736,
+                  "name": "composition-native (ubuntu-24.04-arm)",
+                  "system": "aarch64-linux",
+                  "conclusion": "success"
+                }
+              ]
+            }
+          ]
+        }
+      ]
     }
   }
 }
