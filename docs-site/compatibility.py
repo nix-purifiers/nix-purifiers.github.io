@@ -23,6 +23,8 @@ OPERATIONS = {
     'source-preservation': 'Unchanged project sources',
     'ordinary-registry-consumer': 'Ordinary registry consumer',
     'ordinary-source-consumer': 'Ordinary source consumer',
+    'ordinary-maven-consumer': 'Ordinary Maven consumer',
+    'native-input-composition': 'Native Nix input composition',
     'ordinary-extracted-crate-rebuild': 'Offline extracted-crate rebuild',
     'native-addon-build': 'Native addon build', 'native-addon-load': 'Native addon execution',
     'cdylib-c-caller': 'Shared library with independent C caller',

@@ -61,7 +61,8 @@ class Evidence(unittest.TestCase):
                 validate_registry(registry, self.catalog)
 
     def test_source_fixture_workflow_and_new_implementation_drift(self):
-        for name in ['main.py', 'tests/native.py', '.github/workflows/check.yml', 'new.py', 'model/behavior.nix']:
+        for name in ['main.py', 'tests/native.py', '.github/workflows/check.yml', 'new.py', 'model/behavior.nix',
+                     'tests/fixture.md', 'docs/compiler.rst', '.gitattributes']:
             with self.subTest(name=name):
                 self.git('reset', '--hard', self.revision)
                 (self.root/name).parent.mkdir(parents=True, exist_ok=True)
@@ -71,10 +72,10 @@ class Evidence(unittest.TestCase):
                 self.assertIn(name, result['changedFiles'])
         self.git('reset', '--hard', self.revision)
 
-    def test_documentation_change_is_not_a_new_runtime_pass(self):
+    def test_documentation_change_requires_review_without_becoming_a_runtime_pass(self):
         (self.root/'README.md').write_text('new docs\n'); self.commit()
         result = audit_source(self.root, self.review)
-        self.assertEqual(result['status'], 'inputs-match')
+        self.assertEqual(result['status'], 'review-needed')
         self.assertNotIn('passed', result.values())
         self.assertNotEqual(result['currentRevision'], self.revision)
 
@@ -95,9 +96,10 @@ class Evidence(unittest.TestCase):
         changed_revision = self.git('rev-parse', 'HEAD').strip()
         run = dict(head_sha=self.revision, run_attempt=1)
         job = dict(run_id=123, head_sha=self.revision, name='native',
-                   status='completed', conclusion='success')
+                   status='completed', conclusion='success', labels=['ubuntu-latest'])
         original = subprocess.check_output
-        for mutation in ['none', 'cancelled', 'attempt', 'head', 'job-name', 'ci-inputs', 'review-source']:
+        for mutation in ['none', 'cancelled', 'attempt', 'head', 'job-name', 'ci-inputs', 'review-source',
+                         'runner-platform', 'runner-unknown', 'runner-ambiguous']:
             observed_run, observed_job = copy.deepcopy(run), copy.deepcopy(job)
             review = copy.deepcopy(self.review)
             if mutation == 'cancelled': observed_job['conclusion'] = 'cancelled'
@@ -106,6 +108,9 @@ class Evidence(unittest.TestCase):
             elif mutation == 'job-name': observed_job['name'] = 'unrelated'
             elif mutation == 'ci-inputs': review['inputDigest'] = '0'*64
             elif mutation == 'review-source': review['sourceRevision'] = changed_revision
+            elif mutation == 'runner-platform': observed_job['labels'] = ['macos-latest']
+            elif mutation == 'runner-unknown': observed_job['labels'] = ['self-hosted']
+            elif mutation == 'runner-ambiguous': observed_job['labels'] = ['ubuntu-latest', 'ubuntu-24.04-arm']
             def response(args, **kwargs):
                 if args[0] == 'gh':
                     return json.dumps(observed_job if '/actions/jobs/' in args[-1] else observed_run)

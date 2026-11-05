@@ -9,11 +9,22 @@ from compatibility import EMPTY, validate
 
 
 def relevant(path):
-    # These change presentation, not the implementation or its selected SDKs.
-    return not (path.startswith(('docs/', 'docs-site/')) or
-                path.endswith(('.md', '.rst')) or path in {
-                    'LICENSE', 'COPYING', '.gitignore', '.gitattributes',
-                    '.github/workflows/pages.yml', '.github/workflows/release.yml'})
+    # Native fixtures and build inputs can live under any name or directory.
+    return True
+
+
+# Public GitHub-hosted runner labels, reviewed against GitHub's runner reference:
+# https://docs.github.com/en/actions/reference/runners/github-hosted-runners
+RUNNER_SYSTEMS = {'ubuntu-latest': 'x86_64-linux', 'ubuntu-24.04': 'x86_64-linux',
+                  'ubuntu-24.04-arm': 'aarch64-linux', 'macos-latest': 'aarch64-darwin'}
+
+
+def runner_system(labels):
+    if not labels or any(label not in RUNNER_SYSTEMS for label in labels):
+        raise ValueError('unknown runner labels; platform evidence requires review')
+    systems = {RUNNER_SYSTEMS[label] for label in labels}
+    if len(systems) != 1: raise ValueError('ambiguous runner platform evidence')
+    return systems.pop()
 
 
 def git(checkout, *args):
@@ -148,5 +159,6 @@ def verify_ci(repository, review, checkout, fetch=False):
             job = api(f'repos/{repository}/actions/jobs/{expected["id"]}')
             if (job['run_id'] != evidence['runId'] or job['head_sha'] != run['head_sha']
                     or job['name'] != expected['name'] or job['status'] != 'completed'
-                    or job['conclusion'] != 'success'):
+                    or job['conclusion'] != 'success'
+                    or runner_system(job.get('labels')) != expected['system']):
                 raise ValueError(f'{repository}: required CI job {expected["id"]} is not successful')
