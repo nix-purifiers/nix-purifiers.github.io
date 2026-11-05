@@ -61,9 +61,10 @@ class Evidence(unittest.TestCase):
                 validate_registry(registry, self.catalog)
 
     def test_source_fixture_workflow_and_new_implementation_drift(self):
-        for name in ['main.py', 'tests/native.py', '.github/workflows/check.yml', 'new.py']:
+        for name in ['main.py', 'tests/native.py', '.github/workflows/check.yml', 'new.py', 'model/behavior.nix']:
             with self.subTest(name=name):
                 self.git('reset', '--hard', self.revision)
+                (self.root/name).parent.mkdir(parents=True, exist_ok=True)
                 (self.root/name).write_text('changed\n'); self.commit()
                 result = audit_source(self.root, self.review)
                 self.assertEqual(result['status'], 'review-needed')
