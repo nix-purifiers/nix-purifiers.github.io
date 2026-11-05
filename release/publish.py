@@ -8,6 +8,7 @@ from pathlib import Path
 import re
 import subprocess
 import tempfile
+import time
 
 import packages
 
@@ -50,6 +51,17 @@ def checked(repository, sha):
                and r["event"] in ("push", "workflow_dispatch") for r in runs["workflow_runs"])
 
 
+def wait_for_checked(repository, sha):
+    # The successful workflow event can arrive before its list/API view settles.
+    # Recheck reads only; every attempt still requires the exact completed run.
+    for attempt in range(6):
+        if checked(repository, sha):
+            return True
+        if attempt != 5:
+            time.sleep(2)
+    return False
+
+
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--repository", required=True)
@@ -64,7 +76,7 @@ def main():
     if api(args.repository, "git/ref/heads/main")["object"]["sha"] != sha:
         print("A newer main commit exists; its successful CI will release it.")
         return
-    if not checked(args.repository, sha):
+    if not wait_for_checked(args.repository, sha):
         raise RuntimeError("This main commit has no successful check workflow; refusing to tag it")
     identity = fingerprint(root, sha)
     releases = api(args.repository, "releases?per_page=100")

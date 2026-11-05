@@ -5,6 +5,13 @@ their `check` workflow succeeds on main. Manual runs use the same CI gate.
 Only the current main commit can be tagged; a superseded run leaves release
 publication to the newer commit's CI.
 
+The gate makes up to six read-only queries, two seconds apart, because a
+successful workflow event may precede its visibility in the run-list API.
+Every query still requires a completed successful main push/manual run for the
+exact commit. An absent, failed, cancelled, skipped, unfinished, wrong-commit or
+pull-request result never authorizes publication. This does not retry release
+creation or artifact uploads.
+
 Versions increment within a `MAJOR.MINOR` series, starting at `0.1.1`.
 The release manifest fingerprints tracked implementation files and locked
 dependencies. Documentation, tests and workflow-only changes do not create

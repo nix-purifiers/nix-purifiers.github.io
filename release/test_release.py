@@ -50,6 +50,46 @@ class ReleaseTests(unittest.TestCase):
                 with patch.object(publish, "api", return_value={"workflow_runs": [run]}):
                     self.assertFalse(publish.checked("owner/repo", "current"))
 
+    def test_release_waits_for_exact_success_to_become_visible(self):
+        success = {"head_sha": "current", "head_branch": "main", "event": "push",
+                   "status": "completed", "conclusion": "success"}
+        with patch.object(publish, "api", side_effect=[
+            {"workflow_runs": []},
+            {"workflow_runs": [dict(success, status="in_progress", conclusion=None)]},
+            {"workflow_runs": [success]},
+        ]) as query, patch.object(publish.time, "sleep") as sleep:
+            self.assertTrue(publish.wait_for_checked("owner/repo", "current"))
+            self.assertEqual(query.call_count, 3)
+            self.assertEqual(sleep.call_count, 2)
+
+    def test_release_visibility_wait_is_bounded_and_fails_closed(self):
+        for fields in [dict(conclusion="failure"), dict(conclusion="cancelled"),
+                       dict(conclusion="skipped"), dict(head_sha="other"),
+                       dict(head_branch="topic"), dict(event="pull_request"),
+                       dict(status="in_progress"), dict(status="queued")]:
+            with self.subTest(fields=fields):
+                observed = dict(head_sha="current", head_branch="main", event="push",
+                                status="completed", conclusion="success")
+                observed.update(fields)
+                with patch.object(publish, "api", return_value={"workflow_runs": [observed]}) as query, \
+                     patch.object(publish.time, "sleep") as sleep:
+                    self.assertFalse(publish.wait_for_checked("owner/repo", "current"))
+                    self.assertEqual(query.call_count, 6)
+                    self.assertEqual(sleep.call_count, 5)
+        with patch.object(publish, "api", return_value={"workflow_runs": []}) as query, \
+             patch.object(publish.time, "sleep"):
+            self.assertFalse(publish.wait_for_checked("owner/repo", "current"))
+            self.assertEqual(query.call_count, 6)
+
+    def test_visible_success_needs_no_wait(self):
+        success = {"head_sha": "current", "head_branch": "main", "event": "push",
+                   "status": "completed", "conclusion": "success"}
+        with patch.object(publish, "api", return_value={"workflow_runs": [success]}) as query, \
+             patch.object(publish.time, "sleep") as sleep:
+            self.assertTrue(publish.wait_for_checked("owner/repo", "current"))
+            query.assert_called_once()
+            sleep.assert_not_called()
+
     def test_python_index_retains_versions_with_exact_hashes(self):
         with tempfile.TemporaryDirectory() as temporary:
             site = Path(temporary)
