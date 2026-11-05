@@ -3887,12 +3887,13 @@
               }
             ],
             "evidence": [
-              "https://github.com/nix-purifiers/bundler-purifier/blob/aa54360633eb4d7b5f4f53c0fd1a0e556a789d81/tests/historical-native.py",
-              "https://github.com/nix-purifiers/bundler-purifier/actions/runs/41955690270/job/127009917096"
+              "https://github.com/nix-purifiers/bundler-purifier/blob/2cf9a2522d470519c671eb9488e2808292a55069/tests/historical-native.py",
+              "https://github.com/nix-purifiers/bundler-purifier/actions/runs/41998737356/job/127148348627"
             ],
             "id": "ruby-2.5.8",
             "notes": [
-              "C locale; compiled JSON extension and ordinary RubyGems registry consumer execute on the selected Ruby. Native publication bytes match the Nix projection."
+              "C locale; compiled JSON extension and ordinary RubyGems registry consumer execute on the selected Ruby. Native publication bytes match the Nix projection.",
+              "Reverified on restored main; its complete tracked tree matches the original merged source aa54360633eb4d7b5f4f53c0fd1a0e556a789d81 (original CI run 41955690270)."
             ],
             "operations": [
               "pure-build",
@@ -3908,7 +3909,7 @@
               "native-addon-build",
               "native-addon-load"
             ],
-            "sourceRevision": "aa54360633eb4d7b5f4f53c0fd1a0e556a789d81",
+            "sourceRevision": "2cf9a2522d470519c671eb9488e2808292a55069",
             "system": "x86_64-linux"
           },
           {
@@ -3945,13 +3946,14 @@
               }
             ],
             "evidence": [
-              "https://github.com/nix-purifiers/bundler-purifier/blob/aa54360633eb4d7b5f4f53c0fd1a0e556a789d81/tests/historical-native.py",
-              "https://github.com/nix-purifiers/bundler-purifier/actions/runs/41955690270/job/127009917096"
+              "https://github.com/nix-purifiers/bundler-purifier/blob/2cf9a2522d470519c671eb9488e2808292a55069/tests/historical-native.py",
+              "https://github.com/nix-purifiers/bundler-purifier/actions/runs/41998737356/job/127148348627"
             ],
             "id": "ruby-1.8.7-p374",
             "notes": [
               "C locale; compiled JSON extension and ordinary RubyGems registry consumer execute on the selected Ruby. Native publication bytes match the Nix projection.",
-              "Independent modern Ruby builds the registry index; incoming Nix composition is not established for Ruby 1.8."
+              "Independent modern Ruby builds the registry index; incoming Nix composition is not established for Ruby 1.8.",
+              "Reverified on restored main; its complete tracked tree matches the original merged source aa54360633eb4d7b5f4f53c0fd1a0e556a789d81 (original CI run 41955690270)."
             ],
             "operations": [
               "pure-build",
@@ -3967,7 +3969,7 @@
               "native-addon-build",
               "native-addon-load"
             ],
-            "sourceRevision": "aa54360633eb4d7b5f4f53c0fd1a0e556a789d81",
+            "sourceRevision": "2cf9a2522d470519c671eb9488e2808292a55069",
             "system": "x86_64-linux"
           }
         ]
@@ -20768,11 +20770,12 @@
           },
           {
             "evidence": [
-              "https://github.com/nix-purifiers/maven-purifier/blob/d76004928fa0283524e5bca409dd4ffd82d7e22f/cli/maven_purifier.py",
-              "https://github.com/nix-purifiers/maven-purifier/blob/d76004928fa0283524e5bca409dd4ffd82d7e22f/pkgs/cli/default.nix"
+              "https://github.com/nix-purifiers/maven-purifier/blob/0191b266cbb56449b9d6bed5acb4ce4425224ef0/cli/maven_purifier.py",
+              "https://github.com/nix-purifiers/maven-purifier/blob/0191b266cbb56449b9d6bed5acb4ce4425224ef0/pkgs/cli/default.nix",
+              "https://github.com/nix-purifiers/maven-purifier/blob/0191b266cbb56449b9d6bed5acb4ce4425224ef0/tests/compatibility/check.py"
             ],
-            "sourceRevision": "d76004928fa0283524e5bca409dd4ffd82d7e22f",
-            "text": "Incoming purified project dependencies require Maven 3 or newer. The legacy Maven 2/3.0 recording path cannot use authenticated repositories that require Maven-specific transports."
+            "sourceRevision": "0191b266cbb56449b9d6bed5acb4ce4425224ef0",
+            "text": "Native incoming dependency selection requires Maven 3 or newer; Maven 2.2.1 can consume Nix inputs through the sandbox builder. The legacy Maven 2/3.0 recording path cannot use authenticated repositories that require Maven-specific transports."
           },
           {
             "evidence": [
@@ -20813,7 +20816,265 @@
           }
         ],
         "supportedRanges": [],
-        "testedPoints": []
+        "testedPoints": [
+          {
+            "components": [
+              {
+                "name": "Maven",
+                "role": "native-tool",
+                "version": "2.2.1"
+              },
+              {
+                "name": "OpenJDK",
+                "role": "native-tool-runtime",
+                "version": "8u504-b01"
+              },
+              {
+                "name": "OpenJDK",
+                "role": "compiler",
+                "version": "8u504-b01"
+              }
+            ],
+            "evidence": [
+              "https://github.com/nix-purifiers/maven-purifier/blob/0191b266cbb56449b9d6bed5acb4ce4425224ef0/tests/compatibility/check.py",
+              "https://github.com/nix-purifiers/maven-purifier/blob/0191b266cbb56449b9d6bed5acb4ce4425224ef0/.github/workflows/check.yml",
+              "https://github.com/nix-purifiers/maven-purifier/actions/runs/42000009203/job/127152549543"
+            ],
+            "id": "maven-2.2.1-jdk-8",
+            "notes": [
+              "Exact Maven distribution selected by wrapper; matching pinned OpenJDK compiler/runtime, Java 8 source/bytecode fixture, deterministic relock, offline native clean install, repeated prefetch and sandbox tests. No publication or ordinary downstream consumer claim.",
+              "Maven 2 accepts Nix dependencies in the sandbox builder only; no native model adapter, native input selection or online-goal capture/replay claim."
+            ],
+            "operations": [
+              "native-lock",
+              "lock-reproducibility",
+              "native-prefetch",
+              "native-offline-build",
+              "project-build-scripts",
+              "project-test-scripts",
+              "pure-build",
+              "nix-input-composition"
+            ],
+            "sourceRevision": "0191b266cbb56449b9d6bed5acb4ce4425224ef0",
+            "system": "x86_64-linux"
+          },
+          {
+            "components": [
+              {
+                "name": "Maven",
+                "role": "native-tool",
+                "version": "3.0.5"
+              },
+              {
+                "name": "OpenJDK",
+                "role": "native-tool-runtime",
+                "version": "8u504-b01"
+              },
+              {
+                "name": "OpenJDK",
+                "role": "compiler",
+                "version": "8u504-b01"
+              }
+            ],
+            "evidence": [
+              "https://github.com/nix-purifiers/maven-purifier/blob/0191b266cbb56449b9d6bed5acb4ce4425224ef0/tests/compatibility/check.py",
+              "https://github.com/nix-purifiers/maven-purifier/blob/0191b266cbb56449b9d6bed5acb4ce4425224ef0/.github/workflows/check.yml",
+              "https://github.com/nix-purifiers/maven-purifier/actions/runs/42000009203/job/127152549492"
+            ],
+            "id": "maven-3.0.5-jdk-8",
+            "notes": [
+              "Exact Maven distribution selected by wrapper; matching pinned OpenJDK compiler/runtime, Java 8 source/bytecode fixture, deterministic relock, offline native clean install, repeated prefetch and sandbox tests. No publication or ordinary downstream consumer claim.",
+              "Native --input selection and inferred dependency resolution execute the Java fixture and preserve its POM; sandbox projection checks the rewritten dependency POM.",
+              "No online-goal capture/replay claim for Maven 3.0."
+            ],
+            "operations": [
+              "native-lock",
+              "lock-reproducibility",
+              "native-prefetch",
+              "native-offline-build",
+              "project-build-scripts",
+              "project-test-scripts",
+              "pure-build",
+              "native-input-composition",
+              "projected-descriptor-checks",
+              "pom-preservation"
+            ],
+            "sourceRevision": "0191b266cbb56449b9d6bed5acb4ce4425224ef0",
+            "system": "x86_64-linux"
+          },
+          {
+            "components": [
+              {
+                "name": "Maven",
+                "role": "native-tool",
+                "version": "3.3.9"
+              },
+              {
+                "name": "OpenJDK",
+                "role": "native-tool-runtime",
+                "version": "17.0.20.1+1"
+              },
+              {
+                "name": "OpenJDK",
+                "role": "compiler",
+                "version": "17.0.20.1+1"
+              }
+            ],
+            "evidence": [
+              "https://github.com/nix-purifiers/maven-purifier/blob/0191b266cbb56449b9d6bed5acb4ce4425224ef0/tests/compatibility/check.py",
+              "https://github.com/nix-purifiers/maven-purifier/blob/0191b266cbb56449b9d6bed5acb4ce4425224ef0/.github/workflows/check.yml",
+              "https://github.com/nix-purifiers/maven-purifier/actions/runs/42000009203/job/127152549383"
+            ],
+            "id": "maven-3.3.9-jdk-17",
+            "notes": [
+              "Exact Maven distribution selected by wrapper; matching pinned OpenJDK compiler/runtime, Java 8 source/bytecode fixture, deterministic relock, offline native clean install, repeated prefetch and sandbox tests. No publication or ordinary downstream consumer claim.",
+              "Native --input selection and inferred dependency resolution execute the Java fixture and preserve its POM; sandbox projection checks the rewritten dependency POM."
+            ],
+            "operations": [
+              "native-lock",
+              "lock-reproducibility",
+              "native-prefetch",
+              "native-offline-build",
+              "project-build-scripts",
+              "project-test-scripts",
+              "pure-build",
+              "native-input-composition",
+              "projected-descriptor-checks",
+              "pom-preservation"
+            ],
+            "sourceRevision": "0191b266cbb56449b9d6bed5acb4ce4425224ef0",
+            "system": "x86_64-linux"
+          },
+          {
+            "components": [
+              {
+                "name": "Maven",
+                "role": "native-tool",
+                "version": "3.8.8"
+              },
+              {
+                "name": "OpenJDK",
+                "role": "native-tool-runtime",
+                "version": "17.0.20.1+1"
+              },
+              {
+                "name": "OpenJDK",
+                "role": "compiler",
+                "version": "17.0.20.1+1"
+              }
+            ],
+            "evidence": [
+              "https://github.com/nix-purifiers/maven-purifier/blob/0191b266cbb56449b9d6bed5acb4ce4425224ef0/tests/compatibility/check.py",
+              "https://github.com/nix-purifiers/maven-purifier/blob/0191b266cbb56449b9d6bed5acb4ce4425224ef0/.github/workflows/check.yml",
+              "https://github.com/nix-purifiers/maven-purifier/actions/runs/42000009203/job/127152549496"
+            ],
+            "id": "maven-3.8.8-jdk-17",
+            "notes": [
+              "Exact Maven distribution selected by wrapper; matching pinned OpenJDK compiler/runtime, Java 8 source/bytecode fixture, deterministic relock, offline native clean install, repeated prefetch and sandbox tests. No publication or ordinary downstream consumer claim.",
+              "Native --input selection and inferred dependency resolution execute the Java fixture and preserve its POM; sandbox projection checks the rewritten dependency POM."
+            ],
+            "operations": [
+              "native-lock",
+              "lock-reproducibility",
+              "native-prefetch",
+              "native-offline-build",
+              "project-build-scripts",
+              "project-test-scripts",
+              "pure-build",
+              "native-input-composition",
+              "projected-descriptor-checks",
+              "pom-preservation"
+            ],
+            "sourceRevision": "0191b266cbb56449b9d6bed5acb4ce4425224ef0",
+            "system": "x86_64-linux"
+          },
+          {
+            "components": [
+              {
+                "name": "Maven",
+                "role": "native-tool",
+                "version": "3.9.11"
+              },
+              {
+                "name": "OpenJDK",
+                "role": "native-tool-runtime",
+                "version": "17.0.20.1+1"
+              },
+              {
+                "name": "OpenJDK",
+                "role": "compiler",
+                "version": "17.0.20.1+1"
+              }
+            ],
+            "evidence": [
+              "https://github.com/nix-purifiers/maven-purifier/blob/0191b266cbb56449b9d6bed5acb4ce4425224ef0/tests/compatibility/check.py",
+              "https://github.com/nix-purifiers/maven-purifier/blob/0191b266cbb56449b9d6bed5acb4ce4425224ef0/.github/workflows/check.yml",
+              "https://github.com/nix-purifiers/maven-purifier/actions/runs/42000009203/job/127152549617"
+            ],
+            "id": "maven-3.9.11-jdk-17",
+            "notes": [
+              "Exact Maven distribution selected by wrapper; matching pinned OpenJDK compiler/runtime, Java 8 source/bytecode fixture, deterministic relock, offline native clean install, repeated prefetch and sandbox tests. No publication or ordinary downstream consumer claim.",
+              "Native --input selection and inferred dependency resolution execute the Java fixture and preserve its POM; sandbox projection checks the rewritten dependency POM."
+            ],
+            "operations": [
+              "native-lock",
+              "lock-reproducibility",
+              "native-prefetch",
+              "native-offline-build",
+              "project-build-scripts",
+              "project-test-scripts",
+              "pure-build",
+              "native-input-composition",
+              "projected-descriptor-checks",
+              "pom-preservation"
+            ],
+            "sourceRevision": "0191b266cbb56449b9d6bed5acb4ce4425224ef0",
+            "system": "x86_64-linux"
+          },
+          {
+            "components": [
+              {
+                "name": "Maven",
+                "role": "native-tool",
+                "version": "4.0.0-rc-7"
+              },
+              {
+                "name": "OpenJDK",
+                "role": "native-tool-runtime",
+                "version": "17.0.20.1+1"
+              },
+              {
+                "name": "OpenJDK",
+                "role": "compiler",
+                "version": "17.0.20.1+1"
+              }
+            ],
+            "evidence": [
+              "https://github.com/nix-purifiers/maven-purifier/blob/0191b266cbb56449b9d6bed5acb4ce4425224ef0/tests/compatibility/check.py",
+              "https://github.com/nix-purifiers/maven-purifier/blob/0191b266cbb56449b9d6bed5acb4ce4425224ef0/.github/workflows/check.yml",
+              "https://github.com/nix-purifiers/maven-purifier/actions/runs/42000009203/job/127152549560"
+            ],
+            "id": "maven-4.0.0-rc-7-jdk-17",
+            "notes": [
+              "Exact Maven distribution selected by wrapper; matching pinned OpenJDK compiler/runtime, Java 8 source/bytecode fixture, deterministic relock, offline native clean install, repeated prefetch and sandbox tests. No publication or ordinary downstream consumer claim.",
+              "Native --input selection and inferred dependency resolution execute the Java fixture and preserve its POM; sandbox projection checks the rewritten dependency POM."
+            ],
+            "operations": [
+              "native-lock",
+              "lock-reproducibility",
+              "native-prefetch",
+              "native-offline-build",
+              "project-build-scripts",
+              "project-test-scripts",
+              "pure-build",
+              "native-input-composition",
+              "projected-descriptor-checks",
+              "pom-preservation"
+            ],
+            "sourceRevision": "0191b266cbb56449b9d6bed5acb4ce4425224ef0",
+            "system": "x86_64-linux"
+          }
+        ]
       },
       "facts": {
         "build_engine": {
