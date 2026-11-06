@@ -51,6 +51,30 @@ class CompatibilityTests(unittest.TestCase):
         self.assertIn('Project runtime: Python (free-threaded)', body)
         self.assertIn('Build tool / package manager: uv (ordinary republisher)', body)
 
+    def test_gradle_76_cold_point_keeps_execution_and_byte_parity_scoped(self):
+        page = copy.deepcopy(self.documentation['catalog']['gradle-purifier'])
+        point = next(p for p in page['compatibility']['testedPoints']
+                     if p['id'] == 'gradle-7.6.6-java17-compiler8-runtime8-cold-x86_64-linux')
+        components = {c['role']: c['version'] for c in point['components']}
+        self.assertEqual(components, {'native-tool': '7.6.6', 'native-tool-runtime': '17.0.20.1+1',
+                                     'compiler': '8u504-b01', 'project-runtime': '8u504-b01'})
+        self.assertEqual(point['system'], 'x86_64-linux')
+        self.assertIn('native-published-class-byte-equality', point['operations'])
+        self.assertNotIn('pure-native-byte-equality', point['operations'])
+        self.assertIn('ordinary-java-consumer', point['operations'])
+        self.assertNotIn('ordinary-maven-consumer', point['operations'])
+        self.assertNotIn('ordinary-gradle-consumer', point['operations'])
+        page['compatibility']['testedPoints'] = [point]
+        body = render_compatibility(page, self.contract)
+        self.assertIn('Runtime running the tool: OpenJDK 17.0.20.1+1', body)
+        self.assertIn('Project compiler: OpenJDK 8u504-b01', body)
+        self.assertIn('Project runtime: OpenJDK 8u504-b01', body)
+        self.assertIn('default :test task selects Java 17 but is skipped', body)
+        self.assertIn('Whole native and published JAR bytes differ', body)
+        self.assertIn('Published class bytes match native compilation', body)
+        self.assertNotIn('Matching native/Nix publication bytes', body)
+        self.assertFalse(page['compatibility']['supportedRanges'])
+
     def test_tested_roles_remain_distinct_and_do_not_create_a_range(self):
         page = copy.deepcopy(self.page)
         # This original fixture is x86-only even after other points gain ARM evidence.
