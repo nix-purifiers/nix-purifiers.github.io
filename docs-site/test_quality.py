@@ -22,7 +22,7 @@ class QualityTests(unittest.TestCase):
 
     def test_foreign_repository_does_not_inherit_same_name_tier(self):
         self.assertIsNone(for_repository('other-owner/go-purifier', self.data))
-        self.assertEqual(for_repository('nix-purifiers/go-purifier', self.data)['tier'], 3)
+        self.assertEqual(for_repository('nix-purifiers/go-purifier', self.data)['tier'], 2)
 
     def test_ci_link_does_not_invent_a_success_result(self):
         self.assertEqual(evidence_label('https://github.com/owner/repo/actions/runs/1/job/2'), 'Native CI job')
@@ -30,12 +30,12 @@ class QualityTests(unittest.TestCase):
 
     def test_go_exact_points_do_not_establish_broad_compatibility(self):
         go = self.data['projects']['go-purifier']
-        self.assertEqual(go['tier'], 3)
+        self.assertEqual(go['tier'], 2)
         self.assertEqual(go['criteria']['longCompatibility']['state'], 'unreviewed')
         self.assertIn('1.0.3', go['criteria']['longCompatibility']['summary'])
         self.assertIn('1.26.10', go['criteria']['longCompatibility']['summary'])
         self.assertEqual(go['criteria']['manySamples']['state'], 'unreviewed')
-        self.assertEqual(go['criteria']['nonEolVersions']['state'], 'unreviewed')
+        self.assertEqual(go['criteria']['nonEolVersions']['state'], 'met')
         self.assertTrue(any(sample['name'].startswith('fzf ') for sample in go['sampleBuilds']))
 
     def test_platform_declaration_or_evaluation_cannot_promote(self):
