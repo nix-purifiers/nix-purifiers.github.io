@@ -9,6 +9,7 @@ from content import audit, feature_matrix, render, source_links
 from theme import install_theme
 from reference import guide_plan, reference_text
 from testing import build_testing
+from quality import registry, render_tiers
 
 
 def build(documentation, destination):
@@ -25,6 +26,8 @@ def build(documentation, destination):
         guides[name] = (guide_plan(page['repository'], text), reference_text(page['repository'], text, page))
     theme = Path(__file__).parent
     install_theme(destination)
+    quality = registry()
+    (destination / 'tiers.md').write_text('---\nlayout: default\ntitle: Purifier tiers\n---\n\n' + render_tiers(quality))
     (destination / '_config.yml').write_text(json.dumps({
         'title': 'Purifier reference', 'description': 'Structured purifier behavior catalog',
         'feature_matrices': {page['repository']: f'/{name}/features.html' for name, page in catalog.items()},

@@ -4,6 +4,27 @@ The model has three consumers: documentation, the operational harness, and
 shared behavioral tests. `model/projects/*.nix` describes a purifier without
 requiring a page. Documentation lives separately in `docs-site/projects/`.
 
+## Quality tiers
+
+`tiers.json` records a reviewed tier for every published purifier, independently
+of the exact version compatibility points. `nix eval --json .#qualityTiers`
+exports the complete registry, including purifiers outside the structured
+behavior catalog. Modeled projects also expose their assessment as `quality`.
+
+The four definitions are stored in the registry. Every assignment records its
+reviewed revision and date, confirmed sample-build evidence, and each criterion's
+state, explanation and source links. “Good
+tests,” “many samples” and long compatibility are reviewed judgments rather
+than numerical thresholds. Declaring Darwin or evaluating its derivations does
+not establish that Darwin works; old version points do not establish coverage
+of upstream non-EOL versions. Unreviewed evidence prevents promotion without
+asserting a known failure.
+
+Promotion requires all the tier's criteria and supporting evidence. Even Tier 4
+requires evaluation evidence. Local drafts and proof-only experiments are not
+included in the published inventory. Assessments must be reviewed again when
+their scope changes or upstream support windows move.
+
 ## Ownership boundary
 
 The model teaches the harness how to invoke a tool. It records argument

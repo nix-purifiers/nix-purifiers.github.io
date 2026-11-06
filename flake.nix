@@ -10,6 +10,7 @@
     in {
       lib = { inherit (model) evaluate evaluateDocumentation; inherit testPlan coveragePlan; };
       catalog = model.catalog;
+      qualityTiers = model.qualityTiers;
       contract = model.contract;
       documentation = { catalog = model.documentationCatalog; inherit (model) contract; };
       behaviorContract = model.behaviorContract;

@@ -18,6 +18,23 @@ let
     evidence = compatibilityPoint.evidence;
   };
   checks = {
+    foreignRepositoryDoesNotInheritTier = (model.evaluateDocumentation [ sample {
+      repository = lib.mkForce "other-owner/ant-purifier";
+    } ]).quality == null;
+    allTierAssessmentsEvaluate = force model.qualityTiers;
+    tierPromotionRequiresDarwinAndVersionEvidence = !force (withOverride ({ lib, ... }: {
+      quality.tier = lib.mkForce 2;
+    }));
+    tierThreeRequiresSampleBuild = !force (withOverride ({ lib, ... }: {
+      quality.sampleBuilds = lib.mkForce [];
+    }));
+    tierCriteriaRequireEvidence = !force (withOverride ({ lib, ... }: {
+      quality.criteria.linux.evidence = lib.mkForce [];
+    }));
+    tierFourRequiresEvaluation = !force (withOverride ({ lib, ... }: {
+      quality.tier = lib.mkForce 4;
+      quality.criteria.evaluation.state = lib.mkForce "unreviewed";
+    }));
     packagedVersionNeedsPlatformScope = !force (withOverride {
       compatibility.defaults = [ (packagedDefault // { systems = []; }) ];
     });
