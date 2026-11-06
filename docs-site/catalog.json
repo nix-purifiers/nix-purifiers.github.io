@@ -16858,34 +16858,38 @@
         "criteria": {
           "darwin": {
             "evidence": [
-              "https://github.com/nix-purifiers/go-purifier/actions/runs/42078493574/job/127424981969"
+              "https://github.com/nix-purifiers/go-purifier/actions/runs/42160175672/job/127703715800",
+              "https://github.com/nix-purifiers/go-purifier/actions/runs/42160175672/job/127703715868"
             ],
             "state": "met",
-            "summary": "Native build and conformance checks completed on Darwin."
+            "summary": "Go 1.26.10 and 1.27.3 execute the locked sample and offline/editor suites on ARM macOS; the existing macOS conformance checks also pass."
           },
           "evaluation": {
             "evidence": [
-              "https://github.com/nix-purifiers/go-purifier/actions/runs/42078493574/job/127424982142",
-              "https://github.com/nix-purifiers/go-purifier/blob/e642ecd42675efb3f975257a6b56cf031e215f20/tests/default.nix"
+              "https://github.com/nix-purifiers/go-purifier/actions/runs/42160175672",
+              "https://github.com/nix-purifiers/go-purifier/blob/9a687757d212a7a40defc49b31de7105d9499d40/tests/supported-versions.nix"
             ],
             "state": "met",
-            "summary": "The required successful Linux check evaluates and builds the Nix integration."
+            "summary": "All flake checks and supported-release sample suites evaluate and build at the reviewed source revision."
           },
           "goodTests": {
             "evidence": [
-              "https://github.com/nix-purifiers/go-purifier/actions/runs/42078493574",
-              "https://github.com/nix-purifiers/go-purifier/blob/e642ecd42675efb3f975257a6b56cf031e215f20/.github/workflows/check.yml"
+              "https://github.com/nix-purifiers/go-purifier/actions/runs/42160175672",
+              "https://github.com/nix-purifiers/go-purifier/blob/9a687757d212a7a40defc49b31de7105d9499d40/.github/workflows/check.yml",
+              "https://github.com/nix-purifiers/go-purifier/blob/9a687757d212a7a40defc49b31de7105d9499d40/tests/supported-versions.nix"
             ],
             "state": "met",
-            "summary": "Reviewed native lifecycle, offline/relock/rebuild and failure-path coverage, with required successful CI."
+            "summary": "Reviewed lock/relock, offline/editor, rebuild, malformed/stale-lock, composition and runtime-lifecycle checks pass, alongside supported-release sample and purifier tests."
           },
           "linux": {
             "evidence": [
-              "https://github.com/nix-purifiers/go-purifier/actions/runs/42078493574/job/127424982142",
-              "https://github.com/nix-purifiers/go-purifier/blob/e642ecd42675efb3f975257a6b56cf031e215f20/tests/default.nix"
+              "https://github.com/nix-purifiers/go-purifier/actions/runs/42160175672/job/127703715760",
+              "https://github.com/nix-purifiers/go-purifier/actions/runs/42160175672/job/127703715817",
+              "https://github.com/nix-purifiers/go-purifier/actions/runs/42160175672/job/127703715763",
+              "https://github.com/nix-purifiers/go-purifier/actions/runs/42160175672/job/127703715852"
             ],
             "state": "met",
-            "summary": "Required sample-build checks completed successfully on Linux."
+            "summary": "Go 1.26.10 and 1.27.3 execute the locked sample and offline/editor suites on x86-64 and ARM Linux."
           },
           "longCompatibility": {
             "evidence": [
@@ -16907,43 +16911,54 @@
           },
           "nonEolVersions": {
             "evidence": [
-              "https://go.dev/doc/devel/release#policy",
-              "https://github.com/nix-purifiers/go-purifier/actions/runs/42078493574"
+              "https://go.dev/doc/devel/release",
+              "https://github.com/nix-purifiers/go-purifier/blob/9a687757d212a7a40defc49b31de7105d9499d40/tests/supported-versions.nix",
+              "https://github.com/nix-purifiers/go-purifier/blob/9a687757d212a7a40defc49b31de7105d9499d40/.github/workflows/check.yml",
+              "https://github.com/nix-purifiers/go-purifier/actions/runs/42160175672/job/127703715760",
+              "https://github.com/nix-purifiers/go-purifier/actions/runs/42160175672/job/127703715817",
+              "https://github.com/nix-purifiers/go-purifier/actions/runs/42160175672/job/127703715763",
+              "https://github.com/nix-purifiers/go-purifier/actions/runs/42160175672/job/127703715852",
+              "https://github.com/nix-purifiers/go-purifier/actions/runs/42160175672/job/127703715800",
+              "https://github.com/nix-purifiers/go-purifier/actions/runs/42160175672/job/127703715868"
             ],
-            "state": "unreviewed",
-            "summary": "Go 1.26 is tested and still supported; complete non-EOL coverage including Go 1.27 is not established. Higher-tier coverage review is pending."
+            "state": "met",
+            "summary": "Both upstream-supported release lines, Go 1.26 and 1.27, are covered by required native CI at pinned patches 1.26.10 and 1.27.3 on Linux and macOS. The documented matrix follows upstream support policy; this is not evidence that every patch was executed."
           },
           "oneVersion": {
             "evidence": [
-              "https://github.com/nix-purifiers/go-purifier/actions/runs/42078493574/job/127424982142",
-              "https://github.com/nix-purifiers/go-purifier/blob/e642ecd42675efb3f975257a6b56cf031e215f20/tests/default.nix"
+              "https://github.com/nix-purifiers/go-purifier/actions/runs/42160175672/job/127703715760",
+              "https://github.com/nix-purifiers/go-purifier/actions/runs/42160175672/job/127703715817",
+              "https://github.com/nix-purifiers/go-purifier/actions/runs/42160175672/job/127703715763",
+              "https://github.com/nix-purifiers/go-purifier/actions/runs/42160175672/job/127703715852",
+              "https://github.com/nix-purifiers/go-purifier/actions/runs/42160175672/job/127703715800",
+              "https://github.com/nix-purifiers/go-purifier/actions/runs/42160175672/job/127703715868"
             ],
             "state": "met",
-            "summary": "The required sample build runs the pinned native toolchain at this revision; broader version coverage is not inferred."
+            "summary": "Pinned Go 1.26.10 and 1.27.3 both pass native CI; execution of every patch version is not inferred."
           }
         },
-        "rationale": "Linux and Darwin builds are verified. Sample breadth, historical compatibility and non-EOL version coverage still need review before promotion.",
+        "rationale": "Reviewed tests, pinned fzf and locked fixture builds, and both non-EOL Go release lines pass native CI on x86-64 Linux, ARM Linux and ARM macOS. Sample breadth and long historical compatibility remain unreviewed for Tier 1.",
         "reviewedAt": "2026-11-06",
-        "reviewedRevision": "e642ecd42675efb3f975257a6b56cf031e215f20",
+        "reviewedRevision": "9a687757d212a7a40defc49b31de7105d9499d40",
         "sampleBuilds": [
           {
             "evidence": [
-              "https://github.com/nix-purifiers/go-purifier/actions/runs/42078493574/job/127424982142",
-              "https://github.com/nix-purifiers/go-purifier/blob/e642ecd42675efb3f975257a6b56cf031e215f20/tests/default.nix",
-              "https://github.com/nix-purifiers/go-purifier/tree/e642ecd42675efb3f975257a6b56cf031e215f20/tests/fixtures"
+              "https://github.com/nix-purifiers/go-purifier/actions/runs/42160175672",
+              "https://github.com/nix-purifiers/go-purifier/blob/9a687757d212a7a40defc49b31de7105d9499d40/tests/default.nix",
+              "https://github.com/nix-purifiers/go-purifier/blob/9a687757d212a7a40defc49b31de7105d9499d40/tests/supported-versions.nix"
             ],
             "name": "Required sample builds in tests/fixtures"
           },
           {
             "evidence": [
-              "https://github.com/nix-purifiers/go-purifier/actions/runs/42078493574",
-              "https://github.com/nix-purifiers/go-purifier/blob/e642ecd42675efb3f975257a6b56cf031e215f20/tests/real-world/fzf/go-purifier.lock.json",
-              "https://github.com/nix-purifiers/go-purifier/blob/e642ecd42675efb3f975257a6b56cf031e215f20/tests/default.nix"
+              "https://github.com/nix-purifiers/go-purifier/actions/runs/42160175672",
+              "https://github.com/nix-purifiers/go-purifier/blob/9a687757d212a7a40defc49b31de7105d9499d40/tests/default.nix",
+              "https://github.com/nix-purifiers/go-purifier/blob/9a687757d212a7a40defc49b31de7105d9499d40/tests/real-world/fzf/go-purifier.lock.json"
             ],
             "name": "fzf 0.74.5 (pinned sample)"
           }
         ],
-        "tier": 3
+        "tier": 2
       },
       "repository": "nix-purifiers/go-purifier",
       "reviewedRevision": "173abcff84f4c216b67e8660a7f72e36dbdcb207",
