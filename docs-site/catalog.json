@@ -15247,6 +15247,60 @@
             ],
             "sourceRevision": "759d96470f4857e90fffcba17ab532efda572449",
             "system": "aarch64-linux"
+          },
+          {
+            "components": [
+              {
+                "name": "Gradle",
+                "role": "native-tool",
+                "version": "7.6.6"
+              },
+              {
+                "name": "OpenJDK",
+                "role": "native-tool-runtime",
+                "version": "17.0.20.1+1"
+              },
+              {
+                "name": "OpenJDK",
+                "role": "compiler",
+                "version": "8u504-b01"
+              },
+              {
+                "name": "OpenJDK",
+                "role": "project-runtime",
+                "version": "8u504-b01"
+              }
+            ],
+            "evidence": [
+              "https://github.com/nix-purifiers/gradle-purifier/blob/fa0cd7653fed12aabd6da5fcada1e4f33c96779b/tests/sdk-closure/legacy-lifecycle.py",
+              "https://github.com/nix-purifiers/gradle-purifier/blob/fa0cd7653fed12aabd6da5fcada1e4f33c96779b/tests/epoch-probes/probe.py",
+              "https://github.com/nix-purifiers/gradle-purifier/actions/runs/42132111949/job/127611025418"
+            ],
+            "id": "gradle-7.6.6-java17-compiler8-runtime8-cold-x86_64-linux",
+            "notes": [
+              "One unchanged existing fixture/profile, available in purifier release v0.1.14. Gradle runs on Java 17; Java compilation, the asserting :epochTest JavaExec task and both ordinary consumers execute on Java 8. The published class-file major version is 52.",
+              "The 14-stage proof includes byte-identical relocks before and after relocation, prefetch, an empty native Gradle cache before an offline clean/check in an OS network namespace, sandbox tests, local Maven publication and ordinary Java 8 consumer compilation/execution. Prefetched Nix store inputs remain available.",
+              "The default :test task selects Java 17 but is skipped. It supplies selection metadata, not Java 17 test execution or a JUnit/Test-framework lifecycle claim.",
+              "The published example/Epoch.class bytes match the independently compiled native class. Whole native and published JAR bytes differ; no whole-JAR or POM byte parity, or ordinary Maven/Gradle dependency-resolution claim is made.",
+              "Only this exact x86_64-linux tuple is recorded; no version interval, other SDK combination or other platform is inferred."
+            ],
+            "operations": [
+              "native-lock",
+              "lock-reproducibility",
+              "relocated-cold-relock",
+              "native-prefetch",
+              "native-offline-build",
+              "network-isolated-native-build",
+              "project-build-scripts",
+              "project-test-scripts",
+              "pure-build",
+              "native-publish",
+              "ordinary-java-consumer",
+              "source-preservation",
+              "native-published-class-byte-equality"
+            ],
+            "sourceRevision": "fa0cd7653fed12aabd6da5fcada1e4f33c96779b",
+            "system": "x86_64-linux"
           }
         ]
       },
