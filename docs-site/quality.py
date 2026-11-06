@@ -97,6 +97,8 @@ def render_tiers(data):
               'The registry covers published purifiers, including projects not yet in the structured behavior catalog. [Machine-readable assessments](quality.json).']
     for tier in DEFINITIONS:
         group = [(name, q) for name, q in sorted(data['projects'].items()) if q['tier'] == tier]
+        if not group:
+            continue
         lines += [f'## Tier {tier}', f'{len(group)} purifiers.']
         for name, q in group:
             documentation = f'[Documentation](https://nix-purifiers.github.io/{name}/)' if name in modeled else f'[Project source](https://github.com/nix-purifiers/{name})'
@@ -115,7 +117,39 @@ def render_tiers(data):
 
 
 def homepage(text, data):
-    text = re.sub(r' <a class="tier-badge"[^>]*>Tier [1-4]</a>', '', text)
-    for name, q in data['projects'].items():
-        text = text.replace(f'>{name}</a>', f'>{name}</a> <a class="tier-badge" href="/tiers.html#{name}">Tier {q["tier"]}</a>')
-    return text
+    start = '<!-- purifier-tier-groups:start -->'
+    end = '<!-- purifier-tier-groups:end -->'
+    if text.count(start) != text.count(end) or text.count(start) > 1:
+        raise ValueError('homepage tier group markers are malformed')
+    if start in text and end in text:
+        left = text.index(start)
+        right = text.index(end, left) + len(end)
+    else:
+        listing = re.search(r'<ul>.*?</ul>', text, re.DOTALL)
+        if listing is None:
+            raise ValueError('homepage requires a purifier list')
+        left, right = listing.span()
+    entries = re.findall(r'<li\b[^>]*>.*?</li>', text[left:right], re.DOTALL)
+    groups, seen = {}, set()
+    for entry in entries:
+        # Remove the previous per-line presentation without touching project
+        # links, descriptions, or their order within each tier.
+        entry = re.sub(r' <a class="tier-badge"[^>]*>Tier [1-4]</a>', '', entry)
+        project = re.search(r'>([a-z0-9-]+-purifier)</a>', entry)
+        if project is None or project[1] not in data['projects']:
+            raise ValueError('homepage project requires a tier assessment')
+        name = project[1]
+        if name in seen:
+            raise ValueError('duplicate homepage project')
+        seen.add(name)
+        groups.setdefault(data['projects'][name]['tier'], []).append(entry)
+    if not entries:
+        raise ValueError('homepage purifier list is empty')
+    sections = []
+    for tier, members in sorted(groups.items()):
+        sections.append(f'  <section class="tier-group" aria-labelledby="tier-{tier}">\n'
+                        f'    <h2 id="tier-{tier}">Tier {tier}</h2>\n'
+                        '    <ul>\n' + '\n'.join('      ' + entry for entry in members) +
+                        '\n    </ul>\n  </section>')
+    replacement = start + '\n' + '\n'.join(sections) + '\n  ' + end
+    return text[:left] + replacement + text[right:]
