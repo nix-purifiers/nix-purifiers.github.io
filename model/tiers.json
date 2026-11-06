@@ -2423,7 +2423,7 @@
       "tier": 3,
       "reviewedRevision": "e642ecd42675efb3f975257a6b56cf031e215f20",
       "reviewedAt": "2026-11-06",
-      "rationale": "Linux and Darwin builds are verified. Non-EOL coverage and the many-samples judgment still need review before promotion.",
+      "rationale": "Linux and Darwin builds are verified. Sample breadth, historical compatibility and non-EOL version coverage still need review before promotion.",
       "criteria": {
         "evaluation": {
           "state": "met",
@@ -2474,14 +2474,20 @@
         },
         "manySamples": {
           "state": "unreviewed",
-          "summary": "The many-sample-build judgment has not been reviewed; fixture variants are not counted as independent projects.",
-          "evidence": []
+          "summary": "The fixture groups and pinned fzf sample provide useful coverage. The many-sample breadth judgment is not established; fixture variants are not automatically independent samples, and samples need not be production projects.",
+          "evidence": [
+            "https://github.com/nix-purifiers/go-purifier/blob/e642ecd42675efb3f975257a6b56cf031e215f20/tests/default.nix",
+            "https://github.com/nix-purifiers/go-purifier/blob/e642ecd42675efb3f975257a6b56cf031e215f20/tests/real-world/fzf/go-purifier.lock.json",
+            "https://github.com/nix-purifiers/go-purifier/actions/runs/42078493574"
+          ]
         },
         "longCompatibility": {
-          "state": "met",
-          "summary": "Released GOPATH lifecycle evidence reaches Go 1.0.3 on Linux; this does not imply that every intermediate release or Darwin tuple was tested.",
+          "state": "unreviewed",
+          "summary": "Executed Go 1.0.3 and 1.26.10 are exact points. Compatibility across the intervening module eras has not been established.",
           "evidence": [
-            "https://github.com/nix-purifiers/go-purifier/actions/runs/41962447894/job/127031718105"
+            "https://github.com/nix-purifiers/go-purifier/actions/runs/41962447894/job/127031718105",
+            "https://github.com/nix-purifiers/go-purifier/blob/e642ecd42675efb3f975257a6b56cf031e215f20/tests/gopath-native.py",
+            "https://github.com/nix-purifiers/go-purifier/actions/runs/42078493574"
           ]
         }
       },
@@ -2492,6 +2498,14 @@
             "https://github.com/nix-purifiers/go-purifier/actions/runs/42078493574/job/127424982142",
             "https://github.com/nix-purifiers/go-purifier/blob/e642ecd42675efb3f975257a6b56cf031e215f20/tests/default.nix",
             "https://github.com/nix-purifiers/go-purifier/tree/e642ecd42675efb3f975257a6b56cf031e215f20/tests/fixtures"
+          ]
+        },
+        {
+          "name": "fzf 0.74.5 (pinned sample)",
+          "evidence": [
+            "https://github.com/nix-purifiers/go-purifier/actions/runs/42078493574",
+            "https://github.com/nix-purifiers/go-purifier/blob/e642ecd42675efb3f975257a6b56cf031e215f20/tests/real-world/fzf/go-purifier.lock.json",
+            "https://github.com/nix-purifiers/go-purifier/blob/e642ecd42675efb3f975257a6b56cf031e215f20/tests/default.nix"
           ]
         }
       ]
