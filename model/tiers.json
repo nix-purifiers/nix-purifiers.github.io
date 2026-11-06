@@ -812,49 +812,84 @@
       ]
     },
     "cargo-purifier": {
-      "tier": 3,
-      "reviewedRevision": "b4add3915c2c3e2b8243302bf1c38189dd051250",
+      "tier": 2,
+      "reviewedRevision": "2146ec401ed2f22e2068f005b76b9823b2aff1a4",
       "reviewedAt": "2026-11-06",
-      "rationale": "Linux sample builds are verified. Darwin runtime coverage and non-EOL version breadth are not established.",
+      "rationale": "Reviewed fixture and real-project tests pass on Linux and Darwin. Required current-stable coverage verifies Rust/Cargo 1.99.1, and the pinned ripgrep sample builds and runs. Many independent sample builds and long compatibility remain unreviewed.",
       "criteria": {
         "evaluation": {
           "state": "met",
-          "summary": "The required successful Linux check evaluates and builds the Nix integration.",
+          "summary": "The full Nix integration evaluates and builds in the required Linux and Darwin checks.",
           "evidence": [
-            "https://github.com/nix-purifiers/cargo-purifier/actions/runs/42008518275/job/127181288619",
-            "https://github.com/nix-purifiers/cargo-purifier/blob/b4add3915c2c3e2b8243302bf1c38189dd051250/tests/default.nix"
+            "https://github.com/nix-purifiers/cargo-purifier/actions/runs/42254975326/job/128019648453",
+            "https://github.com/nix-purifiers/cargo-purifier/actions/runs/42254975326/job/128019648305",
+            "https://github.com/nix-purifiers/cargo-purifier/actions/runs/42254975326/job/128019648515",
+            "https://github.com/nix-purifiers/cargo-purifier/blob/2146ec401ed2f22e2068f005b76b9823b2aff1a4/tests/default.nix"
           ]
         },
         "goodTests": {
-          "state": "unreviewed",
-          "summary": "Test breadth has not yet been reviewed for the higher-tier quality judgment.",
-          "evidence": []
+          "state": "met",
+          "summary": "Reviewed unit and native resolver tests, lock and download rejection controls, concurrent configuration, offline wrapper/editor workflows, pure builds and rebuilds, native library origins, publication and ordinary Cargo consumers.",
+          "evidence": [
+            "https://github.com/nix-purifiers/cargo-purifier/actions/runs/42254975326/job/128019648453",
+            "https://github.com/nix-purifiers/cargo-purifier/actions/runs/42254975326/job/128019648305",
+            "https://github.com/nix-purifiers/cargo-purifier/actions/runs/42254975326/job/128019648515",
+            "https://github.com/nix-purifiers/cargo-purifier/actions/runs/42254975326/job/128019648266",
+            "https://github.com/nix-purifiers/cargo-purifier/actions/runs/42254975326/job/128019648298",
+            "https://github.com/nix-purifiers/cargo-purifier/actions/runs/42254975326/job/128019648585",
+            "https://github.com/nix-purifiers/cargo-purifier/blob/2146ec401ed2f22e2068f005b76b9823b2aff1a4/tests/default.nix",
+            "https://github.com/nix-purifiers/cargo-purifier/blob/2146ec401ed2f22e2068f005b76b9823b2aff1a4/tests/composition-native.py",
+            "https://github.com/nix-purifiers/cargo-purifier/blob/2146ec401ed2f22e2068f005b76b9823b2aff1a4/tests/negative.sh"
+          ]
         },
         "linux": {
           "state": "met",
-          "summary": "Required sample-build checks completed successfully on Linux.",
+          "summary": "The full check suite and native lock/update/rebuild and composition workflows pass on x86_64 and aarch64 Linux. Composition uses both default and current-stable tools.",
           "evidence": [
-            "https://github.com/nix-purifiers/cargo-purifier/actions/runs/42008518275/job/127181288619",
-            "https://github.com/nix-purifiers/cargo-purifier/blob/b4add3915c2c3e2b8243302bf1c38189dd051250/tests/default.nix"
+            "https://github.com/nix-purifiers/cargo-purifier/actions/runs/42254975326/job/128019648453",
+            "https://github.com/nix-purifiers/cargo-purifier/actions/runs/42254975326/job/128019648305",
+            "https://github.com/nix-purifiers/cargo-purifier/actions/runs/42254975326/job/128019648266",
+            "https://github.com/nix-purifiers/cargo-purifier/actions/runs/42254975326/job/128019648298",
+            "https://github.com/nix-purifiers/cargo-purifier/blob/2146ec401ed2f22e2068f005b76b9823b2aff1a4/.github/workflows/check.yml"
           ]
         },
         "darwin": {
-          "state": "unreviewed",
-          "summary": "No successful Darwin runtime check is established by this review; declarations or evaluation alone are insufficient.",
-          "evidence": []
+          "state": "met",
+          "summary": "Actual aarch64 Darwin execution passes the full check suite and native lock/update/rebuild and composition workflows, including current-stable tools.",
+          "evidence": [
+            "https://github.com/nix-purifiers/cargo-purifier/actions/runs/42254975326/job/128019648515",
+            "https://github.com/nix-purifiers/cargo-purifier/actions/runs/42254975326/job/128019648585",
+            "https://github.com/nix-purifiers/cargo-purifier/actions/runs/42254975326/job/128019648282",
+            "https://github.com/nix-purifiers/cargo-purifier/actions/runs/42254975326/job/128019647908",
+            "https://github.com/nix-purifiers/cargo-purifier/actions/runs/42254975326/job/128019648497",
+            "https://github.com/nix-purifiers/cargo-purifier/actions/runs/42254975326/job/128019648481"
+          ]
         },
         "oneVersion": {
           "state": "met",
-          "summary": "The required sample build runs the pinned native toolchain at this revision; broader version coverage is not inferred.",
+          "summary": "The required current-stable profile builds and tests with Rust/Cargo 1.99.1; the separate default SDK remains pinned independently.",
           "evidence": [
-            "https://github.com/nix-purifiers/cargo-purifier/actions/runs/42008518275/job/127181288619",
-            "https://github.com/nix-purifiers/cargo-purifier/blob/b4add3915c2c3e2b8243302bf1c38189dd051250/tests/default.nix"
+            "https://github.com/nix-purifiers/cargo-purifier/actions/runs/42254975326/job/128019648453",
+            "https://github.com/nix-purifiers/cargo-purifier/actions/runs/42254975326/job/128019648305",
+            "https://github.com/nix-purifiers/cargo-purifier/actions/runs/42254975326/job/128019648515",
+            "https://github.com/nix-purifiers/cargo-purifier/blob/2146ec401ed2f22e2068f005b76b9823b2aff1a4/tests/current-stable.nix",
+            "https://github.com/nix-purifiers/cargo-purifier/blob/2146ec401ed2f22e2068f005b76b9823b2aff1a4/nix/lib/current-stable-scope.nix"
           ]
         },
         "nonEolVersions": {
-          "state": "unreviewed",
-          "summary": "Coverage of upstream non-EOL versions has not been reviewed against the upstream support policy.",
-          "evidence": []
+          "state": "met",
+          "summary": "The upstream-supported stable release Rust/Cargo 1.99.1 is covered by required full-suite and native workflow checks on Linux and Darwin as reviewed on 2026-11-06. Beta and nightly channels are not credited by this stable-release assessment.",
+          "evidence": [
+            "https://rust-lang.org/policies/security/",
+            "https://static.rust-lang.org/dist/channel-rust-stable.toml",
+            "https://github.com/nix-purifiers/cargo-purifier/actions/runs/42254975326/job/128019648453",
+            "https://github.com/nix-purifiers/cargo-purifier/actions/runs/42254975326/job/128019648305",
+            "https://github.com/nix-purifiers/cargo-purifier/actions/runs/42254975326/job/128019648515",
+            "https://github.com/nix-purifiers/cargo-purifier/actions/runs/42254975326/job/128019648266",
+            "https://github.com/nix-purifiers/cargo-purifier/actions/runs/42254975326/job/128019648298",
+            "https://github.com/nix-purifiers/cargo-purifier/actions/runs/42254975326/job/128019648585",
+            "https://github.com/nix-purifiers/cargo-purifier/blob/2146ec401ed2f22e2068f005b76b9823b2aff1a4/nix/lib/current-stable-scope.nix"
+          ]
         },
         "manySamples": {
           "state": "unreviewed",
@@ -869,11 +904,13 @@
       },
       "sampleBuilds": [
         {
-          "name": "Required sample builds in tests/fixtures",
+          "name": "ripgrep 14.1.1: pinned real workspace build and execution, projected ordinary Cargo install, grep-cli tests and offline wrapper/rust-analyzer loop",
           "evidence": [
-            "https://github.com/nix-purifiers/cargo-purifier/actions/runs/42008518275/job/127181288619",
-            "https://github.com/nix-purifiers/cargo-purifier/blob/b4add3915c2c3e2b8243302bf1c38189dd051250/tests/default.nix",
-            "https://github.com/nix-purifiers/cargo-purifier/tree/b4add3915c2c3e2b8243302bf1c38189dd051250/tests/fixtures"
+            "https://github.com/nix-purifiers/cargo-purifier/actions/runs/42254975326/job/128019648453",
+            "https://github.com/nix-purifiers/cargo-purifier/actions/runs/42254975326/job/128019648305",
+            "https://github.com/nix-purifiers/cargo-purifier/actions/runs/42254975326/job/128019648515",
+            "https://github.com/nix-purifiers/cargo-purifier/blob/2146ec401ed2f22e2068f005b76b9823b2aff1a4/tests/projects/ripgrep.nix",
+            "https://github.com/nix-purifiers/cargo-purifier/blob/2146ec401ed2f22e2068f005b76b9823b2aff1a4/tests/current-stable.nix"
           ]
         }
       ]
