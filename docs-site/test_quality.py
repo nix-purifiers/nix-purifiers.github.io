@@ -28,6 +28,16 @@ class QualityTests(unittest.TestCase):
         self.assertEqual(evidence_label('https://github.com/owner/repo/actions/runs/1/job/2'), 'Native CI job')
         self.assertEqual(evidence_label('https://github.com/owner/repo/actions/runs/1'), 'Native CI run')
 
+    def test_go_exact_points_do_not_establish_broad_compatibility(self):
+        go = self.data['projects']['go-purifier']
+        self.assertEqual(go['tier'], 3)
+        self.assertEqual(go['criteria']['longCompatibility']['state'], 'unreviewed')
+        self.assertIn('1.0.3', go['criteria']['longCompatibility']['summary'])
+        self.assertIn('1.26.10', go['criteria']['longCompatibility']['summary'])
+        self.assertEqual(go['criteria']['manySamples']['state'], 'unreviewed')
+        self.assertEqual(go['criteria']['nonEolVersions']['state'], 'unreviewed')
+        self.assertTrue(any(sample['name'].startswith('fzf ') for sample in go['sampleBuilds']))
+
     def test_platform_declaration_or_evaluation_cannot_promote(self):
         self.q['tier'] = 2
         with self.assertRaisesRegex(ValueError, 'evidenced criteria'):
