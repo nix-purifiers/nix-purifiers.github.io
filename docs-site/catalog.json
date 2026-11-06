@@ -17351,6 +17351,60 @@
             ],
             "sourceRevision": "fa0cd7653fed12aabd6da5fcada1e4f33c96779b",
             "system": "x86_64-linux"
+          },
+          {
+            "components": [
+              {
+                "name": "Gradle",
+                "role": "native-tool",
+                "version": "5.6.4"
+              },
+              {
+                "name": "OpenJDK",
+                "role": "native-tool-runtime",
+                "version": "11.0.32.1+1"
+              },
+              {
+                "name": "OpenJDK",
+                "role": "compiler",
+                "version": "8u504-b01"
+              },
+              {
+                "name": "OpenJDK",
+                "role": "project-runtime",
+                "version": "8u504-b01"
+              }
+            ],
+            "evidence": [
+              "https://github.com/nix-purifiers/gradle-purifier/actions/runs/42227573476/job/127924855530",
+              "https://github.com/nix-purifiers/gradle-purifier/actions/runs/42227573476/artifacts/13505963951",
+              "https://github.com/nix-purifiers/gradle-purifier/blob/82e5106ee2c6c02e57d2d4f256bbca10eab9da25/tests/legacy-maven/basic-56.py",
+              "https://github.com/nix-purifiers/gradle-purifier/blob/82e5106ee2c6c02e57d2d4f256bbca10eab9da25/tests/legacy-maven/guards-56.py",
+              "https://github.com/nix-purifiers/gradle-purifier/blob/82e5106ee2c6c02e57d2d4f256bbca10eab9da25/tests/legacy-maven/settings-56.py",
+              "https://github.com/nix-purifiers/gradle-purifier/blob/82e5106ee2c6c02e57d2d4f256bbca10eab9da25/tests/legacy-maven/plugin-56.py"
+            ],
+            "id": "gradle-5.6.4-java11-compiler8-runtime8-cold-x86_64-linux",
+            "notes": [
+              "One basic Java legacy Upload profile with pinned manager Java 11.0.32.1+1 and compiler, asserting test runtime and Javadoc Java 8u504-b01; no arbitrary SDK source, continuous version range or tier claim.",
+              "The basic and selected-SDK scenarios each pass 13 stages, including new capture, byte-idempotent relock, cold offline replay, sandbox builds and rebuilds. Real JUnit, JavaExec and Javadoc execute.",
+              "Raw legacy JAR/POM release works. Strict root/package projections and purifier CLI publish remain unsupported, including with old locks.",
+              "Only a literal Groovy settings subset is supported. The 21 native settings cases do not establish full capture coverage for each case.",
+              "Controlled plugin testing uses an external native repository init script and does not establish remote settings-plugin support.",
+              "Native and pure POM bytes and JAR entry payloads match; cross-build raw ZIP bytes differ. Within capture, the original and mirrored JAR bytes match. No whole-JAR cross-build byte-equality claim."
+            ],
+            "operations": [
+              "native-lock",
+              "lock-reproducibility",
+              "native-prefetch",
+              "native-offline-build",
+              "network-isolated-native-build",
+              "project-build-scripts",
+              "project-test-scripts",
+              "pure-build",
+              "source-preservation"
+            ],
+            "sourceRevision": "82e5106ee2c6c02e57d2d4f256bbca10eab9da25",
+            "system": "x86_64-linux"
           }
         ]
       },
