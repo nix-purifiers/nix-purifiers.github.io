@@ -46,101 +46,106 @@ a:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
 .muted { color: var(--muted); }
 .maintainer-link { font-size: 0.85rem; }
 .maintainer-link a { color: var(--muted); }
-.tier-badge { font-size: 0.8rem; white-space: nowrap; }
+.tier-group h2 { margin: 0 0 0.75rem; font-family: var(--mono); font-size: 1.125rem; }
 </style>
 </head>
 <body>
 <main>
   <h1>nix-purifiers</h1>
   <p>Locked, Nix-resolved dependencies for your build tool.</p>
-  <p class="muted"><a href="/tiers.html">Purifier tiers</a> describe reviewed tests, sample builds, platform support and compatibility.</p>
-  <ul>
-    <li><a href="https://nix-purifiers.github.io/agda-purifier/">agda-purifier</a> <a class="tier-badge" href="/tiers.html#agda-purifier">Tier 3</a>, for Agda libraries</li>
-    <li><a href="https://nix-purifiers.github.io/alire-purifier/">alire-purifier</a> <a class="tier-badge" href="/tiers.html#alire-purifier">Tier 3</a>, for Alire</li>
-    <li><a href="https://nix-purifiers.github.io/ansible-purifier/">ansible-purifier</a> <a class="tier-badge" href="/tiers.html#ansible-purifier">Tier 3</a>, for Ansible Galaxy collections</li>
-    <li><a href="/ant-purifier/">ant-purifier</a> <a class="tier-badge" href="/tiers.html#ant-purifier">Tier 3</a>, for Ant and Apache Ivy</li>
-    <li><a href="https://nix-purifiers.github.io/buf-purifier/">buf-purifier</a> <a class="tier-badge" href="/tiers.html#buf-purifier">Tier 3</a>, for Buf</li>
-    <li><a href="/bun-purifier/">bun-purifier</a> <a class="tier-badge" href="/tiers.html#bun-purifier">Tier 3</a>, for bun</li>
-    <li><a href="/bundler-purifier/">bundler-purifier</a> <a class="tier-badge" href="/tiers.html#bundler-purifier">Tier 3</a>, for Bundler</li>
-    <li><a href="/cabal-purifier/">cabal-purifier</a> <a class="tier-badge" href="/tiers.html#cabal-purifier">Tier 3</a>, for Cabal (Haskell)</li>
-    <li><a href="/cargo-purifier/">cargo-purifier</a> <a class="tier-badge" href="/tiers.html#cargo-purifier">Tier 3</a>, for cargo</li>
-    <li><a href="/carton-purifier/">carton-purifier</a> <a class="tier-badge" href="/tiers.html#carton-purifier">Tier 3</a>, for Carton (Perl/CPAN)</li>
-    <li><a href="/chef-purifier/">chef-purifier</a> <a class="tier-badge" href="/tiers.html#chef-purifier">Tier 3</a>, for Chef and Cinc Policyfiles</li>
-    <li><a href="/chicken-purifier/">chicken-purifier</a> <a class="tier-badge" href="/tiers.html#chicken-purifier">Tier 3</a>, for CHICKEN Scheme</li>
-    <li><a href="/clojure-cli-purifier/">clojure-cli-purifier</a> <a class="tier-badge" href="/tiers.html#clojure-cli-purifier">Tier 3</a>, for the Clojure CLI (tools.deps)</li>
-    <li><a href="/cmake-purifier/">cmake-purifier</a> <a class="tier-badge" href="/tiers.html#cmake-purifier">Tier 3</a>, for CMake</li>
-    <li><a href="/composer-purifier/">composer-purifier</a> <a class="tier-badge" href="/tiers.html#composer-purifier">Tier 3</a>, for Composer</li>
-    <li><a href="/conda-purifier/">conda-purifier</a> <a class="tier-badge" href="/tiers.html#conda-purifier">Tier 3</a>, for conda</li>
-    <li><a href="/conan-purifier/">conan-purifier</a> <a class="tier-badge" href="/tiers.html#conan-purifier">Tier 3</a>, for Conan</li>
-    <li><a href="/deno-purifier/">deno-purifier</a> <a class="tier-badge" href="/tiers.html#deno-purifier">Tier 3</a>, for Deno</li>
-    <li><a href="https://nix-purifiers.github.io/dhall-purifier/">dhall-purifier</a> <a class="tier-badge" href="/tiers.html#dhall-purifier">Tier 3</a>, for Dhall imports</li>
-    <li><a href="https://nix-purifiers.github.io/cue-purifier/">cue-purifier</a> <a class="tier-badge" href="/tiers.html#cue-purifier">Tier 3</a>, for CUE</li>
-    <li><a href="/docker-purifier/">docker-purifier</a> <a class="tier-badge" href="/tiers.html#docker-purifier">Tier 3</a>, for Docker</li>
-    <li><a href="/dotnet-purifier/">dotnet-purifier</a> <a class="tier-badge" href="/tiers.html#dotnet-purifier">Tier 3</a>, for .NET</li>
-    <li><a href="/dub-purifier/">dub-purifier</a> <a class="tier-badge" href="/tiers.html#dub-purifier">Tier 3</a>, for DUB (D)</li>
-    <li><a href="/elm-purifier/">elm-purifier</a> <a class="tier-badge" href="/tiers.html#elm-purifier">Tier 3</a>, for Elm</li>
-    <li><a href="/esp-idf-purifier/">esp-idf-purifier</a> <a class="tier-badge" href="/tiers.html#esp-idf-purifier">Tier 3</a>, for ESP-IDF components and SDKs</li>
-    <li><a href="/fpm-purifier/">fpm-purifier</a> <a class="tier-badge" href="/tiers.html#fpm-purifier">Tier 3</a>, for Fortran fpm</li>
-    <li><a href="/gleam-purifier/">gleam-purifier</a> <a class="tier-badge" href="/tiers.html#gleam-purifier">Tier 3</a>, for Gleam</li>
-    <li><a href="/go-purifier/">go-purifier</a> <a class="tier-badge" href="/tiers.html#go-purifier">Tier 3</a>, for Go modules</li>
-    <li><a href="/gradle-purifier/">gradle-purifier</a> <a class="tier-badge" href="/tiers.html#gradle-purifier">Tier 3</a>, for Gradle</li>
-    <li><a href="/haxelib-purifier/">haxelib-purifier</a> <a class="tier-badge" href="/tiers.html#haxelib-purifier">Tier 3</a>, for Haxelib (Haxe)</li>
-    <li><a href="/helm-purifier/">helm-purifier</a> <a class="tier-badge" href="/tiers.html#helm-purifier">Tier 3</a>, for Helm</li>
-    <li><a href="/herdr-purifier/">herdr-purifier</a> <a class="tier-badge" href="/tiers.html#herdr-purifier">Tier 3</a>, for Herdr workflow plugins</li>
-    <li><a href="https://nix-purifiers.github.io/idris2-purifier/">idris2-purifier</a> <a class="tier-badge" href="/tiers.html#idris2-purifier">Tier 3</a>, for Idris2 and Pack</li>
-    <li><a href="/jb-purifier/">jb-purifier</a> <a class="tier-badge" href="/tiers.html#jb-purifier">Tier 3</a>, for Jsonnet Bundler</li>
-    <li><a href="/julia-purifier/">julia-purifier</a> <a class="tier-badge" href="/tiers.html#julia-purifier">Tier 3</a>, for Julia (Pkg.jl)</li>
-    <li><a href="/lake-purifier/">lake-purifier</a> <a class="tier-badge" href="/tiers.html#lake-purifier">Tier 3</a>, for Lean and Lake</li>
-    <li><a href="/lein-purifier/">lein-purifier</a> <a class="tier-badge" href="/tiers.html#lein-purifier">Tier 3</a>, for Leiningen</li>
-    <li><a href="/luarocks-purifier/">luarocks-purifier</a> <a class="tier-badge" href="/tiers.html#luarocks-purifier">Tier 3</a>, for LuaRocks</li>
-    <li><a href="/maven-purifier/">maven-purifier</a> <a class="tier-badge" href="/tiers.html#maven-purifier">Tier 3</a>, for Maven</li>
-    <li><a href="/meson-purifier/">meson-purifier</a> <a class="tier-badge" href="/tiers.html#meson-purifier">Tier 3</a>, for Meson</li>
-    <li><a href="/mill-purifier/">mill-purifier</a> <a class="tier-badge" href="/tiers.html#mill-purifier">Tier 3</a>, for Mill (Scala)</li>
-    <li><a href="/mix-purifier/">mix-purifier</a> <a class="tier-badge" href="/tiers.html#mix-purifier">Tier 3</a>, for Mix (Elixir)</li>
-    <li><a href="/nimble-purifier/">nimble-purifier</a> <a class="tier-badge" href="/tiers.html#nimble-purifier">Tier 3</a>, for Nimble (Nim)</li>
-    <li><a href="/npm-purifier/">npm-purifier</a> <a class="tier-badge" href="/tiers.html#npm-purifier">Tier 3</a>, for npm</li>
-    <li><a href="https://nix-purifiers.github.io/octave-purifier/">octave-purifier</a> <a class="tier-badge" href="/tiers.html#octave-purifier">Tier 3</a>, for GNU Octave</li>
-    <li><a href="/opam-purifier/">opam-purifier</a> <a class="tier-badge" href="/tiers.html#opam-purifier">Tier 3</a>, for opam (OCaml)</li>
-    <li><a href="/package-el-purifier/">package-el-purifier</a> <a class="tier-badge" href="/tiers.html#package-el-purifier">Tier 3</a>, for Emacs package.el</li>
-    <li><a href="/pdm-purifier/">pdm-purifier</a> <a class="tier-badge" href="/tiers.html#pdm-purifier">Tier 3</a>, for PDM</li>
-    <li><a href="https://nix-purifiers.github.io/pecl-purifier/">pecl-purifier</a> <a class="tier-badge" href="/tiers.html#pecl-purifier">Tier 3</a>, for PHP extensions</li>
-    <li><a href="/pip-purifier/">pip-purifier</a> <a class="tier-badge" href="/tiers.html#pip-purifier">Tier 3</a>, for pip</li>
-    <li><a href="/pipenv-purifier/">pipenv-purifier</a> <a class="tier-badge" href="/tiers.html#pipenv-purifier">Tier 3</a>, for Pipenv</li>
-    <li><a href="/pixi-purifier/">pixi-purifier</a> <a class="tier-badge" href="/tiers.html#pixi-purifier">Tier 3</a>, for Pixi</li>
-    <li><a href="/pnpm-purifier/">pnpm-purifier</a> <a class="tier-badge" href="/tiers.html#pnpm-purifier">Tier 3</a>, for pnpm</li>
-    <li><a href="/poetry-purifier/">poetry-purifier</a> <a class="tier-badge" href="/tiers.html#poetry-purifier">Tier 3</a>, for Poetry</li>
-    <li><a href="/pub-purifier/">pub-purifier</a> <a class="tier-badge" href="/tiers.html#pub-purifier">Tier 3</a>, for Dart pub</li>
-    <li><a href="/qlot-purifier/">qlot-purifier</a> <a class="tier-badge" href="/tiers.html#qlot-purifier">Tier 3</a>, for Qlot (Common Lisp)</li>
-    <li><a href="/racket-purifier/">racket-purifier</a> <a class="tier-badge" href="/tiers.html#racket-purifier">Tier 3</a>, for Racket</li>
-    <li><a href="/rebar3-purifier/">rebar3-purifier</a> <a class="tier-badge" href="/tiers.html#rebar3-purifier">Tier 3</a>, for rebar3 (Erlang)</li>
-    <li><a href="/renv-purifier/">renv-purifier</a> <a class="tier-badge" href="/tiers.html#renv-purifier">Tier 3</a>, for renv (R)</li>
-    <li><a href="/sbt-purifier/">sbt-purifier</a> <a class="tier-badge" href="/tiers.html#sbt-purifier">Tier 3</a>, for sbt</li>
-    <li><a href="/scala-cli-purifier/">scala-cli-purifier</a> <a class="tier-badge" href="/tiers.html#scala-cli-purifier">Tier 3</a>, for Scala CLI</li>
-    <li><a href="/shards-purifier/">shards-purifier</a> <a class="tier-badge" href="/tiers.html#shards-purifier">Tier 3</a>, for Crystal Shards</li>
-    <li><a href="/soldeer-purifier/">soldeer-purifier</a> <a class="tier-badge" href="/tiers.html#soldeer-purifier">Tier 3</a>, for Soldeer</li>
-    <li><a href="/spago-purifier/">spago-purifier</a> <a class="tier-badge" href="/tiers.html#spago-purifier">Tier 3</a>, for PureScript Spago</li>
-    <li><a href="/stack-purifier/">stack-purifier</a> <a class="tier-badge" href="/tiers.html#stack-purifier">Tier 3</a>, for Stack (Haskell)</li>
-    <li><a href="/straight-purifier/">straight-purifier</a> <a class="tier-badge" href="/tiers.html#straight-purifier">Tier 3</a>, for Emacs straight.el</li>
-    <li><a href="/swiftpm-purifier/">swiftpm-purifier</a> <a class="tier-badge" href="/tiers.html#swiftpm-purifier">Tier 3</a>, for Swift Package Manager</li>
-    <li><a href="/terraform-purifier/">terraform-purifier</a> <a class="tier-badge" href="/tiers.html#terraform-purifier">Tier 3</a>, for Terraform</li>
-    <li><a href="/tofu-purifier/">tofu-purifier</a> <a class="tier-badge" href="/tiers.html#tofu-purifier">Tier 3</a>, for OpenTofu</li>
-    <li><a href="https://nix-purifiers.github.io/tectonic-purifier/">tectonic-purifier</a> <a class="tier-badge" href="/tiers.html#tectonic-purifier">Tier 3</a>, for Tectonic</li>
-    <li><a href="/typst-purifier/">typst-purifier</a> <a class="tier-badge" href="/tiers.html#typst-purifier">Tier 3</a>, for Typst</li>
-    <li><a href="/uv-purifier/">uv-purifier</a> <a class="tier-badge" href="/tiers.html#uv-purifier">Tier 3</a>, for uv</li>
-    <li><a href="/vcpkg-purifier/">vcpkg-purifier</a> <a class="tier-badge" href="/tiers.html#vcpkg-purifier">Tier 3</a>, for vcpkg</li>
-    <li><a href="https://nix-purifiers.github.io/west-purifier/">west-purifier</a> <a class="tier-badge" href="/tiers.html#west-purifier">Tier 3</a>, for West Git workspaces</li>
-    <li><a href="https://nix-purifiers.github.io/lazy-purifier/">lazy-purifier</a> <a class="tier-badge" href="/tiers.html#lazy-purifier">Tier 3</a>, for lazy.nvim plugins</li>
-    <li><a href="https://nix-purifiers.github.io/quarto-purifier/">quarto-purifier</a> <a class="tier-badge" href="/tiers.html#quarto-purifier">Tier 3</a>, for Quarto extensions</li>
-    <li><a href="https://nix-purifiers.github.io/elpaca-purifier/">elpaca-purifier</a> <a class="tier-badge" href="/tiers.html#elpaca-purifier">Tier 3</a>, for Elpaca packages</li>
-    <li><a href="/xmake-purifier/">xmake-purifier</a> <a class="tier-badge" href="/tiers.html#xmake-purifier">Tier 3</a>, for Xmake</li>
-    <li><a href="/yarn-berry-purifier/">yarn-berry-purifier</a> <a class="tier-badge" href="/tiers.html#yarn-berry-purifier">Tier 3</a>, for Yarn 2 and later</li>
-    <li><a href="/yarn-classic-purifier/">yarn-classic-purifier</a> <a class="tier-badge" href="/tiers.html#yarn-classic-purifier">Tier 3</a>, for Yarn 1</li>
-    <li><a href="/zef-purifier/">zef-purifier</a> <a class="tier-badge" href="/tiers.html#zef-purifier">Tier 3</a>, for Raku and zef</li>
-    <li><a href="/zig-purifier/">zig-purifier</a> <a class="tier-badge" href="/tiers.html#zig-purifier">Tier 3</a>, for Zig</li>
-    <li><a href="/arduino-purifier/">arduino-purifier</a> <a class="tier-badge" href="/tiers.html#arduino-purifier">Tier 3</a>, for Arduino CLI profiles</li>
-    <li><a href="/platformio-purifier/">platformio-purifier</a> <a class="tier-badge" href="/tiers.html#platformio-purifier">Tier 3</a>, for PlatformIO</li>
-    <li><a href="/pulumi-purifier/">pulumi-purifier</a> <a class="tier-badge" href="/tiers.html#pulumi-purifier">Tier 3</a>, for Pulumi plugins</li>
-  </ul>
+  <p class="muted"><a href="/tiers.html">Tier criteria and evidence</a></p>
+  <!-- purifier-tier-groups:start -->
+  <section class="tier-group" aria-labelledby="tier-3">
+    <h2 id="tier-3">Tier 3</h2>
+    <ul>
+      <li><a href="https://nix-purifiers.github.io/agda-purifier/">agda-purifier</a>, for Agda libraries</li>
+      <li><a href="https://nix-purifiers.github.io/alire-purifier/">alire-purifier</a>, for Alire</li>
+      <li><a href="https://nix-purifiers.github.io/ansible-purifier/">ansible-purifier</a>, for Ansible Galaxy collections</li>
+      <li><a href="/ant-purifier/">ant-purifier</a>, for Ant and Apache Ivy</li>
+      <li><a href="https://nix-purifiers.github.io/buf-purifier/">buf-purifier</a>, for Buf</li>
+      <li><a href="/bun-purifier/">bun-purifier</a>, for bun</li>
+      <li><a href="/bundler-purifier/">bundler-purifier</a>, for Bundler</li>
+      <li><a href="/cabal-purifier/">cabal-purifier</a>, for Cabal (Haskell)</li>
+      <li><a href="/cargo-purifier/">cargo-purifier</a>, for cargo</li>
+      <li><a href="/carton-purifier/">carton-purifier</a>, for Carton (Perl/CPAN)</li>
+      <li><a href="/chef-purifier/">chef-purifier</a>, for Chef and Cinc Policyfiles</li>
+      <li><a href="/chicken-purifier/">chicken-purifier</a>, for CHICKEN Scheme</li>
+      <li><a href="/clojure-cli-purifier/">clojure-cli-purifier</a>, for the Clojure CLI (tools.deps)</li>
+      <li><a href="/cmake-purifier/">cmake-purifier</a>, for CMake</li>
+      <li><a href="/composer-purifier/">composer-purifier</a>, for Composer</li>
+      <li><a href="/conda-purifier/">conda-purifier</a>, for conda</li>
+      <li><a href="/conan-purifier/">conan-purifier</a>, for Conan</li>
+      <li><a href="/deno-purifier/">deno-purifier</a>, for Deno</li>
+      <li><a href="https://nix-purifiers.github.io/dhall-purifier/">dhall-purifier</a>, for Dhall imports</li>
+      <li><a href="https://nix-purifiers.github.io/cue-purifier/">cue-purifier</a>, for CUE</li>
+      <li><a href="/docker-purifier/">docker-purifier</a>, for Docker</li>
+      <li><a href="/dotnet-purifier/">dotnet-purifier</a>, for .NET</li>
+      <li><a href="/dub-purifier/">dub-purifier</a>, for DUB (D)</li>
+      <li><a href="/elm-purifier/">elm-purifier</a>, for Elm</li>
+      <li><a href="/esp-idf-purifier/">esp-idf-purifier</a>, for ESP-IDF components and SDKs</li>
+      <li><a href="/fpm-purifier/">fpm-purifier</a>, for Fortran fpm</li>
+      <li><a href="/gleam-purifier/">gleam-purifier</a>, for Gleam</li>
+      <li><a href="/go-purifier/">go-purifier</a>, for Go modules</li>
+      <li><a href="/gradle-purifier/">gradle-purifier</a>, for Gradle</li>
+      <li><a href="/haxelib-purifier/">haxelib-purifier</a>, for Haxelib (Haxe)</li>
+      <li><a href="/helm-purifier/">helm-purifier</a>, for Helm</li>
+      <li><a href="/herdr-purifier/">herdr-purifier</a>, for Herdr workflow plugins</li>
+      <li><a href="https://nix-purifiers.github.io/idris2-purifier/">idris2-purifier</a>, for Idris2 and Pack</li>
+      <li><a href="/jb-purifier/">jb-purifier</a>, for Jsonnet Bundler</li>
+      <li><a href="/julia-purifier/">julia-purifier</a>, for Julia (Pkg.jl)</li>
+      <li><a href="/lake-purifier/">lake-purifier</a>, for Lean and Lake</li>
+      <li><a href="/lein-purifier/">lein-purifier</a>, for Leiningen</li>
+      <li><a href="/luarocks-purifier/">luarocks-purifier</a>, for LuaRocks</li>
+      <li><a href="/maven-purifier/">maven-purifier</a>, for Maven</li>
+      <li><a href="/meson-purifier/">meson-purifier</a>, for Meson</li>
+      <li><a href="/mill-purifier/">mill-purifier</a>, for Mill (Scala)</li>
+      <li><a href="/mix-purifier/">mix-purifier</a>, for Mix (Elixir)</li>
+      <li><a href="/nimble-purifier/">nimble-purifier</a>, for Nimble (Nim)</li>
+      <li><a href="/npm-purifier/">npm-purifier</a>, for npm</li>
+      <li><a href="https://nix-purifiers.github.io/octave-purifier/">octave-purifier</a>, for GNU Octave</li>
+      <li><a href="/opam-purifier/">opam-purifier</a>, for opam (OCaml)</li>
+      <li><a href="/package-el-purifier/">package-el-purifier</a>, for Emacs package.el</li>
+      <li><a href="/pdm-purifier/">pdm-purifier</a>, for PDM</li>
+      <li><a href="https://nix-purifiers.github.io/pecl-purifier/">pecl-purifier</a>, for PHP extensions</li>
+      <li><a href="/pip-purifier/">pip-purifier</a>, for pip</li>
+      <li><a href="/pipenv-purifier/">pipenv-purifier</a>, for Pipenv</li>
+      <li><a href="/pixi-purifier/">pixi-purifier</a>, for Pixi</li>
+      <li><a href="/pnpm-purifier/">pnpm-purifier</a>, for pnpm</li>
+      <li><a href="/poetry-purifier/">poetry-purifier</a>, for Poetry</li>
+      <li><a href="/pub-purifier/">pub-purifier</a>, for Dart pub</li>
+      <li><a href="/qlot-purifier/">qlot-purifier</a>, for Qlot (Common Lisp)</li>
+      <li><a href="/racket-purifier/">racket-purifier</a>, for Racket</li>
+      <li><a href="/rebar3-purifier/">rebar3-purifier</a>, for rebar3 (Erlang)</li>
+      <li><a href="/renv-purifier/">renv-purifier</a>, for renv (R)</li>
+      <li><a href="/sbt-purifier/">sbt-purifier</a>, for sbt</li>
+      <li><a href="/scala-cli-purifier/">scala-cli-purifier</a>, for Scala CLI</li>
+      <li><a href="/shards-purifier/">shards-purifier</a>, for Crystal Shards</li>
+      <li><a href="/soldeer-purifier/">soldeer-purifier</a>, for Soldeer</li>
+      <li><a href="/spago-purifier/">spago-purifier</a>, for PureScript Spago</li>
+      <li><a href="/stack-purifier/">stack-purifier</a>, for Stack (Haskell)</li>
+      <li><a href="/straight-purifier/">straight-purifier</a>, for Emacs straight.el</li>
+      <li><a href="/swiftpm-purifier/">swiftpm-purifier</a>, for Swift Package Manager</li>
+      <li><a href="/terraform-purifier/">terraform-purifier</a>, for Terraform</li>
+      <li><a href="/tofu-purifier/">tofu-purifier</a>, for OpenTofu</li>
+      <li><a href="https://nix-purifiers.github.io/tectonic-purifier/">tectonic-purifier</a>, for Tectonic</li>
+      <li><a href="/typst-purifier/">typst-purifier</a>, for Typst</li>
+      <li><a href="/uv-purifier/">uv-purifier</a>, for uv</li>
+      <li><a href="/vcpkg-purifier/">vcpkg-purifier</a>, for vcpkg</li>
+      <li><a href="https://nix-purifiers.github.io/west-purifier/">west-purifier</a>, for West Git workspaces</li>
+      <li><a href="https://nix-purifiers.github.io/lazy-purifier/">lazy-purifier</a>, for lazy.nvim plugins</li>
+      <li><a href="https://nix-purifiers.github.io/quarto-purifier/">quarto-purifier</a>, for Quarto extensions</li>
+      <li><a href="https://nix-purifiers.github.io/elpaca-purifier/">elpaca-purifier</a>, for Elpaca packages</li>
+      <li><a href="/xmake-purifier/">xmake-purifier</a>, for Xmake</li>
+      <li><a href="/yarn-berry-purifier/">yarn-berry-purifier</a>, for Yarn 2 and later</li>
+      <li><a href="/yarn-classic-purifier/">yarn-classic-purifier</a>, for Yarn 1</li>
+      <li><a href="/zef-purifier/">zef-purifier</a>, for Raku and zef</li>
+      <li><a href="/zig-purifier/">zig-purifier</a>, for Zig</li>
+      <li><a href="/arduino-purifier/">arduino-purifier</a>, for Arduino CLI profiles</li>
+      <li><a href="/platformio-purifier/">platformio-purifier</a>, for PlatformIO</li>
+      <li><a href="/pulumi-purifier/">pulumi-purifier</a>, for Pulumi plugins</li>
+    </ul>
+  </section>
+  <!-- purifier-tier-groups:end -->
   <p>Purifiers share a common Nix library, <a href="/purifier/">purifier</a>.</p>
   <p class="muted">The purifier idea was inspired by nixcloud's <a href="https://github.com/nixcloud/cargo">cargo (libnix)</a>.</p>
   <p class="muted maintainer-link"><a href="/testing/">Maintainer testing notes</a></p>

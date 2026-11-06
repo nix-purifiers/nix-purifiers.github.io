@@ -87,9 +87,13 @@ class QualityTests(unittest.TestCase):
             validate(self.q)
 
     def test_homepage_and_shared_theme_use_same_registry(self):
-        source = '<li><a href="/gradle-purifier/">gradle-purifier</a></li>'
+        source = '<ul><li><a href="/gradle-purifier/">gradle-purifier</a>, for Gradle</li></ul>'
         result = homepage(source, self.data)
-        self.assertIn('href="/tiers.html#gradle-purifier">Tier 3', result)
+        self.assertIn('<h2 id="tier-3">Tier 3</h2>', result)
+        self.assertIn('<a href="/gradle-purifier/">gradle-purifier</a>, for Gradle', result)
+        self.assertNotIn('tier-badge', result)
+        for empty in [1, 2, 4]:
+            self.assertNotIn(f'<h2 id="tier-{empty}">', result)
         self.assertEqual(result, homepage(result, self.data))
         with tempfile.TemporaryDirectory() as directory:
             target = Path(directory)
@@ -97,10 +101,28 @@ class QualityTests(unittest.TestCase):
             self.assertEqual(json.loads((target / '_data/purifier_quality.json').read_text()), self.data['projects'])
             self.assertIn('quality.tier', (target / '_layouts/default.html').read_text())
 
+    def test_homepage_groups_only_present_tiers_and_reclassifies_without_stale_headings(self):
+        data = {'projects': {'go-purifier': {'tier': 1}, 'gradle-purifier': {'tier': 3}}}
+        source = '<p>Intro</p><ul><li><a href="/go-purifier/">go-purifier</a>, for Go</li><li><a href="/gradle-purifier/">gradle-purifier</a>, for Gradle</li></ul><p>Footer</p>'
+        result = homepage(source, data)
+        self.assertLess(result.index('Tier 1</h2>'), result.index('Tier 3</h2>'))
+        self.assertNotIn('Tier 2</h2>', result)
+        self.assertNotIn('Tier 4</h2>', result)
+        self.assertEqual(result.count('<li>'), 2)
+        self.assertIn('<p>Intro</p>', result)
+        self.assertIn('<p>Footer</p>', result)
+        data['projects']['go-purifier']['tier'] = 3
+        updated = homepage(result, data)
+        self.assertNotIn('Tier 1</h2>', updated)
+        self.assertEqual(updated.count('Tier 3</h2>'), 1)
+        self.assertEqual(updated.count('<li>'), 2)
+
     def test_tier_page_has_all_definitions_and_published_projects(self):
         text = render_tiers(self.data)
         for tier in range(1, 5):
-            self.assertIn(f'## Tier {tier}', text)
+            self.assertIn(f'| {tier} |', text)
+            populated = any(q['tier'] == tier for q in self.data['projects'].values())
+            self.assertEqual(f'## Tier {tier}' in text, populated)
         for name in self.data['projects']:
             self.assertIn(f'### {name}', text)
         self.assertIn('not numerical cutoffs', text)

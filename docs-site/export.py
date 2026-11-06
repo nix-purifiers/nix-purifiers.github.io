@@ -44,7 +44,7 @@ if __name__ == '__main__':
     target = root / 'docs-site/catalog.json'
     if args.check:
         if (root / 'index.html').read_text() != homepage((root / 'index.html').read_text(), quality):
-            raise SystemExit('Homepage tier badges are stale; run python3 docs-site/export.py')
+            raise SystemExit('Homepage tier sections are stale; run python3 docs-site/export.py')
         if not target.exists() or json.loads(target.read_text()) != documentation:
             raise SystemExit('Documentation export is stale; run python3 docs-site/export.py')
     else:
