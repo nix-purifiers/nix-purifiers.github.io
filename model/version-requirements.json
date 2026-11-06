@@ -19,6 +19,20 @@
             "https://github.com/nix-purifiers/gradle-purifier/blob/7e89d9aed2b4e075309f6cf2b6d38068e3154b55/pkgs/gradle-purifier/default.nix#L31",
             "https://github.com/nix-purifiers/gradle-purifier/blob/7e89d9aed2b4e075309f6cf2b6d38068e3154b55/src/gradle-purifier.sh#L486"
           ]
+        },
+        {
+          "text": "Source mode binds a mandatory actual manager even with zero SDK tasks or only manager-SDK tasks. Exact SDK output/home/Nix contexts and manager executable/runtime home identities are reconstructed from immutable GitHub source pins; Java version strings never select a replacement. Declaration changes require relocking; --java and direct builder JDK overrides cannot mix with this mode.",
+          "sourceRevision": "9c19f8d47def476f9afe4d8940f0076f0b95318f",
+          "evidence": [
+            "https://github.com/nix-purifiers/gradle-purifier/blob/9c19f8d47def476f9afe4d8940f0076f0b95318f/README.md#L295-L314"
+          ]
+        },
+        {
+          "text": "Source mode is x86_64-linux with immutable GitHub sources and immutable GitHub transitive inputs only. Original native SDK selections and discovery configuration take precedence; ordinary Gradle/IDE use requires working original discovery and declared manager. Prefetch does not rewrite project/global properties. This mechanism establishes no Java6/7 or version-range compatibility claim.",
+          "sourceRevision": "9c19f8d47def476f9afe4d8940f0076f0b95318f",
+          "evidence": [
+            "https://github.com/nix-purifiers/gradle-purifier/blob/9c19f8d47def476f9afe4d8940f0076f0b95318f/README.md#L295-L328"
+          ]
         }
       ],
       "projectSelections": [
@@ -44,11 +58,11 @@
           "inputs": [
             "JAVA_HOME"
           ],
-          "description": "JAVA_HOME selects the capture JVM when --java is absent; otherwise the packaged fallback is used.",
-          "sourceRevision": "9e0035882868e88d04bec2d80a1ecaa48be0fd5c",
+          "description": "For projects without gradle-purifier.sdks.json, JAVA_HOME selects the capture JVM when --java is absent; otherwise the packaged fallback is used.",
+          "sourceRevision": "9c19f8d47def476f9afe4d8940f0076f0b95318f",
           "evidence": [
-            "https://github.com/nix-purifiers/gradle-purifier/blob/9e0035882868e88d04bec2d80a1ecaa48be0fd5c/src/gradle-purifier.sh",
-            "https://github.com/nix-purifiers/gradle-purifier/blob/9e0035882868e88d04bec2d80a1ecaa48be0fd5c/pkgs/gradle-purifier/default.nix"
+            "https://github.com/nix-purifiers/gradle-purifier/blob/9c19f8d47def476f9afe4d8940f0076f0b95318f/README.md#L300-L324",
+            "https://github.com/nix-purifiers/gradle-purifier/blob/9c19f8d47def476f9afe4d8940f0076f0b95318f/src/gradle-purifier.sh#L122-L138"
           ]
         },
         {
@@ -58,11 +72,50 @@
           "inputs": [
             "--java"
           ],
-          "description": "An explicit --java option selects the JDK major for capture.",
-          "sourceRevision": "9e0035882868e88d04bec2d80a1ecaa48be0fd5c",
+          "description": "For projects without gradle-purifier.sdks.json, an explicit --java option selects the JDK major for capture.",
+          "sourceRevision": "9c19f8d47def476f9afe4d8940f0076f0b95318f",
           "evidence": [
-            "https://github.com/nix-purifiers/gradle-purifier/blob/9e0035882868e88d04bec2d80a1ecaa48be0fd5c/src/gradle-purifier.sh",
-            "https://github.com/nix-purifiers/gradle-purifier/blob/9e0035882868e88d04bec2d80a1ecaa48be0fd5c/pkgs/gradle-purifier/default.nix"
+            "https://github.com/nix-purifiers/gradle-purifier/blob/9c19f8d47def476f9afe4d8940f0076f0b95318f/README.md#L300-L324",
+            "https://github.com/nix-purifiers/gradle-purifier/blob/9c19f8d47def476f9afe4d8940f0076f0b95318f/src/gradle-purifier.sh#L122-L138"
+          ]
+        },
+        {
+          "role": "native-tool-runtime",
+          "name": "JDK",
+          "kind": "project-file",
+          "inputs": [
+            "gradle-purifier.sdks.json"
+          ],
+          "description": "On x86_64-linux, the project SDK declaration selects a source-owned manager adapter with explicit executable and runtime home.",
+          "sourceRevision": "9c19f8d47def476f9afe4d8940f0076f0b95318f",
+          "evidence": [
+            "https://github.com/nix-purifiers/gradle-purifier/blob/9c19f8d47def476f9afe4d8940f0076f0b95318f/README.md#L271-L314"
+          ]
+        },
+        {
+          "role": "compiler",
+          "name": "JDK",
+          "kind": "project-file",
+          "inputs": [
+            "gradle-purifier.sdks.json"
+          ],
+          "description": "On x86_64-linux, the project SDK declaration supplies immutable SDK candidates; original native Gradle compiler and Javadoc selections must match declared exact SDK identities.",
+          "sourceRevision": "9c19f8d47def476f9afe4d8940f0076f0b95318f",
+          "evidence": [
+            "https://github.com/nix-purifiers/gradle-purifier/blob/9c19f8d47def476f9afe4d8940f0076f0b95318f/README.md#L271-L314"
+          ]
+        },
+        {
+          "role": "project-runtime",
+          "name": "JDK",
+          "kind": "project-file",
+          "inputs": [
+            "gradle-purifier.sdks.json"
+          ],
+          "description": "On x86_64-linux, the project SDK declaration supplies immutable SDK candidates; original native Test and JavaExec selections must match declared exact SDK identities.",
+          "sourceRevision": "9c19f8d47def476f9afe4d8940f0076f0b95318f",
+          "evidence": [
+            "https://github.com/nix-purifiers/gradle-purifier/blob/9c19f8d47def476f9afe4d8940f0076f0b95318f/README.md#L271-L314"
           ]
         }
       ]

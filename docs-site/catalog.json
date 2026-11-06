@@ -17130,6 +17130,20 @@
             ],
             "sourceRevision": "7e89d9aed2b4e075309f6cf2b6d38068e3154b55",
             "text": "The recording agent requires Java 17-compatible bytecode and APIs. The released CLI runs it on its bundled JDK 21, independently of the JVM selected to run Gradle."
+          },
+          {
+            "evidence": [
+              "https://github.com/nix-purifiers/gradle-purifier/blob/9c19f8d47def476f9afe4d8940f0076f0b95318f/README.md#L295-L314"
+            ],
+            "sourceRevision": "9c19f8d47def476f9afe4d8940f0076f0b95318f",
+            "text": "Source mode binds a mandatory actual manager even with zero SDK tasks or only manager-SDK tasks. Exact SDK output/home/Nix contexts and manager executable/runtime home identities are reconstructed from immutable GitHub source pins; Java version strings never select a replacement. Declaration changes require relocking; --java and direct builder JDK overrides cannot mix with this mode."
+          },
+          {
+            "evidence": [
+              "https://github.com/nix-purifiers/gradle-purifier/blob/9c19f8d47def476f9afe4d8940f0076f0b95318f/README.md#L295-L328"
+            ],
+            "sourceRevision": "9c19f8d47def476f9afe4d8940f0076f0b95318f",
+            "text": "Source mode is x86_64-linux with immutable GitHub sources and immutable GitHub transitive inputs only. Original native SDK selections and discovery configuration take precedence; ordinary Gradle/IDE use requires working original discovery and declared manager. Prefetch does not rewrite project/global properties. This mechanism establishes no Java6/7 or version-range compatibility claim."
           }
         ],
         "projectSelections": [
@@ -17149,10 +17163,10 @@
             "sourceRevision": "9e0035882868e88d04bec2d80a1ecaa48be0fd5c"
           },
           {
-            "description": "JAVA_HOME selects the capture JVM when --java is absent; otherwise the packaged fallback is used.",
+            "description": "For projects without gradle-purifier.sdks.json, JAVA_HOME selects the capture JVM when --java is absent; otherwise the packaged fallback is used.",
             "evidence": [
-              "https://github.com/nix-purifiers/gradle-purifier/blob/9e0035882868e88d04bec2d80a1ecaa48be0fd5c/src/gradle-purifier.sh",
-              "https://github.com/nix-purifiers/gradle-purifier/blob/9e0035882868e88d04bec2d80a1ecaa48be0fd5c/pkgs/gradle-purifier/default.nix"
+              "https://github.com/nix-purifiers/gradle-purifier/blob/9c19f8d47def476f9afe4d8940f0076f0b95318f/README.md#L300-L324",
+              "https://github.com/nix-purifiers/gradle-purifier/blob/9c19f8d47def476f9afe4d8940f0076f0b95318f/src/gradle-purifier.sh#L122-L138"
             ],
             "inputs": [
               "JAVA_HOME"
@@ -17160,13 +17174,13 @@
             "kind": "environment",
             "name": "JDK",
             "role": "native-tool-runtime",
-            "sourceRevision": "9e0035882868e88d04bec2d80a1ecaa48be0fd5c"
+            "sourceRevision": "9c19f8d47def476f9afe4d8940f0076f0b95318f"
           },
           {
-            "description": "An explicit --java option selects the JDK major for capture.",
+            "description": "For projects without gradle-purifier.sdks.json, an explicit --java option selects the JDK major for capture.",
             "evidence": [
-              "https://github.com/nix-purifiers/gradle-purifier/blob/9e0035882868e88d04bec2d80a1ecaa48be0fd5c/src/gradle-purifier.sh",
-              "https://github.com/nix-purifiers/gradle-purifier/blob/9e0035882868e88d04bec2d80a1ecaa48be0fd5c/pkgs/gradle-purifier/default.nix"
+              "https://github.com/nix-purifiers/gradle-purifier/blob/9c19f8d47def476f9afe4d8940f0076f0b95318f/README.md#L300-L324",
+              "https://github.com/nix-purifiers/gradle-purifier/blob/9c19f8d47def476f9afe4d8940f0076f0b95318f/src/gradle-purifier.sh#L122-L138"
             ],
             "inputs": [
               "--java"
@@ -17174,7 +17188,46 @@
             "kind": "command-option",
             "name": "JDK",
             "role": "native-tool-runtime",
-            "sourceRevision": "9e0035882868e88d04bec2d80a1ecaa48be0fd5c"
+            "sourceRevision": "9c19f8d47def476f9afe4d8940f0076f0b95318f"
+          },
+          {
+            "description": "On x86_64-linux, the project SDK declaration selects a source-owned manager adapter with explicit executable and runtime home.",
+            "evidence": [
+              "https://github.com/nix-purifiers/gradle-purifier/blob/9c19f8d47def476f9afe4d8940f0076f0b95318f/README.md#L271-L314"
+            ],
+            "inputs": [
+              "gradle-purifier.sdks.json"
+            ],
+            "kind": "project-file",
+            "name": "JDK",
+            "role": "native-tool-runtime",
+            "sourceRevision": "9c19f8d47def476f9afe4d8940f0076f0b95318f"
+          },
+          {
+            "description": "On x86_64-linux, the project SDK declaration supplies immutable SDK candidates; original native Gradle compiler and Javadoc selections must match declared exact SDK identities.",
+            "evidence": [
+              "https://github.com/nix-purifiers/gradle-purifier/blob/9c19f8d47def476f9afe4d8940f0076f0b95318f/README.md#L271-L314"
+            ],
+            "inputs": [
+              "gradle-purifier.sdks.json"
+            ],
+            "kind": "project-file",
+            "name": "JDK",
+            "role": "compiler",
+            "sourceRevision": "9c19f8d47def476f9afe4d8940f0076f0b95318f"
+          },
+          {
+            "description": "On x86_64-linux, the project SDK declaration supplies immutable SDK candidates; original native Test and JavaExec selections must match declared exact SDK identities.",
+            "evidence": [
+              "https://github.com/nix-purifiers/gradle-purifier/blob/9c19f8d47def476f9afe4d8940f0076f0b95318f/README.md#L271-L314"
+            ],
+            "inputs": [
+              "gradle-purifier.sdks.json"
+            ],
+            "kind": "project-file",
+            "name": "JDK",
+            "role": "project-runtime",
+            "sourceRevision": "9c19f8d47def476f9afe4d8940f0076f0b95318f"
           }
         ],
         "supportedRanges": [],
@@ -17441,6 +17494,119 @@
               "source-preservation"
             ],
             "sourceRevision": "82e5106ee2c6c02e57d2d4f256bbca10eab9da25",
+            "system": "x86_64-linux"
+          },
+          {
+            "components": [
+              {
+                "name": "Gradle",
+                "role": "native-tool",
+                "version": "7.6.6"
+              },
+              {
+                "name": "OpenJDK",
+                "role": "native-tool-runtime",
+                "version": "17.0.20.1+1"
+              },
+              {
+                "name": "OpenJDK",
+                "role": "compiler",
+                "version": "8u504-b01"
+              },
+              {
+                "name": "OpenJDK",
+                "role": "project-runtime",
+                "version": "8u504-b01"
+              }
+            ],
+            "evidence": [
+              "https://github.com/nix-purifiers/gradle-purifier/actions/runs/42291213439/job/128144810992",
+              "https://github.com/nix-purifiers/gradle-purifier/actions/runs/42291213439/artifacts/13540797837",
+              "https://github.com/nix-purifiers/gradle-purifier/blob/9c19f8d47def476f9afe4d8940f0076f0b95318f/tests/sdk-sources/lifecycle.py",
+              "https://github.com/nix-purifiers/gradle-purifier/blob/9c19f8d47def476f9afe4d8940f0076f0b95318f/tests/sdk-sources/schema.py",
+              "https://github.com/nix-purifiers/gradle-purifier/blob/9c19f8d47def476f9afe4d8940f0076f0b95318f/tests/sdk-sources/manager-controls.py",
+              "https://github.com/nix-purifiers/gradle-purifier/blob/9c19f8d47def476f9afe4d8940f0076f0b95318f/tests/sdk-sources/negative.py",
+              "https://github.com/nix-purifiers/gradle-purifier/blob/9c19f8d47def476f9afe4d8940f0076f0b95318f/README.md"
+            ],
+            "id": "gradle-7.6.6-project-sdk-sources-java17-compiler8-runtime8-cold-x86_64-linux",
+            "notes": [
+              "Exact source-mode lifecycle released in v0.1.20: Gradle7.6.6, manager OpenJDK17.0.20.1+1 and project compiler, real JUnit Test, asserting JavaExec and Javadoc on OpenJDK8u504-b01. Project gradle-purifier.sdks.json selects published shared adapters from immutable purifier f444063c705056a605583bd273cc8147f57808ee (v0.1.52).",
+              "Eleven recorded stages include source/SDK acquisition, capture, byte-identical relock and relocated relock, prefetch, clean/check with empty native Gradle cache in an OS network namespace, pure/no-IFD tests, native Maven publication and ordinary Java8 consumer compilation/execution. Prefetched Nix store inputs remain available.",
+              "Published example/Main.class bytes match the independently native-compiled class and have class-file major52. No whole-JAR/POM byte parity or ordinary Maven/Gradle dependency-resolution claim.",
+              "All23closed-schema cases, zero-task and all-manager mandatory-manager controls, and13negative stages pass. Same Java version with a different undeclared SDK identity is rejected; an explicit alternate declaration is accepted. These controls do not establish other version/platform lifecycle points.",
+              "Original native discovery and project files are preserved. Ordinary Gradle and IDE use still require working original SDK discovery configuration and the declared manager. This backend is x86_64-linux with immutable GitHub sources/transitive inputs only; no Java6/7, arbitrary SDK tuple, continuous range or tier claim."
+            ],
+            "operations": [
+              "native-lock",
+              "lock-reproducibility",
+              "relocated-cold-relock",
+              "native-prefetch",
+              "native-offline-build",
+              "network-isolated-native-build",
+              "project-build-scripts",
+              "project-test-scripts",
+              "pure-build",
+              "native-publish",
+              "ordinary-java-consumer",
+              "source-preservation",
+              "native-published-class-byte-equality"
+            ],
+            "sourceRevision": "9c19f8d47def476f9afe4d8940f0076f0b95318f",
+            "system": "x86_64-linux"
+          },
+          {
+            "components": [
+              {
+                "name": "Gradle",
+                "role": "native-tool",
+                "version": "6.9.4"
+              },
+              {
+                "name": "OpenJDK",
+                "role": "native-tool-runtime",
+                "version": "11.0.32.1+1"
+              },
+              {
+                "name": "OpenJDK",
+                "role": "compiler",
+                "version": "8u504-b01"
+              },
+              {
+                "name": "OpenJDK",
+                "role": "project-runtime",
+                "version": "8u504-b01"
+              }
+            ],
+            "evidence": [
+              "https://github.com/nix-purifiers/gradle-purifier/actions/runs/42291213439/job/128144811020",
+              "https://github.com/nix-purifiers/gradle-purifier/actions/runs/42291213439/artifacts/13541796445",
+              "https://github.com/nix-purifiers/gradle-purifier/blob/9c19f8d47def476f9afe4d8940f0076f0b95318f/tests/legacy-maven/lifecycle.py",
+              "https://github.com/nix-purifiers/gradle-purifier/blob/9c19f8d47def476f9afe4d8940f0076f0b95318f/tests/epoch-probes/probe.py"
+            ],
+            "id": "gradle-6.9.4-java11-compiler8-runtime8-cold-x86_64-linux",
+            "notes": [
+              "Rechecked on released v0.1.20 with the same pinned CLI-selected Nix SDK outputs. This point exercises existing legacy selection, not the new project-flake SDK source mode; no arbitrary patch/vendor/project-flake SDK source claim.",
+              "Basic original legacy uploadArchives lifecycle; compiler8 and asserting JavaExec check8; standard Test disabled, no JUnit execution credit.",
+              "Native and purified Java8 consumer compile/execute, relocated byte-identical relock, cold namespace replay and Nix tests/release passed.",
+              "CLI publish deploys Nix-produced release artifact through original uploadArchives; compiler sentinel guards against native recompilation.",
+              "Deployed JAR matches Nix release SHA; projected JAR/POM match deployed bytes. No claim of native-versus-published class byte equality.",
+              "No range or tier promotion; other metadata/composition cases require separate bounded evidence."
+            ],
+            "operations": [
+              "native-lock",
+              "lock-reproducibility",
+              "relocated-cold-relock",
+              "native-prefetch",
+              "native-offline-build",
+              "network-isolated-native-build",
+              "project-build-scripts",
+              "project-test-scripts",
+              "pure-build",
+              "native-publish",
+              "ordinary-java-consumer",
+              "source-preservation"
+            ],
+            "sourceRevision": "9c19f8d47def476f9afe4d8940f0076f0b95318f",
             "system": "x86_64-linux"
           }
         ]
