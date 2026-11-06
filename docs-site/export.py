@@ -6,6 +6,7 @@ import subprocess
 from reference import guide_plan
 from inventory import validate_coverage
 from compatibility_evidence import validate_registry
+from quality import registry, homepage
 
 
 def validate_version_coverage(catalog):
@@ -23,6 +24,12 @@ if __name__ == '__main__':
     result = subprocess.run(['nix', 'eval', '--json', '.#documentation'], cwd=root,
                             check=True, capture_output=True, text=True)
     documentation = json.loads(result.stdout)
+    quality = registry()
+    if not set(documentation['catalog']) <= set(quality['projects']):
+        raise SystemExit('Every modeled purifier needs a tier assessment')
+    for name, page in documentation['catalog'].items():
+        if page.get('quality') != quality['projects'][name]:
+            raise SystemExit(f'{name}: quality export differs from the reviewed assessment')
     manifest = json.loads((root / 'model/repositories.json').read_text())
     expected = set(manifest) - {'purifier'}
     if set(documentation['catalog']) != expected:
@@ -36,7 +43,11 @@ if __name__ == '__main__':
     validate_coverage(documentation['catalog'], (root / 'index.html').read_text())
     target = root / 'docs-site/catalog.json'
     if args.check:
+        if (root / 'index.html').read_text() != homepage((root / 'index.html').read_text(), quality):
+            raise SystemExit('Homepage tier badges are stale; run python3 docs-site/export.py')
         if not target.exists() or json.loads(target.read_text()) != documentation:
             raise SystemExit('Documentation export is stale; run python3 docs-site/export.py')
     else:
         target.write_text(json.dumps(documentation, indent=2) + '\n')
+        index = root / 'index.html'
+        index.write_text(homepage(index.read_text(), quality))

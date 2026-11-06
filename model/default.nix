@@ -23,7 +23,7 @@ let
     else throw "Projection support must agree with declared formats and interfaces";
   evaluate = modules:
     let cfg = validateProjections (lib.evalModules { modules = [ ./schema.nix ] ++ modules; }).config;
-    in { version = 1; inherit (cfg) repository operations compatibility; facts = exportFacts cfg; }
+    in { version = 1; inherit (cfg) repository operations compatibility quality; facts = exportFacts cfg; }
       // lib.optionalAttrs (cfg.reviewedRevision != null) { inherit (cfg) reviewedRevision; };
   evaluateDocumentation = modules:
     let
@@ -77,7 +77,7 @@ let
       facts = exportFacts cfg;
     in if builtins.attrNames cfg.sections != expectedSections then
       throw "Every project must explicitly cover the contract sections: ${lib.concatStringsSep ", " expectedSections}"
-    else { version = 1; inherit (cfg) repository summary operations values compatibility; inherit facts sections; }
+    else { version = 1; inherit (cfg) repository summary operations values compatibility quality; inherit facts sections; }
       // lib.optionalAttrs (cfg.reviewedRevision != null) { inherit (cfg) reviewedRevision; };
   names = map (name: lib.removeSuffix ".nix" name) (builtins.filter (name: lib.hasSuffix ".nix" name)
     (builtins.attrNames (builtins.readDir ./projects)));
@@ -86,4 +86,13 @@ let
   documentationCatalog = lib.mapAttrs (name: _: evaluateDocumentation [
     (../docs-site/projects + "/${name}.nix")
   ]) (lib.filterAttrs (name: _: builtins.pathExists (../docs-site/projects + "/${name}.nix")) catalog);
-in { inherit evaluate evaluateDocumentation catalog documentationCatalog contract behaviorContract; }
+  tierRegistry = builtins.fromJSON (builtins.readFile ./tiers.json);
+  qualityTiers = {
+    inherit (tierRegistry) version definitions;
+    projects = lib.mapAttrs (name: _: (lib.evalModules { modules = [
+      ./tiers.nix
+      { options.repository = lib.mkOption { type = lib.types.str; };
+        config.repository = "nix-purifiers/${name}"; }
+    ]; }).config.quality) tierRegistry.projects;
+  };
+in { inherit evaluate evaluateDocumentation catalog documentationCatalog contract behaviorContract qualityTiers; }

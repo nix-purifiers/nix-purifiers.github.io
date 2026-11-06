@@ -2,6 +2,8 @@
 from pathlib import Path
 import re
 import shutil
+import json
+from quality import registry
 
 
 def install_theme(destination):
@@ -13,6 +15,10 @@ def install_theme(destination):
     (destination / '_layouts').mkdir(parents=True, exist_ok=True)
     (destination / '_includes').mkdir(exist_ok=True)
     (destination / 'assets').mkdir(exist_ok=True)
+    (destination / '_data').mkdir(exist_ok=True)
+    quality = registry()
+    (destination / '_data/purifier_quality.json').write_text(json.dumps(quality['projects'], indent=2) + '\n')
+    (destination / 'quality.json').write_text(json.dumps(quality, indent=2) + '\n')
     shutil.copyfile(theme / 'layout.html', destination / '_layouts/default.html')
     (destination / '_includes/base.css').write_text('\n'.join(styles))
     for asset in ('docs.css', 'docs.js'):

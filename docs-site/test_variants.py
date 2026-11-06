@@ -60,6 +60,7 @@ class ReviewedVariantTests(unittest.TestCase):
         shutil.copyfile(original.parent / 'index.html', self.site / 'index.html')
         shutil.copyfile(original.parent / 'robots.txt', self.site / 'robots.txt')
         (self.site / 'model').mkdir()
+        shutil.copyfile(original.parent / 'model/tiers.json', self.site / 'model/tiers.json')
         self.checkout = root / 'checkout'
         self.checkout.mkdir()
         subprocess.run(['git', 'init', str(self.checkout)], check=True, capture_output=True)
@@ -116,6 +117,18 @@ class ReviewedVariantTests(unittest.TestCase):
         self.assertEqual(result.returncode, 0, result.stderr)
         self.assertEqual(json.loads((canonical / 'system.json').read_text()), self.main_page)
         self.assertEqual(self.catalog.read_bytes(), self.catalog_before)
+
+    def test_old_source_snapshot_uses_current_orthogonal_quality_metadata(self):
+        self.branch_page.pop('quality', None)
+        (self.variant / 'page.json').write_text(json.dumps(self.branch_page))
+        output = Path(self.temporary.name) / 'old-quality-output'
+        result = self.prepare(output)
+        self.assertEqual(result.returncode, 0, result.stderr)
+        exported = json.loads((output / 'system.json').read_text())
+        tiers = json.loads((self.site / 'model/tiers.json').read_text())
+        self.assertEqual(exported['quality'], tiers['projects']['bun-purifier'])
+        self.assertEqual(exported['reviewedRevision'], self.branch_revision)
+        self.assertEqual(exported['summary'], 'Explicitly reviewed branch behavior.')
 
     def test_unreviewed_changes_are_rejected_before_output(self):
         (self.checkout / 'tool.py').write_text('unreviewed implementation\n')

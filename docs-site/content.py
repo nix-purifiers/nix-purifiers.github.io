@@ -3,6 +3,7 @@ import re
 import shlex
 from html import escape
 from compatibility import render_compatibility
+from quality import validate as validate_quality
 
 
 def source_links(text, repository, revision='main'):
@@ -60,9 +61,11 @@ def render(page, contract):
     Every contract section requires an explicit decision from the project.
     """
     required = {'version', 'repository', 'summary', 'facts', 'sections', 'operations'}
-    if not required <= set(page) or set(page) - required - {'values', 'reviewedRevision', 'compatibility'} or page['version'] != 1:
+    if not required <= set(page) or set(page) - required - {'values', 'reviewedRevision', 'compatibility', 'quality'} or page['version'] != 1:
         raise ValueError('expected version 1, repository, summary, facts, sections and operations')
     repository = nonempty(page['repository'], 'repository')
+    if page.get('quality') is not None:
+        validate_quality(page['quality'])
     if not re.fullmatch(r'[\w.-]+/[\w.-]+', repository):
         raise ValueError('repository must be owner/name')
     project = repository.split('/')[1]

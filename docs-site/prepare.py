@@ -8,6 +8,7 @@ from theme import install_theme
 from review import canonical_review, resolve_review, SourceDrift
 from reference import guide_plan, reference_text
 from export import validate_version_coverage
+from quality import for_repository
 
 parser = argparse.ArgumentParser(description=__doc__)
 parser.add_argument('--repository', required=True)
@@ -84,6 +85,10 @@ if args.catalog or args.content is not None or content_exists:
         contract['facts'] = json.loads((theme.parent / 'model/contract.json').read_text())['facts']
     if page.get('repository') != args.repository:
         parser.error('content repository does not match --repository')
+    # Quality reviews are orthogonal to native source snapshots. An older
+    # reviewed page must not restore stale quality in system.json while its
+    # shared layout displays the current central assessment.
+    page = dict(page, quality=for_repository(args.repository))
     try:
         text, differences = render(page, contract)
     except ValueError as error:
