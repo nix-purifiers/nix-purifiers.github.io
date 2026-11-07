@@ -1,0 +1,206 @@
+{
+  "sandbox": "true",
+  "sourcePath": "/nix/store/0f7g944majdjcskbilyrl2d876vhbfzq-source",
+  "sourceRevision": "382fb8ec30e8ea8fad98dbb58ac68e47107f0b2b",
+  "sourceIdentity": {
+    "/nix/store/0f7g944majdjcskbilyrl2d876vhbfzq-source": {
+      "ca": "fixed:r:sha256:0pr70clza3jc388m61g68p80sz76n9iy7hak0bdyrhg3w1dxpgsi",
+      "deriver": null,
+      "narHash": "sha256-Ub/bW+DjwezbAlPB42Oy5nwN0EXmBVMRGkwO9SkDJ18=",
+      "narSize": 2258840,
+      "references": [],
+      "registrationTime": 1794024149,
+      "signatures": [],
+      "storeDir": "/nix/store",
+      "ultimate": false,
+      "version": 1
+    }
+  },
+  "projectSnapshot": "project-1",
+  "boundEnvironment": {
+    "COMPAT_FLAKE": "/nix/store/0f7g944majdjcskbilyrl2d876vhbfzq-source",
+    "COMPAT_PROJECT": "/home/runner/work/_temp/maven-compatibility-zc13zymu/project"
+  },
+  "replayEnvironment": {
+    "COMPAT_FLAKE": "/nix/store/0f7g944majdjcskbilyrl2d876vhbfzq-source",
+    "COMPAT_PROJECT": "project-1"
+  },
+  "mavenVersion": "2.2.1",
+  "javaHome": "/nix/store/7dx0p0s94s5dc69chlcfh4wvdp27nxcd-openjdk-headless-8u504-b01",
+  "javaIdentity": {
+    "/nix/store/7dx0p0s94s5dc69chlcfh4wvdp27nxcd-openjdk-headless-8u504-b01": {
+      "ca": null,
+      "deriver": "/nix/store/8wjn1bdsh3wdbnybalahv8mw8k63bgib-openjdk-headless-8u504-b01.drv",
+      "narHash": "sha256-mnBtfolnDGgCsHLuZ/ca3ZQP6Uqm53ZlbXt/CeTC/5Q=",
+      "narSize": 93688928,
+      "references": [
+        "/nix/store/6831hq9vl04fljai1vszchy2bwys02z7-openjdk-headless-8u504-b01-jre",
+        "/nix/store/7dx0p0s94s5dc69chlcfh4wvdp27nxcd-openjdk-headless-8u504-b01",
+        "/nix/store/hfgqb1ssvvw15b2jnf0lgxbarmpyicda-set-java-classpath-hook",
+        "/nix/store/ji36842higmp6b06hbbpmzbd59g1c07c-zlib-1.3.2",
+        "/nix/store/pqyiidz5mi73wv5f91d48s9plcqyj5bz-glibc-2.44-57"
+      ],
+      "registrationTime": 1794024141,
+      "signatures": [
+        "cache.nixos.org-1:Z94ga4eYqLZ5W7JtbhKwAC9nNSnL+ighD5Bm8TxwOF8PZ+LIu7tRcoDi06ibDsP6iUQTK/+fJz7rwob7UTI+Dg=="
+      ],
+      "storeDir": "/nix/store",
+      "ultimate": false,
+      "version": 1
+    }
+  },
+  "command": [
+    "nix",
+    "build",
+    "--impure",
+    "--no-link",
+    "--json",
+    "--print-build-logs",
+    "--expr",
+    "\n      let\n        f = builtins.getFlake (\"path:\" + builtins.getEnv \"COMPAT_FLAKE\");\n        p = import f.inputs.nixpkgs {\n          system = builtins.currentSystem;\n          overlays = [ f.overlays.default ];\n        };\n      in (p.maven-purifier.buildMavenProject {\n        src = /. + builtins.getEnv \"COMPAT_PROJECT\"; projectDependencies = [ f.checks.${builtins.currentSystem}.composition.producer ];\n      }).tests\n    "
+  ],
+  "builds": [
+    {
+      "drvPath": "/nix/store/lzj0x5xmxnsqdh3i3f494fgj5jlizm2z-maven-tests.drv",
+      "outputs": {
+        "out": "/nix/store/wnc3nplkvrzw86l4idp3mx5yjbgq9amd-maven-tests"
+      }
+    }
+  ],
+  "outputs": {
+    "/nix/store/wnc3nplkvrzw86l4idp3mx5yjbgq9amd-maven-tests": {
+      "ca": null,
+      "deriver": "/nix/store/lzj0x5xmxnsqdh3i3f494fgj5jlizm2z-maven-tests.drv",
+      "narHash": "sha256-j5lLqb4gjSsRviWNwM3p/iZD7z6Rq6NtEl5Idl1ZOPE=",
+      "narSize": 6728,
+      "references": [
+        "/nix/store/7dx0p0s94s5dc69chlcfh4wvdp27nxcd-openjdk-headless-8u504-b01",
+        "/nix/store/am0wj036xiik0cqxxgv9qrgwcp0a3irw-settings.xml",
+        "/nix/store/bz0q6pg3x02ym8bzwdv24hpfvshdd3sw-maven-2.2.1"
+      ],
+      "registrationTime": 1794024293,
+      "signatures": [],
+      "storeDir": "/nix/store",
+      "ultimate": true,
+      "version": 1
+    }
+  },
+  "derivations": {
+    "derivations": {
+      "lzj0x5xmxnsqdh3i3f494fgj5jlizm2z-maven-tests.drv": {
+        "args": [
+          "-e",
+          "/nix/store/l622p70vy8k5sh7y5wizi5f2mic6ynpg-source-stdenv.sh",
+          "/nix/store/shkw4qm9qcw5sc5n1k5jznc83ny02r39-default-builder.sh"
+        ],
+        "builder": "/nix/store/nnm9gdr70ihc6zc9298mzz8jpcgaciql-bash-5.3p20/bin/bash",
+        "env": {
+          "__structuredAttrs": "",
+          "buildInputs": "",
+          "buildPhase": "runHook preBuild\nexport HOME=\"$TMPDIR/home\"\nexport JAVA_HOME=/nix/store/7dx0p0s94s5dc69chlcfh4wvdp27nxcd-openjdk-headless-8u504-b01/lib/openjdk\nmkdir -p \"$HOME\"\ncp -r --no-preserve=mode /nix/store/j4ixywj402vsdcasd62d1fx1pvpisckv-maven-composed-repository/. \"$TMPDIR/repository\"\n# The lines `maven-purifier prefetch` writes into .mvn/maven.config\n# point at files of the machine that ran it.\nif [ -f .mvn/maven.config ]; then\n  sed -i '/^-Dmaven-purifier.prefetched=true$/,$d' .mvn/maven.config\nfi\n/nix/store/xahxrjs30p3mw0a42bqg9ikgkikskw8m-python3-3.14.8/bin/python /nix/store/00ksslrh26ddw0ym37xiqgggfl9zqrsa-jvm_repository.py \\\n  --rewrite-sources . --catalog /nix/store/c51y43j6qhsr7vgxpnp3bxbznrrnidla-maven-provided-dependencies-metadata/catalog.json\n\ncp -r --no-preserve=mode /nix/store/6k1k2g86kk2yy8n4j0adw6g3v88v8hlz-maven-runtime-recorder/. \"$TMPDIR/repository\"\nexport MAVEN_PURIFIER_RECORD=\"$TMPDIR/runtime-record.jsonl\"\nexport MAVEN_PURIFIER_CAPTURE_RUNTIME=1\nmaven_failed() {\n  echo \"maven-purifier: Maven failed offline. If it reports an artifact that has not been downloaded, the lock does not hold everything this build needs: run \\`maven-purifier lock --force\\` at the build root, with the goals and -P options you build with. If it reports a compile or test failure, the build itself failed.\" >&2\n  exit 1\n}\n/nix/store/bz0q6pg3x02ym8bzwdv24hpfvshdd3sw-maven-2.2.1/bin/mvn -o -B \\\n   \\\n  -s /nix/store/am0wj036xiik0cqxxgv9qrgwcp0a3irw-settings.xml \\\n  -Dmaven.repo.local=\"$TMPDIR/repository\" \\\n  -Duser.home=\"$HOME\" \\\n  -Daether.remoteRepositoryFilter.prefixes=false \\\n  -Dproject.build.outputTimestamp=1980-01-01T00:00:02Z \\\n  clean install io.github.nix-purifiers:maven-purifier-legacy-recorder:1:record </dev/null || maven_failed\n\nrunHook postBuild\n",
+          "builder": "/nix/store/nnm9gdr70ihc6zc9298mzz8jpcgaciql-bash-5.3p20/bin/bash",
+          "cmakeFlags": "",
+          "configureFlags": "",
+          "depsBuildBuild": "",
+          "depsBuildBuildPropagated": "",
+          "depsBuildTarget": "",
+          "depsBuildTargetPropagated": "",
+          "depsHostHost": "",
+          "depsHostHostPropagated": "",
+          "depsTargetTarget": "",
+          "depsTargetTargetPropagated": "",
+          "doCheck": "",
+          "doInstallCheck": "",
+          "dontConfigure": "1",
+          "dontFixup": "1",
+          "installPhase": "runHook preInstall\nmkdir -p $out\nfind . -type d \\( -name surefire-reports -o -name failsafe-reports \\) -path '*/target/*' | while read -r reports; do\n  mkdir -p \"$out/$(dirname \"$reports\")\"\n  cp -r \"$reports\" \"$out/$reports\"\ndone\nrunHook postInstall\n",
+          "mesonFlags": "",
+          "name": "maven-tests",
+          "nativeBuildInputs": "/nix/store/7dx0p0s94s5dc69chlcfh4wvdp27nxcd-openjdk-headless-8u504-b01",
+          "out": "/nix/store/wnc3nplkvrzw86l4idp3mx5yjbgq9amd-maven-tests",
+          "outputs": "out",
+          "patches": "",
+          "propagatedBuildInputs": "",
+          "propagatedNativeBuildInputs": "",
+          "src": "/nix/store/7v7nh4yfr6jhw8x21hnfrmh4j2si694n-maven-source",
+          "stdenv": "/nix/store/c3k15jk20fccs90qgffdwzhxy15b5fdj-stdenv-linux-no-cc",
+          "strictDeps": "",
+          "system": "x86_64-linux"
+        },
+        "inputs": {
+          "drvs": {
+            "30hr2syjmfvflwi68acggp3w870ikw5c-bash-5.3p20.drv": {
+              "dynamicOutputs": {},
+              "outputs": [
+                "out"
+              ]
+            },
+            "3410zk70i9sw9d46ncac00hvw13d11zi-maven-provided-dependencies.drv": {
+              "dynamicOutputs": {},
+              "outputs": [
+                "metadata"
+              ]
+            },
+            "8wjn1bdsh3wdbnybalahv8mw8k63bgib-openjdk-headless-8u504-b01.drv": {
+              "dynamicOutputs": {},
+              "outputs": [
+                "out"
+              ]
+            },
+            "c048nhv5mapx20rgxklzgapnv8wjba4g-settings.xml.drv": {
+              "dynamicOutputs": {},
+              "outputs": [
+                "out"
+              ]
+            },
+            "iqbfp3454xn63a8l1y4xs34r54nzds59-maven-2.2.1.drv": {
+              "dynamicOutputs": {},
+              "outputs": [
+                "out"
+              ]
+            },
+            "jrjq3n2gpgq6sn07iiymh8ivf19ahncm-stdenv-linux-no-cc.drv": {
+              "dynamicOutputs": {},
+              "outputs": [
+                "out"
+              ]
+            },
+            "vdv9v55rqzn985v5jvha71zpp8lxqrvy-maven-runtime-recorder.drv": {
+              "dynamicOutputs": {},
+              "outputs": [
+                "out"
+              ]
+            },
+            "w1svn0lba9gv480i37z2q97yi4155mlr-python3-3.14.8.drv": {
+              "dynamicOutputs": {},
+              "outputs": [
+                "out"
+              ]
+            },
+            "x42gwc8xqyv9kk3w4ka4ky9fmpmw2d04-maven-composed-repository.drv": {
+              "dynamicOutputs": {},
+              "outputs": [
+                "out"
+              ]
+            }
+          },
+          "srcs": [
+            "00ksslrh26ddw0ym37xiqgggfl9zqrsa-jvm_repository.py",
+            "7v7nh4yfr6jhw8x21hnfrmh4j2si694n-maven-source",
+            "l622p70vy8k5sh7y5wizi5f2mic6ynpg-source-stdenv.sh",
+            "shkw4qm9qcw5sc5n1k5jznc83ny02r39-default-builder.sh"
+          ]
+        },
+        "name": "maven-tests",
+        "outputs": {
+          "out": {
+            "path": "wnc3nplkvrzw86l4idp3mx5yjbgq9amd-maven-tests"
+          }
+        },
+        "system": "x86_64-linux",
+        "version": 4
+      }
+    },
+    "version": 4
+  }
+}

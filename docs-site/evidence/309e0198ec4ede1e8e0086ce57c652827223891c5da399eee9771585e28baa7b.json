@@ -1,0 +1,173 @@
+{
+  "sandbox": "true",
+  "sourcePath": "/nix/store/0f7g944majdjcskbilyrl2d876vhbfzq-source",
+  "sourceRevision": "382fb8ec30e8ea8fad98dbb58ac68e47107f0b2b",
+  "sourceIdentity": {
+    "/nix/store/0f7g944majdjcskbilyrl2d876vhbfzq-source": {
+      "ca": "fixed:r:sha256:0pr70clza3jc388m61g68p80sz76n9iy7hak0bdyrhg3w1dxpgsi",
+      "deriver": null,
+      "narHash": "sha256-Ub/bW+DjwezbAlPB42Oy5nwN0EXmBVMRGkwO9SkDJ18=",
+      "narSize": 2258840,
+      "references": [],
+      "registrationTime": 1794028717,
+      "signatures": [],
+      "storeDir": "/nix/store",
+      "ultimate": false,
+      "version": 1
+    }
+  },
+  "projectSnapshot": "project-1",
+  "boundEnvironment": {
+    "COMPAT_FLAKE": "/nix/store/0f7g944majdjcskbilyrl2d876vhbfzq-source",
+    "COMPAT_PROJECT": "/var/folders/2s/vty41l455yv698g4xkgfv7z00000gn/T/maven-compatibility-gaamu2x0/project-input"
+  },
+  "replayEnvironment": {
+    "COMPAT_FLAKE": "/nix/store/0f7g944majdjcskbilyrl2d876vhbfzq-source",
+    "COMPAT_PROJECT": "project-1"
+  },
+  "mavenVersion": "3.10.0",
+  "javaHome": "/nix/store/al24k44gwd1rk08p1x2p4r88ba9xw132-zulu-ca-jdk-17.0.19",
+  "javaIdentity": {
+    "/nix/store/al24k44gwd1rk08p1x2p4r88ba9xw132-zulu-ca-jdk-17.0.19": {
+      "ca": null,
+      "deriver": "/nix/store/ilqd4qg9ig5ww1h532v6qg5p51izbyxi-zulu-ca-jdk-17.0.19.drv",
+      "narHash": "sha256-Xp5/zOCeVonFDqh26RWy+2E/XIDDsxUvLYEsHEJGfgs=",
+      "narSize": 329922456,
+      "references": [
+        "/nix/store/al24k44gwd1rk08p1x2p4r88ba9xw132-zulu-ca-jdk-17.0.19",
+        "/nix/store/zq9p83z8793icalkabg6nx4f3w0p5m3c-set-java-classpath-hook"
+      ],
+      "registrationTime": 1794028716,
+      "signatures": [
+        "cache.nixos.org-1:pA7kEu7yu5Pi5d7gaB5m3cGVX6zrRe9EriyUihA4We3cvxljxWhvpbjVv+ntm9YTH1u9AKP9U3WYjN+iFOTWBA=="
+      ],
+      "storeDir": "/nix/store",
+      "ultimate": false,
+      "version": 1
+    }
+  },
+  "command": [
+    "nix",
+    "build",
+    "--impure",
+    "--no-link",
+    "--json",
+    "--print-build-logs",
+    "--expr",
+    "\n      let\n        f = builtins.getFlake (\"path:\" + builtins.getEnv \"COMPAT_FLAKE\");\n        p = import f.inputs.nixpkgs {\n          system = builtins.currentSystem;\n          overlays = [ f.overlays.default ];\n        };\n      built = p.maven-purifier.buildMavenProject {\n        src = /. + builtins.getEnv \"COMPAT_PROJECT\";\n      };\n          in p.runCommand \"maven-compatibility-runtime\" { tests = built.tests; } ''\n            find ${built.projections.maven}/org/apache/commons/commons-text -name '*-nix-*.pom' | grep -q .\n            touch $out\n          '' \n    "
+  ],
+  "builds": [
+    {
+      "drvPath": "/nix/store/zdcg4qmzab9fikijf0mx8v9gc0vf6ng2-maven-compatibility-runtime.drv",
+      "outputs": {
+        "out": "/nix/store/532wsy5q2i46g00l3xaah8f2xbl3a9zz-maven-compatibility-runtime"
+      }
+    }
+  ],
+  "outputs": {
+    "/nix/store/532wsy5q2i46g00l3xaah8f2xbl3a9zz-maven-compatibility-runtime": {
+      "ca": null,
+      "deriver": "/nix/store/zdcg4qmzab9fikijf0mx8v9gc0vf6ng2-maven-compatibility-runtime.drv",
+      "narHash": "sha256-d6xi4mKdjkX2JFicDIv5niSzpyI0m/Hnm8GGAIU04kY=",
+      "narSize": 112,
+      "references": [],
+      "registrationTime": 1794029047,
+      "signatures": [],
+      "storeDir": "/nix/store",
+      "ultimate": true,
+      "version": 1
+    }
+  },
+  "derivations": {
+    "derivations": {
+      "zdcg4qmzab9fikijf0mx8v9gc0vf6ng2-maven-compatibility-runtime.drv": {
+        "args": [
+          "-e",
+          "/nix/store/l622p70vy8k5sh7y5wizi5f2mic6ynpg-source-stdenv.sh",
+          "/nix/store/shkw4qm9qcw5sc5n1k5jznc83ny02r39-default-builder.sh"
+        ],
+        "builder": "/nix/store/i1pdjlwb27ki88zssg5q2h696v1r1m15-bash-5.3p20/bin/bash",
+        "env": {
+          "__darwinAllowLocalNetworking": "",
+          "__impureHostDeps": "/bin/sh /usr/lib/libSystem.B.dylib /usr/lib/system/libunc.dylib /dev/zero /dev/random /dev/urandom /bin/sh",
+          "__propagatedImpureHostDeps": "",
+          "__propagatedSandboxProfile": "",
+          "__sandboxProfile": "",
+          "__structuredAttrs": "",
+          "buildCommand": "find /nix/store/zkzyqvq2n84xyh8w1w4d8ky7mwx4n531-maven-publications/org/apache/commons/commons-text -name '*-nix-*.pom' | grep -q .\ntouch $out\n",
+          "buildInputs": "",
+          "builder": "/nix/store/i1pdjlwb27ki88zssg5q2h696v1r1m15-bash-5.3p20/bin/bash",
+          "cmakeFlags": "",
+          "configureFlags": "",
+          "depsBuildBuild": "",
+          "depsBuildBuildPropagated": "",
+          "depsBuildTarget": "",
+          "depsBuildTargetPropagated": "",
+          "depsHostHost": "",
+          "depsHostHostPropagated": "",
+          "depsTargetTarget": "",
+          "depsTargetTargetPropagated": "",
+          "doCheck": "",
+          "doInstallCheck": "",
+          "enableParallelBuilding": "1",
+          "enableParallelChecking": "1",
+          "enableParallelInstalling": "1",
+          "mesonFlags": "",
+          "name": "maven-compatibility-runtime",
+          "nativeBuildInputs": "",
+          "out": "/nix/store/532wsy5q2i46g00l3xaah8f2xbl3a9zz-maven-compatibility-runtime",
+          "outputs": "out",
+          "passAsFile": "buildCommand",
+          "patches": "",
+          "propagatedBuildInputs": "",
+          "propagatedNativeBuildInputs": "",
+          "stdenv": "/nix/store/9lhvi9bx4243wmpgdankw1q5rfv0ja8i-stdenv-darwin-no-cc",
+          "strictDeps": "",
+          "system": "aarch64-darwin",
+          "tests": "/nix/store/qryi92imb7yrrgfi8zcqgqkbq8a5dqpn-maven-tests"
+        },
+        "inputs": {
+          "drvs": {
+            "c58z7b7qarv1c01rnri0w4mj8hl3pgy8-stdenv-darwin-no-cc.drv": {
+              "dynamicOutputs": {},
+              "outputs": [
+                "out"
+              ]
+            },
+            "f9zmmzm3lb7yf8s7m45v7w6qx382gyfi-maven-tests.drv": {
+              "dynamicOutputs": {},
+              "outputs": [
+                "out"
+              ]
+            },
+            "js9y02nxmvnwaifvrhapi041wv20prxj-maven-publications.drv": {
+              "dynamicOutputs": {},
+              "outputs": [
+                "out"
+              ]
+            },
+            "sfnk2mrj9z7amb2q5q7cixizrqxgx6dc-bash-5.3p20.drv": {
+              "dynamicOutputs": {},
+              "outputs": [
+                "out"
+              ]
+            }
+          },
+          "srcs": [
+            "l622p70vy8k5sh7y5wizi5f2mic6ynpg-source-stdenv.sh",
+            "shkw4qm9qcw5sc5n1k5jznc83ny02r39-default-builder.sh"
+          ]
+        },
+        "name": "maven-compatibility-runtime",
+        "outputs": {
+          "out": {
+            "path": "532wsy5q2i46g00l3xaah8f2xbl3a9zz-maven-compatibility-runtime"
+          }
+        },
+        "system": "aarch64-darwin",
+        "version": 4
+      }
+    },
+    "version": 4
+  }
+}
