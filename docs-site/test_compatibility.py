@@ -16,6 +16,56 @@ class CompatibilityTests(unittest.TestCase):
         self.page = self.documentation['catalog']['npm-purifier']
         self.contract = self.documentation['contract']
 
+    def test_nix_scope_selection_renders_actual_attributes_without_file_links(self):
+        page = copy.deepcopy(self.documentation['catalog']['ant-purifier'])
+        selections = page['compatibility']['projectSelections']
+        self.assertTrue(selections)
+        self.assertTrue(all(item['kind'] == 'nix-scope' for item in selections))
+        self.assertEqual({name for item in selections for name in item['inputs']},
+                         {'nativeProfile', 'legacyJvmAdapter', 'ant', 'apacheIvy'})
+        body = render_compatibility(page, self.contract)
+        self.assertIn('Nix scope configuration: `nativeProfile`, `ant`', body)
+        self.assertIn('Nix scope configuration: `legacyJvmAdapter`', body)
+        self.assertNotIn('[legacyJvmAdapter](', body)
+        self.assertNotIn('[nativeProfile](', body)
+
+    def test_selection_kinds_remain_closed_and_existing_kinds_keep_their_rendering(self):
+        for kind in ['project-file', 'environment', 'lockfile', 'command-option', 'nix-scope']:
+            data = copy.deepcopy(EMPTY)
+            data['projectSelections'] = [dict(role='compiler', name='JDK', kind=kind,
+                inputs=['actualInput'], description='Actual selection mechanism.',
+                sourceRevision='1'*40, evidence=['https://example.test/definition'])]
+            with self.subTest(kind=kind):
+                self.assertEqual(validate(data)['projectSelections'][0]['kind'], kind)
+                body = render_compatibility(dict(self.page, compatibility=data), self.contract)
+                self.assertIn('`actualInput`', body)
+                self.assertEqual('Nix scope configuration:' in body, kind == 'nix-scope')
+            data['projectSelections'][0]['kind'] = 'guessed-kind'
+            with self.assertRaises(ValueError):
+                validate(data)
+            data['projectSelections'][0]['kind'] = kind
+            data['projectSelections'][0]['inputs'] = []
+            with self.assertRaises(ValueError):
+                validate(data)
+
+    def test_ant_legacy_point_keeps_class_tree_and_native_publication_distinct(self):
+        page = self.documentation['catalog']['ant-purifier']
+        point = page['compatibility']['testedPoints'][0]
+        self.assertEqual(point['system'], 'x86_64-linux')
+        self.assertEqual({(c['role'], c['name']): c['version'] for c in point['components']}, {
+            ('native-tool', 'Apache Ant'): '1.5.4', ('native-tool', 'Apache Ivy'): '2.4.0',
+            ('native-tool-runtime', 'Azul Zulu JDK'): '6.0.119',
+            ('compiler', 'Azul Zulu JDK'): '6.0.119',
+            ('project-runtime', 'Azul Zulu JDK'): '6.0.119'})
+        self.assertFalse({'native-publish', 'release-pack', 'pure-native-byte-equality',
+                          'native-published-class-byte-equality'} & set(point['operations']))
+        self.assertFalse(page['compatibility']['supportedRanges'])
+        notes = ' '.join(point['notes'])
+        self.assertIn('source/class-tree archive, not native artifact publication fidelity', notes)
+        self.assertIn('compiled Main.class bytes match the independent native control', notes)
+        self.assertIn('not a JUnit task', notes)
+        self.assertIn('Arbitrary custom-task introspection is not established', notes)
+
     def test_every_overview_and_guide_has_the_same_forced_section(self):
         root = Path(__file__).resolve().parent
         for name, page in self.documentation['catalog'].items():

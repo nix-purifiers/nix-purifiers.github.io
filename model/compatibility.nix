@@ -42,7 +42,7 @@ in {
             options = proof // {
               role = component.role;
               name = component.name;
-              kind = mkOption { type = types.enum [ "project-file" "environment" "lockfile" "command-option" ]; };
+              kind = mkOption { type = types.enum [ "project-file" "environment" "lockfile" "command-option" "nix-scope" ]; };
               inputs = mkOption { type = nonempty text; };
               description = mkOption { type = text; };
             };

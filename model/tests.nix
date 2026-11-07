@@ -10,6 +10,7 @@ let
     operations = [ "pure-build" ];
     sourceRevision = "1111111111111111111111111111111111111111";
     evidence = [ "https://example.test/test-fixture" ];
+    notes = [];
   };
   packagedDefault = {
     role = "native-tool"; name = "Tool"; version = "1.2.3";
@@ -18,6 +19,35 @@ let
     evidence = compatibilityPoint.evidence;
   };
   checks = {
+    antCompatibilityDefaultsToCanonicalRegistry =
+      (withOverride {}).compatibility.testedPoints ==
+        (builtins.fromJSON (builtins.readFile ./compatibility-tests.json)).projects.ant-purifier.testedPoints;
+    antCompatibilityAllowsExplicitOverride =
+      (withOverride { compatibility.testedPoints = [ compatibilityPoint ]; }).compatibility.testedPoints == [ compatibilityPoint ];
+    nixScopeVersionSelectionRoundTrips =
+      let
+        selection = {
+          role = "native-tool-runtime"; name = "JDK"; kind = "nix-scope";
+          inputs = [ "nativeProfile" "legacyJvmAdapter" "ant" "apacheIvy" ];
+          description = "Explicit live Nix scope configuration.";
+          sourceRevision = compatibilityPoint.sourceRevision;
+          evidence = compatibilityPoint.evidence;
+        };
+      in (withOverride { compatibility.projectSelections = [ selection ]; }).compatibility.projectSelections == [ selection ];
+    existingVersionSelectionKindsWork = lib.all (kind: force (withOverride {
+      compatibility.projectSelections = [ {
+        role = "native-tool"; name = "Tool"; inherit kind;
+        inputs = [ "selection" ]; description = "An existing selection mechanism.";
+        sourceRevision = compatibilityPoint.sourceRevision; evidence = compatibilityPoint.evidence;
+      } ];
+    })) [ "project-file" "environment" "lockfile" "command-option" ];
+    nixScopeVersionSelectionNeedsInputs = !force (withOverride {
+      compatibility.projectSelections = [ {
+        role = "native-tool-runtime"; name = "JDK"; kind = "nix-scope";
+        inputs = []; description = "Missing the actual Nix attributes.";
+        sourceRevision = compatibilityPoint.sourceRevision; evidence = compatibilityPoint.evidence;
+      } ];
+    });
     foreignRepositoryDoesNotInheritTier = (model.evaluateDocumentation [ sample {
       repository = lib.mkForce "other-owner/ant-purifier";
     } ]).quality == null;

@@ -7885,6 +7885,175 @@
           ]
         }
       ]
+    },
+    "ant-purifier": {
+      "testedPoints": [
+        {
+          "id": "ant-1.5.4-ivy2.4.0-java6-source-owned-sdk-cold-x86_64-linux",
+          "components": [
+            {
+              "role": "native-tool",
+              "name": "Apache Ant",
+              "version": "1.5.4"
+            },
+            {
+              "role": "native-tool",
+              "name": "Apache Ivy",
+              "version": "2.4.0"
+            },
+            {
+              "role": "native-tool-runtime",
+              "name": "Azul Zulu JDK",
+              "version": "6.0.119"
+            },
+            {
+              "role": "compiler",
+              "name": "Azul Zulu JDK",
+              "version": "6.0.119"
+            },
+            {
+              "role": "project-runtime",
+              "name": "Azul Zulu JDK",
+              "version": "6.0.119"
+            }
+          ],
+          "system": "x86_64-linux",
+          "operations": [
+            "native-lock",
+            "lock-reproducibility",
+            "relocated-cold-relock",
+            "native-prefetch",
+            "native-offline-build",
+            "network-isolated-native-build",
+            "project-build-scripts",
+            "project-test-scripts",
+            "pure-build",
+            "source-preservation"
+          ],
+          "sourceRevision": "4db074129b0dd2ac49fae0988804e1a327a48cfa",
+          "evidence": [
+            "https://github.com/nix-purifiers/ant-purifier/actions/runs/42311014691/job/128212174958",
+            "https://github.com/nix-purifiers/ant-purifier/actions/runs/42311014691/artifacts/13548442350",
+            "https://github.com/nix-purifiers/ant-purifier/blob/4db074129b0dd2ac49fae0988804e1a327a48cfa/tests/legacy-basic/check.py",
+            "https://github.com/nix-purifiers/ant-purifier/blob/4db074129b0dd2ac49fae0988804e1a327a48cfa/tests/legacy-basic/lifecycle.py",
+            "https://github.com/nix-purifiers/ant-purifier/blob/4db074129b0dd2ac49fae0988804e1a327a48cfa/tests/legacy-basic/negative.py",
+            "https://github.com/nix-purifiers/ant-purifier/blob/4db074129b0dd2ac49fae0988804e1a327a48cfa/tests/legacy-basic/roles.py",
+            "https://github.com/nix-purifiers/ant-purifier/blob/4db074129b0dd2ac49fae0988804e1a327a48cfa/tests/legacy-basic/containers.py",
+            "https://github.com/nix-purifiers/ant-purifier/blob/4db074129b0dd2ac49fae0988804e1a327a48cfa/tests/legacy-basic/update.py",
+            "https://github.com/nix-purifiers/ant-purifier/blob/4db074129b0dd2ac49fae0988804e1a327a48cfa/tests/legacy-basic/unlocked.py",
+            "https://github.com/nix-purifiers/ant-purifier/blob/4db074129b0dd2ac49fae0988804e1a327a48cfa/tests/legacy-basic/toolchains.nix",
+            "https://github.com/nix-purifiers/ant-purifier/blob/4db074129b0dd2ac49fae0988804e1a327a48cfa/README.md"
+          ],
+          "notes": [
+            "Released in v0.1.4 with the explicit legacy-basic-v1 Nix scope: Ant 1.5.4, Ivy 2.4.0 and Azul Zulu JDK 6.0.119 (observed java.version 1.6.0-119) on x86_64-linux. The same declared SDK runs the native tool, compiler and asserting Java execution.",
+            "The caller supplies a live published JVM SDK adapter and actual Ant/Ivy packages. Output, home, executable and runtime-home Nix contexts are retained; serialized lock paths never select or reconstruct an SDK. Actual native process, runtime home and Ant/Ivy/collector JAR origins are checked.",
+            "Independent native controls resolve a nonempty direct/transitive graph, select shared 2.0 and evict transitive shared 1.0 with its middle caller edge. Actual collector relock and relocation preserve all three lock files byte for byte. Original project sources remain unchanged.",
+            "After prefetch, the origin is stopped and a fresh native build/test runs in an OS network namespace. Retrieved dependency bytes and compiled Main.class bytes match the independent native control; class-file major is 50. Assertions run through a Java task, not a JUnit task. No whole-JAR/POM or published-byte parity claim.",
+            "Immutable-source pure evaluation with import-from-derivation disabled, source/class-tree build and deterministic source/class-tree archive rebuild pass. The release is a source/class-tree archive, not native artifact publication fidelity. Packaging/publication, task containers, nested Ant, Javadoc/JUnit tasks, project composition and projections are outside this profile.",
+            "Controls cover same-version foreign manager/compiler/runtime rejection before the relevant role actions, same-bytes foreign JAR origins, direct packaging and Sequential/Parallel rejection before earlier target actions, native Ivy warm/fresh cache behavior, sticky pins, named updates and changed-artifact rejection without lock writes. Arbitrary custom-task introspection is not established.",
+            "Ordinary unlocked ant warns and executes the selected native tool with original arguments/environment. Explicit prefetch and partial/malformed locks remain errors. These controls establish no additional toolchain tuple, Ant 1.2/Ivy 2.4 compatibility, ARM support or version range."
+          ]
+        }
+      ],
+      "reviews": [
+        {
+          "sourceRevision": "4db074129b0dd2ac49fae0988804e1a327a48cfa",
+          "files": {
+            ".github/workflows/check.yml": "868c793e93b70dc217bb7088dc1874c1626f3c49d42163013615812ee4cadb93",
+            ".github/workflows/pages.yml": "94a08f557e6d4942cdee7464dab8dc7350d3f20e8ab92db42f035fbaead7fe6f",
+            ".github/workflows/release.yml": "935dc1926313f4818ca5981b2f77ce7e9dcd1e1fbd9059d2123ceabe531d8422",
+            ".gitignore": "49941c95db3b821569059e810493411004af4f8ef44e72de50c24ecb2b841233",
+            "LICENSE": "6bdc2caf8d11ccdbfc05b35d852953ba41150d93ba256ae9615a07d246734a56",
+            "README.md": "77b4c0b87ba58b986a460969df7298b45c5e99687872543adf3a19254866caf8",
+            "ant_purifier/__init__.py": "9d61ab39c8d45049b21b7677354cca54700ded3faa7bc9fe6dd4e63cff752b37",
+            "ant_purifier/cli.py": "53fe1b553a67236699e176662d1b85592124b06064918d7df9ecdf361b04f5c4",
+            "ant_purifier/editor.py": "1cf23b81bfb866174bae9146987fc1ad31d1c7549d76139ef7e098e2923d601c",
+            "ant_purifier/lock.py": "89ad3c2f53c7d0c6c9de5fc5f16b9af61e23f85959d182743c6ed997a5f53e79",
+            "ant_purifier/project_inputs.py": "6008854254d15e35ec18229da7972b648d6a3ecc180e53ac57c1eb4438f42df7",
+            "ant_purifier_legacy/__init__.py": "9c0be97199b600e5cd0a7a401f870eadd33ef2d5e1b9a13c7a7509e844d7f07f",
+            "ant_purifier_legacy/__main__.py": "1081a8cadaf86b39290a287c0ea01e4dd9b95814246a14883073e4c206b4c07c",
+            "ant_purifier_legacy/cli.py": "7738442f1e1452335d689396812c8da34f04ea7b62ba3989fb5d33e431e20ae8",
+            "ant_purifier_legacy/lock.py": "0b4a13170d88c333766bbc1299307176a60e45e17c5154588cf32a7f3c19d7b5",
+            "bin/ant-purifier": "94edfbf42cc36840408a36e3edf195be309f1e3c0a6ea3ea059844e3dcc4bc4f",
+            "examples/minimal/ant-purifier.lock.json": "45da9d38bfac1742885ad973ecc3276774ea983f745d79f7b13eed17911d7eee",
+            "examples/minimal/build.properties": "ddede54dad7dac965db7aee4b0e78f08b85628efa2337ca3a7d9b695f87bca40",
+            "examples/minimal/build.xml": "5b21c02a7d77b33040d1b8548cc6a552b2fad0d5bebddcaa7df401b260c451d5",
+            "examples/minimal/ivy.lock.xml": "d548fafd25521ad6e49c0e101708fc6d90ba80b2f38de48317ffbdfe99f31063",
+            "examples/minimal/ivy.xml": "eade025289b9b2ec608041941bbee0ae5347a8f1056b4a142fc5b6bd5e54a762",
+            "examples/minimal/ivysettings.xml": "9b016ea8667db86775e5acd5b07ecceaeb25c520ee3fc36d4270c7451d0d723c",
+            "examples/minimal/src/Main.java": "50a990364fd00b846859987d69c6746143d8f38b485be1625aaa1f4eb0966283",
+            "flake.lock": "61d1e02648d1291cc1ed2c7d88901b1ddd730ab209f1f64e24cd28a024a07b62",
+            "flake.nix": "032897a89175bd37fdde38429a0b75acfd9d833c95a74be3b1aeb045ebbd3ce9",
+            "java-legacy/org/nixpurifiers/ant/legacy/Check.java": "a21cb583a5d2d558cafee1d0750768f51ca88f6d5ba1f082310c145648ea27b3",
+            "java-legacy/org/nixpurifiers/ant/legacy/Graph.java": "ece3828eecc03d8aeae7653fb879c10fdb7e4afedf523d4a81a29ddd56a95193",
+            "java-legacy/org/nixpurifiers/ant/legacy/Guard.java": "77b49c9874210bf9cf4eb46bc1b5a811701f4918f830e9a555e4ae7487d47008",
+            "java-legacy/org/nixpurifiers/ant/legacy/IO.java": "ca343722582f5a087467e2e576c4017bb718e0061c68fc8a51258a6f06c7f1b8",
+            "java-legacy/org/nixpurifiers/ant/legacy/NativeReplay.java": "ba7c9caff5f54c7c00a72b33b536e4c11d0a55c0028f3ccac8bd1f312131bbd2",
+            "java-legacy/org/nixpurifiers/ant/legacy/NativeResolve.java": "dabbc35b6c592aadee52ae1921b36b2cc2fd2271463fe4b3b90363e583375b3f",
+            "java/org/nixpurifiers/ant/Activate.java": "5b02cdd844810a987c793a7a6c0ccc6665a9d9d3d74abd4f9b5ca9f8c568112b",
+            "java/org/nixpurifiers/ant/AntResolve.java": "4eee6b9ee9f2f21ddf9c6994e323afcd13419e7a20364c24f26aa6e930694b86",
+            "java/org/nixpurifiers/ant/LockedListener.java": "f730ea1629d23685d224614432e712bfea6f8155e6ff2fa8d5556d2a028b98fd",
+            "java/org/nixpurifiers/ant/ProjectInputs.java": "dc372b43cd658a6beb449e413dd053d5285f6d585319b951edb2f32eb3405033",
+            "java/org/nixpurifiers/ant/Resolve.java": "7c9bdbb24882850854a115449259d87612d3b3da3ba1c97277b8f61c17efa0ed",
+            "java/org/nixpurifiers/ant/antlib.xml": "89704bf128677c6bd766d842590f145b48bc33a64df21850380759b5a495b9a2",
+            "nix/build-project.nix": "5c7bf4ffb30506a234ba56ae8adc989c4a94d2031b737a20e99077368624b8f3",
+            "nix/cli.nix": "501899cd7f66aafd1da30cc6cdece53df4dcebfecc6b5d805001a25fe35d970b",
+            "nix/environment.nix": "2b2252cbd7e9c881fe697162a5c0f194ab4623a4c157e439d538f0dcf9eb99b6",
+            "nix/ivy.nix": "6fbf782738432c08c5df8143371fa000f83d2cf2aab059e3cc54a561a76fcdbf",
+            "nix/legacy-basic/build-project.nix": "f1ec0d3c632101b9a59a70ef7001bce245b4d32a25275768f2c9b32edf052e2d",
+            "nix/legacy-basic/cli.nix": "f2188406609c0d14377fc5ec4b7d3496d60a99eb70afe6dc87ce9f20afa0edaf",
+            "nix/legacy-basic/plugin.nix": "6b2b03127dcf37c8efbf31b60e8ffe1ce095057936b569fcbef9fb91fffe778c",
+            "nix/legacy-basic/read-lock.nix": "1cdcf1be6877b50c39f12ba9cdd74d0945ad660018c2a3aca6b3ee94cfde025d",
+            "nix/legacy-basic/realize.nix": "a909705ecc76327e6521977b88a62708d355f929ec02735c89e61f662ec4421f",
+            "nix/legacy-basic/runtime.nix": "8f051295a3ea30cebd125595a8c6e51c0466f6533c10bf35c390ba26295a666b",
+            "nix/legacy-basic/sdk.nix": "e07c426dfa722327f57e7b5b1014e482dbac7606e588861cba6423a6cfef7c73",
+            "nix/plugin.nix": "f53f9a548ced6b6a560e0c40cfbde9632a445e5066bbb10b2416ad990a31b632",
+            "nix/read-lock.nix": "e85f868d5e06b6b39f60e7b0303eaafe0f9581b7238b18acb48b9528a0352211",
+            "nix/read-profile-lock.nix": "bd8ab7956ac5843ee4ba1241c6ed1e4ae89d76f2d3286a1e89ba9eb6eac10598",
+            "nix/realize.nix": "5f3639a75ee14c3a6bc0b21a8a65f2eea644469b05bb5e19fa6f558f264a0416",
+            "tests/composition-native.py": "e2f8b7d137022bdf39bdc6fe1155423962074bf70cdf8d11c9238f650dea4845",
+            "tests/composition-provider.nix": "b3415ec951637c62b31af56ab0c3c41750808f76cd20a79cd0d1328d3fa2aec6",
+            "tests/conformance-rebuild.sh": "5b28c50ee9c68c8352ea5760a9a4e3a13f40e012b1474e8fb17e06c3c298e1fb",
+            "tests/consumer.nix": "3387e2582b4f0ae835ea1ac8e417382b8b5bca81c9b3c218fb5667dfd1039254",
+            "tests/consumer/build.xml": "9b918b16428a670881545fea05f47c3ccfa9bf6c31b37259ae230cef1cae1111",
+            "tests/consumer/src/Consumer.java": "0f0ee4e9908f90176eb182da3fb56caab08ccca019fe9a6fdad5c23791378170",
+            "tests/default.nix": "dc2ae8bae0c1f69e19772930072a60a9b9f351f0544f942c1da28a6c69a5f94d",
+            "tests/editor.nix": "8f7dece2a9cfa83f4d4499b98f828b9459448e94d117baea73d6a94c1f69c5c8",
+            "tests/editor.py": "c5b087e03e8734c44b7aea305300e3bbe9ac3708bfb4e5ef2327168f336397dc",
+            "tests/eval-errors.py": "2cabc40022d7f2fad31edc1347e6a340e326164fd88aba59de11fc710d0d8e91",
+            "tests/host-conformance.py": "6efedb0defa19619c4c0515348783b72e3afe294bad5c4846ef837abe8bd886a",
+            "tests/legacy-basic/check.py": "b9064559d7320722e210e28e6fc17b0ff92cf1f8c4b74258f21e74ac02b0d791",
+            "tests/legacy-basic/containers.py": "79af983a6a23090c941e646dc2e75da740a3176cacd41a57cc40f7fd70bf3f58",
+            "tests/legacy-basic/fixture.py": "b342ad4bc7a4fc4d0029c0af5058755dad236260d02674461163e902ff179ec1",
+            "tests/legacy-basic/lifecycle.py": "19bbcd072c3f3efce3fcee9498747f0e5613f97c5eceb907162cd9ea5e47d707",
+            "tests/legacy-basic/negative.py": "7b963daae7229fa3eef10ef9ebc02b111e603e8bef953e6e17c48866a24bacb2",
+            "tests/legacy-basic/roles.py": "a29c699d0267291607baa6520b94e6899f6645ae401f3204a6b3e01e686432c6",
+            "tests/legacy-basic/toolchains.nix": "8cb0c37e36733cae1689f77c976259204529cbd1e810d5bcb332c3ed80eafac5",
+            "tests/legacy-basic/unlocked.py": "977e04296fd96f10ce00d1fd13bca25423a20d600337bfb424bab92ebab220c8",
+            "tests/legacy-basic/update.py": "7e319a36a4d8f5e9bfd24fe0da2d2d477b374e1648099e861c2789fcc0720cad"
+          },
+          "inputDigest": "9a764ed17d7393af37b2e9ea0b940fd5e3ad62e50d551bd5f2fd8e0b7ec97149",
+          "pointIds": [
+            "ant-1.5.4-ivy2.4.0-java6-source-owned-sdk-cold-x86_64-linux"
+          ],
+          "ci": [
+            {
+              "runId": 42311014691,
+              "attempt": 1,
+              "headRevision": "4db074129b0dd2ac49fae0988804e1a327a48cfa",
+              "inputDigest": "9a764ed17d7393af37b2e9ea0b940fd5e3ad62e50d551bd5f2fd8e0b7ec97149",
+              "jobs": [
+                {
+                  "id": 128212174958,
+                  "name": "legacy Ant 1.5.4 / Ivy 2.4.0 / Java 6 (x86-64 Linux)",
+                  "system": "x86_64-linux",
+                  "conclusion": "success"
+                }
+              ]
+            }
+          ]
+        }
+      ]
     }
   }
 }

@@ -1,10 +1,12 @@
-{ ... }:
+{ lib, ... }:
 let
   known = value: { state = "known"; inherit value; };
 in {
   imports = [ ../operations/ant.nix ];
   reviewedRevision = "bdbb867cfd38b327ec85fab1d234b7dbd8468cf9";
   repository = "nix-purifiers/ant-purifier";
+  compatibility.testedPoints = lib.mkDefault
+    (builtins.fromJSON (builtins.readFile ../compatibility-tests.json)).projects.ant-purifier.testedPoints;
   facts = {
     platform_notes = { state = "not-applicable"; reason = "This integration declares Linux targets only."; };
     editor_protocol = known "lsp";

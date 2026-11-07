@@ -65,6 +65,7 @@ OPERATIONS = {
     'revision-update-invalidation': 'Revision update invalidation',
 }
 EMPTY = {'defaults': [], 'testedPoints': [], 'supportedRanges': [], 'limitations': [], 'projectSelections': []}
+SELECTION_KINDS = {'project-file', 'environment', 'lockfile', 'command-option', 'nix-scope'}
 
 
 def validate(data):
@@ -122,7 +123,7 @@ def validate(data):
             raise ValueError('invalid project-selected version')
         proof(item)
         if (item['role'] not in ROLES or not text(item['name']) or not text(item['description'])
-                or not texts(item['inputs']) or item['kind'] not in {'project-file', 'environment', 'lockfile', 'command-option'}):
+                or not texts(item['inputs']) or item['kind'] not in SELECTION_KINDS):
             raise ValueError('project-selected versions require their actual selection inputs')
     for item in data['limitations']:
         if set(item) != {'text', 'sourceRevision', 'evidence'} or not text(item['text']):
@@ -160,6 +161,8 @@ def render_compatibility(page, contract, heading=True):
         lines += ['### Project-selected versions', '| Component | Selected by |', '|---|---|']
         for item in data['projectSelections']:
             inputs = ', '.join('`' + cell(name) + '`' for name in item['inputs'])
+            if item['kind'] == 'nix-scope':
+                inputs = 'Nix scope configuration: ' + inputs
             lines.append(f'| {ROLES[item["role"]]}: {cell(item["name"])} | {cell(item["description"])}<br>{inputs} |')
     if data['supportedRanges']:
         lines += ['### Supported ranges']
