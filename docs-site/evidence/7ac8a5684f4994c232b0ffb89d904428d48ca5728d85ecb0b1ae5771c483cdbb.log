@@ -1,0 +1,182 @@
+# SPDX-License-Identifier: MIT
+#
+# Runs the whole suite on Linux and native aarch64-darwin. `check` runs the
+# flake's checks, which include the conformance checks that the sandbox can
+# run, and their evaluation for every system. The conformance checks that
+# need the network or a second build run as jobs of the same name, and
+# `real-world` works through a real project pinned to a commit.
+name: check
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  check:
+    strategy:
+      fail-fast: false
+      matrix:
+        runner: [ubuntu-latest, ubuntu-24.04-arm, macos-15]
+    runs-on: ${{ matrix.runner }}
+    timeout-minutes: 90
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
+      - uses: cachix/install-nix-action@13d8dd58da0234aa297dedd986986ccb8e7f3e24 # v31
+        with:
+          extra_nix_config: |
+            sandbox = true
+      - run: python3 tests/sandbox.py
+      - name: Flake checks
+        run: nix flake check -L
+      - name: Evaluation for every system
+        run: nix flake check --all-systems --no-build
+
+  # A relock of each fixture reproduces its lockfile byte for byte.
+  conformance-relock:
+    strategy:
+      fail-fast: false
+      matrix:
+        runner: [ubuntu-latest, ubuntu-24.04-arm, macos-15]
+    runs-on: ${{ matrix.runner }}
+    timeout-minutes: 60
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
+      - uses: cachix/install-nix-action@13d8dd58da0234aa297dedd986986ccb8e7f3e24 # v31
+        with:
+          extra_nix_config: |
+            sandbox = true
+      - run: python3 tests/sandbox.py
+      - run: tests/lock-run.sh
+
+  # `nix build --rebuild` of the fixture sdist and wheel gives the same
+  # output.
+  conformance-rebuild:
+    strategy:
+      fail-fast: false
+      matrix:
+        runner: [ubuntu-latest, ubuntu-24.04-arm, macos-15]
+    runs-on: ${{ matrix.runner }}
+    timeout-minutes: 60
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
+      - uses: cachix/install-nix-action@13d8dd58da0234aa297dedd986986ccb8e7f3e24 # v31
+        with:
+          extra_nix_config: |
+            sandbox = true
+      - run: python3 tests/sandbox.py
+      - run: |
+          system=$(nix eval --impure --raw --expr builtins.currentSystem)
+          nix build -L ".#checks.$system.conformance-rebuild"
+          nix build -L --rebuild ".#checks.$system.conformance-rebuild"
+
+  # After `prefetch` and a garbage collection, the everyday loop works with
+  # the network cut.
+  conformance-offline:
+    strategy:
+      fail-fast: false
+      matrix:
+        runner: [ubuntu-latest, ubuntu-24.04-arm, macos-15]
+    runs-on: ${{ matrix.runner }}
+    timeout-minutes: 60
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
+      - uses: cachix/install-nix-action@13d8dd58da0234aa297dedd986986ccb8e7f3e24 # v31
+        with:
+          extra_nix_config: |
+            sandbox = true
+      - run: python3 tests/sandbox.py
+      - run: tests/offline.sh
+        env:
+          PIP_PURIFIER_TEST_GC: "1"
+
+  # `update` moves a pinned package to a newer version that the stale
+  # check accepts.
+  conformance-update:
+    strategy:
+      fail-fast: false
+      matrix:
+        runner: [ubuntu-latest, ubuntu-24.04-arm, macos-15]
+    runs-on: ${{ matrix.runner }}
+    timeout-minutes: 60
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
+      - uses: cachix/install-nix-action@13d8dd58da0234aa297dedd986986ccb8e7f3e24 # v31
+        with:
+          extra_nix_config: |
+            sandbox = true
+      - run: python3 tests/sandbox.py
+      - run: tests/update.sh
+
+  # pallets/click 8.1.8, pinned to a commit.
+  real-world:
+    strategy:
+      fail-fast: false
+      matrix:
+        runner: [ubuntu-latest, ubuntu-24.04-arm, macos-15]
+    runs-on: ${{ matrix.runner }}
+    timeout-minutes: 60
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
+      - uses: cachix/install-nix-action@13d8dd58da0234aa297dedd986986ccb8e7f3e24 # v31
+        with:
+          extra_nix_config: |
+            sandbox = true
+      - run: python3 tests/sandbox.py
+      - run: tests/record.sh tests/real-world.sh
+      - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4
+        if: always()
+        with:
+          name: click-${{ matrix.runner }}
+          path: evidence/
+          retention-days: 14
+
+  composition-native:
+    strategy:
+      fail-fast: false
+      matrix:
+        runner: [ubuntu-latest, ubuntu-24.04-arm, macos-15]
+    runs-on: ${{ matrix.runner }}
+    timeout-minutes: 60
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
+      - uses: cachix/install-nix-action@13d8dd58da0234aa297dedd986986ccb8e7f3e24 # v31
+        with:
+          extra_nix_config: |
+            sandbox = true
+      - run: python3 tests/sandbox.py
+      - run: python3 tests/composition-native.py
+      - name: Compiled input for the project Python
+        run: |
+          fixture="$(nix eval --raw .#lib.purifier.testFixtures.nativePythonComposition)"
+          python3 "$fixture" pip
+
+  # Exact regression points on maintained CPython lines (python.org, 2026-11-06).
+  # Default and immutable current installer SDKs are measured separately.
+  python-compatibility:
+    strategy:
+      fail-fast: false
+      matrix:
+        runner: [ubuntu-latest, ubuntu-24.04-arm, macos-15]
+        point:
+          - { python: python311, installer: default }
+          - { python: python314, installer: current }
+    runs-on: ${{ matrix.runner }}
+    timeout-minutes: 60
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
+      - uses: cachix/install-nix-action@13d8dd58da0234aa297dedd986986ccb8e7f3e24 # v31
+        with:
+          extra_nix_config: |
+            sandbox = true
+      - run: python3 tests/sandbox.py
+      - run: tests/record.sh tests/python-compatibility.sh "${{ matrix.point.python }}" "${{ matrix.point.installer }}"
+      - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4
+        if: always()
+        with:
+          name: python-${{ matrix.runner }}-${{ matrix.point.python }}-${{ matrix.point.installer }}
+          path: evidence/
+          retention-days: 14

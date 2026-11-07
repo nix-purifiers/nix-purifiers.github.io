@@ -1,0 +1,39 @@
+{
+  "createdAtUtc": "2026-11-07T11:24:17.181341+00:00",
+  "status": "Specific consumer replay provenance gap; does not invalidate authenticated native CI realization receipts",
+  "originalReviewSha256": "1e55d4bf5c6594ab6c8360644bb6647abf81fedb846b825051aa7f82541c8dd4",
+  "finding": "Exact generated Click consumer source snapshot was not retained. Explicitpath:. consumes the clone filesystem, including .git. A Git checkout reconstructed from immutable upstream revision plus retained flake/locks omits original CI Git administrative bytes and may also differ in initial flake.lock timing.",
+  "primarySources": {
+    "src/libfetchers/path.cc": {
+      "url": "https://github.com/NixOS/nix/blob/2.35.2/src/libfetchers/path.cc",
+      "gitBlobSha1": "9d846c67536778ecd963de6d793bed7d975b01da",
+      "sha256": "faca1dcdf6cd1c10254aa8572e9f9fcee36ddb77951d72957ba3541e043808bb"
+    },
+    "src/libutil/archive.cc": {
+      "url": "https://github.com/NixOS/nix/blob/2.35.2/src/libutil/archive.cc",
+      "gitBlobSha1": "56172bf32b9a63cf233395cee6b400873a34e2de",
+      "sha256": "4d725b666e149d084d889b17903fff6852dc32398fd8c8e1d5f5e92707604a93"
+    }
+  },
+  "sourceFacts": [
+    "Nix2.35.2 path.cc getAccessor uses dumpPathAndGetMtime(absPath,sink,defaultPathFilter).",
+    "Nix2.35.2 archive.cc defines defaultPathFilter as always true.",
+    "Producer tests/real-world.sh clones Click, locks/relocks, writesflake.nix, builds path:.; buildPipProject directly interpolates src without cleanSource/filter.",
+    "Nineartifactsource-archive.json files capture pip producer, not the complete temporaryClickconsumercheckout.",
+    "The consumerflake.lock is copied into evidence after the first build; its inclusion in that first source snapshot is not established by current artifacts."
+  ],
+  "knownAffectedProfiles": [
+    "click-macos-15",
+    "click-ubuntu-24.04-arm",
+    "click-ubuntu-latest"
+  ],
+  "otherFixtureProfiles": "Exact reconstruction not independently established here; do not generalize the Click.git finding to fixturecopies without inspection.",
+  "capturedDarwinSource": "/nix/store/6fdlpf40nfg15lgmm9sm07zkinhnn8sq-7y0m2viljh8hyy93z7xnxvsd38yv762m-source",
+  "integratorObservedReconstruction": "Different source/store/derivation identities even with and without retainedflake.lock; no equality asserted.",
+  "distinction": {
+    "verified": "9primaryGitHubartifactdigests,33actualCIrecordednative derivation+output+NAR bindings, immutableproducer/sourceSDK/assertions and exactrelease are authenticated.",
+    "notVerified": "A generatedconsumerexpression reconstructed from only retainedfiles evaluates to each original CIderivation ID.",
+    "blockedIfRequired": "Any integration rule requiring exact replay of all33 generatedconsumerexpressions from retainedsourcebytes cannot be satisfied by inventing missingoriginal.git/tree content."
+  },
+  "actions": "Read-onlysourceinspection and own additiveprovenance receipt only; no builds,Nixevals,produceredits,centralmetadataedits or reruns."
+}

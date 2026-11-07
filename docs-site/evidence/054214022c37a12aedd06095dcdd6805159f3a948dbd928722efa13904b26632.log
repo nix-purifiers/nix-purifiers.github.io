@@ -1,0 +1,626 @@
+[
+  {
+    "artifact": "click-macos-15",
+    "system": "aarch64-darwin",
+    "run": {
+      "producerRevision": "3620c35e776dbb8772f068bf9c7c0c2338fbc38f",
+      "producerTree": "6a2e1cbf71746d82e3bb6e24786c3bd249769e3d",
+      "dirty": false,
+      "flakeLockSha256": "15346b3917d8853fd9f60ab644bcd31f8a114bf84953c1630eea5b85d1617935",
+      "system": "aarch64-darwin",
+      "host": "macOS-15.8.2-arm64-arm-64bit-Mach-O",
+      "nix": "nix (Nix) 2.35.2",
+      "nixSettings": {
+        "sandbox": true
+      },
+      "command": [
+        "tests/real-world.sh"
+      ],
+      "githubRunId": "42360586144",
+      "githubRunAttempt": "1"
+    },
+    "sourceNarHash": "sha256-bhRn9UNz2YUWhluxKxhcDn22Y1zXvhy+rPZQ22mct10=",
+    "derivations": [
+      {
+        "drvPath": "/nix/store/fh037266p602nyd408lkmjhpgr9dmryk-click-tests.drv",
+        "system": "aarch64-darwin",
+        "outputs": {
+          "out": "/nix/store/vc4q0z3kmh5jaaxc7s83lzhh91ysmmz9-click-tests"
+        },
+        "outputNarHashes": {
+          "out": "sha256-d6xi4mKdjkX2JFicDIv5niSzpyI0m/Hnm8GGAIU04kY="
+        },
+        "buildCommand": null,
+        "derivationSystem": "aarch64-darwin"
+      },
+      {
+        "drvPath": "/nix/store/2b8jkg4ibr0wwmx9z0yayj6pihva1qsb-pip-purifier-ordinary-development.drv",
+        "system": "aarch64-darwin",
+        "outputs": {
+          "out": "/nix/store/l2zcn0zdd8lgvj1npdq28wa0z4ns7vrv-pip-purifier-ordinary-development"
+        },
+        "outputNarHashes": {
+          "out": "sha256-7V0rx5ekJKaBUPO7E7j5jow5Jka0C6i8PavaTXIm4n8="
+        },
+        "buildCommand": "export HOME=$TMPDIR\ncp -r /nix/store/6fdlpf40nfg15lgmm9sm07zkinhnn8sq-7y0m2viljh8hyy93z7xnxvsd38yv762m-source project\nchmod -R u+w project\ncd project\nmkdir legacy-inputs\nif pip-purifier prefetch --inputs \"$PWD/legacy-inputs\" --venv legacy-env >legacy.log 2>&1; then\n  echo 'legacy inputs without their target interpreter were accepted' >&2\n  exit 1\nfi\ngrep -q 'offline inputs have no target Python' legacy.log\n\npip-purifier prefetch --inputs /nix/store/r2mfpbrris58vc7783pp0zs4dqjqvzh0-pip-purifier-inputs\nexport PATH=\"$PWD/.venv/bin:$PATH\"\npython - <<'PYTHON'\nimport socket\ntry:\n    socket.create_connection(('1.1.1.1', 443), timeout=5)\nexcept OSError:\n    pass\nelse:\n    raise AssertionError('external network is reachable: sandbox required')\nPYTHON\npytest -q tests\nmkdir -p $out\ncp pip-purifier.lock.json $out/\npython - <<'PYTHON' > $out/runtime.json\nimport importlib.metadata as m, json, platform, sys\nprint(json.dumps({'python': sys.version, 'executable': sys.executable,\n                  'platform': platform.platform(),\n                  'distributions': sorted((d.metadata['Name'], d.version) for d in m.distributions())}, indent=2))\nPYTHON\n",
+        "derivationSystem": "aarch64-darwin"
+      },
+      {
+        "drvPath": "/nix/store/ydz554rkkc1a0k9nc5qzhfyx3dc2slrl-click-8.1.8-dist.drv",
+        "system": "aarch64-darwin",
+        "outputs": {
+          "out": "/nix/store/yczchrwjqvl3pjpbfjxpx8c5vcf8haz9-click-8.1.8-dist"
+        },
+        "outputNarHashes": {
+          "out": "sha256-ejWJi/sFwturBXzJJnJhlwr7GC3WCcDhBoS6SM68kWA="
+        },
+        "buildCommand": null,
+        "derivationSystem": "aarch64-darwin"
+      }
+    ]
+  },
+  {
+    "artifact": "click-ubuntu-24.04-arm",
+    "system": "aarch64-linux",
+    "run": {
+      "producerRevision": "3620c35e776dbb8772f068bf9c7c0c2338fbc38f",
+      "producerTree": "6a2e1cbf71746d82e3bb6e24786c3bd249769e3d",
+      "dirty": false,
+      "flakeLockSha256": "15346b3917d8853fd9f60ab644bcd31f8a114bf84953c1630eea5b85d1617935",
+      "system": "aarch64-linux",
+      "host": "Linux-7.0.0-1017-azure-aarch64-with-glibc2.39",
+      "nix": "nix (Nix) 2.35.2",
+      "nixSettings": {
+        "sandbox": true
+      },
+      "command": [
+        "tests/real-world.sh"
+      ],
+      "githubRunId": "42360586144",
+      "githubRunAttempt": "1"
+    },
+    "sourceNarHash": "sha256-bhRn9UNz2YUWhluxKxhcDn22Y1zXvhy+rPZQ22mct10=",
+    "derivations": [
+      {
+        "drvPath": "/nix/store/23k7cf1kpkdjq9qji9ap0b3jsbk3jgzm-click-tests.drv",
+        "system": "aarch64-linux",
+        "outputs": {
+          "out": "/nix/store/84lzhnic3w9ijd6i1yhi54m2laf3wgw6-click-tests"
+        },
+        "outputNarHashes": {
+          "out": "sha256-d6xi4mKdjkX2JFicDIv5niSzpyI0m/Hnm8GGAIU04kY="
+        },
+        "buildCommand": null,
+        "derivationSystem": "aarch64-linux"
+      },
+      {
+        "drvPath": "/nix/store/75rpr6skrhncf5k61d42i3h91d9i1z60-pip-purifier-ordinary-development.drv",
+        "system": "aarch64-linux",
+        "outputs": {
+          "out": "/nix/store/lsd9lmc8skszdnigzfc854wlg8c7lc02-pip-purifier-ordinary-development"
+        },
+        "outputNarHashes": {
+          "out": "sha256-gYWDhx0JaPKABeV2Tz+Ca8xucRjdfcE9BoqIVL2wLx0="
+        },
+        "buildCommand": "export HOME=$TMPDIR\ncp -r /nix/store/j4s4fahcx6m1h3lx54s6dhhbs5f91hdh-kl9hsvf184175v9wm96k3rj72qa404fm-source project\nchmod -R u+w project\ncd project\nmkdir legacy-inputs\nif pip-purifier prefetch --inputs \"$PWD/legacy-inputs\" --venv legacy-env >legacy.log 2>&1; then\n  echo 'legacy inputs without their target interpreter were accepted' >&2\n  exit 1\nfi\ngrep -q 'offline inputs have no target Python' legacy.log\n\npip-purifier prefetch --inputs /nix/store/4x7hcnfmqx6whhha47cp9m0rim5lqpmr-pip-purifier-inputs\nexport PATH=\"$PWD/.venv/bin:$PATH\"\npython - <<'PYTHON'\nimport socket\ntry:\n    socket.create_connection(('1.1.1.1', 443), timeout=5)\nexcept OSError:\n    pass\nelse:\n    raise AssertionError('external network is reachable: sandbox required')\nPYTHON\npytest -q tests\nmkdir -p $out\ncp pip-purifier.lock.json $out/\npython - <<'PYTHON' > $out/runtime.json\nimport importlib.metadata as m, json, platform, sys\nprint(json.dumps({'python': sys.version, 'executable': sys.executable,\n                  'platform': platform.platform(),\n                  'distributions': sorted((d.metadata['Name'], d.version) for d in m.distributions())}, indent=2))\nPYTHON\n",
+        "derivationSystem": "aarch64-linux"
+      },
+      {
+        "drvPath": "/nix/store/02gbdn5bii608n16lhxnlafv0xip0l1r-click-8.1.8-dist.drv",
+        "system": "aarch64-linux",
+        "outputs": {
+          "out": "/nix/store/cmm531cbvagz2wp62j63ljhb7fqg1mvg-click-8.1.8-dist"
+        },
+        "outputNarHashes": {
+          "out": "sha256-ejWJi/sFwturBXzJJnJhlwr7GC3WCcDhBoS6SM68kWA="
+        },
+        "buildCommand": null,
+        "derivationSystem": "aarch64-linux"
+      }
+    ]
+  },
+  {
+    "artifact": "click-ubuntu-latest",
+    "system": "x86_64-linux",
+    "run": {
+      "producerRevision": "3620c35e776dbb8772f068bf9c7c0c2338fbc38f",
+      "producerTree": "6a2e1cbf71746d82e3bb6e24786c3bd249769e3d",
+      "dirty": false,
+      "flakeLockSha256": "15346b3917d8853fd9f60ab644bcd31f8a114bf84953c1630eea5b85d1617935",
+      "system": "x86_64-linux",
+      "host": "Linux-7.0.0-1017-azure-x86_64-with-glibc2.39",
+      "nix": "nix (Nix) 2.35.2",
+      "nixSettings": {
+        "sandbox": true
+      },
+      "command": [
+        "tests/real-world.sh"
+      ],
+      "githubRunId": "42360586144",
+      "githubRunAttempt": "1"
+    },
+    "sourceNarHash": "sha256-bhRn9UNz2YUWhluxKxhcDn22Y1zXvhy+rPZQ22mct10=",
+    "derivations": [
+      {
+        "drvPath": "/nix/store/dbm03bj3skw8icr6p5fklibi5svbl7iq-click-tests.drv",
+        "system": "x86_64-linux",
+        "outputs": {
+          "out": "/nix/store/c5xz003qa9nhsksqfym0sfvpj0ggjdg3-click-tests"
+        },
+        "outputNarHashes": {
+          "out": "sha256-d6xi4mKdjkX2JFicDIv5niSzpyI0m/Hnm8GGAIU04kY="
+        },
+        "buildCommand": null,
+        "derivationSystem": "x86_64-linux"
+      },
+      {
+        "drvPath": "/nix/store/iknn8qannjkgdxijinylc6srxl2sz048-pip-purifier-ordinary-development.drv",
+        "system": "x86_64-linux",
+        "outputs": {
+          "out": "/nix/store/2r5pqbg51qmvn4ps3d2088b7b37kpl9l-pip-purifier-ordinary-development"
+        },
+        "outputNarHashes": {
+          "out": "sha256-YHXKB0gqzgaFLzcxRnbHZn+R1+6tPAi0VAW8b/OCg+0="
+        },
+        "buildCommand": "export HOME=$TMPDIR\ncp -r /nix/store/bfq9nmhjs9p1j4b5246lzsfgn6jvpihc-70hs1zs22lhpn1xn3dminqnj54zl9hi0-source project\nchmod -R u+w project\ncd project\nmkdir legacy-inputs\nif pip-purifier prefetch --inputs \"$PWD/legacy-inputs\" --venv legacy-env >legacy.log 2>&1; then\n  echo 'legacy inputs without their target interpreter were accepted' >&2\n  exit 1\nfi\ngrep -q 'offline inputs have no target Python' legacy.log\n\npip-purifier prefetch --inputs /nix/store/cyg083gi1lbjiynkbgsc392dsimjvjkx-pip-purifier-inputs\nexport PATH=\"$PWD/.venv/bin:$PATH\"\npython - <<'PYTHON'\nimport socket\ntry:\n    socket.create_connection(('1.1.1.1', 443), timeout=5)\nexcept OSError:\n    pass\nelse:\n    raise AssertionError('external network is reachable: sandbox required')\nPYTHON\npytest -q tests\nmkdir -p $out\ncp pip-purifier.lock.json $out/\npython - <<'PYTHON' > $out/runtime.json\nimport importlib.metadata as m, json, platform, sys\nprint(json.dumps({'python': sys.version, 'executable': sys.executable,\n                  'platform': platform.platform(),\n                  'distributions': sorted((d.metadata['Name'], d.version) for d in m.distributions())}, indent=2))\nPYTHON\n",
+        "derivationSystem": "x86_64-linux"
+      },
+      {
+        "drvPath": "/nix/store/jl8lfqyd75kwvmv76rlv63q44flyv5m2-click-8.1.8-dist.drv",
+        "system": "x86_64-linux",
+        "outputs": {
+          "out": "/nix/store/pc4hy389w9wq74amvx1i79zxjanw0liw-click-8.1.8-dist"
+        },
+        "outputNarHashes": {
+          "out": "sha256-ejWJi/sFwturBXzJJnJhlwr7GC3WCcDhBoS6SM68kWA="
+        },
+        "buildCommand": null,
+        "derivationSystem": "x86_64-linux"
+      }
+    ]
+  },
+  {
+    "artifact": "python-macos-15-python311-default",
+    "system": "aarch64-darwin",
+    "run": {
+      "producerRevision": "3620c35e776dbb8772f068bf9c7c0c2338fbc38f",
+      "producerTree": "6a2e1cbf71746d82e3bb6e24786c3bd249769e3d",
+      "dirty": false,
+      "flakeLockSha256": "15346b3917d8853fd9f60ab644bcd31f8a114bf84953c1630eea5b85d1617935",
+      "system": "aarch64-darwin",
+      "host": "macOS-15.8.2-arm64-arm-64bit-Mach-O",
+      "nix": "nix (Nix) 2.35.2",
+      "nixSettings": {
+        "sandbox": true
+      },
+      "command": [
+        "tests/python-compatibility.sh",
+        "python311",
+        "default"
+      ],
+      "githubRunId": "42360586144",
+      "githubRunAttempt": "1"
+    },
+    "sourceNarHash": "sha256-bhRn9UNz2YUWhluxKxhcDn22Y1zXvhy+rPZQ22mct10=",
+    "derivations": [
+      {
+        "drvPath": "/nix/store/kw1h9jnfckx011jdc9wdm30l8z6z98g4-greet-0.1.0-dist.drv",
+        "system": "aarch64-darwin",
+        "outputs": {
+          "out": "/nix/store/zfq24f7q6pbbnngagsj2s7zhc1d52vhq-greet-0.1.0-dist"
+        },
+        "outputNarHashes": {
+          "out": "sha256-miP2P+2UgNLFdDeG2bGllDK6bVvVK2b/058w4GyCiMc="
+        },
+        "buildCommand": null,
+        "derivationSystem": "aarch64-darwin"
+      },
+      {
+        "drvPath": "/nix/store/ikw1s419h1f6m376rmiad06imsrr4s54-greet-tests.drv",
+        "system": "aarch64-darwin",
+        "outputs": {
+          "out": "/nix/store/p7srmzxilha3x53fs0s528wrdpgi1z23-greet-tests"
+        },
+        "outputNarHashes": {
+          "out": "sha256-d6xi4mKdjkX2JFicDIv5niSzpyI0m/Hnm8GGAIU04kY="
+        },
+        "buildCommand": null,
+        "derivationSystem": "aarch64-darwin"
+      },
+      {
+        "drvPath": "/nix/store/4s5c1vymvri3w2ixgk9j1dwbp3nkflg7-pip-purifier-ordinary-development.drv",
+        "system": "aarch64-darwin",
+        "outputs": {
+          "out": "/nix/store/362x8w3hs0agz9z8589ckfhfyga9x6an-pip-purifier-ordinary-development"
+        },
+        "outputNarHashes": {
+          "out": "sha256-dL8gZRfRJUJHM7XxY8hN6FXREE9xP1KS7JPtcyyoj1U="
+        },
+        "buildCommand": "export HOME=$TMPDIR\ncp -r /nix/store/zpb32n41vz5bz90v2112zb8jxfr4jg1y-project-source project\nchmod -R u+w project\ncd project\nmkdir legacy-inputs\nif pip-purifier prefetch --inputs \"$PWD/legacy-inputs\" --venv legacy-env >legacy.log 2>&1; then\n  echo 'legacy inputs without their target interpreter were accepted' >&2\n  exit 1\nfi\ngrep -q 'offline inputs have no target Python' legacy.log\n/nix/store/0jb1qn7qnpbz8774mq5k2c1p84gp0x76-python3-3.14.8/bin/python3.14 -m venv --without-pip .venv\nif pip-purifier prefetch --inputs /nix/store/q2q6fysinmvwj84ipgj52k1r56sz93w1-pip-purifier-inputs >wrong.log 2>&1; then\n  echo 'prefetch accepted an existing environment with another interpreter' >&2\n  exit 1\nfi\ngrep -q 'Recreate the virtual environment' wrong.log\ntest -x .venv/bin/python\nrm -rf .venv\n\npip-purifier prefetch --inputs /nix/store/q2q6fysinmvwj84ipgj52k1r56sz93w1-pip-purifier-inputs\nexport PATH=\"$PWD/.venv/bin:$PATH\"\npython - <<'PYTHON'\nimport socket\ntry:\n    socket.create_connection(('1.1.1.1', 443), timeout=5)\nexcept OSError:\n    pass\nelse:\n    raise AssertionError('external network is reachable: sandbox required')\nPYTHON\ntest \"$(greet)\" = 'hello attrs=25.3.0 docopt=0.6.2 yaml=6.0.3'\nmkdir -p $out\ncp pip-purifier.lock.json $out/\npython - <<'PYTHON' > $out/runtime.json\nimport importlib.metadata as m, json, platform, sys\nprint(json.dumps({'python': sys.version, 'executable': sys.executable,\n                  'platform': platform.platform(),\n                  'distributions': sorted((d.metadata['Name'], d.version) for d in m.distributions())}, indent=2))\nPYTHON\n",
+        "derivationSystem": "aarch64-darwin"
+      },
+      {
+        "drvPath": "/nix/store/7pg2x06jhl8j1y5kqadj01zgsph5mkwp-pip-installer-sdk-isolation.drv",
+        "system": "aarch64-darwin",
+        "outputs": {
+          "out": "/nix/store/k7gfsxzxdi9j3qw1fg4d0gbbikbzay1y-pip-installer-sdk-isolation"
+        },
+        "outputNarHashes": {
+          "out": "sha256-YkpHmJwbPSw4/1nY/PLoC51/RiV75QYzYSaxplgGW9U="
+        },
+        "buildCommand": "export HOME=$TMPDIR\nunset PYTHONPATH\n/nix/store/0jb1qn7qnpbz8774mq5k2c1p84gp0x76-python3-3.14.8/bin/python3.14 -m venv target\nln -s /nix/store/6l0pcqqfj3a95nr5s3a09ajfvdhq1ljx-pip-26.2.2-py3-none-any.whl pip-26.2.2-py3-none-any.whl\nexport PIP_PURIFIER_EXPORT_WHEELS=\"$PWD/captured\"\n/nix/store/1ij17jgdp929psv2zg9x71cblhzqifkm-python3-3.14.8-env/bin/python3.14 /nix/store/k3m8dx3fr54132nb0jl483qvb6acad64-pip_runner.py --python \"$PWD/target\" \\\n  install --no-index --no-deps \"$PWD/pip-26.2.2-py3-none-any.whl\"\ncmp /nix/store/6l0pcqqfj3a95nr5s3a09ajfvdhq1ljx-pip-26.2.2-py3-none-any.whl captured/pip-26.2.2-py3-none-any.whl\nmkdir -p $out\nsha256sum captured/pip-26.2.2-py3-none-any.whl > $out/capture.sha256\n/nix/store/1ij17jgdp929psv2zg9x71cblhzqifkm-python3-3.14.8-env/bin/python3.14 -I - <<'PYTHON' > $out/sdk.json\nimport json, pip, sys\nprint(json.dumps({'python': sys.version, 'basePrefix': sys.base_prefix,\n                  'pip': pip.__version__, 'pipModule': pip.__file__}, indent=2))\nPYTHON\ntarget/bin/python -I - <<'PYTHON' > $out/target.json\nfrom importlib.metadata import distributions\nversions = [distribution.version for distribution in distributions()\n            if distribution.metadata['Name'].lower() == 'pip']\nassert versions == ['26.2.2'], versions\nimport json, sys\nprint(json.dumps({'python': sys.version, 'basePrefix': sys.base_prefix,\n                  'pipVersions': versions}, indent=2))\nPYTHON\n# The real installation hook must reject conflicting bytes with this name.\nprintf 'conflicting wheel bytes' > captured/pip-26.2.2-py3-none-any.whl\n/nix/store/0jb1qn7qnpbz8774mq5k2c1p84gp0x76-python3-3.14.8/bin/python3.14 -m venv conflicting-target\nif /nix/store/1ij17jgdp929psv2zg9x71cblhzqifkm-python3-3.14.8-env/bin/python3.14 /nix/store/k3m8dx3fr54132nb0jl483qvb6acad64-pip_runner.py --python \"$PWD/conflicting-target\" \\\n    install --no-index --no-deps \"$PWD/pip-26.2.2-py3-none-any.whl\" > $out/conflict.log 2>&1; then\n  echo 'conflicting wheel bytes were accepted' >&2\n  exit 1\nfi\ngrep -q 'conflicting native wheel bytes: pip-26.2.2-py3-none-any.whl' $out/conflict.log\n",
+        "derivationSystem": "aarch64-darwin"
+      }
+    ]
+  },
+  {
+    "artifact": "python-macos-15-python314-current",
+    "system": "aarch64-darwin",
+    "run": {
+      "producerRevision": "3620c35e776dbb8772f068bf9c7c0c2338fbc38f",
+      "producerTree": "6a2e1cbf71746d82e3bb6e24786c3bd249769e3d",
+      "dirty": false,
+      "flakeLockSha256": "15346b3917d8853fd9f60ab644bcd31f8a114bf84953c1630eea5b85d1617935",
+      "system": "aarch64-darwin",
+      "host": "macOS-15.8.2-arm64-arm-64bit-Mach-O",
+      "nix": "nix (Nix) 2.35.2",
+      "nixSettings": {
+        "sandbox": true
+      },
+      "command": [
+        "tests/python-compatibility.sh",
+        "python314",
+        "current"
+      ],
+      "githubRunId": "42360586144",
+      "githubRunAttempt": "1"
+    },
+    "sourceNarHash": "sha256-bhRn9UNz2YUWhluxKxhcDn22Y1zXvhy+rPZQ22mct10=",
+    "derivations": [
+      {
+        "drvPath": "/nix/store/dfkxx6gk01bkbh3b9x1dqfc3mlvrzjw4-greet-0.1.0-dist.drv",
+        "system": "aarch64-darwin",
+        "outputs": {
+          "out": "/nix/store/kv8y8j8s5aqg9lx49rq36sd476vx5pvl-greet-0.1.0-dist"
+        },
+        "outputNarHashes": {
+          "out": "sha256-miP2P+2UgNLFdDeG2bGllDK6bVvVK2b/058w4GyCiMc="
+        },
+        "buildCommand": null,
+        "derivationSystem": "aarch64-darwin"
+      },
+      {
+        "drvPath": "/nix/store/i7dvdgahnhwmxq8g3s1jrgmr50mdzaw2-greet-tests.drv",
+        "system": "aarch64-darwin",
+        "outputs": {
+          "out": "/nix/store/wwcq0qzjpzlhwq73alfbrqphn6p0kvda-greet-tests"
+        },
+        "outputNarHashes": {
+          "out": "sha256-d6xi4mKdjkX2JFicDIv5niSzpyI0m/Hnm8GGAIU04kY="
+        },
+        "buildCommand": null,
+        "derivationSystem": "aarch64-darwin"
+      },
+      {
+        "drvPath": "/nix/store/ma70g3lrysgd1rhbs2vqm00xwvbbaljf-pip-purifier-ordinary-development.drv",
+        "system": "aarch64-darwin",
+        "outputs": {
+          "out": "/nix/store/0gm6xch0gcgd4706adf7vs7wdkw3110p-pip-purifier-ordinary-development"
+        },
+        "outputNarHashes": {
+          "out": "sha256-6GRO9jbHIqT0ulWaJ6W0orNDjMtsvWIrFEA1vJTJPzs="
+        },
+        "buildCommand": "export HOME=$TMPDIR\ncp -r /nix/store/phjr5rzdh7gk8zwiqg96rgd79q7v557r-project-source project\nchmod -R u+w project\ncd project\nmkdir legacy-inputs\nif pip-purifier prefetch --inputs \"$PWD/legacy-inputs\" --venv legacy-env >legacy.log 2>&1; then\n  echo 'legacy inputs without their target interpreter were accepted' >&2\n  exit 1\nfi\ngrep -q 'offline inputs have no target Python' legacy.log\n/nix/store/vv4qj91y429rd9xrxkwdxyz14b7imkr8-python3-3.11.17/bin/python3.11 -m venv --without-pip .venv\nif pip-purifier prefetch --inputs /nix/store/smy35kg7jpr3r9f5zhrr2rc27ln8rwkr-pip-purifier-inputs >wrong.log 2>&1; then\n  echo 'prefetch accepted an existing environment with another interpreter' >&2\n  exit 1\nfi\ngrep -q 'Recreate the virtual environment' wrong.log\ntest -x .venv/bin/python\nrm -rf .venv\n\npip-purifier prefetch --inputs /nix/store/smy35kg7jpr3r9f5zhrr2rc27ln8rwkr-pip-purifier-inputs\nexport PATH=\"$PWD/.venv/bin:$PATH\"\npython - <<'PYTHON'\nimport socket\ntry:\n    socket.create_connection(('1.1.1.1', 443), timeout=5)\nexcept OSError:\n    pass\nelse:\n    raise AssertionError('external network is reachable: sandbox required')\nPYTHON\ntest \"$(greet)\" = 'hello attrs=25.3.0 docopt=0.6.2 yaml=6.0.3'\nmkdir -p $out\ncp pip-purifier.lock.json $out/\npython - <<'PYTHON' > $out/runtime.json\nimport importlib.metadata as m, json, platform, sys\nprint(json.dumps({'python': sys.version, 'executable': sys.executable,\n                  'platform': platform.platform(),\n                  'distributions': sorted((d.metadata['Name'], d.version) for d in m.distributions())}, indent=2))\nPYTHON\n",
+        "derivationSystem": "aarch64-darwin"
+      },
+      {
+        "drvPath": "/nix/store/mx3pxh3qrpbv69d3fbb1qcba2hd6dm9z-pip-installer-sdk-isolation.drv",
+        "system": "aarch64-darwin",
+        "outputs": {
+          "out": "/nix/store/mqyjf4pww0m47j51x8d46zadgrp7vr6s-pip-installer-sdk-isolation"
+        },
+        "outputNarHashes": {
+          "out": "sha256-ca6xB6ndE3SDkVtauQT24+rdBF7ssvV8l4jtVD09hLk="
+        },
+        "buildCommand": "export HOME=$TMPDIR\nunset PYTHONPATH\n/nix/store/0jb1qn7qnpbz8774mq5k2c1p84gp0x76-python3-3.14.8/bin/python3.14 -m venv target\nln -s /nix/store/6l0pcqqfj3a95nr5s3a09ajfvdhq1ljx-pip-26.2.2-py3-none-any.whl pip-26.2.2-py3-none-any.whl\nexport PIP_PURIFIER_EXPORT_WHEELS=\"$PWD/captured\"\n/nix/store/9lp0zph5yf8g4iyd6249kga0ifqj0baf-python3-3.14.8-env/bin/python3.14 /nix/store/k3m8dx3fr54132nb0jl483qvb6acad64-pip_runner.py --python \"$PWD/target\" \\\n  install --no-index --no-deps \"$PWD/pip-26.2.2-py3-none-any.whl\"\ncmp /nix/store/6l0pcqqfj3a95nr5s3a09ajfvdhq1ljx-pip-26.2.2-py3-none-any.whl captured/pip-26.2.2-py3-none-any.whl\nmkdir -p $out\nsha256sum captured/pip-26.2.2-py3-none-any.whl > $out/capture.sha256\n/nix/store/9lp0zph5yf8g4iyd6249kga0ifqj0baf-python3-3.14.8-env/bin/python3.14 -I - <<'PYTHON' > $out/sdk.json\nimport json, pip, sys\nprint(json.dumps({'python': sys.version, 'basePrefix': sys.base_prefix,\n                  'pip': pip.__version__, 'pipModule': pip.__file__}, indent=2))\nPYTHON\ntarget/bin/python -I - <<'PYTHON' > $out/target.json\nfrom importlib.metadata import distributions\nversions = [distribution.version for distribution in distributions()\n            if distribution.metadata['Name'].lower() == 'pip']\nassert versions == ['26.2.2'], versions\nimport json, sys\nprint(json.dumps({'python': sys.version, 'basePrefix': sys.base_prefix,\n                  'pipVersions': versions}, indent=2))\nPYTHON\n# The real installation hook must reject conflicting bytes with this name.\nprintf 'conflicting wheel bytes' > captured/pip-26.2.2-py3-none-any.whl\n/nix/store/0jb1qn7qnpbz8774mq5k2c1p84gp0x76-python3-3.14.8/bin/python3.14 -m venv conflicting-target\nif /nix/store/9lp0zph5yf8g4iyd6249kga0ifqj0baf-python3-3.14.8-env/bin/python3.14 /nix/store/k3m8dx3fr54132nb0jl483qvb6acad64-pip_runner.py --python \"$PWD/conflicting-target\" \\\n    install --no-index --no-deps \"$PWD/pip-26.2.2-py3-none-any.whl\" > $out/conflict.log 2>&1; then\n  echo 'conflicting wheel bytes were accepted' >&2\n  exit 1\nfi\ngrep -q 'conflicting native wheel bytes: pip-26.2.2-py3-none-any.whl' $out/conflict.log\n",
+        "derivationSystem": "aarch64-darwin"
+      }
+    ]
+  },
+  {
+    "artifact": "python-ubuntu-24.04-arm-python311-default",
+    "system": "aarch64-linux",
+    "run": {
+      "producerRevision": "3620c35e776dbb8772f068bf9c7c0c2338fbc38f",
+      "producerTree": "6a2e1cbf71746d82e3bb6e24786c3bd249769e3d",
+      "dirty": false,
+      "flakeLockSha256": "15346b3917d8853fd9f60ab644bcd31f8a114bf84953c1630eea5b85d1617935",
+      "system": "aarch64-linux",
+      "host": "Linux-7.0.0-1017-azure-aarch64-with-glibc2.39",
+      "nix": "nix (Nix) 2.35.2",
+      "nixSettings": {
+        "sandbox": true
+      },
+      "command": [
+        "tests/python-compatibility.sh",
+        "python311",
+        "default"
+      ],
+      "githubRunId": "42360586144",
+      "githubRunAttempt": "1"
+    },
+    "sourceNarHash": "sha256-bhRn9UNz2YUWhluxKxhcDn22Y1zXvhy+rPZQ22mct10=",
+    "derivations": [
+      {
+        "drvPath": "/nix/store/3qvvj5akh3i64slwdw6clnmv2z4812ph-greet-0.1.0-dist.drv",
+        "system": "aarch64-linux",
+        "outputs": {
+          "out": "/nix/store/rwrrwxgy9i8592wzzyfm4p6nd611w42l-greet-0.1.0-dist"
+        },
+        "outputNarHashes": {
+          "out": "sha256-miP2P+2UgNLFdDeG2bGllDK6bVvVK2b/058w4GyCiMc="
+        },
+        "buildCommand": null,
+        "derivationSystem": "aarch64-linux"
+      },
+      {
+        "drvPath": "/nix/store/ikgdwdv6jxq3vjgl97k2d0a05alqwbm9-greet-tests.drv",
+        "system": "aarch64-linux",
+        "outputs": {
+          "out": "/nix/store/i0r9mf381q418w1d7rdyamn7in97r0pj-greet-tests"
+        },
+        "outputNarHashes": {
+          "out": "sha256-d6xi4mKdjkX2JFicDIv5niSzpyI0m/Hnm8GGAIU04kY="
+        },
+        "buildCommand": null,
+        "derivationSystem": "aarch64-linux"
+      },
+      {
+        "drvPath": "/nix/store/cwvnvprvn2k6d0l72zlmyd893xyp7h7p-pip-purifier-ordinary-development.drv",
+        "system": "aarch64-linux",
+        "outputs": {
+          "out": "/nix/store/q3vs4ihvkyd7afpy4bgwfzr362dzsdy7-pip-purifier-ordinary-development"
+        },
+        "outputNarHashes": {
+          "out": "sha256-YxbA0RiqXp0f2nIzIQrWwhDq7sh9TtM/BZ+6I5j9LLA="
+        },
+        "buildCommand": "export HOME=$TMPDIR\ncp -r /nix/store/zxia6flhrr7r4n5nacbwws572zvh89x7-project-source project\nchmod -R u+w project\ncd project\nmkdir legacy-inputs\nif pip-purifier prefetch --inputs \"$PWD/legacy-inputs\" --venv legacy-env >legacy.log 2>&1; then\n  echo 'legacy inputs without their target interpreter were accepted' >&2\n  exit 1\nfi\ngrep -q 'offline inputs have no target Python' legacy.log\n/nix/store/lq2fsnmg0q3y0vlxn91w8s8wvj1m6fld-python3-3.14.8/bin/python3.14 -m venv --without-pip .venv\nif pip-purifier prefetch --inputs /nix/store/67krsjj8hysd89pvvw2zwkpdmamg3cr0-pip-purifier-inputs >wrong.log 2>&1; then\n  echo 'prefetch accepted an existing environment with another interpreter' >&2\n  exit 1\nfi\ngrep -q 'Recreate the virtual environment' wrong.log\ntest -x .venv/bin/python\nrm -rf .venv\n\npip-purifier prefetch --inputs /nix/store/67krsjj8hysd89pvvw2zwkpdmamg3cr0-pip-purifier-inputs\nexport PATH=\"$PWD/.venv/bin:$PATH\"\npython - <<'PYTHON'\nimport socket\ntry:\n    socket.create_connection(('1.1.1.1', 443), timeout=5)\nexcept OSError:\n    pass\nelse:\n    raise AssertionError('external network is reachable: sandbox required')\nPYTHON\ntest \"$(greet)\" = 'hello attrs=25.3.0 docopt=0.6.2 yaml=6.0.3'\nmkdir -p $out\ncp pip-purifier.lock.json $out/\npython - <<'PYTHON' > $out/runtime.json\nimport importlib.metadata as m, json, platform, sys\nprint(json.dumps({'python': sys.version, 'executable': sys.executable,\n                  'platform': platform.platform(),\n                  'distributions': sorted((d.metadata['Name'], d.version) for d in m.distributions())}, indent=2))\nPYTHON\n",
+        "derivationSystem": "aarch64-linux"
+      },
+      {
+        "drvPath": "/nix/store/qh8swpkqha0znxirhr8hqb3x5xncllvx-pip-installer-sdk-isolation.drv",
+        "system": "aarch64-linux",
+        "outputs": {
+          "out": "/nix/store/fs25hs8hnckinwmfka5xpany263j0jpx-pip-installer-sdk-isolation"
+        },
+        "outputNarHashes": {
+          "out": "sha256-y9UpcJ2hTLRLTZRWNny8C4KXU3rs4Z3SwP6c1r4dn94="
+        },
+        "buildCommand": "export HOME=$TMPDIR\nunset PYTHONPATH\n/nix/store/lq2fsnmg0q3y0vlxn91w8s8wvj1m6fld-python3-3.14.8/bin/python3.14 -m venv target\nln -s /nix/store/6l0pcqqfj3a95nr5s3a09ajfvdhq1ljx-pip-26.2.2-py3-none-any.whl pip-26.2.2-py3-none-any.whl\nexport PIP_PURIFIER_EXPORT_WHEELS=\"$PWD/captured\"\n/nix/store/2hp37g0d1z25w93vhx0rf1pwzjisgpmx-python3-3.14.8-env/bin/python3.14 /nix/store/k3m8dx3fr54132nb0jl483qvb6acad64-pip_runner.py --python \"$PWD/target\" \\\n  install --no-index --no-deps \"$PWD/pip-26.2.2-py3-none-any.whl\"\ncmp /nix/store/6l0pcqqfj3a95nr5s3a09ajfvdhq1ljx-pip-26.2.2-py3-none-any.whl captured/pip-26.2.2-py3-none-any.whl\nmkdir -p $out\nsha256sum captured/pip-26.2.2-py3-none-any.whl > $out/capture.sha256\n/nix/store/2hp37g0d1z25w93vhx0rf1pwzjisgpmx-python3-3.14.8-env/bin/python3.14 -I - <<'PYTHON' > $out/sdk.json\nimport json, pip, sys\nprint(json.dumps({'python': sys.version, 'basePrefix': sys.base_prefix,\n                  'pip': pip.__version__, 'pipModule': pip.__file__}, indent=2))\nPYTHON\ntarget/bin/python -I - <<'PYTHON' > $out/target.json\nfrom importlib.metadata import distributions\nversions = [distribution.version for distribution in distributions()\n            if distribution.metadata['Name'].lower() == 'pip']\nassert versions == ['26.2.2'], versions\nimport json, sys\nprint(json.dumps({'python': sys.version, 'basePrefix': sys.base_prefix,\n                  'pipVersions': versions}, indent=2))\nPYTHON\n# The real installation hook must reject conflicting bytes with this name.\nprintf 'conflicting wheel bytes' > captured/pip-26.2.2-py3-none-any.whl\n/nix/store/lq2fsnmg0q3y0vlxn91w8s8wvj1m6fld-python3-3.14.8/bin/python3.14 -m venv conflicting-target\nif /nix/store/2hp37g0d1z25w93vhx0rf1pwzjisgpmx-python3-3.14.8-env/bin/python3.14 /nix/store/k3m8dx3fr54132nb0jl483qvb6acad64-pip_runner.py --python \"$PWD/conflicting-target\" \\\n    install --no-index --no-deps \"$PWD/pip-26.2.2-py3-none-any.whl\" > $out/conflict.log 2>&1; then\n  echo 'conflicting wheel bytes were accepted' >&2\n  exit 1\nfi\ngrep -q 'conflicting native wheel bytes: pip-26.2.2-py3-none-any.whl' $out/conflict.log\n",
+        "derivationSystem": "aarch64-linux"
+      }
+    ]
+  },
+  {
+    "artifact": "python-ubuntu-24.04-arm-python314-current",
+    "system": "aarch64-linux",
+    "run": {
+      "producerRevision": "3620c35e776dbb8772f068bf9c7c0c2338fbc38f",
+      "producerTree": "6a2e1cbf71746d82e3bb6e24786c3bd249769e3d",
+      "dirty": false,
+      "flakeLockSha256": "15346b3917d8853fd9f60ab644bcd31f8a114bf84953c1630eea5b85d1617935",
+      "system": "aarch64-linux",
+      "host": "Linux-7.0.0-1017-azure-aarch64-with-glibc2.39",
+      "nix": "nix (Nix) 2.35.2",
+      "nixSettings": {
+        "sandbox": true
+      },
+      "command": [
+        "tests/python-compatibility.sh",
+        "python314",
+        "current"
+      ],
+      "githubRunId": "42360586144",
+      "githubRunAttempt": "1"
+    },
+    "sourceNarHash": "sha256-bhRn9UNz2YUWhluxKxhcDn22Y1zXvhy+rPZQ22mct10=",
+    "derivations": [
+      {
+        "drvPath": "/nix/store/wrkq3ayfzfjsbw0qw359m1yxc939d4bv-greet-0.1.0-dist.drv",
+        "system": "aarch64-linux",
+        "outputs": {
+          "out": "/nix/store/6lbd27gp4vlpc0z353a1z46k9sghylx4-greet-0.1.0-dist"
+        },
+        "outputNarHashes": {
+          "out": "sha256-miP2P+2UgNLFdDeG2bGllDK6bVvVK2b/058w4GyCiMc="
+        },
+        "buildCommand": null,
+        "derivationSystem": "aarch64-linux"
+      },
+      {
+        "drvPath": "/nix/store/qssb9nn6h0jhbxasyjaba5rlc25z00dk-greet-tests.drv",
+        "system": "aarch64-linux",
+        "outputs": {
+          "out": "/nix/store/a7r5snl34bv2psvyr1ssr3g19qnsmjns-greet-tests"
+        },
+        "outputNarHashes": {
+          "out": "sha256-d6xi4mKdjkX2JFicDIv5niSzpyI0m/Hnm8GGAIU04kY="
+        },
+        "buildCommand": null,
+        "derivationSystem": "aarch64-linux"
+      },
+      {
+        "drvPath": "/nix/store/qb17xq7vm88p20vn9l4rskysmpr1bymk-pip-purifier-ordinary-development.drv",
+        "system": "aarch64-linux",
+        "outputs": {
+          "out": "/nix/store/jyggd8lfapj29xx23b4k85w93qc197xn-pip-purifier-ordinary-development"
+        },
+        "outputNarHashes": {
+          "out": "sha256-YCUet67+ibhpwLCu0W2r//za+I8h0HsBx6+wvf8EIbg="
+        },
+        "buildCommand": "export HOME=$TMPDIR\ncp -r /nix/store/5nanv3ik3iwbxpjbsnw0vsbsvkq4cqia-project-source project\nchmod -R u+w project\ncd project\nmkdir legacy-inputs\nif pip-purifier prefetch --inputs \"$PWD/legacy-inputs\" --venv legacy-env >legacy.log 2>&1; then\n  echo 'legacy inputs without their target interpreter were accepted' >&2\n  exit 1\nfi\ngrep -q 'offline inputs have no target Python' legacy.log\n/nix/store/bfzqwgi4i3mif463mdwiarpq5w270hmx-python3-3.11.17/bin/python3.11 -m venv --without-pip .venv\nif pip-purifier prefetch --inputs /nix/store/a2ii5z50sm2rrsb72x211477ff2gp0ww-pip-purifier-inputs >wrong.log 2>&1; then\n  echo 'prefetch accepted an existing environment with another interpreter' >&2\n  exit 1\nfi\ngrep -q 'Recreate the virtual environment' wrong.log\ntest -x .venv/bin/python\nrm -rf .venv\n\npip-purifier prefetch --inputs /nix/store/a2ii5z50sm2rrsb72x211477ff2gp0ww-pip-purifier-inputs\nexport PATH=\"$PWD/.venv/bin:$PATH\"\npython - <<'PYTHON'\nimport socket\ntry:\n    socket.create_connection(('1.1.1.1', 443), timeout=5)\nexcept OSError:\n    pass\nelse:\n    raise AssertionError('external network is reachable: sandbox required')\nPYTHON\ntest \"$(greet)\" = 'hello attrs=25.3.0 docopt=0.6.2 yaml=6.0.3'\nmkdir -p $out\ncp pip-purifier.lock.json $out/\npython - <<'PYTHON' > $out/runtime.json\nimport importlib.metadata as m, json, platform, sys\nprint(json.dumps({'python': sys.version, 'executable': sys.executable,\n                  'platform': platform.platform(),\n                  'distributions': sorted((d.metadata['Name'], d.version) for d in m.distributions())}, indent=2))\nPYTHON\n",
+        "derivationSystem": "aarch64-linux"
+      },
+      {
+        "drvPath": "/nix/store/57vg10m079n26y8mz2zcdi74j93q3zw2-pip-installer-sdk-isolation.drv",
+        "system": "aarch64-linux",
+        "outputs": {
+          "out": "/nix/store/vdaxv1b74znwpkrhbynkgvc1n34fywwg-pip-installer-sdk-isolation"
+        },
+        "outputNarHashes": {
+          "out": "sha256-kUlVHYw7VVqgBorVKMFQftu70pNkH50eLI3lNP0ESbY="
+        },
+        "buildCommand": "export HOME=$TMPDIR\nunset PYTHONPATH\n/nix/store/lq2fsnmg0q3y0vlxn91w8s8wvj1m6fld-python3-3.14.8/bin/python3.14 -m venv target\nln -s /nix/store/6l0pcqqfj3a95nr5s3a09ajfvdhq1ljx-pip-26.2.2-py3-none-any.whl pip-26.2.2-py3-none-any.whl\nexport PIP_PURIFIER_EXPORT_WHEELS=\"$PWD/captured\"\n/nix/store/xkrsypih9vd3mdv0lrhjmx24bwy2w1ra-python3-3.14.8-env/bin/python3.14 /nix/store/k3m8dx3fr54132nb0jl483qvb6acad64-pip_runner.py --python \"$PWD/target\" \\\n  install --no-index --no-deps \"$PWD/pip-26.2.2-py3-none-any.whl\"\ncmp /nix/store/6l0pcqqfj3a95nr5s3a09ajfvdhq1ljx-pip-26.2.2-py3-none-any.whl captured/pip-26.2.2-py3-none-any.whl\nmkdir -p $out\nsha256sum captured/pip-26.2.2-py3-none-any.whl > $out/capture.sha256\n/nix/store/xkrsypih9vd3mdv0lrhjmx24bwy2w1ra-python3-3.14.8-env/bin/python3.14 -I - <<'PYTHON' > $out/sdk.json\nimport json, pip, sys\nprint(json.dumps({'python': sys.version, 'basePrefix': sys.base_prefix,\n                  'pip': pip.__version__, 'pipModule': pip.__file__}, indent=2))\nPYTHON\ntarget/bin/python -I - <<'PYTHON' > $out/target.json\nfrom importlib.metadata import distributions\nversions = [distribution.version for distribution in distributions()\n            if distribution.metadata['Name'].lower() == 'pip']\nassert versions == ['26.2.2'], versions\nimport json, sys\nprint(json.dumps({'python': sys.version, 'basePrefix': sys.base_prefix,\n                  'pipVersions': versions}, indent=2))\nPYTHON\n# The real installation hook must reject conflicting bytes with this name.\nprintf 'conflicting wheel bytes' > captured/pip-26.2.2-py3-none-any.whl\n/nix/store/lq2fsnmg0q3y0vlxn91w8s8wvj1m6fld-python3-3.14.8/bin/python3.14 -m venv conflicting-target\nif /nix/store/xkrsypih9vd3mdv0lrhjmx24bwy2w1ra-python3-3.14.8-env/bin/python3.14 /nix/store/k3m8dx3fr54132nb0jl483qvb6acad64-pip_runner.py --python \"$PWD/conflicting-target\" \\\n    install --no-index --no-deps \"$PWD/pip-26.2.2-py3-none-any.whl\" > $out/conflict.log 2>&1; then\n  echo 'conflicting wheel bytes were accepted' >&2\n  exit 1\nfi\ngrep -q 'conflicting native wheel bytes: pip-26.2.2-py3-none-any.whl' $out/conflict.log\n",
+        "derivationSystem": "aarch64-linux"
+      }
+    ]
+  },
+  {
+    "artifact": "python-ubuntu-latest-python311-default",
+    "system": "x86_64-linux",
+    "run": {
+      "producerRevision": "3620c35e776dbb8772f068bf9c7c0c2338fbc38f",
+      "producerTree": "6a2e1cbf71746d82e3bb6e24786c3bd249769e3d",
+      "dirty": false,
+      "flakeLockSha256": "15346b3917d8853fd9f60ab644bcd31f8a114bf84953c1630eea5b85d1617935",
+      "system": "x86_64-linux",
+      "host": "Linux-7.0.0-1017-azure-x86_64-with-glibc2.39",
+      "nix": "nix (Nix) 2.35.2",
+      "nixSettings": {
+        "sandbox": true
+      },
+      "command": [
+        "tests/python-compatibility.sh",
+        "python311",
+        "default"
+      ],
+      "githubRunId": "42360586144",
+      "githubRunAttempt": "1"
+    },
+    "sourceNarHash": "sha256-bhRn9UNz2YUWhluxKxhcDn22Y1zXvhy+rPZQ22mct10=",
+    "derivations": [
+      {
+        "drvPath": "/nix/store/iaar24dqvjml78ysh38aykbq4fgc85m5-greet-0.1.0-dist.drv",
+        "system": "x86_64-linux",
+        "outputs": {
+          "out": "/nix/store/p26s5bh19p2s8zh9iqgsv2vvbzfqq52h-greet-0.1.0-dist"
+        },
+        "outputNarHashes": {
+          "out": "sha256-miP2P+2UgNLFdDeG2bGllDK6bVvVK2b/058w4GyCiMc="
+        },
+        "buildCommand": null,
+        "derivationSystem": "x86_64-linux"
+      },
+      {
+        "drvPath": "/nix/store/2panyng4n9mlinkb1gyqrqrr5hl3yrxa-greet-tests.drv",
+        "system": "x86_64-linux",
+        "outputs": {
+          "out": "/nix/store/0q654fn43l81xxclvzg7s48cjhqhfjwg-greet-tests"
+        },
+        "outputNarHashes": {
+          "out": "sha256-d6xi4mKdjkX2JFicDIv5niSzpyI0m/Hnm8GGAIU04kY="
+        },
+        "buildCommand": null,
+        "derivationSystem": "x86_64-linux"
+      },
+      {
+        "drvPath": "/nix/store/bh51zrgwx72k9s6wffdl00b466ghk2hw-pip-purifier-ordinary-development.drv",
+        "system": "x86_64-linux",
+        "outputs": {
+          "out": "/nix/store/xlkq4lhrdkcp5wngbw27di1wprvqk9lb-pip-purifier-ordinary-development"
+        },
+        "outputNarHashes": {
+          "out": "sha256-36fcjrw+4hWQlj9FetUg7SqWqOzHW6hLwBsqZU1fcT8="
+        },
+        "buildCommand": "export HOME=$TMPDIR\ncp -r /nix/store/8zzvs213iniwx16pb0vbiaxqfcfg1yxf-project-source project\nchmod -R u+w project\ncd project\nmkdir legacy-inputs\nif pip-purifier prefetch --inputs \"$PWD/legacy-inputs\" --venv legacy-env >legacy.log 2>&1; then\n  echo 'legacy inputs without their target interpreter were accepted' >&2\n  exit 1\nfi\ngrep -q 'offline inputs have no target Python' legacy.log\n/nix/store/xahxrjs30p3mw0a42bqg9ikgkikskw8m-python3-3.14.8/bin/python3.14 -m venv --without-pip .venv\nif pip-purifier prefetch --inputs /nix/store/4rg2h1y4hm3k82xcn7mchdg7mazkivsw-pip-purifier-inputs >wrong.log 2>&1; then\n  echo 'prefetch accepted an existing environment with another interpreter' >&2\n  exit 1\nfi\ngrep -q 'Recreate the virtual environment' wrong.log\ntest -x .venv/bin/python\nrm -rf .venv\n\npip-purifier prefetch --inputs /nix/store/4rg2h1y4hm3k82xcn7mchdg7mazkivsw-pip-purifier-inputs\nexport PATH=\"$PWD/.venv/bin:$PATH\"\npython - <<'PYTHON'\nimport socket\ntry:\n    socket.create_connection(('1.1.1.1', 443), timeout=5)\nexcept OSError:\n    pass\nelse:\n    raise AssertionError('external network is reachable: sandbox required')\nPYTHON\ntest \"$(greet)\" = 'hello attrs=25.3.0 docopt=0.6.2 yaml=6.0.3'\nmkdir -p $out\ncp pip-purifier.lock.json $out/\npython - <<'PYTHON' > $out/runtime.json\nimport importlib.metadata as m, json, platform, sys\nprint(json.dumps({'python': sys.version, 'executable': sys.executable,\n                  'platform': platform.platform(),\n                  'distributions': sorted((d.metadata['Name'], d.version) for d in m.distributions())}, indent=2))\nPYTHON\n",
+        "derivationSystem": "x86_64-linux"
+      },
+      {
+        "drvPath": "/nix/store/6v79y95xm8y8wasymmlhag914lvjvnn6-pip-installer-sdk-isolation.drv",
+        "system": "x86_64-linux",
+        "outputs": {
+          "out": "/nix/store/s7ymwi8107kx1z0101zn9ffjlajl19d8-pip-installer-sdk-isolation"
+        },
+        "outputNarHashes": {
+          "out": "sha256-GiOw0ldfC7Fo3mNBLSKUH07mljnOJTJdkGZ9ATrvrqk="
+        },
+        "buildCommand": "export HOME=$TMPDIR\nunset PYTHONPATH\n/nix/store/xahxrjs30p3mw0a42bqg9ikgkikskw8m-python3-3.14.8/bin/python3.14 -m venv target\nln -s /nix/store/6l0pcqqfj3a95nr5s3a09ajfvdhq1ljx-pip-26.2.2-py3-none-any.whl pip-26.2.2-py3-none-any.whl\nexport PIP_PURIFIER_EXPORT_WHEELS=\"$PWD/captured\"\n/nix/store/6c9ywd8kdk7s16s2nz9f92wb1c8id446-python3-3.14.8-env/bin/python3.14 /nix/store/k3m8dx3fr54132nb0jl483qvb6acad64-pip_runner.py --python \"$PWD/target\" \\\n  install --no-index --no-deps \"$PWD/pip-26.2.2-py3-none-any.whl\"\ncmp /nix/store/6l0pcqqfj3a95nr5s3a09ajfvdhq1ljx-pip-26.2.2-py3-none-any.whl captured/pip-26.2.2-py3-none-any.whl\nmkdir -p $out\nsha256sum captured/pip-26.2.2-py3-none-any.whl > $out/capture.sha256\n/nix/store/6c9ywd8kdk7s16s2nz9f92wb1c8id446-python3-3.14.8-env/bin/python3.14 -I - <<'PYTHON' > $out/sdk.json\nimport json, pip, sys\nprint(json.dumps({'python': sys.version, 'basePrefix': sys.base_prefix,\n                  'pip': pip.__version__, 'pipModule': pip.__file__}, indent=2))\nPYTHON\ntarget/bin/python -I - <<'PYTHON' > $out/target.json\nfrom importlib.metadata import distributions\nversions = [distribution.version for distribution in distributions()\n            if distribution.metadata['Name'].lower() == 'pip']\nassert versions == ['26.2.2'], versions\nimport json, sys\nprint(json.dumps({'python': sys.version, 'basePrefix': sys.base_prefix,\n                  'pipVersions': versions}, indent=2))\nPYTHON\n# The real installation hook must reject conflicting bytes with this name.\nprintf 'conflicting wheel bytes' > captured/pip-26.2.2-py3-none-any.whl\n/nix/store/xahxrjs30p3mw0a42bqg9ikgkikskw8m-python3-3.14.8/bin/python3.14 -m venv conflicting-target\nif /nix/store/6c9ywd8kdk7s16s2nz9f92wb1c8id446-python3-3.14.8-env/bin/python3.14 /nix/store/k3m8dx3fr54132nb0jl483qvb6acad64-pip_runner.py --python \"$PWD/conflicting-target\" \\\n    install --no-index --no-deps \"$PWD/pip-26.2.2-py3-none-any.whl\" > $out/conflict.log 2>&1; then\n  echo 'conflicting wheel bytes were accepted' >&2\n  exit 1\nfi\ngrep -q 'conflicting native wheel bytes: pip-26.2.2-py3-none-any.whl' $out/conflict.log\n",
+        "derivationSystem": "x86_64-linux"
+      }
+    ]
+  },
+  {
+    "artifact": "python-ubuntu-latest-python314-current",
+    "system": "x86_64-linux",
+    "run": {
+      "producerRevision": "3620c35e776dbb8772f068bf9c7c0c2338fbc38f",
+      "producerTree": "6a2e1cbf71746d82e3bb6e24786c3bd249769e3d",
+      "dirty": false,
+      "flakeLockSha256": "15346b3917d8853fd9f60ab644bcd31f8a114bf84953c1630eea5b85d1617935",
+      "system": "x86_64-linux",
+      "host": "Linux-7.0.0-1017-azure-x86_64-with-glibc2.39",
+      "nix": "nix (Nix) 2.35.2",
+      "nixSettings": {
+        "sandbox": true
+      },
+      "command": [
+        "tests/python-compatibility.sh",
+        "python314",
+        "current"
+      ],
+      "githubRunId": "42360586144",
+      "githubRunAttempt": "1"
+    },
+    "sourceNarHash": "sha256-bhRn9UNz2YUWhluxKxhcDn22Y1zXvhy+rPZQ22mct10=",
+    "derivations": [
+      {
+        "drvPath": "/nix/store/1v9d1ijhag1j6gxp74n8lbaz60fmm7cq-greet-0.1.0-dist.drv",
+        "system": "x86_64-linux",
+        "outputs": {
+          "out": "/nix/store/fvgxiiwmmz6322ql8swsvzvglbdgjpw5-greet-0.1.0-dist"
+        },
+        "outputNarHashes": {
+          "out": "sha256-miP2P+2UgNLFdDeG2bGllDK6bVvVK2b/058w4GyCiMc="
+        },
+        "buildCommand": null,
+        "derivationSystem": "x86_64-linux"
+      },
+      {
+        "drvPath": "/nix/store/lvmi3pz9gjybjjfdavawwigh75w8a8rg-greet-tests.drv",
+        "system": "x86_64-linux",
+        "outputs": {
+          "out": "/nix/store/d0hrkmx72dbci587xd3rh2rc74fs4s71-greet-tests"
+        },
+        "outputNarHashes": {
+          "out": "sha256-d6xi4mKdjkX2JFicDIv5niSzpyI0m/Hnm8GGAIU04kY="
+        },
+        "buildCommand": null,
+        "derivationSystem": "x86_64-linux"
+      },
+      {
+        "drvPath": "/nix/store/j9wcphag190090dn5ql9iyv0sai44xi1-pip-purifier-ordinary-development.drv",
+        "system": "x86_64-linux",
+        "outputs": {
+          "out": "/nix/store/hg3xgwadsp0fvwjybmy53hpq250skk78-pip-purifier-ordinary-development"
+        },
+        "outputNarHashes": {
+          "out": "sha256-V6gCLxeeB/Y06ZwyuoCiDxkgcGUzvxY3QXz+yF/BHEQ="
+        },
+        "buildCommand": "export HOME=$TMPDIR\ncp -r /nix/store/bqzbcsp8vwvzk0qq4czjlmanmn534ikn-project-source project\nchmod -R u+w project\ncd project\nmkdir legacy-inputs\nif pip-purifier prefetch --inputs \"$PWD/legacy-inputs\" --venv legacy-env >legacy.log 2>&1; then\n  echo 'legacy inputs without their target interpreter were accepted' >&2\n  exit 1\nfi\ngrep -q 'offline inputs have no target Python' legacy.log\n/nix/store/bp3dz5ss8bbk5nwg03pvp39fngkydidv-python3-3.11.17/bin/python3.11 -m venv --without-pip .venv\nif pip-purifier prefetch --inputs /nix/store/y1qmy09d5zyjnk8mafdp5fbbjz01mhd4-pip-purifier-inputs >wrong.log 2>&1; then\n  echo 'prefetch accepted an existing environment with another interpreter' >&2\n  exit 1\nfi\ngrep -q 'Recreate the virtual environment' wrong.log\ntest -x .venv/bin/python\nrm -rf .venv\n\npip-purifier prefetch --inputs /nix/store/y1qmy09d5zyjnk8mafdp5fbbjz01mhd4-pip-purifier-inputs\nexport PATH=\"$PWD/.venv/bin:$PATH\"\npython - <<'PYTHON'\nimport socket\ntry:\n    socket.create_connection(('1.1.1.1', 443), timeout=5)\nexcept OSError:\n    pass\nelse:\n    raise AssertionError('external network is reachable: sandbox required')\nPYTHON\ntest \"$(greet)\" = 'hello attrs=25.3.0 docopt=0.6.2 yaml=6.0.3'\nmkdir -p $out\ncp pip-purifier.lock.json $out/\npython - <<'PYTHON' > $out/runtime.json\nimport importlib.metadata as m, json, platform, sys\nprint(json.dumps({'python': sys.version, 'executable': sys.executable,\n                  'platform': platform.platform(),\n                  'distributions': sorted((d.metadata['Name'], d.version) for d in m.distributions())}, indent=2))\nPYTHON\n",
+        "derivationSystem": "x86_64-linux"
+      },
+      {
+        "drvPath": "/nix/store/77v823rfhm1wkilnk5wg9finp5gyh9xa-pip-installer-sdk-isolation.drv",
+        "system": "x86_64-linux",
+        "outputs": {
+          "out": "/nix/store/3sw7hac70gh2hgshi8ggphy2vlkhm0wj-pip-installer-sdk-isolation"
+        },
+        "outputNarHashes": {
+          "out": "sha256-HSZQkTfzw+/mJbCrws5VHcMpLKwxiehhjKPzr7z+LJo="
+        },
+        "buildCommand": "export HOME=$TMPDIR\nunset PYTHONPATH\n/nix/store/xahxrjs30p3mw0a42bqg9ikgkikskw8m-python3-3.14.8/bin/python3.14 -m venv target\nln -s /nix/store/6l0pcqqfj3a95nr5s3a09ajfvdhq1ljx-pip-26.2.2-py3-none-any.whl pip-26.2.2-py3-none-any.whl\nexport PIP_PURIFIER_EXPORT_WHEELS=\"$PWD/captured\"\n/nix/store/6axvcifq6g682w1jzxcrlpjm35rbjirs-python3-3.14.8-env/bin/python3.14 /nix/store/k3m8dx3fr54132nb0jl483qvb6acad64-pip_runner.py --python \"$PWD/target\" \\\n  install --no-index --no-deps \"$PWD/pip-26.2.2-py3-none-any.whl\"\ncmp /nix/store/6l0pcqqfj3a95nr5s3a09ajfvdhq1ljx-pip-26.2.2-py3-none-any.whl captured/pip-26.2.2-py3-none-any.whl\nmkdir -p $out\nsha256sum captured/pip-26.2.2-py3-none-any.whl > $out/capture.sha256\n/nix/store/6axvcifq6g682w1jzxcrlpjm35rbjirs-python3-3.14.8-env/bin/python3.14 -I - <<'PYTHON' > $out/sdk.json\nimport json, pip, sys\nprint(json.dumps({'python': sys.version, 'basePrefix': sys.base_prefix,\n                  'pip': pip.__version__, 'pipModule': pip.__file__}, indent=2))\nPYTHON\ntarget/bin/python -I - <<'PYTHON' > $out/target.json\nfrom importlib.metadata import distributions\nversions = [distribution.version for distribution in distributions()\n            if distribution.metadata['Name'].lower() == 'pip']\nassert versions == ['26.2.2'], versions\nimport json, sys\nprint(json.dumps({'python': sys.version, 'basePrefix': sys.base_prefix,\n                  'pipVersions': versions}, indent=2))\nPYTHON\n# The real installation hook must reject conflicting bytes with this name.\nprintf 'conflicting wheel bytes' > captured/pip-26.2.2-py3-none-any.whl\n/nix/store/xahxrjs30p3mw0a42bqg9ikgkikskw8m-python3-3.14.8/bin/python3.14 -m venv conflicting-target\nif /nix/store/6axvcifq6g682w1jzxcrlpjm35rbjirs-python3-3.14.8-env/bin/python3.14 /nix/store/k3m8dx3fr54132nb0jl483qvb6acad64-pip_runner.py --python \"$PWD/conflicting-target\" \\\n    install --no-index --no-deps \"$PWD/pip-26.2.2-py3-none-any.whl\" > $out/conflict.log 2>&1; then\n  echo 'conflicting wheel bytes were accepted' >&2\n  exit 1\nfi\ngrep -q 'conflicting native wheel bytes: pip-26.2.2-py3-none-any.whl' $out/conflict.log\n",
+        "derivationSystem": "x86_64-linux"
+      }
+    ]
+  }
+]
