@@ -63,6 +63,15 @@ class NativeCITests(unittest.TestCase):
         self.check(self.record())
         self.check(self.record(log=self.log.replace('2026-11-06T00:00:02Z derivation evaluated', '2026-11-06T00:00:02Z unpacking pinned source...\n2026-11-06T00:00:02Z derivation evaluated')))
 
+    def test_large_log_preserves_literal_source_and_runner_matching(self):
+        log = self.log + '2026-11-06T00:00:04Z ' + 'x' * (512 * 1024) + '\n'
+        self.check(self.record(log=log))
+        for changed in (log.replace(self.rev, 'b' * 40),
+                        log.replace('Image: ubuntu-24.04-arm', 'Image: ubuntu-24x04-arm')):
+            with self.subTest(changed=changed[:80]):
+                with self.assertRaises(ValueError):
+                    self.check(self.record(log=changed))
+
     def test_url_only_foreign_source_platform_and_drv_rejected(self):
         for field, value in [('jobArtifact', {}), ('revision', 'b' * 40),
                              ('system', 'aarch64-darwin'), ('drvPath', self.drv.replace('example', 'invented')),
