@@ -1,0 +1,26 @@
+{
+  "sourceRevision": "3620c35e776dbb8772f068bf9c7c0c2338fbc38f",
+  "sourceNarHash": "sha256-bhRn9UNz2YUWhluxKxhcDn22Y1zXvhy+rPZQ22mct10=",
+  "check": {
+    "kind": "expression",
+    "value": "let root = builtins.path { path = builtins.getEnv \"PIP_CI_CONSUMER_ROOT\"; name = \"source\"; }; f = builtins.getFlake (builtins.unsafeDiscardStringContext (\"path:\" + builtins.toString root)); in f.checks.x86_64-linux.installer",
+    "replay": {
+      "artifactUrl": "https://nix-purifiers.github.io/evidence/64119771313bfdd4f121437e233dca1ccc915dc3bddc5bbfdaa4fbc8c8505b35.json",
+      "artifactSha256": "64119771313bfdd4f121437e233dca1ccc915dc3bddc5bbfdaa4fbc8c8505b35",
+      "expressionSha256": "6c4f2560c62deb467d28396fc8b95291b4333a22414c744b31113c90fadce16f",
+      "arguments": {
+        "PIP_CI_CONSUMER_ROOT": "restore projectFiles to an arbitrary local directory"
+      }
+    }
+  },
+  "drvPath": "/nix/store/6v79y95xm8y8wasymmlhag914lvjvnn6-pip-installer-sdk-isolation.drv",
+  "observedEvaluation": {
+    "drvPath": "/nix/store/6v79y95xm8y8wasymmlhag914lvjvnn6-pip-installer-sdk-isolation.drv",
+    "outputs": {
+      "out": "/nix/store/s7ymwi8107kx1z0101zn9ffjlajl19d8-pip-installer-sdk-isolation"
+    }
+  },
+  "metadataOnly": true,
+  "profile": "python-ubuntu-latest-python311-default",
+  "limits": "Exact installer-isolation drv/output independently matched; reconstructed consumer-dependent source identities are not credited."
+}

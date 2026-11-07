@@ -1,0 +1,27 @@
+{
+  inputs.pip-purifier.url = "path:/nix/store/v03ixvqn8dbj10ash4diysy4jabh3n5i-source";
+  inputs.nixpkgs.follows = "pip-purifier/nixpkgs";
+  outputs = { nixpkgs, pip-purifier, ... }:
+    let
+      system = "aarch64-linux";
+      pkgs = import nixpkgs {
+        inherit system;
+        overlays = [ pip-purifier.overlays.default ];
+      };
+      project = pkgs.pip-purifier.buildPipProject {
+        src = ./.;
+        checkPhase = "pytest tests";
+      };
+    in {
+      packages.${system}.default = project.packages.click;
+      checks.${system} = {
+        tests = project.tests;
+        development = import "${pip-purifier}/tests/development.nix" {
+          inherit pkgs project;
+          cli = pkgs.pip-purifier.cli;
+          src = ./.;
+          checkPhase = "pytest -q tests";
+        };
+      };
+    };
+}

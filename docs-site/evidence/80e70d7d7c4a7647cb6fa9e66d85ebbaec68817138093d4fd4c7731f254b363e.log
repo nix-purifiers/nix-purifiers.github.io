@@ -1,0 +1,39 @@
+{
+  inputs.pip-purifier.url = "path:/nix/store/v03ixvqn8dbj10ash4diysy4jabh3n5i-source";
+  inputs.nixpkgs.follows = "pip-purifier/nixpkgs";
+  outputs = { nixpkgs, pip-purifier, ... }:
+    let
+      pkgs = import nixpkgs { system = "aarch64-linux"; overlays = [ pip-purifier.overlays.default ]; };
+      installerPython = if "default" == "current" then
+        import "${pip-purifier}/tests/sdk.nix" {
+          flake = pip-purifier; system = "aarch64-linux"; output = "python";
+        }
+      else pkgs.python3;
+      source = builtins.path { path = ./.; name = "project-source"; filter = p: t: !(builtins.elem (baseNameOf p) [ ".venv" ".pip-purifier" ]); };
+      project = pkgs.pip-purifier.buildPipProject {
+        src = source;
+        python = if "default" == "current" then
+          import "${pip-purifier}/tests/sdk.nix" {
+            flake = pip-purifier; system = "aarch64-linux";
+            pythonAttribute = "python311"; output = "python";
+          }
+        else pkgs.python311;
+        checkPhase = "greet";
+      };
+    in {
+      packages.aarch64-linux.default = project.packages.greet;
+      checks.aarch64-linux.tests = project.tests;
+      checks.aarch64-linux.installer = import "${pip-purifier}/tests/installer-sdk.nix" {
+        inherit pkgs;
+        sdk = installerPython.withPackages (ps: [ ps.pip ]);
+      };
+      checks.aarch64-linux.development = import "${pip-purifier}/tests/development.nix" {
+        inherit pkgs project;
+        cli = if "default" == "default" then pkgs.pip-purifier.cli else
+          import "${pip-purifier}/tests/sdk.nix" { flake = pip-purifier; system = "aarch64-linux"; };
+        src = source;
+        wrongPython = if "python311" == "python314" then pkgs.python311 else pkgs.python314;
+        checkPhase = "test \"$(greet)\" = 'hello attrs=25.3.0 docopt=0.6.2 yaml=6.0.3'";
+      };
+    };
+}

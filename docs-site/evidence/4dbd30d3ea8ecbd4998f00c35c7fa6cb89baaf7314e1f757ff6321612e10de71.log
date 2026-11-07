@@ -1,0 +1,617 @@
+[
+  {
+    "profile": "click-macos-15",
+    "expression": "let root = builtins.path { path = builtins.getEnv \"PIP_PROFILE_ROOT\"; name = \"source\"; }; f = builtins.getFlake (builtins.unsafeDiscardStringContext (\"path:\" + builtins.toString root)); attrs = builtins.fromJSON \"[\\\"checks.aarch64-darwin.tests\\\", \\\"checks.aarch64-darwin.development\\\", \\\"packages.aarch64-darwin.default\\\"]\"; in builtins.map (attr: let c = builtins.foldl' (v: k: v.${k}) f (builtins.filter builtins.isString (builtins.split \"[.]\" attr)); in { drvPath = c.drvPath; outputs = { out = c.outPath; }; }) attrs",
+    "root": "/home/chris/Projects/ch-nix-workspace/.worktrees/pip-tier2-metadata-plan/profiles/click-macos-15",
+    "exitCode": 0,
+    "stderr": "",
+    "seconds": 0.9917254447937012,
+    "noNativeBuilds": true,
+    "expected": [
+      {
+        "drvPath": "/nix/store/fh037266p602nyd408lkmjhpgr9dmryk-click-tests.drv",
+        "outputs": {
+          "out": "/nix/store/vc4q0z3kmh5jaaxc7s83lzhh91ysmmz9-click-tests"
+        }
+      },
+      {
+        "drvPath": "/nix/store/2b8jkg4ibr0wwmx9z0yayj6pihva1qsb-pip-purifier-ordinary-development.drv",
+        "outputs": {
+          "out": "/nix/store/l2zcn0zdd8lgvj1npdq28wa0z4ns7vrv-pip-purifier-ordinary-development"
+        }
+      },
+      {
+        "drvPath": "/nix/store/ydz554rkkc1a0k9nc5qzhfyx3dc2slrl-click-8.1.8-dist.drv",
+        "outputs": {
+          "out": "/nix/store/yczchrwjqvl3pjpbfjxpx8c5vcf8haz9-click-8.1.8-dist"
+        }
+      }
+    ],
+    "attributes": [
+      "checks.aarch64-darwin.tests",
+      "checks.aarch64-darwin.development",
+      "packages.aarch64-darwin.default"
+    ],
+    "actual": [
+      {
+        "drvPath": "/nix/store/4hzmx97hlxxlfzsvz9vzncfdrh6154gi-click-tests.drv",
+        "outputs": {
+          "out": "/nix/store/5yx95wkdz9bal1aj9x767i0chibngnz5-click-tests"
+        }
+      },
+      {
+        "drvPath": "/nix/store/6w6wkm7yjhf0n6myfa062j389drd44q5-pip-purifier-ordinary-development.drv",
+        "outputs": {
+          "out": "/nix/store/y9lwxvalby369s8g900r03iqppnsm93q-pip-purifier-ordinary-development"
+        }
+      },
+      {
+        "drvPath": "/nix/store/j3bnc34q2lkmiw0x91as65hln8xxl9ky-click-8.1.8-dist.drv",
+        "outputs": {
+          "out": "/nix/store/3ravncnxh703cn9qxgqdvf28ljwyyyz5-click-8.1.8-dist"
+        }
+      }
+    ],
+    "matches": [
+      false,
+      false,
+      false
+    ]
+  },
+  {
+    "profile": "click-ubuntu-24.04-arm",
+    "expression": "let root = builtins.path { path = builtins.getEnv \"PIP_PROFILE_ROOT\"; name = \"source\"; }; f = builtins.getFlake (builtins.unsafeDiscardStringContext (\"path:\" + builtins.toString root)); attrs = builtins.fromJSON \"[\\\"checks.aarch64-linux.tests\\\", \\\"checks.aarch64-linux.development\\\", \\\"packages.aarch64-linux.default\\\"]\"; in builtins.map (attr: let c = builtins.foldl' (v: k: v.${k}) f (builtins.filter builtins.isString (builtins.split \"[.]\" attr)); in { drvPath = c.drvPath; outputs = { out = c.outPath; }; }) attrs",
+    "root": "/home/chris/Projects/ch-nix-workspace/.worktrees/pip-tier2-metadata-plan/profiles/click-ubuntu-24.04-arm",
+    "exitCode": 0,
+    "stderr": "",
+    "seconds": 1.5150201320648193,
+    "noNativeBuilds": true,
+    "expected": [
+      {
+        "drvPath": "/nix/store/23k7cf1kpkdjq9qji9ap0b3jsbk3jgzm-click-tests.drv",
+        "outputs": {
+          "out": "/nix/store/84lzhnic3w9ijd6i1yhi54m2laf3wgw6-click-tests"
+        }
+      },
+      {
+        "drvPath": "/nix/store/75rpr6skrhncf5k61d42i3h91d9i1z60-pip-purifier-ordinary-development.drv",
+        "outputs": {
+          "out": "/nix/store/lsd9lmc8skszdnigzfc854wlg8c7lc02-pip-purifier-ordinary-development"
+        }
+      },
+      {
+        "drvPath": "/nix/store/02gbdn5bii608n16lhxnlafv0xip0l1r-click-8.1.8-dist.drv",
+        "outputs": {
+          "out": "/nix/store/cmm531cbvagz2wp62j63ljhb7fqg1mvg-click-8.1.8-dist"
+        }
+      }
+    ],
+    "attributes": [
+      "checks.aarch64-linux.tests",
+      "checks.aarch64-linux.development",
+      "packages.aarch64-linux.default"
+    ],
+    "actual": [
+      {
+        "drvPath": "/nix/store/r9difwbwvkslals297zff41vh7xdj47j-click-tests.drv",
+        "outputs": {
+          "out": "/nix/store/hxb50n5rsjkgpc4pjf7b3mq57vicbw22-click-tests"
+        }
+      },
+      {
+        "drvPath": "/nix/store/6fdyfw5jfkzbmrjaakfjskqn1gj38qj6-pip-purifier-ordinary-development.drv",
+        "outputs": {
+          "out": "/nix/store/fla75dkjslgvazicmpaaja44iw7ymqwy-pip-purifier-ordinary-development"
+        }
+      },
+      {
+        "drvPath": "/nix/store/rp2w5mhm968m18mgd2wsgd81dzsa6g03-click-8.1.8-dist.drv",
+        "outputs": {
+          "out": "/nix/store/qy389x4r7sza0mm1l07n58i4q0870l2c-click-8.1.8-dist"
+        }
+      }
+    ],
+    "matches": [
+      false,
+      false,
+      false
+    ]
+  },
+  {
+    "profile": "click-ubuntu-latest",
+    "expression": "let root = builtins.path { path = builtins.getEnv \"PIP_PROFILE_ROOT\"; name = \"source\"; }; f = builtins.getFlake (builtins.unsafeDiscardStringContext (\"path:\" + builtins.toString root)); attrs = builtins.fromJSON \"[\\\"checks.x86_64-linux.tests\\\", \\\"checks.x86_64-linux.development\\\", \\\"packages.x86_64-linux.default\\\"]\"; in builtins.map (attr: let c = builtins.foldl' (v: k: v.${k}) f (builtins.filter builtins.isString (builtins.split \"[.]\" attr)); in { drvPath = c.drvPath; outputs = { out = c.outPath; }; }) attrs",
+    "root": "/home/chris/Projects/ch-nix-workspace/.worktrees/pip-tier2-metadata-plan/profiles/click-ubuntu-latest",
+    "exitCode": 0,
+    "stderr": "",
+    "seconds": 1.4910428524017334,
+    "noNativeBuilds": true,
+    "expected": [
+      {
+        "drvPath": "/nix/store/dbm03bj3skw8icr6p5fklibi5svbl7iq-click-tests.drv",
+        "outputs": {
+          "out": "/nix/store/c5xz003qa9nhsksqfym0sfvpj0ggjdg3-click-tests"
+        }
+      },
+      {
+        "drvPath": "/nix/store/iknn8qannjkgdxijinylc6srxl2sz048-pip-purifier-ordinary-development.drv",
+        "outputs": {
+          "out": "/nix/store/2r5pqbg51qmvn4ps3d2088b7b37kpl9l-pip-purifier-ordinary-development"
+        }
+      },
+      {
+        "drvPath": "/nix/store/jl8lfqyd75kwvmv76rlv63q44flyv5m2-click-8.1.8-dist.drv",
+        "outputs": {
+          "out": "/nix/store/pc4hy389w9wq74amvx1i79zxjanw0liw-click-8.1.8-dist"
+        }
+      }
+    ],
+    "attributes": [
+      "checks.x86_64-linux.tests",
+      "checks.x86_64-linux.development",
+      "packages.x86_64-linux.default"
+    ],
+    "actual": [
+      {
+        "drvPath": "/nix/store/ipa35vnlvmlkwiszic063f457g535mb7-click-tests.drv",
+        "outputs": {
+          "out": "/nix/store/y6cg0k3j0i55p8vl8hxz8ydryxlqjzlw-click-tests"
+        }
+      },
+      {
+        "drvPath": "/nix/store/isjac93k6vvk9jg90d88s3mqyss8mcfz-pip-purifier-ordinary-development.drv",
+        "outputs": {
+          "out": "/nix/store/0grg67501c29gca2ja4c2aw44m6b91mf-pip-purifier-ordinary-development"
+        }
+      },
+      {
+        "drvPath": "/nix/store/5vzczb32vbgair7zxinrk7351l74qchj-click-8.1.8-dist.drv",
+        "outputs": {
+          "out": "/nix/store/zvmgzlg7nxpmd45svpynhqlnl8sa10b3-click-8.1.8-dist"
+        }
+      }
+    ],
+    "matches": [
+      false,
+      false,
+      false
+    ]
+  },
+  {
+    "profile": "python-macos-15-python311-default",
+    "expression": "let root = builtins.path { path = builtins.getEnv \"PIP_PROFILE_ROOT\"; name = \"source\"; }; f = builtins.getFlake (builtins.unsafeDiscardStringContext (\"path:\" + builtins.toString root)); attrs = builtins.fromJSON \"[\\\"packages.aarch64-darwin.default\\\", \\\"checks.aarch64-darwin.tests\\\", \\\"checks.aarch64-darwin.development\\\", \\\"checks.aarch64-darwin.installer\\\"]\"; in builtins.map (attr: let c = builtins.foldl' (v: k: v.${k}) f (builtins.filter builtins.isString (builtins.split \"[.]\" attr)); in { drvPath = c.drvPath; outputs = { out = c.outPath; }; }) attrs",
+    "root": "/home/chris/Projects/ch-nix-workspace/.worktrees/pip-tier2-metadata-plan/profiles/python-macos-15-python311-default",
+    "exitCode": 0,
+    "stderr": "",
+    "seconds": 1.1007962226867676,
+    "noNativeBuilds": true,
+    "expected": [
+      {
+        "drvPath": "/nix/store/kw1h9jnfckx011jdc9wdm30l8z6z98g4-greet-0.1.0-dist.drv",
+        "outputs": {
+          "out": "/nix/store/zfq24f7q6pbbnngagsj2s7zhc1d52vhq-greet-0.1.0-dist"
+        }
+      },
+      {
+        "drvPath": "/nix/store/ikw1s419h1f6m376rmiad06imsrr4s54-greet-tests.drv",
+        "outputs": {
+          "out": "/nix/store/p7srmzxilha3x53fs0s528wrdpgi1z23-greet-tests"
+        }
+      },
+      {
+        "drvPath": "/nix/store/4s5c1vymvri3w2ixgk9j1dwbp3nkflg7-pip-purifier-ordinary-development.drv",
+        "outputs": {
+          "out": "/nix/store/362x8w3hs0agz9z8589ckfhfyga9x6an-pip-purifier-ordinary-development"
+        }
+      },
+      {
+        "drvPath": "/nix/store/7pg2x06jhl8j1y5kqadj01zgsph5mkwp-pip-installer-sdk-isolation.drv",
+        "outputs": {
+          "out": "/nix/store/k7gfsxzxdi9j3qw1fg4d0gbbikbzay1y-pip-installer-sdk-isolation"
+        }
+      }
+    ],
+    "attributes": [
+      "packages.aarch64-darwin.default",
+      "checks.aarch64-darwin.tests",
+      "checks.aarch64-darwin.development",
+      "checks.aarch64-darwin.installer"
+    ],
+    "actual": [
+      {
+        "drvPath": "/nix/store/cjq6rvc0l9fkn03ayf3xrrbwvkhy62jg-greet-0.1.0-dist.drv",
+        "outputs": {
+          "out": "/nix/store/5ac6rsca47214wd8fskcf0x8qx0dhwv6-greet-0.1.0-dist"
+        }
+      },
+      {
+        "drvPath": "/nix/store/1qq1ivr7fmkhd45wnhhvlfak8pz4f5v8-greet-tests.drv",
+        "outputs": {
+          "out": "/nix/store/x7344sw2j0wxcmybm65k6282214z9ap4-greet-tests"
+        }
+      },
+      {
+        "drvPath": "/nix/store/n5z2mkjk8cvqwll8qrjyz0h0d92370ir-pip-purifier-ordinary-development.drv",
+        "outputs": {
+          "out": "/nix/store/372jvr545vkjipdas9fl0y70s2yhvrvd-pip-purifier-ordinary-development"
+        }
+      },
+      {
+        "drvPath": "/nix/store/7pg2x06jhl8j1y5kqadj01zgsph5mkwp-pip-installer-sdk-isolation.drv",
+        "outputs": {
+          "out": "/nix/store/k7gfsxzxdi9j3qw1fg4d0gbbikbzay1y-pip-installer-sdk-isolation"
+        }
+      }
+    ],
+    "matches": [
+      false,
+      false,
+      false,
+      true
+    ]
+  },
+  {
+    "profile": "python-macos-15-python314-current",
+    "expression": "let root = builtins.path { path = builtins.getEnv \"PIP_PROFILE_ROOT\"; name = \"source\"; }; f = builtins.getFlake (builtins.unsafeDiscardStringContext (\"path:\" + builtins.toString root)); attrs = builtins.fromJSON \"[\\\"packages.aarch64-darwin.default\\\", \\\"checks.aarch64-darwin.tests\\\", \\\"checks.aarch64-darwin.development\\\", \\\"checks.aarch64-darwin.installer\\\"]\"; in builtins.map (attr: let c = builtins.foldl' (v: k: v.${k}) f (builtins.filter builtins.isString (builtins.split \"[.]\" attr)); in { drvPath = c.drvPath; outputs = { out = c.outPath; }; }) attrs",
+    "root": "/home/chris/Projects/ch-nix-workspace/.worktrees/pip-tier2-metadata-plan/profiles/python-macos-15-python314-current",
+    "exitCode": 0,
+    "stderr": "",
+    "seconds": 1.7898178100585938,
+    "noNativeBuilds": true,
+    "expected": [
+      {
+        "drvPath": "/nix/store/dfkxx6gk01bkbh3b9x1dqfc3mlvrzjw4-greet-0.1.0-dist.drv",
+        "outputs": {
+          "out": "/nix/store/kv8y8j8s5aqg9lx49rq36sd476vx5pvl-greet-0.1.0-dist"
+        }
+      },
+      {
+        "drvPath": "/nix/store/i7dvdgahnhwmxq8g3s1jrgmr50mdzaw2-greet-tests.drv",
+        "outputs": {
+          "out": "/nix/store/wwcq0qzjpzlhwq73alfbrqphn6p0kvda-greet-tests"
+        }
+      },
+      {
+        "drvPath": "/nix/store/ma70g3lrysgd1rhbs2vqm00xwvbbaljf-pip-purifier-ordinary-development.drv",
+        "outputs": {
+          "out": "/nix/store/0gm6xch0gcgd4706adf7vs7wdkw3110p-pip-purifier-ordinary-development"
+        }
+      },
+      {
+        "drvPath": "/nix/store/mx3pxh3qrpbv69d3fbb1qcba2hd6dm9z-pip-installer-sdk-isolation.drv",
+        "outputs": {
+          "out": "/nix/store/mqyjf4pww0m47j51x8d46zadgrp7vr6s-pip-installer-sdk-isolation"
+        }
+      }
+    ],
+    "attributes": [
+      "packages.aarch64-darwin.default",
+      "checks.aarch64-darwin.tests",
+      "checks.aarch64-darwin.development",
+      "checks.aarch64-darwin.installer"
+    ],
+    "actual": [
+      {
+        "drvPath": "/nix/store/4bjlzfs5mv5mwhwj5x2g2nxk3krz4f3l-greet-0.1.0-dist.drv",
+        "outputs": {
+          "out": "/nix/store/1ahvqpw6s2dc07al1fvw9ck8rd73xmxj-greet-0.1.0-dist"
+        }
+      },
+      {
+        "drvPath": "/nix/store/789mcz61nm0062jf4f2x4bknl41clhk8-greet-tests.drv",
+        "outputs": {
+          "out": "/nix/store/dh6sk0qvq43p8wpb4ml4i3iwvchcj5ya-greet-tests"
+        }
+      },
+      {
+        "drvPath": "/nix/store/yb9hdvvr4vivxid5k2yz701v5pl4vcc0-pip-purifier-ordinary-development.drv",
+        "outputs": {
+          "out": "/nix/store/rx3h6bgd5rr01z1bxq3wfvvxxa1lirqy-pip-purifier-ordinary-development"
+        }
+      },
+      {
+        "drvPath": "/nix/store/mx3pxh3qrpbv69d3fbb1qcba2hd6dm9z-pip-installer-sdk-isolation.drv",
+        "outputs": {
+          "out": "/nix/store/mqyjf4pww0m47j51x8d46zadgrp7vr6s-pip-installer-sdk-isolation"
+        }
+      }
+    ],
+    "matches": [
+      false,
+      false,
+      false,
+      true
+    ]
+  },
+  {
+    "profile": "python-ubuntu-24.04-arm-python311-default",
+    "expression": "let root = builtins.path { path = builtins.getEnv \"PIP_PROFILE_ROOT\"; name = \"source\"; }; f = builtins.getFlake (builtins.unsafeDiscardStringContext (\"path:\" + builtins.toString root)); attrs = builtins.fromJSON \"[\\\"packages.aarch64-linux.default\\\", \\\"checks.aarch64-linux.tests\\\", \\\"checks.aarch64-linux.development\\\", \\\"checks.aarch64-linux.installer\\\"]\"; in builtins.map (attr: let c = builtins.foldl' (v: k: v.${k}) f (builtins.filter builtins.isString (builtins.split \"[.]\" attr)); in { drvPath = c.drvPath; outputs = { out = c.outPath; }; }) attrs",
+    "root": "/home/chris/Projects/ch-nix-workspace/.worktrees/pip-tier2-metadata-plan/profiles/python-ubuntu-24.04-arm-python311-default",
+    "exitCode": 0,
+    "stderr": "",
+    "seconds": 1.3965225219726562,
+    "noNativeBuilds": true,
+    "expected": [
+      {
+        "drvPath": "/nix/store/3qvvj5akh3i64slwdw6clnmv2z4812ph-greet-0.1.0-dist.drv",
+        "outputs": {
+          "out": "/nix/store/rwrrwxgy9i8592wzzyfm4p6nd611w42l-greet-0.1.0-dist"
+        }
+      },
+      {
+        "drvPath": "/nix/store/ikgdwdv6jxq3vjgl97k2d0a05alqwbm9-greet-tests.drv",
+        "outputs": {
+          "out": "/nix/store/i0r9mf381q418w1d7rdyamn7in97r0pj-greet-tests"
+        }
+      },
+      {
+        "drvPath": "/nix/store/cwvnvprvn2k6d0l72zlmyd893xyp7h7p-pip-purifier-ordinary-development.drv",
+        "outputs": {
+          "out": "/nix/store/q3vs4ihvkyd7afpy4bgwfzr362dzsdy7-pip-purifier-ordinary-development"
+        }
+      },
+      {
+        "drvPath": "/nix/store/qh8swpkqha0znxirhr8hqb3x5xncllvx-pip-installer-sdk-isolation.drv",
+        "outputs": {
+          "out": "/nix/store/fs25hs8hnckinwmfka5xpany263j0jpx-pip-installer-sdk-isolation"
+        }
+      }
+    ],
+    "attributes": [
+      "packages.aarch64-linux.default",
+      "checks.aarch64-linux.tests",
+      "checks.aarch64-linux.development",
+      "checks.aarch64-linux.installer"
+    ],
+    "actual": [
+      {
+        "drvPath": "/nix/store/44q8va9yb3xinms1b6qvrvc3bp559ws0-greet-0.1.0-dist.drv",
+        "outputs": {
+          "out": "/nix/store/qkn1vvb3friy66dcpzlxkgyz0m1wj96x-greet-0.1.0-dist"
+        }
+      },
+      {
+        "drvPath": "/nix/store/griijxvq9yimfd0x8nm36929mwgp2clb-greet-tests.drv",
+        "outputs": {
+          "out": "/nix/store/6y4vjqpdz2m24507fhwww660vzgb06vr-greet-tests"
+        }
+      },
+      {
+        "drvPath": "/nix/store/qwrlqb6xbw55fym701fc4q69pbad39q0-pip-purifier-ordinary-development.drv",
+        "outputs": {
+          "out": "/nix/store/8vrjnvdibfc6ywvj2jvz7m6hd5pmacx1-pip-purifier-ordinary-development"
+        }
+      },
+      {
+        "drvPath": "/nix/store/qh8swpkqha0znxirhr8hqb3x5xncllvx-pip-installer-sdk-isolation.drv",
+        "outputs": {
+          "out": "/nix/store/fs25hs8hnckinwmfka5xpany263j0jpx-pip-installer-sdk-isolation"
+        }
+      }
+    ],
+    "matches": [
+      false,
+      false,
+      false,
+      true
+    ]
+  },
+  {
+    "profile": "python-ubuntu-24.04-arm-python314-current",
+    "expression": "let root = builtins.path { path = builtins.getEnv \"PIP_PROFILE_ROOT\"; name = \"source\"; }; f = builtins.getFlake (builtins.unsafeDiscardStringContext (\"path:\" + builtins.toString root)); attrs = builtins.fromJSON \"[\\\"packages.aarch64-linux.default\\\", \\\"checks.aarch64-linux.tests\\\", \\\"checks.aarch64-linux.development\\\", \\\"checks.aarch64-linux.installer\\\"]\"; in builtins.map (attr: let c = builtins.foldl' (v: k: v.${k}) f (builtins.filter builtins.isString (builtins.split \"[.]\" attr)); in { drvPath = c.drvPath; outputs = { out = c.outPath; }; }) attrs",
+    "root": "/home/chris/Projects/ch-nix-workspace/.worktrees/pip-tier2-metadata-plan/profiles/python-ubuntu-24.04-arm-python314-current",
+    "exitCode": 0,
+    "stderr": "",
+    "seconds": 1.6344282627105713,
+    "noNativeBuilds": true,
+    "expected": [
+      {
+        "drvPath": "/nix/store/wrkq3ayfzfjsbw0qw359m1yxc939d4bv-greet-0.1.0-dist.drv",
+        "outputs": {
+          "out": "/nix/store/6lbd27gp4vlpc0z353a1z46k9sghylx4-greet-0.1.0-dist"
+        }
+      },
+      {
+        "drvPath": "/nix/store/qssb9nn6h0jhbxasyjaba5rlc25z00dk-greet-tests.drv",
+        "outputs": {
+          "out": "/nix/store/a7r5snl34bv2psvyr1ssr3g19qnsmjns-greet-tests"
+        }
+      },
+      {
+        "drvPath": "/nix/store/qb17xq7vm88p20vn9l4rskysmpr1bymk-pip-purifier-ordinary-development.drv",
+        "outputs": {
+          "out": "/nix/store/jyggd8lfapj29xx23b4k85w93qc197xn-pip-purifier-ordinary-development"
+        }
+      },
+      {
+        "drvPath": "/nix/store/57vg10m079n26y8mz2zcdi74j93q3zw2-pip-installer-sdk-isolation.drv",
+        "outputs": {
+          "out": "/nix/store/vdaxv1b74znwpkrhbynkgvc1n34fywwg-pip-installer-sdk-isolation"
+        }
+      }
+    ],
+    "attributes": [
+      "packages.aarch64-linux.default",
+      "checks.aarch64-linux.tests",
+      "checks.aarch64-linux.development",
+      "checks.aarch64-linux.installer"
+    ],
+    "actual": [
+      {
+        "drvPath": "/nix/store/sbjyr38xh69j6psczyafslj9c85ra4ff-greet-0.1.0-dist.drv",
+        "outputs": {
+          "out": "/nix/store/cxj887ixicykdjb25zimskqji2iarpjl-greet-0.1.0-dist"
+        }
+      },
+      {
+        "drvPath": "/nix/store/zm58fnk361knlll36q2912ylwyl4cq7a-greet-tests.drv",
+        "outputs": {
+          "out": "/nix/store/2yjb0mwyv8x57hfg02kprz7hg6qm9mgw-greet-tests"
+        }
+      },
+      {
+        "drvPath": "/nix/store/gf69h3g5v3d82hm6rcd2pqys4hlq0yin-pip-purifier-ordinary-development.drv",
+        "outputs": {
+          "out": "/nix/store/i3xs34s8lgpa8h7rkszaz0bdcbqqg23k-pip-purifier-ordinary-development"
+        }
+      },
+      {
+        "drvPath": "/nix/store/57vg10m079n26y8mz2zcdi74j93q3zw2-pip-installer-sdk-isolation.drv",
+        "outputs": {
+          "out": "/nix/store/vdaxv1b74znwpkrhbynkgvc1n34fywwg-pip-installer-sdk-isolation"
+        }
+      }
+    ],
+    "matches": [
+      false,
+      false,
+      false,
+      true
+    ]
+  },
+  {
+    "profile": "python-ubuntu-latest-python311-default",
+    "expression": "let root = builtins.path { path = builtins.getEnv \"PIP_PROFILE_ROOT\"; name = \"source\"; }; f = builtins.getFlake (builtins.unsafeDiscardStringContext (\"path:\" + builtins.toString root)); attrs = builtins.fromJSON \"[\\\"packages.x86_64-linux.default\\\", \\\"checks.x86_64-linux.tests\\\", \\\"checks.x86_64-linux.development\\\", \\\"checks.x86_64-linux.installer\\\"]\"; in builtins.map (attr: let c = builtins.foldl' (v: k: v.${k}) f (builtins.filter builtins.isString (builtins.split \"[.]\" attr)); in { drvPath = c.drvPath; outputs = { out = c.outPath; }; }) attrs",
+    "root": "/home/chris/Projects/ch-nix-workspace/.worktrees/pip-tier2-metadata-plan/profiles/python-ubuntu-latest-python311-default",
+    "exitCode": 0,
+    "stderr": "",
+    "seconds": 1.3930552005767822,
+    "noNativeBuilds": true,
+    "expected": [
+      {
+        "drvPath": "/nix/store/iaar24dqvjml78ysh38aykbq4fgc85m5-greet-0.1.0-dist.drv",
+        "outputs": {
+          "out": "/nix/store/p26s5bh19p2s8zh9iqgsv2vvbzfqq52h-greet-0.1.0-dist"
+        }
+      },
+      {
+        "drvPath": "/nix/store/2panyng4n9mlinkb1gyqrqrr5hl3yrxa-greet-tests.drv",
+        "outputs": {
+          "out": "/nix/store/0q654fn43l81xxclvzg7s48cjhqhfjwg-greet-tests"
+        }
+      },
+      {
+        "drvPath": "/nix/store/bh51zrgwx72k9s6wffdl00b466ghk2hw-pip-purifier-ordinary-development.drv",
+        "outputs": {
+          "out": "/nix/store/xlkq4lhrdkcp5wngbw27di1wprvqk9lb-pip-purifier-ordinary-development"
+        }
+      },
+      {
+        "drvPath": "/nix/store/6v79y95xm8y8wasymmlhag914lvjvnn6-pip-installer-sdk-isolation.drv",
+        "outputs": {
+          "out": "/nix/store/s7ymwi8107kx1z0101zn9ffjlajl19d8-pip-installer-sdk-isolation"
+        }
+      }
+    ],
+    "attributes": [
+      "packages.x86_64-linux.default",
+      "checks.x86_64-linux.tests",
+      "checks.x86_64-linux.development",
+      "checks.x86_64-linux.installer"
+    ],
+    "actual": [
+      {
+        "drvPath": "/nix/store/l53b91ysx6lhajk9pdj73xl6fxbi64xs-greet-0.1.0-dist.drv",
+        "outputs": {
+          "out": "/nix/store/0wrfv7qv47irdj48ck708j9v360a3qab-greet-0.1.0-dist"
+        }
+      },
+      {
+        "drvPath": "/nix/store/mm8phy8dnn57nfk2dzvvydwygwvva2cb-greet-tests.drv",
+        "outputs": {
+          "out": "/nix/store/sqdpaiaf2c9q9vcbin2dsczlzd98h2a8-greet-tests"
+        }
+      },
+      {
+        "drvPath": "/nix/store/yb7jbh8lfrwc2m6dwxz9phjca74hc112-pip-purifier-ordinary-development.drv",
+        "outputs": {
+          "out": "/nix/store/kh801rfzacbc4vzlaqr88kg0acj7370i-pip-purifier-ordinary-development"
+        }
+      },
+      {
+        "drvPath": "/nix/store/6v79y95xm8y8wasymmlhag914lvjvnn6-pip-installer-sdk-isolation.drv",
+        "outputs": {
+          "out": "/nix/store/s7ymwi8107kx1z0101zn9ffjlajl19d8-pip-installer-sdk-isolation"
+        }
+      }
+    ],
+    "matches": [
+      false,
+      false,
+      false,
+      true
+    ]
+  },
+  {
+    "profile": "python-ubuntu-latest-python314-current",
+    "expression": "let root = builtins.path { path = builtins.getEnv \"PIP_PROFILE_ROOT\"; name = \"source\"; }; f = builtins.getFlake (builtins.unsafeDiscardStringContext (\"path:\" + builtins.toString root)); attrs = builtins.fromJSON \"[\\\"packages.x86_64-linux.default\\\", \\\"checks.x86_64-linux.tests\\\", \\\"checks.x86_64-linux.development\\\", \\\"checks.x86_64-linux.installer\\\"]\"; in builtins.map (attr: let c = builtins.foldl' (v: k: v.${k}) f (builtins.filter builtins.isString (builtins.split \"[.]\" attr)); in { drvPath = c.drvPath; outputs = { out = c.outPath; }; }) attrs",
+    "root": "/home/chris/Projects/ch-nix-workspace/.worktrees/pip-tier2-metadata-plan/profiles/python-ubuntu-latest-python314-current",
+    "exitCode": 0,
+    "stderr": "",
+    "seconds": 1.6958465576171875,
+    "noNativeBuilds": true,
+    "expected": [
+      {
+        "drvPath": "/nix/store/1v9d1ijhag1j6gxp74n8lbaz60fmm7cq-greet-0.1.0-dist.drv",
+        "outputs": {
+          "out": "/nix/store/fvgxiiwmmz6322ql8swsvzvglbdgjpw5-greet-0.1.0-dist"
+        }
+      },
+      {
+        "drvPath": "/nix/store/lvmi3pz9gjybjjfdavawwigh75w8a8rg-greet-tests.drv",
+        "outputs": {
+          "out": "/nix/store/d0hrkmx72dbci587xd3rh2rc74fs4s71-greet-tests"
+        }
+      },
+      {
+        "drvPath": "/nix/store/j9wcphag190090dn5ql9iyv0sai44xi1-pip-purifier-ordinary-development.drv",
+        "outputs": {
+          "out": "/nix/store/hg3xgwadsp0fvwjybmy53hpq250skk78-pip-purifier-ordinary-development"
+        }
+      },
+      {
+        "drvPath": "/nix/store/77v823rfhm1wkilnk5wg9finp5gyh9xa-pip-installer-sdk-isolation.drv",
+        "outputs": {
+          "out": "/nix/store/3sw7hac70gh2hgshi8ggphy2vlkhm0wj-pip-installer-sdk-isolation"
+        }
+      }
+    ],
+    "attributes": [
+      "packages.x86_64-linux.default",
+      "checks.x86_64-linux.tests",
+      "checks.x86_64-linux.development",
+      "checks.x86_64-linux.installer"
+    ],
+    "actual": [
+      {
+        "drvPath": "/nix/store/gbbksgmzil9wbcgq6rkkmhar9z8gc871-greet-0.1.0-dist.drv",
+        "outputs": {
+          "out": "/nix/store/fd7yadgm5gw66y0qadpr073y9v5v6w6z-greet-0.1.0-dist"
+        }
+      },
+      {
+        "drvPath": "/nix/store/rim9w8zf77ap88sh67a3j3qj6nz46r27-greet-tests.drv",
+        "outputs": {
+          "out": "/nix/store/bd2wrbi9ajn51d5f4lzyq4g2gs3sm39d-greet-tests"
+        }
+      },
+      {
+        "drvPath": "/nix/store/ln1farmpbpl0c30z5jf8hyv5zrqppz4b-pip-purifier-ordinary-development.drv",
+        "outputs": {
+          "out": "/nix/store/lbzjhqs7rqsdgzjay5aiz4s97psrhlxx-pip-purifier-ordinary-development"
+        }
+      },
+      {
+        "drvPath": "/nix/store/77v823rfhm1wkilnk5wg9finp5gyh9xa-pip-installer-sdk-isolation.drv",
+        "outputs": {
+          "out": "/nix/store/3sw7hac70gh2hgshi8ggphy2vlkhm0wj-pip-installer-sdk-isolation"
+        }
+      }
+    ],
+    "matches": [
+      false,
+      false,
+      false,
+      true
+    ]
+  }
+]

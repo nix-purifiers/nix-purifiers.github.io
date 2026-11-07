@@ -1,0 +1,1429 @@
+﻿2026-11-07T09:43:26.5220070Z Current runner version: '2.338.2'
+2026-11-07T09:43:26.5233490Z ##[group]Runner Image Provisioner
+2026-11-07T09:43:26.5234050Z Hosted Compute Agent
+2026-11-07T09:43:26.5234420Z Version: 20261103.629
+2026-11-07T09:43:26.5234850Z Commit: 15dbd9ccb5dbf34fae002b6ed1a2670f52df37bc
+2026-11-07T09:43:26.5235330Z Build Date: 2026-11-03T17:26:59Z
+2026-11-07T09:43:26.5235770Z Worker ID: {af1460ef-3b45-4a14-8421-9fbc351c0b98}
+2026-11-07T09:43:26.5236220Z Region: westus
+2026-11-07T09:43:26.5236570Z Cloud: MacCloud
+2026-11-07T09:43:26.5236930Z ##[endgroup]
+2026-11-07T09:43:26.5237730Z ##[group]Operating System
+2026-11-07T09:43:26.5238120Z macOS
+2026-11-07T09:43:26.5238430Z 15.8.2
+2026-11-07T09:43:26.5238750Z 24H232
+2026-11-07T09:43:26.5239070Z ##[endgroup]
+2026-11-07T09:43:26.5239410Z ##[group]Runner Image
+2026-11-07T09:43:26.5239780Z Image: macos-15-arm64
+2026-11-07T09:43:26.5240150Z Version: 20261104.0514.1
+2026-11-07T09:43:26.5241080Z Included Software: https://github.com/actions/runner-images/blob/macos-15-arm64/20261104.0514/images/macos/macos-15-arm64-Readme.md
+2026-11-07T09:43:26.5242080Z Image Release: https://github.com/actions/runner-images/releases/tag/macos-15-arm64%2F20261104.0514
+2026-11-07T09:43:26.5242720Z ##[endgroup]
+2026-11-07T09:43:26.5243420Z ##[group]GITHUB_TOKEN Permissions
+2026-11-07T09:43:26.5244360Z Contents: read
+2026-11-07T09:43:26.5244720Z Metadata: read
+2026-11-07T09:43:26.5245070Z ##[endgroup]
+2026-11-07T09:43:26.5246310Z Secret source: Actions
+2026-11-07T09:43:26.5246850Z Cache mode: write
+2026-11-07T09:43:26.5247280Z Prepare workflow directory
+2026-11-07T09:43:26.5452180Z Prepare all required actions
+2026-11-07T09:43:26.5482990Z Getting action download info
+2026-11-07T09:43:26.9405720Z Download action repository 'actions/checkout@11d5960a326750d5838078e36cf38b85af677262' (SHA:11d5960a326750d5838078e36cf38b85af677262)
+2026-11-07T09:43:27.1172580Z Download action repository 'cachix/install-nix-action@13d8dd58da0234aa297dedd986986ccb8e7f3e24' (SHA:13d8dd58da0234aa297dedd986986ccb8e7f3e24)
+2026-11-07T09:43:27.5445820Z Complete job name: composition-native (macos-15)
+2026-11-07T09:43:27.5909930Z ##[group]Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+2026-11-07T09:43:27.5910540Z with:
+2026-11-07T09:43:27.5910850Z   repository: nix-purifiers/pip-purifier
+2026-11-07T09:43:27.5913300Z   token: ***
+2026-11-07T09:43:27.5913590Z   ssh-strict: true
+2026-11-07T09:43:27.5913890Z   ssh-user: git
+2026-11-07T09:43:27.5914190Z   persist-credentials: true
+2026-11-07T09:43:27.5914520Z   clean: true
+2026-11-07T09:43:27.5914820Z   sparse-checkout-cone-mode: true
+2026-11-07T09:43:27.5915230Z   fetch-depth: 1
+2026-11-07T09:43:27.5915530Z   fetch-tags: false
+2026-11-07T09:43:27.5915840Z   show-progress: true
+2026-11-07T09:43:27.5916140Z   lfs: false
+2026-11-07T09:43:27.5916420Z   submodules: false
+2026-11-07T09:43:27.5916730Z   set-safe-directory: true
+2026-11-07T09:43:27.5917070Z   allow-unsafe-pr-checkout: false
+2026-11-07T09:43:27.5917520Z ##[endgroup]
+2026-11-07T09:43:27.9539580Z Syncing repository: nix-purifiers/pip-purifier
+2026-11-07T09:43:27.9541360Z ##[group]Getting Git version info
+2026-11-07T09:43:27.9542290Z Working directory is '/Users/runner/work/pip-purifier/pip-purifier'
+2026-11-07T09:43:27.9543280Z [command]/opt/homebrew/bin/git version
+2026-11-07T09:43:27.9782940Z git version 2.56.0
+2026-11-07T09:43:27.9802280Z ##[endgroup]
+2026-11-07T09:43:27.9812240Z Copying '/Users/runner/.gitconfig' to '/Users/runner/work/_temp/7fcea581-6cf4-4ad0-ac6f-2f63806cf7ad/.gitconfig'
+2026-11-07T09:43:27.9818170Z Temporarily overriding HOME='/Users/runner/work/_temp/7fcea581-6cf4-4ad0-ac6f-2f63806cf7ad' before making global git config changes
+2026-11-07T09:43:27.9819230Z Adding repository directory to the temporary git global config as a safe directory
+2026-11-07T09:43:27.9821610Z [command]/opt/homebrew/bin/git config --global --add safe.directory /Users/runner/work/pip-purifier/pip-purifier
+2026-11-07T09:43:27.9918330Z Deleting the contents of '/Users/runner/work/pip-purifier/pip-purifier'
+2026-11-07T09:43:27.9921500Z ##[group]Initializing the repository
+2026-11-07T09:43:27.9924300Z [command]/opt/homebrew/bin/git init /Users/runner/work/pip-purifier/pip-purifier
+2026-11-07T09:43:28.0122040Z hint: Using 'master' as the name for the initial branch. This default branch name
+2026-11-07T09:43:28.0137920Z hint: will change to "main" in Git 3.0. To configure the initial branch name
+2026-11-07T09:43:28.0232480Z hint: to use in all of your new repositories, which will suppress this warning,
+2026-11-07T09:43:28.0234530Z hint: call:
+2026-11-07T09:43:28.0237590Z hint:
+2026-11-07T09:43:28.0241830Z hint: 	git config --global init.defaultBranch <name>
+2026-11-07T09:43:28.0244760Z hint:
+2026-11-07T09:43:28.0246170Z hint: Names commonly chosen instead of 'master' are 'main', 'trunk' and
+2026-11-07T09:43:28.0247700Z hint: 'development'. The just-created branch can be renamed via this command:
+2026-11-07T09:43:28.0255460Z hint:
+2026-11-07T09:43:28.0257450Z hint: 	git branch -m <name>
+2026-11-07T09:43:28.0258840Z hint:
+2026-11-07T09:43:28.0270960Z hint: Disable this message with "git config set advice.defaultBranchName false"
+2026-11-07T09:43:28.0273270Z Initialized empty Git repository in /Users/runner/work/pip-purifier/pip-purifier/.git/
+2026-11-07T09:43:28.0283610Z [command]/opt/homebrew/bin/git remote add origin https://github.com/nix-purifiers/pip-purifier
+2026-11-07T09:43:28.0291640Z ##[endgroup]
+2026-11-07T09:43:28.0292670Z ##[group]Disabling automatic garbage collection
+2026-11-07T09:43:28.0296460Z [command]/opt/homebrew/bin/git config --local gc.auto 0
+2026-11-07T09:43:28.0308220Z ##[endgroup]
+2026-11-07T09:43:28.0309740Z ##[group]Setting up auth
+2026-11-07T09:43:28.0314540Z [command]/opt/homebrew/bin/git config --local --name-only --get-regexp core\.sshCommand
+2026-11-07T09:43:28.0352340Z [command]/opt/homebrew/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+2026-11-07T09:43:28.1260490Z [command]/opt/homebrew/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+2026-11-07T09:43:28.1310070Z [command]/opt/homebrew/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+2026-11-07T09:43:28.2053620Z [command]/opt/homebrew/bin/git config --local --name-only --get-regexp ^includeIf\.gitdir:
+2026-11-07T09:43:28.2109860Z [command]/opt/homebrew/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url
+2026-11-07T09:43:28.2804520Z [command]/opt/homebrew/bin/git config --local http.https://github.com/.extraheader AUTHORIZATION: basic ***
+2026-11-07T09:43:28.2864070Z ##[endgroup]
+2026-11-07T09:43:28.2865460Z ##[group]Fetching the repository
+2026-11-07T09:43:28.2868240Z [command]/opt/homebrew/bin/git -c protocol.version=2 fetch --no-tags --prune --no-recurse-submodules --depth=1 origin +3620c35e776dbb8772f068bf9c7c0c2338fbc38f:refs/remotes/origin/main
+2026-11-07T09:43:28.7327940Z From https://github.com/nix-purifiers/pip-purifier
+2026-11-07T09:43:28.7328910Z  * [new ref]         3620c35e776dbb8772f068bf9c7c0c2338fbc38f -> origin/main
+2026-11-07T09:43:28.7330820Z ##[endgroup]
+2026-11-07T09:43:28.7331520Z ##[group]Determining the checkout info
+2026-11-07T09:43:28.7332350Z ##[endgroup]
+2026-11-07T09:43:28.7335620Z [command]/opt/homebrew/bin/git sparse-checkout disable
+2026-11-07T09:43:28.7403850Z [command]/opt/homebrew/bin/git config --local --unset-all extensions.worktreeConfig
+2026-11-07T09:43:28.7456190Z ##[group]Checking out the ref
+2026-11-07T09:43:28.7458630Z [command]/opt/homebrew/bin/git checkout --progress --force -B main refs/remotes/origin/main
+2026-11-07T09:43:28.7635680Z Switched to a new branch 'main'
+2026-11-07T09:43:28.7639400Z branch 'main' set up to track 'origin/main'.
+2026-11-07T09:43:28.7642450Z ##[endgroup]
+2026-11-07T09:43:28.7714340Z [command]/opt/homebrew/bin/git log -1 --format=%H
+2026-11-07T09:43:28.7785070Z 3620c35e776dbb8772f068bf9c7c0c2338fbc38f
+2026-11-07T09:43:28.7995740Z ##[group]Run cachix/install-nix-action@13d8dd58da0234aa297dedd986986ccb8e7f3e24
+2026-11-07T09:43:28.7996450Z with:
+2026-11-07T09:43:28.7996820Z   extra_nix_config: sandbox = true
+
+2026-11-07T09:43:28.7997330Z   enable_kvm: true
+2026-11-07T09:43:28.7997750Z   set_as_trusted_user: true
+2026-11-07T09:43:28.7998170Z ##[endgroup]
+2026-11-07T09:43:28.8045340Z ##[start-action display=Run ${GITHUB_ACTION_PATH}/install-nix.sh;id=__cachix_install-nix-action.__run]
+2026-11-07T09:43:28.8119800Z ##[group]Run ${GITHUB_ACTION_PATH}/install-nix.sh
+2026-11-07T09:43:28.8120380Z [36;1m${GITHUB_ACTION_PATH}/install-nix.sh[0m
+2026-11-07T09:43:28.8156410Z shell: /bin/bash --noprofile --norc -e -o pipefail {0}
+2026-11-07T09:43:28.8156920Z env:
+2026-11-07T09:43:28.8157350Z   INPUT_EXTRA_NIX_CONFIG: sandbox = true
+
+2026-11-07T09:43:28.8157830Z   INPUT_GITHUB_ACCESS_TOKEN: 
+2026-11-07T09:43:28.8158330Z   INPUT_INSTALL_OPTIONS: 
+2026-11-07T09:43:28.8158760Z   INPUT_INSTALL_URL: 
+2026-11-07T09:43:28.8159160Z   INPUT_NIX_PATH: 
+2026-11-07T09:43:28.8159500Z   INPUT_ENABLE_KVM: true
+2026-11-07T09:43:28.8159870Z   INPUT_SET_AS_TRUSTED_USER: true
+2026-11-07T09:43:28.8163360Z   GITHUB_TOKEN: ***
+2026-11-07T09:43:28.8163760Z ##[endgroup]
+2026-11-07T09:43:28.8454610Z ##[group]Installing Nix
+2026-11-07T09:43:28.9875840Z installer options: --no-channel-add --nix-extra-conf-file /var/folders/2s/vty41l455yv698g4xkgfv7z00000gn/T/tmp.JyAf9ncg9e/nix.conf --daemon --daemon-user-count 6
+2026-11-07T09:43:29.0292190Z * Host releases.nixos.org:443 was resolved.
+2026-11-07T09:43:29.0292960Z * IPv6: (none)
+2026-11-07T09:43:29.0293560Z * IPv4: 151.101.65.91, 151.101.1.91, 151.101.129.91, 151.101.193.91
+2026-11-07T09:43:29.0294300Z *   Trying 151.101.65.91:443...
+2026-11-07T09:43:29.0304830Z * Connected to releases.nixos.org (151.101.65.91) port 443
+2026-11-07T09:43:29.0334740Z * ALPN: curl offers h2,http/1.1
+2026-11-07T09:43:29.0335540Z * (304) (OUT), TLS handshake, Client hello (1):
+2026-11-07T09:43:29.0336310Z } [323 bytes data]
+2026-11-07T09:43:29.0373980Z *  CAfile: /etc/ssl/cert.pem
+2026-11-07T09:43:29.0374460Z *  CApath: none
+2026-11-07T09:43:29.0374830Z * (304) (IN), TLS handshake, Server hello (2):
+2026-11-07T09:43:29.0375350Z { [122 bytes data]
+2026-11-07T09:43:29.0375720Z * (304) (IN), TLS handshake, Unknown (8):
+2026-11-07T09:43:29.0376170Z { [19 bytes data]
+2026-11-07T09:43:29.0376550Z * (304) (IN), TLS handshake, Certificate (11):
+2026-11-07T09:43:29.0377020Z { [4081 bytes data]
+2026-11-07T09:43:29.0382730Z * (304) (IN), TLS handshake, CERT verify (15):
+2026-11-07T09:43:29.0383320Z { [264 bytes data]
+2026-11-07T09:43:29.0383790Z * (304) (IN), TLS handshake, Finished (20):
+2026-11-07T09:43:29.0384270Z { [36 bytes data]
+2026-11-07T09:43:29.0384700Z * (304) (OUT), TLS handshake, Finished (20):
+2026-11-07T09:43:29.0385220Z } [36 bytes data]
+2026-11-07T09:43:29.0385820Z * SSL connection using TLSv1.3 / AEAD-CHACHA20-POLY1305-SHA256 / [blank] / UNDEF
+2026-11-07T09:43:29.0386520Z * ALPN: server accepted h2
+2026-11-07T09:43:29.0386920Z * Server certificate:
+2026-11-07T09:43:29.0387300Z *  subject: CN=releases.nixos.org
+2026-11-07T09:43:29.0387730Z *  start date: Sep  9 22:18:06 2026 GMT
+2026-11-07T09:43:29.0388180Z *  expire date: Dec  8 22:18:05 2026 GMT
+2026-11-07T09:43:29.0388850Z *  subjectAltName: host "releases.nixos.org" matched cert's "releases.nixos.org"
+2026-11-07T09:43:29.0389520Z *  issuer: C=US; O=Let's Encrypt; CN=YR1
+2026-11-07T09:43:29.0389980Z *  SSL certificate verify ok.
+2026-11-07T09:43:29.0390370Z * using HTTP/2
+2026-11-07T09:43:29.0390910Z * [HTTP/2] [1] OPENED stream for https://releases.nixos.org/nix/nix-2.35.2/install
+2026-11-07T09:43:29.0391670Z * [HTTP/2] [1] [:method: GET]
+2026-11-07T09:43:29.0392070Z * [HTTP/2] [1] [:scheme: https]
+2026-11-07T09:43:29.0392520Z * [HTTP/2] [1] [:authority: releases.nixos.org]
+2026-11-07T09:43:29.0393030Z * [HTTP/2] [1] [:path: /nix/nix-2.35.2/install]
+2026-11-07T09:43:29.0393580Z * [HTTP/2] [1] [user-agent: curl/8.7.1]
+2026-11-07T09:43:29.0394940Z * [HTTP/2] [1] [accept: */*]
+2026-11-07T09:43:29.0395470Z > GET /nix/nix-2.35.2/install HTTP/2
+2026-11-07T09:43:29.0396130Z > Host: releases.nixos.org
+2026-11-07T09:43:29.0396670Z > User-Agent: curl/8.7.1
+2026-11-07T09:43:29.0397050Z > Accept: */*
+2026-11-07T09:43:29.0397400Z > 
+2026-11-07T09:43:29.0397730Z * Request completely sent off
+2026-11-07T09:43:29.0405380Z < HTTP/2 200 
+2026-11-07T09:43:29.0405920Z < last-modified: Wed, 12 Aug 2026 22:06:45 GMT
+2026-11-07T09:43:29.0406450Z < etag: "9f08ad80caddcb58f53e8551ff155b13"
+2026-11-07T09:43:29.0406940Z < x-amz-server-side-encryption: AES256
+2026-11-07T09:43:29.0407670Z < content-type: text/plain
+2026-11-07T09:43:29.0408180Z < server: AmazonS3
+2026-11-07T09:43:29.0408530Z < via: 1.1 varnish, 1.1 varnish
+2026-11-07T09:43:29.0408960Z < access-control-allow-origin: *
+2026-11-07T09:43:29.0409370Z < accept-ranges: bytes
+2026-11-07T09:43:29.0409770Z < date: Sat, 07 Nov 2026 09:43:29 GMT
+2026-11-07T09:43:29.0410200Z < age: 99277
+2026-11-07T09:43:29.0410650Z < x-served-by: cache-dub4323-DUB, cache-pao-kpao1770021-PAO
+2026-11-07T09:43:29.0411430Z < x-cache: HIT, HIT
+2026-11-07T09:43:29.0413030Z < x-cache-hits: 732, 66
+2026-11-07T09:43:29.0413420Z < content-length: 4499
+2026-11-07T09:43:29.0413780Z < 
+2026-11-07T09:43:29.0414090Z { [1119 bytes data]
+2026-11-07T09:43:29.0415460Z * Connection #0 to host releases.nixos.org left intact
+2026-11-07T09:43:29.0540090Z downloading Nix 2.35.2 binary tarball for aarch64-darwin from 'https://releases.nixos.org/nix/nix-2.35.2/nix-2.35.2-aarch64-darwin.tar.xz' to '/var/folders/2s/vty41l455yv698g4xkgfv7z00000gn/T/nix-binary-tarball-unpack.XXXXXXXXXX.VE5akHAIiE'...
+2026-11-07T09:43:29.0609150Z   % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+2026-11-07T09:43:29.0610020Z                                  Dload  Upload   Total   Spent    Left  Speed
+2026-11-07T09:43:29.0610430Z 
+2026-11-07T09:43:29.1962740Z   0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0
+2026-11-07T09:43:29.1972010Z 100 17.6M  100 17.6M    0     0   134M      0 --:--:-- --:--:-- --:--:--  134M
+2026-11-07T09:43:30.5478740Z [1;31mSwitching to the Multi-user Installer[0m
+2026-11-07T09:43:30.5865000Z [32mWelcome to the Multi-User Nix Installation
+2026-11-07T09:43:30.5885630Z [0m
+2026-11-07T09:43:30.5887290Z This installation tool will set up your computer with the Nix package
+2026-11-07T09:43:30.5888400Z manager. This will happen in a few stages:
+2026-11-07T09:43:30.5889030Z 
+2026-11-07T09:43:30.5889590Z 1. Make sure your computer doesn't already have Nix. If it does, I
+2026-11-07T09:43:30.5891000Z    will show you instructions on how to clean up your old install.
+2026-11-07T09:43:30.5891890Z 
+2026-11-07T09:43:30.5892430Z 2. Show you what I am going to install and where. Then I will ask
+2026-11-07T09:43:30.5893920Z    if you are ready to continue.
+2026-11-07T09:43:30.5895100Z 
+2026-11-07T09:43:30.5896130Z 3. Create the system users [34m(uids [351..356])[0m and groups [34m(gid 350)[0m
+2026-11-07T09:43:30.5898180Z    that the Nix daemon uses to run builds. To create system users
+2026-11-07T09:43:30.5899360Z    in a different range, exit and run this tool again with
+2026-11-07T09:43:30.5900340Z    NIX_FIRST_BUILD_UID set.
+2026-11-07T09:43:30.5900790Z 
+2026-11-07T09:43:30.5901230Z 4. Perform the basic installation of the Nix files daemon.
+2026-11-07T09:43:30.5902030Z 
+2026-11-07T09:43:30.5902640Z 5. Configure your shell to import special Nix Profile files, so you
+2026-11-07T09:43:30.5903760Z    can use Nix.
+2026-11-07T09:43:30.5904070Z 
+2026-11-07T09:43:30.5904510Z 6. Start the Nix daemon.
+2026-11-07T09:43:30.5905030Z 
+2026-11-07T09:43:30.5905790Z [32m[4;32mWould you like to see a more detailed list of what I will do?
+2026-11-07T09:43:30.5907260Z [0mNo TTY, assuming you would say yes :)
+2026-11-07T09:43:30.5909760Z 
+2026-11-07T09:43:30.5910370Z I will:
+2026-11-07T09:43:30.5910950Z 
+2026-11-07T09:43:30.5912520Z  - make sure your computer doesn't already have Nix files
+2026-11-07T09:43:30.5914970Z    (if it does, I will tell you how to clean them up.)
+2026-11-07T09:43:30.5916780Z  - create local users (see the list above for the users I'll make)
+2026-11-07T09:43:30.5919160Z  - create a local group (nixbld)
+2026-11-07T09:43:30.5920490Z  - install Nix in /nix
+2026-11-07T09:43:30.5922070Z  - create a configuration file in /etc/nix
+2026-11-07T09:43:30.5923620Z  - set up the "default profile" by creating some Nix-related files in
+2026-11-07T09:43:30.5925000Z    /var/root
+2026-11-07T09:43:30.5931410Z  - back up /etc/bashrc to /etc/bashrc.backup-before-nix
+2026-11-07T09:43:30.5933010Z  - update /etc/bashrc to include some Nix configuration
+2026-11-07T09:43:30.5958390Z  - back up /etc/zshrc to /etc/zshrc.backup-before-nix
+2026-11-07T09:43:30.5959980Z  - update /etc/zshrc to include some Nix configuration
+2026-11-07T09:43:30.5961440Z  - create a Nix volume and a LaunchDaemon to mount it
+2026-11-07T09:43:30.5963420Z  - create a LaunchDaemon (at /Library/LaunchDaemons/org.nixos.nix-daemon.plist) for nix-daemon
+2026-11-07T09:43:30.5965050Z 
+2026-11-07T09:43:30.5968180Z [32m[4;32mReady to continue?
+2026-11-07T09:43:30.5969250Z [0mNo TTY, assuming you would say yes :)
+2026-11-07T09:43:30.5995050Z 
+2026-11-07T09:43:30.5996680Z [34m---- let's talk about sudo -----------------------------------------------------
+2026-11-07T09:43:30.6021460Z [0mThis script is going to call sudo a lot. Normally, it would show you
+2026-11-07T09:43:30.6023310Z exactly what commands it is running and why. However, the script is
+2026-11-07T09:43:30.6028110Z run in a headless fashion, like this:
+2026-11-07T09:43:30.6029470Z 
+2026-11-07T09:43:30.6030130Z   $ curl -L https://nixos.org/nix/install | sh
+2026-11-07T09:43:30.6031240Z 
+2026-11-07T09:43:30.6032100Z or maybe in a CI pipeline. Because of that, I'm going to skip the
+2026-11-07T09:43:30.6034660Z verbose output in the interest of brevity.
+2026-11-07T09:43:30.6035440Z 
+2026-11-07T09:43:30.6035860Z If you would like to
+2026-11-07T09:43:30.6036740Z see the output, try like this:
+2026-11-07T09:43:30.6037430Z 
+2026-11-07T09:43:30.6038040Z   $ curl -L -o install-nix https://nixos.org/nix/install
+2026-11-07T09:43:30.6039210Z   $ sh ./install-nix
+2026-11-07T09:43:30.6039730Z 
+2026-11-07T09:43:30.6039910Z 
+2026-11-07T09:43:30.6040500Z [32m~~> Fixing any leftover Nix volume state
+2026-11-07T09:43:30.6045110Z [0mBefore I try to install, I'll check for any existing Nix volume config
+2026-11-07T09:43:30.6046940Z and ask for your permission to remove it (so that the installer can
+2026-11-07T09:43:30.6048690Z start fresh). I'll also ask for permission to fix any issues I spot.
+2026-11-07T09:43:30.6247210Z 
+2026-11-07T09:43:30.6253760Z [32m~~> Checking for artifacts of previous installs
+2026-11-07T09:43:30.6272020Z [0mBefore I try to install, I'll check for signs Nix already is or has
+2026-11-07T09:43:30.6273490Z been installed on this system.
+2026-11-07T09:43:30.6342750Z 
+2026-11-07T09:43:30.6345610Z [34m---- Nix config report ---------------------------------------------------------
+2026-11-07T09:43:30.6348220Z [0m[1m        Temp Dir[0m:	/var/folders/2s/vty41l455yv698g4xkgfv7z00000gn/T/tmp.93bkTsHuhQ
+2026-11-07T09:43:30.6350280Z [1m        Nix Root[0m:	/nix
+2026-11-07T09:43:30.6351310Z [1m     Build Users[0m:	6
+2026-11-07T09:43:30.6352330Z [1m  Build Group ID[0m:	350
+2026-11-07T09:43:30.6355430Z [1mBuild Group Name[0m:	nixbld
+2026-11-07T09:43:30.6357390Z 
+2026-11-07T09:43:30.6357810Z [4;34mbuild users:
+2026-11-07T09:43:30.6358630Z [0m[1m    Username[0m:	UID
+2026-11-07T09:43:30.6380890Z [1m     _nixbld1[0m:	351
+2026-11-07T09:43:30.6388880Z [1m     _nixbld2[0m:	352
+2026-11-07T09:43:30.6404430Z [1m     _nixbld3[0m:	353
+2026-11-07T09:43:30.6407410Z [1m     _nixbld4[0m:	354
+2026-11-07T09:43:30.6415430Z [1m     _nixbld5[0m:	355
+2026-11-07T09:43:30.6424420Z [1m     _nixbld6[0m:	356
+2026-11-07T09:43:30.6425260Z 
+2026-11-07T09:43:30.6426940Z [32m[4;32mReady to continue?
+2026-11-07T09:43:30.6427990Z [0mNo TTY, assuming you would say yes :)
+2026-11-07T09:43:30.6447970Z 
+2026-11-07T09:43:30.6449310Z [34m---- Preparing a Nix volume ----------------------------------------------------
+2026-11-07T09:43:30.6471140Z [0m    Nix traditionally stores its data in the root directory /nix, but
+2026-11-07T09:43:30.6472900Z     macOS now (starting in 10.15 Catalina) has a read-only root directory.
+2026-11-07T09:43:30.6474540Z     To support Nix, I will create a volume and configure macOS to mount it
+2026-11-07T09:43:30.6475880Z     at /nix.
+2026-11-07T09:43:30.6495290Z 
+2026-11-07T09:43:30.6498560Z [32m~~> Configuring /etc/synthetic.conf to make a mount-point at /nix
+2026-11-07T09:43:30.7360200Z [0m
+2026-11-07T09:43:30.7361060Z [32m~~> Creating a Nix volume
+2026-11-07T09:43:32.3928120Z [0mdisk2s7 was already unmounted
+2026-11-07T09:43:32.4024170Z 
+2026-11-07T09:43:32.4114440Z [32m~~> Configuring /etc/fstab to specify volume mount options
+2026-11-07T09:43:32.4681430Z [0m
+2026-11-07T09:43:32.4682070Z [32m~~> Configuring LaunchDaemon to mount 'Nix Store'
+2026-11-07T09:43:42.7427500Z 
+2026-11-07T09:43:42.7428110Z [32m~~> Setting up the build group nixbld
+2026-11-07T09:43:42.7787310Z [0m[1m            Created[0m:	Yes
+2026-11-07T09:43:42.7819660Z 
+2026-11-07T09:43:42.7820300Z [32m~~> Setting up the build user _nixbld1
+2026-11-07T09:43:42.8339860Z [0m[1m           Created[0m:	Yes
+2026-11-07T09:43:42.8756770Z [1m            Hidden[0m:	Yes
+2026-11-07T09:43:42.9073560Z [1m    Home Directory[0m:	/var/empty
+2026-11-07T09:43:42.9460610Z [1m              Note[0m:	Nix build user 1
+2026-11-07T09:43:42.9789990Z [1m   Logins Disabled[0m:	Yes
+2026-11-07T09:43:43.0064730Z [1m  Member of nixbld[0m:	Yes
+2026-11-07T09:43:43.0417070Z [1m    PrimaryGroupID[0m:	350
+2026-11-07T09:43:43.0425890Z 
+2026-11-07T09:43:43.0441650Z [32m~~> Setting up the build user _nixbld2
+2026-11-07T09:43:43.0783970Z [0m[1m           Created[0m:	Yes
+2026-11-07T09:43:43.1161680Z [1m            Hidden[0m:	Yes
+2026-11-07T09:43:43.1482870Z [1m    Home Directory[0m:	/var/empty
+2026-11-07T09:43:43.1890810Z [1m              Note[0m:	Nix build user 2
+2026-11-07T09:43:43.2215160Z [1m   Logins Disabled[0m:	Yes
+2026-11-07T09:43:43.2460920Z [1m  Member of nixbld[0m:	Yes
+2026-11-07T09:43:43.2810620Z [1m    PrimaryGroupID[0m:	350
+2026-11-07T09:43:43.2819610Z 
+2026-11-07T09:43:43.2819980Z [32m~~> Setting up the build user _nixbld3
+2026-11-07T09:43:43.3169590Z [0m[1m           Created[0m:	Yes
+2026-11-07T09:43:43.3536380Z [1m            Hidden[0m:	Yes
+2026-11-07T09:43:43.3956250Z [1m    Home Directory[0m:	/var/empty
+2026-11-07T09:43:43.4329710Z [1m              Note[0m:	Nix build user 3
+2026-11-07T09:43:43.4653080Z [1m   Logins Disabled[0m:	Yes
+2026-11-07T09:43:43.4891080Z [1m  Member of nixbld[0m:	Yes
+2026-11-07T09:43:43.5240770Z [1m    PrimaryGroupID[0m:	350
+2026-11-07T09:43:43.5250410Z 
+2026-11-07T09:43:43.5250750Z [32m~~> Setting up the build user _nixbld4
+2026-11-07T09:43:43.5599000Z [0m[1m           Created[0m:	Yes
+2026-11-07T09:43:43.5974980Z [1m            Hidden[0m:	Yes
+2026-11-07T09:43:43.6392130Z [1m    Home Directory[0m:	/var/empty
+2026-11-07T09:43:43.6834960Z [1m              Note[0m:	Nix build user 4
+2026-11-07T09:43:43.7185230Z [1m   Logins Disabled[0m:	Yes
+2026-11-07T09:43:43.7440280Z [1m  Member of nixbld[0m:	Yes
+2026-11-07T09:43:43.7795890Z [1m    PrimaryGroupID[0m:	350
+2026-11-07T09:43:43.7807090Z 
+2026-11-07T09:43:43.7807480Z [32m~~> Setting up the build user _nixbld5
+2026-11-07T09:43:43.8186130Z [0m[1m           Created[0m:	Yes
+2026-11-07T09:43:43.8564810Z [1m            Hidden[0m:	Yes
+2026-11-07T09:43:43.8952810Z [1m    Home Directory[0m:	/var/empty
+2026-11-07T09:43:43.9338450Z [1m              Note[0m:	Nix build user 5
+2026-11-07T09:43:43.9699930Z [1m   Logins Disabled[0m:	Yes
+2026-11-07T09:43:43.9953700Z [1m  Member of nixbld[0m:	Yes
+2026-11-07T09:43:44.0298600Z [1m    PrimaryGroupID[0m:	350
+2026-11-07T09:43:44.0307860Z 
+2026-11-07T09:43:44.0308200Z [32m~~> Setting up the build user _nixbld6
+2026-11-07T09:43:44.0649060Z [0m[1m           Created[0m:	Yes
+2026-11-07T09:43:44.1027130Z [1m            Hidden[0m:	Yes
+2026-11-07T09:43:44.1350650Z [1m    Home Directory[0m:	/var/empty
+2026-11-07T09:43:44.1715600Z [1m              Note[0m:	Nix build user 6
+2026-11-07T09:43:44.2043780Z [1m   Logins Disabled[0m:	Yes
+2026-11-07T09:43:44.2281990Z [1m  Member of nixbld[0m:	Yes
+2026-11-07T09:43:44.2618400Z [1m    PrimaryGroupID[0m:	350
+2026-11-07T09:43:44.2619080Z 
+2026-11-07T09:43:44.2619240Z [32m~~> Setting up the basic directory structure
+2026-11-07T09:43:44.2921470Z [0minstall: mkdir /nix/var
+2026-11-07T09:43:44.2921870Z install: mkdir /nix/var/log
+2026-11-07T09:43:44.2922050Z install: mkdir /nix/var/log/nix
+2026-11-07T09:43:44.2922300Z install: mkdir /nix/var/log/nix/drvs
+2026-11-07T09:43:44.2922570Z install: mkdir /nix/var/nix
+2026-11-07T09:43:44.2922790Z install: mkdir /nix/var/nix/db
+2026-11-07T09:43:44.2922970Z install: mkdir /nix/var/nix/gcroots
+2026-11-07T09:43:44.2923320Z install: mkdir /nix/var/nix/profiles
+2026-11-07T09:43:44.2923620Z install: mkdir /nix/var/nix/temproots
+2026-11-07T09:43:44.2924890Z install: mkdir /nix/var/nix/userpool
+2026-11-07T09:43:44.2925180Z install: mkdir /nix/var/nix/daemon-socket
+2026-11-07T09:43:44.2925410Z install: mkdir /nix/var/nix/gcroots/per-user
+2026-11-07T09:43:44.2925950Z install: mkdir /nix/var/nix/profiles/per-user
+2026-11-07T09:43:44.3054760Z install: mkdir /nix/store
+2026-11-07T09:43:44.3170580Z install: mkdir /etc/nix
+2026-11-07T09:43:44.3176320Z 
+2026-11-07T09:43:44.3176750Z [32m~~> Installing Nix
+2026-11-07T09:43:44.8638820Z [0m      Alright! We have our first nix at /nix/store/xbb13wrh7lv306phbapc006hfsscjd97-nix-2.35.2
+2026-11-07T09:43:45.2822190Z       Just finished getting the nix database ready.
+2026-11-07T09:43:45.2823720Z 
+2026-11-07T09:43:45.2824830Z [32m~~> Setting up shell profiles: /etc/bashrc /etc/profile.d/nix.sh /etc/zshrc /etc/bash.bashrc /etc/zsh/zshrc
+2026-11-07T09:43:45.3101250Z [0m
+2026-11-07T09:43:45.3101550Z # Nix
+2026-11-07T09:43:45.3101890Z if [ -e '/nix/var/nix/profiles/default/etc/profile.d/nix-daemon.sh' ]; then
+2026-11-07T09:43:45.3102380Z   . '/nix/var/nix/profiles/default/etc/profile.d/nix-daemon.sh'
+2026-11-07T09:43:45.3102640Z fi
+2026-11-07T09:43:45.3102760Z # End Nix
+2026-11-07T09:43:45.3102840Z 
+2026-11-07T09:43:45.3102950Z # System-wide .bashrc file for interactive bash(1) shells.
+2026-11-07T09:43:45.3103270Z if [ -z "$PS1" ]; then
+2026-11-07T09:43:45.3103460Z    return
+2026-11-07T09:43:45.3103620Z fi
+2026-11-07T09:43:45.3103740Z 
+2026-11-07T09:43:45.3103800Z PS1='\h:\W \u\$ '
+2026-11-07T09:43:45.3104060Z # Make bash check its window size after a process completes
+2026-11-07T09:43:45.3105480Z shopt -s checkwinsize
+2026-11-07T09:43:45.3105700Z 
+2026-11-07T09:43:45.3105860Z [ -r "/etc/bashrc_$TERM_PROGRAM" ] && . "/etc/bashrc_$TERM_PROGRAM"
+2026-11-07T09:43:45.3559760Z 
+2026-11-07T09:43:45.3560040Z # Nix
+2026-11-07T09:43:45.3560410Z if [ -e '/nix/var/nix/profiles/default/etc/profile.d/nix-daemon.sh' ]; then
+2026-11-07T09:43:45.3560850Z   . '/nix/var/nix/profiles/default/etc/profile.d/nix-daemon.sh'
+2026-11-07T09:43:45.3561180Z fi
+2026-11-07T09:43:45.3561360Z # End Nix
+2026-11-07T09:43:45.3561480Z 
+2026-11-07T09:43:45.3561600Z # System-wide profile for interactive zsh(1) shells.
+2026-11-07T09:43:45.3561820Z 
+2026-11-07T09:43:45.3562020Z # Setup user specific overrides for this in ~/.zshrc. See zshbuiltins(1)
+2026-11-07T09:43:45.3562430Z # and zshoptions(1) for more details.
+2026-11-07T09:43:45.3562570Z 
+2026-11-07T09:43:45.3562680Z # Correctly display UTF-8 with combining characters.
+2026-11-07T09:43:45.3563020Z if [[ "$(locale LC_CTYPE)" == "UTF-8" ]]; then
+2026-11-07T09:43:45.3563290Z     setopt COMBINING_CHARS
+2026-11-07T09:43:45.3564760Z fi
+2026-11-07T09:43:45.3564840Z 
+2026-11-07T09:43:45.3564970Z # Disable the log builtin, so we don't conflict with /usr/bin/log
+2026-11-07T09:43:45.3565230Z disable log
+2026-11-07T09:43:45.3565760Z 
+2026-11-07T09:43:45.3565860Z # Save command history
+2026-11-07T09:43:45.3566070Z HISTFILE=${ZDOTDIR:-$HOME}/.zsh_history
+2026-11-07T09:43:45.3756040Z HISTSIZE=2000
+2026-11-07T09:43:45.3756250Z SAVEHIST=1000
+2026-11-07T09:43:45.3756810Z 
+2026-11-07T09:43:45.3756880Z # Beep on error
+2026-11-07T09:43:45.3757110Z setopt BEEP
+2026-11-07T09:43:45.3757230Z 
+2026-11-07T09:43:45.3757370Z # Use keycodes (generated via zkbd) if present, otherwise fallback on
+2026-11-07T09:43:45.3757680Z # values from terminfo
+2026-11-07T09:43:45.3758040Z if [[ -r ${ZDOTDIR:-$HOME}/.zkbd/${TERM}-${VENDOR} ]] ; then
+2026-11-07T09:43:45.3758380Z     source ${ZDOTDIR:-$HOME}/.zkbd/${TERM}-${VENDOR}
+2026-11-07T09:43:45.3758660Z else
+2026-11-07T09:43:45.3758890Z     typeset -g -A key
+2026-11-07T09:43:45.3758990Z 
+2026-11-07T09:43:45.3759080Z     [[ -n "$terminfo[kf1]" ]] && key[F1]=$terminfo[kf1]
+2026-11-07T09:43:45.3759380Z     [[ -n "$terminfo[kf2]" ]] && key[F2]=$terminfo[kf2]
+2026-11-07T09:43:45.3759860Z     [[ -n "$terminfo[kf3]" ]] && key[F3]=$terminfo[kf3]
+2026-11-07T09:43:45.3760200Z     [[ -n "$terminfo[kf4]" ]] && key[F4]=$terminfo[kf4]
+2026-11-07T09:43:45.3760530Z     [[ -n "$terminfo[kf5]" ]] && key[F5]=$terminfo[kf5]
+2026-11-07T09:43:45.3760810Z     [[ -n "$terminfo[kf6]" ]] && key[F6]=$terminfo[kf6]
+2026-11-07T09:43:45.3761040Z     [[ -n "$terminfo[kf7]" ]] && key[F7]=$terminfo[kf7]
+2026-11-07T09:43:45.3761320Z     [[ -n "$terminfo[kf8]" ]] && key[F8]=$terminfo[kf8]
+2026-11-07T09:43:45.3761550Z     [[ -n "$terminfo[kf9]" ]] && key[F9]=$terminfo[kf9]
+2026-11-07T09:43:45.3761800Z     [[ -n "$terminfo[kf10]" ]] && key[F10]=$terminfo[kf10]
+2026-11-07T09:43:45.3762240Z     [[ -n "$terminfo[kf11]" ]] && key[F11]=$terminfo[kf11]
+2026-11-07T09:43:45.3762520Z     [[ -n "$terminfo[kf12]" ]] && key[F12]=$terminfo[kf12]
+2026-11-07T09:43:45.3762780Z     [[ -n "$terminfo[kf13]" ]] && key[F13]=$terminfo[kf13]
+2026-11-07T09:43:45.3763030Z     [[ -n "$terminfo[kf14]" ]] && key[F14]=$terminfo[kf14]
+2026-11-07T09:43:45.3763290Z     [[ -n "$terminfo[kf15]" ]] && key[F15]=$terminfo[kf15]
+2026-11-07T09:43:45.3763650Z     [[ -n "$terminfo[kf16]" ]] && key[F16]=$terminfo[kf16]
+2026-11-07T09:43:45.3763980Z     [[ -n "$terminfo[kf17]" ]] && key[F17]=$terminfo[kf17]
+2026-11-07T09:43:45.3764230Z     [[ -n "$terminfo[kf18]" ]] && key[F18]=$terminfo[kf18]
+2026-11-07T09:43:45.3764530Z     [[ -n "$terminfo[kf19]" ]] && key[F19]=$terminfo[kf19]
+2026-11-07T09:43:45.3764820Z     [[ -n "$terminfo[kf20]" ]] && key[F20]=$terminfo[kf20]
+2026-11-07T09:43:45.3765130Z     [[ -n "$terminfo[kbs]" ]] && key[Backspace]=$terminfo[kbs]
+2026-11-07T09:43:45.3765450Z     [[ -n "$terminfo[kich1]" ]] && key[Insert]=$terminfo[kich1]
+2026-11-07T09:43:45.3765810Z     [[ -n "$terminfo[kdch1]" ]] && key[Delete]=$terminfo[kdch1]
+2026-11-07T09:43:45.3766090Z     [[ -n "$terminfo[khome]" ]] && key[Home]=$terminfo[khome]
+2026-11-07T09:43:45.3766390Z     [[ -n "$terminfo[kend]" ]] && key[End]=$terminfo[kend]
+2026-11-07T09:43:45.3766690Z     [[ -n "$terminfo[kpp]" ]] && key[PageUp]=$terminfo[kpp]
+2026-11-07T09:43:45.3767000Z     [[ -n "$terminfo[knp]" ]] && key[PageDown]=$terminfo[knp]
+2026-11-07T09:43:45.3767270Z     [[ -n "$terminfo[kcuu1]" ]] && key[Up]=$terminfo[kcuu1]
+2026-11-07T09:43:45.3767610Z     [[ -n "$terminfo[kcub1]" ]] && key[Left]=$terminfo[kcub1]
+2026-11-07T09:43:45.3767920Z     [[ -n "$terminfo[kcud1]" ]] && key[Down]=$terminfo[kcud1]
+2026-11-07T09:43:45.3768190Z     [[ -n "$terminfo[kcuf1]" ]] && key[Right]=$terminfo[kcuf1]
+2026-11-07T09:43:45.3768440Z fi
+2026-11-07T09:43:45.3768510Z 
+2026-11-07T09:43:45.3768560Z # Default key bindings
+2026-11-07T09:43:45.3768760Z [[ -n ${key[Delete]} ]] && bindkey "${key[Delete]}" delete-char
+2026-11-07T09:43:45.3769090Z [[ -n ${key[Home]} ]] && bindkey "${key[Home]}" beginning-of-line
+2026-11-07T09:43:45.3769400Z [[ -n ${key[End]} ]] && bindkey "${key[End]}" end-of-line
+2026-11-07T09:43:45.3769660Z [[ -n ${key[Up]} ]] && bindkey "${key[Up]}" up-line-or-search
+2026-11-07T09:43:45.3770070Z [[ -n ${key[Down]} ]] && bindkey "${key[Down]}" down-line-or-search
+2026-11-07T09:43:45.3770300Z 
+2026-11-07T09:43:45.3770350Z # Default prompt
+2026-11-07T09:43:45.3770490Z PS1="%n@%m %1~ %# "
+2026-11-07T09:43:45.3770890Z 
+2026-11-07T09:43:45.3771230Z # Useful support for interacting with Terminal.app or other terminal programs
+2026-11-07T09:43:45.3771650Z [ -r "/etc/zshrc_$TERM_PROGRAM" ] && . "/etc/zshrc_$TERM_PROGRAM"
+2026-11-07T09:43:45.3949970Z 
+2026-11-07T09:43:45.3950340Z # Nix
+2026-11-07T09:43:45.3950860Z if [ -e '/nix/var/nix/profiles/default/etc/profile.d/nix-daemon.sh' ]; then
+2026-11-07T09:43:45.3951300Z   . '/nix/var/nix/profiles/default/etc/profile.d/nix-daemon.sh'
+2026-11-07T09:43:45.3951630Z fi
+2026-11-07T09:43:45.3951750Z # End Nix
+2026-11-07T09:43:45.3951830Z 
+2026-11-07T09:43:45.3975240Z 
+2026-11-07T09:43:45.3976020Z [32m~~> Setting up shell profiles for Fish with conf.d/nix.fish inside /etc/fish /usr/local/etc/fish /opt/homebrew/etc/fish /opt/local/etc/fish
+2026-11-07T09:43:45.4246370Z [0m
+2026-11-07T09:43:45.4246610Z [32m~~> Setting up the default profile
+2026-11-07T09:43:45.5019870Z [0minstalling 'nix-2.35.2'
+2026-11-07T09:43:45.5201370Z building '/nix/store/51lhlqx1rkrfnjihip1vli2rr2f3lpcz-user-environment.drv'...
+2026-11-07T09:43:45.6039840Z installing 'nix-manual-2.35.2-man'
+2026-11-07T09:43:45.6163920Z building '/nix/store/3wfmyfai9vggqs03z01g848kqkfh3nkp-user-environment.drv'...
+2026-11-07T09:43:45.6978080Z installing 'nss-cacert-3.123'
+2026-11-07T09:43:45.7096940Z building '/nix/store/c8s3b1bajazxzq110zpmdydfn5p57smf-user-environment.drv'...
+2026-11-07T09:43:45.7474180Z [0m
+2026-11-07T09:43:45.7474450Z [32m~~> Setting up the nix-daemon LaunchDaemon
+2026-11-07T09:43:55.8018260Z [0m[32mAlright! We're done!
+2026-11-07T09:43:55.8076700Z [0mTry it! Open a new terminal, and type:
+2026-11-07T09:43:55.8078400Z 
+2026-11-07T09:43:55.8079140Z   $ nix-shell -p nix-info --run "nix-info -m"
+2026-11-07T09:43:55.8080800Z 
+2026-11-07T09:43:55.8086620Z Thank you for using this installer. If you have any feedback or need
+2026-11-07T09:43:55.8094200Z help, don't hesitate:
+2026-11-07T09:43:55.8097280Z 
+2026-11-07T09:43:55.8097710Z You can open an issue at
+2026-11-07T09:43:55.8099670Z https://github.com/NixOS/nix/issues/new?labels=installer&template=installer.md
+2026-11-07T09:43:55.8100290Z 
+2026-11-07T09:43:55.8100760Z Or get in touch with the community: https://nixos.org/community
+2026-11-07T09:43:55.8134400Z 
+2026-11-07T09:43:55.8135480Z [34m---- Reminders -----------------------------------------------------------------
+2026-11-07T09:43:55.8136420Z [0m[34m[ 1 ][0m
+2026-11-07T09:43:55.8137060Z Nix won't work in active shell sessions until you restart them.
+2026-11-07T09:43:55.8137680Z 
+2026-11-07T09:43:55.9256620Z ##[endgroup]
+2026-11-07T09:43:55.9309870Z ##[end-action id=__cachix_install-nix-action.__run;outcome=success;conclusion=success;duration_ms=27126]
+2026-11-07T09:43:55.9358670Z ##[group]Run python3 tests/sandbox.py
+2026-11-07T09:43:55.9358920Z [36;1mpython3 tests/sandbox.py[0m
+2026-11-07T09:43:55.9394930Z shell: /bin/bash -e {0}
+2026-11-07T09:43:55.9395110Z env:
+2026-11-07T09:43:55.9395340Z   NIX_PROFILES: /nix/var/nix/profiles/default /Users/runner/.nix-profile
+2026-11-07T09:43:55.9395650Z   NIX_SSL_CERT_FILE: /etc/ssl/cert.pem
+2026-11-07T09:43:55.9395850Z ##[endgroup]
+2026-11-07T09:43:56.1322190Z {"sandbox": true}
+2026-11-07T09:43:56.1386940Z ##[group]Run python3 tests/composition-native.py
+2026-11-07T09:43:56.1387230Z [36;1mpython3 tests/composition-native.py[0m
+2026-11-07T09:43:56.1415580Z shell: /bin/bash -e {0}
+2026-11-07T09:43:56.1415740Z env:
+2026-11-07T09:43:56.1415980Z   NIX_PROFILES: /nix/var/nix/profiles/default /Users/runner/.nix-profile
+2026-11-07T09:43:56.1416270Z   NIX_SSL_CERT_FILE: /etc/ssl/cert.pem
+2026-11-07T09:43:56.1416470Z ##[endgroup]
+2026-11-07T09:43:56.7058350Z unpacking 'github:nix-caisson/caisson/ec291bc9637a95606f7fa9df942d5e803705d8f5?narHash=sha256-FAixpwyAWmhrzmh0fMGt7y0KIcNLqBIGICfMvbExRLo%3D' into the Git cache...
+2026-11-07T09:43:58.5125450Z unpacking 'github:nix-caisson/caisson-core/6868bca2682e96d56714bc9c9adcf0048fbe132f?narHash=sha256-OzlG2Nhl/kU2UUPq%2BARH/GKUHmOqAxQu5Ug/%2BaT1ECc%3D' into the Git cache...
+2026-11-07T09:43:59.0378480Z unpacking 'github:hercules-ci/flake-parts/31729ca8cbdb4fa927b34e5f4353e6a83f39e993?narHash=sha256-glZLQlzIn1fXH6PazR2iUmTo7kzzyYSshrWhLS9TqCU%3D' into the Git cache...
+2026-11-07T09:43:59.8074950Z unpacking 'github:nix-community/nixpkgs.lib/b91d4f1bc958e0bdfd6cb3db4a280486006f5002?narHash=sha256-XtTdVeJX6X/gU%2BvGIUEJHirotv/lYP5%2BQ9irMH6HWPY%3D' into the Git cache...
+2026-11-07T09:44:00.4701130Z unpacking 'github:hercules-ci/flake-parts/024633cd702b10285db5cb19b40ad48d2399ba60?narHash=sha256-zTwuwezD0w3hpga6a6P8emidzAZFyWqlNeRBlpWOOl8%3D' into the Git cache...
+2026-11-07T09:44:00.9341570Z unpacking 'github:nix-community/nixpkgs.lib/7851ba61fd862b277cb6a9cef37394bc18bb94e4?narHash=sha256-ThkfL3D/FhCiZFc9%2B3BtxwuMmpuK%2B/bGtXCSo1%2ByVew%3D' into the Git cache...
+2026-11-07T09:44:01.5027360Z copying path '/nix/store/cm5m4hjjh37s6z82rwa0vhkbcga3m8bq-source' from 'https://cache.nixos.org'...
+2026-11-07T09:44:21.2525430Z unpacking 'github:nix-purifiers/purifier/03eae76bc6a2649aca1ef2039a8aba2808c48d34?narHash=sha256-yJ6D8vsWyAyyk25xArnOFwJ5JViQqOkjaJIy/7g9ufk%3D' into the Git cache...
+2026-11-07T09:44:21.8538410Z /var/folders/2s/vty41l455yv698g4xkgfv7z00000gn/T/pip-native-composition-v6ph584e/source
+2026-11-07T09:44:41.1566730Z these 2 derivations will be built:
+2026-11-07T09:44:41.1567830Z   /nix/store/l57c7s263baxxpx2zini2dcr77fh2x3h-python3-3.14.8-env.drv
+2026-11-07T09:44:41.1568640Z   /nix/store/5n9qp7r6x2s3xdv7309psdzlyhngvicx-pip-purifier-0.1.0.drv
+2026-11-07T09:44:41.1569190Z these 191 paths will be fetched (407.7 MiB download, 1.8 GiB unpacked):
+2026-11-07T09:44:41.1569940Z   /nix/store/ipmf8sagqkyr16l2l1l0k0d9np5xbi57-abseil-cpp-20260817.0
+2026-11-07T09:44:41.1570950Z   /nix/store/svkkgla6ini4hg035ka7wb8idm301r1i-apple-sdk-14.4
+2026-11-07T09:44:41.1571560Z   /nix/store/lrskvg0garp63ls1zg940dnxywg98jgg-apr-1.7.6
+2026-11-07T09:44:41.1572050Z   /nix/store/f3c3rkxq304v74vkgjmdh8iwpmqlpd8n-apr-util-1.6.5
+2026-11-07T09:44:41.1572590Z   /nix/store/i1pdjlwb27ki88zssg5q2h696v1r1m15-bash-5.3p20
+2026-11-07T09:44:41.1573540Z   /nix/store/rpwmk6s6bb6yd5sajlgh70qbi718gpff-bin
+2026-11-07T09:44:41.1574260Z   /nix/store/cry7qbrbdqdd1qak8a0dcw70dcm4cshj-brotli-1.2.0-lib
+2026-11-07T09:44:41.1574840Z   /nix/store/rl5bhx1cysir4jh69vmv1wiqhi1lnryv-builder.pl
+2026-11-07T09:44:41.1575300Z   /nix/store/rks97mrv4i0rk9l9knj027zhgmy4yb38-bzip2-1.0.8
+2026-11-07T09:44:41.1576030Z   /nix/store/kds0dhsl4gp9fy71n612pykqarqpygca-bzip2-1.0.8-bin
+2026-11-07T09:44:41.1577000Z   /nix/store/m9x2il13sywj54296ddwksmx72lbv950-cctools-1010.6
+2026-11-07T09:44:41.1577770Z   /nix/store/b2c9gg3dvy4nnr5d11bj2cby37k5j8m7-cctools-1010.6-libtool
+2026-11-07T09:44:41.1578480Z   /nix/store/c9risrjiq2jy4piadiy7l2nl92vgb1bm-cctools-binutils-darwin-1010.6
+2026-11-07T09:44:41.1580460Z   /nix/store/3j53paxbcd4k06zk75jzv018798wjrjm-cctools-binutils-darwin-wrapper-1010.6
+2026-11-07T09:44:41.1581220Z   /nix/store/hbj4a922mmhd5nlg34fsybyw439iz09p-clang-21.1.8
+2026-11-07T09:44:41.1581750Z   /nix/store/0va26r8nlb0h1bd6iyx9yrmi4py1947m-clang-21.1.8-lib
+2026-11-07T09:44:41.1582210Z   /nix/store/8z7gv889g2cxbvmwcibdzvmikllc51qv-clang-wrapper-21.1.8
+2026-11-07T09:44:41.1586010Z   /nix/store/wbqczzx4vd907aiclk4f5jf71dhv4y8d-compiler-rt-libc-21.1.8
+2026-11-07T09:44:41.1586590Z   /nix/store/4bi4z2fpwbp8yhx2sqghmf8iskrsh9fq-compiler-rt-libc-21.1.8-dev
+2026-11-07T09:44:41.1587010Z   /nix/store/913158w9ykwyzyhs2rgzr8rd45244qs6-coreutils-9.12
+2026-11-07T09:44:41.1587490Z   /nix/store/aaxz8hjksxp76f15j9biw2r1179fzvy7-cups-headers-2.4.19
+2026-11-07T09:44:41.1587870Z   /nix/store/dkv7hd5fx8rnhyg59hy7yw8pah3swglp-curl-8.22.0
+2026-11-07T09:44:41.1588330Z   /nix/store/qkj6mwhvyn5kd1q2lyxim7gfndp3cqyr-cyrus-sasl-2.1.28
+2026-11-07T09:44:41.1588710Z   /nix/store/7kkwmvdcfah2av1qxbzkkrbxr48vlqk7-db-5.3.28
+2026-11-07T09:44:41.1589090Z   /nix/store/8ilxm71av69s66lk63mxzmay7h62x5p3-die-hook
+2026-11-07T09:44:41.1589440Z   /nix/store/gy0qyg8p2vbzyq5zb2p601i2n0m5xnk6-diffutils-3.12
+2026-11-07T09:44:41.1589910Z   /nix/store/gcikcxrsjw61fpd8jlvvzniaxq2b1b6s-ed-1.22.6
+2026-11-07T09:44:41.1590380Z   /nix/store/iplkski62k0y611i4m5h3v0dk2d87db1-expand-response-params
+2026-11-07T09:44:41.1595470Z   /nix/store/879dmrdndpnidx269mhdyz5nlkwwx5nw-expat-2.9.0
+2026-11-07T09:44:41.1595890Z   /nix/store/my66hfzlnfn7w0l99jydlmfxxddjd6kx-file-5.48
+2026-11-07T09:44:41.1596300Z   /nix/store/14nzy6b98s1xi2q4w6anj9civfdp1jcq-findutils-4.11.0
+2026-11-07T09:44:41.1597060Z   /nix/store/nksa7zv2dxx8vdxqci27iiwqnzxl72ys-gawk-5.4.1
+2026-11-07T09:44:41.1597510Z   /nix/store/n1n1ddq35jgikmxr4d0yxz74gb1nnkcg-gdbm-1.26-lib
+2026-11-07T09:44:41.1598020Z   /nix/store/36c168mc93w4mlmqknam03ffyi6qg0w6-gettext-1.0
+2026-11-07T09:44:41.1598370Z   /nix/store/3yd3064192bxb2kbf87fr4lam7ncazcw-git-2.56.0
+2026-11-07T09:44:41.1598780Z   /nix/store/159hwqisk9nsymhk2w3df9z8dqk9j81c-git-2.56.0-doc
+2026-11-07T09:44:41.1599240Z   /nix/store/5ax2pwqqw46gi7izsx195rk20fw6g04n-gmp-with-cxx-6.3.0
+2026-11-07T09:44:41.1599730Z   /nix/store/3xmkpz6hvyjcgd81llmlng9dv0m4b8pf-gnu-config-2024-01-01
+2026-11-07T09:44:41.1600220Z   /nix/store/7ihxb15yxm8345fdazx323iljjsi1i5i-gnugrep-3.12
+2026-11-07T09:44:41.1600590Z   /nix/store/306s97mvw5slpgg7hnb26xy37dhy4xk0-gnumake-4.4.1
+2026-11-07T09:44:41.1601040Z   /nix/store/8fyr2rna4vqibkqsbzyfd4z6fna5c09p-gnused-4.10
+2026-11-07T09:44:41.1601440Z   /nix/store/k5zhhnxn3pa7d8fgs7glys6hwl96q5cm-gnutar-1.35
+2026-11-07T09:44:41.1601890Z   /nix/store/rdly68s8y8alild9v058nyyalq3kf45z-gtest-1.18.0
+2026-11-07T09:44:41.1602240Z   /nix/store/x4nl6d72j5jdncz8vip5h5g8dxgcdfhy-gzip-1.15
+2026-11-07T09:44:41.1602650Z   /nix/store/ylnp8zd34xqwxjvk4kqhgv71x7ikc13c-icu4c-78.3
+2026-11-07T09:44:41.1603080Z   /nix/store/i2bp8q5ix7s0nj1qpj3f5whkp5s9ysr5-jemalloc-5.4.0
+2026-11-07T09:44:41.1603550Z   /nix/store/d9plqh0j9sr8dzzbvz2g1ih4vdq8xr3r-krb5-1.22.2-lib
+2026-11-07T09:44:41.1603960Z   /nix/store/myr0bvpz8blxr9rn55cmcb7a05wwk7pz-ld64-957.1
+2026-11-07T09:44:41.1604330Z   /nix/store/iq8g1j0q7pp4livckzg3pycq4k9nwr3v-ld64-957.1-lib
+2026-11-07T09:44:41.1604740Z   /nix/store/x4163vs8djgppcmghh5zkr3srmfzagff-libSystem-B
+2026-11-07T09:44:41.1605210Z   /nix/store/x1x1gm4vkysqvi93wndbzskipgqy0nc0-libcxx-21.1.6+apple-sdk-26.5
+2026-11-07T09:44:41.1605740Z   /nix/store/ny6fr09ndka7swhqrgnkri2n36vr7nsq-libffi-40
+2026-11-07T09:44:41.1606100Z   /nix/store/viw0q4bs6c2h1fqsd66p2j2fdj25xzbz-libiconv-1.19
+2026-11-07T09:44:41.1606540Z   /nix/store/jaixg82zxmqjbn2s6grpd31jq0yygzc1-libiconv-115.100.1
+2026-11-07T09:44:41.1607040Z   /nix/store/2qdvsdwv916cnkzilrdx479d13ipfccd-libiconv-115.100.1-dev
+2026-11-07T09:44:41.1607500Z   /nix/store/qp0jgrbbzia0g5h2n1k50bcad7h3rh9m-libidn2-2.3.8
+2026-11-07T09:44:41.1607960Z   /nix/store/dv3gqilrzcdl2w97kmsn9pkq9ds2k2dn-libpsl-0.21.5
+2026-11-07T09:44:41.1608390Z   /nix/store/kis5x3k1r9nx8bz6xf6yk7gmnmk72gf7-libresolv-96
+2026-11-07T09:44:41.1608820Z   /nix/store/hinisg78q3l0jscpn7mpm5zbn17fnxqg-libresolv-96-dev
+2026-11-07T09:44:41.1609210Z   /nix/store/rs13lm1lidm0z6644f0hm3n6ils9wmrh-libsbuf-14.1.0
+2026-11-07T09:44:41.1609700Z   /nix/store/r7k5j80fmj2s86vifq147qwxczfs057h-libsbuf-14.1.0-dev
+2026-11-07T09:44:41.1610260Z   /nix/store/1wfb87apx667gglwy21zc90jdm587a99-libsodium-1.0.22-unstable-2026-09-28
+2026-11-07T09:44:41.1610830Z   /nix/store/8fz03pzq1xvk0pl7li1w909gbpcmwifm-libssh2-1.11.1
+2026-11-07T09:44:41.1611490Z   /nix/store/3gpzcl7ayl2x2cx3669rb63lirrk5bvs-libtool-2.6.2-lib
+2026-11-07T09:44:41.1611940Z   /nix/store/lfwvqpn0k7rc07977ab98n3xdr3k5vyg-libunistring-1.4.2
+2026-11-07T09:44:41.1612440Z   /nix/store/a3m4hbgv43cykrsjvha06kfsj7nhc0g2-libutil-73
+2026-11-07T09:44:41.1612860Z   /nix/store/v5jk7n62s6bkp48f9bcain55cgzyszli-libxcrypt-4.5.2
+2026-11-07T09:44:41.1613280Z   /nix/store/5pdi5bq35qs6av37wsaf6qkkbghwhhvz-libxml2-2.15.4
+2026-11-07T09:44:41.1613740Z   /nix/store/5sjz5kmb0xyzgbh8qfgkby4093br1by7-libyaml-0.2.5
+2026-11-07T09:44:41.1614180Z   /nix/store/dkn2518z5jkdgp2n2i8zm9i9ll5xl3py-llvm-21.1.8
+2026-11-07T09:44:41.1614640Z   /nix/store/780w4ih6zr6kj37mildxrc9fn6nxmc4c-llvm-21.1.8-lib
+2026-11-07T09:44:41.1615050Z   /nix/store/gzpbhwqzd2jrbgdc5c7sxgqambgz0wb0-locale-118
+2026-11-07T09:44:41.1615470Z   /nix/store/543rl4jdm7vp6fck8fd4d4s0wwi5fxqy-lz4-1.10.0-lib
+2026-11-07T09:44:41.1616040Z   /nix/store/jjv45y3bl1w4k929ad7v5z75h16gjpzc-mailcap-2.1.54
+2026-11-07T09:44:41.1616530Z   /nix/store/2bmi4i336l2qkjkg2453zp346l5r26bi-make-binary-wrapper-hook
+2026-11-07T09:44:41.1617070Z   /nix/store/31s5k66q35jahgjgd86azshrw03h84xy-make-shell-wrapper-hook
+2026-11-07T09:44:41.1617490Z   /nix/store/a3hgmn50xpdq3aw755gc6n74j2mfgww7-mercurial-7.2.2
+2026-11-07T09:44:41.1617970Z   /nix/store/yrm12ss59zdfz4qnm37aiksk1pc131vb-mitm-cache-0.1.2
+2026-11-07T09:44:41.1618400Z   /nix/store/cgdg5hyf2dwmk433jjg7106l49d1d0rx-mpdecimal-4.0.1
+2026-11-07T09:44:41.1619050Z   /nix/store/zdslvbbhrpilsyqvcwxywqrwla35h68p-ncurses-6.6
+2026-11-07T09:44:41.1619430Z   /nix/store/qjisxvjgpnpk6f2ypf6irfyzi16ay7yf-ncurses-6.6-dev
+2026-11-07T09:44:41.1619880Z   /nix/store/rfv1rw727jcmf340dydlkzmz3qzky78p-ncurses-6.6-man
+2026-11-07T09:44:41.1620280Z   /nix/store/g0278qlsdqkcgciqylpq95g6v6bjxbhb-nghttp2-1.70.0-lib
+2026-11-07T09:44:41.1620790Z   /nix/store/57s5d87yy7ll1fpkk2xgrjhkpcp8dwz6-nghttp3-1.18.0
+2026-11-07T09:44:41.1621260Z   /nix/store/jnydv03kl75vfnyzb7lyb63kl2kqmwwh-ngtcp2-1.23.0
+2026-11-07T09:44:41.1621730Z   /nix/store/49s6yz6m6c4b8nnx9d129jpsk8q6zpkl-nss-cacert-3.131.1
+2026-11-07T09:44:41.1622210Z   /nix/store/d86fn7v0sq8d1b2rwwq39m7s2qgfc58x-openldap-2.6.13
+2026-11-07T09:44:41.1622750Z   /nix/store/pnfqc3xvk68sfni9n3j511h1syb26rmy-openssl-3.5.9
+2026-11-07T09:44:41.1623130Z   /nix/store/68bgiaz10gqpfnvk1vmrj5zsl2dxlv8k-openssl-3.5.9-bin
+2026-11-07T09:44:41.1657340Z   /nix/store/0568rp7whq8ysn4k2a7jranag23grgqn-openssl-3.5.9-dev
+2026-11-07T09:44:41.1657760Z   /nix/store/y8g50am7v50c9hlz50cl489vig0kl7aj-patch-2.8
+2026-11-07T09:44:41.1658180Z   /nix/store/9xb95psp964k4fwf5sabazj3k9zbi8jq-pcre2-10.49
+2026-11-07T09:44:41.1658600Z   /nix/store/ggsm99mnisrm6qbrmsjq7mddzslzqki3-perl-5.42.3
+2026-11-07T09:44:41.1659120Z   /nix/store/f1jdklss1yx9c5hgclym6xh20y2rwkzb-perl5.42.3-Authen-SASL-2.2100
+2026-11-07T09:44:41.1659700Z   /nix/store/vi1mhvydr4li2lqyb17w98cbga1b4rj8-perl5.42.3-CGI-4.59
+2026-11-07T09:44:41.1660340Z   /nix/store/r1nrwaf624y3l31i4zh5p0ixv4fancs0-perl5.42.3-CGI-Fast-2.16
+2026-11-07T09:44:41.1660840Z   /nix/store/n39qw6xpni612kc7p2dhp7ja9di07j6a-perl5.42.3-Clone-0.46
+2026-11-07T09:44:41.1661380Z   /nix/store/xpvsmb2b152p77965p5zyin3raxmgl4q-perl5.42.3-Compress-Raw-Bzip2-2.218
+2026-11-07T09:44:41.1661850Z   /nix/store/7i4zldb1jwk816h64wvj1z5zaipm64h0-perl5.42.3-Compress-Raw-Zlib-2.222
+2026-11-07T09:44:41.1662330Z   /nix/store/3y1a1wg58jqc8amfp8ailvpq4iq6az4j-perl5.42.3-Crypt-URandom-0.55
+2026-11-07T09:44:41.1662850Z   /nix/store/yhi1iyrh3z0pv2lq304pg3kji0543vz1-perl5.42.3-Digest-HMAC-1.05
+2026-11-07T09:44:41.1663340Z   /nix/store/2bzmvqhr9b6d83p14dc31q3avzg00i6n-perl5.42.3-Encode-Locale-1.05
+2026-11-07T09:44:41.1663770Z   /nix/store/qgi3wl6w30ggx25f4l0b7j0k45prf8gc-perl5.42.3-FCGI-0.82
+2026-11-07T09:44:41.1664320Z   /nix/store/6q0ch426vjf3pfhy67y876p24yf100kz-perl5.42.3-FCGI-ProcManager-0.28
+2026-11-07T09:44:41.1664820Z   /nix/store/mj3a963m5pqg7vm9ixpmzrwsz3bs54px-perl5.42.3-File-Listing-6.16
+2026-11-07T09:44:41.1665320Z   /nix/store/j0b5dgw3p0im6lv89rxwc129kw2k2a4p-perl5.42.3-HTML-Parser-3.85
+2026-11-07T09:44:41.1666230Z   /nix/store/bap5ywigmfyslg0gvfnszdfdn036d80h-perl5.42.3-HTML-TagCloud-0.38
+2026-11-07T09:44:41.1667630Z   /nix/store/xb14r7w26s49gmkzm9ah4b3fjrb0i256-perl5.42.3-HTML-Tagset-3.20
+2026-11-07T09:44:41.1670280Z   /nix/store/xllk7bgkils29q8valqc0asi4gxp0n8w-perl5.42.3-HTTP-CookieJar-0.014
+2026-11-07T09:44:41.1672110Z   /nix/store/j4hpngsxiik9dy41qcygkjmixx7cnw8g-perl5.42.3-HTTP-Cookies-6.10
+2026-11-07T09:44:41.1674030Z   /nix/store/9arli9y98gqqsvw75fz7cl3x119mayrd-perl5.42.3-HTTP-Date-6.08
+2026-11-07T09:44:41.1674610Z   /nix/store/lc7rzimivrhfcyy6swfqvvpvsia43ahb-perl5.42.3-HTTP-Message-7.02
+2026-11-07T09:44:41.1676870Z   /nix/store/p88z50qig2q3lyby8dbnwwv8x1mnh7sk-perl5.42.3-HTTP-Negotiate-6.01
+2026-11-07T09:44:41.1677800Z   /nix/store/9r5a3a7piwdf7nj8jp6gz7lf3ynmdysr-perl5.42.3-IO-Compress-2.221
+2026-11-07T09:44:41.1678490Z   /nix/store/c7h1f9h91kmzai0sb1jn3379am6l087a-perl5.42.3-IO-HTML-1.004
+2026-11-07T09:44:41.1679490Z   /nix/store/znv86xpn7cav9xpmngpaanwwk8c3izqn-perl5.42.3-IO-Socket-SSL-2.083
+2026-11-07T09:44:41.1680070Z   /nix/store/4xxvvjrpldd6mrjivfnnb9rbiivl8sa3-perl5.42.3-LWP-MediaTypes-6.04
+2026-11-07T09:44:41.1680640Z   /nix/store/h7hlbsx19gxbqm9p2rravcbcfvsipz57-perl5.42.3-MIME-Base32-1.303
+2026-11-07T09:44:41.1681150Z   /nix/store/qgllhyyi0w5qn3qxidqwirv3xb28z0r8-perl5.42.3-Mozilla-CA-20230821
+2026-11-07T09:44:41.1681720Z   /nix/store/7ddp5r1r3jn0ldsr57vk0g6rp6nmnr0s-perl5.42.3-Net-HTTP-6.23
+2026-11-07T09:44:41.1682240Z   /nix/store/czkd7ya06x30a4wi913kxii0ly69hb0q-perl5.42.3-Net-SMTP-SSL-1.04
+2026-11-07T09:44:41.1683180Z   /nix/store/dhkxf3rpvikfxvmbn6627hb6s1php4p2-perl5.42.3-Net-SSLeay-1.92
+2026-11-07T09:44:41.1683640Z   /nix/store/1w7sbmyabigzq7f9dpm7aha10lj41sbv-perl5.42.3-TermReadKey-2.38
+2026-11-07T09:44:41.1684150Z   /nix/store/n6zm9wmaqipc7frfk46i5k30ba3728dq-perl5.42.3-TimeDate-2.33
+2026-11-07T09:44:41.1684600Z   /nix/store/biw52l5c1in4pimryj18x7h8m5b5ppl9-perl5.42.3-Try-Tiny-0.31
+2026-11-07T09:44:41.1685820Z   /nix/store/cp32jbzkl7bbsh4gcaf2196cp4nn8bk1-perl5.42.3-URI-5.36
+2026-11-07T09:44:41.1688500Z   /nix/store/rlmw3cjhpazan3qfw9pka8a7v5ps4j5k-perl5.42.3-WWW-RobotRules-6.02
+2026-11-07T09:44:41.1689000Z   /nix/store/63wwpxy5hnb60wgpbgfpa6jq3138cwr1-perl5.42.3-libnet-3.15
+2026-11-07T09:44:41.1689610Z   /nix/store/73qgyvqd9yn1xn42vs8qgkvaw5fdsrrr-perl5.42.3-libwww-perl-6.83
+2026-11-07T09:44:41.1690170Z   /nix/store/4r0vc481js1rxvb3f9015ii7p9xbij9r-publicsuffix-list-0-unstable-2026-09-02
+2026-11-07T09:44:41.1692400Z   /nix/store/hw9aya73q22jg383nkcc3xmi7cl5hbv5-pybind11-setup-hook
+2026-11-07T09:44:41.1692740Z   /nix/store/0jb1qn7qnpbz8774mq5k2c1p84gp0x76-python3-3.14.8
+2026-11-07T09:44:41.1693180Z   /nix/store/k67a3szsnj6rm0cyn7nd83df2pvfkwlb-python3.14-breezy-3.3.21
+2026-11-07T09:44:41.1694410Z   /nix/store/94bdzb3p1hsx32sywyrskhvair8vicc8-python3.14-build-1.5.1
+2026-11-07T09:44:41.1694970Z   /nix/store/xvdan1dabfkidsmxf9sj083vh1qyxz3k-python3.14-certifi-2026.07.22
+2026-11-07T09:44:41.1695830Z   /nix/store/a8hxdl3qnyrzs3ps5sfbsa9csp7j15pa-python3.14-cffi-2.1.1
+2026-11-07T09:44:41.1696320Z   /nix/store/n1j3a225a49j5fb9ad44kqz09zil0v5f-python3.14-charset-normalizer-3.5.1
+2026-11-07T09:44:41.1697710Z   /nix/store/ljsgjnpdm2mk9cwlvpwslkv69h04w7np-python3.14-configobj-5.0.9
+2026-11-07T09:44:41.1698730Z   /nix/store/09d92rv78r71bsbi5igmilnzl3szff1b-python3.14-cryptography-50.0.2
+2026-11-07T09:44:41.1699230Z   /nix/store/87wdgvk1mwkbj29rzjljck6avx0vc4l7-python3.14-deprecated-1.3.1
+2026-11-07T09:44:41.1700150Z   /nix/store/6a82w5pdvjrry5k95yqbly1b1najfmvk-python3.14-distro-1.9.0
+2026-11-07T09:44:41.1700960Z   /nix/store/qdf76y4dp5y4d91y915jqki2ly69zg74-python3.14-dulwich-1.2.17
+2026-11-07T09:44:41.1702280Z   /nix/store/ss8nvprcrly3wwgk77mlcmrq362f4sk1-python3.14-ephemeral-port-reserve-1.1.4
+2026-11-07T09:44:41.1704140Z   /nix/store/8184a1jlhp7p3vw7bvwkg29cy82axzlw-python3.14-fastbencode-0.3.11
+2026-11-07T09:44:41.1704740Z   /nix/store/r6aj5bf320l289c8ggk19nbs89j51p24-python3.14-fastimport-0.9.16
+2026-11-07T09:44:41.1705280Z   /nix/store/m3h5dgha96gz2vag21187lba56k7l77d-python3.14-google-re2-1.1.20251105
+2026-11-07T09:44:41.1708670Z   /nix/store/9j06v3l9yfx7ci9svb6b81b4fv63zgwr-python3.14-httplib2-0.32.0
+2026-11-07T09:44:41.1709240Z   /nix/store/rk7mjbzaq3gan1padix3kyrnpwlx151a-python3.14-idna-3.18
+2026-11-07T09:44:41.1710420Z   /nix/store/bvjkj8g5b38bq6aa0ycsa4hcn3dgah94-python3.14-launchpadlib-2.1.0
+2026-11-07T09:44:41.1711510Z   /nix/store/z8b86kz7hsq0y95s22s7qz882cr717nf-python3.14-lazr-restfulclient-0.14.6
+2026-11-07T09:44:41.1712000Z   /nix/store/3n669v8si9k0fakm59hflx0p57s2r08d-python3.14-lazr-uri-1.0.8
+2026-11-07T09:44:41.1712380Z   /nix/store/4xrm5287571cda5wcl79mhh6zk0a5v0z-python3.14-merge3-0.0.16
+2026-11-07T09:44:41.1712770Z   /nix/store/jf6v492hlna5wikilvqpp9nwjafhjfpa-python3.14-oauthlib-3.3.1
+2026-11-07T09:44:41.1713800Z   /nix/store/kr04yz5k9r3sm0drwgccjy4a5fxg206g-python3.14-packaging-26.3
+2026-11-07T09:44:41.1715120Z   /nix/store/qm2sawixg01r3f5r77qiij0gsy5c762h-python3.14-patiencediff-0.2.19
+2026-11-07T09:44:41.1716060Z   /nix/store/9hqf2s6mjy3bx1vcyhmjgwmyd0498s00-python3.14-pip-26.1.2
+2026-11-07T09:44:41.1716630Z   /nix/store/86rfpp32p7gqmgp1hxxanavpppc8kvx5-python3.14-pip-26.1.2-man
+2026-11-07T09:44:41.1717210Z   /nix/store/l6frjr4iwklc78qr7i8xzrb1xk74kx8w-python3.14-pybind11-3.1.0
+2026-11-07T09:44:41.1717740Z   /nix/store/y5zr5hlnd9gkxwbn4rm3m5nf90y6alwc-python3.14-pycparser-3.00
+2026-11-07T09:44:41.1718180Z   /nix/store/r8mlnyf0ndj9gi62622108z5q988zksi-python3.14-pygithub-2.8.1
+2026-11-07T09:44:41.1718620Z   /nix/store/p5rbj5hfk4qcq176irl06iq77irq26rh-python3.14-pyjwt-2.15.1
+2026-11-07T09:44:41.1719000Z   /nix/store/8zhlh4bx60vywdpsq0n0ajm6r07ygp33-python3.14-pynacl-1.6.2
+2026-11-07T09:44:41.1719510Z   /nix/store/2bjrsh7grj9b44lp95cyl7fm8lnfqyzg-python3.14-pyparsing-3.3.2
+2026-11-07T09:44:41.1719930Z   /nix/store/y6n285k9d4mg0ajv84p1vkp5zy0acikg-python3.14-pyproject-hooks-1.2.0
+2026-11-07T09:44:41.1721550Z   /nix/store/q3lqr8mzwr4v0yqp4gh8183dwbp00x9q-python3.14-pyyaml-6.0.3
+2026-11-07T09:44:41.1721960Z   /nix/store/2vhzxac7xs2q3dk2756in95019v7is49-python3.14-requests-2.34.2
+2026-11-07T09:44:41.1722530Z   /nix/store/p11h2n9yz1nz8248g3zd1hyx9xvzi5r0-python3.14-setuptools-83.0.0
+2026-11-07T09:44:41.1725080Z   /nix/store/1s7czavpj79chy6chmk56n50gyny4k21-python3.14-six-1.17.0
+2026-11-07T09:44:41.1726980Z   /nix/store/8i0q8dffjp3gv7llg74rgi9s9fqgj0mc-python3.14-typing-extensions-4.16.0
+2026-11-07T09:44:41.1727610Z   /nix/store/gs7nsjzrn6avs5vh0rfgrcpjz5vw4pqf-python3.14-tzlocal-5.4.4
+2026-11-07T09:44:41.1728930Z   /nix/store/063ivyyjqbx5hk1cqpm1yl29ivxw2zzd-python3.14-urllib3-2.7.0
+2026-11-07T09:44:41.1730620Z   /nix/store/ml9qxqkskl6z66r5y3n0fw3yrd5y27im-python3.14-wadllib-2.1.0
+2026-11-07T09:44:41.1731080Z   /nix/store/zr4hy9dcpqnbizxhrc63bvdq9kyj8cjz-python3.14-wrapt-2.2.2
+2026-11-07T09:44:41.1731440Z   /nix/store/lxr6wlkpaa3xz0mp6ms70njcfsfzdrqz-re2-2025-11-05
+2026-11-07T09:44:41.1731770Z   /nix/store/31iamndp401q2cp73m6cvdl2cqn3fii8-readline-8.3p3
+2026-11-07T09:44:41.1733020Z   /nix/store/2g2x23fs2bycshpyinz4k4q4rkirn8ij-serf-1.3.10
+2026-11-07T09:44:41.1733390Z   /nix/store/g6ayq0j6ywpv4dfhrq2c6vkfm32h6b57-sqlite-3.53.3
+2026-11-07T09:44:41.1734310Z   /nix/store/9lhvi9bx4243wmpgdankw1q5rfv0ja8i-stdenv-darwin-no-cc
+2026-11-07T09:44:41.1734710Z   /nix/store/r766d9bzd26hh7gzfsmhxqg2ii31qs07-subversion-1.14.5
+2026-11-07T09:44:41.1735040Z   /nix/store/v7pl3md4rm2iprj2smf9892wmgj5sh7m-tzdata-2026e
+2026-11-07T09:44:41.1735840Z   /nix/store/zjnxj0kan4y2gwb3kqf8ynd4klzminx6-update-autotools-gnu-config-scripts-hook
+2026-11-07T09:44:41.1736810Z   /nix/store/cjq0isq1szmqjv65h6wlpdxzxv8nzzha-utf8proc-2.12.0
+2026-11-07T09:44:41.1738070Z   /nix/store/69bkdjfr2msvl8nbarggcs7mi96hjlb1-uv-0.13.5
+2026-11-07T09:44:41.1738400Z   /nix/store/1y3hanpz5hwijkd86aidrikjlsp6lhc9-xar-minimal-503-lib
+2026-11-07T09:44:41.1739380Z   /nix/store/vzkhr8v7x35z2p6kwr0rbv8267r8gjcz-xcbuild-0.1.1-unstable-2019-11-20
+2026-11-07T09:44:41.1739860Z   /nix/store/3j7f0im9vb3mfmi4y0s7y6b6alj3c025-xcbuild-0.1.1-unstable-2019-11-20-xcrun
+2026-11-07T09:44:41.1740350Z   /nix/store/5047bgcpicg9kkjliq2q6lmm35davs2c-xz-5.8.4
+2026-11-07T09:44:41.1741560Z   /nix/store/zcj9x8w3pvajyjj48gm16fq8zzij0vlv-xz-5.8.4-bin
+2026-11-07T09:44:41.1742010Z   /nix/store/arspcb0pa15f9f2b079k1kpqik297fxz-zlib-1.3.2
+2026-11-07T09:44:41.1742320Z   /nix/store/w1b4n5n5ib95zkn9q54brw2nyc8vijd7-zlib-ng-2.3.3
+2026-11-07T09:44:41.1742750Z   /nix/store/qa3j5zvp29rdwfs7ykb4cnx6wzacn1lr-zstd-1.5.7
+2026-11-07T09:44:41.1744200Z copying path '/nix/store/i1pdjlwb27ki88zssg5q2h696v1r1m15-bash-5.3p20' from 'https://cache.nixos.org'...
+2026-11-07T09:44:41.1759430Z copying path '/nix/store/lrskvg0garp63ls1zg940dnxywg98jgg-apr-1.7.6' from 'https://cache.nixos.org'...
+2026-11-07T09:44:41.1770280Z copying path '/nix/store/rl5bhx1cysir4jh69vmv1wiqhi1lnryv-builder.pl' from 'https://cache.nixos.org'...
+2026-11-07T09:44:41.1774090Z copying path '/nix/store/rks97mrv4i0rk9l9knj027zhgmy4yb38-bzip2-1.0.8' from 'https://cache.nixos.org'...
+2026-11-07T09:44:41.1779300Z copying path '/nix/store/7kkwmvdcfah2av1qxbzkkrbxr48vlqk7-db-5.3.28' from 'https://cache.nixos.org'...
+2026-11-07T09:44:41.1783180Z copying path '/nix/store/8ilxm71av69s66lk63mxzmay7h62x5p3-die-hook' from 'https://cache.nixos.org'...
+2026-11-07T09:44:41.1797360Z copying path '/nix/store/nksa7zv2dxx8vdxqci27iiwqnzxl72ys-gawk-5.4.1' from 'https://cache.nixos.org'...
+2026-11-07T09:44:41.1802440Z copying path '/nix/store/n1n1ddq35jgikmxr4d0yxz74gb1nnkcg-gdbm-1.26-lib' from 'https://cache.nixos.org'...
+2026-11-07T09:44:41.1807090Z copying path '/nix/store/8fyr2rna4vqibkqsbzyfd4z6fna5c09p-gnused-4.10' from 'https://cache.nixos.org'...
+2026-11-07T09:44:41.1808590Z copying path '/nix/store/ny6fr09ndka7swhqrgnkri2n36vr7nsq-libffi-40' from 'https://cache.nixos.org'...
+2026-11-07T09:44:41.1816100Z copying path '/nix/store/306s97mvw5slpgg7hnb26xy37dhy4xk0-gnumake-4.4.1' from 'https://cache.nixos.org'...
+2026-11-07T09:44:41.1820360Z copying path '/nix/store/jaixg82zxmqjbn2s6grpd31jq0yygzc1-libiconv-115.100.1' from 'https://cache.nixos.org'...
+2026-11-07T09:44:41.1824330Z copying path '/nix/store/gzpbhwqzd2jrbgdc5c7sxgqambgz0wb0-locale-118' from 'https://cache.nixos.org'...
+2026-11-07T09:44:41.1829440Z copying path '/nix/store/rpwmk6s6bb6yd5sajlgh70qbi718gpff-bin' from 'https://cache.nixos.org'...
+2026-11-07T09:44:41.1830350Z copying path '/nix/store/879dmrdndpnidx269mhdyz5nlkwwx5nw-expat-2.9.0' from 'https://cache.nixos.org'...
+2026-11-07T09:44:41.1831390Z copying path '/nix/store/159hwqisk9nsymhk2w3df9z8dqk9j81c-git-2.56.0-doc' from 'https://cache.nixos.org'...
+2026-11-07T09:44:41.1974660Z copying path '/nix/store/a3m4hbgv43cykrsjvha06kfsj7nhc0g2-libutil-73' from 'https://cache.nixos.org'...
+2026-11-07T09:44:41.1988070Z copying path '/nix/store/86rfpp32p7gqmgp1hxxanavpppc8kvx5-python3.14-pip-26.1.2-man' from 'https://cache.nixos.org'...
+2026-11-07T09:44:41.2068450Z copying path '/nix/store/aaxz8hjksxp76f15j9biw2r1179fzvy7-cups-headers-2.4.19' from 'https://cache.nixos.org'...
+2026-11-07T09:44:41.2252770Z copying path '/nix/store/iplkski62k0y611i4m5h3v0dk2d87db1-expand-response-params' from 'https://cache.nixos.org'...
+2026-11-07T09:44:41.2255980Z copying path '/nix/store/v5jk7n62s6bkp48f9bcain55cgzyszli-libxcrypt-4.5.2' from 'https://cache.nixos.org'...
+2026-11-07T09:44:41.2256890Z copying path '/nix/store/wbqczzx4vd907aiclk4f5jf71dhv4y8d-compiler-rt-libc-21.1.8' from 'https://cache.nixos.org'...
+2026-11-07T09:44:41.2510450Z copying path '/nix/store/x1x1gm4vkysqvi93wndbzskipgqy0nc0-libcxx-21.1.6+apple-sdk-26.5' from 'https://cache.nixos.org'...
+2026-11-07T09:44:41.2610520Z copying path '/nix/store/5ax2pwqqw46gi7izsx195rk20fw6g04n-gmp-with-cxx-6.3.0' from 'https://cache.nixos.org'...
+2026-11-07T09:44:41.2717080Z copying path '/nix/store/x4163vs8djgppcmghh5zkr3srmfzagff-libSystem-B' from 'https://cache.nixos.org'...
+2026-11-07T09:44:41.2724200Z copying path '/nix/store/cry7qbrbdqdd1qak8a0dcw70dcm4cshj-brotli-1.2.0-lib' from 'https://cache.nixos.org'...
+2026-11-07T09:44:41.2725120Z copying path '/nix/store/kis5x3k1r9nx8bz6xf6yk7gmnmk72gf7-libresolv-96' from 'https://cache.nixos.org'...
+2026-11-07T09:44:41.2726120Z copying path '/nix/store/g0278qlsdqkcgciqylpq95g6v6bjxbhb-nghttp2-1.70.0-lib' from 'https://cache.nixos.org'...
+2026-11-07T09:44:41.2828010Z copying path '/nix/store/57s5d87yy7ll1fpkk2xgrjhkpcp8dwz6-nghttp3-1.18.0' from 'https://cache.nixos.org'...
+2026-11-07T09:44:41.2932140Z copying path '/nix/store/gcikcxrsjw61fpd8jlvvzniaxq2b1b6s-ed-1.22.6' from 'https://cache.nixos.org'...
+2026-11-07T09:44:41.3033550Z copying path '/nix/store/ylnp8zd34xqwxjvk4kqhgv71x7ikc13c-icu4c-78.3' from 'https://cache.nixos.org'...
+2026-11-07T09:44:41.3087960Z copying path '/nix/store/rdly68s8y8alild9v058nyyalq3kf45z-gtest-1.18.0' from 'https://cache.nixos.org'...
+2026-11-07T09:44:41.3089200Z copying path '/nix/store/n39qw6xpni612kc7p2dhp7ja9di07j6a-perl5.42.3-Clone-0.46' from 'https://cache.nixos.org'...
+2026-11-07T09:44:41.3089920Z copying path '/nix/store/n6zm9wmaqipc7frfk46i5k30ba3728dq-perl5.42.3-TimeDate-2.33' from 'https://cache.nixos.org'...
+2026-11-07T09:44:41.3090940Z copying path '/nix/store/xb14r7w26s49gmkzm9ah4b3fjrb0i256-perl5.42.3-HTML-Tagset-3.20' from 'https://cache.nixos.org'...
+2026-11-07T09:44:41.3091590Z copying path '/nix/store/hinisg78q3l0jscpn7mpm5zbn17fnxqg-libresolv-96-dev' from 'https://cache.nixos.org'...
+2026-11-07T09:44:41.3092260Z copying path '/nix/store/qgllhyyi0w5qn3qxidqwirv3xb28z0r8-perl5.42.3-Mozilla-CA-20230821' from 'https://cache.nixos.org'...
+2026-11-07T09:44:41.3195370Z copying path '/nix/store/4xxvvjrpldd6mrjivfnnb9rbiivl8sa3-perl5.42.3-LWP-MediaTypes-6.04' from 'https://cache.nixos.org'...
+2026-11-07T09:44:41.3295340Z copying path '/nix/store/3y1a1wg58jqc8amfp8ailvpq4iq6az4j-perl5.42.3-Crypt-URandom-0.55' from 'https://cache.nixos.org'...
+2026-11-07T09:44:41.3397010Z copying path '/nix/store/49s6yz6m6c4b8nnx9d129jpsk8q6zpkl-nss-cacert-3.131.1' from 'https://cache.nixos.org'...
+2026-11-07T09:44:41.3497490Z copying path '/nix/store/2bzmvqhr9b6d83p14dc31q3avzg00i6n-perl5.42.3-Encode-Locale-1.05' from 'https://cache.nixos.org'...
+2026-11-07T09:44:41.3599240Z copying path '/nix/store/h7hlbsx19gxbqm9p2rravcbcfvsipz57-perl5.42.3-MIME-Base32-1.303' from 'https://cache.nixos.org'...
+2026-11-07T09:44:41.3699190Z copying path '/nix/store/biw52l5c1in4pimryj18x7h8m5b5ppl9-perl5.42.3-Try-Tiny-0.31' from 'https://cache.nixos.org'...
+2026-11-07T09:44:41.3734760Z copying path '/nix/store/ipmf8sagqkyr16l2l1l0k0d9np5xbi57-abseil-cpp-20260817.0' from 'https://cache.nixos.org'...
+2026-11-07T09:44:41.3837630Z copying path '/nix/store/9arli9y98gqqsvw75fz7cl3x119mayrd-perl5.42.3-HTTP-Date-6.08' from 'https://cache.nixos.org'...
+2026-11-07T09:44:41.4039410Z copying path '/nix/store/c7h1f9h91kmzai0sb1jn3379am6l087a-perl5.42.3-IO-HTML-1.004' from 'https://cache.nixos.org'...
+2026-11-07T09:44:41.4141280Z copying path '/nix/store/4bi4z2fpwbp8yhx2sqghmf8iskrsh9fq-compiler-rt-libc-21.1.8-dev' from 'https://cache.nixos.org'...
+2026-11-07T09:44:41.4243090Z copying path '/nix/store/xpvsmb2b152p77965p5zyin3raxmgl4q-perl5.42.3-Compress-Raw-Bzip2-2.218' from 'https://cache.nixos.org'...
+2026-11-07T09:44:41.4344520Z copying path '/nix/store/rs13lm1lidm0z6644f0hm3n6ils9wmrh-libsbuf-14.1.0' from 'https://cache.nixos.org'...
+2026-11-07T09:44:41.4446140Z copying path '/nix/store/31s5k66q35jahgjgd86azshrw03h84xy-make-shell-wrapper-hook' from 'https://cache.nixos.org'...
+2026-11-07T09:44:41.4547640Z copying path '/nix/store/1wfb87apx667gglwy21zc90jdm587a99-libsodium-1.0.22-unstable-2026-09-28' from 'https://cache.nixos.org'...
+2026-11-07T09:44:41.4649460Z copying path '/nix/store/5sjz5kmb0xyzgbh8qfgkby4093br1by7-libyaml-0.2.5' from 'https://cache.nixos.org'...
+2026-11-07T09:44:41.4751570Z copying path '/nix/store/3xmkpz6hvyjcgd81llmlng9dv0m4b8pf-gnu-config-2024-01-01' from 'https://cache.nixos.org'...
+2026-11-07T09:44:41.4853330Z copying path '/nix/store/viw0q4bs6c2h1fqsd66p2j2fdj25xzbz-libiconv-1.19' from 'https://cache.nixos.org'...
+2026-11-07T09:44:41.4954890Z copying path '/nix/store/4r0vc481js1rxvb3f9015ii7p9xbij9r-publicsuffix-list-0-unstable-2026-09-02' from 'https://cache.nixos.org'...
+2026-11-07T09:44:41.5056320Z copying path '/nix/store/xllk7bgkils29q8valqc0asi4gxp0n8w-perl5.42.3-HTTP-CookieJar-0.014' from 'https://cache.nixos.org'...
+2026-11-07T09:44:41.5156810Z copying path '/nix/store/mj3a963m5pqg7vm9ixpmzrwsz3bs54px-perl5.42.3-File-Listing-6.16' from 'https://cache.nixos.org'...
+2026-11-07T09:44:41.5258550Z copying path '/nix/store/r7k5j80fmj2s86vifq147qwxczfs057h-libsbuf-14.1.0-dev' from 'https://cache.nixos.org'...
+2026-11-07T09:44:41.5358770Z copying path '/nix/store/rfv1rw727jcmf340dydlkzmz3qzky78p-ncurses-6.6-man' from 'https://cache.nixos.org'...
+2026-11-07T09:44:41.5461060Z copying path '/nix/store/3gpzcl7ayl2x2cx3669rb63lirrk5bvs-libtool-2.6.2-lib' from 'https://cache.nixos.org'...
+2026-11-07T09:44:41.5561760Z copying path '/nix/store/1w7sbmyabigzq7f9dpm7aha10lj41sbv-perl5.42.3-TermReadKey-2.38' from 'https://cache.nixos.org'...
+2026-11-07T09:44:41.5664580Z copying path '/nix/store/cp32jbzkl7bbsh4gcaf2196cp4nn8bk1-perl5.42.3-URI-5.36' from 'https://cache.nixos.org'...
+2026-11-07T09:44:41.5765260Z copying path '/nix/store/cgdg5hyf2dwmk433jjg7106l49d1d0rx-mpdecimal-4.0.1' from 'https://cache.nixos.org'...
+2026-11-07T09:44:41.5866870Z copying path '/nix/store/zjnxj0kan4y2gwb3kqf8ynd4klzminx6-update-autotools-gnu-config-scripts-hook' from 'https://cache.nixos.org'...
+2026-11-07T09:44:41.5968370Z copying path '/nix/store/5047bgcpicg9kkjliq2q6lmm35davs2c-xz-5.8.4' from 'https://cache.nixos.org'...
+2026-11-07T09:44:41.6068690Z copying path '/nix/store/6q0ch426vjf3pfhy67y876p24yf100kz-perl5.42.3-FCGI-ProcManager-0.28' from 'https://cache.nixos.org'...
+2026-11-07T09:44:41.6169090Z copying path '/nix/store/lfwvqpn0k7rc07977ab98n3xdr3k5vyg-libunistring-1.4.2' from 'https://cache.nixos.org'...
+2026-11-07T09:44:41.6272720Z copying path '/nix/store/arspcb0pa15f9f2b079k1kpqik297fxz-zlib-1.3.2' from 'https://cache.nixos.org'...
+2026-11-07T09:44:41.6374910Z copying path '/nix/store/jjv45y3bl1w4k929ad7v5z75h16gjpzc-mailcap-2.1.54' from 'https://cache.nixos.org'...
+2026-11-07T09:44:41.6493770Z copying path '/nix/store/543rl4jdm7vp6fck8fd4d4s0wwi5fxqy-lz4-1.10.0-lib' from 'https://cache.nixos.org'...
+2026-11-07T09:44:41.6594040Z copying path '/nix/store/913158w9ykwyzyhs2rgzr8rd45244qs6-coreutils-9.12' from 'https://cache.nixos.org'...
+2026-11-07T09:44:41.6694360Z copying path '/nix/store/9xb95psp964k4fwf5sabazj3k9zbi8jq-pcre2-10.49' from 'https://cache.nixos.org'...
+2026-11-07T09:44:41.6736290Z copying path '/nix/store/rlmw3cjhpazan3qfw9pka8a7v5ps4j5k-perl5.42.3-WWW-RobotRules-6.02' from 'https://cache.nixos.org'...
+2026-11-07T09:44:41.6753190Z copying path '/nix/store/7ddp5r1r3jn0ldsr57vk0g6rp6nmnr0s-perl5.42.3-Net-HTTP-6.23' from 'https://cache.nixos.org'...
+2026-11-07T09:44:41.6854990Z copying path '/nix/store/bap5ywigmfyslg0gvfnszdfdn036d80h-perl5.42.3-HTML-TagCloud-0.38' from 'https://cache.nixos.org'...
+2026-11-07T09:44:41.6956830Z copying path '/nix/store/zcj9x8w3pvajyjj48gm16fq8zzij0vlv-xz-5.8.4-bin' from 'https://cache.nixos.org'...
+2026-11-07T09:44:41.7058900Z copying path '/nix/store/pnfqc3xvk68sfni9n3j511h1syb26rmy-openssl-3.5.9' from 'https://cache.nixos.org'...
+2026-11-07T09:44:41.7160520Z copying path '/nix/store/qgi3wl6w30ggx25f4l0b7j0k45prf8gc-perl5.42.3-FCGI-0.82' from 'https://cache.nixos.org'...
+2026-11-07T09:44:41.7268430Z copying path '/nix/store/7i4zldb1jwk816h64wvj1z5zaipm64h0-perl5.42.3-Compress-Raw-Zlib-2.222' from 'https://cache.nixos.org'...
+2026-11-07T09:44:41.7355860Z copying path '/nix/store/g6ayq0j6ywpv4dfhrq2c6vkfm32h6b57-sqlite-3.53.3' from 'https://cache.nixos.org'...
+2026-11-07T09:44:41.7460330Z copying path '/nix/store/w1b4n5n5ib95zkn9q54brw2nyc8vijd7-zlib-ng-2.3.3' from 'https://cache.nixos.org'...
+2026-11-07T09:44:41.7461290Z copying path '/nix/store/x4nl6d72j5jdncz8vip5h5g8dxgcdfhy-gzip-1.15' from 'https://cache.nixos.org'...
+2026-11-07T09:44:41.7462220Z copying path '/nix/store/yhi1iyrh3z0pv2lq304pg3kji0543vz1-perl5.42.3-Digest-HMAC-1.05' from 'https://cache.nixos.org'...
+2026-11-07T09:44:41.7564110Z copying path '/nix/store/qp0jgrbbzia0g5h2n1k50bcad7h3rh9m-libidn2-2.3.8' from 'https://cache.nixos.org'...
+2026-11-07T09:44:41.7674640Z copying path '/nix/store/qa3j5zvp29rdwfs7ykb4cnx6wzacn1lr-zstd-1.5.7' from 'https://cache.nixos.org'...
+2026-11-07T09:44:41.7775840Z copying path '/nix/store/63wwpxy5hnb60wgpbgfpa6jq3138cwr1-perl5.42.3-libnet-3.15' from 'https://cache.nixos.org'...
+2026-11-07T09:44:41.7877590Z copying path '/nix/store/v7pl3md4rm2iprj2smf9892wmgj5sh7m-tzdata-2026e' from 'https://cache.nixos.org'...
+2026-11-07T09:44:41.7981560Z copying path '/nix/store/7ihxb15yxm8345fdazx323iljjsi1i5i-gnugrep-3.12' from 'https://cache.nixos.org'...
+2026-11-07T09:44:41.8088380Z copying path '/nix/store/zdslvbbhrpilsyqvcwxywqrwla35h68p-ncurses-6.6' from 'https://cache.nixos.org'...
+2026-11-07T09:44:41.8190830Z copying path '/nix/store/y8g50am7v50c9hlz50cl489vig0kl7aj-patch-2.8' from 'https://cache.nixos.org'...
+2026-11-07T09:44:41.8291010Z copying path '/nix/store/kds0dhsl4gp9fy71n612pykqarqpygca-bzip2-1.0.8-bin' from 'https://cache.nixos.org'...
+2026-11-07T09:44:41.8392430Z copying path '/nix/store/my66hfzlnfn7w0l99jydlmfxxddjd6kx-file-5.48' from 'https://cache.nixos.org'...
+2026-11-07T09:44:41.8494690Z copying path '/nix/store/f1jdklss1yx9c5hgclym6xh20y2rwkzb-perl5.42.3-Authen-SASL-2.2100' from 'https://cache.nixos.org'...
+2026-11-07T09:44:41.8596800Z copying path '/nix/store/14nzy6b98s1xi2q4w6anj9civfdp1jcq-findutils-4.11.0' from 'https://cache.nixos.org'...
+2026-11-07T09:44:41.8697550Z copying path '/nix/store/dv3gqilrzcdl2w97kmsn9pkq9ds2k2dn-libpsl-0.21.5' from 'https://cache.nixos.org'...
+2026-11-07T09:44:41.8798910Z copying path '/nix/store/gy0qyg8p2vbzyq5zb2p601i2n0m5xnk6-diffutils-3.12' from 'https://cache.nixos.org'...
+2026-11-07T09:44:41.8876700Z copying path '/nix/store/i2bp8q5ix7s0nj1qpj3f5whkp5s9ysr5-jemalloc-5.4.0' from 'https://cache.nixos.org'...
+2026-11-07T09:44:41.8879580Z copying path '/nix/store/cjq0isq1szmqjv65h6wlpdxzxv8nzzha-utf8proc-2.12.0' from 'https://cache.nixos.org'...
+2026-11-07T09:44:41.9498650Z copying path '/nix/store/iq8g1j0q7pp4livckzg3pycq4k9nwr3v-ld64-957.1-lib' from 'https://cache.nixos.org'...
+2026-11-07T09:44:41.9599380Z copying path '/nix/store/d9plqh0j9sr8dzzbvz2g1ih4vdq8xr3r-krb5-1.22.2-lib' from 'https://cache.nixos.org'...
+2026-11-07T09:44:41.9703410Z copying path '/nix/store/68bgiaz10gqpfnvk1vmrj5zsl2dxlv8k-openssl-3.5.9-bin' from 'https://cache.nixos.org'...
+2026-11-07T09:44:41.9802250Z copying path '/nix/store/8fz03pzq1xvk0pl7li1w909gbpcmwifm-libssh2-1.11.1' from 'https://cache.nixos.org'...
+2026-11-07T09:44:41.9904260Z copying path '/nix/store/dhkxf3rpvikfxvmbn6627hb6s1php4p2-perl5.42.3-Net-SSLeay-1.92' from 'https://cache.nixos.org'...
+2026-11-07T09:44:42.0006040Z copying path '/nix/store/jnydv03kl75vfnyzb7lyb63kl2kqmwwh-ngtcp2-1.23.0' from 'https://cache.nixos.org'...
+2026-11-07T09:44:42.0106590Z copying path '/nix/store/lxr6wlkpaa3xz0mp6ms70njcfsfzdrqz-re2-2025-11-05' from 'https://cache.nixos.org'...
+2026-11-07T09:44:42.0352480Z copying path '/nix/store/0568rp7whq8ysn4k2a7jranag23grgqn-openssl-3.5.9-dev' from 'https://cache.nixos.org'...
+2026-11-07T09:44:42.0559110Z copying path '/nix/store/dkv7hd5fx8rnhyg59hy7yw8pah3swglp-curl-8.22.0' from 'https://cache.nixos.org'...
+2026-11-07T09:44:42.0960950Z copying path '/nix/store/znv86xpn7cav9xpmngpaanwwk8c3izqn-perl5.42.3-IO-Socket-SSL-2.083' from 'https://cache.nixos.org'...
+2026-11-07T09:44:42.1161770Z copying path '/nix/store/czkd7ya06x30a4wi913kxii0ly69hb0q-perl5.42.3-Net-SMTP-SSL-1.04' from 'https://cache.nixos.org'...
+2026-11-07T09:44:42.2880450Z copying path '/nix/store/36c168mc93w4mlmqknam03ffyi6qg0w6-gettext-1.0' from 'https://cache.nixos.org'...
+2026-11-07T09:44:42.2982050Z copying path '/nix/store/2qdvsdwv916cnkzilrdx479d13ipfccd-libiconv-115.100.1-dev' from 'https://cache.nixos.org'...
+2026-11-07T09:44:42.3082550Z copying path '/nix/store/5pdi5bq35qs6av37wsaf6qkkbghwhhvz-libxml2-2.15.4' from 'https://cache.nixos.org'...
+2026-11-07T09:44:42.3183720Z copying path '/nix/store/69bkdjfr2msvl8nbarggcs7mi96hjlb1-uv-0.13.5' from 'https://cache.nixos.org'...
+2026-11-07T09:44:42.3285450Z copying path '/nix/store/780w4ih6zr6kj37mildxrc9fn6nxmc4c-llvm-21.1.8-lib' from 'https://cache.nixos.org'...
+2026-11-07T09:44:42.3386300Z copying path '/nix/store/vzkhr8v7x35z2p6kwr0rbv8267r8gjcz-xcbuild-0.1.1-unstable-2019-11-20' from 'https://cache.nixos.org'...
+2026-11-07T09:44:42.3487800Z copying path '/nix/store/1y3hanpz5hwijkd86aidrikjlsp6lhc9-xar-minimal-503-lib' from 'https://cache.nixos.org'...
+2026-11-07T09:44:42.4924410Z copying path '/nix/store/ggsm99mnisrm6qbrmsjq7mddzslzqki3-perl-5.42.3' from 'https://cache.nixos.org'...
+2026-11-07T09:44:42.5326650Z copying path '/nix/store/3j7f0im9vb3mfmi4y0s7y6b6alj3c025-xcbuild-0.1.1-unstable-2019-11-20-xcrun' from 'https://cache.nixos.org'...
+2026-11-07T09:44:42.5829850Z copying path '/nix/store/31iamndp401q2cp73m6cvdl2cqn3fii8-readline-8.3p3' from 'https://cache.nixos.org'...
+2026-11-07T09:44:42.5931260Z copying path '/nix/store/qjisxvjgpnpk6f2ypf6irfyzi16ay7yf-ncurses-6.6-dev' from 'https://cache.nixos.org'...
+2026-11-07T09:44:42.6332770Z copying path '/nix/store/qkj6mwhvyn5kd1q2lyxim7gfndp3cqyr-cyrus-sasl-2.1.28' from 'https://cache.nixos.org'...
+2026-11-07T09:44:42.6434210Z copying path '/nix/store/k5zhhnxn3pa7d8fgs7glys6hwl96q5cm-gnutar-1.35' from 'https://cache.nixos.org'...
+2026-11-07T09:44:42.7437220Z copying path '/nix/store/d86fn7v0sq8d1b2rwwq39m7s2qgfc58x-openldap-2.6.13' from 'https://cache.nixos.org'...
+2026-11-07T09:44:42.7640550Z copying path '/nix/store/9lhvi9bx4243wmpgdankw1q5rfv0ja8i-stdenv-darwin-no-cc' from 'https://cache.nixos.org'...
+2026-11-07T09:44:42.8549700Z copying path '/nix/store/f3c3rkxq304v74vkgjmdh8iwpmqlpd8n-apr-util-1.6.5' from 'https://cache.nixos.org'...
+2026-11-07T09:44:42.9050900Z copying path '/nix/store/2g2x23fs2bycshpyinz4k4q4rkirn8ij-serf-1.3.10' from 'https://cache.nixos.org'...
+2026-11-07T09:44:42.9353280Z copying path '/nix/store/r766d9bzd26hh7gzfsmhxqg2ii31qs07-subversion-1.14.5' from 'https://cache.nixos.org'...
+2026-11-07T09:44:43.2800750Z copying path '/nix/store/9r5a3a7piwdf7nj8jp6gz7lf3ynmdysr-perl5.42.3-IO-Compress-2.221' from 'https://cache.nixos.org'...
+2026-11-07T09:44:43.3270260Z copying path '/nix/store/lc7rzimivrhfcyy6swfqvvpvsia43ahb-perl5.42.3-HTTP-Message-7.02' from 'https://cache.nixos.org'...
+2026-11-07T09:44:43.3472060Z copying path '/nix/store/j0b5dgw3p0im6lv89rxwc129kw2k2a4p-perl5.42.3-HTML-Parser-3.85' from 'https://cache.nixos.org'...
+2026-11-07T09:44:43.3572410Z copying path '/nix/store/j4hpngsxiik9dy41qcygkjmixx7cnw8g-perl5.42.3-HTTP-Cookies-6.10' from 'https://cache.nixos.org'...
+2026-11-07T09:44:43.3674080Z copying path '/nix/store/p88z50qig2q3lyby8dbnwwv8x1mnh7sk-perl5.42.3-HTTP-Negotiate-6.01' from 'https://cache.nixos.org'...
+2026-11-07T09:44:43.3750620Z copying path '/nix/store/vi1mhvydr4li2lqyb17w98cbga1b4rj8-perl5.42.3-CGI-4.59' from 'https://cache.nixos.org'...
+2026-11-07T09:44:43.3751410Z copying path '/nix/store/73qgyvqd9yn1xn42vs8qgkvaw5fdsrrr-perl5.42.3-libwww-perl-6.83' from 'https://cache.nixos.org'...
+2026-11-07T09:44:43.3752100Z copying path '/nix/store/r1nrwaf624y3l31i4zh5p0ixv4fancs0-perl5.42.3-CGI-Fast-2.16' from 'https://cache.nixos.org'...
+2026-11-07T09:44:43.9366810Z copying path '/nix/store/myr0bvpz8blxr9rn55cmcb7a05wwk7pz-ld64-957.1' from 'https://cache.nixos.org'...
+2026-11-07T09:44:43.9368460Z copying path '/nix/store/dkn2518z5jkdgp2n2i8zm9i9ll5xl3py-llvm-21.1.8' from 'https://cache.nixos.org'...
+2026-11-07T09:44:43.9369450Z copying path '/nix/store/0va26r8nlb0h1bd6iyx9yrmi4py1947m-clang-21.1.8-lib' from 'https://cache.nixos.org'...
+2026-11-07T09:44:44.0041480Z copying path '/nix/store/b2c9gg3dvy4nnr5d11bj2cby37k5j8m7-cctools-1010.6-libtool' from 'https://cache.nixos.org'...
+2026-11-07T09:44:44.1018240Z copying path '/nix/store/m9x2il13sywj54296ddwksmx72lbv950-cctools-1010.6' from 'https://cache.nixos.org'...
+2026-11-07T09:44:45.2545200Z copying path '/nix/store/hbj4a922mmhd5nlg34fsybyw439iz09p-clang-21.1.8' from 'https://cache.nixos.org'...
+2026-11-07T09:44:45.4022400Z copying path '/nix/store/c9risrjiq2jy4piadiy7l2nl92vgb1bm-cctools-binutils-darwin-1010.6' from 'https://cache.nixos.org'...
+2026-11-07T09:44:45.4081770Z copying path '/nix/store/svkkgla6ini4hg035ka7wb8idm301r1i-apple-sdk-14.4' from 'https://cache.nixos.org'...
+2026-11-07T09:44:48.9529260Z copying path '/nix/store/3j53paxbcd4k06zk75jzv018798wjrjm-cctools-binutils-darwin-wrapper-1010.6' from 'https://cache.nixos.org'...
+2026-11-07T09:44:48.9588870Z copying path '/nix/store/8z7gv889g2cxbvmwcibdzvmikllc51qv-clang-wrapper-21.1.8' from 'https://cache.nixos.org'...
+2026-11-07T09:44:48.9666360Z copying path '/nix/store/2bmi4i336l2qkjkg2453zp346l5r26bi-make-binary-wrapper-hook' from 'https://cache.nixos.org'...
+2026-11-07T09:44:48.9667190Z copying path '/nix/store/0jb1qn7qnpbz8774mq5k2c1p84gp0x76-python3-3.14.8' from 'https://cache.nixos.org'...
+2026-11-07T09:44:49.8843020Z copying path '/nix/store/3yd3064192bxb2kbf87fr4lam7ncazcw-git-2.56.0' from 'https://cache.nixos.org'...
+2026-11-07T09:44:49.8860020Z copying path '/nix/store/hw9aya73q22jg383nkcc3xmi7cl5hbv5-pybind11-setup-hook' from 'https://cache.nixos.org'...
+2026-11-07T09:44:49.8862700Z copying path '/nix/store/6a82w5pdvjrry5k95yqbly1b1najfmvk-python3.14-distro-1.9.0' from 'https://cache.nixos.org'...
+2026-11-07T09:44:49.8863450Z copying path '/nix/store/ss8nvprcrly3wwgk77mlcmrq362f4sk1-python3.14-ephemeral-port-reserve-1.1.4' from 'https://cache.nixos.org'...
+2026-11-07T09:44:49.8864300Z copying path '/nix/store/r6aj5bf320l289c8ggk19nbs89j51p24-python3.14-fastimport-0.9.16' from 'https://cache.nixos.org'...
+2026-11-07T09:44:49.8865080Z copying path '/nix/store/rk7mjbzaq3gan1padix3kyrnpwlx151a-python3.14-idna-3.18' from 'https://cache.nixos.org'...
+2026-11-07T09:44:49.8865790Z copying path '/nix/store/jf6v492hlna5wikilvqpp9nwjafhjfpa-python3.14-oauthlib-3.3.1' from 'https://cache.nixos.org'...
+2026-11-07T09:44:49.8866540Z copying path '/nix/store/n1j3a225a49j5fb9ad44kqz09zil0v5f-python3.14-charset-normalizer-3.5.1' from 'https://cache.nixos.org'...
+2026-11-07T09:44:49.8867270Z copying path '/nix/store/4xrm5287571cda5wcl79mhh6zk0a5v0z-python3.14-merge3-0.0.16' from 'https://cache.nixos.org'...
+2026-11-07T09:44:49.8867940Z copying path '/nix/store/kr04yz5k9r3sm0drwgccjy4a5fxg206g-python3.14-packaging-26.3' from 'https://cache.nixos.org'...
+2026-11-07T09:44:49.8868710Z copying path '/nix/store/xvdan1dabfkidsmxf9sj083vh1qyxz3k-python3.14-certifi-2026.07.22' from 'https://cache.nixos.org'...
+2026-11-07T09:44:49.8869410Z copying path '/nix/store/8184a1jlhp7p3vw7bvwkg29cy82axzlw-python3.14-fastbencode-0.3.11' from 'https://cache.nixos.org'...
+2026-11-07T09:44:49.8870080Z copying path '/nix/store/9hqf2s6mjy3bx1vcyhmjgwmyd0498s00-python3.14-pip-26.1.2' from 'https://cache.nixos.org'...
+2026-11-07T09:44:49.8870760Z copying path '/nix/store/qm2sawixg01r3f5r77qiij0gsy5c762h-python3.14-patiencediff-0.2.19' from 'https://cache.nixos.org'...
+2026-11-07T09:44:49.8871450Z copying path '/nix/store/y5zr5hlnd9gkxwbn4rm3m5nf90y6alwc-python3.14-pycparser-3.00' from 'https://cache.nixos.org'...
+2026-11-07T09:44:49.8872110Z copying path '/nix/store/p5rbj5hfk4qcq176irl06iq77irq26rh-python3.14-pyjwt-2.15.1' from 'https://cache.nixos.org'...
+2026-11-07T09:44:49.8978520Z copying path '/nix/store/y6n285k9d4mg0ajv84p1vkp5zy0acikg-python3.14-pyproject-hooks-1.2.0' from 'https://cache.nixos.org'...
+2026-11-07T09:44:49.9179040Z copying path '/nix/store/1s7czavpj79chy6chmk56n50gyny4k21-python3.14-six-1.17.0' from 'https://cache.nixos.org'...
+2026-11-07T09:44:49.9279370Z copying path '/nix/store/2bjrsh7grj9b44lp95cyl7fm8lnfqyzg-python3.14-pyparsing-3.3.2' from 'https://cache.nixos.org'...
+2026-11-07T09:44:49.9380130Z copying path '/nix/store/l6frjr4iwklc78qr7i8xzrb1xk74kx8w-python3.14-pybind11-3.1.0' from 'https://cache.nixos.org'...
+2026-11-07T09:44:49.9481360Z copying path '/nix/store/gs7nsjzrn6avs5vh0rfgrcpjz5vw4pqf-python3.14-tzlocal-5.4.4' from 'https://cache.nixos.org'...
+2026-11-07T09:44:49.9581830Z copying path '/nix/store/p11h2n9yz1nz8248g3zd1hyx9xvzi5r0-python3.14-setuptools-83.0.0' from 'https://cache.nixos.org'...
+2026-11-07T09:44:49.9683080Z copying path '/nix/store/8i0q8dffjp3gv7llg74rgi9s9fqgj0mc-python3.14-typing-extensions-4.16.0' from 'https://cache.nixos.org'...
+2026-11-07T09:44:49.9784020Z copying path '/nix/store/063ivyyjqbx5hk1cqpm1yl29ivxw2zzd-python3.14-urllib3-2.7.0' from 'https://cache.nixos.org'...
+2026-11-07T09:44:49.9883800Z copying path '/nix/store/yrm12ss59zdfz4qnm37aiksk1pc131vb-mitm-cache-0.1.2' from 'https://cache.nixos.org'...
+2026-11-07T09:44:49.9985830Z copying path '/nix/store/a8hxdl3qnyrzs3ps5sfbsa9csp7j15pa-python3.14-cffi-2.1.1' from 'https://cache.nixos.org'...
+2026-11-07T09:44:50.0086080Z copying path '/nix/store/zr4hy9dcpqnbizxhrc63bvdq9kyj8cjz-python3.14-wrapt-2.2.2' from 'https://cache.nixos.org'...
+2026-11-07T09:44:50.0141850Z copying path '/nix/store/q3lqr8mzwr4v0yqp4gh8183dwbp00x9q-python3.14-pyyaml-6.0.3' from 'https://cache.nixos.org'...
+2026-11-07T09:44:50.0160330Z copying path '/nix/store/94bdzb3p1hsx32sywyrskhvair8vicc8-python3.14-build-1.5.1' from 'https://cache.nixos.org'...
+2026-11-07T09:44:50.0262920Z copying path '/nix/store/ljsgjnpdm2mk9cwlvpwslkv69h04w7np-python3.14-configobj-5.0.9' from 'https://cache.nixos.org'...
+2026-11-07T09:44:50.0946240Z copying path '/nix/store/9j06v3l9yfx7ci9svb6b81b4fv63zgwr-python3.14-httplib2-0.32.0' from 'https://cache.nixos.org'...
+2026-11-07T09:44:50.1049570Z copying path '/nix/store/87wdgvk1mwkbj29rzjljck6avx0vc4l7-python3.14-deprecated-1.3.1' from 'https://cache.nixos.org'...
+2026-11-07T09:44:50.1150910Z copying path '/nix/store/8zhlh4bx60vywdpsq0n0ajm6r07ygp33-python3.14-pynacl-1.6.2' from 'https://cache.nixos.org'...
+2026-11-07T09:44:50.1251880Z copying path '/nix/store/09d92rv78r71bsbi5igmilnzl3szff1b-python3.14-cryptography-50.0.2' from 'https://cache.nixos.org'...
+2026-11-07T09:44:50.1298720Z copying path '/nix/store/qdf76y4dp5y4d91y915jqki2ly69zg74-python3.14-dulwich-1.2.17' from 'https://cache.nixos.org'...
+2026-11-07T09:44:50.1299450Z copying path '/nix/store/2vhzxac7xs2q3dk2756in95019v7is49-python3.14-requests-2.34.2' from 'https://cache.nixos.org'...
+2026-11-07T09:44:50.1844150Z copying path '/nix/store/m3h5dgha96gz2vag21187lba56k7l77d-python3.14-google-re2-1.1.20251105' from 'https://cache.nixos.org'...
+2026-11-07T09:44:50.3298590Z copying path '/nix/store/r8mlnyf0ndj9gi62622108z5q988zksi-python3.14-pygithub-2.8.1' from 'https://cache.nixos.org'...
+2026-11-07T09:44:50.3399940Z copying path '/nix/store/3n669v8si9k0fakm59hflx0p57s2r08d-python3.14-lazr-uri-1.0.8' from 'https://cache.nixos.org'...
+2026-11-07T09:44:50.3676060Z copying path '/nix/store/a3hgmn50xpdq3aw755gc6n74j2mfgww7-mercurial-7.2.2' from 'https://cache.nixos.org'...
+2026-11-07T09:44:50.3776570Z copying path '/nix/store/ml9qxqkskl6z66r5y3n0fw3yrd5y27im-python3.14-wadllib-2.1.0' from 'https://cache.nixos.org'...
+2026-11-07T09:44:50.4247330Z copying path '/nix/store/z8b86kz7hsq0y95s22s7qz882cr717nf-python3.14-lazr-restfulclient-0.14.6' from 'https://cache.nixos.org'...
+2026-11-07T09:44:50.5589320Z copying path '/nix/store/bvjkj8g5b38bq6aa0ycsa4hcn3dgah94-python3.14-launchpadlib-2.1.0' from 'https://cache.nixos.org'...
+2026-11-07T09:44:50.8172150Z building '/nix/store/l57c7s263baxxpx2zini2dcr77fh2x3h-python3-3.14.8-env.drv'...
+2026-11-07T09:44:50.8175820Z copying path '/nix/store/k67a3szsnj6rm0cyn7nd83df2pvfkwlb-python3.14-breezy-3.3.21' from 'https://cache.nixos.org'...
+2026-11-07T09:44:54.2412870Z building '/nix/store/5n9qp7r6x2s3xdv7309psdzlyhngvicx-pip-purifier-0.1.0.drv'...
+2026-11-07T09:44:56.3896800Z this derivation will be built:
+2026-11-07T09:44:56.3897410Z   /nix/store/nifcd8iwbcqi2gk2csjb2jzzg3svng8z-pip-composition-tools.drv
+2026-11-07T09:44:56.8151340Z building '/nix/store/nifcd8iwbcqi2gk2csjb2jzzg3svng8z-pip-composition-tools.drv'...
+2026-11-07T09:44:57.7313360Z unpacking 'github:numtide/treefmt-nix/0d6d739a833ba9a9c93034862e4a7b061a062a1c?narHash=sha256-C3alQ2MEt0zVrUSho5NUDo3jmhbff72%2B%2BbfwoqT9Omo%3D' into the Git cache...
+2026-11-07T09:45:00.0493250Z these 14 derivations will be built:
+2026-11-07T09:45:00.0512240Z   /nix/store/1fsl4hx5hy31yjjlj0hsmx3kjqsxy8fr-pyyaml-6.0.3-cp314-cp314-macosx_11_0_arm64.whl.drv
+2026-11-07T09:45:00.0513350Z   /nix/store/32ih0wj8vb4b06d0ikmssxwl69nxvgq6-versions.json.drv
+2026-11-07T09:45:00.0520770Z   /nix/store/s5sbi9lp84l332nn16mvzmp36wimmp69-setuptools-84.2.1-py3-none-any.whl.drv
+2026-11-07T09:45:00.0521610Z   /nix/store/3br6wz17f9pjzn7cpac2chrxhflxlc5g-pip-purifier-wheelhouse.drv
+2026-11-07T09:45:00.0522320Z   /nix/store/41d4qzicml28iwl0yjrk5g8al5h4q0c1-shims.json.drv
+2026-11-07T09:45:00.0522900Z   /nix/store/672n44kjk3l4fgbsr1bdv3gky90ym92g-args.json.drv
+2026-11-07T09:45:00.0523430Z   /nix/store/9mc5yylpsvmgp7xfnx41cw0000sdmcgc-pins.txt.drv
+2026-11-07T09:45:00.0524020Z   /nix/store/j63r136n6zin6rv2zavmk6f6ix6r7z9l-sources.json.drv
+2026-11-07T09:45:00.0524640Z   /nix/store/sixf5cvc0rg2v6p9al2lxbyvhidyfhgf-repositories.json.drv
+2026-11-07T09:45:00.0525330Z   /nix/store/b4z00ilnkdpr577ifh04h7arwr7cl71c-pip-purifier-inputs.drv
+2026-11-07T09:45:00.0525990Z   /nix/store/9afwlk0lmvigmrb4lac290yf6wdc0f6s-greet-environment.drv
+2026-11-07T09:45:00.0526640Z   /nix/store/hlzgkp002p069qv4r99hl6lj9g2qkn0m-greet-0.1.0-dist.drv
+2026-11-07T09:45:00.0527730Z   /nix/store/fwll7caiqz245q965pqhvfpfmwvxg3b0-greet-publication-scope.drv
+2026-11-07T09:45:00.0528440Z   /nix/store/sp1ln3z38pah296jz0fa2kj4f2j89krq-python-projection.drv
+2026-11-07T09:45:00.0529100Z these 18 paths will be fetched (4.7 MiB download, 12.3 MiB unpacked):
+2026-11-07T09:45:00.0529770Z   /nix/store/y7vmfg5wvjvcn0hn2ymhim96b340179g-attrs-25.3.0-py3-none-any.whl
+2026-11-07T09:45:00.0530420Z   /nix/store/kmjxw3bywayk4iqlv44zm45m98zk03yr-curl-8.22.0
+2026-11-07T09:45:00.0530990Z   /nix/store/i3065ksq861m3qx1rd59gfrdabsjl54n-curl-8.22.0-bin
+2026-11-07T09:45:00.0531580Z   /nix/store/vvsjcsy7482d94dr7yi6mzi2ni8bz9r8-curl-8.22.0-dev
+2026-11-07T09:45:00.0532130Z   /nix/store/xm3qb7c060xzdqr0gb7gc0qp26lyiack-curl-8.22.0-man
+2026-11-07T09:45:00.0532740Z   /nix/store/j2j4xqdkkn4ziz27i83ck3by269b3g6c-docopt-0.6.2.tar.gz
+2026-11-07T09:45:00.0533470Z   /nix/store/sxs1zfll1lc9ci9vpfjdbd1iy488zqab-libssh2-1.11.1
+2026-11-07T09:45:00.0534050Z   /nix/store/lzya8lz3fmh6ylpbvgaxc5q0cxgybnms-libssh2-1.11.1-dev
+2026-11-07T09:45:00.0534870Z   /nix/store/rnfnigw729c60m3hbi5padzszab5y5lv-nghttp2-1.70.0
+2026-11-07T09:45:00.0535440Z   /nix/store/05kcw9fa45gwx0f8hbpwgl9rjcy16iyd-nghttp2-1.70.0-dev
+2026-11-07T09:45:00.0536060Z   /nix/store/scajhzcnmhw3j9qskigzg7yv0zpx1865-nghttp2-1.70.0-lib
+2026-11-07T09:45:00.0536640Z   /nix/store/m0vcymsn8z7hj6jhr0gx5g0hvjcqacsb-openssl-3.5.9
+2026-11-07T09:45:00.0537240Z   /nix/store/7yx5gbfa6k928mf5f8wxv4ahncb854k0-openssl-3.5.9-bin
+2026-11-07T09:45:00.0537820Z   /nix/store/bqccqlzdiy8r2yr9bs01b411dyrp6ylz-openssl-3.5.9-dev
+2026-11-07T09:45:00.0538450Z   /nix/store/f905xljhd90pdgdxxk49kfk1kf0l7sl5-python3-3.14.8-env
+2026-11-07T09:45:00.0539210Z   /nix/store/4gqzn5ia76rp74p8fb6nvry3arbn3l7j-stdenv-darwin
+2026-11-07T09:45:00.0539880Z   /nix/store/aaq8c9d20ws8fywmn9n3g4skk6ljz2yw-zlib-1.3.2-dev
+2026-11-07T09:45:00.0540480Z   /nix/store/i5cj4j94rqvkgawc6r5qcj8hyxcq60dg-zlib-1.3.2-static
+2026-11-07T09:45:00.0545810Z copying path '/nix/store/f905xljhd90pdgdxxk49kfk1kf0l7sl5-python3-3.14.8-env' from 'https://cache.nixos.org'...
+2026-11-07T09:45:00.0603060Z copying path '/nix/store/4gqzn5ia76rp74p8fb6nvry3arbn3l7j-stdenv-darwin' from 'https://cache.nixos.org'...
+2026-11-07T09:45:00.2719490Z building '/nix/store/672n44kjk3l4fgbsr1bdv3gky90ym92g-args.json.drv'...
+2026-11-07T09:45:00.4686540Z building '/nix/store/9mc5yylpsvmgp7xfnx41cw0000sdmcgc-pins.txt.drv'...
+2026-11-07T09:45:00.6644960Z building '/nix/store/sixf5cvc0rg2v6p9al2lxbyvhidyfhgf-repositories.json.drv'...
+2026-11-07T09:45:00.6655390Z copying path '/nix/store/y7vmfg5wvjvcn0hn2ymhim96b340179g-attrs-25.3.0-py3-none-any.whl' from 'https://cache.nixos.org'...
+2026-11-07T09:45:00.6657090Z copying path '/nix/store/j2j4xqdkkn4ziz27i83ck3by269b3g6c-docopt-0.6.2.tar.gz' from 'https://cache.nixos.org'...
+2026-11-07T09:45:00.8740380Z building '/nix/store/41d4qzicml28iwl0yjrk5g8al5h4q0c1-shims.json.drv'...
+2026-11-07T09:45:01.0691360Z building '/nix/store/32ih0wj8vb4b06d0ikmssxwl69nxvgq6-versions.json.drv'...
+2026-11-07T09:45:01.0707190Z copying path '/nix/store/xm3qb7c060xzdqr0gb7gc0qp26lyiack-curl-8.22.0-man' from 'https://cache.nixos.org'...
+2026-11-07T09:45:01.0708790Z copying path '/nix/store/scajhzcnmhw3j9qskigzg7yv0zpx1865-nghttp2-1.70.0-lib' from 'https://cache.nixos.org'...
+2026-11-07T09:45:01.0709990Z copying path '/nix/store/m0vcymsn8z7hj6jhr0gx5g0hvjcqacsb-openssl-3.5.9' from 'https://cache.nixos.org'...
+2026-11-07T09:45:01.0793500Z copying path '/nix/store/rnfnigw729c60m3hbi5padzszab5y5lv-nghttp2-1.70.0' from 'https://cache.nixos.org'...
+2026-11-07T09:45:01.0895030Z copying path '/nix/store/i5cj4j94rqvkgawc6r5qcj8hyxcq60dg-zlib-1.3.2-static' from 'https://cache.nixos.org'...
+2026-11-07T09:45:01.2841870Z building '/nix/store/j63r136n6zin6rv2zavmk6f6ix6r7z9l-sources.json.drv'...
+2026-11-07T09:45:01.2849230Z copying path '/nix/store/7yx5gbfa6k928mf5f8wxv4ahncb854k0-openssl-3.5.9-bin' from 'https://cache.nixos.org'...
+2026-11-07T09:45:01.2850230Z copying path '/nix/store/aaq8c9d20ws8fywmn9n3g4skk6ljz2yw-zlib-1.3.2-dev' from 'https://cache.nixos.org'...
+2026-11-07T09:45:01.2852850Z copying path '/nix/store/sxs1zfll1lc9ci9vpfjdbd1iy488zqab-libssh2-1.11.1' from 'https://cache.nixos.org'...
+2026-11-07T09:45:01.2854580Z copying path '/nix/store/05kcw9fa45gwx0f8hbpwgl9rjcy16iyd-nghttp2-1.70.0-dev' from 'https://cache.nixos.org'...
+2026-11-07T09:45:01.2937030Z copying path '/nix/store/kmjxw3bywayk4iqlv44zm45m98zk03yr-curl-8.22.0' from 'https://cache.nixos.org'...
+2026-11-07T09:45:01.2963820Z copying path '/nix/store/bqccqlzdiy8r2yr9bs01b411dyrp6ylz-openssl-3.5.9-dev' from 'https://cache.nixos.org'...
+2026-11-07T09:45:01.3021720Z copying path '/nix/store/i3065ksq861m3qx1rd59gfrdabsjl54n-curl-8.22.0-bin' from 'https://cache.nixos.org'...
+2026-11-07T09:45:01.3203700Z copying path '/nix/store/lzya8lz3fmh6ylpbvgaxc5q0cxgybnms-libssh2-1.11.1-dev' from 'https://cache.nixos.org'...
+2026-11-07T09:45:01.3272780Z copying path '/nix/store/vvsjcsy7482d94dr7yi6mzi2ni8bz9r8-curl-8.22.0-dev' from 'https://cache.nixos.org'...
+2026-11-07T09:45:01.5401130Z building '/nix/store/1fsl4hx5hy31yjjlj0hsmx3kjqsxy8fr-pyyaml-6.0.3-cp314-cp314-macosx_11_0_arm64.whl.drv'...
+2026-11-07T09:45:01.7428940Z building '/nix/store/s5sbi9lp84l332nn16mvzmp36wimmp69-setuptools-84.2.1-py3-none-any.whl.drv'...
+2026-11-07T09:45:02.0064040Z building '/nix/store/3br6wz17f9pjzn7cpac2chrxhflxlc5g-pip-purifier-wheelhouse.drv'...
+2026-11-07T09:45:02.4017290Z building '/nix/store/b4z00ilnkdpr577ifh04h7arwr7cl71c-pip-purifier-inputs.drv'...
+2026-11-07T09:45:02.7187170Z building '/nix/store/hlzgkp002p069qv4r99hl6lj9g2qkn0m-greet-0.1.0-dist.drv'...
+2026-11-07T09:45:02.9797250Z building '/nix/store/9afwlk0lmvigmrb4lac290yf6wdc0f6s-greet-environment.drv'...
+2026-11-07T09:45:07.6001300Z building '/nix/store/fwll7caiqz245q965pqhvfpfmwvxg3b0-greet-publication-scope.drv'...
+2026-11-07T09:45:07.9291210Z building '/nix/store/sp1ln3z38pah296jz0fa2kj4f2j89krq-python-projection.drv'...
+2026-11-07T09:45:08.4952860Z pip-purifier: --python /var/folders/2s/vty41l455yv698g4xkgfv7z00000gn/T/tmpxt9ksu6o/venv/bin/python install --report /var/folders/2s/vty41l455yv698g4xkgfv7z00000gn/T/tmpxt9ksu6o/report.json -r /var/folders/2s/vty41l455yv698g4xkgfv7z00000gn/T/tmpxt9ksu6o/inputs/requirements.txt
+2026-11-07T09:45:09.5048200Z Looking in indexes: http://127.0.0.1:49179/i/0/
+2026-11-07T09:45:09.5049610Z Obtaining file:///private/var/folders/2s/vty41l455yv698g4xkgfv7z00000gn/T/pip-native-composition-v6ph584e/project (from -r /var/folders/2s/vty41l455yv698g4xkgfv7z00000gn/T/tmpxt9ksu6o/inputs/requirements.txt (line 1))
+2026-11-07T09:45:09.5282680Z   Installing build dependencies: started
+2026-11-07T09:45:10.6703140Z   Installing build dependencies: finished with status 'done'
+2026-11-07T09:45:10.6710120Z   Checking if build backend supports build_editable: started
+2026-11-07T09:45:10.8846400Z   Checking if build backend supports build_editable: finished with status 'done'
+2026-11-07T09:45:10.8855990Z   Getting requirements to build editable: started
+2026-11-07T09:45:11.1528000Z   Getting requirements to build editable: finished with status 'done'
+2026-11-07T09:45:11.1539770Z   Preparing editable metadata (pyproject.toml): started
+2026-11-07T09:45:11.3095010Z   Preparing editable metadata (pyproject.toml): finished with status 'done'
+2026-11-07T09:45:11.3143440Z Processing /nix/store/d0zhm6ylh31yarfn6zpyx9brys00v3sw-python-projection/greet-0.1.0+nix.a5cc38a053fdb8319d497e32ee752258dbb96b9a1f4bfb97d9d83ad7f5bc7d40-py3-none-any.whl (from -r /var/folders/2s/vty41l455yv698g4xkgfv7z00000gn/T/tmpxt9ksu6o/inputs/requirements.txt (line 2))
+2026-11-07T09:45:11.3185300Z Processing /nix/store/d0zhm6ylh31yarfn6zpyx9brys00v3sw-python-projection/attrs-25.3.0-py3-none-any.whl (from greet @ file:///nix/store/d0zhm6ylh31yarfn6zpyx9brys00v3sw-python-projection/greet-0.1.0%2Bnix.a5cc38a053fdb8319d497e32ee752258dbb96b9a1f4bfb97d9d83ad7f5bc7d40-py3-none-any.whl->-r /var/folders/2s/vty41l455yv698g4xkgfv7z00000gn/T/tmpxt9ksu6o/inputs/requirements.txt (line 2))
+2026-11-07T09:45:11.3223480Z Processing /nix/store/d0zhm6ylh31yarfn6zpyx9brys00v3sw-python-projection/docopt-0.6.2-py2.py3-none-any.whl (from greet @ file:///nix/store/d0zhm6ylh31yarfn6zpyx9brys00v3sw-python-projection/greet-0.1.0%2Bnix.a5cc38a053fdb8319d497e32ee752258dbb96b9a1f4bfb97d9d83ad7f5bc7d40-py3-none-any.whl->-r /var/folders/2s/vty41l455yv698g4xkgfv7z00000gn/T/tmpxt9ksu6o/inputs/requirements.txt (line 2))
+2026-11-07T09:45:11.3241520Z Processing /nix/store/d0zhm6ylh31yarfn6zpyx9brys00v3sw-python-projection/pyyaml-6.0.3-cp314-cp314-macosx_11_0_arm64.whl (from greet @ file:///nix/store/d0zhm6ylh31yarfn6zpyx9brys00v3sw-python-projection/greet-0.1.0%2Bnix.a5cc38a053fdb8319d497e32ee752258dbb96b9a1f4bfb97d9d83ad7f5bc7d40-py3-none-any.whl->-r /var/folders/2s/vty41l455yv698g4xkgfv7z00000gn/T/tmpxt9ksu6o/inputs/requirements.txt (line 2))
+2026-11-07T09:45:11.3291910Z Building wheels for collected packages: pip-composed
+2026-11-07T09:45:11.3298040Z   Building editable for pip-composed (pyproject.toml): started
+2026-11-07T09:45:11.4897960Z   Building editable for pip-composed (pyproject.toml): finished with status 'done'
+2026-11-07T09:45:11.4904140Z   Created wheel for pip-composed: filename=pip_composed-1.0-0.editable-py3-none-any.whl size=1533 sha256=4292d5f43ff9091bfd4dc4327c0b68871b8c2fffa36f7af7e08141202fbf202c
+2026-11-07T09:45:11.4905260Z   Stored in directory: /private/var/folders/2s/vty41l455yv698g4xkgfv7z00000gn/T/pip-ephem-wheel-cache-d_d24_bv/wheels/a6/0a/0e/7aaed79fa87281d13b34d60dee785efa473ca3fd8176c38b34
+2026-11-07T09:45:11.4916110Z Successfully built pip-composed
+2026-11-07T09:45:11.4965560Z Installing collected packages: docopt, pyyaml, attrs, greet, pip-composed
+2026-11-07T09:45:11.5703950Z Successfully installed attrs-25.3.0 docopt-0.6.2 greet-0.1.0+nix.a5cc38a053fdb8319d497e32ee752258dbb96b9a1f4bfb97d9d83ad7f5bc7d40 pip-composed-1.0 pyyaml-6.0.3
+2026-11-07T09:45:11.6584150Z pip-purifier: --python /var/folders/2s/vty41l455yv698g4xkgfv7z00000gn/T/tmpxt9ksu6o/venv/bin/python wheel --no-deps --wheel-dir /var/folders/2s/vty41l455yv698g4xkgfv7z00000gn/T/tmpxt9ksu6o/dist/. /private/var/folders/2s/vty41l455yv698g4xkgfv7z00000gn/T/pip-native-composition-v6ph584e/project/.
+2026-11-07T09:45:12.5385770Z Looking in indexes: http://127.0.0.1:49179/i/0/
+2026-11-07T09:45:12.5389390Z Processing ./.
+2026-11-07T09:45:12.5404610Z   Installing build dependencies: started
+2026-11-07T09:45:13.4541170Z   Installing build dependencies: finished with status 'done'
+2026-11-07T09:45:13.4548260Z   Getting requirements to build wheel: started
+2026-11-07T09:45:13.7951290Z   Getting requirements to build wheel: finished with status 'done'
+2026-11-07T09:45:13.7962270Z   Preparing metadata (pyproject.toml): started
+2026-11-07T09:45:13.9306740Z   Preparing metadata (pyproject.toml): finished with status 'done'
+2026-11-07T09:45:13.9328840Z Building wheels for collected packages: pip-composed
+2026-11-07T09:45:13.9334960Z   Building wheel for pip-composed (pyproject.toml): started
+2026-11-07T09:45:14.0804460Z   Building wheel for pip-composed (pyproject.toml): finished with status 'done'
+2026-11-07T09:45:14.0811430Z   Created wheel for pip-composed: filename=pip_composed-1.0-py3-none-any.whl size=1451 sha256=d624ee886497f023e6210b6fe092ff165036c3c9e3ef03e32ca44bbc485c019b
+2026-11-07T09:45:14.0812770Z   Stored in directory: /private/var/folders/2s/vty41l455yv698g4xkgfv7z00000gn/T/pip-ephem-wheel-cache-w2oyfcq9/wheels/a6/0a/0e/7aaed79fa87281d13b34d60dee785efa473ca3fd8176c38b34
+2026-11-07T09:45:14.0830320Z Successfully built pip-composed
+2026-11-07T09:45:14.2889690Z * Creating isolated environment: venv+pip...
+2026-11-07T09:45:14.2927150Z * Installing packages in isolated environment:
+2026-11-07T09:45:14.2928110Z   - setuptools>=70
+2026-11-07T09:45:15.5447160Z * Getting build dependencies for sdist...
+2026-11-07T09:45:15.8641490Z running egg_info
+2026-11-07T09:45:15.8648630Z writing src/pip_composed.egg-info/PKG-INFO
+2026-11-07T09:45:15.8652370Z writing dependency_links to src/pip_composed.egg-info/dependency_links.txt
+2026-11-07T09:45:15.8653750Z writing entry points to src/pip_composed.egg-info/entry_points.txt
+2026-11-07T09:45:15.8655110Z writing requirements to src/pip_composed.egg-info/requires.txt
+2026-11-07T09:45:15.8655890Z writing top-level names to src/pip_composed.egg-info/top_level.txt
+2026-11-07T09:45:15.8676820Z reading manifest file 'src/pip_composed.egg-info/SOURCES.txt'
+2026-11-07T09:45:15.8681490Z writing manifest file 'src/pip_composed.egg-info/SOURCES.txt'
+2026-11-07T09:45:15.8861680Z * Installed build dependency versions:
+2026-11-07T09:45:15.8862140Z   - setuptools==84.2.1
+2026-11-07T09:45:15.8862360Z * Building sdist...
+2026-11-07T09:45:15.9978150Z running sdist
+2026-11-07T09:45:15.9978910Z running egg_info
+2026-11-07T09:45:15.9993470Z writing src/pip_composed.egg-info/PKG-INFO
+2026-11-07T09:45:15.9996950Z writing dependency_links to src/pip_composed.egg-info/dependency_links.txt
+2026-11-07T09:45:15.9998260Z writing entry points to src/pip_composed.egg-info/entry_points.txt
+2026-11-07T09:45:15.9999510Z writing requirements to src/pip_composed.egg-info/requires.txt
+2026-11-07T09:45:16.0000390Z writing top-level names to src/pip_composed.egg-info/top_level.txt
+2026-11-07T09:45:16.0021550Z reading manifest file 'src/pip_composed.egg-info/SOURCES.txt'
+2026-11-07T09:45:16.0026010Z writing manifest file 'src/pip_composed.egg-info/SOURCES.txt'
+2026-11-07T09:45:16.0027210Z warning: sdist: standard file not found: should have one of README, README.rst, README.txt, README.md
+2026-11-07T09:45:16.0027600Z 
+2026-11-07T09:45:16.0027710Z running check
+2026-11-07T09:45:16.0045550Z creating pip_composed-1.0
+2026-11-07T09:45:16.0046400Z creating pip_composed-1.0/src/pip_composed
+2026-11-07T09:45:16.0047810Z creating pip_composed-1.0/src/pip_composed.egg-info
+2026-11-07T09:45:16.0048360Z copying files to pip_composed-1.0...
+2026-11-07T09:45:16.0048780Z copying pyproject.toml -> pip_composed-1.0
+2026-11-07T09:45:16.0063920Z copying src/pip_composed/__init__.py -> pip_composed-1.0/src/pip_composed
+2026-11-07T09:45:16.0064530Z copying src/pip_composed.egg-info/PKG-INFO -> pip_composed-1.0/src/pip_composed.egg-info
+2026-11-07T09:45:16.0065200Z copying src/pip_composed.egg-info/SOURCES.txt -> pip_composed-1.0/src/pip_composed.egg-info
+2026-11-07T09:45:16.0065800Z copying src/pip_composed.egg-info/dependency_links.txt -> pip_composed-1.0/src/pip_composed.egg-info
+2026-11-07T09:45:16.0066380Z copying src/pip_composed.egg-info/entry_points.txt -> pip_composed-1.0/src/pip_composed.egg-info
+2026-11-07T09:45:16.0066920Z copying src/pip_composed.egg-info/requires.txt -> pip_composed-1.0/src/pip_composed.egg-info
+2026-11-07T09:45:16.0067500Z copying src/pip_composed.egg-info/top_level.txt -> pip_composed-1.0/src/pip_composed.egg-info
+2026-11-07T09:45:16.0067940Z Writing pip_composed-1.0/setup.cfg
+2026-11-07T09:45:16.0068260Z Creating tar archive
+2026-11-07T09:45:16.0096620Z removing 'pip_composed-1.0' (and everything under it)
+2026-11-07T09:45:16.0469560Z Successfully built pip_composed-1.0.tar.gz
+2026-11-07T09:45:16.3448440Z pip-purifier: wrote /private/var/folders/2s/vty41l455yv698g4xkgfv7z00000gn/T/pip-native-composition-v6ph584e/project/pip-purifier.lock.json with 1 downloads
+2026-11-07T09:45:17.9429200Z pip-purifier: --python /var/folders/2s/vty41l455yv698g4xkgfv7z00000gn/T/tmpqhknrd5l/venv/bin/python install --report /var/folders/2s/vty41l455yv698g4xkgfv7z00000gn/T/tmpqhknrd5l/report.json -r /var/folders/2s/vty41l455yv698g4xkgfv7z00000gn/T/tmpqhknrd5l/inputs/requirements.txt
+2026-11-07T09:45:18.8356240Z Looking in indexes: http://127.0.0.1:49223/i/0/
+2026-11-07T09:45:18.8359250Z Obtaining file:///private/var/folders/2s/vty41l455yv698g4xkgfv7z00000gn/T/pip-native-composition-v6ph584e/project (from -r /var/folders/2s/vty41l455yv698g4xkgfv7z00000gn/T/tmpqhknrd5l/inputs/requirements.txt (line 1))
+2026-11-07T09:45:18.8501530Z   Installing build dependencies: started
+2026-11-07T09:45:19.9059520Z   Installing build dependencies: finished with status 'done'
+2026-11-07T09:45:19.9070880Z   Checking if build backend supports build_editable: started
+2026-11-07T09:45:20.1879300Z   Checking if build backend supports build_editable: finished with status 'done'
+2026-11-07T09:45:20.1889080Z   Getting requirements to build editable: started
+2026-11-07T09:45:20.4646120Z   Getting requirements to build editable: finished with status 'done'
+2026-11-07T09:45:20.4655730Z   Preparing editable metadata (pyproject.toml): started
+2026-11-07T09:45:20.6031310Z   Preparing editable metadata (pyproject.toml): finished with status 'done'
+2026-11-07T09:45:20.6071860Z Processing /nix/store/d0zhm6ylh31yarfn6zpyx9brys00v3sw-python-projection/greet-0.1.0+nix.a5cc38a053fdb8319d497e32ee752258dbb96b9a1f4bfb97d9d83ad7f5bc7d40-py3-none-any.whl (from -r /var/folders/2s/vty41l455yv698g4xkgfv7z00000gn/T/tmpqhknrd5l/inputs/requirements.txt (line 2))
+2026-11-07T09:45:20.6107310Z Processing /nix/store/d0zhm6ylh31yarfn6zpyx9brys00v3sw-python-projection/attrs-25.3.0-py3-none-any.whl (from greet @ file:///nix/store/d0zhm6ylh31yarfn6zpyx9brys00v3sw-python-projection/greet-0.1.0%2Bnix.a5cc38a053fdb8319d497e32ee752258dbb96b9a1f4bfb97d9d83ad7f5bc7d40-py3-none-any.whl->-r /var/folders/2s/vty41l455yv698g4xkgfv7z00000gn/T/tmpqhknrd5l/inputs/requirements.txt (line 2))
+2026-11-07T09:45:20.6141020Z Processing /nix/store/d0zhm6ylh31yarfn6zpyx9brys00v3sw-python-projection/docopt-0.6.2-py2.py3-none-any.whl (from greet @ file:///nix/store/d0zhm6ylh31yarfn6zpyx9brys00v3sw-python-projection/greet-0.1.0%2Bnix.a5cc38a053fdb8319d497e32ee752258dbb96b9a1f4bfb97d9d83ad7f5bc7d40-py3-none-any.whl->-r /var/folders/2s/vty41l455yv698g4xkgfv7z00000gn/T/tmpqhknrd5l/inputs/requirements.txt (line 2))
+2026-11-07T09:45:20.6156220Z Processing /nix/store/d0zhm6ylh31yarfn6zpyx9brys00v3sw-python-projection/pyyaml-6.0.3-cp314-cp314-macosx_11_0_arm64.whl (from greet @ file:///nix/store/d0zhm6ylh31yarfn6zpyx9brys00v3sw-python-projection/greet-0.1.0%2Bnix.a5cc38a053fdb8319d497e32ee752258dbb96b9a1f4bfb97d9d83ad7f5bc7d40-py3-none-any.whl->-r /var/folders/2s/vty41l455yv698g4xkgfv7z00000gn/T/tmpqhknrd5l/inputs/requirements.txt (line 2))
+2026-11-07T09:45:20.6195660Z Building wheels for collected packages: pip-composed
+2026-11-07T09:45:20.6201470Z   Building editable for pip-composed (pyproject.toml): started
+2026-11-07T09:45:20.7672820Z   Building editable for pip-composed (pyproject.toml): finished with status 'done'
+2026-11-07T09:45:20.7678840Z   Created wheel for pip-composed: filename=pip_composed-1.0-0.editable-py3-none-any.whl size=1533 sha256=197743da544fda7a2945b56943dea71c9e67c25c25d8d951fc15c1ce42e5baba
+2026-11-07T09:45:20.7679980Z   Stored in directory: /private/var/folders/2s/vty41l455yv698g4xkgfv7z00000gn/T/pip-ephem-wheel-cache-ankmxsxa/wheels/a6/0a/0e/7aaed79fa87281d13b34d60dee785efa473ca3fd8176c38b34
+2026-11-07T09:45:20.7691840Z Successfully built pip-composed
+2026-11-07T09:45:20.7739040Z Installing collected packages: docopt, pyyaml, attrs, greet, pip-composed
+2026-11-07T09:45:20.8495570Z Successfully installed attrs-25.3.0 docopt-0.6.2 greet-0.1.0+nix.a5cc38a053fdb8319d497e32ee752258dbb96b9a1f4bfb97d9d83ad7f5bc7d40 pip-composed-1.0 pyyaml-6.0.3
+2026-11-07T09:45:20.9532060Z pip-purifier: --python /var/folders/2s/vty41l455yv698g4xkgfv7z00000gn/T/tmpqhknrd5l/venv/bin/python wheel --no-deps --wheel-dir /var/folders/2s/vty41l455yv698g4xkgfv7z00000gn/T/tmpqhknrd5l/dist/. /private/var/folders/2s/vty41l455yv698g4xkgfv7z00000gn/T/pip-native-composition-v6ph584e/project/.
+2026-11-07T09:45:21.9713700Z Looking in indexes: http://127.0.0.1:49223/i/0/
+2026-11-07T09:45:21.9716680Z Processing ./.
+2026-11-07T09:45:21.9730970Z   Installing build dependencies: started
+2026-11-07T09:45:22.8781770Z   Installing build dependencies: finished with status 'done'
+2026-11-07T09:45:22.8788230Z   Getting requirements to build wheel: started
+2026-11-07T09:45:23.2413280Z   Getting requirements to build wheel: finished with status 'done'
+2026-11-07T09:45:23.2430080Z   Preparing metadata (pyproject.toml): started
+2026-11-07T09:45:23.3830690Z   Preparing metadata (pyproject.toml): finished with status 'done'
+2026-11-07T09:45:23.3851130Z Building wheels for collected packages: pip-composed
+2026-11-07T09:45:23.3857100Z   Building wheel for pip-composed (pyproject.toml): started
+2026-11-07T09:45:23.5296230Z   Building wheel for pip-composed (pyproject.toml): finished with status 'done'
+2026-11-07T09:45:23.5302600Z   Created wheel for pip-composed: filename=pip_composed-1.0-py3-none-any.whl size=1451 sha256=c9f0abd556e04a22da7a1c506dc6c6a2b059cc3f2d82610e437909c853af7a80
+2026-11-07T09:45:23.5303650Z   Stored in directory: /private/var/folders/2s/vty41l455yv698g4xkgfv7z00000gn/T/pip-ephem-wheel-cache-n0o3oav6/wheels/a6/0a/0e/7aaed79fa87281d13b34d60dee785efa473ca3fd8176c38b34
+2026-11-07T09:45:23.5320010Z Successfully built pip-composed
+2026-11-07T09:45:23.7288990Z * Creating isolated environment: venv+pip...
+2026-11-07T09:45:23.7324910Z * Installing packages in isolated environment:
+2026-11-07T09:45:23.7325500Z   - setuptools>=70
+2026-11-07T09:45:24.8882660Z * Getting build dependencies for sdist...
+2026-11-07T09:45:25.2614620Z running egg_info
+2026-11-07T09:45:25.2622480Z writing src/pip_composed.egg-info/PKG-INFO
+2026-11-07T09:45:25.2628870Z writing dependency_links to src/pip_composed.egg-info/dependency_links.txt
+2026-11-07T09:45:25.2630930Z writing entry points to src/pip_composed.egg-info/entry_points.txt
+2026-11-07T09:45:25.2632260Z writing requirements to src/pip_composed.egg-info/requires.txt
+2026-11-07T09:45:25.2633240Z writing top-level names to src/pip_composed.egg-info/top_level.txt
+2026-11-07T09:45:25.2657530Z reading manifest file 'src/pip_composed.egg-info/SOURCES.txt'
+2026-11-07T09:45:25.2662430Z writing manifest file 'src/pip_composed.egg-info/SOURCES.txt'
+2026-11-07T09:45:25.2902550Z * Installed build dependency versions:
+2026-11-07T09:45:25.2903010Z   - setuptools==84.2.1
+2026-11-07T09:45:25.2903200Z * Building sdist...
+2026-11-07T09:45:25.4146740Z running sdist
+2026-11-07T09:45:25.4146980Z running egg_info
+2026-11-07T09:45:25.4159800Z writing src/pip_composed.egg-info/PKG-INFO
+2026-11-07T09:45:25.4164050Z writing dependency_links to src/pip_composed.egg-info/dependency_links.txt
+2026-11-07T09:45:25.4165410Z writing entry points to src/pip_composed.egg-info/entry_points.txt
+2026-11-07T09:45:25.4166540Z writing requirements to src/pip_composed.egg-info/requires.txt
+2026-11-07T09:45:25.4167510Z writing top-level names to src/pip_composed.egg-info/top_level.txt
+2026-11-07T09:45:25.4187660Z reading manifest file 'src/pip_composed.egg-info/SOURCES.txt'
+2026-11-07T09:45:25.4192240Z writing manifest file 'src/pip_composed.egg-info/SOURCES.txt'
+2026-11-07T09:45:25.4193180Z warning: sdist: standard file not found: should have one of README, README.rst, README.txt, README.md
+2026-11-07T09:45:25.4193490Z 
+2026-11-07T09:45:25.4193540Z running check
+2026-11-07T09:45:25.4212780Z creating pip_composed-1.0
+2026-11-07T09:45:25.4213850Z creating pip_composed-1.0/src/pip_composed
+2026-11-07T09:45:25.4215180Z creating pip_composed-1.0/src/pip_composed.egg-info
+2026-11-07T09:45:25.4215640Z copying files to pip_composed-1.0...
+2026-11-07T09:45:25.4216000Z copying pyproject.toml -> pip_composed-1.0
+2026-11-07T09:45:25.4217510Z copying src/pip_composed/__init__.py -> pip_composed-1.0/src/pip_composed
+2026-11-07T09:45:25.4218950Z copying src/pip_composed.egg-info/PKG-INFO -> pip_composed-1.0/src/pip_composed.egg-info
+2026-11-07T09:45:25.4221790Z copying src/pip_composed.egg-info/SOURCES.txt -> pip_composed-1.0/src/pip_composed.egg-info
+2026-11-07T09:45:25.4223310Z copying src/pip_composed.egg-info/dependency_links.txt -> pip_composed-1.0/src/pip_composed.egg-info
+2026-11-07T09:45:25.4224640Z copying src/pip_composed.egg-info/entry_points.txt -> pip_composed-1.0/src/pip_composed.egg-info
+2026-11-07T09:45:25.4226060Z copying src/pip_composed.egg-info/requires.txt -> pip_composed-1.0/src/pip_composed.egg-info
+2026-11-07T09:45:25.4228720Z copying src/pip_composed.egg-info/top_level.txt -> pip_composed-1.0/src/pip_composed.egg-info
+2026-11-07T09:45:25.4234050Z Writing pip_composed-1.0/setup.cfg
+2026-11-07T09:45:25.4235180Z Creating tar archive
+2026-11-07T09:45:25.4263710Z removing 'pip_composed-1.0' (and everything under it)
+2026-11-07T09:45:25.4653210Z Successfully built pip_composed-1.0.tar.gz
+2026-11-07T09:45:25.7559470Z pip-purifier: wrote /private/var/folders/2s/vty41l455yv698g4xkgfv7z00000gn/T/pip-native-composition-v6ph584e/project/pip-purifier.lock.json with 1 downloads
+2026-11-07T09:45:27.8710250Z these 7 derivations will be built:
+2026-11-07T09:45:27.8718720Z   /nix/store/3i7bbjdml5gw4dlbcr8abhyzv2nnk9j2-pins.txt.drv
+2026-11-07T09:45:27.8719620Z   /nix/store/3jbqp0gq6dmc3vz5hgyzzmz1f46yf40k-pip-python-views.json.drv
+2026-11-07T09:45:27.8720590Z   /nix/store/43va7vw8lgx1rlqf5mah8r39cp716pkk-old-repositories.json.drv
+2026-11-07T09:45:27.8721540Z   /nix/store/smcq6d00yqasqz06b266pr0fpsm8m6fk-pip-purifier-wheelhouse.drv
+2026-11-07T09:45:27.8722420Z   /nix/store/ygky3zzp5b5zw594228pjvm435m8p3gf-versions.json.drv
+2026-11-07T09:45:27.8723280Z   /nix/store/zhan8q6dqsrm588fgcdz4j40v7x60zb3-pip-python-bindings.drv
+2026-11-07T09:45:27.8724170Z   /nix/store/pnr67czh6zpxx8qqwrwach03n0nix4gz-pip-purifier-inputs.drv
+2026-11-07T09:45:28.0951300Z building '/nix/store/3i7bbjdml5gw4dlbcr8abhyzv2nnk9j2-pins.txt.drv'...
+2026-11-07T09:45:28.2918030Z building '/nix/store/smcq6d00yqasqz06b266pr0fpsm8m6fk-pip-purifier-wheelhouse.drv'...
+2026-11-07T09:45:28.4860520Z building '/nix/store/ygky3zzp5b5zw594228pjvm435m8p3gf-versions.json.drv'...
+2026-11-07T09:45:28.4862430Z structuredAttrs is enabled
+2026-11-07T09:45:28.6867850Z building '/nix/store/43va7vw8lgx1rlqf5mah8r39cp716pkk-old-repositories.json.drv'...
+2026-11-07T09:45:28.6896790Z structuredAttrs is enabled
+2026-11-07T09:45:28.9028410Z building '/nix/store/3jbqp0gq6dmc3vz5hgyzzmz1f46yf40k-pip-python-views.json.drv'...
+2026-11-07T09:45:28.9032000Z structuredAttrs is enabled
+2026-11-07T09:45:28.9089310Z structuredAttrs is enabled
+2026-11-07T09:45:29.2928920Z building '/nix/store/zhan8q6dqsrm588fgcdz4j40v7x60zb3-pip-python-bindings.drv'...
+2026-11-07T09:45:29.6340560Z building '/nix/store/pnr67czh6zpxx8qqwrwach03n0nix4gz-pip-purifier-inputs.drv'...
+2026-11-07T09:45:29.8192740Z pip-purifier: /nix/store/0yvniclsnfgvdqhj7456nw48vxa2iy5z-python3-3.14.8-env/bin/python3.14 -m pip --python /private/var/folders/2s/vty41l455yv698g4xkgfv7z00000gn/T/pip-native-composition-v6ph584e/project/.venv/bin/python install --no-index --find-links /nix/store/8f7czdgiy2zglarqgghl6wgbs6r9d57h-pip-purifier-inputs/wheelhouse --constraint /nix/store/8f7czdgiy2zglarqgghl6wgbs6r9d57h-pip-purifier-inputs/pins.txt -r /var/folders/2s/vty41l455yv698g4xkgfv7z00000gn/T/tmpl19prf59/inputs/requirements.txt
+2026-11-07T09:45:30.4186880Z Looking in links: /nix/store/8f7czdgiy2zglarqgghl6wgbs6r9d57h-pip-purifier-inputs/wheelhouse, /nix/store/8f7czdgiy2zglarqgghl6wgbs6r9d57h-pip-purifier-inputs/wheelhouse
+2026-11-07T09:45:30.4188320Z Obtaining file:///private/var/folders/2s/vty41l455yv698g4xkgfv7z00000gn/T/pip-native-composition-v6ph584e/project (from -r /var/folders/2s/vty41l455yv698g4xkgfv7z00000gn/T/tmpl19prf59/inputs/requirements.txt (line 1))
+2026-11-07T09:45:30.4198930Z   Installing build dependencies: started
+2026-11-07T09:45:30.7252940Z   Installing build dependencies: finished with status 'done'
+2026-11-07T09:45:30.7259610Z   Checking if build backend supports build_editable: started
+2026-11-07T09:45:30.9440260Z   Checking if build backend supports build_editable: finished with status 'done'
+2026-11-07T09:45:30.9455320Z   Getting requirements to build editable: started
+2026-11-07T09:45:31.1760810Z   Getting requirements to build editable: finished with status 'done'
+2026-11-07T09:45:31.1770440Z   Preparing editable metadata (pyproject.toml): started
+2026-11-07T09:45:31.3117660Z   Preparing editable metadata (pyproject.toml): finished with status 'done'
+2026-11-07T09:45:31.3157900Z Processing /nix/store/d0zhm6ylh31yarfn6zpyx9brys00v3sw-python-projection/greet-0.1.0+nix.a5cc38a053fdb8319d497e32ee752258dbb96b9a1f4bfb97d9d83ad7f5bc7d40-py3-none-any.whl (from -r /var/folders/2s/vty41l455yv698g4xkgfv7z00000gn/T/tmpl19prf59/inputs/requirements.txt (line 2))
+2026-11-07T09:45:31.3193820Z Processing /nix/store/d0zhm6ylh31yarfn6zpyx9brys00v3sw-python-projection/attrs-25.3.0-py3-none-any.whl (from greet @ file:///nix/store/d0zhm6ylh31yarfn6zpyx9brys00v3sw-python-projection/greet-0.1.0%2Bnix.a5cc38a053fdb8319d497e32ee752258dbb96b9a1f4bfb97d9d83ad7f5bc7d40-py3-none-any.whl->-r /var/folders/2s/vty41l455yv698g4xkgfv7z00000gn/T/tmpl19prf59/inputs/requirements.txt (line 2))
+2026-11-07T09:45:31.3226100Z Processing /nix/store/d0zhm6ylh31yarfn6zpyx9brys00v3sw-python-projection/docopt-0.6.2-py2.py3-none-any.whl (from greet @ file:///nix/store/d0zhm6ylh31yarfn6zpyx9brys00v3sw-python-projection/greet-0.1.0%2Bnix.a5cc38a053fdb8319d497e32ee752258dbb96b9a1f4bfb97d9d83ad7f5bc7d40-py3-none-any.whl->-r /var/folders/2s/vty41l455yv698g4xkgfv7z00000gn/T/tmpl19prf59/inputs/requirements.txt (line 2))
+2026-11-07T09:45:31.3242250Z Processing /nix/store/d0zhm6ylh31yarfn6zpyx9brys00v3sw-python-projection/pyyaml-6.0.3-cp314-cp314-macosx_11_0_arm64.whl (from greet @ file:///nix/store/d0zhm6ylh31yarfn6zpyx9brys00v3sw-python-projection/greet-0.1.0%2Bnix.a5cc38a053fdb8319d497e32ee752258dbb96b9a1f4bfb97d9d83ad7f5bc7d40-py3-none-any.whl->-r /var/folders/2s/vty41l455yv698g4xkgfv7z00000gn/T/tmpl19prf59/inputs/requirements.txt (line 2))
+2026-11-07T09:45:31.3257310Z Building wheels for collected packages: pip-composed
+2026-11-07T09:45:31.3263240Z   Building editable for pip-composed (pyproject.toml): started
+2026-11-07T09:45:31.4729390Z   Building editable for pip-composed (pyproject.toml): finished with status 'done'
+2026-11-07T09:45:31.4735180Z   Created wheel for pip-composed: filename=pip_composed-1.0-0.editable-py3-none-any.whl size=1533 sha256=45740d3c0c6b4f2041ca0ddee81e603901c998388bfe90c3a5f332b366be1428
+2026-11-07T09:45:31.4736220Z   Stored in directory: /private/var/folders/2s/vty41l455yv698g4xkgfv7z00000gn/T/pip-ephem-wheel-cache-x1u81l42/wheels/a6/0a/0e/7aaed79fa87281d13b34d60dee785efa473ca3fd8176c38b34
+2026-11-07T09:45:31.4747300Z Successfully built pip-composed
+2026-11-07T09:45:31.4795350Z Installing collected packages: docopt, pyyaml, attrs, greet, pip-composed
+2026-11-07T09:45:31.5514120Z Successfully installed attrs-25.3.0 docopt-0.6.2 greet-0.1.0+nix.a5cc38a053fdb8319d497e32ee752258dbb96b9a1f4bfb97d9d83ad7f5bc7d40 pip-composed-1.0 pyyaml-6.0.3
+2026-11-07T09:45:33.7854140Z Looking in links: /nix/store/8f7czdgiy2zglarqgghl6wgbs6r9d57h-pip-purifier-inputs/wheelhouse
+2026-11-07T09:45:33.7857370Z Obtaining file:///private/var/folders/2s/vty41l455yv698g4xkgfv7z00000gn/T/pip-native-composition-v6ph584e/project (from -r requirements.txt (line 1))
+2026-11-07T09:45:33.7869350Z   DEPRECATION: Setting PIP_CONSTRAINT will not affect build constraints in the future, pip 26.2 will enforce this behaviour change. A possible replacement is to specify build constraints using --build-constraint or PIP_BUILD_CONSTRAINT. To disable this warning without any build constraints set --use-feature=build-constraint or PIP_USE_FEATURE="build-constraint".
+2026-11-07T09:45:33.7870560Z   Installing build dependencies: started
+2026-11-07T09:45:34.1129270Z   Installing build dependencies: finished with status 'done'
+2026-11-07T09:45:34.1136810Z   Checking if build backend supports build_editable: started
+2026-11-07T09:45:34.3502290Z   Checking if build backend supports build_editable: finished with status 'done'
+2026-11-07T09:45:34.3510950Z   Getting requirements to build editable: started
+2026-11-07T09:45:34.5837610Z   Getting requirements to build editable: finished with status 'done'
+2026-11-07T09:45:34.5846660Z   Preparing editable metadata (pyproject.toml): started
+2026-11-07T09:45:34.7190230Z   Preparing editable metadata (pyproject.toml): finished with status 'done'
+2026-11-07T09:45:34.7237960Z Processing /nix/store/d0zhm6ylh31yarfn6zpyx9brys00v3sw-python-projection/greet-0.1.0+nix.a5cc38a053fdb8319d497e32ee752258dbb96b9a1f4bfb97d9d83ad7f5bc7d40-py3-none-any.whl (from -r requirements.txt (line 2))
+2026-11-07T09:45:34.7270680Z Processing /nix/store/d0zhm6ylh31yarfn6zpyx9brys00v3sw-python-projection/attrs-25.3.0-py3-none-any.whl (from greet @ file:///nix/store/d0zhm6ylh31yarfn6zpyx9brys00v3sw-python-projection/greet-0.1.0%2Bnix.a5cc38a053fdb8319d497e32ee752258dbb96b9a1f4bfb97d9d83ad7f5bc7d40-py3-none-any.whl->-r requirements.txt (line 2))
+2026-11-07T09:45:34.7303920Z Processing /nix/store/d0zhm6ylh31yarfn6zpyx9brys00v3sw-python-projection/docopt-0.6.2-py2.py3-none-any.whl (from greet @ file:///nix/store/d0zhm6ylh31yarfn6zpyx9brys00v3sw-python-projection/greet-0.1.0%2Bnix.a5cc38a053fdb8319d497e32ee752258dbb96b9a1f4bfb97d9d83ad7f5bc7d40-py3-none-any.whl->-r requirements.txt (line 2))
+2026-11-07T09:45:34.7321180Z Processing /nix/store/d0zhm6ylh31yarfn6zpyx9brys00v3sw-python-projection/pyyaml-6.0.3-cp314-cp314-macosx_11_0_arm64.whl (from greet @ file:///nix/store/d0zhm6ylh31yarfn6zpyx9brys00v3sw-python-projection/greet-0.1.0%2Bnix.a5cc38a053fdb8319d497e32ee752258dbb96b9a1f4bfb97d9d83ad7f5bc7d40-py3-none-any.whl->-r requirements.txt (line 2))
+2026-11-07T09:45:34.7337160Z Building wheels for collected packages: pip-composed
+2026-11-07T09:45:34.7343120Z   Building editable for pip-composed (pyproject.toml): started
+2026-11-07T09:45:34.8814240Z   Building editable for pip-composed (pyproject.toml): finished with status 'done'
+2026-11-07T09:45:34.8820590Z   Created wheel for pip-composed: filename=pip_composed-1.0-0.editable-py3-none-any.whl size=1533 sha256=d877a2ea8b77bbbb377153b268c7e493ab2dba893661f836804708af5058a7ea
+2026-11-07T09:45:34.8822440Z   Stored in directory: /private/var/folders/2s/vty41l455yv698g4xkgfv7z00000gn/T/pip-ephem-wheel-cache-8redsixq/wheels/a6/0a/0e/7aaed79fa87281d13b34d60dee785efa473ca3fd8176c38b34
+2026-11-07T09:45:34.8832890Z Successfully built pip-composed
+2026-11-07T09:45:34.8893530Z Installing collected packages: docopt, pyyaml, attrs, greet, pip-composed
+2026-11-07T09:45:34.8893860Z   Attempting uninstall: docopt
+2026-11-07T09:45:34.8911400Z     Found existing installation: docopt 0.6.2
+2026-11-07T09:45:34.8925570Z     Uninstalling docopt-0.6.2:
+2026-11-07T09:45:34.8938930Z       Successfully uninstalled docopt-0.6.2
+2026-11-07T09:45:34.9010040Z   Attempting uninstall: pyyaml
+2026-11-07T09:45:34.9024630Z     Found existing installation: PyYAML 6.0.3
+2026-11-07T09:45:34.9041460Z     Uninstalling PyYAML-6.0.3:
+2026-11-07T09:45:34.9049310Z       Successfully uninstalled PyYAML-6.0.3
+2026-11-07T09:45:34.9419130Z   Attempting uninstall: attrs
+2026-11-07T09:45:34.9435040Z     Found existing installation: attrs 25.3.0
+2026-11-07T09:45:34.9454030Z     Uninstalling attrs-25.3.0:
+2026-11-07T09:45:34.9461970Z       Successfully uninstalled attrs-25.3.0
+2026-11-07T09:45:34.9798900Z   Attempting uninstall: greet
+2026-11-07T09:45:34.9814000Z     Found existing installation: greet 0.1.0+nix.a5cc38a053fdb8319d497e32ee752258dbb96b9a1f4bfb97d9d83ad7f5bc7d40
+2026-11-07T09:45:34.9826420Z     Uninstalling greet-0.1.0+nix.a5cc38a053fdb8319d497e32ee752258dbb96b9a1f4bfb97d9d83ad7f5bc7d40:
+2026-11-07T09:45:34.9835740Z       Successfully uninstalled greet-0.1.0+nix.a5cc38a053fdb8319d497e32ee752258dbb96b9a1f4bfb97d9d83ad7f5bc7d40
+2026-11-07T09:45:34.9880310Z   Attempting uninstall: pip-composed
+2026-11-07T09:45:34.9893590Z     Found existing installation: pip-composed 1.0
+2026-11-07T09:45:34.9906670Z     Uninstalling pip-composed-1.0:
+2026-11-07T09:45:34.9920060Z       Successfully uninstalled pip-composed-1.0
+2026-11-07T09:45:34.9964100Z Successfully installed attrs-25.3.0 docopt-0.6.2 greet-0.1.0+nix.a5cc38a053fdb8319d497e32ee752258dbb96b9a1f4bfb97d9d83ad7f5bc7d40 pip-composed-1.0 pyyaml-6.0.3
+2026-11-07T09:45:37.1876070Z No broken requirements found.
+2026-11-07T09:45:39.4936690Z these 5 derivations will be built:
+2026-11-07T09:45:39.4944240Z   /nix/store/n9rmk935vb4pgf7zvxqyqxmx9ixzvh8j-pip-composed-environment.drv
+2026-11-07T09:45:39.4945360Z   /nix/store/021xf4n6g86iiihdcfy8fav3yjspyp3c-pip-composed-tests.drv
+2026-11-07T09:45:39.4946310Z   /nix/store/i1k907v7ycjhzf57zrxpgfn92l16xznc-pip-composed-1.0-dist.drv
+2026-11-07T09:45:39.4947340Z   /nix/store/lf97gv5zj12xqhnvbh2gq7a4gymjk94f-pip-composed-publication-scope.drv
+2026-11-07T09:45:39.4948330Z   /nix/store/ic2ck2gx2rgm5qkycjb1jxqliwfiqrvg-python-projection.drv
+2026-11-07T09:45:39.8954280Z building '/nix/store/n9rmk935vb4pgf7zvxqyqxmx9ixzvh8j-pip-composed-environment.drv'...
+2026-11-07T09:45:40.1615830Z building '/nix/store/i1k907v7ycjhzf57zrxpgfn92l16xznc-pip-composed-1.0-dist.drv'...
+2026-11-07T09:45:43.9039350Z building '/nix/store/lf97gv5zj12xqhnvbh2gq7a4gymjk94f-pip-composed-publication-scope.drv'...
+2026-11-07T09:45:44.1205420Z building '/nix/store/021xf4n6g86iiihdcfy8fav3yjspyp3c-pip-composed-tests.drv'...
+2026-11-07T09:45:44.3508040Z building '/nix/store/ic2ck2gx2rgm5qkycjb1jxqliwfiqrvg-python-projection.drv'...
+2026-11-07T09:45:44.6979410Z Using CPython 3.14.8 interpreter at: /nix/store/7wsa3czhbvhdms5npdy0q2nwb563f3my-pip-composition-tools/bin/python
+2026-11-07T09:45:44.6984040Z Creating virtual environment at: /var/folders/2s/vty41l455yv698g4xkgfv7z00000gn/T/pip-native-composition-v6ph584e/downstream
+2026-11-07T09:45:44.7017120Z Activate with: source /var/folders/2s/vty41l455yv698g4xkgfv7z00000gn/T/pip-native-composition-v6ph584e/downstream/bin/activate
+2026-11-07T09:45:44.7488090Z Using Python 3.14.8 environment at: /var/folders/2s/vty41l455yv698g4xkgfv7z00000gn/T/pip-native-composition-v6ph584e/downstream
+2026-11-07T09:45:44.7810740Z Resolved 5 packages in 14ms
+2026-11-07T09:45:44.7939600Z Prepared 5 packages in 11ms
+2026-11-07T09:45:44.7980990Z Installed 5 packages in 3ms
+2026-11-07T09:45:44.7986360Z  + attrs==25.3.0
+2026-11-07T09:45:44.7987470Z  + docopt==0.6.2
+2026-11-07T09:45:44.7988840Z  + greet==0.1.0+nix.a5cc38a053fdb8319d497e32ee752258dbb96b9a1f4bfb97d9d83ad7f5bc7d40
+2026-11-07T09:45:44.7989420Z  + pip-composed==1.0+nix.f697f09c4fb90109651599112609f966bd92cf7fd40cf62a63867979a8943ddd
+2026-11-07T09:45:44.7989780Z  + pyyaml==6.0.3
+2026-11-07T09:45:44.8545480Z /var/folders/2s/vty41l455yv698g4xkgfv7z00000gn/T/pip-native-composition-v6ph584e/downstream/lib/python3.14/site-packages/docopt.py:165: SyntaxWarning: "\S" is an invalid escape sequence. Such sequences will not work in the future. Did you mean "\\S"? A raw string is also an option.
+2026-11-07T09:45:44.8546470Z   name = re.findall('(<\S*?>)', source)[0]
+2026-11-07T09:45:44.8547380Z /var/folders/2s/vty41l455yv698g4xkgfv7z00000gn/T/pip-native-composition-v6ph584e/downstream/lib/python3.14/site-packages/docopt.py:166: SyntaxWarning: "\[" is an invalid escape sequence. Such sequences will not work in the future. Did you mean "\\["? A raw string is also an option.
+2026-11-07T09:45:44.8548300Z   value = re.findall('\[default: (.*)\]', source, flags=re.I)
+2026-11-07T09:45:44.8555200Z /var/folders/2s/vty41l455yv698g4xkgfv7z00000gn/T/pip-native-composition-v6ph584e/downstream/lib/python3.14/site-packages/docopt.py:207: SyntaxWarning: "\[" is an invalid escape sequence. Such sequences will not work in the future. Did you mean "\\["? A raw string is also an option.
+2026-11-07T09:45:44.8556190Z   matched = re.findall('\[default: (.*)\]', description, flags=re.I)
+2026-11-07T09:45:44.8557360Z /var/folders/2s/vty41l455yv698g4xkgfv7z00000gn/T/pip-native-composition-v6ph584e/downstream/lib/python3.14/site-packages/docopt.py:456: SyntaxWarning: "\S" is an invalid escape sequence. Such sequences will not work in the future. Did you mean "\\S"? A raw string is also an option.
+2026-11-07T09:45:44.8558570Z   split = re.split('\n *(<\S+?>|-\S+?)', doc)[1:]
+2026-11-07T09:45:47.0482540Z Publishing 5 files to http://127.0.0.1:49276/
+2026-11-07T09:45:47.0520010Z Hashing attrs-25.3.0-py3-none-any.whl (62.3KiB)
+2026-11-07T09:45:47.0529360Z Uploading attrs-25.3.0-py3-none-any.whl (62.3KiB)
+2026-11-07T09:45:47.0678580Z "POST / HTTP/1.1" 200 -
+2026-11-07T09:45:47.0681800Z Hashing docopt-0.6.2-py2.py3-none-any.whl (13.5KiB)
+2026-11-07T09:45:47.0684830Z Uploading docopt-0.6.2-py2.py3-none-any.whl (13.5KiB)
+2026-11-07T09:45:47.0730680Z "POST / HTTP/1.1" 200 -
+2026-11-07T09:45:47.0733120Z Hashing greet-0.1.0+nix.a5cc38a053fdb8319d497e32ee752258dbb96b9a1f4bfb97d9d83ad7f5bc7d40-py3-none-any.whl (2.2KiB)
+2026-11-07T09:45:47.0735370Z Uploading greet-0.1.0+nix.a5cc38a053fdb8319d497e32ee752258dbb96b9a1f4bfb97d9d83ad7f5bc7d40-py3-none-any.whl (2.2KiB)
+2026-11-07T09:45:47.0756210Z "POST / HTTP/1.1" 200 -
+2026-11-07T09:45:47.0757790Z Hashing pip_composed-1.0+nix.f697f09c4fb90109651599112609f966bd92cf7fd40cf62a63867979a8943ddd-py3-none-any.whl (2.2KiB)
+2026-11-07T09:45:47.0759830Z Uploading pip_composed-1.0+nix.f697f09c4fb90109651599112609f966bd92cf7fd40cf62a63867979a8943ddd-py3-none-any.whl (2.2KiB)
+2026-11-07T09:45:47.0778270Z "POST / HTTP/1.1" 200 -
+2026-11-07T09:45:47.0779820Z Hashing pyyaml-6.0.3-cp314-cp314-macosx_11_0_arm64.whl (169.7KiB)
+2026-11-07T09:45:47.0785040Z Uploading pyyaml-6.0.3-cp314-cp314-macosx_11_0_arm64.whl (169.7KiB)
+2026-11-07T09:45:47.0874770Z "POST / HTTP/1.1" 200 -
+2026-11-07T09:45:48.8220800Z pip-purifier: --python /var/folders/2s/vty41l455yv698g4xkgfv7z00000gn/T/tmpocmhes1d/venv/bin/python install --report /var/folders/2s/vty41l455yv698g4xkgfv7z00000gn/T/tmpocmhes1d/report.json -r /var/folders/2s/vty41l455yv698g4xkgfv7z00000gn/T/tmpocmhes1d/inputs/pylock.toml
+2026-11-07T09:45:49.7204570Z WARNING: Using pylock.toml as a requirements source is an experimental feature. It may be removed/changed in a future release without prior warning.
+2026-11-07T09:45:49.7255430Z Looking in indexes: http://127.0.0.1:49282/i/0/
+2026-11-07T09:45:49.7271840Z Processing /nix/store/d0zhm6ylh31yarfn6zpyx9brys00v3sw-python-projection/attrs-25.3.0-py3-none-any.whl (from /var/folders/2s/vty41l455yv698g4xkgfv7z00000gn/T/tmpocmhes1d/inputs/pylock.toml)
+2026-11-07T09:45:49.7339990Z Processing /nix/store/d0zhm6ylh31yarfn6zpyx9brys00v3sw-python-projection/docopt-0.6.2-py2.py3-none-any.whl (from /var/folders/2s/vty41l455yv698g4xkgfv7z00000gn/T/tmpocmhes1d/inputs/pylock.toml)
+2026-11-07T09:45:49.7354850Z Processing /nix/store/d0zhm6ylh31yarfn6zpyx9brys00v3sw-python-projection/greet-0.1.0+nix.a5cc38a053fdb8319d497e32ee752258dbb96b9a1f4bfb97d9d83ad7f5bc7d40-py3-none-any.whl (from /var/folders/2s/vty41l455yv698g4xkgfv7z00000gn/T/tmpocmhes1d/inputs/pylock.toml)
+2026-11-07T09:45:49.7364650Z Processing /nix/store/d0zhm6ylh31yarfn6zpyx9brys00v3sw-python-projection/pyyaml-6.0.3-cp314-cp314-macosx_11_0_arm64.whl (from /var/folders/2s/vty41l455yv698g4xkgfv7z00000gn/T/tmpocmhes1d/inputs/pylock.toml)
+2026-11-07T09:45:49.7469350Z Installing collected packages: docopt, pyyaml, attrs, greet
+2026-11-07T09:45:49.8290690Z Successfully installed attrs-25.3.0 docopt-0.6.2 greet-0.1.0+nix.a5cc38a053fdb8319d497e32ee752258dbb96b9a1f4bfb97d9d83ad7f5bc7d40 pyyaml-6.0.3
+2026-11-07T09:45:50.3075900Z pip-purifier: wrote /private/var/folders/2s/vty41l455yv698g4xkgfv7z00000gn/T/pip-native-composition-v6ph584e/frozen/pip-purifier.lock.json with 0 downloads
+2026-11-07T09:45:52.1864160Z these 4 derivations will be built:
+2026-11-07T09:45:52.1868290Z   /nix/store/978r5khcg6fz39j9hv4phis74d7059mc-args.json.drv
+2026-11-07T09:45:52.1869020Z   /nix/store/fvc0xm9mq4gzbg3ph5ndmqnc183l2xyi-pip-purifier-wheelhouse.drv
+2026-11-07T09:45:52.1869700Z   /nix/store/ilm4siaal9cz3d5f2w1xaqd5mh55kal2-versions.json.drv
+2026-11-07T09:45:52.1870340Z   /nix/store/0lz1qyp2ymcbl90j5rxwgl148axdbni9-pip-purifier-inputs.drv
+2026-11-07T09:45:52.4053230Z building '/nix/store/978r5khcg6fz39j9hv4phis74d7059mc-args.json.drv'...
+2026-11-07T09:45:52.6066750Z building '/nix/store/fvc0xm9mq4gzbg3ph5ndmqnc183l2xyi-pip-purifier-wheelhouse.drv'...
+2026-11-07T09:45:52.8030900Z building '/nix/store/ilm4siaal9cz3d5f2w1xaqd5mh55kal2-versions.json.drv'...
+2026-11-07T09:45:52.8034130Z structuredAttrs is enabled
+2026-11-07T09:45:52.8093800Z structuredAttrs is enabled
+2026-11-07T09:45:53.2088670Z building '/nix/store/0lz1qyp2ymcbl90j5rxwgl148axdbni9-pip-purifier-inputs.drv'...
+2026-11-07T09:45:53.4110600Z pip-purifier: /nix/store/0yvniclsnfgvdqhj7456nw48vxa2iy5z-python3-3.14.8-env/bin/python3.14 -m pip --python /private/var/folders/2s/vty41l455yv698g4xkgfv7z00000gn/T/pip-native-composition-v6ph584e/frozen/.venv/bin/python install --no-index --find-links /nix/store/63nlcx7rxfkfrrkqy907q1k104gggrb9-pip-purifier-inputs/wheelhouse --constraint /nix/store/63nlcx7rxfkfrrkqy907q1k104gggrb9-pip-purifier-inputs/pins.txt -r /var/folders/2s/vty41l455yv698g4xkgfv7z00000gn/T/tmpki94yl3j/inputs/pylock.toml
+2026-11-07T09:45:53.8316180Z WARNING: Using pylock.toml as a requirements source is an experimental feature. It may be removed/changed in a future release without prior warning.
+2026-11-07T09:45:53.8359830Z Looking in links: /nix/store/63nlcx7rxfkfrrkqy907q1k104gggrb9-pip-purifier-inputs/wheelhouse, /nix/store/63nlcx7rxfkfrrkqy907q1k104gggrb9-pip-purifier-inputs/wheelhouse
+2026-11-07T09:45:53.8371060Z Processing /nix/store/d0zhm6ylh31yarfn6zpyx9brys00v3sw-python-projection/attrs-25.3.0-py3-none-any.whl (from /var/folders/2s/vty41l455yv698g4xkgfv7z00000gn/T/tmpki94yl3j/inputs/pylock.toml)
+2026-11-07T09:45:53.8425740Z Processing /nix/store/d0zhm6ylh31yarfn6zpyx9brys00v3sw-python-projection/docopt-0.6.2-py2.py3-none-any.whl (from /var/folders/2s/vty41l455yv698g4xkgfv7z00000gn/T/tmpki94yl3j/inputs/pylock.toml)
+2026-11-07T09:45:53.8440860Z Processing /nix/store/d0zhm6ylh31yarfn6zpyx9brys00v3sw-python-projection/greet-0.1.0+nix.a5cc38a053fdb8319d497e32ee752258dbb96b9a1f4bfb97d9d83ad7f5bc7d40-py3-none-any.whl (from /var/folders/2s/vty41l455yv698g4xkgfv7z00000gn/T/tmpki94yl3j/inputs/pylock.toml)
+2026-11-07T09:45:53.8449600Z Processing /nix/store/d0zhm6ylh31yarfn6zpyx9brys00v3sw-python-projection/pyyaml-6.0.3-cp314-cp314-macosx_11_0_arm64.whl (from /var/folders/2s/vty41l455yv698g4xkgfv7z00000gn/T/tmpki94yl3j/inputs/pylock.toml)
+2026-11-07T09:45:53.8529950Z Installing collected packages: docopt, pyyaml, attrs, greet
+2026-11-07T09:45:53.9299560Z Successfully installed attrs-25.3.0 docopt-0.6.2 greet-0.1.0+nix.a5cc38a053fdb8319d497e32ee752258dbb96b9a1f4bfb97d9d83ad7f5bc7d40 pyyaml-6.0.3
+2026-11-07T09:45:54.0840860Z PIP NATIVE, PURE AND ORDINARY DOWNSTREAM COMPOSITION PASSED
+2026-11-07T09:45:54.1164460Z ##[group]Run fixture="$(nix eval --raw .#lib.purifier.testFixtures.nativePythonComposition)"
+2026-11-07T09:45:54.1164960Z [36;1mfixture="$(nix eval --raw .#lib.purifier.testFixtures.nativePythonComposition)"[0m
+2026-11-07T09:45:54.1165280Z [36;1mpython3 "$fixture" pip[0m
+2026-11-07T09:45:54.2190620Z shell: /bin/bash -e {0}
+2026-11-07T09:45:54.2190810Z env:
+2026-11-07T09:45:54.2191060Z   NIX_PROFILES: /nix/var/nix/profiles/default /Users/runner/.nix-profile
+2026-11-07T09:45:54.2191360Z   NIX_SSL_CERT_FILE: /etc/ssl/cert.pem
+2026-11-07T09:45:54.2191550Z ##[endgroup]
+2026-11-07T09:45:55.0106700Z /var/folders/2s/vty41l455yv698g4xkgfv7z00000gn/T/pip-target-python-fj760cfh/source
+2026-11-07T09:45:58.3184070Z this derivation will be built:
+2026-11-07T09:45:58.3184610Z   /nix/store/xj2fwnqgc32zla54gxsad09bq47nwx09-python312-consumer-tools.drv
+2026-11-07T09:45:58.3185230Z this path will be fetched (31.7 MiB download, 106.9 MiB unpacked):
+2026-11-07T09:45:58.3185860Z   /nix/store/vgwdsgh9h5wrchrs4l5nx1g1z4h8acf1-python3-3.12.15
+2026-11-07T09:45:58.3212930Z copying path '/nix/store/vgwdsgh9h5wrchrs4l5nx1g1z4h8acf1-python3-3.12.15' from 'https://cache.nixos.org'...
+2026-11-07T09:45:59.3319080Z building '/nix/store/xj2fwnqgc32zla54gxsad09bq47nwx09-python312-consumer-tools.drv'...
+2026-11-07T09:46:01.2575050Z unpacking 'github:nix-purifiers/uv-purifier/0d2f6e7e42462491560afcf8f03a1db4432d6c34' into the Git cache...
+2026-11-07T09:46:01.9786020Z unpacking 'github:nix-purifiers/purifier/052a1d825e4abdfeceffb06bc9b091c7634b7986?narHash=sha256-oBZLoSRURmWi7%2Bkdh0mIGPJ0IbPginDDBvHIh2TW5U0%3D' into the Git cache...
+2026-11-07T09:46:04.2681150Z these 16 derivations will be built:
+2026-11-07T09:46:04.2689300Z   /nix/store/26rj05s9p90j2ijl4gc6rmizg8bv036g-pathspec-1.1.1-py3-none-any.whl.drv
+2026-11-07T09:46:04.2689890Z   /nix/store/2xlf7ryingdi2nk6qyvnzx6q5yipr6ls-editables-0.6-py3-none-any.whl.drv
+2026-11-07T09:46:04.2690390Z   /nix/store/57g70rl83w9ddpqdn74czswis7v06ss7-tomlkit-0.15.2-py3-none-any.whl.drv
+2026-11-07T09:46:04.2690880Z   /nix/store/5npg8c3vsfs56kfp9jzqm79i7yvsiz9w-hatchling-1.33.0-py3-none-any.whl.drv
+2026-11-07T09:46:04.2691370Z   /nix/store/7yl7n0cyd4y783jy25xqp7fdyxqiyz94-pluggy-1.7.0-py3-none-any.whl.drv
+2026-11-07T09:46:04.2691830Z   /nix/store/bki3v2ys1mqn7i18assq8vxii792v16f-packaging-26.3-py3-none-any.whl.drv
+2026-11-07T09:46:04.2692390Z   /nix/store/byc3d8zr6gblpgzzhbi1iypc8xyck2f5-markupsafe-3.0.3-cp312-cp312-macosx_11_0_arm64.whl.drv
+2026-11-07T09:46:04.2693420Z   /nix/store/x55ksidpdigh5x75ygi59rrdcz8i7qdl-trove_classifiers-2026.9.21.13-py3-none-any.whl.drv
+2026-11-07T09:46:04.2693920Z   /nix/store/6b7in2cpra7sqaixspvlv9am85qgsg2i-uv-purifier-wheelhouse.drv
+2026-11-07T09:46:04.2694360Z   /nix/store/2h1spla6blqjb2cbsxpg6qszs5b8dwzg-simple-distributions-0.1.0.drv
+2026-11-07T09:46:04.2694820Z   /nix/store/lj8j4qbd3qiif479p9mxrlr51gmm2kkx-uv-purifier-direct.json.drv
+2026-11-07T09:46:04.2695230Z   /nix/store/fdwz17qbyjaypqckxby862kbknrpisy3-simple-0.1.0.drv
+2026-11-07T09:46:04.2695670Z   /nix/store/iq7anrd0rf552vkmg21q50y0lqv6wdks-simple-publication-wheels.drv
+2026-11-07T09:46:04.2696130Z   /nix/store/wfcbspfknr6dja16bavyq97bc8askq29-docopt-runtime-wheel-0.6.2.drv
+2026-11-07T09:46:04.2696560Z   /nix/store/qi8zyzgb9qcmk5iyjkb860l7l6xr4in7-simple-runtime-wheels.drv
+2026-11-07T09:46:04.2697010Z   /nix/store/rf8nvyrmml78hacik666qhwsis0ccixm-python-projection.drv
+2026-11-07T09:46:04.4842850Z building '/nix/store/2xlf7ryingdi2nk6qyvnzx6q5yipr6ls-editables-0.6-py3-none-any.whl.drv'...
+2026-11-07T09:46:04.7008880Z building '/nix/store/5npg8c3vsfs56kfp9jzqm79i7yvsiz9w-hatchling-1.33.0-py3-none-any.whl.drv'...
+2026-11-07T09:46:04.9064640Z building '/nix/store/byc3d8zr6gblpgzzhbi1iypc8xyck2f5-markupsafe-3.0.3-cp312-cp312-macosx_11_0_arm64.whl.drv'...
+2026-11-07T09:46:05.1137740Z building '/nix/store/7yl7n0cyd4y783jy25xqp7fdyxqiyz94-pluggy-1.7.0-py3-none-any.whl.drv'...
+2026-11-07T09:46:05.3150320Z building '/nix/store/x55ksidpdigh5x75ygi59rrdcz8i7qdl-trove_classifiers-2026.9.21.13-py3-none-any.whl.drv'...
+2026-11-07T09:46:05.5283720Z building '/nix/store/bki3v2ys1mqn7i18assq8vxii792v16f-packaging-26.3-py3-none-any.whl.drv'...
+2026-11-07T09:46:05.7397680Z building '/nix/store/57g70rl83w9ddpqdn74czswis7v06ss7-tomlkit-0.15.2-py3-none-any.whl.drv'...
+2026-11-07T09:46:05.9431190Z building '/nix/store/lj8j4qbd3qiif479p9mxrlr51gmm2kkx-uv-purifier-direct.json.drv'...
+2026-11-07T09:46:06.1603510Z building '/nix/store/26rj05s9p90j2ijl4gc6rmizg8bv036g-pathspec-1.1.1-py3-none-any.whl.drv'...
+2026-11-07T09:46:06.4716870Z building '/nix/store/6b7in2cpra7sqaixspvlv9am85qgsg2i-uv-purifier-wheelhouse.drv'...
+2026-11-07T09:46:07.0059150Z building '/nix/store/wfcbspfknr6dja16bavyq97bc8askq29-docopt-runtime-wheel-0.6.2.drv'...
+2026-11-07T09:46:07.2361090Z building '/nix/store/2h1spla6blqjb2cbsxpg6qszs5b8dwzg-simple-distributions-0.1.0.drv'...
+2026-11-07T09:46:08.3634750Z building '/nix/store/fdwz17qbyjaypqckxby862kbknrpisy3-simple-0.1.0.drv'...
+2026-11-07T09:46:08.6286080Z building '/nix/store/iq7anrd0rf552vkmg21q50y0lqv6wdks-simple-publication-wheels.drv'...
+2026-11-07T09:46:10.6136280Z building '/nix/store/qi8zyzgb9qcmk5iyjkb860l7l6xr4in7-simple-runtime-wheels.drv'...
+2026-11-07T09:46:10.9587900Z building '/nix/store/rf8nvyrmml78hacik666qhwsis0ccixm-python-projection.drv'...
+2026-11-07T09:46:11.6028380Z pip-purifier: --python /var/folders/2s/vty41l455yv698g4xkgfv7z00000gn/T/tmp8_lo5i36/venv/bin/python install --report /var/folders/2s/vty41l455yv698g4xkgfv7z00000gn/T/tmp8_lo5i36/report.json -r /var/folders/2s/vty41l455yv698g4xkgfv7z00000gn/T/tmp8_lo5i36/inputs/requirements.txt
+2026-11-07T09:46:12.9360600Z Looking in indexes: http://127.0.0.1:49313/i/0/
+2026-11-07T09:46:12.9362340Z Processing /nix/store/c97606sch4v8divmvr5qxhskd1afp8w9-python-projection/simple-0.1.0+nix.043744250062fd2b4a0d5da48c4e4b96bcd06efee7a753153cdf74aecb64c47b-py3-none-any.whl (from -r /var/folders/2s/vty41l455yv698g4xkgfv7z00000gn/T/tmp8_lo5i36/inputs/requirements.txt (line 1))
+2026-11-07T09:46:12.9389950Z Processing /nix/store/c97606sch4v8divmvr5qxhskd1afp8w9-python-projection/attrs-25.3.0-py3-none-any.whl (from simple @ file:///nix/store/c97606sch4v8divmvr5qxhskd1afp8w9-python-projection/simple-0.1.0%2Bnix.043744250062fd2b4a0d5da48c4e4b96bcd06efee7a753153cdf74aecb64c47b-py3-none-any.whl->-r /var/folders/2s/vty41l455yv698g4xkgfv7z00000gn/T/tmp8_lo5i36/inputs/requirements.txt (line 1))
+2026-11-07T09:46:12.9424820Z Processing /nix/store/c97606sch4v8divmvr5qxhskd1afp8w9-python-projection/docopt-0.6.2-py2.py3-none-any.whl (from simple @ file:///nix/store/c97606sch4v8divmvr5qxhskd1afp8w9-python-projection/simple-0.1.0%2Bnix.043744250062fd2b4a0d5da48c4e4b96bcd06efee7a753153cdf74aecb64c47b-py3-none-any.whl->-r /var/folders/2s/vty41l455yv698g4xkgfv7z00000gn/T/tmp8_lo5i36/inputs/requirements.txt (line 1))
+2026-11-07T09:46:12.9440300Z Processing /nix/store/c97606sch4v8divmvr5qxhskd1afp8w9-python-projection/markupsafe-3.0.3-cp312-cp312-macosx_11_0_arm64.whl (from simple @ file:///nix/store/c97606sch4v8divmvr5qxhskd1afp8w9-python-projection/simple-0.1.0%2Bnix.043744250062fd2b4a0d5da48c4e4b96bcd06efee7a753153cdf74aecb64c47b-py3-none-any.whl->-r /var/folders/2s/vty41l455yv698g4xkgfv7z00000gn/T/tmp8_lo5i36/inputs/requirements.txt (line 1))
+2026-11-07T09:46:12.9538720Z Installing collected packages: docopt, markupsafe, attrs, simple
+2026-11-07T09:46:12.9978650Z Successfully installed attrs-25.3.0 docopt-0.6.2 markupsafe-3.0.3 simple-0.1.0+nix.043744250062fd2b4a0d5da48c4e4b96bcd06efee7a753153cdf74aecb64c47b
+2026-11-07T09:46:13.0853590Z pip-purifier: wrote /private/var/folders/2s/vty41l455yv698g4xkgfv7z00000gn/T/pip-target-python-fj760cfh/project/pip-purifier.lock.json with 0 downloads
+2026-11-07T09:46:15.4006190Z these 3 derivations will be built:
+2026-11-07T09:46:15.4007750Z   /nix/store/pi8chw9j4qamgwgkgyfidjaym3avkxvq-pip-python-views.json.drv
+2026-11-07T09:46:15.4008310Z   /nix/store/fpy4wv87clns6lzrmbkn38s0s26vj52y-pip-python-bindings.drv
+2026-11-07T09:46:15.4008770Z   /nix/store/jiww8f42jb5i6vafm361km83dh2k578n-pip-purifier-inputs.drv
+2026-11-07T09:46:15.4009900Z these 2 paths will be fetched (289.6 KiB download, 2.1 MiB unpacked):
+2026-11-07T09:46:15.4010380Z   /nix/store/g6fl5ga3fv715qlq5cwaxa7a28f40hp3-python3-3.12.15-env
+2026-11-07T09:46:15.4010840Z   /nix/store/zdjicpy9z0s5cl7csvsjbz4brj5fyv73-python3.12-packaging-26.3
+2026-11-07T09:46:15.6394400Z building '/nix/store/pi8chw9j4qamgwgkgyfidjaym3avkxvq-pip-python-views.json.drv'...
+2026-11-07T09:46:15.6414600Z copying path '/nix/store/zdjicpy9z0s5cl7csvsjbz4brj5fyv73-python3.12-packaging-26.3' from 'https://cache.nixos.org'...
+2026-11-07T09:46:15.6479960Z structuredAttrs is enabled
+2026-11-07T09:46:15.6581840Z copying path '/nix/store/g6fl5ga3fv715qlq5cwaxa7a28f40hp3-python3-3.12.15-env' from 'https://cache.nixos.org'...
+2026-11-07T09:46:16.1049580Z building '/nix/store/fpy4wv87clns6lzrmbkn38s0s26vj52y-pip-python-bindings.drv'...
+2026-11-07T09:46:16.4720390Z building '/nix/store/jiww8f42jb5i6vafm361km83dh2k578n-pip-purifier-inputs.drv'...
+2026-11-07T09:46:16.6787110Z pip-purifier: /nix/store/0yvniclsnfgvdqhj7456nw48vxa2iy5z-python3-3.14.8-env/bin/python3.14 -m pip --python /private/var/folders/2s/vty41l455yv698g4xkgfv7z00000gn/T/pip-target-python-fj760cfh/project/.venv/bin/python install --no-index --find-links /nix/store/vzl2cl1vqz6139y2vfdfhfbvadv6l6w4-pip-purifier-inputs/wheelhouse --constraint /nix/store/vzl2cl1vqz6139y2vfdfhfbvadv6l6w4-pip-purifier-inputs/pins.txt -r /var/folders/2s/vty41l455yv698g4xkgfv7z00000gn/T/tmpajr0w1es/inputs/requirements.txt
+2026-11-07T09:46:17.5527880Z Looking in links: /nix/store/vzl2cl1vqz6139y2vfdfhfbvadv6l6w4-pip-purifier-inputs/wheelhouse, /nix/store/vzl2cl1vqz6139y2vfdfhfbvadv6l6w4-pip-purifier-inputs/wheelhouse
+2026-11-07T09:46:17.5540170Z Processing /nix/store/c97606sch4v8divmvr5qxhskd1afp8w9-python-projection/simple-0.1.0+nix.043744250062fd2b4a0d5da48c4e4b96bcd06efee7a753153cdf74aecb64c47b-py3-none-any.whl (from -r /var/folders/2s/vty41l455yv698g4xkgfv7z00000gn/T/tmpajr0w1es/inputs/requirements.txt (line 1))
+2026-11-07T09:46:17.5577950Z Processing /nix/store/c97606sch4v8divmvr5qxhskd1afp8w9-python-projection/attrs-25.3.0-py3-none-any.whl (from simple @ file:///nix/store/c97606sch4v8divmvr5qxhskd1afp8w9-python-projection/simple-0.1.0%2Bnix.043744250062fd2b4a0d5da48c4e4b96bcd06efee7a753153cdf74aecb64c47b-py3-none-any.whl->-r /var/folders/2s/vty41l455yv698g4xkgfv7z00000gn/T/tmpajr0w1es/inputs/requirements.txt (line 1))
+2026-11-07T09:46:17.5613350Z Processing /nix/store/c97606sch4v8divmvr5qxhskd1afp8w9-python-projection/docopt-0.6.2-py2.py3-none-any.whl (from simple @ file:///nix/store/c97606sch4v8divmvr5qxhskd1afp8w9-python-projection/simple-0.1.0%2Bnix.043744250062fd2b4a0d5da48c4e4b96bcd06efee7a753153cdf74aecb64c47b-py3-none-any.whl->-r /var/folders/2s/vty41l455yv698g4xkgfv7z00000gn/T/tmpajr0w1es/inputs/requirements.txt (line 1))
+2026-11-07T09:46:17.5628750Z Processing /nix/store/c97606sch4v8divmvr5qxhskd1afp8w9-python-projection/markupsafe-3.0.3-cp312-cp312-macosx_11_0_arm64.whl (from simple @ file:///nix/store/c97606sch4v8divmvr5qxhskd1afp8w9-python-projection/simple-0.1.0%2Bnix.043744250062fd2b4a0d5da48c4e4b96bcd06efee7a753153cdf74aecb64c47b-py3-none-any.whl->-r /var/folders/2s/vty41l455yv698g4xkgfv7z00000gn/T/tmpajr0w1es/inputs/requirements.txt (line 1))
+2026-11-07T09:46:17.5711130Z Installing collected packages: docopt, markupsafe, attrs, simple
+2026-11-07T09:46:17.9177220Z Successfully installed attrs-25.3.0 docopt-0.6.2 markupsafe-3.0.3 simple-0.1.0+nix.043744250062fd2b4a0d5da48c4e4b96bcd06efee7a753153cdf74aecb64c47b
+2026-11-07T09:46:18.0632350Z PIP COMPILED PYTHON 3.12 INPUT USING THE PURIFIER SDK PASSED
+2026-11-07T09:46:18.1242000Z Post job cleanup.
+2026-11-07T09:46:18.4448740Z [command]/opt/homebrew/bin/git version
+2026-11-07T09:46:18.4706800Z git version 2.56.0
+2026-11-07T09:46:18.4726660Z Copying '/Users/runner/.gitconfig' to '/Users/runner/work/_temp/d20778a7-029a-418f-80bb-73f6b4e16a42/.gitconfig'
+2026-11-07T09:46:18.4733500Z Temporarily overriding HOME='/Users/runner/work/_temp/d20778a7-029a-418f-80bb-73f6b4e16a42' before making global git config changes
+2026-11-07T09:46:18.4734290Z Adding repository directory to the temporary git global config as a safe directory
+2026-11-07T09:46:18.4736790Z [command]/opt/homebrew/bin/git config --global --add safe.directory /Users/runner/work/pip-purifier/pip-purifier
+2026-11-07T09:46:18.4867470Z [command]/opt/homebrew/bin/git config --local --name-only --get-regexp core\.sshCommand
+2026-11-07T09:46:18.4933480Z [command]/opt/homebrew/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+2026-11-07T09:46:18.5798290Z [command]/opt/homebrew/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+2026-11-07T09:46:18.5853410Z http.https://github.com/.extraheader
+2026-11-07T09:46:18.5860840Z [command]/opt/homebrew/bin/git config --local --unset-all http.https://github.com/.extraheader
+2026-11-07T09:46:18.5926030Z [command]/opt/homebrew/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+2026-11-07T09:46:18.6728670Z [command]/opt/homebrew/bin/git config --local --name-only --get-regexp ^includeIf\.gitdir:
+2026-11-07T09:46:18.6791220Z [command]/opt/homebrew/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url
+2026-11-07T09:46:18.8118360Z Cleaning up orphan processes
+2026-11-07T09:46:19.5833410Z ##[warning]Node.js 20 is deprecated. The following actions target Node.js 20 but are being forced to run on Node.js 24: actions/checkout@11d5960a326750d5838078e36cf38b85af677262. For more information see: https://github.blog/changelog/2025-09-19-deprecation-of-node-20-on-github-actions-runners/
