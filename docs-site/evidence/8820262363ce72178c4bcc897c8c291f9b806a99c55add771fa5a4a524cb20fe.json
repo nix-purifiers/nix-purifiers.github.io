@@ -1,0 +1,66 @@
+{
+  "kind": "portable explicit expression replay of an actual CI-only impure host integration",
+  "sourceRevision": "d13d9ff97251845226ea0c4a5ecd97ca17040476",
+  "sourceNarHash": "sha256-DKBEzHbBb3pf+PoSIDFKRXmp0nLpqFMDAvUkmwXvloc=",
+  "sourceRef": "github:nix-purifiers/docker-purifier/d13d9ff97251845226ea0c4a5ecd97ca17040476",
+  "expression": "let source = builtins.getFlake \"github:nix-purifiers/docker-purifier/d13d9ff97251845226ea0c4a5ecd97ca17040476\"; in import (source.outPath + \"/tests/runtime-check.nix\") { source = \"github:nix-purifiers/docker-purifier/d13d9ff97251845226ea0c4a5ecd97ca17040476\"; dockerHost = \"unix:///home/runner/setup-docker-action/run-7e1fd1f6/docker.sock\"; expectedSystem = \"x86_64-linux\"; expectedEngine = \"29.9.3\"; runtimeId = \"42335887750-1\"; }",
+  "expressionSha256": "33967b6d61ed8abbc227b0890314db32b8b78b01276dc5da0f5496e0792ad35b",
+  "argumentEncoding": "replay.arguments values are Nix string literals, including expectedEngine = \"\" for Darwin; decodedArguments below retain the actual values",
+  "decodedArguments": {
+    "source": "github:nix-purifiers/docker-purifier/d13d9ff97251845226ea0c4a5ecd97ca17040476",
+    "dockerHost": "unix:///home/runner/setup-docker-action/run-7e1fd1f6/docker.sock",
+    "expectedSystem": "x86_64-linux",
+    "expectedEngine": "29.9.3",
+    "runtimeId": "42335887750-1"
+  },
+  "originalWorkflowSourceArgument": "git+file://$PWD?rev=d13d9ff97251845226ea0c4a5ecd97ca17040476",
+  "originalWorkflow": {
+    "receipt": "https://nix-purifiers.github.io/evidence/ae62fecfd3e3b599db1779109e5220bc2327761d3253ba8e9181cb2b8e12dd3f.log",
+    "artifactSha256": "ae62fecfd3e3b599db1779109e5220bc2327761d3253ba8e9181cb2b8e12dd3f",
+    "format": "text"
+  },
+  "producerExpression": {
+    "receipt": "https://nix-purifiers.github.io/evidence/0cc472e76d73708852ccf7effbb3afcd3428a2c4a9e5b0b372f2314a2c7c0700.log",
+    "artifactSha256": "0cc472e76d73708852ccf7effbb3afcd3428a2c4a9e5b0b372f2314a2c7c0700",
+    "format": "text"
+  },
+  "rootLock": {
+    "receipt": "https://nix-purifiers.github.io/evidence/bc96f405cf3b102e769e2cb8738ec73507cd524180887d867ce46622f6545852.json",
+    "artifactSha256": "bc96f405cf3b102e769e2cb8738ec73507cd524180887d867ce46622f6545852"
+  },
+  "runtimeScript": {
+    "receipt": "https://nix-purifiers.github.io/evidence/ae8b2b281b9796a14b60d0ee26b60b61d828affdcc66e02d160ddf41d0af879b.log",
+    "artifactSha256": "ae8b2b281b9796a14b60d0ee26b60b61d828affdcc66e02d160ddf41d0af879b",
+    "format": "text"
+  },
+  "originalArtifacts": {
+    "verified-binding.json": {
+      "receipt": "https://nix-purifiers.github.io/evidence/cbccbf6f8e8f3adea50022d595847a062db403735df9c91179f335bf09057826.json",
+      "artifactSha256": "cbccbf6f8e8f3adea50022d595847a062db403735df9c91179f335bf09057826"
+    },
+    "derivation.json": {
+      "receipt": "https://nix-purifiers.github.io/evidence/11d4b9cb982857af2a66fbf622caa44b498ebb0a11ba44d64daeb2c7ff67693a.json",
+      "artifactSha256": "11d4b9cb982857af2a66fbf622caa44b498ebb0a11ba44d64daeb2c7ff67693a"
+    },
+    "runtime.json": {
+      "receipt": "https://nix-purifiers.github.io/evidence/efa8e5660366d5e73f36b9067e7db6fbc1986ca481a55e098a6c1b8b905cd09d.json",
+      "artifactSha256": "efa8e5660366d5e73f36b9067e7db6fbc1986ca481a55e098a6c1b8b905cd09d"
+    },
+    "runtime.log": {
+      "receipt": "https://nix-purifiers.github.io/evidence/17f5e522a5dde0228e6cdf847b5fb2ef020ffebe8eff92767b59897d09db7038.log",
+      "artifactSha256": "17f5e522a5dde0228e6cdf847b5fb2ef020ffebe8eff92767b59897d09db7038",
+      "format": "text"
+    },
+    "source-archive.json": {
+      "receipt": "https://nix-purifiers.github.io/evidence/a598df8fe61f3393e3f62c1a3f9e78ae04841f358e3d51a7ae38769cf5da805e.json",
+      "artifactSha256": "a598df8fe61f3393e3f62c1a3f9e78ae04841f358e3d51a7ae38769cf5da805e"
+    },
+    "output-nar-hash.txt": {
+      "receipt": "https://nix-purifiers.github.io/evidence/cb910bec6ca40960d6d1be113a881b86478046f83f213572eb90b87f50a2ecc0.log",
+      "artifactSha256": "cb910bec6ca40960d6d1be113a881b86478046f83f213572eb90b87f50a2ecc0",
+      "format": "text"
+    }
+  },
+  "purity": "IMPURE: external Linux Docker daemon/socket, __noChroot=true and sandbox relaxed for the parent check. Nested sandbox=true is separate and does not make the parent pure.",
+  "replayLimit": "Evaluation can reproduce this derivation identity. A native build additionally requires the original platform and a suitably configured external daemon; no new native build is performed by metadata integration."
+}

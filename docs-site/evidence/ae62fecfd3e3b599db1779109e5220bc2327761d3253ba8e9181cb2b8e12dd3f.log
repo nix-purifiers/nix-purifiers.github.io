@@ -1,0 +1,147 @@
+name: check
+on:
+  push:
+    branches: [main]
+  pull_request:
+permissions:
+  contents: read
+jobs:
+  check:
+    strategy:
+      fail-fast: false
+      matrix:
+        runner: [ubuntu-latest, ubuntu-24.04-arm]
+    runs-on: ${{ matrix.runner }}
+    timeout-minutes: 90
+    steps:
+      - uses: actions/checkout@v4
+      - uses: cachix/install-nix-action@v31
+      - name: Enforce and record the pure build sandbox
+        run: |
+          mkdir -p pure-evidence
+          nix config show --option sandbox true --json > pure-evidence/nix-config.json
+          python3 -c 'import json; v=json.load(open("pure-evidence/nix-config.json"))["sandbox"]["value"]; assert v is True or v == "true", v'
+      - name: Pure Linux checks
+        run: |
+          set -o pipefail
+          nix flake check --option sandbox true -L 2>&1 | tee pure-evidence/check.log
+      - name: Independent pure rebuilds
+        run: |
+          set -o pipefail
+          tests/conformance-rebuild.sh 2>&1 | tee pure-evidence/rebuild.log
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: docker-pure-${{ matrix.runner }}
+          path: pure-evidence
+          retention-days: 14
+  conformance:
+    name: conformance-${{ matrix.case }} (${{ matrix.runner }})
+    strategy:
+      fail-fast: false
+      matrix:
+        runner: [ubuntu-latest, ubuntu-24.04-arm]
+        case: [relock, update, external, native]
+    runs-on: ${{ matrix.runner }}
+    timeout-minutes: 90
+    steps:
+      - uses: actions/checkout@v4
+      - uses: cachix/install-nix-action@v31
+      - run: nix shell --inputs-from . --no-update-lock-file nixpkgs#openssl -c python3 tests/host-conformance.py "${{ matrix.case }}"
+
+  host-runtime:
+    name: host-runtime (${{ matrix.runner }}, ${{ matrix.engine || 'colima' }})
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - runner: ubuntu-latest
+            system: x86_64-linux
+            engine: 29.9.3
+          - runner: ubuntu-latest
+            system: x86_64-linux
+            engine: 25.0.18
+          - runner: macos-15-intel
+            system: x86_64-darwin
+    runs-on: ${{ matrix.runner }}
+    timeout-minutes: 90
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: cachix/install-nix-action@v31
+      - uses: docker/setup-docker-action@e43656e248c0bd0647d3f5c195d116aacf6fcaf4 # v4
+        if: runner.os == 'Linux' && matrix.engine == '29.9.3'
+        with:
+          version: v${{ matrix.engine }}
+          set-host: true
+      - name: Start the maintained 25.x daemon from its Nix derivation
+        if: runner.os == 'Linux' && matrix.engine == '25.0.18'
+        run: |
+          nix build .#test-engine25 --out-link engine25 -L
+          mkdir -p runtime-evidence
+          nix derivation show "$(readlink engine25)" > runtime-evidence/engine25-derivation.json
+          nix hash path "$(readlink engine25)" > runtime-evidence/engine25-nar-hash.txt
+          socket="$RUNNER_TEMP/docker25.sock"
+          # The log redirection intentionally runs as the runner, not root.
+          # shellcheck disable=SC2024
+          sudo engine25/bin/dockerd --host "unix://$socket" \
+            --data-root "$RUNNER_TEMP/docker25-data" \
+            --exec-root "$RUNNER_TEMP/docker25-exec" \
+            --pidfile "$RUNNER_TEMP/docker25.pid" \
+            --bridge=none --iptables=false > "$RUNNER_TEMP/docker25.log" 2>&1 &
+          echo "DOCKER_HOST=unix://$socket" >> "$GITHUB_ENV"
+          for _attempt in $(seq 1 60); do
+            if sudo test -S "$socket"; then exit 0; fi
+            sleep 1
+          done
+          cat "$RUNNER_TEMP/docker25.log"
+          exit 1
+      - name: Start Linux engine for the Darwin host client
+        if: runner.os == 'macOS'
+        run: |
+          brew install colima docker
+          colima start --runtime docker --vm-type vz --cpu 2 --memory 4
+          echo "DOCKER_HOST=unix://${HOME}/.colima/default/docker.sock" >> "$GITHUB_ENV"
+          colima version
+          colima status
+      - name: Native host and independent upstream runtime
+        env:
+          EXPECTED_NIX_SYSTEM: ${{ matrix.system }}
+          EXPECTED_ENGINE_VERSION: ${{ matrix.engine }}
+        run: |
+          mkdir -p runtime-evidence
+          set -o pipefail
+          source_ref="git+file://$PWD?rev=$(git rev-parse HEAD)"
+          nix flake archive --json --no-update-lock-file "$source_ref" > runtime-evidence/source-archive.json
+          python3 -c 'import json,pathlib,sys; d=json.load(open(sys.argv[1])); check=lambda v: (pathlib.Path(v["path"]).is_dir() and all(check(i) for i in v.get("inputs",{}).values())); assert check(d), d' runtime-evidence/source-archive.json
+          socket="${DOCKER_HOST:-unix:///var/run/docker.sock}"
+          # This explicit CI-only host integration uses the disposable runner's
+          # local store as root, so it needs no Docker socket permission changes.
+          sudo env "PATH=$PATH" nix build --store local --option build-users-group "" \
+            --impure --option sandbox relaxed --file tests/runtime-check.nix \
+            --argstr source "$source_ref" --argstr dockerHost "$socket" \
+            --argstr expectedSystem "$EXPECTED_NIX_SYSTEM" \
+            --argstr expectedEngine "$EXPECTED_ENGINE_VERSION" \
+            --argstr runtimeId "${GITHUB_RUN_ID}-${GITHUB_RUN_ATTEMPT}" \
+            --out-link runtime-evidence/result -L 2>&1 | tee runtime-evidence/runtime.log
+          output="$(readlink runtime-evidence/result)"
+          cp "$output/runtime.json" runtime-evidence/runtime.json
+          nix derivation show "$output" > runtime-evidence/derivation.json
+          nix-store --query --deriver "$output" > runtime-evidence/derivation-path.txt
+          nix hash path "$output" > runtime-evidence/output-nar-hash.txt
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: docker-runtime-${{ matrix.system }}-${{ matrix.engine || 'colima' }}
+          path: runtime-evidence
+          retention-days: 14
+      - name: Stop the isolated 25.x daemon
+        if: always() && matrix.engine == '25.0.18'
+        run: |
+          if [ -f "$RUNNER_TEMP/docker25.pid" ]; then
+            sudo kill "$(cat "$RUNNER_TEMP/docker25.pid")"
+          fi
+      - name: Stop Colima
+        if: always() && runner.os == 'macOS'
+        run: colima delete --force

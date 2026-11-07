@@ -1,0 +1,29 @@
+{
+  "kind": "original upstream source authentication; not native execution or selected build-source NAR",
+  "upstream": {
+    "repository": "https://github.com/docker-library/hello-world",
+    "revision": "522bcd2faf422c60b9d20e64d7cd6d56600aec97",
+    "sourceNarHash": "sha256-eI/B7JSWfYTW8ZuaJBHDCeHy3FbLkKYHgSi0UCH4Ddw="
+  },
+  "fetch": {
+    "command": [
+      "nix",
+      "flake",
+      "prefetch",
+      "--json",
+      "github:docker-library/hello-world/522bcd2faf422c60b9d20e64d7cd6d56600aec97"
+    ],
+    "exitCode": 0,
+    "stdout": "{\"hash\":\"sha256-eI/B7JSWfYTW8ZuaJBHDCeHy3FbLkKYHgSi0UCH4Ddw=\",\"locked\":{\"lastModified\":1785800442,\"owner\":\"docker-library\",\"repo\":\"hello-world\",\"rev\":\"522bcd2faf422c60b9d20e64d7cd6d56600aec97\",\"type\":\"github\"},\"original\":{\"owner\":\"docker-library\",\"repo\":\"hello-world\",\"rev\":\"522bcd2faf422c60b9d20e64d7cd6d56600aec97\",\"type\":\"github\"},\"storePath\":\"/nix/store/7ca22ph68lwbbyc6dnz7cg0nai5riygj-source\"}\n",
+    "stderr": "unpacking 'github:docker-library/hello-world/522bcd2faf422c60b9d20e64d7cd6d56600aec97' into the Git cache...\n",
+    "seconds": 1.691704511642456,
+    "scope": "Immutable original upstream repository source fetch/hash only; not native execution or selected build-source NAR."
+  },
+  "verifiedFileSha256": {
+    "amd64/Dockerfile": "561c4b6f4b650fdc792e0ed004cfedfe51019971aebce387b3e249697f9a4c98",
+    "amd64/hello": "f4061a47648b7d8fffda5253cebff1d179df9457cfc7e539ad3e3bdc6872c341",
+    "arm64v8/Dockerfile": "561c4b6f4b650fdc792e0ed004cfedfe51019971aebce387b3e249697f9a4c98",
+    "arm64v8/hello": "aadcf773dad62f26c8fc7f2e4a0298aaca63ec90ec0e2e467191479baa20baec"
+  },
+  "selectedBuildSource": "Runtime check copies Dockerfile and executable hello for amd64 on the three host lanes. The separate pure Linux ARM lane uses arm64v8. Each is a subset of this original repository; its selected build-source store path is recorded in the original derivation, not represented by this full-repository NAR."
+}
