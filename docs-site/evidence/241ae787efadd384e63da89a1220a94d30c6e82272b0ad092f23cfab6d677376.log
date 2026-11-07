@@ -1,0 +1,1812 @@
+﻿2026-11-07T11:51:09.3231033Z Current runner version: '2.338.2'
+2026-11-07T11:51:09.3265285Z ##[group]Runner Image Provisioner
+2026-11-07T11:51:09.3266510Z Hosted Compute Agent
+2026-11-07T11:51:09.3267182Z Version: 20261028.624
+2026-11-07T11:51:09.3267978Z Commit: 54898b74c23fde5556c9b3c3a2290865feef0dfe
+2026-11-07T11:51:09.3268735Z Build Date: 2026-10-28T21:51:42Z
+2026-11-07T11:51:09.3269478Z Worker ID: {eddab3d3-1a82-4d80-a632-edbb0b12d3e6}
+2026-11-07T11:51:09.3270496Z Region: centralus
+2026-11-07T11:51:09.3271520Z Cloud: Azure
+2026-11-07T11:51:09.3272199Z ##[endgroup]
+2026-11-07T11:51:09.3274349Z ##[group]Operating System
+2026-11-07T11:51:09.3274997Z Ubuntu
+2026-11-07T11:51:09.3275712Z 24.04.5
+2026-11-07T11:51:09.3276301Z LTS
+2026-11-07T11:51:09.3276883Z ##[endgroup]
+2026-11-07T11:51:09.3277494Z ##[group]Runner Image
+2026-11-07T11:51:09.3278125Z Image: ubuntu-24.04-arm
+2026-11-07T11:51:09.3278844Z Version: 20261101.172.1
+2026-11-07T11:51:09.3280252Z Included Software: https://github.com/actions/runner-images/blob/ubuntu24-arm64/20261101.172/images/ubuntu/Ubuntu2404-Arm64-Readme.md
+2026-11-07T11:51:09.3282277Z Image Release: https://github.com/actions/runner-images/releases/tag/ubuntu24-arm64%2F20261101.172
+2026-11-07T11:51:09.3283337Z ##[endgroup]
+2026-11-07T11:51:09.3284634Z ##[group]GITHUB_TOKEN Permissions
+2026-11-07T11:51:09.3287692Z Contents: read
+2026-11-07T11:51:09.3288491Z Metadata: read
+2026-11-07T11:51:09.3289064Z ##[endgroup]
+2026-11-07T11:51:09.3292352Z Secret source: Actions
+2026-11-07T11:51:09.3293502Z Cache mode: write
+2026-11-07T11:51:09.3294460Z Prepare workflow directory
+2026-11-07T11:51:09.3717186Z Prepare all required actions
+2026-11-07T11:51:09.3772361Z Getting action download info
+2026-11-07T11:51:09.6610534Z Download action repository 'actions/checkout@11d5960a326750d5838078e36cf38b85af677262' (SHA:11d5960a326750d5838078e36cf38b85af677262)
+2026-11-07T11:51:09.8115860Z Download action repository 'cachix/install-nix-action@13d8dd58da0234aa297dedd986986ccb8e7f3e24' (SHA:13d8dd58da0234aa297dedd986986ccb8e7f3e24)
+2026-11-07T11:51:10.1322554Z Complete job name: legacy-native (ubuntu-24.04-arm)
+2026-11-07T11:51:10.2415711Z ##[group]Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+2026-11-07T11:51:10.2417343Z with:
+2026-11-07T11:51:10.2418194Z   repository: nix-purifiers/npm-purifier
+2026-11-07T11:51:10.2422803Z   token: ***
+2026-11-07T11:51:10.2423995Z   ssh-strict: true
+2026-11-07T11:51:10.2424622Z   ssh-user: git
+2026-11-07T11:51:10.2425213Z   persist-credentials: true
+2026-11-07T11:51:10.2425953Z   clean: true
+2026-11-07T11:51:10.2426593Z   sparse-checkout-cone-mode: true
+2026-11-07T11:51:10.2427280Z   fetch-depth: 1
+2026-11-07T11:51:10.2428107Z   fetch-tags: false
+2026-11-07T11:51:10.2428701Z   show-progress: true
+2026-11-07T11:51:10.2429330Z   lfs: false
+2026-11-07T11:51:10.2429992Z   submodules: false
+2026-11-07T11:51:10.2430595Z   set-safe-directory: true
+2026-11-07T11:51:10.2431737Z   allow-unsafe-pr-checkout: false
+2026-11-07T11:51:10.2433074Z ##[endgroup]
+2026-11-07T11:51:10.3431831Z Syncing repository: nix-purifiers/npm-purifier
+2026-11-07T11:51:10.3434915Z ##[group]Getting Git version info
+2026-11-07T11:51:10.3436046Z Working directory is '/home/runner/work/npm-purifier/npm-purifier'
+2026-11-07T11:51:10.3437496Z [command]/usr/bin/git version
+2026-11-07T11:51:10.3586078Z git version 2.56.0
+2026-11-07T11:51:10.3605231Z ##[endgroup]
+2026-11-07T11:51:10.3623112Z Temporarily overriding HOME='/home/runner/work/_temp/2d7e02e0-02ae-4b3a-b30a-a448460ced54' before making global git config changes
+2026-11-07T11:51:10.3625061Z Adding repository directory to the temporary git global config as a safe directory
+2026-11-07T11:51:10.3626596Z [command]/usr/bin/git config --global --add safe.directory /home/runner/work/npm-purifier/npm-purifier
+2026-11-07T11:51:10.3697130Z Deleting the contents of '/home/runner/work/npm-purifier/npm-purifier'
+2026-11-07T11:51:10.3708953Z ##[group]Initializing the repository
+2026-11-07T11:51:10.3711957Z [command]/usr/bin/git init /home/runner/work/npm-purifier/npm-purifier
+2026-11-07T11:51:10.3854207Z hint: Using 'master' as the name for the initial branch. This default branch name
+2026-11-07T11:51:10.3862507Z hint: will change to "main" in Git 3.0. To configure the initial branch name
+2026-11-07T11:51:10.3869927Z hint: to use in all of your new repositories, which will suppress this warning,
+2026-11-07T11:51:10.3871643Z hint: call:
+2026-11-07T11:51:10.3872607Z hint:
+2026-11-07T11:51:10.3873553Z hint: 	git config --global init.defaultBranch <name>
+2026-11-07T11:51:10.3874484Z hint:
+2026-11-07T11:51:10.3875399Z hint: Names commonly chosen instead of 'master' are 'main', 'trunk' and
+2026-11-07T11:51:10.3879733Z hint: 'development'. The just-created branch can be renamed via this command:
+2026-11-07T11:51:10.3880930Z hint:
+2026-11-07T11:51:10.3882223Z hint: 	git branch -m <name>
+2026-11-07T11:51:10.3883178Z hint:
+2026-11-07T11:51:10.3884143Z hint: Disable this message with "git config set advice.defaultBranchName false"
+2026-11-07T11:51:10.3885730Z Initialized empty Git repository in /home/runner/work/npm-purifier/npm-purifier/.git/
+2026-11-07T11:51:10.3888984Z [command]/usr/bin/git remote add origin https://github.com/nix-purifiers/npm-purifier
+2026-11-07T11:51:10.3932687Z ##[endgroup]
+2026-11-07T11:51:10.3934114Z ##[group]Disabling automatic garbage collection
+2026-11-07T11:51:10.3935291Z [command]/usr/bin/git config --local gc.auto 0
+2026-11-07T11:51:10.3968451Z ##[endgroup]
+2026-11-07T11:51:10.3969605Z ##[group]Setting up auth
+2026-11-07T11:51:10.3979521Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+2026-11-07T11:51:10.4015487Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+2026-11-07T11:51:10.4367596Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+2026-11-07T11:51:10.4402313Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+2026-11-07T11:51:10.4639944Z [command]/usr/bin/git config --local --name-only --get-regexp ^includeIf\.gitdir:
+2026-11-07T11:51:10.4676313Z [command]/usr/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url
+2026-11-07T11:51:10.4909517Z [command]/usr/bin/git config --local http.https://github.com/.extraheader AUTHORIZATION: basic ***
+2026-11-07T11:51:10.4957915Z ##[endgroup]
+2026-11-07T11:51:10.4959258Z ##[group]Fetching the repository
+2026-11-07T11:51:10.4967135Z [command]/usr/bin/git -c protocol.version=2 fetch --no-tags --prune --no-recurse-submodules --depth=1 origin +6224f397952839f1e86935c62a097a7ce755df73:refs/remotes/origin/main
+2026-11-07T11:51:10.9131036Z From https://github.com/nix-purifiers/npm-purifier
+2026-11-07T11:51:10.9142433Z  * [new ref]         6224f397952839f1e86935c62a097a7ce755df73 -> origin/main
+2026-11-07T11:51:10.9145817Z ##[endgroup]
+2026-11-07T11:51:10.9147276Z ##[group]Determining the checkout info
+2026-11-07T11:51:10.9148540Z ##[endgroup]
+2026-11-07T11:51:10.9149964Z [command]/usr/bin/git sparse-checkout disable
+2026-11-07T11:51:10.9211542Z [command]/usr/bin/git config --local --unset-all extensions.worktreeConfig
+2026-11-07T11:51:10.9250848Z ##[group]Checking out the ref
+2026-11-07T11:51:10.9254614Z [command]/usr/bin/git checkout --progress --force -B main refs/remotes/origin/main
+2026-11-07T11:51:10.9346634Z Switched to a new branch 'main'
+2026-11-07T11:51:10.9353603Z branch 'main' set up to track 'origin/main'.
+2026-11-07T11:51:10.9357233Z ##[endgroup]
+2026-11-07T11:51:10.9410810Z [command]/usr/bin/git log -1 --format=%H
+2026-11-07T11:51:10.9438885Z 6224f397952839f1e86935c62a097a7ce755df73
+2026-11-07T11:51:10.9839062Z ##[group]Run cachix/install-nix-action@13d8dd58da0234aa297dedd986986ccb8e7f3e24
+2026-11-07T11:51:10.9840826Z with:
+2026-11-07T11:51:10.9842007Z   extra_nix_config: sandbox = true
+
+2026-11-07T11:51:10.9843398Z   enable_kvm: true
+2026-11-07T11:51:10.9844300Z   set_as_trusted_user: true
+2026-11-07T11:51:10.9845274Z ##[endgroup]
+2026-11-07T11:51:10.9928177Z ##[start-action display=Run ${GITHUB_ACTION_PATH}/install-nix.sh;id=__cachix_install-nix-action.__run]
+2026-11-07T11:51:11.0011699Z ##[group]Run ${GITHUB_ACTION_PATH}/install-nix.sh
+2026-11-07T11:51:11.0013245Z [36;1m${GITHUB_ACTION_PATH}/install-nix.sh[0m
+2026-11-07T11:51:11.0210320Z shell: /usr/bin/bash --noprofile --norc -e -o pipefail {0}
+2026-11-07T11:51:11.0211864Z env:
+2026-11-07T11:51:11.0212717Z   INPUT_EXTRA_NIX_CONFIG: sandbox = true
+
+2026-11-07T11:51:11.0213937Z   INPUT_GITHUB_ACCESS_TOKEN: 
+2026-11-07T11:51:11.0214942Z   INPUT_INSTALL_OPTIONS: 
+2026-11-07T11:51:11.0215909Z   INPUT_INSTALL_URL: 
+2026-11-07T11:51:11.0216886Z   INPUT_NIX_PATH: 
+2026-11-07T11:51:11.0217820Z   INPUT_ENABLE_KVM: true
+2026-11-07T11:51:11.0218818Z   INPUT_SET_AS_TRUSTED_USER: true
+2026-11-07T11:51:11.0227067Z   GITHUB_TOKEN: ***
+2026-11-07T11:51:11.0228147Z ##[endgroup]
+2026-11-07T11:51:11.0386365Z ##[group]Enabling KVM support
+2026-11-07T11:51:11.0449069Z KERNEL=="kvm", GROUP="kvm", MODE="0666", OPTIONS+="static_node=kvm"
+2026-11-07T11:51:11.0710454Z Failed to open the device 'kvm': Invalid argument
+2026-11-07T11:51:11.0720709Z KVM is not available
+2026-11-07T11:51:11.0722796Z ##[endgroup]
+2026-11-07T11:51:11.0725522Z ##[group]Installing Nix
+2026-11-07T11:51:11.0997961Z installer options: --no-channel-add --nix-extra-conf-file /tmp/tmp.EAd8gU7KjD/nix.conf --daemon --daemon-user-count 8
+2026-11-07T11:51:11.1269847Z * Host releases.nixos.org:443 was resolved.
+2026-11-07T11:51:11.1277041Z * IPv6: 2a04:4e42:94::347
+2026-11-07T11:51:11.1278121Z * IPv4: 140.248.145.91
+2026-11-07T11:51:11.1279185Z *   Trying 140.248.145.91:443...
+2026-11-07T11:51:11.1398488Z * Connected to releases.nixos.org (140.248.145.91) port 443
+2026-11-07T11:51:11.1411929Z * ALPN: curl offers h2,http/1.1
+2026-11-07T11:51:11.1413259Z } [5 bytes data]
+2026-11-07T11:51:11.1414157Z * TLSv1.3 (OUT), TLS handshake, Client hello (1):
+2026-11-07T11:51:11.1415366Z } [512 bytes data]
+2026-11-07T11:51:11.1598705Z *  CAfile: /etc/ssl/certs/ca-certificates.crt
+2026-11-07T11:51:11.1599861Z *  CApath: /etc/ssl/certs
+2026-11-07T11:51:11.1601038Z { [5 bytes data]
+2026-11-07T11:51:11.1602296Z * TLSv1.3 (IN), TLS handshake, Server hello (2):
+2026-11-07T11:51:11.1603490Z { [122 bytes data]
+2026-11-07T11:51:11.1604610Z * TLSv1.3 (IN), TLS handshake, Encrypted Extensions (8):
+2026-11-07T11:51:11.1605759Z { [19 bytes data]
+2026-11-07T11:51:11.1606728Z * TLSv1.3 (IN), TLS handshake, Certificate (11):
+2026-11-07T11:51:11.1607712Z { [4081 bytes data]
+2026-11-07T11:51:11.1610303Z * TLSv1.3 (IN), TLS handshake, CERT verify (15):
+2026-11-07T11:51:11.1611860Z { [264 bytes data]
+2026-11-07T11:51:11.1612829Z * TLSv1.3 (IN), TLS handshake, Finished (20):
+2026-11-07T11:51:11.1614010Z { [36 bytes data]
+2026-11-07T11:51:11.1614995Z * TLSv1.3 (OUT), TLS change cipher, Change cipher spec (1):
+2026-11-07T11:51:11.1616166Z } [1 bytes data]
+2026-11-07T11:51:11.1617126Z * TLSv1.3 (OUT), TLS handshake, Finished (20):
+2026-11-07T11:51:11.1618072Z } [36 bytes data]
+2026-11-07T11:51:11.1619302Z * SSL connection using TLSv1.3 / TLS_AES_128_GCM_SHA256 / X25519 / RSASSA-PSS
+2026-11-07T11:51:11.1620579Z * ALPN: server accepted h2
+2026-11-07T11:51:11.1621673Z * Server certificate:
+2026-11-07T11:51:11.1622678Z *  subject: CN=releases.nixos.org
+2026-11-07T11:51:11.1623635Z *  start date: Sep  9 22:18:06 2026 GMT
+2026-11-07T11:51:11.1624633Z *  expire date: Dec  8 22:18:05 2026 GMT
+2026-11-07T11:51:11.1626049Z *  subjectAltName: host "releases.nixos.org" matched cert's "releases.nixos.org"
+2026-11-07T11:51:11.1627385Z *  issuer: C=US; O=Let's Encrypt; CN=YR1
+2026-11-07T11:51:11.1628462Z *  SSL certificate verify ok.
+2026-11-07T11:51:11.1630649Z *   Certificate level 0: Public key type RSA (2048/112 Bits/secBits), signed using sha256WithRSAEncryption
+2026-11-07T11:51:11.1633220Z *   Certificate level 1: Public key type RSA (2048/112 Bits/secBits), signed using sha256WithRSAEncryption
+2026-11-07T11:51:11.1635590Z *   Certificate level 2: Public key type RSA (4096/152 Bits/secBits), signed using sha256WithRSAEncryption
+2026-11-07T11:51:11.1637700Z *   Certificate level 3: Public key type RSA (4096/152 Bits/secBits), signed using sha256WithRSAEncryption
+2026-11-07T11:51:11.1639371Z { [5 bytes data]
+2026-11-07T11:51:11.1640218Z * TLSv1.3 (IN), TLS handshake, Newsession Ticket (4):
+2026-11-07T11:51:11.1641704Z { [201 bytes data]
+2026-11-07T11:51:11.1642506Z * using HTTP/2
+2026-11-07T11:51:11.1643614Z * [HTTP/2] [1] OPENED stream for https://releases.nixos.org/nix/nix-2.35.2/install
+2026-11-07T11:51:11.1644960Z * [HTTP/2] [1] [:method: GET]
+2026-11-07T11:51:11.1645858Z * [HTTP/2] [1] [:scheme: https]
+2026-11-07T11:51:11.1646873Z * [HTTP/2] [1] [:authority: releases.nixos.org]
+2026-11-07T11:51:11.1647968Z * [HTTP/2] [1] [:path: /nix/nix-2.35.2/install]
+2026-11-07T11:51:11.1648985Z * [HTTP/2] [1] [user-agent: curl/8.5.0]
+2026-11-07T11:51:11.1650003Z * [HTTP/2] [1] [accept: */*]
+2026-11-07T11:51:11.1650829Z } [5 bytes data]
+2026-11-07T11:51:11.1651875Z > GET /nix/nix-2.35.2/install HTTP/2
+2026-11-07T11:51:11.1652908Z > Host: releases.nixos.org
+2026-11-07T11:51:11.1653755Z > User-Agent: curl/8.5.0
+2026-11-07T11:51:11.1654555Z > Accept: */*
+2026-11-07T11:51:11.1655312Z > 
+2026-11-07T11:51:11.1728417Z { [5 bytes data]
+2026-11-07T11:51:11.1730976Z < HTTP/2 200 
+2026-11-07T11:51:11.1732146Z < last-modified: Wed, 12 Aug 2026 22:06:45 GMT
+2026-11-07T11:51:11.1733502Z < etag: "9f08ad80caddcb58f53e8551ff155b13"
+2026-11-07T11:51:11.1734743Z < x-amz-server-side-encryption: AES256
+2026-11-07T11:51:11.1735705Z < content-type: text/plain
+2026-11-07T11:51:11.1736639Z < server: AmazonS3
+2026-11-07T11:51:11.1737392Z < via: 1.1 varnish, 1.1 varnish
+2026-11-07T11:51:11.1738478Z < access-control-allow-origin: *
+2026-11-07T11:51:11.1739365Z < accept-ranges: bytes
+2026-11-07T11:51:11.1740140Z < date: Sat, 07 Nov 2026 11:51:11 GMT
+2026-11-07T11:51:11.1741349Z < age: 106939
+2026-11-07T11:51:11.1742439Z < x-served-by: cache-dub4323-DUB, cache-chi-kmdw8640048-CHI
+2026-11-07T11:51:11.1743471Z < x-cache: HIT, HIT
+2026-11-07T11:51:11.1744408Z < x-cache-hits: 1, 266
+2026-11-07T11:51:11.1745173Z < content-length: 4499
+2026-11-07T11:51:11.1746074Z < 
+2026-11-07T11:51:11.1746765Z { [4499 bytes data]
+2026-11-07T11:51:11.1747690Z * Connection #0 to host releases.nixos.org left intact
+2026-11-07T11:51:11.1808382Z downloading Nix 2.35.2 binary tarball for aarch64-linux from 'https://releases.nixos.org/nix/nix-2.35.2/nix-2.35.2-aarch64-linux.tar.xz' to '/tmp/nix-binary-tarball-unpack.SBKzliMxQ9'...
+2026-11-07T11:51:11.1849749Z   % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+2026-11-07T11:51:11.1851834Z                                  Dload  Upload   Total   Spent    Left  Speed
+2026-11-07T11:51:11.3839585Z 
+2026-11-07T11:51:11.3840626Z   0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0
+2026-11-07T11:51:11.3841814Z 100 24.1M  100 24.1M    0     0   121M      0 --:--:-- --:--:-- --:--:--  121M
+2026-11-07T11:51:12.6188730Z Note: a multi-user installation is possible. See https://nix.dev/manual/nix/stable/installation/installing-binary.html#multi-user-installation
+2026-11-07T11:51:12.6197538Z [1;31mSwitching to the Multi-user Installer[0m
+2026-11-07T11:51:12.6295556Z [32mWelcome to the Multi-User Nix Installation
+2026-11-07T11:51:12.6306181Z [0m
+2026-11-07T11:51:12.6306889Z This installation tool will set up your computer with the Nix package
+2026-11-07T11:51:12.6307721Z manager. This will happen in a few stages:
+2026-11-07T11:51:12.6307958Z 
+2026-11-07T11:51:12.6308195Z 1. Make sure your computer doesn't already have Nix. If it does, I
+2026-11-07T11:51:12.6308823Z    will show you instructions on how to clean up your old install.
+2026-11-07T11:51:12.6309659Z 
+2026-11-07T11:51:12.6310033Z 2. Show you what I am going to install and where. Then I will ask
+2026-11-07T11:51:12.6310596Z    if you are ready to continue.
+2026-11-07T11:51:12.6310825Z 
+2026-11-07T11:51:12.6311712Z 3. Create the system users [34m(uids [30001..30008])[0m and groups [34m(gid 30000)[0m
+2026-11-07T11:51:12.6312355Z    that the Nix daemon uses to run builds. To create system users
+2026-11-07T11:51:12.6313036Z    in a different range, exit and run this tool again with
+2026-11-07T11:51:12.6313444Z    NIX_FIRST_BUILD_UID set.
+2026-11-07T11:51:12.6313660Z 
+2026-11-07T11:51:12.6313947Z 4. Perform the basic installation of the Nix files daemon.
+2026-11-07T11:51:12.6314234Z 
+2026-11-07T11:51:12.6314494Z 5. Configure your shell to import special Nix Profile files, so you
+2026-11-07T11:51:12.6314940Z    can use Nix.
+2026-11-07T11:51:12.6315169Z 
+2026-11-07T11:51:12.6315313Z 6. Start the Nix daemon.
+2026-11-07T11:51:12.6315558Z 
+2026-11-07T11:51:12.6316526Z [32m[4;32mWould you like to see a more detailed list of what I will do?
+2026-11-07T11:51:12.6317504Z [0mNo TTY, assuming you would say yes :)
+2026-11-07T11:51:12.6317940Z 
+2026-11-07T11:51:12.6318398Z I will:
+2026-11-07T11:51:12.6319303Z 
+2026-11-07T11:51:12.6319902Z  - make sure your computer doesn't already have Nix files
+2026-11-07T11:51:12.6320677Z    (if it does, I will tell you how to clean them up.)
+2026-11-07T11:51:12.6321557Z  - create local users (see the list above for the users I'll make)
+2026-11-07T11:51:12.6322117Z  - create a local group (nixbld)
+2026-11-07T11:51:12.6322461Z  - install Nix in /nix
+2026-11-07T11:51:12.6322871Z  - create a configuration file in /etc/nix
+2026-11-07T11:51:12.6323380Z  - set up the "default profile" by creating some Nix-related files in
+2026-11-07T11:51:12.6323813Z    /root
+2026-11-07T11:51:12.6334536Z  - back up /etc/bash.bashrc to /etc/bash.bashrc.backup-before-nix
+2026-11-07T11:51:12.6335340Z  - update /etc/bash.bashrc to include some Nix configuration
+2026-11-07T11:51:12.6346101Z  - load and start a service (at /etc/systemd/system/nix-daemon.service
+2026-11-07T11:51:12.6346890Z    and /etc/systemd/system/nix-daemon.socket) for nix-daemon
+2026-11-07T11:51:12.6347175Z 
+2026-11-07T11:51:12.6348039Z [32m[4;32mReady to continue?
+2026-11-07T11:51:12.6367959Z [0mNo TTY, assuming you would say yes :)
+2026-11-07T11:51:12.6368522Z 
+2026-11-07T11:51:12.6368992Z [34m---- let's talk about sudo -----------------------------------------------------
+2026-11-07T11:51:12.6377578Z [0mThis script is going to call sudo a lot. Normally, it would show you
+2026-11-07T11:51:12.6378290Z exactly what commands it is running and why. However, the script is
+2026-11-07T11:51:12.6378774Z run in a headless fashion, like this:
+2026-11-07T11:51:12.6379040Z 
+2026-11-07T11:51:12.6379323Z   $ curl -L https://nixos.org/nix/install | sh
+2026-11-07T11:51:12.6379650Z 
+2026-11-07T11:51:12.6379914Z or maybe in a CI pipeline. Because of that, I'm going to skip the
+2026-11-07T11:51:12.6380400Z verbose output in the interest of brevity.
+2026-11-07T11:51:12.6380638Z 
+2026-11-07T11:51:12.6380839Z If you would like to
+2026-11-07T11:51:12.6381395Z see the output, try like this:
+2026-11-07T11:51:12.6381678Z 
+2026-11-07T11:51:12.6381913Z   $ curl -L -o install-nix https://nixos.org/nix/install
+2026-11-07T11:51:12.6382455Z   $ sh ./install-nix
+2026-11-07T11:51:12.6382650Z 
+2026-11-07T11:51:12.6382658Z 
+2026-11-07T11:51:12.6382977Z [32m~~> Checking for artifacts of previous installs
+2026-11-07T11:51:12.6389321Z [0mBefore I try to install, I'll check for signs Nix already is or has
+2026-11-07T11:51:12.6389914Z been installed on this system.
+2026-11-07T11:51:12.6437435Z 
+2026-11-07T11:51:12.6438466Z [34m---- Nix config report ---------------------------------------------------------
+2026-11-07T11:51:12.6439377Z [0m[1m        Temp Dir[0m:	/tmp/tmp.GMqDlJh8kq
+2026-11-07T11:51:12.6439979Z [1m        Nix Root[0m:	/nix
+2026-11-07T11:51:12.6440468Z [1m     Build Users[0m:	8
+2026-11-07T11:51:12.6440938Z [1m  Build Group ID[0m:	30000
+2026-11-07T11:51:12.6442325Z [1mBuild Group Name[0m:	nixbld
+2026-11-07T11:51:12.6442746Z 
+2026-11-07T11:51:12.6443073Z [4;34mbuild users:
+2026-11-07T11:51:12.6443557Z [0m[1m    Username[0m:	UID
+2026-11-07T11:51:12.6564712Z [1m     nixbld1[0m:	30001
+2026-11-07T11:51:12.6575633Z [1m     nixbld2[0m:	30002
+2026-11-07T11:51:12.6588102Z [1m     nixbld3[0m:	30003
+2026-11-07T11:51:12.6600923Z [1m     nixbld4[0m:	30004
+2026-11-07T11:51:12.6613715Z [1m     nixbld5[0m:	30005
+2026-11-07T11:51:12.6625790Z [1m     nixbld6[0m:	30006
+2026-11-07T11:51:12.6637123Z [1m     nixbld7[0m:	30007
+2026-11-07T11:51:12.6649813Z [1m     nixbld8[0m:	30008
+2026-11-07T11:51:12.6650240Z 
+2026-11-07T11:51:12.6650490Z [32m[4;32mReady to continue?
+2026-11-07T11:51:12.6650980Z [0mNo TTY, assuming you would say yes :)
+2026-11-07T11:51:12.6651523Z 
+2026-11-07T11:51:12.6651978Z [32m~~> Setting up the build group nixbld
+2026-11-07T11:51:12.7164334Z [0m[1m            Created[0m:	Yes
+2026-11-07T11:51:12.7192109Z 
+2026-11-07T11:51:12.7193286Z [32m~~> Setting up the build user nixbld1
+2026-11-07T11:51:12.7382326Z useradd warning: nixbld1's uid 30001 is greater than SYS_UID_MAX 999
+2026-11-07T11:51:12.7524871Z [0m[1m           Created[0m:	Yes
+2026-11-07T11:51:12.7530304Z [1m            Hidden[0m:	Yes
+2026-11-07T11:51:12.7551745Z [1m    Home Directory[0m:	/var/empty
+2026-11-07T11:51:12.7572592Z [1m              Note[0m:	Nix build user 1
+2026-11-07T11:51:12.7593090Z [1m   Logins Disabled[0m:	Yes
+2026-11-07T11:51:12.7624783Z [1m  Member of nixbld[0m:	Yes
+2026-11-07T11:51:12.7646487Z [1m    PrimaryGroupID[0m:	30000
+2026-11-07T11:51:12.7660810Z 
+2026-11-07T11:51:12.7662166Z [32m~~> Setting up the build user nixbld2
+2026-11-07T11:51:12.7820035Z useradd warning: nixbld2's uid 30002 is greater than SYS_UID_MAX 999
+2026-11-07T11:51:12.8017586Z [0m[1m           Created[0m:	Yes
+2026-11-07T11:51:12.8024310Z [1m            Hidden[0m:	Yes
+2026-11-07T11:51:12.8046479Z [1m    Home Directory[0m:	/var/empty
+2026-11-07T11:51:12.8067954Z [1m              Note[0m:	Nix build user 2
+2026-11-07T11:51:12.8089285Z [1m   Logins Disabled[0m:	Yes
+2026-11-07T11:51:12.8110565Z [1m  Member of nixbld[0m:	Yes
+2026-11-07T11:51:12.8132689Z [1m    PrimaryGroupID[0m:	30000
+2026-11-07T11:51:12.8146971Z 
+2026-11-07T11:51:12.8148107Z [32m~~> Setting up the build user nixbld3
+2026-11-07T11:51:12.8303817Z useradd warning: nixbld3's uid 30003 is greater than SYS_UID_MAX 999
+2026-11-07T11:51:12.8446704Z [0m[1m           Created[0m:	Yes
+2026-11-07T11:51:12.8452514Z [1m            Hidden[0m:	Yes
+2026-11-07T11:51:12.8475544Z [1m    Home Directory[0m:	/var/empty
+2026-11-07T11:51:12.8501322Z [1m              Note[0m:	Nix build user 3
+2026-11-07T11:51:12.8523196Z [1m   Logins Disabled[0m:	Yes
+2026-11-07T11:51:12.8543599Z [1m  Member of nixbld[0m:	Yes
+2026-11-07T11:51:12.8564338Z [1m    PrimaryGroupID[0m:	30000
+2026-11-07T11:51:12.8577440Z 
+2026-11-07T11:51:12.8577997Z [32m~~> Setting up the build user nixbld4
+2026-11-07T11:51:12.8826163Z useradd warning: nixbld4's uid 30004 is greater than SYS_UID_MAX 999
+2026-11-07T11:51:12.8968317Z [0m[1m           Created[0m:	Yes
+2026-11-07T11:51:12.8974154Z [1m            Hidden[0m:	Yes
+2026-11-07T11:51:12.8997596Z [1m    Home Directory[0m:	/var/empty
+2026-11-07T11:51:12.9022108Z [1m              Note[0m:	Nix build user 4
+2026-11-07T11:51:12.9044138Z [1m   Logins Disabled[0m:	Yes
+2026-11-07T11:51:12.9064118Z [1m  Member of nixbld[0m:	Yes
+2026-11-07T11:51:12.9085437Z [1m    PrimaryGroupID[0m:	30000
+2026-11-07T11:51:12.9098561Z 
+2026-11-07T11:51:12.9099290Z [32m~~> Setting up the build user nixbld5
+2026-11-07T11:51:12.9249807Z useradd warning: nixbld5's uid 30005 is greater than SYS_UID_MAX 999
+2026-11-07T11:51:12.9393913Z [0m[1m           Created[0m:	Yes
+2026-11-07T11:51:12.9400083Z [1m            Hidden[0m:	Yes
+2026-11-07T11:51:12.9423578Z [1m    Home Directory[0m:	/var/empty
+2026-11-07T11:51:12.9445557Z [1m              Note[0m:	Nix build user 5
+2026-11-07T11:51:12.9466934Z [1m   Logins Disabled[0m:	Yes
+2026-11-07T11:51:12.9486678Z [1m  Member of nixbld[0m:	Yes
+2026-11-07T11:51:12.9508371Z [1m    PrimaryGroupID[0m:	30000
+2026-11-07T11:51:12.9522708Z 
+2026-11-07T11:51:12.9523344Z [32m~~> Setting up the build user nixbld6
+2026-11-07T11:51:12.9672945Z useradd warning: nixbld6's uid 30006 is greater than SYS_UID_MAX 999
+2026-11-07T11:51:12.9815456Z [0m[1m           Created[0m:	Yes
+2026-11-07T11:51:12.9821672Z [1m            Hidden[0m:	Yes
+2026-11-07T11:51:12.9843471Z [1m    Home Directory[0m:	/var/empty
+2026-11-07T11:51:12.9863481Z [1m              Note[0m:	Nix build user 6
+2026-11-07T11:51:12.9884182Z [1m   Logins Disabled[0m:	Yes
+2026-11-07T11:51:12.9905145Z [1m  Member of nixbld[0m:	Yes
+2026-11-07T11:51:12.9926825Z [1m    PrimaryGroupID[0m:	30000
+2026-11-07T11:51:12.9940256Z 
+2026-11-07T11:51:12.9941705Z [32m~~> Setting up the build user nixbld7
+2026-11-07T11:51:13.0146079Z useradd warning: nixbld7's uid 30007 is greater than SYS_UID_MAX 999
+2026-11-07T11:51:13.0290383Z [0m[1m           Created[0m:	Yes
+2026-11-07T11:51:13.0297500Z [1m            Hidden[0m:	Yes
+2026-11-07T11:51:13.0318754Z [1m    Home Directory[0m:	/var/empty
+2026-11-07T11:51:13.0339865Z [1m              Note[0m:	Nix build user 7
+2026-11-07T11:51:13.0360372Z [1m   Logins Disabled[0m:	Yes
+2026-11-07T11:51:13.0381570Z [1m  Member of nixbld[0m:	Yes
+2026-11-07T11:51:13.0402960Z [1m    PrimaryGroupID[0m:	30000
+2026-11-07T11:51:13.0416247Z 
+2026-11-07T11:51:13.0416761Z [32m~~> Setting up the build user nixbld8
+2026-11-07T11:51:13.0578493Z useradd warning: nixbld8's uid 30008 is greater than SYS_UID_MAX 999
+2026-11-07T11:51:13.0732408Z [0m[1m           Created[0m:	Yes
+2026-11-07T11:51:13.0738964Z [1m            Hidden[0m:	Yes
+2026-11-07T11:51:13.0763354Z [1m    Home Directory[0m:	/var/empty
+2026-11-07T11:51:13.0784826Z [1m              Note[0m:	Nix build user 8
+2026-11-07T11:51:13.0804397Z [1m   Logins Disabled[0m:	Yes
+2026-11-07T11:51:13.0824182Z [1m  Member of nixbld[0m:	Yes
+2026-11-07T11:51:13.0844707Z [1m    PrimaryGroupID[0m:	30000
+2026-11-07T11:51:13.0845134Z 
+2026-11-07T11:51:13.0845382Z [32m~~> Setting up the basic directory structure
+2026-11-07T11:51:13.0931385Z [0minstall: creating directory '/nix'
+2026-11-07T11:51:13.0931955Z install: creating directory '/nix/var'
+2026-11-07T11:51:13.0932504Z install: creating directory '/nix/var/log'
+2026-11-07T11:51:13.0932843Z install: creating directory '/nix/var/log/nix'
+2026-11-07T11:51:13.0933252Z install: creating directory '/nix/var/log/nix/drvs'
+2026-11-07T11:51:13.0933615Z install: creating directory '/nix/var/nix'
+2026-11-07T11:51:13.0933973Z install: creating directory '/nix/var/nix/db'
+2026-11-07T11:51:13.0934388Z install: creating directory '/nix/var/nix/gcroots'
+2026-11-07T11:51:13.0934767Z install: creating directory '/nix/var/nix/profiles'
+2026-11-07T11:51:13.0935155Z install: creating directory '/nix/var/nix/temproots'
+2026-11-07T11:51:13.0935540Z install: creating directory '/nix/var/nix/userpool'
+2026-11-07T11:51:13.0936008Z install: creating directory '/nix/var/nix/daemon-socket'
+2026-11-07T11:51:13.0936457Z install: creating directory '/nix/var/nix/gcroots/per-user'
+2026-11-07T11:51:13.0936880Z install: creating directory '/nix/var/nix/profiles/per-user'
+2026-11-07T11:51:13.1016117Z install: creating directory '/nix/store'
+2026-11-07T11:51:13.1097434Z install: creating directory '/etc/nix'
+2026-11-07T11:51:13.1107869Z 
+2026-11-07T11:51:13.1108649Z [32m~~> Installing Nix
+2026-11-07T11:51:13.2236009Z [0m      Alright! We have our first nix at /nix/store/fw98swa1g4ysvmv6p6m6xf51kzhvpp6p-nix-2.35.2
+2026-11-07T11:51:13.2752924Z       Just finished getting the nix database ready.
+2026-11-07T11:51:13.2754191Z 
+2026-11-07T11:51:13.2755282Z [32m~~> Setting up shell profiles: /etc/bashrc /etc/profile.d/nix.sh /etc/zshrc /etc/bash.bashrc /etc/zsh/zshrc
+2026-11-07T11:51:13.2925047Z [0m
+2026-11-07T11:51:13.2925383Z # Nix
+2026-11-07T11:51:13.2926027Z if [ -e '/nix/var/nix/profiles/default/etc/profile.d/nix-daemon.sh' ]; then
+2026-11-07T11:51:13.2926938Z   . '/nix/var/nix/profiles/default/etc/profile.d/nix-daemon.sh'
+2026-11-07T11:51:13.2927380Z fi
+2026-11-07T11:51:13.2927655Z # End Nix
+2026-11-07T11:51:13.2927785Z 
+2026-11-07T11:51:13.3108989Z 
+2026-11-07T11:51:13.3109994Z # Nix
+2026-11-07T11:51:13.3110845Z if [ -e '/nix/var/nix/profiles/default/etc/profile.d/nix-daemon.sh' ]; then
+2026-11-07T11:51:13.3111600Z   . '/nix/var/nix/profiles/default/etc/profile.d/nix-daemon.sh'
+2026-11-07T11:51:13.3111959Z fi
+2026-11-07T11:51:13.3112263Z # End Nix
+2026-11-07T11:51:13.3112404Z 
+2026-11-07T11:51:13.3297628Z 
+2026-11-07T11:51:13.3298418Z # Nix
+2026-11-07T11:51:13.3299003Z if [ -e '/nix/var/nix/profiles/default/etc/profile.d/nix-daemon.sh' ]; then
+2026-11-07T11:51:13.3299696Z   . '/nix/var/nix/profiles/default/etc/profile.d/nix-daemon.sh'
+2026-11-07T11:51:13.3300047Z fi
+2026-11-07T11:51:13.3300289Z # End Nix
+2026-11-07T11:51:13.3300428Z 
+2026-11-07T11:51:13.3473037Z 
+2026-11-07T11:51:13.3473759Z # Nix
+2026-11-07T11:51:13.3474448Z if [ -e '/nix/var/nix/profiles/default/etc/profile.d/nix-daemon.sh' ]; then
+2026-11-07T11:51:13.3474960Z   . '/nix/var/nix/profiles/default/etc/profile.d/nix-daemon.sh'
+2026-11-07T11:51:13.3475317Z fi
+2026-11-07T11:51:13.3475625Z # End Nix
+2026-11-07T11:51:13.3475739Z 
+2026-11-07T11:51:13.3475923Z # System-wide .bashrc file for interactive bash(1) shells.
+2026-11-07T11:51:13.3476188Z 
+2026-11-07T11:51:13.3476371Z # To enable the settings / commands in this file for login shells as well,
+2026-11-07T11:51:13.3476861Z # this file has to be sourced in /etc/profile.
+2026-11-07T11:51:13.3477088Z 
+2026-11-07T11:51:13.3477215Z # If not running interactively, don't do anything
+2026-11-07T11:51:13.3477638Z [ -z "$PS1" ] && return
+2026-11-07T11:51:13.3477782Z 
+2026-11-07T11:51:13.3477969Z # check the window size after each command and, if necessary,
+2026-11-07T11:51:13.3478332Z # update the values of LINES and COLUMNS.
+2026-11-07T11:51:13.3478661Z shopt -s checkwinsize
+2026-11-07T11:51:13.3478819Z 
+2026-11-07T11:51:13.3479032Z # set variable identifying the chroot you work in (used in the prompt below)
+2026-11-07T11:51:13.3479571Z if [ -z "${debian_chroot:-}" ] && [ -r /etc/debian_chroot ]; then
+2026-11-07T11:51:13.3479956Z     debian_chroot=$(cat /etc/debian_chroot)
+2026-11-07T11:51:13.3480257Z fi
+2026-11-07T11:51:13.3480393Z 
+2026-11-07T11:51:13.3480602Z # set a fancy prompt (non-color, overwrite the one in /etc/profile)
+2026-11-07T11:51:13.3481065Z # but only if not SUDOing and have SUDO_PS1 set; then assume smart user.
+2026-11-07T11:51:13.3482082Z if ! [ -n "${SUDO_USER}" -a -n "${SUDO_PS1}" ]; then
+2026-11-07T11:51:13.3482483Z   PS1='${debian_chroot:+($debian_chroot)}\u@\h:\w\$ '
+2026-11-07T11:51:13.3482798Z fi
+2026-11-07T11:51:13.3482947Z 
+2026-11-07T11:51:13.3483161Z # Commented out, don't overwrite xterm -T "title" -n "icontitle" by default.
+2026-11-07T11:51:13.3483597Z # If this is an xterm set the title to user@host:dir
+2026-11-07T11:51:13.3484549Z #case "$TERM" in
+2026-11-07T11:51:13.3484832Z #xterm*|rxvt*)
+2026-11-07T11:51:13.3485174Z #    PROMPT_COMMAND='echo -ne "\033]0;${USER}@${HOSTNAME}: ${PWD}\007"'
+2026-11-07T11:51:13.3485630Z #    ;;
+2026-11-07T11:51:13.3485833Z #*)
+2026-11-07T11:51:13.3486056Z #    ;;
+2026-11-07T11:51:13.3486300Z #esac
+2026-11-07T11:51:13.3486430Z 
+2026-11-07T11:51:13.3486554Z # enable bash completion in interactive shells
+2026-11-07T11:51:13.3486934Z #if ! shopt -oq posix; then
+2026-11-07T11:51:13.3487300Z #  if [ -f /usr/share/bash-completion/bash_completion ]; then
+2026-11-07T11:51:13.3487671Z #    . /usr/share/bash-completion/bash_completion
+2026-11-07T11:51:13.3488042Z #  elif [ -f /etc/bash_completion ]; then
+2026-11-07T11:51:13.3488345Z #    . /etc/bash_completion
+2026-11-07T11:51:13.3488614Z #  fi
+2026-11-07T11:51:13.3488828Z #fi
+2026-11-07T11:51:13.3488988Z 
+2026-11-07T11:51:13.3489073Z # sudo hint
+2026-11-07T11:51:13.3489444Z if [ ! -e "$HOME/.sudo_as_admin_successful" ] && [ ! -e "$HOME/.hushlogin" ] ; then
+2026-11-07T11:51:13.3489906Z     case " $(groups) " in *\ admin\ *|*\ sudo\ *)
+2026-11-07T11:51:13.3490614Z     if [ -x /usr/bin/sudo ]; then
+2026-11-07T11:51:13.3490983Z 	cat <<-EOF
+2026-11-07T11:51:13.3491910Z 	To run a command as administrator (user "root"), use "sudo <command>".
+2026-11-07T11:51:13.3492619Z 	See "man sudo_root" for details.
+2026-11-07T11:51:13.3492894Z 	
+2026-11-07T11:51:13.3493090Z 	EOF
+2026-11-07T11:51:13.3493363Z     fi
+2026-11-07T11:51:13.3493569Z     esac
+2026-11-07T11:51:13.3493786Z fi
+2026-11-07T11:51:13.3493924Z 
+2026-11-07T11:51:13.3494091Z # if the command-not-found package is installed, use it
+2026-11-07T11:51:13.3494584Z if [ -x /usr/lib/command-not-found -o -x /usr/share/command-not-found/command-not-found ]; then
+2026-11-07T11:51:13.3495123Z 	function command_not_found_handle {
+2026-11-07T11:51:13.3495479Z 	        # check because c-n-f could've been removed in the meantime
+2026-11-07T11:51:13.3495888Z                 if [ -x /usr/lib/command-not-found ]; then
+2026-11-07T11:51:13.3496235Z 		   /usr/lib/command-not-found -- "$1"
+2026-11-07T11:51:13.3496527Z                    return $?
+2026-11-07T11:51:13.3496931Z                 elif [ -x /usr/share/command-not-found/command-not-found ]; then
+2026-11-07T11:51:13.3497394Z 		   /usr/share/command-not-found/command-not-found -- "$1"
+2026-11-07T11:51:13.3497756Z                    return $?
+2026-11-07T11:51:13.3498018Z 		else
+2026-11-07T11:51:13.3498256Z 		   printf "%s: command not found\n" "$1" >&2
+2026-11-07T11:51:13.3498614Z 		   return 127
+2026-11-07T11:51:13.3498843Z 		fi
+2026-11-07T11:51:13.3499031Z 	}
+2026-11-07T11:51:13.3499276Z fi
+2026-11-07T11:51:13.3500729Z 
+2026-11-07T11:51:13.3501931Z [32m~~> Setting up shell profiles for Fish with conf.d/nix.fish inside /etc/fish /usr/local/etc/fish /opt/homebrew/etc/fish /opt/local/etc/fish
+2026-11-07T11:51:13.3615489Z [0m
+2026-11-07T11:51:13.3615947Z [32m~~> Setting up the default profile
+2026-11-07T11:51:13.3875492Z installing 'nix-2.35.2'
+2026-11-07T11:51:13.4028229Z building '/nix/store/w3570rahiw3ql1x7c9h0rdkbvs5wy5b4-user-environment.drv'...
+2026-11-07T11:51:13.4407315Z installing 'nix-manual-2.35.2-man'
+2026-11-07T11:51:13.4558647Z building '/nix/store/a3hx0vc5ipz03izssj7h9ncyb6n2jhcz-user-environment.drv'...
+2026-11-07T11:51:13.4909429Z installing 'nss-cacert-3.123'
+2026-11-07T11:51:13.5048075Z building '/nix/store/8qjs6j3iq3wprr3k7dycb36g8yp3bmpc-user-environment.drv'...
+2026-11-07T11:51:13.5239956Z [0m
+2026-11-07T11:51:13.5240504Z [32m~~> Setting up the nix-daemon systemd service
+2026-11-07T11:51:13.5612640Z Created symlink /etc/systemd/system/nix-daemon.service → /nix/var/nix/profiles/default/lib/systemd/system/nix-daemon.service.
+2026-11-07T11:51:13.7691843Z Created symlink /etc/systemd/system/nix-daemon.socket → /nix/var/nix/profiles/default/lib/systemd/system/nix-daemon.socket.
+2026-11-07T11:51:13.7693433Z Created symlink /etc/systemd/system/sockets.target.wants/nix-daemon.socket → /nix/var/nix/profiles/default/lib/systemd/system/nix-daemon.socket.
+2026-11-07T11:51:14.2066727Z [0m[32mAlright! We're done!
+2026-11-07T11:51:14.2090565Z [0mTry it! Open a new terminal, and type:
+2026-11-07T11:51:14.2093128Z 
+2026-11-07T11:51:14.2093390Z   $ nix-shell -p nix-info --run "nix-info -m"
+2026-11-07T11:51:14.2093647Z 
+2026-11-07T11:51:14.2093830Z Thank you for using this installer. If you have any feedback or need
+2026-11-07T11:51:14.2094461Z help, don't hesitate:
+2026-11-07T11:51:14.2094601Z 
+2026-11-07T11:51:14.2094714Z You can open an issue at
+2026-11-07T11:51:14.2095150Z https://github.com/NixOS/nix/issues/new?labels=installer&template=installer.md
+2026-11-07T11:51:14.2095581Z 
+2026-11-07T11:51:14.2095786Z Or get in touch with the community: https://nixos.org/community
+2026-11-07T11:51:14.2112207Z 
+2026-11-07T11:51:14.2113177Z [34m---- Reminders -----------------------------------------------------------------
+2026-11-07T11:51:14.2113849Z [0m[34m[ 1 ][0m
+2026-11-07T11:51:14.2114180Z Nix won't work in active shell sessions until you restart them.
+2026-11-07T11:51:14.2114458Z 
+2026-11-07T11:51:14.2584179Z ##[endgroup]
+2026-11-07T11:51:14.2638584Z ##[end-action id=__cachix_install-nix-action.__run;outcome=success;conclusion=success;duration_ms=3270]
+2026-11-07T11:51:14.2709428Z ##[group]Run python3 tests/node-lts-native.py
+2026-11-07T11:51:14.2710019Z [36;1mpython3 tests/node-lts-native.py[0m
+2026-11-07T11:51:14.2767821Z shell: /usr/bin/bash -e {0}
+2026-11-07T11:51:14.2768406Z env:
+2026-11-07T11:51:14.2768687Z   TMPDIR: /home/runner/work/_temp
+2026-11-07T11:51:14.2769126Z   NIX_PROFILES: /nix/var/nix/profiles/default /home/runner/.nix-profile
+2026-11-07T11:51:14.2769661Z   NIX_SSL_CERT_FILE: /etc/ssl/certs/ca-certificates.crt
+2026-11-07T11:51:14.2769989Z ##[endgroup]
+2026-11-07T11:51:14.4949582Z unpacking 'github:nix-caisson/caisson/ec291bc9637a95606f7fa9df942d5e803705d8f5?narHash=sha256-FAixpwyAWmhrzmh0fMGt7y0KIcNLqBIGICfMvbExRLo%3D' into the Git cache...
+2026-11-07T11:51:15.1532243Z unpacking 'github:nix-caisson/caisson-core/6868bca2682e96d56714bc9c9adcf0048fbe132f?narHash=sha256-OzlG2Nhl/kU2UUPq%2BARH/GKUHmOqAxQu5Ug/%2BaT1ECc%3D' into the Git cache...
+2026-11-07T11:51:15.5126716Z unpacking 'github:nix-community/nixpkgs.lib/b91d4f1bc958e0bdfd6cb3db4a280486006f5002?narHash=sha256-XtTdVeJX6X/gU%2BvGIUEJHirotv/lYP5%2BQ9irMH6HWPY%3D' into the Git cache...
+2026-11-07T11:51:15.8838831Z unpacking 'github:hercules-ci/flake-parts/31729ca8cbdb4fa927b34e5f4353e6a83f39e993?narHash=sha256-glZLQlzIn1fXH6PazR2iUmTo7kzzyYSshrWhLS9TqCU%3D' into the Git cache...
+2026-11-07T11:51:16.2061884Z unpacking 'github:nix-purifiers/purifier/b9cccd7799ef7f82ca9bc0b67340714cf4b3c4ea?narHash=sha256-Z5nzMEddKHAvAxhzc%2Bm/QM5aTjPzd52MxETuTrAtAC4%3D' into the Git cache...
+2026-11-07T11:51:16.5121677Z unpacking 'github:nix-community/nixpkgs.lib/7851ba61fd862b277cb6a9cef37394bc18bb94e4?narHash=sha256-ThkfL3D/FhCiZFc9%2B3BtxwuMmpuK%2B/bGtXCSo1%2ByVew%3D' into the Git cache...
+2026-11-07T11:51:16.8455387Z unpacking 'github:hercules-ci/flake-parts/024633cd702b10285db5cb19b40ad48d2399ba60?narHash=sha256-zTwuwezD0w3hpga6a6P8emidzAZFyWqlNeRBlpWOOl8%3D' into the Git cache...
+2026-11-07T11:51:17.0874807Z copying path '/nix/store/cm5m4hjjh37s6z82rwa0vhkbcga3m8bq-source' from 'https://cache.nixos.org'...
+2026-11-07T11:51:23.1933821Z unpacking 'github:numtide/treefmt-nix/0d6d739a833ba9a9c93034862e4a7b061a062a1c?narHash=sha256-C3alQ2MEt0zVrUSho5NUDo3jmhbff72%2B%2BbfwoqT9Omo%3D' into the Git cache...
+2026-11-07T11:51:23.4720545Z Native registry workflow: aarch64-linux Node 24.21.0
+2026-11-07T11:51:26.4791314Z these 3 derivations will be built:
+2026-11-07T11:51:26.4796184Z   /nix/store/4xvzd36mzm9zw063a1q911z0ld2bsiqx-npm-purifier.drv
+2026-11-07T11:51:26.4796898Z   /nix/store/dncsyslf1p7p7b5f4s2vwryifh31q9gv-npm.drv
+2026-11-07T11:51:26.4797390Z   /nix/store/n7gsqzmncavjb2mfrbpzmsb1jn7c6s0i-npm-current-node-tools.drv
+2026-11-07T11:51:26.4797997Z these 129 paths will be fetched (184.0 MiB download, 585.7 MiB unpacked):
+2026-11-07T11:51:26.4798725Z   /nix/store/1gi6cgl9f4vymydl88sm7a7ckpjiyar2-ShellCheck-0.11.0
+2026-11-07T11:51:26.4799213Z   /nix/store/sc2mdq7cnpwrx63hlyi9nrzrlf91klyw-acl-2.4.0
+2026-11-07T11:51:26.4799662Z   /nix/store/36ch1yzgw45z0lbs6cffh8hc8k7nv9gb-ada-4.0.0
+2026-11-07T11:51:26.4800088Z   /nix/store/mha227cdls0rb65v203c6wl7mbigqz6v-attr-2.6.0
+2026-11-07T11:51:26.4800604Z   /nix/store/czx7cscpnqqmc9nwmbpnv2zcvck64mmf-bash-5.3p20
+2026-11-07T11:51:26.4801309Z   /nix/store/cz57r0bgh8az2215msz1yxkq3phqbjzh-brotli-1.2.0-lib
+2026-11-07T11:51:26.4801845Z   /nix/store/38cgmslssr424z59bxfh2g8rc4lvkffi-builder.pl
+2026-11-07T11:51:26.4802261Z   /nix/store/zw8wg4lsihfr4l6cnhr14rwcgqhldnny-bzip2-1.0.8
+2026-11-07T11:51:26.4802692Z   /nix/store/ka8s414hk1sv86grrvq5d7b0mwnzhjaw-bzip2-1.0.8-bin
+2026-11-07T11:51:26.4803211Z   /nix/store/9hfv1d7h4si28wh3p9yb7vlxdc05p6a2-c-ares-1.34.8
+2026-11-07T11:51:26.4803638Z   /nix/store/m2ar7c5ylhgg8vp7dfdx9bhjfvki5xdg-coreutils-9.12
+2026-11-07T11:51:26.4804076Z   /nix/store/r5w60683qmv7p1lzdj6xd9i0lms8b42i-curl-8.22.0
+2026-11-07T11:51:26.4804547Z   /nix/store/wd8sz1s3ilbb61s5m9vhv9h5ccvighw2-diffutils-3.12
+2026-11-07T11:51:26.4804960Z   /nix/store/zxvqbvipb5j4v1wf7qzc60kg8lh8rdms-ed-1.22.6
+2026-11-07T11:51:26.4805826Z   /nix/store/l8xpwwa62pxa48ng6bzv18qwskp8ln7s-expat-2.9.0
+2026-11-07T11:51:26.4806254Z   /nix/store/3wadfj8gksww215f8k8gl1bymfbnzb03-file-5.48
+2026-11-07T11:51:26.4806725Z   /nix/store/3jplw390ifmb9rc4kfv9vvxdfi33mrnq-findutils-4.11.0
+2026-11-07T11:51:26.4807364Z   /nix/store/dw1m6wyv1zd7v1y5ih0yi06ym21widm8-gawk-5.4.1
+2026-11-07T11:51:26.4807772Z   /nix/store/nhrkwapk0zzzmc8x1f2k24qpyz9gy5qb-gcc-16.2.0-lib
+2026-11-07T11:51:26.4808280Z   /nix/store/c1h1q4h9bfmb5d0w342qwjmhw8cxkxzc-gcc-16.2.0-libgcc
+2026-11-07T11:51:26.4808707Z   /nix/store/v655z7ikx2xr1pi3vrag6r078aqqivqi-gdbm-1.26-lib
+2026-11-07T11:51:26.4809108Z   /nix/store/qh35hki623iqrj2mqfxnzjqawxn93gk7-gettext-1.0
+2026-11-07T11:51:26.4809541Z   /nix/store/xqp1x3qm8j8hxqpddwzp9mg73wvrc4xb-git-2.56.0
+2026-11-07T11:51:26.4809953Z   /nix/store/ddvy66njv88c3zgzgkvxfkm4r0za2rza-git-2.56.0-doc
+2026-11-07T11:51:26.4810453Z   /nix/store/sgbpk20y4yn66bszjnx6g49nia88cyzv-git-lfs-3.8.1
+2026-11-07T11:51:26.4810873Z   /nix/store/nhphqkv18x8fpf3flz0bsm1h554pawn7-glibc-2.44-57
+2026-11-07T11:51:26.4811604Z   /nix/store/1jkc0qp9b4vd84n84x1f91pqzcvkhq1j-gmp-with-cxx-6.3.0
+2026-11-07T11:51:26.4812132Z   /nix/store/jvgbq6v334yqdpkqqks9cdiqxla39czz-gmp-with-cxx-6.3.0
+2026-11-07T11:51:26.4812614Z   /nix/store/20bf9qqanrkkkrjdga3bvkwj048xmdr5-gnu-config-2024-01-01
+2026-11-07T11:51:26.4813126Z   /nix/store/74nxb0rnf6lm102ax6ax9b4cpyvrcifq-gnugrep-3.12
+2026-11-07T11:51:26.4813546Z   /nix/store/nw265p43zvgsc8153wbrkl7bakdc53nq-gnumake-4.4.1
+2026-11-07T11:51:26.4813956Z   /nix/store/03rgyjxclvhxnif2klf13nkr92rpxqqg-gnused-4.10
+2026-11-07T11:51:26.4814471Z   /nix/store/awm920jywv9gdjp4lm5r877zdz7xxbcm-gnutar-1.35
+2026-11-07T11:51:26.4814878Z   /nix/store/4cj6wkw6pa34sz9njh6cccvnfksx5mqc-gtest-1.18.0
+2026-11-07T11:51:26.4815331Z   /nix/store/gm4gzpllicwvrjxyilsm7140nqikxhbx-gzip-1.15
+2026-11-07T11:51:26.4815782Z   /nix/store/05j3zngh62zmbqchsg11w3pvravhk1jz-hdrhistogram_c-0.11.10
+2026-11-07T11:51:26.4816252Z   /nix/store/a9l8h2d532wk9zpyvl3qms0v5iwbjp67-iana-etc-20251215
+2026-11-07T11:51:26.4816722Z   /nix/store/m9nmssx5b579jv60gqvbdc51bz5cs8gw-icu4c-78.3
+2026-11-07T11:51:26.4817144Z   /nix/store/zmzhmxp7mc1dbz2v29i7dd185xw0iqgq-keyutils-1.6.3-lib
+2026-11-07T11:51:26.4817620Z   /nix/store/kyc6xi95fbcmb904h346k8k3paygq06l-krb5-1.22.2-lib
+2026-11-07T11:51:26.4818102Z   /nix/store/v6jjr80v6d0v1379fyilzi38ava7rygz-libffi-3.8.0
+2026-11-07T11:51:26.4818518Z   /nix/store/wsn07qxxn13gcdcjw5avz47j8lb2zpdv-libidn2-2.3.8
+2026-11-07T11:51:26.4818972Z   /nix/store/jmpd1nlwmqxyaqci35i6nm6zh7zxwhcc-libpsl-0.21.5
+2026-11-07T11:51:26.4819400Z   /nix/store/n08mywvg7fb9p1hzaarvi06iclki4073-libssh2-1.11.1
+2026-11-07T11:51:26.4819869Z   /nix/store/vr8lx1cjz6zw4xhmb4k405v6cqrkslnk-libunistring-1.4.2
+2026-11-07T11:51:26.4820348Z   /nix/store/abw4gw7fgpngkxqknz4hhzawk07f5x2g-libuv-1.53.0
+2026-11-07T11:51:26.4820771Z   /nix/store/lb75yza16fcfww1sfpns508d6ffjk362-libuv-1.53.0-dev
+2026-11-07T11:51:26.4821675Z   /nix/store/zw9m2pj4lznmkc7k46pcjr8wclkqz4b5-libxcrypt-4.5.2
+2026-11-07T11:51:26.4822192Z   /nix/store/fj9c90nq2c0iwh5c92h6rfd9nk3xy5zc-llhttp-9.4.3
+2026-11-07T11:51:26.4822615Z   /nix/store/7kfrkscfmm8p09q9w392p86rxqji8cbf-mailcap-2.1.54
+2026-11-07T11:51:26.4823088Z   /nix/store/zagpvp7z1jx5m20cxw75f9jcskqvs0i2-merve-1.2.2
+2026-11-07T11:51:26.4823515Z   /nix/store/4c2cgn8fsi52wsmv5y357q6p7kily88f-mpdecimal-4.0.1
+2026-11-07T11:51:26.4823965Z   /nix/store/dm0b6sv46f1pdf3wjzz7jd2yqpddmxkh-nbytes-0.1.4
+2026-11-07T11:51:26.4824383Z   /nix/store/9ahnm6gsklq4dn20fjlz1wn36c34dik0-ncurses-6.6
+2026-11-07T11:51:26.4824846Z   /nix/store/vr6k9ydls6wy5ljh7v9g9z77spkfg446-nghttp2-1.70.0-lib
+2026-11-07T11:51:26.4825334Z   /nix/store/adw348h6dcv6fchrbxc4ka50h9krmskm-nghttp3-1.18.0
+2026-11-07T11:51:26.4825781Z   /nix/store/dli4xp5h5h5bgfpzd81qflbafmp252hb-ngtcp2-1.23.0
+2026-11-07T11:51:26.4826258Z   /nix/store/90xz8p4sn439cnfg7zl6rhmqqqq4s807-nix-prefetch-git-26.11
+2026-11-07T11:51:26.4826765Z   /nix/store/6vlx51wp6rjcsb1gcx54hfb7ndf3k2h8-nodejs-24.21.0
+2026-11-07T11:51:26.4827213Z   /nix/store/g890v8f24xklrl5r3sg2ld4l3ncj8h2g-nodejs-slim-24.21.0
+2026-11-07T11:51:26.4828006Z   /nix/store/z0rkwr5lap3yzcjcpsimy1brh57sfmy5-nodejs-slim-24.21.0-corepack
+2026-11-07T11:51:26.4828583Z   /nix/store/bz5qwik9292pr0ivfbalxnq0mxdlwc2d-nodejs-slim-24.21.0-npm
+2026-11-07T11:51:26.4829200Z   /nix/store/fnbbk0fzhd6zzg3bwfwsx04slck621h6-numactl-2.0.18
+2026-11-07T11:51:26.4829727Z   /nix/store/33r0n37000780rlkipq2zna6yn0aw20f-openssl-3.5.9
+2026-11-07T11:51:26.4830176Z   /nix/store/1r53ih2yfqw9h9mcbz56b59yxipg0a9c-openssl-3.5.9-bin
+2026-11-07T11:51:26.4830652Z   /nix/store/5wzih1n026j37403lyfwmidpa0xvl6al-openssl-3.5.9-dev
+2026-11-07T11:51:26.4831258Z   /nix/store/2c5bg827mnff0ylsp48k3vk6f9a61d0g-patch-2.8
+2026-11-07T11:51:26.4831744Z   /nix/store/jbcx062jzh1gv5rjmbri2rcpc9gjrx3n-patchelf-0.19.2
+2026-11-07T11:51:26.4832268Z   /nix/store/3g2mlwyf1wkiwkjcv86hi9j9d73r9xz9-pcre2-10.49
+2026-11-07T11:51:26.4832675Z   /nix/store/j3l6i3qacavn6dpmqm14nzsk5c9yl1ib-perl-5.42.3
+2026-11-07T11:51:26.4833170Z   /nix/store/m9yg49j35y53bgd3bdhg06rn567lzycw-perl5.42.3-Authen-SASL-2.2100
+2026-11-07T11:51:26.4833722Z   /nix/store/wfcb6wrgrl05cyynkgk298hq3ga9a9wf-perl5.42.3-CGI-4.59
+2026-11-07T11:51:26.4834404Z   /nix/store/7dc422xz4vfav7rsjsv8ysb0plp2g5pj-perl5.42.3-CGI-Fast-2.16
+2026-11-07T11:51:26.4834986Z   /nix/store/bwqiramw268bcd9a7bdii37ipjgdr0sp-perl5.42.3-Clone-0.46
+2026-11-07T11:51:26.4835536Z   /nix/store/9s56vb3g3ymcp0bik9cc271c7hm95dp5-perl5.42.3-Compress-Raw-Bzip2-2.218
+2026-11-07T11:51:26.4836148Z   /nix/store/yhcg0icbcbbcg62ijrf1ifh58krp9750-perl5.42.3-Compress-Raw-Zlib-2.222
+2026-11-07T11:51:26.4836726Z   /nix/store/xzvb7dxh24frcq41fx2zm0k9pyagvwjv-perl5.42.3-Crypt-URandom-0.55
+2026-11-07T11:51:26.4837276Z   /nix/store/rr4fb6cc22grhz2pykld6js8wqfby4kv-perl5.42.3-Digest-HMAC-1.05
+2026-11-07T11:51:26.4837890Z   /nix/store/4qfc63g53l8g4r3fdb11l75m8xa2bkrk-perl5.42.3-Encode-Locale-1.05
+2026-11-07T11:51:26.4838417Z   /nix/store/ysisihxdvs83laxgri3nv8q9ir957hv5-perl5.42.3-FCGI-0.82
+2026-11-07T11:51:26.4838959Z   /nix/store/1iv948fjik0dsv3fl68i5jx64v8jkb4f-perl5.42.3-FCGI-ProcManager-0.28
+2026-11-07T11:51:26.4839533Z   /nix/store/1fd2j9kmzlkakljgiadpqsi22vfkrm6k-perl5.42.3-File-Listing-6.16
+2026-11-07T11:51:26.4840071Z   /nix/store/qa7bp9v759xgv69rhm1fpvhx74zymkqv-perl5.42.3-HTML-Parser-3.85
+2026-11-07T11:51:26.4840676Z   /nix/store/3d8ffdssz2dna2z7k349wc2s5m8vbiaw-perl5.42.3-HTML-TagCloud-0.38
+2026-11-07T11:51:26.4841357Z   /nix/store/4167w0si41chr26mh24yiwmv66vj73b4-perl5.42.3-HTML-Tagset-3.20
+2026-11-07T11:51:26.4842013Z   /nix/store/hlxzq2qnngd444yddc93snl31izs7byl-perl5.42.3-HTTP-CookieJar-0.014
+2026-11-07T11:51:26.4842618Z   /nix/store/mr4ppg94wklwgmjs8v7l3spylmpr1iqx-perl5.42.3-HTTP-Cookies-6.10
+2026-11-07T11:51:26.4843213Z   /nix/store/nl9n5q50141z5v4bhrj8qddpgp1n7j01-perl5.42.3-HTTP-Daemon-6.17
+2026-11-07T11:51:26.4843761Z   /nix/store/rylw5ajszxvn5axzh1vnldapkam8i24d-perl5.42.3-HTTP-Date-6.08
+2026-11-07T11:51:26.4844296Z   /nix/store/vm7qqhk945drixr51hzgxklcpnaipprr-perl5.42.3-HTTP-Message-7.02
+2026-11-07T11:51:26.4844837Z   /nix/store/n084x44cgh7kmgl12mv21rnb1309kzy8-perl5.42.3-HTTP-Negotiate-6.01
+2026-11-07T11:51:26.4845426Z   /nix/store/1rrakdmr8p68pk5hdlv416mgmb2l8c4s-perl5.42.3-IO-Compress-2.221
+2026-11-07T11:51:26.4845957Z   /nix/store/p01kd7s41p2ssmm062k4ap658fa1zzbs-perl5.42.3-IO-HTML-1.004
+2026-11-07T11:51:26.4846553Z   /nix/store/2rl2qqqy6zj933a96fcvj6cbik2814i5-perl5.42.3-IO-Socket-SSL-2.083
+2026-11-07T11:51:26.4847136Z   /nix/store/abk3idrifn9qvgmglbva1k6fc9f3px6x-perl5.42.3-LWP-MediaTypes-6.04
+2026-11-07T11:51:26.4847681Z   /nix/store/cszppz59xvra5hw6yyqwf38w44zqsqa4-perl5.42.3-MIME-Base32-1.303
+2026-11-07T11:51:26.4848273Z   /nix/store/ljphwxvbh28wj6lckfvv62fkb5pzsqcb-perl5.42.3-Mozilla-CA-20230821
+2026-11-07T11:51:26.4848840Z   /nix/store/1688bdb2g1q25qnifsfzzha6vy5mbp64-perl5.42.3-Net-HTTP-6.23
+2026-11-07T11:51:26.4849374Z   /nix/store/r4nqi2ff95qan0x7f886gr8qvhzr4wzh-perl5.42.3-Net-SMTP-SSL-1.04
+2026-11-07T11:51:26.4849907Z   /nix/store/cy8m13hy402wb295g8ppcdzb1al6cvih-perl5.42.3-Net-SSLeay-1.92
+2026-11-07T11:51:26.4850433Z   /nix/store/5xqnaq1i07vkypxljgc69pqyw6xq9mhy-perl5.42.3-TermReadKey-2.38
+2026-11-07T11:51:26.4851408Z   /nix/store/myfbdsar790y1s0s66r039gvz17synyx-perl5.42.3-Test-Fatal-0.017
+2026-11-07T11:51:26.4852185Z   /nix/store/m9s7sb7kgg2sj99q723k7jgc7gg1rnw8-perl5.42.3-Test-Needs-0.002010
+2026-11-07T11:51:26.4852822Z   /nix/store/j9zapfq9ibk48drw4iwiz20a2bb8i061-perl5.42.3-Test-RequiresInternet-0.05
+2026-11-07T11:51:26.4853622Z   /nix/store/xdkdfsyiwb8gz3ig4fklipfm88p65kjg-perl5.42.3-TimeDate-2.33
+2026-11-07T11:51:26.4854152Z   /nix/store/caimwr417x2sfzv5aa5visd00wg290dm-perl5.42.3-Try-Tiny-0.31
+2026-11-07T11:51:26.4854696Z   /nix/store/jw5fmsm7irygjdsklk6cxmqwylzawivj-perl5.42.3-URI-5.36
+2026-11-07T11:51:26.4855254Z   /nix/store/dbxrnyi7wqbp7ddwg3fzfyx3jix2cvs0-perl5.42.3-WWW-RobotRules-6.02
+2026-11-07T11:51:26.4855771Z   /nix/store/vb8qxr56n7vx23hps627l7p84wljhjjc-perl5.42.3-libnet-3.15
+2026-11-07T11:51:26.4856350Z   /nix/store/lv6rqb1wjbv7zi8p5basrw23kf59bdr9-perl5.42.3-libwww-perl-6.83
+2026-11-07T11:51:26.4857047Z   /nix/store/plwcg1la5xyzi2kykfb95lir2pg54jpn-publicsuffix-list-0-unstable-2026-09-02
+2026-11-07T11:51:26.4857648Z   /nix/store/lq2fsnmg0q3y0vlxn91w8s8wvj1m6fld-python3-3.14.8
+2026-11-07T11:51:26.4858118Z   /nix/store/ir2g9cnz59ab72ylgbnxr31k1vdnbm6c-readline-8.3p3
+2026-11-07T11:51:26.4858547Z   /nix/store/pk46cw0q2zlysa9yqgnqv1jrq2ll5ndx-simdjson-4.6.11
+2026-11-07T11:51:26.4859020Z   /nix/store/bjhfq4xfy180kk8cykdfwwj6rn8glkvy-simdutf-9.2.1
+2026-11-07T11:51:26.4859441Z   /nix/store/vyjbj4l5msqs1mwdq0wb8q2lmd9m285n-sqlite-3.53.3
+2026-11-07T11:51:26.4859902Z   /nix/store/4rgz2pgx20yk0pxnm03yvl6dq2cay5hi-stdenv-linux-no-cc
+2026-11-07T11:51:26.4860400Z   /nix/store/ad9h5b41f7x4fvk22axfjvxykisyjc15-tzdata-2026e
+2026-11-07T11:51:26.4860928Z   /nix/store/kvg9ycx7pwbxj4zqvr7bcy0wclln2vvh-update-autotools-gnu-config-scripts-hook
+2026-11-07T11:51:26.4861796Z   /nix/store/a2f8s7l9wlbqdsi6wblxrhnnav5j33jc-util-linux-minimal-2.42.4-lib
+2026-11-07T11:51:26.4862297Z   /nix/store/v79cmgbpn95r20kbjs0bvp2rhl91pnfz-uvwasi-0.0.23
+2026-11-07T11:51:26.4862778Z   /nix/store/09mqjwlgdr2jchjchwpgff2vryn4zc4q-xgcc-16.2.0-libgcc
+2026-11-07T11:51:26.4863241Z   /nix/store/linhs507yd8g96sxp5n0lg8x211xxn18-xz-5.8.4
+2026-11-07T11:51:26.4863645Z   /nix/store/j9a98d3bs0wjwg0v4hrz8kfsmrxgdg7c-xz-5.8.4-bin
+2026-11-07T11:51:26.4864175Z   /nix/store/nw9zbfc171gdsali7fcgl6rayfy5ykkx-zlib-1.3.2
+2026-11-07T11:51:26.4864754Z   /nix/store/743bc92fny9qgsy9bp61y0j0rh639m3d-zlib-1.3.2-dev
+2026-11-07T11:51:26.4865226Z   /nix/store/spcmllkf6z3bvx3zpr2qz9k25hpdn76f-zlib-1.3.2-static
+2026-11-07T11:51:26.4865709Z   /nix/store/wl3d2qbnjm8h45hi56613zgb1yjd2j0g-zlib-ng-2.3.3
+2026-11-07T11:51:26.4866124Z   /nix/store/91qsbvx8w31rd255w8ikficjqg4v3fh4-zstd-1.5.7
+2026-11-07T11:51:26.4866771Z copying path '/nix/store/38cgmslssr424z59bxfh2g8rc4lvkffi-builder.pl' from 'https://cache.nixos.org'...
+2026-11-07T11:51:26.4922351Z copying path '/nix/store/ddvy66njv88c3zgzgkvxfkm4r0za2rza-git-2.56.0-doc' from 'https://cache.nixos.org'...
+2026-11-07T11:51:26.4924404Z copying path '/nix/store/20bf9qqanrkkkrjdga3bvkwj048xmdr5-gnu-config-2024-01-01' from 'https://cache.nixos.org'...
+2026-11-07T11:51:26.4925474Z copying path '/nix/store/7kfrkscfmm8p09q9w392p86rxqji8cbf-mailcap-2.1.54' from 'https://cache.nixos.org'...
+2026-11-07T11:51:26.4926677Z copying path '/nix/store/rr4fb6cc22grhz2pykld6js8wqfby4kv-perl5.42.3-Digest-HMAC-1.05' from 'https://cache.nixos.org'...
+2026-11-07T11:51:26.4928054Z copying path '/nix/store/1iv948fjik0dsv3fl68i5jx64v8jkb4f-perl5.42.3-FCGI-ProcManager-0.28' from 'https://cache.nixos.org'...
+2026-11-07T11:51:26.4929809Z copying path '/nix/store/vb8qxr56n7vx23hps627l7p84wljhjjc-perl5.42.3-libnet-3.15' from 'https://cache.nixos.org'...
+2026-11-07T11:51:26.4932074Z copying path '/nix/store/spcmllkf6z3bvx3zpr2qz9k25hpdn76f-zlib-1.3.2-static' from 'https://cache.nixos.org'...
+2026-11-07T11:51:26.4940203Z copying path '/nix/store/09mqjwlgdr2jchjchwpgff2vryn4zc4q-xgcc-16.2.0-libgcc' from 'https://cache.nixos.org'...
+2026-11-07T11:51:26.4941857Z copying path '/nix/store/3d8ffdssz2dna2z7k349wc2s5m8vbiaw-perl5.42.3-HTML-TagCloud-0.38' from 'https://cache.nixos.org'...
+2026-11-07T11:51:26.4947365Z copying path '/nix/store/ad9h5b41f7x4fvk22axfjvxykisyjc15-tzdata-2026e' from 'https://cache.nixos.org'...
+2026-11-07T11:51:26.4968983Z copying path '/nix/store/c1h1q4h9bfmb5d0w342qwjmhw8cxkxzc-gcc-16.2.0-libgcc' from 'https://cache.nixos.org'...
+2026-11-07T11:51:26.4970008Z copying path '/nix/store/vr8lx1cjz6zw4xhmb4k405v6cqrkslnk-libunistring-1.4.2' from 'https://cache.nixos.org'...
+2026-11-07T11:51:26.4970875Z copying path '/nix/store/4qfc63g53l8g4r3fdb11l75m8xa2bkrk-perl5.42.3-Encode-Locale-1.05' from 'https://cache.nixos.org'...
+2026-11-07T11:51:26.4972976Z copying path '/nix/store/4167w0si41chr26mh24yiwmv66vj73b4-perl5.42.3-HTML-Tagset-3.20' from 'https://cache.nixos.org'...
+2026-11-07T11:51:26.4973940Z copying path '/nix/store/a9l8h2d532wk9zpyvl3qms0v5iwbjp67-iana-etc-20251215' from 'https://cache.nixos.org'...
+2026-11-07T11:51:26.5007920Z copying path '/nix/store/ljphwxvbh28wj6lckfvv62fkb5pzsqcb-perl5.42.3-Mozilla-CA-20230821' from 'https://cache.nixos.org'...
+2026-11-07T11:51:26.5093969Z copying path '/nix/store/cszppz59xvra5hw6yyqwf38w44zqsqa4-perl5.42.3-MIME-Base32-1.303' from 'https://cache.nixos.org'...
+2026-11-07T11:51:26.5122124Z copying path '/nix/store/kvg9ycx7pwbxj4zqvr7bcy0wclln2vvh-update-autotools-gnu-config-scripts-hook' from 'https://cache.nixos.org'...
+2026-11-07T11:51:26.5142852Z copying path '/nix/store/abk3idrifn9qvgmglbva1k6fc9f3px6x-perl5.42.3-LWP-MediaTypes-6.04' from 'https://cache.nixos.org'...
+2026-11-07T11:51:26.5236222Z copying path '/nix/store/caimwr417x2sfzv5aa5visd00wg290dm-perl5.42.3-Try-Tiny-0.31' from 'https://cache.nixos.org'...
+2026-11-07T11:51:26.5291582Z copying path '/nix/store/m9s7sb7kgg2sj99q723k7jgc7gg1rnw8-perl5.42.3-Test-Needs-0.002010' from 'https://cache.nixos.org'...
+2026-11-07T11:51:26.5293504Z copying path '/nix/store/j9zapfq9ibk48drw4iwiz20a2bb8i061-perl5.42.3-Test-RequiresInternet-0.05' from 'https://cache.nixos.org'...
+2026-11-07T11:51:26.5353373Z copying path '/nix/store/p01kd7s41p2ssmm062k4ap658fa1zzbs-perl5.42.3-IO-HTML-1.004' from 'https://cache.nixos.org'...
+2026-11-07T11:51:26.5374948Z copying path '/nix/store/xdkdfsyiwb8gz3ig4fklipfm88p65kjg-perl5.42.3-TimeDate-2.33' from 'https://cache.nixos.org'...
+2026-11-07T11:51:26.5390274Z copying path '/nix/store/plwcg1la5xyzi2kykfb95lir2pg54jpn-publicsuffix-list-0-unstable-2026-09-02' from 'https://cache.nixos.org'...
+2026-11-07T11:51:26.5946592Z copying path '/nix/store/jw5fmsm7irygjdsklk6cxmqwylzawivj-perl5.42.3-URI-5.36' from 'https://cache.nixos.org'...
+2026-11-07T11:51:26.5986651Z copying path '/nix/store/myfbdsar790y1s0s66r039gvz17synyx-perl5.42.3-Test-Fatal-0.017' from 'https://cache.nixos.org'...
+2026-11-07T11:51:26.6033932Z copying path '/nix/store/wsn07qxxn13gcdcjw5avz47j8lb2zpdv-libidn2-2.3.8' from 'https://cache.nixos.org'...
+2026-11-07T11:51:26.6679625Z copying path '/nix/store/rylw5ajszxvn5axzh1vnldapkam8i24d-perl5.42.3-HTTP-Date-6.08' from 'https://cache.nixos.org'...
+2026-11-07T11:51:26.6766574Z copying path '/nix/store/1688bdb2g1q25qnifsfzzha6vy5mbp64-perl5.42.3-Net-HTTP-6.23' from 'https://cache.nixos.org'...
+2026-11-07T11:51:26.6767539Z copying path '/nix/store/nhphqkv18x8fpf3flz0bsm1h554pawn7-glibc-2.44-57' from 'https://cache.nixos.org'...
+2026-11-07T11:51:26.6768419Z copying path '/nix/store/dbxrnyi7wqbp7ddwg3fzfyx3jix2cvs0-perl5.42.3-WWW-RobotRules-6.02' from 'https://cache.nixos.org'...
+2026-11-07T11:51:26.6925531Z copying path '/nix/store/1fd2j9kmzlkakljgiadpqsi22vfkrm6k-perl5.42.3-File-Listing-6.16' from 'https://cache.nixos.org'...
+2026-11-07T11:51:26.6926581Z copying path '/nix/store/hlxzq2qnngd444yddc93snl31izs7byl-perl5.42.3-HTTP-CookieJar-0.014' from 'https://cache.nixos.org'...
+2026-11-07T11:51:26.8539923Z copying path '/nix/store/sc2mdq7cnpwrx63hlyi9nrzrlf91klyw-acl-2.4.0' from 'https://cache.nixos.org'...
+2026-11-07T11:51:26.8541303Z copying path '/nix/store/cz57r0bgh8az2215msz1yxkq3phqbjzh-brotli-1.2.0-lib' from 'https://cache.nixos.org'...
+2026-11-07T11:51:26.8542884Z copying path '/nix/store/mha227cdls0rb65v203c6wl7mbigqz6v-attr-2.6.0' from 'https://cache.nixos.org'...
+2026-11-07T11:51:26.8544470Z copying path '/nix/store/czx7cscpnqqmc9nwmbpnv2zcvck64mmf-bash-5.3p20' from 'https://cache.nixos.org'...
+2026-11-07T11:51:26.8546895Z copying path '/nix/store/zw8wg4lsihfr4l6cnhr14rwcgqhldnny-bzip2-1.0.8' from 'https://cache.nixos.org'...
+2026-11-07T11:51:26.8549758Z copying path '/nix/store/9hfv1d7h4si28wh3p9yb7vlxdc05p6a2-c-ares-1.34.8' from 'https://cache.nixos.org'...
+2026-11-07T11:51:26.8553786Z copying path '/nix/store/l8xpwwa62pxa48ng6bzv18qwskp8ln7s-expat-2.9.0' from 'https://cache.nixos.org'...
+2026-11-07T11:51:26.8559586Z copying path '/nix/store/dw1m6wyv1zd7v1y5ih0yi06ym21widm8-gawk-5.4.1' from 'https://cache.nixos.org'...
+2026-11-07T11:51:26.8560600Z copying path '/nix/store/nhrkwapk0zzzmc8x1f2k24qpyz9gy5qb-gcc-16.2.0-lib' from 'https://cache.nixos.org'...
+2026-11-07T11:51:26.8562312Z copying path '/nix/store/gm4gzpllicwvrjxyilsm7140nqikxhbx-gzip-1.15' from 'https://cache.nixos.org'...
+2026-11-07T11:51:26.8563147Z copying path '/nix/store/v655z7ikx2xr1pi3vrag6r078aqqivqi-gdbm-1.26-lib' from 'https://cache.nixos.org'...
+2026-11-07T11:51:26.8563981Z copying path '/nix/store/zmzhmxp7mc1dbz2v29i7dd185xw0iqgq-keyutils-1.6.3-lib' from 'https://cache.nixos.org'...
+2026-11-07T11:51:26.8564825Z copying path '/nix/store/zxvqbvipb5j4v1wf7qzc60kg8lh8rdms-ed-1.22.6' from 'https://cache.nixos.org'...
+2026-11-07T11:51:26.8566939Z copying path '/nix/store/nw265p43zvgsc8153wbrkl7bakdc53nq-gnumake-4.4.1' from 'https://cache.nixos.org'...
+2026-11-07T11:51:26.8576206Z copying path '/nix/store/sgbpk20y4yn66bszjnx6g49nia88cyzv-git-lfs-3.8.1' from 'https://cache.nixos.org'...
+2026-11-07T11:51:26.8577089Z copying path '/nix/store/03rgyjxclvhxnif2klf13nkr92rpxqqg-gnused-4.10' from 'https://cache.nixos.org'...
+2026-11-07T11:51:26.8740129Z copying path '/nix/store/zw9m2pj4lznmkc7k46pcjr8wclkqz4b5-libxcrypt-4.5.2' from 'https://cache.nixos.org'...
+2026-11-07T11:51:26.8742171Z copying path '/nix/store/nw9zbfc171gdsali7fcgl6rayfy5ykkx-zlib-1.3.2' from 'https://cache.nixos.org'...
+2026-11-07T11:51:26.8753766Z copying path '/nix/store/fnbbk0fzhd6zzg3bwfwsx04slck621h6-numactl-2.0.18' from 'https://cache.nixos.org'...
+2026-11-07T11:51:26.8869669Z copying path '/nix/store/awm920jywv9gdjp4lm5r877zdz7xxbcm-gnutar-1.35' from 'https://cache.nixos.org'...
+2026-11-07T11:51:26.8887327Z copying path '/nix/store/ka8s414hk1sv86grrvq5d7b0mwnzhjaw-bzip2-1.0.8-bin' from 'https://cache.nixos.org'...
+2026-11-07T11:51:26.8896195Z copying path '/nix/store/v6jjr80v6d0v1379fyilzi38ava7rygz-libffi-3.8.0' from 'https://cache.nixos.org'...
+2026-11-07T11:51:26.8903584Z copying path '/nix/store/2c5bg827mnff0ylsp48k3vk6f9a61d0g-patch-2.8' from 'https://cache.nixos.org'...
+2026-11-07T11:51:26.8952722Z copying path '/nix/store/33r0n37000780rlkipq2zna6yn0aw20f-openssl-3.5.9' from 'https://cache.nixos.org'...
+2026-11-07T11:51:26.8962161Z copying path '/nix/store/3g2mlwyf1wkiwkjcv86hi9j9d73r9xz9-pcre2-10.49' from 'https://cache.nixos.org'...
+2026-11-07T11:51:26.8975439Z copying path '/nix/store/5xqnaq1i07vkypxljgc69pqyw6xq9mhy-perl5.42.3-TermReadKey-2.38' from 'https://cache.nixos.org'...
+2026-11-07T11:51:26.9116607Z copying path '/nix/store/wl3d2qbnjm8h45hi56613zgb1yjd2j0g-zlib-ng-2.3.3' from 'https://cache.nixos.org'...
+2026-11-07T11:51:26.9144446Z copying path '/nix/store/ysisihxdvs83laxgri3nv8q9ir957hv5-perl5.42.3-FCGI-0.82' from 'https://cache.nixos.org'...
+2026-11-07T11:51:26.9193551Z copying path '/nix/store/abw4gw7fgpngkxqknz4hhzawk07f5x2g-libuv-1.53.0' from 'https://cache.nixos.org'...
+2026-11-07T11:51:26.9268790Z copying path '/nix/store/adw348h6dcv6fchrbxc4ka50h9krmskm-nghttp3-1.18.0' from 'https://cache.nixos.org'...
+2026-11-07T11:51:26.9290735Z copying path '/nix/store/fj9c90nq2c0iwh5c92h6rfd9nk3xy5zc-llhttp-9.4.3' from 'https://cache.nixos.org'...
+2026-11-07T11:51:26.9331934Z copying path '/nix/store/vr6k9ydls6wy5ljh7v9g9z77spkfg446-nghttp2-1.70.0-lib' from 'https://cache.nixos.org'...
+2026-11-07T11:51:26.9383325Z copying path '/nix/store/743bc92fny9qgsy9bp61y0j0rh639m3d-zlib-1.3.2-dev' from 'https://cache.nixos.org'...
+2026-11-07T11:51:26.9497434Z copying path '/nix/store/3wadfj8gksww215f8k8gl1bymfbnzb03-file-5.48' from 'https://cache.nixos.org'...
+2026-11-07T11:51:26.9509685Z copying path '/nix/store/05j3zngh62zmbqchsg11w3pvravhk1jz-hdrhistogram_c-0.11.10' from 'https://cache.nixos.org'...
+2026-11-07T11:51:26.9519995Z copying path '/nix/store/vyjbj4l5msqs1mwdq0wb8q2lmd9m285n-sqlite-3.53.3' from 'https://cache.nixos.org'...
+2026-11-07T11:51:26.9529315Z copying path '/nix/store/4c2cgn8fsi52wsmv5y357q6p7kily88f-mpdecimal-4.0.1' from 'https://cache.nixos.org'...
+2026-11-07T11:51:26.9603628Z copying path '/nix/store/9ahnm6gsklq4dn20fjlz1wn36c34dik0-ncurses-6.6' from 'https://cache.nixos.org'...
+2026-11-07T11:51:26.9654252Z copying path '/nix/store/1jkc0qp9b4vd84n84x1f91pqzcvkhq1j-gmp-with-cxx-6.3.0' from 'https://cache.nixos.org'...
+2026-11-07T11:51:26.9664673Z copying path '/nix/store/74nxb0rnf6lm102ax6ax9b4cpyvrcifq-gnugrep-3.12' from 'https://cache.nixos.org'...
+2026-11-07T11:51:26.9801334Z copying path '/nix/store/jbcx062jzh1gv5rjmbri2rcpc9gjrx3n-patchelf-0.19.2' from 'https://cache.nixos.org'...
+2026-11-07T11:51:26.9807423Z copying path '/nix/store/jvgbq6v334yqdpkqqks9cdiqxla39czz-gmp-with-cxx-6.3.0' from 'https://cache.nixos.org'...
+2026-11-07T11:51:26.9831721Z copying path '/nix/store/qh35hki623iqrj2mqfxnzjqawxn93gk7-gettext-1.0' from 'https://cache.nixos.org'...
+2026-11-07T11:51:26.9848931Z copying path '/nix/store/4cj6wkw6pa34sz9njh6cccvnfksx5mqc-gtest-1.18.0' from 'https://cache.nixos.org'...
+2026-11-07T11:51:26.9850899Z copying path '/nix/store/91qsbvx8w31rd255w8ikficjqg4v3fh4-zstd-1.5.7' from 'https://cache.nixos.org'...
+2026-11-07T11:51:26.9862225Z copying path '/nix/store/lb75yza16fcfww1sfpns508d6ffjk362-libuv-1.53.0-dev' from 'https://cache.nixos.org'...
+2026-11-07T11:51:26.9872745Z copying path '/nix/store/dm0b6sv46f1pdf3wjzz7jd2yqpddmxkh-nbytes-0.1.4' from 'https://cache.nixos.org'...
+2026-11-07T11:51:26.9915740Z copying path '/nix/store/m9nmssx5b579jv60gqvbdc51bz5cs8gw-icu4c-78.3' from 'https://cache.nixos.org'...
+2026-11-07T11:51:27.0069112Z copying path '/nix/store/v79cmgbpn95r20kbjs0bvp2rhl91pnfz-uvwasi-0.0.23' from 'https://cache.nixos.org'...
+2026-11-07T11:51:27.0081700Z copying path '/nix/store/pk46cw0q2zlysa9yqgnqv1jrq2ll5ndx-simdjson-4.6.11' from 'https://cache.nixos.org'...
+2026-11-07T11:51:27.0082603Z copying path '/nix/store/cy8m13hy402wb295g8ppcdzb1al6cvih-perl5.42.3-Net-SSLeay-1.92' from 'https://cache.nixos.org'...
+2026-11-07T11:51:27.0306028Z copying path '/nix/store/dli4xp5h5h5bgfpzd81qflbafmp252hb-ngtcp2-1.23.0' from 'https://cache.nixos.org'...
+2026-11-07T11:51:27.0403897Z copying path '/nix/store/1gi6cgl9f4vymydl88sm7a7ckpjiyar2-ShellCheck-0.11.0' from 'https://cache.nixos.org'...
+2026-11-07T11:51:27.0437963Z copying path '/nix/store/zagpvp7z1jx5m20cxw75f9jcskqvs0i2-merve-1.2.2' from 'https://cache.nixos.org'...
+2026-11-07T11:51:27.0512068Z copying path '/nix/store/1r53ih2yfqw9h9mcbz56b59yxipg0a9c-openssl-3.5.9-bin' from 'https://cache.nixos.org'...
+2026-11-07T11:51:27.0521276Z copying path '/nix/store/a2f8s7l9wlbqdsi6wblxrhnnav5j33jc-util-linux-minimal-2.42.4-lib' from 'https://cache.nixos.org'...
+2026-11-07T11:51:27.0536651Z copying path '/nix/store/m2ar7c5ylhgg8vp7dfdx9bhjfvki5xdg-coreutils-9.12' from 'https://cache.nixos.org'...
+2026-11-07T11:51:27.0552842Z copying path '/nix/store/bjhfq4xfy180kk8cykdfwwj6rn8glkvy-simdutf-9.2.1' from 'https://cache.nixos.org'...
+2026-11-07T11:51:27.0561997Z copying path '/nix/store/linhs507yd8g96sxp5n0lg8x211xxn18-xz-5.8.4' from 'https://cache.nixos.org'...
+2026-11-07T11:51:27.0609968Z copying path '/nix/store/jmpd1nlwmqxyaqci35i6nm6zh7zxwhcc-libpsl-0.21.5' from 'https://cache.nixos.org'...
+2026-11-07T11:51:27.0760298Z copying path '/nix/store/kyc6xi95fbcmb904h346k8k3paygq06l-krb5-1.22.2-lib' from 'https://cache.nixos.org'...
+2026-11-07T11:51:27.0890937Z copying path '/nix/store/n08mywvg7fb9p1hzaarvi06iclki4073-libssh2-1.11.1' from 'https://cache.nixos.org'...
+2026-11-07T11:51:27.1219845Z copying path '/nix/store/xzvb7dxh24frcq41fx2zm0k9pyagvwjv-perl5.42.3-Crypt-URandom-0.55' from 'https://cache.nixos.org'...
+2026-11-07T11:51:27.1278975Z copying path '/nix/store/9s56vb3g3ymcp0bik9cc271c7hm95dp5-perl5.42.3-Compress-Raw-Bzip2-2.218' from 'https://cache.nixos.org'...
+2026-11-07T11:51:27.1336622Z copying path '/nix/store/bwqiramw268bcd9a7bdii37ipjgdr0sp-perl5.42.3-Clone-0.46' from 'https://cache.nixos.org'...
+2026-11-07T11:51:27.1401822Z copying path '/nix/store/2rl2qqqy6zj933a96fcvj6cbik2814i5-perl5.42.3-IO-Socket-SSL-2.083' from 'https://cache.nixos.org'...
+2026-11-07T11:51:27.1537118Z copying path '/nix/store/yhcg0icbcbbcg62ijrf1ifh58krp9750-perl5.42.3-Compress-Raw-Zlib-2.222' from 'https://cache.nixos.org'...
+2026-11-07T11:51:27.1640993Z copying path '/nix/store/ir2g9cnz59ab72ylgbnxr31k1vdnbm6c-readline-8.3p3' from 'https://cache.nixos.org'...
+2026-11-07T11:51:27.1665564Z copying path '/nix/store/5wzih1n026j37403lyfwmidpa0xvl6al-openssl-3.5.9-dev' from 'https://cache.nixos.org'...
+2026-11-07T11:51:27.1673503Z copying path '/nix/store/36ch1yzgw45z0lbs6cffh8hc8k7nv9gb-ada-4.0.0' from 'https://cache.nixos.org'...
+2026-11-07T11:51:27.1742494Z copying path '/nix/store/m9yg49j35y53bgd3bdhg06rn567lzycw-perl5.42.3-Authen-SASL-2.2100' from 'https://cache.nixos.org'...
+2026-11-07T11:51:27.1806349Z copying path '/nix/store/j9a98d3bs0wjwg0v4hrz8kfsmrxgdg7c-xz-5.8.4-bin' from 'https://cache.nixos.org'...
+2026-11-07T11:51:27.1827277Z copying path '/nix/store/r4nqi2ff95qan0x7f886gr8qvhzr4wzh-perl5.42.3-Net-SMTP-SSL-1.04' from 'https://cache.nixos.org'...
+2026-11-07T11:51:27.1831652Z copying path '/nix/store/wd8sz1s3ilbb61s5m9vhv9h5ccvighw2-diffutils-3.12' from 'https://cache.nixos.org'...
+2026-11-07T11:51:27.1837164Z copying path '/nix/store/j3l6i3qacavn6dpmqm14nzsk5c9yl1ib-perl-5.42.3' from 'https://cache.nixos.org'...
+2026-11-07T11:51:27.1843198Z copying path '/nix/store/3jplw390ifmb9rc4kfv9vvxdfi33mrnq-findutils-4.11.0' from 'https://cache.nixos.org'...
+2026-11-07T11:51:27.1899491Z copying path '/nix/store/lq2fsnmg0q3y0vlxn91w8s8wvj1m6fld-python3-3.14.8' from 'https://cache.nixos.org'...
+2026-11-07T11:51:27.1983735Z copying path '/nix/store/r5w60683qmv7p1lzdj6xd9i0lms8b42i-curl-8.22.0' from 'https://cache.nixos.org'...
+2026-11-07T11:51:27.2890668Z copying path '/nix/store/g890v8f24xklrl5r3sg2ld4l3ncj8h2g-nodejs-slim-24.21.0' from 'https://cache.nixos.org'...
+2026-11-07T11:51:27.3050699Z copying path '/nix/store/4rgz2pgx20yk0pxnm03yvl6dq2cay5hi-stdenv-linux-no-cc' from 'https://cache.nixos.org'...
+2026-11-07T11:51:27.6617982Z copying path '/nix/store/1rrakdmr8p68pk5hdlv416mgmb2l8c4s-perl5.42.3-IO-Compress-2.221' from 'https://cache.nixos.org'...
+2026-11-07T11:51:27.7097560Z copying path '/nix/store/z0rkwr5lap3yzcjcpsimy1brh57sfmy5-nodejs-slim-24.21.0-corepack' from 'https://cache.nixos.org'...
+2026-11-07T11:51:27.7098788Z copying path '/nix/store/bz5qwik9292pr0ivfbalxnq0mxdlwc2d-nodejs-slim-24.21.0-npm' from 'https://cache.nixos.org'...
+2026-11-07T11:51:27.7230680Z copying path '/nix/store/vm7qqhk945drixr51hzgxklcpnaipprr-perl5.42.3-HTTP-Message-7.02' from 'https://cache.nixos.org'...
+2026-11-07T11:51:27.7645602Z copying path '/nix/store/qa7bp9v759xgv69rhm1fpvhx74zymkqv-perl5.42.3-HTML-Parser-3.85' from 'https://cache.nixos.org'...
+2026-11-07T11:51:27.7647321Z copying path '/nix/store/nl9n5q50141z5v4bhrj8qddpgp1n7j01-perl5.42.3-HTTP-Daemon-6.17' from 'https://cache.nixos.org'...
+2026-11-07T11:51:27.7648396Z copying path '/nix/store/mr4ppg94wklwgmjs8v7l3spylmpr1iqx-perl5.42.3-HTTP-Cookies-6.10' from 'https://cache.nixos.org'...
+2026-11-07T11:51:27.7649831Z copying path '/nix/store/n084x44cgh7kmgl12mv21rnb1309kzy8-perl5.42.3-HTTP-Negotiate-6.01' from 'https://cache.nixos.org'...
+2026-11-07T11:51:27.7824863Z copying path '/nix/store/wfcb6wrgrl05cyynkgk298hq3ga9a9wf-perl5.42.3-CGI-4.59' from 'https://cache.nixos.org'...
+2026-11-07T11:51:27.7845402Z copying path '/nix/store/lv6rqb1wjbv7zi8p5basrw23kf59bdr9-perl5.42.3-libwww-perl-6.83' from 'https://cache.nixos.org'...
+2026-11-07T11:51:27.8068010Z copying path '/nix/store/7dc422xz4vfav7rsjsv8ysb0plp2g5pj-perl5.42.3-CGI-Fast-2.16' from 'https://cache.nixos.org'...
+2026-11-07T11:51:27.8925030Z copying path '/nix/store/6vlx51wp6rjcsb1gcx54hfb7ndf3k2h8-nodejs-24.21.0' from 'https://cache.nixos.org'...
+2026-11-07T11:51:28.1377809Z copying path '/nix/store/xqp1x3qm8j8hxqpddwzp9mg73wvrc4xb-git-2.56.0' from 'https://cache.nixos.org'...
+2026-11-07T11:51:28.3647572Z copying path '/nix/store/90xz8p4sn439cnfg7zl6rhmqqqq4s807-nix-prefetch-git-26.11' from 'https://cache.nixos.org'...
+2026-11-07T11:51:28.4740687Z building '/nix/store/4xvzd36mzm9zw063a1q911z0ld2bsiqx-npm-purifier.drv'...
+2026-11-07T11:51:28.6979311Z building '/nix/store/dncsyslf1p7p7b5f4s2vwryifh31q9gv-npm.drv'...
+2026-11-07T11:51:28.8453081Z building '/nix/store/n7gsqzmncavjb2mfrbpzmsb1jn7c6s0i-npm-current-node-tools.drv'...
+2026-11-07T11:51:31.5885005Z these 12 derivations will be built:
+2026-11-07T11:51:31.5894458Z   /nix/store/22yrl0gx2dfbxs82w1y9x46ck0ql6qm7-npm-purifier-git-locks.drv
+2026-11-07T11:51:31.5895548Z   /nix/store/8rp9wk9nvaqiabv4awn9a8768k4fik3q-6758fac3c263f5f923075d986d2ed26ff74ca2c957e5b86b17e62342564ae142d5374d01ec5163c6f7091d93d2e0779c8da4083d8d0128f7408169781630.drv
+2026-11-07T11:51:31.5897027Z   /nix/store/bfbh67lx8pydryi6hhzqky480v8iknzh-a27e483a7bc4f2952a5db53a5e2d532abd20445734edb47bc4443ef8d7ea6767c00dbf4d34e0c44be3740a3c394af5c1af369e8d6566540656c65d8c719e.drv
+2026-11-07T11:51:31.5898533Z   /nix/store/qgv8famid6mksfwzz0zhcl1191w9h0lm-551de20b04af0a016254022499417f781a6384e39460ebfe77f1f2b08a5a14bb6d4a9dc1246063eaa1bda8499e66513ef7bcb1ab1d08cac3728c3f07c3ce.drv
+2026-11-07T11:51:31.5899533Z   /nix/store/588j9lpr4xy0yyhvnj465rpa6hgd47jh-npm-purifier-tarballs.drv
+2026-11-07T11:51:31.5900081Z   /nix/store/gca5r0ck4cg32nf5w5a0r6pl76absyk3-npm-purifier-git-archives.drv
+2026-11-07T11:51:31.5900608Z   /nix/store/3c4djliiph0qs93akb7whdxhz7p2pym2-npm-purifier-cache.drv
+2026-11-07T11:51:31.5901428Z   /nix/store/bf6ngq33m5c5m2qakqix8r1d5clp4fia-npm-projection-packages.json.drv
+2026-11-07T11:51:31.5902009Z   /nix/store/llv87n98qi996fgg66l1cjgq2p6asryw-npm-purifier-prepare-git.drv
+2026-11-07T11:51:31.5902595Z   /nix/store/v7nvxrykjgqf6ldh3a5gfalr281hgfzv-npm-purifier-script-shell.drv
+2026-11-07T11:51:31.5903229Z   /nix/store/x4nvicain6bxxmm1ibq2g45dhlfnzr02-npm-legacy-archive-bindings.json.drv
+2026-11-07T11:51:31.5903789Z   /nix/store/jda4lvy9v1l68d89ga6g5kgqiqxiiq8k-npm-project-release.drv
+2026-11-07T11:51:31.5904356Z these 96 paths will be fetched (140.5 MiB download, 547.9 MiB unpacked):
+2026-11-07T11:51:31.5904817Z   /nix/store/3g4cpzjazywyd0bkgygqx8d4jh31rnw8-acl-2.4.0-bin
+2026-11-07T11:51:31.5905274Z   /nix/store/xbw97nq5sah905gcj3xfpc1h3plwwgk7-acl-2.4.0-dev
+2026-11-07T11:51:31.5905724Z   /nix/store/rmj72zihisg70zglcdimvk4qml7qlgd8-attr-2.6.0-bin
+2026-11-07T11:51:31.5906159Z   /nix/store/k9wnnx2hmszk45yv2cdi0dqw17vcdnry-attr-2.6.0-dev
+2026-11-07T11:51:31.5907243Z   /nix/store/5rfadjrak7ii0iv86l443w5r3w8r3zbk-aws-c-auth-1.0.0
+2026-11-07T11:51:31.5907721Z   /nix/store/fys2cf66ppdb078bj1s0gymm1wmqxyfw-aws-c-cal-1.0.0
+2026-11-07T11:51:31.5908203Z   /nix/store/z22nj7ihb3ziabqs4asd9qa1whxwnsgr-aws-c-common-1.0.0
+2026-11-07T11:51:31.5908704Z   /nix/store/aj8s87g6niz9ljqiwswdisrskj1r9qaf-aws-c-compression-1.0.0
+2026-11-07T11:51:31.5909269Z   /nix/store/frqwwam1nv0j9nyysl7w93zz461a6i6h-aws-c-event-stream-1.0.0
+2026-11-07T11:51:31.5909773Z   /nix/store/cwpfai70ysrmr0268iqn42hmak257v9b-aws-c-http-1.0.0
+2026-11-07T11:51:31.5910207Z   /nix/store/x5vs39450wzb9adczwa0pc60w0lxhsw7-aws-c-io-1.0.0
+2026-11-07T11:51:31.5910633Z   /nix/store/h4xyxm5dh6wl8ja14ydf9z0fdf3apyxj-aws-c-mqtt-1.0.0
+2026-11-07T11:51:31.5911353Z   /nix/store/skzjq3jhh0611769lys4wwnivqryg54q-aws-c-s3-1.1.2
+2026-11-07T11:51:31.5911861Z   /nix/store/xdwsk9vxl3zl2b41gcxngqqvdm6r2dba-aws-c-sdkutils-1.0.0
+2026-11-07T11:51:31.5912398Z   /nix/store/6bpvv73xd9d98ysgl51vkp9212qnippq-aws-checksums-1.0.0
+2026-11-07T11:51:31.5912872Z   /nix/store/ggwniaafi9na0gr9bxfl3m0cyisldw0q-aws-crt-cpp-0.43.6
+2026-11-07T11:51:31.5913312Z   /nix/store/bdzrp13aqp0nzbd4rwlidj5lyd87ii2y-binutils-2.46
+2026-11-07T11:51:31.5914123Z   /nix/store/wfnb7xlrvv6fvgzpd3638g5cr4c4hmhw-binutils-2.46-lib
+2026-11-07T11:51:31.5914659Z   /nix/store/axf7w3k30q4n14mwxms3c2n8glz7lwvd-binutils-wrapper-2.46
+2026-11-07T11:51:31.5915363Z   /nix/store/5rmsip4gjrymxfky84dr2yl975y5l98w-boehm-gc-8.2.12
+2026-11-07T11:51:31.5915847Z   /nix/store/3ksr00iishb2p9vf214nh3yy9adj8xjk-boehm-gc-8.2.12-dev
+2026-11-07T11:51:31.5916275Z   /nix/store/cg0m7ljcpf9z7h58f3hrc5wh45mc0akf-boost-1.89.0
+2026-11-07T11:51:31.5916728Z   /nix/store/af1hm33lm9rdkq0631m3zswivrd4mci7-boost-1.89.0-dev
+2026-11-07T11:51:31.5917188Z   /nix/store/40pv7p07bj7698a03dj653yw42c39ndx-busybox-1.37.0
+2026-11-07T11:51:31.5917682Z   /nix/store/vlc6ljbmpqpyqs19hvcnjyl8w582dpxp-curl-8.22.0
+2026-11-07T11:51:31.5918111Z   /nix/store/62kzb3v4gvk09jpfn7wjj3fbg9hm885g-curl-8.22.0-bin
+2026-11-07T11:51:31.5918549Z   /nix/store/qfahl746y9m810dixh49rvp37q5bwidq-curl-8.22.0-dev
+2026-11-07T11:51:31.5919055Z   /nix/store/vck6dgnvzpq7il1b28fgc25z9qpgvcq0-curl-8.22.0-man
+2026-11-07T11:51:31.5919573Z   /nix/store/l7jrw7zgmg19mh97syxll91y6cvhxgx4-editline-1.17.1-unstable-2025-05-24
+2026-11-07T11:51:31.5920148Z   /nix/store/pwsha050s3qfr06pz4v07842jqza969w-expand-response-params
+2026-11-07T11:51:31.5920622Z   /nix/store/812525ks0y12m1nzrxwlrnq945skg7ll-gcc-16.2.0
+2026-11-07T11:51:31.5921052Z   /nix/store/6gj4dzcv6gaxh5raqyrq7jmy605qaj3z-gcc-wrapper-16.2.0
+2026-11-07T11:51:31.5921855Z   /nix/store/zgmaizk43g99ihidpl181wbf5cfgkj3p-glibc-2.44-57-bin
+2026-11-07T11:51:31.5922344Z   /nix/store/2gh2kjj22acjw1354if79dgr6l73y3sl-glibc-2.44-57-dev
+2026-11-07T11:51:31.5922830Z   /nix/store/3ch4ab4m13lbxlamji5csxx8wgn5vpss-gmp-6.3.0
+2026-11-07T11:51:31.5923259Z   /nix/store/9gran9c501llmzq5awggysld39py81nj-hwloc-2.15.0-lib
+2026-11-07T11:51:31.5923672Z   /nix/store/ql6s7fvi4r3dkhb4rmhrp9kl268zsmcz-isl-0.20
+2026-11-07T11:51:31.5924133Z   /nix/store/cnzv6y37fzvmfcjiwknbfyskasrd429l-krb5-1.22.2
+2026-11-07T11:51:31.5924555Z   /nix/store/7arixkgk0698190lxmqrfzklgxxpqrmy-krb5-1.22.2-dev
+2026-11-07T11:51:31.5924994Z   /nix/store/qfphjh750kbq3fzaqczz2s01a70x7fr9-krb5-1.22.2-lib
+2026-11-07T11:51:31.5925486Z   /nix/store/cfj7kzcizqa36w1jl5rxpry6zpij21lj-libarchive-3.8.9
+2026-11-07T11:51:31.5925958Z   /nix/store/j2rmplq1j2mkm9g9kp62blc8d5s1zn3p-libarchive-3.8.9-dev
+2026-11-07T11:51:31.5926517Z   /nix/store/55isz7b95nilhagjk3nza9fpw77bavh6-libarchive-3.8.9-lib
+2026-11-07T11:51:31.5926988Z   /nix/store/wva3hkv7kdvzx6w0g2khl3v8jfyg8n3j-libblake3-1.8.7
+2026-11-07T11:51:31.5927421Z   /nix/store/3g10zy91l86ms82s354qf07v9iv8kimn-libgit2-1.9.7-lib
+2026-11-07T11:51:31.5927885Z   /nix/store/ag5y64wvbw5wbmglclm0f417i3c6ry23-libmpc-1.4.1
+2026-11-07T11:51:31.5928338Z   /nix/store/sdfjjsa4m5m5pddbg7qqd7zymszfpnm3-libseccomp-2.6.1-lib
+2026-11-07T11:51:31.5928899Z   /nix/store/10ilj5782b9qnzky4sr90l9bbhzp52xc-libsodium-1.0.22-unstable-2026-09-28
+2026-11-07T11:51:31.5929460Z   /nix/store/298g337qpqv47kb7nj6vcjvrkhxmaxin-libssh2-1.11.1
+2026-11-07T11:51:31.5929917Z   /nix/store/2c273f6q7lxlgwqxxdmp5zk3zc3ifc1a-libssh2-1.11.1-dev
+2026-11-07T11:51:31.5930410Z   /nix/store/3biijnc5zjs4zscval0a0qn0gszd5fyh-libxml2-2.15.4
+2026-11-07T11:51:31.5930862Z   /nix/store/a6rq3q3vrfmxkibglffxcsyhs43kxfri-linux-headers-7.2
+2026-11-07T11:51:31.5931612Z   /nix/store/lnzyif7dh3rp0lavxwvv53ghymhy5p5s-lndir-1.0.6
+2026-11-07T11:51:31.5932067Z   /nix/store/cs1h0gfhqvgcx0yafjd1cvwy9pgsqah0-lowdown-3.0.1-lib
+2026-11-07T11:51:31.5932509Z   /nix/store/8iz81cpdx9r5c241k7x55k9sa8ziq47c-mpfr-4.2.2
+2026-11-07T11:51:31.5932952Z   /nix/store/4ycaqfi7mcaw9pafbqj1cmkpx2jhzfdd-nghttp2-1.70.0
+2026-11-07T11:51:31.5933401Z   /nix/store/n6rjn967bskwm43v1zmk61b47w526k4f-nghttp2-1.70.0-dev
+2026-11-07T11:51:31.5933925Z   /nix/store/xjmkw35kvcy61kzw0l2qpxra8qqwb420-nghttp2-1.70.0-lib
+2026-11-07T11:51:31.5934360Z   /nix/store/1r5r28fm7fdsy7ncr4wswb7998d0vswh-nix-2.34.9
+2026-11-07T11:51:31.5934751Z   /nix/store/b3bifxbf3qsgsvqgr6lwj376favs8hlp-nix-2.34.9
+2026-11-07T11:51:31.5935183Z   /nix/store/whdj8w7qx5i10b9y7cvi61pdvfg1n4kx-nix-2.34.9-dev
+2026-11-07T11:51:31.5935873Z   /nix/store/2p5rwzr3wjg412d4cn7hnmz145pj4dya-nix-cmd-2.34.9
+2026-11-07T11:51:31.5936351Z   /nix/store/4rcad4p8g4c7iid1kzxh2dfajy8sny98-nix-cmd-2.34.9-dev
+2026-11-07T11:51:31.5936998Z   /nix/store/4yzbnmwds1k6lbji8q8rjp0mfpg480jz-nix-expr-2.34.9
+2026-11-07T11:51:31.5937451Z   /nix/store/5zbinggxx0a033inpd17bi9brhgbj2f4-nix-expr-2.34.9-dev
+2026-11-07T11:51:31.5937964Z   /nix/store/ih0yh18x7pf1i0cnhdwwhaqwjg79f3lf-nix-expr-c-2.34.9
+2026-11-07T11:51:31.5938464Z   /nix/store/k57cpgibzvwy109r4lxsgv46nbv9cgqg-nix-expr-c-2.34.9-dev
+2026-11-07T11:51:31.5938933Z   /nix/store/c4whcsdjpa7c7q77kmbmrbrz6m5wy1fy-nix-fetchers-2.34.9
+2026-11-07T11:51:31.5939454Z   /nix/store/hq6cp0rqaksgh4vh9wl0li3yxvkzp7hv-nix-fetchers-2.34.9-dev
+2026-11-07T11:51:31.5939957Z   /nix/store/gmqkyiz88zbqrh7040sjxmrk40gdn43c-nix-fetchers-c-2.34.9
+2026-11-07T11:51:31.5940475Z   /nix/store/1s3zzpq34cv3y18kfyff025w99241ik6-nix-fetchers-c-2.34.9-dev
+2026-11-07T11:51:31.5940972Z   /nix/store/mx8rxpra91k7rwzbbhy19zkjbnngy1g0-nix-flake-2.34.9
+2026-11-07T11:51:31.5941717Z   /nix/store/qp4q1vws37qqb83bysag9l7yfjpwz5vl-nix-flake-2.34.9-dev
+2026-11-07T11:51:31.5942276Z   /nix/store/k53ln0vhqlyl4616xmq4ral8v3f9yi4p-nix-flake-c-2.34.9
+2026-11-07T11:51:31.5942766Z   /nix/store/qra7p0g3ai2frgs6mnsz938pk0jnfy46-nix-flake-c-2.34.9-dev
+2026-11-07T11:51:31.5943276Z   /nix/store/ij4dxi7aqm0phn18vpggkspsgnz2rgaq-nix-main-2.34.9
+2026-11-07T11:51:31.5943775Z   /nix/store/15k0w5byfk9lgz3sd5nx8lsm6qqh7gsx-nix-main-2.34.9-dev
+2026-11-07T11:51:31.5944242Z   /nix/store/0imbb8pl9w0fmim2kakdg4dlfmyc6pf6-nix-main-c-2.34.9
+2026-11-07T11:51:31.5944747Z   /nix/store/7qbmkky7lzv7lc26k45clac04296lqjj-nix-main-c-2.34.9-dev
+2026-11-07T11:51:31.5945240Z   /nix/store/ipx2rg1z2bjhcd6ilaxgzsn3gnf5yajj-nix-nswrapper-2.34.9
+2026-11-07T11:51:31.5945701Z   /nix/store/a7qwnhdn7p4n1x80m34sbazg81v74rip-nix-perl-2.34.9
+2026-11-07T11:51:31.5946246Z   /nix/store/31ay1q6ap9qr6sznzkcyswxg1c7s29gv-nix-store-2.34.9
+2026-11-07T11:51:31.5946706Z   /nix/store/isq330s9wljs572fxwmlmii3hayv20nv-nix-store-2.34.9-dev
+2026-11-07T11:51:31.5947211Z   /nix/store/fyar58l3ksd0n9vhxax2iwj5wfz90h8f-nix-store-c-2.34.9
+2026-11-07T11:51:31.5947692Z   /nix/store/yqzj8xj90vx952kdk261ys5a6ldmjz70-nix-store-c-2.34.9-dev
+2026-11-07T11:51:31.5948173Z   /nix/store/2k1cv8hzaka1bixk0q1kbdip00paxns3-nix-util-2.34.9
+2026-11-07T11:51:31.5948709Z   /nix/store/qq365ykakbmdziqk322phr2nz6x6qikd-nix-util-2.34.9-dev
+2026-11-07T11:51:31.5949174Z   /nix/store/vdj46r3m061a7lwng8913vsjgqzm8dqr-nix-util-c-2.34.9
+2026-11-07T11:51:31.5949671Z   /nix/store/g4mzd5l59d0y8p7za6g1rfdlq60x9r8k-nix-util-c-2.34.9-dev
+2026-11-07T11:51:31.5950183Z   /nix/store/56lac0vzr17lgqkcwln2mxf68rm1dgvn-nlohmann_json-3.12.0
+2026-11-07T11:51:31.5950641Z   /nix/store/k0icvc42zssic9y56hwpmgh8ggmyjnbl-onetbb-2022.3.0
+2026-11-07T11:51:31.5951395Z   /nix/store/48zans9myk5mrbkczyhnwbmbr7dxhmqs-openssl-3.5.9
+2026-11-07T11:51:31.5951864Z   /nix/store/6x6zk5phjxdnqblckaxbsz11f6la86cd-openssl-3.5.9-bin
+2026-11-07T11:51:31.5952400Z   /nix/store/p71ld5ydggjp9si9vbw3skkvrygkkpjb-openssl-3.5.9-dev
+2026-11-07T11:51:31.5952869Z   /nix/store/98qvzjkapph0i711y01kbvb7wzgzc5by-s2n-tls-1.7.9
+2026-11-07T11:51:31.5953290Z   /nix/store/49cnv1lz3hiybz55z8lm8i401iqrpqyw-stdenv-linux
+2026-11-07T11:51:31.6087674Z building '/nix/store/bf6ngq33m5c5m2qakqix8r1d5clp4fia-npm-projection-packages.json.drv'...
+2026-11-07T11:51:31.6203089Z building '/nix/store/v7nvxrykjgqf6ldh3a5gfalr281hgfzv-npm-purifier-script-shell.drv'...
+2026-11-07T11:51:31.6214555Z copying path '/nix/store/lnzyif7dh3rp0lavxwvv53ghymhy5p5s-lndir-1.0.6' from 'https://cache.nixos.org'...
+2026-11-07T11:51:31.6805176Z building '/nix/store/gca5r0ck4cg32nf5w5a0r6pl76absyk3-npm-purifier-git-archives.drv'...
+2026-11-07T11:51:31.6925026Z building '/nix/store/22yrl0gx2dfbxs82w1y9x46ck0ql6qm7-npm-purifier-git-locks.drv'...
+2026-11-07T11:51:31.7010970Z copying path '/nix/store/56lac0vzr17lgqkcwln2mxf68rm1dgvn-nlohmann_json-3.12.0' from 'https://cache.nixos.org'...
+2026-11-07T11:51:31.7013657Z copying path '/nix/store/zgmaizk43g99ihidpl181wbf5cfgkj3p-glibc-2.44-57-bin' from 'https://cache.nixos.org'...
+2026-11-07T11:51:31.7023217Z copying path '/nix/store/z22nj7ihb3ziabqs4asd9qa1whxwnsgr-aws-c-common-1.0.0' from 'https://cache.nixos.org'...
+2026-11-07T11:51:31.7031433Z copying path '/nix/store/5rmsip4gjrymxfky84dr2yl975y5l98w-boehm-gc-8.2.12' from 'https://cache.nixos.org'...
+2026-11-07T11:51:31.7033255Z copying path '/nix/store/10ilj5782b9qnzky4sr90l9bbhzp52xc-libsodium-1.0.22-unstable-2026-09-28' from 'https://cache.nixos.org'...
+2026-11-07T11:51:31.7035396Z copying path '/nix/store/cg0m7ljcpf9z7h58f3hrc5wh45mc0akf-boost-1.89.0' from 'https://cache.nixos.org'...
+2026-11-07T11:51:31.7045422Z copying path '/nix/store/98qvzjkapph0i711y01kbvb7wzgzc5by-s2n-tls-1.7.9' from 'https://cache.nixos.org'...
+2026-11-07T11:51:31.7048642Z copying path '/nix/store/pwsha050s3qfr06pz4v07842jqza969w-expand-response-params' from 'https://cache.nixos.org'...
+2026-11-07T11:51:31.7145458Z copying path '/nix/store/40pv7p07bj7698a03dj653yw42c39ndx-busybox-1.37.0' from 'https://cache.nixos.org'...
+2026-11-07T11:51:31.7155325Z copying path '/nix/store/a6rq3q3vrfmxkibglffxcsyhs43kxfri-linux-headers-7.2' from 'https://cache.nixos.org'...
+2026-11-07T11:51:31.7160102Z copying path '/nix/store/l7jrw7zgmg19mh97syxll91y6cvhxgx4-editline-1.17.1-unstable-2025-05-24' from 'https://cache.nixos.org'...
+2026-11-07T11:51:31.7164525Z copying path '/nix/store/cs1h0gfhqvgcx0yafjd1cvwy9pgsqah0-lowdown-3.0.1-lib' from 'https://cache.nixos.org'...
+2026-11-07T11:51:31.7166165Z copying path '/nix/store/sdfjjsa4m5m5pddbg7qqd7zymszfpnm3-libseccomp-2.6.1-lib' from 'https://cache.nixos.org'...
+2026-11-07T11:51:31.7171798Z copying path '/nix/store/3ch4ab4m13lbxlamji5csxx8wgn5vpss-gmp-6.3.0' from 'https://cache.nixos.org'...
+2026-11-07T11:51:31.7181861Z copying path '/nix/store/3biijnc5zjs4zscval0a0qn0gszd5fyh-libxml2-2.15.4' from 'https://cache.nixos.org'...
+2026-11-07T11:51:31.7182714Z copying path '/nix/store/3g10zy91l86ms82s354qf07v9iv8kimn-libgit2-1.9.7-lib' from 'https://cache.nixos.org'...
+2026-11-07T11:51:31.7415787Z building '/nix/store/llv87n98qi996fgg66l1cjgq2p6asryw-npm-purifier-prepare-git.drv'...
+2026-11-07T11:51:31.7420258Z copying path '/nix/store/3g4cpzjazywyd0bkgygqx8d4jh31rnw8-acl-2.4.0-bin' from 'https://cache.nixos.org'...
+2026-11-07T11:51:31.7480152Z copying path '/nix/store/rmj72zihisg70zglcdimvk4qml7qlgd8-attr-2.6.0-bin' from 'https://cache.nixos.org'...
+2026-11-07T11:51:31.7612994Z copying path '/nix/store/wfnb7xlrvv6fvgzpd3638g5cr4c4hmhw-binutils-2.46-lib' from 'https://cache.nixos.org'...
+2026-11-07T11:51:31.7739555Z copying path '/nix/store/vck6dgnvzpq7il1b28fgc25z9qpgvcq0-curl-8.22.0-man' from 'https://cache.nixos.org'...
+2026-11-07T11:51:31.7754172Z copying path '/nix/store/48zans9myk5mrbkczyhnwbmbr7dxhmqs-openssl-3.5.9' from 'https://cache.nixos.org'...
+2026-11-07T11:51:31.7786984Z copying path '/nix/store/3ksr00iishb2p9vf214nh3yy9adj8xjk-boehm-gc-8.2.12-dev' from 'https://cache.nixos.org'...
+2026-11-07T11:51:31.7804906Z copying path '/nix/store/xbw97nq5sah905gcj3xfpc1h3plwwgk7-acl-2.4.0-dev' from 'https://cache.nixos.org'...
+2026-11-07T11:51:31.7812777Z copying path '/nix/store/k9wnnx2hmszk45yv2cdi0dqw17vcdnry-attr-2.6.0-dev' from 'https://cache.nixos.org'...
+2026-11-07T11:51:31.7824797Z copying path '/nix/store/xjmkw35kvcy61kzw0l2qpxra8qqwb420-nghttp2-1.70.0-lib' from 'https://cache.nixos.org'...
+2026-11-07T11:51:31.7893440Z copying path '/nix/store/9gran9c501llmzq5awggysld39py81nj-hwloc-2.15.0-lib' from 'https://cache.nixos.org'...
+2026-11-07T11:51:31.7945849Z copying path '/nix/store/6bpvv73xd9d98ysgl51vkp9212qnippq-aws-checksums-1.0.0' from 'https://cache.nixos.org'...
+2026-11-07T11:51:31.7952476Z copying path '/nix/store/4ycaqfi7mcaw9pafbqj1cmkpx2jhzfdd-nghttp2-1.70.0' from 'https://cache.nixos.org'...
+2026-11-07T11:51:31.7973711Z copying path '/nix/store/aj8s87g6niz9ljqiwswdisrskj1r9qaf-aws-c-compression-1.0.0' from 'https://cache.nixos.org'...
+2026-11-07T11:51:31.8152470Z copying path '/nix/store/fys2cf66ppdb078bj1s0gymm1wmqxyfw-aws-c-cal-1.0.0' from 'https://cache.nixos.org'...
+2026-11-07T11:51:31.8188517Z copying path '/nix/store/xdwsk9vxl3zl2b41gcxngqqvdm6r2dba-aws-c-sdkutils-1.0.0' from 'https://cache.nixos.org'...
+2026-11-07T11:51:31.8206008Z copying path '/nix/store/8iz81cpdx9r5c241k7x55k9sa8ziq47c-mpfr-4.2.2' from 'https://cache.nixos.org'...
+2026-11-07T11:51:31.8316921Z copying path '/nix/store/ql6s7fvi4r3dkhb4rmhrp9kl268zsmcz-isl-0.20' from 'https://cache.nixos.org'...
+2026-11-07T11:51:31.8453360Z copying path '/nix/store/55isz7b95nilhagjk3nza9fpw77bavh6-libarchive-3.8.9-lib' from 'https://cache.nixos.org'...
+2026-11-07T11:51:31.8462227Z copying path '/nix/store/bdzrp13aqp0nzbd4rwlidj5lyd87ii2y-binutils-2.46' from 'https://cache.nixos.org'...
+2026-11-07T11:51:31.8731255Z copying path '/nix/store/2gh2kjj22acjw1354if79dgr6l73y3sl-glibc-2.44-57-dev' from 'https://cache.nixos.org'...
+2026-11-07T11:51:31.8800632Z copying path '/nix/store/n6rjn967bskwm43v1zmk61b47w526k4f-nghttp2-1.70.0-dev' from 'https://cache.nixos.org'...
+2026-11-07T11:51:31.8866208Z copying path '/nix/store/k0icvc42zssic9y56hwpmgh8ggmyjnbl-onetbb-2022.3.0' from 'https://cache.nixos.org'...
+2026-11-07T11:51:31.8867243Z copying path '/nix/store/x5vs39450wzb9adczwa0pc60w0lxhsw7-aws-c-io-1.0.0' from 'https://cache.nixos.org'...
+2026-11-07T11:51:31.8927631Z copying path '/nix/store/qfphjh750kbq3fzaqczz2s01a70x7fr9-krb5-1.22.2-lib' from 'https://cache.nixos.org'...
+2026-11-07T11:51:31.8928897Z copying path '/nix/store/298g337qpqv47kb7nj6vcjvrkhxmaxin-libssh2-1.11.1' from 'https://cache.nixos.org'...
+2026-11-07T11:51:31.8929913Z copying path '/nix/store/6x6zk5phjxdnqblckaxbsz11f6la86cd-openssl-3.5.9-bin' from 'https://cache.nixos.org'...
+2026-11-07T11:51:31.8936620Z copying path '/nix/store/ag5y64wvbw5wbmglclm0f417i3c6ry23-libmpc-1.4.1' from 'https://cache.nixos.org'...
+2026-11-07T11:51:31.9057112Z copying path '/nix/store/cfj7kzcizqa36w1jl5rxpry6zpij21lj-libarchive-3.8.9' from 'https://cache.nixos.org'...
+2026-11-07T11:51:31.9148810Z copying path '/nix/store/af1hm33lm9rdkq0631m3zswivrd4mci7-boost-1.89.0-dev' from 'https://cache.nixos.org'...
+2026-11-07T11:51:31.9436801Z copying path '/nix/store/wva3hkv7kdvzx6w0g2khl3v8jfyg8n3j-libblake3-1.8.7' from 'https://cache.nixos.org'...
+2026-11-07T11:51:31.9497009Z copying path '/nix/store/frqwwam1nv0j9nyysl7w93zz461a6i6h-aws-c-event-stream-1.0.0' from 'https://cache.nixos.org'...
+2026-11-07T11:51:31.9499211Z copying path '/nix/store/cwpfai70ysrmr0268iqn42hmak257v9b-aws-c-http-1.0.0' from 'https://cache.nixos.org'...
+2026-11-07T11:51:31.9546523Z copying path '/nix/store/p71ld5ydggjp9si9vbw3skkvrygkkpjb-openssl-3.5.9-dev' from 'https://cache.nixos.org'...
+2026-11-07T11:51:31.9628684Z copying path '/nix/store/j2rmplq1j2mkm9g9kp62blc8d5s1zn3p-libarchive-3.8.9-dev' from 'https://cache.nixos.org'...
+2026-11-07T11:51:31.9792186Z copying path '/nix/store/vlc6ljbmpqpyqs19hvcnjyl8w582dpxp-curl-8.22.0' from 'https://cache.nixos.org'...
+2026-11-07T11:51:31.9793505Z copying path '/nix/store/cnzv6y37fzvmfcjiwknbfyskasrd429l-krb5-1.22.2' from 'https://cache.nixos.org'...
+2026-11-07T11:51:31.9888808Z copying path '/nix/store/812525ks0y12m1nzrxwlrnq945skg7ll-gcc-16.2.0' from 'https://cache.nixos.org'...
+2026-11-07T11:51:31.9984065Z copying path '/nix/store/2k1cv8hzaka1bixk0q1kbdip00paxns3-nix-util-2.34.9' from 'https://cache.nixos.org'...
+2026-11-07T11:51:32.0041461Z copying path '/nix/store/5rfadjrak7ii0iv86l443w5r3w8r3zbk-aws-c-auth-1.0.0' from 'https://cache.nixos.org'...
+2026-11-07T11:51:32.0043853Z copying path '/nix/store/h4xyxm5dh6wl8ja14ydf9z0fdf3apyxj-aws-c-mqtt-1.0.0' from 'https://cache.nixos.org'...
+2026-11-07T11:51:32.0399814Z copying path '/nix/store/62kzb3v4gvk09jpfn7wjj3fbg9hm885g-curl-8.22.0-bin' from 'https://cache.nixos.org'...
+2026-11-07T11:51:32.0540371Z copying path '/nix/store/2c273f6q7lxlgwqxxdmp5zk3zc3ifc1a-libssh2-1.11.1-dev' from 'https://cache.nixos.org'...
+2026-11-07T11:51:32.0597634Z copying path '/nix/store/7arixkgk0698190lxmqrfzklgxxpqrmy-krb5-1.22.2-dev' from 'https://cache.nixos.org'...
+2026-11-07T11:51:32.0833024Z copying path '/nix/store/ipx2rg1z2bjhcd6ilaxgzsn3gnf5yajj-nix-nswrapper-2.34.9' from 'https://cache.nixos.org'...
+2026-11-07T11:51:32.0834356Z copying path '/nix/store/vdj46r3m061a7lwng8913vsjgqzm8dqr-nix-util-c-2.34.9' from 'https://cache.nixos.org'...
+2026-11-07T11:51:32.0917318Z copying path '/nix/store/skzjq3jhh0611769lys4wwnivqryg54q-aws-c-s3-1.1.2' from 'https://cache.nixos.org'...
+2026-11-07T11:51:32.1290596Z copying path '/nix/store/axf7w3k30q4n14mwxms3c2n8glz7lwvd-binutils-wrapper-2.46' from 'https://cache.nixos.org'...
+2026-11-07T11:51:32.1580600Z copying path '/nix/store/ggwniaafi9na0gr9bxfl3m0cyisldw0q-aws-crt-cpp-0.43.6' from 'https://cache.nixos.org'...
+2026-11-07T11:51:32.1581883Z copying path '/nix/store/qfahl746y9m810dixh49rvp37q5bwidq-curl-8.22.0-dev' from 'https://cache.nixos.org'...
+2026-11-07T11:51:32.1863265Z copying path '/nix/store/31ay1q6ap9qr6sznzkcyswxg1c7s29gv-nix-store-2.34.9' from 'https://cache.nixos.org'...
+2026-11-07T11:51:32.2123327Z building '/nix/store/qgv8famid6mksfwzz0zhcl1191w9h0lm-551de20b04af0a016254022499417f781a6384e39460ebfe77f1f2b08a5a14bb6d4a9dc1246063eaa1bda8499e66513ef7bcb1ab1d08cac3728c3f07c3ce.drv'...
+2026-11-07T11:51:32.2269185Z building '/nix/store/8rp9wk9nvaqiabv4awn9a8768k4fik3q-6758fac3c263f5f923075d986d2ed26ff74ca2c957e5b86b17e62342564ae142d5374d01ec5163c6f7091d93d2e0779c8da4083d8d0128f7408169781630.drv'...
+2026-11-07T11:51:32.2387828Z building '/nix/store/bfbh67lx8pydryi6hhzqky480v8iknzh-a27e483a7bc4f2952a5db53a5e2d532abd20445734edb47bc4443ef8d7ea6767c00dbf4d34e0c44be3740a3c394af5c1af369e8d6566540656c65d8c719e.drv'...
+2026-11-07T11:51:32.2526528Z copying path '/nix/store/ij4dxi7aqm0phn18vpggkspsgnz2rgaq-nix-main-2.34.9' from 'https://cache.nixos.org'...
+2026-11-07T11:51:32.2538663Z copying path '/nix/store/fyar58l3ksd0n9vhxax2iwj5wfz90h8f-nix-store-c-2.34.9' from 'https://cache.nixos.org'...
+2026-11-07T11:51:32.2545673Z copying path '/nix/store/c4whcsdjpa7c7q77kmbmrbrz6m5wy1fy-nix-fetchers-2.34.9' from 'https://cache.nixos.org'...
+2026-11-07T11:51:32.2550397Z copying path '/nix/store/a7qwnhdn7p4n1x80m34sbazg81v74rip-nix-perl-2.34.9' from 'https://cache.nixos.org'...
+2026-11-07T11:51:32.2826958Z copying path '/nix/store/0imbb8pl9w0fmim2kakdg4dlfmyc6pf6-nix-main-c-2.34.9' from 'https://cache.nixos.org'...
+2026-11-07T11:51:32.2984353Z copying path '/nix/store/4yzbnmwds1k6lbji8q8rjp0mfpg480jz-nix-expr-2.34.9' from 'https://cache.nixos.org'...
+2026-11-07T11:51:32.2985312Z copying path '/nix/store/gmqkyiz88zbqrh7040sjxmrk40gdn43c-nix-fetchers-c-2.34.9' from 'https://cache.nixos.org'...
+2026-11-07T11:51:32.3712383Z copying path '/nix/store/ih0yh18x7pf1i0cnhdwwhaqwjg79f3lf-nix-expr-c-2.34.9' from 'https://cache.nixos.org'...
+2026-11-07T11:51:32.3713911Z copying path '/nix/store/mx8rxpra91k7rwzbbhy19zkjbnngy1g0-nix-flake-2.34.9' from 'https://cache.nixos.org'...
+2026-11-07T11:51:32.3914720Z building '/nix/store/588j9lpr4xy0yyhvnj465rpa6hgd47jh-npm-purifier-tarballs.drv'...
+2026-11-07T11:51:32.4337767Z copying path '/nix/store/2p5rwzr3wjg412d4cn7hnmz145pj4dya-nix-cmd-2.34.9' from 'https://cache.nixos.org'...
+2026-11-07T11:51:32.4340605Z copying path '/nix/store/k53ln0vhqlyl4616xmq4ral8v3f9yi4p-nix-flake-c-2.34.9' from 'https://cache.nixos.org'...
+2026-11-07T11:51:32.4759557Z building '/nix/store/x4nvicain6bxxmm1ibq2g45dhlfnzr02-npm-legacy-archive-bindings.json.drv'...
+2026-11-07T11:51:32.4975279Z building '/nix/store/3c4djliiph0qs93akb7whdxhz7p2pym2-npm-purifier-cache.drv'...
+2026-11-07T11:51:32.4997224Z copying path '/nix/store/b3bifxbf3qsgsvqgr6lwj376favs8hlp-nix-2.34.9' from 'https://cache.nixos.org'...
+2026-11-07T11:51:32.5423255Z copying path '/nix/store/1r5r28fm7fdsy7ncr4wswb7998d0vswh-nix-2.34.9' from 'https://cache.nixos.org'...
+2026-11-07T11:51:33.2093449Z copying path '/nix/store/qq365ykakbmdziqk322phr2nz6x6qikd-nix-util-2.34.9-dev' from 'https://cache.nixos.org'...
+2026-11-07T11:51:33.2311881Z copying path '/nix/store/isq330s9wljs572fxwmlmii3hayv20nv-nix-store-2.34.9-dev' from 'https://cache.nixos.org'...
+2026-11-07T11:51:33.2313001Z copying path '/nix/store/g4mzd5l59d0y8p7za6g1rfdlq60x9r8k-nix-util-c-2.34.9-dev' from 'https://cache.nixos.org'...
+2026-11-07T11:51:33.2519158Z copying path '/nix/store/hq6cp0rqaksgh4vh9wl0li3yxvkzp7hv-nix-fetchers-2.34.9-dev' from 'https://cache.nixos.org'...
+2026-11-07T11:51:33.2520368Z copying path '/nix/store/yqzj8xj90vx952kdk261ys5a6ldmjz70-nix-store-c-2.34.9-dev' from 'https://cache.nixos.org'...
+2026-11-07T11:51:33.2713595Z copying path '/nix/store/5zbinggxx0a033inpd17bi9brhgbj2f4-nix-expr-2.34.9-dev' from 'https://cache.nixos.org'...
+2026-11-07T11:51:33.2918284Z copying path '/nix/store/15k0w5byfk9lgz3sd5nx8lsm6qqh7gsx-nix-main-2.34.9-dev' from 'https://cache.nixos.org'...
+2026-11-07T11:51:33.2919745Z copying path '/nix/store/qp4q1vws37qqb83bysag9l7yfjpwz5vl-nix-flake-2.34.9-dev' from 'https://cache.nixos.org'...
+2026-11-07T11:51:33.2920750Z copying path '/nix/store/k57cpgibzvwy109r4lxsgv46nbv9cgqg-nix-expr-c-2.34.9-dev' from 'https://cache.nixos.org'...
+2026-11-07T11:51:33.2922264Z copying path '/nix/store/6gj4dzcv6gaxh5raqyrq7jmy605qaj3z-gcc-wrapper-16.2.0' from 'https://cache.nixos.org'...
+2026-11-07T11:51:33.3130409Z copying path '/nix/store/7qbmkky7lzv7lc26k45clac04296lqjj-nix-main-c-2.34.9-dev' from 'https://cache.nixos.org'...
+2026-11-07T11:51:33.3197027Z copying path '/nix/store/1s3zzpq34cv3y18kfyff025w99241ik6-nix-fetchers-c-2.34.9-dev' from 'https://cache.nixos.org'...
+2026-11-07T11:51:33.3198239Z copying path '/nix/store/4rcad4p8g4c7iid1kzxh2dfajy8sny98-nix-cmd-2.34.9-dev' from 'https://cache.nixos.org'...
+2026-11-07T11:51:33.3202900Z copying path '/nix/store/49cnv1lz3hiybz55z8lm8i401iqrpqyw-stdenv-linux' from 'https://cache.nixos.org'...
+2026-11-07T11:51:33.3368020Z copying path '/nix/store/qra7p0g3ai2frgs6mnsz938pk0jnfy46-nix-flake-c-2.34.9-dev' from 'https://cache.nixos.org'...
+2026-11-07T11:51:33.3547052Z copying path '/nix/store/whdj8w7qx5i10b9y7cvi61pdvfg1n4kx-nix-2.34.9-dev' from 'https://cache.nixos.org'...
+2026-11-07T11:51:33.3963509Z building '/nix/store/jda4lvy9v1l68d89ga6g5kgqiqxiiq8k-npm-project-release.drv'...
+2026-11-07T11:51:37.6999552Z this derivation will be built:
+2026-11-07T11:51:37.7000227Z   /nix/store/7pm2j5gxv6cs07yh6b92bq9iqk1l2id2-npm-projection.drv
+2026-11-07T11:51:37.7613234Z building '/nix/store/7pm2j5gxv6cs07yh6b92bq9iqk1l2id2-npm-projection.drv'...
+2026-11-07T11:51:38.4076015Z npm-purifier: building the dependencies of /home/runner/work/_temp/npm-legacy-native-ot928mbv/project
+2026-11-07T11:51:38.4480112Z unpacking 'github:nix-caisson/caisson/ec291bc9637a95606f7fa9df942d5e803705d8f5?narHash=sha256-FAixpwyAWmhrzmh0fMGt7y0KIcNLqBIGICfMvbExRLo%3D' into the Git cache...
+2026-11-07T11:51:38.9843686Z unpacking 'github:nix-caisson/caisson-core/6868bca2682e96d56714bc9c9adcf0048fbe132f?narHash=sha256-OzlG2Nhl/kU2UUPq%2BARH/GKUHmOqAxQu5Ug/%2BaT1ECc%3D' into the Git cache...
+2026-11-07T11:51:39.2712561Z unpacking 'github:nix-community/nixpkgs.lib/b91d4f1bc958e0bdfd6cb3db4a280486006f5002?narHash=sha256-XtTdVeJX6X/gU%2BvGIUEJHirotv/lYP5%2BQ9irMH6HWPY%3D' into the Git cache...
+2026-11-07T11:51:39.5642238Z unpacking 'github:hercules-ci/flake-parts/31729ca8cbdb4fa927b34e5f4353e6a83f39e993?narHash=sha256-glZLQlzIn1fXH6PazR2iUmTo7kzzyYSshrWhLS9TqCU%3D' into the Git cache...
+2026-11-07T11:51:39.8107295Z unpacking 'github:nix-purifiers/purifier/b9cccd7799ef7f82ca9bc0b67340714cf4b3c4ea?narHash=sha256-Z5nzMEddKHAvAxhzc%2Bm/QM5aTjPzd52MxETuTrAtAC4%3D' into the Git cache...
+2026-11-07T11:51:40.0564765Z unpacking 'github:nix-community/nixpkgs.lib/7851ba61fd862b277cb6a9cef37394bc18bb94e4?narHash=sha256-ThkfL3D/FhCiZFc9%2B3BtxwuMmpuK%2B/bGtXCSo1%2ByVew%3D' into the Git cache...
+2026-11-07T11:51:40.2887921Z unpacking 'github:hercules-ci/flake-parts/024633cd702b10285db5cb19b40ad48d2399ba60?narHash=sha256-zTwuwezD0w3hpga6a6P8emidzAZFyWqlNeRBlpWOOl8%3D' into the Git cache...
+2026-11-07T11:51:40.9685946Z this derivation will be built:
+2026-11-07T11:51:40.9686821Z   /nix/store/h6zrg5akp7vvx4dng8pahhzrb2nahg6k-npm-purifier-interactive.drv
+2026-11-07T11:51:41.0312516Z building '/nix/store/h6zrg5akp7vvx4dng8pahhzrb2nahg6k-npm-purifier-interactive.drv'...
+2026-11-07T11:51:41.0977961Z npm-purifier: npm runs offline in /home/runner/work/_temp/npm-legacy-native-ot928mbv/project through the npm-purifier npm wrapper
+2026-11-07T11:51:41.8970458Z npm warn old lockfile
+2026-11-07T11:51:41.8971877Z npm warn old lockfile The package-lock.json file was created with an old version of npm,
+2026-11-07T11:51:41.8972480Z npm warn old lockfile so supplemental metadata must be fetched from the registry.
+2026-11-07T11:51:41.8972908Z npm warn old lockfile
+2026-11-07T11:51:41.8973329Z npm warn old lockfile This is a one-time fix-up, please be patient...
+2026-11-07T11:51:41.8973751Z npm warn old lockfile
+2026-11-07T11:51:42.0233733Z npm-purifier: package-lock.json records every download; no npm-purifier.lock.json needed
+2026-11-07T11:51:42.2124127Z npm-purifier: building the dependencies of /home/runner/work/_temp/npm-legacy-native-ot928mbv/project
+2026-11-07T11:51:42.6606334Z npm-purifier: npm runs offline in /home/runner/work/_temp/npm-legacy-native-ot928mbv/project through the npm-purifier npm wrapper
+2026-11-07T11:51:43.2449927Z npm warn Unknown env config "nodedir". This will stop working in the next major version of npm. See `npm help npmrc` for supported config options.
+2026-11-07T11:51:43.7459971Z npm warn Unknown env config "nodedir". This will stop working in the next major version of npm. See `npm help npmrc` for supported config options.
+2026-11-07T11:51:44.2404014Z npm warn Unknown env config "nodedir". This will stop working in the next major version of npm. See `npm help npmrc` for supported config options.
+2026-11-07T11:51:44.4941017Z npm-purifier: building legacy-npm-app
+2026-11-07T11:51:46.2263332Z these 3 derivations will be built:
+2026-11-07T11:51:46.2266555Z   /nix/store/jqr6i7w7fchphg8sa721mm23y0jkzkrd-npm-project-release.drv
+2026-11-07T11:51:46.2267189Z   /nix/store/rv57xv2nf88f00ra2jkchpicwdwd5196-npm-project-production-modules.drv
+2026-11-07T11:51:46.2267994Z   /nix/store/pgml2pb9nppqfm5y73hq4zhj20inxlzw-legacy-npm-app-1.0.0.drv
+2026-11-07T11:51:46.2931070Z building '/nix/store/rv57xv2nf88f00ra2jkchpicwdwd5196-npm-project-production-modules.drv'...
+2026-11-07T11:51:46.3058076Z building '/nix/store/jqr6i7w7fchphg8sa721mm23y0jkzkrd-npm-project-release.drv'...
+2026-11-07T11:51:48.0861346Z building '/nix/store/pgml2pb9nppqfm5y73hq4zhj20inxlzw-legacy-npm-app-1.0.0.drv'...
+2026-11-07T11:51:48.5534138Z npm warn Unknown project config "always-auth". This will stop working in the next major version of npm. See `npm help npmrc` for supported config options.
+2026-11-07T11:51:48.6192208Z npm notice
+2026-11-07T11:51:48.6196047Z npm notice 📦  legacy-npm-app@1.0.0
+2026-11-07T11:51:48.6196985Z npm notice Tarball Contents
+2026-11-07T11:51:48.6199676Z npm notice 8B built.txt
+2026-11-07T11:51:48.6199999Z npm notice 109B cli.js
+2026-11-07T11:51:48.6200340Z npm notice 420B package.json
+2026-11-07T11:51:48.6200636Z npm notice Tarball Details
+2026-11-07T11:51:48.6201459Z npm notice name: legacy-npm-app
+2026-11-07T11:51:48.6202610Z npm notice version: 1.0.0
+2026-11-07T11:51:48.6203302Z npm notice filename: legacy-npm-app-1.0.0.tgz
+2026-11-07T11:51:48.6206565Z npm notice package size: 428 B
+2026-11-07T11:51:48.6206940Z npm notice unpacked size: 537 B
+2026-11-07T11:51:48.6207296Z npm notice shasum: cd5c9abfd9060eae6fb38b676ba61a9e456d9641
+2026-11-07T11:51:48.6207810Z npm notice integrity: sha512-vWx15YPzJlq0/[...]7JrOLG48SyG5Q==
+2026-11-07T11:51:48.6208197Z npm notice total files: 3
+2026-11-07T11:51:48.6208479Z npm notice
+2026-11-07T11:51:48.6428788Z npm notice Publishing to http://127.0.0.1:38689/ with tag latest and default access
+2026-11-07T11:51:49.0360405Z PASS ordinary registry resolution/install/execution of prepared graph
+2026-11-07T11:51:49.4827529Z PASS npm11.19.0/Node24.21.0 lock, prefetch, offline install, build/test and actual publication; native lock preserved after resolution
+2026-11-07T11:51:49.4938038Z Native registry workflow: aarch64-linux Node 12.22.12
+2026-11-07T11:51:52.0741350Z these 5 derivations will be built:
+2026-11-07T11:51:52.0745772Z   /nix/store/jp3lkslr0yjyg8wmqkcj0whzqkmz5rah-node-v12.22.12-linux-arm64.tar.xz.drv
+2026-11-07T11:51:52.0747117Z   /nix/store/88kr9l3bj4iihigxwrcwda598g9mwlcv-nodejs-legacy-fixture-12.22.12.drv
+2026-11-07T11:51:52.0748020Z   /nix/store/i0jh5c9gqlcni575qirkdki6b6yy5f8z-npm-purifier.drv
+2026-11-07T11:51:52.0748922Z   /nix/store/2v1siniq4sas5b8ii0pgsw33vsmg1fqk-npm.drv
+2026-11-07T11:51:52.0749548Z   /nix/store/plwmxvdjp2pdslqd04ma113dpzsy0k9f-npm-node-12.22.12-tools.drv
+2026-11-07T11:51:52.0933386Z building '/nix/store/jp3lkslr0yjyg8wmqkcj0whzqkmz5rah-node-v12.22.12-linux-arm64.tar.xz.drv'...
+2026-11-07T11:51:52.3282825Z building '/nix/store/88kr9l3bj4iihigxwrcwda598g9mwlcv-nodejs-legacy-fixture-12.22.12.drv'...
+2026-11-07T11:51:55.0738505Z building '/nix/store/i0jh5c9gqlcni575qirkdki6b6yy5f8z-npm-purifier.drv'...
+2026-11-07T11:51:55.2752355Z building '/nix/store/2v1siniq4sas5b8ii0pgsw33vsmg1fqk-npm.drv'...
+2026-11-07T11:51:55.4057597Z building '/nix/store/plwmxvdjp2pdslqd04ma113dpzsy0k9f-npm-node-12.22.12-tools.drv'...
+2026-11-07T11:51:57.3488798Z this derivation will be built:
+2026-11-07T11:51:57.3491278Z   /nix/store/q7awsw09j50zilahf7p28d5g6xgxq8dh-npm-project-release.drv
+2026-11-07T11:51:57.4158457Z building '/nix/store/q7awsw09j50zilahf7p28d5g6xgxq8dh-npm-project-release.drv'...
+2026-11-07T11:52:01.0126801Z this derivation will be built:
+2026-11-07T11:52:01.0127521Z   /nix/store/zjw6n5l857w6xml185b8lj5s7zhnkslx-npm-projection.drv
+2026-11-07T11:52:01.0735342Z building '/nix/store/zjw6n5l857w6xml185b8lj5s7zhnkslx-npm-projection.drv'...
+2026-11-07T11:52:01.7466952Z npm-purifier: building the dependencies of /home/runner/work/_temp/npm-legacy-native-urnf07x3/project
+2026-11-07T11:52:01.7803958Z unpacking 'github:nix-caisson/caisson/ec291bc9637a95606f7fa9df942d5e803705d8f5?narHash=sha256-FAixpwyAWmhrzmh0fMGt7y0KIcNLqBIGICfMvbExRLo%3D' into the Git cache...
+2026-11-07T11:52:02.3540570Z unpacking 'github:nix-caisson/caisson-core/6868bca2682e96d56714bc9c9adcf0048fbe132f?narHash=sha256-OzlG2Nhl/kU2UUPq%2BARH/GKUHmOqAxQu5Ug/%2BaT1ECc%3D' into the Git cache...
+2026-11-07T11:52:02.5990530Z unpacking 'github:nix-community/nixpkgs.lib/b91d4f1bc958e0bdfd6cb3db4a280486006f5002?narHash=sha256-XtTdVeJX6X/gU%2BvGIUEJHirotv/lYP5%2BQ9irMH6HWPY%3D' into the Git cache...
+2026-11-07T11:52:02.9134654Z unpacking 'github:hercules-ci/flake-parts/31729ca8cbdb4fa927b34e5f4353e6a83f39e993?narHash=sha256-glZLQlzIn1fXH6PazR2iUmTo7kzzyYSshrWhLS9TqCU%3D' into the Git cache...
+2026-11-07T11:52:03.2239463Z unpacking 'github:nix-purifiers/purifier/b9cccd7799ef7f82ca9bc0b67340714cf4b3c4ea?narHash=sha256-Z5nzMEddKHAvAxhzc%2Bm/QM5aTjPzd52MxETuTrAtAC4%3D' into the Git cache...
+2026-11-07T11:52:03.4744687Z unpacking 'github:nix-community/nixpkgs.lib/7851ba61fd862b277cb6a9cef37394bc18bb94e4?narHash=sha256-ThkfL3D/FhCiZFc9%2B3BtxwuMmpuK%2B/bGtXCSo1%2ByVew%3D' into the Git cache...
+2026-11-07T11:52:03.7802801Z unpacking 'github:hercules-ci/flake-parts/024633cd702b10285db5cb19b40ad48d2399ba60?narHash=sha256-zTwuwezD0w3hpga6a6P8emidzAZFyWqlNeRBlpWOOl8%3D' into the Git cache...
+2026-11-07T11:52:04.3146702Z npm-purifier: npm runs offline in /home/runner/work/_temp/npm-legacy-native-urnf07x3/project through the npm-purifier npm wrapper
+2026-11-07T11:52:05.1960792Z npm WARN legacy-npm-app@1.0.0 No description
+2026-11-07T11:52:05.1992587Z npm WARN legacy-npm-app@1.0.0 No repository field.
+2026-11-07T11:52:05.2023189Z npm WARN legacy-npm-app@1.0.0 No license field.
+2026-11-07T11:52:05.2024480Z 
+2026-11-07T11:52:05.2323788Z npm-purifier: package-lock.json records every download; no npm-purifier.lock.json needed
+2026-11-07T11:52:05.4397631Z npm-purifier: building the dependencies of /home/runner/work/_temp/npm-legacy-native-urnf07x3/project
+2026-11-07T11:52:05.8927801Z npm-purifier: npm runs offline in /home/runner/work/_temp/npm-legacy-native-urnf07x3/project through the npm-purifier npm wrapper
+2026-11-07T11:52:08.0014022Z npm-purifier: building legacy-npm-app
+2026-11-07T11:52:09.7683737Z these 3 derivations will be built:
+2026-11-07T11:52:09.7687013Z   /nix/store/8nsvxlja5chaqzmafjzy4vfy758q8lpq-npm-project-release.drv
+2026-11-07T11:52:09.7688124Z   /nix/store/j5lg0j3hsqqmdmbrq5cyvyr7dw2ia413-npm-project-production-modules.drv
+2026-11-07T11:52:09.7688819Z   /nix/store/9p6ndl2p6g70w24ql6l44vfbgy88fw01-legacy-npm-app-1.0.0.drv
+2026-11-07T11:52:09.8350375Z building '/nix/store/j5lg0j3hsqqmdmbrq5cyvyr7dw2ia413-npm-project-production-modules.drv'...
+2026-11-07T11:52:09.8482482Z building '/nix/store/8nsvxlja5chaqzmafjzy4vfy758q8lpq-npm-project-release.drv'...
+2026-11-07T11:52:11.5678087Z building '/nix/store/9p6ndl2p6g70w24ql6l44vfbgy88fw01-legacy-npm-app-1.0.0.drv'...
+2026-11-07T11:52:12.0890250Z npm notice 
+2026-11-07T11:52:12.0891299Z npm notice 📦  legacy-npm-app@1.0.0
+2026-11-07T11:52:12.0891687Z npm notice === Tarball Contents === 
+2026-11-07T11:52:12.0904378Z npm notice 109B cli.js      
+2026-11-07T11:52:12.0904760Z npm notice 420B package.json
+2026-11-07T11:52:12.0906858Z npm notice 9B   built.txt   
+2026-11-07T11:52:12.0907237Z npm notice === Tarball Details === 
+2026-11-07T11:52:12.0910116Z npm notice name:          legacy-npm-app                          
+2026-11-07T11:52:12.0910933Z npm notice version:       1.0.0                                   
+2026-11-07T11:52:12.0911731Z npm notice package size:  432 B                                   
+2026-11-07T11:52:12.0912436Z npm notice unpacked size: 538 B                                   
+2026-11-07T11:52:12.0913046Z npm notice shasum:        e2692d23febea63c8cd540e3acc34b3cb0205cd1
+2026-11-07T11:52:12.0913634Z npm notice integrity:     sha512-juhRKNro1cG9y[...]5uhcrov+MUyqg==
+2026-11-07T11:52:12.0914285Z npm notice total files:   3                                       
+2026-11-07T11:52:12.0914763Z npm notice 
+2026-11-07T11:52:12.5138331Z npm notice created a lockfile as package-lock.json. You should commit this file.
+2026-11-07T11:52:12.5483461Z PASS ordinary registry resolution/install/execution of prepared graph
+2026-11-07T11:52:12.9632331Z PASS npm6.14.16/Node12.22.12 lock, prefetch, offline install, build/test and actual publication; native lock preserved after resolution
+2026-11-07T11:52:12.9734715Z Native registry workflow: aarch64-linux Node 8.17.0
+2026-11-07T11:52:15.5263864Z these 5 derivations will be built:
+2026-11-07T11:52:15.5269587Z   /nix/store/9w976rqj8m8vx6myg41nc2yyyyfd5dsm-node-v8.17.0-linux-arm64.tar.xz.drv
+2026-11-07T11:52:15.5270369Z   /nix/store/n1b9w5r6sch2168gyvnsan4gschgikym-nodejs-legacy-fixture-8.17.0.drv
+2026-11-07T11:52:15.5270897Z   /nix/store/nnl9wyh7d8hx03mfqbng3wgn887v12m0-npm-purifier.drv
+2026-11-07T11:52:15.5271657Z   /nix/store/ikngrafphkjhvhsa5a8lqziqkar4c31k-npm.drv
+2026-11-07T11:52:15.5272112Z   /nix/store/v8253rd8fjp5xk4r2b31c0nmnk33c4gc-npm-node-8.17.0-tools.drv
+2026-11-07T11:52:15.5454222Z building '/nix/store/9w976rqj8m8vx6myg41nc2yyyyfd5dsm-node-v8.17.0-linux-arm64.tar.xz.drv'...
+2026-11-07T11:52:15.7600729Z building '/nix/store/n1b9w5r6sch2168gyvnsan4gschgikym-nodejs-legacy-fixture-8.17.0.drv'...
+2026-11-07T11:52:18.3231980Z building '/nix/store/nnl9wyh7d8hx03mfqbng3wgn887v12m0-npm-purifier.drv'...
+2026-11-07T11:52:18.5293647Z building '/nix/store/ikngrafphkjhvhsa5a8lqziqkar4c31k-npm.drv'...
+2026-11-07T11:52:18.6645766Z building '/nix/store/v8253rd8fjp5xk4r2b31c0nmnk33c4gc-npm-node-8.17.0-tools.drv'...
+2026-11-07T11:52:20.6162137Z this derivation will be built:
+2026-11-07T11:52:20.6163198Z   /nix/store/j8cz987vn7fmd3rpghv9ynby16cvalsq-npm-project-release.drv
+2026-11-07T11:52:20.6835204Z building '/nix/store/j8cz987vn7fmd3rpghv9ynby16cvalsq-npm-project-release.drv'...
+2026-11-07T11:52:24.4767700Z this derivation will be built:
+2026-11-07T11:52:24.4768481Z   /nix/store/a2xnjal282gsjpgyrj9nrz1a200na73p-npm-projection.drv
+2026-11-07T11:52:24.5371679Z building '/nix/store/a2xnjal282gsjpgyrj9nrz1a200na73p-npm-projection.drv'...
+2026-11-07T11:52:25.2744701Z npm-purifier: building the dependencies of /home/runner/work/_temp/npm-legacy-native-goah120h/project
+2026-11-07T11:52:25.3091606Z unpacking 'github:nix-caisson/caisson/ec291bc9637a95606f7fa9df942d5e803705d8f5?narHash=sha256-FAixpwyAWmhrzmh0fMGt7y0KIcNLqBIGICfMvbExRLo%3D' into the Git cache...
+2026-11-07T11:52:25.8834685Z unpacking 'github:nix-caisson/caisson-core/6868bca2682e96d56714bc9c9adcf0048fbe132f?narHash=sha256-OzlG2Nhl/kU2UUPq%2BARH/GKUHmOqAxQu5Ug/%2BaT1ECc%3D' into the Git cache...
+2026-11-07T11:52:26.1432140Z unpacking 'github:nix-community/nixpkgs.lib/b91d4f1bc958e0bdfd6cb3db4a280486006f5002?narHash=sha256-XtTdVeJX6X/gU%2BvGIUEJHirotv/lYP5%2BQ9irMH6HWPY%3D' into the Git cache...
+2026-11-07T11:52:26.4466631Z unpacking 'github:hercules-ci/flake-parts/31729ca8cbdb4fa927b34e5f4353e6a83f39e993?narHash=sha256-glZLQlzIn1fXH6PazR2iUmTo7kzzyYSshrWhLS9TqCU%3D' into the Git cache...
+2026-11-07T11:52:26.7058899Z unpacking 'github:nix-purifiers/purifier/b9cccd7799ef7f82ca9bc0b67340714cf4b3c4ea?narHash=sha256-Z5nzMEddKHAvAxhzc%2Bm/QM5aTjPzd52MxETuTrAtAC4%3D' into the Git cache...
+2026-11-07T11:52:26.9981018Z unpacking 'github:nix-community/nixpkgs.lib/7851ba61fd862b277cb6a9cef37394bc18bb94e4?narHash=sha256-ThkfL3D/FhCiZFc9%2B3BtxwuMmpuK%2B/bGtXCSo1%2ByVew%3D' into the Git cache...
+2026-11-07T11:52:27.3307044Z unpacking 'github:hercules-ci/flake-parts/024633cd702b10285db5cb19b40ad48d2399ba60?narHash=sha256-zTwuwezD0w3hpga6a6P8emidzAZFyWqlNeRBlpWOOl8%3D' into the Git cache...
+2026-11-07T11:52:27.9127965Z npm-purifier: npm runs offline in /home/runner/work/_temp/npm-legacy-native-goah120h/project through the npm-purifier npm wrapper
+2026-11-07T11:52:28.9020474Z npm WARN legacy-npm-app@1.0.0 No description
+2026-11-07T11:52:28.9021006Z npm WARN legacy-npm-app@1.0.0 No repository field.
+2026-11-07T11:52:28.9021832Z npm WARN legacy-npm-app@1.0.0 No license field.
+2026-11-07T11:52:28.9022454Z 
+2026-11-07T11:52:28.9181847Z npm-purifier: package-lock.json records every download; no npm-purifier.lock.json needed
+2026-11-07T11:52:29.1486309Z npm-purifier: building the dependencies of /home/runner/work/_temp/npm-legacy-native-goah120h/project
+2026-11-07T11:52:29.5963304Z npm-purifier: npm runs offline in /home/runner/work/_temp/npm-legacy-native-goah120h/project through the npm-purifier npm wrapper
+2026-11-07T11:52:32.0125152Z npm-purifier: building legacy-npm-app
+2026-11-07T11:52:33.7619649Z these 3 derivations will be built:
+2026-11-07T11:52:33.7622561Z   /nix/store/j5c3a0zvw2kvb3j0ahii91q9ddpkyqak-npm-project-release.drv
+2026-11-07T11:52:33.7623190Z   /nix/store/p4card50w7hd30hrzvcg980ghqrhza1j-npm-project-production-modules.drv
+2026-11-07T11:52:33.7623908Z   /nix/store/78nfrn8mj45lcx0q13l8j5hi21bjhsia-legacy-npm-app-1.0.0.drv
+2026-11-07T11:52:33.8288883Z building '/nix/store/p4card50w7hd30hrzvcg980ghqrhza1j-npm-project-production-modules.drv'...
+2026-11-07T11:52:33.8422016Z building '/nix/store/j5c3a0zvw2kvb3j0ahii91q9ddpkyqak-npm-project-release.drv'...
+2026-11-07T11:52:35.7884213Z building '/nix/store/78nfrn8mj45lcx0q13l8j5hi21bjhsia-legacy-npm-app-1.0.0.drv'...
+2026-11-07T11:52:36.3644659Z npm notice 
+2026-11-07T11:52:36.3645514Z npm notice 📦  legacy-npm-app@1.0.0
+2026-11-07T11:52:36.3646192Z npm notice === Tarball Contents === 
+2026-11-07T11:52:36.3664050Z npm notice 109B cli.js      
+2026-11-07T11:52:36.3664372Z npm notice 420B package.json
+2026-11-07T11:52:36.3664947Z npm notice 7B   built.txt   
+2026-11-07T11:52:36.3665256Z npm notice === Tarball Details === 
+2026-11-07T11:52:36.3671348Z npm notice name:          legacy-npm-app                          
+2026-11-07T11:52:36.3671945Z npm notice version:       1.0.0                                   
+2026-11-07T11:52:36.3672371Z npm notice package size:  433 B                                   
+2026-11-07T11:52:36.3672929Z npm notice unpacked size: 536 B                                   
+2026-11-07T11:52:36.3673376Z npm notice shasum:        13fec729da3ee2b35bf56f723106e3f6dfb6df7a
+2026-11-07T11:52:36.3673856Z npm notice integrity:     sha512-lAU73GA6xSCMr[...]K8i5KOdC85EKQ==
+2026-11-07T11:52:36.3674314Z npm notice total files:   3                                       
+2026-11-07T11:52:36.3674682Z npm notice 
+2026-11-07T11:52:36.8292978Z npm notice created a lockfile as package-lock.json. You should commit this file.
+2026-11-07T11:52:36.8751778Z PASS ordinary registry resolution/install/execution of prepared graph
+2026-11-07T11:52:37.2783411Z PASS npm6.13.4/Node8.17.0 lock, prefetch, offline install, build/test and actual publication; native lock preserved after resolution
+2026-11-07T11:52:37.2887334Z Native registry workflow: aarch64-linux Node 10.24.1
+2026-11-07T11:52:39.9270624Z these 5 derivations will be built:
+2026-11-07T11:52:39.9277202Z   /nix/store/1al2a1mf1grzqjb64j3b3c8xzc0xgds1-node-v10.24.1-linux-arm64.tar.xz.drv
+2026-11-07T11:52:39.9277912Z   /nix/store/n512v0w12x3ihg6kl81rvz6aggw5r05q-nodejs-legacy-fixture-10.24.1.drv
+2026-11-07T11:52:39.9278545Z   /nix/store/cx6nfw6l1vf1br7g9b7xx40cqccg4kvc-npm-purifier.drv
+2026-11-07T11:52:39.9278977Z   /nix/store/6xifw2i0c6j2pxv0hzvjpfvhx1p3yzpp-npm.drv
+2026-11-07T11:52:39.9279431Z   /nix/store/hhdngckpf3gh04dwn4jn789la0sgxby9-npm-node-10.24.1-tools.drv
+2026-11-07T11:52:39.9456350Z building '/nix/store/1al2a1mf1grzqjb64j3b3c8xzc0xgds1-node-v10.24.1-linux-arm64.tar.xz.drv'...
+2026-11-07T11:52:40.1769034Z building '/nix/store/n512v0w12x3ihg6kl81rvz6aggw5r05q-nodejs-legacy-fixture-10.24.1.drv'...
+2026-11-07T11:52:42.8073488Z building '/nix/store/cx6nfw6l1vf1br7g9b7xx40cqccg4kvc-npm-purifier.drv'...
+2026-11-07T11:52:43.0062654Z building '/nix/store/6xifw2i0c6j2pxv0hzvjpfvhx1p3yzpp-npm.drv'...
+2026-11-07T11:52:43.1366901Z building '/nix/store/hhdngckpf3gh04dwn4jn789la0sgxby9-npm-node-10.24.1-tools.drv'...
+2026-11-07T11:52:45.1152246Z this derivation will be built:
+2026-11-07T11:52:45.1153955Z   /nix/store/dbf9lc9szcj2lgi70w2z5gk6bh2wjjzb-npm-project-release.drv
+2026-11-07T11:52:45.1833533Z building '/nix/store/dbf9lc9szcj2lgi70w2z5gk6bh2wjjzb-npm-project-release.drv'...
+2026-11-07T11:52:48.9448805Z this derivation will be built:
+2026-11-07T11:52:48.9450256Z   /nix/store/m918apzm68vaxgaajmv6d860dfgv5zb5-npm-projection.drv
+2026-11-07T11:52:49.0046716Z building '/nix/store/m918apzm68vaxgaajmv6d860dfgv5zb5-npm-projection.drv'...
+2026-11-07T11:52:49.7393467Z npm-purifier: building the dependencies of /home/runner/work/_temp/npm-legacy-native-jlbvfqs0/project
+2026-11-07T11:52:49.7718640Z unpacking 'github:nix-caisson/caisson/ec291bc9637a95606f7fa9df942d5e803705d8f5?narHash=sha256-FAixpwyAWmhrzmh0fMGt7y0KIcNLqBIGICfMvbExRLo%3D' into the Git cache...
+2026-11-07T11:52:50.3275526Z unpacking 'github:nix-caisson/caisson-core/6868bca2682e96d56714bc9c9adcf0048fbe132f?narHash=sha256-OzlG2Nhl/kU2UUPq%2BARH/GKUHmOqAxQu5Ug/%2BaT1ECc%3D' into the Git cache...
+2026-11-07T11:52:50.5863111Z unpacking 'github:nix-community/nixpkgs.lib/b91d4f1bc958e0bdfd6cb3db4a280486006f5002?narHash=sha256-XtTdVeJX6X/gU%2BvGIUEJHirotv/lYP5%2BQ9irMH6HWPY%3D' into the Git cache...
+2026-11-07T11:52:50.9188837Z unpacking 'github:hercules-ci/flake-parts/31729ca8cbdb4fa927b34e5f4353e6a83f39e993?narHash=sha256-glZLQlzIn1fXH6PazR2iUmTo7kzzyYSshrWhLS9TqCU%3D' into the Git cache...
+2026-11-07T11:52:51.1635786Z unpacking 'github:nix-purifiers/purifier/b9cccd7799ef7f82ca9bc0b67340714cf4b3c4ea?narHash=sha256-Z5nzMEddKHAvAxhzc%2Bm/QM5aTjPzd52MxETuTrAtAC4%3D' into the Git cache...
+2026-11-07T11:52:51.4227028Z unpacking 'github:nix-community/nixpkgs.lib/7851ba61fd862b277cb6a9cef37394bc18bb94e4?narHash=sha256-ThkfL3D/FhCiZFc9%2B3BtxwuMmpuK%2B/bGtXCSo1%2ByVew%3D' into the Git cache...
+2026-11-07T11:52:51.6843653Z unpacking 'github:hercules-ci/flake-parts/024633cd702b10285db5cb19b40ad48d2399ba60?narHash=sha256-zTwuwezD0w3hpga6a6P8emidzAZFyWqlNeRBlpWOOl8%3D' into the Git cache...
+2026-11-07T11:52:52.1878145Z npm-purifier: npm runs offline in /home/runner/work/_temp/npm-legacy-native-jlbvfqs0/project through the npm-purifier npm wrapper
+2026-11-07T11:52:53.1532777Z npm WARN legacy-npm-app@1.0.0 No description
+2026-11-07T11:52:53.1540241Z npm WARN legacy-npm-app@1.0.0 No repository field.
+2026-11-07T11:52:53.1547341Z npm WARN legacy-npm-app@1.0.0 No license field.
+2026-11-07T11:52:53.1548568Z 
+2026-11-07T11:52:53.1675313Z npm-purifier: package-lock.json records every download; no npm-purifier.lock.json needed
+2026-11-07T11:52:53.4090142Z npm-purifier: building the dependencies of /home/runner/work/_temp/npm-legacy-native-jlbvfqs0/project
+2026-11-07T11:52:53.8594842Z npm-purifier: npm runs offline in /home/runner/work/_temp/npm-legacy-native-jlbvfqs0/project through the npm-purifier npm wrapper
+2026-11-07T11:52:56.3436013Z npm-purifier: building legacy-npm-app
+2026-11-07T11:52:58.1496814Z these 3 derivations will be built:
+2026-11-07T11:52:58.1500579Z   /nix/store/3r5apyc7fva3kbf3vx0lhx32mkqhkv72-npm-project-production-modules.drv
+2026-11-07T11:52:58.1501235Z   /nix/store/bm6bq6ndfhw13p2nq2lvcs6bka5sbq4l-npm-project-release.drv
+2026-11-07T11:52:58.1501726Z   /nix/store/fk50q73li5p2nvvxw8m2x1d1j8rn4wh6-legacy-npm-app-1.0.0.drv
+2026-11-07T11:52:58.2722674Z building '/nix/store/3r5apyc7fva3kbf3vx0lhx32mkqhkv72-npm-project-production-modules.drv'...
+2026-11-07T11:52:58.2857322Z building '/nix/store/bm6bq6ndfhw13p2nq2lvcs6bka5sbq4l-npm-project-release.drv'...
+2026-11-07T11:53:00.1896027Z building '/nix/store/fk50q73li5p2nvvxw8m2x1d1j8rn4wh6-legacy-npm-app-1.0.0.drv'...
+2026-11-07T11:53:00.7398544Z npm notice 
+2026-11-07T11:53:00.7399633Z npm notice 📦  legacy-npm-app@1.0.0
+2026-11-07T11:53:00.7399978Z npm notice === Tarball Contents === 
+2026-11-07T11:53:00.7414307Z npm notice 109B cli.js      
+2026-11-07T11:53:00.7414586Z npm notice 420B package.json
+2026-11-07T11:53:00.7414813Z npm notice 8B   built.txt   
+2026-11-07T11:53:00.7415037Z npm notice === Tarball Details === 
+2026-11-07T11:53:00.7421414Z npm notice name:          legacy-npm-app                          
+2026-11-07T11:53:00.7421792Z npm notice version:       1.0.0                                   
+2026-11-07T11:53:00.7422162Z npm notice package size:  433 B                                   
+2026-11-07T11:53:00.7422544Z npm notice unpacked size: 537 B                                   
+2026-11-07T11:53:00.7422926Z npm notice shasum:        c15bc2b2fa95ca8978acab80975a67bc9f1b5d7a
+2026-11-07T11:53:00.7423367Z npm notice integrity:     sha512-cU1bLSzoyCr2y[...]WZlcs2G6LJeLA==
+2026-11-07T11:53:00.7423742Z npm notice total files:   3                                       
+2026-11-07T11:53:00.7424039Z npm notice 
+2026-11-07T11:53:01.1845726Z npm notice created a lockfile as package-lock.json. You should commit this file.
+2026-11-07T11:53:01.2359606Z PASS ordinary registry resolution/install/execution of prepared graph
+2026-11-07T11:53:01.6431858Z PASS npm6.14.12/Node10.24.1 lock, prefetch, offline install, build/test and actual publication; native lock preserved after resolution
+2026-11-07T11:53:01.6531288Z Native registry workflow: aarch64-linux Node 14.21.3
+2026-11-07T11:53:04.2539877Z these 5 derivations will be built:
+2026-11-07T11:53:04.2544865Z   /nix/store/3jp239fg18mmch6p8jmgnvmkl2jfxqnq-node-v14.21.3-linux-arm64.tar.xz.drv
+2026-11-07T11:53:04.2545438Z   /nix/store/yzh7afivis7ffkr1hj35fs4gidjn7wqr-nodejs-legacy-fixture-14.21.3.drv
+2026-11-07T11:53:04.2545932Z   /nix/store/klgya2rbnccfz9nbq2grbbq56dhjxi6k-npm-purifier.drv
+2026-11-07T11:53:04.2546308Z   /nix/store/21ijw2sfsi29jf8cyixv01xgda8wq6ax-npm.drv
+2026-11-07T11:53:04.2546707Z   /nix/store/qv31dhssnyxpg731f7mcx28zgv9qvi2z-npm-node-14.21.3-tools.drv
+2026-11-07T11:53:04.2727911Z building '/nix/store/3jp239fg18mmch6p8jmgnvmkl2jfxqnq-node-v14.21.3-linux-arm64.tar.xz.drv'...
+2026-11-07T11:53:04.5377463Z building '/nix/store/yzh7afivis7ffkr1hj35fs4gidjn7wqr-nodejs-legacy-fixture-14.21.3.drv'...
+2026-11-07T11:53:07.9431831Z building '/nix/store/klgya2rbnccfz9nbq2grbbq56dhjxi6k-npm-purifier.drv'...
+2026-11-07T11:53:08.1469030Z building '/nix/store/21ijw2sfsi29jf8cyixv01xgda8wq6ax-npm.drv'...
+2026-11-07T11:53:08.2807730Z building '/nix/store/qv31dhssnyxpg731f7mcx28zgv9qvi2z-npm-node-14.21.3-tools.drv'...
+2026-11-07T11:53:10.2671407Z this derivation will be built:
+2026-11-07T11:53:10.2672768Z   /nix/store/mphgszm8p0yqn29q61sqvdphjv9mxm0v-npm-project-release.drv
+2026-11-07T11:53:10.3349245Z building '/nix/store/mphgszm8p0yqn29q61sqvdphjv9mxm0v-npm-project-release.drv'...
+2026-11-07T11:53:13.9927481Z this derivation will be built:
+2026-11-07T11:53:13.9927909Z   /nix/store/7a5rifpylbnbggwznd6p0r9223lkprrx-npm-projection.drv
+2026-11-07T11:53:14.0550577Z building '/nix/store/7a5rifpylbnbggwznd6p0r9223lkprrx-npm-projection.drv'...
+2026-11-07T11:53:14.7366836Z npm-purifier: building the dependencies of /home/runner/work/_temp/npm-legacy-native-ue6a5hja/project
+2026-11-07T11:53:14.7698809Z unpacking 'github:nix-caisson/caisson/ec291bc9637a95606f7fa9df942d5e803705d8f5?narHash=sha256-FAixpwyAWmhrzmh0fMGt7y0KIcNLqBIGICfMvbExRLo%3D' into the Git cache...
+2026-11-07T11:53:15.3246965Z unpacking 'github:nix-caisson/caisson-core/6868bca2682e96d56714bc9c9adcf0048fbe132f?narHash=sha256-OzlG2Nhl/kU2UUPq%2BARH/GKUHmOqAxQu5Ug/%2BaT1ECc%3D' into the Git cache...
+2026-11-07T11:53:15.5972691Z unpacking 'github:nix-community/nixpkgs.lib/b91d4f1bc958e0bdfd6cb3db4a280486006f5002?narHash=sha256-XtTdVeJX6X/gU%2BvGIUEJHirotv/lYP5%2BQ9irMH6HWPY%3D' into the Git cache...
+2026-11-07T11:53:15.8815749Z unpacking 'github:hercules-ci/flake-parts/31729ca8cbdb4fa927b34e5f4353e6a83f39e993?narHash=sha256-glZLQlzIn1fXH6PazR2iUmTo7kzzyYSshrWhLS9TqCU%3D' into the Git cache...
+2026-11-07T11:53:16.1817468Z unpacking 'github:nix-purifiers/purifier/b9cccd7799ef7f82ca9bc0b67340714cf4b3c4ea?narHash=sha256-Z5nzMEddKHAvAxhzc%2Bm/QM5aTjPzd52MxETuTrAtAC4%3D' into the Git cache...
+2026-11-07T11:53:16.4399138Z unpacking 'github:nix-community/nixpkgs.lib/7851ba61fd862b277cb6a9cef37394bc18bb94e4?narHash=sha256-ThkfL3D/FhCiZFc9%2B3BtxwuMmpuK%2B/bGtXCSo1%2ByVew%3D' into the Git cache...
+2026-11-07T11:53:16.6825682Z unpacking 'github:hercules-ci/flake-parts/024633cd702b10285db5cb19b40ad48d2399ba60?narHash=sha256-zTwuwezD0w3hpga6a6P8emidzAZFyWqlNeRBlpWOOl8%3D' into the Git cache...
+2026-11-07T11:53:17.1879198Z npm-purifier: npm runs offline in /home/runner/work/_temp/npm-legacy-native-ue6a5hja/project through the npm-purifier npm wrapper
+2026-11-07T11:53:18.0981324Z npm WARN legacy-npm-app@1.0.0 No description
+2026-11-07T11:53:18.1019869Z npm WARN legacy-npm-app@1.0.0 No repository field.
+2026-11-07T11:53:18.1057105Z npm WARN legacy-npm-app@1.0.0 No license field.
+2026-11-07T11:53:18.1059102Z 
+2026-11-07T11:53:18.1269581Z npm-purifier: package-lock.json records every download; no npm-purifier.lock.json needed
+2026-11-07T11:53:18.3464878Z npm-purifier: building the dependencies of /home/runner/work/_temp/npm-legacy-native-ue6a5hja/project
+2026-11-07T11:53:18.8102082Z npm-purifier: npm runs offline in /home/runner/work/_temp/npm-legacy-native-ue6a5hja/project through the npm-purifier npm wrapper
+2026-11-07T11:53:20.9910934Z npm-purifier: building legacy-npm-app
+2026-11-07T11:53:22.7467699Z these 3 derivations will be built:
+2026-11-07T11:53:22.7469774Z   /nix/store/y296avij47fcdmnc5g9hmkqm9mdlrwip-npm-project-release.drv
+2026-11-07T11:53:22.7470305Z   /nix/store/zd76fj99aadvsbbjbq1fxqny5mlg5vdy-npm-project-production-modules.drv
+2026-11-07T11:53:22.7470828Z   /nix/store/9dr09j3rvhwsdiawj34hhmwrcml5x1nb-legacy-npm-app-1.0.0.drv
+2026-11-07T11:53:22.8173739Z building '/nix/store/zd76fj99aadvsbbjbq1fxqny5mlg5vdy-npm-project-production-modules.drv'...
+2026-11-07T11:53:22.8330732Z building '/nix/store/y296avij47fcdmnc5g9hmkqm9mdlrwip-npm-project-release.drv'...
+2026-11-07T11:53:24.6839168Z building '/nix/store/9dr09j3rvhwsdiawj34hhmwrcml5x1nb-legacy-npm-app-1.0.0.drv'...
+2026-11-07T11:53:25.2244802Z npm notice 
+2026-11-07T11:53:25.2245698Z npm notice 📦  legacy-npm-app@1.0.0
+2026-11-07T11:53:25.2246180Z npm notice === Tarball Contents === 
+2026-11-07T11:53:25.2259274Z npm notice 109B cli.js      
+2026-11-07T11:53:25.2259513Z npm notice 420B package.json
+2026-11-07T11:53:25.2259733Z npm notice 8B   built.txt   
+2026-11-07T11:53:25.2259956Z npm notice === Tarball Details === 
+2026-11-07T11:53:25.2265047Z npm notice name:          legacy-npm-app                          
+2026-11-07T11:53:25.2265610Z npm notice version:       1.0.0                                   
+2026-11-07T11:53:25.2266085Z npm notice package size:  433 B                                   
+2026-11-07T11:53:25.2266577Z npm notice unpacked size: 537 B                                   
+2026-11-07T11:53:25.2267048Z npm notice shasum:        3f6b576c7fae9e9888456d584426843a61f5a48d
+2026-11-07T11:53:25.2268113Z npm notice integrity:     sha512-ZjOlb/Tti62X0[...]TSvcAl2Hls5AA==
+2026-11-07T11:53:25.2268676Z npm notice total files:   3                                       
+2026-11-07T11:53:25.2269317Z npm notice 
+2026-11-07T11:53:25.6664843Z npm notice created a lockfile as package-lock.json. You should commit this file.
+2026-11-07T11:53:25.7031263Z PASS ordinary registry resolution/install/execution of prepared graph
+2026-11-07T11:53:26.1103082Z PASS npm6.14.18/Node14.21.3 lock, prefetch, offline install, build/test and actual publication; native lock preserved after resolution
+2026-11-07T11:53:26.1202545Z Native registry workflow: aarch64-linux Node 16.20.2
+2026-11-07T11:53:28.6768331Z these 5 derivations will be built:
+2026-11-07T11:53:28.6773945Z   /nix/store/813s96wxpacfl9gw38lvy9grbf63ydam-node-v16.20.2-linux-arm64.tar.xz.drv
+2026-11-07T11:53:28.6774547Z   /nix/store/g001gxr76amwd5mla66fkk5iwr9h5kwz-nodejs-legacy-fixture-16.20.2.drv
+2026-11-07T11:53:28.6775051Z   /nix/store/7khpjd31llmvvp4k39phkv5pjghiz74i-npm-purifier.drv
+2026-11-07T11:53:28.6775420Z   /nix/store/smy8vhyy56v8z7fp7pa0gliavhzd6m2l-npm.drv
+2026-11-07T11:53:28.6775843Z   /nix/store/p9dn706896y02xgz33cnalivp6l2y21d-npm-node-16.20.2-tools.drv
+2026-11-07T11:53:28.6964381Z building '/nix/store/813s96wxpacfl9gw38lvy9grbf63ydam-node-v16.20.2-linux-arm64.tar.xz.drv'...
+2026-11-07T11:53:28.9817983Z building '/nix/store/g001gxr76amwd5mla66fkk5iwr9h5kwz-nodejs-legacy-fixture-16.20.2.drv'...
+2026-11-07T11:53:31.8158971Z building '/nix/store/7khpjd31llmvvp4k39phkv5pjghiz74i-npm-purifier.drv'...
+2026-11-07T11:53:32.0209055Z building '/nix/store/smy8vhyy56v8z7fp7pa0gliavhzd6m2l-npm.drv'...
+2026-11-07T11:53:32.1529496Z building '/nix/store/p9dn706896y02xgz33cnalivp6l2y21d-npm-node-16.20.2-tools.drv'...
+2026-11-07T11:53:34.1522349Z this derivation will be built:
+2026-11-07T11:53:34.1523667Z   /nix/store/rhpm8gqxmkafm6v1lvn5p49h49ysf1xg-npm-project-release.drv
+2026-11-07T11:53:34.2190215Z building '/nix/store/rhpm8gqxmkafm6v1lvn5p49h49ysf1xg-npm-project-release.drv'...
+2026-11-07T11:53:38.2034801Z this derivation will be built:
+2026-11-07T11:53:38.2035487Z   /nix/store/zv8rgvrrslvy7xkqkkijaayv7jygjkm5-npm-projection.drv
+2026-11-07T11:53:38.2723645Z building '/nix/store/zv8rgvrrslvy7xkqkkijaayv7jygjkm5-npm-projection.drv'...
+2026-11-07T11:53:39.3369919Z npm-purifier: building the dependencies of /home/runner/work/_temp/npm-legacy-native-il0wmxsk/project
+2026-11-07T11:53:39.3731301Z unpacking 'github:nix-caisson/caisson/ec291bc9637a95606f7fa9df942d5e803705d8f5?narHash=sha256-FAixpwyAWmhrzmh0fMGt7y0KIcNLqBIGICfMvbExRLo%3D' into the Git cache...
+2026-11-07T11:53:39.9683233Z unpacking 'github:nix-caisson/caisson-core/6868bca2682e96d56714bc9c9adcf0048fbe132f?narHash=sha256-OzlG2Nhl/kU2UUPq%2BARH/GKUHmOqAxQu5Ug/%2BaT1ECc%3D' into the Git cache...
+2026-11-07T11:53:40.2728867Z unpacking 'github:nix-community/nixpkgs.lib/b91d4f1bc958e0bdfd6cb3db4a280486006f5002?narHash=sha256-XtTdVeJX6X/gU%2BvGIUEJHirotv/lYP5%2BQ9irMH6HWPY%3D' into the Git cache...
+2026-11-07T11:53:40.5935390Z unpacking 'github:hercules-ci/flake-parts/31729ca8cbdb4fa927b34e5f4353e6a83f39e993?narHash=sha256-glZLQlzIn1fXH6PazR2iUmTo7kzzyYSshrWhLS9TqCU%3D' into the Git cache...
+2026-11-07T11:53:40.8017640Z unpacking 'github:nix-purifiers/purifier/b9cccd7799ef7f82ca9bc0b67340714cf4b3c4ea?narHash=sha256-Z5nzMEddKHAvAxhzc%2Bm/QM5aTjPzd52MxETuTrAtAC4%3D' into the Git cache...
+2026-11-07T11:53:41.0803279Z unpacking 'github:nix-community/nixpkgs.lib/7851ba61fd862b277cb6a9cef37394bc18bb94e4?narHash=sha256-ThkfL3D/FhCiZFc9%2B3BtxwuMmpuK%2B/bGtXCSo1%2ByVew%3D' into the Git cache...
+2026-11-07T11:53:41.3462152Z unpacking 'github:hercules-ci/flake-parts/024633cd702b10285db5cb19b40ad48d2399ba60?narHash=sha256-zTwuwezD0w3hpga6a6P8emidzAZFyWqlNeRBlpWOOl8%3D' into the Git cache...
+2026-11-07T11:53:41.8835034Z npm-purifier: npm runs offline in /home/runner/work/_temp/npm-legacy-native-il0wmxsk/project through the npm-purifier npm wrapper
+2026-11-07T11:53:43.2749101Z npm WARN old lockfile 
+2026-11-07T11:53:43.2750427Z npm WARN old lockfile The package-lock.json file was created with an old version of npm,
+2026-11-07T11:53:43.2751039Z npm WARN old lockfile so supplemental metadata must be fetched from the registry.
+2026-11-07T11:53:43.2751860Z npm WARN old lockfile 
+2026-11-07T11:53:43.2752656Z npm WARN old lockfile This is a one-time fix-up, please be patient...
+2026-11-07T11:53:43.2753007Z npm WARN old lockfile 
+2026-11-07T11:53:43.3773636Z npm-purifier: package-lock.json records every download; no npm-purifier.lock.json needed
+2026-11-07T11:53:43.7103823Z npm-purifier: building the dependencies of /home/runner/work/_temp/npm-legacy-native-il0wmxsk/project
+2026-11-07T11:53:44.1578184Z npm-purifier: npm runs offline in /home/runner/work/_temp/npm-legacy-native-il0wmxsk/project through the npm-purifier npm wrapper
+2026-11-07T11:53:47.7792741Z npm-purifier: building legacy-npm-app
+2026-11-07T11:53:49.5373250Z these 3 derivations will be built:
+2026-11-07T11:53:49.5377245Z   /nix/store/5n9h6643vqlq6iphq0y2468pnzvhngmi-npm-project-production-modules.drv
+2026-11-07T11:53:49.5377805Z   /nix/store/k8dnr7kfbx83qw1sns4aj71vp5aac4z7-npm-project-release.drv
+2026-11-07T11:53:49.6029143Z   /nix/store/mw00gzxmsdl8qjd546s8xyw4nlfhp4hz-legacy-npm-app-1.0.0.drv
+2026-11-07T11:53:49.6029766Z building '/nix/store/5n9h6643vqlq6iphq0y2468pnzvhngmi-npm-project-production-modules.drv'...
+2026-11-07T11:53:49.6153541Z building '/nix/store/k8dnr7kfbx83qw1sns4aj71vp5aac4z7-npm-project-release.drv'...
+2026-11-07T11:53:51.7389000Z building '/nix/store/mw00gzxmsdl8qjd546s8xyw4nlfhp4hz-legacy-npm-app-1.0.0.drv'...
+2026-11-07T11:53:52.2600778Z npm notice 
+2026-11-07T11:53:52.2602786Z npm notice 📦  legacy-npm-app@1.0.0
+2026-11-07T11:53:52.2604967Z npm notice === Tarball Contents === 
+2026-11-07T11:53:52.2622230Z npm notice 8B   built.txt   
+2026-11-07T11:53:52.2623456Z npm notice 109B cli.js      
+2026-11-07T11:53:52.2623722Z npm notice 420B package.json
+2026-11-07T11:53:52.2624068Z npm notice === Tarball Details === 
+2026-11-07T11:53:52.2633647Z npm notice name:          legacy-npm-app                          
+2026-11-07T11:53:52.2634031Z npm notice version:       1.0.0                                   
+2026-11-07T11:53:52.2634433Z npm notice filename:      legacy-npm-app-1.0.0.tgz                
+2026-11-07T11:53:52.2634824Z npm notice package size:  428 B                                   
+2026-11-07T11:53:52.2635194Z npm notice unpacked size: 537 B                                   
+2026-11-07T11:53:52.2635575Z npm notice shasum:        cdc500ab27bd7debcf0e8e1afcf0bb60503792ce
+2026-11-07T11:53:52.2635973Z npm notice integrity:     sha512-Id08MMNoqWIZz[...]atbO3YfrKLCGg==
+2026-11-07T11:53:52.2636350Z npm notice total files:   3                                       
+2026-11-07T11:53:52.2636641Z npm notice 
+2026-11-07T11:53:52.2654119Z npm notice Publishing to http://127.0.0.1:34103/
+2026-11-07T11:53:52.6905990Z PASS ordinary registry resolution/install/execution of prepared graph
+2026-11-07T11:53:53.1402381Z PASS npm8.19.4/Node16.20.2 lock, prefetch, offline install, build/test and actual publication; native lock preserved after resolution
+2026-11-07T11:53:53.1498408Z Native registry workflow: aarch64-linux Node 18.20.8
+2026-11-07T11:53:55.6905549Z these 5 derivations will be built:
+2026-11-07T11:53:55.6911607Z   /nix/store/239647ln6p7gkff01a0iqn6wc6h6gcd5-node-v18.20.8-linux-arm64.tar.xz.drv
+2026-11-07T11:53:55.6912360Z   /nix/store/sd4bf5axjm9skj7ks2zj9ycaarwzy6nf-nodejs-legacy-fixture-18.20.8.drv
+2026-11-07T11:53:55.6912966Z   /nix/store/3jwx64fkcszqs9pvqwpia7yv905wrs04-npm-purifier.drv
+2026-11-07T11:53:55.6913427Z   /nix/store/g8i5dlb4nv11hwnnv5jxwhx5a8c1k5zs-npm.drv
+2026-11-07T11:53:55.6913912Z   /nix/store/aq8ixf20kfki25f89gss8fkcbbv42gzz-npm-node-18.20.8-tools.drv
+2026-11-07T11:53:55.7100041Z building '/nix/store/239647ln6p7gkff01a0iqn6wc6h6gcd5-node-v18.20.8-linux-arm64.tar.xz.drv'...
+2026-11-07T11:53:55.9898848Z building '/nix/store/sd4bf5axjm9skj7ks2zj9ycaarwzy6nf-nodejs-legacy-fixture-18.20.8.drv'...
+2026-11-07T11:53:59.3640826Z building '/nix/store/3jwx64fkcszqs9pvqwpia7yv905wrs04-npm-purifier.drv'...
+2026-11-07T11:53:59.5665685Z building '/nix/store/g8i5dlb4nv11hwnnv5jxwhx5a8c1k5zs-npm.drv'...
+2026-11-07T11:53:59.7011837Z building '/nix/store/aq8ixf20kfki25f89gss8fkcbbv42gzz-npm-node-18.20.8-tools.drv'...
+2026-11-07T11:54:01.6907517Z this derivation will be built:
+2026-11-07T11:54:01.6908791Z   /nix/store/66l98pifdkan7ycp4nv9wigr28h3slfj-npm-project-release.drv
+2026-11-07T11:54:01.7562216Z building '/nix/store/66l98pifdkan7ycp4nv9wigr28h3slfj-npm-project-release.drv'...
+2026-11-07T11:54:05.4389047Z this derivation will be built:
+2026-11-07T11:54:05.4389453Z   /nix/store/hbnzkvibh8xkdk93qw3gfwbm3kvr17mw-npm-projection.drv
+2026-11-07T11:54:05.4994316Z building '/nix/store/hbnzkvibh8xkdk93qw3gfwbm3kvr17mw-npm-projection.drv'...
+2026-11-07T11:54:06.1259106Z npm-purifier: building the dependencies of /home/runner/work/_temp/npm-legacy-native-2spzc3n4/project
+2026-11-07T11:54:06.1591265Z unpacking 'github:nix-caisson/caisson/ec291bc9637a95606f7fa9df942d5e803705d8f5?narHash=sha256-FAixpwyAWmhrzmh0fMGt7y0KIcNLqBIGICfMvbExRLo%3D' into the Git cache...
+2026-11-07T11:54:06.7248144Z unpacking 'github:nix-caisson/caisson-core/6868bca2682e96d56714bc9c9adcf0048fbe132f?narHash=sha256-OzlG2Nhl/kU2UUPq%2BARH/GKUHmOqAxQu5Ug/%2BaT1ECc%3D' into the Git cache...
+2026-11-07T11:54:07.0002434Z unpacking 'github:nix-community/nixpkgs.lib/b91d4f1bc958e0bdfd6cb3db4a280486006f5002?narHash=sha256-XtTdVeJX6X/gU%2BvGIUEJHirotv/lYP5%2BQ9irMH6HWPY%3D' into the Git cache...
+2026-11-07T11:54:07.3062983Z unpacking 'github:hercules-ci/flake-parts/31729ca8cbdb4fa927b34e5f4353e6a83f39e993?narHash=sha256-glZLQlzIn1fXH6PazR2iUmTo7kzzyYSshrWhLS9TqCU%3D' into the Git cache...
+2026-11-07T11:54:07.5620780Z unpacking 'github:nix-purifiers/purifier/b9cccd7799ef7f82ca9bc0b67340714cf4b3c4ea?narHash=sha256-Z5nzMEddKHAvAxhzc%2Bm/QM5aTjPzd52MxETuTrAtAC4%3D' into the Git cache...
+2026-11-07T11:54:07.8098583Z unpacking 'github:nix-community/nixpkgs.lib/7851ba61fd862b277cb6a9cef37394bc18bb94e4?narHash=sha256-ThkfL3D/FhCiZFc9%2B3BtxwuMmpuK%2B/bGtXCSo1%2ByVew%3D' into the Git cache...
+2026-11-07T11:54:08.1053045Z unpacking 'github:hercules-ci/flake-parts/024633cd702b10285db5cb19b40ad48d2399ba60?narHash=sha256-zTwuwezD0w3hpga6a6P8emidzAZFyWqlNeRBlpWOOl8%3D' into the Git cache...
+2026-11-07T11:54:08.6552250Z npm-purifier: npm runs offline in /home/runner/work/_temp/npm-legacy-native-2spzc3n4/project through the npm-purifier npm wrapper
+2026-11-07T11:54:09.5353561Z npm warn old lockfile
+2026-11-07T11:54:09.6611982Z npm warn old lockfile The package-lock.json file was created with an old version of npm,
+2026-11-07T11:54:09.6612570Z npm warn old lockfile so supplemental metadata must be fetched from the registry.
+2026-11-07T11:54:09.6612949Z npm warn old lockfile
+2026-11-07T11:54:09.6613237Z npm warn old lockfile This is a one-time fix-up, please be patient...
+2026-11-07T11:54:09.6613567Z npm warn old lockfile
+2026-11-07T11:54:09.6613919Z npm-purifier: package-lock.json records every download; no npm-purifier.lock.json needed
+2026-11-07T11:54:09.8501048Z npm-purifier: building the dependencies of /home/runner/work/_temp/npm-legacy-native-2spzc3n4/project
+2026-11-07T11:54:10.3019756Z npm-purifier: npm runs offline in /home/runner/work/_temp/npm-legacy-native-2spzc3n4/project through the npm-purifier npm wrapper
+2026-11-07T11:54:12.3132565Z npm-purifier: building legacy-npm-app
+2026-11-07T11:54:14.1529836Z these 3 derivations will be built:
+2026-11-07T11:54:14.1533687Z   /nix/store/a0viz3fir1nvafil1qmcmxglxf40hhrg-npm-project-production-modules.drv
+2026-11-07T11:54:14.1534254Z   /nix/store/idkj7yqiqaddbnk7njihsydyz5jiizyn-npm-project-release.drv
+2026-11-07T11:54:14.1534735Z   /nix/store/f4lnibz1mv1c24h5l5fd0jz01di3rcms-legacy-npm-app-1.0.0.drv
+2026-11-07T11:54:14.2197931Z building '/nix/store/a0viz3fir1nvafil1qmcmxglxf40hhrg-npm-project-production-modules.drv'...
+2026-11-07T11:54:14.2333007Z building '/nix/store/idkj7yqiqaddbnk7njihsydyz5jiizyn-npm-project-release.drv'...
+2026-11-07T11:54:16.0781777Z building '/nix/store/f4lnibz1mv1c24h5l5fd0jz01di3rcms-legacy-npm-app-1.0.0.drv'...
+2026-11-07T11:54:16.6907653Z npm notice
+2026-11-07T11:54:16.6911072Z npm notice 📦  legacy-npm-app@1.0.0
+2026-11-07T11:54:16.6911888Z npm notice Tarball Contents
+2026-11-07T11:54:16.6915074Z npm notice 8B built.txt
+2026-11-07T11:54:16.6915295Z npm notice 109B cli.js
+2026-11-07T11:54:16.6915499Z npm notice 420B package.json
+2026-11-07T11:54:16.6915717Z npm notice Tarball Details
+2026-11-07T11:54:16.6915934Z npm notice name: legacy-npm-app
+2026-11-07T11:54:16.6916152Z npm notice version: 1.0.0
+2026-11-07T11:54:16.6916389Z npm notice filename: legacy-npm-app-1.0.0.tgz
+2026-11-07T11:54:16.6916662Z npm notice package size: 433 B
+2026-11-07T11:54:16.6916887Z npm notice unpacked size: 537 B
+2026-11-07T11:54:16.6917170Z npm notice shasum: bb0f61d9bbb480b8054983de6e0c22d0f6834857
+2026-11-07T11:54:16.6917545Z npm notice integrity: sha512-Sof2a0hFQWHzo[...]kktp8+HrBBKAw==
+2026-11-07T11:54:16.6917862Z npm notice total files: 3
+2026-11-07T11:54:16.6920640Z npm notice
+2026-11-07T11:54:16.6947098Z npm notice Publishing to http://127.0.0.1:43651/ with tag latest and default access
+2026-11-07T11:54:17.1717502Z PASS ordinary registry resolution/install/execution of prepared graph
+2026-11-07T11:54:17.6222719Z PASS npm10.8.2/Node18.20.8 lock, prefetch, offline install, build/test and actual publication; native lock preserved after resolution
+2026-11-07T11:54:17.6327581Z Native registry workflow: aarch64-linux Node 20.19.0
+2026-11-07T11:54:20.2750559Z these 5 derivations will be built:
+2026-11-07T11:54:20.2756324Z   /nix/store/c9xhbx6qg0zv99l3wkc55v830n9d4x65-node-v20.19.0-linux-arm64.tar.xz.drv
+2026-11-07T11:54:20.2756908Z   /nix/store/0ijn285g5aivmq7agn9zq3hc388s7x44-nodejs-legacy-fixture-20.19.0.drv
+2026-11-07T11:54:20.2757384Z   /nix/store/vxmzlghsm4kj4yf73pzk8qzmviyn3wik-npm-purifier.drv
+2026-11-07T11:54:20.2757760Z   /nix/store/26ncv8h5pwwpwcpwjxqgz4r5kzap5kdh-npm.drv
+2026-11-07T11:54:20.2758160Z   /nix/store/4h77w1mpfk638gdy5ym5z4dycvakbpg0-npm-node-20.19.0-tools.drv
+2026-11-07T11:54:20.2955494Z building '/nix/store/c9xhbx6qg0zv99l3wkc55v830n9d4x65-node-v20.19.0-linux-arm64.tar.xz.drv'...
+2026-11-07T11:54:20.5605894Z building '/nix/store/0ijn285g5aivmq7agn9zq3hc388s7x44-nodejs-legacy-fixture-20.19.0.drv'...
+2026-11-07T11:54:24.1355140Z building '/nix/store/vxmzlghsm4kj4yf73pzk8qzmviyn3wik-npm-purifier.drv'...
+2026-11-07T11:54:24.3417750Z building '/nix/store/26ncv8h5pwwpwcpwjxqgz4r5kzap5kdh-npm.drv'...
+2026-11-07T11:54:24.4736086Z building '/nix/store/4h77w1mpfk638gdy5ym5z4dycvakbpg0-npm-node-20.19.0-tools.drv'...
+2026-11-07T11:54:26.4155274Z this derivation will be built:
+2026-11-07T11:54:26.4156575Z   /nix/store/9z6nkvgws3f60j54v98zc2sngsdbsr1f-npm-project-release.drv
+2026-11-07T11:54:26.4830887Z building '/nix/store/9z6nkvgws3f60j54v98zc2sngsdbsr1f-npm-project-release.drv'...
+2026-11-07T11:54:30.0033135Z this derivation will be built:
+2026-11-07T11:54:30.0034101Z   /nix/store/wqvi3jfbbfkj90z6q0xflk0y7dr210fz-npm-projection.drv
+2026-11-07T11:54:30.0648351Z building '/nix/store/wqvi3jfbbfkj90z6q0xflk0y7dr210fz-npm-projection.drv'...
+2026-11-07T11:54:30.6501360Z npm-purifier: building the dependencies of /home/runner/work/_temp/npm-legacy-native-5me78ghf/project
+2026-11-07T11:54:30.6852345Z unpacking 'github:nix-caisson/caisson/ec291bc9637a95606f7fa9df942d5e803705d8f5?narHash=sha256-FAixpwyAWmhrzmh0fMGt7y0KIcNLqBIGICfMvbExRLo%3D' into the Git cache...
+2026-11-07T11:54:31.3249220Z unpacking 'github:nix-caisson/caisson-core/6868bca2682e96d56714bc9c9adcf0048fbe132f?narHash=sha256-OzlG2Nhl/kU2UUPq%2BARH/GKUHmOqAxQu5Ug/%2BaT1ECc%3D' into the Git cache...
+2026-11-07T11:54:31.6017800Z unpacking 'github:nix-community/nixpkgs.lib/b91d4f1bc958e0bdfd6cb3db4a280486006f5002?narHash=sha256-XtTdVeJX6X/gU%2BvGIUEJHirotv/lYP5%2BQ9irMH6HWPY%3D' into the Git cache...
+2026-11-07T11:54:31.9766636Z unpacking 'github:hercules-ci/flake-parts/31729ca8cbdb4fa927b34e5f4353e6a83f39e993?narHash=sha256-glZLQlzIn1fXH6PazR2iUmTo7kzzyYSshrWhLS9TqCU%3D' into the Git cache...
+2026-11-07T11:54:32.2830096Z unpacking 'github:nix-purifiers/purifier/b9cccd7799ef7f82ca9bc0b67340714cf4b3c4ea?narHash=sha256-Z5nzMEddKHAvAxhzc%2Bm/QM5aTjPzd52MxETuTrAtAC4%3D' into the Git cache...
+2026-11-07T11:54:32.5524301Z unpacking 'github:nix-community/nixpkgs.lib/7851ba61fd862b277cb6a9cef37394bc18bb94e4?narHash=sha256-ThkfL3D/FhCiZFc9%2B3BtxwuMmpuK%2B/bGtXCSo1%2ByVew%3D' into the Git cache...
+2026-11-07T11:54:32.8236449Z unpacking 'github:hercules-ci/flake-parts/024633cd702b10285db5cb19b40ad48d2399ba60?narHash=sha256-zTwuwezD0w3hpga6a6P8emidzAZFyWqlNeRBlpWOOl8%3D' into the Git cache...
+2026-11-07T11:54:33.3366054Z npm-purifier: npm runs offline in /home/runner/work/_temp/npm-legacy-native-5me78ghf/project through the npm-purifier npm wrapper
+2026-11-07T11:54:34.0803437Z npm warn old lockfile
+2026-11-07T11:54:34.0803878Z npm warn old lockfile The package-lock.json file was created with an old version of npm,
+2026-11-07T11:54:34.0804406Z npm warn old lockfile so supplemental metadata must be fetched from the registry.
+2026-11-07T11:54:34.0804806Z npm warn old lockfile
+2026-11-07T11:54:34.0805095Z npm warn old lockfile This is a one-time fix-up, please be patient...
+2026-11-07T11:54:34.0805443Z npm warn old lockfile
+2026-11-07T11:54:34.1993311Z npm-purifier: package-lock.json records every download; no npm-purifier.lock.json needed
+2026-11-07T11:54:34.3705934Z npm-purifier: building the dependencies of /home/runner/work/_temp/npm-legacy-native-5me78ghf/project
+2026-11-07T11:54:34.8267282Z npm-purifier: npm runs offline in /home/runner/work/_temp/npm-legacy-native-5me78ghf/project through the npm-purifier npm wrapper
+2026-11-07T11:54:36.5238200Z npm-purifier: building legacy-npm-app
+2026-11-07T11:54:38.3059628Z these 3 derivations will be built:
+2026-11-07T11:54:38.3063802Z   /nix/store/ingf8c486516kagcz3avj528xc72bkxg-npm-project-production-modules.drv
+2026-11-07T11:54:38.3064343Z   /nix/store/zkq328dzw146xba45y13ha865mxnr917-npm-project-release.drv
+2026-11-07T11:54:38.3064805Z   /nix/store/9bsxdr8w9grd9df28x377bq7gp5jg0x9-legacy-npm-app-1.0.0.drv
+2026-11-07T11:54:38.3725724Z building '/nix/store/ingf8c486516kagcz3avj528xc72bkxg-npm-project-production-modules.drv'...
+2026-11-07T11:54:38.3855901Z building '/nix/store/zkq328dzw146xba45y13ha865mxnr917-npm-project-release.drv'...
+2026-11-07T11:54:40.0268538Z building '/nix/store/9bsxdr8w9grd9df28x377bq7gp5jg0x9-legacy-npm-app-1.0.0.drv'...
+2026-11-07T11:54:40.5833391Z npm notice
+2026-11-07T11:54:40.5835327Z npm notice 📦  legacy-npm-app@1.0.0
+2026-11-07T11:54:40.5836923Z npm notice Tarball Contents
+2026-11-07T11:54:40.5839790Z npm notice 8B built.txt
+2026-11-07T11:54:40.5840090Z npm notice 109B cli.js
+2026-11-07T11:54:40.5840295Z npm notice 420B package.json
+2026-11-07T11:54:40.5840518Z npm notice Tarball Details
+2026-11-07T11:54:40.5840737Z npm notice name: legacy-npm-app
+2026-11-07T11:54:40.5841051Z npm notice version: 1.0.0
+2026-11-07T11:54:40.5841408Z npm notice filename: legacy-npm-app-1.0.0.tgz
+2026-11-07T11:54:40.5841691Z npm notice package size: 431 B
+2026-11-07T11:54:40.5843399Z npm notice unpacked size: 537 B
+2026-11-07T11:54:40.5843841Z npm notice shasum: 274a9b3cd5cb64d0fba51788a86542e2d1e7871e
+2026-11-07T11:54:40.5844231Z npm notice integrity: sha512-a4wQKgEGN85GE[...]Yl8K4bZdVqE+A==
+2026-11-07T11:54:40.5844546Z npm notice total files: 3
+2026-11-07T11:54:40.5844742Z npm notice
+2026-11-07T11:54:40.5867818Z npm notice Publishing to http://127.0.0.1:46269/ with tag latest and default access
+2026-11-07T11:54:40.9960757Z PASS ordinary registry resolution/install/execution of prepared graph
+2026-11-07T11:54:41.4510786Z PASS npm10.8.2/Node20.19.0 lock, prefetch, offline install, build/test and actual publication; native lock preserved after resolution
+2026-11-07T11:54:41.4609877Z Native registry workflow: aarch64-linux Node 22.14.0
+2026-11-07T11:54:44.0961300Z these 5 derivations will be built:
+2026-11-07T11:54:44.0965240Z   /nix/store/sx9rp1i7sm9cyi1vl399p11mqyhl7gj4-node-v22.14.0-linux-arm64.tar.xz.drv
+2026-11-07T11:54:44.0965808Z   /nix/store/57vfd2lk28c3jdgqv8dl80yh7xhjm6q9-nodejs-legacy-fixture-22.14.0.drv
+2026-11-07T11:54:44.0966777Z   /nix/store/jgyh40cppbgypy0nhxx0cjl945z8jc9s-npm-purifier.drv
+2026-11-07T11:54:44.0967395Z   /nix/store/g7609aapnc0rcsjl6hy0kzxzilh42j61-npm.drv
+2026-11-07T11:54:44.0967799Z   /nix/store/1lhmbf4a8wln4vg5q20zp7m5rms3cncd-npm-node-22.14.0-tools.drv
+2026-11-07T11:54:44.1148709Z building '/nix/store/sx9rp1i7sm9cyi1vl399p11mqyhl7gj4-node-v22.14.0-linux-arm64.tar.xz.drv'...
+2026-11-07T11:54:44.4419236Z building '/nix/store/57vfd2lk28c3jdgqv8dl80yh7xhjm6q9-nodejs-legacy-fixture-22.14.0.drv'...
+2026-11-07T11:54:48.3735577Z building '/nix/store/jgyh40cppbgypy0nhxx0cjl945z8jc9s-npm-purifier.drv'...
+2026-11-07T11:54:48.5750937Z building '/nix/store/g7609aapnc0rcsjl6hy0kzxzilh42j61-npm.drv'...
+2026-11-07T11:54:48.7056165Z building '/nix/store/1lhmbf4a8wln4vg5q20zp7m5rms3cncd-npm-node-22.14.0-tools.drv'...
+2026-11-07T11:54:50.6780876Z this derivation will be built:
+2026-11-07T11:54:50.6782292Z   /nix/store/n4bfzs75ivrvxf7vckxvnjql2jbqxm2p-npm-project-release.drv
+2026-11-07T11:54:50.7463924Z building '/nix/store/n4bfzs75ivrvxf7vckxvnjql2jbqxm2p-npm-project-release.drv'...
+2026-11-07T11:54:54.3440750Z this derivation will be built:
+2026-11-07T11:54:54.3441331Z   /nix/store/j0z3yxd4l42ya5x7xz3k6a0c3racc1mn-npm-projection.drv
+2026-11-07T11:54:54.4050463Z building '/nix/store/j0z3yxd4l42ya5x7xz3k6a0c3racc1mn-npm-projection.drv'...
+2026-11-07T11:54:54.9814333Z npm-purifier: building the dependencies of /home/runner/work/_temp/npm-legacy-native-4jeuh80l/project
+2026-11-07T11:54:55.0152546Z unpacking 'github:nix-caisson/caisson/ec291bc9637a95606f7fa9df942d5e803705d8f5?narHash=sha256-FAixpwyAWmhrzmh0fMGt7y0KIcNLqBIGICfMvbExRLo%3D' into the Git cache...
+2026-11-07T11:54:55.5491672Z unpacking 'github:nix-caisson/caisson-core/6868bca2682e96d56714bc9c9adcf0048fbe132f?narHash=sha256-OzlG2Nhl/kU2UUPq%2BARH/GKUHmOqAxQu5Ug/%2BaT1ECc%3D' into the Git cache...
+2026-11-07T11:54:55.8030406Z unpacking 'github:nix-community/nixpkgs.lib/b91d4f1bc958e0bdfd6cb3db4a280486006f5002?narHash=sha256-XtTdVeJX6X/gU%2BvGIUEJHirotv/lYP5%2BQ9irMH6HWPY%3D' into the Git cache...
+2026-11-07T11:54:56.0673170Z unpacking 'github:hercules-ci/flake-parts/31729ca8cbdb4fa927b34e5f4353e6a83f39e993?narHash=sha256-glZLQlzIn1fXH6PazR2iUmTo7kzzyYSshrWhLS9TqCU%3D' into the Git cache...
+2026-11-07T11:54:56.2754725Z unpacking 'github:nix-purifiers/purifier/b9cccd7799ef7f82ca9bc0b67340714cf4b3c4ea?narHash=sha256-Z5nzMEddKHAvAxhzc%2Bm/QM5aTjPzd52MxETuTrAtAC4%3D' into the Git cache...
+2026-11-07T11:54:56.5242118Z unpacking 'github:nix-community/nixpkgs.lib/7851ba61fd862b277cb6a9cef37394bc18bb94e4?narHash=sha256-ThkfL3D/FhCiZFc9%2B3BtxwuMmpuK%2B/bGtXCSo1%2ByVew%3D' into the Git cache...
+2026-11-07T11:54:56.7928652Z unpacking 'github:hercules-ci/flake-parts/024633cd702b10285db5cb19b40ad48d2399ba60?narHash=sha256-zTwuwezD0w3hpga6a6P8emidzAZFyWqlNeRBlpWOOl8%3D' into the Git cache...
+2026-11-07T11:54:57.3216167Z npm-purifier: npm runs offline in /home/runner/work/_temp/npm-legacy-native-4jeuh80l/project through the npm-purifier npm wrapper
+2026-11-07T11:54:58.0668412Z npm warn old lockfile
+2026-11-07T11:54:58.0668844Z npm warn old lockfile The package-lock.json file was created with an old version of npm,
+2026-11-07T11:54:58.0669391Z npm warn old lockfile so supplemental metadata must be fetched from the registry.
+2026-11-07T11:54:58.0669758Z npm warn old lockfile
+2026-11-07T11:54:58.0670044Z npm warn old lockfile This is a one-time fix-up, please be patient...
+2026-11-07T11:54:58.0670383Z npm warn old lockfile
+2026-11-07T11:54:58.2017211Z npm-purifier: package-lock.json records every download; no npm-purifier.lock.json needed
+2026-11-07T11:54:58.3647562Z npm-purifier: building the dependencies of /home/runner/work/_temp/npm-legacy-native-4jeuh80l/project
+2026-11-07T11:54:58.8204649Z npm-purifier: npm runs offline in /home/runner/work/_temp/npm-legacy-native-4jeuh80l/project through the npm-purifier npm wrapper
+2026-11-07T11:55:00.4185031Z npm-purifier: building legacy-npm-app
+2026-11-07T11:55:02.2121678Z these 3 derivations will be built:
+2026-11-07T11:55:02.2125786Z   /nix/store/8sr5jwcj1jrs2f48bv98j3gjpjga0ki2-npm-project-release.drv
+2026-11-07T11:55:02.2126388Z   /nix/store/j04h8b9plh4qxkwffmy7ik3alnd2l490-npm-project-production-modules.drv
+2026-11-07T11:55:02.2127114Z   /nix/store/n6d845gvczphb5s1562j9crmy87dqqhk-legacy-npm-app-1.0.0.drv
+2026-11-07T11:55:02.2788866Z building '/nix/store/j04h8b9plh4qxkwffmy7ik3alnd2l490-npm-project-production-modules.drv'...
+2026-11-07T11:55:02.2925840Z building '/nix/store/8sr5jwcj1jrs2f48bv98j3gjpjga0ki2-npm-project-release.drv'...
+2026-11-07T11:55:03.9392979Z building '/nix/store/n6d845gvczphb5s1562j9crmy87dqqhk-legacy-npm-app-1.0.0.drv'...
+2026-11-07T11:55:04.4659110Z npm notice
+2026-11-07T11:55:04.4660930Z npm notice 📦  legacy-npm-app@1.0.0
+2026-11-07T11:55:04.4661368Z npm notice Tarball Contents
+2026-11-07T11:55:04.4663322Z npm notice 8B built.txt
+2026-11-07T11:55:04.4663524Z npm notice 109B cli.js
+2026-11-07T11:55:04.4663727Z npm notice 420B package.json
+2026-11-07T11:55:04.4663956Z npm notice Tarball Details
+2026-11-07T11:55:04.4664343Z npm notice name: legacy-npm-app
+2026-11-07T11:55:04.4664822Z npm notice version: 1.0.0
+2026-11-07T11:55:04.4665141Z npm notice filename: legacy-npm-app-1.0.0.tgz
+2026-11-07T11:55:04.4665438Z npm notice package size: 431 B
+2026-11-07T11:55:04.4668609Z npm notice unpacked size: 537 B
+2026-11-07T11:55:04.4669038Z npm notice shasum: 1256796be32a3eef2cba5a739cab6a20fab2309f
+2026-11-07T11:55:04.4669436Z npm notice integrity: sha512-goltaoOVLmDbo[...]pF0a5P3t2PBvg==
+2026-11-07T11:55:04.4669934Z npm notice total files: 3
+2026-11-07T11:55:04.4670156Z npm notice
+2026-11-07T11:55:04.4691866Z npm notice Publishing to http://127.0.0.1:45817/ with tag latest and default access
+2026-11-07T11:55:04.8318532Z PASS ordinary registry resolution/install/execution of prepared graph
+2026-11-07T11:55:05.2876080Z PASS npm10.9.2/Node22.14.0 lock, prefetch, offline install, build/test and actual publication; native lock preserved after resolution
+2026-11-07T11:55:05.2978479Z Native registry workflow: aarch64-linux Node 26.0.0
+2026-11-07T11:55:07.8780863Z these 5 derivations will be built:
+2026-11-07T11:55:07.8785866Z   /nix/store/frcy6aj2fddg8ka087a774553zsa9mxc-node-v26.0.0-linux-arm64.tar.xz.drv
+2026-11-07T11:55:07.8786448Z   /nix/store/3cpw6cw39l2hxzmhdbc4sqq460bxraa2-nodejs-legacy-fixture-26.0.0.drv
+2026-11-07T11:55:07.8786922Z   /nix/store/5fxs5yy359g1fblkxzn0y013fjva4rhb-npm-purifier.drv
+2026-11-07T11:55:07.8787463Z   /nix/store/yn73ndgfa4h4m2gc4fbr1kw0c322lap4-npm.drv
+2026-11-07T11:55:07.8787946Z   /nix/store/nplmf9029r9nsx4pp5x811rwha8gzymp-npm-node-26.0.0-tools.drv
+2026-11-07T11:55:07.8966437Z building '/nix/store/frcy6aj2fddg8ka087a774553zsa9mxc-node-v26.0.0-linux-arm64.tar.xz.drv'...
+2026-11-07T11:55:08.1972506Z building '/nix/store/3cpw6cw39l2hxzmhdbc4sqq460bxraa2-nodejs-legacy-fixture-26.0.0.drv'...
+2026-11-07T11:55:12.3051211Z building '/nix/store/5fxs5yy359g1fblkxzn0y013fjva4rhb-npm-purifier.drv'...
+2026-11-07T11:55:12.5146214Z building '/nix/store/yn73ndgfa4h4m2gc4fbr1kw0c322lap4-npm.drv'...
+2026-11-07T11:55:12.6493902Z building '/nix/store/nplmf9029r9nsx4pp5x811rwha8gzymp-npm-node-26.0.0-tools.drv'...
+2026-11-07T11:55:14.6658931Z this derivation will be built:
+2026-11-07T11:55:14.6659911Z   /nix/store/h6bqsv5b0a9agsdad0v9ks8k6i407pbs-npm-project-release.drv
+2026-11-07T11:55:14.7325218Z building '/nix/store/h6bqsv5b0a9agsdad0v9ks8k6i407pbs-npm-project-release.drv'...
+2026-11-07T11:55:18.2478105Z this derivation will be built:
+2026-11-07T11:55:18.2479719Z   /nix/store/793xlwrhhiycskhgdf473pmc68z5bhxs-npm-projection.drv
+2026-11-07T11:55:18.3089459Z building '/nix/store/793xlwrhhiycskhgdf473pmc68z5bhxs-npm-projection.drv'...
+2026-11-07T11:55:18.8894269Z npm-purifier: building the dependencies of /home/runner/work/_temp/npm-legacy-native-1i0xgvn8/project
+2026-11-07T11:55:18.9245716Z unpacking 'github:nix-caisson/caisson/ec291bc9637a95606f7fa9df942d5e803705d8f5?narHash=sha256-FAixpwyAWmhrzmh0fMGt7y0KIcNLqBIGICfMvbExRLo%3D' into the Git cache...
+2026-11-07T11:55:19.5297970Z unpacking 'github:nix-caisson/caisson-core/6868bca2682e96d56714bc9c9adcf0048fbe132f?narHash=sha256-OzlG2Nhl/kU2UUPq%2BARH/GKUHmOqAxQu5Ug/%2BaT1ECc%3D' into the Git cache...
+2026-11-07T11:55:19.8410028Z unpacking 'github:nix-community/nixpkgs.lib/b91d4f1bc958e0bdfd6cb3db4a280486006f5002?narHash=sha256-XtTdVeJX6X/gU%2BvGIUEJHirotv/lYP5%2BQ9irMH6HWPY%3D' into the Git cache...
+2026-11-07T11:55:20.1380121Z unpacking 'github:hercules-ci/flake-parts/31729ca8cbdb4fa927b34e5f4353e6a83f39e993?narHash=sha256-glZLQlzIn1fXH6PazR2iUmTo7kzzyYSshrWhLS9TqCU%3D' into the Git cache...
+2026-11-07T11:55:20.4341854Z unpacking 'github:nix-purifiers/purifier/b9cccd7799ef7f82ca9bc0b67340714cf4b3c4ea?narHash=sha256-Z5nzMEddKHAvAxhzc%2Bm/QM5aTjPzd52MxETuTrAtAC4%3D' into the Git cache...
+2026-11-07T11:55:20.6792150Z unpacking 'github:nix-community/nixpkgs.lib/7851ba61fd862b277cb6a9cef37394bc18bb94e4?narHash=sha256-ThkfL3D/FhCiZFc9%2B3BtxwuMmpuK%2B/bGtXCSo1%2ByVew%3D' into the Git cache...
+2026-11-07T11:55:20.9164610Z unpacking 'github:hercules-ci/flake-parts/024633cd702b10285db5cb19b40ad48d2399ba60?narHash=sha256-zTwuwezD0w3hpga6a6P8emidzAZFyWqlNeRBlpWOOl8%3D' into the Git cache...
+2026-11-07T11:55:21.4699162Z npm-purifier: npm runs offline in /home/runner/work/_temp/npm-legacy-native-1i0xgvn8/project through the npm-purifier npm wrapper
+2026-11-07T11:55:22.2001675Z npm warn old lockfile
+2026-11-07T11:55:22.2002113Z npm warn old lockfile The package-lock.json file was created with an old version of npm,
+2026-11-07T11:55:22.2002648Z npm warn old lockfile so supplemental metadata must be fetched from the registry.
+2026-11-07T11:55:22.2003019Z npm warn old lockfile
+2026-11-07T11:55:22.2003305Z npm warn old lockfile This is a one-time fix-up, please be patient...
+2026-11-07T11:55:22.2003635Z npm warn old lockfile
+2026-11-07T11:55:22.3801968Z npm-purifier: package-lock.json records every download; no npm-purifier.lock.json needed
+2026-11-07T11:55:22.5491320Z npm-purifier: building the dependencies of /home/runner/work/_temp/npm-legacy-native-1i0xgvn8/project
+2026-11-07T11:55:23.0001737Z npm-purifier: npm runs offline in /home/runner/work/_temp/npm-legacy-native-1i0xgvn8/project through the npm-purifier npm wrapper
+2026-11-07T11:55:23.5287100Z npm warn Unknown env config "nodedir". This will stop working in the next major version of npm. See `npm help npmrc` for supported config options.
+2026-11-07T11:55:23.9602167Z npm warn Unknown env config "nodedir". This will stop working in the next major version of npm. See `npm help npmrc` for supported config options.
+2026-11-07T11:55:24.3832495Z npm warn Unknown env config "nodedir". This will stop working in the next major version of npm. See `npm help npmrc` for supported config options.
+2026-11-07T11:55:24.5856489Z npm-purifier: building legacy-npm-app
+2026-11-07T11:55:26.3943147Z these 3 derivations will be built:
+2026-11-07T11:55:26.3949219Z   /nix/store/slh2jmym4mpi9iija7i3ps2fmnp4h91p-npm-project-release.drv
+2026-11-07T11:55:26.3949775Z   /nix/store/vknwv8ch76apfwwml5bf8aczacps0zr7-npm-project-production-modules.drv
+2026-11-07T11:55:26.3950316Z   /nix/store/1arnc0dlxx7as180j32d994ybp983w7r-legacy-npm-app-1.0.0.drv
+2026-11-07T11:55:26.4608688Z building '/nix/store/vknwv8ch76apfwwml5bf8aczacps0zr7-npm-project-production-modules.drv'...
+2026-11-07T11:55:26.4736707Z building '/nix/store/slh2jmym4mpi9iija7i3ps2fmnp4h91p-npm-project-release.drv'...
+2026-11-07T11:55:28.0866086Z building '/nix/store/1arnc0dlxx7as180j32d994ybp983w7r-legacy-npm-app-1.0.0.drv'...
+2026-11-07T11:55:28.5270513Z npm warn Unknown project config "always-auth". This will stop working in the next major version of npm. See `npm help npmrc` for supported config options.
+2026-11-07T11:55:28.5821508Z npm notice
+2026-11-07T11:55:28.5825246Z npm notice 📦  legacy-npm-app@1.0.0
+2026-11-07T11:55:28.5825976Z npm notice Tarball Contents
+2026-11-07T11:55:28.5828224Z npm notice 7B built.txt
+2026-11-07T11:55:28.5828457Z npm notice 109B cli.js
+2026-11-07T11:55:28.5828661Z npm notice 420B package.json
+2026-11-07T11:55:28.5828903Z npm notice Tarball Details
+2026-11-07T11:55:28.5830143Z npm notice name: legacy-npm-app
+2026-11-07T11:55:28.5830671Z npm notice version: 1.0.0
+2026-11-07T11:55:28.5831386Z npm notice filename: legacy-npm-app-1.0.0.tgz
+2026-11-07T11:55:28.5837425Z npm notice package size: 432 B
+2026-11-07T11:55:28.5837681Z npm notice unpacked size: 536 B
+2026-11-07T11:55:28.5837963Z npm notice shasum: 78d87f9407ad07cd5ef3c2fb37f90c6f0c922f27
+2026-11-07T11:55:28.5838334Z npm notice integrity: sha512-vpzhGC0HmE+/S[...]+udlc51E0KzdA==
+2026-11-07T11:55:28.5838646Z npm notice total files: 3
+2026-11-07T11:55:28.5838843Z npm notice
+2026-11-07T11:55:28.6034722Z npm notice Publishing to http://127.0.0.1:40703/ with tag latest and default access
+2026-11-07T11:55:28.9478128Z PASS ordinary registry resolution/install/execution of prepared graph
+2026-11-07T11:55:29.4037229Z PASS npm11.12.1/Node26.0.0 lock, prefetch, offline install, build/test and actual publication; native lock preserved after resolution
+2026-11-07T11:55:29.4243012Z ##[group]Run python3 tests/shrinkwrap-native.py
+2026-11-07T11:55:29.4243408Z [36;1mpython3 tests/shrinkwrap-native.py[0m
+2026-11-07T11:55:29.4285112Z shell: /usr/bin/bash -e {0}
+2026-11-07T11:55:29.4285365Z env:
+2026-11-07T11:55:29.4285556Z   TMPDIR: /home/runner/work/_temp
+2026-11-07T11:55:29.4285880Z   NIX_PROFILES: /nix/var/nix/profiles/default /home/runner/.nix-profile
+2026-11-07T11:55:29.4286261Z   NIX_SSL_CERT_FILE: /etc/ssl/certs/ca-certificates.crt
+2026-11-07T11:55:29.4286536Z ##[endgroup]
+2026-11-07T11:55:29.4794513Z Native registry workflow: Node 4.9.1
+2026-11-07T11:55:32.1572121Z these 5 derivations will be built:
+2026-11-07T11:55:32.1577703Z   /nix/store/kjfpvp9127vpqabd60n9ffwsvx0ck1yn-node-v4.9.1-linux-arm64.tar.xz.drv
+2026-11-07T11:55:32.1578288Z   /nix/store/iib2j46qwxxad54cqwdayqvd37qnwrwa-nodejs-legacy-fixture-4.9.1.drv
+2026-11-07T11:55:32.1578769Z   /nix/store/rd4n3f76vpm2bf4c937kjbpyxm2qyfv7-npm-purifier.drv
+2026-11-07T11:55:32.1579230Z   /nix/store/324cscdvwmsp1qbf8aphrrk6qqwkiq1n-npm.drv
+2026-11-07T11:55:32.1579656Z   /nix/store/mkc8xfwalqcfxa3rgi3kwihmm2zhnvs4-npm-node-4.9.1-tools.drv
+2026-11-07T11:55:32.1776019Z building '/nix/store/kjfpvp9127vpqabd60n9ffwsvx0ck1yn-node-v4.9.1-linux-arm64.tar.xz.drv'...
+2026-11-07T11:55:32.3843046Z building '/nix/store/iib2j46qwxxad54cqwdayqvd37qnwrwa-nodejs-legacy-fixture-4.9.1.drv'...
+2026-11-07T11:55:34.1956600Z building '/nix/store/rd4n3f76vpm2bf4c937kjbpyxm2qyfv7-npm-purifier.drv'...
+2026-11-07T11:55:34.4052486Z building '/nix/store/324cscdvwmsp1qbf8aphrrk6qqwkiq1n-npm.drv'...
+2026-11-07T11:55:34.5378683Z building '/nix/store/mkc8xfwalqcfxa3rgi3kwihmm2zhnvs4-npm-node-4.9.1-tools.drv'...
+2026-11-07T11:55:36.5525015Z this derivation will be built:
+2026-11-07T11:55:36.5526476Z   /nix/store/r5fqhgjs5r8xpymga9x8v0pk5yp6n9l8-npm-project-release.drv
+2026-11-07T11:55:36.6212546Z building '/nix/store/r5fqhgjs5r8xpymga9x8v0pk5yp6n9l8-npm-project-release.drv'...
+2026-11-07T11:55:40.9068980Z this derivation will be built:
+2026-11-07T11:55:40.9069831Z   /nix/store/nwnpzqrrgvfzcbdm2xpar3kzsnlwsj3s-npm-projection.drv
+2026-11-07T11:55:40.9677705Z building '/nix/store/nwnpzqrrgvfzcbdm2xpar3kzsnlwsj3s-npm-projection.drv'...
+2026-11-07T11:55:41.8123503Z npm-purifier: building the dependencies of /home/runner/work/_temp/npm-legacy-native-rv71nckn/project
+2026-11-07T11:55:41.8470095Z unpacking 'github:nix-caisson/caisson/ec291bc9637a95606f7fa9df942d5e803705d8f5?narHash=sha256-FAixpwyAWmhrzmh0fMGt7y0KIcNLqBIGICfMvbExRLo%3D' into the Git cache...
+2026-11-07T11:55:42.4925520Z unpacking 'github:nix-caisson/caisson-core/6868bca2682e96d56714bc9c9adcf0048fbe132f?narHash=sha256-OzlG2Nhl/kU2UUPq%2BARH/GKUHmOqAxQu5Ug/%2BaT1ECc%3D' into the Git cache...
+2026-11-07T11:55:42.8107367Z unpacking 'github:nix-community/nixpkgs.lib/b91d4f1bc958e0bdfd6cb3db4a280486006f5002?narHash=sha256-XtTdVeJX6X/gU%2BvGIUEJHirotv/lYP5%2BQ9irMH6HWPY%3D' into the Git cache...
+2026-11-07T11:55:43.1560912Z unpacking 'github:hercules-ci/flake-parts/31729ca8cbdb4fa927b34e5f4353e6a83f39e993?narHash=sha256-glZLQlzIn1fXH6PazR2iUmTo7kzzyYSshrWhLS9TqCU%3D' into the Git cache...
+2026-11-07T11:55:43.4721294Z unpacking 'github:nix-purifiers/purifier/b9cccd7799ef7f82ca9bc0b67340714cf4b3c4ea?narHash=sha256-Z5nzMEddKHAvAxhzc%2Bm/QM5aTjPzd52MxETuTrAtAC4%3D' into the Git cache...
+2026-11-07T11:55:43.7775560Z unpacking 'github:nix-community/nixpkgs.lib/7851ba61fd862b277cb6a9cef37394bc18bb94e4?narHash=sha256-ThkfL3D/FhCiZFc9%2B3BtxwuMmpuK%2B/bGtXCSo1%2ByVew%3D' into the Git cache...
+2026-11-07T11:55:44.0833044Z unpacking 'github:hercules-ci/flake-parts/024633cd702b10285db5cb19b40ad48d2399ba60?narHash=sha256-zTwuwezD0w3hpga6a6P8emidzAZFyWqlNeRBlpWOOl8%3D' into the Git cache...
+2026-11-07T11:55:44.6570125Z npm-purifier: npm runs offline in /home/runner/work/_temp/npm-legacy-native-rv71nckn/project through the npm-purifier npm wrapper
+2026-11-07T11:55:45.7281626Z npm WARN package.json legacy-npm-app@1.0.0 No description
+2026-11-07T11:55:45.7284801Z npm WARN package.json legacy-npm-app@1.0.0 No repository field.
+2026-11-07T11:55:45.7290953Z npm WARN package.json legacy-npm-app@1.0.0 No README data
+2026-11-07T11:55:45.7294070Z npm WARN package.json legacy-npm-app@1.0.0 No license field.
+2026-11-07T11:55:47.4818891Z npm-purifier: recorded the tarball URL and integrity of node_modules/is-number, node_modules/is-odd, node_modules/is-odd/node_modules/is-number in npm-shrinkwrap.json
+2026-11-07T11:55:47.4837449Z npm-purifier: npm-shrinkwrap.json records every download; no npm-purifier.lock.json needed
+2026-11-07T11:55:47.7639119Z npm-purifier: building the dependencies of /home/runner/work/_temp/npm-legacy-native-rv71nckn/project
+2026-11-07T11:55:48.2237909Z npm-purifier: npm runs offline in /home/runner/work/_temp/npm-legacy-native-rv71nckn/project through the npm-purifier npm wrapper
+2026-11-07T11:55:49.1321240Z npm WARN package.json legacy-npm-app@1.0.0 No description
+2026-11-07T11:55:49.1323797Z npm WARN package.json legacy-npm-app@1.0.0 No repository field.
+2026-11-07T11:55:49.1330647Z npm WARN package.json legacy-npm-app@1.0.0 No README data
+2026-11-07T11:55:49.1333215Z npm WARN package.json legacy-npm-app@1.0.0 No license field.
+2026-11-07T11:55:51.4589737Z npm-purifier: building legacy-npm-app
+2026-11-07T11:55:53.3461050Z these 3 derivations will be built:
+2026-11-07T11:55:53.3465596Z   /nix/store/4nzwq5yld5ycdzwx8n9xi6czjs33vm67-npm-project-release.drv
+2026-11-07T11:55:53.3466131Z   /nix/store/ykap5swfms9lxah0iadhr51c8s8qxkq2-npm-project-production-modules.drv
+2026-11-07T11:55:53.3466825Z   /nix/store/6sjgfica69dz78idrqs5djdap2yh0fc3-legacy-npm-app-1.0.0.drv
+2026-11-07T11:55:53.4136286Z building '/nix/store/ykap5swfms9lxah0iadhr51c8s8qxkq2-npm-project-production-modules.drv'...
+2026-11-07T11:55:53.4273171Z building '/nix/store/4nzwq5yld5ycdzwx8n9xi6czjs33vm67-npm-project-release.drv'...
+2026-11-07T11:55:55.8445952Z building '/nix/store/6sjgfica69dz78idrqs5djdap2yh0fc3-legacy-npm-app-1.0.0.drv'...
+2026-11-07T11:55:57.0646624Z PASS ordinary registry resolution/install/execution of prepared graph
+2026-11-07T11:55:57.6980665Z npm-purifier: building the dependencies of /home/runner/work/_temp/npm-legacy-native-rv71nckn/failed-script
+2026-11-07T11:55:58.1612827Z npm-purifier: npm runs offline in /home/runner/work/_temp/npm-legacy-native-rv71nckn/failed-script through the npm-purifier npm wrapper
+2026-11-07T11:55:59.1511674Z PASS failed native lifecycle restores original shrinkwrap bytes and mtime
+2026-11-07T11:55:59.1596257Z PASS npm2.15.11/Node4.9.1 lock, prefetch, offline install, build/test and actual publication; native lock preserved after resolution
+2026-11-07T11:55:59.1709533Z Native registry workflow: Node 6.17.1
+2026-11-07T11:56:01.8093211Z these 5 derivations will be built:
+2026-11-07T11:56:01.8098202Z   /nix/store/gzaczj2p9j2cakdy2iy1b7y2s6k72frn-node-v6.17.1-linux-arm64.tar.xz.drv
+2026-11-07T11:56:01.8098764Z   /nix/store/hq2r5b3ryafp4q75srk6nfppa63v8qj8-nodejs-legacy-fixture-6.17.1.drv
+2026-11-07T11:56:01.8099233Z   /nix/store/7i0n879r2xm2sgn0fhblm48hvhl6974j-npm-purifier.drv
+2026-11-07T11:56:01.8099635Z   /nix/store/lsprz73via0gp1lccm6r7klvy4jvgj5y-npm.drv
+2026-11-07T11:56:01.8100030Z   /nix/store/w1kxfk7h69hspf72mxj79a9dr2q3c2xg-npm-node-6.17.1-tools.drv
+2026-11-07T11:56:01.8291839Z building '/nix/store/gzaczj2p9j2cakdy2iy1b7y2s6k72frn-node-v6.17.1-linux-arm64.tar.xz.drv'...
+2026-11-07T11:56:02.0326876Z building '/nix/store/hq2r5b3ryafp4q75srk6nfppa63v8qj8-nodejs-legacy-fixture-6.17.1.drv'...
+2026-11-07T11:56:03.9905654Z building '/nix/store/7i0n879r2xm2sgn0fhblm48hvhl6974j-npm-purifier.drv'...
+2026-11-07T11:56:04.1925609Z building '/nix/store/lsprz73via0gp1lccm6r7klvy4jvgj5y-npm.drv'...
+2026-11-07T11:56:04.3225285Z building '/nix/store/w1kxfk7h69hspf72mxj79a9dr2q3c2xg-npm-node-6.17.1-tools.drv'...
+2026-11-07T11:56:06.3275372Z this derivation will be built:
+2026-11-07T11:56:06.3276730Z   /nix/store/q0s4jdf03c478zwyrfgiyw401p63zmmc-npm-project-release.drv
+2026-11-07T11:56:06.3947652Z building '/nix/store/q0s4jdf03c478zwyrfgiyw401p63zmmc-npm-project-release.drv'...
+2026-11-07T11:56:10.8544884Z this derivation will be built:
+2026-11-07T11:56:10.8545316Z   /nix/store/hjih7qhrnajy7c29dql8nwyvc842kq8w-npm-projection.drv
+2026-11-07T11:56:10.9169444Z building '/nix/store/hjih7qhrnajy7c29dql8nwyvc842kq8w-npm-projection.drv'...
+2026-11-07T11:56:11.7454051Z npm-purifier: building the dependencies of /home/runner/work/_temp/npm-legacy-native-lc7po0vf/project
+2026-11-07T11:56:11.7808524Z unpacking 'github:nix-caisson/caisson/ec291bc9637a95606f7fa9df942d5e803705d8f5?narHash=sha256-FAixpwyAWmhrzmh0fMGt7y0KIcNLqBIGICfMvbExRLo%3D' into the Git cache...
+2026-11-07T11:56:12.3982956Z unpacking 'github:nix-caisson/caisson-core/6868bca2682e96d56714bc9c9adcf0048fbe132f?narHash=sha256-OzlG2Nhl/kU2UUPq%2BARH/GKUHmOqAxQu5Ug/%2BaT1ECc%3D' into the Git cache...
+2026-11-07T11:56:12.6545891Z unpacking 'github:nix-community/nixpkgs.lib/b91d4f1bc958e0bdfd6cb3db4a280486006f5002?narHash=sha256-XtTdVeJX6X/gU%2BvGIUEJHirotv/lYP5%2BQ9irMH6HWPY%3D' into the Git cache...
+2026-11-07T11:56:12.9664753Z unpacking 'github:hercules-ci/flake-parts/31729ca8cbdb4fa927b34e5f4353e6a83f39e993?narHash=sha256-glZLQlzIn1fXH6PazR2iUmTo7kzzyYSshrWhLS9TqCU%3D' into the Git cache...
+2026-11-07T11:56:13.2306711Z unpacking 'github:nix-purifiers/purifier/b9cccd7799ef7f82ca9bc0b67340714cf4b3c4ea?narHash=sha256-Z5nzMEddKHAvAxhzc%2Bm/QM5aTjPzd52MxETuTrAtAC4%3D' into the Git cache...
+2026-11-07T11:56:13.4543422Z unpacking 'github:nix-community/nixpkgs.lib/7851ba61fd862b277cb6a9cef37394bc18bb94e4?narHash=sha256-ThkfL3D/FhCiZFc9%2B3BtxwuMmpuK%2B/bGtXCSo1%2ByVew%3D' into the Git cache...
+2026-11-07T11:56:13.7365803Z unpacking 'github:hercules-ci/flake-parts/024633cd702b10285db5cb19b40ad48d2399ba60?narHash=sha256-zTwuwezD0w3hpga6a6P8emidzAZFyWqlNeRBlpWOOl8%3D' into the Git cache...
+2026-11-07T11:56:14.2768215Z npm-purifier: npm runs offline in /home/runner/work/_temp/npm-legacy-native-lc7po0vf/project through the npm-purifier npm wrapper
+2026-11-07T11:56:15.6875682Z npm WARN legacy-npm-app@1.0.0 No description
+2026-11-07T11:56:15.6876504Z npm WARN legacy-npm-app@1.0.0 No repository field.
+2026-11-07T11:56:15.6876860Z npm WARN legacy-npm-app@1.0.0 No license field.
+2026-11-07T11:56:17.2961523Z npm-purifier: recorded the tarball URL and integrity of node_modules/is-number, node_modules/is-odd, node_modules/is-odd/node_modules/is-number in npm-shrinkwrap.json
+2026-11-07T11:56:17.2979485Z npm-purifier: npm-shrinkwrap.json records every download; no npm-purifier.lock.json needed
+2026-11-07T11:56:17.5793432Z npm-purifier: building the dependencies of /home/runner/work/_temp/npm-legacy-native-lc7po0vf/project
+2026-11-07T11:56:18.0442389Z npm-purifier: npm runs offline in /home/runner/work/_temp/npm-legacy-native-lc7po0vf/project through the npm-purifier npm wrapper
+2026-11-07T11:56:19.1654215Z npm WARN legacy-npm-app@1.0.0 No description
+2026-11-07T11:56:19.1654594Z npm WARN legacy-npm-app@1.0.0 No repository field.
+2026-11-07T11:56:19.1654916Z npm WARN legacy-npm-app@1.0.0 No license field.
+2026-11-07T11:56:21.3821427Z npm-purifier: building legacy-npm-app
+2026-11-07T11:56:23.1753440Z these 3 derivations will be built:
+2026-11-07T11:56:23.1757284Z   /nix/store/2iqrc4nsh5h52y6i78hrf808gainh5la-npm-project-production-modules.drv
+2026-11-07T11:56:23.1757853Z   /nix/store/i9ns1qnz0kdcy5phx3xx9sx1j0r7vpv1-npm-project-release.drv
+2026-11-07T11:56:23.1758826Z   /nix/store/hmswf2l6b6mxy3j8cpn509nivkm0zb6l-legacy-npm-app-1.0.0.drv
+2026-11-07T11:56:23.2745101Z building '/nix/store/2iqrc4nsh5h52y6i78hrf808gainh5la-npm-project-production-modules.drv'...
+2026-11-07T11:56:23.2895221Z building '/nix/store/i9ns1qnz0kdcy5phx3xx9sx1j0r7vpv1-npm-project-release.drv'...
+2026-11-07T11:56:25.8148282Z building '/nix/store/hmswf2l6b6mxy3j8cpn509nivkm0zb6l-legacy-npm-app-1.0.0.drv'...
+2026-11-07T11:56:27.1321232Z PASS ordinary registry resolution/install/execution of prepared graph
+2026-11-07T11:56:27.7766739Z npm-purifier: building the dependencies of /home/runner/work/_temp/npm-legacy-native-lc7po0vf/failed-script
+2026-11-07T11:56:28.2345419Z npm-purifier: npm runs offline in /home/runner/work/_temp/npm-legacy-native-lc7po0vf/failed-script through the npm-purifier npm wrapper
+2026-11-07T11:56:29.4088103Z PASS failed native lifecycle restores original shrinkwrap bytes and mtime
+2026-11-07T11:56:29.4176685Z PASS npm3.10.10/Node6.17.1 lock, prefetch, offline install, build/test and actual publication; native lock preserved after resolution
+2026-11-07T11:56:29.4386459Z ##[group]Run nix eval --impure --option allow-import-from-derivation false --json --expr 'import ./tests/sdk-context.nix {}'
+2026-11-07T11:56:29.4387369Z [36;1mnix eval --impure --option allow-import-from-derivation false --json --expr 'import ./tests/sdk-context.nix {}'[0m
+2026-11-07T11:56:29.4436504Z shell: /usr/bin/bash -e {0}
+2026-11-07T11:56:29.4436761Z env:
+2026-11-07T11:56:29.4436958Z   TMPDIR: /home/runner/work/_temp
+2026-11-07T11:56:29.4437286Z   NIX_PROFILES: /nix/var/nix/profiles/default /home/runner/.nix-profile
+2026-11-07T11:56:29.4437668Z   NIX_SSL_CERT_FILE: /etc/ssl/certs/ca-certificates.crt
+2026-11-07T11:56:29.4437942Z ##[endgroup]
+2026-11-07T11:56:30.3919973Z {"canonicalDerivation":"/nix/store/pbpcbj48qdzmxzlj4p4mnfy226dq09h7-nodejs-24.21.0.drv","noSdkBuildRequired":true,"rawPathFallbackChecked":true,"restoredDerivation":"/nix/store/zsaq3jg2l621fk4k90pncr7s0n96hgvv-unbuildable-multi-output-sdk.drv","selectedOutput":"secondary","system":"aarch64-linux"}
+2026-11-07T11:56:30.4098834Z ##[group]Run python3 tests/sdk-portable.py
+2026-11-07T11:56:30.4099220Z [36;1mpython3 tests/sdk-portable.py[0m
+2026-11-07T11:56:30.4134494Z shell: /usr/bin/bash -e {0}
+2026-11-07T11:56:30.4134733Z env:
+2026-11-07T11:56:30.4134917Z   TMPDIR: /home/runner/work/_temp
+2026-11-07T11:56:30.4135239Z   NIX_PROFILES: /nix/var/nix/profiles/default /home/runner/.nix-profile
+2026-11-07T11:56:30.4135626Z   NIX_SSL_CERT_FILE: /etc/ssl/certs/ca-certificates.crt
+2026-11-07T11:56:30.4135904Z ##[endgroup]
+2026-11-07T11:56:30.9196248Z this derivation will be built:
+2026-11-07T11:56:30.9196835Z   /nix/store/g6il18842sgwf5fz1lj180mpc4skcnaa-sdk-reference-expression.nix.drv
+2026-11-07T11:56:30.9345020Z building '/nix/store/g6il18842sgwf5fz1lj180mpc4skcnaa-sdk-reference-expression.nix.drv'...
+2026-11-07T11:56:31.3564736Z copying 2 paths...
+2026-11-07T11:56:31.3572387Z copying path '/nix/store/rzrn8244mv1s6rb3a6x26akyc0gzdsrs-sdk-reference-expression.nix' to 'file:///home/runner/work/_temp/sdk-runtime-copy-oji6xmzp/cache'...
+2026-11-07T11:56:31.3573735Z copying path '/nix/store/hklvjkhxdw1ia0a8jxjhpkhs9y5lk2a4-sdk-context-must-remain-unbuilt.drv' to 'file:///home/runner/work/_temp/sdk-runtime-copy-oji6xmzp/cache'...
+2026-11-07T11:56:31.3848854Z copying 2 paths...
+2026-11-07T11:56:31.3853527Z copying path '/nix/store/hklvjkhxdw1ia0a8jxjhpkhs9y5lk2a4-sdk-context-must-remain-unbuilt.drv' from 'file:///home/runner/work/_temp/sdk-runtime-copy-oji6xmzp/cache'...
+2026-11-07T11:56:31.3859291Z copying path '/nix/store/rzrn8244mv1s6rb3a6x26akyc0gzdsrs-sdk-reference-expression.nix' from 'file:///home/runner/work/_temp/sdk-runtime-copy-oji6xmzp/cache'...
+2026-11-07T11:56:31.4139459Z PASS SDK recipe retained by ordinary copy; cold-store restore needs no SDK build or IFD
+2026-11-07T11:56:31.4356346Z Post job cleanup.
+2026-11-07T11:56:31.5182440Z [command]/usr/bin/git version
+2026-11-07T11:56:31.5212224Z git version 2.56.0
+2026-11-07T11:56:31.5279796Z Temporarily overriding HOME='/home/runner/work/_temp/711eea3b-ff26-484e-9bcc-9bf276119e7f' before making global git config changes
+2026-11-07T11:56:31.5280636Z Adding repository directory to the temporary git global config as a safe directory
+2026-11-07T11:56:31.5281636Z [command]/usr/bin/git config --global --add safe.directory /home/runner/work/npm-purifier/npm-purifier
+2026-11-07T11:56:31.5315689Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+2026-11-07T11:56:31.5348742Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+2026-11-07T11:56:31.5612124Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+2026-11-07T11:56:31.5636135Z http.https://github.com/.extraheader
+2026-11-07T11:56:31.5648823Z [command]/usr/bin/git config --local --unset-all http.https://github.com/.extraheader
+2026-11-07T11:56:31.5705755Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+2026-11-07T11:56:31.5952790Z [command]/usr/bin/git config --local --name-only --get-regexp ^includeIf\.gitdir:
+2026-11-07T11:56:31.5995660Z [command]/usr/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url
+2026-11-07T11:56:31.6395863Z Cleaning up orphan processes
+2026-11-07T11:56:31.6833816Z ##[warning]Node.js 20 is deprecated. The following actions target Node.js 20 but are being forced to run on Node.js 24: actions/checkout@11d5960a326750d5838078e36cf38b85af677262. For more information see: https://github.blog/changelog/2025-09-19-deprecation-of-node-20-on-github-actions-runners/

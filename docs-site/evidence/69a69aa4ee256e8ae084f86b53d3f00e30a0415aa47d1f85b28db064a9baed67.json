@@ -1,0 +1,140 @@
+{
+  "source": "6b994ceb112995d83b80d4fc57319b8abc504e8f",
+  "system": "aarch64-linux",
+  "sandbox": true,
+  "machine": "aarch64",
+  "defaultBun": "1.4.2",
+  "check": ".#checks.aarch64-linux.sandbox-local-network",
+  "command": [
+    "nix",
+    "build",
+    "--no-link",
+    "--rebuild",
+    "--option",
+    "sandbox",
+    "true",
+    "--option",
+    "max-jobs",
+    "2",
+    "--option",
+    "cores",
+    "2",
+    "-L",
+    "--json",
+    ".#checks.aarch64-linux.sandbox-local-network"
+  ],
+  "status": "passed",
+  "builds": [
+    {
+      "drvPath": "/nix/store/v8nfg9f0qq1my4332x3kvn8zdy0dgjrf-sandbox-local-network-boundary.drv",
+      "outputs": {
+        "out": "/nix/store/fs5frplwwk250cnxb51vh58lkv49y9z5-sandbox-local-network-boundary"
+      }
+    }
+  ],
+  "derivations": {
+    "derivations": {
+      "v8nfg9f0qq1my4332x3kvn8zdy0dgjrf-sandbox-local-network-boundary.drv": {
+        "args": [
+          "-e",
+          "/nix/store/l622p70vy8k5sh7y5wizi5f2mic6ynpg-source-stdenv.sh",
+          "/nix/store/shkw4qm9qcw5sc5n1k5jznc83ny02r39-default-builder.sh"
+        ],
+        "builder": "/nix/store/czx7cscpnqqmc9nwmbpnv2zcvck64mmf-bash-5.3p20/bin/bash",
+        "env": {
+          "__structuredAttrs": "",
+          "buildCommand": "python - <<'PY'\nimport errno, json, os, socket, sys\nwith socket.socket() as server, socket.socket() as client:\n    server.settimeout(5)\n    client.settimeout(5)\n    server.bind(('127.0.0.1', 0))\n    server.listen(1)\n    client.connect(server.getsockname())\n    connection, _ = server.accept()\n    with connection:\n        connection.settimeout(5)\n        client.sendall(b'tcp-request')\n        assert connection.recv(64) == b'tcp-request'\n        connection.sendall(b'tcp-response')\n        assert client.recv(64) == b'tcp-response'\nwith socket.socket(type=socket.SOCK_DGRAM) as server, socket.socket(type=socket.SOCK_DGRAM) as client:\n    server.settimeout(5)\n    client.settimeout(5)\n    server.bind(('127.0.0.1', 0))\n    client.sendto(b'udp-request', server.getsockname())\n    request, address = server.recvfrom(64)\n    assert request == b'udp-request'\n    server.sendto(b'udp-response', address)\n    assert client.recvfrom(64)[0] == b'udp-response'\nassert sys.platform in ('darwin', 'linux'), sys.platform\npermission_denied = (errno.EPERM, errno.EACCES)\nallowed_errors = permission_denied if sys.platform == 'darwin' else permission_denied + (errno.ENETUNREACH, errno.EHOSTUNREACH)\ndenied = {}\nfor kind, name in [(socket.SOCK_STREAM, 'tcp'), (socket.SOCK_DGRAM, 'udp')]:\n    with socket.socket(type=kind) as external:\n        external.settimeout(3)\n        try:\n            if kind == socket.SOCK_STREAM:\n                external.connect(('192.0.2.1', 9))\n            else:\n                external.sendto(b'forbidden', ('192.0.2.1', 9))\n        except OSError as error:\n            assert error.errno in allowed_errors, error\n            denied[name] = error.errno\n        else:\n            raise AssertionError(f'external {name} unexpectedly allowed')\nwith open(os.environ['out'], 'w') as receipt:\n    json.dump({'platform': sys.platform, 'loopbackTcp': True, 'loopbackUdp': True, 'externalTestNetDenied': denied, 'denialMechanism': 'seatbelt-permission' if sys.platform == 'darwin' else 'linux-network-namespace'}, receipt)\nPY\n",
+          "buildInputs": "",
+          "builder": "/nix/store/czx7cscpnqqmc9nwmbpnv2zcvck64mmf-bash-5.3p20/bin/bash",
+          "cmakeFlags": "",
+          "configureFlags": "",
+          "depsBuildBuild": "",
+          "depsBuildBuildPropagated": "",
+          "depsBuildTarget": "",
+          "depsBuildTargetPropagated": "",
+          "depsHostHost": "",
+          "depsHostHostPropagated": "",
+          "depsTargetTarget": "",
+          "depsTargetTargetPropagated": "",
+          "doCheck": "",
+          "doInstallCheck": "",
+          "enableParallelBuilding": "1",
+          "enableParallelChecking": "1",
+          "enableParallelInstalling": "1",
+          "mesonFlags": "",
+          "name": "sandbox-local-network-boundary",
+          "nativeBuildInputs": "/nix/store/lq2fsnmg0q3y0vlxn91w8s8wvj1m6fld-python3-3.14.8",
+          "out": "/nix/store/fs5frplwwk250cnxb51vh58lkv49y9z5-sandbox-local-network-boundary",
+          "outputs": "out",
+          "passAsFile": "buildCommand",
+          "patches": "",
+          "propagatedBuildInputs": "",
+          "propagatedNativeBuildInputs": "",
+          "stdenv": "/nix/store/4rgz2pgx20yk0pxnm03yvl6dq2cay5hi-stdenv-linux-no-cc",
+          "strictDeps": "",
+          "system": "aarch64-linux"
+        },
+        "inputs": {
+          "drvs": {
+            "3ilgh22z0kad09ys6c6g7g8f2kq0bk17-bash-5.3p20.drv": {
+              "dynamicOutputs": {},
+              "outputs": [
+                "out"
+              ]
+            },
+            "53q2g0a8zwlfj1hksivjxqf32q3rn1yq-python3-3.14.8.drv": {
+              "dynamicOutputs": {},
+              "outputs": [
+                "out"
+              ]
+            },
+            "a7r4jm9np2jswd02yz0344pmmy0jg44d-stdenv-linux-no-cc.drv": {
+              "dynamicOutputs": {},
+              "outputs": [
+                "out"
+              ]
+            }
+          },
+          "srcs": [
+            "l622p70vy8k5sh7y5wizi5f2mic6ynpg-source-stdenv.sh",
+            "shkw4qm9qcw5sc5n1k5jznc83ny02r39-default-builder.sh"
+          ]
+        },
+        "name": "sandbox-local-network-boundary",
+        "outputs": {
+          "out": {
+            "path": "fs5frplwwk250cnxb51vh58lkv49y9z5-sandbox-local-network-boundary"
+          }
+        },
+        "system": "aarch64-linux",
+        "version": 4
+      }
+    },
+    "version": 4
+  },
+  "outputs": {
+    "/nix/store/fs5frplwwk250cnxb51vh58lkv49y9z5-sandbox-local-network-boundary": {
+      "ca": null,
+      "deriver": "/nix/store/v8nfg9f0qq1my4332x3kvn8zdy0dgjrf-sandbox-local-network-boundary.drv",
+      "narHash": "sha256-9XCZVtJGjg6jKr8QpBBEvaAnT1hhzEBUIicMSiifUgg=",
+      "narSize": 272,
+      "references": [],
+      "registrationTime": 1794054045,
+      "signatures": [],
+      "storeDir": "/nix/store",
+      "ultimate": true,
+      "version": 1
+    }
+  },
+  "sample": null,
+  "networkBoundary": {
+    "platform": "linux",
+    "loopbackTcp": true,
+    "loopbackUdp": true,
+    "externalTestNetDenied": {
+      "tcp": 101,
+      "udp": 101
+    },
+    "denialMechanism": "linux-network-namespace"
+  }
+}

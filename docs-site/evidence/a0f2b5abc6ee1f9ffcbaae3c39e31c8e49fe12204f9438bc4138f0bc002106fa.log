@@ -1,0 +1,13 @@
+--- a/DefaultProcessWorkerSpec.java
++++ b/DefaultProcessWorkerSpec.java
+@@ -43,6 +43,10 @@
+         super(objectFactory);
+         this.forkOptions = forkOptions;
+         this.forkOptions.setEnvironment(sanitizeEnvironment(forkOptions));
++        // Explicit sandbox transport choice; retain environment sanitization.
++        if (Boolean.getBoolean("java.net.preferIPv4Stack")) {
++            this.forkOptions.systemProperty("java.net.preferIPv4Stack", "true");
++        }
+     }
+ 
+     /**

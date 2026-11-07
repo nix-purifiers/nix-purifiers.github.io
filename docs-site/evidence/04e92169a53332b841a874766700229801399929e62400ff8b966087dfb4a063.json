@@ -1,0 +1,132 @@
+{
+  "source": "6b994ceb112995d83b80d4fc57319b8abc504e8f",
+  "system": "x86_64-linux",
+  "sandbox": true,
+  "machine": "x86_64",
+  "defaultBun": "1.4.2",
+  "check": ".#checks.x86_64-linux.current-stable-unit",
+  "command": [
+    "nix",
+    "build",
+    "--no-link",
+    "--rebuild",
+    "--option",
+    "sandbox",
+    "true",
+    "--option",
+    "max-jobs",
+    "2",
+    "--option",
+    "cores",
+    "2",
+    "-L",
+    "--json",
+    ".#checks.x86_64-linux.current-stable-unit"
+  ],
+  "status": "passed",
+  "builds": [
+    {
+      "drvPath": "/nix/store/c9r15ilm5k3bqg966my9lkm5jw5chqgw-test-unit.drv",
+      "outputs": {
+        "out": "/nix/store/kjxpkw6a92vjzmmf1l7a074sq8k6p6y1-test-unit"
+      }
+    }
+  ],
+  "derivations": {
+    "derivations": {
+      "c9r15ilm5k3bqg966my9lkm5jw5chqgw-test-unit.drv": {
+        "args": [
+          "-e",
+          "/nix/store/l622p70vy8k5sh7y5wizi5f2mic6ynpg-source-stdenv.sh",
+          "/nix/store/shkw4qm9qcw5sc5n1k5jznc83ny02r39-default-builder.sh"
+        ],
+        "builder": "/nix/store/nnm9gdr70ihc6zc9298mzz8jpcgaciql-bash-5.3p20/bin/bash",
+        "env": {
+          "__structuredAttrs": "",
+          "buildCommand": "export HOME=$TMPDIR\ncp -r $src/. .\nbun test ./tests/unit\ntouch $out\n",
+          "buildInputs": "",
+          "builder": "/nix/store/nnm9gdr70ihc6zc9298mzz8jpcgaciql-bash-5.3p20/bin/bash",
+          "cmakeFlags": "",
+          "configureFlags": "",
+          "depsBuildBuild": "",
+          "depsBuildBuildPropagated": "",
+          "depsBuildTarget": "",
+          "depsBuildTargetPropagated": "",
+          "depsHostHost": "",
+          "depsHostHostPropagated": "",
+          "depsTargetTarget": "",
+          "depsTargetTargetPropagated": "",
+          "doCheck": "",
+          "doInstallCheck": "",
+          "enableParallelBuilding": "1",
+          "enableParallelChecking": "1",
+          "enableParallelInstalling": "1",
+          "mesonFlags": "",
+          "name": "test-unit",
+          "nativeBuildInputs": "/nix/store/7py3q3rn0qbcyzwqk6mdbyd8r1m9x54r-bun-1.4.4",
+          "out": "/nix/store/kjxpkw6a92vjzmmf1l7a074sq8k6p6y1-test-unit",
+          "outputs": "out",
+          "passAsFile": "buildCommand",
+          "patches": "",
+          "propagatedBuildInputs": "",
+          "propagatedNativeBuildInputs": "",
+          "src": "/nix/store/8nvqjbh73nv1zksbipn3x1m50ch3yhl2-source",
+          "stdenv": "/nix/store/c3k15jk20fccs90qgffdwzhxy15b5fdj-stdenv-linux-no-cc",
+          "strictDeps": "",
+          "system": "x86_64-linux"
+        },
+        "inputs": {
+          "drvs": {
+            "0lan2n1x4rcwy1ai94zxphk6p34vhb6x-bun-1.4.4.drv": {
+              "dynamicOutputs": {},
+              "outputs": [
+                "out"
+              ]
+            },
+            "30hr2syjmfvflwi68acggp3w870ikw5c-bash-5.3p20.drv": {
+              "dynamicOutputs": {},
+              "outputs": [
+                "out"
+              ]
+            },
+            "jrjq3n2gpgq6sn07iiymh8ivf19ahncm-stdenv-linux-no-cc.drv": {
+              "dynamicOutputs": {},
+              "outputs": [
+                "out"
+              ]
+            }
+          },
+          "srcs": [
+            "8nvqjbh73nv1zksbipn3x1m50ch3yhl2-source",
+            "l622p70vy8k5sh7y5wizi5f2mic6ynpg-source-stdenv.sh",
+            "shkw4qm9qcw5sc5n1k5jznc83ny02r39-default-builder.sh"
+          ]
+        },
+        "name": "test-unit",
+        "outputs": {
+          "out": {
+            "path": "kjxpkw6a92vjzmmf1l7a074sq8k6p6y1-test-unit"
+          }
+        },
+        "system": "x86_64-linux",
+        "version": 4
+      }
+    },
+    "version": 4
+  },
+  "outputs": {
+    "/nix/store/kjxpkw6a92vjzmmf1l7a074sq8k6p6y1-test-unit": {
+      "ca": null,
+      "deriver": "/nix/store/c9r15ilm5k3bqg966my9lkm5jw5chqgw-test-unit.drv",
+      "narHash": "sha256-d6xi4mKdjkX2JFicDIv5niSzpyI0m/Hnm8GGAIU04kY=",
+      "narSize": 112,
+      "references": [],
+      "registrationTime": 1794054062,
+      "signatures": [],
+      "storeDir": "/nix/store",
+      "ultimate": true,
+      "version": 1
+    }
+  },
+  "sample": null
+}

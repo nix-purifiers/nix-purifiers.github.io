@@ -1,0 +1,48 @@
+{
+  "status": "success",
+  "executedSystem": "aarch64-darwin",
+  "sourceRevision": "1a5653242018a7c5939e5fd10f6f2de52feadfad",
+  "sourceNarHash": "sha256-ueLaprdMJcfAyfKkCKCRmMCVqX570dLZyC3+5B/lPVY=",
+  "drvPath": "/nix/store/qzqnwl8d0v6c43wvy8zmdx1ix7kh0kcx-gradle-worker-transport-observation.drv",
+  "outputs": {
+    "out": "/nix/store/vf8qkdsawprlqil788ri26f70yqmas6j-gradle-worker-transport-observation"
+  },
+  "outputNarHashes": {
+    "out": "sha256-eV84KKxjjSmnK12muPvW3jYJdrNFtvADaaZmrEcl51Q="
+  },
+  "sdkVersions": {
+    "Gradle upstream point": "9.9.0",
+    "SDK role": "derived Darwin Nix build distribution",
+    "JDK": "/nix/store/al24k44gwd1rk08p1x2p4r88ba9xw132-zulu-ca-jdk-17.0.19",
+    "JDK version": "17.0.19"
+  },
+  "sampleSources": [],
+  "kind": "authenticated actual-main native CI receipt; no integration build",
+  "check": {
+    "kind": "expression",
+    "value": "let f = builtins.getFlake \"/nix/store/iq5k2i954jg5m9vagc8q2wy3kvn263dr-source\"; p = import f.inputs.nixpkgs { system = builtins.currentSystem; overlays = [ f.overlays.default ]; }; in (import (builtins.toPath \"/nix/store/iq5k2i954jg5m9vagc8q2wy3kvn263dr-source/tests/tier2-worker-options.nix\") { pkgs = p; distribution = builtins.storePath \"/nix/store/a4s55zxxm719x1dk57r006hw8m922mhj-gradle-9.9.0-purifier-darwin-worker-ipv4\"; jdk = builtins.storePath \"/nix/store/al24k44gwd1rk08p1x2p4r88ba9xw132-zulu-ca-jdk-17.0.19\"; javaHome = \"/nix/store/al24k44gwd1rk08p1x2p4r88ba9xw132-zulu-ca-jdk-17.0.19\"; derived = true; })",
+    "replay": {
+      "artifactUrl": "https://nix-purifiers.github.io/evidence/86cd567731e0e085aad65df47aa0906864d2ae565b42b8487283cbf269fc78a3.json",
+      "artifactSha256": "86cd567731e0e085aad65df47aa0906864d2ae565b42b8487283cbf269fc78a3",
+      "expressionSha256": "513aea27b9ad37150275209ebea265d074d8a5707b83218e73d391dfd9063a95",
+      "arguments": {}
+    }
+  },
+  "actualJob": "https://github.com/nix-purifiers/gradle-purifier/actions/runs/42370432193/job/128397255431",
+  "rawReceipt": {
+    "receipt": "https://nix-purifiers.github.io/evidence/cc339a785c7b8284d2a53f089eb8e40a3dda3a1d33d1e7649997f7adf9420598.json",
+    "artifactSha256": "cc339a785c7b8284d2a53f089eb8e40a3dda3a1d33d1e7649997f7adf9420598"
+  },
+  "rawDerivation": {
+    "receipt": "https://nix-purifiers.github.io/evidence/5f77e971ee127ab4d8819e268d09218c1ffbe9382e03d842674628d3138dc45b.json",
+    "artifactSha256": "5f77e971ee127ab4d8819e268d09218c1ffbe9382e03d842674628d3138dc45b"
+  },
+  "rawPathInfo": {
+    "receipt": "https://nix-purifiers.github.io/evidence/58557363718ef777e97c052ae3ef8c32efef19f077f98e7ab96453996ee4e1c5.json",
+    "artifactSha256": "58557363718ef777e97c052ae3ef8c32efef19f077f98e7ab96453996ee4e1c5"
+  },
+  "independentMetadataMatch": false,
+  "limitation": "Actual native CI execution/output NAR proven; independent metadata evaluation unavailable because original Darwin derived SDK output is not locally available without a build. Captured store inputs are required; no portable complete wrapper/SDK-cache replay is claimed.",
+  "scope": "Distinct pure-worker-transport output identity; do not reuse its NAR for another role.",
+  "tests": null
+}

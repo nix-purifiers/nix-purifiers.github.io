@@ -1,0 +1,270 @@
+[
+  {
+    "record": "gradle-purifier@1a56532:gradle-tier2-aarch64-darwin-8.14.6:pure-build",
+    "system": "aarch64-darwin",
+    "check": {
+      "kind": "expression",
+      "value": "let f = builtins.getFlake \"/nix/store/iq5k2i954jg5m9vagc8q2wy3kvn263dr-source\"; p = import f.inputs.nixpkgs { system = builtins.currentSystem; overlays = [ f.overlays.default ]; }; in (p.gradle-purifier.buildGradleProject { src = builtins.path { path = builtins.getEnv \"GRADLE_SAMPLE_SOURCE\"; name = \"petclinic-tier2-source\"; }; doCheck = true; }).packages.spring-petclinic.overrideAttrs (old: { postInstall = (old.postInstall or \"\") + ''\nmkdir -p \"$out/nix-support/test-results\"\nfind build/test-results/test -name \"TEST-*.xml\" -exec cp {} \"$out/nix-support/test-results/\" \\;\n''; })",
+      "replay": {
+        "artifactUrl": "https://nix-purifiers.github.io/evidence/da1118b765f51f55a787c5f9792cf8beb5c8267978d65f3770bb7cec393f8c55.json",
+        "artifactSha256": "da1118b765f51f55a787c5f9792cf8beb5c8267978d65f3770bb7cec393f8c55",
+        "expressionSha256": "c76cfcf52c1de232b36a7471d9501b43ef898ca3619618dba96497c449cfac08",
+        "arguments": {
+          "GRADLE_SAMPLE_SOURCE": "Restore projectReceipt.projectFiles to a local directory; exact builtins.path name petclinic-tier2-source is retained."
+        }
+      }
+    },
+    "GRADLE_SAMPLE_SOURCE": "/home/chris/Projects/ch-nix-workspace/.worktrees/gradle-tier2-metadata-plan/projects/gradle-tier2-aarch64-darwin-8.14.6",
+    "expectedDrv": "/nix/store/p95y1csp703chrgffnqsp07i93d499sz-spring-petclinic.drv",
+    "actualDrv": "/nix/store/p95y1csp703chrgffnqsp07i93d499sz-spring-petclinic.drv",
+    "exitCode": 0,
+    "stderr": "",
+    "matches": true,
+    "noBuild": true
+  },
+  {
+    "record": "gradle-purifier@1a56532:gradle-tier2-aarch64-darwin-8.14.6:pure-effective-sdk",
+    "system": "aarch64-darwin",
+    "check": {
+      "kind": "expression",
+      "value": "(let f = builtins.getFlake \"/nix/store/iq5k2i954jg5m9vagc8q2wy3kvn263dr-source\"; p = import f.inputs.nixpkgs { system = builtins.currentSystem; overlays = [ f.overlays.default ]; }; in (p.gradle-purifier.buildGradleProject { src = builtins.path { path = builtins.getEnv \"GRADLE_SAMPLE_SOURCE\"; name = \"petclinic-tier2-source\"; }; doCheck = true; }).packages.spring-petclinic.overrideAttrs (old: { postInstall = (old.postInstall or \"\") + ''\nmkdir -p \"$out/nix-support/test-results\"\nfind build/test-results/test -name \"TEST-*.xml\" -exec cp {} \"$out/nix-support/test-results/\" \\;\n''; })).distribution",
+      "replay": {
+        "artifactUrl": "https://nix-purifiers.github.io/evidence/0d9c9696ed4052a91b044580841ef8d5fb7292bd40116526b78e631878e3ee82.json",
+        "artifactSha256": "0d9c9696ed4052a91b044580841ef8d5fb7292bd40116526b78e631878e3ee82",
+        "expressionSha256": "b6045f3dabefd09a16d77715a475979c1def4b4d6e03b39ec8841e2c00a9bdf8",
+        "arguments": {
+          "GRADLE_SAMPLE_SOURCE": "Restore projectReceipt.projectFiles to a local directory; exact builtins.path name petclinic-tier2-source is retained."
+        }
+      }
+    },
+    "GRADLE_SAMPLE_SOURCE": "/home/chris/Projects/ch-nix-workspace/.worktrees/gradle-tier2-metadata-plan/projects/gradle-tier2-aarch64-darwin-8.14.6",
+    "expectedDrv": "/nix/store/1pk313ahlhi6frv7ij46nxjfsi6qrv72-gradle-8.14.6-purifier-darwin-worker-ipv4.drv",
+    "actualDrv": "/nix/store/1pk313ahlhi6frv7ij46nxjfsi6qrv72-gradle-8.14.6-purifier-darwin-worker-ipv4.drv",
+    "exitCode": 0,
+    "stderr": "",
+    "matches": true,
+    "noBuild": true
+  },
+  {
+    "record": "gradle-purifier@1a56532:gradle-tier2-aarch64-darwin-9.9.0:pure-build",
+    "system": "aarch64-darwin",
+    "check": {
+      "kind": "expression",
+      "value": "let f = builtins.getFlake \"/nix/store/iq5k2i954jg5m9vagc8q2wy3kvn263dr-source\"; p = import f.inputs.nixpkgs { system = builtins.currentSystem; overlays = [ f.overlays.default ]; }; in (p.gradle-purifier.buildGradleProject { src = builtins.path { path = builtins.getEnv \"GRADLE_SAMPLE_SOURCE\"; name = \"petclinic-tier2-source\"; }; doCheck = true; }).packages.spring-petclinic.overrideAttrs (old: { postInstall = (old.postInstall or \"\") + ''\nmkdir -p \"$out/nix-support/test-results\"\nfind build/test-results/test -name \"TEST-*.xml\" -exec cp {} \"$out/nix-support/test-results/\" \\;\n''; })",
+      "replay": {
+        "artifactUrl": "https://nix-purifiers.github.io/evidence/3e67790500c6595aebb69d866e90836a5055948de15a83b94bdbf12d1718cc7e.json",
+        "artifactSha256": "3e67790500c6595aebb69d866e90836a5055948de15a83b94bdbf12d1718cc7e",
+        "expressionSha256": "c76cfcf52c1de232b36a7471d9501b43ef898ca3619618dba96497c449cfac08",
+        "arguments": {
+          "GRADLE_SAMPLE_SOURCE": "Restore projectReceipt.projectFiles to a local directory; exact builtins.path name petclinic-tier2-source is retained."
+        }
+      }
+    },
+    "GRADLE_SAMPLE_SOURCE": "/home/chris/Projects/ch-nix-workspace/.worktrees/gradle-tier2-metadata-plan/projects/gradle-tier2-aarch64-darwin-9.9.0",
+    "expectedDrv": "/nix/store/wg6dw8gmyip91wh0xb6s9q9bmycxdg7w-spring-petclinic.drv",
+    "actualDrv": "/nix/store/wg6dw8gmyip91wh0xb6s9q9bmycxdg7w-spring-petclinic.drv",
+    "exitCode": 0,
+    "stderr": "",
+    "matches": true,
+    "noBuild": true
+  },
+  {
+    "record": "gradle-purifier@1a56532:gradle-tier2-aarch64-darwin-9.9.0:pure-effective-sdk",
+    "system": "aarch64-darwin",
+    "check": {
+      "kind": "expression",
+      "value": "(let f = builtins.getFlake \"/nix/store/iq5k2i954jg5m9vagc8q2wy3kvn263dr-source\"; p = import f.inputs.nixpkgs { system = builtins.currentSystem; overlays = [ f.overlays.default ]; }; in (p.gradle-purifier.buildGradleProject { src = builtins.path { path = builtins.getEnv \"GRADLE_SAMPLE_SOURCE\"; name = \"petclinic-tier2-source\"; }; doCheck = true; }).packages.spring-petclinic.overrideAttrs (old: { postInstall = (old.postInstall or \"\") + ''\nmkdir -p \"$out/nix-support/test-results\"\nfind build/test-results/test -name \"TEST-*.xml\" -exec cp {} \"$out/nix-support/test-results/\" \\;\n''; })).distribution",
+      "replay": {
+        "artifactUrl": "https://nix-purifiers.github.io/evidence/9f3f72689f62d4d60107d66eed53f2dba3d92d58752f822b75a4469d6324ee4d.json",
+        "artifactSha256": "9f3f72689f62d4d60107d66eed53f2dba3d92d58752f822b75a4469d6324ee4d",
+        "expressionSha256": "b6045f3dabefd09a16d77715a475979c1def4b4d6e03b39ec8841e2c00a9bdf8",
+        "arguments": {
+          "GRADLE_SAMPLE_SOURCE": "Restore projectReceipt.projectFiles to a local directory; exact builtins.path name petclinic-tier2-source is retained."
+        }
+      }
+    },
+    "GRADLE_SAMPLE_SOURCE": "/home/chris/Projects/ch-nix-workspace/.worktrees/gradle-tier2-metadata-plan/projects/gradle-tier2-aarch64-darwin-9.9.0",
+    "expectedDrv": "/nix/store/p4nqak3zyyxpjb21jw98d4ir0db1ljq4-gradle-9.9.0-purifier-darwin-worker-ipv4.drv",
+    "actualDrv": "/nix/store/p4nqak3zyyxpjb21jw98d4ir0db1ljq4-gradle-9.9.0-purifier-darwin-worker-ipv4.drv",
+    "exitCode": 0,
+    "stderr": "",
+    "matches": true,
+    "noBuild": true
+  },
+  {
+    "record": "gradle-purifier@1a56532:gradle-tier2-x86_64-linux-8.14.6:ordinary-offline-check",
+    "system": "x86_64-linux",
+    "check": {
+      "kind": "expression",
+      "value": "let f = builtins.getFlake \"/nix/store/iq5k2i954jg5m9vagc8q2wy3kvn263dr-source\"; p = import f.inputs.nixpkgs { system = builtins.currentSystem; overlays = [ f.overlays.default ]; }; in (import (builtins.toPath \"/nix/store/iq5k2i954jg5m9vagc8q2wy3kvn263dr-source/tests/tier2-offline.nix\") { pkgs = p; jdk = builtins.storePath \"/nix/store/ry8szmmd7pymhc0cgdnwf7mb5083j5mc-openjdk-headless-17.0.20.1+1\"; distribution = builtins.storePath \"/nix/store/2xg81wjll1lfzb599zny2s52bv2ji58n-gradle-8.14.6\"; library = builtins.storePath \"/nix/store/33mlrc8qkwyhp583ly1dz3fy3r7kvmd1-lib\"; repository = builtins.storePath \"/nix/store/svwvpm6hfh2k80q6796qb5z7hx8vqifc-gradle-purifier-repository\"; javaHome = \"/nix/store/ry8szmmd7pymhc0cgdnwf7mb5083j5mc-openjdk-headless-17.0.20.1+1/lib/openjdk\"; src = builtins.path { path = \"/nix/store/mw773k8v7646a5dx17f4p2whaks7jpv3-petclinic-tier2-source\"; name = \"petclinic-tier2-source\"; }; properties = builtins.path { path = \"/home/chris/Projects/ch-nix-workspace/evidence/gradle-tier2-main-1a56/runtime/gradle-tier2-x86_64-linux-8.14.6/prefetch.properties\"; name = \"prefetch.properties\"; }; wrapperHome = builtins.path { path = \"/nix/store/6qrlqdir5rz6xnshf9p5pk39wy81zdkl-wrapper-home\"; name = \"wrapper-home\"; }; })",
+      "replay": {
+        "artifactUrl": "https://nix-purifiers.github.io/evidence/87d3b71c07cc54563ea6fd5186982a5852793c9d9c2664d4fadea26aa550a6fd.json",
+        "artifactSha256": "87d3b71c07cc54563ea6fd5186982a5852793c9d9c2664d4fadea26aa550a6fd",
+        "expressionSha256": "7c707a907292c4ba3ec1f294f00d2cfaa3aa5955a8c978859cada3388a754e92",
+        "arguments": {}
+      }
+    },
+    "GRADLE_SAMPLE_SOURCE": null,
+    "expectedDrv": "/nix/store/bqalily8w0hl4dv289cmf3sn5wyd4srx-petclinic-ordinary-offline.drv",
+    "actualDrv": "/nix/store/bqalily8w0hl4dv289cmf3sn5wyd4srx-petclinic-ordinary-offline.drv",
+    "exitCode": 0,
+    "stderr": "",
+    "matches": true,
+    "noBuild": true
+  },
+  {
+    "record": "gradle-purifier@1a56532:gradle-tier2-x86_64-linux-8.14.6:pure-build",
+    "system": "x86_64-linux",
+    "check": {
+      "kind": "expression",
+      "value": "let f = builtins.getFlake \"/nix/store/iq5k2i954jg5m9vagc8q2wy3kvn263dr-source\"; p = import f.inputs.nixpkgs { system = builtins.currentSystem; overlays = [ f.overlays.default ]; }; in (p.gradle-purifier.buildGradleProject { src = builtins.path { path = builtins.getEnv \"GRADLE_SAMPLE_SOURCE\"; name = \"petclinic-tier2-source\"; }; doCheck = true; }).packages.spring-petclinic.overrideAttrs (old: { postInstall = (old.postInstall or \"\") + ''\nmkdir -p \"$out/nix-support/test-results\"\nfind build/test-results/test -name \"TEST-*.xml\" -exec cp {} \"$out/nix-support/test-results/\" \\;\n''; })",
+      "replay": {
+        "artifactUrl": "https://nix-purifiers.github.io/evidence/c44fcd7201aa8323fe255ef64d75f53709046b4c32151770af52ad6d7c622062.json",
+        "artifactSha256": "c44fcd7201aa8323fe255ef64d75f53709046b4c32151770af52ad6d7c622062",
+        "expressionSha256": "c76cfcf52c1de232b36a7471d9501b43ef898ca3619618dba96497c449cfac08",
+        "arguments": {
+          "GRADLE_SAMPLE_SOURCE": "Restore projectReceipt.projectFiles to a local directory; exact builtins.path name petclinic-tier2-source is retained."
+        }
+      }
+    },
+    "GRADLE_SAMPLE_SOURCE": "/home/chris/Projects/ch-nix-workspace/.worktrees/gradle-tier2-metadata-plan/projects/gradle-tier2-x86_64-linux-8.14.6",
+    "expectedDrv": "/nix/store/4cqv9vyykzabxn1kj04ffnm2gkglkpyl-spring-petclinic.drv",
+    "actualDrv": "/nix/store/4cqv9vyykzabxn1kj04ffnm2gkglkpyl-spring-petclinic.drv",
+    "exitCode": 0,
+    "stderr": "",
+    "matches": true,
+    "noBuild": true
+  },
+  {
+    "record": "gradle-purifier@1a56532:gradle-tier2-x86_64-linux-8.14.6:pure-effective-sdk",
+    "system": "x86_64-linux",
+    "check": {
+      "kind": "expression",
+      "value": "(let f = builtins.getFlake \"/nix/store/iq5k2i954jg5m9vagc8q2wy3kvn263dr-source\"; p = import f.inputs.nixpkgs { system = builtins.currentSystem; overlays = [ f.overlays.default ]; }; in (p.gradle-purifier.buildGradleProject { src = builtins.path { path = builtins.getEnv \"GRADLE_SAMPLE_SOURCE\"; name = \"petclinic-tier2-source\"; }; doCheck = true; }).packages.spring-petclinic.overrideAttrs (old: { postInstall = (old.postInstall or \"\") + ''\nmkdir -p \"$out/nix-support/test-results\"\nfind build/test-results/test -name \"TEST-*.xml\" -exec cp {} \"$out/nix-support/test-results/\" \\;\n''; })).distribution",
+      "replay": {
+        "artifactUrl": "https://nix-purifiers.github.io/evidence/535dcbe3418f8dfb626eb04d6b775a34e749ee967426141c6dd301378cae0f16.json",
+        "artifactSha256": "535dcbe3418f8dfb626eb04d6b775a34e749ee967426141c6dd301378cae0f16",
+        "expressionSha256": "b6045f3dabefd09a16d77715a475979c1def4b4d6e03b39ec8841e2c00a9bdf8",
+        "arguments": {
+          "GRADLE_SAMPLE_SOURCE": "Restore projectReceipt.projectFiles to a local directory; exact builtins.path name petclinic-tier2-source is retained."
+        }
+      }
+    },
+    "GRADLE_SAMPLE_SOURCE": "/home/chris/Projects/ch-nix-workspace/.worktrees/gradle-tier2-metadata-plan/projects/gradle-tier2-x86_64-linux-8.14.6",
+    "expectedDrv": "/nix/store/al65ssshflmz151hav27qm5iqrgx2frv-gradle-8.14.6.drv",
+    "actualDrv": "/nix/store/al65ssshflmz151hav27qm5iqrgx2frv-gradle-8.14.6.drv",
+    "exitCode": 0,
+    "stderr": "",
+    "matches": true,
+    "noBuild": true
+  },
+  {
+    "record": "gradle-purifier@1a56532:gradle-tier2-x86_64-linux-8.14.6:pure-worker-transport",
+    "system": "x86_64-linux",
+    "check": {
+      "kind": "expression",
+      "value": "let f = builtins.getFlake \"/nix/store/iq5k2i954jg5m9vagc8q2wy3kvn263dr-source\"; p = import f.inputs.nixpkgs { system = builtins.currentSystem; overlays = [ f.overlays.default ]; }; in (import (builtins.toPath \"/nix/store/iq5k2i954jg5m9vagc8q2wy3kvn263dr-source/tests/tier2-worker-options.nix\") { pkgs = p; distribution = builtins.storePath \"/nix/store/2xg81wjll1lfzb599zny2s52bv2ji58n-gradle-8.14.6\"; jdk = builtins.storePath \"/nix/store/ry8szmmd7pymhc0cgdnwf7mb5083j5mc-openjdk-headless-17.0.20.1+1\"; javaHome = \"/nix/store/ry8szmmd7pymhc0cgdnwf7mb5083j5mc-openjdk-headless-17.0.20.1+1/lib/openjdk\"; derived = false; })",
+      "replay": {
+        "artifactUrl": "https://nix-purifiers.github.io/evidence/9b7fa66e38731a36d2e9176af58780e34b3843a8a357a3df112850ab2ee4bea4.json",
+        "artifactSha256": "9b7fa66e38731a36d2e9176af58780e34b3843a8a357a3df112850ab2ee4bea4",
+        "expressionSha256": "108adbd1b94f40205cf6429d6d5ec5648260309c6cfac1e23887ed0a56709c92",
+        "arguments": {}
+      }
+    },
+    "GRADLE_SAMPLE_SOURCE": null,
+    "expectedDrv": "/nix/store/6bjwls5a3pqps81481ni19ilb4y1x57s-gradle-worker-transport-observation.drv",
+    "actualDrv": "/nix/store/6bjwls5a3pqps81481ni19ilb4y1x57s-gradle-worker-transport-observation.drv",
+    "exitCode": 0,
+    "stderr": "",
+    "matches": true,
+    "noBuild": true
+  },
+  {
+    "record": "gradle-purifier@1a56532:gradle-tier2-x86_64-linux-9.9.0:ordinary-offline-check",
+    "system": "x86_64-linux",
+    "check": {
+      "kind": "expression",
+      "value": "let f = builtins.getFlake \"/nix/store/iq5k2i954jg5m9vagc8q2wy3kvn263dr-source\"; p = import f.inputs.nixpkgs { system = builtins.currentSystem; overlays = [ f.overlays.default ]; }; in (import (builtins.toPath \"/nix/store/iq5k2i954jg5m9vagc8q2wy3kvn263dr-source/tests/tier2-offline.nix\") { pkgs = p; jdk = builtins.storePath \"/nix/store/ry8szmmd7pymhc0cgdnwf7mb5083j5mc-openjdk-headless-17.0.20.1+1\"; distribution = builtins.storePath \"/nix/store/f2rlfhmy8g9j37idqlm29lijzimlrrld-gradle-9.9.0\"; library = builtins.storePath \"/nix/store/33mlrc8qkwyhp583ly1dz3fy3r7kvmd1-lib\"; repository = builtins.storePath \"/nix/store/m24v8rn7nkgikqvxrmq41wy3infidal2-gradle-purifier-repository\"; javaHome = \"/nix/store/ry8szmmd7pymhc0cgdnwf7mb5083j5mc-openjdk-headless-17.0.20.1+1/lib/openjdk\"; src = builtins.path { path = \"/nix/store/hbsbxp3bvps6k4z1w33wd4za05xv64lw-petclinic-tier2-source\"; name = \"petclinic-tier2-source\"; }; properties = builtins.path { path = \"/home/chris/Projects/ch-nix-workspace/evidence/gradle-tier2-main-1a56/runtime/gradle-tier2-x86_64-linux-9.9.0/prefetch.properties\"; name = \"prefetch.properties\"; }; wrapperHome = builtins.path { path = \"/nix/store/lmhdy8dfp9n4f2cms975hjc1hq7j73kw-wrapper-home\"; name = \"wrapper-home\"; }; })",
+      "replay": {
+        "artifactUrl": "https://nix-purifiers.github.io/evidence/d9356785a2739b82251fea03a5d95f1d56933032200430d878b9682a6269618b.json",
+        "artifactSha256": "d9356785a2739b82251fea03a5d95f1d56933032200430d878b9682a6269618b",
+        "expressionSha256": "57d91f68dba466c85a4e8ee09f4bb115becfb19f2d11906a059fe51df07cdb04",
+        "arguments": {}
+      }
+    },
+    "GRADLE_SAMPLE_SOURCE": null,
+    "expectedDrv": "/nix/store/0h3pn7ncci31q1zg5ssr6m6y3lhg3wnj-petclinic-ordinary-offline.drv",
+    "actualDrv": "/nix/store/0h3pn7ncci31q1zg5ssr6m6y3lhg3wnj-petclinic-ordinary-offline.drv",
+    "exitCode": 0,
+    "stderr": "",
+    "matches": true,
+    "noBuild": true
+  },
+  {
+    "record": "gradle-purifier@1a56532:gradle-tier2-x86_64-linux-9.9.0:pure-build",
+    "system": "x86_64-linux",
+    "check": {
+      "kind": "expression",
+      "value": "let f = builtins.getFlake \"/nix/store/iq5k2i954jg5m9vagc8q2wy3kvn263dr-source\"; p = import f.inputs.nixpkgs { system = builtins.currentSystem; overlays = [ f.overlays.default ]; }; in (p.gradle-purifier.buildGradleProject { src = builtins.path { path = builtins.getEnv \"GRADLE_SAMPLE_SOURCE\"; name = \"petclinic-tier2-source\"; }; doCheck = true; }).packages.spring-petclinic.overrideAttrs (old: { postInstall = (old.postInstall or \"\") + ''\nmkdir -p \"$out/nix-support/test-results\"\nfind build/test-results/test -name \"TEST-*.xml\" -exec cp {} \"$out/nix-support/test-results/\" \\;\n''; })",
+      "replay": {
+        "artifactUrl": "https://nix-purifiers.github.io/evidence/122b5ba1639bb98c566262007164a1659d5884a5a0606b8e01a164edae04d9ea.json",
+        "artifactSha256": "122b5ba1639bb98c566262007164a1659d5884a5a0606b8e01a164edae04d9ea",
+        "expressionSha256": "c76cfcf52c1de232b36a7471d9501b43ef898ca3619618dba96497c449cfac08",
+        "arguments": {
+          "GRADLE_SAMPLE_SOURCE": "Restore projectReceipt.projectFiles to a local directory; exact builtins.path name petclinic-tier2-source is retained."
+        }
+      }
+    },
+    "GRADLE_SAMPLE_SOURCE": "/home/chris/Projects/ch-nix-workspace/.worktrees/gradle-tier2-metadata-plan/projects/gradle-tier2-x86_64-linux-9.9.0",
+    "expectedDrv": "/nix/store/96bvc1pvks8001s61pf6qx4lwjra0wf7-spring-petclinic.drv",
+    "actualDrv": "/nix/store/96bvc1pvks8001s61pf6qx4lwjra0wf7-spring-petclinic.drv",
+    "exitCode": 0,
+    "stderr": "",
+    "matches": true,
+    "noBuild": true
+  },
+  {
+    "record": "gradle-purifier@1a56532:gradle-tier2-x86_64-linux-9.9.0:pure-effective-sdk",
+    "system": "x86_64-linux",
+    "check": {
+      "kind": "expression",
+      "value": "(let f = builtins.getFlake \"/nix/store/iq5k2i954jg5m9vagc8q2wy3kvn263dr-source\"; p = import f.inputs.nixpkgs { system = builtins.currentSystem; overlays = [ f.overlays.default ]; }; in (p.gradle-purifier.buildGradleProject { src = builtins.path { path = builtins.getEnv \"GRADLE_SAMPLE_SOURCE\"; name = \"petclinic-tier2-source\"; }; doCheck = true; }).packages.spring-petclinic.overrideAttrs (old: { postInstall = (old.postInstall or \"\") + ''\nmkdir -p \"$out/nix-support/test-results\"\nfind build/test-results/test -name \"TEST-*.xml\" -exec cp {} \"$out/nix-support/test-results/\" \\;\n''; })).distribution",
+      "replay": {
+        "artifactUrl": "https://nix-purifiers.github.io/evidence/2b42f7fb76a8138e2741e612f23ea31c4110f219f6d544594acc3f8528f61bdc.json",
+        "artifactSha256": "2b42f7fb76a8138e2741e612f23ea31c4110f219f6d544594acc3f8528f61bdc",
+        "expressionSha256": "b6045f3dabefd09a16d77715a475979c1def4b4d6e03b39ec8841e2c00a9bdf8",
+        "arguments": {
+          "GRADLE_SAMPLE_SOURCE": "Restore projectReceipt.projectFiles to a local directory; exact builtins.path name petclinic-tier2-source is retained."
+        }
+      }
+    },
+    "GRADLE_SAMPLE_SOURCE": "/home/chris/Projects/ch-nix-workspace/.worktrees/gradle-tier2-metadata-plan/projects/gradle-tier2-x86_64-linux-9.9.0",
+    "expectedDrv": "/nix/store/wk82aczlwb67j6jwjdqd7i4bj36v9a4x-gradle-9.9.0.drv",
+    "actualDrv": "/nix/store/wk82aczlwb67j6jwjdqd7i4bj36v9a4x-gradle-9.9.0.drv",
+    "exitCode": 0,
+    "stderr": "",
+    "matches": true,
+    "noBuild": true
+  },
+  {
+    "record": "gradle-purifier@1a56532:gradle-tier2-x86_64-linux-9.9.0:pure-worker-transport",
+    "system": "x86_64-linux",
+    "check": {
+      "kind": "expression",
+      "value": "let f = builtins.getFlake \"/nix/store/iq5k2i954jg5m9vagc8q2wy3kvn263dr-source\"; p = import f.inputs.nixpkgs { system = builtins.currentSystem; overlays = [ f.overlays.default ]; }; in (import (builtins.toPath \"/nix/store/iq5k2i954jg5m9vagc8q2wy3kvn263dr-source/tests/tier2-worker-options.nix\") { pkgs = p; distribution = builtins.storePath \"/nix/store/f2rlfhmy8g9j37idqlm29lijzimlrrld-gradle-9.9.0\"; jdk = builtins.storePath \"/nix/store/ry8szmmd7pymhc0cgdnwf7mb5083j5mc-openjdk-headless-17.0.20.1+1\"; javaHome = \"/nix/store/ry8szmmd7pymhc0cgdnwf7mb5083j5mc-openjdk-headless-17.0.20.1+1/lib/openjdk\"; derived = false; })",
+      "replay": {
+        "artifactUrl": "https://nix-purifiers.github.io/evidence/5295d1251a323b89b631f1b948b0f8481eebc587d6ca96e7605fb64fe7ed6d63.json",
+        "artifactSha256": "5295d1251a323b89b631f1b948b0f8481eebc587d6ca96e7605fb64fe7ed6d63",
+        "expressionSha256": "a04acf4188a79f17a63d65816bc5e0ff6ee632a90b204492e46a15e62feef665",
+        "arguments": {}
+      }
+    },
+    "GRADLE_SAMPLE_SOURCE": null,
+    "expectedDrv": "/nix/store/ydik3i34cw2ipm0l4ilkvk2rxwqjkv3h-gradle-worker-transport-observation.drv",
+    "actualDrv": "/nix/store/ydik3i34cw2ipm0l4ilkvk2rxwqjkv3h-gradle-worker-transport-observation.drv",
+    "exitCode": 0,
+    "stderr": "",
+    "matches": true,
+    "noBuild": true
+  }
+]

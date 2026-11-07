@@ -1,0 +1,130 @@
+{
+  "source": "6b994ceb112995d83b80d4fc57319b8abc504e8f",
+  "system": "aarch64-linux",
+  "sandbox": true,
+  "machine": "aarch64",
+  "defaultBun": "1.4.2",
+  "check": ".#checks.aarch64-linux.current-stable-sources-program",
+  "command": [
+    "nix",
+    "build",
+    "--no-link",
+    "--rebuild",
+    "--option",
+    "sandbox",
+    "true",
+    "--option",
+    "max-jobs",
+    "2",
+    "--option",
+    "cores",
+    "2",
+    "-L",
+    "--json",
+    ".#checks.aarch64-linux.current-stable-sources-program"
+  ],
+  "status": "passed",
+  "builds": [
+    {
+      "drvPath": "/nix/store/ibsliz39npfsfim2rkh5q73bh1p3c9qf-test-sources-program.drv",
+      "outputs": {
+        "out": "/nix/store/1lv1hqhmwqdz6qdn5gap2xbs5b8vk2jy-test-sources-program"
+      }
+    }
+  ],
+  "derivations": {
+    "derivations": {
+      "ibsliz39npfsfim2rkh5q73bh1p3c9qf-test-sources-program.drv": {
+        "args": [
+          "-e",
+          "/nix/store/l622p70vy8k5sh7y5wizi5f2mic6ynpg-source-stdenv.sh",
+          "/nix/store/shkw4qm9qcw5sc5n1k5jznc83ny02r39-default-builder.sh"
+        ],
+        "builder": "/nix/store/czx7cscpnqqmc9nwmbpnv2zcvck64mmf-bash-5.3p20/bin/bash",
+        "env": {
+          "__structuredAttrs": "",
+          "buildCommand": "actual=$(/nix/store/kgmi1lmliirawc68j0817x2p5fv34qsg-fixture-sources-1.0.0/bin/fixture-sources)\nif [ \"$actual\" != 'plain object: true, one day: 86400000 ms' ]; then\n  echo \"expected: \"'plain object: true, one day: 86400000 ms'\n  echo \"actual:   $actual\"\n  exit 1\nfi\ntouch $out\n",
+          "buildInputs": "",
+          "builder": "/nix/store/czx7cscpnqqmc9nwmbpnv2zcvck64mmf-bash-5.3p20/bin/bash",
+          "cmakeFlags": "",
+          "configureFlags": "",
+          "depsBuildBuild": "",
+          "depsBuildBuildPropagated": "",
+          "depsBuildTarget": "",
+          "depsBuildTargetPropagated": "",
+          "depsHostHost": "",
+          "depsHostHostPropagated": "",
+          "depsTargetTarget": "",
+          "depsTargetTargetPropagated": "",
+          "doCheck": "",
+          "doInstallCheck": "",
+          "enableParallelBuilding": "1",
+          "enableParallelChecking": "1",
+          "enableParallelInstalling": "1",
+          "mesonFlags": "",
+          "name": "test-sources-program",
+          "nativeBuildInputs": "",
+          "out": "/nix/store/1lv1hqhmwqdz6qdn5gap2xbs5b8vk2jy-test-sources-program",
+          "outputs": "out",
+          "passAsFile": "buildCommand",
+          "patches": "",
+          "propagatedBuildInputs": "",
+          "propagatedNativeBuildInputs": "",
+          "stdenv": "/nix/store/4rgz2pgx20yk0pxnm03yvl6dq2cay5hi-stdenv-linux-no-cc",
+          "strictDeps": "",
+          "system": "aarch64-linux"
+        },
+        "inputs": {
+          "drvs": {
+            "3ilgh22z0kad09ys6c6g7g8f2kq0bk17-bash-5.3p20.drv": {
+              "dynamicOutputs": {},
+              "outputs": [
+                "out"
+              ]
+            },
+            "a7r4jm9np2jswd02yz0344pmmy0jg44d-stdenv-linux-no-cc.drv": {
+              "dynamicOutputs": {},
+              "outputs": [
+                "out"
+              ]
+            },
+            "an1cixj303yhxdga6hdqq01nryj3qxsc-fixture-sources-1.0.0.drv": {
+              "dynamicOutputs": {},
+              "outputs": [
+                "out"
+              ]
+            }
+          },
+          "srcs": [
+            "l622p70vy8k5sh7y5wizi5f2mic6ynpg-source-stdenv.sh",
+            "shkw4qm9qcw5sc5n1k5jznc83ny02r39-default-builder.sh"
+          ]
+        },
+        "name": "test-sources-program",
+        "outputs": {
+          "out": {
+            "path": "1lv1hqhmwqdz6qdn5gap2xbs5b8vk2jy-test-sources-program"
+          }
+        },
+        "system": "aarch64-linux",
+        "version": 4
+      }
+    },
+    "version": 4
+  },
+  "outputs": {
+    "/nix/store/1lv1hqhmwqdz6qdn5gap2xbs5b8vk2jy-test-sources-program": {
+      "ca": null,
+      "deriver": "/nix/store/ibsliz39npfsfim2rkh5q73bh1p3c9qf-test-sources-program.drv",
+      "narHash": "sha256-d6xi4mKdjkX2JFicDIv5niSzpyI0m/Hnm8GGAIU04kY=",
+      "narSize": 112,
+      "references": [],
+      "registrationTime": 1794054058,
+      "signatures": [],
+      "storeDir": "/nix/store",
+      "ultimate": true,
+      "version": 1
+    }
+  },
+  "sample": null
+}

@@ -1,0 +1,162 @@
+# SPDX-License-Identifier: MIT
+name: check
+
+on:
+  push:
+    branches: ['**']
+  pull_request:
+
+jobs:
+  # The flake's checks, the sandboxed conformance-* checks among them,
+  # built on every system the flake supports.
+  flake-check:
+    strategy:
+      fail-fast: false
+      matrix:
+        runner: [ubuntu-latest, ubuntu-24.04-arm, macos-15]
+    runs-on: ${{ matrix.runner }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: cachix/install-nix-action@v31
+        with:
+          extra_nix_config: |
+            sandbox = true
+      - run: nix flake check --option sandbox true -L
+      - name: Execute named runtime derivations and record identities
+        run: python3 tests/runtime-receipts.py
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: bun-runtime-${{ matrix.runner }}
+          path: runtime-receipts/
+          retention-days: 14
+
+  # Relocking every fixture and elysia reproduces each lockfile byte for
+  # byte. A relock needs the network, so it runs here.
+  conformance-relock:
+    strategy:
+      fail-fast: false
+      matrix:
+        runner: [ubuntu-latest, ubuntu-24.04-arm, macos-15]
+    runs-on: ${{ matrix.runner }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: cachix/install-nix-action@v31
+        with:
+          extra_nix_config: |
+            sandbox = true
+      - run: bash tests/cli.sh relock
+
+  # `bun-purifier update` of a fixture that pins an old version moves
+  # bun.lock to a newer one and relocks, and both lockfiles then pass the
+  # stale check. bun update needs the network, so it runs here.
+  conformance-update:
+    strategy:
+      fail-fast: false
+      matrix:
+        runner: [ubuntu-latest, ubuntu-24.04-arm, macos-15]
+    runs-on: ${{ matrix.runner }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: cachix/install-nix-action@v31
+        with:
+          extra_nix_config: |
+            sandbox = true
+      - run: bash tests/cli.sh update
+
+  # After `bun-purifier prefetch`, the everyday loop works with the network
+  # cut: the loop runs in a network namespace with no interfaces up.
+  conformance-offline:
+    strategy:
+      fail-fast: false
+      matrix:
+        runner: [ubuntu-latest, ubuntu-24.04-arm]
+    runs-on: ${{ matrix.runner }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: cachix/install-nix-action@v31
+        with:
+          extra_nix_config: |
+            sandbox = true
+      - run: bash tests/cli.sh offline-prefetch
+        env:
+          OFFLINE_DIR: ${{ runner.temp }}/offline
+      - run: >-
+          sudo unshare --net --
+          sudo -u "$USER" env PATH="$PATH" HOME="$HOME" OFFLINE_DIR="$OFFLINE_DIR"
+          bash tests/cli.sh offline-loop
+        env:
+          OFFLINE_DIR: ${{ runner.temp }}/offline
+
+  # macos-15 is a native arm64 runner. Deny all network access after
+  # prefetch; the positive/negative probe checks the isolation itself.
+  conformance-offline-darwin:
+    runs-on: macos-15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: cachix/install-nix-action@v31
+        with:
+          extra_nix_config: |
+            sandbox = true
+      - name: Record native runtime
+        run: |
+          test "$(uname -m)" = arm64
+          test "$(nix eval --impure --raw --expr builtins.currentSystem)" = aarch64-darwin
+          nix run '.#bun-purifier.bun' -- --version
+      - run: bash tests/cli.sh offline-prefetch
+        env:
+          OFFLINE_DIR: ${{ runner.temp }}/offline
+      - name: Run ordinary Bun with network denied
+        env:
+          OFFLINE_DIR: ${{ runner.temp }}/offline
+        run: |
+          BUN_PURIFIER_TEST_CLI="$(nix build --no-link --print-out-paths '.#bun-purifier')/bin/bun-purifier"
+          export BUN_PURIFIER_TEST_CLI
+          BUN_PURIFIER_TEST_BUN="$(nix build --no-link --print-out-paths '.#bun-purifier.bun')/bin/bun"
+          export BUN_PURIFIER_TEST_BUN
+          curl --fail --max-time 30 https://registry.npmjs.org/is-odd > /dev/null
+          profile='(version 1) (allow default) (deny network*)'
+          if sandbox-exec -p "$profile" curl --fail --max-time 5 https://registry.npmjs.org/is-odd; then
+            echo 'network isolation failed'
+            exit 1
+          fi
+          sandbox-exec -p "$profile" bash tests/cli.sh offline-loop
+
+  # The rest of what needs the network or Nix itself: the everyday loop
+  # with its refusals, publishing, the Nix error for a malformed lockfile,
+  # and `nix build --rebuild` (conformance-rebuild).
+  cli:
+    strategy:
+      fail-fast: false
+      matrix:
+        runner: [ubuntu-latest, ubuntu-24.04-arm, macos-15]
+    runs-on: ${{ matrix.runner }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: cachix/install-nix-action@v31
+        with:
+          extra_nix_config: |
+            sandbox = true
+      - run: bash tests/cli.sh loop publish nix-errors rebuild
+
+  composition-native:
+    strategy:
+      fail-fast: false
+      matrix:
+        runner: [ubuntu-latest, ubuntu-24.04-arm, macos-15]
+    runs-on: ${{ matrix.runner }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: cachix/install-nix-action@v31
+        with:
+          extra_nix_config: |
+            sandbox = true
+      - run: python3 tests/composition-native.py
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: bun-composition-source-${{ matrix.runner }}
+          path: composition-receipts/
+          retention-days: 14

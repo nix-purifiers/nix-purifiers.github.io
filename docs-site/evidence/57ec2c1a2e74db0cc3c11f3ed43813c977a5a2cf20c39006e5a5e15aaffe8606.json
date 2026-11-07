@@ -1,0 +1,58 @@
+{
+  "status": "success",
+  "executedSystem": "x86_64-linux",
+  "sourceRevision": "1a5653242018a7c5939e5fd10f6f2de52feadfad",
+  "sourceNarHash": "sha256-ueLaprdMJcfAyfKkCKCRmMCVqX570dLZyC3+5B/lPVY=",
+  "drvPath": "/nix/store/bqalily8w0hl4dv289cmf3sn5wyd4srx-petclinic-ordinary-offline.drv",
+  "outputs": {
+    "out": "/nix/store/p8mw0y52n33lqk8cy7vzbbrkx17i8sx8-petclinic-ordinary-offline"
+  },
+  "outputNarHashes": {
+    "out": "sha256-yWW0zhqikGFqOt/+HIMTe0QRNMLgU3J0VRblSUXgjcQ="
+  },
+  "sdkVersions": {
+    "Gradle upstream point": "8.14.6",
+    "SDK role": "official upstream distribution",
+    "JDK": "/nix/store/ry8szmmd7pymhc0cgdnwf7mb5083j5mc-openjdk-headless-17.0.20.1+1/lib/openjdk",
+    "JDK version": "17.0.20.1+1"
+  },
+  "sampleSources": [
+    {
+      "repository": "https://github.com/spring-projects/spring-petclinic",
+      "revision": "500158f732419217507c7656904b8e6aa1bcc0d6",
+      "sourceNarHash": "sha256-j3Uiz+Wn9jWegwrJvCZZymLNrzo5zn5GyPBIn6+6V2w="
+    }
+  ],
+  "kind": "authenticated actual-main native CI receipt; no integration build",
+  "check": {
+    "kind": "expression",
+    "value": "let f = builtins.getFlake \"/nix/store/iq5k2i954jg5m9vagc8q2wy3kvn263dr-source\"; p = import f.inputs.nixpkgs { system = builtins.currentSystem; overlays = [ f.overlays.default ]; }; in (import (builtins.toPath \"/nix/store/iq5k2i954jg5m9vagc8q2wy3kvn263dr-source/tests/tier2-offline.nix\") { pkgs = p; jdk = builtins.storePath \"/nix/store/ry8szmmd7pymhc0cgdnwf7mb5083j5mc-openjdk-headless-17.0.20.1+1\"; distribution = builtins.storePath \"/nix/store/2xg81wjll1lfzb599zny2s52bv2ji58n-gradle-8.14.6\"; library = builtins.storePath \"/nix/store/33mlrc8qkwyhp583ly1dz3fy3r7kvmd1-lib\"; repository = builtins.storePath \"/nix/store/svwvpm6hfh2k80q6796qb5z7hx8vqifc-gradle-purifier-repository\"; javaHome = \"/nix/store/ry8szmmd7pymhc0cgdnwf7mb5083j5mc-openjdk-headless-17.0.20.1+1/lib/openjdk\"; src = builtins.path { path = \"/nix/store/mw773k8v7646a5dx17f4p2whaks7jpv3-petclinic-tier2-source\"; name = \"petclinic-tier2-source\"; }; properties = builtins.path { path = \"/home/chris/Projects/ch-nix-workspace/evidence/gradle-tier2-main-1a56/runtime/gradle-tier2-x86_64-linux-8.14.6/prefetch.properties\"; name = \"prefetch.properties\"; }; wrapperHome = builtins.path { path = \"/nix/store/6qrlqdir5rz6xnshf9p5pk39wy81zdkl-wrapper-home\"; name = \"wrapper-home\"; }; })",
+    "replay": {
+      "artifactUrl": "https://nix-purifiers.github.io/evidence/87d3b71c07cc54563ea6fd5186982a5852793c9d9c2664d4fadea26aa550a6fd.json",
+      "artifactSha256": "87d3b71c07cc54563ea6fd5186982a5852793c9d9c2664d4fadea26aa550a6fd",
+      "expressionSha256": "7c707a907292c4ba3ec1f294f00d2cfaa3aa5955a8c978859cada3388a754e92",
+      "arguments": {}
+    }
+  },
+  "actualJob": "https://github.com/nix-purifiers/gradle-purifier/actions/runs/42370432193/job/128397255574",
+  "rawReceipt": {
+    "receipt": "https://nix-purifiers.github.io/evidence/70ed4ce40ed2fe3bb6b98b3e56b1b3c2c0aec1de0e1d53be0e0ed49e07da36ec.json",
+    "artifactSha256": "70ed4ce40ed2fe3bb6b98b3e56b1b3c2c0aec1de0e1d53be0e0ed49e07da36ec"
+  },
+  "rawDerivation": {
+    "receipt": "https://nix-purifiers.github.io/evidence/00ca51020f7abc4d71a13e6026eba8940d662f622649c1fba9fbd4abc78586af.json",
+    "artifactSha256": "00ca51020f7abc4d71a13e6026eba8940d662f622649c1fba9fbd4abc78586af"
+  },
+  "rawPathInfo": {
+    "receipt": "https://nix-purifiers.github.io/evidence/5a6eb66a26ab31cb8e4d6ebeac2e2f5923063e7e0874700c66baa80ff58132e1.json",
+    "artifactSha256": "5a6eb66a26ab31cb8e4d6ebeac2e2f5923063e7e0874700c66baa80ff58132e1"
+  },
+  "independentMetadataMatch": true,
+  "limitation": "Independent metadata evaluation exactly matches actual CI drv. Captured store inputs are required; no portable complete wrapper/SDK-cache replay is claimed.",
+  "scope": "Distinct ordinary-offline-check output identity; do not reuse its NAR for another role.",
+  "tests": {
+    "tests": 81,
+    "failures": 0,
+    "skipped": 4
+  }
+}

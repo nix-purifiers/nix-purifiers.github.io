@@ -1,0 +1,58 @@
+{
+  "status": "success",
+  "executedSystem": "aarch64-darwin",
+  "sourceRevision": "1a5653242018a7c5939e5fd10f6f2de52feadfad",
+  "sourceNarHash": "sha256-ueLaprdMJcfAyfKkCKCRmMCVqX570dLZyC3+5B/lPVY=",
+  "drvPath": "/nix/store/4nsd94ixmajzshdhykd0sxzj7favghzn-petclinic-ordinary-offline.drv",
+  "outputs": {
+    "out": "/nix/store/b6kd4gcnmk1ncfwlix2bc66jz71g7b3d-petclinic-ordinary-offline"
+  },
+  "outputNarHashes": {
+    "out": "sha256-NHOHZpX/qhLi1cE3hxaAUEBEf1nMdd+gyKy71FrQ0VM="
+  },
+  "sdkVersions": {
+    "Gradle upstream point": "9.9.0",
+    "SDK role": "official upstream distribution",
+    "JDK": "/nix/store/al24k44gwd1rk08p1x2p4r88ba9xw132-zulu-ca-jdk-17.0.19",
+    "JDK version": "17.0.19"
+  },
+  "sampleSources": [
+    {
+      "repository": "https://github.com/spring-projects/spring-petclinic",
+      "revision": "500158f732419217507c7656904b8e6aa1bcc0d6",
+      "sourceNarHash": "sha256-j3Uiz+Wn9jWegwrJvCZZymLNrzo5zn5GyPBIn6+6V2w="
+    }
+  ],
+  "kind": "authenticated actual-main native CI receipt; no integration build",
+  "check": {
+    "kind": "expression",
+    "value": "let f = builtins.getFlake \"/nix/store/iq5k2i954jg5m9vagc8q2wy3kvn263dr-source\"; p = import f.inputs.nixpkgs { system = builtins.currentSystem; overlays = [ f.overlays.default ]; }; in (import (builtins.toPath \"/nix/store/iq5k2i954jg5m9vagc8q2wy3kvn263dr-source/tests/tier2-offline.nix\") { pkgs = p; jdk = builtins.storePath \"/nix/store/al24k44gwd1rk08p1x2p4r88ba9xw132-zulu-ca-jdk-17.0.19\"; distribution = builtins.storePath \"/nix/store/9di8yy8c1x4ivh00xg2xr8ac4igidk6y-gradle-9.9.0\"; library = builtins.storePath \"/nix/store/33mlrc8qkwyhp583ly1dz3fy3r7kvmd1-lib\"; repository = builtins.storePath \"/nix/store/rp2wkii5xi5sp1r2sncv9r6d76zn4b1z-gradle-purifier-repository\"; javaHome = \"/nix/store/al24k44gwd1rk08p1x2p4r88ba9xw132-zulu-ca-jdk-17.0.19\"; src = builtins.path { path = \"/var/folders/2s/vty41l455yv698g4xkgfv7z00000gn/T/gradle-tier2-ft21tuac/pure-source\"; name = \"petclinic-tier2-source\"; }; properties = builtins.path { path = \"/var/folders/2s/vty41l455yv698g4xkgfv7z00000gn/T/gradle-tier2-ft21tuac/prefetch.properties\"; name = \"prefetch.properties\"; }; wrapperHome = builtins.path { path = \"/var/folders/2s/vty41l455yv698g4xkgfv7z00000gn/T/gradle-tier2-ft21tuac/gradle-home/wrapper\"; name = \"wrapper-home\"; }; })",
+    "replay": {
+      "artifactUrl": "https://nix-purifiers.github.io/evidence/7d23ac51b5783e6ed0160d96480dce633d84ce41cde60a4e9a2eb62d42fd68d3.json",
+      "artifactSha256": "7d23ac51b5783e6ed0160d96480dce633d84ce41cde60a4e9a2eb62d42fd68d3",
+      "expressionSha256": "6618119c85ceda1091f9498440c104002b02222beeb42190bec017a41d95f82a",
+      "arguments": {}
+    }
+  },
+  "actualJob": "https://github.com/nix-purifiers/gradle-purifier/actions/runs/42370432193/job/128397255431",
+  "rawReceipt": {
+    "receipt": "https://nix-purifiers.github.io/evidence/cc339a785c7b8284d2a53f089eb8e40a3dda3a1d33d1e7649997f7adf9420598.json",
+    "artifactSha256": "cc339a785c7b8284d2a53f089eb8e40a3dda3a1d33d1e7649997f7adf9420598"
+  },
+  "rawDerivation": {
+    "receipt": "https://nix-purifiers.github.io/evidence/128edccbcbc52ebecd07517edcc1127ed91603fd48b1dd220bbeb302dc779268.json",
+    "artifactSha256": "128edccbcbc52ebecd07517edcc1127ed91603fd48b1dd220bbeb302dc779268"
+  },
+  "rawPathInfo": {
+    "receipt": "https://nix-purifiers.github.io/evidence/00dc02f18926e22afc284bfa99a673e34dfb71e214a8f90f64d911136ee30f72.json",
+    "artifactSha256": "00dc02f18926e22afc284bfa99a673e34dfb71e214a8f90f64d911136ee30f72"
+  },
+  "independentMetadataMatch": false,
+  "limitation": "Actual native CI execution/output NAR proven; independent metadata evaluation unavailable because original Darwin wrapper-home cache is not retained. Captured store inputs are required; no portable complete wrapper/SDK-cache replay is claimed.",
+  "scope": "Distinct ordinary-offline-check output identity; do not reuse its NAR for another role.",
+  "tests": {
+    "tests": 81,
+    "failures": 0,
+    "skipped": 4
+  }
+}

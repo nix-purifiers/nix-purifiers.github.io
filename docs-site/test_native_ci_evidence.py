@@ -63,6 +63,29 @@ class NativeCITests(unittest.TestCase):
         self.check(self.record())
         self.check(self.record(log=self.log.replace('2026-11-06T00:00:02Z derivation evaluated', '2026-11-06T00:00:02Z unpacking pinned source...\n2026-11-06T00:00:02Z derivation evaluated')))
 
+    def test_exact_bounded_parallel_check_preserves_execution_bindings(self):
+        command = 'nix flake check --max-jobs 2 --print-build-logs'
+        job = copy.deepcopy(self.job)
+        job['steps'][0]['name'] = 'Run ' + command
+        log = self.log.replace('nix flake check -L', command)
+        record = self.record(job=job, log=log)
+        record['command'] = command
+        self.check(record)
+        changed = copy.deepcopy(record)
+        changed['command'] = command.replace('--max-jobs 2', '--max-jobs 3')
+        with self.assertRaises(ValueError):
+            self.check(changed)
+        failed = copy.deepcopy(job)
+        failed['steps'][0]['conclusion'] = 'failure'
+        changed = self.record(job=failed, log=log)
+        changed['command'] = command
+        with self.assertRaises(ValueError):
+            self.check(changed)
+        changed = self.record(job=job, log=log.replace(self.drv, self.drv.replace('example', 'foreign')))
+        changed['command'] = command
+        with self.assertRaises(ValueError):
+            self.check(changed)
+
     def test_large_log_preserves_literal_source_and_runner_matching(self):
         log = self.log + '2026-11-06T00:00:04Z ' + 'x' * (512 * 1024) + '\n'
         self.check(self.record(log=log))
@@ -71,6 +94,36 @@ class NativeCITests(unittest.TestCase):
             with self.subTest(changed=changed[:80]):
                 with self.assertRaises(ValueError):
                     self.check(self.record(log=changed))
+
+    def test_many_line_step_preserves_late_command_and_rejects_nonmatch(self):
+        command = 'nix flake check -L'
+        base = self.log.replace('2026-11-06T00:00:01Z ' + command + '\n', '')
+        noise = '2026-11-06T00:00:02Z unrelated build output\n' * 120000
+        late = base + noise + '2026-11-06T00:00:02Z ' + command + '\n'
+        self.check(self.record(log=late))
+        with self.assertRaises(ValueError):
+            self.check(self.record(log=late.replace(command, 'nix flake check -X')))
+
+    def test_logical_command_continuations_and_separator_boundaries(self):
+        command = 'nix flake check -L'
+        base = self.log.replace('2026-11-06T00:00:01Z ' + command + '\n', '')
+        cases = [
+            (['nix flake \\', 'check -L'], True),
+            (['nix flake check \\', '-L'], True),
+            ([command + '; echo unrelated'], False),
+            ([command + ' && echo unrelated'], False),
+            (['echo before', command, 'echo after'], True),
+            ([''], False),
+            (['nix flake \\', '', 'check -L'], False),
+        ]
+        for lines, accepted in cases:
+            log = base + ''.join('2026-11-06T00:00:02Z ' + line + '\n' for line in lines)
+            with self.subTest(lines=lines, accepted=accepted):
+                if accepted:
+                    self.check(self.record(log=log))
+                else:
+                    with self.assertRaises(ValueError):
+                        self.check(self.record(log=log))
 
     def test_url_only_foreign_source_platform_and_drv_rejected(self):
         for field, value in [('jobArtifact', {}), ('revision', 'b' * 40),

@@ -1,0 +1,136 @@
+{
+  "source": "6b994ceb112995d83b80d4fc57319b8abc504e8f",
+  "system": "x86_64-linux",
+  "sandbox": true,
+  "machine": "x86_64",
+  "defaultBun": "1.4.2",
+  "check": ".#checks.x86_64-linux.current-stable-runtime",
+  "command": [
+    "nix",
+    "build",
+    "--no-link",
+    "--rebuild",
+    "--option",
+    "sandbox",
+    "true",
+    "--option",
+    "max-jobs",
+    "2",
+    "--option",
+    "cores",
+    "2",
+    "-L",
+    "--json",
+    ".#checks.x86_64-linux.current-stable-runtime"
+  ],
+  "status": "passed",
+  "builds": [
+    {
+      "drvPath": "/nix/store/yb7xj72l9jncj193vbkbq22lbrbmf2xa-bun-current-stable-runtime.drv",
+      "outputs": {
+        "out": "/nix/store/6n7gmqh7jgd7y2zg37sry0dli9gxi74v-bun-current-stable-runtime"
+      }
+    }
+  ],
+  "derivations": {
+    "derivations": {
+      "yb7xj72l9jncj193vbkbq22lbrbmf2xa-bun-current-stable-runtime.drv": {
+        "args": [
+          "-e",
+          "/nix/store/l622p70vy8k5sh7y5wizi5f2mic6ynpg-source-stdenv.sh",
+          "/nix/store/shkw4qm9qcw5sc5n1k5jznc83ny02r39-default-builder.sh"
+        ],
+        "builder": "/nix/store/nnm9gdr70ihc6zc9298mzz8jpcgaciql-bash-5.3p20/bin/bash",
+        "env": {
+          "__structuredAttrs": "",
+          "buildCommand": "test \"$(/nix/store/7py3q3rn0qbcyzwqk6mdbyd8r1m9x54r-bun-1.4.4/bin/bun --version)\" = 1.4.4\n/nix/store/7py3q3rn0qbcyzwqk6mdbyd8r1m9x54r-bun-1.4.4/bin/bun -e 'if (Bun.version !== \"1.4.4\" || process.platform !== \"linux\" || process.arch !== \"x64\") throw new Error(\"wrong SDK/platform\"); console.log(JSON.stringify({version:Bun.version,revision:Bun.revision,platform:process.platform,arch:process.arch}))' > \"$out\"\n",
+          "buildInputs": "",
+          "builder": "/nix/store/nnm9gdr70ihc6zc9298mzz8jpcgaciql-bash-5.3p20/bin/bash",
+          "cmakeFlags": "",
+          "configureFlags": "",
+          "depsBuildBuild": "",
+          "depsBuildBuildPropagated": "",
+          "depsBuildTarget": "",
+          "depsBuildTargetPropagated": "",
+          "depsHostHost": "",
+          "depsHostHostPropagated": "",
+          "depsTargetTarget": "",
+          "depsTargetTargetPropagated": "",
+          "doCheck": "",
+          "doInstallCheck": "",
+          "enableParallelBuilding": "1",
+          "enableParallelChecking": "1",
+          "enableParallelInstalling": "1",
+          "mesonFlags": "",
+          "name": "bun-current-stable-runtime",
+          "nativeBuildInputs": "",
+          "out": "/nix/store/6n7gmqh7jgd7y2zg37sry0dli9gxi74v-bun-current-stable-runtime",
+          "outputs": "out",
+          "passAsFile": "buildCommand",
+          "patches": "",
+          "propagatedBuildInputs": "",
+          "propagatedNativeBuildInputs": "",
+          "stdenv": "/nix/store/c3k15jk20fccs90qgffdwzhxy15b5fdj-stdenv-linux-no-cc",
+          "strictDeps": "",
+          "system": "x86_64-linux"
+        },
+        "inputs": {
+          "drvs": {
+            "0lan2n1x4rcwy1ai94zxphk6p34vhb6x-bun-1.4.4.drv": {
+              "dynamicOutputs": {},
+              "outputs": [
+                "out"
+              ]
+            },
+            "30hr2syjmfvflwi68acggp3w870ikw5c-bash-5.3p20.drv": {
+              "dynamicOutputs": {},
+              "outputs": [
+                "out"
+              ]
+            },
+            "jrjq3n2gpgq6sn07iiymh8ivf19ahncm-stdenv-linux-no-cc.drv": {
+              "dynamicOutputs": {},
+              "outputs": [
+                "out"
+              ]
+            }
+          },
+          "srcs": [
+            "l622p70vy8k5sh7y5wizi5f2mic6ynpg-source-stdenv.sh",
+            "shkw4qm9qcw5sc5n1k5jznc83ny02r39-default-builder.sh"
+          ]
+        },
+        "name": "bun-current-stable-runtime",
+        "outputs": {
+          "out": {
+            "path": "6n7gmqh7jgd7y2zg37sry0dli9gxi74v-bun-current-stable-runtime"
+          }
+        },
+        "system": "x86_64-linux",
+        "version": 4
+      }
+    },
+    "version": 4
+  },
+  "outputs": {
+    "/nix/store/6n7gmqh7jgd7y2zg37sry0dli9gxi74v-bun-current-stable-runtime": {
+      "ca": null,
+      "deriver": "/nix/store/yb7xj72l9jncj193vbkbq22lbrbmf2xa-bun-current-stable-runtime.drv",
+      "narHash": "sha256-sb8zS77cFSphN7XNpEksrp3KR96b22S+qUmxRZS89xI=",
+      "narSize": 224,
+      "references": [],
+      "registrationTime": 1794054039,
+      "signatures": [],
+      "storeDir": "/nix/store",
+      "ultimate": true,
+      "version": 1
+    }
+  },
+  "sample": null,
+  "nativeRuntime": {
+    "version": "1.4.4",
+    "revision": "38afee6c84fcf48c0edb2466aa4b27d287a59c30",
+    "platform": "linux",
+    "arch": "x64"
+  }
+}

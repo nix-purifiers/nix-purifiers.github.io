@@ -1,0 +1,1353 @@
+{
+  "tier": 3,
+  "reviewedRevision": "6e0980414b91c7e8c379ebf5bb5292f7d66da537",
+  "reviewedAt": "2026-11-06",
+  "rationale": "Native Linux sample derivations and meaningful regression tests are verified. Darwin runtime execution is absent from the inspected CI; this prevents Tier 2. The executed supported current line is demonstrated.",
+  "criteria": {
+    "evaluation": {
+      "state": "met",
+      "summary": "All 28 executable checks.x86_64-linux attributes evaluate and realize successfully at 6e0980414b91c7e8c379ebf5bb5292f7d66da537. Exact derivations, native outputs and NAR hashes are in the packet; native aarch64-linux CI independently succeeds.",
+      "evidence": [
+        "https://github.com/nix-purifiers/bun-purifier/actions/runs/41994711245/job/127134989302",
+        "https://nix-purifiers.github.io/evidence/b8267b7999536021fd31ecdd1eb0767d5751fc824c4552bbd690f75c71e07b5b.json"
+      ]
+    },
+    "goodTests": {
+      "state": "met",
+      "summary": "Successful executable unit and conformance derivations cover lock parsing, missing/tampered/stale locks, workspaces, source/path/registry packages, releases, builder overrides and offline behavior. The independent Elysia derivation runs 1,616 upstream tests (1,614 pass, two skips). Later producer cold pure sandbox and empty-cache negative-control evidence is outside this reviewed baseline.",
+      "evidence": [
+        "https://github.com/nix-purifiers/bun-purifier/actions/runs/41994711245/job/127134989302",
+        "https://nix-purifiers.github.io/evidence/b8267b7999536021fd31ecdd1eb0767d5751fc824c4552bbd690f75c71e07b5b.json"
+      ]
+    },
+    "linux": {
+      "state": "met",
+      "summary": "Native aarch64-linux CI builds the required sample/check derivations successfully at the exact reviewed revision; local x86_64-linux checks also realize successfully. Neither result is cross-evaluation.",
+      "evidence": [
+        "https://github.com/nix-purifiers/bun-purifier/actions/runs/41994711245/job/127134989302",
+        "https://nix-purifiers.github.io/evidence/b8267b7999536021fd31ecdd1eb0767d5751fc824c4552bbd690f75c71e07b5b.json"
+      ]
+    },
+    "darwin": {
+      "state": "not-met",
+      "summary": "The inspected .github/workflows/check.yml and successful native jobs cover ubuntu-latest and ubuntu-24.04-arm only. The flake declares aarch64-darwin, which is not execution. No successful native Darwin sample derivation/SDK/output receipt is available; this Linux review host cannot execute it.",
+      "evidence": [
+        "https://github.com/nix-purifiers/bun-purifier/actions/runs/41994711245/job/127134989302",
+        "https://nix-purifiers.github.io/evidence/b8267b7999536021fd31ecdd1eb0767d5751fc824c4552bbd690f75c71e07b5b.json"
+      ]
+    },
+    "oneVersion": {
+      "state": "met",
+      "summary": "Actual native sample execution demonstrates Bun 1.4.2. Scope is the exact executed version point(s), not a version range.",
+      "evidence": [
+        "https://github.com/nix-purifiers/bun-purifier/actions/runs/41994711245/job/127134989302",
+        "https://nix-purifiers.github.io/evidence/b8267b7999536021fd31ecdd1eb0767d5751fc824c4552bbd690f75c71e07b5b.json"
+      ]
+    },
+    "nonEolVersions": {
+      "state": "met",
+      "summary": "Bun SECURITY.md explicitly supports the 1.x.x family. Native Elysia and fixture derivations execute Bun 1.4.2, a point in that current supported family. Upstream latest is 1.4.4; this judgment claims the executed family point, not unexecuted patches, binary identities or all 1.x releases.",
+      "evidence": [
+        "https://github.com/nix-purifiers/bun-purifier/actions/runs/41994711245/job/127134989302",
+        "https://github.com/oven-sh/bun/blob/7ca0042d3ba23ed60fd9cd8af1a1ce6ec3f8d074/SECURITY.md",
+        "https://nix-purifiers.github.io/evidence/b8267b7999536021fd31ecdd1eb0767d5751fc824c4552bbd690f75c71e07b5b.json"
+      ]
+    },
+    "manySamples": {
+      "state": "not-met",
+      "summary": "Elysia is one independent upstream application; workspace, registry, path and source cases are owned fixtures. Their diversity supports test quality but does not yet demonstrate many independent upstream applications.",
+      "evidence": [
+        "https://github.com/nix-purifiers/bun-purifier/actions/runs/41994711245/job/127134989302",
+        "https://nix-purifiers.github.io/evidence/b8267b7999536021fd31ecdd1eb0767d5751fc824c4552bbd690f75c71e07b5b.json"
+      ]
+    },
+    "longCompatibility": {
+      "state": "not-met",
+      "summary": "Only native Bun 1.4.2 is demonstrated. Package tarballs containing other Bun version strings are dependencies, not execution of those runtimes.",
+      "evidence": [
+        "https://github.com/nix-purifiers/bun-purifier/actions/runs/41994711245/job/127134989302",
+        "https://nix-purifiers.github.io/evidence/b8267b7999536021fd31ecdd1eb0767d5751fc824c4552bbd690f75c71e07b5b.json"
+      ]
+    }
+  },
+  "sampleBuilds": [
+    {
+      "name": "Independent upstream elysiajs/elysia e037eca710e7ad193be09cc6615ab0dbe54af914 (source NAR sha256-6uGhZ4FmcEgvIHNMAvyabEVeb1pLOWGBXUoUjp5DjBQ=), plus owned workspace/source/path/registry fixtures.",
+      "evidence": [
+        "https://github.com/nix-purifiers/bun-purifier/actions/runs/41994711245/job/127134989302",
+        "https://nix-purifiers.github.io/evidence/b8267b7999536021fd31ecdd1eb0767d5751fc824c4552bbd690f75c71e07b5b.json"
+      ]
+    }
+  ],
+  "derivationReview": {
+    "criteria": {
+      "darwin": {
+        "derivations": [],
+        "gap": "The inspected .github/workflows/check.yml and successful native jobs cover ubuntu-latest and ubuntu-24.04-arm only. The flake declares aarch64-darwin, which is not execution. No successful native Darwin sample derivation/SDK/output receipt is available; this Linux review host cannot execute it.",
+        "sources": [
+          "https://github.com/nix-purifiers/bun-purifier/actions/runs/41994711245/job/127134989302",
+          "https://nix-purifiers.github.io/evidence/b8267b7999536021fd31ecdd1eb0767d5751fc824c4552bbd690f75c71e07b5b.json"
+        ],
+        "state": "not-met",
+        "summary": "The inspected .github/workflows/check.yml and successful native jobs cover ubuntu-latest and ubuntu-24.04-arm only. The flake declares aarch64-darwin, which is not execution. No successful native Darwin sample derivation/SDK/output receipt is available; this Linux review host cannot execute it."
+      },
+      "evaluation": {
+        "derivations": [
+          "bun-purifier:local:browser-projections",
+          "bun-purifier:local:builder-by-callpackage",
+          "bun-purifier:local:builder-in-the-scope",
+          "bun-purifier:local:builder-override",
+          "bun-purifier:local:composition-producer",
+          "bun-purifier:local:conformance-external",
+          "bun-purifier:local:conformance-malformed",
+          "bun-purifier:local:conformance-missing",
+          "bun-purifier:local:conformance-offline",
+          "bun-purifier:local:conformance-rebuild",
+          "bun-purifier:local:conformance-relock",
+          "bun-purifier:local:conformance-stale",
+          "bun-purifier:local:conformance-tampered",
+          "bun-purifier:local:elysia",
+          "bun-purifier:local:npm-projection",
+          "bun-purifier:local:paths-program",
+          "bun-purifier:local:publish",
+          "bun-purifier:local:read-lock",
+          "bun-purifier:local:registries-program",
+          "bun-purifier:local:scope-override",
+          "bun-purifier:local:sources-program",
+          "bun-purifier:local:treefmt",
+          "bun-purifier:local:unit",
+          "bun-purifier:local:workspace-fetches",
+          "bun-purifier:local:workspace-program",
+          "bun-purifier:local:workspace-project",
+          "bun-purifier:local:workspace-release",
+          "bun-purifier:local:workspace-tests"
+        ],
+        "gap": null,
+        "sources": [
+          "https://github.com/nix-purifiers/bun-purifier/actions/runs/41994711245/job/127134989302",
+          "https://nix-purifiers.github.io/evidence/b8267b7999536021fd31ecdd1eb0767d5751fc824c4552bbd690f75c71e07b5b.json"
+        ],
+        "state": "met",
+        "summary": "All 28 executable checks.x86_64-linux attributes evaluate and realize successfully at 6e0980414b91c7e8c379ebf5bb5292f7d66da537. Exact derivations, native outputs and NAR hashes are in the packet; native aarch64-linux CI independently succeeds."
+      },
+      "goodTests": {
+        "derivations": [
+          "bun-purifier:local:browser-projections",
+          "bun-purifier:local:builder-by-callpackage",
+          "bun-purifier:local:builder-in-the-scope",
+          "bun-purifier:local:builder-override",
+          "bun-purifier:local:composition-producer",
+          "bun-purifier:local:conformance-external",
+          "bun-purifier:local:conformance-malformed",
+          "bun-purifier:local:conformance-missing",
+          "bun-purifier:local:conformance-offline",
+          "bun-purifier:local:conformance-rebuild",
+          "bun-purifier:local:conformance-relock",
+          "bun-purifier:local:conformance-stale",
+          "bun-purifier:local:conformance-tampered",
+          "bun-purifier:local:elysia",
+          "bun-purifier:local:npm-projection",
+          "bun-purifier:local:paths-program",
+          "bun-purifier:local:publish",
+          "bun-purifier:local:read-lock",
+          "bun-purifier:local:registries-program",
+          "bun-purifier:local:scope-override",
+          "bun-purifier:local:sources-program",
+          "bun-purifier:local:treefmt",
+          "bun-purifier:local:unit",
+          "bun-purifier:local:workspace-fetches",
+          "bun-purifier:local:workspace-program",
+          "bun-purifier:local:workspace-project",
+          "bun-purifier:local:workspace-release",
+          "bun-purifier:local:workspace-tests"
+        ],
+        "gap": null,
+        "sources": [
+          "https://github.com/nix-purifiers/bun-purifier/actions/runs/41994711245/job/127134989302",
+          "https://nix-purifiers.github.io/evidence/b8267b7999536021fd31ecdd1eb0767d5751fc824c4552bbd690f75c71e07b5b.json"
+        ],
+        "state": "met",
+        "summary": "Successful executable unit and conformance derivations cover lock parsing, missing/tampered/stale locks, workspaces, source/path/registry packages, releases, builder overrides and offline behavior. The independent Elysia derivation runs 1,616 upstream tests (1,614 pass, two skips). Later producer cold pure sandbox and empty-cache negative-control evidence is outside this reviewed baseline."
+      },
+      "linux": {
+        "derivations": [
+          "bun-purifier:local:browser-projections",
+          "bun-purifier:local:builder-by-callpackage",
+          "bun-purifier:local:builder-in-the-scope",
+          "bun-purifier:local:builder-override",
+          "bun-purifier:local:composition-producer",
+          "bun-purifier:local:conformance-external",
+          "bun-purifier:local:conformance-malformed",
+          "bun-purifier:local:conformance-missing",
+          "bun-purifier:local:conformance-offline",
+          "bun-purifier:local:conformance-rebuild",
+          "bun-purifier:local:conformance-relock",
+          "bun-purifier:local:conformance-stale",
+          "bun-purifier:local:conformance-tampered",
+          "bun-purifier:local:elysia",
+          "bun-purifier:local:npm-projection",
+          "bun-purifier:local:paths-program",
+          "bun-purifier:local:publish",
+          "bun-purifier:local:read-lock",
+          "bun-purifier:local:registries-program",
+          "bun-purifier:local:scope-override",
+          "bun-purifier:local:sources-program",
+          "bun-purifier:local:treefmt",
+          "bun-purifier:local:unit",
+          "bun-purifier:local:workspace-fetches",
+          "bun-purifier:local:workspace-program",
+          "bun-purifier:local:workspace-project",
+          "bun-purifier:local:workspace-release",
+          "bun-purifier:local:workspace-tests"
+        ],
+        "gap": null,
+        "sources": [
+          "https://github.com/nix-purifiers/bun-purifier/actions/runs/41994711245/job/127134989302",
+          "https://nix-purifiers.github.io/evidence/b8267b7999536021fd31ecdd1eb0767d5751fc824c4552bbd690f75c71e07b5b.json"
+        ],
+        "state": "met",
+        "summary": "Native aarch64-linux CI builds the required sample/check derivations successfully at the exact reviewed revision; local x86_64-linux checks also realize successfully. Neither result is cross-evaluation."
+      },
+      "longCompatibility": {
+        "derivations": [],
+        "gap": "Only native Bun 1.4.2 is demonstrated. Package tarballs containing other Bun version strings are dependencies, not execution of those runtimes.",
+        "sources": [
+          "https://github.com/nix-purifiers/bun-purifier/actions/runs/41994711245/job/127134989302",
+          "https://nix-purifiers.github.io/evidence/b8267b7999536021fd31ecdd1eb0767d5751fc824c4552bbd690f75c71e07b5b.json"
+        ],
+        "state": "not-met",
+        "summary": "Only native Bun 1.4.2 is demonstrated. Package tarballs containing other Bun version strings are dependencies, not execution of those runtimes."
+      },
+      "manySamples": {
+        "derivations": [],
+        "gap": "Elysia is one independent upstream application; workspace, registry, path and source cases are owned fixtures. Their diversity supports test quality but does not yet demonstrate many independent upstream applications.",
+        "sources": [
+          "https://github.com/nix-purifiers/bun-purifier/actions/runs/41994711245/job/127134989302",
+          "https://nix-purifiers.github.io/evidence/b8267b7999536021fd31ecdd1eb0767d5751fc824c4552bbd690f75c71e07b5b.json"
+        ],
+        "state": "not-met",
+        "summary": "Elysia is one independent upstream application; workspace, registry, path and source cases are owned fixtures. Their diversity supports test quality but does not yet demonstrate many independent upstream applications."
+      },
+      "nonEolVersions": {
+        "derivations": [
+          "bun-purifier:local:elysia"
+        ],
+        "gap": null,
+        "sources": [
+          "https://github.com/nix-purifiers/bun-purifier/actions/runs/41994711245/job/127134989302",
+          "https://github.com/oven-sh/bun/blob/7ca0042d3ba23ed60fd9cd8af1a1ce6ec3f8d074/SECURITY.md",
+          "https://nix-purifiers.github.io/evidence/b8267b7999536021fd31ecdd1eb0767d5751fc824c4552bbd690f75c71e07b5b.json"
+        ],
+        "state": "met",
+        "summary": "Bun SECURITY.md explicitly supports the 1.x.x family. Native Elysia and fixture derivations execute Bun 1.4.2, a point in that current supported family. Upstream latest is 1.4.4; this judgment claims the executed family point, not unexecuted patches, binary identities or all 1.x releases."
+      },
+      "oneVersion": {
+        "derivations": [
+          "bun-purifier:local:elysia"
+        ],
+        "gap": null,
+        "sources": [
+          "https://github.com/nix-purifiers/bun-purifier/actions/runs/41994711245/job/127134989302",
+          "https://nix-purifiers.github.io/evidence/b8267b7999536021fd31ecdd1eb0767d5751fc824c4552bbd690f75c71e07b5b.json"
+        ],
+        "state": "met",
+        "summary": "Actual native sample execution demonstrates Bun 1.4.2. Scope is the exact executed version point(s), not a version range."
+      }
+    },
+    "derivations": {
+      "bun-purifier:local:browser-projections": {
+        "build": {
+          "artifactSha256": "c303023ca11c1d34bc3f65aee43e794c9a28639a9fe77cbf064b30d887d0bf00",
+          "drvPath": "/nix/store/ddqls3xakdpya8gcpvc024r0kq4bw92v-browser-webjar-ordinary-consumers.drv",
+          "executedSystem": "x86_64-linux",
+          "outputNarHashes": {
+            "out": "sha256-d6xi4mKdjkX2JFicDIv5niSzpyI0m/Hnm8GGAIU04kY="
+          },
+          "outputs": {
+            "out": "/nix/store/d39xs4wcwxgwz6vbsdk9bi2czaxbpbz6-browser-webjar-ordinary-consumers"
+          },
+          "receipt": "https://nix-purifiers.github.io/evidence/c303023ca11c1d34bc3f65aee43e794c9a28639a9fe77cbf064b30d887d0bf00.json",
+          "sampleSources": [],
+          "sdkVersions": {},
+          "sourceNarHash": "sha256-q/B0t2iFfn0bi+a3giLy6vHfMYqKit8zRyosW8IETRs=",
+          "sourceRevision": "6e0980414b91c7e8c379ebf5bb5292f7d66da537",
+          "status": "success"
+        },
+        "check": {
+          "kind": "flake-attribute",
+          "replay": null,
+          "value": "checks.x86_64-linux.browser-projections"
+        },
+        "drvPath": "/nix/store/ddqls3xakdpya8gcpvc024r0kq4bw92v-browser-webjar-ordinary-consumers.drv",
+        "evaluation": null,
+        "outputNarHashes": {
+          "out": "sha256-d6xi4mKdjkX2JFicDIv5niSzpyI0m/Hnm8GGAIU04kY="
+        },
+        "outputs": {
+          "out": "/nix/store/d39xs4wcwxgwz6vbsdk9bi2czaxbpbz6-browser-webjar-ordinary-consumers"
+        },
+        "repository": "nix-purifiers/bun-purifier",
+        "revision": "6e0980414b91c7e8c379ebf5bb5292f7d66da537",
+        "sampleSources": [],
+        "sdkVersions": {},
+        "sourceNarHash": "sha256-q/B0t2iFfn0bi+a3giLy6vHfMYqKit8zRyosW8IETRs=",
+        "system": "x86_64-linux"
+      },
+      "bun-purifier:local:builder-by-callpackage": {
+        "build": {
+          "artifactSha256": "c303023ca11c1d34bc3f65aee43e794c9a28639a9fe77cbf064b30d887d0bf00",
+          "drvPath": "/nix/store/6xygjwnm4kx53dh6prm867as699p26fg-test-builder-by-callpackage.drv",
+          "executedSystem": "x86_64-linux",
+          "outputNarHashes": {
+            "out": "sha256-d6xi4mKdjkX2JFicDIv5niSzpyI0m/Hnm8GGAIU04kY="
+          },
+          "outputs": {
+            "out": "/nix/store/slv10jf59k89l6p54hj98c3r7210rd5p-test-builder-by-callpackage"
+          },
+          "receipt": "https://nix-purifiers.github.io/evidence/c303023ca11c1d34bc3f65aee43e794c9a28639a9fe77cbf064b30d887d0bf00.json",
+          "sampleSources": [],
+          "sdkVersions": {},
+          "sourceNarHash": "sha256-q/B0t2iFfn0bi+a3giLy6vHfMYqKit8zRyosW8IETRs=",
+          "sourceRevision": "6e0980414b91c7e8c379ebf5bb5292f7d66da537",
+          "status": "success"
+        },
+        "check": {
+          "kind": "flake-attribute",
+          "replay": null,
+          "value": "checks.x86_64-linux.builder-by-callpackage"
+        },
+        "drvPath": "/nix/store/6xygjwnm4kx53dh6prm867as699p26fg-test-builder-by-callpackage.drv",
+        "evaluation": null,
+        "outputNarHashes": {
+          "out": "sha256-d6xi4mKdjkX2JFicDIv5niSzpyI0m/Hnm8GGAIU04kY="
+        },
+        "outputs": {
+          "out": "/nix/store/slv10jf59k89l6p54hj98c3r7210rd5p-test-builder-by-callpackage"
+        },
+        "repository": "nix-purifiers/bun-purifier",
+        "revision": "6e0980414b91c7e8c379ebf5bb5292f7d66da537",
+        "sampleSources": [],
+        "sdkVersions": {},
+        "sourceNarHash": "sha256-q/B0t2iFfn0bi+a3giLy6vHfMYqKit8zRyosW8IETRs=",
+        "system": "x86_64-linux"
+      },
+      "bun-purifier:local:builder-in-the-scope": {
+        "build": {
+          "artifactSha256": "c303023ca11c1d34bc3f65aee43e794c9a28639a9fe77cbf064b30d887d0bf00",
+          "drvPath": "/nix/store/44ywxk4mfncgbh2slgp9ilnyjjggz2ka-test-builder-in-the-scope.drv",
+          "executedSystem": "x86_64-linux",
+          "outputNarHashes": {
+            "out": "sha256-d6xi4mKdjkX2JFicDIv5niSzpyI0m/Hnm8GGAIU04kY="
+          },
+          "outputs": {
+            "out": "/nix/store/qdbx79fk02ixivjl18g16nghk1lh5syl-test-builder-in-the-scope"
+          },
+          "receipt": "https://nix-purifiers.github.io/evidence/c303023ca11c1d34bc3f65aee43e794c9a28639a9fe77cbf064b30d887d0bf00.json",
+          "sampleSources": [],
+          "sdkVersions": {},
+          "sourceNarHash": "sha256-q/B0t2iFfn0bi+a3giLy6vHfMYqKit8zRyosW8IETRs=",
+          "sourceRevision": "6e0980414b91c7e8c379ebf5bb5292f7d66da537",
+          "status": "success"
+        },
+        "check": {
+          "kind": "flake-attribute",
+          "replay": null,
+          "value": "checks.x86_64-linux.builder-in-the-scope"
+        },
+        "drvPath": "/nix/store/44ywxk4mfncgbh2slgp9ilnyjjggz2ka-test-builder-in-the-scope.drv",
+        "evaluation": null,
+        "outputNarHashes": {
+          "out": "sha256-d6xi4mKdjkX2JFicDIv5niSzpyI0m/Hnm8GGAIU04kY="
+        },
+        "outputs": {
+          "out": "/nix/store/qdbx79fk02ixivjl18g16nghk1lh5syl-test-builder-in-the-scope"
+        },
+        "repository": "nix-purifiers/bun-purifier",
+        "revision": "6e0980414b91c7e8c379ebf5bb5292f7d66da537",
+        "sampleSources": [],
+        "sdkVersions": {},
+        "sourceNarHash": "sha256-q/B0t2iFfn0bi+a3giLy6vHfMYqKit8zRyosW8IETRs=",
+        "system": "x86_64-linux"
+      },
+      "bun-purifier:local:builder-override": {
+        "build": {
+          "artifactSha256": "c303023ca11c1d34bc3f65aee43e794c9a28639a9fe77cbf064b30d887d0bf00",
+          "drvPath": "/nix/store/6dpsnn2yg4hjsxa1z2y1ss3jczczdhxg-test-builder-override.drv",
+          "executedSystem": "x86_64-linux",
+          "outputNarHashes": {
+            "out": "sha256-d6xi4mKdjkX2JFicDIv5niSzpyI0m/Hnm8GGAIU04kY="
+          },
+          "outputs": {
+            "out": "/nix/store/skj7jz4hb1rc3g7vz9znid0myxs2d0rr-test-builder-override"
+          },
+          "receipt": "https://nix-purifiers.github.io/evidence/c303023ca11c1d34bc3f65aee43e794c9a28639a9fe77cbf064b30d887d0bf00.json",
+          "sampleSources": [],
+          "sdkVersions": {},
+          "sourceNarHash": "sha256-q/B0t2iFfn0bi+a3giLy6vHfMYqKit8zRyosW8IETRs=",
+          "sourceRevision": "6e0980414b91c7e8c379ebf5bb5292f7d66da537",
+          "status": "success"
+        },
+        "check": {
+          "kind": "flake-attribute",
+          "replay": null,
+          "value": "checks.x86_64-linux.builder-override"
+        },
+        "drvPath": "/nix/store/6dpsnn2yg4hjsxa1z2y1ss3jczczdhxg-test-builder-override.drv",
+        "evaluation": null,
+        "outputNarHashes": {
+          "out": "sha256-d6xi4mKdjkX2JFicDIv5niSzpyI0m/Hnm8GGAIU04kY="
+        },
+        "outputs": {
+          "out": "/nix/store/skj7jz4hb1rc3g7vz9znid0myxs2d0rr-test-builder-override"
+        },
+        "repository": "nix-purifiers/bun-purifier",
+        "revision": "6e0980414b91c7e8c379ebf5bb5292f7d66da537",
+        "sampleSources": [],
+        "sdkVersions": {},
+        "sourceNarHash": "sha256-q/B0t2iFfn0bi+a3giLy6vHfMYqKit8zRyosW8IETRs=",
+        "system": "x86_64-linux"
+      },
+      "bun-purifier:local:composition-producer": {
+        "build": {
+          "artifactSha256": "c303023ca11c1d34bc3f65aee43e794c9a28639a9fe77cbf064b30d887d0bf00",
+          "drvPath": "/nix/store/y7idvlj0wwg1gl067rqsmdcqp43j908d-_fixture_lib-0.1.0.drv",
+          "executedSystem": "x86_64-linux",
+          "outputNarHashes": {
+            "out": "sha256-SmecXBkGN3xhy8JrbvsUtmisyMpNUwER6fIVdjIL51A="
+          },
+          "outputs": {
+            "out": "/nix/store/1b5as4hbhkp3dfqp8hsbhqmf1ab5pa7g-_fixture_lib-0.1.0"
+          },
+          "receipt": "https://nix-purifiers.github.io/evidence/c303023ca11c1d34bc3f65aee43e794c9a28639a9fe77cbf064b30d887d0bf00.json",
+          "sampleSources": [],
+          "sdkVersions": {},
+          "sourceNarHash": "sha256-q/B0t2iFfn0bi+a3giLy6vHfMYqKit8zRyosW8IETRs=",
+          "sourceRevision": "6e0980414b91c7e8c379ebf5bb5292f7d66da537",
+          "status": "success"
+        },
+        "check": {
+          "kind": "flake-attribute",
+          "replay": null,
+          "value": "checks.x86_64-linux.composition-producer"
+        },
+        "drvPath": "/nix/store/y7idvlj0wwg1gl067rqsmdcqp43j908d-_fixture_lib-0.1.0.drv",
+        "evaluation": null,
+        "outputNarHashes": {
+          "out": "sha256-SmecXBkGN3xhy8JrbvsUtmisyMpNUwER6fIVdjIL51A="
+        },
+        "outputs": {
+          "out": "/nix/store/1b5as4hbhkp3dfqp8hsbhqmf1ab5pa7g-_fixture_lib-0.1.0"
+        },
+        "repository": "nix-purifiers/bun-purifier",
+        "revision": "6e0980414b91c7e8c379ebf5bb5292f7d66da537",
+        "sampleSources": [],
+        "sdkVersions": {},
+        "sourceNarHash": "sha256-q/B0t2iFfn0bi+a3giLy6vHfMYqKit8zRyosW8IETRs=",
+        "system": "x86_64-linux"
+      },
+      "bun-purifier:local:conformance-external": {
+        "build": {
+          "artifactSha256": "c303023ca11c1d34bc3f65aee43e794c9a28639a9fe77cbf064b30d887d0bf00",
+          "drvPath": "/nix/store/chs9lz6i8in3zcj9img7hbwq830ssry9-test-conformance-external.drv",
+          "executedSystem": "x86_64-linux",
+          "outputNarHashes": {
+            "out": "sha256-d6xi4mKdjkX2JFicDIv5niSzpyI0m/Hnm8GGAIU04kY="
+          },
+          "outputs": {
+            "out": "/nix/store/0nc3d449cv2ql3vb25fhagg26m6jdzhr-test-conformance-external"
+          },
+          "receipt": "https://nix-purifiers.github.io/evidence/c303023ca11c1d34bc3f65aee43e794c9a28639a9fe77cbf064b30d887d0bf00.json",
+          "sampleSources": [],
+          "sdkVersions": {},
+          "sourceNarHash": "sha256-q/B0t2iFfn0bi+a3giLy6vHfMYqKit8zRyosW8IETRs=",
+          "sourceRevision": "6e0980414b91c7e8c379ebf5bb5292f7d66da537",
+          "status": "success"
+        },
+        "check": {
+          "kind": "flake-attribute",
+          "replay": null,
+          "value": "checks.x86_64-linux.conformance-external"
+        },
+        "drvPath": "/nix/store/chs9lz6i8in3zcj9img7hbwq830ssry9-test-conformance-external.drv",
+        "evaluation": null,
+        "outputNarHashes": {
+          "out": "sha256-d6xi4mKdjkX2JFicDIv5niSzpyI0m/Hnm8GGAIU04kY="
+        },
+        "outputs": {
+          "out": "/nix/store/0nc3d449cv2ql3vb25fhagg26m6jdzhr-test-conformance-external"
+        },
+        "repository": "nix-purifiers/bun-purifier",
+        "revision": "6e0980414b91c7e8c379ebf5bb5292f7d66da537",
+        "sampleSources": [],
+        "sdkVersions": {},
+        "sourceNarHash": "sha256-q/B0t2iFfn0bi+a3giLy6vHfMYqKit8zRyosW8IETRs=",
+        "system": "x86_64-linux"
+      },
+      "bun-purifier:local:conformance-malformed": {
+        "build": {
+          "artifactSha256": "c303023ca11c1d34bc3f65aee43e794c9a28639a9fe77cbf064b30d887d0bf00",
+          "drvPath": "/nix/store/nqfh238ng9zpca0v9v4qqiqhfhs71124-test-conformance-malformed.drv",
+          "executedSystem": "x86_64-linux",
+          "outputNarHashes": {
+            "out": "sha256-d6xi4mKdjkX2JFicDIv5niSzpyI0m/Hnm8GGAIU04kY="
+          },
+          "outputs": {
+            "out": "/nix/store/g7g3y9178n1ww7321n729sq64lpk8hf1-test-conformance-malformed"
+          },
+          "receipt": "https://nix-purifiers.github.io/evidence/c303023ca11c1d34bc3f65aee43e794c9a28639a9fe77cbf064b30d887d0bf00.json",
+          "sampleSources": [],
+          "sdkVersions": {},
+          "sourceNarHash": "sha256-q/B0t2iFfn0bi+a3giLy6vHfMYqKit8zRyosW8IETRs=",
+          "sourceRevision": "6e0980414b91c7e8c379ebf5bb5292f7d66da537",
+          "status": "success"
+        },
+        "check": {
+          "kind": "flake-attribute",
+          "replay": null,
+          "value": "checks.x86_64-linux.conformance-malformed"
+        },
+        "drvPath": "/nix/store/nqfh238ng9zpca0v9v4qqiqhfhs71124-test-conformance-malformed.drv",
+        "evaluation": null,
+        "outputNarHashes": {
+          "out": "sha256-d6xi4mKdjkX2JFicDIv5niSzpyI0m/Hnm8GGAIU04kY="
+        },
+        "outputs": {
+          "out": "/nix/store/g7g3y9178n1ww7321n729sq64lpk8hf1-test-conformance-malformed"
+        },
+        "repository": "nix-purifiers/bun-purifier",
+        "revision": "6e0980414b91c7e8c379ebf5bb5292f7d66da537",
+        "sampleSources": [],
+        "sdkVersions": {},
+        "sourceNarHash": "sha256-q/B0t2iFfn0bi+a3giLy6vHfMYqKit8zRyosW8IETRs=",
+        "system": "x86_64-linux"
+      },
+      "bun-purifier:local:conformance-missing": {
+        "build": {
+          "artifactSha256": "c303023ca11c1d34bc3f65aee43e794c9a28639a9fe77cbf064b30d887d0bf00",
+          "drvPath": "/nix/store/py9xs1s5hl7a5bsxnk6zd65wmmzkc4ag-test-conformance-missing.drv",
+          "executedSystem": "x86_64-linux",
+          "outputNarHashes": {
+            "out": "sha256-d6xi4mKdjkX2JFicDIv5niSzpyI0m/Hnm8GGAIU04kY="
+          },
+          "outputs": {
+            "out": "/nix/store/3v1if5ymbss9w4412m1wmi0hsynvssaf-test-conformance-missing"
+          },
+          "receipt": "https://nix-purifiers.github.io/evidence/c303023ca11c1d34bc3f65aee43e794c9a28639a9fe77cbf064b30d887d0bf00.json",
+          "sampleSources": [],
+          "sdkVersions": {},
+          "sourceNarHash": "sha256-q/B0t2iFfn0bi+a3giLy6vHfMYqKit8zRyosW8IETRs=",
+          "sourceRevision": "6e0980414b91c7e8c379ebf5bb5292f7d66da537",
+          "status": "success"
+        },
+        "check": {
+          "kind": "flake-attribute",
+          "replay": null,
+          "value": "checks.x86_64-linux.conformance-missing"
+        },
+        "drvPath": "/nix/store/py9xs1s5hl7a5bsxnk6zd65wmmzkc4ag-test-conformance-missing.drv",
+        "evaluation": null,
+        "outputNarHashes": {
+          "out": "sha256-d6xi4mKdjkX2JFicDIv5niSzpyI0m/Hnm8GGAIU04kY="
+        },
+        "outputs": {
+          "out": "/nix/store/3v1if5ymbss9w4412m1wmi0hsynvssaf-test-conformance-missing"
+        },
+        "repository": "nix-purifiers/bun-purifier",
+        "revision": "6e0980414b91c7e8c379ebf5bb5292f7d66da537",
+        "sampleSources": [],
+        "sdkVersions": {},
+        "sourceNarHash": "sha256-q/B0t2iFfn0bi+a3giLy6vHfMYqKit8zRyosW8IETRs=",
+        "system": "x86_64-linux"
+      },
+      "bun-purifier:local:conformance-offline": {
+        "build": {
+          "artifactSha256": "c303023ca11c1d34bc3f65aee43e794c9a28639a9fe77cbf064b30d887d0bf00",
+          "drvPath": "/nix/store/11g6hjy2ma7nv27km4rdn0p4nbj294x4-test-conformance-offline.drv",
+          "executedSystem": "x86_64-linux",
+          "outputNarHashes": {
+            "out": "sha256-d6xi4mKdjkX2JFicDIv5niSzpyI0m/Hnm8GGAIU04kY="
+          },
+          "outputs": {
+            "out": "/nix/store/3qci79wah8lw0jz54g4qyxhpvh9mg2zv-test-conformance-offline"
+          },
+          "receipt": "https://nix-purifiers.github.io/evidence/c303023ca11c1d34bc3f65aee43e794c9a28639a9fe77cbf064b30d887d0bf00.json",
+          "sampleSources": [],
+          "sdkVersions": {},
+          "sourceNarHash": "sha256-q/B0t2iFfn0bi+a3giLy6vHfMYqKit8zRyosW8IETRs=",
+          "sourceRevision": "6e0980414b91c7e8c379ebf5bb5292f7d66da537",
+          "status": "success"
+        },
+        "check": {
+          "kind": "flake-attribute",
+          "replay": null,
+          "value": "checks.x86_64-linux.conformance-offline"
+        },
+        "drvPath": "/nix/store/11g6hjy2ma7nv27km4rdn0p4nbj294x4-test-conformance-offline.drv",
+        "evaluation": null,
+        "outputNarHashes": {
+          "out": "sha256-d6xi4mKdjkX2JFicDIv5niSzpyI0m/Hnm8GGAIU04kY="
+        },
+        "outputs": {
+          "out": "/nix/store/3qci79wah8lw0jz54g4qyxhpvh9mg2zv-test-conformance-offline"
+        },
+        "repository": "nix-purifiers/bun-purifier",
+        "revision": "6e0980414b91c7e8c379ebf5bb5292f7d66da537",
+        "sampleSources": [],
+        "sdkVersions": {},
+        "sourceNarHash": "sha256-q/B0t2iFfn0bi+a3giLy6vHfMYqKit8zRyosW8IETRs=",
+        "system": "x86_64-linux"
+      },
+      "bun-purifier:local:conformance-rebuild": {
+        "build": {
+          "artifactSha256": "c303023ca11c1d34bc3f65aee43e794c9a28639a9fe77cbf064b30d887d0bf00",
+          "drvPath": "/nix/store/9w4195mv0zjnprq351q4hzd2rb9d57a3-test-conformance-rebuild.drv",
+          "executedSystem": "x86_64-linux",
+          "outputNarHashes": {
+            "out": "sha256-d6xi4mKdjkX2JFicDIv5niSzpyI0m/Hnm8GGAIU04kY="
+          },
+          "outputs": {
+            "out": "/nix/store/fywpyz756ypnp2ng5489r3vxpa2lifma-test-conformance-rebuild"
+          },
+          "receipt": "https://nix-purifiers.github.io/evidence/c303023ca11c1d34bc3f65aee43e794c9a28639a9fe77cbf064b30d887d0bf00.json",
+          "sampleSources": [],
+          "sdkVersions": {},
+          "sourceNarHash": "sha256-q/B0t2iFfn0bi+a3giLy6vHfMYqKit8zRyosW8IETRs=",
+          "sourceRevision": "6e0980414b91c7e8c379ebf5bb5292f7d66da537",
+          "status": "success"
+        },
+        "check": {
+          "kind": "flake-attribute",
+          "replay": null,
+          "value": "checks.x86_64-linux.conformance-rebuild"
+        },
+        "drvPath": "/nix/store/9w4195mv0zjnprq351q4hzd2rb9d57a3-test-conformance-rebuild.drv",
+        "evaluation": null,
+        "outputNarHashes": {
+          "out": "sha256-d6xi4mKdjkX2JFicDIv5niSzpyI0m/Hnm8GGAIU04kY="
+        },
+        "outputs": {
+          "out": "/nix/store/fywpyz756ypnp2ng5489r3vxpa2lifma-test-conformance-rebuild"
+        },
+        "repository": "nix-purifiers/bun-purifier",
+        "revision": "6e0980414b91c7e8c379ebf5bb5292f7d66da537",
+        "sampleSources": [],
+        "sdkVersions": {},
+        "sourceNarHash": "sha256-q/B0t2iFfn0bi+a3giLy6vHfMYqKit8zRyosW8IETRs=",
+        "system": "x86_64-linux"
+      },
+      "bun-purifier:local:conformance-relock": {
+        "build": {
+          "artifactSha256": "c303023ca11c1d34bc3f65aee43e794c9a28639a9fe77cbf064b30d887d0bf00",
+          "drvPath": "/nix/store/ajw8slhbrwx2h6pp2r9mjp6rh05i8fa4-test-conformance-relock.drv",
+          "executedSystem": "x86_64-linux",
+          "outputNarHashes": {
+            "out": "sha256-d6xi4mKdjkX2JFicDIv5niSzpyI0m/Hnm8GGAIU04kY="
+          },
+          "outputs": {
+            "out": "/nix/store/rggyvmf4mhc6bxznxwp6cpjqycp9ymx3-test-conformance-relock"
+          },
+          "receipt": "https://nix-purifiers.github.io/evidence/c303023ca11c1d34bc3f65aee43e794c9a28639a9fe77cbf064b30d887d0bf00.json",
+          "sampleSources": [],
+          "sdkVersions": {},
+          "sourceNarHash": "sha256-q/B0t2iFfn0bi+a3giLy6vHfMYqKit8zRyosW8IETRs=",
+          "sourceRevision": "6e0980414b91c7e8c379ebf5bb5292f7d66da537",
+          "status": "success"
+        },
+        "check": {
+          "kind": "flake-attribute",
+          "replay": null,
+          "value": "checks.x86_64-linux.conformance-relock"
+        },
+        "drvPath": "/nix/store/ajw8slhbrwx2h6pp2r9mjp6rh05i8fa4-test-conformance-relock.drv",
+        "evaluation": null,
+        "outputNarHashes": {
+          "out": "sha256-d6xi4mKdjkX2JFicDIv5niSzpyI0m/Hnm8GGAIU04kY="
+        },
+        "outputs": {
+          "out": "/nix/store/rggyvmf4mhc6bxznxwp6cpjqycp9ymx3-test-conformance-relock"
+        },
+        "repository": "nix-purifiers/bun-purifier",
+        "revision": "6e0980414b91c7e8c379ebf5bb5292f7d66da537",
+        "sampleSources": [],
+        "sdkVersions": {},
+        "sourceNarHash": "sha256-q/B0t2iFfn0bi+a3giLy6vHfMYqKit8zRyosW8IETRs=",
+        "system": "x86_64-linux"
+      },
+      "bun-purifier:local:conformance-stale": {
+        "build": {
+          "artifactSha256": "c303023ca11c1d34bc3f65aee43e794c9a28639a9fe77cbf064b30d887d0bf00",
+          "drvPath": "/nix/store/wc313r1c02cl2ybkfr1pxq88yg95j4pg-test-stale-prefetch.drv",
+          "executedSystem": "x86_64-linux",
+          "outputNarHashes": {
+            "out": "sha256-d6xi4mKdjkX2JFicDIv5niSzpyI0m/Hnm8GGAIU04kY="
+          },
+          "outputs": {
+            "out": "/nix/store/s8sr76zs94l7azc4j33yzwndg5qpzlda-test-stale-prefetch"
+          },
+          "receipt": "https://nix-purifiers.github.io/evidence/c303023ca11c1d34bc3f65aee43e794c9a28639a9fe77cbf064b30d887d0bf00.json",
+          "sampleSources": [],
+          "sdkVersions": {},
+          "sourceNarHash": "sha256-q/B0t2iFfn0bi+a3giLy6vHfMYqKit8zRyosW8IETRs=",
+          "sourceRevision": "6e0980414b91c7e8c379ebf5bb5292f7d66da537",
+          "status": "success"
+        },
+        "check": {
+          "kind": "flake-attribute",
+          "replay": null,
+          "value": "checks.x86_64-linux.conformance-stale"
+        },
+        "drvPath": "/nix/store/wc313r1c02cl2ybkfr1pxq88yg95j4pg-test-stale-prefetch.drv",
+        "evaluation": null,
+        "outputNarHashes": {
+          "out": "sha256-d6xi4mKdjkX2JFicDIv5niSzpyI0m/Hnm8GGAIU04kY="
+        },
+        "outputs": {
+          "out": "/nix/store/s8sr76zs94l7azc4j33yzwndg5qpzlda-test-stale-prefetch"
+        },
+        "repository": "nix-purifiers/bun-purifier",
+        "revision": "6e0980414b91c7e8c379ebf5bb5292f7d66da537",
+        "sampleSources": [],
+        "sdkVersions": {},
+        "sourceNarHash": "sha256-q/B0t2iFfn0bi+a3giLy6vHfMYqKit8zRyosW8IETRs=",
+        "system": "x86_64-linux"
+      },
+      "bun-purifier:local:conformance-tampered": {
+        "build": {
+          "artifactSha256": "c303023ca11c1d34bc3f65aee43e794c9a28639a9fe77cbf064b30d887d0bf00",
+          "drvPath": "/nix/store/nw4f9dr1h4is92xvjf8b73mwglh91q8b-test-tampered-prefetch.drv",
+          "executedSystem": "x86_64-linux",
+          "outputNarHashes": {
+            "out": "sha256-d6xi4mKdjkX2JFicDIv5niSzpyI0m/Hnm8GGAIU04kY="
+          },
+          "outputs": {
+            "out": "/nix/store/2z4dbyrz4fk1ilh5fcrzxwcqalxk8y7q-test-tampered-prefetch"
+          },
+          "receipt": "https://nix-purifiers.github.io/evidence/c303023ca11c1d34bc3f65aee43e794c9a28639a9fe77cbf064b30d887d0bf00.json",
+          "sampleSources": [],
+          "sdkVersions": {},
+          "sourceNarHash": "sha256-q/B0t2iFfn0bi+a3giLy6vHfMYqKit8zRyosW8IETRs=",
+          "sourceRevision": "6e0980414b91c7e8c379ebf5bb5292f7d66da537",
+          "status": "success"
+        },
+        "check": {
+          "kind": "flake-attribute",
+          "replay": null,
+          "value": "checks.x86_64-linux.conformance-tampered"
+        },
+        "drvPath": "/nix/store/nw4f9dr1h4is92xvjf8b73mwglh91q8b-test-tampered-prefetch.drv",
+        "evaluation": null,
+        "outputNarHashes": {
+          "out": "sha256-d6xi4mKdjkX2JFicDIv5niSzpyI0m/Hnm8GGAIU04kY="
+        },
+        "outputs": {
+          "out": "/nix/store/2z4dbyrz4fk1ilh5fcrzxwcqalxk8y7q-test-tampered-prefetch"
+        },
+        "repository": "nix-purifiers/bun-purifier",
+        "revision": "6e0980414b91c7e8c379ebf5bb5292f7d66da537",
+        "sampleSources": [],
+        "sdkVersions": {},
+        "sourceNarHash": "sha256-q/B0t2iFfn0bi+a3giLy6vHfMYqKit8zRyosW8IETRs=",
+        "system": "x86_64-linux"
+      },
+      "bun-purifier:local:elysia": {
+        "build": {
+          "artifactSha256": "c303023ca11c1d34bc3f65aee43e794c9a28639a9fe77cbf064b30d887d0bf00",
+          "drvPath": "/nix/store/j4gmsz82fxn5phb59p27hm6cja559knd-test-elysia.drv",
+          "executedSystem": "x86_64-linux",
+          "outputNarHashes": {
+            "out": "sha256-d6xi4mKdjkX2JFicDIv5niSzpyI0m/Hnm8GGAIU04kY="
+          },
+          "outputs": {
+            "out": "/nix/store/83qffin7ccbw2a3j9iclf75zaxizfk5a-test-elysia"
+          },
+          "receipt": "https://nix-purifiers.github.io/evidence/c303023ca11c1d34bc3f65aee43e794c9a28639a9fe77cbf064b30d887d0bf00.json",
+          "sampleSources": [
+            {
+              "repository": "https://github.com/elysiajs/elysia",
+              "revision": "e037eca710e7ad193be09cc6615ab0dbe54af914",
+              "sourceNarHash": "sha256-6uGhZ4FmcEgvIHNMAvyabEVeb1pLOWGBXUoUjp5DjBQ="
+            }
+          ],
+          "sdkVersions": {
+            "Bun": "1.4.2"
+          },
+          "sourceNarHash": "sha256-q/B0t2iFfn0bi+a3giLy6vHfMYqKit8zRyosW8IETRs=",
+          "sourceRevision": "6e0980414b91c7e8c379ebf5bb5292f7d66da537",
+          "status": "success"
+        },
+        "check": {
+          "kind": "flake-attribute",
+          "replay": null,
+          "value": "checks.x86_64-linux.elysia"
+        },
+        "drvPath": "/nix/store/j4gmsz82fxn5phb59p27hm6cja559knd-test-elysia.drv",
+        "evaluation": null,
+        "outputNarHashes": {
+          "out": "sha256-d6xi4mKdjkX2JFicDIv5niSzpyI0m/Hnm8GGAIU04kY="
+        },
+        "outputs": {
+          "out": "/nix/store/83qffin7ccbw2a3j9iclf75zaxizfk5a-test-elysia"
+        },
+        "repository": "nix-purifiers/bun-purifier",
+        "revision": "6e0980414b91c7e8c379ebf5bb5292f7d66da537",
+        "sampleSources": [
+          {
+            "repository": "https://github.com/elysiajs/elysia",
+            "revision": "e037eca710e7ad193be09cc6615ab0dbe54af914",
+            "sourceNarHash": "sha256-6uGhZ4FmcEgvIHNMAvyabEVeb1pLOWGBXUoUjp5DjBQ="
+          }
+        ],
+        "sdkVersions": {
+          "Bun": "1.4.2"
+        },
+        "sourceNarHash": "sha256-q/B0t2iFfn0bi+a3giLy6vHfMYqKit8zRyosW8IETRs=",
+        "system": "x86_64-linux"
+      },
+      "bun-purifier:local:npm-projection": {
+        "build": {
+          "artifactSha256": "c303023ca11c1d34bc3f65aee43e794c9a28639a9fe77cbf064b30d887d0bf00",
+          "drvPath": "/nix/store/jc7h79w3s0m650lps9b75yyhlzdljabp-bun-npm-projection-check.drv",
+          "executedSystem": "x86_64-linux",
+          "outputNarHashes": {
+            "out": "sha256-d6xi4mKdjkX2JFicDIv5niSzpyI0m/Hnm8GGAIU04kY="
+          },
+          "outputs": {
+            "out": "/nix/store/85694sgjaaklza09fb7crhw2s29ky213-bun-npm-projection-check"
+          },
+          "receipt": "https://nix-purifiers.github.io/evidence/c303023ca11c1d34bc3f65aee43e794c9a28639a9fe77cbf064b30d887d0bf00.json",
+          "sampleSources": [],
+          "sdkVersions": {},
+          "sourceNarHash": "sha256-q/B0t2iFfn0bi+a3giLy6vHfMYqKit8zRyosW8IETRs=",
+          "sourceRevision": "6e0980414b91c7e8c379ebf5bb5292f7d66da537",
+          "status": "success"
+        },
+        "check": {
+          "kind": "flake-attribute",
+          "replay": null,
+          "value": "checks.x86_64-linux.npm-projection"
+        },
+        "drvPath": "/nix/store/jc7h79w3s0m650lps9b75yyhlzdljabp-bun-npm-projection-check.drv",
+        "evaluation": null,
+        "outputNarHashes": {
+          "out": "sha256-d6xi4mKdjkX2JFicDIv5niSzpyI0m/Hnm8GGAIU04kY="
+        },
+        "outputs": {
+          "out": "/nix/store/85694sgjaaklza09fb7crhw2s29ky213-bun-npm-projection-check"
+        },
+        "repository": "nix-purifiers/bun-purifier",
+        "revision": "6e0980414b91c7e8c379ebf5bb5292f7d66da537",
+        "sampleSources": [],
+        "sdkVersions": {},
+        "sourceNarHash": "sha256-q/B0t2iFfn0bi+a3giLy6vHfMYqKit8zRyosW8IETRs=",
+        "system": "x86_64-linux"
+      },
+      "bun-purifier:local:paths-program": {
+        "build": {
+          "artifactSha256": "c303023ca11c1d34bc3f65aee43e794c9a28639a9fe77cbf064b30d887d0bf00",
+          "drvPath": "/nix/store/mrv1qk7cl5s1n3y3hgp1gazazjrv6wl7-test-paths-program.drv",
+          "executedSystem": "x86_64-linux",
+          "outputNarHashes": {
+            "out": "sha256-d6xi4mKdjkX2JFicDIv5niSzpyI0m/Hnm8GGAIU04kY="
+          },
+          "outputs": {
+            "out": "/nix/store/mrhk66mx8155lfbfp4ldx7rkig8aq8jf-test-paths-program"
+          },
+          "receipt": "https://nix-purifiers.github.io/evidence/c303023ca11c1d34bc3f65aee43e794c9a28639a9fe77cbf064b30d887d0bf00.json",
+          "sampleSources": [],
+          "sdkVersions": {},
+          "sourceNarHash": "sha256-q/B0t2iFfn0bi+a3giLy6vHfMYqKit8zRyosW8IETRs=",
+          "sourceRevision": "6e0980414b91c7e8c379ebf5bb5292f7d66da537",
+          "status": "success"
+        },
+        "check": {
+          "kind": "flake-attribute",
+          "replay": null,
+          "value": "checks.x86_64-linux.paths-program"
+        },
+        "drvPath": "/nix/store/mrv1qk7cl5s1n3y3hgp1gazazjrv6wl7-test-paths-program.drv",
+        "evaluation": null,
+        "outputNarHashes": {
+          "out": "sha256-d6xi4mKdjkX2JFicDIv5niSzpyI0m/Hnm8GGAIU04kY="
+        },
+        "outputs": {
+          "out": "/nix/store/mrhk66mx8155lfbfp4ldx7rkig8aq8jf-test-paths-program"
+        },
+        "repository": "nix-purifiers/bun-purifier",
+        "revision": "6e0980414b91c7e8c379ebf5bb5292f7d66da537",
+        "sampleSources": [],
+        "sdkVersions": {},
+        "sourceNarHash": "sha256-q/B0t2iFfn0bi+a3giLy6vHfMYqKit8zRyosW8IETRs=",
+        "system": "x86_64-linux"
+      },
+      "bun-purifier:local:publish": {
+        "build": {
+          "artifactSha256": "c303023ca11c1d34bc3f65aee43e794c9a28639a9fe77cbf064b30d887d0bf00",
+          "drvPath": "/nix/store/as97krcd35x1fawpxkxl01l51l3ni1yv-test-publish.drv",
+          "executedSystem": "x86_64-linux",
+          "outputNarHashes": {
+            "out": "sha256-d6xi4mKdjkX2JFicDIv5niSzpyI0m/Hnm8GGAIU04kY="
+          },
+          "outputs": {
+            "out": "/nix/store/3pyjkxpsp6h6mf3474sl32pzihyvn7xd-test-publish"
+          },
+          "receipt": "https://nix-purifiers.github.io/evidence/c303023ca11c1d34bc3f65aee43e794c9a28639a9fe77cbf064b30d887d0bf00.json",
+          "sampleSources": [],
+          "sdkVersions": {},
+          "sourceNarHash": "sha256-q/B0t2iFfn0bi+a3giLy6vHfMYqKit8zRyosW8IETRs=",
+          "sourceRevision": "6e0980414b91c7e8c379ebf5bb5292f7d66da537",
+          "status": "success"
+        },
+        "check": {
+          "kind": "flake-attribute",
+          "replay": null,
+          "value": "checks.x86_64-linux.publish"
+        },
+        "drvPath": "/nix/store/as97krcd35x1fawpxkxl01l51l3ni1yv-test-publish.drv",
+        "evaluation": null,
+        "outputNarHashes": {
+          "out": "sha256-d6xi4mKdjkX2JFicDIv5niSzpyI0m/Hnm8GGAIU04kY="
+        },
+        "outputs": {
+          "out": "/nix/store/3pyjkxpsp6h6mf3474sl32pzihyvn7xd-test-publish"
+        },
+        "repository": "nix-purifiers/bun-purifier",
+        "revision": "6e0980414b91c7e8c379ebf5bb5292f7d66da537",
+        "sampleSources": [],
+        "sdkVersions": {},
+        "sourceNarHash": "sha256-q/B0t2iFfn0bi+a3giLy6vHfMYqKit8zRyosW8IETRs=",
+        "system": "x86_64-linux"
+      },
+      "bun-purifier:local:read-lock": {
+        "build": {
+          "artifactSha256": "c303023ca11c1d34bc3f65aee43e794c9a28639a9fe77cbf064b30d887d0bf00",
+          "drvPath": "/nix/store/zsbvbvmj3mjpypcp7a829l7aqkf2wyhn-test-read-lock.drv",
+          "executedSystem": "x86_64-linux",
+          "outputNarHashes": {
+            "out": "sha256-d6xi4mKdjkX2JFicDIv5niSzpyI0m/Hnm8GGAIU04kY="
+          },
+          "outputs": {
+            "out": "/nix/store/lw468hysvqpkvf28waqjylk51l6j929r-test-read-lock"
+          },
+          "receipt": "https://nix-purifiers.github.io/evidence/c303023ca11c1d34bc3f65aee43e794c9a28639a9fe77cbf064b30d887d0bf00.json",
+          "sampleSources": [],
+          "sdkVersions": {},
+          "sourceNarHash": "sha256-q/B0t2iFfn0bi+a3giLy6vHfMYqKit8zRyosW8IETRs=",
+          "sourceRevision": "6e0980414b91c7e8c379ebf5bb5292f7d66da537",
+          "status": "success"
+        },
+        "check": {
+          "kind": "flake-attribute",
+          "replay": null,
+          "value": "checks.x86_64-linux.read-lock"
+        },
+        "drvPath": "/nix/store/zsbvbvmj3mjpypcp7a829l7aqkf2wyhn-test-read-lock.drv",
+        "evaluation": null,
+        "outputNarHashes": {
+          "out": "sha256-d6xi4mKdjkX2JFicDIv5niSzpyI0m/Hnm8GGAIU04kY="
+        },
+        "outputs": {
+          "out": "/nix/store/lw468hysvqpkvf28waqjylk51l6j929r-test-read-lock"
+        },
+        "repository": "nix-purifiers/bun-purifier",
+        "revision": "6e0980414b91c7e8c379ebf5bb5292f7d66da537",
+        "sampleSources": [],
+        "sdkVersions": {},
+        "sourceNarHash": "sha256-q/B0t2iFfn0bi+a3giLy6vHfMYqKit8zRyosW8IETRs=",
+        "system": "x86_64-linux"
+      },
+      "bun-purifier:local:registries-program": {
+        "build": {
+          "artifactSha256": "c303023ca11c1d34bc3f65aee43e794c9a28639a9fe77cbf064b30d887d0bf00",
+          "drvPath": "/nix/store/yvn17cipij9s7w2vp5yvbpsr02k80fh0-test-registries-program.drv",
+          "executedSystem": "x86_64-linux",
+          "outputNarHashes": {
+            "out": "sha256-d6xi4mKdjkX2JFicDIv5niSzpyI0m/Hnm8GGAIU04kY="
+          },
+          "outputs": {
+            "out": "/nix/store/z5ph852qk51r12cxj1wjgknyr7m024x8-test-registries-program"
+          },
+          "receipt": "https://nix-purifiers.github.io/evidence/c303023ca11c1d34bc3f65aee43e794c9a28639a9fe77cbf064b30d887d0bf00.json",
+          "sampleSources": [],
+          "sdkVersions": {},
+          "sourceNarHash": "sha256-q/B0t2iFfn0bi+a3giLy6vHfMYqKit8zRyosW8IETRs=",
+          "sourceRevision": "6e0980414b91c7e8c379ebf5bb5292f7d66da537",
+          "status": "success"
+        },
+        "check": {
+          "kind": "flake-attribute",
+          "replay": null,
+          "value": "checks.x86_64-linux.registries-program"
+        },
+        "drvPath": "/nix/store/yvn17cipij9s7w2vp5yvbpsr02k80fh0-test-registries-program.drv",
+        "evaluation": null,
+        "outputNarHashes": {
+          "out": "sha256-d6xi4mKdjkX2JFicDIv5niSzpyI0m/Hnm8GGAIU04kY="
+        },
+        "outputs": {
+          "out": "/nix/store/z5ph852qk51r12cxj1wjgknyr7m024x8-test-registries-program"
+        },
+        "repository": "nix-purifiers/bun-purifier",
+        "revision": "6e0980414b91c7e8c379ebf5bb5292f7d66da537",
+        "sampleSources": [],
+        "sdkVersions": {},
+        "sourceNarHash": "sha256-q/B0t2iFfn0bi+a3giLy6vHfMYqKit8zRyosW8IETRs=",
+        "system": "x86_64-linux"
+      },
+      "bun-purifier:local:scope-override": {
+        "build": {
+          "artifactSha256": "c303023ca11c1d34bc3f65aee43e794c9a28639a9fe77cbf064b30d887d0bf00",
+          "drvPath": "/nix/store/y7lkjddbxhz05h82aak7g8qr50pqklms-test-scope-override.drv",
+          "executedSystem": "x86_64-linux",
+          "outputNarHashes": {
+            "out": "sha256-d6xi4mKdjkX2JFicDIv5niSzpyI0m/Hnm8GGAIU04kY="
+          },
+          "outputs": {
+            "out": "/nix/store/cxbcfs2ml89nkcj8m2a98nh929b6mkmd-test-scope-override"
+          },
+          "receipt": "https://nix-purifiers.github.io/evidence/c303023ca11c1d34bc3f65aee43e794c9a28639a9fe77cbf064b30d887d0bf00.json",
+          "sampleSources": [],
+          "sdkVersions": {},
+          "sourceNarHash": "sha256-q/B0t2iFfn0bi+a3giLy6vHfMYqKit8zRyosW8IETRs=",
+          "sourceRevision": "6e0980414b91c7e8c379ebf5bb5292f7d66da537",
+          "status": "success"
+        },
+        "check": {
+          "kind": "flake-attribute",
+          "replay": null,
+          "value": "checks.x86_64-linux.scope-override"
+        },
+        "drvPath": "/nix/store/y7lkjddbxhz05h82aak7g8qr50pqklms-test-scope-override.drv",
+        "evaluation": null,
+        "outputNarHashes": {
+          "out": "sha256-d6xi4mKdjkX2JFicDIv5niSzpyI0m/Hnm8GGAIU04kY="
+        },
+        "outputs": {
+          "out": "/nix/store/cxbcfs2ml89nkcj8m2a98nh929b6mkmd-test-scope-override"
+        },
+        "repository": "nix-purifiers/bun-purifier",
+        "revision": "6e0980414b91c7e8c379ebf5bb5292f7d66da537",
+        "sampleSources": [],
+        "sdkVersions": {},
+        "sourceNarHash": "sha256-q/B0t2iFfn0bi+a3giLy6vHfMYqKit8zRyosW8IETRs=",
+        "system": "x86_64-linux"
+      },
+      "bun-purifier:local:sources-program": {
+        "build": {
+          "artifactSha256": "c303023ca11c1d34bc3f65aee43e794c9a28639a9fe77cbf064b30d887d0bf00",
+          "drvPath": "/nix/store/mr7086mly08q5zaj6h84bncvf7pmnq09-test-sources-program.drv",
+          "executedSystem": "x86_64-linux",
+          "outputNarHashes": {
+            "out": "sha256-d6xi4mKdjkX2JFicDIv5niSzpyI0m/Hnm8GGAIU04kY="
+          },
+          "outputs": {
+            "out": "/nix/store/rw2yar0il5rxwbmmmplyq10y713whl5l-test-sources-program"
+          },
+          "receipt": "https://nix-purifiers.github.io/evidence/c303023ca11c1d34bc3f65aee43e794c9a28639a9fe77cbf064b30d887d0bf00.json",
+          "sampleSources": [],
+          "sdkVersions": {},
+          "sourceNarHash": "sha256-q/B0t2iFfn0bi+a3giLy6vHfMYqKit8zRyosW8IETRs=",
+          "sourceRevision": "6e0980414b91c7e8c379ebf5bb5292f7d66da537",
+          "status": "success"
+        },
+        "check": {
+          "kind": "flake-attribute",
+          "replay": null,
+          "value": "checks.x86_64-linux.sources-program"
+        },
+        "drvPath": "/nix/store/mr7086mly08q5zaj6h84bncvf7pmnq09-test-sources-program.drv",
+        "evaluation": null,
+        "outputNarHashes": {
+          "out": "sha256-d6xi4mKdjkX2JFicDIv5niSzpyI0m/Hnm8GGAIU04kY="
+        },
+        "outputs": {
+          "out": "/nix/store/rw2yar0il5rxwbmmmplyq10y713whl5l-test-sources-program"
+        },
+        "repository": "nix-purifiers/bun-purifier",
+        "revision": "6e0980414b91c7e8c379ebf5bb5292f7d66da537",
+        "sampleSources": [],
+        "sdkVersions": {},
+        "sourceNarHash": "sha256-q/B0t2iFfn0bi+a3giLy6vHfMYqKit8zRyosW8IETRs=",
+        "system": "x86_64-linux"
+      },
+      "bun-purifier:local:treefmt": {
+        "build": {
+          "artifactSha256": "c303023ca11c1d34bc3f65aee43e794c9a28639a9fe77cbf064b30d887d0bf00",
+          "drvPath": "/nix/store/12m2wxifn24x1hl8clbcgl75k9kpk31f-treefmt-check.drv",
+          "executedSystem": "x86_64-linux",
+          "outputNarHashes": {
+            "out": "sha256-d6xi4mKdjkX2JFicDIv5niSzpyI0m/Hnm8GGAIU04kY="
+          },
+          "outputs": {
+            "out": "/nix/store/8l52wixxpssqh6x82hdvdc8cfjdlhfz6-treefmt-check"
+          },
+          "receipt": "https://nix-purifiers.github.io/evidence/c303023ca11c1d34bc3f65aee43e794c9a28639a9fe77cbf064b30d887d0bf00.json",
+          "sampleSources": [],
+          "sdkVersions": {},
+          "sourceNarHash": "sha256-q/B0t2iFfn0bi+a3giLy6vHfMYqKit8zRyosW8IETRs=",
+          "sourceRevision": "6e0980414b91c7e8c379ebf5bb5292f7d66da537",
+          "status": "success"
+        },
+        "check": {
+          "kind": "flake-attribute",
+          "replay": null,
+          "value": "checks.x86_64-linux.treefmt"
+        },
+        "drvPath": "/nix/store/12m2wxifn24x1hl8clbcgl75k9kpk31f-treefmt-check.drv",
+        "evaluation": null,
+        "outputNarHashes": {
+          "out": "sha256-d6xi4mKdjkX2JFicDIv5niSzpyI0m/Hnm8GGAIU04kY="
+        },
+        "outputs": {
+          "out": "/nix/store/8l52wixxpssqh6x82hdvdc8cfjdlhfz6-treefmt-check"
+        },
+        "repository": "nix-purifiers/bun-purifier",
+        "revision": "6e0980414b91c7e8c379ebf5bb5292f7d66da537",
+        "sampleSources": [],
+        "sdkVersions": {},
+        "sourceNarHash": "sha256-q/B0t2iFfn0bi+a3giLy6vHfMYqKit8zRyosW8IETRs=",
+        "system": "x86_64-linux"
+      },
+      "bun-purifier:local:unit": {
+        "build": {
+          "artifactSha256": "c303023ca11c1d34bc3f65aee43e794c9a28639a9fe77cbf064b30d887d0bf00",
+          "drvPath": "/nix/store/6zvihy0irxr64ccmawazv63pvw3xkv63-test-unit.drv",
+          "executedSystem": "x86_64-linux",
+          "outputNarHashes": {
+            "out": "sha256-d6xi4mKdjkX2JFicDIv5niSzpyI0m/Hnm8GGAIU04kY="
+          },
+          "outputs": {
+            "out": "/nix/store/r591blal887np40i478ybvl21gfd7ii3-test-unit"
+          },
+          "receipt": "https://nix-purifiers.github.io/evidence/c303023ca11c1d34bc3f65aee43e794c9a28639a9fe77cbf064b30d887d0bf00.json",
+          "sampleSources": [],
+          "sdkVersions": {},
+          "sourceNarHash": "sha256-q/B0t2iFfn0bi+a3giLy6vHfMYqKit8zRyosW8IETRs=",
+          "sourceRevision": "6e0980414b91c7e8c379ebf5bb5292f7d66da537",
+          "status": "success"
+        },
+        "check": {
+          "kind": "flake-attribute",
+          "replay": null,
+          "value": "checks.x86_64-linux.unit"
+        },
+        "drvPath": "/nix/store/6zvihy0irxr64ccmawazv63pvw3xkv63-test-unit.drv",
+        "evaluation": null,
+        "outputNarHashes": {
+          "out": "sha256-d6xi4mKdjkX2JFicDIv5niSzpyI0m/Hnm8GGAIU04kY="
+        },
+        "outputs": {
+          "out": "/nix/store/r591blal887np40i478ybvl21gfd7ii3-test-unit"
+        },
+        "repository": "nix-purifiers/bun-purifier",
+        "revision": "6e0980414b91c7e8c379ebf5bb5292f7d66da537",
+        "sampleSources": [],
+        "sdkVersions": {},
+        "sourceNarHash": "sha256-q/B0t2iFfn0bi+a3giLy6vHfMYqKit8zRyosW8IETRs=",
+        "system": "x86_64-linux"
+      },
+      "bun-purifier:local:workspace-fetches": {
+        "build": {
+          "artifactSha256": "c303023ca11c1d34bc3f65aee43e794c9a28639a9fe77cbf064b30d887d0bf00",
+          "drvPath": "/nix/store/qvy6xkv0ggb0yjb6xmna4dvsfj7r6zq9-test-workspace-fetches.drv",
+          "executedSystem": "x86_64-linux",
+          "outputNarHashes": {
+            "out": "sha256-d6xi4mKdjkX2JFicDIv5niSzpyI0m/Hnm8GGAIU04kY="
+          },
+          "outputs": {
+            "out": "/nix/store/v0l23cjm4lrd045wb7w0042b41gpc9qr-test-workspace-fetches"
+          },
+          "receipt": "https://nix-purifiers.github.io/evidence/c303023ca11c1d34bc3f65aee43e794c9a28639a9fe77cbf064b30d887d0bf00.json",
+          "sampleSources": [],
+          "sdkVersions": {},
+          "sourceNarHash": "sha256-q/B0t2iFfn0bi+a3giLy6vHfMYqKit8zRyosW8IETRs=",
+          "sourceRevision": "6e0980414b91c7e8c379ebf5bb5292f7d66da537",
+          "status": "success"
+        },
+        "check": {
+          "kind": "flake-attribute",
+          "replay": null,
+          "value": "checks.x86_64-linux.workspace-fetches"
+        },
+        "drvPath": "/nix/store/qvy6xkv0ggb0yjb6xmna4dvsfj7r6zq9-test-workspace-fetches.drv",
+        "evaluation": null,
+        "outputNarHashes": {
+          "out": "sha256-d6xi4mKdjkX2JFicDIv5niSzpyI0m/Hnm8GGAIU04kY="
+        },
+        "outputs": {
+          "out": "/nix/store/v0l23cjm4lrd045wb7w0042b41gpc9qr-test-workspace-fetches"
+        },
+        "repository": "nix-purifiers/bun-purifier",
+        "revision": "6e0980414b91c7e8c379ebf5bb5292f7d66da537",
+        "sampleSources": [],
+        "sdkVersions": {},
+        "sourceNarHash": "sha256-q/B0t2iFfn0bi+a3giLy6vHfMYqKit8zRyosW8IETRs=",
+        "system": "x86_64-linux"
+      },
+      "bun-purifier:local:workspace-program": {
+        "build": {
+          "artifactSha256": "c303023ca11c1d34bc3f65aee43e794c9a28639a9fe77cbf064b30d887d0bf00",
+          "drvPath": "/nix/store/6zsq6fb81qsfx1239dy3nwha277kkwb3-test-workspace-program.drv",
+          "executedSystem": "x86_64-linux",
+          "outputNarHashes": {
+            "out": "sha256-d6xi4mKdjkX2JFicDIv5niSzpyI0m/Hnm8GGAIU04kY="
+          },
+          "outputs": {
+            "out": "/nix/store/pvj8p2s2iscd2lx1b610j26w718jbnvy-test-workspace-program"
+          },
+          "receipt": "https://nix-purifiers.github.io/evidence/c303023ca11c1d34bc3f65aee43e794c9a28639a9fe77cbf064b30d887d0bf00.json",
+          "sampleSources": [],
+          "sdkVersions": {},
+          "sourceNarHash": "sha256-q/B0t2iFfn0bi+a3giLy6vHfMYqKit8zRyosW8IETRs=",
+          "sourceRevision": "6e0980414b91c7e8c379ebf5bb5292f7d66da537",
+          "status": "success"
+        },
+        "check": {
+          "kind": "flake-attribute",
+          "replay": null,
+          "value": "checks.x86_64-linux.workspace-program"
+        },
+        "drvPath": "/nix/store/6zsq6fb81qsfx1239dy3nwha277kkwb3-test-workspace-program.drv",
+        "evaluation": null,
+        "outputNarHashes": {
+          "out": "sha256-d6xi4mKdjkX2JFicDIv5niSzpyI0m/Hnm8GGAIU04kY="
+        },
+        "outputs": {
+          "out": "/nix/store/pvj8p2s2iscd2lx1b610j26w718jbnvy-test-workspace-program"
+        },
+        "repository": "nix-purifiers/bun-purifier",
+        "revision": "6e0980414b91c7e8c379ebf5bb5292f7d66da537",
+        "sampleSources": [],
+        "sdkVersions": {},
+        "sourceNarHash": "sha256-q/B0t2iFfn0bi+a3giLy6vHfMYqKit8zRyosW8IETRs=",
+        "system": "x86_64-linux"
+      },
+      "bun-purifier:local:workspace-project": {
+        "build": {
+          "artifactSha256": "c303023ca11c1d34bc3f65aee43e794c9a28639a9fe77cbf064b30d887d0bf00",
+          "drvPath": "/nix/store/ml8gnjli8l8xrpapr9z3km0rwzfjl1hy-fixture-workspace-0.drv",
+          "executedSystem": "x86_64-linux",
+          "outputNarHashes": {
+            "out": "sha256-nFwSiBrkQZS95G3XJ3AyB4lNWqbpKAvldfkCqqKEzPE="
+          },
+          "outputs": {
+            "out": "/nix/store/fnlyhcp4ir9y1fza7jsvh35a50p1rl5g-fixture-workspace-0"
+          },
+          "receipt": "https://nix-purifiers.github.io/evidence/c303023ca11c1d34bc3f65aee43e794c9a28639a9fe77cbf064b30d887d0bf00.json",
+          "sampleSources": [],
+          "sdkVersions": {},
+          "sourceNarHash": "sha256-q/B0t2iFfn0bi+a3giLy6vHfMYqKit8zRyosW8IETRs=",
+          "sourceRevision": "6e0980414b91c7e8c379ebf5bb5292f7d66da537",
+          "status": "success"
+        },
+        "check": {
+          "kind": "flake-attribute",
+          "replay": null,
+          "value": "checks.x86_64-linux.workspace-project"
+        },
+        "drvPath": "/nix/store/ml8gnjli8l8xrpapr9z3km0rwzfjl1hy-fixture-workspace-0.drv",
+        "evaluation": null,
+        "outputNarHashes": {
+          "out": "sha256-nFwSiBrkQZS95G3XJ3AyB4lNWqbpKAvldfkCqqKEzPE="
+        },
+        "outputs": {
+          "out": "/nix/store/fnlyhcp4ir9y1fza7jsvh35a50p1rl5g-fixture-workspace-0"
+        },
+        "repository": "nix-purifiers/bun-purifier",
+        "revision": "6e0980414b91c7e8c379ebf5bb5292f7d66da537",
+        "sampleSources": [],
+        "sdkVersions": {},
+        "sourceNarHash": "sha256-q/B0t2iFfn0bi+a3giLy6vHfMYqKit8zRyosW8IETRs=",
+        "system": "x86_64-linux"
+      },
+      "bun-purifier:local:workspace-release": {
+        "build": {
+          "artifactSha256": "c303023ca11c1d34bc3f65aee43e794c9a28639a9fe77cbf064b30d887d0bf00",
+          "drvPath": "/nix/store/7svk4pqp9ki9225nzi4rsyz47jqjvvfy-test-workspace-release.drv",
+          "executedSystem": "x86_64-linux",
+          "outputNarHashes": {
+            "out": "sha256-d6xi4mKdjkX2JFicDIv5niSzpyI0m/Hnm8GGAIU04kY="
+          },
+          "outputs": {
+            "out": "/nix/store/697s6ihm0n5d7dphl1kap0cx1n92gq8j-test-workspace-release"
+          },
+          "receipt": "https://nix-purifiers.github.io/evidence/c303023ca11c1d34bc3f65aee43e794c9a28639a9fe77cbf064b30d887d0bf00.json",
+          "sampleSources": [],
+          "sdkVersions": {},
+          "sourceNarHash": "sha256-q/B0t2iFfn0bi+a3giLy6vHfMYqKit8zRyosW8IETRs=",
+          "sourceRevision": "6e0980414b91c7e8c379ebf5bb5292f7d66da537",
+          "status": "success"
+        },
+        "check": {
+          "kind": "flake-attribute",
+          "replay": null,
+          "value": "checks.x86_64-linux.workspace-release"
+        },
+        "drvPath": "/nix/store/7svk4pqp9ki9225nzi4rsyz47jqjvvfy-test-workspace-release.drv",
+        "evaluation": null,
+        "outputNarHashes": {
+          "out": "sha256-d6xi4mKdjkX2JFicDIv5niSzpyI0m/Hnm8GGAIU04kY="
+        },
+        "outputs": {
+          "out": "/nix/store/697s6ihm0n5d7dphl1kap0cx1n92gq8j-test-workspace-release"
+        },
+        "repository": "nix-purifiers/bun-purifier",
+        "revision": "6e0980414b91c7e8c379ebf5bb5292f7d66da537",
+        "sampleSources": [],
+        "sdkVersions": {},
+        "sourceNarHash": "sha256-q/B0t2iFfn0bi+a3giLy6vHfMYqKit8zRyosW8IETRs=",
+        "system": "x86_64-linux"
+      },
+      "bun-purifier:local:workspace-tests": {
+        "build": {
+          "artifactSha256": "c303023ca11c1d34bc3f65aee43e794c9a28639a9fe77cbf064b30d887d0bf00",
+          "drvPath": "/nix/store/5dsqjgfwhkn68zwqk1py26ka3z32g87m-fixture-workspace-0-tests.drv",
+          "executedSystem": "x86_64-linux",
+          "outputNarHashes": {
+            "out": "sha256-d6xi4mKdjkX2JFicDIv5niSzpyI0m/Hnm8GGAIU04kY="
+          },
+          "outputs": {
+            "out": "/nix/store/f12n02h5s7gxf3748za658fmwr40b6hv-fixture-workspace-0-tests"
+          },
+          "receipt": "https://nix-purifiers.github.io/evidence/c303023ca11c1d34bc3f65aee43e794c9a28639a9fe77cbf064b30d887d0bf00.json",
+          "sampleSources": [],
+          "sdkVersions": {},
+          "sourceNarHash": "sha256-q/B0t2iFfn0bi+a3giLy6vHfMYqKit8zRyosW8IETRs=",
+          "sourceRevision": "6e0980414b91c7e8c379ebf5bb5292f7d66da537",
+          "status": "success"
+        },
+        "check": {
+          "kind": "flake-attribute",
+          "replay": null,
+          "value": "checks.x86_64-linux.workspace-tests"
+        },
+        "drvPath": "/nix/store/5dsqjgfwhkn68zwqk1py26ka3z32g87m-fixture-workspace-0-tests.drv",
+        "evaluation": null,
+        "outputNarHashes": {
+          "out": "sha256-d6xi4mKdjkX2JFicDIv5niSzpyI0m/Hnm8GGAIU04kY="
+        },
+        "outputs": {
+          "out": "/nix/store/f12n02h5s7gxf3748za658fmwr40b6hv-fixture-workspace-0-tests"
+        },
+        "repository": "nix-purifiers/bun-purifier",
+        "revision": "6e0980414b91c7e8c379ebf5bb5292f7d66da537",
+        "sampleSources": [],
+        "sdkVersions": {},
+        "sourceNarHash": "sha256-q/B0t2iFfn0bi+a3giLy6vHfMYqKit8zRyosW8IETRs=",
+        "system": "x86_64-linux"
+      }
+    },
+    "sampleBuilds": [
+      {
+        "derivations": [
+          "bun-purifier:local:elysia"
+        ],
+        "name": "Independent upstream elysiajs/elysia e037eca710e7ad193be09cc6615ab0dbe54af914 (source NAR sha256-6uGhZ4FmcEgvIHNMAvyabEVeb1pLOWGBXUoUjp5DjBQ=), plus owned workspace/source/path/registry fixtures.",
+        "upstream": {
+          "repository": "https://github.com/elysiajs/elysia",
+          "revision": "e037eca710e7ad193be09cc6615ab0dbe54af914",
+          "sourceNarHash": "sha256-6uGhZ4FmcEgvIHNMAvyabEVeb1pLOWGBXUoUjp5DjBQ="
+        }
+      }
+    ]
+  }
+}

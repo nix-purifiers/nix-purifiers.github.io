@@ -1,0 +1,1011 @@
+{
+  "criteria": {
+    "darwin": {
+      "state": "not-met",
+      "summary": "Inspected current-main workflow and successful job list have no native Darwin execution. The flake declares/evaluates Darwin, which supplies no runtime credit.",
+      "evidence": [
+        "https://github.com/nix-purifiers/gradle-purifier/actions/runs/42291213439",
+        "https://github.com/nix-purifiers/gradle-purifier/blob/9c19f8d47def476f9afe4d8940f0076f0b95318f/.github/workflows/check.yml",
+        "https://nix-purifiers.github.io/evidence/f905624eadd4bdea3fa9fd82569da48fd809823de3948916987d17614a170c11.json"
+      ]
+    },
+    "evaluation": {
+      "state": "met",
+      "summary": "Actual no-IFD Nix evaluation at public main 9c19f8d47def476f9afe4d8940f0076f0b95318f yielded these check derivations; exact paths match successful native CI build traces. Source NAR, derivation bytes and output identities are recorded.",
+      "evidence": [
+        "https://github.com/nix-purifiers/gradle-purifier/actions/runs/42291213439",
+        "https://github.com/nix-purifiers/gradle-purifier/blob/9c19f8d47def476f9afe4d8940f0076f0b95318f/tests/default.nix",
+        "https://github.com/nix-purifiers/gradle-purifier/blob/9c19f8d47def476f9afe4d8940f0076f0b95318f/tests/real-world/petclinic.json",
+        "https://github.com/nix-purifiers/gradle-purifier/blob/9c19f8d47def476f9afe4d8940f0076f0b95318f/.github/workflows/check.yml",
+        "https://github.com/nix-purifiers/gradle-purifier/blob/9c19f8d47def476f9afe4d8940f0076f0b95318f/tests/legacy-maven/basic-56.py",
+        "https://github.com/nix-purifiers/gradle-purifier/blob/9c19f8d47def476f9afe4d8940f0076f0b95318f/tests/legacy-maven/lifecycle.py",
+        "https://nix-purifiers.github.io/evidence/f905624eadd4bdea3fa9fd82569da48fd809823de3948916987d17614a170c11.json"
+      ]
+    },
+    "goodTests": {
+      "state": "met",
+      "summary": "Successful sandbox checks exercise Java JUnit, Kotlin JVM/app and Kotlin Native builds, archives and class assertions, snapshot publications, missing/malformed/stale/tampered-lock failures, recorder/runtime-metadata/SDK-source units and JVM composition. Required native host jobs additionally test relock/offline/rebuild/update and project SDK closure/source modes. Petclinic's published-main derivation is packaging with doCheck=false and supplies no upstream-test credit.",
+      "evidence": [
+        "https://github.com/nix-purifiers/gradle-purifier/actions/runs/42291213439",
+        "https://github.com/nix-purifiers/gradle-purifier/blob/9c19f8d47def476f9afe4d8940f0076f0b95318f/tests/default.nix",
+        "https://github.com/nix-purifiers/gradle-purifier/blob/9c19f8d47def476f9afe4d8940f0076f0b95318f/tests/real-world/petclinic.json",
+        "https://github.com/nix-purifiers/gradle-purifier/blob/9c19f8d47def476f9afe4d8940f0076f0b95318f/.github/workflows/check.yml",
+        "https://github.com/nix-purifiers/gradle-purifier/blob/9c19f8d47def476f9afe4d8940f0076f0b95318f/tests/legacy-maven/basic-56.py",
+        "https://github.com/nix-purifiers/gradle-purifier/blob/9c19f8d47def476f9afe4d8940f0076f0b95318f/tests/legacy-maven/lifecycle.py",
+        "https://nix-purifiers.github.io/evidence/f905624eadd4bdea3fa9fd82569da48fd809823de3948916987d17614a170c11.json"
+      ]
+    },
+    "linux": {
+      "state": "met",
+      "summary": "Successful native x86_64-linux CI jobs actually build the identified check derivations from this exact source. SDK closure and output bindings distinguish execution from declarations/cross-evaluation.",
+      "evidence": [
+        "https://github.com/nix-purifiers/gradle-purifier/actions/runs/42291213439",
+        "https://github.com/nix-purifiers/gradle-purifier/blob/9c19f8d47def476f9afe4d8940f0076f0b95318f/tests/default.nix",
+        "https://github.com/nix-purifiers/gradle-purifier/blob/9c19f8d47def476f9afe4d8940f0076f0b95318f/tests/real-world/petclinic.json",
+        "https://github.com/nix-purifiers/gradle-purifier/blob/9c19f8d47def476f9afe4d8940f0076f0b95318f/.github/workflows/check.yml",
+        "https://github.com/nix-purifiers/gradle-purifier/blob/9c19f8d47def476f9afe4d8940f0076f0b95318f/tests/legacy-maven/basic-56.py",
+        "https://github.com/nix-purifiers/gradle-purifier/blob/9c19f8d47def476f9afe4d8940f0076f0b95318f/tests/legacy-maven/lifecycle.py",
+        "https://nix-purifiers.github.io/evidence/f905624eadd4bdea3fa9fd82569da48fd809823de3948916987d17614a170c11.json"
+      ]
+    },
+    "longCompatibility": {
+      "state": "not-met",
+      "summary": "Main CI has real bounded5.6.4 and6.9.4 legacy scenarios,7.6.6 with managerJDK17/projectJDK8, and modern8.14.3/9.1.0/9.5.1 checks. Those native host proofs deserve preservation. The5.6/6.9 scenarios are specific recorder/publication/SDK behaviors and lack a checked sample-build derivation matrix binding historical SDKs to the modern contract; default Test is disabled in the6.9 producer. Thus the full long-compatibility judgment is not established by the derivation-backed sample corpus; no interval or universal-JUnit claim.",
+      "evidence": [
+        "https://github.com/nix-purifiers/gradle-purifier/actions/runs/42291213439",
+        "https://github.com/nix-purifiers/gradle-purifier/blob/9c19f8d47def476f9afe4d8940f0076f0b95318f/tests/default.nix",
+        "https://github.com/nix-purifiers/gradle-purifier/blob/9c19f8d47def476f9afe4d8940f0076f0b95318f/tests/real-world/petclinic.json",
+        "https://github.com/nix-purifiers/gradle-purifier/blob/9c19f8d47def476f9afe4d8940f0076f0b95318f/.github/workflows/check.yml",
+        "https://github.com/nix-purifiers/gradle-purifier/blob/9c19f8d47def476f9afe4d8940f0076f0b95318f/tests/legacy-maven/basic-56.py",
+        "https://github.com/nix-purifiers/gradle-purifier/blob/9c19f8d47def476f9afe4d8940f0076f0b95318f/tests/legacy-maven/lifecycle.py",
+        "https://nix-purifiers.github.io/evidence/f905624eadd4bdea3fa9fd82569da48fd809823de3948916987d17614a170c11.json"
+      ]
+    },
+    "manySamples": {
+      "state": "met",
+      "summary": "The executed source corpus includes a Java library with JUnit and Maven/source archives, a Kotlin JVM multi-project application with version catalog/buildSrc/coroutines, Kotlin Native library/executable targets, snapshot Groovy publication with reproducibility assertions, and pinned Spring Petclinic application packaging. These distinct build graphs, languages, target runtimes and publication outputs establish sample breadth. Four controlled authored fixture families are identified as such; the upstream application is separate. Petclinic packaging counts as a successful sample build but supplies no upstream-test credit.",
+      "evidence": [
+        "https://github.com/nix-purifiers/gradle-purifier/actions/runs/42291213439",
+        "https://github.com/nix-purifiers/gradle-purifier/blob/9c19f8d47def476f9afe4d8940f0076f0b95318f/tests/default.nix",
+        "https://nix-purifiers.github.io/evidence/f905624eadd4bdea3fa9fd82569da48fd809823de3948916987d17614a170c11.json"
+      ]
+    },
+    "nonEolVersions": {
+      "state": "not-met",
+      "summary": "Each new minor supersedes earlier minors of that major; critical/security fixes also reach final minor of previous major. Producer verified current9.9.0 and previous-major8.14 maintained. Inspected public-main checks include8.14/8.14.3 and9.1.0/9.5.1, not successful current9.9.0 lifecycle derivation. New8.14.6+9.9.0 native matrix still producer-owned and unproven.",
+      "evidence": [
+        "https://github.com/nix-purifiers/gradle-purifier/actions/runs/42291213439",
+        "https://docs.gradle.org/current/userguide/feature_lifecycle.html",
+        "https://services.gradle.org/versions/current",
+        "https://nix-purifiers.github.io/evidence/f905624eadd4bdea3fa9fd82569da48fd809823de3948916987d17614a170c11.json"
+      ]
+    },
+    "oneVersion": {
+      "state": "met",
+      "summary": "Executed exact SDK point(s): Gradle8.14.3 Java,9.1.0 Kotlin and9.5.1 Petclinic packaging. No patch interval is inferred.",
+      "evidence": [
+        "https://github.com/nix-purifiers/gradle-purifier/actions/runs/42291213439",
+        "https://github.com/nix-purifiers/gradle-purifier/blob/9c19f8d47def476f9afe4d8940f0076f0b95318f/tests/default.nix",
+        "https://github.com/nix-purifiers/gradle-purifier/blob/9c19f8d47def476f9afe4d8940f0076f0b95318f/tests/real-world/petclinic.json",
+        "https://github.com/nix-purifiers/gradle-purifier/blob/9c19f8d47def476f9afe4d8940f0076f0b95318f/.github/workflows/check.yml",
+        "https://github.com/nix-purifiers/gradle-purifier/blob/9c19f8d47def476f9afe4d8940f0076f0b95318f/tests/legacy-maven/basic-56.py",
+        "https://github.com/nix-purifiers/gradle-purifier/blob/9c19f8d47def476f9afe4d8940f0076f0b95318f/tests/legacy-maven/lifecycle.py",
+        "https://nix-purifiers.github.io/evidence/f905624eadd4bdea3fa9fd82569da48fd809823de3948916987d17614a170c11.json"
+      ]
+    }
+  },
+  "rationale": "Exact-source Linux sample/check derivations execute successfully with reviewed tests. Native Darwin execution is not demonstrated. Current maintained-version execution also has the specific gap documented below.",
+  "reviewedAt": "2026-11-06",
+  "reviewedRevision": "9c19f8d47def476f9afe4d8940f0076f0b95318f",
+  "sampleBuilds": [
+    {
+      "name": "Spring Petclinic",
+      "evidence": [
+        "https://github.com/nix-purifiers/gradle-purifier/actions/runs/42291213439",
+        "https://github.com/nix-purifiers/gradle-purifier/blob/9c19f8d47def476f9afe4d8940f0076f0b95318f/tests/default.nix",
+        "https://nix-purifiers.github.io/evidence/f905624eadd4bdea3fa9fd82569da48fd809823de3948916987d17614a170c11.json"
+      ]
+    },
+    {
+      "name": "Java library with JUnit and Maven publication",
+      "evidence": [
+        "https://github.com/nix-purifiers/gradle-purifier/actions/runs/42291213439",
+        "https://github.com/nix-purifiers/gradle-purifier/blob/9c19f8d47def476f9afe4d8940f0076f0b95318f/tests/default.nix",
+        "https://nix-purifiers.github.io/evidence/f905624eadd4bdea3fa9fd82569da48fd809823de3948916987d17614a170c11.json"
+      ]
+    },
+    {
+      "name": "Kotlin JVM application and convention-plugin build",
+      "evidence": [
+        "https://github.com/nix-purifiers/gradle-purifier/actions/runs/42291213439",
+        "https://github.com/nix-purifiers/gradle-purifier/blob/9c19f8d47def476f9afe4d8940f0076f0b95318f/tests/default.nix",
+        "https://nix-purifiers.github.io/evidence/f905624eadd4bdea3fa9fd82569da48fd809823de3948916987d17614a170c11.json"
+      ]
+    },
+    {
+      "name": "Kotlin Native executable/library",
+      "evidence": [
+        "https://github.com/nix-purifiers/gradle-purifier/actions/runs/42291213439",
+        "https://github.com/nix-purifiers/gradle-purifier/blob/9c19f8d47def476f9afe4d8940f0076f0b95318f/tests/default.nix",
+        "https://nix-purifiers.github.io/evidence/f905624eadd4bdea3fa9fd82569da48fd809823de3948916987d17614a170c11.json"
+      ]
+    },
+    {
+      "name": "snapshot Groovy publication/rebuild",
+      "evidence": [
+        "https://github.com/nix-purifiers/gradle-purifier/actions/runs/42291213439",
+        "https://github.com/nix-purifiers/gradle-purifier/blob/9c19f8d47def476f9afe4d8940f0076f0b95318f/tests/default.nix",
+        "https://nix-purifiers.github.io/evidence/f905624eadd4bdea3fa9fd82569da48fd809823de3948916987d17614a170c11.json"
+      ]
+    }
+  ],
+  "tier": 3,
+  "derivationReview": {
+    "criteria": {
+      "evaluation": {
+        "state": "met",
+        "summary": "Actual no-IFD Nix evaluation at public main 9c19f8d47def476f9afe4d8940f0076f0b95318f yielded these check derivations; exact paths match successful native CI build traces. Source NAR, derivation bytes and output identities are recorded.",
+        "derivations": [
+          "gradle-purifier:x86_64-linux:petclinic",
+          "gradle-purifier:x86_64-linux:java-library",
+          "gradle-purifier:x86_64-linux:java-library-tests",
+          "gradle-purifier:x86_64-linux:kotlin-app",
+          "gradle-purifier:x86_64-linux:kotlin-app-runs",
+          "gradle-purifier:x86_64-linux:kotlin-native",
+          "gradle-purifier:x86_64-linux:kotlin-native-runs",
+          "gradle-purifier:x86_64-linux:snapshot-groovy-tests",
+          "gradle-purifier:x86_64-linux:snapshot-groovy-rebuild",
+          "gradle-purifier:x86_64-linux:conformance-missing",
+          "gradle-purifier:x86_64-linux:recorder-unit",
+          "gradle-purifier:x86_64-linux:sdk-source-capture-unit"
+        ],
+        "sources": [
+          "https://github.com/nix-purifiers/gradle-purifier/blob/9c19f8d47def476f9afe4d8940f0076f0b95318f/tests/default.nix",
+          "https://github.com/nix-purifiers/gradle-purifier/blob/9c19f8d47def476f9afe4d8940f0076f0b95318f/tests/real-world/petclinic.json",
+          "https://github.com/nix-purifiers/gradle-purifier/blob/9c19f8d47def476f9afe4d8940f0076f0b95318f/.github/workflows/check.yml",
+          "https://github.com/nix-purifiers/gradle-purifier/blob/9c19f8d47def476f9afe4d8940f0076f0b95318f/tests/legacy-maven/basic-56.py",
+          "https://github.com/nix-purifiers/gradle-purifier/blob/9c19f8d47def476f9afe4d8940f0076f0b95318f/tests/legacy-maven/lifecycle.py",
+          "https://nix-purifiers.github.io/evidence/f905624eadd4bdea3fa9fd82569da48fd809823de3948916987d17614a170c11.json"
+        ],
+        "gap": null
+      },
+      "goodTests": {
+        "state": "met",
+        "summary": "Successful sandbox checks exercise Java JUnit, Kotlin JVM/app and Kotlin Native builds, archives and class assertions, snapshot publications, missing/malformed/stale/tampered-lock failures, recorder/runtime-metadata/SDK-source units and JVM composition. Required native host jobs additionally test relock/offline/rebuild/update and project SDK closure/source modes. Petclinic's published-main derivation is packaging with doCheck=false and supplies no upstream-test credit.",
+        "derivations": [
+          "gradle-purifier:x86_64-linux:petclinic",
+          "gradle-purifier:x86_64-linux:java-library",
+          "gradle-purifier:x86_64-linux:java-library-tests",
+          "gradle-purifier:x86_64-linux:kotlin-app",
+          "gradle-purifier:x86_64-linux:kotlin-app-runs",
+          "gradle-purifier:x86_64-linux:kotlin-native",
+          "gradle-purifier:x86_64-linux:kotlin-native-runs",
+          "gradle-purifier:x86_64-linux:snapshot-groovy-tests",
+          "gradle-purifier:x86_64-linux:snapshot-groovy-rebuild",
+          "gradle-purifier:x86_64-linux:conformance-missing",
+          "gradle-purifier:x86_64-linux:recorder-unit",
+          "gradle-purifier:x86_64-linux:sdk-source-capture-unit"
+        ],
+        "sources": [
+          "https://github.com/nix-purifiers/gradle-purifier/blob/9c19f8d47def476f9afe4d8940f0076f0b95318f/tests/default.nix",
+          "https://github.com/nix-purifiers/gradle-purifier/blob/9c19f8d47def476f9afe4d8940f0076f0b95318f/tests/real-world/petclinic.json",
+          "https://github.com/nix-purifiers/gradle-purifier/blob/9c19f8d47def476f9afe4d8940f0076f0b95318f/.github/workflows/check.yml",
+          "https://github.com/nix-purifiers/gradle-purifier/blob/9c19f8d47def476f9afe4d8940f0076f0b95318f/tests/legacy-maven/basic-56.py",
+          "https://github.com/nix-purifiers/gradle-purifier/blob/9c19f8d47def476f9afe4d8940f0076f0b95318f/tests/legacy-maven/lifecycle.py",
+          "https://nix-purifiers.github.io/evidence/f905624eadd4bdea3fa9fd82569da48fd809823de3948916987d17614a170c11.json"
+        ],
+        "gap": null
+      },
+      "linux": {
+        "state": "met",
+        "summary": "Successful native x86_64-linux CI jobs actually build the identified check derivations from this exact source. SDK closure and output bindings distinguish execution from declarations/cross-evaluation.",
+        "derivations": [
+          "gradle-purifier:x86_64-linux:petclinic",
+          "gradle-purifier:x86_64-linux:java-library",
+          "gradle-purifier:x86_64-linux:java-library-tests",
+          "gradle-purifier:x86_64-linux:kotlin-app",
+          "gradle-purifier:x86_64-linux:kotlin-app-runs",
+          "gradle-purifier:x86_64-linux:kotlin-native",
+          "gradle-purifier:x86_64-linux:kotlin-native-runs",
+          "gradle-purifier:x86_64-linux:snapshot-groovy-tests",
+          "gradle-purifier:x86_64-linux:snapshot-groovy-rebuild",
+          "gradle-purifier:x86_64-linux:conformance-missing",
+          "gradle-purifier:x86_64-linux:recorder-unit",
+          "gradle-purifier:x86_64-linux:sdk-source-capture-unit"
+        ],
+        "sources": [
+          "https://github.com/nix-purifiers/gradle-purifier/blob/9c19f8d47def476f9afe4d8940f0076f0b95318f/tests/default.nix",
+          "https://github.com/nix-purifiers/gradle-purifier/blob/9c19f8d47def476f9afe4d8940f0076f0b95318f/tests/real-world/petclinic.json",
+          "https://github.com/nix-purifiers/gradle-purifier/blob/9c19f8d47def476f9afe4d8940f0076f0b95318f/.github/workflows/check.yml",
+          "https://github.com/nix-purifiers/gradle-purifier/blob/9c19f8d47def476f9afe4d8940f0076f0b95318f/tests/legacy-maven/basic-56.py",
+          "https://github.com/nix-purifiers/gradle-purifier/blob/9c19f8d47def476f9afe4d8940f0076f0b95318f/tests/legacy-maven/lifecycle.py",
+          "https://nix-purifiers.github.io/evidence/f905624eadd4bdea3fa9fd82569da48fd809823de3948916987d17614a170c11.json"
+        ],
+        "gap": null
+      },
+      "darwin": {
+        "state": "not-met",
+        "summary": "Inspected current-main workflow and successful job list have no native Darwin execution. The flake declares/evaluates Darwin, which supplies no runtime credit.",
+        "derivations": [],
+        "sources": [
+          "https://github.com/nix-purifiers/gradle-purifier/blob/9c19f8d47def476f9afe4d8940f0076f0b95318f/.github/workflows/check.yml",
+          "https://nix-purifiers.github.io/evidence/f905624eadd4bdea3fa9fd82569da48fd809823de3948916987d17614a170c11.json"
+        ],
+        "gap": "A native Darwin sample/test build receipt with exact source/SDK/drv/output binding is absent."
+      },
+      "oneVersion": {
+        "state": "met",
+        "summary": "Executed exact SDK point(s): Gradle8.14.3 Java,9.1.0 Kotlin and9.5.1 Petclinic packaging. No patch interval is inferred.",
+        "derivations": [
+          "gradle-purifier:x86_64-linux:java-library",
+          "gradle-purifier:x86_64-linux:kotlin-app",
+          "gradle-purifier:x86_64-linux:kotlin-native",
+          "gradle-purifier:x86_64-linux:petclinic"
+        ],
+        "sources": [
+          "https://github.com/nix-purifiers/gradle-purifier/blob/9c19f8d47def476f9afe4d8940f0076f0b95318f/tests/default.nix",
+          "https://github.com/nix-purifiers/gradle-purifier/blob/9c19f8d47def476f9afe4d8940f0076f0b95318f/tests/real-world/petclinic.json",
+          "https://github.com/nix-purifiers/gradle-purifier/blob/9c19f8d47def476f9afe4d8940f0076f0b95318f/.github/workflows/check.yml",
+          "https://github.com/nix-purifiers/gradle-purifier/blob/9c19f8d47def476f9afe4d8940f0076f0b95318f/tests/legacy-maven/basic-56.py",
+          "https://github.com/nix-purifiers/gradle-purifier/blob/9c19f8d47def476f9afe4d8940f0076f0b95318f/tests/legacy-maven/lifecycle.py",
+          "https://nix-purifiers.github.io/evidence/f905624eadd4bdea3fa9fd82569da48fd809823de3948916987d17614a170c11.json"
+        ],
+        "gap": null
+      },
+      "nonEolVersions": {
+        "state": "not-met",
+        "summary": "Each new minor supersedes earlier minors of that major; critical/security fixes also reach final minor of previous major. Producer verified current9.9.0 and previous-major8.14 maintained. Inspected public-main checks include8.14/8.14.3 and9.1.0/9.5.1, not successful current9.9.0 lifecycle derivation. New8.14.6+9.9.0 native matrix still producer-owned and unproven.",
+        "derivations": [],
+        "sources": [
+          "https://docs.gradle.org/current/userguide/feature_lifecycle.html",
+          "https://services.gradle.org/versions/current",
+          "https://nix-purifiers.github.io/evidence/f905624eadd4bdea3fa9fd82569da48fd809823de3948916987d17614a170c11.json"
+        ],
+        "gap": "Each new minor supersedes earlier minors of that major; critical/security fixes also reach final minor of previous major. Producer verified current9.9.0 and previous-major8.14 maintained. Inspected public-main checks include8.14/8.14.3 and9.1.0/9.5.1, not successful current9.9.0 lifecycle derivation. New8.14.6+9.9.0 native matrix still producer-owned and unproven."
+      },
+      "manySamples": {
+        "state": "met",
+        "summary": "The executed source corpus includes a Java library with JUnit and Maven/source archives, a Kotlin JVM multi-project application with version catalog/buildSrc/coroutines, Kotlin Native library/executable targets, snapshot Groovy publication with reproducibility assertions, and pinned Spring Petclinic application packaging. These distinct build graphs, languages, target runtimes and publication outputs establish sample breadth. Four controlled authored fixture families are identified as such; the upstream application is separate. Petclinic packaging counts as a successful sample build but supplies no upstream-test credit.",
+        "derivations": [
+          "gradle-purifier:x86_64-linux:petclinic",
+          "gradle-purifier:x86_64-linux:java-library",
+          "gradle-purifier:x86_64-linux:java-library-tests",
+          "gradle-purifier:x86_64-linux:kotlin-app",
+          "gradle-purifier:x86_64-linux:kotlin-app-runs",
+          "gradle-purifier:x86_64-linux:kotlin-native",
+          "gradle-purifier:x86_64-linux:kotlin-native-runs",
+          "gradle-purifier:x86_64-linux:snapshot-groovy-tests",
+          "gradle-purifier:x86_64-linux:snapshot-groovy-rebuild"
+        ],
+        "sources": [
+          "https://github.com/nix-purifiers/gradle-purifier/blob/9c19f8d47def476f9afe4d8940f0076f0b95318f/tests/default.nix",
+          "https://nix-purifiers.github.io/evidence/f905624eadd4bdea3fa9fd82569da48fd809823de3948916987d17614a170c11.json"
+        ],
+        "gap": null
+      },
+      "longCompatibility": {
+        "state": "not-met",
+        "summary": "Main CI has real bounded5.6.4 and6.9.4 legacy scenarios,7.6.6 with managerJDK17/projectJDK8, and modern8.14.3/9.1.0/9.5.1 checks. Those native host proofs deserve preservation. The5.6/6.9 scenarios are specific recorder/publication/SDK behaviors and lack a checked sample-build derivation matrix binding historical SDKs to the modern contract; default Test is disabled in the6.9 producer. Thus the full long-compatibility judgment is not established by the derivation-backed sample corpus; no interval or universal-JUnit claim.",
+        "derivations": [],
+        "sources": [
+          "https://github.com/nix-purifiers/gradle-purifier/blob/9c19f8d47def476f9afe4d8940f0076f0b95318f/tests/default.nix",
+          "https://github.com/nix-purifiers/gradle-purifier/blob/9c19f8d47def476f9afe4d8940f0076f0b95318f/tests/real-world/petclinic.json",
+          "https://github.com/nix-purifiers/gradle-purifier/blob/9c19f8d47def476f9afe4d8940f0076f0b95318f/.github/workflows/check.yml",
+          "https://github.com/nix-purifiers/gradle-purifier/blob/9c19f8d47def476f9afe4d8940f0076f0b95318f/tests/legacy-maven/basic-56.py",
+          "https://github.com/nix-purifiers/gradle-purifier/blob/9c19f8d47def476f9afe4d8940f0076f0b95318f/tests/legacy-maven/lifecycle.py",
+          "https://nix-purifiers.github.io/evidence/f905624eadd4bdea3fa9fd82569da48fd809823de3948916987d17614a170c11.json"
+        ],
+        "gap": "Main CI has real bounded5.6.4 and6.9.4 legacy scenarios,7.6.6 with managerJDK17/projectJDK8, and modern8.14.3/9.1.0/9.5.1 checks. Those native host proofs deserve preservation. The5.6/6.9 scenarios are specific recorder/publication/SDK behaviors and lack a checked sample-build derivation matrix binding historical SDKs to the modern contract; default Test is disabled in the6.9 producer. Thus the full long-compatibility judgment is not established by the derivation-backed sample corpus; no interval or universal-JUnit claim."
+      }
+    },
+    "derivations": {
+      "gradle-purifier:x86_64-linux:conformance-missing": {
+        "revision": "9c19f8d47def476f9afe4d8940f0076f0b95318f",
+        "system": "x86_64-linux",
+        "drvPath": "/nix/store/br1j2d9rihnk7hklg9cwin7y5sakzxnd-conformance-missing.drv",
+        "sourceNarHash": "sha256-uaxKqJNrdcYuoMNfV/MdB7c64Gq+W43tS7weqM93FVo=",
+        "repository": "nix-purifiers/gradle-purifier",
+        "check": {
+          "kind": "flake-attribute",
+          "value": "checks.x86_64-linux.conformance-missing",
+          "replay": null
+        },
+        "outputs": {
+          "out": "/nix/store/drbhd1yxdq5ckagn69jb3rc06aqgywya-conformance-missing"
+        },
+        "outputNarHashes": {
+          "out": "sha256-d6xi4mKdjkX2JFicDIv5niSzpyI0m/Hnm8GGAIU04kY="
+        },
+        "sdkVersions": {},
+        "sampleSources": [],
+        "evaluation": null,
+        "build": {
+          "status": "success",
+          "executedSystem": "x86_64-linux",
+          "sourceRevision": "9c19f8d47def476f9afe4d8940f0076f0b95318f",
+          "sourceNarHash": "sha256-uaxKqJNrdcYuoMNfV/MdB7c64Gq+W43tS7weqM93FVo=",
+          "drvPath": "/nix/store/br1j2d9rihnk7hklg9cwin7y5sakzxnd-conformance-missing.drv",
+          "outputs": {
+            "out": "/nix/store/drbhd1yxdq5ckagn69jb3rc06aqgywya-conformance-missing"
+          },
+          "outputNarHashes": {
+            "out": "sha256-d6xi4mKdjkX2JFicDIv5niSzpyI0m/Hnm8GGAIU04kY="
+          },
+          "sdkVersions": {},
+          "sampleSources": [],
+          "receipt": "https://nix-purifiers.github.io/evidence/e3bdeb5bd839634288b697a256b28afca897326741ae895a76929965cb3d6bda.json",
+          "artifactSha256": "e3bdeb5bd839634288b697a256b28afca897326741ae895a76929965cb3d6bda"
+        }
+      },
+      "gradle-purifier:x86_64-linux:java-library": {
+        "revision": "9c19f8d47def476f9afe4d8940f0076f0b95318f",
+        "system": "x86_64-linux",
+        "drvPath": "/nix/store/85rqa035zmy5zbv9ffhl3bfbd91jpa2h-greeting.drv",
+        "sourceNarHash": "sha256-uaxKqJNrdcYuoMNfV/MdB7c64Gq+W43tS7weqM93FVo=",
+        "repository": "nix-purifiers/gradle-purifier",
+        "check": {
+          "kind": "flake-attribute",
+          "value": "checks.x86_64-linux.java-library",
+          "replay": null
+        },
+        "outputs": {
+          "localPublications": "/nix/store/nidpiknrcdl1w3r7m0xfhi1la8n5b4c8-greeting-localPublications",
+          "maven": "/nix/store/fvpl17nhs5xgbivwpg0s5mrkanxpwc89-greeting-maven",
+          "out": "/nix/store/6sh999h69jkwa2kdblafjs8i5v8x9607-greeting",
+          "runtime": "/nix/store/dpm5sflaijwcz0pvrcifh9m4rf13ipkp-greeting-runtime"
+        },
+        "outputNarHashes": {
+          "localPublications": "sha256-GrealkS+OCFvPvwy+sf5bOmp8F/Jrc9pZ3RQsAchcGA=",
+          "maven": "sha256-ZKj4EQYDEE6W1HUDacPW9+G1rFea3ihJTCGM1kZvMlU=",
+          "out": "sha256-vdqW2qqTmzNEswh+CfLc+7YxP/F1pQ7IQkfX8mj50VY=",
+          "runtime": "sha256-uQjQ87RI2AwFaFG3nD5sTFq8DG3zO4bOE6z8P6hNR6I="
+        },
+        "sdkVersions": {
+          "Gradle": "8.14.3",
+          "GradleManagerJDK": "21.0.12.1+1"
+        },
+        "sampleSources": [
+          {
+            "repository": "https://github.com/nix-purifiers/gradle-purifier",
+            "revision": "9c19f8d47def476f9afe4d8940f0076f0b95318f",
+            "sourceNarHash": "sha256-uaxKqJNrdcYuoMNfV/MdB7c64Gq+W43tS7weqM93FVo="
+          }
+        ],
+        "evaluation": null,
+        "build": {
+          "status": "success",
+          "executedSystem": "x86_64-linux",
+          "sourceRevision": "9c19f8d47def476f9afe4d8940f0076f0b95318f",
+          "sourceNarHash": "sha256-uaxKqJNrdcYuoMNfV/MdB7c64Gq+W43tS7weqM93FVo=",
+          "drvPath": "/nix/store/85rqa035zmy5zbv9ffhl3bfbd91jpa2h-greeting.drv",
+          "outputs": {
+            "localPublications": "/nix/store/nidpiknrcdl1w3r7m0xfhi1la8n5b4c8-greeting-localPublications",
+            "maven": "/nix/store/fvpl17nhs5xgbivwpg0s5mrkanxpwc89-greeting-maven",
+            "out": "/nix/store/6sh999h69jkwa2kdblafjs8i5v8x9607-greeting",
+            "runtime": "/nix/store/dpm5sflaijwcz0pvrcifh9m4rf13ipkp-greeting-runtime"
+          },
+          "outputNarHashes": {
+            "localPublications": "sha256-GrealkS+OCFvPvwy+sf5bOmp8F/Jrc9pZ3RQsAchcGA=",
+            "maven": "sha256-ZKj4EQYDEE6W1HUDacPW9+G1rFea3ihJTCGM1kZvMlU=",
+            "out": "sha256-vdqW2qqTmzNEswh+CfLc+7YxP/F1pQ7IQkfX8mj50VY=",
+            "runtime": "sha256-uQjQ87RI2AwFaFG3nD5sTFq8DG3zO4bOE6z8P6hNR6I="
+          },
+          "sdkVersions": {
+            "Gradle": "8.14.3",
+            "GradleManagerJDK": "21.0.12.1+1"
+          },
+          "sampleSources": [
+            {
+              "repository": "https://github.com/nix-purifiers/gradle-purifier",
+              "revision": "9c19f8d47def476f9afe4d8940f0076f0b95318f",
+              "sourceNarHash": "sha256-uaxKqJNrdcYuoMNfV/MdB7c64Gq+W43tS7weqM93FVo="
+            }
+          ],
+          "receipt": "https://nix-purifiers.github.io/evidence/168108dbdaf1565b049939f1e032e8ce56b2e75bc732973bbdf39d9e0bb3fb11.json",
+          "artifactSha256": "168108dbdaf1565b049939f1e032e8ce56b2e75bc732973bbdf39d9e0bb3fb11"
+        }
+      },
+      "gradle-purifier:x86_64-linux:java-library-tests": {
+        "revision": "9c19f8d47def476f9afe4d8940f0076f0b95318f",
+        "system": "x86_64-linux",
+        "drvPath": "/nix/store/0iwdgb6z9a2a67m0f4yabirjbbhi03lb-greeting-tests.drv",
+        "sourceNarHash": "sha256-uaxKqJNrdcYuoMNfV/MdB7c64Gq+W43tS7weqM93FVo=",
+        "repository": "nix-purifiers/gradle-purifier",
+        "check": {
+          "kind": "flake-attribute",
+          "value": "checks.x86_64-linux.java-library-tests",
+          "replay": null
+        },
+        "outputs": {
+          "out": "/nix/store/g0vgjranjhx6w0hj77p2x3lh1x2068a7-greeting-tests"
+        },
+        "outputNarHashes": {
+          "out": "sha256-pQpattmS9VmO3ZIQUFn66az8GSmB4IvYhTTCFn6SUmo="
+        },
+        "sdkVersions": {
+          "Gradle": "8.14.3",
+          "GradleManagerJDK": "21.0.12.1+1"
+        },
+        "sampleSources": [
+          {
+            "repository": "https://github.com/nix-purifiers/gradle-purifier",
+            "revision": "9c19f8d47def476f9afe4d8940f0076f0b95318f",
+            "sourceNarHash": "sha256-uaxKqJNrdcYuoMNfV/MdB7c64Gq+W43tS7weqM93FVo="
+          }
+        ],
+        "evaluation": null,
+        "build": {
+          "status": "success",
+          "executedSystem": "x86_64-linux",
+          "sourceRevision": "9c19f8d47def476f9afe4d8940f0076f0b95318f",
+          "sourceNarHash": "sha256-uaxKqJNrdcYuoMNfV/MdB7c64Gq+W43tS7weqM93FVo=",
+          "drvPath": "/nix/store/0iwdgb6z9a2a67m0f4yabirjbbhi03lb-greeting-tests.drv",
+          "outputs": {
+            "out": "/nix/store/g0vgjranjhx6w0hj77p2x3lh1x2068a7-greeting-tests"
+          },
+          "outputNarHashes": {
+            "out": "sha256-pQpattmS9VmO3ZIQUFn66az8GSmB4IvYhTTCFn6SUmo="
+          },
+          "sdkVersions": {
+            "Gradle": "8.14.3",
+            "GradleManagerJDK": "21.0.12.1+1"
+          },
+          "sampleSources": [
+            {
+              "repository": "https://github.com/nix-purifiers/gradle-purifier",
+              "revision": "9c19f8d47def476f9afe4d8940f0076f0b95318f",
+              "sourceNarHash": "sha256-uaxKqJNrdcYuoMNfV/MdB7c64Gq+W43tS7weqM93FVo="
+            }
+          ],
+          "receipt": "https://nix-purifiers.github.io/evidence/e3bdeb5bd839634288b697a256b28afca897326741ae895a76929965cb3d6bda.json",
+          "artifactSha256": "e3bdeb5bd839634288b697a256b28afca897326741ae895a76929965cb3d6bda"
+        }
+      },
+      "gradle-purifier:x86_64-linux:kotlin-app": {
+        "revision": "9c19f8d47def476f9afe4d8940f0076f0b95318f",
+        "system": "x86_64-linux",
+        "drvPath": "/nix/store/x8ar2gipphns98a4xdl70g9vww9mbz84-app.drv",
+        "sourceNarHash": "sha256-uaxKqJNrdcYuoMNfV/MdB7c64Gq+W43tS7weqM93FVo=",
+        "repository": "nix-purifiers/gradle-purifier",
+        "check": {
+          "kind": "flake-attribute",
+          "value": "checks.x86_64-linux.kotlin-app",
+          "replay": null
+        },
+        "outputs": {
+          "localPublications": "/nix/store/f5zrxl143b7l5jgf9k3h3bh3vafgr5zr-app-localPublications",
+          "out": "/nix/store/4yajxivq0m80m4m18jml4bb436xydwgp-app",
+          "runtime": "/nix/store/m4i8917x9z4sf1y3x2jsg7zl9lxws85w-app-runtime"
+        },
+        "outputNarHashes": {
+          "localPublications": "sha256-EzpkySSG0QG5lQ8gQt4J0BtEcrJytanasV2eZJMCEnQ=",
+          "out": "sha256-2wT9LEz011XZQNXK0Qhywf6RvYE9cBBXYwsJC3MJzvc=",
+          "runtime": "sha256-Fzzw9i+fuhz8IXvAIB8PjIpYTIiX8bxkbqf/gpJn5A4="
+        },
+        "sdkVersions": {
+          "Gradle": "9.1.0",
+          "GradleManagerJDK": "21.0.12.1+1"
+        },
+        "sampleSources": [
+          {
+            "repository": "https://github.com/nix-purifiers/gradle-purifier",
+            "revision": "9c19f8d47def476f9afe4d8940f0076f0b95318f",
+            "sourceNarHash": "sha256-uaxKqJNrdcYuoMNfV/MdB7c64Gq+W43tS7weqM93FVo="
+          }
+        ],
+        "evaluation": null,
+        "build": {
+          "status": "success",
+          "executedSystem": "x86_64-linux",
+          "sourceRevision": "9c19f8d47def476f9afe4d8940f0076f0b95318f",
+          "sourceNarHash": "sha256-uaxKqJNrdcYuoMNfV/MdB7c64Gq+W43tS7weqM93FVo=",
+          "drvPath": "/nix/store/x8ar2gipphns98a4xdl70g9vww9mbz84-app.drv",
+          "outputs": {
+            "localPublications": "/nix/store/f5zrxl143b7l5jgf9k3h3bh3vafgr5zr-app-localPublications",
+            "out": "/nix/store/4yajxivq0m80m4m18jml4bb436xydwgp-app",
+            "runtime": "/nix/store/m4i8917x9z4sf1y3x2jsg7zl9lxws85w-app-runtime"
+          },
+          "outputNarHashes": {
+            "localPublications": "sha256-EzpkySSG0QG5lQ8gQt4J0BtEcrJytanasV2eZJMCEnQ=",
+            "out": "sha256-2wT9LEz011XZQNXK0Qhywf6RvYE9cBBXYwsJC3MJzvc=",
+            "runtime": "sha256-Fzzw9i+fuhz8IXvAIB8PjIpYTIiX8bxkbqf/gpJn5A4="
+          },
+          "sdkVersions": {
+            "Gradle": "9.1.0",
+            "GradleManagerJDK": "21.0.12.1+1"
+          },
+          "sampleSources": [
+            {
+              "repository": "https://github.com/nix-purifiers/gradle-purifier",
+              "revision": "9c19f8d47def476f9afe4d8940f0076f0b95318f",
+              "sourceNarHash": "sha256-uaxKqJNrdcYuoMNfV/MdB7c64Gq+W43tS7weqM93FVo="
+            }
+          ],
+          "receipt": "https://nix-purifiers.github.io/evidence/168108dbdaf1565b049939f1e032e8ce56b2e75bc732973bbdf39d9e0bb3fb11.json",
+          "artifactSha256": "168108dbdaf1565b049939f1e032e8ce56b2e75bc732973bbdf39d9e0bb3fb11"
+        }
+      },
+      "gradle-purifier:x86_64-linux:kotlin-app-runs": {
+        "revision": "9c19f8d47def476f9afe4d8940f0076f0b95318f",
+        "system": "x86_64-linux",
+        "drvPath": "/nix/store/mrk9qdmfkdab65gkq4s4rhqq8mdmxhji-kotlin-app-runs.drv",
+        "sourceNarHash": "sha256-uaxKqJNrdcYuoMNfV/MdB7c64Gq+W43tS7weqM93FVo=",
+        "repository": "nix-purifiers/gradle-purifier",
+        "check": {
+          "kind": "flake-attribute",
+          "value": "checks.x86_64-linux.kotlin-app-runs",
+          "replay": null
+        },
+        "outputs": {
+          "out": "/nix/store/ccq1184nw4qj6kpbqbbalmkcc6lzzjg4-kotlin-app-runs"
+        },
+        "outputNarHashes": {
+          "out": "sha256-d6xi4mKdjkX2JFicDIv5niSzpyI0m/Hnm8GGAIU04kY="
+        },
+        "sdkVersions": {
+          "Gradle": "9.1.0",
+          "GradleManagerJDK": "21.0.12.1+1"
+        },
+        "sampleSources": [
+          {
+            "repository": "https://github.com/nix-purifiers/gradle-purifier",
+            "revision": "9c19f8d47def476f9afe4d8940f0076f0b95318f",
+            "sourceNarHash": "sha256-uaxKqJNrdcYuoMNfV/MdB7c64Gq+W43tS7weqM93FVo="
+          }
+        ],
+        "evaluation": null,
+        "build": {
+          "status": "success",
+          "executedSystem": "x86_64-linux",
+          "sourceRevision": "9c19f8d47def476f9afe4d8940f0076f0b95318f",
+          "sourceNarHash": "sha256-uaxKqJNrdcYuoMNfV/MdB7c64Gq+W43tS7weqM93FVo=",
+          "drvPath": "/nix/store/mrk9qdmfkdab65gkq4s4rhqq8mdmxhji-kotlin-app-runs.drv",
+          "outputs": {
+            "out": "/nix/store/ccq1184nw4qj6kpbqbbalmkcc6lzzjg4-kotlin-app-runs"
+          },
+          "outputNarHashes": {
+            "out": "sha256-d6xi4mKdjkX2JFicDIv5niSzpyI0m/Hnm8GGAIU04kY="
+          },
+          "sdkVersions": {
+            "Gradle": "9.1.0",
+            "GradleManagerJDK": "21.0.12.1+1"
+          },
+          "sampleSources": [
+            {
+              "repository": "https://github.com/nix-purifiers/gradle-purifier",
+              "revision": "9c19f8d47def476f9afe4d8940f0076f0b95318f",
+              "sourceNarHash": "sha256-uaxKqJNrdcYuoMNfV/MdB7c64Gq+W43tS7weqM93FVo="
+            }
+          ],
+          "receipt": "https://nix-purifiers.github.io/evidence/e3bdeb5bd839634288b697a256b28afca897326741ae895a76929965cb3d6bda.json",
+          "artifactSha256": "e3bdeb5bd839634288b697a256b28afca897326741ae895a76929965cb3d6bda"
+        }
+      },
+      "gradle-purifier:x86_64-linux:kotlin-native": {
+        "revision": "9c19f8d47def476f9afe4d8940f0076f0b95318f",
+        "system": "x86_64-linux",
+        "drvPath": "/nix/store/0xj2f3mhzjbzdp9rbgapnhk15h1qs76v-kotlin-native.drv",
+        "sourceNarHash": "sha256-uaxKqJNrdcYuoMNfV/MdB7c64Gq+W43tS7weqM93FVo=",
+        "repository": "nix-purifiers/gradle-purifier",
+        "check": {
+          "kind": "flake-attribute",
+          "value": "checks.x86_64-linux.kotlin-native",
+          "replay": null
+        },
+        "outputs": {
+          "localPublications": "/nix/store/1qajlhshjz80s6wbh1s68fadbrja3rw2-kotlin-native-localPublications",
+          "maven": "/nix/store/qclp9pvhv5vj79cvimgaa4yhvsji3drh-kotlin-native-maven",
+          "out": "/nix/store/kzis46dxnkwfvdlrak7rgjsmxmxdqqz9-kotlin-native",
+          "runtime": "/nix/store/akl7dynd8hpj1vikxkq1j85pga8ki5na-kotlin-native-runtime"
+        },
+        "outputNarHashes": {
+          "localPublications": "sha256-pQpattmS9VmO3ZIQUFn66az8GSmB4IvYhTTCFn6SUmo=",
+          "maven": "sha256-7dJTl2fADL5kDfEd5leMa5Fr6HPkMvMRseXGmEcJK1c=",
+          "out": "sha256-p8C2tJ4DNK7xI90P2PDLw/OBrT7LSPjhd07j2WqirGQ=",
+          "runtime": "sha256-+fAu1N7o5szxAE7BWW1UlLIuaEIRJuz0/3so89b36A0="
+        },
+        "sdkVersions": {
+          "Gradle": "9.1.0",
+          "GradleManagerJDK": "17.0.20.1+1"
+        },
+        "sampleSources": [
+          {
+            "repository": "https://github.com/nix-purifiers/gradle-purifier",
+            "revision": "9c19f8d47def476f9afe4d8940f0076f0b95318f",
+            "sourceNarHash": "sha256-uaxKqJNrdcYuoMNfV/MdB7c64Gq+W43tS7weqM93FVo="
+          }
+        ],
+        "evaluation": null,
+        "build": {
+          "status": "success",
+          "executedSystem": "x86_64-linux",
+          "sourceRevision": "9c19f8d47def476f9afe4d8940f0076f0b95318f",
+          "sourceNarHash": "sha256-uaxKqJNrdcYuoMNfV/MdB7c64Gq+W43tS7weqM93FVo=",
+          "drvPath": "/nix/store/0xj2f3mhzjbzdp9rbgapnhk15h1qs76v-kotlin-native.drv",
+          "outputs": {
+            "localPublications": "/nix/store/1qajlhshjz80s6wbh1s68fadbrja3rw2-kotlin-native-localPublications",
+            "maven": "/nix/store/qclp9pvhv5vj79cvimgaa4yhvsji3drh-kotlin-native-maven",
+            "out": "/nix/store/kzis46dxnkwfvdlrak7rgjsmxmxdqqz9-kotlin-native",
+            "runtime": "/nix/store/akl7dynd8hpj1vikxkq1j85pga8ki5na-kotlin-native-runtime"
+          },
+          "outputNarHashes": {
+            "localPublications": "sha256-pQpattmS9VmO3ZIQUFn66az8GSmB4IvYhTTCFn6SUmo=",
+            "maven": "sha256-7dJTl2fADL5kDfEd5leMa5Fr6HPkMvMRseXGmEcJK1c=",
+            "out": "sha256-p8C2tJ4DNK7xI90P2PDLw/OBrT7LSPjhd07j2WqirGQ=",
+            "runtime": "sha256-+fAu1N7o5szxAE7BWW1UlLIuaEIRJuz0/3so89b36A0="
+          },
+          "sdkVersions": {
+            "Gradle": "9.1.0",
+            "GradleManagerJDK": "17.0.20.1+1"
+          },
+          "sampleSources": [
+            {
+              "repository": "https://github.com/nix-purifiers/gradle-purifier",
+              "revision": "9c19f8d47def476f9afe4d8940f0076f0b95318f",
+              "sourceNarHash": "sha256-uaxKqJNrdcYuoMNfV/MdB7c64Gq+W43tS7weqM93FVo="
+            }
+          ],
+          "receipt": "https://nix-purifiers.github.io/evidence/168108dbdaf1565b049939f1e032e8ce56b2e75bc732973bbdf39d9e0bb3fb11.json",
+          "artifactSha256": "168108dbdaf1565b049939f1e032e8ce56b2e75bc732973bbdf39d9e0bb3fb11"
+        }
+      },
+      "gradle-purifier:x86_64-linux:kotlin-native-runs": {
+        "revision": "9c19f8d47def476f9afe4d8940f0076f0b95318f",
+        "system": "x86_64-linux",
+        "drvPath": "/nix/store/yimqk2qbavijra40a4blbcac3bz2h1wj-kotlin-native-runs.drv",
+        "sourceNarHash": "sha256-uaxKqJNrdcYuoMNfV/MdB7c64Gq+W43tS7weqM93FVo=",
+        "repository": "nix-purifiers/gradle-purifier",
+        "check": {
+          "kind": "flake-attribute",
+          "value": "checks.x86_64-linux.kotlin-native-runs",
+          "replay": null
+        },
+        "outputs": {
+          "out": "/nix/store/7w88ak6psbjpkzyc4m101vfz739530ds-kotlin-native-runs"
+        },
+        "outputNarHashes": {
+          "out": "sha256-d6xi4mKdjkX2JFicDIv5niSzpyI0m/Hnm8GGAIU04kY="
+        },
+        "sdkVersions": {
+          "Gradle": "9.1.0",
+          "GradleManagerJDK": "17.0.20.1+1"
+        },
+        "sampleSources": [
+          {
+            "repository": "https://github.com/nix-purifiers/gradle-purifier",
+            "revision": "9c19f8d47def476f9afe4d8940f0076f0b95318f",
+            "sourceNarHash": "sha256-uaxKqJNrdcYuoMNfV/MdB7c64Gq+W43tS7weqM93FVo="
+          }
+        ],
+        "evaluation": null,
+        "build": {
+          "status": "success",
+          "executedSystem": "x86_64-linux",
+          "sourceRevision": "9c19f8d47def476f9afe4d8940f0076f0b95318f",
+          "sourceNarHash": "sha256-uaxKqJNrdcYuoMNfV/MdB7c64Gq+W43tS7weqM93FVo=",
+          "drvPath": "/nix/store/yimqk2qbavijra40a4blbcac3bz2h1wj-kotlin-native-runs.drv",
+          "outputs": {
+            "out": "/nix/store/7w88ak6psbjpkzyc4m101vfz739530ds-kotlin-native-runs"
+          },
+          "outputNarHashes": {
+            "out": "sha256-d6xi4mKdjkX2JFicDIv5niSzpyI0m/Hnm8GGAIU04kY="
+          },
+          "sdkVersions": {
+            "Gradle": "9.1.0",
+            "GradleManagerJDK": "17.0.20.1+1"
+          },
+          "sampleSources": [
+            {
+              "repository": "https://github.com/nix-purifiers/gradle-purifier",
+              "revision": "9c19f8d47def476f9afe4d8940f0076f0b95318f",
+              "sourceNarHash": "sha256-uaxKqJNrdcYuoMNfV/MdB7c64Gq+W43tS7weqM93FVo="
+            }
+          ],
+          "receipt": "https://nix-purifiers.github.io/evidence/e3bdeb5bd839634288b697a256b28afca897326741ae895a76929965cb3d6bda.json",
+          "artifactSha256": "e3bdeb5bd839634288b697a256b28afca897326741ae895a76929965cb3d6bda"
+        }
+      },
+      "gradle-purifier:x86_64-linux:petclinic": {
+        "revision": "9c19f8d47def476f9afe4d8940f0076f0b95318f",
+        "system": "x86_64-linux",
+        "drvPath": "/nix/store/jw2wg0rf99iq1fpfr4847241z7ip29p6-petclinic.drv",
+        "sourceNarHash": "sha256-uaxKqJNrdcYuoMNfV/MdB7c64Gq+W43tS7weqM93FVo=",
+        "repository": "nix-purifiers/gradle-purifier",
+        "check": {
+          "kind": "flake-attribute",
+          "value": "checks.x86_64-linux.petclinic",
+          "replay": null
+        },
+        "outputs": {
+          "out": "/nix/store/cpi1pzx0krmzm2ir5rv5jyk63nj2b48m-petclinic"
+        },
+        "outputNarHashes": {
+          "out": "sha256-d6xi4mKdjkX2JFicDIv5niSzpyI0m/Hnm8GGAIU04kY="
+        },
+        "sdkVersions": {
+          "Gradle": "9.5.1",
+          "GradleManagerJDK": "17.0.20.1+1"
+        },
+        "sampleSources": [
+          {
+            "repository": "https://github.com/spring-projects/spring-petclinic",
+            "revision": "500158f732419217507c7656904b8e6aa1bcc0d6",
+            "sourceNarHash": "sha256-j3Uiz+Wn9jWegwrJvCZZymLNrzo5zn5GyPBIn6+6V2w="
+          }
+        ],
+        "evaluation": null,
+        "build": {
+          "status": "success",
+          "executedSystem": "x86_64-linux",
+          "sourceRevision": "9c19f8d47def476f9afe4d8940f0076f0b95318f",
+          "sourceNarHash": "sha256-uaxKqJNrdcYuoMNfV/MdB7c64Gq+W43tS7weqM93FVo=",
+          "drvPath": "/nix/store/jw2wg0rf99iq1fpfr4847241z7ip29p6-petclinic.drv",
+          "outputs": {
+            "out": "/nix/store/cpi1pzx0krmzm2ir5rv5jyk63nj2b48m-petclinic"
+          },
+          "outputNarHashes": {
+            "out": "sha256-d6xi4mKdjkX2JFicDIv5niSzpyI0m/Hnm8GGAIU04kY="
+          },
+          "sdkVersions": {
+            "Gradle": "9.5.1",
+            "GradleManagerJDK": "17.0.20.1+1"
+          },
+          "sampleSources": [
+            {
+              "repository": "https://github.com/spring-projects/spring-petclinic",
+              "revision": "500158f732419217507c7656904b8e6aa1bcc0d6",
+              "sourceNarHash": "sha256-j3Uiz+Wn9jWegwrJvCZZymLNrzo5zn5GyPBIn6+6V2w="
+            }
+          ],
+          "receipt": "https://nix-purifiers.github.io/evidence/e3bdeb5bd839634288b697a256b28afca897326741ae895a76929965cb3d6bda.json",
+          "artifactSha256": "e3bdeb5bd839634288b697a256b28afca897326741ae895a76929965cb3d6bda"
+        }
+      },
+      "gradle-purifier:x86_64-linux:recorder-unit": {
+        "revision": "9c19f8d47def476f9afe4d8940f0076f0b95318f",
+        "system": "x86_64-linux",
+        "drvPath": "/nix/store/mj6f280ns5w284r5r9dwa9d1mmw723mk-recorder-unit.drv",
+        "sourceNarHash": "sha256-uaxKqJNrdcYuoMNfV/MdB7c64Gq+W43tS7weqM93FVo=",
+        "repository": "nix-purifiers/gradle-purifier",
+        "check": {
+          "kind": "flake-attribute",
+          "value": "checks.x86_64-linux.recorder-unit",
+          "replay": null
+        },
+        "outputs": {
+          "out": "/nix/store/rbcxzl1dnja1sqh3dln24hnq72aaqlfg-recorder-unit"
+        },
+        "outputNarHashes": {
+          "out": "sha256-d6xi4mKdjkX2JFicDIv5niSzpyI0m/Hnm8GGAIU04kY="
+        },
+        "sdkVersions": {},
+        "sampleSources": [],
+        "evaluation": null,
+        "build": {
+          "status": "success",
+          "executedSystem": "x86_64-linux",
+          "sourceRevision": "9c19f8d47def476f9afe4d8940f0076f0b95318f",
+          "sourceNarHash": "sha256-uaxKqJNrdcYuoMNfV/MdB7c64Gq+W43tS7weqM93FVo=",
+          "drvPath": "/nix/store/mj6f280ns5w284r5r9dwa9d1mmw723mk-recorder-unit.drv",
+          "outputs": {
+            "out": "/nix/store/rbcxzl1dnja1sqh3dln24hnq72aaqlfg-recorder-unit"
+          },
+          "outputNarHashes": {
+            "out": "sha256-d6xi4mKdjkX2JFicDIv5niSzpyI0m/Hnm8GGAIU04kY="
+          },
+          "sdkVersions": {},
+          "sampleSources": [],
+          "receipt": "https://nix-purifiers.github.io/evidence/e3bdeb5bd839634288b697a256b28afca897326741ae895a76929965cb3d6bda.json",
+          "artifactSha256": "e3bdeb5bd839634288b697a256b28afca897326741ae895a76929965cb3d6bda"
+        }
+      },
+      "gradle-purifier:x86_64-linux:sdk-source-capture-unit": {
+        "revision": "9c19f8d47def476f9afe4d8940f0076f0b95318f",
+        "system": "x86_64-linux",
+        "drvPath": "/nix/store/8bfnj0x8ky5dl6ih89m4ckpi65pmsn6l-sdk-source-capture-unit.drv",
+        "sourceNarHash": "sha256-uaxKqJNrdcYuoMNfV/MdB7c64Gq+W43tS7weqM93FVo=",
+        "repository": "nix-purifiers/gradle-purifier",
+        "check": {
+          "kind": "flake-attribute",
+          "value": "checks.x86_64-linux.sdk-source-capture-unit",
+          "replay": null
+        },
+        "outputs": {
+          "out": "/nix/store/7qm09i5a2v1zisxvgshw945gb659fg8v-sdk-source-capture-unit"
+        },
+        "outputNarHashes": {
+          "out": "sha256-d6xi4mKdjkX2JFicDIv5niSzpyI0m/Hnm8GGAIU04kY="
+        },
+        "sdkVersions": {},
+        "sampleSources": [],
+        "evaluation": null,
+        "build": {
+          "status": "success",
+          "executedSystem": "x86_64-linux",
+          "sourceRevision": "9c19f8d47def476f9afe4d8940f0076f0b95318f",
+          "sourceNarHash": "sha256-uaxKqJNrdcYuoMNfV/MdB7c64Gq+W43tS7weqM93FVo=",
+          "drvPath": "/nix/store/8bfnj0x8ky5dl6ih89m4ckpi65pmsn6l-sdk-source-capture-unit.drv",
+          "outputs": {
+            "out": "/nix/store/7qm09i5a2v1zisxvgshw945gb659fg8v-sdk-source-capture-unit"
+          },
+          "outputNarHashes": {
+            "out": "sha256-d6xi4mKdjkX2JFicDIv5niSzpyI0m/Hnm8GGAIU04kY="
+          },
+          "sdkVersions": {},
+          "sampleSources": [],
+          "receipt": "https://nix-purifiers.github.io/evidence/e3bdeb5bd839634288b697a256b28afca897326741ae895a76929965cb3d6bda.json",
+          "artifactSha256": "e3bdeb5bd839634288b697a256b28afca897326741ae895a76929965cb3d6bda"
+        }
+      },
+      "gradle-purifier:x86_64-linux:snapshot-groovy-rebuild": {
+        "revision": "9c19f8d47def476f9afe4d8940f0076f0b95318f",
+        "system": "x86_64-linux",
+        "drvPath": "/nix/store/71d43716dzqfdad7kjj4si3hyx380jj4-snapshot-groovy-rebuild.drv",
+        "sourceNarHash": "sha256-uaxKqJNrdcYuoMNfV/MdB7c64Gq+W43tS7weqM93FVo=",
+        "repository": "nix-purifiers/gradle-purifier",
+        "check": {
+          "kind": "flake-attribute",
+          "value": "checks.x86_64-linux.snapshot-groovy-rebuild",
+          "replay": null
+        },
+        "outputs": {
+          "out": "/nix/store/zk1jhn11aa42fbl8dajy9nim3az1yqc0-snapshot-groovy-rebuild"
+        },
+        "outputNarHashes": {
+          "out": "sha256-d6xi4mKdjkX2JFicDIv5niSzpyI0m/Hnm8GGAIU04kY="
+        },
+        "sdkVersions": {
+          "Gradle": "8.14"
+        },
+        "sampleSources": [
+          {
+            "repository": "https://github.com/nix-purifiers/gradle-purifier",
+            "revision": "9c19f8d47def476f9afe4d8940f0076f0b95318f",
+            "sourceNarHash": "sha256-uaxKqJNrdcYuoMNfV/MdB7c64Gq+W43tS7weqM93FVo="
+          }
+        ],
+        "evaluation": null,
+        "build": {
+          "status": "success",
+          "executedSystem": "x86_64-linux",
+          "sourceRevision": "9c19f8d47def476f9afe4d8940f0076f0b95318f",
+          "sourceNarHash": "sha256-uaxKqJNrdcYuoMNfV/MdB7c64Gq+W43tS7weqM93FVo=",
+          "drvPath": "/nix/store/71d43716dzqfdad7kjj4si3hyx380jj4-snapshot-groovy-rebuild.drv",
+          "outputs": {
+            "out": "/nix/store/zk1jhn11aa42fbl8dajy9nim3az1yqc0-snapshot-groovy-rebuild"
+          },
+          "outputNarHashes": {
+            "out": "sha256-d6xi4mKdjkX2JFicDIv5niSzpyI0m/Hnm8GGAIU04kY="
+          },
+          "sdkVersions": {
+            "Gradle": "8.14"
+          },
+          "sampleSources": [
+            {
+              "repository": "https://github.com/nix-purifiers/gradle-purifier",
+              "revision": "9c19f8d47def476f9afe4d8940f0076f0b95318f",
+              "sourceNarHash": "sha256-uaxKqJNrdcYuoMNfV/MdB7c64Gq+W43tS7weqM93FVo="
+            }
+          ],
+          "receipt": "https://nix-purifiers.github.io/evidence/e3bdeb5bd839634288b697a256b28afca897326741ae895a76929965cb3d6bda.json",
+          "artifactSha256": "e3bdeb5bd839634288b697a256b28afca897326741ae895a76929965cb3d6bda"
+        }
+      },
+      "gradle-purifier:x86_64-linux:snapshot-groovy-tests": {
+        "revision": "9c19f8d47def476f9afe4d8940f0076f0b95318f",
+        "system": "x86_64-linux",
+        "drvPath": "/nix/store/d2ai22hfhhjycrmvqxzs2pywi4whwfb4-snapshot-groovy-tests.drv",
+        "sourceNarHash": "sha256-uaxKqJNrdcYuoMNfV/MdB7c64Gq+W43tS7weqM93FVo=",
+        "repository": "nix-purifiers/gradle-purifier",
+        "check": {
+          "kind": "flake-attribute",
+          "value": "checks.x86_64-linux.snapshot-groovy-tests",
+          "replay": null
+        },
+        "outputs": {
+          "out": "/nix/store/lkg6ni6dgk7nh1hj7g8476b2mj1g4hnd-snapshot-groovy-tests"
+        },
+        "outputNarHashes": {
+          "out": "sha256-pQpattmS9VmO3ZIQUFn66az8GSmB4IvYhTTCFn6SUmo="
+        },
+        "sdkVersions": {
+          "Gradle": "8.14"
+        },
+        "sampleSources": [
+          {
+            "repository": "https://github.com/nix-purifiers/gradle-purifier",
+            "revision": "9c19f8d47def476f9afe4d8940f0076f0b95318f",
+            "sourceNarHash": "sha256-uaxKqJNrdcYuoMNfV/MdB7c64Gq+W43tS7weqM93FVo="
+          }
+        ],
+        "evaluation": null,
+        "build": {
+          "status": "success",
+          "executedSystem": "x86_64-linux",
+          "sourceRevision": "9c19f8d47def476f9afe4d8940f0076f0b95318f",
+          "sourceNarHash": "sha256-uaxKqJNrdcYuoMNfV/MdB7c64Gq+W43tS7weqM93FVo=",
+          "drvPath": "/nix/store/d2ai22hfhhjycrmvqxzs2pywi4whwfb4-snapshot-groovy-tests.drv",
+          "outputs": {
+            "out": "/nix/store/lkg6ni6dgk7nh1hj7g8476b2mj1g4hnd-snapshot-groovy-tests"
+          },
+          "outputNarHashes": {
+            "out": "sha256-pQpattmS9VmO3ZIQUFn66az8GSmB4IvYhTTCFn6SUmo="
+          },
+          "sdkVersions": {
+            "Gradle": "8.14"
+          },
+          "sampleSources": [
+            {
+              "repository": "https://github.com/nix-purifiers/gradle-purifier",
+              "revision": "9c19f8d47def476f9afe4d8940f0076f0b95318f",
+              "sourceNarHash": "sha256-uaxKqJNrdcYuoMNfV/MdB7c64Gq+W43tS7weqM93FVo="
+            }
+          ],
+          "receipt": "https://nix-purifiers.github.io/evidence/e3bdeb5bd839634288b697a256b28afca897326741ae895a76929965cb3d6bda.json",
+          "artifactSha256": "e3bdeb5bd839634288b697a256b28afca897326741ae895a76929965cb3d6bda"
+        }
+      }
+    },
+    "sampleBuilds": [
+      {
+        "name": "Spring Petclinic",
+        "upstream": {
+          "repository": "https://github.com/spring-projects/spring-petclinic",
+          "revision": "500158f732419217507c7656904b8e6aa1bcc0d6",
+          "sourceNarHash": "sha256-j3Uiz+Wn9jWegwrJvCZZymLNrzo5zn5GyPBIn6+6V2w="
+        },
+        "derivations": [
+          "gradle-purifier:x86_64-linux:petclinic"
+        ]
+      },
+      {
+        "name": "Java library with JUnit and Maven publication",
+        "upstream": {
+          "repository": "https://github.com/nix-purifiers/gradle-purifier",
+          "revision": "9c19f8d47def476f9afe4d8940f0076f0b95318f",
+          "sourceNarHash": "sha256-uaxKqJNrdcYuoMNfV/MdB7c64Gq+W43tS7weqM93FVo="
+        },
+        "derivations": [
+          "gradle-purifier:x86_64-linux:java-library",
+          "gradle-purifier:x86_64-linux:java-library-tests"
+        ]
+      },
+      {
+        "name": "Kotlin JVM application and convention-plugin build",
+        "upstream": {
+          "repository": "https://github.com/nix-purifiers/gradle-purifier",
+          "revision": "9c19f8d47def476f9afe4d8940f0076f0b95318f",
+          "sourceNarHash": "sha256-uaxKqJNrdcYuoMNfV/MdB7c64Gq+W43tS7weqM93FVo="
+        },
+        "derivations": [
+          "gradle-purifier:x86_64-linux:kotlin-app",
+          "gradle-purifier:x86_64-linux:kotlin-app-runs"
+        ]
+      },
+      {
+        "name": "Kotlin Native executable/library",
+        "upstream": {
+          "repository": "https://github.com/nix-purifiers/gradle-purifier",
+          "revision": "9c19f8d47def476f9afe4d8940f0076f0b95318f",
+          "sourceNarHash": "sha256-uaxKqJNrdcYuoMNfV/MdB7c64Gq+W43tS7weqM93FVo="
+        },
+        "derivations": [
+          "gradle-purifier:x86_64-linux:kotlin-native",
+          "gradle-purifier:x86_64-linux:kotlin-native-runs"
+        ]
+      },
+      {
+        "name": "snapshot Groovy publication/rebuild",
+        "upstream": {
+          "repository": "https://github.com/nix-purifiers/gradle-purifier",
+          "revision": "9c19f8d47def476f9afe4d8940f0076f0b95318f",
+          "sourceNarHash": "sha256-uaxKqJNrdcYuoMNfV/MdB7c64Gq+W43tS7weqM93FVo="
+        },
+        "derivations": [
+          "gradle-purifier:x86_64-linux:snapshot-groovy-tests",
+          "gradle-purifier:x86_64-linux:snapshot-groovy-rebuild"
+        ]
+      }
+    ]
+  }
+}

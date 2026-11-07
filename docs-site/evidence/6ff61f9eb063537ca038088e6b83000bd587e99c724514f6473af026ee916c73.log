@@ -1,0 +1,320 @@
+# SPDX-License-Identifier: MIT
+#
+# The flake's checks and the purifier contract's conformance jobs, on
+# pushes to main and on pull requests, each on x86_64-linux and
+# aarch64-linux and aarch64-darwin runners.
+#
+#   check                 builds every flake check (the fixtures, the
+#                         sandboxable conformance checks, the unit tests and
+#                         the pinned real-world project) and evaluates them
+#                         for every system
+#   conformance-relock    relocks each fixture and the real-world project
+#                         and fails when a lockfile differs by a byte
+#   conformance-rebuild   builds the fixture packages a second time with
+#                         `nix build --rebuild` and fails when an output
+#                         differs
+#   conformance-offline   prefetches the workspace fixture, cuts the
+#                         runner off the network, Nix daemon included, and
+#                         runs the everyday loop
+name: check
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  check:
+    strategy:
+      fail-fast: false
+      matrix:
+        runner: [ubuntu-latest, ubuntu-24.04-arm, macos-26]
+    runs-on: ${{ matrix.runner }}
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
+      - uses: cachix/install-nix-action@13d8dd58da0234aa297dedd986986ccb8e7f3e24 # v31
+        with:
+          extra_nix_config: |
+            sandbox = true
+      - name: Build and run the checks
+        run: nix flake check --option sandbox true -L
+      - name: Record executable check derivations and outputs
+        run: |
+          set -euo pipefail
+          system=$(nix eval --impure --raw --expr builtins.currentSystem)
+          if [ "$RUNNER_OS" = macOS ]; then
+            test "$(uname -m)" = arm64
+            test "$system" = aarch64-darwin
+          fi
+          mkdir -p evidence
+          nix config show sandbox > evidence/sandbox-setting
+          test "$(cat evidence/sandbox-setting)" = true
+          git rev-parse HEAD > evidence/source-revision
+          cp flake.lock evidence/flake.lock
+          for check in version-runtime-10 version-runtime-11 version-runtime-12 version-runtime-current current-script-installs real-world fixture-tests; do
+            nix build --option sandbox true --no-link --json ".#checks.$system.$check" > "evidence/$check.json"
+            drv=$(nix eval --raw ".#checks.$system.$check.drvPath")
+            nix derivation show "$drv" > "evidence/$check.drv.json"
+            output=$(nix eval --raw ".#checks.$system.$check.outPath")
+            nix path-info --json "$output" > "evidence/$check.output.json"
+          done
+      - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4
+        with:
+          name: runtime-derivations-${{ matrix.runner }}
+          path: evidence/
+          retention-days: 30
+      - name: Exercise the maintained pnpm point with independent native installs
+        run: python3 tests/version-runtime.py --current-only
+      - name: Evaluate the checks for every system
+        run: nix flake check --all-systems --no-build
+
+  conformance-relock:
+    strategy:
+      fail-fast: false
+      matrix:
+        runner: [ubuntu-latest, ubuntu-24.04-arm, macos-26]
+    runs-on: ${{ matrix.runner }}
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
+      - uses: cachix/install-nix-action@13d8dd58da0234aa297dedd986986ccb8e7f3e24 # v31
+        with:
+          extra_nix_config: |
+            sandbox = true
+      # The relock of each fixture writes the purifier lockfile the fixture
+      # holds, or none when the fixture holds none, and leaves
+      # pnpm-lock.yaml as it is.
+      - name: Relock each fixture and compare
+        run: |
+          set -euo pipefail
+          for fixture in workspace sources prepare update; do
+            work=$(mktemp -d)
+            cp -r "tests/fixtures/$fixture" "$work/project"
+            (cd "$work/project" && nix run "$GITHUB_WORKSPACE" -- lock)
+            if [ -e "tests/fixtures/$fixture/pnpm-purifier.lock.json" ]; then
+              diff -u "tests/fixtures/$fixture/pnpm-purifier.lock.json" "$work/project/pnpm-purifier.lock.json"
+            else
+              [ ! -e "$work/project/pnpm-purifier.lock.json" ]
+            fi
+            diff -u "tests/fixtures/$fixture/pnpm-lock.yaml" "$work/project/pnpm-lock.yaml"
+          done
+      # pnpm-lock.yaml of giget says everything its build needs, so the
+      # relock writes no purifier lockfile.
+      - name: Relock the real-world project
+        run: |
+          set -euo pipefail
+          work=$(mktemp -d)
+          git clone --quiet https://github.com/unjs/giget "$work/project"
+          git -C "$work/project" checkout --quiet f1dad453055b97a81d5227edce7262c8dcaf53d2
+          (cd "$work/project" && nix run "$GITHUB_WORKSPACE" -- lock --lockfile "$work/lock.json")
+          [ ! -e "$work/lock.json" ]
+          git -C "$work/project" diff --exit-code pnpm-lock.yaml
+
+  conformance-update:
+    strategy:
+      fail-fast: false
+      matrix:
+        runner: [ubuntu-latest, ubuntu-24.04-arm, macos-26]
+    runs-on: ${{ matrix.runner }}
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
+      - uses: cachix/install-nix-action@13d8dd58da0234aa297dedd986986ccb8e7f3e24 # v31
+        with:
+          extra_nix_config: |
+            sandbox = true
+      # tests/fixtures/update locks ms at 2.0.0 within the range ^2.0.0.
+      # After `update`, the lock holds a newer ms, `prefetch` accepts both
+      # lockfiles as current (Nix evaluation fails on a stale purifier
+      # lockfile), and a frozen install from the lock succeeds, which pnpm
+      # refuses for a pnpm-lock.yaml that does not match package.json.
+      - name: Update the fixture and check both lockfiles
+        run: |
+          set -euo pipefail
+          cp -r tests/fixtures/update "$RUNNER_TEMP/project"
+          cd "$RUNNER_TEMP/project"
+          nix run "$GITHUB_WORKSPACE" -- update
+          grep -E '^  ms@2\.' pnpm-lock.yaml
+          if grep -q '^  ms@2\.0\.0:' pnpm-lock.yaml; then
+            echo "the lock still holds ms 2.0.0" >&2
+            exit 1
+          fi
+          nix run "$GITHUB_WORKSPACE" -- prefetch
+          .pnpm-purifier/command/bin/pnpm-purifier install --frozen-lockfile
+      # With an external pnpm-lock.yaml, `update` writes the updated lock at
+      # that path and leaves the copy in the tree as it is.
+      - name: Update with a pnpm-lock.yaml outside the tree
+        run: |
+          set -euo pipefail
+          mkdir "$RUNNER_TEMP/outside"
+          cp -r tests/fixtures/update "$RUNNER_TEMP/external"
+          cd "$RUNNER_TEMP/external"
+          cp pnpm-lock.yaml "$RUNNER_TEMP/tree-before.yaml"
+          nix run "$GITHUB_WORKSPACE" -- update --tool-lockfile "$RUNNER_TEMP/outside/pnpm-lock.yaml"
+          cmp "$RUNNER_TEMP/tree-before.yaml" pnpm-lock.yaml
+          grep -E '^  ms@2\.' "$RUNNER_TEMP/outside/pnpm-lock.yaml"
+          if grep -q '^  ms@2\.0\.0:' "$RUNNER_TEMP/outside/pnpm-lock.yaml"; then
+            echo "the external lock still holds ms 2.0.0" >&2
+            exit 1
+          fi
+
+  conformance-rebuild:
+    strategy:
+      fail-fast: false
+      matrix:
+        runner: [ubuntu-latest, ubuntu-24.04-arm, macos-26]
+    runs-on: ${{ matrix.runner }}
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
+      - uses: cachix/install-nix-action@13d8dd58da0234aa297dedd986986ccb8e7f3e24 # v31
+        with:
+          extra_nix_config: |
+            sandbox = true
+      - name: Build the fixture packages, then build them again and compare
+        run: |
+          set -euo pipefail
+          system=$(nix eval --impure --raw --expr builtins.currentSystem)
+          for check in fixture-app fixture-greet; do
+            nix build --option sandbox true --no-link ".#checks.$system.$check"
+            nix build --option sandbox true --no-link --rebuild ".#checks.$system.$check"
+          done
+
+  conformance-offline:
+    strategy:
+      fail-fast: false
+      matrix:
+        runner: [ubuntu-latest, ubuntu-24.04-arm]
+    runs-on: ${{ matrix.runner }}
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
+      - uses: cachix/install-nix-action@13d8dd58da0234aa297dedd986986ccb8e7f3e24 # v31
+        with:
+          extra_nix_config: |
+            sandbox = true
+      - name: Prefetch the workspace fixture
+        run: |
+          set -euo pipefail
+          cp -r tests/fixtures/workspace "$RUNNER_TEMP/project"
+          cd "$RUNNER_TEMP/project"
+          nix run "$GITHUB_WORKSPACE" -- prefetch
+      # The runner agent keeps its connection to GitHub. The Nix daemon and
+      # its builders (root and the nixbld group) lose the network, and the
+      # commands below run in a network namespace of their own, which has
+      # only a loopback interface. Ubuntu allows that namespace to an
+      # unprivileged user once the AppArmor restriction is off.
+      - name: Cut Nix off the network
+        run: |
+          set -euo pipefail
+          sudo sysctl -w kernel.apparmor_restrict_unprivileged_userns=0
+          for tables in iptables ip6tables; do
+            sudo "$tables" -A OUTPUT -o lo -j ACCEPT
+            sudo "$tables" -A OUTPUT -m owner --uid-owner 0 -j REJECT
+            sudo "$tables" -A OUTPUT -m owner --gid-owner nixbld -j REJECT
+          done
+      - name: Install, build, test and run with no network
+        run: |
+          set -euo pipefail
+          cd "$RUNNER_TEMP/project"
+          # Expand variables in the child shell.
+          # shellcheck disable=SC2016
+          unshare --map-root-user --net bash -euo pipefail -c '
+            ip link set lo up
+            if curl --silent --max-time 10 https://registry.npmjs.org/ > /dev/null; then
+              echo "the network is still reachable" >&2
+              exit 1
+            fi
+            purifier=.pnpm-purifier/command/bin/pnpm-purifier
+            "$purifier" install
+            "$purifier" --recursive run build
+            "$purifier" --recursive test
+            .pnpm-purifier/node/bin/node packages/app/dist/main.js offline | grep -F "Hello, "
+          '
+
+  composition-native:
+    strategy:
+      fail-fast: false
+      matrix:
+        runner: [ubuntu-latest, ubuntu-24.04-arm, macos-26]
+    runs-on: ${{ matrix.runner }}
+    timeout-minutes: 60
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
+      - uses: cachix/install-nix-action@13d8dd58da0234aa297dedd986986ccb8e7f3e24 # v31
+        with:
+          extra_nix_config: |
+            sandbox = true
+      - run: python3 tests/composition-native.py
+
+  conformance-darwin-offline:
+    runs-on: macos-26
+    timeout-minutes: 60
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
+      - uses: cachix/install-nix-action@13d8dd58da0234aa297dedd986986ccb8e7f3e24 # v31
+        with:
+          extra_nix_config: |
+            sandbox = true
+      - name: Verify native Darwin and prefetch
+        run: |
+          set -euo pipefail
+          test "$(uname -m)" = arm64
+          test "$(nix eval --impure --raw --expr builtins.currentSystem)" = aarch64-darwin
+          git rev-parse HEAD
+          /usr/bin/curl --fail --silent --max-time 30 https://registry.npmjs.org/ > /dev/null
+          cp -r tests/fixtures/workspace "$RUNNER_TEMP/project"
+          cd "$RUNNER_TEMP/project"
+          nix run "$GITHUB_WORKSPACE" -- lock
+          nix run "$GITHUB_WORKSPACE" -- prefetch
+      - name: Install, build, test and run with external network denied
+        run: |
+          set -euo pipefail
+          cd "$RUNNER_TEMP/project"
+          rm -rf node_modules packages/app/node_modules packages/greet/node_modules
+          # Children retain loopback for the locked registry and Unix sockets
+          # for Nix. The daemon is separate: forbid its substitutes explicitly.
+          export NIX_CONFIG=$'substituters =\nconnect-timeout = 1'
+          # Expand variables in the child shell.
+          # shellcheck disable=SC2016
+          sandbox-exec -p '(version 1)(allow default)(deny network*)(allow network-outbound (remote ip "localhost:*"))(allow network-bind (local ip "localhost:*"))(allow network-inbound (local ip "localhost:*"))(allow network* (local unix-socket))(allow network* (remote unix-socket))' /bin/bash -euo pipefail -c '
+            if /usr/bin/curl --silent --max-time 10 https://registry.npmjs.org/ > /dev/null; then
+              echo "the network is still reachable" >&2
+              exit 1
+            fi
+            # Prove the narrow policy still permits a real loopback HTTP
+            # server and client, rather than failing every network operation.
+            .pnpm-purifier/node/bin/node -e "const http = require(\"node:http\"); const fs = require(\"node:fs\"); const server = http.createServer((req, res) => res.end(\"loopback-ok\")); server.listen(0, \"127.0.0.1\", () => fs.writeFileSync(\"$RUNNER_TEMP/loopback-port\", String(server.address().port)));" &
+            probe=$!
+            trap "kill $probe 2>/dev/null || true" EXIT
+            for attempt in {1..100}; do
+              test -s "$RUNNER_TEMP/loopback-port" && break
+              sleep 0.1
+            done
+            test -s "$RUNNER_TEMP/loopback-port"
+            test "$(/usr/bin/curl --fail --silent --max-time 10 "http://127.0.0.1:$(cat "$RUNNER_TEMP/loopback-port")/")" = loopback-ok
+            kill "$probe"
+            wait "$probe" || true
+            trap - EXIT
+            purifier=.pnpm-purifier/command/bin/pnpm-purifier
+            test ! -e "$RUNNER_TEMP/offline-fresh-store"
+            "$purifier" install --frozen-lockfile --store-dir "$RUNNER_TEMP/offline-fresh-store"
+            "$purifier" --recursive run build
+            "$purifier" --recursive test
+            .pnpm-purifier/node/bin/node packages/app/dist/main.js offline | grep -F "Hello, "
+          '
+
+  version-runtime:
+    strategy:
+      fail-fast: false
+      matrix:
+        runner: [ubuntu-latest, ubuntu-24.04-arm, macos-26]
+    runs-on: ${{ matrix.runner }}
+    timeout-minutes: 60
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
+      - uses: cachix/install-nix-action@13d8dd58da0234aa297dedd986986ccb8e7f3e24 # v31
+        with:
+          extra_nix_config: |
+            sandbox = true
+      - run: python3 tests/version-runtime.py
+      - run: python3 tests/real-world-runtime.py

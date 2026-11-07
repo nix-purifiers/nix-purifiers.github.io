@@ -1,0 +1,50 @@
+[
+  {
+    "profile": "gradle-tier2-aarch64-darwin-8.14.6",
+    "system": "aarch64-darwin",
+    "kind": "worker",
+    "expression": "(let f = builtins.getFlake \"/nix/store/iq5k2i954jg5m9vagc8q2wy3kvn263dr-source\"; p = import f.inputs.nixpkgs { system = builtins.currentSystem; overlays = [ f.overlays.default ]; }; in (import (builtins.toPath \"/nix/store/iq5k2i954jg5m9vagc8q2wy3kvn263dr-source/tests/tier2-worker-options.nix\") { pkgs = p; distribution = builtins.storePath \"/nix/store/yvgf360hi0g0qf6ksiiqvzckwzvpqv1s-gradle-8.14.6-purifier-darwin-worker-ipv4\"; jdk = builtins.storePath \"/nix/store/al24k44gwd1rk08p1x2p4r88ba9xw132-zulu-ca-jdk-17.0.19\"; javaHome = \"/nix/store/al24k44gwd1rk08p1x2p4r88ba9xw132-zulu-ca-jdk-17.0.19\"; derived = true; })).drvPath",
+    "exitCode": 1,
+    "stdout": "",
+    "stderr": "error:\n       \u2026 while evaluating the attribute 'drvPath'\n         at /nix/store/cm5m4hjjh37s6z82rwa0vhkbcga3m8bq-source/lib/customisation.nix:420:11:\n          419|         // {\n          420|           drvPath =\n             |           ^\n          421|             assert condition;\n\n       \u2026 while calling the 'derivationStrict' builtin\n         at \u00abnix-internal\u00bb/derivation-internal.nix:37:12:\n           36|\n           37|   strict = derivationStrict drvAttrs;\n             |            ^\n           38|\n\n       (stack trace truncated; use '--show-trace' to show the full, detailed trace)\n\n       error: path '/nix/store/yvgf360hi0g0qf6ksiiqvzckwzvpqv1s-gradle-8.14.6-purifier-darwin-worker-ipv4' is required, but there is no substituter that can build it\n",
+    "expected": "/nix/store/lgrnnv64gf2wpq3vc95gyyb4gk55m058-gradle-worker-transport-observation.drv",
+    "matches": false,
+    "noBuild": true
+  },
+  {
+    "profile": "gradle-tier2-aarch64-darwin-9.9.0",
+    "system": "aarch64-darwin",
+    "kind": "worker",
+    "expression": "(let f = builtins.getFlake \"/nix/store/iq5k2i954jg5m9vagc8q2wy3kvn263dr-source\"; p = import f.inputs.nixpkgs { system = builtins.currentSystem; overlays = [ f.overlays.default ]; }; in (import (builtins.toPath \"/nix/store/iq5k2i954jg5m9vagc8q2wy3kvn263dr-source/tests/tier2-worker-options.nix\") { pkgs = p; distribution = builtins.storePath \"/nix/store/a4s55zxxm719x1dk57r006hw8m922mhj-gradle-9.9.0-purifier-darwin-worker-ipv4\"; jdk = builtins.storePath \"/nix/store/al24k44gwd1rk08p1x2p4r88ba9xw132-zulu-ca-jdk-17.0.19\"; javaHome = \"/nix/store/al24k44gwd1rk08p1x2p4r88ba9xw132-zulu-ca-jdk-17.0.19\"; derived = true; })).drvPath",
+    "exitCode": 1,
+    "stdout": "",
+    "stderr": "error:\n       \u2026 while evaluating the attribute 'drvPath'\n         at /nix/store/cm5m4hjjh37s6z82rwa0vhkbcga3m8bq-source/lib/customisation.nix:420:11:\n          419|         // {\n          420|           drvPath =\n             |           ^\n          421|             assert condition;\n\n       \u2026 while calling the 'derivationStrict' builtin\n         at \u00abnix-internal\u00bb/derivation-internal.nix:37:12:\n           36|\n           37|   strict = derivationStrict drvAttrs;\n             |            ^\n           38|\n\n       (stack trace truncated; use '--show-trace' to show the full, detailed trace)\n\n       error: path '/nix/store/a4s55zxxm719x1dk57r006hw8m922mhj-gradle-9.9.0-purifier-darwin-worker-ipv4' is required, but there is no substituter that can build it\n",
+    "expected": "/nix/store/qzqnwl8d0v6c43wvy8zmdx1ix7kh0kcx-gradle-worker-transport-observation.drv",
+    "matches": false,
+    "noBuild": true
+  },
+  {
+    "profile": "gradle-tier2-x86_64-linux-8.14.6",
+    "system": "x86_64-linux",
+    "kind": "worker",
+    "expression": "(let f = builtins.getFlake \"/nix/store/iq5k2i954jg5m9vagc8q2wy3kvn263dr-source\"; p = import f.inputs.nixpkgs { system = builtins.currentSystem; overlays = [ f.overlays.default ]; }; in (import (builtins.toPath \"/nix/store/iq5k2i954jg5m9vagc8q2wy3kvn263dr-source/tests/tier2-worker-options.nix\") { pkgs = p; distribution = builtins.storePath \"/nix/store/2xg81wjll1lfzb599zny2s52bv2ji58n-gradle-8.14.6\"; jdk = builtins.storePath \"/nix/store/ry8szmmd7pymhc0cgdnwf7mb5083j5mc-openjdk-headless-17.0.20.1+1\"; javaHome = \"/nix/store/ry8szmmd7pymhc0cgdnwf7mb5083j5mc-openjdk-headless-17.0.20.1+1/lib/openjdk\"; derived = false; })).drvPath",
+    "exitCode": 0,
+    "stdout": "/nix/store/6bjwls5a3pqps81481ni19ilb4y1x57s-gradle-worker-transport-observation.drv",
+    "stderr": "",
+    "expected": "/nix/store/6bjwls5a3pqps81481ni19ilb4y1x57s-gradle-worker-transport-observation.drv",
+    "matches": true,
+    "noBuild": true
+  },
+  {
+    "profile": "gradle-tier2-x86_64-linux-9.9.0",
+    "system": "x86_64-linux",
+    "kind": "worker",
+    "expression": "(let f = builtins.getFlake \"/nix/store/iq5k2i954jg5m9vagc8q2wy3kvn263dr-source\"; p = import f.inputs.nixpkgs { system = builtins.currentSystem; overlays = [ f.overlays.default ]; }; in (import (builtins.toPath \"/nix/store/iq5k2i954jg5m9vagc8q2wy3kvn263dr-source/tests/tier2-worker-options.nix\") { pkgs = p; distribution = builtins.storePath \"/nix/store/f2rlfhmy8g9j37idqlm29lijzimlrrld-gradle-9.9.0\"; jdk = builtins.storePath \"/nix/store/ry8szmmd7pymhc0cgdnwf7mb5083j5mc-openjdk-headless-17.0.20.1+1\"; javaHome = \"/nix/store/ry8szmmd7pymhc0cgdnwf7mb5083j5mc-openjdk-headless-17.0.20.1+1/lib/openjdk\"; derived = false; })).drvPath",
+    "exitCode": 0,
+    "stdout": "/nix/store/ydik3i34cw2ipm0l4ilkvk2rxwqjkv3h-gradle-worker-transport-observation.drv",
+    "stderr": "",
+    "expected": "/nix/store/ydik3i34cw2ipm0l4ilkvk2rxwqjkv3h-gradle-worker-transport-observation.drv",
+    "matches": true,
+    "noBuild": true
+  }
+]

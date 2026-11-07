@@ -1,0 +1,688 @@
+# SPDX-License-Identifier: MIT
+#
+# Runs on pushes to main and on pull requests, on x86_64-linux and on
+# aarch64-linux. The `check` job runs every flake check (the command, the
+# unit tests, the sandboxed conformance checks, and the build of every
+# test fixture from its lockfile) and evaluates the checks for every
+# system the flake supports. The conformance checks that need the network
+# or Nix outside the sandbox are jobs of the same name.
+name: check
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  check:
+    strategy:
+      fail-fast: false
+      matrix:
+        runner: [ubuntu-latest, ubuntu-24.04-arm]
+    runs-on: ${{ matrix.runner }}
+    timeout-minutes: 90
+    steps:
+      - uses: actions/checkout@v4
+      - uses: cachix/install-nix-action@v31
+      - name: Flake checks
+        run: nix flake check --max-jobs 2 --print-build-logs
+      - name: Evaluation for every system
+        run: nix flake check --all-systems --no-build
+
+  # Relocking every fixture reproduces its lockfile byte for byte.
+  conformance-relock:
+    strategy:
+      fail-fast: false
+      matrix:
+        runner: [ubuntu-latest, ubuntu-24.04-arm]
+    runs-on: ${{ matrix.runner }}
+    timeout-minutes: 60
+    steps:
+      - uses: actions/checkout@v4
+      - uses: cachix/install-nix-action@v31
+      - name: Relock the fixtures
+        run: tests/relock-fixtures.sh --relock
+      - name: Compare with the committed lockfiles
+        run: git diff --exit-code -- tests/fixtures
+
+  # Building a fixture again gives the same output.
+  conformance-rebuild:
+    strategy:
+      fail-fast: false
+      matrix:
+        runner: [ubuntu-latest, ubuntu-24.04-arm]
+    runs-on: ${{ matrix.runner }}
+    timeout-minutes: 90
+    steps:
+      - uses: actions/checkout@v4
+      - uses: cachix/install-nix-action@v31
+      - name: Build and rebuild the fixtures
+        run: |
+          system=$(nix eval --impure --raw --expr builtins.currentSystem)
+          packages=(
+            ".#checks.$system.java-library"
+            ".#checks.$system.kotlin-core"
+            ".#checks.$system.kotlin-shared"
+            ".#checks.$system.kotlin-app"
+          )
+          nix build --no-link --max-jobs 2 "${packages[@]}"
+          nix build --no-link --rebuild "${packages[@]}"
+
+  # After `prefetch`, ./gradlew builds each fixture with the network cut
+  # off, and the command reports each mistake in a lockfile.
+  conformance-offline:
+    strategy:
+      fail-fast: false
+      matrix:
+        runner: [ubuntu-latest, ubuntu-24.04-arm]
+    runs-on: ${{ matrix.runner }}
+    timeout-minutes: 90
+    steps:
+      - uses: actions/checkout@v4
+      - uses: cachix/install-nix-action@v31
+      # Ubuntu lets no unprivileged user make a network namespace unless
+      # AppArmor allows it; the test cuts the network in one.
+      - name: Allow user namespaces
+        run: sudo sysctl -w kernel.apparmor_restrict_unprivileged_userns=0
+      - name: Offline builds
+        run: tests/offline.sh
+
+  # `update` moves a fixture that pins an old version, and both lockfiles
+  # then pass the stale check.
+  conformance-update:
+    strategy:
+      fail-fast: false
+      matrix:
+        runner: [ubuntu-latest, ubuntu-24.04-arm]
+    runs-on: ${{ matrix.runner }}
+    timeout-minutes: 60
+    steps:
+      - uses: actions/checkout@v4
+      - uses: cachix/install-nix-action@v31
+      - name: Update
+        env:
+          GRADLE_PURIFIER_CENTRAL_MIRROR: "1"
+        run: tests/update.sh
+
+  composition-native:
+    strategy:
+      fail-fast: false
+      matrix:
+        runner: [ubuntu-latest, ubuntu-24.04-arm]
+    runs-on: ${{ matrix.runner }}
+    timeout-minutes: 60
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: cachix/install-nix-action@v31
+      - name: Native Nix project inputs
+        run: python3 tests/composition-native.py
+      - name: Capture and replay SNAPSHOT publication with Groovy inference
+        run: |
+          nix build '.#default' --out-link "$RUNNER_TEMP/snapshot-groovy-cli"
+          python3 tests/snapshot-groovy-native.py "$RUNNER_TEMP/snapshot-groovy-cli/bin/gradle-purifier"
+
+  project-sdk-closure:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    env:
+      PYTHONDONTWRITEBYTECODE: '1'
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
+        with:
+          persist-credentials: false
+      - name: Prepare SDK proof identity
+        shell: bash
+        run: |
+          mkdir -p "$RUNNER_TEMP/gradle-sdk-proof"
+          git rev-parse HEAD > "$RUNNER_TEMP/gradle-sdk-proof/source-revision"
+      - uses: cachix/install-nix-action@13d8dd58da0234aa297dedd986986ccb8e7f3e24 # v31
+      - name: Build candidate, baseline and the existing SDKs
+        shell: bash
+        run: |
+          nix build .#default --out-link "$RUNNER_TEMP/gradle-sdk-candidate"
+          nix build --inputs-from . 'nixpkgs#jdk8_headless' 'nixpkgs#jdk17_headless' 'nixpkgs#jdk21_headless' --no-link
+          nix build 'github:nix-purifiers/gradle-purifier/f7ec9a358e25567231b58100d196c40557a6d638#default' \
+            --out-link "$RUNNER_TEMP/gradle-sdk-baseline"
+          python - <<'PYTHON'
+          from pathlib import Path
+          import os
+          root = Path(os.environ['RUNNER_TEMP'])
+          cli = root/'gradle-sdk-candidate/bin/gradle-purifier'
+          descriptor = next(line.split('=',1)[1] for line in cli.read_text().splitlines() if line.startswith('sdk_descriptor='))
+          (root/'gradle-sdk-proof/sdk-source-descriptor.json').write_bytes(Path(descriptor).read_bytes())
+          PYTHON
+      - name: Observe selected native SDKs on the existing fixture
+        shell: bash
+        run: |
+          python tests/sdk-telemetry/probe.py \
+            --cli "$RUNNER_TEMP/gradle-sdk-candidate/bin/gradle-purifier" \
+            --output "$RUNNER_TEMP/gradle-sdk-proof/telemetry"
+      - name: Replay split SDK and same SDK control through publication
+        shell: bash
+        run: |
+          python tests/sdk-closure/lifecycle.py \
+            --cli "$RUNNER_TEMP/gradle-sdk-candidate/bin/gradle-purifier" \
+            --baseline-cli "$RUNNER_TEMP/gradle-sdk-baseline/bin/gradle-purifier" \
+            --sdk-receipt "$RUNNER_TEMP/gradle-sdk-proof/telemetry/context.json" \
+            --output "$RUNNER_TEMP/gradle-sdk-proof/lifecycle"
+      - name: Reject SDK identity, path, platform and stale role changes
+        shell: bash
+        run: |
+          python tests/sdk-closure/negative.py \
+            --cli "$RUNNER_TEMP/gradle-sdk-candidate/bin/gradle-purifier" \
+            --project "$RUNNER_TEMP/gradle-sdk-proof/lifecycle/split" \
+            --output "$RUNNER_TEMP/gradle-sdk-proof/negative"
+      - name: Validate explicit native SDK selection without provider metadata
+        run: |
+          # The SDK home interpolation below belongs to Nix.
+          # shellcheck disable=SC2016
+          nix eval --impure --json --expr '
+            let f = builtins.getFlake (toString ./.);
+                p = import f.inputs.nixpkgs { system = builtins.currentSystem; config = {}; overlays = []; };
+                describe = j: { path = toString j; home = j.home or "${j}/lib/openjdk"; version = j.version; };
+            in { java8 = describe p.jdk8_headless; java17 = describe p.jdk17_headless; }
+          ' > "$RUNNER_TEMP/gradle-sdk-proof/explicit-sdks.json"
+          python tests/sdk-closure/explicit-native.py \
+            --cli "$RUNNER_TEMP/gradle-sdk-candidate/bin/gradle-purifier" \
+            --cache "$RUNNER_TEMP/gradle-sdk-distributions" \
+            --sdks "$RUNNER_TEMP/gradle-sdk-proof/explicit-sdks.json" \
+            --output "$RUNNER_TEMP/gradle-sdk-proof/explicit-native"
+      - name: Validate native Test runtime identity and failed-copy guards
+        run: |
+          python tests/sdk-closure/native-test-options.py \
+            --cli "$RUNNER_TEMP/gradle-sdk-candidate/bin/gradle-purifier" \
+            --cache "$RUNNER_TEMP/gradle-sdk-distributions" \
+            --sdks "$RUNNER_TEMP/gradle-sdk-proof/explicit-sdks.json" \
+            --output "$RUNNER_TEMP/gradle-sdk-proof/native-test-options"
+      - name: Allow namespaces for the cold legacy SDK control
+        run: sudo sysctl -w kernel.apparmor_restrict_unprivileged_userns=0
+      - name: Replay the unchanged legacy fixture with cold caches and network isolation
+        run: |
+          python tests/sdk-closure/legacy-lifecycle.py \
+            --cli "$RUNNER_TEMP/gradle-sdk-candidate/bin/gradle-purifier" \
+            --cache "$RUNNER_TEMP/gradle-sdk-distributions" \
+            --sdks "$RUNNER_TEMP/gradle-sdk-proof/explicit-sdks.json" \
+            --output "$RUNNER_TEMP/gradle-sdk-proof/legacy-lifecycle"
+      - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4
+        if: always()
+        with:
+          name: gradle-project-sdk-closure
+          if-no-files-found: error
+          path: |
+            ${{ runner.temp }}/gradle-sdk-proof/source-revision
+            ${{ runner.temp }}/gradle-sdk-proof/sdk-source-descriptor.json
+            ${{ runner.temp }}/gradle-sdk-proof/telemetry/*.json
+            ${{ runner.temp }}/gradle-sdk-proof/telemetry/*.log
+            ${{ runner.temp }}/gradle-sdk-proof/lifecycle/*.json
+            ${{ runner.temp }}/gradle-sdk-proof/lifecycle/*.log
+            ${{ runner.temp }}/gradle-sdk-proof/negative/*.json
+            ${{ runner.temp }}/gradle-sdk-proof/negative/*.log
+            ${{ runner.temp }}/gradle-sdk-proof/explicit-sdks.json
+            ${{ runner.temp }}/gradle-sdk-proof/explicit-native/*.json
+            ${{ runner.temp }}/gradle-sdk-proof/explicit-native/*/*.log
+            ${{ runner.temp }}/gradle-sdk-proof/explicit-native/*/output/*.json
+            ${{ runner.temp }}/gradle-sdk-proof/native-test-options/*.json
+            ${{ runner.temp }}/gradle-sdk-proof/native-test-options/*.log
+            ${{ runner.temp }}/gradle-sdk-proof/native-test-options/*/*.log
+            ${{ runner.temp }}/gradle-sdk-proof/native-test-options/*/runtime.properties
+            ${{ runner.temp }}/gradle-sdk-proof/native-test-options/*/output/*.json
+            ${{ runner.temp }}/gradle-sdk-proof/native-test-options/*/build/test-results/test/*.xml
+            ${{ runner.temp }}/gradle-sdk-proof/legacy-lifecycle/*.json
+            ${{ runner.temp }}/gradle-sdk-proof/legacy-lifecycle/*.log
+            ${{ runner.temp }}/gradle-sdk-proof/legacy-lifecycle/*.jar
+
+  project-sdk-sources:
+    runs-on: ubuntu-latest
+    timeout-minutes: 40
+    env:
+      PYTHONDONTWRITEBYTECODE: '1'
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
+        with:
+          persist-credentials: false
+      - uses: cachix/install-nix-action@13d8dd58da0234aa297dedd986986ccb8e7f3e24 # v31
+      - name: Build the candidate and enable native offline namespace proofs
+        run: |
+          mkdir -p "$RUNNER_TEMP/gradle-sdk-source-proof"
+          git rev-parse HEAD > "$RUNNER_TEMP/gradle-sdk-source-proof/source-revision"
+          nix build .#default --out-link "$RUNNER_TEMP/gradle-sdk-source-candidate"
+          sudo sysctl -w kernel.apparmor_restrict_unprivileged_userns=0
+      - name: Project-owned SDK lifecycle with actual JUnit and Javadoc
+        run: |
+          python3 -B tests/sdk-sources/lifecycle.py \
+            --cli "$RUNNER_TEMP/gradle-sdk-source-candidate/bin/gradle-purifier" \
+            --output "$RUNNER_TEMP/gradle-sdk-source-proof/lifecycle"
+      - name: Closed source schema and pure reconstruction
+        run: |
+          python3 -B tests/sdk-sources/schema.py \
+            --cli "$RUNNER_TEMP/gradle-sdk-source-candidate/bin/gradle-purifier" \
+            --positive "$RUNNER_TEMP/gradle-sdk-source-proof/lifecycle/project" \
+            --output "$RUNNER_TEMP/gradle-sdk-source-proof/schema"
+      - name: Mandatory manager with zero tasks and all-manager task SDKs
+        run: |
+          python3 -B tests/sdk-sources/manager-controls.py \
+            --cli "$RUNNER_TEMP/gradle-sdk-source-candidate/bin/gradle-purifier" \
+            --positive "$RUNNER_TEMP/gradle-sdk-source-proof/lifecycle/project" \
+            --output "$RUNNER_TEMP/gradle-sdk-source-proof/manager-controls"
+      - name: Exact SDK, actual manager, stale source and missing discovery boundaries
+        run: |
+          python3 -B tests/sdk-sources/negative.py \
+            --cli "$RUNNER_TEMP/gradle-sdk-source-candidate/bin/gradle-purifier" \
+            --positive "$RUNNER_TEMP/gradle-sdk-source-proof/lifecycle/project" \
+            --output "$RUNNER_TEMP/gradle-sdk-source-proof/negative"
+      - name: Upload project SDK source proofs
+        if: always()
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4
+        with:
+          name: gradle-project-sdk-sources
+          path: |
+            ${{ runner.temp }}/gradle-sdk-source-proof/source-revision
+            ${{ runner.temp }}/gradle-sdk-source-proof/lifecycle/*.json
+            ${{ runner.temp }}/gradle-sdk-source-proof/lifecycle/*.log
+            ${{ runner.temp }}/gradle-sdk-source-proof/lifecycle/*.jar
+            ${{ runner.temp }}/gradle-sdk-source-proof/schema/*.json
+            ${{ runner.temp }}/gradle-sdk-source-proof/schema/*.log
+            ${{ runner.temp }}/gradle-sdk-source-proof/manager-controls/*.json
+            ${{ runner.temp }}/gradle-sdk-source-proof/manager-controls/*.log
+            ${{ runner.temp }}/gradle-sdk-source-proof/negative/*.json
+            ${{ runner.temp }}/gradle-sdk-source-proof/negative/*.log
+
+  javadoc-link-metadata:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    env:
+      PYTHONDONTWRITEBYTECODE: '1'
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
+        with:
+          persist-credentials: false
+      - name: Record Javadoc proof identity
+        run: |
+          mkdir -p "$RUNNER_TEMP/gradle-javadoc-proof"
+          git rev-parse HEAD > "$RUNNER_TEMP/gradle-javadoc-proof/source-revision"
+          python3 - <<'PYTHON'
+          import hashlib, json, os, subprocess
+          from pathlib import Path
+          files = subprocess.check_output(['git', 'ls-files', '-z']).decode().split('\0')
+          hashes = {name: hashlib.sha256(Path(name).read_bytes()).hexdigest()
+                    for name in files if name and Path(name).is_file()}
+          (Path(os.environ['RUNNER_TEMP'])/'gradle-javadoc-proof/source-hashes.json').write_text(
+              json.dumps(hashes, indent=2) + '\n')
+          PYTHON
+      - uses: cachix/install-nix-action@13d8dd58da0234aa297dedd986986ccb8e7f3e24 # v31
+      - name: Build candidate
+        run: nix build .#default --out-link "$RUNNER_TEMP/gradle-javadoc-candidate"
+      - name: Preserve marked metadata and ordinary binary downloads
+        run: |
+          python3 tests/javadoc-recorder-bytes.py \
+            "$RUNNER_TEMP/gradle-javadoc-candidate/bin/gradle-purifier" \
+            --results "$RUNNER_TEMP/gradle-javadoc-proof/recorder"
+      - name: Capture native Javadoc then replay with its metadata server stopped
+        run: |
+          python3 tests/javadoc-native.py \
+            "$RUNNER_TEMP/gradle-javadoc-candidate/bin/gradle-purifier" \
+            --results "$RUNNER_TEMP/gradle-javadoc-proof/native"
+      - name: Reject rehashed malformed metadata roles before replay
+        run: |
+          python3 tests/javadoc-resource-schema.py \
+            --project "$RUNNER_TEMP/gradle-javadoc-proof/native/project" \
+            --results "$RUNNER_TEMP/gradle-javadoc-proof/schema"
+      - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4
+        if: always()
+        with:
+          name: gradle-javadoc-link-metadata
+          if-no-files-found: error
+          path: |
+            ${{ runner.temp }}/gradle-javadoc-proof/source-revision
+            ${{ runner.temp }}/gradle-javadoc-proof/source-hashes.json
+            ${{ runner.temp }}/gradle-javadoc-proof/recorder/*.json
+            ${{ runner.temp }}/gradle-javadoc-proof/recorder/*.tsv
+            ${{ runner.temp }}/gradle-javadoc-proof/recorder/*.log
+            ${{ runner.temp }}/gradle-javadoc-proof/native/*.json
+            ${{ runner.temp }}/gradle-javadoc-proof/native/*.log
+            ${{ runner.temp }}/gradle-javadoc-proof/schema/*.json
+
+  native-missing-hint:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    env:
+      PYTHONDONTWRITEBYTECODE: '1'
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
+        with:
+          persist-credentials: false
+      - uses: cachix/install-nix-action@13d8dd58da0234aa297dedd986986ccb8e7f3e24 # v31
+      - name: Build candidate and existing native hint SDKs
+        run: |
+          mkdir -p "$RUNNER_TEMP/gradle-hint-proof"
+          git rev-parse HEAD > "$RUNNER_TEMP/gradle-hint-proof/source-revision"
+          nix build .#default --out-link "$RUNNER_TEMP/gradle-hint-candidate"
+          nix build --inputs-from . 'nixpkgs#jdk17_headless' 'nixpkgs#jdk21_headless' --no-link
+          # The SDK home interpolation below belongs to Nix.
+          # shellcheck disable=SC2016
+          nix eval --impure --json --expr '
+            let f = builtins.getFlake (toString ./.);
+                p = import f.inputs.nixpkgs { system = builtins.currentSystem; config = {}; overlays = []; };
+                describe = j: { path = toString j; home = j.home or "${j}/lib/openjdk"; version = j.version; };
+            in { java17 = describe p.jdk17_headless; java21 = describe p.jdk21_headless; }
+          ' > "$RUNNER_TEMP/gradle-hint-proof/sdks.json"
+      - name: Preserve native failure hints on the existing legacy and modern controls
+        run: |
+          python3 tests/missing-hint-native.py \
+            --cli "$RUNNER_TEMP/gradle-hint-candidate/bin/gradle-purifier" \
+            --cache "$RUNNER_TEMP/gradle-hint-distributions" \
+            --sdks "$RUNNER_TEMP/gradle-hint-proof/sdks.json" \
+            --output "$RUNNER_TEMP/gradle-hint-proof/native"
+      - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4
+        if: always()
+        with:
+          name: gradle-native-missing-hint
+          if-no-files-found: error
+          path: |
+            ${{ runner.temp }}/gradle-hint-proof/source-revision
+            ${{ runner.temp }}/gradle-hint-proof/sdks.json
+            ${{ runner.temp }}/gradle-hint-proof/native/*.json
+            ${{ runner.temp }}/gradle-hint-proof/native/*/*.log
+
+  repository-replay:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    env:
+      PYTHONDONTWRITEBYTECODE: '1'
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
+        with:
+          persist-credentials: false
+      - uses: cachix/install-nix-action@13d8dd58da0234aa297dedd986986ccb8e7f3e24 # v31
+      - name: Bind replay proof to candidate sources and immutable SDKs
+        run: |
+          mkdir -p "$RUNNER_TEMP/gradle-replay-proof" "$RUNNER_TEMP/gradle-replay-distributions"
+          git rev-parse HEAD > "$RUNNER_TEMP/gradle-replay-proof/source-revision"
+          python - <<'PYTHON'
+          from pathlib import Path
+          import hashlib,json,os,subprocess
+          files=subprocess.check_output(['git','ls-files'],text=True).splitlines()
+          Path(os.environ['RUNNER_TEMP'],'gradle-replay-proof/source-hashes.json').write_text(json.dumps({p:hashlib.sha256(Path(p).read_bytes()).hexdigest() for p in files if Path(p).is_file()},indent=2))
+          PYTHON
+          nix build .#default --out-link "$RUNNER_TEMP/gradle-replay-candidate"
+          nix build 'github:nix-purifiers/gradle-purifier/fa0cd7653fed12aabd6da5fcada1e4f33c96779b#default' \
+            --out-link "$RUNNER_TEMP/gradle-replay-baseline"
+          nix build --inputs-from . 'nixpkgs#jdk8_headless' 'nixpkgs#jdk11_headless' 'nixpkgs#jdk17_headless' 'nixpkgs#jdk21_headless' 'nixpkgs#maven' --no-link
+          # The SDK home interpolation below belongs to Nix.
+          # shellcheck disable=SC2016
+          nix eval --impure --json --expr '
+            let f = builtins.getFlake (toString ./.);
+                p = import f.inputs.nixpkgs { system = builtins.currentSystem; config = {}; overlays = []; };
+                describe = j: { path = toString j; home = j.home or "${j}/lib/openjdk"; version = j.version; };
+            in { java8 = describe p.jdk8_headless; java11 = describe p.jdk11_headless;
+                 java17 = describe p.jdk17_headless; java21 = describe p.jdk21_headless; }
+          ' > "$RUNNER_TEMP/gradle-replay-proof/sdks.json"
+          nix eval --impure --raw --expr '
+            let f = builtins.getFlake (toString ./.);
+                p = import f.inputs.nixpkgs { system = builtins.currentSystem; config = {}; overlays = []; };
+            in p.maven.outPath
+          ' > "$RUNNER_TEMP/gradle-replay-proof/maven-path.txt"
+          sudo sysctl -w kernel.apparmor_restrict_unprivileged_userns=0
+      - name: Verify native URI identity, collisions and unsupported URL bounds
+        run: |
+          # Fetch the existing checksummed distribution through its profile helper.
+          python - <<'PYTHON'
+          from pathlib import Path
+          import importlib.util,json,os
+          spec=importlib.util.spec_from_file_location('epoch','tests/epoch-probes/probe.py');m=importlib.util.module_from_spec(spec);spec.loader.exec_module(m)
+          profile=next(p for p in json.loads(Path('tests/epoch-probes/profiles.json').read_text())['profiles'] if p['id']=='gradle-6.9.4')
+          m.distribution(profile,Path(os.environ['RUNNER_TEMP'])/'gradle-replay-distributions')
+          PYTHON
+          java_home=$(python -c 'import json,sys;print(json.load(open(sys.argv[1]))["java11"]["home"])' "$RUNNER_TEMP/gradle-replay-proof/sdks.json")
+          python tests/replay-repositories/mapping.py \
+            --gradle "$RUNNER_TEMP/gradle-replay-distributions/gradle-6.9.4/bin/gradle" \
+            --java-home "$java_home" --output "$RUNNER_TEMP/gradle-replay-proof/mapping"
+      - name: Reproduce released failure and replay the unchanged legacy lock
+        run: |
+          python tests/replay-repositories/legacy-origin.py \
+            --cli "$RUNNER_TEMP/gradle-replay-candidate/bin/gradle-purifier" \
+            --baseline-cli "$RUNNER_TEMP/gradle-replay-baseline/bin/gradle-purifier" \
+            --sdks "$RUNNER_TEMP/gradle-replay-proof/sdks.json" \
+            --cache "$RUNNER_TEMP/gradle-replay-distributions" \
+            --output "$RUNNER_TEMP/gradle-replay-proof/legacy"
+      - name: Preserve old archive locks until explicit publication relock
+        run: |
+          python tests/legacy-maven/old-lock-compat.py \
+            --cli "$RUNNER_TEMP/gradle-replay-candidate/bin/gradle-purifier" \
+            --baseline-cli "$RUNNER_TEMP/gradle-replay-baseline/bin/gradle-purifier" \
+            --sdks "$RUNNER_TEMP/gradle-replay-proof/sdks.json" \
+            --cache "$RUNNER_TEMP/gradle-replay-distributions" \
+            --output "$RUNNER_TEMP/gradle-replay-proof/old-lock-compat"
+      - name: Publish projected metadata and resolve transitive consumers with the origin stopped
+        run: |
+          maven=$(cat "$RUNNER_TEMP/gradle-replay-proof/maven-path.txt")
+          python tests/replay-repositories/lifecycle.py \
+            --cli "$RUNNER_TEMP/gradle-replay-candidate/bin/gradle-purifier" \
+            --sdks "$RUNNER_TEMP/gradle-replay-proof/sdks.json" \
+            --cache "$RUNNER_TEMP/gradle-replay-distributions" \
+            --maven "$maven/bin/mvn" --output "$RUNNER_TEMP/gradle-replay-proof/modern"
+      - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4
+        if: always()
+        with:
+          name: gradle-repository-replay
+          if-no-files-found: error
+          path: |
+            ${{ runner.temp }}/gradle-replay-proof/source-revision
+            ${{ runner.temp }}/gradle-replay-proof/source-hashes.json
+            ${{ runner.temp }}/gradle-replay-proof/sdks.json
+            ${{ runner.temp }}/gradle-replay-proof/maven-path.txt
+            ${{ runner.temp }}/gradle-replay-proof/mapping/*.json
+            ${{ runner.temp }}/gradle-replay-proof/mapping/*.log
+            ${{ runner.temp }}/gradle-replay-proof/legacy/*.json
+            ${{ runner.temp }}/gradle-replay-proof/legacy/*.log
+            ${{ runner.temp }}/gradle-replay-proof/legacy/candidate/*.json
+            ${{ runner.temp }}/gradle-replay-proof/legacy/candidate/*.log
+            ${{ runner.temp }}/gradle-replay-proof/legacy/candidate/*.txt
+            ${{ runner.temp }}/gradle-replay-proof/old-lock-compat/*.json
+            ${{ runner.temp }}/gradle-replay-proof/old-lock-compat/*.log
+            ${{ runner.temp }}/gradle-replay-proof/modern/*.json
+            ${{ runner.temp }}/gradle-replay-proof/modern/*.log
+            ${{ runner.temp }}/gradle-replay-proof/modern/*.txt
+            ${{ runner.temp }}/gradle-replay-proof/modern/gradle-consumer/build.gradle
+            ${{ runner.temp }}/gradle-replay-proof/modern/maven-consumer/pom.xml
+
+  legacy-basic-56:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    env:
+      PYTHONDONTWRITEBYTECODE: '1'
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
+        with:
+          persist-credentials: false
+      - uses: cachix/install-nix-action@13d8dd58da0234aa297dedd986986ccb8e7f3e24 # v31
+      - name: Prepare bounded Gradle5.6 proof
+        run: |
+          mkdir -p "$RUNNER_TEMP/gradle-56-proof" "$RUNNER_TEMP/gradle-56-distributions"
+          git rev-parse HEAD > "$RUNNER_TEMP/gradle-56-proof/source-revision"
+          python - <<'PYTHON'
+          from pathlib import Path
+          import hashlib,json,os,subprocess
+          files=subprocess.check_output(['git','ls-files'],text=True).splitlines()
+          Path(os.environ['RUNNER_TEMP'],'gradle-56-proof/source-hashes.json').write_text(json.dumps({p:hashlib.sha256(Path(p).read_bytes()).hexdigest() for p in files if Path(p).is_file()},indent=2))
+          PYTHON
+          nix build .#default --out-link "$RUNNER_TEMP/gradle-56-candidate"
+          nix build --inputs-from . 'nixpkgs#jdk8_headless' 'nixpkgs#jdk11_headless' --no-link
+          nix eval --impure --json --expr '
+            let f = builtins.getFlake (toString ./.);
+                p = import f.inputs.nixpkgs { system = builtins.currentSystem; config = {}; overlays = []; };
+                describe = j: { path = toString j; home = j.home or "${j}/lib/openjdk"; version = j.version; };
+            in { java8 = describe p.jdk8_headless; java11 = describe p.jdk11_headless; }
+          ' > "$RUNNER_TEMP/gradle-56-proof/sdks.json"
+          sudo sysctl -w kernel.apparmor_restrict_unprivileged_userns=0
+      - name: Declarative settings before native evaluation
+        run: |
+          python tests/legacy-maven/settings-56.py \
+            --sdks "$RUNNER_TEMP/gradle-56-proof/sdks.json" \
+            --cache "$RUNNER_TEMP/gradle-56-distributions" --output "$RUNNER_TEMP/gradle-56-proof/settings"
+      - name: Basic and selected SDK cold replay and strict rejections
+        run: |
+          for scenario in basic sdk; do
+            args=()
+            if [ "$scenario" = sdk ]; then args+=(--sdk); fi
+            python tests/legacy-maven/basic-56.py "${args[@]}" \
+              --cli "$RUNNER_TEMP/gradle-56-candidate/bin/gradle-purifier" \
+              --sdks "$RUNNER_TEMP/gradle-56-proof/sdks.json" \
+              --cache "$RUNNER_TEMP/gradle-56-distributions" --output "$RUNNER_TEMP/gradle-56-proof/$scenario"
+          done
+      - name: Native task, metadata, SDK and old-lock strict guards
+        run: |
+          python tests/legacy-maven/guards-56.py \
+            --cli "$RUNNER_TEMP/gradle-56-candidate/bin/gradle-purifier" \
+            --sdks "$RUNNER_TEMP/gradle-56-proof/sdks.json" \
+            --project "$RUNNER_TEMP/gradle-56-proof/basic/producer" \
+            --cache "$RUNNER_TEMP/gradle-56-distributions" --output "$RUNNER_TEMP/gradle-56-proof/guards"
+      - name: Native project plugin with stopped origin
+        run: |
+          python tests/legacy-maven/plugin-56.py \
+            --cli "$RUNNER_TEMP/gradle-56-candidate/bin/gradle-purifier" \
+            --sdks "$RUNNER_TEMP/gradle-56-proof/sdks.json" \
+            --cache "$RUNNER_TEMP/gradle-56-distributions" --output "$RUNNER_TEMP/gradle-56-proof/plugin"
+      - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4
+        if: always()
+        with:
+          name: gradle-legacy-basic-56
+          path: |
+            ${{ runner.temp }}/gradle-56-proof/source-*.json
+            ${{ runner.temp }}/gradle-56-proof/source-revision
+            ${{ runner.temp }}/gradle-56-proof/sdks.json
+            ${{ runner.temp }}/gradle-56-proof/**/*.log
+            ${{ runner.temp }}/gradle-56-proof/**/report.json
+            ${{ runner.temp }}/gradle-56-proof/**/schema-report.json
+            ${{ runner.temp }}/gradle-56-proof/**/context.json
+            ${{ runner.temp }}/gradle-56-proof/**/source-context.json
+            ${{ runner.temp }}/gradle-56-proof/**/*selection.json
+            ${{ runner.temp }}/gradle-56-proof/**/*native-counter.json
+            ${{ runner.temp }}/gradle-56-proof/**/gradle-purifier.lock.json
+            ${{ runner.temp }}/gradle-56-proof/**/task-sdks.json
+            ${{ runner.temp }}/gradle-56-proof/**/task-sdk-observations.json
+            ${{ runner.temp }}/gradle-56-proof/**/producer/src/**
+            ${{ runner.temp }}/gradle-56-proof/**/producer/build.gradle
+            ${{ runner.temp }}/gradle-56-proof/**/producer/settings.gradle
+            ${{ runner.temp }}/gradle-56-proof/**/repository/**
+            ${{ runner.temp }}/gradle-56-proof/**/lock-run/output/**
+            ${{ runner.temp }}/gradle-56-proof/**/payloads/**
+            ${{ runner.temp }}/gradle-56-proof/**/native-gradle-version.txt
+
+  legacy-maven:
+    runs-on: ubuntu-latest
+    timeout-minutes: 40
+    env:
+      PYTHONDONTWRITEBYTECODE: '1'
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
+        with:
+          persist-credentials: false
+          fetch-depth: 0
+      - uses: cachix/install-nix-action@13d8dd58da0234aa297dedd986986ccb8e7f3e24 # v31
+      - name: Prepare immutable legacy proof inputs
+        run: |
+          mkdir -p "$RUNNER_TEMP/gradle-legacy-proof" "$RUNNER_TEMP/gradle-legacy-distributions"
+          git rev-parse HEAD > "$RUNNER_TEMP/gradle-legacy-proof/source-revision"
+          python - <<'PYTHON'
+          from pathlib import Path
+          import hashlib,json,os,subprocess
+          files=subprocess.check_output(['git','ls-files'],text=True).splitlines()
+          Path(os.environ['RUNNER_TEMP'],'gradle-legacy-proof/source-hashes.json').write_text(json.dumps({p:hashlib.sha256(Path(p).read_bytes()).hexdigest() for p in files if Path(p).is_file()},indent=2))
+          PYTHON
+          nix build .#default --out-link "$RUNNER_TEMP/gradle-legacy-candidate"
+          nix build 'github:nix-purifiers/gradle-purifier/f8d27b4f00d539d5de764ada829ae492d349678b#default' \
+            --out-link "$RUNNER_TEMP/gradle-legacy-typed-baseline"
+          nix build --inputs-from . 'nixpkgs#jdk8_headless' 'nixpkgs#jdk11_headless' 'nixpkgs#jdk17_headless' 'nixpkgs#maven' --no-link
+          # shellcheck disable=SC2016
+          nix eval --impure --json --expr '
+            let f = builtins.getFlake (toString ./.);
+                p = import f.inputs.nixpkgs { system = builtins.currentSystem; config = {}; overlays = []; };
+                describe = j: { path = toString j; home = j.home or "${j}/lib/openjdk"; version = j.version; };
+            in { java8 = describe p.jdk8_headless; java11 = describe p.jdk11_headless; java17 = describe p.jdk17_headless; }
+          ' > "$RUNNER_TEMP/gradle-legacy-proof/sdks.json"
+          nix eval --impure --raw --expr '
+            let f = builtins.getFlake (toString ./.);
+                p = import f.inputs.nixpkgs { system = builtins.currentSystem; config = {}; overlays = []; };
+            in p.maven.outPath
+          ' > "$RUNNER_TEMP/gradle-legacy-proof/maven-path.txt"
+          sudo sysctl -w kernel.apparmor_restrict_unprivileged_userns=0
+      - name: Original legacy publication through cold Nix build and deployment
+        run: |
+          python tests/legacy-maven/lifecycle.py \
+            --cli "$RUNNER_TEMP/gradle-legacy-candidate/bin/gradle-purifier" \
+            --sdks "$RUNNER_TEMP/gradle-legacy-proof/sdks.json" \
+            --cache "$RUNNER_TEMP/gradle-legacy-distributions" \
+            --output "$RUNNER_TEMP/gradle-legacy-proof/plain"
+      - name: Preserve projected closure and consume only the deployment
+        run: |
+          maven=$(cat "$RUNNER_TEMP/gradle-legacy-proof/maven-path.txt")
+          python tests/legacy-maven/metadata.py \
+            --cli "$RUNNER_TEMP/gradle-legacy-candidate/bin/gradle-purifier" \
+            --sdks "$RUNNER_TEMP/gradle-legacy-proof/sdks.json" \
+            --cache "$RUNNER_TEMP/gradle-legacy-distributions" \
+            --maven "$maven/bin/mvn" --output "$RUNNER_TEMP/gradle-legacy-proof/metadata"
+      - name: Preserve a real Nix producer input and native competing-version semantics
+        run: |
+          maven=$(cat "$RUNNER_TEMP/gradle-legacy-proof/maven-path.txt")
+          python tests/legacy-maven/provided.py \
+            --cli "$RUNNER_TEMP/gradle-legacy-candidate/bin/gradle-purifier" \
+            --sdks "$RUNNER_TEMP/gradle-legacy-proof/sdks.json" \
+            --cache "$RUNNER_TEMP/gradle-legacy-distributions" \
+            --maven "$maven/bin/mvn" --output "$RUNNER_TEMP/gradle-legacy-proof/provided"
+      - name: Native semantics, public bindings and immutable companion boundaries
+        run: |
+          project="$RUNNER_TEMP/gradle-legacy-proof/plain/cold"
+          gradle="$project/.gradle-purifier/distribution/bin/gradle"
+          python tests/legacy-maven/native.py --gradle "$gradle" \
+            --sdk-info "$RUNNER_TEMP/gradle-legacy-proof/sdks.json" --output "$RUNNER_TEMP/gradle-legacy-proof/native"
+          python tests/legacy-maven/parent.py --gradle "$gradle" \
+            --cli "$RUNNER_TEMP/gradle-legacy-candidate/bin/gradle-purifier" \
+            --sdks "$RUNNER_TEMP/gradle-legacy-proof/sdks.json" --output "$RUNNER_TEMP/gradle-legacy-proof/parent"
+          python tests/legacy-maven/schema.py --project "$project" --output "$RUNNER_TEMP/gradle-legacy-proof/schema"
+          python tests/legacy-maven/native-metadata.py --gradle "$gradle" \
+            --sdks "$RUNNER_TEMP/gradle-legacy-proof/sdks.json" --output "$RUNNER_TEMP/gradle-legacy-proof/native-metadata"
+          python tests/legacy-maven/publication-selection.py \
+            --cli "$RUNNER_TEMP/gradle-legacy-candidate/bin/gradle-purifier" \
+            --sdks "$RUNNER_TEMP/gradle-legacy-proof/sdks.json" --output "$RUNNER_TEMP/gradle-legacy-proof/publication-selection"
+          for edge in direct provider lazy name; do
+            python tests/legacy-maven/publication-selection.py --late-private-dependency --private-edge-kind "$edge" \
+              --cli "$RUNNER_TEMP/gradle-legacy-candidate/bin/gradle-purifier" \
+              --sdks "$RUNNER_TEMP/gradle-legacy-proof/sdks.json" --output "$RUNNER_TEMP/gradle-legacy-proof/late-private-$edge"
+          done
+          python tests/legacy-maven/metadata-unavailable.py \
+            --cli "$RUNNER_TEMP/gradle-legacy-candidate/bin/gradle-purifier" \
+            --sdks "$RUNNER_TEMP/gradle-legacy-proof/sdks.json" --output "$RUNNER_TEMP/gradle-legacy-proof/metadata-unavailable"
+          python tests/legacy-maven/metadata-unavailable.py --case rich-selector \
+            --cli "$RUNNER_TEMP/gradle-legacy-candidate/bin/gradle-purifier" \
+            --sdks "$RUNNER_TEMP/gradle-legacy-proof/sdks.json" --output "$RUNNER_TEMP/gradle-legacy-proof/rich-selector-unavailable"
+          python tests/legacy-maven/typed-lock-compat.py \
+            --cli "$RUNNER_TEMP/gradle-legacy-candidate/bin/gradle-purifier" \
+            --baseline-cli "$RUNNER_TEMP/gradle-legacy-typed-baseline/bin/gradle-purifier" \
+            --sdks "$RUNNER_TEMP/gradle-legacy-proof/sdks.json" --output "$RUNNER_TEMP/gradle-legacy-proof/typed-lock-compat"
+          python tests/legacy-maven/companion.py --project "$project" --gradle "$gradle" \
+            --cli "$RUNNER_TEMP/gradle-legacy-candidate/bin/gradle-purifier" \
+            --sdks "$RUNNER_TEMP/gradle-legacy-proof/sdks.json" --output "$RUNNER_TEMP/gradle-legacy-proof/companion"
+          python tests/legacy-maven/negative.py --project "$RUNNER_TEMP/gradle-legacy-proof/metadata/cold" \
+            --publication "$RUNNER_TEMP/gradle-legacy-proof/metadata/cold/.gradle-purifier/publication" \
+            --gradle "$gradle" --sdks "$RUNNER_TEMP/gradle-legacy-proof/sdks.json" --output "$RUNNER_TEMP/gradle-legacy-proof/guards"
+      - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4
+        if: always()
+        with:
+          name: gradle-legacy-maven
+          if-no-files-found: error
+          path: |
+            ${{ runner.temp }}/gradle-legacy-proof/**/*.json
+            ${{ runner.temp }}/gradle-legacy-proof/**/*.log
+            ${{ runner.temp }}/gradle-legacy-proof/**/*.txt
+            ${{ runner.temp }}/gradle-legacy-proof/source-revision
+            ${{ runner.temp }}/gradle-legacy-proof/metadata/gradle-consumer/build.gradle
+            ${{ runner.temp }}/gradle-legacy-proof/metadata/maven-consumer/pom.xml
+            ${{ runner.temp }}/gradle-legacy-proof/provided/**/build.gradle
+            ${{ runner.temp }}/gradle-legacy-proof/provided/**/pom.xml
+            ${{ runner.temp }}/gradle-legacy-proof/provided/**/src/**/*.java

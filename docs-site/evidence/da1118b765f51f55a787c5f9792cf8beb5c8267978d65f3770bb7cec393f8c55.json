@@ -1,0 +1,280 @@
+{
+  "producerRevision": "1a5653242018a7c5939e5fd10f6f2de52feadfad",
+  "producerSourceNarHash": "sha256-ueLaprdMJcfAyfKkCKCRmMCVqX570dLZyC3+5B/lPVY=",
+  "capturedExpression": {
+    "receipt": "https://nix-purifiers.github.io/evidence/75ec15384a7134f25d18f7bc6f200841bb1c288e569aeaa2553694902842f10d.log",
+    "artifactSha256": "75ec15384a7134f25d18f7bc6f200841bb1c288e569aeaa2553694902842f10d",
+    "format": "text"
+  },
+  "expression": "let f = builtins.getFlake \"/nix/store/iq5k2i954jg5m9vagc8q2wy3kvn263dr-source\"; p = import f.inputs.nixpkgs { system = builtins.currentSystem; overlays = [ f.overlays.default ]; }; in (p.gradle-purifier.buildGradleProject { src = builtins.path { path = builtins.getEnv \"GRADLE_SAMPLE_SOURCE\"; name = \"petclinic-tier2-source\"; }; doCheck = true; }).packages.spring-petclinic.overrideAttrs (old: { postInstall = (old.postInstall or \"\") + ''\nmkdir -p \"$out/nix-support/test-results\"\nfind build/test-results/test -name \"TEST-*.xml\" -exec cp {} \"$out/nix-support/test-results/\" \\;\n''; })",
+  "arguments": {
+    "GRADLE_SAMPLE_SOURCE": "Restore projectReceipt.projectFiles to a local directory; exact builtins.path name petclinic-tier2-source is retained."
+  },
+  "projectReceipt": {
+    "receipt": "https://nix-purifiers.github.io/evidence/c98176dfb16de50950348c47091506b6d8863ce582ca39dc8967831e70fd9e00.json",
+    "artifactSha256": "c98176dfb16de50950348c47091506b6d8863ce582ca39dc8967831e70fd9e00"
+  },
+  "originalArtifacts": {
+    "cli.stdout": {
+      "receipt": "https://nix-purifiers.github.io/evidence/24946216fce9cd11518f815adca5fa8f8044c8b058f8685b97060003b194b608.log",
+      "artifactSha256": "24946216fce9cd11518f815adca5fa8f8044c8b058f8685b97060003b194b608",
+      "format": "text"
+    },
+    "gradle-purifier.lock.json": {
+      "receipt": "https://nix-purifiers.github.io/evidence/91567ebba2f6a096463f8d2a5592952b0c99bb76d816065fb7bdc4a247ff43f8.json",
+      "artifactSha256": "91567ebba2f6a096463f8d2a5592952b0c99bb76d816065fb7bdc4a247ff43f8"
+    },
+    "java.stdout": {
+      "receipt": "https://nix-purifiers.github.io/evidence/e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.log",
+      "artifactSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "format": "text"
+    },
+    "lock.stdout": {
+      "receipt": "https://nix-purifiers.github.io/evidence/31d9223db34c64e02095241c27a8e1eadfee99172d27c2817b3a5755929259ae.log",
+      "artifactSha256": "31d9223db34c64e02095241c27a8e1eadfee99172d27c2817b3a5755929259ae",
+      "format": "text"
+    },
+    "loopback-control.stdout": {
+      "receipt": "https://nix-purifiers.github.io/evidence/c0211b57005a27dcdf367ec877911fa5251cde8087f59e998e9194133411d179.log",
+      "artifactSha256": "c0211b57005a27dcdf367ec877911fa5251cde8087f59e998e9194133411d179",
+      "format": "text"
+    },
+    "network-control.stdout": {
+      "receipt": "https://nix-purifiers.github.io/evidence/2bf9bf8b374eb73c42d6abbec195b5ea76537666875fd0b8f06708a87560ca1a.log",
+      "artifactSha256": "2bf9bf8b374eb73c42d6abbec195b5ea76537666875fd0b8f06708a87560ca1a",
+      "format": "text"
+    },
+    "network-positive.stdout": {
+      "receipt": "https://nix-purifiers.github.io/evidence/778fdaf90fd498c96935128a0240e6609c909f0ac093eb05d3bba987cabd2bce.log",
+      "artifactSha256": "778fdaf90fd498c96935128a0240e6609c909f0ac093eb05d3bba987cabd2bce",
+      "format": "text"
+    },
+    "ordinary-offline-check-derivation-json.stdout": {
+      "receipt": "https://nix-purifiers.github.io/evidence/896707d6ace759b86f089faf4618551384d14eb3d8dc77a07b2bf1d95d2a6a69.json",
+      "artifactSha256": "896707d6ace759b86f089faf4618551384d14eb3d8dc77a07b2bf1d95d2a6a69"
+    },
+    "ordinary-offline-check-derivation.stdout": {
+      "receipt": "https://nix-purifiers.github.io/evidence/fa9e125b836a49b5423c8f06ec5a5c7012ac2f4261dd20b1ed37d1d535e7aa70.log",
+      "artifactSha256": "fa9e125b836a49b5423c8f06ec5a5c7012ac2f4261dd20b1ed37d1d535e7aa70",
+      "format": "text"
+    },
+    "ordinary-offline-check-path-info.stdout": {
+      "receipt": "https://nix-purifiers.github.io/evidence/87da9fae36a57a71dc22499d6a610ab6506c1e91b3355971685d5341b6b458a1.json",
+      "artifactSha256": "87da9fae36a57a71dc22499d6a610ab6506c1e91b3355971685d5341b6b458a1"
+    },
+    "ordinary-offline-check.nix": {
+      "receipt": "https://nix-purifiers.github.io/evidence/d15279874ed15d24e16aff6b02b63eb99a6f85819e90836fa8327ece1693a4f0.log",
+      "artifactSha256": "d15279874ed15d24e16aff6b02b63eb99a6f85819e90836fa8327ece1693a4f0",
+      "format": "text"
+    },
+    "ordinary-offline-check.stdout": {
+      "receipt": "https://nix-purifiers.github.io/evidence/9c277ebfede9278e841af957cb9d2270543e7e8bb655f8210ce90be7eade5647.log",
+      "artifactSha256": "9c277ebfede9278e841af957cb9d2270543e7e8bb655f8210ce90be7eade5647",
+      "format": "text"
+    },
+    "ordinary-offline-receipt.json": {
+      "receipt": "https://nix-purifiers.github.io/evidence/f72ca4d200f65461d177067056353f20e858cc792dbe1b87930004b9ccb8595e.json",
+      "artifactSha256": "f72ca4d200f65461d177067056353f20e858cc792dbe1b87930004b9ccb8595e"
+    },
+    "ordinary-test.log": {
+      "receipt": "https://nix-purifiers.github.io/evidence/5fe81ae10db9ba2256c37a3e039a00d7e3050dd9e55626014bffff439f79078d.log",
+      "artifactSha256": "5fe81ae10db9ba2256c37a3e039a00d7e3050dd9e55626014bffff439f79078d",
+      "format": "text"
+    },
+    "ordinary-test.stdout": {
+      "receipt": "https://nix-purifiers.github.io/evidence/b7bc4483ad3ed54844b3ab77000c7d144b9044a102c4656ca1fefa5a4d5a49b9.log",
+      "artifactSha256": "b7bc4483ad3ed54844b3ab77000c7d144b9044a102c4656ca1fefa5a4d5a49b9",
+      "format": "text"
+    },
+    "prefetch.properties": {
+      "receipt": "https://nix-purifiers.github.io/evidence/b638a9c2b229d247a467ce94aa75c27e4a9d50270a0724add452d4b10bf3fb11.log",
+      "artifactSha256": "b638a9c2b229d247a467ce94aa75c27e4a9d50270a0724add452d4b10bf3fb11",
+      "format": "text"
+    },
+    "prefetch.stdout": {
+      "receipt": "https://nix-purifiers.github.io/evidence/e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.log",
+      "artifactSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "format": "text"
+    },
+    "pure-build-derivation-json.stdout": {
+      "receipt": "https://nix-purifiers.github.io/evidence/5d06d735b773629e10cd5a3ab4666aa7977078e79b3bf19e73362b6e92bbcdd4.json",
+      "artifactSha256": "5d06d735b773629e10cd5a3ab4666aa7977078e79b3bf19e73362b6e92bbcdd4"
+    },
+    "pure-build-derivation.stdout": {
+      "receipt": "https://nix-purifiers.github.io/evidence/d03800c4ec4f045ebe49b2f10f8245edebbd48ac4f997f80e3d24dd8dd2b31ad.log",
+      "artifactSha256": "d03800c4ec4f045ebe49b2f10f8245edebbd48ac4f997f80e3d24dd8dd2b31ad",
+      "format": "text"
+    },
+    "pure-build-path-info.stdout": {
+      "receipt": "https://nix-purifiers.github.io/evidence/ab00b033c86b3de6c92d6154b9c751cb2798a5b52e7ee50ef24bdd97e1ec8889.json",
+      "artifactSha256": "ab00b033c86b3de6c92d6154b9c751cb2798a5b52e7ee50ef24bdd97e1ec8889"
+    },
+    "pure-build.nix": {
+      "receipt": "https://nix-purifiers.github.io/evidence/75ec15384a7134f25d18f7bc6f200841bb1c288e569aeaa2553694902842f10d.log",
+      "artifactSha256": "75ec15384a7134f25d18f7bc6f200841bb1c288e569aeaa2553694902842f10d",
+      "format": "text"
+    },
+    "pure-build.stdout": {
+      "receipt": "https://nix-purifiers.github.io/evidence/e28647c83902fb30b8a75fa9270b8d1deba4ab0a9965e98ef51daae66fa584b3.log",
+      "artifactSha256": "e28647c83902fb30b8a75fa9270b8d1deba4ab0a9965e98ef51daae66fa584b3",
+      "format": "text"
+    },
+    "pure-effective-sdk-derivation-json.stdout": {
+      "receipt": "https://nix-purifiers.github.io/evidence/c80259f6be34bbd0bc32d8dcc42fd2ebe24bc3ed76492f43439faa42bd76d90c.json",
+      "artifactSha256": "c80259f6be34bbd0bc32d8dcc42fd2ebe24bc3ed76492f43439faa42bd76d90c"
+    },
+    "pure-effective-sdk-derivation.stdout": {
+      "receipt": "https://nix-purifiers.github.io/evidence/d7109f5363aba54c16bbef30b6e0f2d508a1f0e74e40b0d824f948f9a0a9b7dc.log",
+      "artifactSha256": "d7109f5363aba54c16bbef30b6e0f2d508a1f0e74e40b0d824f948f9a0a9b7dc",
+      "format": "text"
+    },
+    "pure-effective-sdk-path-info.stdout": {
+      "receipt": "https://nix-purifiers.github.io/evidence/90286507b2af8ce7ebb378487a64528a9b932f0fbe2db005c5c9473a0d3f84f9.json",
+      "artifactSha256": "90286507b2af8ce7ebb378487a64528a9b932f0fbe2db005c5c9473a0d3f84f9"
+    },
+    "pure-effective-sdk.nix": {
+      "receipt": "https://nix-purifiers.github.io/evidence/bc746f9b2db77a6b4a12da63f45c5202ba0603901322f8e4e37894913533edef.log",
+      "artifactSha256": "bc746f9b2db77a6b4a12da63f45c5202ba0603901322f8e4e37894913533edef",
+      "format": "text"
+    },
+    "pure-effective-sdk.stdout": {
+      "receipt": "https://nix-purifiers.github.io/evidence/7976eff46b2445d650e0c153f2f323d336f5324c9eca2372614a2b19d05b54ee.log",
+      "artifactSha256": "7976eff46b2445d650e0c153f2f323d336f5324c9eca2372614a2b19d05b54ee",
+      "format": "text"
+    },
+    "pure-sdk-identity.stdout": {
+      "receipt": "https://nix-purifiers.github.io/evidence/dd7982e02fc4ffaea5ca953a0dce6ff8c89dc59df51ccdeecc57828993e28d5e.json",
+      "artifactSha256": "dd7982e02fc4ffaea5ca953a0dce6ff8c89dc59df51ccdeecc57828993e28d5e"
+    },
+    "pure-sdk-input-path-info.stdout": {
+      "receipt": "https://nix-purifiers.github.io/evidence/ef73bbf0a16c132ee00d5fab65e4d45d1a9364cc7afdb901e76eb6e23ab7e4f5.json",
+      "artifactSha256": "ef73bbf0a16c132ee00d5fab65e4d45d1a9364cc7afdb901e76eb6e23ab7e4f5"
+    },
+    "pure-worker-transport-derivation-json.stdout": {
+      "receipt": "https://nix-purifiers.github.io/evidence/91b16584673268d8eb8203b82ba675412e8207b537eaa2dba68f51abf78e7e68.json",
+      "artifactSha256": "91b16584673268d8eb8203b82ba675412e8207b537eaa2dba68f51abf78e7e68"
+    },
+    "pure-worker-transport-derivation.stdout": {
+      "receipt": "https://nix-purifiers.github.io/evidence/45ba2ea3f6b35957bd9b33072223b7f5135f9d58480c4e88223ef507b9bdd7b5.log",
+      "artifactSha256": "45ba2ea3f6b35957bd9b33072223b7f5135f9d58480c4e88223ef507b9bdd7b5",
+      "format": "text"
+    },
+    "pure-worker-transport-path-info.stdout": {
+      "receipt": "https://nix-purifiers.github.io/evidence/d8481d73ed924f07f99588fc260231163f70067073eb8958b6ed7654a3d553d7.json",
+      "artifactSha256": "d8481d73ed924f07f99588fc260231163f70067073eb8958b6ed7654a3d553d7"
+    },
+    "pure-worker-transport-receipt.json": {
+      "receipt": "https://nix-purifiers.github.io/evidence/2102cb57ed3e9c46191ac46ce7b7a07f42ae549e318e45509be3618c009a87f2.json",
+      "artifactSha256": "2102cb57ed3e9c46191ac46ce7b7a07f42ae549e318e45509be3618c009a87f2"
+    },
+    "pure-worker-transport.log": {
+      "receipt": "https://nix-purifiers.github.io/evidence/8ae9f82ad3cfdd1d7cf528c8f0f9e0ebd65a8ecc1c7eac964e5a9a687c72d0d8.log",
+      "artifactSha256": "8ae9f82ad3cfdd1d7cf528c8f0f9e0ebd65a8ecc1c7eac964e5a9a687c72d0d8",
+      "format": "text"
+    },
+    "pure-worker-transport.nix": {
+      "receipt": "https://nix-purifiers.github.io/evidence/b86ed37c97bd1e60b0fc797a5b08ea2df8ac1b8771331c1eb97f12fccb6c7b11.log",
+      "artifactSha256": "b86ed37c97bd1e60b0fc797a5b08ea2df8ac1b8771331c1eb97f12fccb6c7b11",
+      "format": "text"
+    },
+    "pure-worker-transport.stdout": {
+      "receipt": "https://nix-purifiers.github.io/evidence/73665a69bf8863e90e3eb181f801fb4606dcc53f0fb15d9229b9786d0cdddb94.log",
+      "artifactSha256": "73665a69bf8863e90e3eb181f801fb4606dcc53f0fb15d9229b9786d0cdddb94",
+      "format": "text"
+    },
+    "receipt.json": {
+      "receipt": "https://nix-purifiers.github.io/evidence/0fc1902f6231a7c6530ef8d39e03cf022ea264ec6a558c0e9eec5f1f1a9d9d50.json",
+      "artifactSha256": "0fc1902f6231a7c6530ef8d39e03cf022ea264ec6a558c0e9eec5f1f1a9d9d50"
+    },
+    "sample-checkout.stdout": {
+      "receipt": "https://nix-purifiers.github.io/evidence/e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.log",
+      "artifactSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "format": "text"
+    },
+    "sample-fetch.stdout": {
+      "receipt": "https://nix-purifiers.github.io/evidence/e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.log",
+      "artifactSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "format": "text"
+    },
+    "sample-init.stdout": {
+      "receipt": "https://nix-purifiers.github.io/evidence/fa4ac69ee3056f0540f1e762e80a5c50f59feed82b7db3073ed0b430b9c30a65.log",
+      "artifactSha256": "fa4ac69ee3056f0540f1e762e80a5c50f59feed82b7db3073ed0b430b9c30a65",
+      "format": "text"
+    },
+    "sample-patch.stdout": {
+      "receipt": "https://nix-purifiers.github.io/evidence/12f4d28e1eb946d41442742ac4fc772d07bef4604706f0746ad95e81e26dea97.log",
+      "artifactSha256": "12f4d28e1eb946d41442742ac4fc772d07bef4604706f0746ad95e81e26dea97",
+      "format": "text"
+    },
+    "sample-revision.stdout": {
+      "receipt": "https://nix-purifiers.github.io/evidence/b5abd832186178425b867b7ccc8a08d78b99e832a591790b09de6de4458a73f1.log",
+      "artifactSha256": "b5abd832186178425b867b7ccc8a08d78b99e832a591790b09de6de4458a73f1",
+      "format": "text"
+    },
+    "sandbox-config.stdout": {
+      "receipt": "https://nix-purifiers.github.io/evidence/a17fcf0a2f50e2d495e4f90ce263410edc183add6c62699a2facbccf60410f74.log",
+      "artifactSha256": "a17fcf0a2f50e2d495e4f90ce263410edc183add6c62699a2facbccf60410f74",
+      "format": "text"
+    },
+    "source-archive.stdout": {
+      "receipt": "https://nix-purifiers.github.io/evidence/384e6c16408f4dec1bb9b8d97941743633f188f08fddf0528a18b8867d3ff2cd.json",
+      "artifactSha256": "384e6c16408f4dec1bb9b8d97941743633f188f08fddf0528a18b8867d3ff2cd"
+    },
+    "source-diff.stdout": {
+      "receipt": "https://nix-purifiers.github.io/evidence/e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.log",
+      "artifactSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "format": "text"
+    },
+    "source-path-info.stdout": {
+      "receipt": "https://nix-purifiers.github.io/evidence/be6d42f6c88f469a23233731c82ed5e95e5c5a972ecc5d4aef7b115da4370a4c.json",
+      "artifactSha256": "be6d42f6c88f469a23233731c82ed5e95e5c5a972ecc5d4aef7b115da4370a4c"
+    },
+    "source.stdout": {
+      "receipt": "https://nix-purifiers.github.io/evidence/0a7b7916b387fc260a0ca5ebd7d98a031da30e4a89aa563a7351ac10bb3baf4c.log",
+      "artifactSha256": "0a7b7916b387fc260a0ca5ebd7d98a031da30e4a89aa563a7351ac10bb3baf4c",
+      "format": "text"
+    },
+    "system.stdout": {
+      "receipt": "https://nix-purifiers.github.io/evidence/f91df7efacf30b63c4babe002e2f230b71c92236071ebb33dc422cd6046f3bc6.log",
+      "artifactSha256": "f91df7efacf30b63c4babe002e2f230b71c92236071ebb33dc422cd6046f3bc6",
+      "format": "text"
+    },
+    "pure-sdk-provenance/class-api.txt": {
+      "receipt": "https://nix-purifiers.github.io/evidence/eb1d50220f235ee0b00a67fe6019b06015bf1f4d34ba9b3d42956ade429e91a7.log",
+      "artifactSha256": "eb1d50220f235ee0b00a67fe6019b06015bf1f4d34ba9b3d42956ade429e91a7",
+      "format": "text"
+    },
+    "pure-sdk-provenance/manifest.json": {
+      "receipt": "https://nix-purifiers.github.io/evidence/582c81267686272969e153bbcd15de1835ba3ff51e3a04cd535e4067728b61b6.json",
+      "artifactSha256": "582c81267686272969e153bbcd15de1835ba3ff51e3a04cd535e4067728b61b6"
+    },
+    "pure-sdk-provenance/transport.patch": {
+      "receipt": "https://nix-purifiers.github.io/evidence/a0f2b5abc6ee1f9ffcbaae3c39e31c8e49fe12204f9438bc4138f0bc002106fa.log",
+      "artifactSha256": "a0f2b5abc6ee1f9ffcbaae3c39e31c8e49fe12204f9438bc4138f0bc002106fa",
+      "format": "text"
+    },
+    "pure-sdk-provenance/upstream.java": {
+      "receipt": "https://nix-purifiers.github.io/evidence/55f53013956313bc9197caa42bf4f979a07821e5e4c7c51e2007d175166ae892.log",
+      "artifactSha256": "55f53013956313bc9197caa42bf4f979a07821e5e4c7c51e2007d175166ae892",
+      "format": "text"
+    }
+  },
+  "independentlyMatched": true,
+  "evaluationCapture": {
+    "profile": "gradle-tier2-aarch64-darwin-8.14.6",
+    "system": "aarch64-darwin",
+    "kind": "pure-build",
+    "originalExpression": "let f = builtins.getFlake \"/nix/store/iq5k2i954jg5m9vagc8q2wy3kvn263dr-source\"; p = import f.inputs.nixpkgs { system = builtins.currentSystem; overlays = [ f.overlays.default ]; }; in (p.gradle-purifier.buildGradleProject { src = builtins.path { path = \"/var/folders/2s/vty41l455yv698g4xkgfv7z00000gn/T/gradle-tier2-s0cxxy24/pure-source\"; name = \"petclinic-tier2-source\"; }; doCheck = true; }).packages.spring-petclinic.overrideAttrs (old: { postInstall = (old.postInstall or \"\") + ''\nmkdir -p \"$out/nix-support/test-results\"\nfind build/test-results/test -name \"TEST-*.xml\" -exec cp {} \"$out/nix-support/test-results/\" \\;\n''; })",
+    "expression": "let f = builtins.getFlake \"/nix/store/iq5k2i954jg5m9vagc8q2wy3kvn263dr-source\"; p = import f.inputs.nixpkgs { system = builtins.currentSystem; overlays = [ f.overlays.default ]; }; in (p.gradle-purifier.buildGradleProject { src = builtins.path { path = \"/nix/store/mw773k8v7646a5dx17f4p2whaks7jpv3-petclinic-tier2-source\"; name = \"petclinic-tier2-source\"; }; doCheck = true; }).packages.spring-petclinic.overrideAttrs (old: { postInstall = (old.postInstall or \"\") + ''\nmkdir -p \"$out/nix-support/test-results\"\nfind build/test-results/test -name \"TEST-*.xml\" -exec cp {} \"$out/nix-support/test-results/\" \\;\n''; })",
+    "restoredSourcePath": "/nix/store/mw773k8v7646a5dx17f4p2whaks7jpv3-petclinic-tier2-source",
+    "exitCode": 0,
+    "stdout": "/nix/store/p95y1csp703chrgffnqsp07i93d499sz-spring-petclinic.drv",
+    "stderr": "",
+    "expected": "/nix/store/p95y1csp703chrgffnqsp07i93d499sz-spring-petclinic.drv",
+    "matches": true,
+    "noBuild": true
+  },
+  "limitation": "Independent metadata evaluation exactly matches actual CI drv. Reconstructed133-file source bytes/modes exactly match captured drv input.",
+  "actualJob": "https://github.com/nix-purifiers/gradle-purifier/actions/runs/42370432193/job/128397255671",
+  "noIntegrationBuild": true
+}
