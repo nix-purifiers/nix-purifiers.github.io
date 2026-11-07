@@ -1,0 +1,113 @@
+{
+  "version": 1,
+  "project": "uv-purifier",
+  "reviewedAt": "2026-11-07T03:24:54.238482+00:00",
+  "supersedes": {
+    "path": "assessments.json",
+    "sha256": "1d8cb21b2940d6a46b5f303597140b2845c9ef12aae9c36cee802515f79a4805",
+    "criterion": "nonEolVersions",
+    "previousState": "not-met",
+    "reason": "The previous requirement for Python 3.11/3.13/3.15 execution exceeded the clarified bounded maintained tool/runtime-point criterion."
+  },
+  "criteria": {
+    "nonEolVersions": {
+      "state": "met",
+      "summary": "The actual public-baseline Flask derivation runs uv 0.13.5 with CPython 3.14.8. Upstream currently releases the 0.13 line (latest observed 0.13.7), defines patch changes as non-breaking and minor changes as breaking, and lists Python 3.14 as continuously tested Tier 1. This demonstrates a maintained tool/runtime point under the bounded criterion. No inspected primary policy says a newer patch makes 0.13.5 EOL. This claim covers the executed 0.13.5/3.14.8 tuple only; it does not claim every patch, the full Python-version matrix, or execution of 0.13.7/Python 3.15 from an unmerged producer change.",
+      "evidence": [
+        "https://github.com/nix-purifiers/uv-purifier/actions/runs/42155508325/job/127688579087",
+        "https://docs.astral.sh/uv/reference/policies/versioning/",
+        "https://docs.astral.sh/uv/reference/policies/python/",
+        "https://github.com/astral-sh/.github/blob/main/SECURITY.md",
+        "https://github.com/astral-sh/uv/releases/tag/0.13.7"
+      ],
+      "derivations": [
+        "flask"
+      ],
+      "sources": [
+        "https://docs.astral.sh/uv/reference/policies/versioning/",
+        "https://docs.astral.sh/uv/reference/policies/python/",
+        "https://github.com/astral-sh/uv/releases/tag/0.13.7"
+      ],
+      "gap": null
+    }
+  },
+  "actualNativeBinding": {
+    "existingDerivationId": "flask",
+    "qualifiedExistingDerivationId": "uv-purifier/flask",
+    "repository": "https://github.com/nix-purifiers/uv-purifier",
+    "revision": "ea43ef3106cef19ba7f9c0e75140822cd98ebc4f",
+    "sourceNarHash": "sha256-MAx8dSy7Jy1EZVJ5RmCztO3HAKer+NOpY14IucmjO9Q=",
+    "check": {
+      "kind": "flake-attribute",
+      "value": "checks.x86_64-linux.flask"
+    },
+    "drvPath": "/nix/store/59gicqnlmkqka1w8p79bjmpaw4s2apr3-uv-purifier-test-flask.drv",
+    "outputs": {
+      "out": "/nix/store/6wrc2maxhma5pav0gxq47vny6rjy4q1a-uv-purifier-test-flask"
+    },
+    "outputNarHashes": {
+      "out": "sha256-d6xi4mKdjkX2JFicDIv5niSzpyI0m/Hnm8GGAIU04kY="
+    },
+    "executedSdkVersions": {
+      "uv": "0.13.5",
+      "python": "3.14.8"
+    },
+    "receipt": {
+      "status": "success",
+      "executedSystem": "x86_64-linux",
+      "sourceRevision": "ea43ef3106cef19ba7f9c0e75140822cd98ebc4f",
+      "sourceNarHash": "sha256-MAx8dSy7Jy1EZVJ5RmCztO3HAKer+NOpY14IucmjO9Q=",
+      "drvPath": "/nix/store/59gicqnlmkqka1w8p79bjmpaw4s2apr3-uv-purifier-test-flask.drv",
+      "outputs": {
+        "out": "/nix/store/6wrc2maxhma5pav0gxq47vny6rjy4q1a-uv-purifier-test-flask"
+      },
+      "receipt": "evidence/uv-purifier/main-job-127688579087.log",
+      "artifactSha256": "4128015b956df8da0e95d77b6118fab5c8f5d1723196f0350b9b5f1b84a21e29",
+      "jobUrl": "https://github.com/nix-purifiers/uv-purifier/actions/runs/42155508325/job/127688579087",
+      "jobConclusion": "success",
+      "events": [
+        {
+          "line": 5401,
+          "text": "2026-11-06T03:20:09.0565166Z building '/nix/store/59gicqnlmkqka1w8p79bjmpaw4s2apr3-uv-purifier-test-flask.drv'..."
+        }
+      ],
+      "completedAt": "2026-11-06T03:20:15Z",
+      "outputIdentityBinding": "Local Nix derivation JSON proves drv\u2192output; this exact drv has a native build/rebuild event in the successful immutable-revision CI job."
+    },
+    "runtimeAssertion": "Flask project.tests and subsequent offline UV_OFFLINE=1 uv run --no-sync pytest both execute; 494 passed is logged for both."
+  },
+  "primaryPolicyAdjudication": {
+    "latestReleaseObserved": "0.13.7",
+    "maintainedLineInterpretation": "Current uv 0.13 line has a tested 0.13.5 representative point. Explicit patch compatibility policy supports this bounded line interpretation; this is not a promise of ongoing security fixes for every old patch.",
+    "pythonPoint": "3.14 is explicitly Tier 1 and continuously tested in upstream policy; actual installed runtime is 3.14.8.",
+    "contraryPolicyFound": false,
+    "inspectedPolicies": [
+      "uv versioning",
+      "uv Python support",
+      "uv repository SECURITY.md",
+      "Astral organization SECURITY.md"
+    ],
+    "scopeOfNegativeFinding": "No latest-patch-only maintenance or patch-specific EOL rule appears in these inspected primary policies; no claim about all possible unpublished policies."
+  },
+  "noCreditFor": [
+    "Unmerged PR 489 or other producer-head uv 0.13.7 executions",
+    "Python 3.11/3.13/3.15 execution absent from this public-baseline sample",
+    "Native Darwin execution absent from this reviewed public-baseline check matrix"
+  ],
+  "tier": 3,
+  "tierChange": null,
+  "originalFrozenPacketChanged": false,
+  "policySnapshots": {
+    "uv-non-eol-policy/current-release.json": "651e64ac3ad4b6abb76ba1ace6bccf6e661400ded469f2be0966f79fbd6a11c9",
+    "uv-non-eol-policy/current-release.json.stderr": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "uv-non-eol-policy/versioning.json": "a56b4b6e1f856cdcf07aa2edcc7a45295ecac410b8b6918b06266882cf9e4b7f",
+    "uv-non-eol-policy/versioning.json.stderr": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "uv-non-eol-policy/versioning.md": "5971cabb80aeff6d813737d0c1d3dc45fb5fa8e3b6bd488d199f40cf56c7f2e2",
+    "uv-non-eol-policy/python-policy.json": "bbb7ff6059babc417aa41fdb6e53c526a3e32385f031c17050ad77f81e136b2a",
+    "uv-non-eol-policy/python-policy.json.stderr": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "uv-non-eol-policy/python-policy.md": "0ea203370211ada871569f681b11353157d451587cc398d7aa8333dd2b006a64",
+    "uv-non-eol-policy/org-security.json": "c652439884b347ade145909a2820b6f1f4cc680ddddeae8900f31e7918e56978",
+    "uv-non-eol-policy/org-security.json.stderr": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "uv-non-eol-policy/org-security.md": "197cbd108d707d35e42c406edece86b3c84d75b2757fc6fb47ba6f9ef5bf708a"
+  }
+}

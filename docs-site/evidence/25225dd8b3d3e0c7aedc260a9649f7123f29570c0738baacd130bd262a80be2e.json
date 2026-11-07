@@ -1,0 +1,106 @@
+{
+  "version": 1,
+  "kind": "additive-non-eol-re-adjudication",
+  "reviewDate": "2026-11-06 America/Los_Angeles",
+  "rootCriterionClarification": "One actually tested maintained tool/runtime pair suffices; exhaustive execution across all maintained series/minors/patches is not required. Pair must be supported by primary policy, and SDK execution must be direct, not inferred from closure.",
+  "frozenPacketSha256": {
+    "assessments.json": "395b7fec08f52a9645d25122c808169040f3d9baa07ed13f3933bb444811c28e",
+    "derivation-evidence.json": "0bc57a0e1c9de2755f3921906d49b806e854b92f7ef63f18636aa6ef7376c10d",
+    "review-receipt.json": "3ba0ab12d5180b01714dd3484655979656d0b51968b1177d7290920748614992"
+  },
+  "tierChanges": {},
+  "projects": {
+    "maven-purifier": {
+      "reviewedRevision": "b1560c561b576d5f6cbb2210a085ec0c6da806cb",
+      "criteria": {
+        "nonEolVersions": {
+          "state": "met",
+          "summary": "The public-main Gson test derivation actually invokes Maven3.10.0 with JDK21.0.12.1+1 and succeeds. Maven primary history identifies3.10.0 as maintained, and3.10.0 release notes require Java8 or newer. This one executed supported pair satisfies the clarified criterion; missing3.9.16 execution on this public snapshot limits breadth but no longer makes the criterion not-met. No other version range or producer revision is substituted.",
+          "evidence": [
+            "https://maven.apache.org/docs/history.html",
+            "https://maven.apache.org/docs/3.10.0/release-notes.html",
+            "/nix/store/h935j1fsd4qd0wb3b20ifz2zp0nlnh8x-maven-tests.drv",
+            "execution/maven-purifier/receipt.json"
+          ],
+          "supportingDerivationIds": [
+            "maven-purifier:real-world-gson-tests:x86_64-linux"
+          ],
+          "actualExecutedSdkVersions": {
+            "Maven": "3.10.0",
+            "JDK": "21.0.12.1+1"
+          }
+        }
+      },
+      "executedPairProof": {
+        "existingDerivationId": "maven-purifier:real-world-gson-tests:x86_64-linux",
+        "checkAttribute": "checks.x86_64-linux.real-world-gson-tests",
+        "drvPath": "/nix/store/h935j1fsd4qd0wb3b20ifz2zp0nlnh8x-maven-tests.drv",
+        "outputs": {
+          "out": "/nix/store/5ln3h4r6y7i0w46qnpqhn2nh8zpbvpzl-maven-tests"
+        },
+        "sourceRevision": "b1560c561b576d5f6cbb2210a085ec0c6da806cb",
+        "sourceNarHash": "sha256-k9LZVbB/ZxwxbdFXRJc36qRz+cP5glH4IPUbDV55U0k=",
+        "successfulBuildReceipt": "execution/maven-purifier/receipt.json",
+        "successfulBuildReceiptSha256": "8ab96154c2b601d65d8450c5988b27e0c3c3968b8523de39d72a0ab5a02e78bc",
+        "actualInvocationDerivationBody": "mapping-inputs/maven-purifier/real-world-gson-tests.json",
+        "actualInvocationDerivationBodySha256": "7fa3f356495b5437c06f8b32fc23c4715033b6b7d67231d740391e87c3109f62"
+      },
+      "policyObservations": {
+        "history": "Latest version in each of two GA series maintained; current exact versions3.10.0/3.9.16.",
+        "releaseNotes": "Maven3.10.0 runs on Java8 or newer.",
+        "captureMethod": "Fresh official primary-page web reads; Maven history also separately captured in maven-policy-clarification.json."
+      },
+      "supersedes": "Only earlier criterion judgment requiring execution of both maintained Maven series; primary policy facts and original packet remain unchanged."
+    },
+    "mix-purifier": {
+      "reviewedRevision": "0145ec2b1d2eb99e796f9ca96a015f9a42ede5c2",
+      "criteria": {
+        "nonEolVersions": {
+          "state": "not-met",
+          "summary": "Elixir1.18 is explicitly security-maintained, so lack of1.20/other minor execution is not a failure under the clarified rule. However the actual public Credo test derivation executes Elixir1.18.5 with Erlang/OTP28.5.0.8; primary current Elixir compatibility table lists OTP25\u201327 for Elixir1.18. The1.18.5 release note is a security fix and gives no OTP28 support exception. Native test success is demonstrated, but an upstream-supported maintained pair is not established for this actual SDK selection. No unexecuted OTP27 alternative is inferred.",
+          "evidence": [
+            "https://elixir.hexdocs.pm/main/compatibility-and-deprecations.html",
+            "https://elixir-lang.org/docs/",
+            "https://github.com/elixir-lang/elixir/releases/tag/v1.18.5",
+            "/nix/store/nplhlsrycv172kq2n13i7w2hclckl0ri-credo-tests-1.7.19.drv",
+            "mapping-inputs/mix-purifier/credo-tests.json"
+          ],
+          "supportingDerivationIds": [
+            "mix-purifier:credo-tests:x86_64-linux"
+          ],
+          "actualExecutedSdkVersions": {
+            "Elixir": "1.18.5",
+            "ErlangOTP": "28.5.0.8"
+          }
+        }
+      },
+      "executedPairProof": {
+        "existingDerivationId": "mix-purifier:credo-tests:x86_64-linux",
+        "checkAttribute": "checks.x86_64-linux.credo-tests",
+        "drvPath": "/nix/store/nplhlsrycv172kq2n13i7w2hclckl0ri-credo-tests-1.7.19.drv",
+        "outputs": {
+          "out": "/nix/store/n193nc88km3b0kgmziam5hc043bqhc7n-credo-tests-1.7.19"
+        },
+        "sourceRevision": "0145ec2b1d2eb99e796f9ca96a015f9a42ede5c2",
+        "sourceNarHash": "sha256-PeF1AtVYEIHfiNVpfuI1JdQFvViilkP2iTzQ2nY9Ha4=",
+        "successfulBuildReceipt": "execution/mix-purifier/receipt.json",
+        "successfulBuildReceiptSha256": "d8c1be5988cd57cd8eb64ef129e4b48060d33489cde97c903499a600dab9bff5",
+        "actualInvocationDerivationBody": "mapping-inputs/mix-purifier/credo-tests.json",
+        "actualInvocationDerivationBodySha256": "8210c3db9fbfdb9ca73771ad7d21b3c8408db94c47aa1f465f98bfe031ecf8b5"
+      },
+      "policyObservations": {
+        "primaryCompatibilityPage": "Security support table includes1.18. Erlang/OTP compatibility table row1.18 lists25\u201327; no28 exception in that row.",
+        "officialDocsIndex": "Independently repeats1.18 supports OTP25/26/27.",
+        "patchRelease": "Primary v1.18.5 GitHub release body only describes security fix CVE-2026-75758; no additional OTP28 compatibility claim.",
+        "patchReleaseBodyArtifact": "upstream/elixir-1.18.5-release.json",
+        "patchReleaseArtifactSha256": "4c11a4f787e4147068a7428374a0cce87420dffa1c6872c9fc8c3233f3c3a93c"
+      },
+      "supersedes": "Earlier not-met rationale requiring other maintained Elixir minors. State remains not-met solely for the actual executed pair-policy mismatch, subject to root adjudication."
+    }
+  },
+  "limits": [
+    "No builds, source changes, tier promotions or mutations to frozen files.",
+    "npm latest-only judgment is untouched.",
+    "This overlay changes Maven nonEol to met and refines Mix not-met rationale; other criteria remain unchanged."
+  ]
+}

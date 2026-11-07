@@ -1,0 +1,244 @@
+{
+  "version": 1,
+  "group": "group-3",
+  "reviewedAt": "2026-11-06",
+  "precedence": "Apply after frozen assessments, sample-bindings corrections, and deriver audit. Only nonEolVersions criterion and resulting explanatory rationale are replaced; no tier promotion or new execution inferred.",
+  "criterionInterpretation": "Actual executed maintained tool/runtime pair suffices; exhaustive maintained-line/channel/patch matrix is not required. Newer patch alone does not imply EOL.",
+  "originalPacketSha256": {
+    "assessments.json": "36edf80d27e43737f136e2d6709014dfe50c9559c094505d3d3cf2d43fa38560",
+    "derivation-evidence.json": "8c4a333a81114dd8a45636fbdb0ee982c608d861a2ffb55cf9981c4c1729390a",
+    "review-receipt.json": "d723a66989a5740e8d42b6e06991ffd876756c8295e46daecaddc2982a563f44",
+    "sample-bindings.json": "a076cad973b583649c9820de74378c7d9e0a5a4ad6bb332727629e32da26ff59",
+    "sample-bindings-receipt.json": "9bb77145952134504139bcfe8c6040bde7ef3753351cc29624d407a1a3bd83e1"
+  },
+  "projects": {
+    "esp-idf-purifier": {
+      "reviewedRevision": "8d883c7d2034035692378529c974a3e38cd6724e",
+      "tier": 3,
+      "criteria": {
+        "nonEolVersions": {
+          "state": "met",
+          "summary": "Met for actually executed ESP-IDF6.1 on native x86_64-linux: the project check constructs ESP32-C3 firmware and validates it with esptool; the host check executes the Linux ELF. Upstream identifies6.1 as current stable (released2026-08-27), with30 months support per major/minor release. This proves a maintained exact tool/host pair. Other maintained ESP-IDF lines are not required for this criterion and are not claimed; physical-board runtime remains unproven.",
+          "derivations": [
+            "esp-idf-purifier:x86_64-linux:project",
+            "esp-idf-purifier:x86_64-linux:host"
+          ],
+          "sources": [
+            "https://docs.espressif.com/projects/esp-idf/en/stable/esp32/versions.html",
+            "https://github.com/espressif/esp-idf/releases/tag/v6.1"
+          ],
+          "evidence": [
+            "/home/chris/Projects/ch-nix-workspace/.worktrees/tier-review/group-3/derivation-evidence.json#esp-idf-purifier:x86_64-linux:project",
+            "/home/chris/Projects/ch-nix-workspace/.worktrees/tier-review/group-3/derivation-evidence.json#esp-idf-purifier:x86_64-linux:host",
+            "https://docs.espressif.com/projects/esp-idf/en/stable/esp32/versions.html",
+            "https://github.com/espressif/esp-idf/releases/tag/v6.1",
+            "/home/chris/Projects/ch-nix-workspace/.worktrees/tier-review/group-3/non-eol-correction-policy-evidence.json"
+          ],
+          "gap": null,
+          "actuallyExecutedSdkVersions": {
+            "esp-idf": "6.1"
+          }
+        }
+      },
+      "rationale": "Tier3 confirmed by actual native Linux sample derivations. Good tests and the explicitly scoped maintained tool/runtime point are demonstrated; native Darwin execution is missing. Broad independent sample corpus and long historical compatibility remain unproven.",
+      "withdrawnRationale": "Other maintained ESP-IDF-line executions were previously required unnecessarily."
+    },
+    "firefox-purifier": {
+      "reviewedRevision": "6c20931cc8b5f251d1b041531227d9c7ad1c7cda",
+      "tier": 3,
+      "criteria": {
+        "nonEolVersions": {
+          "state": "met",
+          "summary": "Met for actually executed regular-channel Firefox159.0 on native x86_64-linux. The successful project derivation runs the locked browser/extension workflow and requires its screenshot artifact. Mozilla released159.0 on2026-10-27 and describes the actively maintained regular channel separately from ESR. This proves one maintained regular-browser/host pair; ESR execution is neither required for this criterion nor claimed.",
+          "derivations": [
+            "firefox-purifier:x86_64-linux:project"
+          ],
+          "sources": [
+            "https://www.firefox.com/en-US/firefox/159.0/releasenotes/",
+            "https://support.mozilla.org/en-US/kb/choosing-firefox-update-channel"
+          ],
+          "evidence": [
+            "/home/chris/Projects/ch-nix-workspace/.worktrees/tier-review/group-3/derivation-evidence.json#firefox-purifier:x86_64-linux:project",
+            "https://www.firefox.com/en-US/firefox/159.0/releasenotes/",
+            "https://support.mozilla.org/en-US/kb/choosing-firefox-update-channel",
+            "/home/chris/Projects/ch-nix-workspace/.worktrees/tier-review/group-3/non-eol-correction-policy-evidence.json"
+          ],
+          "gap": null,
+          "actuallyExecutedSdkVersions": {
+            "firefox": "159.0"
+          }
+        }
+      },
+      "rationale": "Tier3 confirmed by actual native Linux sample derivations. Good tests and the explicitly scoped maintained tool/runtime point are demonstrated; native Darwin execution is missing. Broad independent sample corpus and long historical compatibility remain unproven.",
+      "withdrawnRationale": "ESR coverage was previously required unnecessarily for a demonstrated maintained regular-channel point."
+    },
+    "gimp-purifier": {
+      "reviewedRevision": "f5092be456722a67bbe5adc5025d49aebdfdf845",
+      "tier": 3,
+      "criteria": {
+        "nonEolVersions": {
+          "state": "met",
+          "summary": "Met for actually executed GIMP3.2.6 on native x86_64-linux. Its successful project derivation invokes the locked GIMP executable to produce the checked image.ppm. Upstream identifies3.2 as the current stable branch and documents active backports in the3.2.6 release. The later3.2.8 patch does not by itself make the tested3.2.6 point EOL. This claims only the tested maintained3.2-line tool/host point; execution of3.2.8 or every patch is not claimed.",
+          "derivations": [
+            "gimp-purifier:x86_64-linux:project"
+          ],
+          "sources": [
+            "https://www.gimp.org/release-notes/",
+            "https://www.gimp.org/news/2026/09/10/gimp-3-2-6-released/",
+            "https://www.gimp.org/downloads/"
+          ],
+          "evidence": [
+            "/home/chris/Projects/ch-nix-workspace/.worktrees/tier-review/group-3/derivation-evidence.json#gimp-purifier:x86_64-linux:project",
+            "https://www.gimp.org/release-notes/",
+            "https://www.gimp.org/news/2026/09/10/gimp-3-2-6-released/",
+            "https://www.gimp.org/downloads/",
+            "/home/chris/Projects/ch-nix-workspace/.worktrees/tier-review/group-3/non-eol-correction-policy-evidence.json"
+          ],
+          "gap": null,
+          "actuallyExecutedSdkVersions": {
+            "gimp": "3.2.6"
+          }
+        }
+      },
+      "rationale": "Tier3 confirmed by actual native Linux sample derivations. Good tests and the explicitly scoped maintained tool/runtime point are demonstrated; native Darwin execution is missing. Broad independent sample corpus and long historical compatibility remain unproven.",
+      "withdrawnRationale": "Missing execution of newer3.2.8 patch was previously treated as sufficient to fail the maintained-line criterion; this was too strict."
+    },
+    "docker-purifier": {
+      "reviewedRevision": "58d2913eabcb0c31409a49f0ed8d91008fd32bdf",
+      "tier": 3,
+      "criteria": {
+        "nonEolVersions": {
+          "state": "met",
+          "summary": "Met only for the actually executed Dockerfile-build backend Buildah1.46.0 inside the native x86_64-linux VM. The successful image derivation executes the locked Dockerfile including RUN instructions and exports OCI; upstream marks Buildah1.46.0 (released2026-10-21) as latest. This is a maintained backend/host point. It does not establish DockerEngine29.9.2 or any daemon runtime: that value was package evaluation only, and the offline check only validates OCI layout/blob digests.",
+          "derivations": [
+            "docker-purifier:x86_64-linux:image"
+          ],
+          "sources": [
+            "https://github.com/podman-container-tools/buildah/releases/tag/v1.46.0"
+          ],
+          "evidence": [
+            "/home/chris/Projects/ch-nix-workspace/.worktrees/tier-review/group-3/derivation-evidence.json#docker-purifier:x86_64-linux:image",
+            "https://github.com/podman-container-tools/buildah/releases/tag/v1.46.0",
+            "/home/chris/Projects/ch-nix-workspace/.worktrees/tier-review/group-3/non-eol-correction-policy-evidence.json"
+          ],
+          "gap": null,
+          "actuallyExecutedSdkVersions": {
+            "buildah": "1.46.0"
+          }
+        }
+      },
+      "rationale": "Tier3 confirmed by actual native Linux sample derivations. Good tests and the explicitly scoped maintained tool/runtime point are demonstrated; native Darwin execution is missing. Broad independent sample corpus and long historical compatibility remain unproven.",
+      "withdrawnRationale": "Original policy rationale concerned unexecuted DockerEngine29.9.2/29.9.3 instead of the actually executed Buildah backend, whose SDK role was separately approved."
+    },
+    "elm-purifier": {
+      "reviewedRevision": "e79677828b366534448a14cb6e07c0632ea23193",
+      "tier": 3,
+      "criteria": {
+        "nonEolVersions": {
+          "state": "not-met",
+          "summary": "Successful checks execute Elm0.19.1 and0.19.2, including a real0.19.2 list-extra test run in exact-source native CI. Upstream0.19.3 release notes describe the current compiler and an upgrade, but the inspected primary material does not bind maintained support status to the tested earlier compiler points. This is a maintained-status evidence gap for those exact points;0.19.3 existence alone is not an EOL declaration and no exhaustive patch matrix is required. A primary support statement covering a tested point, or execution of the explicitly current release, would resolve it.",
+          "derivations": [
+            "elm-purifier:x86_64-linux:conformance-offline",
+            "elm-purifier:x86_64-linux:elm_0_19_1-version",
+            "elm-purifier:x86_64-linux:real-world-elm-spa-example-tests",
+            "elm-purifier:x86_64-linux:real-world-elm-spa-example",
+            "elm-purifier:x86_64-linux:real-world-list-extra-tests",
+            "elm-purifier:x86_64-linux:real-world-list-extra"
+          ],
+          "sources": [
+            "https://elm-lang.org/news",
+            "https://github.com/elm/compiler/releases",
+            "/home/chris/Projects/ch-nix-workspace/.worktrees/tier-review/group-3/elm-purifier/upstream-latest-release.json"
+          ],
+          "evidence": [
+            "/home/chris/Projects/ch-nix-workspace/.worktrees/tier-review/group-3/derivation-evidence.json#elm-purifier:x86_64-linux:conformance-offline",
+            "/home/chris/Projects/ch-nix-workspace/.worktrees/tier-review/group-3/derivation-evidence.json#elm-purifier:x86_64-linux:elm_0_19_1-version",
+            "/home/chris/Projects/ch-nix-workspace/.worktrees/tier-review/group-3/derivation-evidence.json#elm-purifier:x86_64-linux:real-world-elm-spa-example-tests",
+            "/home/chris/Projects/ch-nix-workspace/.worktrees/tier-review/group-3/derivation-evidence.json#elm-purifier:x86_64-linux:real-world-elm-spa-example",
+            "/home/chris/Projects/ch-nix-workspace/.worktrees/tier-review/group-3/derivation-evidence.json#elm-purifier:x86_64-linux:real-world-list-extra-tests",
+            "/home/chris/Projects/ch-nix-workspace/.worktrees/tier-review/group-3/derivation-evidence.json#elm-purifier:x86_64-linux:real-world-list-extra",
+            "https://elm-lang.org/news",
+            "https://github.com/elm/compiler/releases",
+            "/home/chris/Projects/ch-nix-workspace/.worktrees/tier-review/group-3/elm-purifier/upstream-latest-release.json"
+          ],
+          "gap": "Successful checks execute Elm0.19.1 and0.19.2, including a real0.19.2 list-extra test run in exact-source native CI. Upstream0.19.3 release notes describe the current compiler and an upgrade, but the inspected primary material does not bind maintained support status to the tested earlier compiler points. This is a maintained-status evidence gap for those exact points;0.19.3 existence alone is not an EOL declaration and no exhaustive patch matrix is required. A primary support statement covering a tested point, or execution of the explicitly current release, would resolve it."
+        }
+      },
+      "withdrawnRationale": "No maintained-range/exhaustive matrix or automatic EOL inference from a newer release is used."
+    },
+    "dub-purifier": {
+      "reviewedRevision": "6fae322e73cc8aa1ff7d09a13e6d78ca4023143d",
+      "tier": 3,
+      "criteria": {
+        "nonEolVersions": {
+          "state": "not-met",
+          "summary": "Successful sample checks execute Dub1.42.0 with LDC1.42.0. Upstream release API identifies newer minor1.43.0, but no primary maintenance statement was established for the tested Dub1.42.0 tool/compiler pair. This specific maintained-status binding remains absent; the newer minor does not itself declare1.42.0 EOL, and exhaustive older-version coverage is not required.",
+          "derivations": [
+            "dub-purifier:x86_64-linux:project"
+          ],
+          "sources": [
+            "https://github.com/dlang/dub/releases",
+            "https://dlang.org/changelog/",
+            "/home/chris/Projects/ch-nix-workspace/.worktrees/tier-review/group-3/dub-purifier/upstream-latest-release.json"
+          ],
+          "evidence": [
+            "/home/chris/Projects/ch-nix-workspace/.worktrees/tier-review/group-3/derivation-evidence.json#dub-purifier:x86_64-linux:project",
+            "https://github.com/dlang/dub/releases",
+            "https://dlang.org/changelog/",
+            "/home/chris/Projects/ch-nix-workspace/.worktrees/tier-review/group-3/dub-purifier/upstream-latest-release.json"
+          ],
+          "gap": "Successful sample checks execute Dub1.42.0 with LDC1.42.0. Upstream release API identifies newer minor1.43.0, but no primary maintenance statement was established for the tested Dub1.42.0 tool/compiler pair. This specific maintained-status binding remains absent; the newer minor does not itself declare1.42.0 EOL, and exhaustive older-version coverage is not required."
+        }
+      },
+      "withdrawnRationale": "No maintained-range/exhaustive matrix or automatic EOL inference from a newer release is used."
+    },
+    "elpaca-purifier": {
+      "reviewedRevision": "37489af3b1d7dabf00643d04ff2d075310875790",
+      "tier": 3,
+      "criteria": {
+        "nonEolVersions": {
+          "state": "not-met",
+          "summary": "The real sample executes Emacs31.1 with the locked Elpaca2025-11-06 unstable snapshot plus the date-table patch. Upstream requires Emacs>=27.1 and has a0.2.0 release; the minimum host requirement does not establish that this exact older patched manager snapshot is a currently maintained manager/host pair. The missing fact is maintenance provenance for the executed manager point, not an exhaustive Emacs version matrix. No EOL date is invented.",
+          "derivations": [
+            "elpaca-purifier:x86_64-linux:project"
+          ],
+          "sources": [
+            "https://github.com/progfolio/elpaca",
+            "/home/chris/Projects/ch-nix-workspace/.worktrees/tier-review/group-3/elpaca-purifier/upstream-latest-release.json"
+          ],
+          "evidence": [
+            "/home/chris/Projects/ch-nix-workspace/.worktrees/tier-review/group-3/derivation-evidence.json#elpaca-purifier:x86_64-linux:project",
+            "https://github.com/progfolio/elpaca",
+            "/home/chris/Projects/ch-nix-workspace/.worktrees/tier-review/group-3/elpaca-purifier/upstream-latest-release.json"
+          ],
+          "gap": "The real sample executes Emacs31.1 with the locked Elpaca2025-11-06 unstable snapshot plus the date-table patch. Upstream requires Emacs>=27.1 and has a0.2.0 release; the minimum host requirement does not establish that this exact older patched manager snapshot is a currently maintained manager/host pair. The missing fact is maintenance provenance for the executed manager point, not an exhaustive Emacs version matrix. No EOL date is invented."
+        }
+      },
+      "withdrawnRationale": "No maintained-range/exhaustive matrix or automatic EOL inference from a newer release is used."
+    },
+    "fiji-purifier": {
+      "reviewedRevision": "ed546b5a94043d02e068c241503b8c5f9440cfca",
+      "tier": 3,
+      "criteria": {
+        "nonEolVersions": {
+          "state": "not-met",
+          "summary": "The real sample executes Fiji20250514-1117. Upstream publishes rolling latest/stable images and datestamped/life-line archives, but the inspected primary material does not designate this exact archived distribution snapshot as a maintained current distribution/runtime pair. Maintenance status for the executed snapshot is the specific missing binding; no EOL date or exhaustive image-version matrix is inferred.",
+          "derivations": [
+            "fiji-purifier:x86_64-linux:project"
+          ],
+          "sources": [
+            "https://imagej.net/software/fiji/downloads",
+            "https://downloads.imagej.net/fiji/archive/latest/"
+          ],
+          "evidence": [
+            "/home/chris/Projects/ch-nix-workspace/.worktrees/tier-review/group-3/derivation-evidence.json#fiji-purifier:x86_64-linux:project",
+            "https://imagej.net/software/fiji/downloads",
+            "https://downloads.imagej.net/fiji/archive/latest/"
+          ],
+          "gap": "The real sample executes Fiji20250514-1117. Upstream publishes rolling latest/stable images and datestamped/life-line archives, but the inspected primary material does not designate this exact archived distribution snapshot as a maintained current distribution/runtime pair. Maintenance status for the executed snapshot is the specific missing binding; no EOL date or exhaustive image-version matrix is inferred."
+        }
+      },
+      "withdrawnRationale": "No maintained-range/exhaustive matrix or automatic EOL inference from a newer release is used."
+    }
+  }
+}
