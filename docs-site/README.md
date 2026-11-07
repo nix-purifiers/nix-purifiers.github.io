@@ -278,6 +278,12 @@ Run `python3 docs-site/export.py` after editing the registry. Export validation
 rejects missing bindings, changed evidence, mismatched platforms, and catalog
 points that differ from the registry. Review the generated catalog diff.
 
+For an explicit Nix scope selection, use `kind: "nix-scope"` and list the actual
+attribute names in `inputs`. The renderer labels these as **Nix scope
+configuration**; it does not interpret them as project files, environment
+variables or command options. Keep the immutable API evidence and tested tuple
+separate from packaged defaults, compiler target flags and inferred ranges.
+
 ```sh
 python3 tools/audit-compatibility-evidence.py
 python3 tools/audit-compatibility-evidence.py --fetch --verify-ci \

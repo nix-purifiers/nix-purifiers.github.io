@@ -11,6 +11,15 @@ from compatibility_evidence import inputs, input_digest, validate_registry, audi
 
 
 class Evidence(unittest.TestCase):
+    def test_ant_export_requires_the_canonical_registry_binding(self):
+        root = Path(__file__).resolve().parent.parent
+        registry = json.loads((root/'model/compatibility-tests.json').read_text())
+        catalog = json.loads((root/'docs-site/catalog.json').read_text())['catalog']
+        validate_registry(registry, catalog)
+        catalog['ant-purifier']['compatibility']['testedPoints'] = []
+        with self.assertRaisesRegex(ValueError, 'ant-purifier: catalog tested points differ'):
+            validate_registry(registry, catalog)
+
     def setUp(self):
         self.temporary = tempfile.TemporaryDirectory()
         self.addCleanup(self.temporary.cleanup)

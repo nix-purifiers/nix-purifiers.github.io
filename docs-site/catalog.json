@@ -1926,15 +1926,180 @@
         "limitations": [
           {
             "evidence": [
-              "https://github.com/nix-purifiers/ant-purifier/blob/74c81970fadede82c6c5f80ff5b6392d40220e59/nix/plugin.nix"
+              "https://github.com/nix-purifiers/ant-purifier/blob/4db074129b0dd2ac49fae0988804e1a327a48cfa/nix/plugin.nix",
+              "https://github.com/nix-purifiers/ant-purifier/blob/4db074129b0dd2ac49fae0988804e1a327a48cfa/nix/legacy-basic/plugin.nix",
+              "https://github.com/nix-purifiers/ant-purifier/blob/4db074129b0dd2ac49fae0988804e1a327a48cfa/flake.nix"
             ],
-            "sourceRevision": "74c81970fadede82c6c5f80ff5b6392d40220e59",
-            "text": "The bundled Ant plugin is compiled for Java 11 bytecode; the JVM loading it must support that bytecode level. The packaged JVM is listed separately."
+            "sourceRevision": "4db074129b0dd2ac49fae0988804e1a327a48cfa",
+            "text": "The default modern-v1 plugin is compiled with --release 11 (Java 11 bytecode/API target); the JVM loading it must support that class format. This target does not establish a Java 11 lifecycle point. The opt-in legacy-basic-v1 profile uses a separate Java 6-targeted collector; executed combinations are recorded separately."
+          },
+          {
+            "evidence": [
+              "https://github.com/nix-purifiers/ant-purifier/blob/4db074129b0dd2ac49fae0988804e1a327a48cfa/nix/legacy-basic/sdk.nix",
+              "https://github.com/nix-purifiers/ant-purifier/blob/4db074129b0dd2ac49fae0988804e1a327a48cfa/nix/legacy-basic/runtime.nix",
+              "https://github.com/nix-purifiers/ant-purifier/blob/4db074129b0dd2ac49fae0988804e1a327a48cfa/nix/legacy-basic/read-lock.nix",
+              "https://github.com/nix-purifiers/ant-purifier/blob/4db074129b0dd2ac49fae0988804e1a327a48cfa/README.md"
+            ],
+            "sourceRevision": "4db074129b0dd2ac49fae0988804e1a327a48cfa",
+            "text": "legacy-basic-v1 is an explicit x86_64-linux Nix scope with a mandatory live legacyJvmAdapter and actual Ant/Ivy packages. The SDK and manager must have the published output/home/executable/runtime-home identities; version strings never choose replacement SDK inputs. The recorded tested tuple is separate from packaged defaults and bytecode targets."
+          },
+          {
+            "evidence": [
+              "https://github.com/nix-purifiers/ant-purifier/blob/4db074129b0dd2ac49fae0988804e1a327a48cfa/nix/legacy-basic/build-project.nix",
+              "https://github.com/nix-purifiers/ant-purifier/blob/4db074129b0dd2ac49fae0988804e1a327a48cfa/java-legacy/org/nixpurifiers/ant/legacy/Guard.java",
+              "https://github.com/nix-purifiers/ant-purifier/blob/4db074129b0dd2ac49fae0988804e1a327a48cfa/README.md"
+            ],
+            "sourceRevision": "4db074129b0dd2ac49fae0988804e1a327a48cfa",
+            "text": "The legacy profile exposes dependencies and a source/class tree. Its archive is not native artifact publication fidelity. Packaging/publication tasks, task containers, nested Ant, Javadoc/JUnit tasks, project composition and projections are unsupported. Arbitrary custom-task introspection, additional versions, ARM support and version ranges are not established."
           }
         ],
-        "projectSelections": [],
+        "projectSelections": [
+          {
+            "description": "Select legacy-basic-v1 explicitly and supply the actual Ant package in the Nix scope; this opt-in profile is restricted to x86_64-linux.",
+            "evidence": [
+              "https://github.com/nix-purifiers/ant-purifier/blob/4db074129b0dd2ac49fae0988804e1a327a48cfa/flake.nix",
+              "https://github.com/nix-purifiers/ant-purifier/blob/4db074129b0dd2ac49fae0988804e1a327a48cfa/nix/legacy-basic/sdk.nix",
+              "https://github.com/nix-purifiers/ant-purifier/blob/4db074129b0dd2ac49fae0988804e1a327a48cfa/README.md"
+            ],
+            "inputs": [
+              "nativeProfile",
+              "ant"
+            ],
+            "kind": "nix-scope",
+            "name": "Apache Ant",
+            "role": "native-tool",
+            "sourceRevision": "4db074129b0dd2ac49fae0988804e1a327a48cfa"
+          },
+          {
+            "description": "For legacy-basic-v1, supply the actual Ivy package in the same Nix scope; its native API and origin belong to the recorded tuple.",
+            "evidence": [
+              "https://github.com/nix-purifiers/ant-purifier/blob/4db074129b0dd2ac49fae0988804e1a327a48cfa/flake.nix",
+              "https://github.com/nix-purifiers/ant-purifier/blob/4db074129b0dd2ac49fae0988804e1a327a48cfa/nix/legacy-basic/sdk.nix",
+              "https://github.com/nix-purifiers/ant-purifier/blob/4db074129b0dd2ac49fae0988804e1a327a48cfa/README.md"
+            ],
+            "inputs": [
+              "apacheIvy"
+            ],
+            "kind": "nix-scope",
+            "name": "Apache Ivy",
+            "role": "native-tool",
+            "sourceRevision": "4db074129b0dd2ac49fae0988804e1a327a48cfa"
+          },
+          {
+            "description": "For legacy-basic-v1, supply a live SDK adapter with explicit manager executable and runtime home. Nix contexts retain the actual SDK inputs.",
+            "evidence": [
+              "https://github.com/nix-purifiers/ant-purifier/blob/4db074129b0dd2ac49fae0988804e1a327a48cfa/flake.nix",
+              "https://github.com/nix-purifiers/ant-purifier/blob/4db074129b0dd2ac49fae0988804e1a327a48cfa/nix/legacy-basic/sdk.nix",
+              "https://github.com/nix-purifiers/ant-purifier/blob/4db074129b0dd2ac49fae0988804e1a327a48cfa/README.md"
+            ],
+            "inputs": [
+              "legacyJvmAdapter"
+            ],
+            "kind": "nix-scope",
+            "name": "JDK",
+            "role": "native-tool-runtime",
+            "sourceRevision": "4db074129b0dd2ac49fae0988804e1a327a48cfa"
+          },
+          {
+            "description": "For legacy-basic-v1, compilation must use the SDK home/compiler bound by the live adapter. It is a Nix value rather than a version string or serialized store path.",
+            "evidence": [
+              "https://github.com/nix-purifiers/ant-purifier/blob/4db074129b0dd2ac49fae0988804e1a327a48cfa/flake.nix",
+              "https://github.com/nix-purifiers/ant-purifier/blob/4db074129b0dd2ac49fae0988804e1a327a48cfa/nix/legacy-basic/sdk.nix",
+              "https://github.com/nix-purifiers/ant-purifier/blob/4db074129b0dd2ac49fae0988804e1a327a48cfa/README.md"
+            ],
+            "inputs": [
+              "legacyJvmAdapter"
+            ],
+            "kind": "nix-scope",
+            "name": "JDK",
+            "role": "compiler",
+            "sourceRevision": "4db074129b0dd2ac49fae0988804e1a327a48cfa"
+          },
+          {
+            "description": "Forked Java tasks in legacy-basic-v1 must use the adapter\u2019s declared manager executable or runtime-home Java executable. The recorded tuple uses the same SDK for every role; independent runtime SDKs have no recorded point.",
+            "evidence": [
+              "https://github.com/nix-purifiers/ant-purifier/blob/4db074129b0dd2ac49fae0988804e1a327a48cfa/flake.nix",
+              "https://github.com/nix-purifiers/ant-purifier/blob/4db074129b0dd2ac49fae0988804e1a327a48cfa/nix/legacy-basic/sdk.nix",
+              "https://github.com/nix-purifiers/ant-purifier/blob/4db074129b0dd2ac49fae0988804e1a327a48cfa/README.md"
+            ],
+            "inputs": [
+              "legacyJvmAdapter"
+            ],
+            "kind": "nix-scope",
+            "name": "JDK",
+            "role": "project-runtime",
+            "sourceRevision": "4db074129b0dd2ac49fae0988804e1a327a48cfa"
+          }
+        ],
         "supportedRanges": [],
-        "testedPoints": []
+        "testedPoints": [
+          {
+            "components": [
+              {
+                "name": "Apache Ant",
+                "role": "native-tool",
+                "version": "1.5.4"
+              },
+              {
+                "name": "Apache Ivy",
+                "role": "native-tool",
+                "version": "2.4.0"
+              },
+              {
+                "name": "Azul Zulu JDK",
+                "role": "native-tool-runtime",
+                "version": "6.0.119"
+              },
+              {
+                "name": "Azul Zulu JDK",
+                "role": "compiler",
+                "version": "6.0.119"
+              },
+              {
+                "name": "Azul Zulu JDK",
+                "role": "project-runtime",
+                "version": "6.0.119"
+              }
+            ],
+            "evidence": [
+              "https://github.com/nix-purifiers/ant-purifier/actions/runs/42311014691/job/128212174958",
+              "https://github.com/nix-purifiers/ant-purifier/actions/runs/42311014691/artifacts/13548442350",
+              "https://github.com/nix-purifiers/ant-purifier/blob/4db074129b0dd2ac49fae0988804e1a327a48cfa/tests/legacy-basic/check.py",
+              "https://github.com/nix-purifiers/ant-purifier/blob/4db074129b0dd2ac49fae0988804e1a327a48cfa/tests/legacy-basic/lifecycle.py",
+              "https://github.com/nix-purifiers/ant-purifier/blob/4db074129b0dd2ac49fae0988804e1a327a48cfa/tests/legacy-basic/negative.py",
+              "https://github.com/nix-purifiers/ant-purifier/blob/4db074129b0dd2ac49fae0988804e1a327a48cfa/tests/legacy-basic/roles.py",
+              "https://github.com/nix-purifiers/ant-purifier/blob/4db074129b0dd2ac49fae0988804e1a327a48cfa/tests/legacy-basic/containers.py",
+              "https://github.com/nix-purifiers/ant-purifier/blob/4db074129b0dd2ac49fae0988804e1a327a48cfa/tests/legacy-basic/update.py",
+              "https://github.com/nix-purifiers/ant-purifier/blob/4db074129b0dd2ac49fae0988804e1a327a48cfa/tests/legacy-basic/unlocked.py",
+              "https://github.com/nix-purifiers/ant-purifier/blob/4db074129b0dd2ac49fae0988804e1a327a48cfa/tests/legacy-basic/toolchains.nix",
+              "https://github.com/nix-purifiers/ant-purifier/blob/4db074129b0dd2ac49fae0988804e1a327a48cfa/README.md"
+            ],
+            "id": "ant-1.5.4-ivy2.4.0-java6-source-owned-sdk-cold-x86_64-linux",
+            "notes": [
+              "Released in v0.1.4 with the explicit legacy-basic-v1 Nix scope: Ant 1.5.4, Ivy 2.4.0 and Azul Zulu JDK 6.0.119 (observed java.version 1.6.0-119) on x86_64-linux. The same declared SDK runs the native tool, compiler and asserting Java execution.",
+              "The caller supplies a live published JVM SDK adapter and actual Ant/Ivy packages. Output, home, executable and runtime-home Nix contexts are retained; serialized lock paths never select or reconstruct an SDK. Actual native process, runtime home and Ant/Ivy/collector JAR origins are checked.",
+              "Independent native controls resolve a nonempty direct/transitive graph, select shared 2.0 and evict transitive shared 1.0 with its middle caller edge. Actual collector relock and relocation preserve all three lock files byte for byte. Original project sources remain unchanged.",
+              "After prefetch, the origin is stopped and a fresh native build/test runs in an OS network namespace. Retrieved dependency bytes and compiled Main.class bytes match the independent native control; class-file major is 50. Assertions run through a Java task, not a JUnit task. No whole-JAR/POM or published-byte parity claim.",
+              "Immutable-source pure evaluation with import-from-derivation disabled, source/class-tree build and deterministic source/class-tree archive rebuild pass. The release is a source/class-tree archive, not native artifact publication fidelity. Packaging/publication, task containers, nested Ant, Javadoc/JUnit tasks, project composition and projections are outside this profile.",
+              "Controls cover same-version foreign manager/compiler/runtime rejection before the relevant role actions, same-bytes foreign JAR origins, direct packaging and Sequential/Parallel rejection before earlier target actions, native Ivy warm/fresh cache behavior, sticky pins, named updates and changed-artifact rejection without lock writes. Arbitrary custom-task introspection is not established.",
+              "Ordinary unlocked ant warns and executes the selected native tool with original arguments/environment. Explicit prefetch and partial/malformed locks remain errors. These controls establish no additional toolchain tuple, Ant 1.2/Ivy 2.4 compatibility, ARM support or version range."
+            ],
+            "operations": [
+              "native-lock",
+              "lock-reproducibility",
+              "relocated-cold-relock",
+              "native-prefetch",
+              "native-offline-build",
+              "network-isolated-native-build",
+              "project-build-scripts",
+              "project-test-scripts",
+              "pure-build",
+              "source-preservation"
+            ],
+            "sourceRevision": "4db074129b0dd2ac49fae0988804e1a327a48cfa",
+            "system": "x86_64-linux"
+          }
+        ]
       },
       "facts": {
         "build_engine": {
