@@ -59,11 +59,11 @@ let
       quality.sampleBuilds = lib.mkForce [];
     }));
     tierCriteriaRequireEvidence = !force (withOverride ({ lib, ... }: {
-      quality.criteria.linux.evidence = lib.mkForce [];
+      quality.derivationReview.criteria.linux.derivations = lib.mkForce [];
     }));
     tierFourRequiresEvaluation = !force (withOverride ({ lib, ... }: {
       quality.tier = lib.mkForce 4;
-      quality.criteria.evaluation.state = lib.mkForce "unreviewed";
+      quality.criteria.evaluation.state = lib.mkForce "not-met";
     }));
     packagedVersionNeedsPlatformScope = !force (withOverride {
       compatibility.defaults = [ (packagedDefault // { systems = []; }) ];

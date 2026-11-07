@@ -1,0 +1,2849 @@
+{
+  "version": 1,
+  "reviewedAt": "2026-11-06",
+  "idConvention": "Local IDs are exact existing keys under derivation-evidence.json projects[project].derivations; qualified IDs are project/localId.",
+  "scope": "Mapping supplement preserves judgments except reviewed Zef support-retention and Zig current-compiler sample corrections. Predicted/evaluated outputs remain separate from observed printed outputs and local registered NARs.",
+  "projects": {
+    "tectonic-purifier": {
+      "criterionToExistingDerivationIds": {
+        "evaluation": [
+          "cli",
+          "environment",
+          "project",
+          "release",
+          "resources"
+        ],
+        "goodTests": [
+          "project",
+          "environment",
+          "resources",
+          "release"
+        ],
+        "linux": [
+          "project",
+          "environment",
+          "resources",
+          "release"
+        ],
+        "darwin": [],
+        "oneVersion": [
+          "project",
+          "environment",
+          "resources",
+          "release"
+        ],
+        "nonEolVersions": [
+          "project",
+          "environment",
+          "resources",
+          "release"
+        ],
+        "manySamples": [
+          "project",
+          "environment",
+          "resources",
+          "release"
+        ],
+        "longCompatibility": [
+          "project",
+          "environment",
+          "resources",
+          "release"
+        ]
+      },
+      "sampleBuildMappings": [
+        {
+          "sampleBuildIndex": 0,
+          "name": "examples/minimal: authored LaTeX document",
+          "classification": "authored-fixture",
+          "supportingExistingDerivationIds": [
+            "project",
+            "environment"
+          ],
+          "source": {
+            "repository": "https://github.com/nix-purifiers/tectonic-purifier",
+            "revision": "a19d92cd13a519b4acdde2d82e8506fb1187894f",
+            "path": "examples/minimal",
+            "storePath": "/nix/store/0qd47agnraig3xbmaq20x4vv8w1rvhnc-source",
+            "sourceNarHash": "sha256-KBJadSe3TL8IzuNX+m+GuqwU0pbUrRSsDGKRUNQSx9g=",
+            "narHashScope": "Exact builder-consumed source tree (may be filtered/project subtree); not automatically the whole Git repository NAR.",
+            "nixPathInfoReceipt": "evidence/sample-source-info.json"
+          },
+          "purifierSource": {
+            "repository": "https://github.com/nix-purifiers/tectonic-purifier",
+            "revision": "a19d92cd13a519b4acdde2d82e8506fb1187894f",
+            "sourceNarHash": "sha256-/QsdNfuYy/xWwVnj6MtanorvE8BJClH0qBawXqB1wb0="
+          },
+          "executedSdkVersions": {
+            "tectonic": "0.17.0",
+            "tectonic-unwrapped": "0.17.0"
+          },
+          "actualExecution": "tectonic -X build --only-cached; extracted PDF text must equal 42",
+          "actualDerivationPhases": [
+            {
+              "drvPath": "/nix/store/3s4vykib44wd8i0xifpdaizlz4pdxj31-tectonic-project.drv",
+              "derivationFileSha256": "8025014b91aa949974c35b7d32243afd479434750e27f4f959122527a26107bf",
+              "nativeBuildEvents": [
+                {
+                  "line": 1746,
+                  "text": "2026-11-06T03:18:48.7157159Z building '/nix/store/3s4vykib44wd8i0xifpdaizlz4pdxj31-tectonic-project.drv'..."
+                },
+                {
+                  "line": 1824,
+                  "text": "2026-11-06T03:19:15.2410385Z checking outputs of '/nix/store/3s4vykib44wd8i0xifpdaizlz4pdxj31-tectonic-project.drv'..."
+                }
+              ],
+              "commands": {
+                "buildCommand": "cp -pr /nix/store/0qd47agnraig3xbmaq20x4vv8w1rvhnc-source source\nchmod -R u+w source\ncd source\nexport SOURCE_DATE_EPOCH=1 TECTONIC_CACHE_DIR=\"$TMPDIR/cache\" TECTONIC_PURIFIER_BUNDLE=/nix/store/slwimaigh3mihvcica59hxh6sw6w0ckg-tectonic-locked-resources/bundle\nmkdir -p \"$TECTONIC_CACHE_DIR/formats\" \"$out\"\nfor file in /nix/store/608p1bb43ha2v93wggwzkbgq2j2cgwsa-tectonic-native-formats/*; do ln -s \"$file\" \"$TECTONIC_CACHE_DIR/formats/\"; done\n/nix/store/xahxrjs30p3mw0a42bqg9ikgkikskw8m-python3-3.14.8/bin/python3 /nix/store/rbxj28zab8ycbcjsa7jb62ybvq01z7ck-fonts.py /nix/store/slwimaigh3mihvcica59hxh6sw6w0ckg-tectonic-locked-resources/bundle \"$TMPDIR/font-cache\" \"$TMPDIR/fonts.conf\"\nexport FONTCONFIG_FILE=\"$TMPDIR/fonts.conf\"\nunset FONTCONFIG_PATH FONTCONFIG_SYSROOT\ntectonic -X build --only-cached\ncp -pr build/. \"$out/\"\n\npdftotext \"$out/default/default.pdf\" text; test \"$(head -n 1 text)\" = 42\nmkdir -p \"$out/source\"\ncp -pr /nix/store/0qd47agnraig3xbmaq20x4vv8w1rvhnc-source/. \"$out/source/\"\n"
+              },
+              "executableSearchPathInputs": {
+                "nativeBuildInputs": "/nix/store/mp74bxfvg50bsf6a9mwlxmhxvv6cym9y-tectonic-wrapped-0.17.0 /nix/store/pci0jbvvnsdh1vqjb4p1d3n2a9xpnl59-poppler-utils-26.10.0-dev"
+              },
+              "directSdkDerivationReferences": [
+                "/nix/store/dp8jj8azbv2dihrq4dshsn6rpjaf2m8v-tectonic-wrapped-0.17.0.drv",
+                "/nix/store/w1svn0lba9gv480i37z2q97yi4155mlr-python3-3.14.8.drv"
+              ],
+              "commandsOrigin": "Actual instantiated derivation env; match native build event via packet CI log, not closure-only version inference."
+            },
+            {
+              "drvPath": "/nix/store/jml00lz1hv0cn0i3d3kbzz09v93x10c8-tectonic-locked-environment.drv",
+              "derivationFileSha256": "2fff764d7594690d5978b3f16f5881729a579ff59f42299ac7394f7fcfe662f3",
+              "nativeBuildEvents": [
+                {
+                  "line": 1748,
+                  "text": "2026-11-06T03:18:48.7403142Z building '/nix/store/jml00lz1hv0cn0i3d3kbzz09v93x10c8-tectonic-locked-environment.drv'..."
+                },
+                {
+                  "line": 1822,
+                  "text": "2026-11-06T03:19:15.2061532Z checking outputs of '/nix/store/jml00lz1hv0cn0i3d3kbzz09v93x10c8-tectonic-locked-environment.drv'..."
+                }
+              ],
+              "commands": {
+                "buildCommand": "mkdir -p \"$out\"\nln -s /nix/store/sv14s2z1w8nwf8hbw8822h66s6j5hhcv-tectonic-environment.json \"$out/manifest.json\"\n"
+              },
+              "executableSearchPathInputs": {},
+              "directSdkDerivationReferences": [],
+              "commandsOrigin": "Actual instantiated derivation env; match native build event via packet CI log, not closure-only version inference."
+            }
+          ],
+          "sdkDependencyWitnesses": [
+            {
+              "check": "project",
+              "parentDerivation": "/nix/store/3s4vykib44wd8i0xifpdaizlz4pdxj31-tectonic-project.drv",
+              "sdkDerivation": "/nix/store/dp8jj8azbv2dihrq4dshsn6rpjaf2m8v-tectonic-wrapped-0.17.0.drv",
+              "sdkDerivationSha256": "b071586cc204e1e8053a829f8f8c7a58119dfaf39eb8e25b0b1c957870de0701",
+              "dependencyDepth": 1
+            },
+            {
+              "check": "project",
+              "parentDerivation": "/nix/store/njh36xmdw8m2c6ha7ybghkj484b8nj69-tectonic-native-formats.drv",
+              "sdkDerivation": "/nix/store/dp8jj8azbv2dihrq4dshsn6rpjaf2m8v-tectonic-wrapped-0.17.0.drv",
+              "sdkDerivationSha256": "b071586cc204e1e8053a829f8f8c7a58119dfaf39eb8e25b0b1c957870de0701",
+              "dependencyDepth": 2
+            },
+            {
+              "check": "project",
+              "parentDerivation": "/nix/store/qqi922yvcmrh2yv1mf5f5i5klvgrw2sh-tectonic-native-index.drv",
+              "sdkDerivation": "/nix/store/8g3klw48zky4mn2i0bd4l5n18j50x34n-tectonic-wrapped-0.17.0.drv",
+              "sdkDerivationSha256": "c73776a9bbc2f2fcca7bd3808e6ed56fb219464d13956b5dda932e65b517b137",
+              "dependencyDepth": 3
+            },
+            {
+              "check": "project",
+              "parentDerivation": "/nix/store/yzzfhvifmck32ks7fr0ssd1mc49sry6n-tectonic-native-working-set.zip.drv",
+              "sdkDerivation": "/nix/store/8g3klw48zky4mn2i0bd4l5n18j50x34n-tectonic-wrapped-0.17.0.drv",
+              "sdkDerivationSha256": "c73776a9bbc2f2fcca7bd3808e6ed56fb219464d13956b5dda932e65b517b137",
+              "dependencyDepth": 4
+            },
+            {
+              "check": "environment",
+              "parentDerivation": "/nix/store/njh36xmdw8m2c6ha7ybghkj484b8nj69-tectonic-native-formats.drv",
+              "sdkDerivation": "/nix/store/dp8jj8azbv2dihrq4dshsn6rpjaf2m8v-tectonic-wrapped-0.17.0.drv",
+              "sdkDerivationSha256": "b071586cc204e1e8053a829f8f8c7a58119dfaf39eb8e25b0b1c957870de0701",
+              "dependencyDepth": 3
+            },
+            {
+              "check": "environment",
+              "parentDerivation": "/nix/store/qqi922yvcmrh2yv1mf5f5i5klvgrw2sh-tectonic-native-index.drv",
+              "sdkDerivation": "/nix/store/8g3klw48zky4mn2i0bd4l5n18j50x34n-tectonic-wrapped-0.17.0.drv",
+              "sdkDerivationSha256": "c73776a9bbc2f2fcca7bd3808e6ed56fb219464d13956b5dda932e65b517b137",
+              "dependencyDepth": 4
+            }
+          ],
+          "runtimeEvidence": {
+            "status": "success",
+            "executedSystem": "x86_64-linux",
+            "sourceRevision": "a19d92cd13a519b4acdde2d82e8506fb1187894f",
+            "sourceNarHash": "sha256-/QsdNfuYy/xWwVnj6MtanorvE8BJClH0qBawXqB1wb0=",
+            "drvPath": "/nix/store/3s4vykib44wd8i0xifpdaizlz4pdxj31-tectonic-project.drv",
+            "outputs": {
+              "out": "/nix/store/krb3vkvsf8yblksgw37g94f4vyhsi3xq-tectonic-project"
+            },
+            "receipt": "evidence/tectonic-purifier/main-job-127687501095.log",
+            "artifactSha256": "00e5c16d660aae4d81837a2476b432b3917f671464ae1bc2069772dbf82752d5",
+            "jobUrl": "https://github.com/nix-purifiers/tectonic-purifier/actions/runs/42155174675/job/127687501095",
+            "jobConclusion": "success",
+            "events": [
+              {
+                "line": 1746,
+                "text": "2026-11-06T03:18:48.7157159Z building '/nix/store/3s4vykib44wd8i0xifpdaizlz4pdxj31-tectonic-project.drv'..."
+              },
+              {
+                "line": 1824,
+                "text": "2026-11-06T03:19:15.2410385Z checking outputs of '/nix/store/3s4vykib44wd8i0xifpdaizlz4pdxj31-tectonic-project.drv'..."
+              }
+            ],
+            "completedAt": "2026-11-06T03:19:19Z",
+            "outputIdentityBinding": "Local Nix derivation JSON proves drv\u2192output; this exact drv has a native build/rebuild event in the successful immutable-revision CI job."
+          },
+          "outputProvenance": {
+            "ciObserved": "Exact drv building/rebuild event and successful check.",
+            "evaluated": "Named-check output paths independently bound through local instantiated derivation JSON.",
+            "localRealization": "NAR hashes only when actually present in realized-output-info.json; not claimed printed by CI."
+          },
+          "gap": null
+        }
+      ],
+      "judgmentChanges": []
+    },
+    "terraform-purifier": {
+      "criterionToExistingDerivationIds": {
+        "evaluation": [
+          "conformance-external",
+          "conformance-malformed",
+          "conformance-missing",
+          "conformance-stale",
+          "conformance-tampered",
+          "editor",
+          "environment",
+          "offline",
+          "release",
+          "unit"
+        ],
+        "goodTests": [
+          "offline",
+          "conformance-external",
+          "unit",
+          "editor",
+          "release",
+          "conformance-tampered"
+        ],
+        "linux": [
+          "offline",
+          "conformance-external",
+          "unit",
+          "editor",
+          "release",
+          "conformance-tampered"
+        ],
+        "darwin": [],
+        "oneVersion": [
+          "offline",
+          "conformance-external",
+          "unit",
+          "editor",
+          "release",
+          "conformance-tampered"
+        ],
+        "nonEolVersions": [
+          "offline",
+          "conformance-external",
+          "unit",
+          "editor",
+          "release",
+          "conformance-tampered"
+        ],
+        "manySamples": [
+          "offline",
+          "conformance-external",
+          "unit",
+          "editor",
+          "release",
+          "conformance-tampered"
+        ],
+        "longCompatibility": [
+          "offline",
+          "conformance-external",
+          "unit",
+          "editor",
+          "release",
+          "conformance-tampered"
+        ]
+      },
+      "sampleBuildMappings": [
+        {
+          "sampleBuildIndex": 0,
+          "name": "examples/random: authored random-provider Terraform configuration with native tftest",
+          "classification": "authored-fixture",
+          "supportingExistingDerivationIds": [
+            "offline",
+            "environment"
+          ],
+          "source": {
+            "repository": "https://github.com/nix-purifiers/terraform-purifier",
+            "revision": "65924d3be463e7ad3cfe1092707f7e8681c6ffa8",
+            "path": "examples/random",
+            "storePath": "/nix/store/3lrvwp9rn6ddasans5h3dmhs79manzzy-source",
+            "sourceNarHash": "sha256-IxDAhRtVZdn3Kb52iUMd2x2BHKnb4xt4bLviaVl5ijc=",
+            "narHashScope": "Exact builder-consumed source tree (may be filtered/project subtree); not automatically the whole Git repository NAR.",
+            "nixPathInfoReceipt": "evidence/sample-source-info.json"
+          },
+          "purifierSource": {
+            "repository": "https://github.com/nix-purifiers/terraform-purifier",
+            "revision": "65924d3be463e7ad3cfe1092707f7e8681c6ffa8",
+            "sourceNarHash": "sha256-emreMdVH4MgQeClVyz4nPyfg2Ja3d2QLLg5Kp2oYrsk="
+          },
+          "executedSdkVersions": {
+            "terraform": "1.17.0"
+          },
+          "actualExecution": "terraform init/validate in environment; native terraform test in offline check",
+          "actualDerivationPhases": [
+            {
+              "drvPath": "/nix/store/mx2166d40dsmrqs3c7dsxzm79pfzznhm-terraform-project-tests.drv",
+              "derivationFileSha256": "5710ced97cd21e66acdfe55f5b0d6a15ba99a210a4c010dbc615cfd36778a754",
+              "nativeBuildEvents": [
+                {
+                  "line": 1153,
+                  "text": "2026-11-06T03:20:07.0956612Z building '/nix/store/mx2166d40dsmrqs3c7dsxzm79pfzznhm-terraform-project-tests.drv'..."
+                }
+              ],
+              "commands": {
+                "buildCommand": "export HOME=\"$TMPDIR/home\" TF_IN_AUTOMATION=1\nmkdir -p \"$HOME\"\ncp -r /nix/store/7lcshq8429fq9bsidz3gk8pc06v9lmja-terraform-configuration work\nchmod -R u+w work\ncd work\nexport TF_DATA_DIR=\"$PWD/.terraform\" NIX_PURIFIER_NATIVE_LOCKFILE=\"$PWD/.terraform.lock.hcl\"\nterraform test -no-color\ntouch \"$out\"\n"
+              },
+              "executableSearchPathInputs": {
+                "nativeBuildInputs": "/nix/store/3cnl09ivj9g77avxn1phgn4p3jglnxkn-terraform-1.17.0"
+              },
+              "directSdkDerivationReferences": [
+                "/nix/store/m8xi8qmv3n0l09bp4idbwvw7lp5k4fy5-terraform-1.17.0.drv"
+              ],
+              "commandsOrigin": "Actual instantiated derivation env; match native build event via packet CI log, not closure-only version inference."
+            },
+            {
+              "drvPath": "/nix/store/dxcvvrdk1dv41rjgnhrp1fmvbvvf322d-terraform-configuration.drv",
+              "derivationFileSha256": "94a3ab1230187c296349dfb13e087b6f928e8e4ca9cf221af0932a4fdad50444",
+              "nativeBuildEvents": [
+                {
+                  "line": 1138,
+                  "text": "2026-11-06T03:20:06.8704460Z building '/nix/store/dxcvvrdk1dv41rjgnhrp1fmvbvvf322d-terraform-configuration.drv'..."
+                },
+                {
+                  "line": 1182,
+                  "text": "2026-11-06T03:20:08.0761415Z checking outputs of '/nix/store/dxcvvrdk1dv41rjgnhrp1fmvbvvf322d-terraform-configuration.drv'..."
+                }
+              ],
+              "commands": {
+                "buildCommand": "export HOME=\"$TMPDIR/home\" TF_IN_AUTOMATION=1 TF_DATA_DIR=\"$out/.terraform\"\nexport NIX_PURIFIER_NATIVE_LOCKFILE=\"$out/.terraform.lock.hcl\"\nmkdir -p \"$HOME\" \"$out\"\ncp -r /nix/store/3lrvwp9rn6ddasans5h3dmhs79manzzy-source/. \"$out/\"\nchmod -R u+w \"$out\"\ncp /nix/store/n6558iwc6k3afv1vihpgw8r4vw6g0z2h-.terraform.lock.hcl \"$out/.terraform.lock.hcl\"\ncp /nix/store/58hr1i3iayj4q4k5pab21p3xpm20gxyl-terraform-purifier.lock.json \"$out/terraform-purifier.lock.json\"\npython /nix/store/v2ppx3hjygwnsd7fdzdh6syl42ksgrrl-materialize.py \"$out\" /nix/store/58hr1i3iayj4q4k5pab21p3xpm20gxyl-terraform-purifier.lock.json /nix/store/jj8y8xjngq398v6xsra5b1wrdv4vc7pc-terraform-dependencies\nterraform -chdir=\"$out\" init -backend=false -get=false -input=false -lockfile=readonly -no-color -plugin-dir=/nix/store/jj8y8xjngq398v6xsra5b1wrdv4vc7pc-terraform-dependencies/providers\nterraform -chdir=\"$out\" validate -no-color\n"
+              },
+              "executableSearchPathInputs": {
+                "nativeBuildInputs": "/nix/store/3cnl09ivj9g77avxn1phgn4p3jglnxkn-terraform-1.17.0 /nix/store/6yngrq66r6ni6xbfkvk44a10ik2jpw1l-python3-3.14.8-env"
+              },
+              "directSdkDerivationReferences": [
+                "/nix/store/d16aik1nv7n9r2d2s9wnx17z197j5qnq-python3-3.14.8-env.drv",
+                "/nix/store/m8xi8qmv3n0l09bp4idbwvw7lp5k4fy5-terraform-1.17.0.drv"
+              ],
+              "commandsOrigin": "Actual instantiated derivation env; match native build event via packet CI log, not closure-only version inference."
+            }
+          ],
+          "sdkDependencyWitnesses": [
+            {
+              "check": "offline",
+              "parentDerivation": "/nix/store/mx2166d40dsmrqs3c7dsxzm79pfzznhm-terraform-project-tests.drv",
+              "sdkDerivation": "/nix/store/m8xi8qmv3n0l09bp4idbwvw7lp5k4fy5-terraform-1.17.0.drv",
+              "sdkDerivationSha256": "4f6ac267af27a0d47786d5d2f7e59a9c45b284aa07b2fe5c7e898d371074e9e9",
+              "dependencyDepth": 1
+            },
+            {
+              "check": "offline",
+              "parentDerivation": "/nix/store/dxcvvrdk1dv41rjgnhrp1fmvbvvf322d-terraform-configuration.drv",
+              "sdkDerivation": "/nix/store/m8xi8qmv3n0l09bp4idbwvw7lp5k4fy5-terraform-1.17.0.drv",
+              "sdkDerivationSha256": "4f6ac267af27a0d47786d5d2f7e59a9c45b284aa07b2fe5c7e898d371074e9e9",
+              "dependencyDepth": 2
+            },
+            {
+              "check": "offline",
+              "parentDerivation": "/nix/store/m8xi8qmv3n0l09bp4idbwvw7lp5k4fy5-terraform-1.17.0.drv",
+              "sdkDerivation": "/nix/store/14zw7avxjv2735qibczbahk79lg91wkw-terraform-1.17.0-go-modules.drv",
+              "sdkDerivationSha256": "1aa1cb5d4bd33fa5629f9c1c43a39e7e3b1670bf85040522377f639c741c06c1",
+              "dependencyDepth": 2
+            }
+          ],
+          "runtimeEvidence": {
+            "status": "success",
+            "executedSystem": "x86_64-linux",
+            "sourceRevision": "65924d3be463e7ad3cfe1092707f7e8681c6ffa8",
+            "sourceNarHash": "sha256-emreMdVH4MgQeClVyz4nPyfg2Ja3d2QLLg5Kp2oYrsk=",
+            "drvPath": "/nix/store/mx2166d40dsmrqs3c7dsxzm79pfzznhm-terraform-project-tests.drv",
+            "outputs": {
+              "out": "/nix/store/bm4qmjw0a2v3xjxpd7skgpygcy79jyah-terraform-project-tests"
+            },
+            "receipt": "evidence/terraform-purifier/main-job-127687513943.log",
+            "artifactSha256": "5bfeb78a169c8a07f433d230e1627107520e264023e87659d9dddaafe21c15b6",
+            "jobUrl": "https://github.com/nix-purifiers/terraform-purifier/actions/runs/42155178681/job/127687513943",
+            "jobConclusion": "success",
+            "events": [
+              {
+                "line": 1153,
+                "text": "2026-11-06T03:20:07.0956612Z building '/nix/store/mx2166d40dsmrqs3c7dsxzm79pfzznhm-terraform-project-tests.drv'..."
+              }
+            ],
+            "completedAt": "2026-11-06T03:20:10Z",
+            "outputIdentityBinding": "Local Nix derivation JSON proves drv\u2192output; this exact drv has a native build/rebuild event in the successful immutable-revision CI job."
+          },
+          "outputProvenance": {
+            "ciObserved": "Exact drv building/rebuild event and successful check.",
+            "evaluated": "Named-check output paths independently bound through local instantiated derivation JSON.",
+            "localRealization": "NAR hashes only when actually present in realized-output-info.json; not claimed printed by CI."
+          },
+          "gap": null
+        }
+      ],
+      "judgmentChanges": []
+    },
+    "tofu-purifier": {
+      "criterionToExistingDerivationIds": {
+        "evaluation": [
+          "conformance-external",
+          "conformance-malformed",
+          "conformance-missing",
+          "conformance-stale",
+          "conformance-tampered",
+          "editor",
+          "environment",
+          "offline",
+          "release",
+          "unit"
+        ],
+        "goodTests": [
+          "offline",
+          "conformance-external",
+          "unit",
+          "editor",
+          "release",
+          "conformance-tampered"
+        ],
+        "linux": [
+          "offline",
+          "conformance-external",
+          "unit",
+          "editor",
+          "release",
+          "conformance-tampered"
+        ],
+        "darwin": [],
+        "oneVersion": [
+          "offline",
+          "conformance-external",
+          "unit",
+          "editor",
+          "release",
+          "conformance-tampered"
+        ],
+        "nonEolVersions": [
+          "offline",
+          "conformance-external",
+          "unit",
+          "editor",
+          "release",
+          "conformance-tampered"
+        ],
+        "manySamples": [
+          "offline",
+          "conformance-external",
+          "unit",
+          "editor",
+          "release",
+          "conformance-tampered"
+        ],
+        "longCompatibility": [
+          "offline",
+          "conformance-external",
+          "unit",
+          "editor",
+          "release",
+          "conformance-tampered"
+        ]
+      },
+      "sampleBuildMappings": [
+        {
+          "sampleBuildIndex": 0,
+          "name": "examples/random: authored random-provider OpenTofu configuration with native tftest",
+          "classification": "authored-fixture",
+          "supportingExistingDerivationIds": [
+            "offline",
+            "environment"
+          ],
+          "source": {
+            "repository": "https://github.com/nix-purifiers/tofu-purifier",
+            "revision": "4106b6066ccb326ddf4def2721a4d5e9ef920766",
+            "path": "examples/random",
+            "storePath": "/nix/store/pr24p6rgckgx86agw1v4nfiswwjvr20d-source",
+            "sourceNarHash": "sha256-9FMNcjV+qoLvErXkesZWrFPhkkxSprFr0rpqyKyU0Zk=",
+            "narHashScope": "Exact builder-consumed source tree (may be filtered/project subtree); not automatically the whole Git repository NAR.",
+            "nixPathInfoReceipt": "evidence/sample-source-info.json"
+          },
+          "purifierSource": {
+            "repository": "https://github.com/nix-purifiers/tofu-purifier",
+            "revision": "4106b6066ccb326ddf4def2721a4d5e9ef920766",
+            "sourceNarHash": "sha256-3LKotvKsPqSSx5e21T8ngVoy6cnAtPbpEDbVYzjmTGU="
+          },
+          "executedSdkVersions": {
+            "opentofu": "1.13.2"
+          },
+          "actualExecution": "tofu init/validate in environment; native tofu test in offline check",
+          "actualDerivationPhases": [
+            {
+              "drvPath": "/nix/store/62nxnq0grnvqr9rjkr3n4px1z60jhi2b-tofu-project-tests.drv",
+              "derivationFileSha256": "a0ef6714bd817587cbae1c5d59b0e51ff603e85dae42e388abd153abe8f07a37",
+              "nativeBuildEvents": [
+                {
+                  "line": 887,
+                  "text": "2026-11-06T03:18:33.5742928Z building '/nix/store/62nxnq0grnvqr9rjkr3n4px1z60jhi2b-tofu-project-tests.drv'..."
+                }
+              ],
+              "commands": {
+                "buildCommand": "export HOME=\"$TMPDIR/home\" TF_IN_AUTOMATION=1\nmkdir -p \"$HOME\"\ncp -r /nix/store/b9n65hzc9sahlw2vipkl1pgpl7rz2pyx-tofu-configuration work\nchmod -R u+w work\ncd work\nexport TF_DATA_DIR=\"$PWD/.terraform\" NIX_PURIFIER_NATIVE_LOCKFILE=\"$PWD/.terraform.lock.hcl\"\ntofu test -no-color\ntouch \"$out\"\n"
+              },
+              "executableSearchPathInputs": {
+                "nativeBuildInputs": "/nix/store/1wg69mpidc4035mipqz4p6mcpfd7566w-opentofu-1.13.2"
+              },
+              "directSdkDerivationReferences": [
+                "/nix/store/h8p3xikr7jz8w7vmhw2hg9hxqgqscx7y-opentofu-1.13.2.drv"
+              ],
+              "commandsOrigin": "Actual instantiated derivation env; match native build event via packet CI log, not closure-only version inference."
+            },
+            {
+              "drvPath": "/nix/store/xl10xylxqwk5b35l1i1skxlbq12ll4qz-tofu-configuration.drv",
+              "derivationFileSha256": "2165ba5341ec1a9224b81db9d4127b4fbddcdf755e65b5d2d9840dfe7441d370",
+              "nativeBuildEvents": [
+                {
+                  "line": 870,
+                  "text": "2026-11-06T03:18:33.2505515Z building '/nix/store/xl10xylxqwk5b35l1i1skxlbq12ll4qz-tofu-configuration.drv'..."
+                },
+                {
+                  "line": 909,
+                  "text": "2026-11-06T03:18:34.7399427Z checking outputs of '/nix/store/xl10xylxqwk5b35l1i1skxlbq12ll4qz-tofu-configuration.drv'..."
+                }
+              ],
+              "commands": {
+                "buildCommand": "export HOME=\"$TMPDIR/home\" TF_IN_AUTOMATION=1 TF_DATA_DIR=\"$out/.terraform\"\nexport NIX_PURIFIER_NATIVE_LOCKFILE=\"$out/.terraform.lock.hcl\"\nmkdir -p \"$HOME\" \"$out\"\ncp -r /nix/store/pr24p6rgckgx86agw1v4nfiswwjvr20d-source/. \"$out/\"\nchmod -R u+w \"$out\"\ncp /nix/store/ydr2mhw2h6hv2k5ia544pkf7inpj99kg-.terraform.lock.hcl \"$out/.terraform.lock.hcl\"\ncp /nix/store/gn6jdzx2wy0s3fcr32snj1pw9429m627-tofu-purifier.lock.json \"$out/tofu-purifier.lock.json\"\npython /nix/store/v2ppx3hjygwnsd7fdzdh6syl42ksgrrl-materialize.py \"$out\" /nix/store/gn6jdzx2wy0s3fcr32snj1pw9429m627-tofu-purifier.lock.json /nix/store/9jvb6bph04g5y8hczafj4dpz42rj1dq6-tofu-dependencies\ntofu -chdir=\"$out\" init -backend=false -get=false -input=false -lockfile=readonly -no-color -plugin-dir=/nix/store/9jvb6bph04g5y8hczafj4dpz42rj1dq6-tofu-dependencies/providers\ntofu -chdir=\"$out\" validate -no-color\n"
+              },
+              "executableSearchPathInputs": {
+                "nativeBuildInputs": "/nix/store/1wg69mpidc4035mipqz4p6mcpfd7566w-opentofu-1.13.2 /nix/store/6yngrq66r6ni6xbfkvk44a10ik2jpw1l-python3-3.14.8-env"
+              },
+              "directSdkDerivationReferences": [
+                "/nix/store/d16aik1nv7n9r2d2s9wnx17z197j5qnq-python3-3.14.8-env.drv",
+                "/nix/store/h8p3xikr7jz8w7vmhw2hg9hxqgqscx7y-opentofu-1.13.2.drv"
+              ],
+              "commandsOrigin": "Actual instantiated derivation env; match native build event via packet CI log, not closure-only version inference."
+            }
+          ],
+          "sdkDependencyWitnesses": [
+            {
+              "check": "offline",
+              "parentDerivation": "/nix/store/62nxnq0grnvqr9rjkr3n4px1z60jhi2b-tofu-project-tests.drv",
+              "sdkDerivation": "/nix/store/h8p3xikr7jz8w7vmhw2hg9hxqgqscx7y-opentofu-1.13.2.drv",
+              "sdkDerivationSha256": "a68fa024f597ac317c663dbe56544508bb30484a74a167326517758fcb353e37",
+              "dependencyDepth": 1
+            },
+            {
+              "check": "offline",
+              "parentDerivation": "/nix/store/h8p3xikr7jz8w7vmhw2hg9hxqgqscx7y-opentofu-1.13.2.drv",
+              "sdkDerivation": "/nix/store/yd0dg4y699m8zrpklqasnmmkk4g861xa-opentofu-1.13.2-go-modules.drv",
+              "sdkDerivationSha256": "57ebb536c99c55fbd990ea70f85d5ad8749366454d87be104fb6fa7c2ec30b3d",
+              "dependencyDepth": 2
+            },
+            {
+              "check": "offline",
+              "parentDerivation": "/nix/store/xl10xylxqwk5b35l1i1skxlbq12ll4qz-tofu-configuration.drv",
+              "sdkDerivation": "/nix/store/h8p3xikr7jz8w7vmhw2hg9hxqgqscx7y-opentofu-1.13.2.drv",
+              "sdkDerivationSha256": "a68fa024f597ac317c663dbe56544508bb30484a74a167326517758fcb353e37",
+              "dependencyDepth": 2
+            }
+          ],
+          "runtimeEvidence": {
+            "status": "success",
+            "executedSystem": "x86_64-linux",
+            "sourceRevision": "4106b6066ccb326ddf4def2721a4d5e9ef920766",
+            "sourceNarHash": "sha256-3LKotvKsPqSSx5e21T8ngVoy6cnAtPbpEDbVYzjmTGU=",
+            "drvPath": "/nix/store/62nxnq0grnvqr9rjkr3n4px1z60jhi2b-tofu-project-tests.drv",
+            "outputs": {
+              "out": "/nix/store/9ym8lic74cf5avny8gda8qsbc6n6x5ph-tofu-project-tests"
+            },
+            "receipt": "evidence/tofu-purifier/main-job-127687527067.log",
+            "artifactSha256": "dea5d8e098203db2d93ae2d07fe9584064b5f474febe23f8eee50e3dd67c9f54",
+            "jobUrl": "https://github.com/nix-purifiers/tofu-purifier/actions/runs/42155182708/job/127687527067",
+            "jobConclusion": "success",
+            "events": [
+              {
+                "line": 887,
+                "text": "2026-11-06T03:18:33.5742928Z building '/nix/store/62nxnq0grnvqr9rjkr3n4px1z60jhi2b-tofu-project-tests.drv'..."
+              }
+            ],
+            "completedAt": "2026-11-06T03:18:38Z",
+            "outputIdentityBinding": "Local Nix derivation JSON proves drv\u2192output; this exact drv has a native build/rebuild event in the successful immutable-revision CI job."
+          },
+          "outputProvenance": {
+            "ciObserved": "Exact drv building/rebuild event and successful check.",
+            "evaluated": "Named-check output paths independently bound through local instantiated derivation JSON.",
+            "localRealization": "NAR hashes only when actually present in realized-output-info.json; not claimed printed by CI."
+          },
+          "gap": null
+        }
+      ],
+      "judgmentChanges": []
+    },
+    "typst-purifier": {
+      "criterionToExistingDerivationIds": {
+        "evaluation": [
+          "cli",
+          "environment",
+          "project",
+          "release",
+          "resources"
+        ],
+        "goodTests": [
+          "project",
+          "resources",
+          "environment",
+          "release"
+        ],
+        "linux": [
+          "project",
+          "resources",
+          "environment",
+          "release"
+        ],
+        "darwin": [],
+        "oneVersion": [
+          "project",
+          "resources",
+          "environment",
+          "release"
+        ],
+        "nonEolVersions": [
+          "project",
+          "resources",
+          "environment",
+          "release"
+        ],
+        "manySamples": [
+          "project",
+          "resources",
+          "environment",
+          "release"
+        ],
+        "longCompatibility": [
+          "project",
+          "resources",
+          "environment",
+          "release"
+        ]
+      },
+      "sampleBuildMappings": [
+        {
+          "sampleBuildIndex": 0,
+          "name": "examples/minimal: authored Typst document with packages/WASM",
+          "classification": "authored-fixture",
+          "supportingExistingDerivationIds": [
+            "project",
+            "environment"
+          ],
+          "source": {
+            "repository": "https://github.com/nix-purifiers/typst-purifier",
+            "revision": "5a4e265b31b4fd0b9f7f136185aee81c1b0c70d4",
+            "path": "examples/minimal",
+            "storePath": "/nix/store/7mqff5k14ra31k4qjhrspdfb4z181144-source",
+            "sourceNarHash": "sha256-XwyaE4hFV5hlYYNjDn6BJLgSIKsnoyk0Q7ZChUDsFe4=",
+            "narHashScope": "Exact builder-consumed source tree (may be filtered/project subtree); not automatically the whole Git repository NAR.",
+            "nixPathInfoReceipt": "evidence/sample-source-info.json"
+          },
+          "purifierSource": {
+            "repository": "https://github.com/nix-purifiers/typst-purifier",
+            "revision": "5a4e265b31b4fd0b9f7f136185aee81c1b0c70d4",
+            "sourceNarHash": "sha256-Wsn0rSwxifKr4isAgPi1HczdhGBnQ6XFmYl/23BrUUY="
+          },
+          "executedSdkVersions": {
+            "typst": "0.15.1"
+          },
+          "actualExecution": "typst compile main.typ; native typst eval query must yield 42",
+          "actualDerivationPhases": [
+            {
+              "drvPath": "/nix/store/hsvbzwnnjx0igdiri3adl2qbyhcs1w3y-typst-project.drv",
+              "derivationFileSha256": "1a073518fdcd7f3a45bb5bfd6dcdca1d0a6e5826f2f5f9c530dca4a5a98fb21a",
+              "nativeBuildEvents": [
+                {
+                  "line": 4352,
+                  "text": "2026-11-06T03:24:32.4231758Z building '/nix/store/hsvbzwnnjx0igdiri3adl2qbyhcs1w3y-typst-project.drv'..."
+                },
+                {
+                  "line": 4541,
+                  "text": "2026-11-06T03:28:26.9630665Z checking outputs of '/nix/store/hsvbzwnnjx0igdiri3adl2qbyhcs1w3y-typst-project.drv'..."
+                }
+              ],
+              "commands": {
+                "buildCommand": "export HOME=\"$TMPDIR/home\" TYPST_PURIFIER_FROZEN=1\nexport TYPST_PACKAGE_PATH=/nix/store/511gyqdqkkr7yk4m6c389y037sgyq8zd-typst-locked-packages TYPST_PACKAGE_CACHE_PATH=/nix/store/511gyqdqkkr7yk4m6c389y037sgyq8zd-typst-locked-packages\nexport SOURCE_DATE_EPOCH=315532800 TYPST_IGNORE_SYSTEM_FONTS=true\nunset TYPST_FONT_PATHS TYPST_PURIFIER_CAPTURE TYPST_ROOT TYPST_FEATURES\nmkdir -p \"$HOME\" \"$out\" source\ncp -pr /nix/store/7mqff5k14ra31k4qjhrspdfb4z181144-source/. source/\nchmod -R u+w source\ncd source\ntypst compile --ignore-system-fonts  --deps \"$out/dependencies.json\" main.typ \"$out/document.pdf\"\ntypst eval --ignore-system-fonts --in main.typ 'query(<purifier-proof>).first().value' | grep -Fx 42\n"
+              },
+              "executableSearchPathInputs": {
+                "nativeBuildInputs": "/nix/store/prjm8s9308hgrm0wvpzz5jhlzrvni7xz-purifier-native-typst-0.15.1 /nix/store/xahxrjs30p3mw0a42bqg9ikgkikskw8m-python3-3.14.8"
+              },
+              "directSdkDerivationReferences": [
+                "/nix/store/1xbcqjz5j4gxlpspijqxqjdyn1343cd6-purifier-native-typst-0.15.1.drv",
+                "/nix/store/w1svn0lba9gv480i37z2q97yi4155mlr-python3-3.14.8.drv"
+              ],
+              "commandsOrigin": "Actual instantiated derivation env; match native build event via packet CI log, not closure-only version inference."
+            },
+            {
+              "drvPath": "/nix/store/iglqmi8ai1vlx2rq0hv9bxcfzv2ix5i7-typst-locked-packages.drv",
+              "derivationFileSha256": "e017829ff47b7999d86bbc9ba48d3a7ac617668f0ab9cd7e55b6db32eee81a5d",
+              "nativeBuildEvents": [
+                {
+                  "line": 848,
+                  "text": "2026-11-06T03:13:53.1261375Z building '/nix/store/iglqmi8ai1vlx2rq0hv9bxcfzv2ix5i7-typst-locked-packages.drv'..."
+                },
+                {
+                  "line": 4540,
+                  "text": "2026-11-06T03:28:26.8681477Z checking outputs of '/nix/store/iglqmi8ai1vlx2rq0hv9bxcfzv2ix5i7-typst-locked-packages.drv'..."
+                }
+              ],
+              "commands": {
+                "buildCommand": "mkdir -p \"$out\"\nmkdir -p \"$out/preview/cetz/0.5.2\"\ntar -xzf /nix/store/1rvs2mrb36v81160y3asrk9h8bmmla2r-typst-fixed-archives/archives/cetz/0.5.2.tar.gz -C \"$out/preview/cetz/0.5.2\"\npython3 /nix/store/an5fmrn5fr1dgfl1n8d3mhx5qm6c4zpy-check-package.py /nix/store/anqxpk0rp36makx4fpcmd3fzs86c2l2l-typst-package.json \"$out/preview/cetz/0.5.2\"\n\nmkdir -p \"$out/preview/oxifmt/1.0.0\"\ntar -xzf /nix/store/1rvs2mrb36v81160y3asrk9h8bmmla2r-typst-fixed-archives/archives/oxifmt/1.0.0.tar.gz -C \"$out/preview/oxifmt/1.0.0\"\npython3 /nix/store/an5fmrn5fr1dgfl1n8d3mhx5qm6c4zpy-check-package.py /nix/store/s0nyffb4cajzk6ml9phf491vwv2jnkp9-typst-package.json \"$out/preview/oxifmt/1.0.0\"\n"
+              },
+              "executableSearchPathInputs": {
+                "nativeBuildInputs": "/nix/store/f9shc46n2300jbm0h60f6s4m69j0smyp-gnutar-1.35 /nix/store/rpswfv0ff4wap9anx7k1224x2m94pfcc-gzip-1.15 /nix/store/xahxrjs30p3mw0a42bqg9ikgkikskw8m-python3-3.14.8"
+              },
+              "directSdkDerivationReferences": [
+                "/nix/store/w1svn0lba9gv480i37z2q97yi4155mlr-python3-3.14.8.drv"
+              ],
+              "commandsOrigin": "Actual instantiated derivation env; match native build event via packet CI log, not closure-only version inference."
+            }
+          ],
+          "sdkDependencyWitnesses": [
+            {
+              "check": "project",
+              "parentDerivation": "/nix/store/hsvbzwnnjx0igdiri3adl2qbyhcs1w3y-typst-project.drv",
+              "sdkDerivation": "/nix/store/1xbcqjz5j4gxlpspijqxqjdyn1343cd6-purifier-native-typst-0.15.1.drv",
+              "sdkDerivationSha256": "dde7de97d0349bb64576dcc8fd4edb905187357b3cd7543a25b76b8a4124df75",
+              "dependencyDepth": 1
+            },
+            {
+              "check": "project",
+              "parentDerivation": "/nix/store/1xbcqjz5j4gxlpspijqxqjdyn1343cd6-purifier-native-typst-0.15.1.drv",
+              "sdkDerivation": "/nix/store/21c9f23db1kizvk0jchgvn2yy2s715n1-purifier-native-typst-0.15.1-vendor.drv",
+              "sdkDerivationSha256": "fb3022991b7339c933ade4f870179ab271cb2dfab5d27883a239cdc019bbf05a",
+              "dependencyDepth": 2
+            },
+            {
+              "check": "project",
+              "parentDerivation": "/nix/store/21c9f23db1kizvk0jchgvn2yy2s715n1-purifier-native-typst-0.15.1-vendor.drv",
+              "sdkDerivation": "/nix/store/dm19zp9ykhvj2zbw50n4dq6nxlqczdaj-purifier-native-typst-0.15.1-vendor-staging.drv",
+              "sdkDerivationSha256": "ad48730d49e7377adfca8d33ba9a57086b910bf015ee81d565297503b9e6b647",
+              "dependencyDepth": 3
+            }
+          ],
+          "runtimeEvidence": {
+            "status": "success",
+            "executedSystem": "x86_64-linux",
+            "sourceRevision": "5a4e265b31b4fd0b9f7f136185aee81c1b0c70d4",
+            "sourceNarHash": "sha256-Wsn0rSwxifKr4isAgPi1HczdhGBnQ6XFmYl/23BrUUY=",
+            "drvPath": "/nix/store/hsvbzwnnjx0igdiri3adl2qbyhcs1w3y-typst-project.drv",
+            "outputs": {
+              "out": "/nix/store/g4lgb6a3cw7d3jl5cfl9hazws6gzrnh6-typst-project"
+            },
+            "receipt": "evidence/typst-purifier/main-job-127687538426.log",
+            "artifactSha256": "509b8f2c4e414b84a8020c813d21583f06af8ef843a9c810ac43d21c8fe23b7f",
+            "jobUrl": "https://github.com/nix-purifiers/typst-purifier/actions/runs/42155186138/job/127687538426",
+            "jobConclusion": "success",
+            "events": [
+              {
+                "line": 4352,
+                "text": "2026-11-06T03:24:32.4231758Z building '/nix/store/hsvbzwnnjx0igdiri3adl2qbyhcs1w3y-typst-project.drv'..."
+              },
+              {
+                "line": 4541,
+                "text": "2026-11-06T03:28:26.9630665Z checking outputs of '/nix/store/hsvbzwnnjx0igdiri3adl2qbyhcs1w3y-typst-project.drv'..."
+              }
+            ],
+            "completedAt": "2026-11-06T03:28:29Z",
+            "outputIdentityBinding": "Local Nix derivation JSON proves drv\u2192output; this exact drv has a native build/rebuild event in the successful immutable-revision CI job."
+          },
+          "outputProvenance": {
+            "ciObserved": "Exact drv building/rebuild event and successful check.",
+            "evaluated": "Named-check output paths independently bound through local instantiated derivation JSON.",
+            "localRealization": "NAR hashes only when actually present in realized-output-info.json; not claimed printed by CI."
+          },
+          "gap": null
+        }
+      ],
+      "judgmentChanges": []
+    },
+    "uv-purifier": {
+      "criterionToExistingDerivationIds": {
+        "evaluation": [
+          "cli",
+          "composition-producer",
+          "composition-producer-python312",
+          "conformance-external",
+          "conformance-malformed",
+          "conformance-missing",
+          "conformance-offline",
+          "conformance-stale",
+          "conformance-tampered",
+          "fetches",
+          "flask",
+          "native-check-inputs",
+          "nix-library",
+          "offline-workspace",
+          "outputs",
+          "outside",
+          "overlay",
+          "pythonpath",
+          "rebuild-package",
+          "rebuild-release",
+          "release",
+          "runtime-projections",
+          "simple",
+          "sources",
+          "tests",
+          "treefmt",
+          "unit",
+          "workspace"
+        ],
+        "goodTests": [
+          "flask",
+          "unit",
+          "tests",
+          "nix-library",
+          "conformance-tampered",
+          "conformance-offline",
+          "offline-workspace",
+          "runtime-projections",
+          "composition-producer-python312"
+        ],
+        "linux": [
+          "flask",
+          "unit",
+          "tests",
+          "nix-library",
+          "conformance-tampered",
+          "conformance-offline",
+          "offline-workspace",
+          "runtime-projections",
+          "composition-producer-python312"
+        ],
+        "darwin": [],
+        "oneVersion": [
+          "flask",
+          "unit",
+          "tests",
+          "nix-library",
+          "conformance-tampered",
+          "conformance-offline",
+          "offline-workspace",
+          "runtime-projections",
+          "composition-producer-python312"
+        ],
+        "nonEolVersions": [
+          "flask",
+          "unit",
+          "tests",
+          "nix-library",
+          "conformance-tampered",
+          "conformance-offline",
+          "offline-workspace",
+          "runtime-projections",
+          "composition-producer-python312"
+        ],
+        "manySamples": [
+          "flask",
+          "unit",
+          "tests",
+          "nix-library",
+          "conformance-tampered",
+          "conformance-offline",
+          "offline-workspace",
+          "runtime-projections",
+          "composition-producer-python312"
+        ],
+        "longCompatibility": [
+          "flask",
+          "unit",
+          "tests",
+          "nix-library",
+          "conformance-tampered",
+          "conformance-offline",
+          "offline-workspace",
+          "runtime-projections",
+          "composition-producer-python312",
+          "historical-0.13.5-python-3.8.19",
+          "historical-0.3.0-python-3.8.19",
+          "historical-0.13.5-python-3.9.20"
+        ]
+      },
+      "sampleBuildMappings": [
+        {
+          "sampleBuildIndex": 0,
+          "name": "Flask upstream 49943b5a94413a530761350f04e896f76e8d620e",
+          "classification": "independent-upstream",
+          "supportingExistingDerivationIds": [
+            "flask"
+          ],
+          "source": {
+            "repository": "https://github.com/pallets/flask",
+            "revision": "49943b5a94413a530761350f04e896f76e8d620e",
+            "path": null,
+            "storePath": "/nix/store/aih0wapndfnbvh97g5p4wbf1qnl9k5xf-source",
+            "sourceNarHash": "sha256-B+57AoHgGsoxtXTInivSKa7X0G4HaO6VPv20kT0WXR0=",
+            "narHashScope": "Exact builder-consumed source tree (may be filtered/project subtree); not automatically the whole Git repository NAR.",
+            "nixPathInfoReceipt": "evidence/sample-source-info.json"
+          },
+          "purifierSource": {
+            "repository": "https://github.com/nix-purifiers/uv-purifier",
+            "revision": "ea43ef3106cef19ba7f9c0e75140822cd98ebc4f",
+            "sourceNarHash": "sha256-MAx8dSy7Jy1EZVJ5RmCztO3HAKer+NOpY14IucmjO9Q="
+          },
+          "executedSdkVersions": {
+            "python3": "3.14.8",
+            "uv": "0.13.5"
+          },
+          "actualExecution": "Actual uv0.13.5 export/venv/pip installs in Flask package derivation; Python3.14.8 runs Flask pytest in project.tests and offline uv run --no-sync pytest, 494 tests pass",
+          "actualDerivationPhases": [
+            {
+              "drvPath": "/nix/store/59gicqnlmkqka1w8p79bjmpaw4s2apr3-uv-purifier-test-flask.drv",
+              "derivationFileSha256": "4c723c483cf3a5164c42a29100dd1f0be0b8ac4c9751cfff535ae50d32ec104c",
+              "nativeBuildEvents": [
+                {
+                  "line": 5401,
+                  "text": "2026-11-06T03:20:09.0565166Z building '/nix/store/59gicqnlmkqka1w8p79bjmpaw4s2apr3-uv-purifier-test-flask.drv'..."
+                }
+              ],
+              "commands": {
+                "buildCommand": "/nix/store/sm8dxsr8hriagnaxj9jkkgkhlsn1m2h5-flask-3.2.0.dev0/bin/flask --version\ntest -f /nix/store/mi32a9wfla7pnj8sy0iq3hmw4i7lgqvn-flask-distributions-3.2.0.dev0/flask-3.2.0.dev0-py3-none-any.whl\ntest -f /nix/store/mi32a9wfla7pnj8sy0iq3hmw4i7lgqvn-flask-distributions-3.2.0.dev0/flask-3.2.0.dev0.tar.gz\ntest -e /nix/store/njvib2vfkyn2qqcqrskha9mzl4q2r67y-flask-tests\n\ncp -r /nix/store/aih0wapndfnbvh97g5p4wbf1qnl9k5xf-source flask\nchmod -R u+w flask\ncp /nix/store/35hq2bgkf3cnq5hkdmq5gvjvjmpxqjbz-uv-purifier.lock.json flask/uv-purifier.lock.json\ncd flask\nexport HOME=$TMPDIR UV_CACHE_DIR=$TMPDIR/uv-cache PYTHONDONTWRITEBYTECODE=1\nuv-purifier prefetch --inputs /nix/store/lc1049s5w191wjc6d9kcfa0fj6lwq3a8-uv-purifier-interactive\nUV_OFFLINE=1 uv run --no-sync pytest -q -p no:cacheprovider\ntouch $out\n"
+              },
+              "executableSearchPathInputs": {
+                "nativeBuildInputs": "/nix/store/m2srgjpxa1b46qxlyp7w7lma8pi6445v-uv-purifier-0.1.0 /nix/store/9cg9w4h3i9afkh37cb08qwxz6xi1kq8a-uv-0.13.5"
+              },
+              "directSdkDerivationReferences": [
+                "/nix/store/621mzwr1jxhpgxiakvzzq6xr5kw88xnj-uv-0.13.5.drv",
+                "/nix/store/vdklm2xck18jbcpjb0ngaci2l9xrjvhw-uv-purifier-0.1.0.drv"
+              ],
+              "commandsOrigin": "Actual instantiated derivation env; match native build event via packet CI log, not closure-only version inference."
+            },
+            {
+              "drvPath": "/nix/store/45vfzhgydj9c3plbc3nhlh90k27sh13s-flask-3.2.0.dev0.drv",
+              "derivationFileSha256": "fd5b7f4ebd64a7df43938b3e423867f938f239c006587973e242a10a9b38806c",
+              "nativeBuildEvents": [
+                {
+                  "line": 3603,
+                  "text": "2026-11-06T03:19:55.9324200Z building '/nix/store/45vfzhgydj9c3plbc3nhlh90k27sh13s-flask-3.2.0.dev0.drv'..."
+                }
+              ],
+              "commands": {
+                "buildPhase": "runHook preBuild\nexport HOME=$TMPDIR UV_CACHE_DIR=$TMPDIR/uv-cache\n\nsha256sum uv.lock > \"$TMPDIR/native-lock.sha256\"\n/nix/store/9cg9w4h3i9afkh37cb08qwxz6xi1kq8a-uv-0.13.5/bin/uv export --offline --frozen --no-dev --package flask --no-emit-workspace \\\n  --format requirements.txt --output-file \"$TMPDIR/exported.txt\"\nsha256sum --check \"$TMPDIR/native-lock.sha256\"\n/nix/store/xahxrjs30p3mw0a42bqg9ikgkikskw8m-python3-3.14.8/bin/python3.14 -I /nix/store/9daji3dsg5hqrqm7rrxw3y9s24lsq1jd-split_requirements.py \"$TMPDIR/exported.txt\" /nix/store/qyqfkbp03pmgz48618r9wky8fks7lb98-uv-purifier-direct.json \\\n  \"$TMPDIR/requirements.txt\" \"$TMPDIR/direct-wheels.txt\"\nuv venv --no-python-downloads --python /nix/store/xahxrjs30p3mw0a42bqg9ikgkikskw8m-python3-3.14.8/bin/python3.14 \"$out\"\nuv --no-config pip install --offline --no-index --find-links /nix/store/gjlfwca6p76yd0znpvi3nyfdcly93p07-uv-purifier-wheelhouse --python \"$out/bin/python\" --require-hashes -r \"$TMPDIR/requirements.txt\"\nwhile read -r wheels; do\n  uv --no-config pip install --offline --no-index --python \"$out/bin/python\" --no-deps \"$wheels\"/*.whl\ndone < \"$TMPDIR/direct-wheels.txt\"\nuv --no-config pip install --offline --no-index --python \"$out/bin/python\" --no-deps /nix/store/mi32a9wfla7pnj8sy0iq3hmw4i7lgqvn-flask-distributions-3.2.0.dev0/*.whl\n\n\nrunHook postBuild\n"
+              },
+              "executableSearchPathInputs": {
+                "nativeBuildInputs": "/nix/store/9cg9w4h3i9afkh37cb08qwxz6xi1kq8a-uv-0.13.5"
+              },
+              "directSdkDerivationReferences": [
+                "/nix/store/621mzwr1jxhpgxiakvzzq6xr5kw88xnj-uv-0.13.5.drv",
+                "/nix/store/w1svn0lba9gv480i37z2q97yi4155mlr-python3-3.14.8.drv"
+              ],
+              "commandsOrigin": "Actual instantiated derivation env; match native build event via packet CI log, not closure-only version inference."
+            }
+          ],
+          "sdkDependencyWitnesses": [
+            {
+              "check": "flask",
+              "parentDerivation": "/nix/store/59gicqnlmkqka1w8p79bjmpaw4s2apr3-uv-purifier-test-flask.drv",
+              "sdkDerivation": "/nix/store/621mzwr1jxhpgxiakvzzq6xr5kw88xnj-uv-0.13.5.drv",
+              "sdkDerivationSha256": "c707d9755b2eb9e1d305dd8930d8c58cce475bb19a4dba0fb2e0cd72b5140d25",
+              "dependencyDepth": 1
+            },
+            {
+              "check": "flask",
+              "parentDerivation": "/nix/store/45vfzhgydj9c3plbc3nhlh90k27sh13s-flask-3.2.0.dev0.drv",
+              "sdkDerivation": "/nix/store/621mzwr1jxhpgxiakvzzq6xr5kw88xnj-uv-0.13.5.drv",
+              "sdkDerivationSha256": "c707d9755b2eb9e1d305dd8930d8c58cce475bb19a4dba0fb2e0cd72b5140d25",
+              "dependencyDepth": 2
+            },
+            {
+              "check": "flask",
+              "parentDerivation": "/nix/store/45vfzhgydj9c3plbc3nhlh90k27sh13s-flask-3.2.0.dev0.drv",
+              "sdkDerivation": "/nix/store/w1svn0lba9gv480i37z2q97yi4155mlr-python3-3.14.8.drv",
+              "sdkDerivationSha256": "a37ae132f655698bba9335db7734372a9c7aef41bbf4ef62eb65b6ca15e3368a",
+              "dependencyDepth": 2
+            },
+            {
+              "check": "flask",
+              "parentDerivation": "/nix/store/621mzwr1jxhpgxiakvzzq6xr5kw88xnj-uv-0.13.5.drv",
+              "sdkDerivation": "/nix/store/k54nsrscjwxfv8wp0r3bmzbv07yij4j6-uv-0.13.5-vendor.drv",
+              "sdkDerivationSha256": "e6767cd199b49d28ffa1a8060a2ce63b500679acf99a25769a18419f2eeeaeff",
+              "dependencyDepth": 2
+            },
+            {
+              "check": "flask",
+              "parentDerivation": "/nix/store/df9slq8avzyji34n76qcwn2yp9qzvsqd-flask-distributions-3.2.0.dev0.drv",
+              "sdkDerivation": "/nix/store/621mzwr1jxhpgxiakvzzq6xr5kw88xnj-uv-0.13.5.drv",
+              "sdkDerivationSha256": "c707d9755b2eb9e1d305dd8930d8c58cce475bb19a4dba0fb2e0cd72b5140d25",
+              "dependencyDepth": 2
+            },
+            {
+              "check": "flask",
+              "parentDerivation": "/nix/store/df9slq8avzyji34n76qcwn2yp9qzvsqd-flask-distributions-3.2.0.dev0.drv",
+              "sdkDerivation": "/nix/store/w1svn0lba9gv480i37z2q97yi4155mlr-python3-3.14.8.drv",
+              "sdkDerivationSha256": "a37ae132f655698bba9335db7734372a9c7aef41bbf4ef62eb65b6ca15e3368a",
+              "dependencyDepth": 2
+            },
+            {
+              "check": "flask",
+              "parentDerivation": "/nix/store/vdklm2xck18jbcpjb0ngaci2l9xrjvhw-uv-purifier-0.1.0.drv",
+              "sdkDerivation": "/nix/store/621mzwr1jxhpgxiakvzzq6xr5kw88xnj-uv-0.13.5.drv",
+              "sdkDerivationSha256": "c707d9755b2eb9e1d305dd8930d8c58cce475bb19a4dba0fb2e0cd72b5140d25",
+              "dependencyDepth": 2
+            },
+            {
+              "check": "flask",
+              "parentDerivation": "/nix/store/vdklm2xck18jbcpjb0ngaci2l9xrjvhw-uv-purifier-0.1.0.drv",
+              "sdkDerivation": "/nix/store/ppp13cjwn59a6cbx8ry0ic7rf0an088d-python3-3.14.8-env.drv",
+              "sdkDerivationSha256": "8da6cec370cfe91ec7be8a3f1ef765e084cbb419c30b53912b81b23f096ec0b2",
+              "dependencyDepth": 2
+            },
+            {
+              "check": "flask",
+              "parentDerivation": "/nix/store/yy7ck7wnff061k4m3n7nivj2a7pw2dfs-uv-purifier-interactive.drv",
+              "sdkDerivation": "/nix/store/w1svn0lba9gv480i37z2q97yi4155mlr-python3-3.14.8.drv",
+              "sdkDerivationSha256": "a37ae132f655698bba9335db7734372a9c7aef41bbf4ef62eb65b6ca15e3368a",
+              "dependencyDepth": 2
+            },
+            {
+              "check": "flask",
+              "parentDerivation": "/nix/store/f34aifylrfwz1v9f10b7y2jr6mhymp0y-uv-purifier-wheelhouse.drv",
+              "sdkDerivation": "/nix/store/2z5sbdiiq8gpdr2ycj08ra8y2ihn7mc5-uv-0.12.0-py3-none-manylinux_2_17_x86_64.manylinux2014_x86_64.whl.drv",
+              "sdkDerivationSha256": "b3a5ae2986336eba02bc84dabfee74fd57cd84bac6067ec6f07cbc4446b2b2b4",
+              "dependencyDepth": 3
+            },
+            {
+              "check": "flask",
+              "parentDerivation": "/nix/store/8ds5175k9mig32q7gargz43plknspi1j-flask-development-0.drv",
+              "sdkDerivation": "/nix/store/621mzwr1jxhpgxiakvzzq6xr5kw88xnj-uv-0.13.5.drv",
+              "sdkDerivationSha256": "c707d9755b2eb9e1d305dd8930d8c58cce475bb19a4dba0fb2e0cd72b5140d25",
+              "dependencyDepth": 3
+            },
+            {
+              "check": "flask",
+              "parentDerivation": "/nix/store/8ds5175k9mig32q7gargz43plknspi1j-flask-development-0.drv",
+              "sdkDerivation": "/nix/store/w1svn0lba9gv480i37z2q97yi4155mlr-python3-3.14.8.drv",
+              "sdkDerivationSha256": "a37ae132f655698bba9335db7734372a9c7aef41bbf4ef62eb65b6ca15e3368a",
+              "dependencyDepth": 3
+            },
+            {
+              "check": "flask",
+              "parentDerivation": "/nix/store/45ial5wyx19y9hbfz1asqbzyx1vq4gdz-cargo-1.99.0.drv",
+              "sdkDerivation": "/nix/store/w1svn0lba9gv480i37z2q97yi4155mlr-python3-3.14.8.drv",
+              "sdkDerivationSha256": "a37ae132f655698bba9335db7734372a9c7aef41bbf4ef62eb65b6ca15e3368a",
+              "dependencyDepth": 3
+            },
+            {
+              "check": "flask",
+              "parentDerivation": "/nix/store/k54nsrscjwxfv8wp0r3bmzbv07yij4j6-uv-0.13.5-vendor.drv",
+              "sdkDerivation": "/nix/store/hq76bhp1dkkpbfwm23hi6s8gblw9i42j-uv-0.13.5-vendor-staging.drv",
+              "sdkDerivationSha256": "149f72edb8c24362f8dd54abb4b6f66762b37c126d5da2f9b65c95d4fce128b7",
+              "dependencyDepth": 3
+            },
+            {
+              "check": "flask",
+              "parentDerivation": "/nix/store/lsklxr7k7vs2qja22qr2gp4z2h97hblx-git-2.56.0.drv",
+              "sdkDerivation": "/nix/store/w1svn0lba9gv480i37z2q97yi4155mlr-python3-3.14.8.drv",
+              "sdkDerivationSha256": "a37ae132f655698bba9335db7734372a9c7aef41bbf4ef62eb65b6ca15e3368a",
+              "dependencyDepth": 3
+            },
+            {
+              "check": "flask",
+              "parentDerivation": "/nix/store/ppp13cjwn59a6cbx8ry0ic7rf0an088d-python3-3.14.8-env.drv",
+              "sdkDerivation": "/nix/store/w1svn0lba9gv480i37z2q97yi4155mlr-python3-3.14.8.drv",
+              "sdkDerivationSha256": "a37ae132f655698bba9335db7734372a9c7aef41bbf4ef62eb65b6ca15e3368a",
+              "dependencyDepth": 3
+            },
+            {
+              "check": "flask",
+              "parentDerivation": "/nix/store/5bsgcnbygqx14948zsmmlqw1z4874lii-rustc-1.99.0.drv",
+              "sdkDerivation": "/nix/store/w1svn0lba9gv480i37z2q97yi4155mlr-python3-3.14.8.drv",
+              "sdkDerivationSha256": "a37ae132f655698bba9335db7734372a9c7aef41bbf4ef62eb65b6ca15e3368a",
+              "dependencyDepth": 4
+            },
+            {
+              "check": "flask",
+              "parentDerivation": "/nix/store/66678n25ykgk1aylfrk4q6647pavd0qp-fetch-cargo-vendor-util.drv",
+              "sdkDerivation": "/nix/store/kwvcw474s6q8mrc5fc24k2xfh17axlm9-python3-3.14.8-env.drv",
+              "sdkDerivationSha256": "8fbc43d299a0e33ff98706c2bc2392d60471b4bc33ac4f011e28080bba3e84d9",
+              "dependencyDepth": 4
+            },
+            {
+              "check": "flask",
+              "parentDerivation": "/nix/store/fc1byqrrzpcslw0m7ncfrl5acqw1pc6f-replace-workspace-values.drv",
+              "sdkDerivation": "/nix/store/20xazgs8hy8k8dj0y03ai6za19pnxb2n-python3-3.14.8-env.drv",
+              "sdkDerivationSha256": "d619499bbdded073a147ba28d5ba5302bc2b9163ad448fe3dddb6d65b65731e1",
+              "dependencyDepth": 4
+            },
+            {
+              "check": "flask",
+              "parentDerivation": "/nix/store/5lqjmf78b5br2c906zffaq7whp5x4byr-asciidoc-10.2.1.drv",
+              "sdkDerivation": "/nix/store/w1svn0lba9gv480i37z2q97yi4155mlr-python3-3.14.8.drv",
+              "sdkDerivationSha256": "a37ae132f655698bba9335db7734372a9c7aef41bbf4ef62eb65b6ca15e3368a",
+              "dependencyDepth": 4
+            },
+            {
+              "check": "flask",
+              "parentDerivation": "/nix/store/2p8pp7qgszf2ndj05clw7vi4kdkap2n3-python3.14-tomli-w-1.2.0.drv",
+              "sdkDerivation": "/nix/store/w1svn0lba9gv480i37z2q97yi4155mlr-python3-3.14.8.drv",
+              "sdkDerivationSha256": "a37ae132f655698bba9335db7734372a9c7aef41bbf4ef62eb65b6ca15e3368a",
+              "dependencyDepth": 4
+            },
+            {
+              "check": "flask",
+              "parentDerivation": "/nix/store/kcr89zvzk3f7k156jxrijfmmmc2anvy5-python3.14-packaging-26.3.drv",
+              "sdkDerivation": "/nix/store/w1svn0lba9gv480i37z2q97yi4155mlr-python3-3.14.8.drv",
+              "sdkDerivationSha256": "a37ae132f655698bba9335db7734372a9c7aef41bbf4ef62eb65b6ca15e3368a",
+              "dependencyDepth": 4
+            }
+          ],
+          "runtimeEvidence": {
+            "status": "success",
+            "executedSystem": "x86_64-linux",
+            "sourceRevision": "ea43ef3106cef19ba7f9c0e75140822cd98ebc4f",
+            "sourceNarHash": "sha256-MAx8dSy7Jy1EZVJ5RmCztO3HAKer+NOpY14IucmjO9Q=",
+            "drvPath": "/nix/store/59gicqnlmkqka1w8p79bjmpaw4s2apr3-uv-purifier-test-flask.drv",
+            "outputs": {
+              "out": "/nix/store/6wrc2maxhma5pav0gxq47vny6rjy4q1a-uv-purifier-test-flask"
+            },
+            "receipt": "evidence/uv-purifier/main-job-127688579087.log",
+            "artifactSha256": "4128015b956df8da0e95d77b6118fab5c8f5d1723196f0350b9b5f1b84a21e29",
+            "jobUrl": "https://github.com/nix-purifiers/uv-purifier/actions/runs/42155508325/job/127688579087",
+            "jobConclusion": "success",
+            "events": [
+              {
+                "line": 5401,
+                "text": "2026-11-06T03:20:09.0565166Z building '/nix/store/59gicqnlmkqka1w8p79bjmpaw4s2apr3-uv-purifier-test-flask.drv'..."
+              }
+            ],
+            "completedAt": "2026-11-06T03:20:15Z",
+            "outputIdentityBinding": "Local Nix derivation JSON proves drv\u2192output; this exact drv has a native build/rebuild event in the successful immutable-revision CI job."
+          },
+          "outputProvenance": {
+            "ciObserved": "Exact drv building/rebuild event and successful check.",
+            "evaluated": "Named-check output paths independently bound through local instantiated derivation JSON.",
+            "localRealization": "NAR hashes only when actually present in realized-output-info.json; not claimed printed by CI."
+          },
+          "gap": null,
+          "preparedSource": {
+            "storePath": "/nix/store/42y4i20njhdwbh84mv64508d5jpg7p91-aih0wapndfnbvh97g5p4wbf1qnl9k5xf-source-locked",
+            "sourceNarHash": "sha256-zvQEBqRwbWsxTOojjUh49xdVSuhl6zzmiZEFHneY1/w=",
+            "scope": "Original Flask source plus external purifier companion; original source NAR above stays separate."
+          }
+        }
+      ],
+      "judgmentChanges": []
+    },
+    "vcpkg-purifier": {
+      "criterionToExistingDerivationIds": {
+        "evaluation": [
+          "cli",
+          "environment",
+          "foreign-projections",
+          "project",
+          "release"
+        ],
+        "goodTests": [
+          "project",
+          "foreign-projections",
+          "environment",
+          "release"
+        ],
+        "linux": [
+          "project",
+          "foreign-projections",
+          "environment",
+          "release"
+        ],
+        "darwin": [],
+        "oneVersion": [
+          "project",
+          "foreign-projections",
+          "environment",
+          "release"
+        ],
+        "nonEolVersions": [
+          "project",
+          "foreign-projections",
+          "environment",
+          "release"
+        ],
+        "manySamples": [
+          "project",
+          "foreign-projections",
+          "environment",
+          "release"
+        ],
+        "longCompatibility": [
+          "project",
+          "foreign-projections",
+          "environment",
+          "release"
+        ]
+      },
+      "sampleBuildMappings": [
+        {
+          "sampleBuildIndex": 0,
+          "name": "examples/minimal: authored native C/CMake vcpkg consumer",
+          "classification": "authored-fixture",
+          "supportingExistingDerivationIds": [
+            "project",
+            "environment"
+          ],
+          "source": {
+            "repository": "https://github.com/nix-purifiers/vcpkg-purifier",
+            "revision": "ceae6750c5b25f7e0fc063595ea9de0ae3271600",
+            "path": "examples/minimal",
+            "storePath": "/nix/store/nqn8n8ph7r0ch9kys0vni6gkmi0rnmyg-source",
+            "sourceNarHash": "sha256-iy6AluwXLeHUVqnUI5y+DxQQ4YeaMijzOA6WkATppAM=",
+            "narHashScope": "Exact builder-consumed source tree (may be filtered/project subtree); not automatically the whole Git repository NAR.",
+            "nixPathInfoReceipt": "evidence/sample-source-info.json"
+          },
+          "purifierSource": {
+            "repository": "https://github.com/nix-purifiers/vcpkg-purifier",
+            "revision": "ceae6750c5b25f7e0fc063595ea9de0ae3271600",
+            "sourceNarHash": "sha256-Pv89/pq0/0JEF5eQNw3tL/+DOKUF7JErBdjt0Jg4wzw="
+          },
+          "executedSdkVersions": {
+            "vcpkg": "2026.06.24"
+          },
+          "actualExecution": "Environment invokes native vcpkg; project executes CMake build and CTest using the realized vcpkg environment",
+          "actualDerivationPhases": [
+            {
+              "drvPath": "/nix/store/csw1z8s9y7hnf2k22pc1li3r6qzvvj73-purified-vcpkg-project.drv",
+              "derivationFileSha256": "f6127898bc17b1cf5f72d1bf891b406593f8acec8a34194d4f1520d1fe1fc3ae",
+              "nativeBuildEvents": [
+                {
+                  "line": 1287,
+                  "text": "2026-11-06T03:18:50.4965551Z building '/nix/store/csw1z8s9y7hnf2k22pc1li3r6qzvvj73-purified-vcpkg-project.drv'..."
+                },
+                {
+                  "line": 1381,
+                  "text": "2026-11-06T03:19:01.2385305Z checking outputs of '/nix/store/csw1z8s9y7hnf2k22pc1li3r6qzvvj73-purified-vcpkg-project.drv'..."
+                }
+              ],
+              "commands": {
+                "buildCommand": "    export HOME=\"$TMPDIR/home\"\n    export XDG_CACHE_HOME=\"$TMPDIR/cache\"\n    export VCPKG_ROOT=/nix/store/zsgbhy2mycprfx7wij4gprh2dgmzn3km-purified-vcpkg-environment/root\n    export VCPKG_DISABLE_METRICS=1 VCPKG_FORCE_SYSTEM_BINARIES=1\n    export VCPKG_BINARY_SOURCES=clear\nunset VCPKG_OVERLAY_PORTS VCPKG_OVERLAY_TRIPLETS VCPKG_FEATURE_FLAGS\n    export X_VCPKG_ASSET_SOURCES=\"clear;x-azurl,file:///nix/store/zsgbhy2mycprfx7wij4gprh2dgmzn3km-purified-vcpkg-environment/assets;x-block-origin\"\n    export NIX_VCPKG_WRITABLE_PATH=\"$TMPDIR/vcpkg\"\n    mkdir -p \"$HOME\" source \"$out\"\n    cp -r /nix/store/nqn8n8ph7r0ch9kys0vni6gkmi0rnmyg-source/. source/\n    chmod -R u+w source\n    cp -r /nix/store/zsgbhy2mycprfx7wij4gprh2dgmzn3km-purified-vcpkg-environment/installed installed\n    chmod -R u+w installed\n    cmake -S source -B build \\\n      -DCMAKE_TOOLCHAIN_FILE=/nix/store/zsgbhy2mycprfx7wij4gprh2dgmzn3km-purified-vcpkg-environment/root/scripts/buildsystems/vcpkg.cmake \\\n      -DVCPKG_MANIFEST_DIR=/nix/store/zsgbhy2mycprfx7wij4gprh2dgmzn3km-purified-vcpkg-environment/manifest \\\n      -DVCPKG_INSTALLED_DIR=\"$PWD/installed\" \\\n      -DVCPKG_TARGET_TRIPLET=x64-linux -DVCPKG_HOST_TRIPLET=x64-linux \\\n      -DVCPKG_MANIFEST_FEATURES='' \\\n      -DCMAKE_INSTALL_PREFIX=\"$out\" \n    cmake --build build \n    ctest --test-dir build --output-on-failure\n    cmake --install build\n"
+              },
+              "executableSearchPathInputs": {
+                "nativeBuildInputs": "/nix/store/g1722sl2shsn0yw08zdgxsmqgikgmbyp-vcpkg-purifier-toolchain /nix/store/xahxrjs30p3mw0a42bqg9ikgkikskw8m-python3-3.14.8"
+              },
+              "directSdkDerivationReferences": [
+                "/nix/store/w1svn0lba9gv480i37z2q97yi4155mlr-python3-3.14.8.drv"
+              ],
+              "commandsOrigin": "Actual instantiated derivation env; match native build event via packet CI log, not closure-only version inference."
+            },
+            {
+              "drvPath": "/nix/store/5gv8k3gm2xz8h75b8n17ixld9675y3p9-purified-vcpkg-environment.drv",
+              "derivationFileSha256": "cc6929e37ab01231e0c6985448e32555dd0390d30ddff229db59149f3f7b8091",
+              "nativeBuildEvents": [
+                {
+                  "line": 1217,
+                  "text": "2026-11-06T03:18:46.3355502Z building '/nix/store/5gv8k3gm2xz8h75b8n17ixld9675y3p9-purified-vcpkg-environment.drv'..."
+                },
+                {
+                  "line": 1380,
+                  "text": "2026-11-06T03:18:56.9469703Z checking outputs of '/nix/store/5gv8k3gm2xz8h75b8n17ixld9675y3p9-purified-vcpkg-environment.drv'..."
+                }
+              ],
+              "commands": {
+                "buildCommand": "    export HOME=\"$TMPDIR/home\"\n    export XDG_CACHE_HOME=\"$TMPDIR/cache\"\n    export VCPKG_DISABLE_METRICS=1\n    export VCPKG_FORCE_SYSTEM_BINARIES=1\n    export VCPKG_BINARY_SOURCES=clear\nunset VCPKG_OVERLAY_PORTS VCPKG_OVERLAY_TRIPLETS VCPKG_FEATURE_FLAGS\n    export NIX_VCPKG_WRITABLE_PATH=\"$TMPDIR/vcpkg\"\n    mkdir -p \"$HOME\"\n    python3 /nix/store/jp433dq93a09dwgmsimkhwgh683dg5i4-vcpkg-prepare.py /nix/store/ak62p8nbs69cihsi1mwn5lxwmvgxkdws-vcpkg-locked-sources \"$out\"\n    mkdir -p \"$out/root\"\n    for name in scripts triplets versions docs LICENSE.txt .vcpkg-root; do ln -s /nix/store/5rawcl092wwcypsxplhlfnc660mkam8j-vcpkg-2026.06.24/share/vcpkg/\"$name\" \"$out/root/$name\"; done\n    ln -s \"$out/ports\" \"$out/root/ports\"\n    ln -s /nix/store/5rawcl092wwcypsxplhlfnc660mkam8j-vcpkg-2026.06.24/bin/vcpkg \"$out/root/vcpkg\"\n    echo '{\"readonly\":true,\"usegitregistry\":false,\"deployment\":\"Git\"}' > \"$out/root/vcpkg-bundle.json\"\n    export VCPKG_ROOT=\"$out/root\"\n    export X_VCPKG_ASSET_SOURCES=\"clear;x-azurl,file://$out/assets;x-block-origin\"\n    vcpkg install --vcpkg-root=\"$out/root\" --x-manifest-root=\"$out/manifest\" \\\n      --x-install-root=\"$out/installed\" --triplet=x64-linux --host-triplet=x64-linux \\\n      \n    # Native SPDX documents contain a wall-clock creation time and a random\n    # document UUID. Preserve their dependency/licensing data and stabilize only\n    # these generated fields.\n    python3 /nix/store/mqyckkj8s4gpk4s0cqg89mc6m9095fp3-vcpkg-normalize-spdx.py \"$out/installed\"\n"
+              },
+              "executableSearchPathInputs": {
+                "nativeBuildInputs": "/nix/store/g1722sl2shsn0yw08zdgxsmqgikgmbyp-vcpkg-purifier-toolchain /nix/store/xahxrjs30p3mw0a42bqg9ikgkikskw8m-python3-3.14.8"
+              },
+              "directSdkDerivationReferences": [
+                "/nix/store/b2wx67mpzl699aidvjih4wiiw5p5fpbn-vcpkg-2026.06.24.drv",
+                "/nix/store/w1svn0lba9gv480i37z2q97yi4155mlr-python3-3.14.8.drv"
+              ],
+              "commandsOrigin": "Actual instantiated derivation env; match native build event via packet CI log, not closure-only version inference."
+            }
+          ],
+          "sdkDependencyWitnesses": [
+            {
+              "check": "project",
+              "parentDerivation": "/nix/store/39fp9qdhqq30r3bqy689dr7rnhz7s9a7-vcpkg-purifier-toolchain.drv",
+              "sdkDerivation": "/nix/store/b2wx67mpzl699aidvjih4wiiw5p5fpbn-vcpkg-2026.06.24.drv",
+              "sdkDerivationSha256": "aa88b967a9f50c26691732270789427aa56feef152a01b9d9a51e7099db5ed8f",
+              "dependencyDepth": 2
+            },
+            {
+              "check": "project",
+              "parentDerivation": "/nix/store/5gv8k3gm2xz8h75b8n17ixld9675y3p9-purified-vcpkg-environment.drv",
+              "sdkDerivation": "/nix/store/b2wx67mpzl699aidvjih4wiiw5p5fpbn-vcpkg-2026.06.24.drv",
+              "sdkDerivationSha256": "aa88b967a9f50c26691732270789427aa56feef152a01b9d9a51e7099db5ed8f",
+              "dependencyDepth": 2
+            },
+            {
+              "check": "environment",
+              "parentDerivation": "/nix/store/5gv8k3gm2xz8h75b8n17ixld9675y3p9-purified-vcpkg-environment.drv",
+              "sdkDerivation": "/nix/store/b2wx67mpzl699aidvjih4wiiw5p5fpbn-vcpkg-2026.06.24.drv",
+              "sdkDerivationSha256": "aa88b967a9f50c26691732270789427aa56feef152a01b9d9a51e7099db5ed8f",
+              "dependencyDepth": 1
+            },
+            {
+              "check": "environment",
+              "parentDerivation": "/nix/store/39fp9qdhqq30r3bqy689dr7rnhz7s9a7-vcpkg-purifier-toolchain.drv",
+              "sdkDerivation": "/nix/store/b2wx67mpzl699aidvjih4wiiw5p5fpbn-vcpkg-2026.06.24.drv",
+              "sdkDerivationSha256": "aa88b967a9f50c26691732270789427aa56feef152a01b9d9a51e7099db5ed8f",
+              "dependencyDepth": 2
+            }
+          ],
+          "runtimeEvidence": {
+            "status": "success",
+            "executedSystem": "x86_64-linux",
+            "sourceRevision": "ceae6750c5b25f7e0fc063595ea9de0ae3271600",
+            "sourceNarHash": "sha256-Pv89/pq0/0JEF5eQNw3tL/+DOKUF7JErBdjt0Jg4wzw=",
+            "drvPath": "/nix/store/csw1z8s9y7hnf2k22pc1li3r6qzvvj73-purified-vcpkg-project.drv",
+            "outputs": {
+              "out": "/nix/store/azb8a4z6daj6qwl82xj5pqqr50qf2j7z-purified-vcpkg-project"
+            },
+            "receipt": "evidence/vcpkg-purifier/main-job-127688590928.log",
+            "artifactSha256": "57bf5803b7a9c4b53b7c011734da0b5471fea703b92ba37b696b44faf867a033",
+            "jobUrl": "https://github.com/nix-purifiers/vcpkg-purifier/actions/runs/42155512188/job/127688590928",
+            "jobConclusion": "success",
+            "events": [
+              {
+                "line": 1287,
+                "text": "2026-11-06T03:18:50.4965551Z building '/nix/store/csw1z8s9y7hnf2k22pc1li3r6qzvvj73-purified-vcpkg-project.drv'..."
+              },
+              {
+                "line": 1381,
+                "text": "2026-11-06T03:19:01.2385305Z checking outputs of '/nix/store/csw1z8s9y7hnf2k22pc1li3r6qzvvj73-purified-vcpkg-project.drv'..."
+              }
+            ],
+            "completedAt": "2026-11-06T03:19:05Z",
+            "outputIdentityBinding": "Local Nix derivation JSON proves drv\u2192output; this exact drv has a native build/rebuild event in the successful immutable-revision CI job."
+          },
+          "outputProvenance": {
+            "ciObserved": "Exact drv building/rebuild event and successful check.",
+            "evaluated": "Named-check output paths independently bound through local instantiated derivation JSON.",
+            "localRealization": "NAR hashes only when actually present in realized-output-info.json; not claimed printed by CI."
+          },
+          "gap": null
+        }
+      ],
+      "judgmentChanges": []
+    },
+    "west-purifier": {
+      "criterionToExistingDerivationIds": {
+        "evaluation": [
+          "cli",
+          "environment",
+          "project",
+          "release"
+        ],
+        "goodTests": [
+          "project",
+          "environment",
+          "release"
+        ],
+        "linux": [
+          "project",
+          "environment",
+          "release"
+        ],
+        "darwin": [],
+        "oneVersion": [
+          "project",
+          "environment",
+          "release"
+        ],
+        "nonEolVersions": [
+          "project",
+          "environment",
+          "release"
+        ],
+        "manySamples": [
+          "project",
+          "environment",
+          "release"
+        ],
+        "longCompatibility": [
+          "project",
+          "environment",
+          "release"
+        ]
+      },
+      "sampleBuildMappings": [
+        {
+          "sampleBuildIndex": 0,
+          "name": "examples/minimal: authored West workspace/C consumer of pinned jsmn",
+          "classification": "authored-fixture",
+          "supportingExistingDerivationIds": [
+            "project",
+            "environment"
+          ],
+          "source": {
+            "repository": "https://github.com/nix-purifiers/west-purifier",
+            "revision": "c310bd10d8c849ef44cea2c6e8f8277a4cb239f4",
+            "path": "examples/minimal",
+            "storePath": "/nix/store/527gwfcsdl2jnqq6v9hy0c7l8s29jazs-source",
+            "sourceNarHash": "sha256-2reSN46c+hrnNhXyLXbQtqrolOinbMoX2itQ6LEbUiE=",
+            "narHashScope": "Exact builder-consumed source tree (may be filtered/project subtree); not automatically the whole Git repository NAR.",
+            "nixPathInfoReceipt": "evidence/sample-source-info.json"
+          },
+          "purifierSource": {
+            "repository": "https://github.com/nix-purifiers/west-purifier",
+            "revision": "c310bd10d8c849ef44cea2c6e8f8277a4cb239f4",
+            "sourceNarHash": "sha256-UwEx/I/wxKkKdmjiDW7gAEn/uBOgrlJkx48QAKOR/Lg="
+          },
+          "executedSdkVersions": {
+            "python3": "3.14.8",
+            "python3.pkgs.west": "1.5.0"
+          },
+          "actualExecution": "Native West build via patched python environment; installed answer executable must print 42",
+          "actualDerivationPhases": [
+            {
+              "drvPath": "/nix/store/g1514v3slw23mzfq8gn1184cj7s1i37b-west-project.drv",
+              "derivationFileSha256": "a24feabb154bcb4ca1189e3aeb46f541115338b813f3dc40f36e693a7bb9d704",
+              "nativeBuildEvents": [
+                {
+                  "line": 1046,
+                  "text": "2026-11-06T03:17:23.0870398Z building '/nix/store/g1514v3slw23mzfq8gn1184cj7s1i37b-west-project.drv'..."
+                },
+                {
+                  "line": 1127,
+                  "text": "2026-11-06T03:17:52.2760936Z checking outputs of '/nix/store/g1514v3slw23mzfq8gn1184cj7s1i37b-west-project.drv'..."
+                }
+              ],
+              "commands": {
+                "buildCommand": "cp -pr /nix/store/527gwfcsdl2jnqq6v9hy0c7l8s29jazs-source source\nchmod -R u+w source\ncd source\nmkdir -p \"$out\"\n/nix/store/xahxrjs30p3mw0a42bqg9ikgkikskw8m-python3-3.14.8/bin/python3 /nix/store/25h7f4l85z3n98sn39yg1a42m7acl5s6-layout.py \"$TMPDIR/workspace\" \"$PWD\" /nix/store/7dn1ha22g3jhsw5ksm5b0pkpf4r3xyw7-west-locked-environment/manifest.json \\\n  /nix/store/nzjn6wmrq7c4hxbccyb20wqp3gjkcs3d-python3-3.14.8-env/bin/west build > \"$TMPDIR/build.log\" 2>&1 || { cat \"$TMPDIR/build.log\"; exit 1; }\ncmake --install build --prefix \"$out\"\ntest \"$($out/bin/answer)\" = 42\ncp -pr /nix/store/527gwfcsdl2jnqq6v9hy0c7l8s29jazs-source \"$out/source\"\n"
+              },
+              "executableSearchPathInputs": {
+                "nativeBuildInputs": "/nix/store/nzjn6wmrq7c4hxbccyb20wqp3gjkcs3d-python3-3.14.8-env /nix/store/rlpcs1h48m058z811xxkn5672v77p5qj-cmake-4.4.4 /nix/store/vs2sa1msvkjxbb70h47819zq8a9srj21-gnumake-4.4.1 /nix/store/r5ri78axx1qggkjq3vawywlzglg70b5w-gcc-wrapper-16.2.0"
+              },
+              "directSdkDerivationReferences": [
+                "/nix/store/sna7jsbf22rb1n19cbwy7qv8myy2aji6-python3-3.14.8-env.drv",
+                "/nix/store/w1svn0lba9gv480i37z2q97yi4155mlr-python3-3.14.8.drv"
+              ],
+              "commandsOrigin": "Actual instantiated derivation env; match native build event via packet CI log, not closure-only version inference."
+            },
+            {
+              "drvPath": "/nix/store/k44lc3864fjlvy3q2rkgq30fj6q2j0a2-west-locked-environment.drv",
+              "derivationFileSha256": "f39173ab9b3050bdc469cfcc17622e3f6da5c54cbb0b9404e7834bb2149b2e30",
+              "nativeBuildEvents": [
+                {
+                  "line": 809,
+                  "text": "2026-11-06T03:17:20.0017087Z building '/nix/store/k44lc3864fjlvy3q2rkgq30fj6q2j0a2-west-locked-environment.drv'..."
+                },
+                {
+                  "line": 1126,
+                  "text": "2026-11-06T03:17:52.2295917Z checking outputs of '/nix/store/k44lc3864fjlvy3q2rkgq30fj6q2j0a2-west-locked-environment.drv'..."
+                }
+              ],
+              "commands": {
+                "buildCommand": "mkdir -p \"$out\"\nln -s /nix/store/fxfv20n93868zpvqngrhbbissqpafz0z-west-environment.json \"$out/manifest.json\"\n"
+              },
+              "executableSearchPathInputs": {},
+              "directSdkDerivationReferences": [],
+              "commandsOrigin": "Actual instantiated derivation env; match native build event via packet CI log, not closure-only version inference."
+            }
+          ],
+          "sdkDependencyWitnesses": [
+            {
+              "check": "project",
+              "parentDerivation": "/nix/store/sna7jsbf22rb1n19cbwy7qv8myy2aji6-python3-3.14.8-env.drv",
+              "sdkDerivation": "/nix/store/3gjd6bgzhpwangsl3vahnckm142cy13i-python3.14-west-1.5.0.drv",
+              "sdkDerivationSha256": "03972248417defca7db4b60593835ab867e1ce0e4ad407961868a46bd9944e34",
+              "dependencyDepth": 2
+            }
+          ],
+          "runtimeEvidence": {
+            "status": "success",
+            "executedSystem": "x86_64-linux",
+            "sourceRevision": "c310bd10d8c849ef44cea2c6e8f8277a4cb239f4",
+            "sourceNarHash": "sha256-UwEx/I/wxKkKdmjiDW7gAEn/uBOgrlJkx48QAKOR/Lg=",
+            "drvPath": "/nix/store/g1514v3slw23mzfq8gn1184cj7s1i37b-west-project.drv",
+            "outputs": {
+              "out": "/nix/store/ra1krhmyimjafzic7akj9r97ppypim18-west-project"
+            },
+            "receipt": "evidence/west-purifier/main-job-127688605220.log",
+            "artifactSha256": "374c3d515ac0fe92df228eeb80e0860964705a2e745c1a8ef32e258a7eecf116",
+            "jobUrl": "https://github.com/nix-purifiers/west-purifier/actions/runs/42155516612/job/127688605220",
+            "jobConclusion": "success",
+            "events": [
+              {
+                "line": 1046,
+                "text": "2026-11-06T03:17:23.0870398Z building '/nix/store/g1514v3slw23mzfq8gn1184cj7s1i37b-west-project.drv'..."
+              },
+              {
+                "line": 1127,
+                "text": "2026-11-06T03:17:52.2760936Z checking outputs of '/nix/store/g1514v3slw23mzfq8gn1184cj7s1i37b-west-project.drv'..."
+              }
+            ],
+            "completedAt": "2026-11-06T03:17:55Z",
+            "outputIdentityBinding": "Local Nix derivation JSON proves drv\u2192output; this exact drv has a native build/rebuild event in the successful immutable-revision CI job."
+          },
+          "outputProvenance": {
+            "ciObserved": "Exact drv building/rebuild event and successful check.",
+            "evaluated": "Named-check output paths independently bound through local instantiated derivation JSON.",
+            "localRealization": "NAR hashes only when actually present in realized-output-info.json; not claimed printed by CI."
+          },
+          "gap": null
+        }
+      ],
+      "judgmentChanges": []
+    },
+    "xmake-purifier": {
+      "criterionToExistingDerivationIds": {
+        "evaluation": [
+          "cli",
+          "environment",
+          "native-projections",
+          "project",
+          "release"
+        ],
+        "goodTests": [
+          "project",
+          "native-projections",
+          "environment",
+          "release"
+        ],
+        "linux": [
+          "project",
+          "native-projections",
+          "environment",
+          "release"
+        ],
+        "darwin": [],
+        "oneVersion": [
+          "project",
+          "native-projections",
+          "environment",
+          "release"
+        ],
+        "nonEolVersions": [
+          "project",
+          "native-projections",
+          "environment",
+          "release"
+        ],
+        "manySamples": [
+          "project",
+          "native-projections",
+          "environment",
+          "release"
+        ],
+        "longCompatibility": [
+          "project",
+          "native-projections",
+          "environment",
+          "release"
+        ]
+      },
+      "sampleBuildMappings": [
+        {
+          "sampleBuildIndex": 0,
+          "name": "examples/minimal: authored Xmake C consumer; separate authored FFI projection",
+          "classification": "authored-fixture",
+          "supportingExistingDerivationIds": [
+            "project",
+            "environment"
+          ],
+          "source": {
+            "repository": "https://github.com/nix-purifiers/xmake-purifier",
+            "revision": "4a12be2b5b6659d75954c03471b4ae4bc97f7f1b",
+            "path": "examples/minimal",
+            "storePath": "/nix/store/78rankk5q3g1xsrashh99lzq498zlw82-source",
+            "sourceNarHash": "sha256-YHCCowC2T+qgzHLiC45lKNqIw7WDg6EW54Q+3IuBofc=",
+            "narHashScope": "Exact builder-consumed source tree (may be filtered/project subtree); not automatically the whole Git repository NAR.",
+            "nixPathInfoReceipt": "evidence/sample-source-info.json"
+          },
+          "purifierSource": {
+            "repository": "https://github.com/nix-purifiers/xmake-purifier",
+            "revision": "4a12be2b5b6659d75954c03471b4ae4bc97f7f1b",
+            "sourceNarHash": "sha256-E92jxfD88QT9Clzg+XVoYj+/Dv/RaNlVdx2EeWhRveA="
+          },
+          "executedSdkVersions": {
+            "xmake": "3.1.2"
+          },
+          "actualExecution": "Native xmake configure/build/test/install; smoke test executes built C program",
+          "actualDerivationPhases": [
+            {
+              "drvPath": "/nix/store/hiczlviajg7vnx7cvblv2f8khmfhx7qb-purified-xmake-project.drv",
+              "derivationFileSha256": "685a1fa1947ba60404594bfdfb7d17888fa58cccbcbf9857af8d326abfd35cbb",
+              "nativeBuildEvents": [
+                {
+                  "line": 1647,
+                  "text": "2026-11-06T03:18:45.7640391Z building '/nix/store/hiczlviajg7vnx7cvblv2f8khmfhx7qb-purified-xmake-project.drv'..."
+                },
+                {
+                  "line": 1688,
+                  "text": "2026-11-06T03:18:50.8909841Z checking outputs of '/nix/store/hiczlviajg7vnx7cvblv2f8khmfhx7qb-purified-xmake-project.drv'..."
+                }
+              ],
+              "commands": {
+                "buildCommand": "export HOME=\"$TMPDIR/home\" XMAKE_GLOBALDIR=\"$TMPDIR/global\" XMAKE_CONFIGDIR=\"$TMPDIR/config\"\nexport XMAKE_PKG_CACHEDIR=\"$TMPDIR/cache\" XMAKE_PKG_INSTALLDIR=$(readlink -f /nix/store/hkmi2jfj84mcmk8s3nn11cd98bz6qir8-purified-xmake-environment/packages)\nexport XMAKE_PURIFIER_REPOSITORIES=$(readlink -f /nix/store/hkmi2jfj84mcmk8s3nn11cd98bz6qir8-purified-xmake-environment/repositories)\nexport XMAKE_PURIFIER_REPOSITORIES_FILE=/nix/store/hkmi2jfj84mcmk8s3nn11cd98bz6qir8-purified-xmake-environment/repositories.json\nexport XMAKE_PURIFIER_PROFILE=/nix/store/hkmi2jfj84mcmk8s3nn11cd98bz6qir8-purified-xmake-environment/profile.json XMAKE_PURIFIER_FROZEN=1\nexport SOURCE_DATE_EPOCH=1\nmkdir -p \"$HOME\" project\ncp -r /nix/store/78rankk5q3g1xsrashh99lzq498zlw82-source/. project/\nchmod -R u+w project\ncd project\nexport XMAKE_PURIFIER_PROJECT=\"$PWD\" XMAKE_PURIFIER_NATIVE_LOCK=\"$TMPDIR/profile.lock\"\npython3 -c 'import json,sys; sys.stdout.write(json.load(open(sys.argv[1]))[\"nativeLock\"])' /nix/store/hkmi2jfj84mcmk8s3nn11cd98bz6qir8-purified-xmake-environment/profile.json > \"$XMAKE_PURIFIER_NATIVE_LOCK\"\nxmake f -m release --require=n -y\nxmake -y\nxmake test -y\nxmake install -y -o \"$out\"\n"
+              },
+              "executableSearchPathInputs": {
+                "nativeBuildInputs": "/nix/store/lns14q2w8g5vdnlvqspsck6hypa7ndcn-xmake-purifier-toolchain /nix/store/xahxrjs30p3mw0a42bqg9ikgkikskw8m-python3-3.14.8"
+              },
+              "directSdkDerivationReferences": [
+                "/nix/store/w1svn0lba9gv480i37z2q97yi4155mlr-python3-3.14.8.drv"
+              ],
+              "commandsOrigin": "Actual instantiated derivation env; match native build event via packet CI log, not closure-only version inference."
+            },
+            {
+              "drvPath": "/nix/store/zn7jf6hx7iwq6y4d17c1ykzdswmhffwp-purified-xmake-environment.drv",
+              "derivationFileSha256": "6faffcfe8eb8da27983e5413158973e532391634f6e468c6eb5e008d7b33968b",
+              "nativeBuildEvents": [
+                {
+                  "line": 1612,
+                  "text": "2026-11-06T03:18:41.7366035Z building '/nix/store/zn7jf6hx7iwq6y4d17c1ykzdswmhffwp-purified-xmake-environment.drv'..."
+                },
+                {
+                  "line": 1686,
+                  "text": "2026-11-06T03:18:47.8756384Z checking outputs of '/nix/store/zn7jf6hx7iwq6y4d17c1ykzdswmhffwp-purified-xmake-environment.drv'..."
+                }
+              ],
+              "commands": {
+                "buildCommand": "mkdir -p \"$out/packages\" \"$TMPDIR/home\" work\nexport HOME=\"$TMPDIR/home\" XMAKE_GLOBALDIR=\"$TMPDIR/global\" XMAKE_CONFIGDIR=\"$TMPDIR/config\"\nexport XMAKE_PKG_CACHEDIR=\"$TMPDIR/cache\" XMAKE_PKG_INSTALLDIR=\"$out/packages\"\nexport XMAKE_PURIFIER_REPOSITORIES=/nix/store/mi87h2k80dqxsb9zz5sqd6xlyrmabli9-xmake-pinned-repositories XMAKE_PURIFIER_REPOSITORIES_FILE=/nix/store/28yyzrjf1yjs7jypjm0mps3d2bshsi8s-xmake-repositories.json\nexport XMAKE_PURIFIER_BLOBS=/nix/store/ilrz3czpcjhimxz2xy3nffjsna3qx5di-locked-xmake-sources XMAKE_PURIFIER_PROFILE=/nix/store/257vawq2gfmj7i237lyx536dmzsq1zs5-xmake-profile.json\n# Xmake assembles through the compiler driver; stdenv's raw GNU as is\n# not an Xmake tool implementation (visible with ARM NEON sources).\nexport AS=/nix/store/r5ri78axx1qggkjq3vawywlzglg70b5w-gcc-wrapper-16.2.0/bin/gcc\nexport SOURCE_DATE_EPOCH=1\npython3 /nix/store/01i8jc8j6mybpg4lx4872b8b5qh31hn4-build.py /nix/store/playf3h6x77rzl7aw59q9frnb7zm7if3-xmake-build-metadata.json \"$PWD/work\"\ncd work\nxmake g --network=private\nxmake f -m release --require=n -y\nxmake require --build -y\nln -s /nix/store/lns14q2w8g5vdnlvqspsck6hypa7ndcn-xmake-purifier-toolchain \"$out/sdk\"\nln -s /nix/store/mi87h2k80dqxsb9zz5sqd6xlyrmabli9-xmake-pinned-repositories \"$out/repositories\"\nln -s /nix/store/ilrz3czpcjhimxz2xy3nffjsna3qx5di-locked-xmake-sources \"$out/sources\"\ncp /nix/store/28yyzrjf1yjs7jypjm0mps3d2bshsi8s-xmake-repositories.json \"$out/repositories.json\"\ncp /nix/store/257vawq2gfmj7i237lyx536dmzsq1zs5-xmake-profile.json \"$out/profile.json\"\ncp /nix/store/playf3h6x77rzl7aw59q9frnb7zm7if3-xmake-build-metadata.json \"$out/metadata.json\"\n"
+              },
+              "executableSearchPathInputs": {
+                "nativeBuildInputs": "/nix/store/lns14q2w8g5vdnlvqspsck6hypa7ndcn-xmake-purifier-toolchain /nix/store/xahxrjs30p3mw0a42bqg9ikgkikskw8m-python3-3.14.8"
+              },
+              "directSdkDerivationReferences": [
+                "/nix/store/w1svn0lba9gv480i37z2q97yi4155mlr-python3-3.14.8.drv"
+              ],
+              "commandsOrigin": "Actual instantiated derivation env; match native build event via packet CI log, not closure-only version inference."
+            }
+          ],
+          "sdkDependencyWitnesses": [
+            {
+              "check": "project",
+              "parentDerivation": "/nix/store/yw0qk0zqywxqx1kpv6xwnl84p3c0xz1y-xmake-purifier-toolchain.drv",
+              "sdkDerivation": "/nix/store/q77xm7gj4kr1zgd9qh5xk7xdhvjdldqs-xmake-3.1.2.drv",
+              "sdkDerivationSha256": "f866bf3e83497493dcbbb99a24bceed8acc8ec05a29ba7016be4b16e16c97c6c",
+              "dependencyDepth": 2
+            },
+            {
+              "check": "environment",
+              "parentDerivation": "/nix/store/yw0qk0zqywxqx1kpv6xwnl84p3c0xz1y-xmake-purifier-toolchain.drv",
+              "sdkDerivation": "/nix/store/q77xm7gj4kr1zgd9qh5xk7xdhvjdldqs-xmake-3.1.2.drv",
+              "sdkDerivationSha256": "f866bf3e83497493dcbbb99a24bceed8acc8ec05a29ba7016be4b16e16c97c6c",
+              "dependencyDepth": 2
+            }
+          ],
+          "runtimeEvidence": {
+            "status": "success",
+            "executedSystem": "x86_64-linux",
+            "sourceRevision": "4a12be2b5b6659d75954c03471b4ae4bc97f7f1b",
+            "sourceNarHash": "sha256-E92jxfD88QT9Clzg+XVoYj+/Dv/RaNlVdx2EeWhRveA=",
+            "drvPath": "/nix/store/hiczlviajg7vnx7cvblv2f8khmfhx7qb-purified-xmake-project.drv",
+            "outputs": {
+              "out": "/nix/store/w5q46r2k2rfmm4nz6s2g61krjq63nacv-purified-xmake-project"
+            },
+            "receipt": "evidence/xmake-purifier/main-job-127688616692.log",
+            "artifactSha256": "5dcc34faf47ee81b1eecac7b489a27d50f3e8f2f1320577d576d1bb0a5616842",
+            "jobUrl": "https://github.com/nix-purifiers/xmake-purifier/actions/runs/42155519885/job/127688616692",
+            "jobConclusion": "success",
+            "events": [
+              {
+                "line": 1647,
+                "text": "2026-11-06T03:18:45.7640391Z building '/nix/store/hiczlviajg7vnx7cvblv2f8khmfhx7qb-purified-xmake-project.drv'..."
+              },
+              {
+                "line": 1688,
+                "text": "2026-11-06T03:18:50.8909841Z checking outputs of '/nix/store/hiczlviajg7vnx7cvblv2f8khmfhx7qb-purified-xmake-project.drv'..."
+              }
+            ],
+            "completedAt": "2026-11-06T03:18:53Z",
+            "outputIdentityBinding": "Local Nix derivation JSON proves drv\u2192output; this exact drv has a native build/rebuild event in the successful immutable-revision CI job."
+          },
+          "outputProvenance": {
+            "ciObserved": "Exact drv building/rebuild event and successful check.",
+            "evaluated": "Named-check output paths independently bound through local instantiated derivation JSON.",
+            "localRealization": "NAR hashes only when actually present in realized-output-info.json; not claimed printed by CI."
+          },
+          "gap": null
+        }
+      ],
+      "judgmentChanges": []
+    },
+    "yarn-berry-purifier": {
+      "criterionToExistingDerivationIds": {
+        "evaluation": [
+          "app",
+          "app-tests",
+          "browser-projections",
+          "composition-producer",
+          "conformance-external",
+          "conformance-malformed",
+          "conformance-missing",
+          "conformance-offline",
+          "conformance-rebuild",
+          "conformance-relock",
+          "conformance-stale",
+          "conformance-tampered",
+          "conformance-update",
+          "external-record",
+          "external-restore",
+          "external-yarn-lock",
+          "foreign",
+          "git-build",
+          "git-record",
+          "interactive",
+          "locked-hash",
+          "npm-projection",
+          "offline-external",
+          "platform-filter",
+          "prettier",
+          "publish",
+          "publish-tarball",
+          "read-lock",
+          "sources",
+          "tampered-file",
+          "treefmt",
+          "unit",
+          "workspaces-root",
+          "yarn",
+          "yarn-berry-purifier"
+        ],
+        "goodTests": [
+          "prettier",
+          "conformance-offline",
+          "conformance-tampered",
+          "publish",
+          "interactive",
+          "npm-projection",
+          "browser-projections"
+        ],
+        "linux": [
+          "prettier",
+          "conformance-offline",
+          "conformance-tampered",
+          "publish",
+          "interactive",
+          "npm-projection",
+          "browser-projections"
+        ],
+        "darwin": [],
+        "oneVersion": [
+          "prettier",
+          "conformance-offline",
+          "conformance-tampered",
+          "publish",
+          "interactive",
+          "npm-projection",
+          "browser-projections"
+        ],
+        "nonEolVersions": [
+          "prettier",
+          "conformance-offline",
+          "conformance-tampered",
+          "publish",
+          "interactive",
+          "npm-projection",
+          "browser-projections"
+        ],
+        "manySamples": [
+          "prettier",
+          "conformance-offline",
+          "conformance-tampered",
+          "publish",
+          "interactive",
+          "npm-projection",
+          "browser-projections"
+        ],
+        "longCompatibility": [
+          "prettier",
+          "conformance-offline",
+          "conformance-tampered",
+          "publish",
+          "interactive",
+          "npm-projection",
+          "browser-projections"
+        ]
+      },
+      "sampleBuildMappings": [
+        {
+          "sampleBuildIndex": 0,
+          "name": "Prettier upstream bed4edbb1cf2a9db4004215b0ce5707cdb02b5d9",
+          "classification": "independent-upstream",
+          "supportingExistingDerivationIds": [
+            "prettier"
+          ],
+          "source": {
+            "repository": "https://github.com/prettier/prettier",
+            "revision": "bed4edbb1cf2a9db4004215b0ce5707cdb02b5d9",
+            "path": null,
+            "storePath": "/nix/store/58qsbb92qgppyp352h4yri18ggg9iajk-source",
+            "sourceNarHash": "sha256-Gm9jbi8E8AX2366olEPodeBwCJ42RRGnhKr4Wl9u2UM=",
+            "narHashScope": "Exact builder-consumed source tree (may be filtered/project subtree); not automatically the whole Git repository NAR.",
+            "nixPathInfoReceipt": "evidence/sample-source-info.json"
+          },
+          "purifierSource": {
+            "repository": "https://github.com/nix-purifiers/yarn-berry-purifier",
+            "revision": "ed69e6b861bb8e55d871c426c7ef9c27e3bf21db",
+            "sourceNarHash": "sha256-0GpxXX/e8GUg768UMFxwsxN+qtwGC4YTZojJYfVumGE="
+          },
+          "executedSdkVersions": {
+            "nodejs": "24.21.0",
+            "yarn-berry": "4.18.1"
+          },
+          "actualExecution": "Native Yarn4.18.1 installs/builds Prettier under Node24.21.0; installed Prettier formats input and exact expected output is asserted",
+          "actualDerivationPhases": [
+            {
+              "drvPath": "/nix/store/f1cq8m5g38rkhmlj4vznn374zgj7vxpf-prettier-check.drv",
+              "derivationFileSha256": "efd84c894e880bcef390306322d23a4a6f26c1262edcdbaea8f029839f051d14",
+              "nativeBuildEvents": [
+                {
+                  "line": 10873,
+                  "text": "2026-11-06T03:19:53.5339954Z building '/nix/store/f1cq8m5g38rkhmlj4vznn374zgj7vxpf-prettier-check.drv'..."
+                }
+              ],
+              "commands": {
+                "buildCommand": "printf 'const  a  =  {b:1}\\n' > input.js\nprettier input.js | grep -qx 'const a = { b: 1 };'\ntouch $out\n"
+              },
+              "executableSearchPathInputs": {
+                "nativeBuildInputs": "/nix/store/kavv1fjp49ikj3n09a6qqz2wf8shi5by-prettier-3.10.0-dev"
+              },
+              "directSdkDerivationReferences": [],
+              "commandsOrigin": "Actual instantiated derivation env; match native build event via packet CI log, not closure-only version inference."
+            },
+            {
+              "drvPath": "/nix/store/qwsg8fxq9ji29mfb6qbaqlvc3z73kx6s-prettier-3.10.0-dev.drv",
+              "derivationFileSha256": "5c6f3d70202fc8db28efd3c5a93deaab8a3577a8f91eb1515ce2d9dd0e40b0a3",
+              "nativeBuildEvents": [
+                {
+                  "line": 10860,
+                  "text": "2026-11-06T03:19:43.5793016Z building '/nix/store/qwsg8fxq9ji29mfb6qbaqlvc3z73kx6s-prettier-3.10.0-dev.drv'..."
+                }
+              ],
+              "commands": {
+                "installPhase": "runHook preInstall\nmodules=\"$out/lib/node_modules\"\nmkdir -p \"$modules\"\nif [ -d /nix/store/xsrbmgcj5hiid68arl1ra87dljq6030m-yarn-project-production-modules/node_modules ]; then\n  cp -a /nix/store/xsrbmgcj5hiid68arl1ra87dljq6030m-yarn-project-production-modules/node_modules/. \"$modules/\"\n  chmod -R u+w \"$modules\"\n  rm -rf \"$modules/.bin\" \"$modules/.yarn-state.yml\"\nfi\nrm -rf \"$modules\"/prettier\nmkdir -p \"$modules\"/prettier\ntar -xzf /nix/store/d4yvw1jv1shw31kv7x7gh2gps16wzl7j-yarn-project-build/prettier.tgz --strip-components=1 \\\n  -C \"$modules\"/prettier\n\n\nchmod -R u+w \"$modules\"\nmkdir -p \"$out/bin\"\ntarget=\"$modules\"/prettier/./bin/prettier.cjs\nchmod +x \"$target\"\nln -s \"$target\" \"$out/bin\"/prettier\n\nrunHook postInstall\n"
+              },
+              "executableSearchPathInputs": {
+                "buildInputs": "/nix/store/j1j9b0w3mhpccdli73ycj5w7nf6fkzqz-nodejs-24.21.0"
+              },
+              "directSdkDerivationReferences": [
+                "/nix/store/a7mzwdph5vkavini0lj77xph53qhgjlf-nodejs-24.21.0.drv"
+              ],
+              "commandsOrigin": "Actual instantiated derivation env; match native build event via packet CI log, not closure-only version inference."
+            },
+            {
+              "drvPath": "/nix/store/kh32817vas1qlkwcrzm3phh9csv7yy00-yarn-project-build.drv",
+              "derivationFileSha256": "8c81cb14eecc56e40a657c145eba62f66c9ecd64b8faa9a49c9d8d6db6c287e4",
+              "nativeBuildEvents": [
+                {
+                  "line": 9926,
+                  "text": "2026-11-06T03:19:05.3227345Z building '/nix/store/kh32817vas1qlkwcrzm3phh9csv7yy00-yarn-project-build.drv'..."
+                }
+              ],
+              "commands": {
+                "buildPhase": "runHook preBuild\ncp /nix/store/58qsbb92qgppyp352h4yri18ggg9iajk-source/yarn.lock yarn.lock\ncp /nix/store/9qp17iw1f5cl0zjqczpwl91sjf5lyqhc-prettier.lock.json yarn-berry-purifier.lock.json\nchmod u+w yarn.lock yarn-berry-purifier.lock.json\n\n\nexport HOME=\"$TMPDIR/home\"\nmkdir -p \"$HOME\"\ncat > \"$HOME/.yarnrc.yml\" << 'EOF'\nplugins:\n  - path: /nix/store/j70xm6zyiqq9m2qfpmqni84n9s0cqh3y-yarn-berry-purifier-plugin/purifier.cjs\n    spec: \"@nix-purifiers/plugin-yarn-berry-purifier\"\nEOF\nexport BERRY_PURIFIER_SERVE=/nix/store/249njpcjgrvbw13gqsp0jfd13ivbjjxj-yarn-berry-purifier-served\n# When Yarn packs a git dependency with npm or Yarn Classic, npm reads\n# the served tarballs from its cache by integrity, offline, and Yarn\n# Classic reads them from its offline mirror. Yarn passes these settings\n# through to both; it would reject unknown YARN_ settings.\nexport npm_config_cache=\"$TMPDIR/npm-cache\"\nmkdir -p \"$npm_config_cache\"\nif [ -d /nix/store/249njpcjgrvbw13gqsp0jfd13ivbjjxj-yarn-berry-purifier-served/npm-cache ]; then\n  cp -rs --no-preserve=mode /nix/store/249njpcjgrvbw13gqsp0jfd13ivbjjxj-yarn-berry-purifier-served/npm-cache/. \"$npm_config_cache\"\nfi\nexport npm_config_offline=true\nexport npm_config_audit=false\nexport npm_config_fund=false\nexport npm_config_update_notifier=false\nexport npm_config_yarn_offline_mirror=/nix/store/249njpcjgrvbw13gqsp0jfd13ivbjjxj-yarn-berry-purifier-served/yarn-mirror\n# Yarn packs git dependencies in parallel, and Yarn Classic installs\n# into a shared cache that only one Yarn Classic may write at a time.\necho \"--mutex \\\"file:$TMPDIR/yarn-classic.mutex\\\"\" > \"$HOME/.yarnrc\"\n# A git dependency that names npm in packageManager and has no lockfile\n# gets the package-lock.json the lock run resolved for it, from this\n# `npm` in front of npm on the PATH.\nmkdir -p \"$TMPDIR/purifier-bin\"\ncat > \"$TMPDIR/purifier-bin/npm\" << 'EOF'\n#!/nix/store/nnm9gdr70ihc6zc9298mzz8jpcgaciql-bash-5.3p20/bin/bash\nif [ -f package.json ] && [ ! -f package-lock.json ]; then\n  lock=\"/nix/store/249njpcjgrvbw13gqsp0jfd13ivbjjxj-yarn-berry-purifier-served/npm-locks/$(sha256sum package.json | cut -d' ' -f1).json\"\n  if [ -f \"$lock\" ]; then\n    cp \"$lock\" package-lock.json\n    chmod u+w package-lock.json\n  fi\nfi\nexec /nix/store/j1j9b0w3mhpccdli73ycj5w7nf6fkzqz-nodejs-24.21.0/bin/npm \"$@\"\nEOF\nchmod +x \"$TMPDIR/purifier-bin/npm\"\nexport PATH=\"$TMPDIR/purifier-bin:$PATH\"\n# `git clone` of a locked repository clones the copy in the served\n# directory.\nexport GIT_CONFIG_COUNT=1\nexport GIT_CONFIG_KEY_0=safe.directory\nexport GIT_CONFIG_VALUE_0='*'\n\nexport YARN_GLOBAL_FOLDER=\"$TMPDIR/yarn-global\"\nexport YARN_ENABLE_TELEMETRY=0\nexport YARN_ENABLE_INLINE_BUILDS=1\nexport YARN_ENABLE_PROGRESS_BARS=0\n# node-gyp takes the headers of the Node.js that runs it rather than\n# downloading them.\nexport npm_config_nodedir=/nix/store/j1j9b0w3mhpccdli73ycj5w7nf6fkzqz-nodejs-24.21.0\nyarnJs=\"$(realpath ./.yarn/releases/yarn-4.18.1.cjs)\"\nyarn() {\n  /nix/store/j1j9b0w3mhpccdli73ycj5w7nf6fkzqz-nodejs-24.21.0/bin/node \"$yarnJs\" \"$@\"\n}\nexport BERRY_PURIFIER_INPUT_VIEWS='[]'\n\n\npatchInstalled() {\n  local dirs=()\n  while IFS= read -r -d \"\" dir; do\n    dirs+=(\"$dir\")\n  done < <(find . \\( -name node_modules -o -path ./.yarn/unplugged \\) -type d -prune -print0)\n  if [ ${#dirs[@]} -gt 0 ]; then\n    patchShebangs \"${dirs[@]}\" > /dev/null\n    if declare -F autoPatchelf > /dev/null; then\n      autoPatchelf \"${dirs[@]}\"\n    fi\n  fi\n}\n\nYARN_ENABLE_SCRIPTS=0 yarn install --immutable\npatchInstalled\nyarn install --immutable\nrunScript() {\n  if true && node -e 'var scripts = require(\"./package.json\").scripts; process.exit(scripts && scripts[process.argv[1]] ? 0 : 1)' \"$1\"; then\n    yarn run \"$1\"\n  else\n    \n    :\n  fi\n}\n\nfor script in build; do\n  runScript \"$script\"\ndone\nrunHook postBuild\n",
+                "installPhase": "runHook preInstall\nmkdir -p \"$out\"\nyarn  pack --out \"$out\"/prettier.tgz\n\nrunHook postInstall\n"
+              },
+              "executableSearchPathInputs": {
+                "nativeBuildInputs": "/nix/store/j1j9b0w3mhpccdli73ycj5w7nf6fkzqz-nodejs-24.21.0 /nix/store/xgw813vgzl2q0696sq45adpj0xd690jq-git-2.56.0 /nix/store/m5r2g21f5ymnbhwp6lczq0ig4jkcz3lg-python3-3.14.8-env /nix/store/7a84lb77p1c5wqzw9lyk3n65zl4ssbmx-node-gyp-13.1.0 /nix/store/24zxb4wfmwvnbjjk2jdkzmj7irk41w3w-auto-patchelf-hook",
+                "buildInputs": "/nix/store/7a2cjhcgzyym5zaz6m4fksw47qvm150w-gcc-16.2.0-lib"
+              },
+              "directSdkDerivationReferences": [
+                "/nix/store/a7mzwdph5vkavini0lj77xph53qhgjlf-nodejs-24.21.0.drv",
+                "/nix/store/jsskx9gaff84kx4nbyi1sd2adhq0dxp0-python3-3.14.8-env.drv"
+              ],
+              "commandsOrigin": "Actual instantiated derivation env; match native build event via packet CI log, not closure-only version inference."
+            },
+            {
+              "drvPath": "/nix/store/qndpdlhs808dg86p0vwiwvjhn4n2ihrs-yarn-project-production-modules.drv",
+              "derivationFileSha256": "c1bbe4e42a233590994e4adc1ee20f25d313617843dca34dba885abe0d1d2f4a",
+              "nativeBuildEvents": [
+                {
+                  "line": 9927,
+                  "text": "2026-11-06T03:19:05.3550331Z building '/nix/store/qndpdlhs808dg86p0vwiwvjhn4n2ihrs-yarn-project-production-modules.drv'..."
+                }
+              ],
+              "commands": {
+                "buildPhase": "runHook preBuild\ncp /nix/store/58qsbb92qgppyp352h4yri18ggg9iajk-source/yarn.lock yarn.lock\ncp /nix/store/9qp17iw1f5cl0zjqczpwl91sjf5lyqhc-prettier.lock.json yarn-berry-purifier.lock.json\nchmod u+w yarn.lock yarn-berry-purifier.lock.json\n\nexport HOME=\"$TMPDIR/home\"\nmkdir -p \"$HOME\"\ncat > \"$HOME/.yarnrc.yml\" << 'EOF'\nplugins:\n  - path: /nix/store/j70xm6zyiqq9m2qfpmqni84n9s0cqh3y-yarn-berry-purifier-plugin/purifier.cjs\n    spec: \"@nix-purifiers/plugin-yarn-berry-purifier\"\nEOF\nexport BERRY_PURIFIER_SERVE=/nix/store/249njpcjgrvbw13gqsp0jfd13ivbjjxj-yarn-berry-purifier-served\n# When Yarn packs a git dependency with npm or Yarn Classic, npm reads\n# the served tarballs from its cache by integrity, offline, and Yarn\n# Classic reads them from its offline mirror. Yarn passes these settings\n# through to both; it would reject unknown YARN_ settings.\nexport npm_config_cache=\"$TMPDIR/npm-cache\"\nmkdir -p \"$npm_config_cache\"\nif [ -d /nix/store/249njpcjgrvbw13gqsp0jfd13ivbjjxj-yarn-berry-purifier-served/npm-cache ]; then\n  cp -rs --no-preserve=mode /nix/store/249njpcjgrvbw13gqsp0jfd13ivbjjxj-yarn-berry-purifier-served/npm-cache/. \"$npm_config_cache\"\nfi\nexport npm_config_offline=true\nexport npm_config_audit=false\nexport npm_config_fund=false\nexport npm_config_update_notifier=false\nexport npm_config_yarn_offline_mirror=/nix/store/249njpcjgrvbw13gqsp0jfd13ivbjjxj-yarn-berry-purifier-served/yarn-mirror\n# Yarn packs git dependencies in parallel, and Yarn Classic installs\n# into a shared cache that only one Yarn Classic may write at a time.\necho \"--mutex \\\"file:$TMPDIR/yarn-classic.mutex\\\"\" > \"$HOME/.yarnrc\"\n# A git dependency that names npm in packageManager and has no lockfile\n# gets the package-lock.json the lock run resolved for it, from this\n# `npm` in front of npm on the PATH.\nmkdir -p \"$TMPDIR/purifier-bin\"\ncat > \"$TMPDIR/purifier-bin/npm\" << 'EOF'\n#!/nix/store/nnm9gdr70ihc6zc9298mzz8jpcgaciql-bash-5.3p20/bin/bash\nif [ -f package.json ] && [ ! -f package-lock.json ]; then\n  lock=\"/nix/store/249njpcjgrvbw13gqsp0jfd13ivbjjxj-yarn-berry-purifier-served/npm-locks/$(sha256sum package.json | cut -d' ' -f1).json\"\n  if [ -f \"$lock\" ]; then\n    cp \"$lock\" package-lock.json\n    chmod u+w package-lock.json\n  fi\nfi\nexec /nix/store/j1j9b0w3mhpccdli73ycj5w7nf6fkzqz-nodejs-24.21.0/bin/npm \"$@\"\nEOF\nchmod +x \"$TMPDIR/purifier-bin/npm\"\nexport PATH=\"$TMPDIR/purifier-bin:$PATH\"\n# `git clone` of a locked repository clones the copy in the served\n# directory.\nexport GIT_CONFIG_COUNT=1\nexport GIT_CONFIG_KEY_0=safe.directory\nexport GIT_CONFIG_VALUE_0='*'\n\nexport YARN_GLOBAL_FOLDER=\"$TMPDIR/yarn-global\"\nexport YARN_ENABLE_TELEMETRY=0\nexport YARN_ENABLE_INLINE_BUILDS=1\nexport YARN_ENABLE_PROGRESS_BARS=0\n# node-gyp takes the headers of the Node.js that runs it rather than\n# downloading them.\nexport npm_config_nodedir=/nix/store/j1j9b0w3mhpccdli73ycj5w7nf6fkzqz-nodejs-24.21.0\nyarnJs=\"$(realpath ./.yarn/releases/yarn-4.18.1.cjs)\"\nyarn() {\n  /nix/store/j1j9b0w3mhpccdli73ycj5w7nf6fkzqz-nodejs-24.21.0/bin/node \"$yarnJs\" \"$@\"\n}\nexport BERRY_PURIFIER_INPUT_VIEWS='[]'\n\n\npatchInstalled() {\n  local dirs=()\n  while IFS= read -r -d \"\" dir; do\n    dirs+=(\"$dir\")\n  done < <(find . \\( -name node_modules -o -path ./.yarn/unplugged \\) -type d -prune -print0)\n  if [ ${#dirs[@]} -gt 0 ]; then\n    patchShebangs \"${dirs[@]}\" > /dev/null\n    if declare -F autoPatchelf > /dev/null; then\n      autoPatchelf \"${dirs[@]}\"\n    fi\n  fi\n}\n\nexport YARN_NODE_LINKER=node-modules\nYARN_ENABLE_SCRIPTS=0 yarn workspaces focus --production --all\npatchInstalled\nyarn workspaces focus --production --all\n# A `link:` or `portal:` dependency is a symlink into the project,\n# which the installed packages do not contain, so it becomes a copy of\n# its target.\nfind . -path '*node_modules/*' -not -path '*/.bin/*' -type l -print0 \\\n  | while IFS= read -r -d \"\" link; do\n      target=\"$(readlink -f \"$link\")\"\n      rm \"$link\"\n      cp -r \"$target\" \"$link\"\n    done\nrunHook postBuild\n",
+                "installPhase": "runHook preInstall\nmkdir -p \"$out\"\nfind . -name node_modules -type d -prune -print0 | while IFS= read -r -d \"\" dir; do\n  mkdir -p \"$out/$(dirname \"$dir\")\"\n  cp -a \"$dir\" \"$out/$dir\"\ndone\nrunHook postInstall\n"
+              },
+              "executableSearchPathInputs": {
+                "nativeBuildInputs": "/nix/store/j1j9b0w3mhpccdli73ycj5w7nf6fkzqz-nodejs-24.21.0 /nix/store/xgw813vgzl2q0696sq45adpj0xd690jq-git-2.56.0 /nix/store/m5r2g21f5ymnbhwp6lczq0ig4jkcz3lg-python3-3.14.8-env /nix/store/7a84lb77p1c5wqzw9lyk3n65zl4ssbmx-node-gyp-13.1.0 /nix/store/24zxb4wfmwvnbjjk2jdkzmj7irk41w3w-auto-patchelf-hook",
+                "buildInputs": "/nix/store/7a2cjhcgzyym5zaz6m4fksw47qvm150w-gcc-16.2.0-lib"
+              },
+              "directSdkDerivationReferences": [
+                "/nix/store/a7mzwdph5vkavini0lj77xph53qhgjlf-nodejs-24.21.0.drv",
+                "/nix/store/jsskx9gaff84kx4nbyi1sd2adhq0dxp0-python3-3.14.8-env.drv"
+              ],
+              "commandsOrigin": "Actual instantiated derivation env; match native build event via packet CI log, not closure-only version inference."
+            }
+          ],
+          "sdkDependencyWitnesses": [
+            {
+              "check": "prettier",
+              "parentDerivation": "/nix/store/qwsg8fxq9ji29mfb6qbaqlvc3z73kx6s-prettier-3.10.0-dev.drv",
+              "sdkDerivation": "/nix/store/a7mzwdph5vkavini0lj77xph53qhgjlf-nodejs-24.21.0.drv",
+              "sdkDerivationSha256": "b1a27abb72ab1a5debf4da1f9c0f783b2ded98c4b4bd20149215959a45bf1e86",
+              "dependencyDepth": 2
+            },
+            {
+              "check": "prettier",
+              "parentDerivation": "/nix/store/kh32817vas1qlkwcrzm3phh9csv7yy00-yarn-project-build.drv",
+              "sdkDerivation": "/nix/store/a7mzwdph5vkavini0lj77xph53qhgjlf-nodejs-24.21.0.drv",
+              "sdkDerivationSha256": "b1a27abb72ab1a5debf4da1f9c0f783b2ded98c4b4bd20149215959a45bf1e86",
+              "dependencyDepth": 3
+            },
+            {
+              "check": "prettier",
+              "parentDerivation": "/nix/store/qndpdlhs808dg86p0vwiwvjhn4n2ihrs-yarn-project-production-modules.drv",
+              "sdkDerivation": "/nix/store/a7mzwdph5vkavini0lj77xph53qhgjlf-nodejs-24.21.0.drv",
+              "sdkDerivationSha256": "b1a27abb72ab1a5debf4da1f9c0f783b2ded98c4b4bd20149215959a45bf1e86",
+              "dependencyDepth": 3
+            },
+            {
+              "check": "prettier",
+              "parentDerivation": "/nix/store/91448wi5x68jlrr0j31jj7q71s39svl5-node-gyp-13.1.0.drv",
+              "sdkDerivation": "/nix/store/a7mzwdph5vkavini0lj77xph53qhgjlf-nodejs-24.21.0.drv",
+              "sdkDerivationSha256": "b1a27abb72ab1a5debf4da1f9c0f783b2ded98c4b4bd20149215959a45bf1e86",
+              "dependencyDepth": 4
+            }
+          ],
+          "runtimeEvidence": {
+            "status": "success",
+            "executedSystem": "x86_64-linux",
+            "sourceRevision": "ed69e6b861bb8e55d871c426c7ef9c27e3bf21db",
+            "sourceNarHash": "sha256-0GpxXX/e8GUg768UMFxwsxN+qtwGC4YTZojJYfVumGE=",
+            "drvPath": "/nix/store/f1cq8m5g38rkhmlj4vznn374zgj7vxpf-prettier-check.drv",
+            "outputs": {
+              "out": "/nix/store/q1ww0sq7kzwgazzr3xwkj7nx5lbklr9s-prettier-check"
+            },
+            "receipt": "evidence/yarn-berry-purifier/main-job-127688629501.log",
+            "artifactSha256": "fa0cbd0399362de8574c1149488693441d2df9e535675d5225966516ecfd3f93",
+            "jobUrl": "https://github.com/nix-purifiers/yarn-berry-purifier/actions/runs/42155523744/job/127688629501",
+            "jobConclusion": "success",
+            "events": [
+              {
+                "line": 10873,
+                "text": "2026-11-06T03:19:53.5339954Z building '/nix/store/f1cq8m5g38rkhmlj4vznn374zgj7vxpf-prettier-check.drv'..."
+              }
+            ],
+            "completedAt": "2026-11-06T03:20:11Z",
+            "outputIdentityBinding": "Local Nix derivation JSON proves drv\u2192output; this exact drv has a native build/rebuild event in the successful immutable-revision CI job."
+          },
+          "outputProvenance": {
+            "ciObserved": "Exact drv building/rebuild event and successful check.",
+            "evaluated": "Named-check output paths independently bound through local instantiated derivation JSON.",
+            "localRealization": "NAR hashes only when actually present in realized-output-info.json; not claimed printed by CI."
+          },
+          "gap": null
+        }
+      ],
+      "judgmentChanges": []
+    },
+    "yarn-classic-purifier": {
+      "criterionToExistingDerivationIds": {
+        "evaluation": [
+          "app",
+          "app-tests",
+          "archive-timestamps",
+          "browser-projections",
+          "composition-producer",
+          "conformance-external",
+          "conformance-malformed",
+          "conformance-malformed-json",
+          "conformance-missing",
+          "conformance-offline",
+          "conformance-rebuild",
+          "conformance-relock",
+          "conformance-stale",
+          "conformance-tampered",
+          "conformance-update",
+          "external-yarn-lock",
+          "fetches",
+          "git-dependency",
+          "git-prepare",
+          "git-prepare-generated-lock",
+          "git-urls",
+          "immer",
+          "legacy-node",
+          "legacy-node-0",
+          "legacy-node-0-tools",
+          "legacy-node-4",
+          "legacy-node-4-tools",
+          "legacy-node-addon",
+          "legacy-node-tools",
+          "local-paths",
+          "mirror-names",
+          "node-lts-10",
+          "node-lts-10-tools",
+          "node-lts-14",
+          "node-lts-14-tools",
+          "node-lts-16",
+          "node-lts-16-tools",
+          "node-lts-18",
+          "node-lts-18-tools",
+          "node-lts-20",
+          "node-lts-20-tools",
+          "node-lts-22",
+          "node-lts-22-tools",
+          "node-lts-26",
+          "node-lts-26-tools",
+          "node-lts-6",
+          "node-lts-6-tools",
+          "node-lts-8",
+          "node-lts-8-tools",
+          "npm-projection",
+          "prerelease-node",
+          "publish",
+          "publish-tarball",
+          "purifier-lock",
+          "read-lock",
+          "registry-mirrors",
+          "remote",
+          "sha1-fragment",
+          "tampered-file",
+          "treefmt",
+          "workspaces",
+          "workspaces-root",
+          "yarn",
+          "yarn-classic-purifier"
+        ],
+        "goodTests": [
+          "immer",
+          "app-tests",
+          "conformance-offline",
+          "conformance-tampered",
+          "publish",
+          "legacy-node-0",
+          "legacy-node-4",
+          "node-lts-22",
+          "node-lts-26"
+        ],
+        "linux": [
+          "immer",
+          "app-tests",
+          "conformance-offline",
+          "conformance-tampered",
+          "publish",
+          "legacy-node-0",
+          "legacy-node-4",
+          "node-lts-22",
+          "node-lts-26"
+        ],
+        "darwin": [],
+        "oneVersion": [
+          "immer",
+          "app-tests",
+          "conformance-offline",
+          "conformance-tampered",
+          "publish",
+          "legacy-node-0",
+          "legacy-node-4",
+          "node-lts-22",
+          "node-lts-26"
+        ],
+        "nonEolVersions": [
+          "immer",
+          "app-tests",
+          "conformance-offline",
+          "conformance-tampered",
+          "publish",
+          "legacy-node-0",
+          "legacy-node-4",
+          "node-lts-22",
+          "node-lts-26"
+        ],
+        "manySamples": [
+          "immer",
+          "app-tests",
+          "conformance-offline",
+          "conformance-tampered",
+          "publish",
+          "legacy-node-0",
+          "legacy-node-4",
+          "node-lts-22",
+          "node-lts-26"
+        ],
+        "longCompatibility": [
+          "legacy-node",
+          "legacy-node-0",
+          "legacy-node-0-tools",
+          "legacy-node-4",
+          "legacy-node-4-tools",
+          "legacy-node-addon",
+          "legacy-node-tools",
+          "node-lts-10",
+          "node-lts-10-tools",
+          "node-lts-14",
+          "node-lts-14-tools",
+          "node-lts-16",
+          "node-lts-16-tools",
+          "node-lts-18",
+          "node-lts-18-tools",
+          "node-lts-20",
+          "node-lts-20-tools",
+          "node-lts-22",
+          "node-lts-22-tools",
+          "node-lts-26",
+          "node-lts-26-tools",
+          "node-lts-6",
+          "node-lts-6-tools",
+          "node-lts-8",
+          "node-lts-8-tools"
+        ]
+      },
+      "sampleBuildMappings": [
+        {
+          "sampleBuildIndex": 0,
+          "name": "Immer upstream 75a290e44ba14bd723c8ef8546b6559c8ef3ae88",
+          "classification": "independent-upstream",
+          "supportingExistingDerivationIds": [
+            "immer"
+          ],
+          "source": {
+            "repository": "https://github.com/immerjs/immer",
+            "revision": "75a290e44ba14bd723c8ef8546b6559c8ef3ae88",
+            "path": null,
+            "storePath": "/nix/store/74rfjlpmajhhinjkmj1zaq9div1455pz-yarn-source",
+            "sourceNarHash": "sha256-XOeu1biJRgglGW0Zz2cVPt14e4Rh1N2h87wtC6XQLEE=",
+            "narHashScope": "Exact builder-consumed source tree (may be filtered/project subtree); not automatically the whole Git repository NAR.",
+            "nixPathInfoReceipt": "evidence/sample-source-info.json"
+          },
+          "purifierSource": {
+            "repository": "https://github.com/nix-purifiers/yarn-classic-purifier",
+            "revision": "6f92a7faca10233f61256e7a2710e6ec09e6136d",
+            "sourceNarHash": "sha256-A97ByE9cMiMbgH2D5eiWfqlPDzgmB5+fQAtxZqrFNtY="
+          },
+          "executedSdkVersions": {
+            "nodejs": "24.21.0",
+            "yarn": "1.22.22"
+          },
+          "actualExecution": "Native Yarn1.22.22 installs/builds/tests Immer with Node24.21.0; source/build/Flow suite on x86_64 and produce() assertion execute",
+          "actualDerivationPhases": [
+            {
+              "drvPath": "/nix/store/v31phl7m6rlj78ql96y7nh07nd66hszv-immer-check.drv",
+              "derivationFileSha256": "c9b1234f90bbd8f0546c744a6fe72dd1eb5bd44d5d8507045682f6698b40c6fa",
+              "nativeBuildEvents": [
+                {
+                  "line": 17374,
+                  "text": "2026-11-06T03:23:39.4686382Z building '/nix/store/v31phl7m6rlj78ql96y7nh07nd66hszv-immer-check.drv'..."
+                }
+              ],
+              "commands": {
+                "buildCommand": "NODE_PATH=/nix/store/s2gfkzk7n4p4dd4ii7riykyf97ygcid8-immer-10.0.3-beta/lib/node_modules node -e '\n  const { produce } = require(\"immer\");\n  const next = produce({ a: 1 }, (draft) => { draft.a = 2; });\n  if (next.a !== 2) process.exit(1);\n'\ntouch $out\n"
+              },
+              "executableSearchPathInputs": {
+                "nativeBuildInputs": "/nix/store/j1j9b0w3mhpccdli73ycj5w7nf6fkzqz-nodejs-24.21.0"
+              },
+              "directSdkDerivationReferences": [
+                "/nix/store/a7mzwdph5vkavini0lj77xph53qhgjlf-nodejs-24.21.0.drv"
+              ],
+              "commandsOrigin": "Actual instantiated derivation env; match native build event via packet CI log, not closure-only version inference."
+            },
+            {
+              "drvPath": "/nix/store/313abdm4r163w1646ikgf964vv62lbw8-immer-10.0.3-beta.drv",
+              "derivationFileSha256": "0c82631e9f5bc7ea281bebd903c930cb7c95f9b48d6c6d69f37a6b7710db7a43",
+              "nativeBuildEvents": [
+                {
+                  "line": 16826,
+                  "text": "2026-11-06T03:23:29.9276552Z building '/nix/store/313abdm4r163w1646ikgf964vv62lbw8-immer-10.0.3-beta.drv'..."
+                }
+              ],
+              "commands": {
+                "installPhase": "runHook preInstall\nmodules=\"$out/lib/node_modules\"\nmkdir -p \"$modules\"\nif [ -d /nix/store/86crsfpall9dk2hql665qmm1pdixx6av-yarn-project-production-modules/node_modules ]; then\n  cp -a /nix/store/86crsfpall9dk2hql665qmm1pdixx6av-yarn-project-production-modules/node_modules/. \"$modules/\"\n  chmod -R u+w \"$modules\"\n  rm -rf \"$modules/.bin\" \"$modules/.yarn-integrity\"\nfi\nrm -rf \"$modules\"/immer\nmkdir -p \"$modules\"/immer\ntar -xzf /nix/store/612g4252664xylsmw1iy3620qhgfrnq1-yarn-project-release/immer.tgz --strip-components=1 \\\n  -C \"$modules\"/immer\n\n\nchmod -R u+w \"$modules\"\n\n\nrunHook postInstall\n"
+              },
+              "executableSearchPathInputs": {
+                "buildInputs": "/nix/store/j1j9b0w3mhpccdli73ycj5w7nf6fkzqz-nodejs-24.21.0"
+              },
+              "directSdkDerivationReferences": [
+                "/nix/store/a7mzwdph5vkavini0lj77xph53qhgjlf-nodejs-24.21.0.drv"
+              ],
+              "commandsOrigin": "Actual instantiated derivation env; match native build event via packet CI log, not closure-only version inference."
+            },
+            {
+              "drvPath": "/nix/store/q08vf92rvwmrpvvbc9w21bhmpbhcfcak-yarn-project-tests.drv",
+              "derivationFileSha256": "582077e3a93503253312180b528eaf67d6ddaa0d31f9a0cbe7bcee53fe77d36c",
+              "nativeBuildEvents": [
+                {
+                  "line": 16138,
+                  "text": "2026-11-06T03:22:21.9600622Z building '/nix/store/q08vf92rvwmrpvvbc9w21bhmpbhcfcak-yarn-project-tests.drv'..."
+                }
+              ],
+              "commands": {
+                "buildPhase": "runHook preBuild\ncp --no-preserve=mode /nix/store/v66cgw37j6rqz5k4czrcfdi1i7jsf6fv-source/yarn.lock yarn.lock\n\nexport HOME=\"$TMPDIR/home\"\nexport YARN_CACHE_FOLDER=\"$TMPDIR/yarn-cache\"\nexport YARN_YARN_OFFLINE_MIRROR=\"$TMPDIR/yarn-offline-mirror\"\nexport YARN_YARN_OFFLINE_MIRROR_PRUNING=false\nexport YARN_DISABLE_SELF_UPDATE_CHECK=true\n# node-gyp takes the headers of the Node.js that runs it rather than\n# downloading them.\nexport npm_config_nodedir=/nix/store/j1j9b0w3mhpccdli73ycj5w7nf6fkzqz-nodejs-24.21.0\nmkdir -p \"$HOME\" \"$YARN_YARN_OFFLINE_MIRROR\"\ncp -rs --no-preserve=mode /nix/store/k37ynigajrz36qqs34rvl4724v7kqrdn-yarn-offline-mirror/. \"$YARN_YARN_OFFLINE_MIRROR\"\nmirror=\"$(yarn config get yarn-offline-mirror --offline --silent)\"\nif [ \"$mirror\" != \"$YARN_YARN_OFFLINE_MIRROR\" ] && [ \"$mirror\" != undefined ]; then\n  mkdir -p \"$mirror\"\n  cp -rsn --no-preserve=mode /nix/store/k37ynigajrz36qqs34rvl4724v7kqrdn-yarn-offline-mirror/. \"$mirror\"\nfi\nexport YARN_SCRIPT_SHELL=/nix/store/1iyzlri4dkpac1x8x8628dp2iy6yrdlg-yarn-project-script-shell\n\nyarn install --offline --frozen-lockfile --non-interactive --no-progress --ignore-scripts\npatchShebangs \"$YARN_CACHE_FOLDER\" > /dev/null\nif declare -F autoPatchelf > /dev/null; then\n  autoPatchelf \"$YARN_CACHE_FOLDER\"\nfi\nwhile IFS= read -r -d \"\" dir; do\n  rm -rf \"$dir\"\ndone < <(find . -name node_modules -type d -prune -print0)\npatchShebangs . > /dev/null\nyarn install --offline --frozen-lockfile --non-interactive --no-progress\n\nrunScript() {\n  if node -e 'var scripts = require(\"./package.json\").scripts; process.exit(scripts && scripts[process.argv[1]] ? 0 : 1)' \"$1\"; then\n    yarn run \"$1\"\n  else\n    \n    :\n  fi\n}\n\nfor script in build test; do\n  runScript \"$script\"\ndone\nrunHook postBuild\n",
+                "installPhase": "runHook preInstall\ntouch $out\nrunHook postInstall\n"
+              },
+              "executableSearchPathInputs": {
+                "nativeBuildInputs": "/nix/store/j1j9b0w3mhpccdli73ycj5w7nf6fkzqz-nodejs-24.21.0 /nix/store/956bk5xr4ins0havkzr1dh9l846pll7c-yarn-1.22.22 /nix/store/xahxrjs30p3mw0a42bqg9ikgkikskw8m-python3-3.14.8 /nix/store/7a84lb77p1c5wqzw9lyk3n65zl4ssbmx-node-gyp-13.1.0 /nix/store/24zxb4wfmwvnbjjk2jdkzmj7irk41w3w-auto-patchelf-hook",
+                "buildInputs": "/nix/store/7a2cjhcgzyym5zaz6m4fksw47qvm150w-gcc-16.2.0-lib"
+              },
+              "directSdkDerivationReferences": [
+                "/nix/store/a7mzwdph5vkavini0lj77xph53qhgjlf-nodejs-24.21.0.drv",
+                "/nix/store/gsgzwqnczsad9gnvhdh3qbl8jghz1zdm-yarn-1.22.22.drv",
+                "/nix/store/w1svn0lba9gv480i37z2q97yi4155mlr-python3-3.14.8.drv"
+              ],
+              "commandsOrigin": "Actual instantiated derivation env; match native build event via packet CI log, not closure-only version inference."
+            },
+            {
+              "drvPath": "/nix/store/izylsbvcxxyrwsncfy0xg3a2g7shbc0x-yarn-project-production-modules.drv",
+              "derivationFileSha256": "e950194ed824722332dab98018bfcba39863cffa5019a8dd8d97ab9fe778eca9",
+              "nativeBuildEvents": [
+                {
+                  "line": 16119,
+                  "text": "2026-11-06T03:22:21.7198191Z building '/nix/store/izylsbvcxxyrwsncfy0xg3a2g7shbc0x-yarn-project-production-modules.drv'..."
+                }
+              ],
+              "commands": {
+                "buildPhase": "runHook preBuild\ncp --no-preserve=mode /nix/store/v66cgw37j6rqz5k4czrcfdi1i7jsf6fv-source/yarn.lock yarn.lock\n\nexport HOME=\"$TMPDIR/home\"\nexport YARN_CACHE_FOLDER=\"$TMPDIR/yarn-cache\"\nexport YARN_YARN_OFFLINE_MIRROR=\"$TMPDIR/yarn-offline-mirror\"\nexport YARN_YARN_OFFLINE_MIRROR_PRUNING=false\nexport YARN_DISABLE_SELF_UPDATE_CHECK=true\n# node-gyp takes the headers of the Node.js that runs it rather than\n# downloading them.\nexport npm_config_nodedir=/nix/store/j1j9b0w3mhpccdli73ycj5w7nf6fkzqz-nodejs-24.21.0\nmkdir -p \"$HOME\" \"$YARN_YARN_OFFLINE_MIRROR\"\ncp -rs --no-preserve=mode /nix/store/k37ynigajrz36qqs34rvl4724v7kqrdn-yarn-offline-mirror/. \"$YARN_YARN_OFFLINE_MIRROR\"\nmirror=\"$(yarn config get yarn-offline-mirror --offline --silent)\"\nif [ \"$mirror\" != \"$YARN_YARN_OFFLINE_MIRROR\" ] && [ \"$mirror\" != undefined ]; then\n  mkdir -p \"$mirror\"\n  cp -rsn --no-preserve=mode /nix/store/k37ynigajrz36qqs34rvl4724v7kqrdn-yarn-offline-mirror/. \"$mirror\"\nfi\nexport YARN_SCRIPT_SHELL=/nix/store/1iyzlri4dkpac1x8x8628dp2iy6yrdlg-yarn-project-script-shell\n\nfor dir in . .; do\n  node -e '\n    var fs = require(\"fs\");\n    var file = process.argv[1] + \"/package.json\";\n    var manifest = JSON.parse(fs.readFileSync(file, \"utf8\"));\n    [\"preinstall\", \"install\", \"postinstall\", \"prepublish\", \"preprepare\", \"prepare\", \"postprepare\"].forEach(function (s) {\n      if (manifest.scripts) delete manifest.scripts[s];\n    });\n    fs.writeFileSync(file, JSON.stringify(manifest, null, 2));\n  ' \"$dir\"\ndone\nyarn install --offline --frozen-lockfile --non-interactive --no-progress --production --ignore-scripts\npatchShebangs \"$YARN_CACHE_FOLDER\" > /dev/null\nif declare -F autoPatchelf > /dev/null; then\n  autoPatchelf \"$YARN_CACHE_FOLDER\"\nfi\nwhile IFS= read -r -d \"\" dir; do\n  rm -rf \"$dir\"\ndone < <(find . -name node_modules -type d -prune -print0)\npatchShebangs . > /dev/null\nyarn install --offline --frozen-lockfile --non-interactive --no-progress --production\n\n# A `link:` dependency is a symlink into the project, which the\n# installed packages do not contain, so it becomes a copy of its\n# target.\nfind . -path '*node_modules/*' -not -path '*/.bin/*' -type l -print0 \\\n  | while IFS= read -r -d \"\" link; do\n      target=\"$(readlink -f \"$link\")\"\n      rm \"$link\"\n      cp -r \"$target\" \"$link\"\n    done\nrunHook postBuild\n",
+                "installPhase": "runHook preInstall\nmkdir -p \"$out\"\nfind . -name node_modules -type d -prune -print0 | while IFS= read -r -d \"\" dir; do\n  mkdir -p \"$out/$(dirname \"$dir\")\"\n  cp -a \"$dir\" \"$out/$dir\"\ndone\nrunHook postInstall\n"
+              },
+              "executableSearchPathInputs": {
+                "nativeBuildInputs": "/nix/store/j1j9b0w3mhpccdli73ycj5w7nf6fkzqz-nodejs-24.21.0 /nix/store/956bk5xr4ins0havkzr1dh9l846pll7c-yarn-1.22.22 /nix/store/xahxrjs30p3mw0a42bqg9ikgkikskw8m-python3-3.14.8 /nix/store/7a84lb77p1c5wqzw9lyk3n65zl4ssbmx-node-gyp-13.1.0 /nix/store/24zxb4wfmwvnbjjk2jdkzmj7irk41w3w-auto-patchelf-hook",
+                "buildInputs": "/nix/store/7a2cjhcgzyym5zaz6m4fksw47qvm150w-gcc-16.2.0-lib"
+              },
+              "directSdkDerivationReferences": [
+                "/nix/store/a7mzwdph5vkavini0lj77xph53qhgjlf-nodejs-24.21.0.drv",
+                "/nix/store/gsgzwqnczsad9gnvhdh3qbl8jghz1zdm-yarn-1.22.22.drv",
+                "/nix/store/w1svn0lba9gv480i37z2q97yi4155mlr-python3-3.14.8.drv"
+              ],
+              "commandsOrigin": "Actual instantiated derivation env; match native build event via packet CI log, not closure-only version inference."
+            },
+            {
+              "drvPath": "/nix/store/qbw6fc3dqlcrdh7kwd2x6jhnsxdhv9rl-yarn-project-release.drv",
+              "derivationFileSha256": "a6a2be1029f583af3c6672e879b62b2bb295a2dcd5b9957892142a1ce3b3d572",
+              "nativeBuildEvents": [
+                {
+                  "line": 16120,
+                  "text": "2026-11-06T03:22:21.8177196Z building '/nix/store/qbw6fc3dqlcrdh7kwd2x6jhnsxdhv9rl-yarn-project-release.drv'..."
+                }
+              ],
+              "commands": {
+                "buildPhase": "runHook preBuild\ncp --no-preserve=mode /nix/store/v66cgw37j6rqz5k4czrcfdi1i7jsf6fv-source/yarn.lock yarn.lock\n\nexport HOME=\"$TMPDIR/home\"\nexport YARN_CACHE_FOLDER=\"$TMPDIR/yarn-cache\"\nexport YARN_YARN_OFFLINE_MIRROR=\"$TMPDIR/yarn-offline-mirror\"\nexport YARN_YARN_OFFLINE_MIRROR_PRUNING=false\nexport YARN_DISABLE_SELF_UPDATE_CHECK=true\n# node-gyp takes the headers of the Node.js that runs it rather than\n# downloading them.\nexport npm_config_nodedir=/nix/store/j1j9b0w3mhpccdli73ycj5w7nf6fkzqz-nodejs-24.21.0\nmkdir -p \"$HOME\" \"$YARN_YARN_OFFLINE_MIRROR\"\ncp -rs --no-preserve=mode /nix/store/k37ynigajrz36qqs34rvl4724v7kqrdn-yarn-offline-mirror/. \"$YARN_YARN_OFFLINE_MIRROR\"\nmirror=\"$(yarn config get yarn-offline-mirror --offline --silent)\"\nif [ \"$mirror\" != \"$YARN_YARN_OFFLINE_MIRROR\" ] && [ \"$mirror\" != undefined ]; then\n  mkdir -p \"$mirror\"\n  cp -rsn --no-preserve=mode /nix/store/k37ynigajrz36qqs34rvl4724v7kqrdn-yarn-offline-mirror/. \"$mirror\"\nfi\nexport YARN_SCRIPT_SHELL=/nix/store/1iyzlri4dkpac1x8x8628dp2iy6yrdlg-yarn-project-script-shell\n\nyarn install --offline --frozen-lockfile --non-interactive --no-progress --ignore-scripts\npatchShebangs \"$YARN_CACHE_FOLDER\" > /dev/null\nif declare -F autoPatchelf > /dev/null; then\n  autoPatchelf \"$YARN_CACHE_FOLDER\"\nfi\nwhile IFS= read -r -d \"\" dir; do\n  rm -rf \"$dir\"\ndone < <(find . -name node_modules -type d -prune -print0)\npatchShebangs . > /dev/null\nyarn install --offline --frozen-lockfile --non-interactive --no-progress\n\nrunScript() {\n  if node -e 'var scripts = require(\"./package.json\").scripts; process.exit(scripts && scripts[process.argv[1]] ? 0 : 1)' \"$1\"; then\n    yarn run \"$1\"\n  else\n    \n    :\n  fi\n}\n\nfor script in build; do\n  runScript \"$script\"\ndone\nrunHook postBuild\n",
+                "installPhase": "runHook preInstall\nmkdir -p \"$out\"\n(cd ./'' && yarn pack --offline --silent --filename \"$out\"/immer.tgz)\n/nix/store/xahxrjs30p3mw0a42bqg9ikgkikskw8m-python3-3.14.8/bin/python /nix/store/3v0355vqa3ifzrhiv83vg9g5p93cxkxr-archive_timestamps.py \"$out\"/immer.tgz\n\n\nrunHook postInstall\n"
+              },
+              "executableSearchPathInputs": {
+                "nativeBuildInputs": "/nix/store/j1j9b0w3mhpccdli73ycj5w7nf6fkzqz-nodejs-24.21.0 /nix/store/956bk5xr4ins0havkzr1dh9l846pll7c-yarn-1.22.22 /nix/store/xahxrjs30p3mw0a42bqg9ikgkikskw8m-python3-3.14.8 /nix/store/7a84lb77p1c5wqzw9lyk3n65zl4ssbmx-node-gyp-13.1.0 /nix/store/24zxb4wfmwvnbjjk2jdkzmj7irk41w3w-auto-patchelf-hook",
+                "buildInputs": "/nix/store/7a2cjhcgzyym5zaz6m4fksw47qvm150w-gcc-16.2.0-lib"
+              },
+              "directSdkDerivationReferences": [
+                "/nix/store/a7mzwdph5vkavini0lj77xph53qhgjlf-nodejs-24.21.0.drv",
+                "/nix/store/gsgzwqnczsad9gnvhdh3qbl8jghz1zdm-yarn-1.22.22.drv",
+                "/nix/store/w1svn0lba9gv480i37z2q97yi4155mlr-python3-3.14.8.drv"
+              ],
+              "commandsOrigin": "Actual instantiated derivation env; match native build event via packet CI log, not closure-only version inference."
+            }
+          ],
+          "sdkDependencyWitnesses": [
+            {
+              "check": "immer",
+              "parentDerivation": "/nix/store/v31phl7m6rlj78ql96y7nh07nd66hszv-immer-check.drv",
+              "sdkDerivation": "/nix/store/a7mzwdph5vkavini0lj77xph53qhgjlf-nodejs-24.21.0.drv",
+              "sdkDerivationSha256": "b1a27abb72ab1a5debf4da1f9c0f783b2ded98c4b4bd20149215959a45bf1e86",
+              "dependencyDepth": 1
+            },
+            {
+              "check": "immer",
+              "parentDerivation": "/nix/store/313abdm4r163w1646ikgf964vv62lbw8-immer-10.0.3-beta.drv",
+              "sdkDerivation": "/nix/store/a7mzwdph5vkavini0lj77xph53qhgjlf-nodejs-24.21.0.drv",
+              "sdkDerivationSha256": "b1a27abb72ab1a5debf4da1f9c0f783b2ded98c4b4bd20149215959a45bf1e86",
+              "dependencyDepth": 2
+            },
+            {
+              "check": "immer",
+              "parentDerivation": "/nix/store/q08vf92rvwmrpvvbc9w21bhmpbhcfcak-yarn-project-tests.drv",
+              "sdkDerivation": "/nix/store/a7mzwdph5vkavini0lj77xph53qhgjlf-nodejs-24.21.0.drv",
+              "sdkDerivationSha256": "b1a27abb72ab1a5debf4da1f9c0f783b2ded98c4b4bd20149215959a45bf1e86",
+              "dependencyDepth": 2
+            },
+            {
+              "check": "immer",
+              "parentDerivation": "/nix/store/q08vf92rvwmrpvvbc9w21bhmpbhcfcak-yarn-project-tests.drv",
+              "sdkDerivation": "/nix/store/gsgzwqnczsad9gnvhdh3qbl8jghz1zdm-yarn-1.22.22.drv",
+              "sdkDerivationSha256": "c79ede5436ef1a6984f2d221c14b8507f17c036ab5cf696b4361a6a31651c1b0",
+              "dependencyDepth": 2
+            },
+            {
+              "check": "immer",
+              "parentDerivation": "/nix/store/izylsbvcxxyrwsncfy0xg3a2g7shbc0x-yarn-project-production-modules.drv",
+              "sdkDerivation": "/nix/store/a7mzwdph5vkavini0lj77xph53qhgjlf-nodejs-24.21.0.drv",
+              "sdkDerivationSha256": "b1a27abb72ab1a5debf4da1f9c0f783b2ded98c4b4bd20149215959a45bf1e86",
+              "dependencyDepth": 3
+            },
+            {
+              "check": "immer",
+              "parentDerivation": "/nix/store/izylsbvcxxyrwsncfy0xg3a2g7shbc0x-yarn-project-production-modules.drv",
+              "sdkDerivation": "/nix/store/gsgzwqnczsad9gnvhdh3qbl8jghz1zdm-yarn-1.22.22.drv",
+              "sdkDerivationSha256": "c79ede5436ef1a6984f2d221c14b8507f17c036ab5cf696b4361a6a31651c1b0",
+              "dependencyDepth": 3
+            },
+            {
+              "check": "immer",
+              "parentDerivation": "/nix/store/qbw6fc3dqlcrdh7kwd2x6jhnsxdhv9rl-yarn-project-release.drv",
+              "sdkDerivation": "/nix/store/a7mzwdph5vkavini0lj77xph53qhgjlf-nodejs-24.21.0.drv",
+              "sdkDerivationSha256": "b1a27abb72ab1a5debf4da1f9c0f783b2ded98c4b4bd20149215959a45bf1e86",
+              "dependencyDepth": 3
+            },
+            {
+              "check": "immer",
+              "parentDerivation": "/nix/store/qbw6fc3dqlcrdh7kwd2x6jhnsxdhv9rl-yarn-project-release.drv",
+              "sdkDerivation": "/nix/store/gsgzwqnczsad9gnvhdh3qbl8jghz1zdm-yarn-1.22.22.drv",
+              "sdkDerivationSha256": "c79ede5436ef1a6984f2d221c14b8507f17c036ab5cf696b4361a6a31651c1b0",
+              "dependencyDepth": 3
+            },
+            {
+              "check": "immer",
+              "parentDerivation": "/nix/store/2p0fwl10vsba1hap7g7bw00avg07zhzs-yarn-project-script-shell.drv",
+              "sdkDerivation": "/nix/store/a7mzwdph5vkavini0lj77xph53qhgjlf-nodejs-24.21.0.drv",
+              "sdkDerivationSha256": "b1a27abb72ab1a5debf4da1f9c0f783b2ded98c4b4bd20149215959a45bf1e86",
+              "dependencyDepth": 3
+            },
+            {
+              "check": "immer",
+              "parentDerivation": "/nix/store/91448wi5x68jlrr0j31jj7q71s39svl5-node-gyp-13.1.0.drv",
+              "sdkDerivation": "/nix/store/a7mzwdph5vkavini0lj77xph53qhgjlf-nodejs-24.21.0.drv",
+              "sdkDerivationSha256": "b1a27abb72ab1a5debf4da1f9c0f783b2ded98c4b4bd20149215959a45bf1e86",
+              "dependencyDepth": 3
+            },
+            {
+              "check": "immer",
+              "parentDerivation": "/nix/store/gsgzwqnczsad9gnvhdh3qbl8jghz1zdm-yarn-1.22.22.drv",
+              "sdkDerivation": "/nix/store/a7mzwdph5vkavini0lj77xph53qhgjlf-nodejs-24.21.0.drv",
+              "sdkDerivationSha256": "b1a27abb72ab1a5debf4da1f9c0f783b2ded98c4b4bd20149215959a45bf1e86",
+              "dependencyDepth": 3
+            },
+            {
+              "check": "immer",
+              "parentDerivation": "/nix/store/lzlz6pw92lzfjikjb1qmbzsxcnm2z6bz-yarn-offline-mirror-files.drv",
+              "sdkDerivation": "/nix/store/0gmwqbr96sqa2na7pfjysk7cgkknhylk-run-node-1.0.0.tgz.drv",
+              "sdkDerivationSha256": "20e0e2211ab9421f3c0813cb14ebc5350c08496e36b22234d524a445b57dd02e",
+              "dependencyDepth": 4
+            },
+            {
+              "check": "immer",
+              "parentDerivation": "/nix/store/lzlz6pw92lzfjikjb1qmbzsxcnm2z6bz-yarn-offline-mirror-files.drv",
+              "sdkDerivation": "/nix/store/1lzjnw8xbnfs0ksqvvlichwzhi5bkgcm-please-upgrade-node-3.1.1.tgz.drv",
+              "sdkDerivationSha256": "f36c8bcb8651c1d5fbc774132d4eec733f257018526f199b210102957b37430b",
+              "dependencyDepth": 4
+            },
+            {
+              "check": "immer",
+              "parentDerivation": "/nix/store/lzlz6pw92lzfjikjb1qmbzsxcnm2z6bz-yarn-offline-mirror-files.drv",
+              "sdkDerivation": "/nix/store/nlydnj28nnk6mysil81bwd0rmc8yyh1a-_types-node-24.3.1.tgz.drv",
+              "sdkDerivationSha256": "951f03a03fe742368afd6b398d0159639e33ae6ef514ddc00fa768ada256222a",
+              "dependencyDepth": 4
+            },
+            {
+              "check": "immer",
+              "parentDerivation": "/nix/store/lzlz6pw92lzfjikjb1qmbzsxcnm2z6bz-yarn-offline-mirror-files.drv",
+              "sdkDerivation": "/nix/store/w6jg9flx92ynk82ryrbyzjbn3adaxffs-vite-node-3.2.4.tgz.drv",
+              "sdkDerivationSha256": "6262eea1f17e1510d7346ac6929660fd78bb713a5dadbd38d830090d5492f11d",
+              "dependencyDepth": 4
+            },
+            {
+              "check": "immer",
+              "parentDerivation": "/nix/store/lzlz6pw92lzfjikjb1qmbzsxcnm2z6bz-yarn-offline-mirror-files.drv",
+              "sdkDerivation": "/nix/store/x4g34rk7vsyslfsgal12123qfgjf5wby-snapdragon-node-2.1.1.tgz.drv",
+              "sdkDerivationSha256": "f5bf9f7e019281b00d9214c3d63e203aa924b0ac0fdd689375a15069bc8d8c81",
+              "dependencyDepth": 4
+            },
+            {
+              "check": "immer",
+              "parentDerivation": "/nix/store/zglfy5syffp58rwz1sbfbc7zaq9kq65v-npm-config-hook.drv",
+              "sdkDerivation": "/nix/store/a7mzwdph5vkavini0lj77xph53qhgjlf-nodejs-24.21.0.drv",
+              "sdkDerivationSha256": "b1a27abb72ab1a5debf4da1f9c0f783b2ded98c4b4bd20149215959a45bf1e86",
+              "dependencyDepth": 4
+            },
+            {
+              "check": "immer",
+              "parentDerivation": "/nix/store/zglfy5syffp58rwz1sbfbc7zaq9kq65v-npm-config-hook.drv",
+              "sdkDerivation": "/nix/store/a7qh64mad8r7hlhcqqrzrl2df3fgns2i-nodejs-24.21.0-source.drv",
+              "sdkDerivationSha256": "99fab8a86d1fea555e40f0fa988ffe54493de108d03420d82e98dcf5dc011f58",
+              "dependencyDepth": 4
+            }
+          ],
+          "runtimeEvidence": {
+            "status": "success",
+            "executedSystem": "x86_64-linux",
+            "sourceRevision": "6f92a7faca10233f61256e7a2710e6ec09e6136d",
+            "sourceNarHash": "sha256-A97ByE9cMiMbgH2D5eiWfqlPDzgmB5+fQAtxZqrFNtY=",
+            "drvPath": "/nix/store/v31phl7m6rlj78ql96y7nh07nd66hszv-immer-check.drv",
+            "outputs": {
+              "out": "/nix/store/bvcs6kir76pk4309i6pd4nqgmqh0zajd-immer-check"
+            },
+            "receipt": "evidence/yarn-classic-purifier/main-job-127689606650.log",
+            "artifactSha256": "ff1b14f11def486fe2bcd04d6d48bd288f5484dbd6e14d998dd55e58c9b5ac80",
+            "jobUrl": "https://github.com/nix-purifiers/yarn-classic-purifier/actions/runs/42155830026/job/127689606650",
+            "jobConclusion": "success",
+            "events": [
+              {
+                "line": 17374,
+                "text": "2026-11-06T03:23:39.4686382Z building '/nix/store/v31phl7m6rlj78ql96y7nh07nd66hszv-immer-check.drv'..."
+              }
+            ],
+            "completedAt": "2026-11-06T03:23:52Z",
+            "outputIdentityBinding": "Local Nix derivation JSON proves drv\u2192output; this exact drv has a native build/rebuild event in the successful immutable-revision CI job."
+          },
+          "outputProvenance": {
+            "ciObserved": "Exact drv building/rebuild event and successful check.",
+            "evaluated": "Named-check output paths independently bound through local instantiated derivation JSON.",
+            "localRealization": "NAR hashes only when actually present in realized-output-info.json; not claimed printed by CI."
+          },
+          "gap": null
+        }
+      ],
+      "judgmentChanges": []
+    },
+    "zef-purifier": {
+      "criterionToExistingDerivationIds": {
+        "evaluation": [
+          "cli",
+          "environment",
+          "project",
+          "release"
+        ],
+        "goodTests": [
+          "project",
+          "environment",
+          "release"
+        ],
+        "linux": [
+          "project",
+          "environment",
+          "release"
+        ],
+        "darwin": [],
+        "oneVersion": [
+          "project",
+          "environment",
+          "release"
+        ],
+        "nonEolVersions": [
+          "project",
+          "environment",
+          "release"
+        ],
+        "manySamples": [
+          "project",
+          "environment",
+          "release"
+        ],
+        "longCompatibility": [
+          "project",
+          "environment",
+          "release"
+        ]
+      },
+      "sampleBuildMappings": [
+        {
+          "sampleBuildIndex": 0,
+          "name": "examples/minimal: authored Raku distribution with basic.rakutest",
+          "classification": "authored-fixture",
+          "supportingExistingDerivationIds": [
+            "project",
+            "environment"
+          ],
+          "source": {
+            "repository": "https://github.com/nix-purifiers/zef-purifier",
+            "revision": "40df7a0af40c81e5450fc84f2bf9f52967929522",
+            "path": "examples/minimal",
+            "storePath": "/nix/store/x4wxcisvy5n9b22szarv7108hni8ahnm-source",
+            "sourceNarHash": "sha256-EYNwZnxv+1LydsneUlPMOoMt8cZ7L+TJAZXCwkA0o2A=",
+            "narHashScope": "Exact builder-consumed source tree (may be filtered/project subtree); not automatically the whole Git repository NAR.",
+            "nixPathInfoReceipt": "evidence/sample-source-info.json"
+          },
+          "purifierSource": {
+            "repository": "https://github.com/nix-purifiers/zef-purifier",
+            "revision": "40df7a0af40c81e5450fc84f2bf9f52967929522",
+            "sourceNarHash": "sha256-0Th/ZG/k3sWF39FGkfI0fW+DZSeL3bEyE2/8lulQrx8="
+          },
+          "executedSdkVersions": {
+            "rakudo": "2026.07",
+            "zef": "1.1.3"
+          },
+          "actualExecution": "Environment invokes native Zef1.1.3; project runs actual Rakudo2026.07 basic.rakutest; no1.1.4 execution is claimed",
+          "actualDerivationPhases": [
+            {
+              "drvPath": "/nix/store/jfkyhilrzv86cpcldgncrgdg92azwrdn-purified-raku-project.drv",
+              "derivationFileSha256": "6468292ca5a8d917fd9a68e931df065d34ad61c0dde059a60e47a269ac2acc5b",
+              "nativeBuildEvents": [
+                {
+                  "line": 819,
+                  "text": "2026-11-06T03:20:30.0801562Z building '/nix/store/jfkyhilrzv86cpcldgncrgdg92azwrdn-purified-raku-project.drv'..."
+                }
+              ],
+              "commands": {
+                "buildCommand": "export PATH=/nix/store/wb7cyj588347jiqn85jjs5w6ymxsws3i-zef-purifier-toolchain/bin:$PATH HOME=\"$TMPDIR/home\" RAKUDOLIB=\"inst#/nix/store/8549rzjnd7ipsyrs08ci50nkvkyb10qj-purified-zef-environment/repo\"\nmkdir -p \"$HOME\" work \"$out\"\ncp -pr /nix/store/x4wxcisvy5n9b22szarv7108hni8ahnm-source/. work/\nchmod -R u+w work\ncd work\nif [ -f Build.rakumod ] || [ -f Build.pm6 ]; then zef build .; fi\nfor test in t/*.rakutest; do raku -Ilib \"$test\"; done\ncp -r lib META6.json \"$out/\"\n"
+              },
+              "executableSearchPathInputs": {
+                "nativeBuildInputs": "/nix/store/wb7cyj588347jiqn85jjs5w6ymxsws3i-zef-purifier-toolchain"
+              },
+              "directSdkDerivationReferences": [],
+              "commandsOrigin": "Actual instantiated derivation env; match native build event via packet CI log, not closure-only version inference."
+            },
+            {
+              "drvPath": "/nix/store/7zr7fpz7kr2lj4rj2sz4ask25j8vqx5g-purified-zef-environment.drv",
+              "derivationFileSha256": "4c9bf38854375996c8339f2f07c6e2bcb64174bb169d4efc281c6d7d16e6948d",
+              "nativeBuildEvents": [
+                {
+                  "line": 801,
+                  "text": "2026-11-06T03:20:27.2497836Z building '/nix/store/7zr7fpz7kr2lj4rj2sz4ask25j8vqx5g-purified-zef-environment.drv'..."
+                },
+                {
+                  "line": 901,
+                  "text": "2026-11-06T03:21:00.2354221Z checking outputs of '/nix/store/7zr7fpz7kr2lj4rj2sz4ask25j8vqx5g-purified-zef-environment.drv'..."
+                }
+              ],
+              "commands": {
+                "buildCommand": "export PATH=/nix/store/wb7cyj588347jiqn85jjs5w6ymxsws3i-zef-purifier-toolchain/bin:$PATH\nexport HOME=\"$TMPDIR/home\" ZEF_CONFIG_TEMPDIR=\"$TMPDIR/tmp\" ZEF_CONFIG_STOREDIR=\"$TMPDIR/store\"\nmkdir -p \"$HOME\" \"$ZEF_CONFIG_TEMPDIR\" \"$ZEF_CONFIG_STOREDIR\" \"$out/repo\"/{short,dist,sources,resources,bin,precomp}\nzef --precompile-install --/update --/depends --/build-depends --/test-depends --/test --force-install --install-to=\"$out/repo\" install /nix/store/3v2xi84kj2pn4m51cyqr0qmwj31b2h7a-locked-raku-sources/archives/0000.tar.gz /nix/store/3v2xi84kj2pn4m51cyqr0qmwj31b2h7a-locked-raku-sources/archives/0001.tar.gz /nix/store/3v2xi84kj2pn4m51cyqr0qmwj31b2h7a-locked-raku-sources/archives/0002.tar.gz /nix/store/3v2xi84kj2pn4m51cyqr0qmwj31b2h7a-locked-raku-sources/archives/0003.tar.gz\n\nexport RAKUDOLIB=\"inst#$out/repo\"\nraku -e 'say Rakudo::Internals::JSON.to-json(CompUnit::RepositoryRegistry.repository-for-spec(%*ENV<RAKUDOLIB>).installed.grep(*.defined).map(*.meta).grep(*.defined).Array)' > \"$TMPDIR/installed.json\"\npython3 /nix/store/47b2l3h9g73ka9m310mk6dsc0fhq5iqb-check-installed.py /nix/store/p4vxs75f3dkmj07dmh22vz1djj4lw04w-zef-capture.json \"$TMPDIR/installed.json\"\nraku /nix/store/7pk6p36y5w04my1rw3dmn0nzmnpsj87c-warm.raku /nix/store/p4vxs75f3dkmj07dmh22vz1djj4lw04w-zef-capture.json\ncp /nix/store/p4vxs75f3dkmj07dmh22vz1djj4lw04w-zef-capture.json \"$out/capture.json\"\nln -s /nix/store/3v2xi84kj2pn4m51cyqr0qmwj31b2h7a-locked-raku-sources \"$out/sources\"\n"
+              },
+              "executableSearchPathInputs": {
+                "nativeBuildInputs": "/nix/store/wb7cyj588347jiqn85jjs5w6ymxsws3i-zef-purifier-toolchain /nix/store/xahxrjs30p3mw0a42bqg9ikgkikskw8m-python3-3.14.8"
+              },
+              "directSdkDerivationReferences": [
+                "/nix/store/w1svn0lba9gv480i37z2q97yi4155mlr-python3-3.14.8.drv"
+              ],
+              "commandsOrigin": "Actual instantiated derivation env; match native build event via packet CI log, not closure-only version inference."
+            }
+          ],
+          "sdkDependencyWitnesses": [
+            {
+              "check": "project",
+              "parentDerivation": "/nix/store/5l4w1dn64l4bp0307bnsjh83hakkhzmx-zef-purifier-toolchain.drv",
+              "sdkDerivation": "/nix/store/35k02cgnylgr5r089n4zz49jvm8qdrhv-rakudo-2026.07.drv",
+              "sdkDerivationSha256": "5e675cdccf5ab8d5bd0d98e0d3008f54f404f5f855922bb03bbb8173daff6f95",
+              "dependencyDepth": 2
+            },
+            {
+              "check": "project",
+              "parentDerivation": "/nix/store/5l4w1dn64l4bp0307bnsjh83hakkhzmx-zef-purifier-toolchain.drv",
+              "sdkDerivation": "/nix/store/zkp4cxj3xy6rwvynzpxds142ddmrzl9x-zef-1.1.3.drv",
+              "sdkDerivationSha256": "130dfd1c42c2baa5092e9a62052b06fe6f1e22f89c9ba415ab6ea46b49993ad1",
+              "dependencyDepth": 2
+            },
+            {
+              "check": "project",
+              "parentDerivation": "/nix/store/zkp4cxj3xy6rwvynzpxds142ddmrzl9x-zef-1.1.3.drv",
+              "sdkDerivation": "/nix/store/35k02cgnylgr5r089n4zz49jvm8qdrhv-rakudo-2026.07.drv",
+              "sdkDerivationSha256": "5e675cdccf5ab8d5bd0d98e0d3008f54f404f5f855922bb03bbb8173daff6f95",
+              "dependencyDepth": 3
+            },
+            {
+              "check": "environment",
+              "parentDerivation": "/nix/store/5l4w1dn64l4bp0307bnsjh83hakkhzmx-zef-purifier-toolchain.drv",
+              "sdkDerivation": "/nix/store/35k02cgnylgr5r089n4zz49jvm8qdrhv-rakudo-2026.07.drv",
+              "sdkDerivationSha256": "5e675cdccf5ab8d5bd0d98e0d3008f54f404f5f855922bb03bbb8173daff6f95",
+              "dependencyDepth": 2
+            },
+            {
+              "check": "environment",
+              "parentDerivation": "/nix/store/5l4w1dn64l4bp0307bnsjh83hakkhzmx-zef-purifier-toolchain.drv",
+              "sdkDerivation": "/nix/store/zkp4cxj3xy6rwvynzpxds142ddmrzl9x-zef-1.1.3.drv",
+              "sdkDerivationSha256": "130dfd1c42c2baa5092e9a62052b06fe6f1e22f89c9ba415ab6ea46b49993ad1",
+              "dependencyDepth": 2
+            },
+            {
+              "check": "environment",
+              "parentDerivation": "/nix/store/zkp4cxj3xy6rwvynzpxds142ddmrzl9x-zef-1.1.3.drv",
+              "sdkDerivation": "/nix/store/35k02cgnylgr5r089n4zz49jvm8qdrhv-rakudo-2026.07.drv",
+              "sdkDerivationSha256": "5e675cdccf5ab8d5bd0d98e0d3008f54f404f5f855922bb03bbb8173daff6f95",
+              "dependencyDepth": 3
+            }
+          ],
+          "runtimeEvidence": {
+            "status": "success",
+            "executedSystem": "x86_64-linux",
+            "sourceRevision": "40df7a0af40c81e5450fc84f2bf9f52967929522",
+            "sourceNarHash": "sha256-0Th/ZG/k3sWF39FGkfI0fW+DZSeL3bEyE2/8lulQrx8=",
+            "drvPath": "/nix/store/jfkyhilrzv86cpcldgncrgdg92azwrdn-purified-raku-project.drv",
+            "outputs": {
+              "out": "/nix/store/j202fcrzd5ikhhr3yp6d0b2q8qayih5x-purified-raku-project"
+            },
+            "receipt": "evidence/zef-purifier/main-job-127689617961.log",
+            "artifactSha256": "038249087c692f0ef2345ae1a80e03384f2db23bc037365411a8e73a6c63bc15",
+            "jobUrl": "https://github.com/nix-purifiers/zef-purifier/actions/runs/42155833501/job/127689617961",
+            "jobConclusion": "success",
+            "events": [
+              {
+                "line": 819,
+                "text": "2026-11-06T03:20:30.0801562Z building '/nix/store/jfkyhilrzv86cpcldgncrgdg92azwrdn-purified-raku-project.drv'..."
+              }
+            ],
+            "completedAt": "2026-11-06T03:21:04Z",
+            "outputIdentityBinding": "Local Nix derivation JSON proves drv\u2192output; this exact drv has a native build/rebuild event in the successful immutable-revision CI job."
+          },
+          "outputProvenance": {
+            "ciObserved": "Exact drv building/rebuild event and successful check.",
+            "evaluated": "Named-check output paths independently bound through local instantiated derivation JSON.",
+            "localRealization": "NAR hashes only when actually present in realized-output-info.json; not claimed printed by CI."
+          },
+          "gap": null
+        }
+      ],
+      "judgmentChanges": [
+        {
+          "criterion": "nonEolVersions",
+          "from": "met",
+          "to": "not-met",
+          "reason": "The latest primary upstream Zef release is 1.1.4, while the executed patched manager is 1.1.3 with Rakudo 2026.07. The inspected upstream release/security material does not explicitly promise maintenance for a 1.1 branch or retention of 1.1.3. Same-minor numbering alone cannot establish that support. No 1.1.4 sample derivation is executed in this review. Current supported-version execution is therefore unproved; 1.1.3 is not declared EOL."
+        }
+      ]
+    },
+    "zig-purifier": {
+      "criterionToExistingDerivationIds": {
+        "evaluation": [
+          "cli",
+          "conformance-external",
+          "conformance-malformed",
+          "conformance-missing",
+          "conformance-stale",
+          "conformance-tampered",
+          "fixture-hello",
+          "fixture-hello-archive",
+          "fixture-hello-callpackage",
+          "fixture-hello-default-name",
+          "fixture-hello-dependencies",
+          "fixture-hello-files",
+          "fixture-hello-git-clap",
+          "fixture-hello-package",
+          "fixture-hello-release",
+          "fixture-hello-step-run",
+          "fixture-hello-tests",
+          "fixture-readme",
+          "native-projections",
+          "project-zls",
+          "treefmt",
+          "wasm-projections"
+        ],
+        "goodTests": [
+          "project-zls",
+          "fixture-readme",
+          "fixture-hello-tests",
+          "fixture-hello-git-clap",
+          "native-projections",
+          "wasm-projections",
+          "conformance-tampered"
+        ],
+        "linux": [
+          "project-zls",
+          "fixture-readme",
+          "fixture-hello-tests",
+          "fixture-hello-git-clap",
+          "native-projections",
+          "wasm-projections",
+          "conformance-tampered"
+        ],
+        "darwin": [],
+        "oneVersion": [
+          "project-zls",
+          "fixture-readme",
+          "fixture-hello-tests",
+          "fixture-hello-git-clap",
+          "native-projections",
+          "wasm-projections",
+          "conformance-tampered"
+        ],
+        "nonEolVersions": [
+          "project-zls",
+          "fixture-readme",
+          "fixture-hello-tests",
+          "fixture-hello-git-clap",
+          "native-projections",
+          "wasm-projections",
+          "conformance-tampered"
+        ],
+        "manySamples": [
+          "project-zls",
+          "fixture-readme",
+          "fixture-hello-tests",
+          "fixture-hello-git-clap",
+          "native-projections",
+          "wasm-projections",
+          "conformance-tampered"
+        ],
+        "longCompatibility": [
+          "project-zls",
+          "fixture-readme",
+          "fixture-hello-tests",
+          "fixture-hello-git-clap",
+          "native-projections",
+          "wasm-projections",
+          "conformance-tampered"
+        ]
+      },
+      "sampleBuildMappings": [
+        {
+          "sampleBuildIndex": 0,
+          "name": "ZLS upstream f91b2e1e305e5d5bd3725aea90f9f9bfb3dce055 (ZLS 0.15.1)",
+          "classification": "independent-upstream",
+          "supportingExistingDerivationIds": [
+            "project-zls"
+          ],
+          "source": {
+            "repository": "https://github.com/zigtools/zls",
+            "revision": "f91b2e1e305e5d5bd3725aea90f9f9bfb3dce055",
+            "path": null,
+            "storePath": "/nix/store/7g806dganb3yllg80d5mbd0lrgza7nmg-zls-f91b2e1",
+            "sourceNarHash": "sha256-6IkRtQkn+qUHDz00QvCV/rb2yuF6xWEXug41CD8LLw8=",
+            "narHashScope": "Exact builder-consumed source tree (may be filtered/project subtree); not automatically the whole Git repository NAR.",
+            "nixPathInfoReceipt": "evidence/sample-source-info.json"
+          },
+          "purifierSource": {
+            "repository": "https://github.com/nix-purifiers/zig-purifier",
+            "revision": "fbf3e82f9ddc64dbc84402cc5b55f32431892a39",
+            "sourceNarHash": "sha256-pHPJCUXMNQ/5UfWuAHtSZPSvUjEB57fTSBFuIaTrzO0="
+          },
+          "executedSdkVersions": {
+            "zig": "0.15.2",
+            "zls": "0.15.1"
+          },
+          "actualExecution": "Native Zig0.15.2 builds ZLS through zig build install; installed zls --version must equal0.15.1. Separate0.17.0 readme derivation executes std.Build dependency/install graph without target application code",
+          "actualDerivationPhases": [
+            {
+              "drvPath": "/nix/store/zxlbh7q50rpi92zzad46dv3bagzmip2a-project-zls.drv",
+              "derivationFileSha256": "22ce52fface823d19454cf2a9b1b3363db32f66f5183e3ea2a73e8d36ecaec4e",
+              "nativeBuildEvents": [
+                {
+                  "line": 1185,
+                  "text": "2026-11-06T03:23:06.5813144Z building '/nix/store/zxlbh7q50rpi92zzad46dv3bagzmip2a-project-zls.drv'..."
+                }
+              ],
+              "commands": {
+                "buildCommand": "/nix/store/l1vll7vlic5zg4lnnar7dfh73a2pbfnh-zls-0.15.1/bin/zls --version > actual\nprintf '%s\\n' \"$expected\" > expected-file\nif ! diff -u expected-file actual; then\n  exit 1\nfi\ntouch $out\n"
+              },
+              "executableSearchPathInputs": {},
+              "directSdkDerivationReferences": [],
+              "commandsOrigin": "Actual instantiated derivation env; match native build event via packet CI log, not closure-only version inference."
+            },
+            {
+              "drvPath": "/nix/store/fd54mdafv3yvlgrhmjg8rzc9px1nc0p5-readme-0.0.1.drv",
+              "derivationFileSha256": "e6dd1f88bcbe54a2a262ae43fef4bfb303486f40fa81c8cb9e0ba80911034a13",
+              "nativeBuildEvents": [
+                {
+                  "line": 1172,
+                  "text": "2026-11-06T03:22:49.3743698Z building '/nix/store/fd54mdafv3yvlgrhmjg8rzc9px1nc0p5-readme-0.0.1.drv'..."
+                }
+              ],
+              "commands": {
+                "buildPhase": "runHook preBuild\nexport HOME=$TMPDIR\nexport ZIG_GLOBAL_CACHE_DIR=$TMPDIR/zig-global\ncp -r /nix/store/q790q6sxfpj1p25q1b74gw7sr0c3llyk-fixtures $TMPDIR/source\nchmod -R u+w $TMPDIR/source\ncd $TMPDIR/source/readme\n\nmkdir -p $ZIG_GLOBAL_CACHE_DIR/p zig-pkg\nfor package in /nix/store/807y0hiisss7kaqnwyjwrfvg19k3l1am-zig-purifier-packages/*; do\n  name=$(basename \"$package\")\n  ln -s \"$(readlink \"$package\")\" \"$ZIG_GLOBAL_CACHE_DIR/p/$name\"\n  if [ ! -e \"zig-pkg/$name\" ]; then\n    ln -s \"$(readlink \"$package\")\" \"zig-pkg/$name\"\n  fi\ndone\n\nif ! zig build install '--release=safe' --prefix $out 2> >(tee $TMPDIR/zig-errors >&2); then\n  if grep -qiE 'fetch|connection|name ?server|unable to download|hash mismatch' $TMPDIR/zig-errors; then\n    echo \"zig-purifier: zig tried to fetch a package that /nix/store/q790q6sxfpj1p25q1b74gw7sr0c3llyk-fixtures/readme/zig-purifier.lock.json does not hold. Run \\`zig-purifier lock\\` where build.zig.zon is.\" >&2\n  fi\n  exit 1\nfi\n\nrunHook postBuild\n"
+              },
+              "executableSearchPathInputs": {
+                "nativeBuildInputs": "/nix/store/bh36r8iv38v7k3jdn4fa302xlm1hks8k-zig-0.17.0"
+              },
+              "directSdkDerivationReferences": [
+                "/nix/store/8p9iwhy1mll11gl2i4a3m94q7hz43vib-zig-0.17.0.drv"
+              ],
+              "commandsOrigin": "Actual instantiated derivation env; match native build event via packet CI log, not closure-only version inference."
+            },
+            {
+              "drvPath": "/nix/store/fynqhwmhgih297ghakggqs34qllpa1g1-zls-0.15.1.drv",
+              "derivationFileSha256": "c8669eac8484a4890467a015dfc442fbeed4c0f51b62f7065b96e875547e65c7",
+              "nativeBuildEvents": [
+                {
+                  "line": 1125,
+                  "text": "2026-11-06T03:21:15.3848501Z building '/nix/store/fynqhwmhgih297ghakggqs34qllpa1g1-zls-0.15.1.drv'..."
+                }
+              ],
+              "commands": {
+                "buildPhase": "runHook preBuild\nexport HOME=$TMPDIR\nexport ZIG_GLOBAL_CACHE_DIR=$TMPDIR/zig-global\ncp -r /nix/store/7g806dganb3yllg80d5mbd0lrgza7nmg-zls-f91b2e1 $TMPDIR/source\nchmod -R u+w $TMPDIR/source\ncd $TMPDIR/source/.\n# A lockfile given outside `src` replaces any copy in it.\ncp /nix/store/zgbq3mkj27qvvrj5x6cfggq6rni0kzz1-zig-purifier.lock.json zig-purifier.lock.json\n\nmkdir -p $ZIG_GLOBAL_CACHE_DIR/p zig-pkg\nfor package in /nix/store/jfdzbkfkm8cw7bhg3gqzghidl8fb242n-zig-purifier-packages/*; do\n  name=$(basename \"$package\")\n  ln -s \"$(readlink \"$package\")\" \"$ZIG_GLOBAL_CACHE_DIR/p/$name\"\n  if [ ! -e \"zig-pkg/$name\" ]; then\n    ln -s \"$(readlink \"$package\")\" \"zig-pkg/$name\"\n  fi\ndone\n\nif ! zig build install '--release=safe' '-Dcpu=baseline' --prefix $out 2> >(tee $TMPDIR/zig-errors >&2); then\n  if grep -qiE 'fetch|connection|name ?server|unable to download|hash mismatch' $TMPDIR/zig-errors; then\n    echo \"zig-purifier: zig tried to fetch a package that /nix/store/5yxav8g4x8b5n17b626paw79cjz6wlwl-source/tests/projects/zls/zig-purifier.lock.json does not hold. Run \\`zig-purifier lock\\` where build.zig.zon is.\" >&2\n  fi\n  exit 1\nfi\n\nrunHook postBuild\n"
+              },
+              "executableSearchPathInputs": {
+                "nativeBuildInputs": "/nix/store/pvqir2c8zrsagyjqlmpwbzcr0qldl6y9-zig-0.15.2"
+              },
+              "directSdkDerivationReferences": [
+                "/nix/store/1478w2sqv4ni5i04g5d3c40pxgz8bfi5-zig-0.15.2.drv"
+              ],
+              "commandsOrigin": "Actual instantiated derivation env; match native build event via packet CI log, not closure-only version inference."
+            }
+          ],
+          "sdkDependencyWitnesses": [
+            {
+              "check": "project-zls",
+              "parentDerivation": "/nix/store/fynqhwmhgih297ghakggqs34qllpa1g1-zls-0.15.1.drv",
+              "sdkDerivation": "/nix/store/1478w2sqv4ni5i04g5d3c40pxgz8bfi5-zig-0.15.2.drv",
+              "sdkDerivationSha256": "fdbd9880ccfea8506b345329247f02ea9fda2c99345963a114d295fc7736d145",
+              "dependencyDepth": 2
+            },
+            {
+              "check": "project-zls",
+              "parentDerivation": "/nix/store/56a2r2fz1aw9xlr93hamrmyhr463y381-zig-purifier-0.1.0.drv",
+              "sdkDerivation": "/nix/store/1478w2sqv4ni5i04g5d3c40pxgz8bfi5-zig-0.15.2.drv",
+              "sdkDerivationSha256": "fdbd9880ccfea8506b345329247f02ea9fda2c99345963a114d295fc7736d145",
+              "dependencyDepth": 4
+            },
+            {
+              "check": "project-zls",
+              "parentDerivation": "/nix/store/8pkb2m38k9qv8kmid9wfp4knbnljf6m4-zig-package-diffz-0.0.1-G2tlIQrOAQCfH15jdyaLyrMgV8eGPouFhkCeYFTmJaLk.drv",
+              "sdkDerivation": "/nix/store/1478w2sqv4ni5i04g5d3c40pxgz8bfi5-zig-0.15.2.drv",
+              "sdkDerivationSha256": "fdbd9880ccfea8506b345329247f02ea9fda2c99345963a114d295fc7736d145",
+              "dependencyDepth": 4
+            },
+            {
+              "check": "project-zls",
+              "parentDerivation": "/nix/store/k6byy3i9khix8bywcz5f2g4lrf8zlzap-zig-package-N-V-__8AAMeOlQEipHjcyu0TCftdAi9AQe7EXUDJOoVe0k-t.drv",
+              "sdkDerivation": "/nix/store/1478w2sqv4ni5i04g5d3c40pxgz8bfi5-zig-0.15.2.drv",
+              "sdkDerivationSha256": "fdbd9880ccfea8506b345329247f02ea9fda2c99345963a114d295fc7736d145",
+              "dependencyDepth": 4
+            },
+            {
+              "check": "project-zls",
+              "parentDerivation": "/nix/store/nz9wvz3knlw3lyxc6dy9fqwk45ddbjjy-zig-package-known_folders-0.0.0-Fy-PJkfRAAAVdptXWXBspIIC7EkVgLgWozU5zIk5Zgcy.drv",
+              "sdkDerivation": "/nix/store/1478w2sqv4ni5i04g5d3c40pxgz8bfi5-zig-0.15.2.drv",
+              "sdkDerivationSha256": "fdbd9880ccfea8506b345329247f02ea9fda2c99345963a114d295fc7736d145",
+              "dependencyDepth": 4
+            },
+            {
+              "check": "project-zls",
+              "parentDerivation": "/nix/store/vj6gymlj2p5rrnabjdab19jiaq4mms0y-zig-package-lsp_kit-0.1.0-bi_PL04yCgAxLsF0hH2a5sZKT84MGQaKXouw2jvCE8Nl.drv",
+              "sdkDerivation": "/nix/store/1478w2sqv4ni5i04g5d3c40pxgz8bfi5-zig-0.15.2.drv",
+              "sdkDerivationSha256": "fdbd9880ccfea8506b345329247f02ea9fda2c99345963a114d295fc7736d145",
+              "dependencyDepth": 4
+            }
+          ],
+          "runtimeEvidence": {
+            "status": "success",
+            "executedSystem": "x86_64-linux",
+            "sourceRevision": "fbf3e82f9ddc64dbc84402cc5b55f32431892a39",
+            "sourceNarHash": "sha256-pHPJCUXMNQ/5UfWuAHtSZPSvUjEB57fTSBFuIaTrzO0=",
+            "drvPath": "/nix/store/zxlbh7q50rpi92zzad46dv3bagzmip2a-project-zls.drv",
+            "outputs": {
+              "out": "/nix/store/kmmmlgzs6n84qr7kv84qzqw3224l8x2k-project-zls"
+            },
+            "receipt": "evidence/zig-purifier/main-job-127689634241.log",
+            "artifactSha256": "b2852e7ba43ca13be79a38ed012213a183341b41abdcca9a45df17b04b59edba",
+            "jobUrl": "https://github.com/nix-purifiers/zig-purifier/actions/runs/42155838211/job/127689634241",
+            "jobConclusion": "success",
+            "events": [
+              {
+                "line": 1185,
+                "text": "2026-11-06T03:23:06.5813144Z building '/nix/store/zxlbh7q50rpi92zzad46dv3bagzmip2a-project-zls.drv'..."
+              }
+            ],
+            "completedAt": "2026-11-06T03:24:32Z",
+            "outputIdentityBinding": "Local Nix derivation JSON proves drv\u2192output; this exact drv has a native build/rebuild event in the successful immutable-revision CI job."
+          },
+          "outputProvenance": {
+            "ciObserved": "Exact drv building/rebuild event and successful check.",
+            "evaluated": "Named-check output paths independently bound through local instantiated derivation JSON.",
+            "localRealization": "NAR hashes only when actually present in realized-output-info.json; not claimed printed by CI."
+          },
+          "gap": null
+        }
+      ],
+      "judgmentChanges": [
+        {
+          "criterion": "nonEolVersions",
+          "from": "met",
+          "to": "not-met",
+          "reason": "The official Zig download page identifies current stable line 0.17 (latest 0.17.1 on 2026-11-02). The fixture-readme dependency genuinely executes native Zig 0.17.0 via zig build install, running std.Build dependency resolution and installing a dependency README. It deliberately compiles no target application or dependency code, and the outer check only verifies installed file content. This proves the native build-manager point, but leaves a current 0.17 compiled-target plus runtime representative-project gap. The successful ZLS application uses 0.15.2 and cannot fill that current-compiler gap. Zig 0.17 is not declared unsupported. The stale GitHub latest API 0.15.1 is not the current upstream authority."
+        }
+      ],
+      "currentSdkPointScope": {
+        "existingDerivationId": "fixture-readme",
+        "sdkVersion": "0.17.0",
+        "actualCommand": "zig build install '--release=safe' --prefix $out",
+        "targetApplicationCompile": false,
+        "assertion": "Native std.Build resolves locked clap dependency and installs README; outer check greps installed file. Root adjudicated nonEolVersions not-met: actual current native build-manager execution retained, but a current compiled-target plus runtime representative-project sample is missing."
+      }
+    }
+  }
+}

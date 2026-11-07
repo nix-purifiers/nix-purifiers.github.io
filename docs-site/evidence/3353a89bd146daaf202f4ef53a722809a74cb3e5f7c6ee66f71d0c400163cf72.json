@@ -1,0 +1,606 @@
+{
+  "auditedRecords": 29,
+  "registeredDeriverMatches": 27,
+  "registeredDeriverMismatches": [
+    {
+      "id": "elm-purifier:x86_64-linux:real-world-list-extra-tests",
+      "expected": "/nix/store/mlrafz0nwgzvnq252k2dh68xhbycb08z-elm-tests.drv",
+      "registered": "/nix/store/cmclbx4wjwvbipn2735lcqd90g4h4vfq-elm-tests.drv",
+      "output": "/nix/store/h8m7zbyzd554834zszb1v0bcz98cadji-elm-tests",
+      "rawOutput": {
+        "path": "h8m7zbyzd554834zszb1v0bcz98cadji-elm-tests"
+      },
+      "pathInfo": {
+        "ca": null,
+        "deriver": "/nix/store/cmclbx4wjwvbipn2735lcqd90g4h4vfq-elm-tests.drv",
+        "narHash": "sha256-d6xi4mKdjkX2JFicDIv5niSzpyI0m/Hnm8GGAIU04kY=",
+        "narSize": 112,
+        "references": [],
+        "registrationTime": 1793530235,
+        "signatures": [],
+        "storeDir": "/nix/store",
+        "ultimate": true,
+        "version": 1
+      }
+    },
+    {
+      "id": "elm-purifier:x86_64-linux:real-world-list-extra",
+      "expected": "/nix/store/8mw1pwnkkkc259rqgjyp6i2hsbwhyr80-real-world-list-extra.drv",
+      "registered": "/nix/store/7i9m88yka15v3sp5kzhxqc8w67nlrvky-real-world-list-extra.drv",
+      "output": "/nix/store/p9xdb609jdpavgk1lx1ibdwy11czbg0w-real-world-list-extra",
+      "rawOutput": {
+        "path": "p9xdb609jdpavgk1lx1ibdwy11czbg0w-real-world-list-extra"
+      },
+      "pathInfo": {
+        "ca": null,
+        "deriver": "/nix/store/7i9m88yka15v3sp5kzhxqc8w67nlrvky-real-world-list-extra.drv",
+        "narHash": "sha256-d6xi4mKdjkX2JFicDIv5niSzpyI0m/Hnm8GGAIU04kY=",
+        "narSize": 112,
+        "references": [],
+        "registrationTime": 1793530236,
+        "signatures": [],
+        "storeDir": "/nix/store",
+        "ultimate": true,
+        "version": 1
+      }
+    }
+  ],
+  "freshLocalRebuildClaim": false,
+  "registeredDeriverSourceRevision": null,
+  "registeredSourceGap": "Original repository/revision that first registered the two outputs is not known from path-info; never relabel it with current reviewed source. Their actual source path and operational command fields are explicitly compared, not historical provenance invented.",
+  "finding": "Two expected derivations realize already-registered output identities from different derivation graphs. Operational derivation fields and all consumed source paths match at test/docs/home/package/unpack layers. Graph differences reduce to eight pairs of fixed-output fetches: builtin:fetchurl versus stdenv curl fetchers, each same output path, flat hash and verified actual bytes. Therefore output/command/input identities are equivalent under fixed-output identity; derivation IDs themselves remain different.",
+  "operationalLayerComparisons": [
+    {
+      "derivers": [
+        "/nix/store/7i9m88yka15v3sp5kzhxqc8w67nlrvky-real-world-list-extra.drv",
+        "/nix/store/8mw1pwnkkkc259rqgjyp6i2hsbwhyr80-real-world-list-extra.drv"
+      ],
+      "identicalOperationalFields": true,
+      "identicalInputSourcePaths": true,
+      "sameDeclaredOutputs": {
+        "out": {
+          "path": "p9xdb609jdpavgk1lx1ibdwy11czbg0w-real-world-list-extra"
+        }
+      },
+      "differingInputDrvRefs": [
+        "/nix/store/8g2s5lxwrfnn80bc3r8d464cih7q0byv-elm-elm-community-list-extra-8.7.0-docs.drv",
+        "/nix/store/jmjch1z8lbs95p0jvj0v2k88k08s28yh-elm-elm-community-list-extra-8.7.0-docs.drv"
+      ],
+      "differingInputOutputIdentitiesEqual": true
+    },
+    {
+      "derivers": [
+        "/nix/store/cmclbx4wjwvbipn2735lcqd90g4h4vfq-elm-tests.drv",
+        "/nix/store/mlrafz0nwgzvnq252k2dh68xhbycb08z-elm-tests.drv"
+      ],
+      "identicalOperationalFields": true,
+      "identicalInputSourcePaths": true,
+      "sameDeclaredOutputs": {
+        "out": {
+          "path": "h8m7zbyzd554834zszb1v0bcz98cadji-elm-tests"
+        }
+      },
+      "differingInputDrvRefs": [
+        "/nix/store/18xrxqin6r06d2p1an5sphf7wz2df4mk-elm-home-0.19.2.drv",
+        "/nix/store/fh5qllag8qp1m9ns730aj6mfh3xaaiqm-elm-home-0.19.2.drv"
+      ],
+      "differingInputOutputIdentitiesEqual": true
+    },
+    {
+      "derivers": [
+        "/nix/store/18xrxqin6r06d2p1an5sphf7wz2df4mk-elm-home-0.19.2.drv",
+        "/nix/store/fh5qllag8qp1m9ns730aj6mfh3xaaiqm-elm-home-0.19.2.drv"
+      ],
+      "identicalOperationalFields": true,
+      "identicalInputSourcePaths": true,
+      "sameDeclaredOutputs": {
+        "out": {
+          "path": "7sq6lxfaycfr3hnhgvb290p6kq15c3il-elm-home-0.19.2"
+        }
+      },
+      "differingInputDrvRefs": [
+        "/nix/store/045azdkk2iyjf27yb1mdjr5i4d2z4xpl-elm-packages-0.19.2.drv",
+        "/nix/store/0ywvvzqbf1xfx4fwf0h95wgr1vlwn7j5-elm-packages-0.19.2.drv"
+      ],
+      "differingInputOutputIdentitiesEqual": true
+    },
+    {
+      "derivers": [
+        "/nix/store/8g2s5lxwrfnn80bc3r8d464cih7q0byv-elm-elm-community-list-extra-8.7.0-docs.drv",
+        "/nix/store/jmjch1z8lbs95p0jvj0v2k88k08s28yh-elm-elm-community-list-extra-8.7.0-docs.drv"
+      ],
+      "identicalOperationalFields": true,
+      "identicalInputSourcePaths": true,
+      "sameDeclaredOutputs": {
+        "out": {
+          "path": "kdib20g9y92ck6xis1grasc2cz9vsf9x-elm-elm-community-list-extra-8.7.0-docs"
+        }
+      },
+      "differingInputDrvRefs": [
+        "/nix/store/18xrxqin6r06d2p1an5sphf7wz2df4mk-elm-home-0.19.2.drv",
+        "/nix/store/fh5qllag8qp1m9ns730aj6mfh3xaaiqm-elm-home-0.19.2.drv"
+      ],
+      "differingInputOutputIdentitiesEqual": true
+    },
+    {
+      "derivers": [
+        "/nix/store/045azdkk2iyjf27yb1mdjr5i4d2z4xpl-elm-packages-0.19.2.drv",
+        "/nix/store/0ywvvzqbf1xfx4fwf0h95wgr1vlwn7j5-elm-packages-0.19.2.drv"
+      ],
+      "identicalOperationalFields": true,
+      "identicalInputSourcePaths": true,
+      "sameDeclaredOutputs": {
+        "out": {
+          "path": "h3i1w7iqaj96yayygysg756j2cy14g72-elm-packages-0.19.2"
+        }
+      },
+      "differingInputDrvRefs": [
+        "/nix/store/0cd1lrihkw66g41a8apfjw7mm18rcq72-1.0.5.drv",
+        "/nix/store/3pn0g4h8slcmf2rjyjfmbw2ypgyx3zg8-1.0.1.drv",
+        "/nix/store/58hz8yf5zqn5qy9ralqk208m8mf6rdvy-1.0.8.drv",
+        "/nix/store/5xjqi74lafk48p41h8xdwd4qhqb5yxrv-1.0.5.drv",
+        "/nix/store/8c0yb2py47x7ndf0brly940rkf0rngvi-1.1.4.drv",
+        "/nix/store/b1p7nij95syvwz3dfwiqqknjb27mxiv9-1.0.5.drv",
+        "/nix/store/bfgh7pn6946crdfvvjijmv3pjwd7lxlz-1.0.0.drv",
+        "/nix/store/cfglj9yy68h3d9v4sb1gv3cj5z67hb73-1.0.1.drv",
+        "/nix/store/cnp1zzs2yykmhxwyb0a60idx262cnqmq-1.0.0.drv",
+        "/nix/store/g3y3nn1mmk1kcj5y8kr6790d0fmxnfhq-2.2.1.drv",
+        "/nix/store/g8lmq96l4ahwab4dw56w4hyxv9qnxkxj-1.0.0.drv",
+        "/nix/store/h3n2hc3vnrl8zrvccpv7w743nqlvscmg-2.2.1.drv",
+        "/nix/store/jsk1ylnwdaw0vamjvv3fl65da7g8j8lv-1.1.4.drv",
+        "/nix/store/kj0df0wsx72ammqrkx9mvpv2wqm6r06c-1.0.0.drv",
+        "/nix/store/mp8klvc6axay3gxfcpxidp8jszi4qm1i-1.0.5.drv",
+        "/nix/store/n7487lyyc5y3s8rgxxby6pgq5flvljwl-1.0.8.drv"
+      ],
+      "differingInputOutputIdentitiesEqual": true
+    },
+    {
+      "derivers": [
+        "/nix/store/0cd1lrihkw66g41a8apfjw7mm18rcq72-1.0.5.drv",
+        "/nix/store/b1p7nij95syvwz3dfwiqqknjb27mxiv9-1.0.5.drv"
+      ],
+      "identicalOperationalFields": true,
+      "identicalInputSourcePaths": true,
+      "sameDeclaredOutputs": {
+        "out": {
+          "path": "3qnh3p68drwdgf2rclvmzbfxbck82j23-1.0.5"
+        }
+      },
+      "differingInputDrvRefs": [
+        "/nix/store/2l2bynxv1yc8bkrmhkfrqbh1z1sp0a01-1.0.5.drv",
+        "/nix/store/c0p7f0y3xpdgqxy48c49pix4z9ypk7ww-1.0.5.drv"
+      ],
+      "differingInputOutputIdentitiesEqual": true
+    },
+    {
+      "derivers": [
+        "/nix/store/3pn0g4h8slcmf2rjyjfmbw2ypgyx3zg8-1.0.1.drv",
+        "/nix/store/cfglj9yy68h3d9v4sb1gv3cj5z67hb73-1.0.1.drv"
+      ],
+      "identicalOperationalFields": true,
+      "identicalInputSourcePaths": true,
+      "sameDeclaredOutputs": {
+        "out": {
+          "path": "cw7d73454js67q78s4a626f5n1gpizm5-1.0.1"
+        }
+      },
+      "differingInputDrvRefs": [
+        "/nix/store/hm1z9f73cqv3ssz55w11s1afbl9al1cr-1.0.1.drv",
+        "/nix/store/rggxal3n9z8wlk9avjgjrr4b21y94jvx-1.0.1.drv"
+      ],
+      "differingInputOutputIdentitiesEqual": true
+    },
+    {
+      "derivers": [
+        "/nix/store/58hz8yf5zqn5qy9ralqk208m8mf6rdvy-1.0.8.drv",
+        "/nix/store/n7487lyyc5y3s8rgxxby6pgq5flvljwl-1.0.8.drv"
+      ],
+      "identicalOperationalFields": true,
+      "identicalInputSourcePaths": true,
+      "sameDeclaredOutputs": {
+        "out": {
+          "path": "3fkz13jvl4a2iydr7pszlqaggma6wxw0-1.0.8"
+        }
+      },
+      "differingInputDrvRefs": [
+        "/nix/store/8vnfkjzail7vfinv16089h5mn190nrxa-1.0.8.drv",
+        "/nix/store/dn7c3x6k7jvn4khv8k0azv3kp103yhr7-1.0.8.drv"
+      ],
+      "differingInputOutputIdentitiesEqual": true
+    },
+    {
+      "derivers": [
+        "/nix/store/5xjqi74lafk48p41h8xdwd4qhqb5yxrv-1.0.5.drv",
+        "/nix/store/mp8klvc6axay3gxfcpxidp8jszi4qm1i-1.0.5.drv"
+      ],
+      "identicalOperationalFields": true,
+      "identicalInputSourcePaths": true,
+      "sameDeclaredOutputs": {
+        "out": {
+          "path": "xdnmjd0gwld92bvv1sqnarpfb860nhhf-1.0.5"
+        }
+      },
+      "differingInputDrvRefs": [
+        "/nix/store/071lp9sfsx6b2c6clsxndzqq4ykd4qk1-1.0.5.drv",
+        "/nix/store/1b8gyzri9khxng87ws44f528rnmqn2g0-1.0.5.drv"
+      ],
+      "differingInputOutputIdentitiesEqual": true
+    },
+    {
+      "derivers": [
+        "/nix/store/8c0yb2py47x7ndf0brly940rkf0rngvi-1.1.4.drv",
+        "/nix/store/jsk1ylnwdaw0vamjvv3fl65da7g8j8lv-1.1.4.drv"
+      ],
+      "identicalOperationalFields": true,
+      "identicalInputSourcePaths": true,
+      "sameDeclaredOutputs": {
+        "out": {
+          "path": "i2n524iin3aydnzsr02fdzcsf5adi5fr-1.1.4"
+        }
+      },
+      "differingInputDrvRefs": [
+        "/nix/store/1x7yq425m5vvpm4g49bn0zpbjrrkvg7n-1.1.4.drv",
+        "/nix/store/iy86ydbdr0mkb05z7h8p1hqyhbcbn8rz-1.1.4.drv"
+      ],
+      "differingInputOutputIdentitiesEqual": true
+    },
+    {
+      "derivers": [
+        "/nix/store/bfgh7pn6946crdfvvjijmv3pjwd7lxlz-1.0.0.drv",
+        "/nix/store/g8lmq96l4ahwab4dw56w4hyxv9qnxkxj-1.0.0.drv"
+      ],
+      "identicalOperationalFields": true,
+      "identicalInputSourcePaths": true,
+      "sameDeclaredOutputs": {
+        "out": {
+          "path": "4d3lh00k1448j2kp1y1i1hd5ni9l0cmf-1.0.0"
+        }
+      },
+      "differingInputDrvRefs": [
+        "/nix/store/d8q1vsnfmf8hafgkrbh82f9wcvksw0wk-1.0.0.drv",
+        "/nix/store/rsf77nd7xc4ahapy098lfkrk3hrwax4h-1.0.0.drv"
+      ],
+      "differingInputOutputIdentitiesEqual": true
+    },
+    {
+      "derivers": [
+        "/nix/store/cnp1zzs2yykmhxwyb0a60idx262cnqmq-1.0.0.drv",
+        "/nix/store/kj0df0wsx72ammqrkx9mvpv2wqm6r06c-1.0.0.drv"
+      ],
+      "identicalOperationalFields": true,
+      "identicalInputSourcePaths": true,
+      "sameDeclaredOutputs": {
+        "out": {
+          "path": "4nfadcqgsxv0rjli7cwwxplxbs44nvv0-1.0.0"
+        }
+      },
+      "differingInputDrvRefs": [
+        "/nix/store/62p5lk2mangm8lc42rf79sfwc3rqf5w9-1.0.0.drv",
+        "/nix/store/xsqsyd6g9qmnh4kk4f8mhj1ghbvilj6x-1.0.0.drv"
+      ],
+      "differingInputOutputIdentitiesEqual": true
+    },
+    {
+      "derivers": [
+        "/nix/store/g3y3nn1mmk1kcj5y8kr6790d0fmxnfhq-2.2.1.drv",
+        "/nix/store/h3n2hc3vnrl8zrvccpv7w743nqlvscmg-2.2.1.drv"
+      ],
+      "identicalOperationalFields": true,
+      "identicalInputSourcePaths": true,
+      "sameDeclaredOutputs": {
+        "out": {
+          "path": "0vx6kv3d3mwkryvjh0xz3rrc7g5qh25j-2.2.1"
+        }
+      },
+      "differingInputDrvRefs": [
+        "/nix/store/6h0g8m64md2la8xy1ypq2rdx2qkjld2y-2.2.1.drv",
+        "/nix/store/xyinjd2h5gc0zxms0j3vdfvzpavk9wlz-2.2.1.drv"
+      ],
+      "differingInputOutputIdentitiesEqual": true
+    }
+  ],
+  "fixedFetchComparisons": [
+    {
+      "derivers": [
+        "/nix/store/071lp9sfsx6b2c6clsxndzqq4ykd4qk1-1.0.5.drv",
+        "/nix/store/1b8gyzri9khxng87ws44f528rnmqn2g0-1.0.5.drv"
+      ],
+      "builders": [
+        "/nix/store/nnm9gdr70ihc6zc9298mzz8jpcgaciql-bash-5.3p20/bin/bash",
+        "builtin:fetchurl"
+      ],
+      "output": "/nix/store/j1hci1q9v8jy9nhirf6i4njdf9ik8qlc-1.0.5",
+      "expectedFlatSha256": "sha256-ckGjk8T0l3r3XRjIV/Ge5CurA4ohJaz9JTm3cJmRg90=",
+      "actualFlatSha256": "sha256-ckGjk8T0l3r3XRjIV/Ge5CurA4ohJaz9JTm3cJmRg90=",
+      "sameOutputAndEnforcedHash": true
+    },
+    {
+      "derivers": [
+        "/nix/store/1x7yq425m5vvpm4g49bn0zpbjrrkvg7n-1.1.4.drv",
+        "/nix/store/iy86ydbdr0mkb05z7h8p1hqyhbcbn8rz-1.1.4.drv"
+      ],
+      "builders": [
+        "builtin:fetchurl",
+        "/nix/store/nnm9gdr70ihc6zc9298mzz8jpcgaciql-bash-5.3p20/bin/bash"
+      ],
+      "output": "/nix/store/wsq4kxmpl03rslsz4mlmm3s6kvpvas6p-1.1.4",
+      "expectedFlatSha256": "sha256-JV7IM9UDeS3S9fdZCdE+QPsQYaTJejeVUCe+u8+Nhds=",
+      "actualFlatSha256": "sha256-JV7IM9UDeS3S9fdZCdE+QPsQYaTJejeVUCe+u8+Nhds=",
+      "sameOutputAndEnforcedHash": true
+    },
+    {
+      "derivers": [
+        "/nix/store/2l2bynxv1yc8bkrmhkfrqbh1z1sp0a01-1.0.5.drv",
+        "/nix/store/c0p7f0y3xpdgqxy48c49pix4z9ypk7ww-1.0.5.drv"
+      ],
+      "builders": [
+        "/nix/store/nnm9gdr70ihc6zc9298mzz8jpcgaciql-bash-5.3p20/bin/bash",
+        "builtin:fetchurl"
+      ],
+      "output": "/nix/store/0gq36znqjvxr00rgxinpp12n7rcpxhqw-1.0.5",
+      "expectedFlatSha256": "sha256-HRUjmHa22scI1OKhBxbkM9R6gtQdDamemlnO/064z9U=",
+      "actualFlatSha256": "sha256-HRUjmHa22scI1OKhBxbkM9R6gtQdDamemlnO/064z9U=",
+      "sameOutputAndEnforcedHash": true
+    },
+    {
+      "derivers": [
+        "/nix/store/62p5lk2mangm8lc42rf79sfwc3rqf5w9-1.0.0.drv",
+        "/nix/store/xsqsyd6g9qmnh4kk4f8mhj1ghbvilj6x-1.0.0.drv"
+      ],
+      "builders": [
+        "/nix/store/nnm9gdr70ihc6zc9298mzz8jpcgaciql-bash-5.3p20/bin/bash",
+        "builtin:fetchurl"
+      ],
+      "output": "/nix/store/8wakrv8d5mckjg6rzkxdi1qdpy866kaq-1.0.0",
+      "expectedFlatSha256": "sha256-cqLuaCJv52zHULOjRoL0R2+kyKVpfDd4ODFnVr2CaUI=",
+      "actualFlatSha256": "sha256-cqLuaCJv52zHULOjRoL0R2+kyKVpfDd4ODFnVr2CaUI=",
+      "sameOutputAndEnforcedHash": true
+    },
+    {
+      "derivers": [
+        "/nix/store/6h0g8m64md2la8xy1ypq2rdx2qkjld2y-2.2.1.drv",
+        "/nix/store/xyinjd2h5gc0zxms0j3vdfvzpavk9wlz-2.2.1.drv"
+      ],
+      "builders": [
+        "/nix/store/nnm9gdr70ihc6zc9298mzz8jpcgaciql-bash-5.3p20/bin/bash",
+        "builtin:fetchurl"
+      ],
+      "output": "/nix/store/zh2whzsgx97l05g7ry2x0diwjvcy7315-2.2.1",
+      "expectedFlatSha256": "sha256-6hQKTYF9Bwt15da+V0WikzeIjfEj9ZJztIaQ4u5reqw=",
+      "actualFlatSha256": "sha256-6hQKTYF9Bwt15da+V0WikzeIjfEj9ZJztIaQ4u5reqw=",
+      "sameOutputAndEnforcedHash": true
+    },
+    {
+      "derivers": [
+        "/nix/store/8vnfkjzail7vfinv16089h5mn190nrxa-1.0.8.drv",
+        "/nix/store/dn7c3x6k7jvn4khv8k0azv3kp103yhr7-1.0.8.drv"
+      ],
+      "builders": [
+        "/nix/store/nnm9gdr70ihc6zc9298mzz8jpcgaciql-bash-5.3p20/bin/bash",
+        "builtin:fetchurl"
+      ],
+      "output": "/nix/store/bmd2f2w8ia0vzwc7hj3clb6j41yjqnmy-1.0.8",
+      "expectedFlatSha256": "sha256-ZrFhZwfWLZeBSy5x0TN2kd3OGocYDxij846KYWHx0aA=",
+      "actualFlatSha256": "sha256-ZrFhZwfWLZeBSy5x0TN2kd3OGocYDxij846KYWHx0aA=",
+      "sameOutputAndEnforcedHash": true
+    },
+    {
+      "derivers": [
+        "/nix/store/d8q1vsnfmf8hafgkrbh82f9wcvksw0wk-1.0.0.drv",
+        "/nix/store/rsf77nd7xc4ahapy098lfkrk3hrwax4h-1.0.0.drv"
+      ],
+      "builders": [
+        "/nix/store/nnm9gdr70ihc6zc9298mzz8jpcgaciql-bash-5.3p20/bin/bash",
+        "builtin:fetchurl"
+      ],
+      "output": "/nix/store/dk2g5l4isilgdn1h18s8npy4ml8kask5-1.0.0",
+      "expectedFlatSha256": "sha256-VCPZFEzmrR+sAtp1bp8PwDz8BBmqvDF9pUSFw7Nkr5w=",
+      "actualFlatSha256": "sha256-VCPZFEzmrR+sAtp1bp8PwDz8BBmqvDF9pUSFw7Nkr5w=",
+      "sameOutputAndEnforcedHash": true
+    },
+    {
+      "derivers": [
+        "/nix/store/hm1z9f73cqv3ssz55w11s1afbl9al1cr-1.0.1.drv",
+        "/nix/store/rggxal3n9z8wlk9avjgjrr4b21y94jvx-1.0.1.drv"
+      ],
+      "builders": [
+        "/nix/store/nnm9gdr70ihc6zc9298mzz8jpcgaciql-bash-5.3p20/bin/bash",
+        "builtin:fetchurl"
+      ],
+      "output": "/nix/store/li0ixb5hx3fg8ybkg3mzgqrs6yjn6r88-1.0.1",
+      "expectedFlatSha256": "sha256-iGN7ZQ8B8qzhHHWdi4wuluBhCu9C0xTVjvbf0GGPDv8=",
+      "actualFlatSha256": "sha256-iGN7ZQ8B8qzhHHWdi4wuluBhCu9C0xTVjvbf0GGPDv8=",
+      "sameOutputAndEnforcedHash": true
+    }
+  ],
+  "nativeCI": {
+    "repository": "nix-purifiers/elm-purifier",
+    "sourceRevision": "e79677828b366534448a14cb6e07c0632ea23193",
+    "run": "https://github.com/nix-purifiers/elm-purifier/actions/runs/42152619081",
+    "job": "https://github.com/nix-purifiers/elm-purifier/actions/runs/42152619081/job/127679182087",
+    "nativeSystem": "x86_64-linux",
+    "conclusion": "success",
+    "expectedDeriversActuallyBuilt": [
+      "/nix/store/mlrafz0nwgzvnq252k2dh68xhbycb08z-elm-tests.drv",
+      "/nix/store/8mw1pwnkkkc259rqgjyp6i2hsbwhyr80-real-world-list-extra.drv"
+    ],
+    "log": "/home/chris/Projects/ch-nix-workspace/.worktrees/tier-review/group-3/elm-purifier/ci.log",
+    "logSha256": "6dfc191b4ec63f2498db5eb25ede1e15df5b722646d97e6c232c3f07c3a5166f",
+    "retainedLines": [
+      {
+        "line": 8041,
+        "text": "check (ubuntu-latest)\tUNKNOWN STEP\t2026-11-06T02:49:13.9889247Z checking derivation checks.x86_64-linux.real-world-list-extra..."
+      },
+      {
+        "line": 8042,
+        "text": "check (ubuntu-latest)\tUNKNOWN STEP\t2026-11-06T02:49:14.0568597Z unpacking 'https://github.com/elm-community/list-extra/archive/46a4817f2df99ce3379390db21348177ac95056d.tar.gz' into the Git cache..."
+      },
+      {
+        "line": 8043,
+        "text": "check (ubuntu-latest)\tUNKNOWN STEP\t2026-11-06T02:49:14.3223398Z derivation evaluated to /nix/store/8mw1pwnkkkc259rqgjyp6i2hsbwhyr80-real-world-list-extra.drv"
+      },
+      {
+        "line": 8044,
+        "text": "check (ubuntu-latest)\tUNKNOWN STEP\t2026-11-06T02:49:14.3224084Z checking derivation checks.x86_64-linux.real-world-list-extra-tests..."
+      },
+      {
+        "line": 8045,
+        "text": "check (ubuntu-latest)\tUNKNOWN STEP\t2026-11-06T02:49:14.3229570Z derivation evaluated to /nix/store/mlrafz0nwgzvnq252k2dh68xhbycb08z-elm-tests.drv"
+      },
+      {
+        "line": 9048,
+        "text": "check (ubuntu-latest)\tUNKNOWN STEP\t2026-11-06T02:49:35.2414396Z building '/nix/store/8mw1pwnkkkc259rqgjyp6i2hsbwhyr80-real-world-list-extra.drv'..."
+      },
+      {
+        "line": 9049,
+        "text": "check (ubuntu-latest)\tUNKNOWN STEP\t2026-11-06T02:49:35.2415313Z elm-nix-purifiers-greeting> Dependencies ready!"
+      },
+      {
+        "line": 9050,
+        "text": "check (ubuntu-latest)\tUNKNOWN STEP\t2026-11-06T02:49:35.2595667Z elm-test> rebuilt dependencies successfully"
+      },
+      {
+        "line": 9051,
+        "text": "check (ubuntu-latest)\tUNKNOWN STEP\t2026-11-06T02:49:35.2693741Z elm-test> patching script interpreter paths in node_modules"
+      },
+      {
+        "line": 9052,
+        "text": "check (ubuntu-latest)\tUNKNOWN STEP\t2026-11-06T02:49:35.2809740Z real-world-list-extra> true"
+      },
+      {
+        "line": 9111,
+        "text": "check (ubuntu-latest)\tUNKNOWN STEP\t2026-11-06T02:49:37.2217309Z building '/nix/store/mlrafz0nwgzvnq252k2dh68xhbycb08z-elm-tests.drv'..."
+      },
+      {
+        "line": 9112,
+        "text": "check (ubuntu-latest)\tUNKNOWN STEP\t2026-11-06T02:49:37.2639731Z building '/nix/store/spv40a6vb7hakq1z0bhrd79i5phzx952-ordinary-resource-consumers.drv'..."
+      },
+      {
+        "line": 9113,
+        "text": "check (ubuntu-latest)\tUNKNOWN STEP\t2026-11-06T02:49:37.2640175Z elm-tests> Running phase: unpackPhase"
+      },
+      {
+        "line": 9114,
+        "text": "check (ubuntu-latest)\tUNKNOWN STEP\t2026-11-06T02:49:37.2640378Z elm-tests> Running phase: unpackPhase"
+      },
+      {
+        "line": 9115,
+        "text": "check (ubuntu-latest)\tUNKNOWN STEP\t2026-11-06T02:49:37.2712392Z elm-tests> unpacking source archive /nix/store/md98cc6zxnzswj8sr79vm4yrgmdbx6aa-elm-source"
+      },
+      {
+        "line": 9116,
+        "text": "check (ubuntu-latest)\tUNKNOWN STEP\t2026-11-06T02:49:37.2758957Z elm-tests> source root is elm-source"
+      },
+      {
+        "line": 9117,
+        "text": "check (ubuntu-latest)\tUNKNOWN STEP\t2026-11-06T02:49:37.2863759Z elm-tests> unpacking source archive /nix/store/ly4pmp1p0pghc1fz3aj1znni5wz4iq9j-elm-source"
+      },
+      {
+        "line": 9118,
+        "text": "check (ubuntu-latest)\tUNKNOWN STEP\t2026-11-06T02:49:37.2873295Z elm-tests> Running phase: patchPhase"
+      },
+      {
+        "line": 9119,
+        "text": "check (ubuntu-latest)\tUNKNOWN STEP\t2026-11-06T02:49:37.2908413Z elm-tests> source root is elm-source"
+      },
+      {
+        "line": 9120,
+        "text": "check (ubuntu-latest)\tUNKNOWN STEP\t2026-11-06T02:49:37.2985230Z elm-tests> Running phase: patchPhase"
+      },
+      {
+        "line": 9121,
+        "text": "check (ubuntu-latest)\tUNKNOWN STEP\t2026-11-06T02:49:37.3024151Z elm-tests> Running phase: updateAutotoolsGnuConfigScriptsPhase"
+      },
+      {
+        "line": 9122,
+        "text": "check (ubuntu-latest)\tUNKNOWN STEP\t2026-11-06T02:49:37.3069555Z elm-tests> Running phase: updateAutotoolsGnuConfigScriptsPhase"
+      },
+      {
+        "line": 9123,
+        "text": "check (ubuntu-latest)\tUNKNOWN STEP\t2026-11-06T02:49:37.3155249Z elm-tests> Running phase: buildPhase"
+      },
+      {
+        "line": 9124,
+        "text": "check (ubuntu-latest)\tUNKNOWN STEP\t2026-11-06T02:49:37.3175936Z elm-tests> Running phase: buildPhase"
+      },
+      {
+        "line": 9125,
+        "text": "check (ubuntu-latest)\tUNKNOWN STEP\t2026-11-06T02:49:37.3914047Z ordinary-resource-consumers> 127.0.0.1 - - [06/Nov/2026 02:49:37] \"GET /docs.json HTTP/1.1\" 200 -"
+      },
+      {
+        "line": 9126,
+        "text": "check (ubuntu-latest)\tUNKNOWN STEP\t2026-11-06T02:49:37.3914993Z ordinary-resource-consumers> 127.0.0.1 - - [06/Nov/2026 02:49:37] code 404, message File not found"
+      },
+      {
+        "line": 9146,
+        "text": "check (ubuntu-latest)\tUNKNOWN STEP\t2026-11-06T02:49:38.6574485Z elm-tests> Solving dependencies > Compiling > Starting tests"
+      },
+      {
+        "line": 9147,
+        "text": "check (ubuntu-latest)\tUNKNOWN STEP\t2026-11-06T02:49:38.6575636Z unit> test_a_working_server_succeeds_at_once (test_lsp_probe.Probe.test_a_working_server_succeeds_at_once) ... ok"
+      },
+      {
+        "line": 9148,
+        "text": "check (ubuntu-latest)\tUNKNOWN STEP\t2026-11-06T02:49:38.6576691Z unit> test_closed_output_from_a_live_server_is_bounded (test_lsp_probe.Probe.test_closed_output_from_a_live_server_is_bounded) ... ok"
+      },
+      {
+        "line": 9149,
+        "text": "check (ubuntu-latest)\tUNKNOWN STEP\t2026-11-06T02:49:38.8679280Z elm-tests> "
+      },
+      {
+        "line": 9150,
+        "text": "check (ubuntu-latest)\tUNKNOWN STEP\t2026-11-06T02:49:38.8679846Z elm-tests> elm-test 0.19.2-1"
+      },
+      {
+        "line": 9151,
+        "text": "check (ubuntu-latest)\tUNKNOWN STEP\t2026-11-06T02:49:38.8680657Z elm-tests> -----------------"
+      },
+      {
+        "line": 9152,
+        "text": "check (ubuntu-latest)\tUNKNOWN STEP\t2026-11-06T02:49:38.8681016Z elm-tests> "
+      },
+      {
+        "line": 9153,
+        "text": "check (ubuntu-latest)\tUNKNOWN STEP\t2026-11-06T02:49:38.8681547Z elm-tests> Running 220 tests. To reproduce these results, run: elm-test --fuzz 100 --seed 382330009873838"
+      },
+      {
+        "line": 9154,
+        "text": "check (ubuntu-latest)\tUNKNOWN STEP\t2026-11-06T02:49:38.8682121Z elm-tests> "
+      },
+      {
+        "line": 9155,
+        "text": "check (ubuntu-latest)\tUNKNOWN STEP\t2026-11-06T02:49:39.0037678Z elm-tests> "
+      },
+      {
+        "line": 9156,
+        "text": "check (ubuntu-latest)\tUNKNOWN STEP\t2026-11-06T02:49:39.0037928Z elm-tests> TEST RUN PASSED"
+      },
+      {
+        "line": 9157,
+        "text": "check (ubuntu-latest)\tUNKNOWN STEP\t2026-11-06T02:49:39.0038155Z elm-tests> "
+      },
+      {
+        "line": 9158,
+        "text": "check (ubuntu-latest)\tUNKNOWN STEP\t2026-11-06T02:49:39.0038330Z elm-tests> Duration: 531 ms"
+      },
+      {
+        "line": 9159,
+        "text": "check (ubuntu-latest)\tUNKNOWN STEP\t2026-11-06T02:49:39.0038503Z elm-tests> Passed:   220"
+      },
+      {
+        "line": 9160,
+        "text": "check (ubuntu-latest)\tUNKNOWN STEP\t2026-11-06T02:49:39.0038893Z elm-tests> Failed:   0"
+      },
+      {
+        "line": 9161,
+        "text": "check (ubuntu-latest)\tUNKNOWN STEP\t2026-11-06T02:49:39.0039016Z elm-tests> "
+      },
+      {
+        "line": 9162,
+        "text": "check (ubuntu-latest)\tUNKNOWN STEP\t2026-11-06T02:49:39.0351105Z elm-tests> Running phase: installPhase"
+      }
+    ],
+    "outputNarProvenance": "NAR hashes come from local registered output path-info; CI establishes actual expected drv build at exact source, but no CI output NAR is fabricated."
+  },
+  "integrationInstruction": "Keep expected drvPath from successful current-source nix build receipt, preserve registered deriver as separate metadata, attach this audited fixed-output equivalence and native-CI success. If schema cannot represent this distinction, retain2 records as explicit proof gaps rather than substituting registered drv identity or claiming fresh local execution."
+}

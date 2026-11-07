@@ -1,0 +1,1010 @@
+{
+  "agda-purifier": {
+    "tier": 3,
+    "reviewedRevision": "5b2c934e530b79f7ae3240ef69468a1a8c19a15a",
+    "reviewedAt": "2026-11-06",
+    "rationale": "Native Linux sample derivations and meaningful regression tests are verified. Darwin runtime execution is absent from the inspected CI; this prevents Tier 2. The executed supported current line is demonstrated.",
+    "criteria": {
+      "evaluation": {
+        "state": "met",
+        "summary": "All 4 executable checks.x86_64-linux attributes evaluate and realize successfully at 5b2c934e530b79f7ae3240ef69468a1a8c19a15a. Exact derivations, native outputs and NAR hashes are in the packet; native aarch64-linux CI independently succeeds.",
+        "evidence": [
+          "https://github.com/nix-purifiers/agda-purifier/actions/runs/41807052857/job/126496589886",
+          "/home/chris/Projects/ch-nix-workspace/.worktrees/tier-review/group-1/derivation-evidence.json#/projects/agda-purifier"
+        ]
+      },
+      "goodTests": {
+        "state": "met",
+        "summary": "The project derivation type-checks Proof.agda against the locked prelude. Successful CI also exercises stale/tampered lock rejection, native metadata capture, source edits, private configuration, GC roots and ordinary Agda consumption; the positive derivation and negative lifecycle controls jointly give meaningful regression coverage.",
+        "evidence": [
+          "https://github.com/nix-purifiers/agda-purifier/actions/runs/41807052857/job/126496589886",
+          "/home/chris/Projects/ch-nix-workspace/.worktrees/tier-review/group-1/derivation-evidence.json#/projects/agda-purifier"
+        ]
+      },
+      "linux": {
+        "state": "met",
+        "summary": "Native aarch64-linux CI builds the required sample/check derivations successfully at the exact reviewed revision; local x86_64-linux checks also realize successfully. Neither result is cross-evaluation.",
+        "evidence": [
+          "https://github.com/nix-purifiers/agda-purifier/actions/runs/41807052857/job/126496589886",
+          "/home/chris/Projects/ch-nix-workspace/.worktrees/tier-review/group-1/derivation-evidence.json#/projects/agda-purifier"
+        ]
+      },
+      "darwin": {
+        "state": "not-met",
+        "summary": "The inspected .github/workflows/check.yml and successful native jobs cover ubuntu-latest and ubuntu-24.04-arm only. The flake check system list is Linux-only. No successful native Darwin sample derivation/SDK/output receipt is available; this Linux review host cannot execute it.",
+        "evidence": [
+          "https://github.com/nix-purifiers/agda-purifier/actions/runs/41807052857/job/126496589886",
+          "/home/chris/Projects/ch-nix-workspace/.worktrees/tier-review/group-1/derivation-evidence.json#/projects/agda-purifier"
+        ]
+      },
+      "oneVersion": {
+        "state": "met",
+        "summary": "Actual native sample execution demonstrates Agda 2.8.0. Scope is the exact executed version point(s), not a version range.",
+        "evidence": [
+          "https://github.com/nix-purifiers/agda-purifier/actions/runs/41807052857/job/126496589886",
+          "/home/chris/Projects/ch-nix-workspace/.worktrees/tier-review/group-1/derivation-evidence.json#/projects/agda-purifier"
+        ]
+      },
+      "nonEolVersions": {
+        "state": "met",
+        "summary": "The native sample executes Agda 2.8.0 on the current 2.8 line. The official 2.8.0.2 release explicitly says there are no non-installation fixes over 2.8.0 and existing 2.8.0 installations need not upgrade. This supports the executed line point, without claiming all Agda patches or old 2.6/2.7 lines.",
+        "evidence": [
+          "https://github.com/nix-purifiers/agda-purifier/actions/runs/41807052857/job/126496589886",
+          "/home/chris/Projects/ch-nix-workspace/.worktrees/tier-review/group-1/derivation-evidence.json#/projects/agda-purifier",
+          "https://github.com/agda/agda/releases/tag/v2.8.0.2"
+        ]
+      },
+      "manySamples": {
+        "state": "not-met",
+        "summary": "Only the minimal proof fixture is built as a consumer. Its prelude dependency and capture/edit variants do not demonstrate many independent sample builds.",
+        "evidence": [
+          "https://github.com/nix-purifiers/agda-purifier/actions/runs/41807052857/job/126496589886",
+          "/home/chris/Projects/ch-nix-workspace/.worktrees/tier-review/group-1/derivation-evidence.json#/projects/agda-purifier"
+        ]
+      },
+      "longCompatibility": {
+        "state": "not-met",
+        "summary": "Only Agda 2.8.0 is executed. The library uses --build-library, introduced in 2.8; no older compiler derivation execution was found.",
+        "evidence": [
+          "https://github.com/nix-purifiers/agda-purifier/actions/runs/41807052857/job/126496589886",
+          "/home/chris/Projects/ch-nix-workspace/.worktrees/tier-review/group-1/derivation-evidence.json#/projects/agda-purifier"
+        ]
+      }
+    },
+    "sampleBuilds": [
+      {
+        "name": "examples/minimal: Proof.agda and its locked agda-prelude dependency (4230566d3ae2); this is a repository-owned proof fixture, not an independent upstream application.",
+        "evidence": [
+          "https://github.com/nix-purifiers/agda-purifier/actions/runs/41807052857/job/126496589886",
+          "/home/chris/Projects/ch-nix-workspace/.worktrees/tier-review/group-1/derivation-evidence.json#/projects/agda-purifier",
+          "/nix/store/r29hvg0zqsgj5m0arzgj5grj4vak7yy7-agda-project.drv",
+          "/nix/store/6khbbk9ngrjiqcdh56wxywr3ws8l13h0-agda-project"
+        ]
+      }
+    ]
+  },
+  "alire-purifier": {
+    "tier": 3,
+    "reviewedRevision": "f364b29e67a039f2d7c0f10407eec1603f8fac3b",
+    "reviewedAt": "2026-11-06",
+    "rationale": "Native Linux sample derivations and meaningful regression tests are verified. Darwin runtime execution is absent from the inspected CI; this prevents Tier 2. The executed supported current line is demonstrated.",
+    "criteria": {
+      "evaluation": {
+        "state": "met",
+        "summary": "All 4 executable checks.x86_64-linux attributes evaluate and realize successfully at f364b29e67a039f2d7c0f10407eec1603f8fac3b. Exact derivations, native outputs and NAR hashes are in the packet; native aarch64-linux CI independently succeeds.",
+        "evidence": [
+          "https://github.com/nix-purifiers/alire-purifier/actions/runs/41963311948/job/127034483283",
+          "/home/chris/Projects/ch-nix-workspace/.worktrees/tier-review/group-1/derivation-evidence.json#/projects/alire-purifier"
+        ]
+      },
+      "goodTests": {
+        "state": "met",
+        "summary": "The project derivation builds the Ada executable and checks its printed answer is 42. Successful native CI additionally checks mutable roots, read-only dependencies, private settings, GC/fallback, immutable compiler selection, original Alire resolver capture and ordinary GPR consumption.",
+        "evidence": [
+          "https://github.com/nix-purifiers/alire-purifier/actions/runs/41963311948/job/127034483283",
+          "/home/chris/Projects/ch-nix-workspace/.worktrees/tier-review/group-1/derivation-evidence.json#/projects/alire-purifier"
+        ]
+      },
+      "linux": {
+        "state": "met",
+        "summary": "Native aarch64-linux CI builds the required sample/check derivations successfully at the exact reviewed revision; local x86_64-linux checks also realize successfully. Neither result is cross-evaluation.",
+        "evidence": [
+          "https://github.com/nix-purifiers/alire-purifier/actions/runs/41963311948/job/127034483283",
+          "/home/chris/Projects/ch-nix-workspace/.worktrees/tier-review/group-1/derivation-evidence.json#/projects/alire-purifier"
+        ]
+      },
+      "darwin": {
+        "state": "not-met",
+        "summary": "The inspected .github/workflows/check.yml and successful native jobs cover ubuntu-latest and ubuntu-24.04-arm only. The flake check system list is Linux-only. No successful native Darwin sample derivation/SDK/output receipt is available; this Linux review host cannot execute it.",
+        "evidence": [
+          "https://github.com/nix-purifiers/alire-purifier/actions/runs/41963311948/job/127034483283",
+          "/home/chris/Projects/ch-nix-workspace/.worktrees/tier-review/group-1/derivation-evidence.json#/projects/alire-purifier"
+        ]
+      },
+      "oneVersion": {
+        "state": "met",
+        "summary": "Actual native sample execution demonstrates Alire 2.1.1 / GNAT 16.2.0 / GPRbuild 25.0.0. Scope is the exact executed version point(s), not a version range.",
+        "evidence": [
+          "https://github.com/nix-purifiers/alire-purifier/actions/runs/41963311948/job/127034483283",
+          "/home/chris/Projects/ch-nix-workspace/.worktrees/tier-review/group-1/derivation-evidence.json#/projects/alire-purifier"
+        ]
+      },
+      "nonEolVersions": {
+        "state": "met",
+        "summary": "Actual builds use Alire 2.1.1, the latest official stable maintenance release observed through the upstream release API. The current 2.1 line is demonstrated at that exact point; the inspected release material does not define a multi-line maintenance window, and this judgment does not invent one or imply every compiler is covered.",
+        "evidence": [
+          "https://github.com/nix-purifiers/alire-purifier/actions/runs/41963311948/job/127034483283",
+          "/home/chris/Projects/ch-nix-workspace/.worktrees/tier-review/group-1/derivation-evidence.json#/projects/alire-purifier",
+          "https://github.com/alire-project/alire/releases/tag/v2.1.1"
+        ]
+      },
+      "manySamples": {
+        "state": "not-met",
+        "summary": "The one root proof fixture consumes libhello; mutable copies, resolver captures and empty variants exercise features of that root, rather than independent upstream samples.",
+        "evidence": [
+          "https://github.com/nix-purifiers/alire-purifier/actions/runs/41963311948/job/127034483283",
+          "/home/chris/Projects/ch-nix-workspace/.worktrees/tier-review/group-1/derivation-evidence.json#/projects/alire-purifier"
+        ]
+      },
+      "longCompatibility": {
+        "state": "not-met",
+        "summary": "Only Alire 2.1.1 with the pinned GNAT/GPRbuild tuple is demonstrated. No historical Alire/compiler tuple is executed by the inspected checks.",
+        "evidence": [
+          "https://github.com/nix-purifiers/alire-purifier/actions/runs/41963311948/job/127034483283",
+          "/home/chris/Projects/ch-nix-workspace/.worktrees/tier-review/group-1/derivation-evidence.json#/projects/alire-purifier"
+        ]
+      }
+    },
+    "sampleBuilds": [
+      {
+        "name": "examples/minimal: purifierproof with upstream libhello 1.0.1 and GNAT 16.2.0; the root is a repository fixture, the upstream library is a dependency.",
+        "evidence": [
+          "https://github.com/nix-purifiers/alire-purifier/actions/runs/41963311948/job/127034483283",
+          "/home/chris/Projects/ch-nix-workspace/.worktrees/tier-review/group-1/derivation-evidence.json#/projects/alire-purifier",
+          "/nix/store/7nnmpzhlshhi8nanm9r46bbzrh26mm5w-alire-project.drv",
+          "/nix/store/1ww3fw86npffkkii0lazv4iw935x9jpf-alire-project"
+        ]
+      }
+    ]
+  },
+  "anki-purifier": {
+    "tier": 3,
+    "reviewedRevision": "6b5ead0d6ca2f31eac0e3baab3be39e63890d5b0",
+    "reviewedAt": "2026-11-06",
+    "rationale": "Native Linux sample derivations and meaningful regression tests are verified. Darwin runtime execution is absent from the inspected CI; this prevents Tier 2. The upstream-version execution gap is recorded explicitly.",
+    "criteria": {
+      "evaluation": {
+        "state": "met",
+        "summary": "All 4 executable checks.x86_64-linux attributes evaluate and realize successfully at 6b5ead0d6ca2f31eac0e3baab3be39e63890d5b0. Exact derivations, native outputs and NAR hashes are in the packet; native aarch64-linux CI independently succeeds.",
+        "evidence": [
+          "https://github.com/nix-purifiers/anki-purifier/actions/runs/41955565327/job/127009528725",
+          "/home/chris/Projects/ch-nix-workspace/.worktrees/tier-review/group-1/derivation-evidence.json#/projects/anki-purifier"
+        ]
+      },
+      "goodTests": {
+        "state": "met",
+        "summary": "The derivations install the locked AnkiConnect add-on and run the project output check. Successful CI also drives the real Anki GUI, source/preferences/network guards, collection locking, artifact consumers, capture and atomic failures. These controls address add-on and application integration beyond file creation.",
+        "evidence": [
+          "https://github.com/nix-purifiers/anki-purifier/actions/runs/41955565327/job/127009528725",
+          "/home/chris/Projects/ch-nix-workspace/.worktrees/tier-review/group-1/derivation-evidence.json#/projects/anki-purifier"
+        ]
+      },
+      "linux": {
+        "state": "met",
+        "summary": "Native aarch64-linux CI builds the required sample/check derivations successfully at the exact reviewed revision; local x86_64-linux checks also realize successfully. Neither result is cross-evaluation.",
+        "evidence": [
+          "https://github.com/nix-purifiers/anki-purifier/actions/runs/41955565327/job/127009528725",
+          "/home/chris/Projects/ch-nix-workspace/.worktrees/tier-review/group-1/derivation-evidence.json#/projects/anki-purifier"
+        ]
+      },
+      "darwin": {
+        "state": "not-met",
+        "summary": "The inspected .github/workflows/check.yml and successful native jobs cover ubuntu-latest and ubuntu-24.04-arm only. The flake check system list is Linux-only. No successful native Darwin sample derivation/SDK/output receipt is available; this Linux review host cannot execute it.",
+        "evidence": [
+          "https://github.com/nix-purifiers/anki-purifier/actions/runs/41955565327/job/127009528725",
+          "/home/chris/Projects/ch-nix-workspace/.worktrees/tier-review/group-1/derivation-evidence.json#/projects/anki-purifier"
+        ]
+      },
+      "oneVersion": {
+        "state": "met",
+        "summary": "Actual native sample execution demonstrates Anki 26.09.3. Scope is the exact executed version point(s), not a version range.",
+        "evidence": [
+          "https://github.com/nix-purifiers/anki-purifier/actions/runs/41955565327/job/127009528725",
+          "/home/chris/Projects/ch-nix-workspace/.worktrees/tier-review/group-1/derivation-evidence.json#/projects/anki-purifier"
+        ]
+      },
+      "nonEolVersions": {
+        "state": "not-met",
+        "summary": "The executed native application is 26.09.3. Upstream 26.09.4, published 2026-11-04, explicitly urges an upgrade for security fixes; no 26.09.4 check derivation execution is in this packet. This is a specific current-release proof gap, not a claim that a new patch automatically establishes an EOL date.",
+        "evidence": [
+          "https://github.com/nix-purifiers/anki-purifier/actions/runs/41955565327/job/127009528725",
+          "/home/chris/Projects/ch-nix-workspace/.worktrees/tier-review/group-1/derivation-evidence.json#/projects/anki-purifier",
+          "https://github.com/ankitects/anki/releases/tag/26.09.4"
+        ]
+      },
+      "manySamples": {
+        "state": "not-met",
+        "summary": "Only one minimal Anki profile and one locked AnkiConnect add-on are shown. GUI, capture and error scenarios reuse that profile.",
+        "evidence": [
+          "https://github.com/nix-purifiers/anki-purifier/actions/runs/41955565327/job/127009528725",
+          "/home/chris/Projects/ch-nix-workspace/.worktrees/tier-review/group-1/derivation-evidence.json#/projects/anki-purifier"
+        ]
+      },
+      "longCompatibility": {
+        "state": "not-met",
+        "summary": "No older native Anki release is built or executed; add-on min/max metadata is not execution across an application version range.",
+        "evidence": [
+          "https://github.com/nix-purifiers/anki-purifier/actions/runs/41955565327/job/127009528725",
+          "/home/chris/Projects/ch-nix-workspace/.worktrees/tier-review/group-1/derivation-evidence.json#/projects/anki-purifier"
+        ]
+      }
+    },
+    "sampleBuilds": [
+      {
+        "name": "examples/minimal: Anki project with AnkiConnect add-on 2055492159; one owned application profile, not several independent add-on projects.",
+        "evidence": [
+          "https://github.com/nix-purifiers/anki-purifier/actions/runs/41955565327/job/127009528725",
+          "/home/chris/Projects/ch-nix-workspace/.worktrees/tier-review/group-1/derivation-evidence.json#/projects/anki-purifier",
+          "/nix/store/h3fk7pqdynii20ddidaywh3vjcw6ljcd-anki-project.drv",
+          "/nix/store/ixx4czr32x1lm4p1b9xcrh8b2z6fxrmv-anki-project"
+        ]
+      }
+    ]
+  },
+  "ansible-purifier": {
+    "tier": 3,
+    "reviewedRevision": "858ef25cef07ffda9486f1e8bd6329e561bbbfe6",
+    "reviewedAt": "2026-11-06",
+    "rationale": "Native Linux sample derivations and meaningful regression tests are verified. Darwin runtime execution is absent from the inspected CI; this prevents Tier 2. The upstream-version execution gap is recorded explicitly.",
+    "criteria": {
+      "evaluation": {
+        "state": "met",
+        "summary": "All 4 executable checks.x86_64-linux attributes evaluate and realize successfully at 858ef25cef07ffda9486f1e8bd6329e561bbbfe6. Exact derivations, native outputs and NAR hashes are in the packet; native aarch64-linux CI independently succeeds.",
+        "evidence": [
+          "https://github.com/nix-purifiers/ansible-purifier/actions/runs/41807048130/job/126496570276",
+          "/home/chris/Projects/ch-nix-workspace/.worktrees/tier-review/group-1/derivation-evidence.json#/projects/ansible-purifier"
+        ]
+      },
+      "goodTests": {
+        "state": "met",
+        "summary": "The project derivation runs the locked playbook and checks 42.0 in its log. Native CI further checks source mutation, read-only collections, lookup isolation, root networking, ordinary consumers, publication/fallback, transitive Galaxy capture and empty dependencies.",
+        "evidence": [
+          "https://github.com/nix-purifiers/ansible-purifier/actions/runs/41807048130/job/126496570276",
+          "/home/chris/Projects/ch-nix-workspace/.worktrees/tier-review/group-1/derivation-evidence.json#/projects/ansible-purifier"
+        ]
+      },
+      "linux": {
+        "state": "met",
+        "summary": "Native aarch64-linux CI builds the required sample/check derivations successfully at the exact reviewed revision; local x86_64-linux checks also realize successfully. Neither result is cross-evaluation.",
+        "evidence": [
+          "https://github.com/nix-purifiers/ansible-purifier/actions/runs/41807048130/job/126496570276",
+          "/home/chris/Projects/ch-nix-workspace/.worktrees/tier-review/group-1/derivation-evidence.json#/projects/ansible-purifier"
+        ]
+      },
+      "darwin": {
+        "state": "not-met",
+        "summary": "The inspected .github/workflows/check.yml and successful native jobs cover ubuntu-latest and ubuntu-24.04-arm only. The flake check system list is Linux-only. No successful native Darwin sample derivation/SDK/output receipt is available; this Linux review host cannot execute it.",
+        "evidence": [
+          "https://github.com/nix-purifiers/ansible-purifier/actions/runs/41807048130/job/126496570276",
+          "/home/chris/Projects/ch-nix-workspace/.worktrees/tier-review/group-1/derivation-evidence.json#/projects/ansible-purifier"
+        ]
+      },
+      "oneVersion": {
+        "state": "met",
+        "summary": "Actual native sample execution demonstrates ansible-core 2.21.5. Scope is the exact executed version point(s), not a version range.",
+        "evidence": [
+          "https://github.com/nix-purifiers/ansible-purifier/actions/runs/41807048130/job/126496570276",
+          "/home/chris/Projects/ch-nix-workspace/.worktrees/tier-review/group-1/derivation-evidence.json#/projects/ansible-purifier"
+        ]
+      },
+      "nonEolVersions": {
+        "state": "not-met",
+        "summary": "Upstream maintains the latest ansible-core release plus two prior releases. The upstream API reports 2.22.0 released 2026-11-02, so maintained lines are 2.22, 2.21 and 2.20. The packet executes only 2.21.5; native 2.20 and 2.22 sample derivations are absent. The tested 2.21 line is not labelled EOL.",
+        "evidence": [
+          "https://github.com/nix-purifiers/ansible-purifier/actions/runs/41807048130/job/126496570276",
+          "/home/chris/Projects/ch-nix-workspace/.worktrees/tier-review/group-1/derivation-evidence.json#/projects/ansible-purifier",
+          "https://docs.ansible.com/projects/ansible/latest/reference_appendices/release_and_maintenance.html"
+        ]
+      },
+      "manySamples": {
+        "state": "not-met",
+        "summary": "Only the minimal playbook root is independently built. Collection dependencies and capture variants are not distinct upstream playbooks.",
+        "evidence": [
+          "https://github.com/nix-purifiers/ansible-purifier/actions/runs/41807048130/job/126496570276",
+          "/home/chris/Projects/ch-nix-workspace/.worktrees/tier-review/group-1/derivation-evidence.json#/projects/ansible-purifier"
+        ]
+      },
+      "longCompatibility": {
+        "state": "not-met",
+        "summary": "A single ansible-core 2.21.5 tuple is executed; no historical ansible-core line is tested.",
+        "evidence": [
+          "https://github.com/nix-purifiers/ansible-purifier/actions/runs/41807048130/job/126496570276",
+          "/home/chris/Projects/ch-nix-workspace/.worktrees/tier-review/group-1/derivation-evidence.json#/projects/ansible-purifier"
+        ]
+      }
+    },
+    "sampleBuilds": [
+      {
+        "name": "examples/minimal: owned playbook fixture using locked Galaxy collections; its dependency graph is not a set of independent upstream playbook samples.",
+        "evidence": [
+          "https://github.com/nix-purifiers/ansible-purifier/actions/runs/41807048130/job/126496570276",
+          "/home/chris/Projects/ch-nix-workspace/.worktrees/tier-review/group-1/derivation-evidence.json#/projects/ansible-purifier",
+          "/nix/store/x77i2zqbsgc9pa78nm3v6k3qsji9992k-ansible-project.drv",
+          "/nix/store/p62x02npnjy23c3aflfhk80jfbkifglr-ansible-project"
+        ]
+      }
+    ]
+  },
+  "ant-purifier": {
+    "tier": 3,
+    "reviewedRevision": "6e8dcf60dcf3735531220e1eb747215f6419b20d",
+    "reviewedAt": "2026-11-06",
+    "rationale": "Native Linux sample derivations and meaningful regression tests are verified. Darwin runtime execution is absent from the inspected CI; this prevents Tier 2. The executed supported current line is demonstrated.",
+    "criteria": {
+      "evaluation": {
+        "state": "met",
+        "summary": "All 10 executable checks.x86_64-linux attributes evaluate and realize successfully at 6e8dcf60dcf3735531220e1eb747215f6419b20d. Exact derivations, native outputs and NAR hashes are in the packet; native aarch64-linux CI independently succeeds.",
+        "evidence": [
+          "https://github.com/nix-purifiers/ant-purifier/actions/runs/41807049394/job/126496574914",
+          "/home/chris/Projects/ch-nix-workspace/.worktrees/tier-review/group-1/derivation-evidence.json#/projects/ant-purifier"
+        ]
+      },
+      "goodTests": {
+        "state": "met",
+        "summary": "Executable checks compile/test the minimal Java root, export both Maven/Ivy projections, consume the publication with ordinary Ant, and check editor metadata. CI also covers invalid locks, native conformance, rebuilds and composition. These tests check functional output and consumption, not only Nix evaluation.",
+        "evidence": [
+          "https://github.com/nix-purifiers/ant-purifier/actions/runs/41807049394/job/126496574914",
+          "/home/chris/Projects/ch-nix-workspace/.worktrees/tier-review/group-1/derivation-evidence.json#/projects/ant-purifier"
+        ]
+      },
+      "linux": {
+        "state": "met",
+        "summary": "Native aarch64-linux CI builds the required sample/check derivations successfully at the exact reviewed revision; local x86_64-linux checks also realize successfully. Neither result is cross-evaluation.",
+        "evidence": [
+          "https://github.com/nix-purifiers/ant-purifier/actions/runs/41807049394/job/126496574914",
+          "/home/chris/Projects/ch-nix-workspace/.worktrees/tier-review/group-1/derivation-evidence.json#/projects/ant-purifier"
+        ]
+      },
+      "darwin": {
+        "state": "not-met",
+        "summary": "The inspected .github/workflows/check.yml and successful native jobs cover ubuntu-latest and ubuntu-24.04-arm only. The flake check system list is Linux-only. No successful native Darwin sample derivation/SDK/output receipt is available; this Linux review host cannot execute it.",
+        "evidence": [
+          "https://github.com/nix-purifiers/ant-purifier/actions/runs/41807049394/job/126496574914",
+          "/home/chris/Projects/ch-nix-workspace/.worktrees/tier-review/group-1/derivation-evidence.json#/projects/ant-purifier"
+        ]
+      },
+      "oneVersion": {
+        "state": "met",
+        "summary": "Actual native sample execution demonstrates Ant 1.10.18 / Ivy 2.6.0 / OpenJDK 21.0.12.1+1. Scope is the exact executed version point(s), not a version range.",
+        "evidence": [
+          "https://github.com/nix-purifiers/ant-purifier/actions/runs/41807049394/job/126496574914",
+          "/home/chris/Projects/ch-nix-workspace/.worktrees/tier-review/group-1/derivation-evidence.json#/projects/ant-purifier"
+        ]
+      },
+      "nonEolVersions": {
+        "state": "met",
+        "summary": "Actual project/consumer derivations execute Ant 1.10.18 and Ivy 2.6.0. The official Apache site identifies these as the current releases and explicitly ends Ant 1.9.x support in 2024, directing users to 1.10.x. This demonstrates the maintained current Ant/Ivy line points; it does not claim arbitrary Java versions.",
+        "evidence": [
+          "https://github.com/nix-purifiers/ant-purifier/actions/runs/41807049394/job/126496574914",
+          "/home/chris/Projects/ch-nix-workspace/.worktrees/tier-review/group-1/derivation-evidence.json#/projects/ant-purifier",
+          "https://ant.apache.org/"
+        ]
+      },
+      "manySamples": {
+        "state": "not-met",
+        "summary": "One owned minimal Java root and its publication consumer are exercised; composition variants do not establish many independently maintained upstream Ant samples.",
+        "evidence": [
+          "https://github.com/nix-purifiers/ant-purifier/actions/runs/41807049394/job/126496574914",
+          "/home/chris/Projects/ch-nix-workspace/.worktrees/tier-review/group-1/derivation-evidence.json#/projects/ant-purifier"
+        ]
+      },
+      "longCompatibility": {
+        "state": "not-met",
+        "summary": "Current main has a successful Ant 1.5.4/Ivy 2.4.0/Java 6 legacy profile, backed by a downloaded CI artifact and pure build/rebuild. Its declared scope is dependency resolution, compilation and class-tree execution; packaging, projection and publication are rejected. This valuable historical point does not yet demonstrate the modern purifier workflow across historical toolchains. No intermediate Ant versions are inferred.",
+        "evidence": [
+          "https://github.com/nix-purifiers/ant-purifier/actions/runs/41807049394/job/126496574914",
+          "/home/chris/Projects/ch-nix-workspace/.worktrees/tier-review/group-1/derivation-evidence.json#/projects/ant-purifier"
+        ]
+      }
+    },
+    "sampleBuilds": [
+      {
+        "name": "examples/minimal: owned Java/Ant sample using commons-lang3 3.17.0; native consumer and editor checks exercise its publication.",
+        "evidence": [
+          "https://github.com/nix-purifiers/ant-purifier/actions/runs/41807049394/job/126496574914",
+          "/home/chris/Projects/ch-nix-workspace/.worktrees/tier-review/group-1/derivation-evidence.json#/projects/ant-purifier",
+          "/nix/store/xqp0la8y0cijfrgv1wpilyix1rm22zbf-purified-ant-project.drv",
+          "/nix/store/5c86k8c5yqd3ffzfwxlk20lh2x7rq2v0-purified-ant-project"
+        ]
+      }
+    ]
+  },
+  "arduino-purifier": {
+    "tier": 3,
+    "reviewedRevision": "203391790f820c8d33e0540020eb419e4ac722a4",
+    "reviewedAt": "2026-11-06",
+    "rationale": "Native Linux sample derivations and meaningful regression tests are verified. Darwin runtime execution is absent from the inspected CI; this prevents Tier 2. The executed supported current line is demonstrated.",
+    "criteria": {
+      "evaluation": {
+        "state": "met",
+        "summary": "All 4 executable checks.x86_64-linux attributes evaluate and realize successfully at 203391790f820c8d33e0540020eb419e4ac722a4. Exact derivations, native outputs and NAR hashes are in the packet; native aarch64-linux CI independently succeeds.",
+        "evidence": [
+          "https://github.com/nix-purifiers/arduino-purifier/actions/runs/41807052590/job/126496584368",
+          "/home/chris/Projects/ch-nix-workspace/.worktrees/tier-review/group-1/derivation-evidence.json#/projects/arduino-purifier"
+        ]
+      },
+      "goodTests": {
+        "state": "met",
+        "summary": "The firmware derivation performs a real AVR compile and checks firmware.hex. Successful CI exercises firmware42/43/42 mutation, profile/selection guards, immutable package trees, network isolation, ordinary firmware consumption, publication/fallback, cold capture, both host closures and atomic failure.",
+        "evidence": [
+          "https://github.com/nix-purifiers/arduino-purifier/actions/runs/41807052590/job/126496584368",
+          "/home/chris/Projects/ch-nix-workspace/.worktrees/tier-review/group-1/derivation-evidence.json#/projects/arduino-purifier"
+        ]
+      },
+      "linux": {
+        "state": "met",
+        "summary": "Native aarch64-linux CI builds the required sample/check derivations successfully at the exact reviewed revision; local x86_64-linux checks also realize successfully. Neither result is cross-evaluation.",
+        "evidence": [
+          "https://github.com/nix-purifiers/arduino-purifier/actions/runs/41807052590/job/126496584368",
+          "/home/chris/Projects/ch-nix-workspace/.worktrees/tier-review/group-1/derivation-evidence.json#/projects/arduino-purifier"
+        ]
+      },
+      "darwin": {
+        "state": "not-met",
+        "summary": "The inspected .github/workflows/check.yml and successful native jobs cover ubuntu-latest and ubuntu-24.04-arm only. The flake check system list is Linux-only. No successful native Darwin sample derivation/SDK/output receipt is available; this Linux review host cannot execute it.",
+        "evidence": [
+          "https://github.com/nix-purifiers/arduino-purifier/actions/runs/41807052590/job/126496584368",
+          "/home/chris/Projects/ch-nix-workspace/.worktrees/tier-review/group-1/derivation-evidence.json#/projects/arduino-purifier"
+        ]
+      },
+      "oneVersion": {
+        "state": "met",
+        "summary": "Actual native sample execution demonstrates Arduino CLI 1.5.1. Scope is the exact executed version point(s), not a version range.",
+        "evidence": [
+          "https://github.com/nix-purifiers/arduino-purifier/actions/runs/41807052590/job/126496584368",
+          "/home/chris/Projects/ch-nix-workspace/.worktrees/tier-review/group-1/derivation-evidence.json#/projects/arduino-purifier"
+        ]
+      },
+      "nonEolVersions": {
+        "state": "met",
+        "summary": "The actual native compile uses Arduino CLI 1.5.1, the latest official stable upstream release observed by API. That current CLI line point is demonstrated with the committed Uno profile. This does not claim all boards, cores, SDKs or patches, and no undocumented multi-line EOL policy is assumed.",
+        "evidence": [
+          "https://github.com/nix-purifiers/arduino-purifier/actions/runs/41807052590/job/126496584368",
+          "/home/chris/Projects/ch-nix-workspace/.worktrees/tier-review/group-1/derivation-evidence.json#/projects/arduino-purifier",
+          "https://github.com/arduino/arduino-cli/releases/tag/v1.5.1"
+        ]
+      },
+      "manySamples": {
+        "state": "not-met",
+        "summary": "One Uno firmware sketch is built; mutations, replay snapshots and architecture-specific package archives are feature coverage of that sketch, not many independent upstream Arduino projects.",
+        "evidence": [
+          "https://github.com/nix-purifiers/arduino-purifier/actions/runs/41807052590/job/126496584368",
+          "/home/chris/Projects/ch-nix-workspace/.worktrees/tier-review/group-1/derivation-evidence.json#/projects/arduino-purifier"
+        ]
+      },
+      "longCompatibility": {
+        "state": "not-met",
+        "summary": "Only Arduino CLI 1.5.1 with the locked board profile is executed. Locked historical AVR component versions do not prove older CLI compatibility.",
+        "evidence": [
+          "https://github.com/nix-purifiers/arduino-purifier/actions/runs/41807052590/job/126496584368",
+          "/home/chris/Projects/ch-nix-workspace/.worktrees/tier-review/group-1/derivation-evidence.json#/projects/arduino-purifier"
+        ]
+      }
+    },
+    "sampleBuilds": [
+      {
+        "name": "examples/minimal: owned Uno firmware fixture; source mutations and host closure variants remain the same sketch/profile.",
+        "evidence": [
+          "https://github.com/nix-purifiers/arduino-purifier/actions/runs/41807052590/job/126496584368",
+          "/home/chris/Projects/ch-nix-workspace/.worktrees/tier-review/group-1/derivation-evidence.json#/projects/arduino-purifier",
+          "/nix/store/hhj1d2psgrv2m0xrk8xi1qi9adpn598k-arduino-native-firmware.drv",
+          "/nix/store/61kz0b4fxgfdj518m3pcmnmh00287n0p-arduino-native-firmware"
+        ]
+      }
+    ]
+  },
+  "blender-purifier": {
+    "tier": 3,
+    "reviewedRevision": "0a67251800df3d8d38202430b3a466a34e374052",
+    "reviewedAt": "2026-11-06",
+    "rationale": "Native Linux sample derivations and meaningful regression tests are verified. Darwin runtime execution is absent from the inspected CI; this prevents Tier 2. The upstream-version execution gap is recorded explicitly.",
+    "criteria": {
+      "evaluation": {
+        "state": "met",
+        "summary": "All 4 executable checks.x86_64-linux attributes evaluate and realize successfully at 0a67251800df3d8d38202430b3a466a34e374052. Exact derivations, native outputs and NAR hashes are in the packet; native aarch64-linux CI independently succeeds.",
+        "evidence": [
+          "https://github.com/nix-purifiers/blender-purifier/actions/runs/41955444401/job/127009140976",
+          "/home/chris/Projects/ch-nix-workspace/.worktrees/tier-review/group-1/derivation-evidence.json#/projects/blender-purifier"
+        ]
+      },
+      "goodTests": {
+        "state": "met",
+        "summary": "The derivations invoke real Blender to install the locked extension and build the project. Successful CI runs native extension integration, ordinary artifact consumers, immutable compiled-wheel checks and atomic capture failures, covering runtime loading and isolation.",
+        "evidence": [
+          "https://github.com/nix-purifiers/blender-purifier/actions/runs/41955444401/job/127009140976",
+          "/home/chris/Projects/ch-nix-workspace/.worktrees/tier-review/group-1/derivation-evidence.json#/projects/blender-purifier"
+        ]
+      },
+      "linux": {
+        "state": "met",
+        "summary": "Native aarch64-linux CI builds the required sample/check derivations successfully at the exact reviewed revision; local x86_64-linux checks also realize successfully. Neither result is cross-evaluation.",
+        "evidence": [
+          "https://github.com/nix-purifiers/blender-purifier/actions/runs/41955444401/job/127009140976",
+          "/home/chris/Projects/ch-nix-workspace/.worktrees/tier-review/group-1/derivation-evidence.json#/projects/blender-purifier"
+        ]
+      },
+      "darwin": {
+        "state": "not-met",
+        "summary": "The inspected .github/workflows/check.yml and successful native jobs cover ubuntu-latest and ubuntu-24.04-arm only. The flake check system list is Linux-only. No successful native Darwin sample derivation/SDK/output receipt is available; this Linux review host cannot execute it.",
+        "evidence": [
+          "https://github.com/nix-purifiers/blender-purifier/actions/runs/41955444401/job/127009140976",
+          "/home/chris/Projects/ch-nix-workspace/.worktrees/tier-review/group-1/derivation-evidence.json#/projects/blender-purifier"
+        ]
+      },
+      "oneVersion": {
+        "state": "met",
+        "summary": "Actual native sample execution demonstrates Blender 5.2.2 LTS. Scope is the exact executed version point(s), not a version range.",
+        "evidence": [
+          "https://github.com/nix-purifiers/blender-purifier/actions/runs/41955444401/job/127009140976",
+          "/home/chris/Projects/ch-nix-workspace/.worktrees/tier-review/group-1/derivation-evidence.json#/projects/blender-purifier"
+        ]
+      },
+      "nonEolVersions": {
+        "state": "not-met",
+        "summary": "Upstream lists both Blender 5.2 LTS and 4.5 LTS as currently maintained, with two years of fixes. Actual execution is 5.2.2 only; no 4.5 LTS sample derivation is demonstrated. The newer 5.2.3 patch alone is not used to declare 5.2.2 EOL.",
+        "evidence": [
+          "https://github.com/nix-purifiers/blender-purifier/actions/runs/41955444401/job/127009140976",
+          "/home/chris/Projects/ch-nix-workspace/.worktrees/tier-review/group-1/derivation-evidence.json#/projects/blender-purifier",
+          "https://www.blender.org/download/lts/"
+        ]
+      },
+      "manySamples": {
+        "state": "not-met",
+        "summary": "One owned BoltFactory consumer is demonstrated. Wheel isolation and capture variants are not a broad set of independent upstream Blender projects.",
+        "evidence": [
+          "https://github.com/nix-purifiers/blender-purifier/actions/runs/41955444401/job/127009140976",
+          "/home/chris/Projects/ch-nix-workspace/.worktrees/tier-review/group-1/derivation-evidence.json#/projects/blender-purifier"
+        ]
+      },
+      "longCompatibility": {
+        "state": "not-met",
+        "summary": "Only Blender 5.2.2 is executed. An extension manifest minimum of 4.2.0 is a compatibility declaration, not a historical Blender build.",
+        "evidence": [
+          "https://github.com/nix-purifiers/blender-purifier/actions/runs/41955444401/job/127009140976",
+          "/home/chris/Projects/ch-nix-workspace/.worktrees/tier-review/group-1/derivation-evidence.json#/projects/blender-purifier"
+        ]
+      }
+    },
+    "sampleBuilds": [
+      {
+        "name": "examples/minimal: owned Blender project with BoltFactory 0.7.1; independent extension source is a dependency of one tested root.",
+        "evidence": [
+          "https://github.com/nix-purifiers/blender-purifier/actions/runs/41955444401/job/127009140976",
+          "/home/chris/Projects/ch-nix-workspace/.worktrees/tier-review/group-1/derivation-evidence.json#/projects/blender-purifier",
+          "/nix/store/yhy9wlbbin60vgkhw4ywcncl60djl6xz-blender-project.drv",
+          "/nix/store/p9n1467ah10vvi8ssq1qvz180d2pkijc-blender-project"
+        ]
+      }
+    ]
+  },
+  "buf-purifier": {
+    "tier": 3,
+    "reviewedRevision": "130346691f9978a2b4f2444976614042dcea52fd",
+    "reviewedAt": "2026-11-06",
+    "rationale": "Native Linux sample derivations and meaningful regression tests are verified. Darwin runtime execution is absent from the inspected CI; this prevents Tier 2. The upstream-version execution gap is recorded explicitly.",
+    "criteria": {
+      "evaluation": {
+        "state": "met",
+        "summary": "All 7 executable checks.x86_64-linux attributes evaluate and realize successfully at 130346691f9978a2b4f2444976614042dcea52fd. Exact derivations, native outputs and NAR hashes are in the packet; native aarch64-linux CI independently succeeds.",
+        "evidence": [
+          "https://github.com/nix-purifiers/buf-purifier/actions/runs/42001818177/job/127158648558",
+          "/home/chris/Projects/ch-nix-workspace/.worktrees/tier-review/group-1/derivation-evidence.json#/projects/buf-purifier"
+        ]
+      },
+      "goodTests": {
+        "state": "met",
+        "summary": "The project derivation builds/generates C++ protobuf code and checks generated output. Additional derivations consume Python bindings through ordinary pip, schema through ordinary protobuf and resource projections through ordinary consumers. Native CI adds LSP, source edits, private caches, GC/fallback, capture and transitive graphs.",
+        "evidence": [
+          "https://github.com/nix-purifiers/buf-purifier/actions/runs/42001818177/job/127158648558",
+          "/home/chris/Projects/ch-nix-workspace/.worktrees/tier-review/group-1/derivation-evidence.json#/projects/buf-purifier"
+        ]
+      },
+      "linux": {
+        "state": "met",
+        "summary": "Native aarch64-linux CI builds the required sample/check derivations successfully at the exact reviewed revision; local x86_64-linux checks also realize successfully. Neither result is cross-evaluation.",
+        "evidence": [
+          "https://github.com/nix-purifiers/buf-purifier/actions/runs/42001818177/job/127158648558",
+          "/home/chris/Projects/ch-nix-workspace/.worktrees/tier-review/group-1/derivation-evidence.json#/projects/buf-purifier"
+        ]
+      },
+      "darwin": {
+        "state": "not-met",
+        "summary": "The inspected .github/workflows/check.yml and successful native jobs cover ubuntu-latest and ubuntu-24.04-arm only. The flake check system list is Linux-only. No successful native Darwin sample derivation/SDK/output receipt is available; this Linux review host cannot execute it.",
+        "evidence": [
+          "https://github.com/nix-purifiers/buf-purifier/actions/runs/42001818177/job/127158648558",
+          "/home/chris/Projects/ch-nix-workspace/.worktrees/tier-review/group-1/derivation-evidence.json#/projects/buf-purifier"
+        ]
+      },
+      "oneVersion": {
+        "state": "met",
+        "summary": "Actual native sample execution demonstrates Buf 1.73.0. Scope is the exact executed version point(s), not a version range.",
+        "evidence": [
+          "https://github.com/nix-purifiers/buf-purifier/actions/runs/42001818177/job/127158648558",
+          "/home/chris/Projects/ch-nix-workspace/.worktrees/tier-review/group-1/derivation-evidence.json#/projects/buf-purifier"
+        ]
+      },
+      "nonEolVersions": {
+        "state": "not-met",
+        "summary": "Actual execution binds Buf 1.73.0. The primary upstream release record identifies 1.75.0 as current, including edition-2026 and generator/descriptor fixes. No upstream support policy establishing an older maintained Buf set was found in the inspected SECURITY endpoint/release material, and no current 1.75.0 derivation executes here. This records the unresolved current-line point verification; it does not assert 1.73.0 is EOL.",
+        "evidence": [
+          "https://github.com/nix-purifiers/buf-purifier/actions/runs/42001818177/job/127158648558",
+          "/home/chris/Projects/ch-nix-workspace/.worktrees/tier-review/group-1/derivation-evidence.json#/projects/buf-purifier",
+          "https://github.com/bufbuild/buf/releases/tag/v1.75.0"
+        ]
+      },
+      "manySamples": {
+        "state": "not-met",
+        "summary": "One owned schema root is built, with several ordinary projection consumers. Those consumers exercise different outputs of the same sample rather than many upstream Buf projects.",
+        "evidence": [
+          "https://github.com/nix-purifiers/buf-purifier/actions/runs/42001818177/job/127158648558",
+          "/home/chris/Projects/ch-nix-workspace/.worktrees/tier-review/group-1/derivation-evidence.json#/projects/buf-purifier"
+        ]
+      },
+      "longCompatibility": {
+        "state": "not-met",
+        "summary": "Only Buf 1.73.0 is executed; no historical Buf compiler/generator tuple is tested.",
+        "evidence": [
+          "https://github.com/nix-purifiers/buf-purifier/actions/runs/42001818177/job/127158648558",
+          "/home/chris/Projects/ch-nix-workspace/.worktrees/tier-review/group-1/derivation-evidence.json#/projects/buf-purifier"
+        ]
+      }
+    },
+    "sampleBuilds": [
+      {
+        "name": "examples/minimal: owned proof/v1/proof.proto schema root; Python/schema/resource consumers exercise its projections.",
+        "evidence": [
+          "https://github.com/nix-purifiers/buf-purifier/actions/runs/42001818177/job/127158648558",
+          "/home/chris/Projects/ch-nix-workspace/.worktrees/tier-review/group-1/derivation-evidence.json#/projects/buf-purifier",
+          "/nix/store/y75sc9l08s5cczrqw188drz6dwlq9jni-buf-project.drv",
+          "/nix/store/g9p2y85ym00i50xd028603znyha8ldin-buf-project"
+        ]
+      }
+    ]
+  },
+  "bun-purifier": {
+    "tier": 3,
+    "reviewedRevision": "6e0980414b91c7e8c379ebf5bb5292f7d66da537",
+    "reviewedAt": "2026-11-06",
+    "rationale": "Native Linux sample derivations and meaningful regression tests are verified. Darwin runtime execution is absent from the inspected CI; this prevents Tier 2. The executed supported current line is demonstrated.",
+    "criteria": {
+      "evaluation": {
+        "state": "met",
+        "summary": "All 28 executable checks.x86_64-linux attributes evaluate and realize successfully at 6e0980414b91c7e8c379ebf5bb5292f7d66da537. Exact derivations, native outputs and NAR hashes are in the packet; native aarch64-linux CI independently succeeds.",
+        "evidence": [
+          "https://github.com/nix-purifiers/bun-purifier/actions/runs/41994711245/job/127134989302",
+          "/home/chris/Projects/ch-nix-workspace/.worktrees/tier-review/group-1/derivation-evidence.json#/projects/bun-purifier"
+        ]
+      },
+      "goodTests": {
+        "state": "met",
+        "summary": "Successful executable unit and conformance derivations cover lock parsing, missing/tampered/stale locks, workspaces, source/path/registry packages, releases, builder overrides and offline behavior. The independent Elysia derivation runs 1,616 upstream tests (1,614 pass, two skips). Producer evidence adds a fresh cold pure sandbox loop and empty-cache negative control, but remains unpublished.",
+        "evidence": [
+          "https://github.com/nix-purifiers/bun-purifier/actions/runs/41994711245/job/127134989302",
+          "/home/chris/Projects/ch-nix-workspace/.worktrees/tier-review/group-1/derivation-evidence.json#/projects/bun-purifier"
+        ]
+      },
+      "linux": {
+        "state": "met",
+        "summary": "Native aarch64-linux CI builds the required sample/check derivations successfully at the exact reviewed revision; local x86_64-linux checks also realize successfully. Neither result is cross-evaluation.",
+        "evidence": [
+          "https://github.com/nix-purifiers/bun-purifier/actions/runs/41994711245/job/127134989302",
+          "/home/chris/Projects/ch-nix-workspace/.worktrees/tier-review/group-1/derivation-evidence.json#/projects/bun-purifier"
+        ]
+      },
+      "darwin": {
+        "state": "not-met",
+        "summary": "The inspected .github/workflows/check.yml and successful native jobs cover ubuntu-latest and ubuntu-24.04-arm only. The flake declares aarch64-darwin, which is not execution. No successful native Darwin sample derivation/SDK/output receipt is available; this Linux review host cannot execute it.",
+        "evidence": [
+          "https://github.com/nix-purifiers/bun-purifier/actions/runs/41994711245/job/127134989302",
+          "/home/chris/Projects/ch-nix-workspace/.worktrees/tier-review/group-1/derivation-evidence.json#/projects/bun-purifier"
+        ]
+      },
+      "oneVersion": {
+        "state": "met",
+        "summary": "Actual native sample execution demonstrates Bun 1.4.2. Scope is the exact executed version point(s), not a version range.",
+        "evidence": [
+          "https://github.com/nix-purifiers/bun-purifier/actions/runs/41994711245/job/127134989302",
+          "/home/chris/Projects/ch-nix-workspace/.worktrees/tier-review/group-1/derivation-evidence.json#/projects/bun-purifier"
+        ]
+      },
+      "nonEolVersions": {
+        "state": "met",
+        "summary": "Bun SECURITY.md explicitly supports the 1.x.x family. Native Elysia and fixture derivations execute Bun 1.4.2, a point in that current supported family. Upstream latest is 1.4.4; this judgment claims the executed family point, not unexecuted patches, binary identities or all 1.x releases.",
+        "evidence": [
+          "https://github.com/nix-purifiers/bun-purifier/actions/runs/41994711245/job/127134989302",
+          "/home/chris/Projects/ch-nix-workspace/.worktrees/tier-review/group-1/derivation-evidence.json#/projects/bun-purifier",
+          "https://github.com/oven-sh/bun/blob/7ca0042d3ba23ed60fd9cd8af1a1ce6ec3f8d074/SECURITY.md"
+        ]
+      },
+      "manySamples": {
+        "state": "not-met",
+        "summary": "Elysia is one independent upstream application; workspace, registry, path and source cases are owned fixtures. Their diversity supports test quality but does not yet demonstrate many independent upstream applications.",
+        "evidence": [
+          "https://github.com/nix-purifiers/bun-purifier/actions/runs/41994711245/job/127134989302",
+          "/home/chris/Projects/ch-nix-workspace/.worktrees/tier-review/group-1/derivation-evidence.json#/projects/bun-purifier"
+        ]
+      },
+      "longCompatibility": {
+        "state": "not-met",
+        "summary": "Only native Bun 1.4.2 is demonstrated. Package tarballs containing other Bun version strings are dependencies, not execution of those runtimes.",
+        "evidence": [
+          "https://github.com/nix-purifiers/bun-purifier/actions/runs/41994711245/job/127134989302",
+          "/home/chris/Projects/ch-nix-workspace/.worktrees/tier-review/group-1/derivation-evidence.json#/projects/bun-purifier"
+        ]
+      }
+    },
+    "sampleBuilds": [
+      {
+        "name": "Independent upstream elysiajs/elysia e037eca710e7ad193be09cc6615ab0dbe54af914 (source NAR sha256-6uGhZ4FmcEgvIHNMAvyabEVeb1pLOWGBXUoUjp5DjBQ=), plus owned workspace/source/path/registry fixtures.",
+        "evidence": [
+          "https://github.com/nix-purifiers/bun-purifier/actions/runs/41994711245/job/127134989302",
+          "/home/chris/Projects/ch-nix-workspace/.worktrees/tier-review/group-1/derivation-evidence.json#/projects/bun-purifier",
+          "/nix/store/j4gmsz82fxn5phb59p27hm6cja559knd-test-elysia.drv",
+          "/nix/store/83qffin7ccbw2a3j9iclf75zaxizfk5a-test-elysia"
+        ]
+      }
+    ]
+  },
+  "bundler-purifier": {
+    "tier": 3,
+    "reviewedRevision": "bd48bb6b1c1fe893899a301e5c55fc7cc8e92310",
+    "reviewedAt": "2026-11-06",
+    "rationale": "Native Linux sample derivations and meaningful regression tests are verified. Darwin runtime execution is absent from the inspected CI; this prevents Tier 2. The upstream-version execution gap is recorded explicitly.",
+    "criteria": {
+      "evaluation": {
+        "state": "met",
+        "summary": "All 35 executable checks.x86_64-linux attributes evaluate and realize successfully at bd48bb6b1c1fe893899a301e5c55fc7cc8e92310. Exact derivations, native outputs and NAR hashes are in the packet; native aarch64-linux CI independently succeeds.",
+        "evidence": [
+          "https://github.com/nix-purifiers/bundler-purifier/actions/runs/42008521132/job/127181292088",
+          "/home/chris/Projects/ch-nix-workspace/.worktrees/tier-review/group-1/derivation-evidence.json#/projects/bundler-purifier"
+        ]
+      },
+      "goodTests": {
+        "state": "met",
+        "summary": "Executable checks cover Ruby unit tests, tampered/stale/missing/malformed/external locks, a workspace app, local path gem, library tests, gem packaging and executable loading. Lobsters loads Rails and libvips from its offline bundle. Historical compiled-extension consumers and SDK composition exercise real ABI-sensitive behavior.",
+        "evidence": [
+          "https://github.com/nix-purifiers/bundler-purifier/actions/runs/42008521132/job/127181292088",
+          "/home/chris/Projects/ch-nix-workspace/.worktrees/tier-review/group-1/derivation-evidence.json#/projects/bundler-purifier"
+        ]
+      },
+      "linux": {
+        "state": "met",
+        "summary": "Native aarch64-linux CI builds the required sample/check derivations successfully at the exact reviewed revision; local x86_64-linux checks also realize successfully. Neither result is cross-evaluation.",
+        "evidence": [
+          "https://github.com/nix-purifiers/bundler-purifier/actions/runs/42008521132/job/127181292088",
+          "/home/chris/Projects/ch-nix-workspace/.worktrees/tier-review/group-1/derivation-evidence.json#/projects/bundler-purifier"
+        ]
+      },
+      "darwin": {
+        "state": "not-met",
+        "summary": "The inspected .github/workflows/check.yml and successful native jobs cover ubuntu-latest and ubuntu-24.04-arm only. The flake declares aarch64-darwin, which is not execution. No successful native Darwin sample derivation/SDK/output receipt is available; this Linux review host cannot execute it.",
+        "evidence": [
+          "https://github.com/nix-purifiers/bundler-purifier/actions/runs/42008521132/job/127181292088",
+          "/home/chris/Projects/ch-nix-workspace/.worktrees/tier-review/group-1/derivation-evidence.json#/projects/bundler-purifier"
+        ]
+      },
+      "oneVersion": {
+        "state": "met",
+        "summary": "Actual native sample execution demonstrates Ruby 3.4.11 and 4.0.9; historical Ruby 2.5.8 and 1.8.7-p374 with Bundler 1.17.3. Scope is the exact executed version point(s), not a version range.",
+        "evidence": [
+          "https://github.com/nix-purifiers/bundler-purifier/actions/runs/42008521132/job/127181292088",
+          "/home/chris/Projects/ch-nix-workspace/.worktrees/tier-review/group-1/derivation-evidence.json#/projects/bundler-purifier"
+        ]
+      },
+      "nonEolVersions": {
+        "state": "not-met",
+        "summary": "Upstream Ruby maintenance policy currently includes 4.0 and 3.4 in normal maintenance and 3.3 in security maintenance. The executed modern samples use Ruby 3.4.11 and 4.0.9; no Ruby 3.3 sample derivation is demonstrated. Historical Ruby 1.8/2.5 execution does not fill the maintained 3.3 gap. Bundler security material does not define a broader supported range.",
+        "evidence": [
+          "https://github.com/nix-purifiers/bundler-purifier/actions/runs/42008521132/job/127181292088",
+          "/home/chris/Projects/ch-nix-workspace/.worktrees/tier-review/group-1/derivation-evidence.json#/projects/bundler-purifier",
+          "https://www.ruby-lang.org/en/downloads/branches/"
+        ]
+      },
+      "manySamples": {
+        "state": "not-met",
+        "summary": "Lobsters is one independent upstream application. App/library/submodule and historical-greeting fixtures give meaningful scenario coverage, but are authored here and do not establish many independent upstream application builds.",
+        "evidence": [
+          "https://github.com/nix-purifiers/bundler-purifier/actions/runs/42008521132/job/127181292088",
+          "/home/chris/Projects/ch-nix-workspace/.worktrees/tier-review/group-1/derivation-evidence.json#/projects/bundler-purifier"
+        ]
+      },
+      "longCompatibility": {
+        "state": "met",
+        "summary": "Successful x86_64-linux check/consumer derivations execute Ruby 1.8.7-p374 with RubyGems 2.6.14/Bundler 1.17.3 and a compiled json 1.8.6 extension; another exact tuple uses Ruby 2.5.8/Bundler 1.17.3. Ordinary consumers load the projected gem and compiled extension. Together with Ruby 3.4.11/4.0.9 sample execution, these are substantive historical compatibility points spanning old and modern toolchains. Intermediate versions and Darwin history are not inferred.",
+        "evidence": [
+          "https://github.com/nix-purifiers/bundler-purifier/actions/runs/42008521132/job/127181292088",
+          "/home/chris/Projects/ch-nix-workspace/.worktrees/tier-review/group-1/derivation-evidence.json#/projects/bundler-purifier"
+        ]
+      }
+    },
+    "sampleBuilds": [
+      {
+        "name": "Independent lobsters/lobsters cb2b28371dbf5549b6fad293a6c2dfc8ec7a0320 (NAR sha256-MidCtPYmp91ADKj1GK0aH+XcYJUToADOY0RydBITQ+0=); owned app/library/submodule/historical fixtures are separate from this upstream sample.",
+        "evidence": [
+          "https://github.com/nix-purifiers/bundler-purifier/actions/runs/42008521132/job/127181292088",
+          "/home/chris/Projects/ch-nix-workspace/.worktrees/tier-review/group-1/derivation-evidence.json#/projects/bundler-purifier",
+          "/nix/store/y00bg3154a0x7qrlpbnj4nnm3zk6qkvy-real-lobsters.drv",
+          "/nix/store/ibvjszijykfn360yz2xy9zk2ycg4365n-real-lobsters"
+        ]
+      }
+    ]
+  },
+  "cabal-purifier": {
+    "tier": 3,
+    "reviewedRevision": "18afa5af01a17979d233260c568f0c519a708882",
+    "reviewedAt": "2026-11-06",
+    "rationale": "Native Linux sample derivations and meaningful regression tests are verified. Darwin runtime execution is absent from the inspected CI; this prevents Tier 2. The upstream-version execution gap is recorded explicitly.",
+    "criteria": {
+      "evaluation": {
+        "state": "met",
+        "summary": "All 17 executable checks.x86_64-linux attributes evaluate and realize successfully at 18afa5af01a17979d233260c568f0c519a708882. Exact derivations, native outputs and NAR hashes are in the packet; native aarch64-linux CI independently succeeds.",
+        "evidence": [
+          "https://github.com/nix-purifiers/cabal-purifier/actions/runs/41775701785/job/126395420488",
+          "/home/chris/Projects/ch-nix-workspace/.worktrees/tier-review/group-1/derivation-evidence.json#/projects/cabal-purifier"
+        ]
+      },
+      "goodTests": {
+        "state": "met",
+        "summary": "Executable checks run unit tests, app/workspace/library tests and benchmark, source release and documentation archives, invalid locks and unsupported systems. The independent ShellCheck 0.11.0 derivation checks SC2086 detection and runs ShellCheck's own suite. Native CI also verifies relock, rebuild, cold offline/update, interactive errors and VCS sources.",
+        "evidence": [
+          "https://github.com/nix-purifiers/cabal-purifier/actions/runs/41775701785/job/126395420488",
+          "/home/chris/Projects/ch-nix-workspace/.worktrees/tier-review/group-1/derivation-evidence.json#/projects/cabal-purifier"
+        ]
+      },
+      "linux": {
+        "state": "met",
+        "summary": "Native aarch64-linux CI builds the required sample/check derivations successfully at the exact reviewed revision; local x86_64-linux checks also realize successfully. Neither result is cross-evaluation.",
+        "evidence": [
+          "https://github.com/nix-purifiers/cabal-purifier/actions/runs/41775701785/job/126395420488",
+          "/home/chris/Projects/ch-nix-workspace/.worktrees/tier-review/group-1/derivation-evidence.json#/projects/cabal-purifier"
+        ]
+      },
+      "darwin": {
+        "state": "not-met",
+        "summary": "The inspected .github/workflows/check.yml and successful native jobs cover ubuntu-latest and ubuntu-24.04-arm only. The flake declares aarch64-darwin, which is not execution. No successful native Darwin sample derivation/SDK/output receipt is available; this Linux review host cannot execute it.",
+        "evidence": [
+          "https://github.com/nix-purifiers/cabal-purifier/actions/runs/41775701785/job/126395420488",
+          "/home/chris/Projects/ch-nix-workspace/.worktrees/tier-review/group-1/derivation-evidence.json#/projects/cabal-purifier"
+        ]
+      },
+      "oneVersion": {
+        "state": "met",
+        "summary": "Actual native sample execution demonstrates Cabal-install 3.16.1.0 / GHC 9.10.3. Scope is the exact executed version point(s), not a version range.",
+        "evidence": [
+          "https://github.com/nix-purifiers/cabal-purifier/actions/runs/41775701785/job/126395420488",
+          "/home/chris/Projects/ch-nix-workspace/.worktrees/tier-review/group-1/derivation-evidence.json#/projects/cabal-purifier"
+        ]
+      },
+      "nonEolVersions": {
+        "state": "not-met",
+        "summary": "Upstream Cabal documents a three-year GHC support window and reports current cabal-install 3.18.2.0. This packet executes only Cabal-install 3.16.1.0 with GHC 9.10.3, not a matrix of the maintained GHC lines nor the current Cabal point. No EOL date for 3.16 is invented from the newer release.",
+        "evidence": [
+          "https://github.com/nix-purifiers/cabal-purifier/actions/runs/41775701785/job/126395420488",
+          "/home/chris/Projects/ch-nix-workspace/.worktrees/tier-review/group-1/derivation-evidence.json#/projects/cabal-purifier",
+          "https://github.com/haskell/cabal"
+        ]
+      },
+      "manySamples": {
+        "state": "not-met",
+        "summary": "ShellCheck is one independent upstream application. App/workspace/external/release/docs/benchmark checks mostly exercise owned fixtures and outputs of those same roots; they do not establish many independent upstream builds.",
+        "evidence": [
+          "https://github.com/nix-purifiers/cabal-purifier/actions/runs/41775701785/job/126395420488",
+          "/home/chris/Projects/ch-nix-workspace/.worktrees/tier-review/group-1/derivation-evidence.json#/projects/cabal-purifier"
+        ]
+      },
+      "longCompatibility": {
+        "state": "not-met",
+        "summary": "Only Cabal-install 3.16.1.0 and GHC 9.10.3 execute. Manifest cabal-version lower bounds and VCS source coverage do not prove older Cabal or GHC execution.",
+        "evidence": [
+          "https://github.com/nix-purifiers/cabal-purifier/actions/runs/41775701785/job/126395420488",
+          "/home/chris/Projects/ch-nix-workspace/.worktrees/tier-review/group-1/derivation-evidence.json#/projects/cabal-purifier"
+        ]
+      }
+    },
+    "sampleBuilds": [
+      {
+        "name": "Independent koalaman/shellcheck aac0823e6b58f8a499e856e93738082691cbf212 (v0.11.0; NAR sha256-41bVsMyX6NU0AHnl9phmGxIQxH+D97qmqbfD1LemnNU=); app/workspace/external are owned fixtures.",
+        "evidence": [
+          "https://github.com/nix-purifiers/cabal-purifier/actions/runs/41775701785/job/126395420488",
+          "/home/chris/Projects/ch-nix-workspace/.worktrees/tier-review/group-1/derivation-evidence.json#/projects/cabal-purifier",
+          "/nix/store/dg4sxi6la71500s5kc15cq58snmdqnga-real-world-shellcheck.drv",
+          "/nix/store/n3f70dlvkjm53fpp60bd02mqzsahy9ml-real-world-shellcheck"
+        ]
+      }
+    ]
+  },
+  "calibre-purifier": {
+    "tier": 3,
+    "reviewedRevision": "a802d8acc97b5f960293242cff4857feeae0c894",
+    "reviewedAt": "2026-11-06",
+    "rationale": "Native Linux sample derivations and meaningful regression tests are verified. Darwin runtime execution is absent from the inspected CI; this prevents Tier 2. The upstream-version execution gap is recorded explicitly.",
+    "criteria": {
+      "evaluation": {
+        "state": "met",
+        "summary": "All 4 executable checks.x86_64-linux attributes evaluate and realize successfully at a802d8acc97b5f960293242cff4857feeae0c894. Exact derivations, native outputs and NAR hashes are in the packet; native aarch64-linux CI independently succeeds.",
+        "evidence": [
+          "https://github.com/nix-purifiers/calibre-purifier/actions/runs/41955545873/job/127009463622",
+          "/home/chris/Projects/ch-nix-workspace/.worktrees/tier-review/group-1/derivation-evidence.json#/projects/calibre-purifier"
+        ]
+      },
+      "goodTests": {
+        "state": "met",
+        "summary": "Executable project/environment/release checks use real calibre and install EpubMerge. Successful native CI additionally covers GUI interaction, worker and preference isolation, shared database exclusion, immutable code, ordinary artifact consumers, native capture and atomic failure. This is meaningful runtime integration coverage.",
+        "evidence": [
+          "https://github.com/nix-purifiers/calibre-purifier/actions/runs/41955545873/job/127009463622",
+          "/home/chris/Projects/ch-nix-workspace/.worktrees/tier-review/group-1/derivation-evidence.json#/projects/calibre-purifier"
+        ]
+      },
+      "linux": {
+        "state": "met",
+        "summary": "Native aarch64-linux CI builds the required sample/check derivations successfully at the exact reviewed revision; local x86_64-linux checks also realize successfully. Neither result is cross-evaluation.",
+        "evidence": [
+          "https://github.com/nix-purifiers/calibre-purifier/actions/runs/41955545873/job/127009463622",
+          "/home/chris/Projects/ch-nix-workspace/.worktrees/tier-review/group-1/derivation-evidence.json#/projects/calibre-purifier"
+        ]
+      },
+      "darwin": {
+        "state": "not-met",
+        "summary": "The inspected .github/workflows/check.yml and successful native jobs cover ubuntu-latest and ubuntu-24.04-arm only. The flake check system list is Linux-only. No successful native Darwin sample derivation/SDK/output receipt is available; this Linux review host cannot execute it.",
+        "evidence": [
+          "https://github.com/nix-purifiers/calibre-purifier/actions/runs/41955545873/job/127009463622",
+          "/home/chris/Projects/ch-nix-workspace/.worktrees/tier-review/group-1/derivation-evidence.json#/projects/calibre-purifier"
+        ]
+      },
+      "oneVersion": {
+        "state": "met",
+        "summary": "Actual native sample execution demonstrates calibre 9.17.0. Scope is the exact executed version point(s), not a version range.",
+        "evidence": [
+          "https://github.com/nix-purifiers/calibre-purifier/actions/runs/41955545873/job/127009463622",
+          "/home/chris/Projects/ch-nix-workspace/.worktrees/tier-review/group-1/derivation-evidence.json#/projects/calibre-purifier"
+        ]
+      },
+      "nonEolVersions": {
+        "state": "not-met",
+        "summary": "The primary security policy says security fixes ship with normal releases, and the current official/API release is 9.18.0 (2026-11-06). Actual sample execution uses 9.17.0; no 9.18.0 runtime derivation or policy promising maintenance of 9.17 was found. This is a current-release verification gap, not an inferred EOL date.",
+        "evidence": [
+          "https://github.com/nix-purifiers/calibre-purifier/actions/runs/41955545873/job/127009463622",
+          "/home/chris/Projects/ch-nix-workspace/.worktrees/tier-review/group-1/derivation-evidence.json#/projects/calibre-purifier",
+          "https://github.com/kovidgoyal/calibre/blob/master/SECURITY.md"
+        ]
+      },
+      "manySamples": {
+        "state": "not-met",
+        "summary": "One owned EpubMerge consumer profile is built. Worker, GUI, IPC and capture variants validate that profile rather than several independent upstream calibre workflows.",
+        "evidence": [
+          "https://github.com/nix-purifiers/calibre-purifier/actions/runs/41955545873/job/127009463622",
+          "/home/chris/Projects/ch-nix-workspace/.worktrees/tier-review/group-1/derivation-evidence.json#/projects/calibre-purifier"
+        ]
+      },
+      "longCompatibility": {
+        "state": "not-met",
+        "summary": "Only calibre 9.17.0 is executed. Plugin minimum-version metadata and advertised platform lists are not older native application execution.",
+        "evidence": [
+          "https://github.com/nix-purifiers/calibre-purifier/actions/runs/41955545873/job/127009463622",
+          "/home/chris/Projects/ch-nix-workspace/.worktrees/tier-review/group-1/derivation-evidence.json#/projects/calibre-purifier"
+        ]
+      }
+    },
+    "sampleBuilds": [
+      {
+        "name": "examples/minimal: owned calibre profile consuming EpubMerge 3.3.0; one plugin/application sample with GUI and consumer variants.",
+        "evidence": [
+          "https://github.com/nix-purifiers/calibre-purifier/actions/runs/41955545873/job/127009463622",
+          "/home/chris/Projects/ch-nix-workspace/.worktrees/tier-review/group-1/derivation-evidence.json#/projects/calibre-purifier",
+          "/nix/store/3g1vw6rcxrkvk5pmadhzpl3hzfg8fq2i-calibre-project.drv",
+          "/nix/store/95zs0wdyvac22c207fxma1sviyhidr72-calibre-project"
+        ]
+      }
+    ]
+  }
+}

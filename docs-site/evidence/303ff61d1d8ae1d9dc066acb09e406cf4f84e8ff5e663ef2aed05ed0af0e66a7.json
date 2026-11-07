@@ -1,0 +1,311 @@
+{
+  "status": "reviewer-approved-selection",
+  "createdAt": "2026-11-07T02:15:10.331691+00:00",
+  "baseEvidenceSha256": "0943b73f7a49f4badc51c3e24a1a8ec541a49c893894008de47096e960a3352e",
+  "projects": {
+    "pdm-purifier": {
+      "reviewerApprovedTypedReferences": {
+        "evaluation": [
+          "pdm-purifier:checks.x86_64-linux.simple-runs"
+        ],
+        "linux": [
+          "pdm-purifier:checks.x86_64-linux.simple-runs"
+        ],
+        "oneVersion": [
+          "pdm-purifier:checks.x86_64-linux.simple-runs"
+        ],
+        "goodTests": [
+          "pdm-purifier:checks.x86_64-linux.simple-runs",
+          "pdm-purifier:checks.x86_64-linux.conformance-stale",
+          "pdm-purifier:checks.x86_64-linux.conformance-tampered",
+          "pdm-purifier:checks.x86_64-linux.conformance-malformed"
+        ],
+        "nonEolVersions": []
+      },
+      "selectionRationale": "simple-runs executes installed CLI output; the three refusal checks evaluate real stale/tampered/malformed lock rejection assertions. Broader offline/VCS/unit quality judgment retains its original successful native CI references.",
+      "summaryScope": "Original reviewed state and substantive summary may be retained only with original CI/evidence references attached. Selected typed witnesses are deliberately a subset; they do not assert that every behavior named in the review ran inside each selected builder.",
+      "sdkRule": "Use selected-sample SDK versions from sample-bindings-supplement.json and recovered project SDK dependency paths. Do not infer an SDK map for auxiliary checks whose map is empty."
+    },
+    "pecl-purifier": {
+      "reviewerApprovedTypedReferences": {
+        "evaluation": [
+          "pecl-purifier:checks.x86_64-linux.project"
+        ],
+        "linux": [
+          "pecl-purifier:checks.x86_64-linux.project"
+        ],
+        "oneVersion": [
+          "pecl-purifier:checks.x86_64-linux.project"
+        ],
+        "goodTests": [
+          "pecl-purifier:checks.x86_64-linux.project",
+          "pecl-purifier:checks.x86_64-linux.environment",
+          "pecl-purifier:checks.x86_64-linux.release"
+        ],
+        "nonEolVersions": []
+      },
+      "selectionRationale": "project actually phpizes/compiles and runs test.php with the extension; environment/release witness locked dependencies and packaged output. Native conformance breadth is supported by preserved CI references, not attributed wholly to the project builder.",
+      "summaryScope": "Original reviewed state and substantive summary may be retained only with original CI/evidence references attached. Selected typed witnesses are deliberately a subset; they do not assert that every behavior named in the review ran inside each selected builder.",
+      "sdkRule": "Use selected-sample SDK versions from sample-bindings-supplement.json and recovered project SDK dependency paths. Do not infer an SDK map for auxiliary checks whose map is empty."
+    },
+    "pip-purifier": {
+      "reviewerApprovedTypedReferences": {
+        "evaluation": [
+          "pip-purifier:checks.x86_64-linux.project"
+        ],
+        "linux": [
+          "pip-purifier:checks.x86_64-linux.project"
+        ],
+        "oneVersion": [
+          "pip-purifier:checks.x86_64-linux.project"
+        ],
+        "goodTests": [
+          "pip-purifier:checks.x86_64-linux.project",
+          "pip-purifier:checks.x86_64-linux.unit",
+          "pip-purifier:checks.x86_64-linux.editable-extras",
+          "pip-purifier:checks.x86_64-linux.installer-sdk-isolation",
+          "pip-purifier:checks.x86_64-linux.conformance-offline",
+          "pip-purifier:checks.x86_64-linux.sources",
+          "pip-purifier:checks.x86_64-linux.pylock",
+          "pip-purifier:checks.x86_64-linux.conformance-missing",
+          "pip-purifier:checks.x86_64-linux.conformance-tampered"
+        ],
+        "nonEolVersions": []
+      },
+      "selectionRationale": "Selected checks execute sample/imports, unit suite, editable replay/release, distinct installer SDK, network-isolated replay, source kinds, pylock and failure paths. This is substantive functional and negative coverage.",
+      "summaryScope": "Original reviewed state and substantive summary may be retained only with original CI/evidence references attached. Selected typed witnesses are deliberately a subset; they do not assert that every behavior named in the review ran inside each selected builder.",
+      "sdkRule": "Use selected-sample SDK versions from sample-bindings-supplement.json and recovered project SDK dependency paths. Do not infer an SDK map for auxiliary checks whose map is empty."
+    },
+    "pipenv-purifier": {
+      "reviewerApprovedTypedReferences": {
+        "evaluation": [
+          "pipenv-purifier:checks.x86_64-linux.composition-producer"
+        ],
+        "linux": [
+          "pipenv-purifier:checks.x86_64-linux.composition-producer"
+        ],
+        "oneVersion": [
+          "pipenv-purifier:checks.x86_64-linux.composition-producer"
+        ],
+        "goodTests": [
+          "pipenv-purifier:checks.x86_64-linux.composition-producer",
+          "pipenv-purifier:checks.x86_64-linux.unit",
+          "pipenv-purifier:checks.x86_64-linux.conformance-rebuild",
+          "pipenv-purifier:checks.x86_64-linux.simple-package",
+          "pipenv-purifier:checks.x86_64-linux.sources-fetches",
+          "pipenv-purifier:checks.x86_64-linux.nix-library"
+        ],
+        "nonEolVersions": []
+      },
+      "selectionRationale": "composition-producer builds the authored sample package; unit/nix-library execute helper/library tests; rebuild compares outputs and package/fetch assertions check artifacts and locked downloads. Independent1853-test run remains original CI evidence with its missing typed NAR explicit.",
+      "summaryScope": "Original reviewed state and substantive summary may be retained only with original CI/evidence references attached. Selected typed witnesses are deliberately a subset; they do not assert that every behavior named in the review ran inside each selected builder.",
+      "sdkRule": "Use selected-sample SDK versions from sample-bindings-supplement.json and recovered project SDK dependency paths. Do not infer an SDK map for auxiliary checks whose map is empty."
+    },
+    "pixi-purifier": {
+      "reviewerApprovedTypedReferences": {
+        "evaluation": [
+          "pixi-purifier:checks.x86_64-linux.offline"
+        ],
+        "linux": [
+          "pixi-purifier:checks.x86_64-linux.offline"
+        ],
+        "oneVersion": [
+          "pixi-purifier:checks.x86_64-linux.offline"
+        ],
+        "goodTests": [
+          "pixi-purifier:checks.x86_64-linux.offline",
+          "pixi-purifier:checks.x86_64-linux.editor",
+          "pixi-purifier:checks.x86_64-linux.conformance-external",
+          "pixi-purifier:checks.x86_64-linux.environment",
+          "pixi-purifier:checks.x86_64-linux.release"
+        ],
+        "nonEolVersions": []
+      },
+      "selectionRationale": "offline exercises locked workspace tasks; editor checks import resolution; conformance-external tests external locks; environment/release preserve outputs. Host solver/update/refusal breadth stays in original native CI evidence.",
+      "summaryScope": "Original reviewed state and substantive summary may be retained only with original CI/evidence references attached. Selected typed witnesses are deliberately a subset; they do not assert that every behavior named in the review ran inside each selected builder.",
+      "sdkRule": "Use selected-sample SDK versions from sample-bindings-supplement.json and recovered project SDK dependency paths. Do not infer an SDK map for auxiliary checks whose map is empty."
+    },
+    "platformio-purifier": {
+      "reviewerApprovedTypedReferences": {
+        "evaluation": [
+          "platformio-purifier:checks.x86_64-linux.project"
+        ],
+        "linux": [
+          "platformio-purifier:checks.x86_64-linux.project"
+        ],
+        "oneVersion": [
+          "platformio-purifier:checks.x86_64-linux.project"
+        ],
+        "goodTests": [
+          "platformio-purifier:checks.x86_64-linux.project",
+          "platformio-purifier:checks.x86_64-linux.environment",
+          "platformio-purifier:checks.x86_64-linux.release"
+        ],
+        "nonEolVersions": [
+          "platformio-purifier:checks.x86_64-linux.project"
+        ]
+      },
+      "selectionRationale": "project compiles real Uno firmware with nonempty hex assertion; environment/release preserve locked toolchains and firmware packaging. Broader source-edit/analysis/native-consumer host assertions retain original CI evidence.",
+      "summaryScope": "Original reviewed state and substantive summary may be retained only with original CI/evidence references attached. Selected typed witnesses are deliberately a subset; they do not assert that every behavior named in the review ran inside each selected builder.",
+      "sdkRule": "Use selected-sample SDK versions from sample-bindings-supplement.json and recovered project SDK dependency paths. Do not infer an SDK map for auxiliary checks whose map is empty."
+    },
+    "pnpm-purifier": {
+      "reviewerApprovedTypedReferences": {
+        "evaluation": [
+          "pnpm-purifier:checks.x86_64-linux.fixture-tests"
+        ],
+        "linux": [
+          "pnpm-purifier:checks.x86_64-linux.fixture-tests"
+        ],
+        "oneVersion": [
+          "pnpm-purifier:checks.x86_64-linux.fixture-tests"
+        ],
+        "goodTests": [
+          "pnpm-purifier:checks.x86_64-linux.fixture-tests",
+          "pnpm-purifier:checks.x86_64-linux.unit",
+          "pnpm-purifier:checks.x86_64-linux.sources",
+          "pnpm-purifier:checks.x86_64-linux.prepare",
+          "pnpm-purifier:checks.x86_64-linux.integrity",
+          "pnpm-purifier:checks.x86_64-linux.publish",
+          "pnpm-purifier:checks.x86_64-linux.platform-filters",
+          "pnpm-purifier:checks.x86_64-linux.real-world"
+        ],
+        "nonEolVersions": [
+          "pnpm-purifier:checks.x86_64-linux.fixture-tests"
+        ]
+      },
+      "selectionRationale": "fixture-tests executes workspace scripts on12.9, while unit/sources/prepare/integrity/publish/platform-filters test parser+native lifecycle+source+publication+platform behavior. Separate real-world giget executes11.27, never mislabeled12.9.",
+      "summaryScope": "Original reviewed state and substantive summary may be retained only with original CI/evidence references attached. Selected typed witnesses are deliberately a subset; they do not assert that every behavior named in the review ran inside each selected builder.",
+      "sdkRule": "Use selected-sample SDK versions from sample-bindings-supplement.json and recovered project SDK dependency paths. Do not infer an SDK map for auxiliary checks whose map is empty."
+    },
+    "poetry-purifier": {
+      "reviewerApprovedTypedReferences": {
+        "evaluation": [
+          "poetry-purifier:checks.x86_64-linux.app-runs"
+        ],
+        "linux": [
+          "poetry-purifier:checks.x86_64-linux.app-runs"
+        ],
+        "oneVersion": [
+          "poetry-purifier:checks.x86_64-linux.app-runs"
+        ],
+        "goodTests": [
+          "poetry-purifier:checks.x86_64-linux.app-runs",
+          "poetry-purifier:checks.x86_64-linux.composition-producer",
+          "poetry-purifier:checks.x86_64-linux.app-environment",
+          "poetry-purifier:checks.x86_64-linux.read-lock",
+          "poetry-purifier:checks.x86_64-linux.git-submodules"
+        ],
+        "nonEolVersions": [
+          "poetry-purifier:checks.x86_64-linux.app-runs"
+        ]
+      },
+      "selectionRationale": "app-runs executes app and checks expected dependency versions; composition-producer/app-environment build actual app; read-lock/git-submodules check lock semantics and checkout content. Independent Rich and other lifecycle breadth retain original native CI evidence.",
+      "summaryScope": "Original reviewed state and substantive summary may be retained only with original CI/evidence references attached. Selected typed witnesses are deliberately a subset; they do not assert that every behavior named in the review ran inside each selected builder.",
+      "sdkRule": "Use selected-sample SDK versions from sample-bindings-supplement.json and recovered project SDK dependency paths. Do not infer an SDK map for auxiliary checks whose map is empty."
+    },
+    "pub-purifier": {
+      "reviewerApprovedTypedReferences": {
+        "evaluation": [
+          "pub-purifier:checks.x86_64-linux.offline"
+        ],
+        "linux": [
+          "pub-purifier:checks.x86_64-linux.offline"
+        ],
+        "oneVersion": [
+          "pub-purifier:checks.x86_64-linux.offline"
+        ],
+        "goodTests": [
+          "pub-purifier:checks.x86_64-linux.offline",
+          "pub-purifier:checks.x86_64-linux.package",
+          "pub-purifier:checks.x86_64-linux.editor",
+          "pub-purifier:checks.x86_64-linux.conformance-external",
+          "pub-purifier:checks.x86_64-linux.environment",
+          "pub-purifier:checks.x86_64-linux.release"
+        ],
+        "nonEolVersions": [
+          "pub-purifier:checks.x86_64-linux.offline"
+        ]
+      },
+      "selectionRationale": "offline compiles/runs hello; package/environment/release witness outputs; editor and conformance-external test editor resolution and external locks. Host solver/update/failure tests remain original CI evidence.",
+      "summaryScope": "Original reviewed state and substantive summary may be retained only with original CI/evidence references attached. Selected typed witnesses are deliberately a subset; they do not assert that every behavior named in the review ran inside each selected builder.",
+      "sdkRule": "Use selected-sample SDK versions from sample-bindings-supplement.json and recovered project SDK dependency paths. Do not infer an SDK map for auxiliary checks whose map is empty."
+    },
+    "pulumi-purifier": {
+      "reviewerApprovedTypedReferences": {
+        "evaluation": [
+          "pulumi-purifier:checks.x86_64-linux.project"
+        ],
+        "linux": [
+          "pulumi-purifier:checks.x86_64-linux.project"
+        ],
+        "oneVersion": [
+          "pulumi-purifier:checks.x86_64-linux.project"
+        ],
+        "goodTests": [
+          "pulumi-purifier:checks.x86_64-linux.project",
+          "pulumi-purifier:checks.x86_64-linux.environment",
+          "pulumi-purifier:checks.x86_64-linux.release"
+        ],
+        "nonEolVersions": []
+      },
+      "selectionRationale": "project validates plugin selection through native/check.py, then its flake checkCommand runs real Pulumi login/stack init/up and asserts answer42; environment/release witness locked plugin graph and packaged source. Detailed mutable42\u219243\u219242/preview host conformance remains separately supported by original CI.",
+      "summaryScope": "Original reviewed state and substantive summary may be retained only with original CI/evidence references attached. Selected typed witnesses are deliberately a subset; they do not assert that every behavior named in the review ran inside each selected builder.",
+      "sdkRule": "Use selected-sample SDK versions from sample-bindings-supplement.json and recovered project SDK dependency paths. Do not infer an SDK map for auxiliary checks whose map is empty."
+    },
+    "qgis-purifier": {
+      "reviewerApprovedTypedReferences": {
+        "evaluation": [
+          "qgis-purifier:checks.x86_64-linux.project"
+        ],
+        "linux": [
+          "qgis-purifier:checks.x86_64-linux.project"
+        ],
+        "oneVersion": [
+          "qgis-purifier:checks.x86_64-linux.project"
+        ],
+        "goodTests": [
+          "qgis-purifier:checks.x86_64-linux.project",
+          "qgis-purifier:checks.x86_64-linux.environment",
+          "qgis-purifier:checks.x86_64-linux.release",
+          "qgis-purifier:checks.x86_64-linux.cli"
+        ],
+        "nonEolVersions": []
+      },
+      "selectionRationale": "project/environment/release witness locked project artifacts and cli is the actual native integration driver; processing/geometry and GUI assertions execute in successful host CI, preserved as separate references rather than falsely relabeled builder commands.",
+      "summaryScope": "Original reviewed state and substantive summary may be retained only with original CI/evidence references attached. Selected typed witnesses are deliberately a subset; they do not assert that every behavior named in the review ran inside each selected builder.",
+      "sdkRule": "Use selected-sample SDK versions from sample-bindings-supplement.json and recovered project SDK dependency paths. Do not infer an SDK map for auxiliary checks whose map is empty."
+    },
+    "qlot-purifier": {
+      "reviewerApprovedTypedReferences": {
+        "evaluation": [
+          "qlot-purifier:checks.x86_64-linux.installed"
+        ],
+        "linux": [
+          "qlot-purifier:checks.x86_64-linux.installed"
+        ],
+        "oneVersion": [
+          "qlot-purifier:checks.x86_64-linux.installed"
+        ],
+        "goodTests": [
+          "qlot-purifier:checks.x86_64-linux.installed",
+          "qlot-purifier:checks.x86_64-linux.project",
+          "qlot-purifier:checks.x86_64-linux.environment",
+          "qlot-purifier:checks.x86_64-linux.release"
+        ],
+        "nonEolVersions": []
+      },
+      "selectionRationale": "installed executes SBCL quickload and JSON42 verification; project/environment/release witness compiled ASDF environment and artifacts. Host FASL/source/refusal/update breadth retains original CI references.",
+      "summaryScope": "Original reviewed state and substantive summary may be retained only with original CI/evidence references attached. Selected typed witnesses are deliberately a subset; they do not assert that every behavior named in the review ran inside each selected builder.",
+      "sdkRule": "Use selected-sample SDK versions from sample-bindings-supplement.json and recovered project SDK dependency paths. Do not infer an SDK map for auxiliary checks whose map is empty."
+    }
+  },
+  "sampleExpansionApproval": {
+    "approved": true,
+    "fixtureRule": "Name each authored fixture separately; bind parent repository revision/NAR plus exact fixture path and selected executable check. Keep independent=false.",
+    "independentRule": "Name actual upstream samples separately with exact repository/revision/NAR and actual SDK/check binding. PDM/Click lack original upstream NARs and must remain explicit gaps, never confirmed independent normalized IDs. Other independent samples with incomplete typed test output/NAR receipts must also retain those receipt gaps; do not manufacture complete typed proof from source-only producer derivations.",
+    "bindingSource": "sample-bindings-supplement.json"
+  },
+  "darwin": "No native Darwin claim in this frozen main packet.",
+  "pubPolicy": "Use pub-root-adjudication.json full summary; optional latest-patch not-met alternative has no precedence."
+}

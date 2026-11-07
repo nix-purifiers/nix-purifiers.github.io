@@ -1,0 +1,2388 @@
+{
+  "version": 1,
+  "kind": "criterion-and-sample-binding-supplement",
+  "reviewDate": "2026-11-06",
+  "frozenPacketSha256": {
+    "assessments.json": "395b7fec08f52a9645d25122c808169040f3d9baa07ed13f3933bb444811c28e",
+    "derivation-evidence.json": "0bc57a0e1c9de2755f3921906d49b806e854b92f7ef63f18636aa6ef7376c10d",
+    "review-receipt.json": "3ba0ab12d5180b01714dd3484655979656d0b51968b1177d7290920748614992"
+  },
+  "judgmentsUnchanged": true,
+  "rules": [
+    "Existing project-level sdkVersions in frozen packet are contextual. Do not copy them onto every check; use sample-specific sdkExecutions below.",
+    "A packaging/link-farm wrapper does not itself execute its SDK; actual child test/build invocation and dependency edges are identified.",
+    "Native CI observations are independent proof records, not relabeled local drv/output/NAR identities. Missing CI output pair/NAR remains absent."
+  ],
+  "projects": {
+    "lazy-purifier": {
+      "criteria": {
+        "evaluation": {
+          "state": "met",
+          "supportingDerivationIds": [
+            "lazy-purifier:cli:x86_64-linux",
+            "lazy-purifier:environment:x86_64-linux",
+            "lazy-purifier:project:x86_64-linux",
+            "lazy-purifier:release:x86_64-linux"
+          ],
+          "nativeCiEvidencePointers": [],
+          "policySources": [],
+          "gap": null
+        },
+        "goodTests": {
+          "state": "met",
+          "supportingDerivationIds": [
+            "lazy-purifier:environment:x86_64-linux",
+            "lazy-purifier:project:x86_64-linux",
+            "lazy-purifier:release:x86_64-linux"
+          ],
+          "nativeCiEvidencePointers": [],
+          "policySources": [],
+          "gap": null
+        },
+        "linux": {
+          "state": "met",
+          "supportingDerivationIds": [
+            "lazy-purifier:project:x86_64-linux",
+            "lazy-purifier:environment:x86_64-linux",
+            "lazy-purifier:release:x86_64-linux"
+          ],
+          "nativeCiEvidencePointers": [],
+          "policySources": [],
+          "gap": null
+        },
+        "darwin": {
+          "state": "not-met",
+          "supportingDerivationIds": [],
+          "nativeCiEvidencePointers": [],
+          "policySources": [],
+          "gap": "The inspected successful workflows execute Ubuntu x86_64/ARM only; no native Darwin SDK/build/test/output receipt exists for this public revision. Linux execution, Darwin lock entries or conditional systems do not establish Darwin runtime."
+        },
+        "oneVersion": {
+          "state": "met",
+          "supportingDerivationIds": [
+            "lazy-purifier:project:x86_64-linux",
+            "lazy-purifier:environment:x86_64-linux",
+            "lazy-purifier:release:x86_64-linux"
+          ],
+          "nativeCiEvidencePointers": [],
+          "policySources": [],
+          "gap": null
+        },
+        "nonEolVersions": {
+          "state": "met",
+          "supportingDerivationIds": [
+            "lazy-purifier:project:x86_64-linux",
+            "lazy-purifier:environment:x86_64-linux",
+            "lazy-purifier:release:x86_64-linux"
+          ],
+          "nativeCiEvidencePointers": [],
+          "policySources": [
+            "https://neovim.io/",
+            "https://github.com/folke/lazy.nvim/blob/main/README.md"
+          ],
+          "gap": null
+        },
+        "manySamples": {
+          "state": "not-met",
+          "supportingDerivationIds": [
+            "lazy-purifier:project:x86_64-linux"
+          ],
+          "nativeCiEvidencePointers": [],
+          "policySources": [],
+          "gap": "One repository configuration is built. popup/plenary are dependencies of that configuration, not separate consumer sample builds; no independent configuration corpus is established."
+        },
+        "longCompatibility": {
+          "state": "not-met",
+          "supportingDerivationIds": [],
+          "nativeCiEvidencePointers": [],
+          "policySources": [],
+          "gap": "The project derivation executes one pinned Neovim/lazy.nvim pair. No historical runtime matrix is wired into the flake or successful reviewed workflow; a minimum upstream requirement is not execution evidence."
+        }
+      },
+      "sampleBuilds": [
+        {
+          "sampleBuildIndex": 0,
+          "name": "Repository examples/minimal Neovim configuration (fixture)",
+          "kind": "fixture",
+          "source": {
+            "repository": "https://github.com/nix-purifiers/lazy-purifier",
+            "revision": "46980849b3ce70be29e950008859dbb8a32cd56f",
+            "path": "examples/minimal",
+            "repositorySourceNarHash": "sha256-hCOCItUWVCRJnbjRtnHnBrl5DJ+4Evnr4sVqbn48q98=",
+            "sourceNarHash": "sha256-2L/NSiaCrwoNfPz/L76Kez2kuv7pv4i6nN2Ywl8OyCI=",
+            "binding": "Actual fixture subtree NAR computed with nix hash path; containing immutable purifier source revision/NAR also provided."
+          },
+          "supportingDerivationIds": [
+            "lazy-purifier:project:x86_64-linux"
+          ],
+          "sdkExecutions": [
+            {
+              "versions": {
+                "Neovim": "0.12.6",
+                "lazy.nvim": "11.17.5"
+              },
+              "basis": "project buildCommand explicitly passes neovim-unwrapped0.12.6/bin/nvim and lazy.nvim11.17.5 to native/check.py; runtime startup assertions run.",
+              "supportingDerivationIds": [
+                "lazy-purifier:project:x86_64-linux"
+              ]
+            }
+          ],
+          "gaps": []
+        }
+      ],
+      "bindingArtifacts": {
+        "mapping-inputs/lazy-purifier/environment.json": "3cbf0f788713185459bcc036a990d444838e07e5867afc770859febb0616e7bd",
+        "mapping-inputs/lazy-purifier/environment.err": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "mapping-inputs/lazy-purifier/project.json": "d58bd7742f0ab7323e7d6a5e873f601a0615ef0850782546f042708a2f4214f7",
+        "mapping-inputs/lazy-purifier/project.err": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "mapping-inputs/lazy-purifier/release.json": "eb472ecf836f4bf7debc5f553d430beaef24872ec336a915504fc6e0444e3473",
+        "mapping-inputs/lazy-purifier/release.err": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "mapping-inputs/lazy-purifier/examples_minimal-nar.json": "8a39d6dc2f26d4717934e47ec5484a427f81148889ec7630b2e42c012ba9a5ac"
+      },
+      "corrections": []
+    },
+    "lein-purifier": {
+      "criteria": {
+        "evaluation": {
+          "state": "met",
+          "supportingDerivationIds": [
+            "lein-purifier:builder-override:x86_64-linux",
+            "lein-purifier:cli:x86_64-linux",
+            "lein-purifier:composition:x86_64-linux",
+            "lein-purifier:conformance-external:x86_64-linux",
+            "lein-purifier:conformance-malformed:x86_64-linux",
+            "lein-purifier:conformance-missing:x86_64-linux",
+            "lein-purifier:conformance-stale:x86_64-linux",
+            "lein-purifier:conformance-tampered:x86_64-linux",
+            "lein-purifier:consumer-package:x86_64-linux",
+            "lein-purifier:example-ring:x86_64-linux",
+            "lein-purifier:example-ring-tests:x86_64-linux",
+            "lein-purifier:hello:x86_64-linux",
+            "lein-purifier:hello-artifacts:x86_64-linux",
+            "lein-purifier:hello-runs:x86_64-linux",
+            "lein-purifier:hello-tests:x86_64-linux",
+            "lein-purifier:jvm-projection:x86_64-linux",
+            "lein-purifier:mono-core:x86_64-linux",
+            "lein-purifier:mono-tool:x86_64-linux",
+            "lein-purifier:monolith-release:x86_64-linux",
+            "lein-purifier:monolith-runs:x86_64-linux",
+            "lein-purifier:multi-app:x86_64-linux",
+            "lein-purifier:multi-lib:x86_64-linux",
+            "lein-purifier:multi-sub-runs:x86_64-linux",
+            "lein-purifier:multi-sub-tests:x86_64-linux",
+            "lein-purifier:ring-source:x86_64-linux",
+            "lein-purifier:scope-override:x86_64-linux",
+            "lein-purifier:sources:x86_64-linux",
+            "lein-purifier:sources-runs:x86_64-linux",
+            "lein-purifier:standalone-projection:x86_64-linux",
+            "lein-purifier:treefmt:x86_64-linux",
+            "lein-purifier:unit:x86_64-linux"
+          ],
+          "nativeCiEvidencePointers": [],
+          "policySources": [],
+          "gap": null
+        },
+        "goodTests": {
+          "state": "met",
+          "supportingDerivationIds": [
+            "lein-purifier:builder-override:x86_64-linux",
+            "lein-purifier:composition:x86_64-linux",
+            "lein-purifier:conformance-external:x86_64-linux",
+            "lein-purifier:conformance-malformed:x86_64-linux",
+            "lein-purifier:conformance-missing:x86_64-linux",
+            "lein-purifier:conformance-stale:x86_64-linux",
+            "lein-purifier:conformance-tampered:x86_64-linux",
+            "lein-purifier:consumer-package:x86_64-linux",
+            "lein-purifier:example-ring:x86_64-linux",
+            "lein-purifier:example-ring-tests:x86_64-linux",
+            "lein-purifier:hello:x86_64-linux",
+            "lein-purifier:hello-artifacts:x86_64-linux",
+            "lein-purifier:hello-runs:x86_64-linux",
+            "lein-purifier:hello-tests:x86_64-linux",
+            "lein-purifier:jvm-projection:x86_64-linux",
+            "lein-purifier:mono-core:x86_64-linux",
+            "lein-purifier:mono-tool:x86_64-linux",
+            "lein-purifier:monolith-release:x86_64-linux",
+            "lein-purifier:monolith-runs:x86_64-linux",
+            "lein-purifier:multi-app:x86_64-linux",
+            "lein-purifier:multi-lib:x86_64-linux",
+            "lein-purifier:multi-sub-runs:x86_64-linux",
+            "lein-purifier:multi-sub-tests:x86_64-linux",
+            "lein-purifier:scope-override:x86_64-linux",
+            "lein-purifier:sources:x86_64-linux",
+            "lein-purifier:sources-runs:x86_64-linux",
+            "lein-purifier:standalone-projection:x86_64-linux",
+            "lein-purifier:unit:x86_64-linux"
+          ],
+          "nativeCiEvidencePointers": [],
+          "policySources": [],
+          "gap": null
+        },
+        "linux": {
+          "state": "met",
+          "supportingDerivationIds": [
+            "lein-purifier:example-ring-tests:x86_64-linux",
+            "lein-purifier:example-ring:x86_64-linux",
+            "lein-purifier:hello-tests:x86_64-linux",
+            "lein-purifier:hello-runs:x86_64-linux"
+          ],
+          "nativeCiEvidencePointers": [],
+          "policySources": [],
+          "gap": null
+        },
+        "darwin": {
+          "state": "not-met",
+          "supportingDerivationIds": [],
+          "nativeCiEvidencePointers": [],
+          "policySources": [],
+          "gap": "The inspected successful workflows execute Ubuntu x86_64/ARM only; no native Darwin SDK/build/test/output receipt exists for this public revision. Linux execution, Darwin lock entries or conditional systems do not establish Darwin runtime."
+        },
+        "oneVersion": {
+          "state": "met",
+          "supportingDerivationIds": [
+            "lein-purifier:example-ring-tests:x86_64-linux",
+            "lein-purifier:example-ring:x86_64-linux",
+            "lein-purifier:hello-tests:x86_64-linux",
+            "lein-purifier:hello-runs:x86_64-linux"
+          ],
+          "nativeCiEvidencePointers": [],
+          "policySources": [],
+          "gap": null
+        },
+        "nonEolVersions": {
+          "state": "not-met",
+          "supportingDerivationIds": [],
+          "nativeCiEvidencePointers": [],
+          "policySources": [
+            "https://leiningen.org/",
+            "https://clojure.org/releases/downloads"
+          ],
+          "gap": "The successful derivations execute Leiningen2.12.0/JDK21. Fresh upstream release API identifies current Leiningen2.13.0, which is not executed by the reviewed checks; no primary policy establishes2.12.0 as the complete maintained scope. This is a missing current-point execution proof, not a claim that2.12.0 is EOL. Clojure release policy is kept separate from Leiningen."
+        },
+        "manySamples": {
+          "state": "not-met",
+          "supportingDerivationIds": [
+            "lein-purifier:example-ring:x86_64-linux",
+            "lein-purifier:example-ring-tests:x86_64-linux",
+            "lein-purifier:hello-tests:x86_64-linux",
+            "lein-purifier:sources-runs:x86_64-linux",
+            "lein-purifier:multi-sub-tests:x86_64-linux",
+            "lein-purifier:monolith-runs:x86_64-linux"
+          ],
+          "nativeCiEvidencePointers": [],
+          "policySources": [],
+          "gap": "Ring is one independent upstream project. Its five subprojects and four repository fixture families cover useful module/repository behaviors but do not constitute a broad independent consumer corpus."
+        },
+        "longCompatibility": {
+          "state": "not-met",
+          "supportingDerivationIds": [],
+          "nativeCiEvidencePointers": [],
+          "policySources": [],
+          "gap": "All committed fixture and Ring locks select Leiningen 2.12.0 with Java major21. The wrong-version refusal test deliberately rejects a fake tool version; it does not execute historical Leiningen/JDK combinations."
+        }
+      },
+      "sampleBuilds": [
+        {
+          "sampleBuildIndex": 0,
+          "name": "ring-clojure/ring (independent-upstream)",
+          "kind": "independent-upstream",
+          "source": {
+            "repository": "https://github.com/ring-clojure/ring",
+            "revision": "6238fe0e2e4506e28a0ce6ade9ae514f7b02cbee",
+            "sourceNarHash": "sha256-jZyAZjp90mwnDl0KVWirvtxl8pwxwPM+AxIj4l95YkM=",
+            "binding": "Pinned fetchTree/fetchTarball/fetchFromGitHub or locked flake input consumed by successful executable sample graph; see source declaration in frozen source snapshot. Base32 fetchTarball hashes converted with nix hash convert, not fabricated output hashes."
+          },
+          "supportingDerivationIds": [
+            "lein-purifier:example-ring:x86_64-linux",
+            "lein-purifier:example-ring-tests:x86_64-linux"
+          ],
+          "sdkExecutions": [
+            {
+              "versions": {
+                "Leiningen": "2.12.0",
+                "JDK": "21.0.12.1+1"
+              },
+              "basis": "example-ring-tests/hello-tests are link farms; collected direct child test drv buildPhase invokes leinOffline lein -o test with exact Leiningen2.12/JDK21 nativeBuildInputs.",
+              "supportingDerivationIds": [
+                "lein-purifier:example-ring:x86_64-linux",
+                "lein-purifier:example-ring-tests:x86_64-linux"
+              ]
+            }
+          ],
+          "gaps": []
+        },
+        {
+          "sampleBuildIndex": 1,
+          "name": "hello, sources, multi-sub and monolith (fixtures)",
+          "kind": "fixtures",
+          "source": {
+            "repository": "https://github.com/nix-purifiers/lein-purifier",
+            "revision": "3fcd98f5fd7c19b9f49bf5176e56305b239d64eb",
+            "path": "tests/fixtures",
+            "repositorySourceNarHash": "sha256-3fD+lNdkC+BIvcccIkc2fGut97ZSA3S78+pSA9BeQUs=",
+            "sourceNarHash": "sha256-6SNuLemx47wHYL6sRJZcqktn323G+vK9gJZK7ON3TQM=",
+            "binding": "Actual fixture subtree NAR computed with nix hash path; containing immutable purifier source revision/NAR also provided."
+          },
+          "supportingDerivationIds": [
+            "lein-purifier:hello-tests:x86_64-linux",
+            "lein-purifier:sources-runs:x86_64-linux",
+            "lein-purifier:multi-sub-tests:x86_64-linux",
+            "lein-purifier:monolith-runs:x86_64-linux"
+          ],
+          "sdkExecutions": [
+            {
+              "versions": {
+                "Leiningen": "2.12.0",
+                "JDK": "21.0.12.1+1"
+              },
+              "basis": "example-ring-tests/hello-tests are link farms; collected direct child test drv buildPhase invokes leinOffline lein -o test with exact Leiningen2.12/JDK21 nativeBuildInputs.",
+              "supportingDerivationIds": [
+                "lein-purifier:hello-tests:x86_64-linux",
+                "lein-purifier:sources-runs:x86_64-linux",
+                "lein-purifier:multi-sub-tests:x86_64-linux",
+                "lein-purifier:monolith-runs:x86_64-linux"
+              ]
+            }
+          ],
+          "gaps": []
+        }
+      ],
+      "bindingArtifacts": {
+        "mapping-inputs/lein-purifier/example-ring.json": "e4870913a989556c63b19fff1213abfdb5dc5f1b3141c1fd257c7d51fd39613f",
+        "mapping-inputs/lein-purifier/example-ring.err": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "mapping-inputs/lein-purifier/example-ring-tests.json": "027637777098994311bf3ca5315867c7de70ede6af085f04ef358f5b7f14b0a9",
+        "mapping-inputs/lein-purifier/example-ring-tests.err": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "mapping-inputs/lein-purifier/hello-runs.json": "d09b805dc1abddc88c33efd47c331d7756c42e4af5d2a1d698d719b1122343ed",
+        "mapping-inputs/lein-purifier/hello-runs.err": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "mapping-inputs/lein-purifier/hello-tests.json": "09f7adf155b0d824cc8170e3e51c3be5140a4e144a88b40daac2d9e941fa8696",
+        "mapping-inputs/lein-purifier/hello-tests.err": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "mapping-inputs/lein-purifier/monolith-runs.json": "dff0a737e848dd1756f424b78b9a2aa5b2d5be37b765045ae96a1803b327c544",
+        "mapping-inputs/lein-purifier/monolith-runs.err": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "mapping-inputs/lein-purifier/multi-sub-tests.json": "cdccbb48ef9e44934b9f9ec4fdd9ea95dd389ba464dbc0b362ad0e34320a36fe",
+        "mapping-inputs/lein-purifier/multi-sub-tests.err": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "mapping-inputs/lein-purifier/sources-runs.json": "86f2dbd0b34bd995610faf0b93e1c9e46be06309c5286215b6a773c37c8394c6",
+        "mapping-inputs/lein-purifier/sources-runs.err": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "mapping-inputs/lein-purifier/tests_fixtures-nar.json": "372d1d06858d88e3b69ef2705077ec93de0f8757029b0d180f5fc496a05efbef",
+        "mapping-inputs/lein-purifier/child-gvvsrrsby0n4gfncnp48f7plzcm4gm79-ring-devel-tests.drv.json": "3460852fd5ccfcbc964e1b8e346a6a779ca32fbe82536dda4c86a0d218ec4fa8",
+        "mapping-inputs/lein-purifier/child-h6l7sp7spj7fsmp55d5av73mrcggpwd5-ring-jakarta-servlet-tests.drv.json": "0ed674bccfda6197331d0201d0562b77c2588f622571674870ec71633b9fa8da",
+        "mapping-inputs/lein-purifier/child-ly9q0sl8bqaray7i0zr63gjd8g2jsp9r-ring-core-tests.drv.json": "f58800ab018790141278ee287c7919db3fdf876607cf78f22bf261706979d6f4",
+        "mapping-inputs/lein-purifier/child-nxnb9wj1qycpf61vbv5m4w4qyzsypmi6-ring-servlet-tests.drv.json": "7efc153593796fda3c4c4800f783838d71d7395f32576d54386be6dba750a852",
+        "mapping-inputs/lein-purifier/child-x4yywmxp2mnc6csb0qirfx56741kdgf5-ring-jetty-adapter-tests.drv.json": "5dcfb7e2954128a223c36cf2b8d2c284b8fe334f1997989471651ec5b4bfe676",
+        "mapping-inputs/lein-purifier/child-y6j62glj8d2yia9fh0b7rngrlkbxl6fr-hello-tests.drv.json": "3a040a9cbc2b653ddc73582ca57c0bfee2b331d342d2c53ac05bbfb14639f695"
+      },
+      "corrections": []
+    },
+    "luarocks-purifier": {
+      "criteria": {
+        "evaluation": {
+          "state": "met",
+          "supportingDerivationIds": [
+            "luarocks-purifier:app:x86_64-linux",
+            "luarocks-purifier:app-lock-in-memory:x86_64-linux",
+            "luarocks-purifier:app-publish:x86_64-linux",
+            "luarocks-purifier:app-release:x86_64-linux",
+            "luarocks-purifier:app-runs:x86_64-linux",
+            "luarocks-purifier:app-tests:x86_64-linux",
+            "luarocks-purifier:cli:x86_64-linux",
+            "luarocks-purifier:conformance-external:x86_64-linux",
+            "luarocks-purifier:conformance-malformed:x86_64-linux",
+            "luarocks-purifier:conformance-missing:x86_64-linux",
+            "luarocks-purifier:conformance-stale:x86_64-linux",
+            "luarocks-purifier:conformance-tampered:x86_64-linux",
+            "luarocks-purifier:legacy-manager-tools:x86_64-linux",
+            "luarocks-purifier:lib:x86_64-linux",
+            "luarocks-purifier:lib-demo:x86_64-linux",
+            "luarocks-purifier:lib-release:x86_64-linux",
+            "luarocks-purifier:lib-runs:x86_64-linux",
+            "luarocks-purifier:real-luacheck:x86_64-linux",
+            "luarocks-purifier:treefmt:x86_64-linux",
+            "luarocks-purifier:unit:x86_64-linux",
+            "luarocks-purifier:vcs-runs:x86_64-linux"
+          ],
+          "nativeCiEvidencePointers": [],
+          "policySources": [],
+          "gap": null
+        },
+        "goodTests": {
+          "state": "met",
+          "supportingDerivationIds": [
+            "luarocks-purifier:app:x86_64-linux",
+            "luarocks-purifier:app-lock-in-memory:x86_64-linux",
+            "luarocks-purifier:app-publish:x86_64-linux",
+            "luarocks-purifier:app-release:x86_64-linux",
+            "luarocks-purifier:app-runs:x86_64-linux",
+            "luarocks-purifier:app-tests:x86_64-linux",
+            "luarocks-purifier:conformance-external:x86_64-linux",
+            "luarocks-purifier:conformance-malformed:x86_64-linux",
+            "luarocks-purifier:conformance-missing:x86_64-linux",
+            "luarocks-purifier:conformance-stale:x86_64-linux",
+            "luarocks-purifier:conformance-tampered:x86_64-linux",
+            "luarocks-purifier:legacy-manager-tools:x86_64-linux",
+            "luarocks-purifier:lib:x86_64-linux",
+            "luarocks-purifier:lib-demo:x86_64-linux",
+            "luarocks-purifier:lib-release:x86_64-linux",
+            "luarocks-purifier:lib-runs:x86_64-linux",
+            "luarocks-purifier:real-luacheck:x86_64-linux",
+            "luarocks-purifier:unit:x86_64-linux",
+            "luarocks-purifier:vcs-runs:x86_64-linux"
+          ],
+          "nativeCiEvidencePointers": [],
+          "policySources": [],
+          "gap": null
+        },
+        "linux": {
+          "state": "met",
+          "supportingDerivationIds": [
+            "luarocks-purifier:real-luacheck:x86_64-linux",
+            "luarocks-purifier:app-tests:x86_64-linux"
+          ],
+          "nativeCiEvidencePointers": [],
+          "policySources": [],
+          "gap": null
+        },
+        "darwin": {
+          "state": "not-met",
+          "supportingDerivationIds": [],
+          "nativeCiEvidencePointers": [],
+          "policySources": [],
+          "gap": "The inspected successful workflows execute Ubuntu x86_64/ARM only; no native Darwin SDK/build/test/output receipt exists for this public revision. Linux execution, Darwin lock entries or conditional systems do not establish Darwin runtime."
+        },
+        "oneVersion": {
+          "state": "met",
+          "supportingDerivationIds": [
+            "luarocks-purifier:real-luacheck:x86_64-linux",
+            "luarocks-purifier:app-tests:x86_64-linux"
+          ],
+          "nativeCiEvidencePointers": [],
+          "policySources": [],
+          "gap": null
+        },
+        "nonEolVersions": {
+          "state": "met",
+          "supportingDerivationIds": [],
+          "nativeCiEvidencePointers": [
+            "derivation-evidence.json#/projects/luarocks-purifier/historicalExecution/3",
+            "derivation-evidence.json#/projects/luarocks-purifier/historicalExecution/7"
+          ],
+          "policySources": [
+            "https://www.lua.org/versions.html",
+            "https://github.com/luarocks/luarocks/releases/tag/v3.13.0"
+          ],
+          "gap": null
+        },
+        "manySamples": {
+          "state": "not-met",
+          "supportingDerivationIds": [
+            "luarocks-purifier:real-luacheck:x86_64-linux",
+            "luarocks-purifier:app-tests:x86_64-linux"
+          ],
+          "nativeCiEvidencePointers": [],
+          "policySources": [],
+          "gap": "luacheck is one independent upstream consumer; the app/lib/VCS rocks are controlled fixtures and SDK reruns of them are not new independent projects. The evidence does not establish a broad consumer corpus."
+        },
+        "longCompatibility": {
+          "state": "met",
+          "supportingDerivationIds": [],
+          "nativeCiEvidencePointers": [
+            "derivation-evidence.json#/projects/luarocks-purifier/historicalExecution/0",
+            "derivation-evidence.json#/projects/luarocks-purifier/historicalExecution/1",
+            "derivation-evidence.json#/projects/luarocks-purifier/historicalExecution/2",
+            "derivation-evidence.json#/projects/luarocks-purifier/historicalExecution/3",
+            "derivation-evidence.json#/projects/luarocks-purifier/historicalExecution/4",
+            "derivation-evidence.json#/projects/luarocks-purifier/historicalExecution/5",
+            "derivation-evidence.json#/projects/luarocks-purifier/historicalExecution/6",
+            "derivation-evidence.json#/projects/luarocks-purifier/historicalExecution/7",
+            "derivation-evidence.json#/projects/luarocks-purifier/historicalExecution/8",
+            "derivation-evidence.json#/projects/luarocks-purifier/historicalExecution/9",
+            "derivation-evidence.json#/projects/luarocks-purifier/historicalExecution/10",
+            "derivation-evidence.json#/projects/luarocks-purifier/historicalExecution/11"
+          ],
+          "policySources": [],
+          "gap": null
+        }
+      },
+      "sampleBuilds": [
+        {
+          "sampleBuildIndex": 0,
+          "name": "luacheck v1.2.0 (independent-upstream)",
+          "kind": "independent-upstream",
+          "source": {
+            "repository": "https://github.com/lunarmodules/luacheck",
+            "revision": "cc089e3f65acdd1ef8716cc73a3eca24a6b845e4",
+            "sourceNarHash": "sha256-6aDXZRLq2c36dbasyVzcecQKoMvY81RIGYasdF211UY=",
+            "binding": "Pinned fetchTree/fetchTarball/fetchFromGitHub or locked flake input consumed by successful executable sample graph; see source declaration in frozen source snapshot. Base32 fetchTarball hashes converted with nix hash convert, not fabricated output hashes."
+          },
+          "supportingDerivationIds": [
+            "luarocks-purifier:real-luacheck:x86_64-linux"
+          ],
+          "sdkExecutions": [
+            {
+              "versions": {
+                "Lua": "5.4.9",
+                "LuaRocksBuildManager": "3.13.0"
+              },
+              "basis": "real-luacheck invokes realized luacheck wrapper, which explicitly execs lua5.4.9; collected package child drv runs the actual LuaRocks build. Lua5.1.5 is a separate native-CI point, not this sample runtime.",
+              "supportingDerivationIds": [
+                "luarocks-purifier:real-luacheck:x86_64-linux"
+              ]
+            }
+          ],
+          "gaps": []
+        },
+        {
+          "sampleBuildIndex": 1,
+          "name": "app/lib and VCS rocks (fixtures)",
+          "kind": "fixtures",
+          "source": {
+            "repository": "https://github.com/nix-purifiers/luarocks-purifier",
+            "revision": "b27fe736fe2328c7eec64cbf130607397ed79f95",
+            "path": "tests/fixtures",
+            "repositorySourceNarHash": "sha256-BQYHvWpEMIr3jWWFCrmAwgkxMgO5vTUfRSu6fYK9+To=",
+            "sourceNarHash": "sha256-Atx1xuClczHRfXU6KZ+SgWwwTN1fUjbwUWQVGtu1HXI=",
+            "binding": "Actual fixture subtree NAR computed with nix hash path; containing immutable purifier source revision/NAR also provided."
+          },
+          "supportingDerivationIds": [
+            "luarocks-purifier:app-tests:x86_64-linux"
+          ],
+          "sdkExecutions": [
+            {
+              "versions": {
+                "Lua": "5.4.9",
+                "LuaRocksBuildManager": "3.13.0"
+              },
+              "basis": "real-luacheck invokes realized luacheck wrapper, which explicitly execs lua5.4.9; collected package child drv runs the actual LuaRocks build. Lua5.1.5 is a separate native-CI point, not this sample runtime.",
+              "supportingDerivationIds": [
+                "luarocks-purifier:app-tests:x86_64-linux"
+              ]
+            }
+          ],
+          "gaps": []
+        }
+      ],
+      "bindingArtifacts": {
+        "mapping-inputs/luarocks-purifier/app-tests.json": "18b9b5fea1cc3c530fd4655c1fe7854efae1a4582b0b880a123adc0c5c4b1357",
+        "mapping-inputs/luarocks-purifier/app-tests.err": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "mapping-inputs/luarocks-purifier/real-luacheck.json": "67766b360a29fade7adb6066857918d99184bb4956b3b9c63417c2b99bcbddfa",
+        "mapping-inputs/luarocks-purifier/real-luacheck.err": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "mapping-inputs/luarocks-purifier/tests_fixtures-nar.json": "c138e27a0ec0e7c5a551554800f9f6b6d6aeac4c2847dd7fe1277df1eb7005ca",
+        "mapping-inputs/luarocks-purifier/child-y2jnb68k67rlj5zc1yr6d5wf6r4w8cv9-luacheck-dev-1.drv.json": "7f541417e8553a4f05cc1e640c81c883dd2a1d0b4f58cc6a9f8dc2fedec7d82b",
+        "mapping-inputs/luarocks-purifier/luacheck-invoked-wrapper.txt": "afbef32586ce1e5df4f5820a19472f116a14f3d6d287f506dd87190e8c0dc6ab",
+        "mapping-inputs/luarocks-purifier/luacheck-invoked-wrapper.txt.provenance.json": "31f0405f6d7eae0435f646b1fed063052599e0ab39cec5c7138ae1d84cd6315c"
+      },
+      "corrections": [
+        "Frozen project-wide Lua5.1.5 is a real separate native-CI point but must not label luacheck: its realized executable invokes Lua5.4.9. Current5.5.1 maps to actual native-CI job, not local default sample."
+      ]
+    },
+    "maven-purifier": {
+      "criteria": {
+        "evaluation": {
+          "state": "met",
+          "supportingDerivationIds": [
+            "maven-purifier:composition:x86_64-linux",
+            "maven-purifier:conformance-external:x86_64-linux",
+            "maven-purifier:conformance-malformed:x86_64-linux",
+            "maven-purifier:conformance-missing:x86_64-linux",
+            "maven-purifier:conformance-offline:x86_64-linux",
+            "maven-purifier:conformance-rebuild:x86_64-linux",
+            "maven-purifier:conformance-stale:x86_64-linux",
+            "maven-purifier:conformance-tampered:x86_64-linux",
+            "maven-purifier:jvm-projection:x86_64-linux",
+            "maven-purifier:multi-app:x86_64-linux",
+            "maven-purifier:multi-core:x86_64-linux",
+            "maven-purifier:multi-publish:x86_64-linux",
+            "maven-purifier:multi-runs:x86_64-linux",
+            "maven-purifier:multi-tests:x86_64-linux",
+            "maven-purifier:nix-library:x86_64-linux",
+            "maven-purifier:online-goal:x86_64-linux",
+            "maven-purifier:packaging:x86_64-linux",
+            "maven-purifier:real-world-gson:x86_64-linux",
+            "maven-purifier:real-world-gson-proto:x86_64-linux",
+            "maven-purifier:real-world-gson-tests:x86_64-linux",
+            "maven-purifier:sources:x86_64-linux",
+            "maven-purifier:sources-declared:x86_64-linux",
+            "maven-purifier:sources-tests:x86_64-linux",
+            "maven-purifier:standalone-projection:x86_64-linux",
+            "maven-purifier:treefmt:x86_64-linux",
+            "maven-purifier:unit-cli:x86_64-linux",
+            "maven-purifier:unit-extension:x86_64-linux",
+            "maven-purifier:wrapper-version:x86_64-linux"
+          ],
+          "nativeCiEvidencePointers": [],
+          "policySources": [],
+          "gap": null
+        },
+        "goodTests": {
+          "state": "met",
+          "supportingDerivationIds": [
+            "maven-purifier:composition:x86_64-linux",
+            "maven-purifier:conformance-external:x86_64-linux",
+            "maven-purifier:conformance-malformed:x86_64-linux",
+            "maven-purifier:conformance-missing:x86_64-linux",
+            "maven-purifier:conformance-offline:x86_64-linux",
+            "maven-purifier:conformance-rebuild:x86_64-linux",
+            "maven-purifier:conformance-stale:x86_64-linux",
+            "maven-purifier:conformance-tampered:x86_64-linux",
+            "maven-purifier:jvm-projection:x86_64-linux",
+            "maven-purifier:multi-app:x86_64-linux",
+            "maven-purifier:multi-core:x86_64-linux",
+            "maven-purifier:multi-publish:x86_64-linux",
+            "maven-purifier:multi-runs:x86_64-linux",
+            "maven-purifier:multi-tests:x86_64-linux",
+            "maven-purifier:nix-library:x86_64-linux",
+            "maven-purifier:online-goal:x86_64-linux",
+            "maven-purifier:packaging:x86_64-linux",
+            "maven-purifier:real-world-gson:x86_64-linux",
+            "maven-purifier:real-world-gson-proto:x86_64-linux",
+            "maven-purifier:real-world-gson-tests:x86_64-linux",
+            "maven-purifier:sources:x86_64-linux",
+            "maven-purifier:sources-declared:x86_64-linux",
+            "maven-purifier:sources-tests:x86_64-linux",
+            "maven-purifier:standalone-projection:x86_64-linux",
+            "maven-purifier:unit-cli:x86_64-linux",
+            "maven-purifier:unit-extension:x86_64-linux",
+            "maven-purifier:wrapper-version:x86_64-linux"
+          ],
+          "nativeCiEvidencePointers": [],
+          "policySources": [],
+          "gap": null
+        },
+        "linux": {
+          "state": "met",
+          "supportingDerivationIds": [
+            "maven-purifier:real-world-gson-tests:x86_64-linux",
+            "maven-purifier:real-world-gson:x86_64-linux",
+            "maven-purifier:multi-tests:x86_64-linux"
+          ],
+          "nativeCiEvidencePointers": [],
+          "policySources": [],
+          "gap": null
+        },
+        "darwin": {
+          "state": "not-met",
+          "supportingDerivationIds": [],
+          "nativeCiEvidencePointers": [],
+          "policySources": [],
+          "gap": "The inspected successful workflows execute Ubuntu x86_64/ARM only; no native Darwin SDK/build/test/output receipt exists for this public revision. Linux execution, Darwin lock entries or conditional systems do not establish Darwin runtime."
+        },
+        "oneVersion": {
+          "state": "met",
+          "supportingDerivationIds": [
+            "maven-purifier:real-world-gson-tests:x86_64-linux",
+            "maven-purifier:real-world-gson:x86_64-linux",
+            "maven-purifier:multi-tests:x86_64-linux"
+          ],
+          "nativeCiEvidencePointers": [],
+          "policySources": [],
+          "gap": null
+        },
+        "nonEolVersions": {
+          "state": "not-met",
+          "supportingDerivationIds": [],
+          "nativeCiEvidencePointers": [],
+          "policySources": [
+            "https://maven.apache.org/docs/history.html"
+          ],
+          "gap": "Apache's primary policy maintains only the last releases of the last two GA series:3.9.16 and3.10.0. Public-main fixture/Gson derivations execute3.10.0; public compatibility jobs execute3.9.11 rather than maintained3.9.16. Producer local3.9.16/3.10.0 receipts are recorded separately pending immutable reviewed-source binding. Thus public-main coverage of both maintained exact points is not yet established."
+        },
+        "manySamples": {
+          "state": "not-met",
+          "supportingDerivationIds": [
+            "maven-purifier:real-world-gson:x86_64-linux",
+            "maven-purifier:real-world-gson-proto:x86_64-linux",
+            "maven-purifier:real-world-gson-tests:x86_64-linux",
+            "maven-purifier:multi-tests:x86_64-linux",
+            "maven-purifier:multi-runs:x86_64-linux",
+            "maven-purifier:wrapper-version:x86_64-linux"
+          ],
+          "nativeCiEvidencePointers": [],
+          "policySources": [],
+          "gap": "Gson is one independent upstream reactor, including protobuf/JPMS modules; modules and controlled multi/sources/wrapper fixtures are not separate independently selected projects. The corpus is not broad enough to establish the many-samples judgment."
+        },
+        "longCompatibility": {
+          "state": "met",
+          "supportingDerivationIds": [],
+          "nativeCiEvidencePointers": [
+            "derivation-evidence.json#/projects/maven-purifier/historicalExecution/0",
+            "derivation-evidence.json#/projects/maven-purifier/historicalExecution/1",
+            "derivation-evidence.json#/projects/maven-purifier/historicalExecution/2",
+            "derivation-evidence.json#/projects/maven-purifier/historicalExecution/3",
+            "derivation-evidence.json#/projects/maven-purifier/historicalExecution/4",
+            "derivation-evidence.json#/projects/maven-purifier/historicalExecution/5"
+          ],
+          "policySources": [],
+          "gap": null
+        }
+      },
+      "sampleBuilds": [
+        {
+          "sampleBuildIndex": 0,
+          "name": "google/gson gson-parent-2.15.0 (independent-upstream)",
+          "kind": "independent-upstream",
+          "source": {
+            "repository": "https://github.com/google/gson",
+            "revision": "fcd416909db2bea96eb916bcfb2d0a83cb9b86c3",
+            "sourceNarHash": "sha256-Z6Ciixpi415JzF96ZACH9YR2Aq15uS/oPz1TxhQGRUQ=",
+            "binding": "Pinned fetchTree/fetchTarball/fetchFromGitHub or locked flake input consumed by successful executable sample graph; see source declaration in frozen source snapshot. Base32 fetchTarball hashes converted with nix hash convert, not fabricated output hashes."
+          },
+          "supportingDerivationIds": [
+            "maven-purifier:real-world-gson:x86_64-linux",
+            "maven-purifier:real-world-gson-proto:x86_64-linux",
+            "maven-purifier:real-world-gson-tests:x86_64-linux"
+          ],
+          "sdkExecutions": [
+            {
+              "versions": {
+                "Maven": "3.10.0",
+                "JDK": "21.0.12.1+1"
+              },
+              "basis": "real-world-gson-tests/multi-tests buildPhase explicitly sets JAVA_HOME21 and invokes maven3.10.0/bin/mvn offline clean install. wrapper-version separately invokes Maven3.9.11.",
+              "supportingDerivationIds": [
+                "maven-purifier:real-world-gson:x86_64-linux",
+                "maven-purifier:real-world-gson-proto:x86_64-linux",
+                "maven-purifier:real-world-gson-tests:x86_64-linux"
+              ]
+            }
+          ],
+          "gaps": []
+        },
+        {
+          "sampleBuildIndex": 1,
+          "name": "multi reactor, sources, wrapper and external (fixtures)",
+          "kind": "fixtures",
+          "source": {
+            "repository": "https://github.com/nix-purifiers/maven-purifier",
+            "revision": "b1560c561b576d5f6cbb2210a085ec0c6da806cb",
+            "path": "tests/fixtures",
+            "repositorySourceNarHash": "sha256-k9LZVbB/ZxwxbdFXRJc36qRz+cP5glH4IPUbDV55U0k=",
+            "sourceNarHash": "sha256-131gFdPkBx6pwfKyvd5z3H3MTDNZAj1PZrFiWo+U3FM=",
+            "binding": "Actual fixture subtree NAR computed with nix hash path; containing immutable purifier source revision/NAR also provided."
+          },
+          "supportingDerivationIds": [
+            "maven-purifier:multi-tests:x86_64-linux",
+            "maven-purifier:multi-runs:x86_64-linux",
+            "maven-purifier:wrapper-version:x86_64-linux"
+          ],
+          "sdkExecutions": [
+            {
+              "versions": {
+                "Maven": "3.10.0",
+                "JDK": "21.0.12.1+1"
+              },
+              "basis": "real-world-gson-tests/multi-tests buildPhase explicitly sets JAVA_HOME21 and invokes maven3.10.0/bin/mvn offline clean install. wrapper-version separately invokes Maven3.9.11.",
+              "supportingDerivationIds": [
+                "maven-purifier:multi-tests:x86_64-linux",
+                "maven-purifier:multi-runs:x86_64-linux",
+                "maven-purifier:wrapper-version:x86_64-linux"
+              ]
+            }
+          ],
+          "gaps": []
+        }
+      ],
+      "bindingArtifacts": {
+        "mapping-inputs/maven-purifier/multi-runs.json": "e7159670304c02a84615b74fe31e75e80f723afa850c9090ca607d64f6705bc0",
+        "mapping-inputs/maven-purifier/multi-runs.err": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "mapping-inputs/maven-purifier/multi-tests.json": "cfa8f7e1cef350ca49cee1f75c92553b9e93db7ff7d7ea9c31ab5ab55b91baca",
+        "mapping-inputs/maven-purifier/multi-tests.err": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "mapping-inputs/maven-purifier/real-world-gson.json": "2191b5671ab3d90b8b1b9865bf98fe6b7e4bbd243b425041ac6307a8f2abf361",
+        "mapping-inputs/maven-purifier/real-world-gson.err": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "mapping-inputs/maven-purifier/real-world-gson-proto.json": "2e0b7fb52305c643ca1cff58e86217c1f8f474b81dec9f8ebb1e942cee90f859",
+        "mapping-inputs/maven-purifier/real-world-gson-proto.err": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "mapping-inputs/maven-purifier/real-world-gson-tests.json": "7fa3f356495b5437c06f8b32fc23c4715033b6b7d67231d740391e87c3109f62",
+        "mapping-inputs/maven-purifier/real-world-gson-tests.err": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "mapping-inputs/maven-purifier/wrapper-version.json": "865bbb1e027ecf283b3d959d25e3c1c69319efdba1ba4218cd25c6d2396320cd",
+        "mapping-inputs/maven-purifier/wrapper-version.err": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "mapping-inputs/maven-purifier/tests_fixtures-nar.json": "e562062a1cfcbbf5f093fd3b64a7e83d52ac0099966159cadb7f672e5edfc2d0"
+      },
+      "corrections": []
+    },
+    "meson-purifier": {
+      "criteria": {
+        "evaluation": {
+          "state": "met",
+          "supportingDerivationIds": [
+            "meson-purifier:builder-package:x86_64-linux",
+            "meson-purifier:cli:x86_64-linux",
+            "meson-purifier:conformance-external:x86_64-linux",
+            "meson-purifier:conformance-malformed:x86_64-linux",
+            "meson-purifier:conformance-missing:x86_64-linux",
+            "meson-purifier:conformance-stale:x86_64-linux",
+            "meson-purifier:conformance-tampered:x86_64-linux",
+            "meson-purifier:fixture-app:x86_64-linux",
+            "meson-purifier:fixture-fetches:x86_64-linux",
+            "meson-purifier:fixture-packages:x86_64-linux",
+            "meson-purifier:fixture-release:x86_64-linux",
+            "meson-purifier:fixture-tests:x86_64-linux",
+            "meson-purifier:native-ffi:x86_64-linux",
+            "meson-purifier:real-world-rizin:x86_64-linux",
+            "meson-purifier:resource-schema:x86_64-linux",
+            "meson-purifier:toolchain:x86_64-linux",
+            "meson-purifier:treefmt:x86_64-linux",
+            "meson-purifier:wrap-file-reader:x86_64-linux"
+          ],
+          "nativeCiEvidencePointers": [],
+          "policySources": [],
+          "gap": null
+        },
+        "goodTests": {
+          "state": "met",
+          "supportingDerivationIds": [
+            "meson-purifier:builder-package:x86_64-linux",
+            "meson-purifier:conformance-external:x86_64-linux",
+            "meson-purifier:conformance-malformed:x86_64-linux",
+            "meson-purifier:conformance-missing:x86_64-linux",
+            "meson-purifier:conformance-stale:x86_64-linux",
+            "meson-purifier:conformance-tampered:x86_64-linux",
+            "meson-purifier:fixture-app:x86_64-linux",
+            "meson-purifier:fixture-fetches:x86_64-linux",
+            "meson-purifier:fixture-packages:x86_64-linux",
+            "meson-purifier:fixture-release:x86_64-linux",
+            "meson-purifier:fixture-tests:x86_64-linux",
+            "meson-purifier:native-ffi:x86_64-linux",
+            "meson-purifier:real-world-rizin:x86_64-linux",
+            "meson-purifier:resource-schema:x86_64-linux",
+            "meson-purifier:toolchain:x86_64-linux",
+            "meson-purifier:wrap-file-reader:x86_64-linux"
+          ],
+          "nativeCiEvidencePointers": [],
+          "policySources": [],
+          "gap": null
+        },
+        "linux": {
+          "state": "met",
+          "supportingDerivationIds": [
+            "meson-purifier:real-world-rizin:x86_64-linux",
+            "meson-purifier:fixture-tests:x86_64-linux",
+            "meson-purifier:native-ffi:x86_64-linux"
+          ],
+          "nativeCiEvidencePointers": [],
+          "policySources": [],
+          "gap": null
+        },
+        "darwin": {
+          "state": "not-met",
+          "supportingDerivationIds": [],
+          "nativeCiEvidencePointers": [],
+          "policySources": [],
+          "gap": "The inspected successful workflows execute Ubuntu x86_64/ARM only; no native Darwin SDK/build/test/output receipt exists for this public revision. Linux execution, Darwin lock entries or conditional systems do not establish Darwin runtime."
+        },
+        "oneVersion": {
+          "state": "met",
+          "supportingDerivationIds": [
+            "meson-purifier:real-world-rizin:x86_64-linux",
+            "meson-purifier:fixture-tests:x86_64-linux",
+            "meson-purifier:native-ffi:x86_64-linux"
+          ],
+          "nativeCiEvidencePointers": [],
+          "policySources": [],
+          "gap": null
+        },
+        "nonEolVersions": {
+          "state": "met",
+          "supportingDerivationIds": [
+            "meson-purifier:real-world-rizin:x86_64-linux",
+            "meson-purifier:fixture-tests:x86_64-linux",
+            "meson-purifier:native-ffi:x86_64-linux"
+          ],
+          "nativeCiEvidencePointers": [],
+          "policySources": [
+            "https://github.com/mesonbuild/meson/releases/tag/1.12.1",
+            "https://mesonbuild.com/Release-procedure.html"
+          ],
+          "gap": null
+        },
+        "manySamples": {
+          "state": "not-met",
+          "supportingDerivationIds": [
+            "meson-purifier:real-world-rizin:x86_64-linux",
+            "meson-purifier:fixture-tests:x86_64-linux",
+            "meson-purifier:native-ffi:x86_64-linux",
+            "meson-purifier:resource-schema:x86_64-linux"
+          ],
+          "nativeCiEvidencePointers": [],
+          "policySources": [],
+          "gap": "Rizin is one independent upstream project; the app and external/FFI/schema fixtures plus their wrap dependencies are not independent consumer samples. The executed corpus lacks broad independent consumer diversity."
+        },
+        "longCompatibility": {
+          "state": "not-met",
+          "supportingDerivationIds": [],
+          "nativeCiEvidencePointers": [],
+          "policySources": [],
+          "gap": "Public checks execute one pinned Meson1.12.1 toolchain. Fixture package version1.0.0 and Rizin0.8.2 are consumer versions, not old Meson runtime points, and do not establish historical Meson compatibility."
+        }
+      },
+      "sampleBuilds": [
+        {
+          "sampleBuildIndex": 0,
+          "name": "rizinorg/rizin0.8.2 (independent-upstream)",
+          "kind": "independent-upstream",
+          "source": {
+            "repository": "https://github.com/rizinorg/rizin",
+            "revision": "5a611eee2999d312317ff90d600e37dde0f58992",
+            "sourceNarHash": "sha256-+3p3urhcRBASLMAExXbSq0BnmlPqF8OSSnBPmGVTPZU=",
+            "binding": "Pinned fetchTree/fetchTarball/fetchFromGitHub or locked flake input consumed by successful executable sample graph; see source declaration in frozen source snapshot. Base32 fetchTarball hashes converted with nix hash convert, not fabricated output hashes."
+          },
+          "supportingDerivationIds": [
+            "meson-purifier:real-world-rizin:x86_64-linux"
+          ],
+          "sdkExecutions": [
+            {
+              "versions": {
+                "Meson": "1.12.1"
+              },
+              "basis": "fixture-tests and collected Rizin build dependency use actual Meson setup/build/test hook with selected meson1.12.1; real-world-rizin directly executes Rizin/rz-asm, not Meson itself.",
+              "supportingDerivationIds": [
+                "meson-purifier:real-world-rizin:x86_64-linux"
+              ]
+            }
+          ],
+          "gaps": []
+        },
+        {
+          "sampleBuildIndex": 1,
+          "name": "C app, external wraps, native FFI and resource-schema (fixtures)",
+          "kind": "fixtures",
+          "source": {
+            "repository": "https://github.com/nix-purifiers/meson-purifier",
+            "revision": "64f252d0df2f08cd81f3baad09d0faa69f9e0217",
+            "path": "tests/fixtures",
+            "repositorySourceNarHash": "sha256-vlcv16SJ6BNSqZ8ntZ9OxZCb5S8vKqgpsN52SLakxrQ=",
+            "sourceNarHash": "sha256-jj0tj8wDopksm4Y6znOSCS/PA4qHE6h8Gp/QN2Cbtag=",
+            "binding": "Actual fixture subtree NAR computed with nix hash path; containing immutable purifier source revision/NAR also provided."
+          },
+          "supportingDerivationIds": [
+            "meson-purifier:fixture-tests:x86_64-linux",
+            "meson-purifier:native-ffi:x86_64-linux",
+            "meson-purifier:resource-schema:x86_64-linux"
+          ],
+          "sdkExecutions": [
+            {
+              "versions": {
+                "Meson": "1.12.1"
+              },
+              "basis": "fixture-tests and collected Rizin build dependency use actual Meson setup/build/test hook with selected meson1.12.1; real-world-rizin directly executes Rizin/rz-asm, not Meson itself.",
+              "supportingDerivationIds": [
+                "meson-purifier:fixture-tests:x86_64-linux",
+                "meson-purifier:native-ffi:x86_64-linux",
+                "meson-purifier:resource-schema:x86_64-linux"
+              ]
+            }
+          ],
+          "gaps": []
+        }
+      ],
+      "bindingArtifacts": {
+        "mapping-inputs/meson-purifier/fixture-tests.json": "69ae1771cc29769df66d7c27db7e0c3a3f7c2f05f0f45330c686cca8ec0220e4",
+        "mapping-inputs/meson-purifier/fixture-tests.err": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "mapping-inputs/meson-purifier/native-ffi.json": "20341a2025e57ba997e92b361181f3eb00bef83409685cc160b61aed86ca37e5",
+        "mapping-inputs/meson-purifier/native-ffi.err": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "mapping-inputs/meson-purifier/real-world-rizin.json": "3b43e050b6b1894f90f50ef00fd417469b5465adc1aa3fb6d114a72f0c929f6c",
+        "mapping-inputs/meson-purifier/real-world-rizin.err": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "mapping-inputs/meson-purifier/resource-schema.json": "3ddc064c94286708815cb9c5c131d571bd8eea3c4b67a0eec40b6d2822978f48",
+        "mapping-inputs/meson-purifier/resource-schema.err": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "mapping-inputs/meson-purifier/tests_fixtures-nar.json": "256aaf523d4d072fda4d7f8010b978fe0d679507d503e1c9ced0c1e0973b78b0",
+        "mapping-inputs/meson-purifier/child-vzzisrgvnnzg6y94c9pmk8yvnlgszkfy-rizin.drv.json": "44bae279c7c2dd1e60520eaf996503f992873b01581b75d9eb552505877386f5",
+        "mapping-inputs/meson-purifier/child-kp6li7n18vmgk6skax97r7nbdihjbakr-rizin-0.8.2.drv.json": "17694d98840ba31275aaa400c39fa74f20725c00b02d90f8a225ef848880ee79"
+      },
+      "corrections": []
+    },
+    "mill-purifier": {
+      "criteria": {
+        "evaluation": {
+          "state": "met",
+          "supportingDerivationIds": [
+            "mill-purifier:cli:x86_64-linux",
+            "mill-purifier:composition:x86_64-linux",
+            "mill-purifier:conformance-external:x86_64-linux",
+            "mill-purifier:conformance-malformed:x86_64-linux",
+            "mill-purifier:conformance-missing:x86_64-linux",
+            "mill-purifier:conformance-offline:x86_64-linux",
+            "mill-purifier:conformance-other-version:x86_64-linux",
+            "mill-purifier:conformance-stale:x86_64-linux",
+            "mill-purifier:conformance-tampered:x86_64-linux",
+            "mill-purifier:definition-hash:x86_64-linux",
+            "mill-purifier:derived-urls:x86_64-linux",
+            "mill-purifier:jvm-projection:x86_64-linux",
+            "mill-purifier:polyglot-greeter:x86_64-linux",
+            "mill-purifier:polyglot-greeter-package:x86_64-linux",
+            "mill-purifier:polyglot-hello:x86_64-linux",
+            "mill-purifier:polyglot-hello-package:x86_64-linux",
+            "mill-purifier:polyglot-hello-run:x86_64-linux",
+            "mill-purifier:polyglot-release:x86_64-linux",
+            "mill-purifier:polyglot-versioned:x86_64-linux",
+            "mill-purifier:polyglot-versioned-package:x86_64-linux",
+            "mill-purifier:polyglot-versioned-run:x86_64-linux",
+            "mill-purifier:polyglot-versioned-untagged:x86_64-linux",
+            "mill-purifier:publisher-available:x86_64-linux",
+            "mill-purifier:read-lock:x86_64-linux",
+            "mill-purifier:real-world-fansi-packages:x86_64-linux",
+            "mill-purifier:real-world-fansi-release:x86_64-linux",
+            "mill-purifier:real-world-fansi-source:x86_64-linux",
+            "mill-purifier:real-world-fansi-tests:x86_64-linux",
+            "mill-purifier:real-world-fansi-version:x86_64-linux",
+            "mill-purifier:simple-core:x86_64-linux",
+            "mill-purifier:simple-core-artifacts:x86_64-linux",
+            "mill-purifier:simple-core-jar:x86_64-linux",
+            "mill-purifier:simple-release:x86_64-linux",
+            "mill-purifier:simple-run:x86_64-linux",
+            "mill-purifier:simple-tests:x86_64-linux",
+            "mill-purifier:standalone-projection:x86_64-linux",
+            "mill-purifier:treefmt:x86_64-linux"
+          ],
+          "nativeCiEvidencePointers": [],
+          "policySources": [],
+          "gap": null
+        },
+        "goodTests": {
+          "state": "met",
+          "supportingDerivationIds": [
+            "mill-purifier:composition:x86_64-linux",
+            "mill-purifier:conformance-external:x86_64-linux",
+            "mill-purifier:conformance-malformed:x86_64-linux",
+            "mill-purifier:conformance-missing:x86_64-linux",
+            "mill-purifier:conformance-offline:x86_64-linux",
+            "mill-purifier:conformance-other-version:x86_64-linux",
+            "mill-purifier:conformance-stale:x86_64-linux",
+            "mill-purifier:conformance-tampered:x86_64-linux",
+            "mill-purifier:definition-hash:x86_64-linux",
+            "mill-purifier:derived-urls:x86_64-linux",
+            "mill-purifier:jvm-projection:x86_64-linux",
+            "mill-purifier:polyglot-greeter:x86_64-linux",
+            "mill-purifier:polyglot-greeter-package:x86_64-linux",
+            "mill-purifier:polyglot-hello:x86_64-linux",
+            "mill-purifier:polyglot-hello-package:x86_64-linux",
+            "mill-purifier:polyglot-hello-run:x86_64-linux",
+            "mill-purifier:polyglot-release:x86_64-linux",
+            "mill-purifier:polyglot-versioned:x86_64-linux",
+            "mill-purifier:polyglot-versioned-package:x86_64-linux",
+            "mill-purifier:polyglot-versioned-run:x86_64-linux",
+            "mill-purifier:polyglot-versioned-untagged:x86_64-linux",
+            "mill-purifier:publisher-available:x86_64-linux",
+            "mill-purifier:read-lock:x86_64-linux",
+            "mill-purifier:real-world-fansi-packages:x86_64-linux",
+            "mill-purifier:real-world-fansi-release:x86_64-linux",
+            "mill-purifier:real-world-fansi-tests:x86_64-linux",
+            "mill-purifier:real-world-fansi-version:x86_64-linux",
+            "mill-purifier:simple-core:x86_64-linux",
+            "mill-purifier:simple-core-artifacts:x86_64-linux",
+            "mill-purifier:simple-core-jar:x86_64-linux",
+            "mill-purifier:simple-release:x86_64-linux",
+            "mill-purifier:simple-run:x86_64-linux",
+            "mill-purifier:simple-tests:x86_64-linux",
+            "mill-purifier:standalone-projection:x86_64-linux"
+          ],
+          "nativeCiEvidencePointers": [],
+          "policySources": [],
+          "gap": null
+        },
+        "linux": {
+          "state": "met",
+          "supportingDerivationIds": [
+            "mill-purifier:real-world-fansi-tests:x86_64-linux",
+            "mill-purifier:real-world-fansi-packages:x86_64-linux",
+            "mill-purifier:simple-tests:x86_64-linux"
+          ],
+          "nativeCiEvidencePointers": [],
+          "policySources": [],
+          "gap": null
+        },
+        "darwin": {
+          "state": "not-met",
+          "supportingDerivationIds": [],
+          "nativeCiEvidencePointers": [],
+          "policySources": [],
+          "gap": "The inspected successful workflows execute Ubuntu x86_64/ARM only; no native Darwin SDK/build/test/output receipt exists for this public revision. Linux execution, Darwin lock entries or conditional systems do not establish Darwin runtime."
+        },
+        "oneVersion": {
+          "state": "met",
+          "supportingDerivationIds": [
+            "mill-purifier:real-world-fansi-tests:x86_64-linux",
+            "mill-purifier:real-world-fansi-packages:x86_64-linux",
+            "mill-purifier:simple-tests:x86_64-linux"
+          ],
+          "nativeCiEvidencePointers": [],
+          "policySources": [],
+          "gap": null
+        },
+        "nonEolVersions": {
+          "state": "met",
+          "supportingDerivationIds": [
+            "mill-purifier:real-world-fansi-tests:x86_64-linux",
+            "mill-purifier:real-world-fansi-packages:x86_64-linux",
+            "mill-purifier:simple-tests:x86_64-linux"
+          ],
+          "nativeCiEvidencePointers": [],
+          "policySources": [
+            "https://github.com/com-lihaoyi/mill/blob/main/changelog.adoc",
+            "https://mill-build.org/mill/cli/installation-ide.html"
+          ],
+          "gap": null
+        },
+        "manySamples": {
+          "state": "not-met",
+          "supportingDerivationIds": [
+            "mill-purifier:real-world-fansi-tests:x86_64-linux",
+            "mill-purifier:real-world-fansi-packages:x86_64-linux",
+            "mill-purifier:simple-tests:x86_64-linux",
+            "mill-purifier:polyglot-versioned-run:x86_64-linux"
+          ],
+          "nativeCiEvidencePointers": [],
+          "policySources": [],
+          "gap": "fansi is one independent consumer. JVM/JS/Native and Scala-axis outputs are modules of that project; simple/ranged/polyglot are synthetic fixtures. This establishes useful feature breadth but not a broad independent project corpus."
+        },
+        "longCompatibility": {
+          "state": "not-met",
+          "supportingDerivationIds": [],
+          "nativeCiEvidencePointers": [],
+          "policySources": [],
+          "gap": "Mill1.0.0 and1.3.1 exercise two release points and distinct project layouts, but both are recent1.x behavior. No executed old0.x build grammar/manager generations or comparably long historical sequence is present; Scala axis variants do not substitute for old Mill execution."
+        }
+      },
+      "sampleBuilds": [
+        {
+          "sampleBuildIndex": 0,
+          "name": "com-lihaoyi/fansi0.5.1 (independent-upstream)",
+          "kind": "independent-upstream",
+          "source": {
+            "repository": "https://github.com/com-lihaoyi/fansi",
+            "revision": "387754bc1fc0be0ac787b195490275012d80c683",
+            "sourceNarHash": "sha256-51QTUIXv6srcK9w7y9f4uo57kj5Fnlv0CO1PdoPWw6s=",
+            "binding": "Pinned fetchTree/fetchTarball/fetchFromGitHub or locked flake input consumed by successful executable sample graph; see source declaration in frozen source snapshot. Base32 fetchTarball hashes converted with nix hash convert, not fabricated output hashes."
+          },
+          "supportingDerivationIds": [
+            "mill-purifier:real-world-fansi-tests:x86_64-linux",
+            "mill-purifier:real-world-fansi-packages:x86_64-linux"
+          ],
+          "sdkExecutions": [
+            {
+              "versions": {
+                "Mill": "1.0.0",
+                "JDK": "21.0.12.1+1"
+              },
+              "basis": "real-world-fansi-tests buildPhase explicitly java -jar .../mill-dist/1.0.0/... fansi.jvm[2.13.15].test.testForked. simple-tests uses separate Mill1.3.1, not the Fansi tool version.",
+              "supportingDerivationIds": [
+                "mill-purifier:real-world-fansi-tests:x86_64-linux",
+                "mill-purifier:real-world-fansi-packages:x86_64-linux"
+              ]
+            }
+          ],
+          "gaps": []
+        },
+        {
+          "sampleBuildIndex": 1,
+          "name": "simple, ranged and polyglot (fixtures)",
+          "kind": "fixtures",
+          "source": {
+            "repository": "https://github.com/nix-purifiers/mill-purifier",
+            "revision": "d2979cf74e3ce08bd1a40304d5a6581d34eb2027",
+            "path": "tests/fixtures",
+            "repositorySourceNarHash": "sha256-wR00gIXANg8qKfKEfo/oKnl6rE0mc9CoeQMiFi8pD34=",
+            "sourceNarHash": "sha256-R5BL24em+Kjlrc+/SoC5bf7lbvjbK0HdlC3vuQ42yLg=",
+            "binding": "Actual fixture subtree NAR computed with nix hash path; containing immutable purifier source revision/NAR also provided."
+          },
+          "supportingDerivationIds": [
+            "mill-purifier:simple-tests:x86_64-linux",
+            "mill-purifier:polyglot-versioned-run:x86_64-linux"
+          ],
+          "sdkExecutions": [
+            {
+              "versions": {
+                "Mill": "1.3.1",
+                "JDK": "21.0.12.1+1"
+              },
+              "basis": "simple-tests explicitly invokes selected mill-dist1.3.1; polyglot tests use their separately locked Mill SDK. Not the Fansi1.0.0 point.",
+              "supportingDerivationIds": [
+                "mill-purifier:simple-tests:x86_64-linux",
+                "mill-purifier:polyglot-versioned-run:x86_64-linux"
+              ]
+            }
+          ],
+          "gaps": []
+        }
+      ],
+      "bindingArtifacts": {
+        "mapping-inputs/mill-purifier/polyglot-versioned-run.json": "6dbb847cce6b9a1816901a84aef31ee9235bb813e9a2111cc761c71abdaba0be",
+        "mapping-inputs/mill-purifier/polyglot-versioned-run.err": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "mapping-inputs/mill-purifier/real-world-fansi-packages.json": "e4cab8312eb792d5bee51b37e20b8ff854b4b5a291ea46270dbc22bdfb8e3759",
+        "mapping-inputs/mill-purifier/real-world-fansi-packages.err": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "mapping-inputs/mill-purifier/real-world-fansi-tests.json": "06025e0992d7d2d2ae40794e5828856383fd1978c81945f8579c2cc5a33acc82",
+        "mapping-inputs/mill-purifier/real-world-fansi-tests.err": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "mapping-inputs/mill-purifier/simple-tests.json": "c09f846066a4ca0e8e81fcbd3df3bae3ea85798dbc3362f916f5efbfa2a282f9",
+        "mapping-inputs/mill-purifier/simple-tests.err": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "mapping-inputs/mill-purifier/tests_fixtures-nar.json": "20da586191aaddcd13fcf92e556d08e9d2ea4e8539bbcbddc9cdfb0c4e4d17f4"
+      },
+      "corrections": [
+        "Fansi1.0.0 and fixture1.3.1 are distinct executed Mill versions; never assign both to a single sample invocation."
+      ]
+    },
+    "mix-purifier": {
+      "criteria": {
+        "evaluation": {
+          "state": "met",
+          "supportingDerivationIds": [
+            "mix-purifier:basic-deps-accepted:x86_64-linux",
+            "mix-purifier:basic-escript:x86_64-linux",
+            "mix-purifier:basic-release:x86_64-linux",
+            "mix-purifier:basic-runs:x86_64-linux",
+            "mix-purifier:builder-override:x86_64-linux",
+            "mix-purifier:builder-refuses:x86_64-linux",
+            "mix-purifier:command:x86_64-linux",
+            "mix-purifier:conformance-external:x86_64-linux",
+            "mix-purifier:conformance-malformed:x86_64-linux",
+            "mix-purifier:conformance-missing:x86_64-linux",
+            "mix-purifier:conformance-offline:x86_64-linux",
+            "mix-purifier:conformance-rebuild:x86_64-linux",
+            "mix-purifier:conformance-relock:x86_64-linux",
+            "mix-purifier:conformance-stale:x86_64-linux",
+            "mix-purifier:conformance-tampered:x86_64-linux",
+            "mix-purifier:consumer-package:x86_64-linux",
+            "mix-purifier:credo-app:x86_64-linux",
+            "mix-purifier:credo-escript:x86_64-linux",
+            "mix-purifier:credo-hex-package:x86_64-linux",
+            "mix-purifier:credo-release:x86_64-linux",
+            "mix-purifier:credo-relock:x86_64-linux",
+            "mix-purifier:credo-tests:x86_64-linux",
+            "mix-purifier:future-lock-version:x86_64-linux",
+            "mix-purifier:git-deps-accepted:x86_64-linux",
+            "mix-purifier:git-relock:x86_64-linux",
+            "mix-purifier:git-runs:x86_64-linux",
+            "mix-purifier:git-tests:x86_64-linux",
+            "mix-purifier:hexrepo-deps-accepted:x86_64-linux",
+            "mix-purifier:hexrepo-relock:x86_64-linux",
+            "mix-purifier:hexrepo-runs:x86_64-linux",
+            "mix-purifier:missing-hex-repo:x86_64-linux",
+            "mix-purifier:missing-outputs:x86_64-linux",
+            "mix-purifier:outputs-known:x86_64-linux",
+            "mix-purifier:pathdep-relock:x86_64-linux",
+            "mix-purifier:pathdep-runs:x86_64-linux",
+            "mix-purifier:publish:x86_64-linux",
+            "mix-purifier:publish-relock:x86_64-linux",
+            "mix-purifier:reads-submodules:x86_64-linux",
+            "mix-purifier:scope-override:x86_64-linux",
+            "mix-purifier:stale-git-lock:x86_64-linux",
+            "mix-purifier:tampered-inner-checksum:x86_64-linux",
+            "mix-purifier:tool-lockfile:x86_64-linux",
+            "mix-purifier:treefmt:x86_64-linux",
+            "mix-purifier:umbrella-apps:x86_64-linux",
+            "mix-purifier:umbrella-deps-accepted:x86_64-linux",
+            "mix-purifier:umbrella-relock:x86_64-linux",
+            "mix-purifier:umbrella-runs:x86_64-linux",
+            "mix-purifier:unit:x86_64-linux",
+            "mix-purifier:unreadable-mix-lock:x86_64-linux",
+            "mix-purifier:update-relock:x86_64-linux"
+          ],
+          "nativeCiEvidencePointers": [],
+          "policySources": [],
+          "gap": null
+        },
+        "goodTests": {
+          "state": "met",
+          "supportingDerivationIds": [
+            "mix-purifier:basic-deps-accepted:x86_64-linux",
+            "mix-purifier:basic-escript:x86_64-linux",
+            "mix-purifier:basic-release:x86_64-linux",
+            "mix-purifier:basic-runs:x86_64-linux",
+            "mix-purifier:builder-override:x86_64-linux",
+            "mix-purifier:builder-refuses:x86_64-linux",
+            "mix-purifier:command:x86_64-linux",
+            "mix-purifier:conformance-external:x86_64-linux",
+            "mix-purifier:conformance-malformed:x86_64-linux",
+            "mix-purifier:conformance-missing:x86_64-linux",
+            "mix-purifier:conformance-offline:x86_64-linux",
+            "mix-purifier:conformance-rebuild:x86_64-linux",
+            "mix-purifier:conformance-relock:x86_64-linux",
+            "mix-purifier:conformance-stale:x86_64-linux",
+            "mix-purifier:conformance-tampered:x86_64-linux",
+            "mix-purifier:consumer-package:x86_64-linux",
+            "mix-purifier:credo-app:x86_64-linux",
+            "mix-purifier:credo-escript:x86_64-linux",
+            "mix-purifier:credo-hex-package:x86_64-linux",
+            "mix-purifier:credo-release:x86_64-linux",
+            "mix-purifier:credo-relock:x86_64-linux",
+            "mix-purifier:credo-tests:x86_64-linux",
+            "mix-purifier:future-lock-version:x86_64-linux",
+            "mix-purifier:git-deps-accepted:x86_64-linux",
+            "mix-purifier:git-relock:x86_64-linux",
+            "mix-purifier:git-runs:x86_64-linux",
+            "mix-purifier:git-tests:x86_64-linux",
+            "mix-purifier:hexrepo-deps-accepted:x86_64-linux",
+            "mix-purifier:hexrepo-relock:x86_64-linux",
+            "mix-purifier:hexrepo-runs:x86_64-linux",
+            "mix-purifier:missing-hex-repo:x86_64-linux",
+            "mix-purifier:missing-outputs:x86_64-linux",
+            "mix-purifier:outputs-known:x86_64-linux",
+            "mix-purifier:pathdep-relock:x86_64-linux",
+            "mix-purifier:pathdep-runs:x86_64-linux",
+            "mix-purifier:publish:x86_64-linux",
+            "mix-purifier:publish-relock:x86_64-linux",
+            "mix-purifier:reads-submodules:x86_64-linux",
+            "mix-purifier:scope-override:x86_64-linux",
+            "mix-purifier:stale-git-lock:x86_64-linux",
+            "mix-purifier:tampered-inner-checksum:x86_64-linux",
+            "mix-purifier:tool-lockfile:x86_64-linux",
+            "mix-purifier:umbrella-apps:x86_64-linux",
+            "mix-purifier:umbrella-deps-accepted:x86_64-linux",
+            "mix-purifier:umbrella-relock:x86_64-linux",
+            "mix-purifier:umbrella-runs:x86_64-linux",
+            "mix-purifier:unit:x86_64-linux",
+            "mix-purifier:unreadable-mix-lock:x86_64-linux",
+            "mix-purifier:update-relock:x86_64-linux"
+          ],
+          "nativeCiEvidencePointers": [],
+          "policySources": [],
+          "gap": null
+        },
+        "linux": {
+          "state": "met",
+          "supportingDerivationIds": [
+            "mix-purifier:credo-tests:x86_64-linux",
+            "mix-purifier:credo-escript:x86_64-linux",
+            "mix-purifier:git-tests:x86_64-linux"
+          ],
+          "nativeCiEvidencePointers": [],
+          "policySources": [],
+          "gap": null
+        },
+        "darwin": {
+          "state": "not-met",
+          "supportingDerivationIds": [],
+          "nativeCiEvidencePointers": [],
+          "policySources": [],
+          "gap": "The inspected successful workflows execute Ubuntu x86_64/ARM only; no native Darwin SDK/build/test/output receipt exists for this public revision. Linux execution, Darwin lock entries or conditional systems do not establish Darwin runtime."
+        },
+        "oneVersion": {
+          "state": "met",
+          "supportingDerivationIds": [
+            "mix-purifier:credo-tests:x86_64-linux",
+            "mix-purifier:credo-escript:x86_64-linux",
+            "mix-purifier:git-tests:x86_64-linux"
+          ],
+          "nativeCiEvidencePointers": [],
+          "policySources": [],
+          "gap": null
+        },
+        "nonEolVersions": {
+          "state": "not-met",
+          "supportingDerivationIds": [],
+          "nativeCiEvidencePointers": [],
+          "policySources": [
+            "https://elixir.hexdocs.pm/main/compatibility-and-deprecations.html",
+            "https://elixir-lang.org/docs/"
+          ],
+          "gap": "The executed Elixir1.18.5 point lies in a security-supported minor under upstream's current last-five-minors policy (1.16 through1.20), but no derivation matrix executes the other supported minors/current1.20 or verifies their OTP combinations. Thus a maintained-version breadth claim is not established.1.18 is not called EOL."
+        },
+        "manySamples": {
+          "state": "not-met",
+          "supportingDerivationIds": [
+            "mix-purifier:credo-tests:x86_64-linux",
+            "mix-purifier:credo-escript:x86_64-linux",
+            "mix-purifier:credo-hex-package:x86_64-linux",
+            "mix-purifier:git-tests:x86_64-linux",
+            "mix-purifier:basic-runs:x86_64-linux",
+            "mix-purifier:umbrella-runs:x86_64-linux",
+            "mix-purifier:pathdep-runs:x86_64-linux"
+          ],
+          "nativeCiEvidencePointers": [],
+          "policySources": [],
+          "gap": "Credo is one independent upstream consumer. Its release/escript/Hex outputs and the controlled dependency-layout fixtures are not independent projects, so broad consumer diversity is not demonstrated."
+        },
+        "longCompatibility": {
+          "state": "not-met",
+          "supportingDerivationIds": [],
+          "nativeCiEvidencePointers": [],
+          "policySources": [],
+          "gap": "All checked builds use the pinned Elixir1.18.5/OTP28 toolchain; Hex package versions and multiple Mix project layouts are not historical Elixir/OTP runtime points."
+        }
+      },
+      "sampleBuilds": [
+        {
+          "sampleBuildIndex": 0,
+          "name": "rrrene/credo1.7.19 (independent-upstream)",
+          "kind": "independent-upstream",
+          "source": {
+            "repository": "https://github.com/rrrene/credo",
+            "revision": "d4a88d49619ee354a61667841adf1d2fa0292127",
+            "sourceNarHash": "sha256-GjZNMEGMxRHM8X5IIIAc91rnI5PwhJG6ZXh7/8rkf5I=",
+            "binding": "Pinned fetchTree/fetchTarball/fetchFromGitHub or locked flake input consumed by successful executable sample graph; see source declaration in frozen source snapshot. Base32 fetchTarball hashes converted with nix hash convert, not fabricated output hashes."
+          },
+          "supportingDerivationIds": [
+            "mix-purifier:credo-tests:x86_64-linux",
+            "mix-purifier:credo-escript:x86_64-linux",
+            "mix-purifier:credo-hex-package:x86_64-linux"
+          ],
+          "sdkExecutions": [
+            {
+              "versions": {
+                "Elixir": "1.18.5",
+                "ErlangOTP": "28.5.0.8"
+              },
+              "basis": "credo-tests structuredAttrs.installPhase invokes mix test --no-deps-check, with exact Elixir1.18.5/Erlang28.5.0.8 nativeBuildInputs; actual native test invocation, not only closure membership.",
+              "supportingDerivationIds": [
+                "mix-purifier:credo-tests:x86_64-linux",
+                "mix-purifier:credo-escript:x86_64-linux",
+                "mix-purifier:credo-hex-package:x86_64-linux"
+              ]
+            }
+          ],
+          "gaps": []
+        },
+        {
+          "sampleBuildIndex": 1,
+          "name": "Hex, git, umbrella, path and named-repository projects (fixtures)",
+          "kind": "fixtures",
+          "source": {
+            "repository": "https://github.com/nix-purifiers/mix-purifier",
+            "revision": "0145ec2b1d2eb99e796f9ca96a015f9a42ede5c2",
+            "path": "tests/fixtures",
+            "repositorySourceNarHash": "sha256-PeF1AtVYEIHfiNVpfuI1JdQFvViilkP2iTzQ2nY9Ha4=",
+            "sourceNarHash": "sha256-btE00/YSMrnFY0PbqmAQVNpT4DuEdy3hxBqtkJiBVeU=",
+            "binding": "Actual fixture subtree NAR computed with nix hash path; containing immutable purifier source revision/NAR also provided."
+          },
+          "supportingDerivationIds": [
+            "mix-purifier:git-tests:x86_64-linux",
+            "mix-purifier:basic-runs:x86_64-linux",
+            "mix-purifier:umbrella-runs:x86_64-linux",
+            "mix-purifier:pathdep-runs:x86_64-linux"
+          ],
+          "sdkExecutions": [
+            {
+              "versions": {
+                "Elixir": "1.18.5",
+                "ErlangOTP": "28.5.0.8"
+              },
+              "basis": "credo-tests structuredAttrs.installPhase invokes mix test --no-deps-check, with exact Elixir1.18.5/Erlang28.5.0.8 nativeBuildInputs; actual native test invocation, not only closure membership.",
+              "supportingDerivationIds": [
+                "mix-purifier:git-tests:x86_64-linux",
+                "mix-purifier:basic-runs:x86_64-linux",
+                "mix-purifier:umbrella-runs:x86_64-linux",
+                "mix-purifier:pathdep-runs:x86_64-linux"
+              ]
+            }
+          ],
+          "gaps": []
+        }
+      ],
+      "bindingArtifacts": {
+        "mapping-inputs/mix-purifier/basic-runs.json": "e281fbd423e0c3870b229a9fbdf16c3478ae5797949e0a6d5c3ffce27fd5e2e2",
+        "mapping-inputs/mix-purifier/basic-runs.err": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "mapping-inputs/mix-purifier/credo-escript.json": "2b497a67ead8cec5417dcedd7dac24a37904c8185df13c74e63f42f549fd6a71",
+        "mapping-inputs/mix-purifier/credo-escript.err": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "mapping-inputs/mix-purifier/credo-hex-package.json": "093139c2f17458672c1f7e33d288958abbd788febf59aa0d2bf4361c9314a3ab",
+        "mapping-inputs/mix-purifier/credo-hex-package.err": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "mapping-inputs/mix-purifier/credo-tests.json": "8210c3db9fbfdb9ca73771ad7d21b3c8408db94c47aa1f465f98bfe031ecf8b5",
+        "mapping-inputs/mix-purifier/credo-tests.err": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "mapping-inputs/mix-purifier/git-tests.json": "2813d93ec63a9f7b2954b4c85d99e35eca52bf6c127972379f4ae8d8f6345feb",
+        "mapping-inputs/mix-purifier/git-tests.err": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "mapping-inputs/mix-purifier/pathdep-runs.json": "7b36d707f96925f349107d8e6edd1f32a1425977f93f9da24d5ebc1620bd2741",
+        "mapping-inputs/mix-purifier/pathdep-runs.err": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "mapping-inputs/mix-purifier/umbrella-runs.json": "ecc58e1e91256d51ba916bcf0c2e2f05f13787c8832cc46e850ebf5c8a9a5715",
+        "mapping-inputs/mix-purifier/umbrella-runs.err": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "mapping-inputs/mix-purifier/tests_fixtures-nar.json": "cca2cb452ea8dcf1a5a2e5174af05db3b0ada5bae1e353c4febeb26493076e50"
+      },
+      "corrections": []
+    },
+    "nimble-purifier": {
+      "criteria": {
+        "evaluation": {
+          "state": "met",
+          "supportingDerivationIds": [
+            "nimble-purifier:cli:x86_64-linux",
+            "nimble-purifier:environment:x86_64-linux",
+            "nimble-purifier:project:x86_64-linux",
+            "nimble-purifier:release:x86_64-linux"
+          ],
+          "nativeCiEvidencePointers": [],
+          "policySources": [],
+          "gap": null
+        },
+        "goodTests": {
+          "state": "met",
+          "supportingDerivationIds": [
+            "nimble-purifier:environment:x86_64-linux",
+            "nimble-purifier:project:x86_64-linux",
+            "nimble-purifier:release:x86_64-linux"
+          ],
+          "nativeCiEvidencePointers": [],
+          "policySources": [],
+          "gap": null
+        },
+        "linux": {
+          "state": "met",
+          "supportingDerivationIds": [
+            "nimble-purifier:project:x86_64-linux",
+            "nimble-purifier:environment:x86_64-linux",
+            "nimble-purifier:release:x86_64-linux"
+          ],
+          "nativeCiEvidencePointers": [],
+          "policySources": [],
+          "gap": null
+        },
+        "darwin": {
+          "state": "not-met",
+          "supportingDerivationIds": [],
+          "nativeCiEvidencePointers": [],
+          "policySources": [],
+          "gap": "The inspected successful workflows execute Ubuntu x86_64/ARM only; no native Darwin SDK/build/test/output receipt exists for this public revision. Linux execution, Darwin lock entries or conditional systems do not establish Darwin runtime."
+        },
+        "oneVersion": {
+          "state": "met",
+          "supportingDerivationIds": [
+            "nimble-purifier:project:x86_64-linux",
+            "nimble-purifier:environment:x86_64-linux",
+            "nimble-purifier:release:x86_64-linux"
+          ],
+          "nativeCiEvidencePointers": [],
+          "policySources": [],
+          "gap": null
+        },
+        "nonEolVersions": {
+          "state": "not-met",
+          "supportingDerivationIds": [],
+          "nativeCiEvidencePointers": [],
+          "policySources": [
+            "https://nim-lang.org/install.html",
+            "https://nim-lang.org/faq.html"
+          ],
+          "gap": "The executed pair is Nim2.2.12/Nimble0.26.0. Fresh primary release API identifies current Nimble0.26.2 and Nim downloads list2.2.14/2.4.0; none is executed by the reviewed Nix sample. This is a specific current SDK execution gap; no EOL status is inferred for the old pair merely from newer releases."
+        },
+        "manySamples": {
+          "state": "not-met",
+          "supportingDerivationIds": [
+            "nimble-purifier:project:x86_64-linux"
+          ],
+          "nativeCiEvidencePointers": [],
+          "policySources": [],
+          "gap": "Only examples/minimal is built as a consumer. Dependencies and repeated lifecycle runs of that project are not separate independently selected upstream projects."
+        },
+        "longCompatibility": {
+          "state": "not-met",
+          "supportingDerivationIds": [],
+          "nativeCiEvidencePointers": [],
+          "policySources": [],
+          "gap": "The check set fixes Nim2.2.12/Nimble0.26.0; no old compiler/Nimble runtime matrix is executed. Profiles/editor checks vary workflow context rather than historical tool versions."
+        }
+      },
+      "sampleBuilds": [
+        {
+          "sampleBuildIndex": 0,
+          "name": "Repository examples/minimal Nim project (fixture)",
+          "kind": "fixture",
+          "source": {
+            "repository": "https://github.com/nix-purifiers/nimble-purifier",
+            "revision": "b2cf33a6d5a6ed716b1cb48e9eb836e271af29a6",
+            "path": "examples/minimal",
+            "repositorySourceNarHash": "sha256-cMpQtq2Lw72oMjSjxLxeHnyjHqubz/MIxmhR7cFnZNw=",
+            "sourceNarHash": "sha256-7702rwLS9PomjkJgJTMCG2BEKCuFB2to+lHPilW64rI=",
+            "binding": "Actual fixture subtree NAR computed with nix hash path; containing immutable purifier source revision/NAR also provided."
+          },
+          "supportingDerivationIds": [
+            "nimble-purifier:project:x86_64-linux"
+          ],
+          "sdkExecutions": [
+            {
+              "versions": {
+                "Nimble": "0.26.0",
+                "Nim": "2.2.12"
+              },
+              "basis": "project invokes nimble setup/build/test. Realized toolchain nimble wrapper explicitly execs nimble0.26.0 with --nim:<nim-wrapper2.2.12>/bin/nim --useSystemNim; saved wrapper text.",
+              "supportingDerivationIds": [
+                "nimble-purifier:project:x86_64-linux"
+              ]
+            }
+          ],
+          "gaps": []
+        }
+      ],
+      "bindingArtifacts": {
+        "mapping-inputs/nimble-purifier/environment.json": "de7df65ff2ed570a464b6458874788c8409ea27e0070dc8873368343a633cc64",
+        "mapping-inputs/nimble-purifier/environment.err": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "mapping-inputs/nimble-purifier/project.json": "5193dfcf579aa267dc22eff5cd87f3d7275c04d3f7e9242081df02784e1dccf0",
+        "mapping-inputs/nimble-purifier/project.err": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "mapping-inputs/nimble-purifier/release.json": "1a5a83cb817dc9349d4ea8f21b69246b6a7af416e162519bf5869e3ba432bc89",
+        "mapping-inputs/nimble-purifier/release.err": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "mapping-inputs/nimble-purifier/examples_minimal-nar.json": "e8026414ae6882812d359c8ecf6e7a1e0aa3112d24e80d7c450d4f35269db0ce",
+        "mapping-inputs/nimble-purifier/nimble-invoked-wrapper.txt": "4021ff7f195556fcfee6a72a91439f6e190c58362632b3dea72db9c3b6223195",
+        "mapping-inputs/nimble-purifier/nimble-invoked-wrapper.txt.provenance.json": "b5aaa7a4be5aaad99ecaedd9c2c94e51e43d54c56328f315efc516ea57742c13"
+      },
+      "corrections": []
+    },
+    "npm-purifier": {
+      "criteria": {
+        "evaluation": {
+          "state": "met",
+          "supportingDerivationIds": [
+            "npm-purifier:app:x86_64-linux",
+            "npm-purifier:builder-override:x86_64-linux",
+            "npm-purifier:cache-path:x86_64-linux",
+            "npm-purifier:composition-producer:x86_64-linux",
+            "npm-purifier:conformance-external:x86_64-linux",
+            "npm-purifier:conformance-malformed:x86_64-linux",
+            "npm-purifier:conformance-missing:x86_64-linux",
+            "npm-purifier:conformance-stale:x86_64-linux",
+            "npm-purifier:conformance-tampered:x86_64-linux",
+            "npm-purifier:consumer-package:x86_64-linux",
+            "npm-purifier:git:x86_64-linux",
+            "npm-purifier:git-repository:x86_64-linux",
+            "npm-purifier:git-without-purifier-lock:x86_64-linux",
+            "npm-purifier:interactive:x86_64-linux",
+            "npm-purifier:legacy-lock-tree:x86_64-linux",
+            "npm-purifier:legacy-node:x86_64-linux",
+            "npm-purifier:legacy-node-tools:x86_64-linux",
+            "npm-purifier:lock-in-memory:x86_64-linux",
+            "npm-purifier:lock-run-units:x86_64-linux",
+            "npm-purifier:missing-integrity:x86_64-linux",
+            "npm-purifier:node-lts-10:x86_64-linux",
+            "npm-purifier:node-lts-10-tools:x86_64-linux",
+            "npm-purifier:node-lts-14:x86_64-linux",
+            "npm-purifier:node-lts-14-tools:x86_64-linux",
+            "npm-purifier:node-lts-16:x86_64-linux",
+            "npm-purifier:node-lts-16-tools:x86_64-linux",
+            "npm-purifier:node-lts-18:x86_64-linux",
+            "npm-purifier:node-lts-18-tools:x86_64-linux",
+            "npm-purifier:node-lts-20:x86_64-linux",
+            "npm-purifier:node-lts-20-tools:x86_64-linux",
+            "npm-purifier:node-lts-22:x86_64-linux",
+            "npm-purifier:node-lts-22-tools:x86_64-linux",
+            "npm-purifier:node-lts-26:x86_64-linux",
+            "npm-purifier:node-lts-26-tools:x86_64-linux",
+            "npm-purifier:node-lts-8:x86_64-linux",
+            "npm-purifier:node-lts-8-tools:x86_64-linux",
+            "npm-purifier:npm:x86_64-linux",
+            "npm-purifier:npm-projection:x86_64-linux",
+            "npm-purifier:npm-purifier-command:x86_64-linux",
+            "npm-purifier:old-lockfile:x86_64-linux",
+            "npm-purifier:paths:x86_64-linux",
+            "npm-purifier:platform-filter:x86_64-linux",
+            "npm-purifier:publish:x86_64-linux",
+            "npm-purifier:publish-build:x86_64-linux",
+            "npm-purifier:real-commander:x86_64-linux",
+            "npm-purifier:real-http-server:x86_64-linux",
+            "npm-purifier:scope-override:x86_64-linux",
+            "npm-purifier:shrinkwrap-node-4:x86_64-linux",
+            "npm-purifier:shrinkwrap-node-4-tools:x86_64-linux",
+            "npm-purifier:shrinkwrap-node-6:x86_64-linux",
+            "npm-purifier:shrinkwrap-node-6-tools:x86_64-linux",
+            "npm-purifier:tampered-commit:x86_64-linux",
+            "npm-purifier:tampered-tarball:x86_64-linux",
+            "npm-purifier:treefmt:x86_64-linux",
+            "npm-purifier:unknown-source:x86_64-linux",
+            "npm-purifier:webjar:x86_64-linux",
+            "npm-purifier:workspaces:x86_64-linux",
+            "npm-purifier:workspaces-root:x86_64-linux"
+          ],
+          "nativeCiEvidencePointers": [],
+          "policySources": [],
+          "gap": null
+        },
+        "goodTests": {
+          "state": "met",
+          "supportingDerivationIds": [
+            "npm-purifier:app:x86_64-linux",
+            "npm-purifier:builder-override:x86_64-linux",
+            "npm-purifier:cache-path:x86_64-linux",
+            "npm-purifier:composition-producer:x86_64-linux",
+            "npm-purifier:conformance-external:x86_64-linux",
+            "npm-purifier:conformance-malformed:x86_64-linux",
+            "npm-purifier:conformance-missing:x86_64-linux",
+            "npm-purifier:conformance-stale:x86_64-linux",
+            "npm-purifier:conformance-tampered:x86_64-linux",
+            "npm-purifier:consumer-package:x86_64-linux",
+            "npm-purifier:git:x86_64-linux",
+            "npm-purifier:git-repository:x86_64-linux",
+            "npm-purifier:git-without-purifier-lock:x86_64-linux",
+            "npm-purifier:interactive:x86_64-linux",
+            "npm-purifier:legacy-lock-tree:x86_64-linux",
+            "npm-purifier:legacy-node:x86_64-linux",
+            "npm-purifier:legacy-node-tools:x86_64-linux",
+            "npm-purifier:lock-in-memory:x86_64-linux",
+            "npm-purifier:lock-run-units:x86_64-linux",
+            "npm-purifier:missing-integrity:x86_64-linux",
+            "npm-purifier:node-lts-10:x86_64-linux",
+            "npm-purifier:node-lts-10-tools:x86_64-linux",
+            "npm-purifier:node-lts-14:x86_64-linux",
+            "npm-purifier:node-lts-14-tools:x86_64-linux",
+            "npm-purifier:node-lts-16:x86_64-linux",
+            "npm-purifier:node-lts-16-tools:x86_64-linux",
+            "npm-purifier:node-lts-18:x86_64-linux",
+            "npm-purifier:node-lts-18-tools:x86_64-linux",
+            "npm-purifier:node-lts-20:x86_64-linux",
+            "npm-purifier:node-lts-20-tools:x86_64-linux",
+            "npm-purifier:node-lts-22:x86_64-linux",
+            "npm-purifier:node-lts-22-tools:x86_64-linux",
+            "npm-purifier:node-lts-26:x86_64-linux",
+            "npm-purifier:node-lts-26-tools:x86_64-linux",
+            "npm-purifier:node-lts-8:x86_64-linux",
+            "npm-purifier:node-lts-8-tools:x86_64-linux",
+            "npm-purifier:npm:x86_64-linux",
+            "npm-purifier:npm-projection:x86_64-linux",
+            "npm-purifier:npm-purifier-command:x86_64-linux",
+            "npm-purifier:old-lockfile:x86_64-linux",
+            "npm-purifier:paths:x86_64-linux",
+            "npm-purifier:platform-filter:x86_64-linux",
+            "npm-purifier:publish:x86_64-linux",
+            "npm-purifier:publish-build:x86_64-linux",
+            "npm-purifier:real-commander:x86_64-linux",
+            "npm-purifier:real-http-server:x86_64-linux",
+            "npm-purifier:scope-override:x86_64-linux",
+            "npm-purifier:shrinkwrap-node-4:x86_64-linux",
+            "npm-purifier:shrinkwrap-node-4-tools:x86_64-linux",
+            "npm-purifier:shrinkwrap-node-6:x86_64-linux",
+            "npm-purifier:shrinkwrap-node-6-tools:x86_64-linux",
+            "npm-purifier:tampered-commit:x86_64-linux",
+            "npm-purifier:tampered-tarball:x86_64-linux",
+            "npm-purifier:unknown-source:x86_64-linux",
+            "npm-purifier:webjar:x86_64-linux",
+            "npm-purifier:workspaces:x86_64-linux",
+            "npm-purifier:workspaces-root:x86_64-linux"
+          ],
+          "nativeCiEvidencePointers": [],
+          "policySources": [],
+          "gap": null
+        },
+        "linux": {
+          "state": "met",
+          "supportingDerivationIds": [
+            "npm-purifier:real-commander:x86_64-linux",
+            "npm-purifier:real-http-server:x86_64-linux",
+            "npm-purifier:node-lts-22:x86_64-linux",
+            "npm-purifier:node-lts-26:x86_64-linux"
+          ],
+          "nativeCiEvidencePointers": [],
+          "policySources": [],
+          "gap": null
+        },
+        "darwin": {
+          "state": "not-met",
+          "supportingDerivationIds": [],
+          "nativeCiEvidencePointers": [],
+          "policySources": [],
+          "gap": "The inspected successful workflows execute Ubuntu x86_64/ARM only; no native Darwin SDK/build/test/output receipt exists for this public revision. Linux execution, Darwin lock entries or conditional systems do not establish Darwin runtime."
+        },
+        "oneVersion": {
+          "state": "met",
+          "supportingDerivationIds": [
+            "npm-purifier:real-commander:x86_64-linux",
+            "npm-purifier:real-http-server:x86_64-linux",
+            "npm-purifier:node-lts-22:x86_64-linux",
+            "npm-purifier:node-lts-26:x86_64-linux"
+          ],
+          "nativeCiEvidencePointers": [],
+          "policySources": [],
+          "gap": null
+        },
+        "nonEolVersions": {
+          "state": "not-met",
+          "supportingDerivationIds": [],
+          "nativeCiEvidencePointers": [],
+          "policySources": [
+            "https://github.com/nodejs/Release",
+            "https://nodejs.org/en/about/previous-releases",
+            "https://github.com/npm/cli/wiki/Release-Process",
+            "https://docs.npmjs.com/about-npm-versions/"
+          ],
+          "gap": "Public-main derivations/native jobs execute maintained Node22/24/26 line points with npm10.9.2/11.19.0/11.12.1. However npm own primary Release Process supports only npm@latest (no npm LTS), and fresh API identifies12.2.2. No public-main derivation executes npm12.2.2. Node-line coverage is real but cannot establish the separate current npm-manager criterion; producer latest-point work is pending and not substituted into this snapshot."
+        },
+        "manySamples": {
+          "state": "not-met",
+          "supportingDerivationIds": [
+            "npm-purifier:real-commander:x86_64-linux",
+            "npm-purifier:real-http-server:x86_64-linux",
+            "npm-purifier:workspaces:x86_64-linux",
+            "npm-purifier:paths:x86_64-linux",
+            "npm-purifier:git:x86_64-linux"
+          ],
+          "nativeCiEvidencePointers": [],
+          "policySources": [],
+          "gap": "Commander and http-server supply independent library/CLI samples and meaningful test coverage, but they remain a narrow JavaScript consumer set. Workspace/path/Git/WebJar/legacy fixture variants do not add independent consumers; there is no broad corpus exercising distinct native-addon/framework/application projects, so the Tier1 many-samples judgment is not demonstrated."
+        },
+        "longCompatibility": {
+          "state": "met",
+          "supportingDerivationIds": [],
+          "nativeCiEvidencePointers": [
+            "derivation-evidence.json#/projects/npm-purifier/historicalExecution/0",
+            "derivation-evidence.json#/projects/npm-purifier/historicalExecution/1"
+          ],
+          "policySources": [],
+          "gap": null
+        }
+      },
+      "sampleBuilds": [
+        {
+          "sampleBuildIndex": 0,
+          "name": "tj/commander.js15.0.0 (independent-upstream)",
+          "kind": "independent-upstream",
+          "source": {
+            "repository": "https://github.com/tj/commander.js",
+            "revision": "ba6d13ddb4243e5913367734f8c159089ffe7834",
+            "sourceNarHash": "sha256-9RE6NdU3sO7pT/NGH4CoqyHCJZMNURjCCouSNmz00wo=",
+            "binding": "Pinned fetchTree/fetchTarball/fetchFromGitHub or locked flake input consumed by successful executable sample graph; see source declaration in frozen source snapshot. Base32 fetchTarball hashes converted with nix hash convert, not fabricated output hashes."
+          },
+          "supportingDerivationIds": [
+            "npm-purifier:real-commander:x86_64-linux"
+          ],
+          "sdkExecutions": [
+            {
+              "versions": {
+                "Node": "24.21.0",
+                "npm": "11.19.0"
+              },
+              "basis": "Commander child npm-project-tests buildPhase invokes npm --version/npm ci/npm run test and node with selected node24.21.0 nativeBuildInputs; actual invoked npm package.json reports11.19.0, saved. Node22/26 are separate check tuples.",
+              "supportingDerivationIds": [
+                "npm-purifier:real-commander:x86_64-linux"
+              ]
+            }
+          ],
+          "gaps": []
+        },
+        {
+          "sampleBuildIndex": 1,
+          "name": "http-party/http-server14.1.2 (independent-upstream)",
+          "kind": "independent-upstream",
+          "source": {
+            "repository": "https://github.com/http-party/http-server",
+            "revision": "0d3b7bb5b6e8a59fd450ae2dca65870009cfcd8b",
+            "sourceNarHash": "sha256-9jDm4+idPiycUY1Br1s78AvLLTH4pC47M18e4olSZXc=",
+            "binding": "Pinned fetchTree/fetchTarball/fetchFromGitHub or locked flake input consumed by successful executable sample graph; see source declaration in frozen source snapshot. Base32 fetchTarball hashes converted with nix hash convert, not fabricated output hashes."
+          },
+          "supportingDerivationIds": [
+            "npm-purifier:real-http-server:x86_64-linux"
+          ],
+          "sdkExecutions": [
+            {
+              "versions": {
+                "Node": "24.21.0",
+                "npm": "11.19.0"
+              },
+              "basis": "Commander child npm-project-tests buildPhase invokes npm --version/npm ci/npm run test and node with selected node24.21.0 nativeBuildInputs; actual invoked npm package.json reports11.19.0, saved. Node22/26 are separate check tuples.",
+              "supportingDerivationIds": [
+                "npm-purifier:real-http-server:x86_64-linux"
+              ]
+            }
+          ],
+          "gaps": []
+        },
+        {
+          "sampleBuildIndex": 2,
+          "name": "app/workspaces/path/git/webjar/legacy node (fixtures)",
+          "kind": "fixtures",
+          "source": {
+            "repository": "https://github.com/nix-purifiers/npm-purifier",
+            "revision": "3fa35f99bf459e2692849c1ecd570547c88a9dde",
+            "path": "tests/fixtures",
+            "repositorySourceNarHash": "sha256-NXhV8vvssfx9ADMRdBAn0Gh+BR65h60abLmPLzs2BZY=",
+            "sourceNarHash": "sha256-rz+QNVi0zCtC+FvNow/67N18SNtE6D7VpOg+CTtBk9k=",
+            "binding": "Actual fixture subtree NAR computed with nix hash path; containing immutable purifier source revision/NAR also provided."
+          },
+          "supportingDerivationIds": [
+            "npm-purifier:workspaces:x86_64-linux",
+            "npm-purifier:paths:x86_64-linux",
+            "npm-purifier:git:x86_64-linux"
+          ],
+          "sdkExecutions": [
+            {
+              "versions": {
+                "Node": "24.21.0",
+                "npm": "11.19.0"
+              },
+              "basis": "Commander child npm-project-tests buildPhase invokes npm --version/npm ci/npm run test and node with selected node24.21.0 nativeBuildInputs; actual invoked npm package.json reports11.19.0, saved. Node22/26 are separate check tuples.",
+              "supportingDerivationIds": [
+                "npm-purifier:workspaces:x86_64-linux",
+                "npm-purifier:paths:x86_64-linux",
+                "npm-purifier:git:x86_64-linux"
+              ]
+            }
+          ],
+          "gaps": []
+        }
+      ],
+      "bindingArtifacts": {
+        "mapping-inputs/npm-purifier/git.json": "be11af9a7800bef5e99d46bf70796a091d97a5746f50840fb2aa0b16af8655ae",
+        "mapping-inputs/npm-purifier/git.err": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "mapping-inputs/npm-purifier/node-lts-22.json": "15e1c3f4208402f3f61e3d88c6945646d6f2df6b3d226c15e68d27b9608ccc31",
+        "mapping-inputs/npm-purifier/node-lts-22.err": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "mapping-inputs/npm-purifier/node-lts-26.json": "291d0feae70c2fda54db98b9c7028da8451d827a15e3abb528cdb3100610d518",
+        "mapping-inputs/npm-purifier/node-lts-26.err": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "mapping-inputs/npm-purifier/paths.json": "e3a211b594247f8a3d5082c9d46b4e120ea76135929f59c9805b63064b1a2dcf",
+        "mapping-inputs/npm-purifier/paths.err": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "mapping-inputs/npm-purifier/real-commander.json": "03f41a1287f8f28b151347ada860792b29eecab876494debb20256dca2d3ce40",
+        "mapping-inputs/npm-purifier/real-commander.err": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "mapping-inputs/npm-purifier/real-http-server.json": "2a8224d988ca88a8e6ed6a02b966f2d3f3291928d7638fba4524d20174d48d2e",
+        "mapping-inputs/npm-purifier/real-http-server.err": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "mapping-inputs/npm-purifier/workspaces.json": "ac065db645936305477f1fc31a14b9630cd82c7b2855b7fc1171b83efb5656f1",
+        "mapping-inputs/npm-purifier/workspaces.err": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "mapping-inputs/npm-purifier/tests_fixtures-nar.json": "4761059ebaa8a615cfcd856689a3b0e87a203e0efecee637bb46c7c08feac11a",
+        "mapping-inputs/npm-purifier/child-1hqzba3sxk6i36bww182ad9gszzwaarp-npm-project-tests.drv.json": "eb6981d5d741a8b7cde2249d115a0a616b068322810d9a2d09977dd01d8b23f9",
+        "mapping-inputs/npm-purifier/child-803plgycsig9lyq6f7j13qq76mks1z9m-http-server-14.1.2.drv.json": "2508da7ec044d79205c2a830c81eb3b72d88fd2b73c4ade3595b67f52ff2fd3d",
+        "mapping-inputs/npm-purifier/child-gpgwrdjx1p4qyj75sxr1rfi7p80gpgnx-npm-project-release.drv.json": "9e9b2385d4b0142bb78473b667c13694c8c45d46f7f5d8e36baad9123512023b",
+        "mapping-inputs/npm-purifier/invoked-npm-package.json": "09dfcf187178ce1ab3ea6194c80d3ae082ad2a86dc1269ac963f94429e718122",
+        "mapping-inputs/npm-purifier/invoked-npm-package.json.provenance.json": "679a9ee28e75d31484b911c8229ef985d7e297387c3f029a2cbd85b7ef5253d0"
+      },
+      "corrections": []
+    },
+    "octave-purifier": {
+      "criteria": {
+        "evaluation": {
+          "state": "met",
+          "supportingDerivationIds": [
+            "octave-purifier:cli:x86_64-linux",
+            "octave-purifier:environment:x86_64-linux",
+            "octave-purifier:project:x86_64-linux",
+            "octave-purifier:release:x86_64-linux"
+          ],
+          "nativeCiEvidencePointers": [],
+          "policySources": [],
+          "gap": null
+        },
+        "goodTests": {
+          "state": "met",
+          "supportingDerivationIds": [
+            "octave-purifier:environment:x86_64-linux",
+            "octave-purifier:project:x86_64-linux",
+            "octave-purifier:release:x86_64-linux"
+          ],
+          "nativeCiEvidencePointers": [],
+          "policySources": [],
+          "gap": null
+        },
+        "linux": {
+          "state": "met",
+          "supportingDerivationIds": [
+            "octave-purifier:project:x86_64-linux",
+            "octave-purifier:environment:x86_64-linux",
+            "octave-purifier:release:x86_64-linux"
+          ],
+          "nativeCiEvidencePointers": [],
+          "policySources": [],
+          "gap": null
+        },
+        "darwin": {
+          "state": "not-met",
+          "supportingDerivationIds": [],
+          "nativeCiEvidencePointers": [],
+          "policySources": [],
+          "gap": "The inspected successful workflows execute Ubuntu x86_64/ARM only; no native Darwin SDK/build/test/output receipt exists for this public revision. Linux execution, Darwin lock entries or conditional systems do not establish Darwin runtime."
+        },
+        "oneVersion": {
+          "state": "met",
+          "supportingDerivationIds": [
+            "octave-purifier:project:x86_64-linux",
+            "octave-purifier:environment:x86_64-linux",
+            "octave-purifier:release:x86_64-linux"
+          ],
+          "nativeCiEvidencePointers": [],
+          "policySources": [],
+          "gap": null
+        },
+        "nonEolVersions": {
+          "state": "met",
+          "supportingDerivationIds": [
+            "octave-purifier:project:x86_64-linux",
+            "octave-purifier:environment:x86_64-linux",
+            "octave-purifier:release:x86_64-linux"
+          ],
+          "nativeCiEvidencePointers": [],
+          "policySources": [
+            "https://octave.org/download",
+            "https://octave.org/news/release/2026/06/01/octave-11.3.0-released.html"
+          ],
+          "gap": null
+        },
+        "manySamples": {
+          "state": "not-met",
+          "supportingDerivationIds": [
+            "octave-purifier:project:x86_64-linux"
+          ],
+          "nativeCiEvidencePointers": [],
+          "policySources": [],
+          "gap": "purifierproof is one controlled package fixture. Installed control dependencies and repeated environment/project/release outputs are not independent consumer samples."
+        },
+        "longCompatibility": {
+          "state": "not-met",
+          "supportingDerivationIds": [],
+          "nativeCiEvidencePointers": [],
+          "policySources": [],
+          "gap": "All sample checks use Octave11.3.0; the lock's SDK hash pins that environment rather than defining a historical Octave runtime matrix."
+        }
+      },
+      "sampleBuilds": [
+        {
+          "sampleBuildIndex": 0,
+          "name": "Repository purifierproof Octave package (fixture)",
+          "kind": "fixture",
+          "source": {
+            "repository": "https://github.com/nix-purifiers/octave-purifier",
+            "revision": "af2480a8e2d62611a4342309884ca23136a85eee",
+            "path": "examples/minimal",
+            "repositorySourceNarHash": "sha256-wl2B+hx1IgElQlYH7DHNi8Cg973QvnmMZzMQ5ZhQIGA=",
+            "sourceNarHash": "sha256-uRS/wmLWW2vZ7xlYDUBm7d5goBvzNHXZzwWYhzJ85RM=",
+            "binding": "Actual fixture subtree NAR computed with nix hash path; containing immutable purifier source revision/NAR also provided."
+          },
+          "supportingDerivationIds": [
+            "octave-purifier:project:x86_64-linux"
+          ],
+          "sdkExecutions": [
+            {
+              "versions": {
+                "Octave": "11.3.0"
+              },
+              "basis": "project buildCommand invokes octave-cli with octave11.3.0-env on nativeBuildInputs PATH and asserts purifier_answer42.",
+              "supportingDerivationIds": [
+                "octave-purifier:project:x86_64-linux"
+              ]
+            }
+          ],
+          "gaps": []
+        }
+      ],
+      "bindingArtifacts": {
+        "mapping-inputs/octave-purifier/environment.json": "35cc7eae6a72efdd83e0329631584dbc50ce603e49be6504231cd8460818b9eb",
+        "mapping-inputs/octave-purifier/environment.err": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "mapping-inputs/octave-purifier/project.json": "63edcba5e0dc5b9b756cef38ba1b197110c9610651e04a37d40607de47c857d6",
+        "mapping-inputs/octave-purifier/project.err": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "mapping-inputs/octave-purifier/release.json": "866427b82428536f1820c44bd49713c5fe097b3e2a08167742207773f37e5810",
+        "mapping-inputs/octave-purifier/release.err": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "mapping-inputs/octave-purifier/examples_minimal-nar.json": "8463d31eb2fad3d98536a057a9323c9891b54cd0d88d6619c6677c3fce7f2244"
+      },
+      "corrections": []
+    },
+    "opam-purifier": {
+      "criteria": {
+        "evaluation": {
+          "state": "met",
+          "supportingDerivationIds": [
+            "opam-purifier:cli:x86_64-linux",
+            "opam-purifier:conformance-external:x86_64-linux",
+            "opam-purifier:conformance-malformed:x86_64-linux",
+            "opam-purifier:conformance-missing:x86_64-linux",
+            "opam-purifier:conformance-rebuild:x86_64-linux",
+            "opam-purifier:conformance-stale:x86_64-linux",
+            "opam-purifier:conformance-tampered:x86_64-linux",
+            "opam-purifier:hello-fetches:x86_64-linux",
+            "opam-purifier:hello-outputs:x86_64-linux",
+            "opam-purifier:hello-package:x86_64-linux",
+            "opam-purifier:hello-read-lock:x86_64-linux",
+            "opam-purifier:hello-release:x86_64-linux",
+            "opam-purifier:hello-runs:x86_64-linux",
+            "opam-purifier:hello-tests:x86_64-linux",
+            "opam-purifier:parser-agrees:x86_64-linux",
+            "opam-purifier:real-world-uri-outputs:x86_64-linux",
+            "opam-purifier:real-world-uri-tests:x86_64-linux",
+            "opam-purifier:treefmt:x86_64-linux",
+            "opam-purifier:workspace-outputs:x86_64-linux",
+            "opam-purifier:workspace-package:x86_64-linux",
+            "opam-purifier:workspace-runs:x86_64-linux"
+          ],
+          "nativeCiEvidencePointers": [],
+          "policySources": [],
+          "gap": null
+        },
+        "goodTests": {
+          "state": "met",
+          "supportingDerivationIds": [
+            "opam-purifier:conformance-external:x86_64-linux",
+            "opam-purifier:conformance-malformed:x86_64-linux",
+            "opam-purifier:conformance-missing:x86_64-linux",
+            "opam-purifier:conformance-rebuild:x86_64-linux",
+            "opam-purifier:conformance-stale:x86_64-linux",
+            "opam-purifier:conformance-tampered:x86_64-linux",
+            "opam-purifier:hello-fetches:x86_64-linux",
+            "opam-purifier:hello-outputs:x86_64-linux",
+            "opam-purifier:hello-package:x86_64-linux",
+            "opam-purifier:hello-read-lock:x86_64-linux",
+            "opam-purifier:hello-release:x86_64-linux",
+            "opam-purifier:hello-runs:x86_64-linux",
+            "opam-purifier:hello-tests:x86_64-linux",
+            "opam-purifier:parser-agrees:x86_64-linux",
+            "opam-purifier:real-world-uri-outputs:x86_64-linux",
+            "opam-purifier:real-world-uri-tests:x86_64-linux",
+            "opam-purifier:workspace-outputs:x86_64-linux",
+            "opam-purifier:workspace-package:x86_64-linux",
+            "opam-purifier:workspace-runs:x86_64-linux"
+          ],
+          "nativeCiEvidencePointers": [],
+          "policySources": [],
+          "gap": null
+        },
+        "linux": {
+          "state": "met",
+          "supportingDerivationIds": [
+            "opam-purifier:real-world-uri-tests:x86_64-linux",
+            "opam-purifier:real-world-uri-outputs:x86_64-linux",
+            "opam-purifier:hello-tests:x86_64-linux",
+            "opam-purifier:workspace-runs:x86_64-linux"
+          ],
+          "nativeCiEvidencePointers": [],
+          "policySources": [],
+          "gap": null
+        },
+        "darwin": {
+          "state": "not-met",
+          "supportingDerivationIds": [],
+          "nativeCiEvidencePointers": [],
+          "policySources": [],
+          "gap": "The inspected successful workflows execute Ubuntu x86_64/ARM only; no native Darwin SDK/build/test/output receipt exists for this public revision. Linux execution, Darwin lock entries or conditional systems do not establish Darwin runtime."
+        },
+        "oneVersion": {
+          "state": "met",
+          "supportingDerivationIds": [
+            "opam-purifier:real-world-uri-tests:x86_64-linux",
+            "opam-purifier:real-world-uri-outputs:x86_64-linux",
+            "opam-purifier:hello-tests:x86_64-linux",
+            "opam-purifier:workspace-runs:x86_64-linux"
+          ],
+          "nativeCiEvidencePointers": [],
+          "policySources": [],
+          "gap": null
+        },
+        "nonEolVersions": {
+          "state": "not-met",
+          "supportingDerivationIds": [],
+          "nativeCiEvidencePointers": [],
+          "policySources": [
+            "https://opam.ocaml.org/",
+            "https://ocaml.org/releases"
+          ],
+          "gap": "The executed manager is current opam2.6.1, but the compiled consumer locks select OCaml5.2.1. Primary OCaml history identifies5.5.2 as current with security fixes and4.14.4 as a separately security-fixed line; neither compiler point is executed in the reviewed checks. Complete current manager/compiler support is therefore not established. No EOL status is invented for5.2.1."
+        },
+        "manySamples": {
+          "state": "not-met",
+          "supportingDerivationIds": [
+            "opam-purifier:real-world-uri-tests:x86_64-linux",
+            "opam-purifier:real-world-uri-outputs:x86_64-linux",
+            "opam-purifier:hello-tests:x86_64-linux",
+            "opam-purifier:workspace-runs:x86_64-linux"
+          ],
+          "nativeCiEvidencePointers": [],
+          "policySources": [],
+          "gap": "ocaml-uri is one independent upstream project; uri/uri-re/uri-sexp outputs are its subpackages. Hello/workspace are controlled fixtures, so the corpus lacks independent consumer breadth."
+        },
+        "longCompatibility": {
+          "state": "not-met",
+          "supportingDerivationIds": [],
+          "nativeCiEvidencePointers": [],
+          "policySources": [],
+          "gap": "The check source selects current opam and one locked compiler environment per fixture; no historical opam1.x/2.x or older compiler generation execution matrix is established. Multiple packages/pins exercise source types rather than historical compatibility."
+        }
+      },
+      "sampleBuilds": [
+        {
+          "sampleBuildIndex": 0,
+          "name": "mirage/ocaml-uri4.4.0 (independent-upstream)",
+          "kind": "independent-upstream",
+          "source": {
+            "repository": "https://github.com/mirage/ocaml-uri",
+            "revision": "c336c796f4deb8979a4c7ceea3bef34b46240623",
+            "sourceNarHash": "sha256-KCZIYMQi+/uIBF2hynSpefe9zI4aBvXAy3WrKw8GUfg=",
+            "binding": "Pinned fetchTree/fetchTarball/fetchFromGitHub or locked flake input consumed by successful executable sample graph; see source declaration in frozen source snapshot. Base32 fetchTarball hashes converted with nix hash convert, not fabricated output hashes."
+          },
+          "supportingDerivationIds": [
+            "opam-purifier:real-world-uri-tests:x86_64-linux",
+            "opam-purifier:real-world-uri-outputs:x86_64-linux"
+          ],
+          "sdkExecutions": [
+            {
+              "versions": {
+                "opam": "2.6.1",
+                "OCaml": "5.2.1"
+              },
+              "basis": "hello-tests/URI-tests buildPhase invokes opam install/reinstall --with-test with opam2.6.1 on PATH; committed switch install locks select ocaml-base-compiler5.2.1. Exact compiler ABI label also supported by successful compile/test, not claimed current5.5.",
+              "supportingDerivationIds": [
+                "opam-purifier:real-world-uri-tests:x86_64-linux",
+                "opam-purifier:real-world-uri-outputs:x86_64-linux"
+              ]
+            }
+          ],
+          "gaps": []
+        },
+        {
+          "sampleBuildIndex": 1,
+          "name": "hello and workspace URL/git/local pins (fixtures)",
+          "kind": "fixtures",
+          "source": {
+            "repository": "https://github.com/nix-purifiers/opam-purifier",
+            "revision": "8ee439250ca39763a4ddbda0c4ebdc7f61cd80f2",
+            "path": "tests/fixtures",
+            "repositorySourceNarHash": "sha256-wZgyMFU4i5n29ntQ6zpVfqBg2Qi3Qzo8zhdcR5UYHxs=",
+            "sourceNarHash": "sha256-4CxeHKHu/C0LsB0RahX5HuLTaiAiQewvJGlsfOJqrQc=",
+            "binding": "Actual fixture subtree NAR computed with nix hash path; containing immutable purifier source revision/NAR also provided."
+          },
+          "supportingDerivationIds": [
+            "opam-purifier:hello-tests:x86_64-linux",
+            "opam-purifier:workspace-runs:x86_64-linux"
+          ],
+          "sdkExecutions": [
+            {
+              "versions": {
+                "opam": "2.6.1",
+                "OCaml": "5.2.1"
+              },
+              "basis": "hello-tests/URI-tests buildPhase invokes opam install/reinstall --with-test with opam2.6.1 on PATH; committed switch install locks select ocaml-base-compiler5.2.1. Exact compiler ABI label also supported by successful compile/test, not claimed current5.5.",
+              "supportingDerivationIds": [
+                "opam-purifier:hello-tests:x86_64-linux",
+                "opam-purifier:workspace-runs:x86_64-linux"
+              ]
+            }
+          ],
+          "gaps": []
+        }
+      ],
+      "bindingArtifacts": {
+        "mapping-inputs/opam-purifier/hello-tests.json": "3967c2140d1f447f595b999bd4b666b39f07b339bc7dc572a7da4cd8886b84ed",
+        "mapping-inputs/opam-purifier/hello-tests.err": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "mapping-inputs/opam-purifier/real-world-uri-outputs.json": "463b8932c7ec31901c80e6d7e6c3a265fe352f629a2ab4fb0e5f9d743595c724",
+        "mapping-inputs/opam-purifier/real-world-uri-outputs.err": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "mapping-inputs/opam-purifier/real-world-uri-tests.json": "fe18098868d297012daa24fbf831607477f6bd2aa349ae98bd2ac57c7e08ded4",
+        "mapping-inputs/opam-purifier/real-world-uri-tests.err": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "mapping-inputs/opam-purifier/workspace-runs.json": "57f6a2756c1d20e8b7706e8e96bac56f863a30a375e248c05e2f02333c055c5e",
+        "mapping-inputs/opam-purifier/workspace-runs.err": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "mapping-inputs/opam-purifier/tests_fixtures-nar.json": "9477f0e7a7d9de47b71dff76d5e49acf7b49482e2950abd9ed9e0acaa910714e"
+      },
+      "corrections": []
+    },
+    "package-el-purifier": {
+      "criteria": {
+        "evaluation": {
+          "state": "met",
+          "supportingDerivationIds": [
+            "package-el-purifier:environment:x86_64-linux",
+            "package-el-purifier:external:x86_64-linux",
+            "package-el-purifier:malformed:x86_64-linux",
+            "package-el-purifier:missing:x86_64-linux",
+            "package-el-purifier:native-package:x86_64-linux",
+            "package-el-purifier:offline:x86_64-linux",
+            "package-el-purifier:release:x86_64-linux",
+            "package-el-purifier:stale:x86_64-linux",
+            "package-el-purifier:tampered:x86_64-linux",
+            "package-el-purifier:unit:x86_64-linux"
+          ],
+          "nativeCiEvidencePointers": [],
+          "policySources": [],
+          "gap": null
+        },
+        "goodTests": {
+          "state": "met",
+          "supportingDerivationIds": [
+            "package-el-purifier:environment:x86_64-linux",
+            "package-el-purifier:external:x86_64-linux",
+            "package-el-purifier:malformed:x86_64-linux",
+            "package-el-purifier:missing:x86_64-linux",
+            "package-el-purifier:native-package:x86_64-linux",
+            "package-el-purifier:offline:x86_64-linux",
+            "package-el-purifier:release:x86_64-linux",
+            "package-el-purifier:stale:x86_64-linux",
+            "package-el-purifier:tampered:x86_64-linux",
+            "package-el-purifier:unit:x86_64-linux"
+          ],
+          "nativeCiEvidencePointers": [],
+          "policySources": [],
+          "gap": null
+        },
+        "linux": {
+          "state": "met",
+          "supportingDerivationIds": [
+            "package-el-purifier:offline:x86_64-linux",
+            "package-el-purifier:native-package:x86_64-linux",
+            "package-el-purifier:unit:x86_64-linux"
+          ],
+          "nativeCiEvidencePointers": [],
+          "policySources": [],
+          "gap": null
+        },
+        "darwin": {
+          "state": "not-met",
+          "supportingDerivationIds": [],
+          "nativeCiEvidencePointers": [],
+          "policySources": [],
+          "gap": "The inspected successful workflows execute Ubuntu x86_64/ARM only; no native Darwin SDK/build/test/output receipt exists for this public revision. Linux execution, Darwin lock entries or conditional systems do not establish Darwin runtime."
+        },
+        "oneVersion": {
+          "state": "met",
+          "supportingDerivationIds": [
+            "package-el-purifier:offline:x86_64-linux",
+            "package-el-purifier:native-package:x86_64-linux",
+            "package-el-purifier:unit:x86_64-linux"
+          ],
+          "nativeCiEvidencePointers": [],
+          "policySources": [],
+          "gap": null
+        },
+        "nonEolVersions": {
+          "state": "met",
+          "supportingDerivationIds": [
+            "package-el-purifier:offline:x86_64-linux",
+            "package-el-purifier:native-package:x86_64-linux",
+            "package-el-purifier:unit:x86_64-linux"
+          ],
+          "nativeCiEvidencePointers": [],
+          "policySources": [
+            "https://github.com/emacs-mirror/emacs/blob/master/etc/HISTORY",
+            "https://www.gnu.org/software/emacs/manual/html_node/efaq/Latest-version-of-Emacs.html"
+          ],
+          "gap": null
+        },
+        "manySamples": {
+          "state": "not-met",
+          "supportingDerivationIds": [
+            "package-el-purifier:offline:x86_64-linux",
+            "package-el-purifier:environment:x86_64-linux"
+          ],
+          "nativeCiEvidencePointers": [],
+          "policySources": [],
+          "gap": "The only consumer configuration is the repository's Vertico example; Vertico is a dependency, not an independently packaged configuration sample. Native installation of the purifier itself tests distribution, not independent consumer breadth."
+        },
+        "longCompatibility": {
+          "state": "not-met",
+          "supportingDerivationIds": [],
+          "nativeCiEvidencePointers": [],
+          "policySources": [],
+          "gap": "The example lock fixes Emacs31.1 and the Nix checks execute that selection only. Native package.el integration does not establish execution on historical Emacs majors."
+        }
+      },
+      "sampleBuilds": [
+        {
+          "sampleBuildIndex": 0,
+          "name": "Repository examples/config using Vertico (fixture)",
+          "kind": "fixture",
+          "source": {
+            "repository": "https://github.com/nix-purifiers/package-el-purifier",
+            "revision": "1b4166f241998d42985dcc02d6c53ca3836a5852",
+            "path": "examples/config",
+            "repositorySourceNarHash": "sha256-jviMofqgZu1XjllfrRQheWdL5dkJnuoAU/cR+QojmxE=",
+            "sourceNarHash": "sha256-A601cPSQpE/oyOnzG7eQHs9s8heF08v7/f2/K32ZB1g=",
+            "binding": "Actual fixture subtree NAR computed with nix hash path; containing immutable purifier source revision/NAR also provided."
+          },
+          "supportingDerivationIds": [
+            "package-el-purifier:offline:x86_64-linux",
+            "package-el-purifier:environment:x86_64-linux"
+          ],
+          "sdkExecutions": [
+            {
+              "versions": {
+                "Emacs": "31.1"
+              },
+              "basis": "offline buildCommand invokes emacs --batch ERT using exact emacs31.1 nativeBuildInputs PATH.",
+              "supportingDerivationIds": [
+                "package-el-purifier:offline:x86_64-linux",
+                "package-el-purifier:environment:x86_64-linux"
+              ]
+            }
+          ],
+          "gaps": []
+        }
+      ],
+      "bindingArtifacts": {
+        "mapping-inputs/package-el-purifier/environment.json": "f2418d503568b93ba028dd0e578e04f5962965a81814646f2cb44a7eff1987e2",
+        "mapping-inputs/package-el-purifier/environment.err": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "mapping-inputs/package-el-purifier/native-package.json": "825abafe36da781a61a0e5675514b54482a66434c3b80f032d37cca844683521",
+        "mapping-inputs/package-el-purifier/native-package.err": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "mapping-inputs/package-el-purifier/offline.json": "ed8893fb19b3d836e13bd741f22b276355c64c5ee1b32c34617683252ea1b4fc",
+        "mapping-inputs/package-el-purifier/offline.err": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "mapping-inputs/package-el-purifier/unit.json": "e4fedfe71e200733ae26c582f1bfdc42146d6837a439fe9c81007542a9cf6b8c",
+        "mapping-inputs/package-el-purifier/unit.err": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "mapping-inputs/package-el-purifier/examples_config-nar.json": "3ccde04928af80857ea8a6e5d6b259d99f0fb87d283caf049c0e2a630d697779"
+      },
+      "corrections": []
+    }
+  },
+  "scopeLimit": "No judgment/tier changes; no new builds were needed. Supplement records read-only derivation bodies, actual executable wrapper contents and fixture source NAR hashes."
+}

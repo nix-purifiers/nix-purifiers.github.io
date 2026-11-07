@@ -1,0 +1,1591 @@
+{
+  "quarto-purifier": {
+    "tier": 3,
+    "reviewedRevision": "5d1892a23c66355a6d1a0b7c8679e07769400dfc",
+    "reviewedAt": "2026-11-06",
+    "rationale": "Executed native Linux samples and reviewed Nix/test sources support Tier 3. Native Darwin proof is absent, so Tier 2 is not demonstrated; each higher criterion has an explicit judgment. ",
+    "criteria": {
+      "evaluation": {
+        "state": "met",
+        "summary": "The immutable source evaluates to the retained executable checks; actual native sample-check derivations and their build receipts are bound below.",
+        "evidence": [
+          "derivation-evidence.json#/projects/quarto-purifier/derivations/project",
+          "derivation-evidence.json#/projects/quarto-purifier/derivations/resources",
+          "https://github.com/nix-purifiers/quarto-purifier/blob/5d1892a23c66355a6d1a0b7c8679e07769400dfc/flake.nix",
+          "https://github.com/nix-purifiers/quarto-purifier/blob/5d1892a23c66355a6d1a0b7c8679e07769400dfc/flake.lock",
+          "https://github.com/nix-purifiers/quarto-purifier/blob/5d1892a23c66355a6d1a0b7c8679e07769400dfc/.github/workflows/check.yml",
+          "https://github.com/nix-purifiers/quarto-purifier/blob/5d1892a23c66355a6d1a0b7c8679e07769400dfc/nix/build-project.nix",
+          "https://github.com/nix-purifiers/quarto-purifier/blob/5d1892a23c66355a6d1a0b7c8679e07769400dfc/nix/environment.nix",
+          "https://github.com/nix-purifiers/quarto-purifier/blob/5d1892a23c66355a6d1a0b7c8679e07769400dfc/nix/scope.nix"
+        ]
+      },
+      "goodTests": {
+        "state": "met",
+        "summary": "The executed project check renders with the patched native Quarto and asserts the extension's HTML marker; resources consumes published resources, and release depends on the rendered project. Current-source CI additionally runs eval-errors, capture, conformance, output rebuilds and release rebuild assertions. This checks native resolution, output use and lock rejection, beyond a CLI smoke test.",
+        "evidence": [
+          "derivation-evidence.json#/projects/quarto-purifier/derivations/project",
+          "derivation-evidence.json#/projects/quarto-purifier/derivations/resources",
+          "https://github.com/nix-purifiers/quarto-purifier/blob/5d1892a23c66355a6d1a0b7c8679e07769400dfc/flake.nix",
+          "https://github.com/nix-purifiers/quarto-purifier/blob/5d1892a23c66355a6d1a0b7c8679e07769400dfc/flake.lock",
+          "https://github.com/nix-purifiers/quarto-purifier/blob/5d1892a23c66355a6d1a0b7c8679e07769400dfc/.github/workflows/check.yml",
+          "https://github.com/nix-purifiers/quarto-purifier/blob/5d1892a23c66355a6d1a0b7c8679e07769400dfc/nix/build-project.nix",
+          "https://github.com/nix-purifiers/quarto-purifier/blob/5d1892a23c66355a6d1a0b7c8679e07769400dfc/nix/environment.nix",
+          "https://github.com/nix-purifiers/quarto-purifier/blob/5d1892a23c66355a6d1a0b7c8679e07769400dfc/nix/scope.nix"
+        ]
+      },
+      "linux": {
+        "state": "met",
+        "summary": "Native x86_64-linux sample checks succeeded for this immutable revision. Exact check attributes, derivation paths, outputs and build receipts are recorded; Linux declarations and cross-evaluation are not used as runtime evidence.",
+        "evidence": [
+          "derivation-evidence.json#/projects/quarto-purifier/derivations/project",
+          "derivation-evidence.json#/projects/quarto-purifier/derivations/resources",
+          "https://github.com/nix-purifiers/quarto-purifier/blob/5d1892a23c66355a6d1a0b7c8679e07769400dfc/flake.nix",
+          "https://github.com/nix-purifiers/quarto-purifier/blob/5d1892a23c66355a6d1a0b7c8679e07769400dfc/flake.lock",
+          "https://github.com/nix-purifiers/quarto-purifier/blob/5d1892a23c66355a6d1a0b7c8679e07769400dfc/.github/workflows/check.yml",
+          "https://github.com/nix-purifiers/quarto-purifier/blob/5d1892a23c66355a6d1a0b7c8679e07769400dfc/nix/build-project.nix",
+          "https://github.com/nix-purifiers/quarto-purifier/blob/5d1892a23c66355a6d1a0b7c8679e07769400dfc/nix/environment.nix",
+          "https://github.com/nix-purifiers/quarto-purifier/blob/5d1892a23c66355a6d1a0b7c8679e07769400dfc/nix/scope.nix"
+        ]
+      },
+      "darwin": {
+        "state": "not-met",
+        "summary": "No native Darwin execution receipt exists for this reviewed source. The flake/check workflow targets Linux x86_64 and aarch64 only.",
+        "evidence": [
+          "derivation-evidence.json#/projects/quarto-purifier/derivations/project",
+          "derivation-evidence.json#/projects/quarto-purifier/derivations/resources",
+          "https://github.com/nix-purifiers/quarto-purifier/blob/5d1892a23c66355a6d1a0b7c8679e07769400dfc/flake.nix",
+          "https://github.com/nix-purifiers/quarto-purifier/blob/5d1892a23c66355a6d1a0b7c8679e07769400dfc/flake.lock",
+          "https://github.com/nix-purifiers/quarto-purifier/blob/5d1892a23c66355a6d1a0b7c8679e07769400dfc/.github/workflows/check.yml",
+          "https://github.com/nix-purifiers/quarto-purifier/blob/5d1892a23c66355a6d1a0b7c8679e07769400dfc/nix/build-project.nix",
+          "https://github.com/nix-purifiers/quarto-purifier/blob/5d1892a23c66355a6d1a0b7c8679e07769400dfc/nix/environment.nix",
+          "https://github.com/nix-purifiers/quarto-purifier/blob/5d1892a23c66355a6d1a0b7c8679e07769400dfc/nix/scope.nix"
+        ]
+      },
+      "oneVersion": {
+        "state": "met",
+        "summary": "Native sample checks execute the exact SDK roles {\"quarto\": \"1.10.18\"}. Version strings are bound to inspected native inputs/locks and successful derivations, not merely to documentation.",
+        "evidence": [
+          "derivation-evidence.json#/projects/quarto-purifier/derivations/project",
+          "derivation-evidence.json#/projects/quarto-purifier/derivations/resources",
+          "https://github.com/nix-purifiers/quarto-purifier/blob/5d1892a23c66355a6d1a0b7c8679e07769400dfc/flake.nix",
+          "https://github.com/nix-purifiers/quarto-purifier/blob/5d1892a23c66355a6d1a0b7c8679e07769400dfc/flake.lock",
+          "https://github.com/nix-purifiers/quarto-purifier/blob/5d1892a23c66355a6d1a0b7c8679e07769400dfc/.github/workflows/check.yml",
+          "https://github.com/nix-purifiers/quarto-purifier/blob/5d1892a23c66355a6d1a0b7c8679e07769400dfc/nix/build-project.nix",
+          "https://github.com/nix-purifiers/quarto-purifier/blob/5d1892a23c66355a6d1a0b7c8679e07769400dfc/nix/environment.nix",
+          "https://github.com/nix-purifiers/quarto-purifier/blob/5d1892a23c66355a6d1a0b7c8679e07769400dfc/nix/scope.nix"
+        ]
+      },
+      "nonEolVersions": {
+        "state": "not-met",
+        "summary": "Executed SDK is Quarto 1.10.18. Upstream currently publishes stable 1.10.20 and 1.11.9, with the 1.11 download notes describing a Deno certificate security update; 1.12 releases are prereleases. No derivation executing either current stable patch is present. This is a missing current-patch execution proof, not an invented EOL date for 1.10.",
+        "evidence": [
+          "derivation-evidence.json#/projects/quarto-purifier/derivations/project",
+          "derivation-evidence.json#/projects/quarto-purifier/derivations/resources",
+          "https://quarto.org/docs/download/",
+          "https://api.github.com/repos/quarto-dev/quarto-cli/releases?per_page=5"
+        ]
+      },
+      "manySamples": {
+        "state": "not-met",
+        "summary": "Only examples/minimal is a complete document sample. Resource consumer and release checks reuse that document; the extension dependency is an input, not another independently built document.",
+        "evidence": [
+          "derivation-evidence.json#/projects/quarto-purifier/derivations/project",
+          "derivation-evidence.json#/projects/quarto-purifier/derivations/resources",
+          "https://github.com/nix-purifiers/quarto-purifier/blob/5d1892a23c66355a6d1a0b7c8679e07769400dfc/flake.nix",
+          "https://github.com/nix-purifiers/quarto-purifier/blob/5d1892a23c66355a6d1a0b7c8679e07769400dfc/flake.lock",
+          "https://github.com/nix-purifiers/quarto-purifier/blob/5d1892a23c66355a6d1a0b7c8679e07769400dfc/.github/workflows/check.yml",
+          "https://github.com/nix-purifiers/quarto-purifier/blob/5d1892a23c66355a6d1a0b7c8679e07769400dfc/nix/build-project.nix",
+          "https://github.com/nix-purifiers/quarto-purifier/blob/5d1892a23c66355a6d1a0b7c8679e07769400dfc/nix/environment.nix",
+          "https://github.com/nix-purifiers/quarto-purifier/blob/5d1892a23c66355a6d1a0b7c8679e07769400dfc/nix/scope.nix"
+        ]
+      },
+      "longCompatibility": {
+        "state": "not-met",
+        "summary": "The rendered document is bound to one Quarto SDK point, 1.10.18; extension and resource variants do not establish historical Quarto compatibility.",
+        "evidence": [
+          "derivation-evidence.json#/projects/quarto-purifier/derivations/project",
+          "derivation-evidence.json#/projects/quarto-purifier/derivations/resources",
+          "https://github.com/nix-purifiers/quarto-purifier/blob/5d1892a23c66355a6d1a0b7c8679e07769400dfc/flake.nix",
+          "https://github.com/nix-purifiers/quarto-purifier/blob/5d1892a23c66355a6d1a0b7c8679e07769400dfc/flake.lock",
+          "https://github.com/nix-purifiers/quarto-purifier/blob/5d1892a23c66355a6d1a0b7c8679e07769400dfc/.github/workflows/check.yml",
+          "https://github.com/nix-purifiers/quarto-purifier/blob/5d1892a23c66355a6d1a0b7c8679e07769400dfc/nix/build-project.nix",
+          "https://github.com/nix-purifiers/quarto-purifier/blob/5d1892a23c66355a6d1a0b7c8679e07769400dfc/nix/environment.nix",
+          "https://github.com/nix-purifiers/quarto-purifier/blob/5d1892a23c66355a6d1a0b7c8679e07769400dfc/nix/scope.nix"
+        ]
+      }
+    },
+    "sampleBuilds": [
+      {
+        "name": "Repository fixture examples/minimal: render a document using a locked extension, require fa-check in HTML; resources check exercises ordinary resource consumers.",
+        "evidence": [
+          "derivation-evidence.json#/projects/quarto-purifier/derivations/project",
+          "derivation-evidence.json#/projects/quarto-purifier/derivations/resources"
+        ]
+      }
+    ]
+  },
+  "racket-purifier": {
+    "tier": 3,
+    "reviewedRevision": "af1fd5f01bf9ad422fad039edc34540eb7b85d4b",
+    "reviewedAt": "2026-11-06",
+    "rationale": "Executed native Linux samples and reviewed Nix/test sources support Tier 3. Native Darwin proof is absent, so Tier 2 is not demonstrated; each higher criterion has an explicit judgment. ",
+    "criteria": {
+      "evaluation": {
+        "state": "met",
+        "summary": "The immutable source evaluates to the retained executable checks; actual native sample-check derivations and their build receipts are bound below.",
+        "evidence": [
+          "derivation-evidence.json#/projects/racket-purifier/derivations/project",
+          "derivation-evidence.json#/projects/racket-purifier/derivations/installed",
+          "https://github.com/nix-purifiers/racket-purifier/blob/af1fd5f01bf9ad422fad039edc34540eb7b85d4b/flake.nix",
+          "https://github.com/nix-purifiers/racket-purifier/blob/af1fd5f01bf9ad422fad039edc34540eb7b85d4b/flake.lock",
+          "https://github.com/nix-purifiers/racket-purifier/blob/af1fd5f01bf9ad422fad039edc34540eb7b85d4b/.github/workflows/check.yml",
+          "https://github.com/nix-purifiers/racket-purifier/blob/af1fd5f01bf9ad422fad039edc34540eb7b85d4b/nix/build-project.nix",
+          "https://github.com/nix-purifiers/racket-purifier/blob/af1fd5f01bf9ad422fad039edc34540eb7b85d4b/nix/environment.nix",
+          "https://github.com/nix-purifiers/racket-purifier/blob/af1fd5f01bf9ad422fad039edc34540eb7b85d4b/nix/toolchain.nix"
+        ]
+      },
+      "goodTests": {
+        "state": "met",
+        "summary": "The executed project runs raco test for the locked package. The installed check loads the installed wrapper from its final output and compares answer 42; release and environment are also realized. Current CI exercises malformed/stale lock evaluation, capture, conformance and rebuilding environment/project/release, providing both positive consumer and negative contract coverage.",
+        "evidence": [
+          "derivation-evidence.json#/projects/racket-purifier/derivations/project",
+          "derivation-evidence.json#/projects/racket-purifier/derivations/installed",
+          "https://github.com/nix-purifiers/racket-purifier/blob/af1fd5f01bf9ad422fad039edc34540eb7b85d4b/flake.nix",
+          "https://github.com/nix-purifiers/racket-purifier/blob/af1fd5f01bf9ad422fad039edc34540eb7b85d4b/flake.lock",
+          "https://github.com/nix-purifiers/racket-purifier/blob/af1fd5f01bf9ad422fad039edc34540eb7b85d4b/.github/workflows/check.yml",
+          "https://github.com/nix-purifiers/racket-purifier/blob/af1fd5f01bf9ad422fad039edc34540eb7b85d4b/nix/build-project.nix",
+          "https://github.com/nix-purifiers/racket-purifier/blob/af1fd5f01bf9ad422fad039edc34540eb7b85d4b/nix/environment.nix",
+          "https://github.com/nix-purifiers/racket-purifier/blob/af1fd5f01bf9ad422fad039edc34540eb7b85d4b/nix/toolchain.nix"
+        ]
+      },
+      "linux": {
+        "state": "met",
+        "summary": "Native x86_64-linux sample checks succeeded for this immutable revision. Exact check attributes, derivation paths, outputs and build receipts are recorded; Linux declarations and cross-evaluation are not used as runtime evidence.",
+        "evidence": [
+          "derivation-evidence.json#/projects/racket-purifier/derivations/project",
+          "derivation-evidence.json#/projects/racket-purifier/derivations/installed",
+          "https://github.com/nix-purifiers/racket-purifier/blob/af1fd5f01bf9ad422fad039edc34540eb7b85d4b/flake.nix",
+          "https://github.com/nix-purifiers/racket-purifier/blob/af1fd5f01bf9ad422fad039edc34540eb7b85d4b/flake.lock",
+          "https://github.com/nix-purifiers/racket-purifier/blob/af1fd5f01bf9ad422fad039edc34540eb7b85d4b/.github/workflows/check.yml",
+          "https://github.com/nix-purifiers/racket-purifier/blob/af1fd5f01bf9ad422fad039edc34540eb7b85d4b/nix/build-project.nix",
+          "https://github.com/nix-purifiers/racket-purifier/blob/af1fd5f01bf9ad422fad039edc34540eb7b85d4b/nix/environment.nix",
+          "https://github.com/nix-purifiers/racket-purifier/blob/af1fd5f01bf9ad422fad039edc34540eb7b85d4b/nix/toolchain.nix"
+        ]
+      },
+      "darwin": {
+        "state": "not-met",
+        "summary": "No native Darwin execution receipt exists for this reviewed source. The flake/check workflow targets Linux x86_64 and aarch64 only.",
+        "evidence": [
+          "derivation-evidence.json#/projects/racket-purifier/derivations/project",
+          "derivation-evidence.json#/projects/racket-purifier/derivations/installed",
+          "https://github.com/nix-purifiers/racket-purifier/blob/af1fd5f01bf9ad422fad039edc34540eb7b85d4b/flake.nix",
+          "https://github.com/nix-purifiers/racket-purifier/blob/af1fd5f01bf9ad422fad039edc34540eb7b85d4b/flake.lock",
+          "https://github.com/nix-purifiers/racket-purifier/blob/af1fd5f01bf9ad422fad039edc34540eb7b85d4b/.github/workflows/check.yml",
+          "https://github.com/nix-purifiers/racket-purifier/blob/af1fd5f01bf9ad422fad039edc34540eb7b85d4b/nix/build-project.nix",
+          "https://github.com/nix-purifiers/racket-purifier/blob/af1fd5f01bf9ad422fad039edc34540eb7b85d4b/nix/environment.nix",
+          "https://github.com/nix-purifiers/racket-purifier/blob/af1fd5f01bf9ad422fad039edc34540eb7b85d4b/nix/toolchain.nix"
+        ]
+      },
+      "oneVersion": {
+        "state": "met",
+        "summary": "Native sample checks execute the exact SDK roles {\"gcc\": \"16.2.0\", \"racket\": \"9.3\"}. Version strings are bound to inspected native inputs/locks and successful derivations, not merely to documentation.",
+        "evidence": [
+          "derivation-evidence.json#/projects/racket-purifier/derivations/project",
+          "derivation-evidence.json#/projects/racket-purifier/derivations/installed",
+          "https://github.com/nix-purifiers/racket-purifier/blob/af1fd5f01bf9ad422fad039edc34540eb7b85d4b/flake.nix",
+          "https://github.com/nix-purifiers/racket-purifier/blob/af1fd5f01bf9ad422fad039edc34540eb7b85d4b/flake.lock",
+          "https://github.com/nix-purifiers/racket-purifier/blob/af1fd5f01bf9ad422fad039edc34540eb7b85d4b/.github/workflows/check.yml",
+          "https://github.com/nix-purifiers/racket-purifier/blob/af1fd5f01bf9ad422fad039edc34540eb7b85d4b/nix/build-project.nix",
+          "https://github.com/nix-purifiers/racket-purifier/blob/af1fd5f01bf9ad422fad039edc34540eb7b85d4b/nix/environment.nix",
+          "https://github.com/nix-purifiers/racket-purifier/blob/af1fd5f01bf9ad422fad039edc34540eb7b85d4b/nix/toolchain.nix"
+        ]
+      },
+      "nonEolVersions": {
+        "state": "met",
+        "summary": "Actual project and installed-consumer derivations use Racket 9.3, matching the current stable release shown on the primary download page and live upstream release API. The builder asserts the SDK/Racket/GCC tuple equals the lock. This claims the tested current stable point, not every older or future patch.",
+        "evidence": [
+          "derivation-evidence.json#/projects/racket-purifier/derivations/project",
+          "derivation-evidence.json#/projects/racket-purifier/derivations/installed",
+          "https://download.racket-lang.org/",
+          "https://api.github.com/repos/racket/racket/releases?per_page=5"
+        ]
+      },
+      "manySamples": {
+        "state": "not-met",
+        "summary": "Only the repository's purifier-example fixture is built as a complete package. installed is an additional consumer of the same package, not an independent upstream Racket project.",
+        "evidence": [
+          "derivation-evidence.json#/projects/racket-purifier/derivations/project",
+          "derivation-evidence.json#/projects/racket-purifier/derivations/installed",
+          "https://github.com/nix-purifiers/racket-purifier/blob/af1fd5f01bf9ad422fad039edc34540eb7b85d4b/flake.nix",
+          "https://github.com/nix-purifiers/racket-purifier/blob/af1fd5f01bf9ad422fad039edc34540eb7b85d4b/flake.lock",
+          "https://github.com/nix-purifiers/racket-purifier/blob/af1fd5f01bf9ad422fad039edc34540eb7b85d4b/.github/workflows/check.yml",
+          "https://github.com/nix-purifiers/racket-purifier/blob/af1fd5f01bf9ad422fad039edc34540eb7b85d4b/nix/build-project.nix",
+          "https://github.com/nix-purifiers/racket-purifier/blob/af1fd5f01bf9ad422fad039edc34540eb7b85d4b/nix/environment.nix",
+          "https://github.com/nix-purifiers/racket-purifier/blob/af1fd5f01bf9ad422fad039edc34540eb7b85d4b/nix/toolchain.nix"
+        ]
+      },
+      "longCompatibility": {
+        "state": "not-met",
+        "summary": "The lock and successful consumer tests bind Racket 9.3 only; no historical SDK point is demonstrated.",
+        "evidence": [
+          "derivation-evidence.json#/projects/racket-purifier/derivations/project",
+          "derivation-evidence.json#/projects/racket-purifier/derivations/installed",
+          "https://github.com/nix-purifiers/racket-purifier/blob/af1fd5f01bf9ad422fad039edc34540eb7b85d4b/flake.nix",
+          "https://github.com/nix-purifiers/racket-purifier/blob/af1fd5f01bf9ad422fad039edc34540eb7b85d4b/flake.lock",
+          "https://github.com/nix-purifiers/racket-purifier/blob/af1fd5f01bf9ad422fad039edc34540eb7b85d4b/.github/workflows/check.yml",
+          "https://github.com/nix-purifiers/racket-purifier/blob/af1fd5f01bf9ad422fad039edc34540eb7b85d4b/nix/build-project.nix",
+          "https://github.com/nix-purifiers/racket-purifier/blob/af1fd5f01bf9ad422fad039edc34540eb7b85d4b/nix/environment.nix",
+          "https://github.com/nix-purifiers/racket-purifier/blob/af1fd5f01bf9ad422fad039edc34540eb7b85d4b/nix/toolchain.nix"
+        ]
+      }
+    },
+    "sampleBuilds": [
+      {
+        "name": "Repository fixture examples/minimal: raco test of purifier-example plus installed consumer requiring the installed package and checking answer 42.",
+        "evidence": [
+          "derivation-evidence.json#/projects/racket-purifier/derivations/project",
+          "derivation-evidence.json#/projects/racket-purifier/derivations/installed"
+        ]
+      }
+    ]
+  },
+  "rebar3-purifier": {
+    "tier": 3,
+    "reviewedRevision": "8cf43df2533f7d2059c2caa34fd998c327e19b7d",
+    "reviewedAt": "2026-11-06",
+    "rationale": "Executed native Linux samples and reviewed Nix/test sources support Tier 3. Native Darwin proof is absent, so Tier 2 is not demonstrated; each higher criterion has an explicit judgment. ",
+    "criteria": {
+      "evaluation": {
+        "state": "met",
+        "summary": "The immutable source evaluates to the retained executable checks; actual native sample-check derivations and their build receipts are bound below.",
+        "evidence": [
+          "derivation-evidence.json#/projects/rebar3-purifier/derivations/fixture-hello-tests",
+          "derivation-evidence.json#/projects/rebar3-purifier/derivations/fixture-hello-build",
+          "derivation-evidence.json#/projects/rebar3-purifier/derivations/fixture-umbrella-build",
+          "derivation-evidence.json#/projects/rebar3-purifier/derivations/conformance-external",
+          "https://github.com/nix-purifiers/rebar3-purifier/blob/8cf43df2533f7d2059c2caa34fd998c327e19b7d/flake.nix",
+          "https://github.com/nix-purifiers/rebar3-purifier/blob/8cf43df2533f7d2059c2caa34fd998c327e19b7d/flake.lock",
+          "https://github.com/nix-purifiers/rebar3-purifier/blob/8cf43df2533f7d2059c2caa34fd998c327e19b7d/tests/default.nix",
+          "https://github.com/nix-purifiers/rebar3-purifier/blob/8cf43df2533f7d2059c2caa34fd998c327e19b7d/.github/workflows/check.yml",
+          "https://github.com/nix-purifiers/rebar3-purifier/blob/8cf43df2533f7d2059c2caa34fd998c327e19b7d/nix/lib/build-rebar3-project.nix"
+        ]
+      },
+      "goodTests": {
+        "state": "met",
+        "summary": "Executed checks exercise EUnit, the hello executable with external purifier/native locks, umbrella applications and release layouts, Hex and git cache provenance, readLock and separate stale/tampered/missing/malformed refusals. These assertions test the actual native build and packaging paths rather than checking only generated JSON.",
+        "evidence": [
+          "derivation-evidence.json#/projects/rebar3-purifier/derivations/fixture-hello-tests",
+          "derivation-evidence.json#/projects/rebar3-purifier/derivations/fixture-hello-build",
+          "derivation-evidence.json#/projects/rebar3-purifier/derivations/fixture-umbrella-build",
+          "derivation-evidence.json#/projects/rebar3-purifier/derivations/conformance-external",
+          "https://github.com/nix-purifiers/rebar3-purifier/blob/8cf43df2533f7d2059c2caa34fd998c327e19b7d/flake.nix",
+          "https://github.com/nix-purifiers/rebar3-purifier/blob/8cf43df2533f7d2059c2caa34fd998c327e19b7d/flake.lock",
+          "https://github.com/nix-purifiers/rebar3-purifier/blob/8cf43df2533f7d2059c2caa34fd998c327e19b7d/tests/default.nix",
+          "https://github.com/nix-purifiers/rebar3-purifier/blob/8cf43df2533f7d2059c2caa34fd998c327e19b7d/.github/workflows/check.yml",
+          "https://github.com/nix-purifiers/rebar3-purifier/blob/8cf43df2533f7d2059c2caa34fd998c327e19b7d/nix/lib/build-rebar3-project.nix"
+        ]
+      },
+      "linux": {
+        "state": "met",
+        "summary": "Native x86_64-linux sample checks succeeded for this immutable revision. Exact check attributes, derivation paths, outputs and build receipts are recorded; Linux declarations and cross-evaluation are not used as runtime evidence.",
+        "evidence": [
+          "derivation-evidence.json#/projects/rebar3-purifier/derivations/fixture-hello-tests",
+          "derivation-evidence.json#/projects/rebar3-purifier/derivations/fixture-hello-build",
+          "derivation-evidence.json#/projects/rebar3-purifier/derivations/fixture-umbrella-build",
+          "derivation-evidence.json#/projects/rebar3-purifier/derivations/conformance-external",
+          "https://github.com/nix-purifiers/rebar3-purifier/blob/8cf43df2533f7d2059c2caa34fd998c327e19b7d/flake.nix",
+          "https://github.com/nix-purifiers/rebar3-purifier/blob/8cf43df2533f7d2059c2caa34fd998c327e19b7d/flake.lock",
+          "https://github.com/nix-purifiers/rebar3-purifier/blob/8cf43df2533f7d2059c2caa34fd998c327e19b7d/tests/default.nix",
+          "https://github.com/nix-purifiers/rebar3-purifier/blob/8cf43df2533f7d2059c2caa34fd998c327e19b7d/.github/workflows/check.yml",
+          "https://github.com/nix-purifiers/rebar3-purifier/blob/8cf43df2533f7d2059c2caa34fd998c327e19b7d/nix/lib/build-rebar3-project.nix"
+        ]
+      },
+      "darwin": {
+        "state": "not-met",
+        "summary": "No native Darwin execution receipt exists for this reviewed source. The flake/check workflow targets Linux x86_64 and aarch64 only.",
+        "evidence": [
+          "derivation-evidence.json#/projects/rebar3-purifier/derivations/fixture-hello-tests",
+          "derivation-evidence.json#/projects/rebar3-purifier/derivations/fixture-hello-build",
+          "derivation-evidence.json#/projects/rebar3-purifier/derivations/fixture-umbrella-build",
+          "derivation-evidence.json#/projects/rebar3-purifier/derivations/conformance-external",
+          "https://github.com/nix-purifiers/rebar3-purifier/blob/8cf43df2533f7d2059c2caa34fd998c327e19b7d/flake.nix",
+          "https://github.com/nix-purifiers/rebar3-purifier/blob/8cf43df2533f7d2059c2caa34fd998c327e19b7d/flake.lock",
+          "https://github.com/nix-purifiers/rebar3-purifier/blob/8cf43df2533f7d2059c2caa34fd998c327e19b7d/tests/default.nix",
+          "https://github.com/nix-purifiers/rebar3-purifier/blob/8cf43df2533f7d2059c2caa34fd998c327e19b7d/.github/workflows/check.yml",
+          "https://github.com/nix-purifiers/rebar3-purifier/blob/8cf43df2533f7d2059c2caa34fd998c327e19b7d/nix/lib/build-rebar3-project.nix"
+        ]
+      },
+      "oneVersion": {
+        "state": "met",
+        "summary": "Native sample checks execute the exact SDK roles {\"erlang\": \"28.5.0.8\", \"rebar3\": \"3.28.0\"}. Version strings are bound to inspected native inputs/locks and successful derivations, not merely to documentation.",
+        "evidence": [
+          "derivation-evidence.json#/projects/rebar3-purifier/derivations/fixture-hello-tests",
+          "derivation-evidence.json#/projects/rebar3-purifier/derivations/fixture-hello-build",
+          "derivation-evidence.json#/projects/rebar3-purifier/derivations/fixture-umbrella-build",
+          "derivation-evidence.json#/projects/rebar3-purifier/derivations/conformance-external",
+          "https://github.com/nix-purifiers/rebar3-purifier/blob/8cf43df2533f7d2059c2caa34fd998c327e19b7d/flake.nix",
+          "https://github.com/nix-purifiers/rebar3-purifier/blob/8cf43df2533f7d2059c2caa34fd998c327e19b7d/flake.lock",
+          "https://github.com/nix-purifiers/rebar3-purifier/blob/8cf43df2533f7d2059c2caa34fd998c327e19b7d/tests/default.nix",
+          "https://github.com/nix-purifiers/rebar3-purifier/blob/8cf43df2533f7d2059c2caa34fd998c327e19b7d/.github/workflows/check.yml",
+          "https://github.com/nix-purifiers/rebar3-purifier/blob/8cf43df2533f7d2059c2caa34fd998c327e19b7d/nix/lib/build-rebar3-project.nix"
+        ]
+      },
+      "nonEolVersions": {
+        "state": "not-met",
+        "summary": "Rebar3 3.28.0 is the current stable and executes with Erlang/OTP 28.5.0.8. Upstream's current README identifies 27\u201329 for 3.28.0 and its getting-started policy supports the newest three OTP majors. The inspected derivations provide OTP 28 only; native OTP 27 and 29 executions are missing. No all-patch range is claimed.",
+        "evidence": [
+          "derivation-evidence.json#/projects/rebar3-purifier/derivations/fixture-hello-tests",
+          "derivation-evidence.json#/projects/rebar3-purifier/derivations/fixture-hello-build",
+          "derivation-evidence.json#/projects/rebar3-purifier/derivations/fixture-umbrella-build",
+          "derivation-evidence.json#/projects/rebar3-purifier/derivations/conformance-external",
+          "https://rebar3.org/docs/getting-started/",
+          "https://github.com/erlang/rebar3/blob/main/README.md",
+          "https://api.github.com/repos/erlang/rebar3/releases?per_page=5"
+        ]
+      },
+      "manySamples": {
+        "state": "not-met",
+        "summary": "hello and umbrella are repository-authored fixtures. Dependencies fetched from Hex/git, their plugin, and generated release consumers do not establish a collection of independent upstream project builds.",
+        "evidence": [
+          "derivation-evidence.json#/projects/rebar3-purifier/derivations/fixture-hello-tests",
+          "derivation-evidence.json#/projects/rebar3-purifier/derivations/fixture-hello-build",
+          "derivation-evidence.json#/projects/rebar3-purifier/derivations/fixture-umbrella-build",
+          "derivation-evidence.json#/projects/rebar3-purifier/derivations/conformance-external",
+          "https://github.com/nix-purifiers/rebar3-purifier/blob/8cf43df2533f7d2059c2caa34fd998c327e19b7d/flake.nix",
+          "https://github.com/nix-purifiers/rebar3-purifier/blob/8cf43df2533f7d2059c2caa34fd998c327e19b7d/flake.lock",
+          "https://github.com/nix-purifiers/rebar3-purifier/blob/8cf43df2533f7d2059c2caa34fd998c327e19b7d/tests/default.nix",
+          "https://github.com/nix-purifiers/rebar3-purifier/blob/8cf43df2533f7d2059c2caa34fd998c327e19b7d/.github/workflows/check.yml",
+          "https://github.com/nix-purifiers/rebar3-purifier/blob/8cf43df2533f7d2059c2caa34fd998c327e19b7d/nix/lib/build-rebar3-project.nix"
+        ]
+      },
+      "longCompatibility": {
+        "state": "not-met",
+        "summary": "All fixture locks pin Rebar3 3.28.0 and the realized native SDK is OTP 28.5.0.8. No older rebar3/OTP build point establishes a historical span.",
+        "evidence": [
+          "derivation-evidence.json#/projects/rebar3-purifier/derivations/fixture-hello-tests",
+          "derivation-evidence.json#/projects/rebar3-purifier/derivations/fixture-hello-build",
+          "derivation-evidence.json#/projects/rebar3-purifier/derivations/fixture-umbrella-build",
+          "derivation-evidence.json#/projects/rebar3-purifier/derivations/conformance-external",
+          "https://github.com/nix-purifiers/rebar3-purifier/blob/8cf43df2533f7d2059c2caa34fd998c327e19b7d/flake.nix",
+          "https://github.com/nix-purifiers/rebar3-purifier/blob/8cf43df2533f7d2059c2caa34fd998c327e19b7d/flake.lock",
+          "https://github.com/nix-purifiers/rebar3-purifier/blob/8cf43df2533f7d2059c2caa34fd998c327e19b7d/tests/default.nix",
+          "https://github.com/nix-purifiers/rebar3-purifier/blob/8cf43df2533f7d2059c2caa34fd998c327e19b7d/.github/workflows/check.yml",
+          "https://github.com/nix-purifiers/rebar3-purifier/blob/8cf43df2533f7d2059c2caa34fd998c327e19b7d/nix/lib/build-rebar3-project.nix"
+        ]
+      }
+    },
+    "sampleBuilds": [
+      {
+        "name": "Repository fixtures hello and umbrella; escript execution, EUnit, Hex/git cache reconstruction, plugin/release and external-lock consumers.",
+        "evidence": [
+          "derivation-evidence.json#/projects/rebar3-purifier/derivations/fixture-hello-tests",
+          "derivation-evidence.json#/projects/rebar3-purifier/derivations/fixture-hello-build",
+          "derivation-evidence.json#/projects/rebar3-purifier/derivations/fixture-umbrella-build",
+          "derivation-evidence.json#/projects/rebar3-purifier/derivations/conformance-external"
+        ]
+      }
+    ]
+  },
+  "renv-purifier": {
+    "tier": 3,
+    "reviewedRevision": "528729376aab9a8bc148b375c35099bbc5eee52e",
+    "reviewedAt": "2026-11-06",
+    "rationale": "Executed native Linux samples and reviewed Nix/test sources support Tier 3. Native Darwin proof is absent, so Tier 2 is not demonstrated; each higher criterion has an explicit judgment. ",
+    "criteria": {
+      "evaluation": {
+        "state": "met",
+        "summary": "The immutable source evaluates to the retained executable checks; actual native sample-check derivations and their build receipts are bound below.",
+        "evidence": [
+          "derivation-evidence.json#/projects/renv-purifier/derivations/hello-tests",
+          "derivation-evidence.json#/projects/renv-purifier/derivations/hello-runs",
+          "derivation-evidence.json#/projects/renv-purifier/derivations/cransays-runs",
+          "derivation-evidence.json#/projects/renv-purifier/derivations/conformance-offline",
+          "derivation-evidence.json#/projects/renv-purifier/derivations/old-renv-runs",
+          "https://github.com/nix-purifiers/renv-purifier/blob/528729376aab9a8bc148b375c35099bbc5eee52e/flake.nix",
+          "https://github.com/nix-purifiers/renv-purifier/blob/528729376aab9a8bc148b375c35099bbc5eee52e/flake.lock",
+          "https://github.com/nix-purifiers/renv-purifier/blob/528729376aab9a8bc148b375c35099bbc5eee52e/tests/default.nix",
+          "https://github.com/nix-purifiers/renv-purifier/blob/528729376aab9a8bc148b375c35099bbc5eee52e/.github/workflows/check.yml",
+          "https://github.com/nix-purifiers/renv-purifier/blob/528729376aab9a8bc148b375c35099bbc5eee52e/nix/lib/build-renv-project.nix"
+        ]
+      },
+      "goodTests": {
+        "state": "met",
+        "summary": "Executed checks cover R CMD check of hello, dependency loading and provenance for CRAN/archive/GitHub/git/URL/local/Bioconductor, offline prefetch/use, publishing a CRAN-style repository, external lockfiles, old-renv restore, language-server loading and cransays dependency loading. Current CI's later tests/cli.sh external-capture byte comparison fails after flake checks pass: openssl's unchanged bytes moved to an Archive URL. This limits a passing whole-lifecycle claim, but does not erase the broad executable assertions. Manager reports a test-only repair pending publication; it is not counted as released proof here.",
+        "evidence": [
+          "derivation-evidence.json#/projects/renv-purifier/derivations/hello-tests",
+          "derivation-evidence.json#/projects/renv-purifier/derivations/hello-runs",
+          "derivation-evidence.json#/projects/renv-purifier/derivations/cransays-runs",
+          "derivation-evidence.json#/projects/renv-purifier/derivations/conformance-offline",
+          "derivation-evidence.json#/projects/renv-purifier/derivations/old-renv-runs",
+          "https://github.com/nix-purifiers/renv-purifier/blob/528729376aab9a8bc148b375c35099bbc5eee52e/flake.nix",
+          "https://github.com/nix-purifiers/renv-purifier/blob/528729376aab9a8bc148b375c35099bbc5eee52e/flake.lock",
+          "https://github.com/nix-purifiers/renv-purifier/blob/528729376aab9a8bc148b375c35099bbc5eee52e/tests/default.nix",
+          "https://github.com/nix-purifiers/renv-purifier/blob/528729376aab9a8bc148b375c35099bbc5eee52e/.github/workflows/check.yml",
+          "https://github.com/nix-purifiers/renv-purifier/blob/528729376aab9a8bc148b375c35099bbc5eee52e/nix/lib/build-renv-project.nix"
+        ]
+      },
+      "linux": {
+        "state": "met",
+        "summary": "Native x86_64-linux sample checks succeeded for this immutable revision. Exact check attributes, derivation paths, outputs and build receipts are recorded; Linux declarations and cross-evaluation are not used as runtime evidence.",
+        "evidence": [
+          "derivation-evidence.json#/projects/renv-purifier/derivations/hello-tests",
+          "derivation-evidence.json#/projects/renv-purifier/derivations/hello-runs",
+          "derivation-evidence.json#/projects/renv-purifier/derivations/cransays-runs",
+          "derivation-evidence.json#/projects/renv-purifier/derivations/conformance-offline",
+          "derivation-evidence.json#/projects/renv-purifier/derivations/old-renv-runs",
+          "https://github.com/nix-purifiers/renv-purifier/blob/528729376aab9a8bc148b375c35099bbc5eee52e/flake.nix",
+          "https://github.com/nix-purifiers/renv-purifier/blob/528729376aab9a8bc148b375c35099bbc5eee52e/flake.lock",
+          "https://github.com/nix-purifiers/renv-purifier/blob/528729376aab9a8bc148b375c35099bbc5eee52e/tests/default.nix",
+          "https://github.com/nix-purifiers/renv-purifier/blob/528729376aab9a8bc148b375c35099bbc5eee52e/.github/workflows/check.yml",
+          "https://github.com/nix-purifiers/renv-purifier/blob/528729376aab9a8bc148b375c35099bbc5eee52e/nix/lib/build-renv-project.nix"
+        ]
+      },
+      "darwin": {
+        "state": "not-met",
+        "summary": "No native Darwin execution receipt exists for this reviewed source. The flake/check workflow targets Linux x86_64 and aarch64 only.",
+        "evidence": [
+          "derivation-evidence.json#/projects/renv-purifier/derivations/hello-tests",
+          "derivation-evidence.json#/projects/renv-purifier/derivations/hello-runs",
+          "derivation-evidence.json#/projects/renv-purifier/derivations/cransays-runs",
+          "derivation-evidence.json#/projects/renv-purifier/derivations/conformance-offline",
+          "derivation-evidence.json#/projects/renv-purifier/derivations/old-renv-runs",
+          "https://github.com/nix-purifiers/renv-purifier/blob/528729376aab9a8bc148b375c35099bbc5eee52e/flake.nix",
+          "https://github.com/nix-purifiers/renv-purifier/blob/528729376aab9a8bc148b375c35099bbc5eee52e/flake.lock",
+          "https://github.com/nix-purifiers/renv-purifier/blob/528729376aab9a8bc148b375c35099bbc5eee52e/tests/default.nix",
+          "https://github.com/nix-purifiers/renv-purifier/blob/528729376aab9a8bc148b375c35099bbc5eee52e/.github/workflows/check.yml",
+          "https://github.com/nix-purifiers/renv-purifier/blob/528729376aab9a8bc148b375c35099bbc5eee52e/nix/lib/build-renv-project.nix"
+        ]
+      },
+      "oneVersion": {
+        "state": "met",
+        "summary": "Native sample checks execute the exact SDK roles {\"R\": \"4.6.1\", \"renv\": \"1.3.1\", \"restoredRenvOldFixture\": \"1.2.3\"}. Version strings are bound to inspected native inputs/locks and successful derivations, not merely to documentation.",
+        "evidence": [
+          "derivation-evidence.json#/projects/renv-purifier/derivations/hello-tests",
+          "derivation-evidence.json#/projects/renv-purifier/derivations/hello-runs",
+          "derivation-evidence.json#/projects/renv-purifier/derivations/cransays-runs",
+          "derivation-evidence.json#/projects/renv-purifier/derivations/conformance-offline",
+          "derivation-evidence.json#/projects/renv-purifier/derivations/old-renv-runs",
+          "https://github.com/nix-purifiers/renv-purifier/blob/528729376aab9a8bc148b375c35099bbc5eee52e/flake.nix",
+          "https://github.com/nix-purifiers/renv-purifier/blob/528729376aab9a8bc148b375c35099bbc5eee52e/flake.lock",
+          "https://github.com/nix-purifiers/renv-purifier/blob/528729376aab9a8bc148b375c35099bbc5eee52e/tests/default.nix",
+          "https://github.com/nix-purifiers/renv-purifier/blob/528729376aab9a8bc148b375c35099bbc5eee52e/.github/workflows/check.yml",
+          "https://github.com/nix-purifiers/renv-purifier/blob/528729376aab9a8bc148b375c35099bbc5eee52e/nix/lib/build-renv-project.nix"
+        ]
+      },
+      "nonEolVersions": {
+        "state": "met",
+        "summary": "The executed derivations bind R 4.6.1 and renv 1.3.1; renv 1.3.1 is current stable in upstream's release API. The old-renv check additionally restores 1.2.3 while native renv remains current. Primary renv guidance distinguishes restoring package versions from choosing R itself. This claims those exact native/restored roles, not all R or renv releases.",
+        "evidence": [
+          "derivation-evidence.json#/projects/renv-purifier/derivations/hello-tests",
+          "derivation-evidence.json#/projects/renv-purifier/derivations/hello-runs",
+          "derivation-evidence.json#/projects/renv-purifier/derivations/cransays-runs",
+          "derivation-evidence.json#/projects/renv-purifier/derivations/conformance-offline",
+          "derivation-evidence.json#/projects/renv-purifier/derivations/old-renv-runs",
+          "https://rstudio.github.io/renv/articles/faq.html",
+          "https://rstudio.github.io/renv/news/index.html",
+          "https://api.github.com/repos/rstudio/renv/releases?per_page=5"
+        ]
+      },
+      "manySamples": {
+        "state": "not-met",
+        "summary": "cransays is one independent upstream sample, with a restored dependency library rather than its whole dashboard. hello/sources/editor/old-renv are authored fixtures; their several dependency sources do not make several independent projects.",
+        "evidence": [
+          "derivation-evidence.json#/projects/renv-purifier/derivations/hello-tests",
+          "derivation-evidence.json#/projects/renv-purifier/derivations/hello-runs",
+          "derivation-evidence.json#/projects/renv-purifier/derivations/cransays-runs",
+          "derivation-evidence.json#/projects/renv-purifier/derivations/conformance-offline",
+          "derivation-evidence.json#/projects/renv-purifier/derivations/old-renv-runs",
+          "https://github.com/nix-purifiers/renv-purifier/blob/528729376aab9a8bc148b375c35099bbc5eee52e/flake.nix",
+          "https://github.com/nix-purifiers/renv-purifier/blob/528729376aab9a8bc148b375c35099bbc5eee52e/flake.lock",
+          "https://github.com/nix-purifiers/renv-purifier/blob/528729376aab9a8bc148b375c35099bbc5eee52e/tests/default.nix",
+          "https://github.com/nix-purifiers/renv-purifier/blob/528729376aab9a8bc148b375c35099bbc5eee52e/.github/workflows/check.yml",
+          "https://github.com/nix-purifiers/renv-purifier/blob/528729376aab9a8bc148b375c35099bbc5eee52e/nix/lib/build-renv-project.nix"
+        ]
+      },
+      "longCompatibility": {
+        "state": "not-met",
+        "summary": "The successful old-renv point is 1.2.3 and current native point is 1.3.1, both 2026 release points. This restore test does not demonstrate a long historical R/renv compatibility span.",
+        "evidence": [
+          "derivation-evidence.json#/projects/renv-purifier/derivations/hello-tests",
+          "derivation-evidence.json#/projects/renv-purifier/derivations/hello-runs",
+          "derivation-evidence.json#/projects/renv-purifier/derivations/cransays-runs",
+          "derivation-evidence.json#/projects/renv-purifier/derivations/conformance-offline",
+          "derivation-evidence.json#/projects/renv-purifier/derivations/old-renv-runs",
+          "https://github.com/nix-purifiers/renv-purifier/blob/528729376aab9a8bc148b375c35099bbc5eee52e/flake.nix",
+          "https://github.com/nix-purifiers/renv-purifier/blob/528729376aab9a8bc148b375c35099bbc5eee52e/flake.lock",
+          "https://github.com/nix-purifiers/renv-purifier/blob/528729376aab9a8bc148b375c35099bbc5eee52e/tests/default.nix",
+          "https://github.com/nix-purifiers/renv-purifier/blob/528729376aab9a8bc148b375c35099bbc5eee52e/.github/workflows/check.yml",
+          "https://github.com/nix-purifiers/renv-purifier/blob/528729376aab9a8bc148b375c35099bbc5eee52e/nix/lib/build-renv-project.nix"
+        ]
+      }
+    },
+    "sampleBuilds": [
+      {
+        "name": "Fixtures hello/sources/editor/old-renv and independent r-hub/cransays aeaa1397fdb453e0a5b710ddc03a3fa04a89cf39. cransays checks restore/load its library; they do not render the Quarto dashboard or check the removed package code.",
+        "evidence": [
+          "derivation-evidence.json#/projects/renv-purifier/derivations/hello-tests",
+          "derivation-evidence.json#/projects/renv-purifier/derivations/hello-runs",
+          "derivation-evidence.json#/projects/renv-purifier/derivations/cransays-runs",
+          "derivation-evidence.json#/projects/renv-purifier/derivations/conformance-offline",
+          "derivation-evidence.json#/projects/renv-purifier/derivations/old-renv-runs"
+        ]
+      }
+    ]
+  },
+  "sbt-purifier": {
+    "tier": 3,
+    "reviewedRevision": "694028d9262526adedc8a942b82e84e2c2b7630b",
+    "reviewedAt": "2026-11-06",
+    "rationale": "Executed native Linux samples and reviewed Nix/test sources support Tier 3. Native Darwin proof is absent, so Tier 2 is not demonstrated; each higher criterion has an explicit judgment. Historical sbt endpoint compatibility is met for discrete versions; many independent samples remain unproved.",
+    "criteria": {
+      "evaluation": {
+        "state": "met",
+        "summary": "The immutable source evaluates to the retained executable checks; actual native sample-check derivations and their build receipts are bound below.",
+        "evidence": [
+          "derivation-evidence.json#/projects/sbt-purifier/derivations/legacy-build",
+          "derivation-evidence.json#/projects/sbt-purifier/derivations/legacy-ivy-build",
+          "derivation-evidence.json#/projects/sbt-purifier/derivations/externalized-multi",
+          "derivation-evidence.json#/projects/sbt-purifier/derivations/externalized-sbt2",
+          "derivation-evidence.json#/projects/sbt-purifier/derivations/consumer-repository",
+          "https://github.com/nix-purifiers/sbt-purifier/blob/694028d9262526adedc8a942b82e84e2c2b7630b/flake.nix",
+          "https://github.com/nix-purifiers/sbt-purifier/blob/694028d9262526adedc8a942b82e84e2c2b7630b/flake.lock",
+          "https://github.com/nix-purifiers/sbt-purifier/blob/694028d9262526adedc8a942b82e84e2c2b7630b/tests/default.nix",
+          "https://github.com/nix-purifiers/sbt-purifier/blob/694028d9262526adedc8a942b82e84e2c2b7630b/.github/workflows/check.yml",
+          "https://github.com/nix-purifiers/sbt-purifier/blob/694028d9262526adedc8a942b82e84e2c2b7630b/nix/lib/build-sbt-project.nix"
+        ]
+      },
+      "goodTests": {
+        "state": "met",
+        "summary": "The executed suite builds the plugin with unit tests, runs fixture tests on sbt 0.13/1/2, exercises Ivy and Coursier, meta-build injection, project matrices, exact published artifact layouts, Maven/Ivy consumers and external/stale/tampered/missing/malformed locks. Native consumers resolve only from exported file repositories. These independent behavioral paths justify goodTests even though the samples themselves are authored fixtures.",
+        "evidence": [
+          "derivation-evidence.json#/projects/sbt-purifier/derivations/legacy-build",
+          "derivation-evidence.json#/projects/sbt-purifier/derivations/legacy-ivy-build",
+          "derivation-evidence.json#/projects/sbt-purifier/derivations/externalized-multi",
+          "derivation-evidence.json#/projects/sbt-purifier/derivations/externalized-sbt2",
+          "derivation-evidence.json#/projects/sbt-purifier/derivations/consumer-repository",
+          "https://github.com/nix-purifiers/sbt-purifier/blob/694028d9262526adedc8a942b82e84e2c2b7630b/flake.nix",
+          "https://github.com/nix-purifiers/sbt-purifier/blob/694028d9262526adedc8a942b82e84e2c2b7630b/flake.lock",
+          "https://github.com/nix-purifiers/sbt-purifier/blob/694028d9262526adedc8a942b82e84e2c2b7630b/tests/default.nix",
+          "https://github.com/nix-purifiers/sbt-purifier/blob/694028d9262526adedc8a942b82e84e2c2b7630b/.github/workflows/check.yml",
+          "https://github.com/nix-purifiers/sbt-purifier/blob/694028d9262526adedc8a942b82e84e2c2b7630b/nix/lib/build-sbt-project.nix"
+        ]
+      },
+      "linux": {
+        "state": "met",
+        "summary": "Native x86_64-linux sample checks succeeded for this immutable revision. Exact check attributes, derivation paths, outputs and build receipts are recorded; Linux declarations and cross-evaluation are not used as runtime evidence.",
+        "evidence": [
+          "derivation-evidence.json#/projects/sbt-purifier/derivations/legacy-build",
+          "derivation-evidence.json#/projects/sbt-purifier/derivations/legacy-ivy-build",
+          "derivation-evidence.json#/projects/sbt-purifier/derivations/externalized-multi",
+          "derivation-evidence.json#/projects/sbt-purifier/derivations/externalized-sbt2",
+          "derivation-evidence.json#/projects/sbt-purifier/derivations/consumer-repository",
+          "https://github.com/nix-purifiers/sbt-purifier/blob/694028d9262526adedc8a942b82e84e2c2b7630b/flake.nix",
+          "https://github.com/nix-purifiers/sbt-purifier/blob/694028d9262526adedc8a942b82e84e2c2b7630b/flake.lock",
+          "https://github.com/nix-purifiers/sbt-purifier/blob/694028d9262526adedc8a942b82e84e2c2b7630b/tests/default.nix",
+          "https://github.com/nix-purifiers/sbt-purifier/blob/694028d9262526adedc8a942b82e84e2c2b7630b/.github/workflows/check.yml",
+          "https://github.com/nix-purifiers/sbt-purifier/blob/694028d9262526adedc8a942b82e84e2c2b7630b/nix/lib/build-sbt-project.nix"
+        ]
+      },
+      "darwin": {
+        "state": "not-met",
+        "summary": "No native Darwin execution receipt exists for this reviewed source. The flake declares aarch64-darwin but inspected CI runs Linux only; declarations are not execution.",
+        "evidence": [
+          "derivation-evidence.json#/projects/sbt-purifier/derivations/legacy-build",
+          "derivation-evidence.json#/projects/sbt-purifier/derivations/legacy-ivy-build",
+          "derivation-evidence.json#/projects/sbt-purifier/derivations/externalized-multi",
+          "derivation-evidence.json#/projects/sbt-purifier/derivations/externalized-sbt2",
+          "derivation-evidence.json#/projects/sbt-purifier/derivations/consumer-repository",
+          "https://github.com/nix-purifiers/sbt-purifier/blob/694028d9262526adedc8a942b82e84e2c2b7630b/flake.nix",
+          "https://github.com/nix-purifiers/sbt-purifier/blob/694028d9262526adedc8a942b82e84e2c2b7630b/flake.lock",
+          "https://github.com/nix-purifiers/sbt-purifier/blob/694028d9262526adedc8a942b82e84e2c2b7630b/tests/default.nix",
+          "https://github.com/nix-purifiers/sbt-purifier/blob/694028d9262526adedc8a942b82e84e2c2b7630b/.github/workflows/check.yml",
+          "https://github.com/nix-purifiers/sbt-purifier/blob/694028d9262526adedc8a942b82e84e2c2b7630b/nix/lib/build-sbt-project.nix"
+        ]
+      },
+      "oneVersion": {
+        "state": "met",
+        "summary": "Native sample checks execute the exact SDK roles {\"jdkCurrent\": \"21.0.12.1+1\", \"jdkLegacy\": \"8u504-b01\", \"sbtConsumer\": \"1.11.7\", \"sbtCurrent1\": \"1.13.1\", \"sbtCurrent2\": \"2.0.12\", \"sbtLegacy\": \"0.13.18\"}. Version strings are bound to inspected native inputs/locks and successful derivations, not merely to documentation.",
+        "evidence": [
+          "derivation-evidence.json#/projects/sbt-purifier/derivations/legacy-build",
+          "derivation-evidence.json#/projects/sbt-purifier/derivations/legacy-ivy-build",
+          "derivation-evidence.json#/projects/sbt-purifier/derivations/externalized-multi",
+          "derivation-evidence.json#/projects/sbt-purifier/derivations/externalized-sbt2",
+          "derivation-evidence.json#/projects/sbt-purifier/derivations/consumer-repository",
+          "https://github.com/nix-purifiers/sbt-purifier/blob/694028d9262526adedc8a942b82e84e2c2b7630b/flake.nix",
+          "https://github.com/nix-purifiers/sbt-purifier/blob/694028d9262526adedc8a942b82e84e2c2b7630b/flake.lock",
+          "https://github.com/nix-purifiers/sbt-purifier/blob/694028d9262526adedc8a942b82e84e2c2b7630b/tests/default.nix",
+          "https://github.com/nix-purifiers/sbt-purifier/blob/694028d9262526adedc8a942b82e84e2c2b7630b/.github/workflows/check.yml",
+          "https://github.com/nix-purifiers/sbt-purifier/blob/694028d9262526adedc8a942b82e84e2c2b7630b/nix/lib/build-sbt-project.nix"
+        ]
+      },
+      "nonEolVersions": {
+        "state": "met",
+        "summary": "Successful native check derivations cover both current stable upstream release lines at exact points sbt 1.13.1 and 2.0.12, confirmed by live primary releases (2.1.0-RC3 is a prerelease). They bind JDK 21; the legacy 0.13.18 lane binds JDK 8 separately. Current producer draft is not needed for these existing fixture points; no continuous patch range is inferred.",
+        "evidence": [
+          "derivation-evidence.json#/projects/sbt-purifier/derivations/legacy-build",
+          "derivation-evidence.json#/projects/sbt-purifier/derivations/legacy-ivy-build",
+          "derivation-evidence.json#/projects/sbt-purifier/derivations/externalized-multi",
+          "derivation-evidence.json#/projects/sbt-purifier/derivations/externalized-sbt2",
+          "derivation-evidence.json#/projects/sbt-purifier/derivations/consumer-repository",
+          "https://api.github.com/repos/sbt/sbt/releases?per_page=5",
+          "https://www.scala-sbt.org/1.x/docs/Combined%2BPages.html"
+        ]
+      },
+      "manySamples": {
+        "state": "not-met",
+        "summary": "The numerous builds are consumer/producer variants of repository-authored fixtures. No independent upstream project has a frozen successful public-main check in this review; the owner's test-interface draft is not substituted for one.",
+        "evidence": [
+          "derivation-evidence.json#/projects/sbt-purifier/derivations/legacy-build",
+          "derivation-evidence.json#/projects/sbt-purifier/derivations/legacy-ivy-build",
+          "derivation-evidence.json#/projects/sbt-purifier/derivations/externalized-multi",
+          "derivation-evidence.json#/projects/sbt-purifier/derivations/externalized-sbt2",
+          "derivation-evidence.json#/projects/sbt-purifier/derivations/consumer-repository",
+          "https://github.com/nix-purifiers/sbt-purifier/blob/694028d9262526adedc8a942b82e84e2c2b7630b/flake.nix",
+          "https://github.com/nix-purifiers/sbt-purifier/blob/694028d9262526adedc8a942b82e84e2c2b7630b/flake.lock",
+          "https://github.com/nix-purifiers/sbt-purifier/blob/694028d9262526adedc8a942b82e84e2c2b7630b/tests/default.nix",
+          "https://github.com/nix-purifiers/sbt-purifier/blob/694028d9262526adedc8a942b82e84e2c2b7630b/.github/workflows/check.yml",
+          "https://github.com/nix-purifiers/sbt-purifier/blob/694028d9262526adedc8a942b82e84e2c2b7630b/nix/lib/build-sbt-project.nix"
+        ]
+      },
+      "longCompatibility": {
+        "state": "met",
+        "summary": "The actual legacy-build and legacy-ivy-build execute sbt 0.13.18/JDK 8, while sbt2 and multi/ivy variants execute 2.0.12 and 1.13.1/JDK 21. Repository consumers test the resulting publications. These discrete old and current sbt generations give meaningful historical breadth; they do not imply every intervening patch works.",
+        "evidence": [
+          "derivation-evidence.json#/projects/sbt-purifier/derivations/legacy-build",
+          "derivation-evidence.json#/projects/sbt-purifier/derivations/legacy-ivy-build",
+          "derivation-evidence.json#/projects/sbt-purifier/derivations/externalized-multi",
+          "derivation-evidence.json#/projects/sbt-purifier/derivations/externalized-sbt2",
+          "derivation-evidence.json#/projects/sbt-purifier/derivations/consumer-repository",
+          "https://github.com/nix-purifiers/sbt-purifier/blob/694028d9262526adedc8a942b82e84e2c2b7630b/flake.nix",
+          "https://github.com/nix-purifiers/sbt-purifier/blob/694028d9262526adedc8a942b82e84e2c2b7630b/flake.lock",
+          "https://github.com/nix-purifiers/sbt-purifier/blob/694028d9262526adedc8a942b82e84e2c2b7630b/tests/default.nix",
+          "https://github.com/nix-purifiers/sbt-purifier/blob/694028d9262526adedc8a942b82e84e2c2b7630b/.github/workflows/check.yml",
+          "https://github.com/nix-purifiers/sbt-purifier/blob/694028d9262526adedc8a942b82e84e2c2b7630b/nix/lib/build-sbt-project.nix"
+        ]
+      }
+    },
+    "sampleBuilds": [
+      {
+        "name": "Repository fixtures multi, ivy, sbt013, sbt2, metameta, matrix, matrix2 and consumer. The producer owner's independent sbt/test-interface sample is an unreleased draft and excluded.",
+        "evidence": [
+          "derivation-evidence.json#/projects/sbt-purifier/derivations/legacy-build",
+          "derivation-evidence.json#/projects/sbt-purifier/derivations/legacy-ivy-build",
+          "derivation-evidence.json#/projects/sbt-purifier/derivations/externalized-multi",
+          "derivation-evidence.json#/projects/sbt-purifier/derivations/externalized-sbt2",
+          "derivation-evidence.json#/projects/sbt-purifier/derivations/consumer-repository"
+        ]
+      }
+    ]
+  },
+  "scala-cli-purifier": {
+    "tier": 3,
+    "reviewedRevision": "37c32a9ec3e7489ee4976ee40d882585f5c6d793",
+    "reviewedAt": "2026-11-06",
+    "rationale": "Executed native Linux samples and reviewed Nix/test sources support Tier 3. Native Darwin proof is absent, so Tier 2 is not demonstrated; each higher criterion has an explicit judgment. ",
+    "criteria": {
+      "evaluation": {
+        "state": "met",
+        "summary": "The immutable source evaluates to the retained executable checks; actual native sample-check derivations and their build receipts are bound below.",
+        "evidence": [
+          "derivation-evidence.json#/projects/scala-cli-purifier/derivations/hello-runs",
+          "derivation-evidence.json#/projects/scala-cli-purifier/derivations/hello-tests",
+          "derivation-evidence.json#/projects/scala-cli-purifier/derivations/script-runs",
+          "derivation-evidence.json#/projects/scala-cli-purifier/derivations/js-runs",
+          "derivation-evidence.json#/projects/scala-cli-purifier/derivations/native-runs",
+          "derivation-evidence.json#/projects/scala-cli-purifier/derivations/example-besom-core",
+          "https://github.com/nix-purifiers/scala-cli-purifier/blob/37c32a9ec3e7489ee4976ee40d882585f5c6d793/flake.nix",
+          "https://github.com/nix-purifiers/scala-cli-purifier/blob/37c32a9ec3e7489ee4976ee40d882585f5c6d793/flake.lock",
+          "https://github.com/nix-purifiers/scala-cli-purifier/blob/37c32a9ec3e7489ee4976ee40d882585f5c6d793/tests/default.nix",
+          "https://github.com/nix-purifiers/scala-cli-purifier/blob/37c32a9ec3e7489ee4976ee40d882585f5c6d793/.github/workflows/check.yml",
+          "https://github.com/nix-purifiers/scala-cli-purifier/blob/37c32a9ec3e7489ee4976ee40d882585f5c6d793/nix/lib/build-scala-cli-project.nix"
+        ]
+      },
+      "goodTests": {
+        "state": "met",
+        "summary": "Executed checks run JVM, Scala.js and Scala Native fixtures and their tests, inspect exact artifacts, exercise standalone/composed Maven publication, and reject malformed/missing/tampered/stale locks and changed native CLI versions. The independent Besom library is compiled and its jar contents checked. Producer draft's stronger runtime sample and lifecycle matrix are excluded until source-frozen and released.",
+        "evidence": [
+          "derivation-evidence.json#/projects/scala-cli-purifier/derivations/hello-runs",
+          "derivation-evidence.json#/projects/scala-cli-purifier/derivations/hello-tests",
+          "derivation-evidence.json#/projects/scala-cli-purifier/derivations/script-runs",
+          "derivation-evidence.json#/projects/scala-cli-purifier/derivations/js-runs",
+          "derivation-evidence.json#/projects/scala-cli-purifier/derivations/native-runs",
+          "derivation-evidence.json#/projects/scala-cli-purifier/derivations/example-besom-core",
+          "https://github.com/nix-purifiers/scala-cli-purifier/blob/37c32a9ec3e7489ee4976ee40d882585f5c6d793/flake.nix",
+          "https://github.com/nix-purifiers/scala-cli-purifier/blob/37c32a9ec3e7489ee4976ee40d882585f5c6d793/flake.lock",
+          "https://github.com/nix-purifiers/scala-cli-purifier/blob/37c32a9ec3e7489ee4976ee40d882585f5c6d793/tests/default.nix",
+          "https://github.com/nix-purifiers/scala-cli-purifier/blob/37c32a9ec3e7489ee4976ee40d882585f5c6d793/.github/workflows/check.yml",
+          "https://github.com/nix-purifiers/scala-cli-purifier/blob/37c32a9ec3e7489ee4976ee40d882585f5c6d793/nix/lib/build-scala-cli-project.nix"
+        ]
+      },
+      "linux": {
+        "state": "met",
+        "summary": "Native x86_64-linux sample checks succeeded for this immutable revision. Exact check attributes, derivation paths, outputs and build receipts are recorded; Linux declarations and cross-evaluation are not used as runtime evidence.",
+        "evidence": [
+          "derivation-evidence.json#/projects/scala-cli-purifier/derivations/hello-runs",
+          "derivation-evidence.json#/projects/scala-cli-purifier/derivations/hello-tests",
+          "derivation-evidence.json#/projects/scala-cli-purifier/derivations/script-runs",
+          "derivation-evidence.json#/projects/scala-cli-purifier/derivations/js-runs",
+          "derivation-evidence.json#/projects/scala-cli-purifier/derivations/native-runs",
+          "derivation-evidence.json#/projects/scala-cli-purifier/derivations/example-besom-core",
+          "https://github.com/nix-purifiers/scala-cli-purifier/blob/37c32a9ec3e7489ee4976ee40d882585f5c6d793/flake.nix",
+          "https://github.com/nix-purifiers/scala-cli-purifier/blob/37c32a9ec3e7489ee4976ee40d882585f5c6d793/flake.lock",
+          "https://github.com/nix-purifiers/scala-cli-purifier/blob/37c32a9ec3e7489ee4976ee40d882585f5c6d793/tests/default.nix",
+          "https://github.com/nix-purifiers/scala-cli-purifier/blob/37c32a9ec3e7489ee4976ee40d882585f5c6d793/.github/workflows/check.yml",
+          "https://github.com/nix-purifiers/scala-cli-purifier/blob/37c32a9ec3e7489ee4976ee40d882585f5c6d793/nix/lib/build-scala-cli-project.nix"
+        ]
+      },
+      "darwin": {
+        "state": "not-met",
+        "summary": "No native Darwin execution receipt exists for this reviewed source. The flake declares aarch64-darwin but inspected CI runs Linux only; declarations are not execution.",
+        "evidence": [
+          "derivation-evidence.json#/projects/scala-cli-purifier/derivations/hello-runs",
+          "derivation-evidence.json#/projects/scala-cli-purifier/derivations/hello-tests",
+          "derivation-evidence.json#/projects/scala-cli-purifier/derivations/script-runs",
+          "derivation-evidence.json#/projects/scala-cli-purifier/derivations/js-runs",
+          "derivation-evidence.json#/projects/scala-cli-purifier/derivations/native-runs",
+          "derivation-evidence.json#/projects/scala-cli-purifier/derivations/example-besom-core",
+          "https://github.com/nix-purifiers/scala-cli-purifier/blob/37c32a9ec3e7489ee4976ee40d882585f5c6d793/flake.nix",
+          "https://github.com/nix-purifiers/scala-cli-purifier/blob/37c32a9ec3e7489ee4976ee40d882585f5c6d793/flake.lock",
+          "https://github.com/nix-purifiers/scala-cli-purifier/blob/37c32a9ec3e7489ee4976ee40d882585f5c6d793/tests/default.nix",
+          "https://github.com/nix-purifiers/scala-cli-purifier/blob/37c32a9ec3e7489ee4976ee40d882585f5c6d793/.github/workflows/check.yml",
+          "https://github.com/nix-purifiers/scala-cli-purifier/blob/37c32a9ec3e7489ee4976ee40d882585f5c6d793/nix/lib/build-scala-cli-project.nix"
+        ]
+      },
+      "oneVersion": {
+        "state": "met",
+        "summary": "Native sample checks execute the exact SDK roles {\"java\": \"21.0.12.1\", \"scala-cli\": \"1.18.0\", \"scalaBesom\": \"3.3.7\", \"scalaJVM\": \"3.3.4\", \"scalaScript\": \"2.13.15\"}. Version strings are bound to inspected native inputs/locks and successful derivations, not merely to documentation.",
+        "evidence": [
+          "derivation-evidence.json#/projects/scala-cli-purifier/derivations/hello-runs",
+          "derivation-evidence.json#/projects/scala-cli-purifier/derivations/hello-tests",
+          "derivation-evidence.json#/projects/scala-cli-purifier/derivations/script-runs",
+          "derivation-evidence.json#/projects/scala-cli-purifier/derivations/js-runs",
+          "derivation-evidence.json#/projects/scala-cli-purifier/derivations/native-runs",
+          "derivation-evidence.json#/projects/scala-cli-purifier/derivations/example-besom-core",
+          "https://github.com/nix-purifiers/scala-cli-purifier/blob/37c32a9ec3e7489ee4976ee40d882585f5c6d793/flake.nix",
+          "https://github.com/nix-purifiers/scala-cli-purifier/blob/37c32a9ec3e7489ee4976ee40d882585f5c6d793/flake.lock",
+          "https://github.com/nix-purifiers/scala-cli-purifier/blob/37c32a9ec3e7489ee4976ee40d882585f5c6d793/tests/default.nix",
+          "https://github.com/nix-purifiers/scala-cli-purifier/blob/37c32a9ec3e7489ee4976ee40d882585f5c6d793/.github/workflows/check.yml",
+          "https://github.com/nix-purifiers/scala-cli-purifier/blob/37c32a9ec3e7489ee4976ee40d882585f5c6d793/nix/lib/build-scala-cli-project.nix"
+        ]
+      },
+      "nonEolVersions": {
+        "state": "met",
+        "summary": "Actual native Scala CLI 1.18.0/JDK 21.0.12.1 checks execute the current stable CLI release from the live primary API. This judgment is scoped to the purifier's CLI SDK role. The upstream Scala policy separately maintains compiler Next/LTS lines; this packet does not claim coverage of every maintained compiler line (notably a new 3.9 LTS point) from the CLI version alone, and records that broader compiler coverage gap.",
+        "evidence": [
+          "derivation-evidence.json#/projects/scala-cli-purifier/derivations/hello-runs",
+          "derivation-evidence.json#/projects/scala-cli-purifier/derivations/hello-tests",
+          "derivation-evidence.json#/projects/scala-cli-purifier/derivations/script-runs",
+          "derivation-evidence.json#/projects/scala-cli-purifier/derivations/js-runs",
+          "derivation-evidence.json#/projects/scala-cli-purifier/derivations/native-runs",
+          "derivation-evidence.json#/projects/scala-cli-purifier/derivations/example-besom-core",
+          "https://scala-cli.virtuslab.org/docs/release_notes/",
+          "https://www.scala-lang.org/development/",
+          "https://api.github.com/repos/VirtusLab/scala-cli/releases?per_page=5"
+        ]
+      },
+      "manySamples": {
+        "state": "not-met",
+        "summary": "Besom core is one independent upstream library. The other checks are authored fixtures, platform variants or consumers of those same fixtures. This is not many independent sample projects.",
+        "evidence": [
+          "derivation-evidence.json#/projects/scala-cli-purifier/derivations/hello-runs",
+          "derivation-evidence.json#/projects/scala-cli-purifier/derivations/hello-tests",
+          "derivation-evidence.json#/projects/scala-cli-purifier/derivations/script-runs",
+          "derivation-evidence.json#/projects/scala-cli-purifier/derivations/js-runs",
+          "derivation-evidence.json#/projects/scala-cli-purifier/derivations/native-runs",
+          "derivation-evidence.json#/projects/scala-cli-purifier/derivations/example-besom-core",
+          "https://github.com/nix-purifiers/scala-cli-purifier/blob/37c32a9ec3e7489ee4976ee40d882585f5c6d793/flake.nix",
+          "https://github.com/nix-purifiers/scala-cli-purifier/blob/37c32a9ec3e7489ee4976ee40d882585f5c6d793/flake.lock",
+          "https://github.com/nix-purifiers/scala-cli-purifier/blob/37c32a9ec3e7489ee4976ee40d882585f5c6d793/tests/default.nix",
+          "https://github.com/nix-purifiers/scala-cli-purifier/blob/37c32a9ec3e7489ee4976ee40d882585f5c6d793/.github/workflows/check.yml",
+          "https://github.com/nix-purifiers/scala-cli-purifier/blob/37c32a9ec3e7489ee4976ee40d882585f5c6d793/nix/lib/build-scala-cli-project.nix"
+        ]
+      },
+      "longCompatibility": {
+        "state": "not-met",
+        "summary": "The tested native CLI version is 1.18.0. Scala 2/3 compiler fixture points and the Java-major parsing test exercise separate language/parsing roles; they are not executions of old native Scala CLI releases or a long purifier compatibility span.",
+        "evidence": [
+          "derivation-evidence.json#/projects/scala-cli-purifier/derivations/hello-runs",
+          "derivation-evidence.json#/projects/scala-cli-purifier/derivations/hello-tests",
+          "derivation-evidence.json#/projects/scala-cli-purifier/derivations/script-runs",
+          "derivation-evidence.json#/projects/scala-cli-purifier/derivations/js-runs",
+          "derivation-evidence.json#/projects/scala-cli-purifier/derivations/native-runs",
+          "derivation-evidence.json#/projects/scala-cli-purifier/derivations/example-besom-core",
+          "https://github.com/nix-purifiers/scala-cli-purifier/blob/37c32a9ec3e7489ee4976ee40d882585f5c6d793/flake.nix",
+          "https://github.com/nix-purifiers/scala-cli-purifier/blob/37c32a9ec3e7489ee4976ee40d882585f5c6d793/flake.lock",
+          "https://github.com/nix-purifiers/scala-cli-purifier/blob/37c32a9ec3e7489ee4976ee40d882585f5c6d793/tests/default.nix",
+          "https://github.com/nix-purifiers/scala-cli-purifier/blob/37c32a9ec3e7489ee4976ee40d882585f5c6d793/.github/workflows/check.yml",
+          "https://github.com/nix-purifiers/scala-cli-purifier/blob/37c32a9ec3e7489ee4976ee40d882585f5c6d793/nix/lib/build-scala-cli-project.nix"
+        ]
+      }
+    },
+    "sampleBuilds": [
+      {
+        "name": "Authored JVM/script/sources/URL/local/JS/native/library fixtures plus VirtusLab/besom core at 6017c8814ac885df3c10d06969d90e2c2d8b3f9d. Public-main Besom check compiles and inspects a Context.class jar entry; it does not run the proposed producer-owner runtime probe.",
+        "evidence": [
+          "derivation-evidence.json#/projects/scala-cli-purifier/derivations/hello-runs",
+          "derivation-evidence.json#/projects/scala-cli-purifier/derivations/hello-tests",
+          "derivation-evidence.json#/projects/scala-cli-purifier/derivations/script-runs",
+          "derivation-evidence.json#/projects/scala-cli-purifier/derivations/js-runs",
+          "derivation-evidence.json#/projects/scala-cli-purifier/derivations/native-runs",
+          "derivation-evidence.json#/projects/scala-cli-purifier/derivations/example-besom-core"
+        ]
+      }
+    ]
+  },
+  "shards-purifier": {
+    "tier": 3,
+    "reviewedRevision": "05babcd2f430e9ca2fe5527bd8be9d1b48c1f64a",
+    "reviewedAt": "2026-11-06",
+    "rationale": "Executed native Linux samples and reviewed Nix/test sources support Tier 3. Native Darwin proof is absent, so Tier 2 is not demonstrated; each higher criterion has an explicit judgment. ",
+    "criteria": {
+      "evaluation": {
+        "state": "met",
+        "summary": "The immutable source evaluates to the retained executable checks; actual native sample-check derivations and their build receipts are bound below.",
+        "evidence": [
+          "derivation-evidence.json#/projects/shards-purifier/derivations/project",
+          "derivation-evidence.json#/projects/shards-purifier/derivations/editor",
+          "https://github.com/nix-purifiers/shards-purifier/blob/05babcd2f430e9ca2fe5527bd8be9d1b48c1f64a/flake.nix",
+          "https://github.com/nix-purifiers/shards-purifier/blob/05babcd2f430e9ca2fe5527bd8be9d1b48c1f64a/flake.lock",
+          "https://github.com/nix-purifiers/shards-purifier/blob/05babcd2f430e9ca2fe5527bd8be9d1b48c1f64a/tests/default.nix",
+          "https://github.com/nix-purifiers/shards-purifier/blob/05babcd2f430e9ca2fe5527bd8be9d1b48c1f64a/.github/workflows/check.yml",
+          "https://github.com/nix-purifiers/shards-purifier/blob/05babcd2f430e9ca2fe5527bd8be9d1b48c1f64a/nix/build-project.nix",
+          "https://github.com/nix-purifiers/shards-purifier/blob/05babcd2f430e9ca2fe5527bd8be9d1b48c1f64a/nix/environment.nix"
+        ]
+      },
+      "goodTests": {
+        "state": "met",
+        "summary": "The executed project runs native frozen local dependency build and Crystal specs. The editor derivation tests the built environment; release depends on the project. Current CI adds eval-errors and native/relock/update/external conformance cases plus rebuilding. These assertions span lock rejection, native source use and produced binaries, despite having only one authored project.",
+        "evidence": [
+          "derivation-evidence.json#/projects/shards-purifier/derivations/project",
+          "derivation-evidence.json#/projects/shards-purifier/derivations/editor",
+          "https://github.com/nix-purifiers/shards-purifier/blob/05babcd2f430e9ca2fe5527bd8be9d1b48c1f64a/flake.nix",
+          "https://github.com/nix-purifiers/shards-purifier/blob/05babcd2f430e9ca2fe5527bd8be9d1b48c1f64a/flake.lock",
+          "https://github.com/nix-purifiers/shards-purifier/blob/05babcd2f430e9ca2fe5527bd8be9d1b48c1f64a/tests/default.nix",
+          "https://github.com/nix-purifiers/shards-purifier/blob/05babcd2f430e9ca2fe5527bd8be9d1b48c1f64a/.github/workflows/check.yml",
+          "https://github.com/nix-purifiers/shards-purifier/blob/05babcd2f430e9ca2fe5527bd8be9d1b48c1f64a/nix/build-project.nix",
+          "https://github.com/nix-purifiers/shards-purifier/blob/05babcd2f430e9ca2fe5527bd8be9d1b48c1f64a/nix/environment.nix"
+        ]
+      },
+      "linux": {
+        "state": "met",
+        "summary": "Native x86_64-linux sample checks succeeded for this immutable revision. Exact check attributes, derivation paths, outputs and build receipts are recorded; Linux declarations and cross-evaluation are not used as runtime evidence.",
+        "evidence": [
+          "derivation-evidence.json#/projects/shards-purifier/derivations/project",
+          "derivation-evidence.json#/projects/shards-purifier/derivations/editor",
+          "https://github.com/nix-purifiers/shards-purifier/blob/05babcd2f430e9ca2fe5527bd8be9d1b48c1f64a/flake.nix",
+          "https://github.com/nix-purifiers/shards-purifier/blob/05babcd2f430e9ca2fe5527bd8be9d1b48c1f64a/flake.lock",
+          "https://github.com/nix-purifiers/shards-purifier/blob/05babcd2f430e9ca2fe5527bd8be9d1b48c1f64a/tests/default.nix",
+          "https://github.com/nix-purifiers/shards-purifier/blob/05babcd2f430e9ca2fe5527bd8be9d1b48c1f64a/.github/workflows/check.yml",
+          "https://github.com/nix-purifiers/shards-purifier/blob/05babcd2f430e9ca2fe5527bd8be9d1b48c1f64a/nix/build-project.nix",
+          "https://github.com/nix-purifiers/shards-purifier/blob/05babcd2f430e9ca2fe5527bd8be9d1b48c1f64a/nix/environment.nix"
+        ]
+      },
+      "darwin": {
+        "state": "not-met",
+        "summary": "No native Darwin execution receipt exists for this reviewed source. The flake/check workflow targets Linux x86_64 and aarch64 only.",
+        "evidence": [
+          "derivation-evidence.json#/projects/shards-purifier/derivations/project",
+          "derivation-evidence.json#/projects/shards-purifier/derivations/editor",
+          "https://github.com/nix-purifiers/shards-purifier/blob/05babcd2f430e9ca2fe5527bd8be9d1b48c1f64a/flake.nix",
+          "https://github.com/nix-purifiers/shards-purifier/blob/05babcd2f430e9ca2fe5527bd8be9d1b48c1f64a/flake.lock",
+          "https://github.com/nix-purifiers/shards-purifier/blob/05babcd2f430e9ca2fe5527bd8be9d1b48c1f64a/tests/default.nix",
+          "https://github.com/nix-purifiers/shards-purifier/blob/05babcd2f430e9ca2fe5527bd8be9d1b48c1f64a/.github/workflows/check.yml",
+          "https://github.com/nix-purifiers/shards-purifier/blob/05babcd2f430e9ca2fe5527bd8be9d1b48c1f64a/nix/build-project.nix",
+          "https://github.com/nix-purifiers/shards-purifier/blob/05babcd2f430e9ca2fe5527bd8be9d1b48c1f64a/nix/environment.nix"
+        ]
+      },
+      "oneVersion": {
+        "state": "met",
+        "summary": "Native sample checks execute the exact SDK roles {\"crystal\": \"1.21.1\", \"shards\": \"0.20.0\"}. Version strings are bound to inspected native inputs/locks and successful derivations, not merely to documentation.",
+        "evidence": [
+          "derivation-evidence.json#/projects/shards-purifier/derivations/project",
+          "derivation-evidence.json#/projects/shards-purifier/derivations/editor",
+          "https://github.com/nix-purifiers/shards-purifier/blob/05babcd2f430e9ca2fe5527bd8be9d1b48c1f64a/flake.nix",
+          "https://github.com/nix-purifiers/shards-purifier/blob/05babcd2f430e9ca2fe5527bd8be9d1b48c1f64a/flake.lock",
+          "https://github.com/nix-purifiers/shards-purifier/blob/05babcd2f430e9ca2fe5527bd8be9d1b48c1f64a/tests/default.nix",
+          "https://github.com/nix-purifiers/shards-purifier/blob/05babcd2f430e9ca2fe5527bd8be9d1b48c1f64a/.github/workflows/check.yml",
+          "https://github.com/nix-purifiers/shards-purifier/blob/05babcd2f430e9ca2fe5527bd8be9d1b48c1f64a/nix/build-project.nix",
+          "https://github.com/nix-purifiers/shards-purifier/blob/05babcd2f430e9ca2fe5527bd8be9d1b48c1f64a/nix/environment.nix"
+        ]
+      },
+      "nonEolVersions": {
+        "state": "met",
+        "summary": "Actual Shards 0.20.0 is the current stable upstream Shards release; its executed project uses the lock-bound Crystal 1.21.1 compiler. Upstream releases do not establish parallel maintained Shards branches or an EOL calendar. The current stable Shards point is demonstrated; this does not claim all Crystal minors or classify 1.21.1 EOL just because newer Crystal documentation exists.",
+        "evidence": [
+          "derivation-evidence.json#/projects/shards-purifier/derivations/project",
+          "derivation-evidence.json#/projects/shards-purifier/derivations/editor",
+          "https://github.com/crystal-lang/shards/releases",
+          "https://github.com/crystal-lang/shards/blob/master/README.md",
+          "https://api.github.com/repos/crystal-lang/shards/releases?per_page=5"
+        ]
+      },
+      "manySamples": {
+        "state": "not-met",
+        "summary": "Only examples/minimal is built as a complete application. Specs, editor and release are consumers/outputs of that same authored fixture, not independent Crystal projects.",
+        "evidence": [
+          "derivation-evidence.json#/projects/shards-purifier/derivations/project",
+          "derivation-evidence.json#/projects/shards-purifier/derivations/editor",
+          "https://github.com/nix-purifiers/shards-purifier/blob/05babcd2f430e9ca2fe5527bd8be9d1b48c1f64a/flake.nix",
+          "https://github.com/nix-purifiers/shards-purifier/blob/05babcd2f430e9ca2fe5527bd8be9d1b48c1f64a/flake.lock",
+          "https://github.com/nix-purifiers/shards-purifier/blob/05babcd2f430e9ca2fe5527bd8be9d1b48c1f64a/tests/default.nix",
+          "https://github.com/nix-purifiers/shards-purifier/blob/05babcd2f430e9ca2fe5527bd8be9d1b48c1f64a/.github/workflows/check.yml",
+          "https://github.com/nix-purifiers/shards-purifier/blob/05babcd2f430e9ca2fe5527bd8be9d1b48c1f64a/nix/build-project.nix",
+          "https://github.com/nix-purifiers/shards-purifier/blob/05babcd2f430e9ca2fe5527bd8be9d1b48c1f64a/nix/environment.nix"
+        ]
+      },
+      "longCompatibility": {
+        "state": "not-met",
+        "summary": "The executable checks bind Shards 0.20.0 and Crystal 1.21.1 only; no historical native SDK point is established.",
+        "evidence": [
+          "derivation-evidence.json#/projects/shards-purifier/derivations/project",
+          "derivation-evidence.json#/projects/shards-purifier/derivations/editor",
+          "https://github.com/nix-purifiers/shards-purifier/blob/05babcd2f430e9ca2fe5527bd8be9d1b48c1f64a/flake.nix",
+          "https://github.com/nix-purifiers/shards-purifier/blob/05babcd2f430e9ca2fe5527bd8be9d1b48c1f64a/flake.lock",
+          "https://github.com/nix-purifiers/shards-purifier/blob/05babcd2f430e9ca2fe5527bd8be9d1b48c1f64a/tests/default.nix",
+          "https://github.com/nix-purifiers/shards-purifier/blob/05babcd2f430e9ca2fe5527bd8be9d1b48c1f64a/.github/workflows/check.yml",
+          "https://github.com/nix-purifiers/shards-purifier/blob/05babcd2f430e9ca2fe5527bd8be9d1b48c1f64a/nix/build-project.nix",
+          "https://github.com/nix-purifiers/shards-purifier/blob/05babcd2f430e9ca2fe5527bd8be9d1b48c1f64a/nix/environment.nix"
+        ]
+      }
+    },
+    "sampleBuilds": [
+      {
+        "name": "Repository fixture examples/minimal, native shards --frozen --local build, Crystal specs and editor consumer.",
+        "evidence": [
+          "derivation-evidence.json#/projects/shards-purifier/derivations/project",
+          "derivation-evidence.json#/projects/shards-purifier/derivations/editor"
+        ]
+      }
+    ]
+  },
+  "soldeer-purifier": {
+    "tier": 3,
+    "reviewedRevision": "4a6b6d20f8cec707a425b3155aac92eb01c6e37d",
+    "reviewedAt": "2026-11-06",
+    "rationale": "Executed native Linux samples and reviewed Nix/test sources support Tier 3. Native Darwin proof is absent, so Tier 2 is not demonstrated; each higher criterion has an explicit judgment. ",
+    "criteria": {
+      "evaluation": {
+        "state": "met",
+        "summary": "The immutable source evaluates to the retained executable checks; actual native sample-check derivations and their build receipts are bound below.",
+        "evidence": [
+          "derivation-evidence.json#/projects/soldeer-purifier/derivations/package",
+          "derivation-evidence.json#/projects/soldeer-purifier/derivations/offline",
+          "derivation-evidence.json#/projects/soldeer-purifier/derivations/conformance-external",
+          "https://github.com/nix-purifiers/soldeer-purifier/blob/4a6b6d20f8cec707a425b3155aac92eb01c6e37d/flake.nix",
+          "https://github.com/nix-purifiers/soldeer-purifier/blob/4a6b6d20f8cec707a425b3155aac92eb01c6e37d/flake.lock",
+          "https://github.com/nix-purifiers/soldeer-purifier/blob/4a6b6d20f8cec707a425b3155aac92eb01c6e37d/tests/default.nix",
+          "https://github.com/nix-purifiers/soldeer-purifier/blob/4a6b6d20f8cec707a425b3155aac92eb01c6e37d/.github/workflows/check.yml",
+          "https://github.com/nix-purifiers/soldeer-purifier/blob/4a6b6d20f8cec707a425b3155aac92eb01c6e37d/nix/build-project.nix"
+        ]
+      },
+      "goodTests": {
+        "state": "met",
+        "summary": "Executed checks compile the Counter contracts, run their offline Forge tests, compare exact contract artifact JSON when both lockfiles are external, exercise a Solidity editor consumer, run Python unit tests, and assert distinct stale/tampered/missing/malformed refusals. These are behavioral native and contract assertions rather than just environment construction.",
+        "evidence": [
+          "derivation-evidence.json#/projects/soldeer-purifier/derivations/package",
+          "derivation-evidence.json#/projects/soldeer-purifier/derivations/offline",
+          "derivation-evidence.json#/projects/soldeer-purifier/derivations/conformance-external",
+          "https://github.com/nix-purifiers/soldeer-purifier/blob/4a6b6d20f8cec707a425b3155aac92eb01c6e37d/flake.nix",
+          "https://github.com/nix-purifiers/soldeer-purifier/blob/4a6b6d20f8cec707a425b3155aac92eb01c6e37d/flake.lock",
+          "https://github.com/nix-purifiers/soldeer-purifier/blob/4a6b6d20f8cec707a425b3155aac92eb01c6e37d/tests/default.nix",
+          "https://github.com/nix-purifiers/soldeer-purifier/blob/4a6b6d20f8cec707a425b3155aac92eb01c6e37d/.github/workflows/check.yml",
+          "https://github.com/nix-purifiers/soldeer-purifier/blob/4a6b6d20f8cec707a425b3155aac92eb01c6e37d/nix/build-project.nix"
+        ]
+      },
+      "linux": {
+        "state": "met",
+        "summary": "Native x86_64-linux sample checks succeeded for this immutable revision. Exact check attributes, derivation paths, outputs and build receipts are recorded; Linux declarations and cross-evaluation are not used as runtime evidence.",
+        "evidence": [
+          "derivation-evidence.json#/projects/soldeer-purifier/derivations/package",
+          "derivation-evidence.json#/projects/soldeer-purifier/derivations/offline",
+          "derivation-evidence.json#/projects/soldeer-purifier/derivations/conformance-external",
+          "https://github.com/nix-purifiers/soldeer-purifier/blob/4a6b6d20f8cec707a425b3155aac92eb01c6e37d/flake.nix",
+          "https://github.com/nix-purifiers/soldeer-purifier/blob/4a6b6d20f8cec707a425b3155aac92eb01c6e37d/flake.lock",
+          "https://github.com/nix-purifiers/soldeer-purifier/blob/4a6b6d20f8cec707a425b3155aac92eb01c6e37d/tests/default.nix",
+          "https://github.com/nix-purifiers/soldeer-purifier/blob/4a6b6d20f8cec707a425b3155aac92eb01c6e37d/.github/workflows/check.yml",
+          "https://github.com/nix-purifiers/soldeer-purifier/blob/4a6b6d20f8cec707a425b3155aac92eb01c6e37d/nix/build-project.nix"
+        ]
+      },
+      "darwin": {
+        "state": "not-met",
+        "summary": "No native Darwin execution receipt exists for this reviewed source. The flake/check workflow targets Linux x86_64 and aarch64 only.",
+        "evidence": [
+          "derivation-evidence.json#/projects/soldeer-purifier/derivations/package",
+          "derivation-evidence.json#/projects/soldeer-purifier/derivations/offline",
+          "derivation-evidence.json#/projects/soldeer-purifier/derivations/conformance-external",
+          "https://github.com/nix-purifiers/soldeer-purifier/blob/4a6b6d20f8cec707a425b3155aac92eb01c6e37d/flake.nix",
+          "https://github.com/nix-purifiers/soldeer-purifier/blob/4a6b6d20f8cec707a425b3155aac92eb01c6e37d/flake.lock",
+          "https://github.com/nix-purifiers/soldeer-purifier/blob/4a6b6d20f8cec707a425b3155aac92eb01c6e37d/tests/default.nix",
+          "https://github.com/nix-purifiers/soldeer-purifier/blob/4a6b6d20f8cec707a425b3155aac92eb01c6e37d/.github/workflows/check.yml",
+          "https://github.com/nix-purifiers/soldeer-purifier/blob/4a6b6d20f8cec707a425b3155aac92eb01c6e37d/nix/build-project.nix"
+        ]
+      },
+      "oneVersion": {
+        "state": "met",
+        "summary": "Native sample checks execute the exact SDK roles {\"foundry\": \"1.8.4\", \"solc\": \"0.8.33\", \"soldeer\": \"0.12.0\"}. Version strings are bound to inspected native inputs/locks and successful derivations, not merely to documentation.",
+        "evidence": [
+          "derivation-evidence.json#/projects/soldeer-purifier/derivations/package",
+          "derivation-evidence.json#/projects/soldeer-purifier/derivations/offline",
+          "derivation-evidence.json#/projects/soldeer-purifier/derivations/conformance-external",
+          "https://github.com/nix-purifiers/soldeer-purifier/blob/4a6b6d20f8cec707a425b3155aac92eb01c6e37d/flake.nix",
+          "https://github.com/nix-purifiers/soldeer-purifier/blob/4a6b6d20f8cec707a425b3155aac92eb01c6e37d/flake.lock",
+          "https://github.com/nix-purifiers/soldeer-purifier/blob/4a6b6d20f8cec707a425b3155aac92eb01c6e37d/tests/default.nix",
+          "https://github.com/nix-purifiers/soldeer-purifier/blob/4a6b6d20f8cec707a425b3155aac92eb01c6e37d/.github/workflows/check.yml",
+          "https://github.com/nix-purifiers/soldeer-purifier/blob/4a6b6d20f8cec707a425b3155aac92eb01c6e37d/nix/build-project.nix"
+        ]
+      },
+      "nonEolVersions": {
+        "state": "not-met",
+        "summary": "The actual Foundry 1.8.4 binary reports bundled Soldeer 0.12.0, and check derivations bind solc 0.8.33. Primary upstream Soldeer releases identify 0.12.1 as current stable. No check executing that current Soldeer patch is present. No claim is made that the prior 0.12.0 has a documented EOL date.",
+        "evidence": [
+          "derivation-evidence.json#/projects/soldeer-purifier/derivations/package",
+          "derivation-evidence.json#/projects/soldeer-purifier/derivations/offline",
+          "derivation-evidence.json#/projects/soldeer-purifier/derivations/conformance-external",
+          "https://github.com/mario-eth/soldeer/releases",
+          "https://github.com/mario-eth/soldeer/blob/main/README.md",
+          "https://api.github.com/repos/mario-eth/soldeer/releases?per_page=5"
+        ]
+      },
+      "manySamples": {
+        "state": "not-met",
+        "summary": "Counter is the sole authored Solidity project; external locks, editor and offline checks reuse it. Dependency contracts are inputs to this sample, not independent application sample builds.",
+        "evidence": [
+          "derivation-evidence.json#/projects/soldeer-purifier/derivations/package",
+          "derivation-evidence.json#/projects/soldeer-purifier/derivations/offline",
+          "derivation-evidence.json#/projects/soldeer-purifier/derivations/conformance-external",
+          "https://github.com/nix-purifiers/soldeer-purifier/blob/4a6b6d20f8cec707a425b3155aac92eb01c6e37d/flake.nix",
+          "https://github.com/nix-purifiers/soldeer-purifier/blob/4a6b6d20f8cec707a425b3155aac92eb01c6e37d/flake.lock",
+          "https://github.com/nix-purifiers/soldeer-purifier/blob/4a6b6d20f8cec707a425b3155aac92eb01c6e37d/tests/default.nix",
+          "https://github.com/nix-purifiers/soldeer-purifier/blob/4a6b6d20f8cec707a425b3155aac92eb01c6e37d/.github/workflows/check.yml",
+          "https://github.com/nix-purifiers/soldeer-purifier/blob/4a6b6d20f8cec707a425b3155aac92eb01c6e37d/nix/build-project.nix"
+        ]
+      },
+      "longCompatibility": {
+        "state": "not-met",
+        "summary": "The executed native tuple is Foundry 1.8.4/Soldeer 0.12.0/solc 0.8.33 only; there is no older native SDK build point.",
+        "evidence": [
+          "derivation-evidence.json#/projects/soldeer-purifier/derivations/package",
+          "derivation-evidence.json#/projects/soldeer-purifier/derivations/offline",
+          "derivation-evidence.json#/projects/soldeer-purifier/derivations/conformance-external",
+          "https://github.com/nix-purifiers/soldeer-purifier/blob/4a6b6d20f8cec707a425b3155aac92eb01c6e37d/flake.nix",
+          "https://github.com/nix-purifiers/soldeer-purifier/blob/4a6b6d20f8cec707a425b3155aac92eb01c6e37d/flake.lock",
+          "https://github.com/nix-purifiers/soldeer-purifier/blob/4a6b6d20f8cec707a425b3155aac92eb01c6e37d/tests/default.nix",
+          "https://github.com/nix-purifiers/soldeer-purifier/blob/4a6b6d20f8cec707a425b3155aac92eb01c6e37d/.github/workflows/check.yml",
+          "https://github.com/nix-purifiers/soldeer-purifier/blob/4a6b6d20f8cec707a425b3155aac92eb01c6e37d/nix/build-project.nix"
+        ]
+      }
+    },
+    "sampleBuilds": [
+      {
+        "name": "Repository fixture examples/counter, Forge build/offline test, Counter JSON artifact comparison with external locks, editor and unit/negative checks.",
+        "evidence": [
+          "derivation-evidence.json#/projects/soldeer-purifier/derivations/package",
+          "derivation-evidence.json#/projects/soldeer-purifier/derivations/offline",
+          "derivation-evidence.json#/projects/soldeer-purifier/derivations/conformance-external"
+        ]
+      }
+    ]
+  },
+  "spago-purifier": {
+    "tier": 3,
+    "reviewedRevision": "2aafeacbdd12d8211c09f9ed0f39dee03608b5ad",
+    "reviewedAt": "2026-11-06",
+    "rationale": "Executed native Linux samples and reviewed Nix/test sources support Tier 3. Native Darwin proof is absent, so Tier 2 is not demonstrated; each higher criterion has an explicit judgment. ",
+    "criteria": {
+      "evaluation": {
+        "state": "met",
+        "summary": "The immutable source evaluates to the retained executable checks; actual native sample-check derivations and their build receipts are bound below.",
+        "evidence": [
+          "derivation-evidence.json#/projects/spago-purifier/derivations/project",
+          "https://github.com/nix-purifiers/spago-purifier/blob/2aafeacbdd12d8211c09f9ed0f39dee03608b5ad/flake.nix",
+          "https://github.com/nix-purifiers/spago-purifier/blob/2aafeacbdd12d8211c09f9ed0f39dee03608b5ad/flake.lock",
+          "https://github.com/nix-purifiers/spago-purifier/blob/2aafeacbdd12d8211c09f9ed0f39dee03608b5ad/.github/workflows/check.yml",
+          "https://github.com/nix-purifiers/spago-purifier/blob/2aafeacbdd12d8211c09f9ed0f39dee03608b5ad/nix/build-project.nix",
+          "https://github.com/nix-purifiers/spago-purifier/blob/2aafeacbdd12d8211c09f9ed0f39dee03608b5ad/nix/environment.nix",
+          "https://github.com/nix-purifiers/spago-purifier/blob/2aafeacbdd12d8211c09f9ed0f39dee03608b5ad/nix/toolchain.nix"
+        ]
+      },
+      "goodTests": {
+        "state": "met",
+        "summary": "The executed project uses the native Spago wrapper and runs spago test by default; environment and release are realized. Current-source CI adds native/relock/update/external conformance and rebuild probes plus malformed/stale evaluation errors. Together these test native lock/capture use and output behavior, not just a successful expression.",
+        "evidence": [
+          "derivation-evidence.json#/projects/spago-purifier/derivations/project",
+          "https://github.com/nix-purifiers/spago-purifier/blob/2aafeacbdd12d8211c09f9ed0f39dee03608b5ad/flake.nix",
+          "https://github.com/nix-purifiers/spago-purifier/blob/2aafeacbdd12d8211c09f9ed0f39dee03608b5ad/flake.lock",
+          "https://github.com/nix-purifiers/spago-purifier/blob/2aafeacbdd12d8211c09f9ed0f39dee03608b5ad/.github/workflows/check.yml",
+          "https://github.com/nix-purifiers/spago-purifier/blob/2aafeacbdd12d8211c09f9ed0f39dee03608b5ad/nix/build-project.nix",
+          "https://github.com/nix-purifiers/spago-purifier/blob/2aafeacbdd12d8211c09f9ed0f39dee03608b5ad/nix/environment.nix",
+          "https://github.com/nix-purifiers/spago-purifier/blob/2aafeacbdd12d8211c09f9ed0f39dee03608b5ad/nix/toolchain.nix"
+        ]
+      },
+      "linux": {
+        "state": "met",
+        "summary": "Native x86_64-linux sample checks succeeded for this immutable revision. Exact check attributes, derivation paths, outputs and build receipts are recorded; Linux declarations and cross-evaluation are not used as runtime evidence.",
+        "evidence": [
+          "derivation-evidence.json#/projects/spago-purifier/derivations/project",
+          "https://github.com/nix-purifiers/spago-purifier/blob/2aafeacbdd12d8211c09f9ed0f39dee03608b5ad/flake.nix",
+          "https://github.com/nix-purifiers/spago-purifier/blob/2aafeacbdd12d8211c09f9ed0f39dee03608b5ad/flake.lock",
+          "https://github.com/nix-purifiers/spago-purifier/blob/2aafeacbdd12d8211c09f9ed0f39dee03608b5ad/.github/workflows/check.yml",
+          "https://github.com/nix-purifiers/spago-purifier/blob/2aafeacbdd12d8211c09f9ed0f39dee03608b5ad/nix/build-project.nix",
+          "https://github.com/nix-purifiers/spago-purifier/blob/2aafeacbdd12d8211c09f9ed0f39dee03608b5ad/nix/environment.nix",
+          "https://github.com/nix-purifiers/spago-purifier/blob/2aafeacbdd12d8211c09f9ed0f39dee03608b5ad/nix/toolchain.nix"
+        ]
+      },
+      "darwin": {
+        "state": "not-met",
+        "summary": "No native Darwin execution receipt exists for this reviewed source. The flake/check workflow targets Linux x86_64 and aarch64 only.",
+        "evidence": [
+          "derivation-evidence.json#/projects/spago-purifier/derivations/project",
+          "https://github.com/nix-purifiers/spago-purifier/blob/2aafeacbdd12d8211c09f9ed0f39dee03608b5ad/flake.nix",
+          "https://github.com/nix-purifiers/spago-purifier/blob/2aafeacbdd12d8211c09f9ed0f39dee03608b5ad/flake.lock",
+          "https://github.com/nix-purifiers/spago-purifier/blob/2aafeacbdd12d8211c09f9ed0f39dee03608b5ad/.github/workflows/check.yml",
+          "https://github.com/nix-purifiers/spago-purifier/blob/2aafeacbdd12d8211c09f9ed0f39dee03608b5ad/nix/build-project.nix",
+          "https://github.com/nix-purifiers/spago-purifier/blob/2aafeacbdd12d8211c09f9ed0f39dee03608b5ad/nix/environment.nix",
+          "https://github.com/nix-purifiers/spago-purifier/blob/2aafeacbdd12d8211c09f9ed0f39dee03608b5ad/nix/toolchain.nix"
+        ]
+      },
+      "oneVersion": {
+        "state": "met",
+        "summary": "Native sample checks execute the exact SDK roles {\"purescript\": \"0.15.16\", \"spago\": \"1.0.5\"}. Version strings are bound to inspected native inputs/locks and successful derivations, not merely to documentation.",
+        "evidence": [
+          "derivation-evidence.json#/projects/spago-purifier/derivations/project",
+          "https://github.com/nix-purifiers/spago-purifier/blob/2aafeacbdd12d8211c09f9ed0f39dee03608b5ad/flake.nix",
+          "https://github.com/nix-purifiers/spago-purifier/blob/2aafeacbdd12d8211c09f9ed0f39dee03608b5ad/flake.lock",
+          "https://github.com/nix-purifiers/spago-purifier/blob/2aafeacbdd12d8211c09f9ed0f39dee03608b5ad/.github/workflows/check.yml",
+          "https://github.com/nix-purifiers/spago-purifier/blob/2aafeacbdd12d8211c09f9ed0f39dee03608b5ad/nix/build-project.nix",
+          "https://github.com/nix-purifiers/spago-purifier/blob/2aafeacbdd12d8211c09f9ed0f39dee03608b5ad/nix/environment.nix",
+          "https://github.com/nix-purifiers/spago-purifier/blob/2aafeacbdd12d8211c09f9ed0f39dee03608b5ad/nix/toolchain.nix"
+        ]
+      },
+      "nonEolVersions": {
+        "state": "met",
+        "summary": "Actual Spago 1.0.5/PureScript 0.15.16 check derivations execute the current stable Spago release from live primary releases. Upstream distinguishes the current PureScript rewrite from the legacy <=0.21.x codebase. This is an exact current-line execution, not an assertion that the legacy line or every PureScript version is supported.",
+        "evidence": [
+          "derivation-evidence.json#/projects/spago-purifier/derivations/project",
+          "https://github.com/purescript/spago/blob/master/README.md",
+          "https://api.github.com/repos/purescript/spago/releases?per_page=5"
+        ]
+      },
+      "manySamples": {
+        "state": "not-met",
+        "summary": "Only examples/minimal is a complete authored application. Native/external/rebuild cases vary how that same fixture is consumed; dependencies from package sets are not separate sample applications.",
+        "evidence": [
+          "derivation-evidence.json#/projects/spago-purifier/derivations/project",
+          "https://github.com/nix-purifiers/spago-purifier/blob/2aafeacbdd12d8211c09f9ed0f39dee03608b5ad/flake.nix",
+          "https://github.com/nix-purifiers/spago-purifier/blob/2aafeacbdd12d8211c09f9ed0f39dee03608b5ad/flake.lock",
+          "https://github.com/nix-purifiers/spago-purifier/blob/2aafeacbdd12d8211c09f9ed0f39dee03608b5ad/.github/workflows/check.yml",
+          "https://github.com/nix-purifiers/spago-purifier/blob/2aafeacbdd12d8211c09f9ed0f39dee03608b5ad/nix/build-project.nix",
+          "https://github.com/nix-purifiers/spago-purifier/blob/2aafeacbdd12d8211c09f9ed0f39dee03608b5ad/nix/environment.nix",
+          "https://github.com/nix-purifiers/spago-purifier/blob/2aafeacbdd12d8211c09f9ed0f39dee03608b5ad/nix/toolchain.nix"
+        ]
+      },
+      "longCompatibility": {
+        "state": "not-met",
+        "summary": "All executable proof binds Spago 1.0.5/PureScript 0.15.16; no legacy Haskell-Spago execution or historical native SDK breadth is established.",
+        "evidence": [
+          "derivation-evidence.json#/projects/spago-purifier/derivations/project",
+          "https://github.com/nix-purifiers/spago-purifier/blob/2aafeacbdd12d8211c09f9ed0f39dee03608b5ad/flake.nix",
+          "https://github.com/nix-purifiers/spago-purifier/blob/2aafeacbdd12d8211c09f9ed0f39dee03608b5ad/flake.lock",
+          "https://github.com/nix-purifiers/spago-purifier/blob/2aafeacbdd12d8211c09f9ed0f39dee03608b5ad/.github/workflows/check.yml",
+          "https://github.com/nix-purifiers/spago-purifier/blob/2aafeacbdd12d8211c09f9ed0f39dee03608b5ad/nix/build-project.nix",
+          "https://github.com/nix-purifiers/spago-purifier/blob/2aafeacbdd12d8211c09f9ed0f39dee03608b5ad/nix/environment.nix",
+          "https://github.com/nix-purifiers/spago-purifier/blob/2aafeacbdd12d8211c09f9ed0f39dee03608b5ad/nix/toolchain.nix"
+        ]
+      }
+    },
+    "sampleBuilds": [
+      {
+        "name": "Repository fixture examples/minimal: native Spago build and spago test with locked environment and source release.",
+        "evidence": [
+          "derivation-evidence.json#/projects/spago-purifier/derivations/project"
+        ]
+      }
+    ]
+  },
+  "stack-purifier": {
+    "tier": 3,
+    "reviewedRevision": "1499697d48d4e8e795d9f78cb9f829176b36ab50",
+    "reviewedAt": "2026-11-06",
+    "rationale": "Executed native Linux samples and reviewed Nix/test sources support Tier 3. Native Darwin proof is absent, so Tier 2 is not demonstrated; each higher criterion has an explicit judgment. ",
+    "criteria": {
+      "evaluation": {
+        "state": "met",
+        "summary": "The immutable source evaluates to the retained executable checks; actual native sample-check derivations and their build receipts are bound below.",
+        "evidence": [
+          "derivation-evidence.json#/projects/stack-purifier/derivations/project",
+          "https://github.com/nix-purifiers/stack-purifier/blob/1499697d48d4e8e795d9f78cb9f829176b36ab50/flake.nix",
+          "https://github.com/nix-purifiers/stack-purifier/blob/1499697d48d4e8e795d9f78cb9f829176b36ab50/flake.lock",
+          "https://github.com/nix-purifiers/stack-purifier/blob/1499697d48d4e8e795d9f78cb9f829176b36ab50/tests/default.nix",
+          "https://github.com/nix-purifiers/stack-purifier/blob/1499697d48d4e8e795d9f78cb9f829176b36ab50/.github/workflows/check.yml",
+          "https://github.com/nix-purifiers/stack-purifier/blob/1499697d48d4e8e795d9f78cb9f829176b36ab50/nix/build-project.nix",
+          "https://github.com/nix-purifiers/stack-purifier/blob/1499697d48d4e8e795d9f78cb9f829176b36ab50/nix/environment.nix",
+          "https://github.com/nix-purifiers/stack-purifier/blob/1499697d48d4e8e795d9f78cb9f829176b36ab50/nix/toolchain.nix"
+        ]
+      },
+      "goodTests": {
+        "state": "met",
+        "summary": "The executed project builds with native Stack, runs tests and compiles benchmarks without running benchmarks, then installs binaries. Its locked environment and source release are realized. Current-source CI tests relock/update/external/native/snapshot behavior and rebuilds. This checks the Stack/GHC dependency integration and lock contract beyond a CLI smoke check.",
+        "evidence": [
+          "derivation-evidence.json#/projects/stack-purifier/derivations/project",
+          "https://github.com/nix-purifiers/stack-purifier/blob/1499697d48d4e8e795d9f78cb9f829176b36ab50/flake.nix",
+          "https://github.com/nix-purifiers/stack-purifier/blob/1499697d48d4e8e795d9f78cb9f829176b36ab50/flake.lock",
+          "https://github.com/nix-purifiers/stack-purifier/blob/1499697d48d4e8e795d9f78cb9f829176b36ab50/tests/default.nix",
+          "https://github.com/nix-purifiers/stack-purifier/blob/1499697d48d4e8e795d9f78cb9f829176b36ab50/.github/workflows/check.yml",
+          "https://github.com/nix-purifiers/stack-purifier/blob/1499697d48d4e8e795d9f78cb9f829176b36ab50/nix/build-project.nix",
+          "https://github.com/nix-purifiers/stack-purifier/blob/1499697d48d4e8e795d9f78cb9f829176b36ab50/nix/environment.nix",
+          "https://github.com/nix-purifiers/stack-purifier/blob/1499697d48d4e8e795d9f78cb9f829176b36ab50/nix/toolchain.nix"
+        ]
+      },
+      "linux": {
+        "state": "met",
+        "summary": "Native x86_64-linux sample checks succeeded for this immutable revision. Exact check attributes, derivation paths, outputs and build receipts are recorded; Linux declarations and cross-evaluation are not used as runtime evidence.",
+        "evidence": [
+          "derivation-evidence.json#/projects/stack-purifier/derivations/project",
+          "https://github.com/nix-purifiers/stack-purifier/blob/1499697d48d4e8e795d9f78cb9f829176b36ab50/flake.nix",
+          "https://github.com/nix-purifiers/stack-purifier/blob/1499697d48d4e8e795d9f78cb9f829176b36ab50/flake.lock",
+          "https://github.com/nix-purifiers/stack-purifier/blob/1499697d48d4e8e795d9f78cb9f829176b36ab50/tests/default.nix",
+          "https://github.com/nix-purifiers/stack-purifier/blob/1499697d48d4e8e795d9f78cb9f829176b36ab50/.github/workflows/check.yml",
+          "https://github.com/nix-purifiers/stack-purifier/blob/1499697d48d4e8e795d9f78cb9f829176b36ab50/nix/build-project.nix",
+          "https://github.com/nix-purifiers/stack-purifier/blob/1499697d48d4e8e795d9f78cb9f829176b36ab50/nix/environment.nix",
+          "https://github.com/nix-purifiers/stack-purifier/blob/1499697d48d4e8e795d9f78cb9f829176b36ab50/nix/toolchain.nix"
+        ]
+      },
+      "darwin": {
+        "state": "not-met",
+        "summary": "No native Darwin execution receipt exists for this reviewed source. The flake/check workflow targets Linux x86_64 and aarch64 only.",
+        "evidence": [
+          "derivation-evidence.json#/projects/stack-purifier/derivations/project",
+          "https://github.com/nix-purifiers/stack-purifier/blob/1499697d48d4e8e795d9f78cb9f829176b36ab50/flake.nix",
+          "https://github.com/nix-purifiers/stack-purifier/blob/1499697d48d4e8e795d9f78cb9f829176b36ab50/flake.lock",
+          "https://github.com/nix-purifiers/stack-purifier/blob/1499697d48d4e8e795d9f78cb9f829176b36ab50/tests/default.nix",
+          "https://github.com/nix-purifiers/stack-purifier/blob/1499697d48d4e8e795d9f78cb9f829176b36ab50/.github/workflows/check.yml",
+          "https://github.com/nix-purifiers/stack-purifier/blob/1499697d48d4e8e795d9f78cb9f829176b36ab50/nix/build-project.nix",
+          "https://github.com/nix-purifiers/stack-purifier/blob/1499697d48d4e8e795d9f78cb9f829176b36ab50/nix/environment.nix",
+          "https://github.com/nix-purifiers/stack-purifier/blob/1499697d48d4e8e795d9f78cb9f829176b36ab50/nix/toolchain.nix"
+        ]
+      },
+      "oneVersion": {
+        "state": "met",
+        "summary": "Native sample checks execute the exact SDK roles {\"ghc\": \"9.10.3\", \"stack\": \"3.9.3\"}. Version strings are bound to inspected native inputs/locks and successful derivations, not merely to documentation.",
+        "evidence": [
+          "derivation-evidence.json#/projects/stack-purifier/derivations/project",
+          "https://github.com/nix-purifiers/stack-purifier/blob/1499697d48d4e8e795d9f78cb9f829176b36ab50/flake.nix",
+          "https://github.com/nix-purifiers/stack-purifier/blob/1499697d48d4e8e795d9f78cb9f829176b36ab50/flake.lock",
+          "https://github.com/nix-purifiers/stack-purifier/blob/1499697d48d4e8e795d9f78cb9f829176b36ab50/tests/default.nix",
+          "https://github.com/nix-purifiers/stack-purifier/blob/1499697d48d4e8e795d9f78cb9f829176b36ab50/.github/workflows/check.yml",
+          "https://github.com/nix-purifiers/stack-purifier/blob/1499697d48d4e8e795d9f78cb9f829176b36ab50/nix/build-project.nix",
+          "https://github.com/nix-purifiers/stack-purifier/blob/1499697d48d4e8e795d9f78cb9f829176b36ab50/nix/environment.nix",
+          "https://github.com/nix-purifiers/stack-purifier/blob/1499697d48d4e8e795d9f78cb9f829176b36ab50/nix/toolchain.nix"
+        ]
+      },
+      "nonEolVersions": {
+        "state": "not-met",
+        "summary": "The actual native tuple is Stack 3.9.3/GHC 9.10.3. The primary release API publishes stable Stack 3.11.1 (4.1 entries are release candidates); no derivation executing the current stable 3.11.1 point is inspected. The release-maintenance documentation does not license declaring 3.9.3 EOL, and no such declaration is made.",
+        "evidence": [
+          "derivation-evidence.json#/projects/stack-purifier/derivations/project",
+          "https://docs.haskellstack.org/en/stable/maintainers/releases/",
+          "https://api.github.com/repos/commercialhaskell/stack/releases?per_page=5"
+        ]
+      },
+      "manySamples": {
+        "state": "not-met",
+        "summary": "The single minimal authored package supplies the test, benchmark and executable. Snapshot and relock variants reuse it; split is a dependency rather than an independent upstream application sample.",
+        "evidence": [
+          "derivation-evidence.json#/projects/stack-purifier/derivations/project",
+          "https://github.com/nix-purifiers/stack-purifier/blob/1499697d48d4e8e795d9f78cb9f829176b36ab50/flake.nix",
+          "https://github.com/nix-purifiers/stack-purifier/blob/1499697d48d4e8e795d9f78cb9f829176b36ab50/flake.lock",
+          "https://github.com/nix-purifiers/stack-purifier/blob/1499697d48d4e8e795d9f78cb9f829176b36ab50/tests/default.nix",
+          "https://github.com/nix-purifiers/stack-purifier/blob/1499697d48d4e8e795d9f78cb9f829176b36ab50/.github/workflows/check.yml",
+          "https://github.com/nix-purifiers/stack-purifier/blob/1499697d48d4e8e795d9f78cb9f829176b36ab50/nix/build-project.nix",
+          "https://github.com/nix-purifiers/stack-purifier/blob/1499697d48d4e8e795d9f78cb9f829176b36ab50/nix/environment.nix",
+          "https://github.com/nix-purifiers/stack-purifier/blob/1499697d48d4e8e795d9f78cb9f829176b36ab50/nix/toolchain.nix"
+        ]
+      },
+      "longCompatibility": {
+        "state": "not-met",
+        "summary": "The successful native SDK point is Stack 3.9.3/GHC 9.10.3. A resolver snapshot case does not demonstrate old Stack/GHC generations.",
+        "evidence": [
+          "derivation-evidence.json#/projects/stack-purifier/derivations/project",
+          "https://github.com/nix-purifiers/stack-purifier/blob/1499697d48d4e8e795d9f78cb9f829176b36ab50/flake.nix",
+          "https://github.com/nix-purifiers/stack-purifier/blob/1499697d48d4e8e795d9f78cb9f829176b36ab50/flake.lock",
+          "https://github.com/nix-purifiers/stack-purifier/blob/1499697d48d4e8e795d9f78cb9f829176b36ab50/tests/default.nix",
+          "https://github.com/nix-purifiers/stack-purifier/blob/1499697d48d4e8e795d9f78cb9f829176b36ab50/.github/workflows/check.yml",
+          "https://github.com/nix-purifiers/stack-purifier/blob/1499697d48d4e8e795d9f78cb9f829176b36ab50/nix/build-project.nix",
+          "https://github.com/nix-purifiers/stack-purifier/blob/1499697d48d4e8e795d9f78cb9f829176b36ab50/nix/environment.nix",
+          "https://github.com/nix-purifiers/stack-purifier/blob/1499697d48d4e8e795d9f78cb9f829176b36ab50/nix/toolchain.nix"
+        ]
+      }
+    },
+    "sampleBuilds": [
+      {
+        "name": "Repository fixture examples/minimal: GHC 9.10.3 resolver, split dependency, native Stack build/test/bench compile and installed executable.",
+        "evidence": [
+          "derivation-evidence.json#/projects/stack-purifier/derivations/project"
+        ]
+      }
+    ]
+  },
+  "straight-purifier": {
+    "tier": 3,
+    "reviewedRevision": "d7cc8f167b0c8cf204b5d4bc775f41e50113f56d",
+    "reviewedAt": "2026-11-06",
+    "rationale": "Executed native Linux samples and reviewed Nix/test sources support Tier 3. Native Darwin proof is absent, so Tier 2 is not demonstrated; each higher criterion has an explicit judgment. ",
+    "criteria": {
+      "evaluation": {
+        "state": "met",
+        "summary": "The immutable source evaluates to the retained executable checks; actual native sample-check derivations and their build receipts are bound below.",
+        "evidence": [
+          "derivation-evidence.json#/projects/straight-purifier/derivations/project",
+          "https://github.com/nix-purifiers/straight-purifier/blob/d7cc8f167b0c8cf204b5d4bc775f41e50113f56d/flake.nix",
+          "https://github.com/nix-purifiers/straight-purifier/blob/d7cc8f167b0c8cf204b5d4bc775f41e50113f56d/flake.lock",
+          "https://github.com/nix-purifiers/straight-purifier/blob/d7cc8f167b0c8cf204b5d4bc775f41e50113f56d/tests/default.nix",
+          "https://github.com/nix-purifiers/straight-purifier/blob/d7cc8f167b0c8cf204b5d4bc775f41e50113f56d/.github/workflows/check.yml",
+          "https://github.com/nix-purifiers/straight-purifier/blob/d7cc8f167b0c8cf204b5d4bc775f41e50113f56d/nix/build-project.nix",
+          "https://github.com/nix-purifiers/straight-purifier/blob/d7cc8f167b0c8cf204b5d4bc775f41e50113f56d/nix/environment.nix"
+        ]
+      },
+      "goodTests": {
+        "state": "met",
+        "summary": "Executed project tests assert s-trim works from a Nix store source, find-function locates the installed s.el definition, and native attempts to add an unlocked package or thaw versions fail. The environment bootstraps native Straight with locked recipes and the release depends on the tests. Current CI adds lock/eval/relock/update/external/native and rebuild coverage, giving positive use and enforced immutability assertions.",
+        "evidence": [
+          "derivation-evidence.json#/projects/straight-purifier/derivations/project",
+          "https://github.com/nix-purifiers/straight-purifier/blob/d7cc8f167b0c8cf204b5d4bc775f41e50113f56d/flake.nix",
+          "https://github.com/nix-purifiers/straight-purifier/blob/d7cc8f167b0c8cf204b5d4bc775f41e50113f56d/flake.lock",
+          "https://github.com/nix-purifiers/straight-purifier/blob/d7cc8f167b0c8cf204b5d4bc775f41e50113f56d/tests/default.nix",
+          "https://github.com/nix-purifiers/straight-purifier/blob/d7cc8f167b0c8cf204b5d4bc775f41e50113f56d/.github/workflows/check.yml",
+          "https://github.com/nix-purifiers/straight-purifier/blob/d7cc8f167b0c8cf204b5d4bc775f41e50113f56d/nix/build-project.nix",
+          "https://github.com/nix-purifiers/straight-purifier/blob/d7cc8f167b0c8cf204b5d4bc775f41e50113f56d/nix/environment.nix"
+        ]
+      },
+      "linux": {
+        "state": "met",
+        "summary": "Native x86_64-linux sample checks succeeded for this immutable revision. Exact check attributes, derivation paths, outputs and build receipts are recorded; Linux declarations and cross-evaluation are not used as runtime evidence.",
+        "evidence": [
+          "derivation-evidence.json#/projects/straight-purifier/derivations/project",
+          "https://github.com/nix-purifiers/straight-purifier/blob/d7cc8f167b0c8cf204b5d4bc775f41e50113f56d/flake.nix",
+          "https://github.com/nix-purifiers/straight-purifier/blob/d7cc8f167b0c8cf204b5d4bc775f41e50113f56d/flake.lock",
+          "https://github.com/nix-purifiers/straight-purifier/blob/d7cc8f167b0c8cf204b5d4bc775f41e50113f56d/tests/default.nix",
+          "https://github.com/nix-purifiers/straight-purifier/blob/d7cc8f167b0c8cf204b5d4bc775f41e50113f56d/.github/workflows/check.yml",
+          "https://github.com/nix-purifiers/straight-purifier/blob/d7cc8f167b0c8cf204b5d4bc775f41e50113f56d/nix/build-project.nix",
+          "https://github.com/nix-purifiers/straight-purifier/blob/d7cc8f167b0c8cf204b5d4bc775f41e50113f56d/nix/environment.nix"
+        ]
+      },
+      "darwin": {
+        "state": "not-met",
+        "summary": "No native Darwin execution receipt exists for this reviewed source. The flake/check workflow targets Linux x86_64 and aarch64 only.",
+        "evidence": [
+          "derivation-evidence.json#/projects/straight-purifier/derivations/project",
+          "https://github.com/nix-purifiers/straight-purifier/blob/d7cc8f167b0c8cf204b5d4bc775f41e50113f56d/flake.nix",
+          "https://github.com/nix-purifiers/straight-purifier/blob/d7cc8f167b0c8cf204b5d4bc775f41e50113f56d/flake.lock",
+          "https://github.com/nix-purifiers/straight-purifier/blob/d7cc8f167b0c8cf204b5d4bc775f41e50113f56d/tests/default.nix",
+          "https://github.com/nix-purifiers/straight-purifier/blob/d7cc8f167b0c8cf204b5d4bc775f41e50113f56d/.github/workflows/check.yml",
+          "https://github.com/nix-purifiers/straight-purifier/blob/d7cc8f167b0c8cf204b5d4bc775f41e50113f56d/nix/build-project.nix",
+          "https://github.com/nix-purifiers/straight-purifier/blob/d7cc8f167b0c8cf204b5d4bc775f41e50113f56d/nix/environment.nix"
+        ]
+      },
+      "oneVersion": {
+        "state": "met",
+        "summary": "Native sample checks execute the exact SDK roles {\"emacs\": \"31.1\", \"straight\": \"3ad4414072ba512e39e19e8a7101bdfcb8318410\"}. Version strings are bound to inspected native inputs/locks and successful derivations, not merely to documentation.",
+        "evidence": [
+          "derivation-evidence.json#/projects/straight-purifier/derivations/project",
+          "https://github.com/nix-purifiers/straight-purifier/blob/d7cc8f167b0c8cf204b5d4bc775f41e50113f56d/flake.nix",
+          "https://github.com/nix-purifiers/straight-purifier/blob/d7cc8f167b0c8cf204b5d4bc775f41e50113f56d/flake.lock",
+          "https://github.com/nix-purifiers/straight-purifier/blob/d7cc8f167b0c8cf204b5d4bc775f41e50113f56d/tests/default.nix",
+          "https://github.com/nix-purifiers/straight-purifier/blob/d7cc8f167b0c8cf204b5d4bc775f41e50113f56d/.github/workflows/check.yml",
+          "https://github.com/nix-purifiers/straight-purifier/blob/d7cc8f167b0c8cf204b5d4bc775f41e50113f56d/nix/build-project.nix",
+          "https://github.com/nix-purifiers/straight-purifier/blob/d7cc8f167b0c8cf204b5d4bc775f41e50113f56d/nix/environment.nix"
+        ]
+      },
+      "nonEolVersions": {
+        "state": "met",
+        "summary": "Actual Emacs 31.1 loads Straight 3ad4414072ba512e39e19e8a7101bdfcb8318410 and runs ERT integration checks. The locked Straight revision exactly equals current upstream stable main as read from its primary commits API. Upstream documents Emacs >=25.1 and stable main/development branches without an EOL calendar. This establishes the current native tuple; it does not infer all versions >=25.1 execute.",
+        "evidence": [
+          "derivation-evidence.json#/projects/straight-purifier/derivations/project",
+          "https://github.com/radian-software/straight.el",
+          "https://github.com/radian-software/straight.el/blob/main/README.md",
+          "https://api.github.com/repos/radian-software/straight.el/commits/main"
+        ]
+      },
+      "manySamples": {
+        "state": "not-met",
+        "summary": "Only the authored examples/config is built as an Emacs configuration. Its pinned s.el and recipe repositories are input dependencies, not independently built user configurations.",
+        "evidence": [
+          "derivation-evidence.json#/projects/straight-purifier/derivations/project",
+          "https://github.com/nix-purifiers/straight-purifier/blob/d7cc8f167b0c8cf204b5d4bc775f41e50113f56d/flake.nix",
+          "https://github.com/nix-purifiers/straight-purifier/blob/d7cc8f167b0c8cf204b5d4bc775f41e50113f56d/flake.lock",
+          "https://github.com/nix-purifiers/straight-purifier/blob/d7cc8f167b0c8cf204b5d4bc775f41e50113f56d/tests/default.nix",
+          "https://github.com/nix-purifiers/straight-purifier/blob/d7cc8f167b0c8cf204b5d4bc775f41e50113f56d/.github/workflows/check.yml",
+          "https://github.com/nix-purifiers/straight-purifier/blob/d7cc8f167b0c8cf204b5d4bc775f41e50113f56d/nix/build-project.nix",
+          "https://github.com/nix-purifiers/straight-purifier/blob/d7cc8f167b0c8cf204b5d4bc775f41e50113f56d/nix/environment.nix"
+        ]
+      },
+      "longCompatibility": {
+        "state": "not-met",
+        "summary": "Only Emacs 31.1 with one locked Straight revision executes. Upstream's minimum Emacs 25.1 declaration does not establish purifier execution on that historical point.",
+        "evidence": [
+          "derivation-evidence.json#/projects/straight-purifier/derivations/project",
+          "https://github.com/nix-purifiers/straight-purifier/blob/d7cc8f167b0c8cf204b5d4bc775f41e50113f56d/flake.nix",
+          "https://github.com/nix-purifiers/straight-purifier/blob/d7cc8f167b0c8cf204b5d4bc775f41e50113f56d/flake.lock",
+          "https://github.com/nix-purifiers/straight-purifier/blob/d7cc8f167b0c8cf204b5d4bc775f41e50113f56d/tests/default.nix",
+          "https://github.com/nix-purifiers/straight-purifier/blob/d7cc8f167b0c8cf204b5d4bc775f41e50113f56d/.github/workflows/check.yml",
+          "https://github.com/nix-purifiers/straight-purifier/blob/d7cc8f167b0c8cf204b5d4bc775f41e50113f56d/nix/build-project.nix",
+          "https://github.com/nix-purifiers/straight-purifier/blob/d7cc8f167b0c8cf204b5d4bc775f41e50113f56d/nix/environment.nix"
+        ]
+      }
+    },
+    "sampleBuilds": [
+      {
+        "name": "Repository fixture examples/config: Emacs ERT tests for locked s.el function, installed definition source, and rejection of unlocked install/native update.",
+        "evidence": [
+          "derivation-evidence.json#/projects/straight-purifier/derivations/project"
+        ]
+      }
+    ]
+  },
+  "swiftpm-purifier": {
+    "tier": 3,
+    "reviewedRevision": "c6b194164b4fa1774b689257a58297bebfee19b5",
+    "reviewedAt": "2026-11-06",
+    "rationale": "Executed native Linux samples and reviewed Nix/test sources support Tier 3. Native Darwin proof is absent, so Tier 2 is not demonstrated; each higher criterion has an explicit judgment. ",
+    "criteria": {
+      "evaluation": {
+        "state": "met",
+        "summary": "The immutable source evaluates to the retained executable checks; actual native sample-check derivations and their build receipts are bound below.",
+        "evidence": [
+          "derivation-evidence.json#/projects/swiftpm-purifier/derivations/fixture-hello",
+          "derivation-evidence.json#/projects/swiftpm-purifier/derivations/fixture-hello-tests",
+          "derivation-evidence.json#/projects/swiftpm-purifier/derivations/fixture-macro",
+          "derivation-evidence.json#/projects/swiftpm-purifier/derivations/project-toolbox",
+          "derivation-evidence.json#/projects/swiftpm-purifier/derivations/native-projections",
+          "https://github.com/nix-purifiers/swiftpm-purifier/blob/c6b194164b4fa1774b689257a58297bebfee19b5/flake.nix",
+          "https://github.com/nix-purifiers/swiftpm-purifier/blob/c6b194164b4fa1774b689257a58297bebfee19b5/flake.lock",
+          "https://github.com/nix-purifiers/swiftpm-purifier/blob/c6b194164b4fa1774b689257a58297bebfee19b5/tests/default.nix",
+          "https://github.com/nix-purifiers/swiftpm-purifier/blob/c6b194164b4fa1774b689257a58297bebfee19b5/.github/workflows/check.yml",
+          "https://github.com/nix-purifiers/swiftpm-purifier/blob/c6b194164b4fa1774b689257a58297bebfee19b5/nix/lib/build-swiftpm-project.nix"
+        ]
+      },
+      "goodTests": {
+        "state": "met",
+        "summary": "Executed checks run hello/paths/macro/binary programs with exact output expectations, execute the platform binary artifact, run Linux XCTest, exercise external locks and lock schema/refusal checks, inspect release and fetch outputs, and run the independently pinned vapor/toolbox executable. native-projections tests ordinary Swift consumers. The Darwin XCTest exception is explicit in source and no Darwin execution is inferred.",
+        "evidence": [
+          "derivation-evidence.json#/projects/swiftpm-purifier/derivations/fixture-hello",
+          "derivation-evidence.json#/projects/swiftpm-purifier/derivations/fixture-hello-tests",
+          "derivation-evidence.json#/projects/swiftpm-purifier/derivations/fixture-macro",
+          "derivation-evidence.json#/projects/swiftpm-purifier/derivations/project-toolbox",
+          "derivation-evidence.json#/projects/swiftpm-purifier/derivations/native-projections",
+          "https://github.com/nix-purifiers/swiftpm-purifier/blob/c6b194164b4fa1774b689257a58297bebfee19b5/flake.nix",
+          "https://github.com/nix-purifiers/swiftpm-purifier/blob/c6b194164b4fa1774b689257a58297bebfee19b5/flake.lock",
+          "https://github.com/nix-purifiers/swiftpm-purifier/blob/c6b194164b4fa1774b689257a58297bebfee19b5/tests/default.nix",
+          "https://github.com/nix-purifiers/swiftpm-purifier/blob/c6b194164b4fa1774b689257a58297bebfee19b5/.github/workflows/check.yml",
+          "https://github.com/nix-purifiers/swiftpm-purifier/blob/c6b194164b4fa1774b689257a58297bebfee19b5/nix/lib/build-swiftpm-project.nix"
+        ]
+      },
+      "linux": {
+        "state": "met",
+        "summary": "Native x86_64-linux sample checks succeeded for this immutable revision. Exact check attributes, derivation paths, outputs and build receipts are recorded; Linux declarations and cross-evaluation are not used as runtime evidence.",
+        "evidence": [
+          "derivation-evidence.json#/projects/swiftpm-purifier/derivations/fixture-hello",
+          "derivation-evidence.json#/projects/swiftpm-purifier/derivations/fixture-hello-tests",
+          "derivation-evidence.json#/projects/swiftpm-purifier/derivations/fixture-macro",
+          "derivation-evidence.json#/projects/swiftpm-purifier/derivations/project-toolbox",
+          "derivation-evidence.json#/projects/swiftpm-purifier/derivations/native-projections",
+          "https://github.com/nix-purifiers/swiftpm-purifier/blob/c6b194164b4fa1774b689257a58297bebfee19b5/flake.nix",
+          "https://github.com/nix-purifiers/swiftpm-purifier/blob/c6b194164b4fa1774b689257a58297bebfee19b5/flake.lock",
+          "https://github.com/nix-purifiers/swiftpm-purifier/blob/c6b194164b4fa1774b689257a58297bebfee19b5/tests/default.nix",
+          "https://github.com/nix-purifiers/swiftpm-purifier/blob/c6b194164b4fa1774b689257a58297bebfee19b5/.github/workflows/check.yml",
+          "https://github.com/nix-purifiers/swiftpm-purifier/blob/c6b194164b4fa1774b689257a58297bebfee19b5/nix/lib/build-swiftpm-project.nix"
+        ]
+      },
+      "darwin": {
+        "state": "not-met",
+        "summary": "No native Darwin execution receipt exists for this reviewed source. The flake declares aarch64-darwin but inspected CI runs Linux only; declarations are not execution.",
+        "evidence": [
+          "derivation-evidence.json#/projects/swiftpm-purifier/derivations/fixture-hello",
+          "derivation-evidence.json#/projects/swiftpm-purifier/derivations/fixture-hello-tests",
+          "derivation-evidence.json#/projects/swiftpm-purifier/derivations/fixture-macro",
+          "derivation-evidence.json#/projects/swiftpm-purifier/derivations/project-toolbox",
+          "derivation-evidence.json#/projects/swiftpm-purifier/derivations/native-projections",
+          "https://github.com/nix-purifiers/swiftpm-purifier/blob/c6b194164b4fa1774b689257a58297bebfee19b5/flake.nix",
+          "https://github.com/nix-purifiers/swiftpm-purifier/blob/c6b194164b4fa1774b689257a58297bebfee19b5/flake.lock",
+          "https://github.com/nix-purifiers/swiftpm-purifier/blob/c6b194164b4fa1774b689257a58297bebfee19b5/tests/default.nix",
+          "https://github.com/nix-purifiers/swiftpm-purifier/blob/c6b194164b4fa1774b689257a58297bebfee19b5/.github/workflows/check.yml",
+          "https://github.com/nix-purifiers/swiftpm-purifier/blob/c6b194164b4fa1774b689257a58297bebfee19b5/nix/lib/build-swiftpm-project.nix"
+        ]
+      },
+      "oneVersion": {
+        "state": "met",
+        "summary": "Native sample checks execute the exact SDK roles {\"swift\": \"6.3.3\", \"swiftpm\": \"6.3.3\"}. Version strings are bound to inspected native inputs/locks and successful derivations, not merely to documentation.",
+        "evidence": [
+          "derivation-evidence.json#/projects/swiftpm-purifier/derivations/fixture-hello",
+          "derivation-evidence.json#/projects/swiftpm-purifier/derivations/fixture-hello-tests",
+          "derivation-evidence.json#/projects/swiftpm-purifier/derivations/fixture-macro",
+          "derivation-evidence.json#/projects/swiftpm-purifier/derivations/project-toolbox",
+          "derivation-evidence.json#/projects/swiftpm-purifier/derivations/native-projections",
+          "https://github.com/nix-purifiers/swiftpm-purifier/blob/c6b194164b4fa1774b689257a58297bebfee19b5/flake.nix",
+          "https://github.com/nix-purifiers/swiftpm-purifier/blob/c6b194164b4fa1774b689257a58297bebfee19b5/flake.lock",
+          "https://github.com/nix-purifiers/swiftpm-purifier/blob/c6b194164b4fa1774b689257a58297bebfee19b5/tests/default.nix",
+          "https://github.com/nix-purifiers/swiftpm-purifier/blob/c6b194164b4fa1774b689257a58297bebfee19b5/.github/workflows/check.yml",
+          "https://github.com/nix-purifiers/swiftpm-purifier/blob/c6b194164b4fa1774b689257a58297bebfee19b5/nix/lib/build-swiftpm-project.nix"
+        ]
+      },
+      "nonEolVersions": {
+        "state": "not-met",
+        "summary": "The actual native derivations bind Swift/SwiftPM 6.3.3; primary SwiftPM release data lists current stable swift-6.4.2-RELEASE and SwiftPM ships with the Swift toolchain. No executed 6.4.2 SDK derivation is present. This is a current-line execution gap, not a claim that 6.3 has a known EOL date.",
+        "evidence": [
+          "derivation-evidence.json#/projects/swiftpm-purifier/derivations/fixture-hello",
+          "derivation-evidence.json#/projects/swiftpm-purifier/derivations/fixture-hello-tests",
+          "derivation-evidence.json#/projects/swiftpm-purifier/derivations/fixture-macro",
+          "derivation-evidence.json#/projects/swiftpm-purifier/derivations/project-toolbox",
+          "derivation-evidence.json#/projects/swiftpm-purifier/derivations/native-projections",
+          "https://www.swift.org/install/",
+          "https://github.com/swiftlang/swift-package-manager/blob/main/README.md",
+          "https://api.github.com/repos/swiftlang/swift-package-manager/releases?per_page=5"
+        ]
+      },
+      "manySamples": {
+        "state": "not-met",
+        "summary": "vapor/toolbox is one independent upstream project; hello/paths/macro/binary are repository-authored fixtures. Multiple product types, tests and artifact consumers from those fixtures do not establish many independent projects.",
+        "evidence": [
+          "derivation-evidence.json#/projects/swiftpm-purifier/derivations/fixture-hello",
+          "derivation-evidence.json#/projects/swiftpm-purifier/derivations/fixture-hello-tests",
+          "derivation-evidence.json#/projects/swiftpm-purifier/derivations/fixture-macro",
+          "derivation-evidence.json#/projects/swiftpm-purifier/derivations/project-toolbox",
+          "derivation-evidence.json#/projects/swiftpm-purifier/derivations/native-projections",
+          "https://github.com/nix-purifiers/swiftpm-purifier/blob/c6b194164b4fa1774b689257a58297bebfee19b5/flake.nix",
+          "https://github.com/nix-purifiers/swiftpm-purifier/blob/c6b194164b4fa1774b689257a58297bebfee19b5/flake.lock",
+          "https://github.com/nix-purifiers/swiftpm-purifier/blob/c6b194164b4fa1774b689257a58297bebfee19b5/tests/default.nix",
+          "https://github.com/nix-purifiers/swiftpm-purifier/blob/c6b194164b4fa1774b689257a58297bebfee19b5/.github/workflows/check.yml",
+          "https://github.com/nix-purifiers/swiftpm-purifier/blob/c6b194164b4fa1774b689257a58297bebfee19b5/nix/lib/build-swiftpm-project.nix"
+        ]
+      },
+      "longCompatibility": {
+        "state": "not-met",
+        "summary": "All realized native checks use the pinned Swift/SwiftPM 6.3.3 SDK; old Package.resolved/schema support is not execution of historical Swift toolchains.",
+        "evidence": [
+          "derivation-evidence.json#/projects/swiftpm-purifier/derivations/fixture-hello",
+          "derivation-evidence.json#/projects/swiftpm-purifier/derivations/fixture-hello-tests",
+          "derivation-evidence.json#/projects/swiftpm-purifier/derivations/fixture-macro",
+          "derivation-evidence.json#/projects/swiftpm-purifier/derivations/project-toolbox",
+          "derivation-evidence.json#/projects/swiftpm-purifier/derivations/native-projections",
+          "https://github.com/nix-purifiers/swiftpm-purifier/blob/c6b194164b4fa1774b689257a58297bebfee19b5/flake.nix",
+          "https://github.com/nix-purifiers/swiftpm-purifier/blob/c6b194164b4fa1774b689257a58297bebfee19b5/flake.lock",
+          "https://github.com/nix-purifiers/swiftpm-purifier/blob/c6b194164b4fa1774b689257a58297bebfee19b5/tests/default.nix",
+          "https://github.com/nix-purifiers/swiftpm-purifier/blob/c6b194164b4fa1774b689257a58297bebfee19b5/.github/workflows/check.yml",
+          "https://github.com/nix-purifiers/swiftpm-purifier/blob/c6b194164b4fa1774b689257a58297bebfee19b5/nix/lib/build-swiftpm-project.nix"
+        ]
+      }
+    },
+    "sampleBuilds": [
+      {
+        "name": "hello/paths/macro/binary authored fixtures and independent vapor/toolbox 20.0.2 at 9046ddadc17ac8400e1923a2db3bdca054172874; project-toolbox runs vapor --help and asserts OVERVIEW.",
+        "evidence": [
+          "derivation-evidence.json#/projects/swiftpm-purifier/derivations/fixture-hello",
+          "derivation-evidence.json#/projects/swiftpm-purifier/derivations/fixture-hello-tests",
+          "derivation-evidence.json#/projects/swiftpm-purifier/derivations/fixture-macro",
+          "derivation-evidence.json#/projects/swiftpm-purifier/derivations/project-toolbox",
+          "derivation-evidence.json#/projects/swiftpm-purifier/derivations/native-projections"
+        ]
+      }
+    ]
+  }
+}

@@ -1,0 +1,108 @@
+{
+  "status": "root-adjudicated-final",
+  "recordedAt": "2026-11-07T02:09:45.364610+00:00",
+  "decisionBy": "01a198d9-493a-79a1-bb09-6c91c2c6838a",
+  "baseAssessmentsSha256": "485be95e780b45a32a381fe119acaccc0522ebb2dc36b4fa021cbe0a737536cf",
+  "baseEvidenceSha256": "0943b73f7a49f4badc51c3e24a1a8ec541a49c893894008de47096e960a3352e",
+  "precedence": "This full pub-purifier assessment preserves the frozen met state and supplies the manager-required bounded policy summary. It supersedes the optional latest-patch not-met alternative; that alternative must not be applied. All other projects and criteria remain unchanged.",
+  "correctedAssessment": {
+    "tier": 3,
+    "reviewedRevision": "8a21150b1cae4f21f7e71dc61d393953caaaeaae",
+    "reviewedAt": "2026-11-06",
+    "rationale": "Reviewed native Linux derivations evaluate and execute a concrete sample with substantive tests. Tier3 remains appropriate because native Darwin execution is absent. Independent sample breadth and historical compatibility are not established; maintained-version judgment is limited to the explicitly inspected SDK points.",
+    "criteria": {
+      "evaluation": {
+        "state": "met",
+        "summary": "Current main 8a21150b1cae4f21f7e71dc61d393953caaaeaae check definitions evaluate in successful native Linux CI. offline is bound to executable derivation /nix/store/lcyb27warc0lbcybw46zfx92sfysmrfy-pub-project-tests.drv; local exploratory evaluation is supplementary only.",
+        "evidence": [
+          "https://github.com/nix-purifiers/pub-purifier/actions/runs/42154542339",
+          "/nix/store/lcyb27warc0lbcybw46zfx92sfysmrfy-pub-project-tests.drv",
+          "https://github.com/nix-purifiers/pub-purifier/blob/8a21150b1cae4f21f7e71dc61d393953caaaeaae/tests/default.nix"
+        ]
+      },
+      "goodTests": {
+        "state": "met",
+        "summary": "Nix checks compile/run the hello project offline, build cache/release, exercise editor resolution and external/stale/tampered/malformed/missing locks. Native host-conformance tests local pub solver relock/selective/full update, offline run, atomic refusal, fallback and rebuild, with executable result assertions.",
+        "evidence": [
+          "https://github.com/nix-purifiers/pub-purifier/actions/runs/42154542339",
+          "https://github.com/nix-purifiers/pub-purifier/blob/8a21150b1cae4f21f7e71dc61d393953caaaeaae/tests/default.nix",
+          "https://github.com/nix-purifiers/pub-purifier/blob/8a21150b1cae4f21f7e71dc61d393953caaaeaae/.github/workflows/check.yml",
+          "/nix/store/5631qqv2zpyk0r2iqz08p7h2iyijiqx5-pub-unit.drv",
+          "/nix/store/lcyb27warc0lbcybw46zfx92sfysmrfy-pub-project-tests.drv",
+          "/nix/store/yf1zpib08v91y0ran64s0h1fr3rn1wx1-pub-external-locks.drv",
+          "/nix/store/hw2xsz3r6zfcgiphsb9wrvic11g9mph0-pub-stale.drv",
+          "/nix/store/izdisnkzfay3dyip44my3zpjcjpcz7q5-pub-tampered.drv",
+          "/nix/store/8y6ja85f0zalb0ydzjbx63wm707gr6nw-pub-missing.drv",
+          "/nix/store/6zdfbhkgmiilxf2wg2sjbbgfiy51b6in-pub-malformed.drv"
+        ]
+      },
+      "linux": {
+        "state": "met",
+        "summary": "Native x86_64-linux and aarch64-linux CI jobs completed successfully and built/run the sample checks. Exact per-system check derivations and successful building traces are retained; ten x86_64 outputs were also realized locally by exact CI drv identity.",
+        "evidence": [
+          "https://github.com/nix-purifiers/pub-purifier/actions/runs/42154542339",
+          "/nix/store/lcyb27warc0lbcybw46zfx92sfysmrfy-pub-project-tests.drv",
+          "https://github.com/nix-purifiers/pub-purifier/blob/8a21150b1cae4f21f7e71dc61d393953caaaeaae/tests/default.nix"
+        ]
+      },
+      "darwin": {
+        "state": "not-met",
+        "summary": "Inspected current-main workflow schedules only ubuntu-latest and ubuntu-24.04-arm runtime jobs. No successful native Darwin check/SDK/output receipt is present. Declared aarch64-darwin support or --all-systems --no-build evaluation does not satisfy runtime execution.",
+        "evidence": [
+          "https://github.com/nix-purifiers/pub-purifier/blob/8a21150b1cae4f21f7e71dc61d393953caaaeaae/.github/workflows/check.yml",
+          "https://github.com/nix-purifiers/pub-purifier/actions/runs/42154542339"
+        ]
+      },
+      "oneVersion": {
+        "state": "met",
+        "summary": "Native sample execution establishes these exact SDK points: dart 3.13.0. Authored hello Dart project and demo/other local package-index variants; no independent upstream application is established.",
+        "evidence": [
+          "https://github.com/nix-purifiers/pub-purifier/actions/runs/42154542339",
+          "/nix/store/lcyb27warc0lbcybw46zfx92sfysmrfy-pub-project-tests.drv",
+          "https://github.com/nix-purifiers/pub-purifier/blob/8a21150b1cae4f21f7e71dc61d393953caaaeaae/tests/default.nix"
+        ]
+      },
+      "nonEolVersions": {
+        "state": "met",
+        "summary": "The primary Dart SDK support policy describes maintenance by minor release line until the next major/minor, with fixes delivered as patches within that line. Native purifier checks compile and run with Dart3.13.0 on the current3.13 stable line. This is a bounded tested-current-line-point judgment: latest documented3.13.7 was not executed, and no all-patch range or security-support claim for older patches is made.",
+        "evidence": [
+          "https://dart.dev/tools/sdk#support-policy",
+          "https://dart.dev/get-dart",
+          "https://github.com/nix-purifiers/pub-purifier/actions/runs/42154542339",
+          "/nix/store/lcyb27warc0lbcybw46zfx92sfysmrfy-pub-project-tests.drv"
+        ]
+      },
+      "manySamples": {
+        "state": "not-met",
+        "summary": "Authored hello Dart project and demo/other local package-index variants; no independent upstream application is established. Inspection establishes useful concrete cases but not a broad independent upstream sample corpus covering different project structures; authored variants, dependency nodes and tests of one upstream project are not counted as separate projects.",
+        "evidence": [
+          "https://github.com/nix-purifiers/pub-purifier/actions/runs/42154542339",
+          "https://github.com/nix-purifiers/pub-purifier/blob/8a21150b1cae4f21f7e71dc61d393953caaaeaae/tests/default.nix",
+          "/nix/store/lcyb27warc0lbcybw46zfx92sfysmrfy-pub-project-tests.drv"
+        ]
+      },
+      "longCompatibility": {
+        "state": "not-met",
+        "summary": "One Dart 3.13.0 executable and synthetic dependency1\u21922 updates establish no earlier Dart SDK compatibility.",
+        "evidence": [
+          "https://github.com/nix-purifiers/pub-purifier/actions/runs/42154542339",
+          "https://github.com/nix-purifiers/pub-purifier/blob/8a21150b1cae4f21f7e71dc61d393953caaaeaae/tests/default.nix",
+          "/nix/store/lcyb27warc0lbcybw46zfx92sfysmrfy-pub-project-tests.drv"
+        ]
+      }
+    },
+    "sampleBuilds": [
+      {
+        "name": "Authored hello Dart project and demo/other local package-index variants; no independent upstream application is established.",
+        "evidence": [
+          "https://github.com/nix-purifiers/pub-purifier/actions/runs/42154542339",
+          "/nix/store/lcyb27warc0lbcybw46zfx92sfysmrfy-pub-project-tests.drv",
+          "https://github.com/nix-purifiers/pub-purifier/blob/8a21150b1cae4f21f7e71dc61d393953caaaeaae/tests/default.nix"
+        ]
+      }
+    ]
+  },
+  "policyEvidence": "policy/dart-support-policy-addendum.json",
+  "policyEvidenceSha256": "c1d184ab002177d6a3bd0213530ddd770190c1f5c2906e9aea2c20b1b118549a",
+  "policyInterpretation": "Manager independently inspected full primary SDK policy lines73\u201376 and approved tested-current-LINE-point interpretation. It is not a claim of upstream security support for older patches."
+}

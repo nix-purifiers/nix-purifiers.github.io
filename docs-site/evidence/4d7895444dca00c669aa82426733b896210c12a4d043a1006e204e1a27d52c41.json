@@ -1,0 +1,147 @@
+{
+  "status": "complete",
+  "group": "group-6",
+  "frozenAt": "2026-11-07T02:03:54.217179+00:00",
+  "scope": "Only group-6 evidence, assessments, review and reproducibility helpers. No producer/shared metadata/site edits, pushes, merges or CI controls.",
+  "manager": "01a198d9-493a-79a1-bb09-6c91c2c6838a",
+  "websiteReviewer": "01a19fa5-abb2-7ab0-ae7e-73c1702b632a",
+  "validation": {
+    "status": "passed",
+    "counts": {
+      "projects": 12,
+      "judgments": 96,
+      "nativeLinuxDerivations": 352,
+      "evaluationOnlyDarwinDerivations": 72,
+      "derivations": 424,
+      "primarySdkBindings": 19
+    }
+  },
+  "assessmentsSha256": "485be95e780b45a32a381fe119acaccc0522ebb2dc36b4fa021cbe0a737536cf",
+  "derivationEvidenceSha256": "0943b73f7a49f4badc51c3e24a1a8ec541a49c893894008de47096e960a3352e",
+  "integrationSummarySha256": "2e1a6d173fb4c0a54b5dcb72dd34489811a323f6344ee535ed8b2fb9fdaae5ef",
+  "artifactManifestSha256": "70a8b0f1e7dd2e4c3f497bafe75cffc2ebbe9d5bbe0d308e8532b9c7a2ef59a8",
+  "baselineSha256": "1e53074cbdbbe129a0426dcf6dc3cdbe2a806c6c2d6e0566da6652fe29b4d971",
+  "assignmentSha256": "23c41a4692e9f33fe229e79c2c7280b7b2df00a0555947d433bb14453cde940a",
+  "tierProposals": {
+    "pdm-purifier": 3,
+    "pecl-purifier": 3,
+    "pip-purifier": 3,
+    "pipenv-purifier": 3,
+    "pixi-purifier": 3,
+    "platformio-purifier": 3,
+    "pnpm-purifier": 3,
+    "poetry-purifier": 3,
+    "pub-purifier": 3,
+    "pulumi-purifier": 3,
+    "qgis-purifier": 3,
+    "qlot-purifier": 3
+  },
+  "tierChanges": [],
+  "criterionCounts": {
+    "evaluation": {
+      "met": 12,
+      "not-met": 0
+    },
+    "goodTests": {
+      "met": 12,
+      "not-met": 0
+    },
+    "linux": {
+      "met": 12,
+      "not-met": 0
+    },
+    "darwin": {
+      "met": 0,
+      "not-met": 12
+    },
+    "oneVersion": {
+      "met": 12,
+      "not-met": 0
+    },
+    "nonEolVersions": {
+      "met": 4,
+      "not-met": 8
+    },
+    "manySamples": {
+      "met": 0,
+      "not-met": 12
+    },
+    "longCompatibility": {
+      "met": 0,
+      "not-met": 12
+    }
+  },
+  "capabilityEvidenceMethod": {
+    "immutableSource": "Exact GitHub revisions fetched through executable source-nar-bindings.nix; registered NAR hashes read from ValidPaths read-only; every inspected regular source file matches the fetched immutable tree.",
+    "ci": "Successful head_sha-bound check runs, exact job IDs/native runners, raw CI logs, check-attribute\u2192drv evaluation lines, fresh building lines where present and actual runtime assertions.",
+    "derivationArtifacts": "Actual .drv files copied where locally available; parsed using Python ast.literal_eval on the Derive tuple, preserving exact output identities, inputs and environment.",
+    "outputHashes": "Read-only ValidPaths rows for exact parsed output paths; hex SHA256 converted to SRI. Registration is identity evidence, not execution proof.",
+    "nativeSdk": "Nineteen principal SDK/version bindings have recovered raw derivations and exact dependency paths from the successful native sample check. Auxiliary checks receive no inferred SDK-map claim.",
+    "localVerification": "Ten exact CI drv output realizations succeeded, plus fresh PDM simple-runs and Poetry app-runs builds. Additional pnpm fixture-tests exact realization disambiguates current pnpm12.9.0 from independent giget pnpm11.27.0.",
+    "platform": "352 native Linux derivation records including18 expression-built independent-sample records;72 Darwin evaluation-only records have build=null. No Darwin runtime claim.",
+    "buildReceipts": [
+      "local-realization-command.json",
+      "local-realization.json",
+      "local-realization-exit.json",
+      "local-final-two-command.json",
+      "local-final-two.json",
+      "local-final-two.stderr",
+      "local-final-two-exit.json",
+      "pnpm-current-line-command.json",
+      "pnpm-current-line.json",
+      "pnpm-current-line-exit.json"
+    ],
+    "sourceReceipts": [
+      "source-nar-command.json",
+      "source-nar-bindings.nix",
+      "source-nar-bindings.json",
+      "source-bindings-verified.json",
+      "source-nar-exit.json"
+    ]
+  },
+  "remainingProofGaps": {
+    "darwin": "All12 workflows schedule native Linux only; absent native Darwin source/SDK/derivation/output/runtime receipts.",
+    "maintainedVersions": {
+      "pdm-purifier": "Current upstream release2.29.7 was published2026-11-06. Inspected installation docs require Python 3.10+ but give no maintained PDM branch calendar. Execution of2.27.0 does not demonstrate the current2.29 line; no EOL date is inferred.",
+      "pecl-purifier": "PHP primary policy maintains branches8.2,8.3,8.4,8.5 on review date. The executed8.5.12 point does not demonstrate8.2\u20138.4.",
+      "pip-purifier": "Primary pip stable documentation is26.3; CPython maintains3.11\u20133.15 on review date. Current main  checks use Python 3.14.8; they do not establish native purifier execution across3.11\u20133.15 or current installer26.3. Producer candidate is separate.",
+      "pipenv-purifier": "Primary documentation identifies2026.10.5 and latest GitHub release is2026.10.6 (Nov5). The executed SDK is2026.5.1; current-release execution is missing. No explicit EOL date for2026.5.1 is asserted.",
+      "pixi-purifier": "Primary latest release isv0.84.1 (Nov4); executable checks use0.82.1. Inspected primary docs do not define a maintained0.82 branch. Current0.84 execution is missing; old0.82 is not labeled EOL.",
+      "pulumi-purifier": "Latest primary GitHub release isv3.274.1 (Nov5); native tests execute3.268.0. Inspected support docs do not establish3.268 as a separately maintained branch. Current-release execution remains missing;3.268 is not asserted EOL.",
+      "qgis-purifier": "Official roadmap distinguishes latest release and long-term-release maintenance. CI executes QGIS4.2.3, but no successful derivation for the separately maintained3.44 LTR is present. The LTR execution gap prevents maintained-line coverage.",
+      "qlot-purifier": "Latest primary Qlot release is1.8.4 (May31); Nix toolchain executes1.5.2/SBCL 2.6.8. Inspected release material provides no separately maintained1.5 policy. Current1.8 execution is missing; the old pin is not called EOL."
+    },
+    "manySamples": {
+      "pdm-purifier": "Authored simple/sources/VCS fixtures; independent pdm-project/pdm at09c95b7842844f4e857c88f669e1c666db405c71, relocked before sandbox environment/package builds and pdm --version. Inspection establishes useful concrete cases but not a broad independent upstream sample corpus covering different project structures; authored variants, dependency nodes and tests of one upstream project are not counted as separate projects.",
+      "pecl-purifier": "Authored purifierproof C extension in examples/minimal, plus locked YAML/msgpack dependencies; dependencies are not counted as separate independent sample projects. Inspection establishes useful concrete cases but not a broad independent upstream sample corpus covering different project structures; authored variants, dependency nodes and tests of one upstream project are not counted as separate projects.",
+      "pip-purifier": "Authored greet/source/pylock fixtures; independent pallets/click8.1.8 at934813e4d421071a1b3db3973c02fe2721359a6e, sandbox tests/package plus prefetched tests. Host prefetched tests do not themselves prove a network namespace cut. Inspection establishes useful concrete cases but not a broad independent upstream sample corpus covering different project structures; authored variants, dependency nodes and tests of one upstream project are not counted as separate projects.",
+      "pipenv-purifier": "Independent pypa/pipenv atfef029307389de23d0704407e4d0ebf1d1b17758 with committed external companion lock and default/develop categories; authored simple/sources/outside fixtures are not independent projects. Inspection establishes useful concrete cases but not a broad independent upstream sample corpus covering different project structures; authored variants, dependency nodes and tests of one upstream project are not counted as separate projects.",
+      "pixi-purifier": "Authored examples/python workspace and local-channel demo/other variants in host-conformance; these do not establish an independent upstream workspace corpus. Inspection establishes useful concrete cases but not a broad independent upstream sample corpus covering different project structures; authored variants, dependency nodes and tests of one upstream project are not counted as separate projects.",
+      "platformio-purifier": "Authored Uno firmware in examples/minimal, with locked AVR/framework/library dependencies and native objcopy/GDB consumers; no board hardware execution is claimed. Inspection establishes useful concrete cases but not a broad independent upstream sample corpus covering different project structures; authored variants, dependency nodes and tests of one upstream project are not counted as separate projects.",
+      "pnpm-purifier": "Independent unjs/giget3.3.1 atf1dad453055b97a81d5227edce7262c8dcaf53d2, built in sandbox and invoked with --help; authored workspace/source/prepare fixtures are not independent samples. Inspection establishes useful concrete cases but not a broad independent upstream sample corpus covering different project structures; authored variants, dependency nodes and tests of one upstream project are not counted as separate projects.",
+      "poetry-purifier": "Independent Textualize/rich15.0.0 at6ac483cbea39cab124dfd3483bba70ffafb71050 with committed relocked poetry.lock and companion lock; authored app and path/VCS dependencies are one fixture family. Inspection establishes useful concrete cases but not a broad independent upstream sample corpus covering different project structures; authored variants, dependency nodes and tests of one upstream project are not counted as separate projects.",
+      "pub-purifier": "Authored hello Dart project and demo/other local package-index variants; no independent upstream application is established. Inspection establishes useful concrete cases but not a broad independent upstream sample corpus covering different project structures; authored variants, dependency nodes and tests of one upstream project are not counted as separate projects.",
+      "pulumi-purifier": "Authored examples/minimal project and controlled language plugin protocol fixture; plugin identities and variants do not form independent user projects. Inspection establishes useful concrete cases but not a broad independent upstream sample corpus covering different project structures; authored variants, dependency nodes and tests of one upstream project are not counted as separate projects.",
+      "qgis-purifier": "Authored minimal processing project with independent LatLonTools4.0.4 archive pinned by content hash, plus GUI activation. A plugin dependency and fixture variants are not a broad independent project corpus. Inspection establishes useful concrete cases but not a broad independent upstream sample corpus covering different project structures; authored variants, dependency nodes and tests of one upstream project are not counted as separate projects.",
+      "qlot-purifier": "Authored purifier-example ASDF project and locked Quicklisp dependencies, with an installed native SBCL consumer. Library dependencies are not independent purifier sample projects. Inspection establishes useful concrete cases but not a broad independent upstream sample corpus covering different project structures; authored variants, dependency nodes and tests of one upstream project are not counted as separate projects."
+    },
+    "longCompatibility": {
+      "pdm-purifier": "The PDM self-build and fixtures use PDM 2.27.0. Old dependency versions and several VCS transports do not establish old PDM compatibility.",
+      "pecl-purifier": "One PHP ABI8.5.12 and one authored extension family execute; package min-PHP metadata is not execution on earlier PHP branches.",
+      "pip-purifier": "The independent Click version and old dependency versions are not a pip history matrix. Main installer SDK26.1.2 and isolated26.2.2 wheel tests are exact points, not years of pip/Python compatibility.",
+      "pipenv-purifier": "The Pipenv upstream sample and SDK2026.5.1 do not establish earlier Pipenv release lines. Historical six versions test dependency update behavior only.",
+      "pixi-purifier": "Pixi 0.82.1 and local package1\u21922 update scenarios do not establish historic Pixi or lock-format compatibility.",
+      "platformio-purifier": "One Core 6.2.0 and Uno/AVR workflow execute; historical platform package metadata is not a Core release history matrix.",
+      "pnpm-purifier": "Current-major12.9.0 execution and fixtures do not establish years of pnpm compatibility. Producer candidate adds exact10/11/12 runtime points but remains separate and does not imply continuous ranges.",
+      "poetry-purifier": "Poetry 2.5.1 builds a Rich source whose original lock was2.1.3 and is relocked by2.5.1. That does not prove execution of Poetry 2.1.3 or old Poetry release lines.",
+      "pub-purifier": "One Dart 3.13.0 executable and synthetic dependency1\u21922 updates establish no earlier Dart SDK compatibility.",
+      "pulumi-purifier": "One Pulumi 3.268.0 engine point and mutable source42\u219243\u219242 regression tests do not demonstrate old Pulumi compatibility.",
+      "qgis-purifier": "One QGIS4.2.3 plus LatLonTools4.0.4 does not show old QGIS/Qt/Python compatibility across releases.",
+      "qlot-purifier": "Qlot 1.5.2/SBCL 2.6.8 and Quicklisp2024-10-12 pin/update test data do not establish execution of old Qlot/SBCL versions."
+    },
+    "outputMetadata": "Some CI checks, including the independent Pipenv test check, lack local output NARs; exact drv/output path and successful native builder receipt are retained. The separate locally realized Pipenv sample package has registered output NARs. Do not invent missing hashes.",
+    "policyTransport": "Direct Python HTTP retrieval of policy pages was blocked by domain allowlist; official primary pages were inspected with web browsing and preserved in policy/browse-receipt.json. Live Dart archive VERSION endpoint inaccessible; current3.13 line corroborated by official language evolution, announcement and docs."
+  },
+  "producerCoordination": "producer-candidates/coordination.json; current-main reviews are separate from unreleased pip/pnpm candidates. No automatic promotion.",
+  "assessmentSemantics": "Not-met states document exactly what inspected evidence does not demonstrate; they do not assert tool failure or infer EOL from a newer release. Exact supported current-line points suffice where primary policy identifies them; no all-patch range claims."
+}

@@ -1,0 +1,2348 @@
+{
+  "tectonic-purifier": {
+    "tier": 3,
+    "reviewedRevision": "a19d92cd13a519b4acdde2d82e8506fb1187894f",
+    "reviewedAt": "2026-11-06",
+    "rationale": "Successful native Linux checks and sample derivations are bound to this immutable revision. Test quality has been reviewed; native Darwin execution is absent, so Tier 2 is not established.",
+    "criteria": {
+      "evaluation": {
+        "state": "met",
+        "summary": "All 5 x86_64-linux check attributes evaluate locally; exact drv/output bindings match the successful native CI derivations.",
+        "evidence": [
+          "https://github.com/nix-purifiers/tectonic-purifier/actions/runs/42155174675/job/127687501095",
+          "https://github.com/nix-purifiers/tectonic-purifier/blob/a19d92cd13a519b4acdde2d82e8506fb1187894f/flake.nix",
+          "derivation-evidence.json#projects/tectonic-purifier/derivations"
+        ],
+        "derivations": [
+          "cli",
+          "environment",
+          "project",
+          "release",
+          "resources"
+        ],
+        "sources": [
+          "https://github.com/nix-purifiers/tectonic-purifier/blob/a19d92cd13a519b4acdde2d82e8506fb1187894f/flake.nix"
+        ],
+        "gap": null
+      },
+      "goodTests": {
+        "state": "met",
+        "summary": "The project derivation compiles LaTeX and checks extracted PDF text equals 42; resource-consumer derivation tests ordinary consumers. CI additionally executes malformed/stale lock rejection, editable document changes, readonly resources/formats, font isolation, source publication/fallback and deterministic format/index/working-set rebuilds. These cover the resource-locking contract beyond a successful CLI build.",
+        "evidence": [
+          "https://github.com/nix-purifiers/tectonic-purifier/actions/runs/42155174675/job/127687501095",
+          "https://github.com/nix-purifiers/tectonic-purifier/blob/a19d92cd13a519b4acdde2d82e8506fb1187894f/flake.nix",
+          "derivation-evidence.json#projects/tectonic-purifier/derivations"
+        ],
+        "derivations": [
+          "project",
+          "environment",
+          "resources",
+          "release"
+        ],
+        "sources": [
+          "https://github.com/nix-purifiers/tectonic-purifier/blob/a19d92cd13a519b4acdde2d82e8506fb1187894f/flake.nix"
+        ],
+        "gap": null
+      },
+      "linux": {
+        "state": "met",
+        "summary": "The inspected Ubuntu x86_64 job checks out this exact revision and successfully builds every local-evaluated check derivation; the packet records each build/rebuild event, exact output identity and available local NAR hash.",
+        "evidence": [
+          "https://github.com/nix-purifiers/tectonic-purifier/actions/runs/42155174675/job/127687501095",
+          "https://github.com/nix-purifiers/tectonic-purifier/blob/a19d92cd13a519b4acdde2d82e8506fb1187894f/flake.nix",
+          "derivation-evidence.json#projects/tectonic-purifier/derivations"
+        ],
+        "derivations": [
+          "project",
+          "environment",
+          "resources",
+          "release"
+        ],
+        "sources": [
+          "https://github.com/nix-purifiers/tectonic-purifier/blob/a19d92cd13a519b4acdde2d82e8506fb1187894f/flake.nix"
+        ],
+        "gap": null
+      },
+      "darwin": {
+        "state": "not-met",
+        "summary": "Neither the baseline nor current-main workflow includes a Darwin runner. The flake check system list inspected here is Linux-only.",
+        "evidence": [
+          "https://github.com/nix-purifiers/tectonic-purifier/actions/runs/42155174675/job/127687501095",
+          "https://github.com/nix-purifiers/tectonic-purifier/blob/a19d92cd13a519b4acdde2d82e8506fb1187894f/flake.nix",
+          "derivation-evidence.json#projects/tectonic-purifier/derivations",
+          "https://github.com/nix-purifiers/tectonic-purifier/blob/a19d92cd13a519b4acdde2d82e8506fb1187894f/.github/workflows/check.yml"
+        ],
+        "derivations": [],
+        "sources": [
+          "https://github.com/nix-purifiers/tectonic-purifier/blob/a19d92cd13a519b4acdde2d82e8506fb1187894f/.github/workflows/check.yml"
+        ],
+        "gap": "No successful native Darwin CI/check derivation and realized-output binding at this revision."
+      },
+      "oneVersion": {
+        "state": "met",
+        "summary": "Native sample execution establishes exact toolchain points tectonic 0.17.0, tectonic-unwrapped 0.17.0. No untested version interval is inferred.",
+        "evidence": [
+          "https://github.com/nix-purifiers/tectonic-purifier/actions/runs/42155174675/job/127687501095",
+          "https://github.com/nix-purifiers/tectonic-purifier/blob/a19d92cd13a519b4acdde2d82e8506fb1187894f/flake.nix",
+          "derivation-evidence.json#projects/tectonic-purifier/derivations"
+        ],
+        "derivations": [
+          "project",
+          "environment",
+          "resources",
+          "release"
+        ],
+        "sources": [
+          "https://github.com/nix-purifiers/tectonic-purifier/blob/a19d92cd13a519b4acdde2d82e8506fb1187894f/flake.nix"
+        ],
+        "gap": null
+      },
+      "nonEolVersions": {
+        "state": "met",
+        "summary": "Upstream installation/release page identifies Tectonic 0.17.0 as current; the exact patched 0.17.0 compiler is an input of the successful project derivation. No separate maintained older lines or formal EOL calendar were found; the judgment covers this current release point only.",
+        "evidence": [
+          "https://github.com/nix-purifiers/tectonic-purifier/actions/runs/42155174675/job/127687501095",
+          "https://github.com/nix-purifiers/tectonic-purifier/blob/a19d92cd13a519b4acdde2d82e8506fb1187894f/flake.nix",
+          "derivation-evidence.json#projects/tectonic-purifier/derivations",
+          "https://tectonic-typesetting.github.io/",
+          "https://github.com/tectonic-typesetting/tectonic/releases/tag/tectonic%400.17.0"
+        ],
+        "derivations": [
+          "project",
+          "environment",
+          "resources",
+          "release"
+        ],
+        "sources": [
+          "https://tectonic-typesetting.github.io/",
+          "https://github.com/tectonic-typesetting/tectonic/releases/tag/tectonic%400.17.0"
+        ],
+        "gap": null
+      },
+      "manySamples": {
+        "state": "not-met",
+        "summary": "One authored minimal LaTeX document and resource consumers are tested. TeX resource entries and working-set files are dependencies of that document, not independent upstream document projects.",
+        "evidence": [
+          "https://github.com/nix-purifiers/tectonic-purifier/actions/runs/42155174675/job/127687501095",
+          "https://github.com/nix-purifiers/tectonic-purifier/blob/a19d92cd13a519b4acdde2d82e8506fb1187894f/flake.nix",
+          "derivation-evidence.json#projects/tectonic-purifier/derivations",
+          "https://github.com/nix-purifiers/tectonic-purifier/blob/a19d92cd13a519b4acdde2d82e8506fb1187894f/flake.nix"
+        ],
+        "derivations": [
+          "project",
+          "environment",
+          "resources",
+          "release"
+        ],
+        "sources": [
+          "https://github.com/nix-purifiers/tectonic-purifier/blob/a19d92cd13a519b4acdde2d82e8506fb1187894f/flake.nix"
+        ],
+        "gap": "One authored minimal LaTeX document and resource consumers are tested. TeX resource entries and working-set files are dependencies of that document, not independent upstream document projects."
+      },
+      "longCompatibility": {
+        "state": "not-met",
+        "summary": "Only Tectonic 0.17.0 is executed in the inspected checks; deterministic rebuilds of its bundle/index/formats do not establish historical compiler compatibility.",
+        "evidence": [
+          "https://github.com/nix-purifiers/tectonic-purifier/actions/runs/42155174675/job/127687501095",
+          "https://github.com/nix-purifiers/tectonic-purifier/blob/a19d92cd13a519b4acdde2d82e8506fb1187894f/flake.nix",
+          "derivation-evidence.json#projects/tectonic-purifier/derivations",
+          "https://github.com/nix-purifiers/tectonic-purifier/blob/a19d92cd13a519b4acdde2d82e8506fb1187894f/flake.nix"
+        ],
+        "derivations": [
+          "project",
+          "environment",
+          "resources",
+          "release"
+        ],
+        "sources": [
+          "https://github.com/nix-purifiers/tectonic-purifier/blob/a19d92cd13a519b4acdde2d82e8506fb1187894f/flake.nix"
+        ],
+        "gap": "Only Tectonic 0.17.0 is executed in the inspected checks; deterministic rebuilds of its bundle/index/formats do not establish historical compiler compatibility."
+      }
+    },
+    "sampleBuilds": [
+      {
+        "name": "examples/minimal: authored LaTeX document",
+        "evidence": [
+          "https://github.com/nix-purifiers/tectonic-purifier/actions/runs/42155174675/job/127687501095",
+          "https://github.com/nix-purifiers/tectonic-purifier/blob/a19d92cd13a519b4acdde2d82e8506fb1187894f/flake.nix",
+          "derivation-evidence.json#projects/tectonic-purifier/derivations"
+        ]
+      }
+    ]
+  },
+  "terraform-purifier": {
+    "tier": 3,
+    "reviewedRevision": "65924d3be463e7ad3cfe1092707f7e8681c6ffa8",
+    "reviewedAt": "2026-11-06",
+    "rationale": "Successful native Linux checks and sample derivations are bound to this immutable revision. Test quality has been reviewed; native Darwin execution is absent, so Tier 2 is not established.",
+    "criteria": {
+      "evaluation": {
+        "state": "met",
+        "summary": "All 10 x86_64-linux check attributes evaluate locally; exact drv/output bindings match the successful native CI derivations.",
+        "evidence": [
+          "https://github.com/nix-purifiers/terraform-purifier/actions/runs/42155178681/job/127687513943",
+          "https://github.com/nix-purifiers/terraform-purifier/blob/65924d3be463e7ad3cfe1092707f7e8681c6ffa8/tests/default.nix",
+          "derivation-evidence.json#projects/terraform-purifier/derivations"
+        ],
+        "derivations": [
+          "conformance-external",
+          "conformance-malformed",
+          "conformance-missing",
+          "conformance-stale",
+          "conformance-tampered",
+          "editor",
+          "environment",
+          "offline",
+          "release",
+          "unit"
+        ],
+        "sources": [
+          "https://github.com/nix-purifiers/terraform-purifier/blob/65924d3be463e7ad3cfe1092707f7e8681c6ffa8/tests/default.nix"
+        ],
+        "gap": null
+      },
+      "goodTests": {
+        "state": "met",
+        "summary": "Sandboxed offline and external-source checks run the native Terraform test; unit checks compare Python and Nix lock readers; editor check executes terraform-ls; distinct malformed/missing/stale/tampered derivations reject invalid companions. CI rebuilds configuration/release and exercises native capture/update/relock. This covers provider resolution, native execution, lock validation and consumers.",
+        "evidence": [
+          "https://github.com/nix-purifiers/terraform-purifier/actions/runs/42155178681/job/127687513943",
+          "https://github.com/nix-purifiers/terraform-purifier/blob/65924d3be463e7ad3cfe1092707f7e8681c6ffa8/tests/default.nix",
+          "derivation-evidence.json#projects/terraform-purifier/derivations"
+        ],
+        "derivations": [
+          "offline",
+          "conformance-external",
+          "unit",
+          "editor",
+          "release",
+          "conformance-tampered"
+        ],
+        "sources": [
+          "https://github.com/nix-purifiers/terraform-purifier/blob/65924d3be463e7ad3cfe1092707f7e8681c6ffa8/tests/default.nix"
+        ],
+        "gap": null
+      },
+      "linux": {
+        "state": "met",
+        "summary": "The inspected Ubuntu x86_64 job checks out this exact revision and successfully builds every local-evaluated check derivation; the packet records each build/rebuild event, exact output identity and available local NAR hash.",
+        "evidence": [
+          "https://github.com/nix-purifiers/terraform-purifier/actions/runs/42155178681/job/127687513943",
+          "https://github.com/nix-purifiers/terraform-purifier/blob/65924d3be463e7ad3cfe1092707f7e8681c6ffa8/tests/default.nix",
+          "derivation-evidence.json#projects/terraform-purifier/derivations"
+        ],
+        "derivations": [
+          "offline",
+          "conformance-external",
+          "unit",
+          "editor",
+          "release",
+          "conformance-tampered"
+        ],
+        "sources": [
+          "https://github.com/nix-purifiers/terraform-purifier/blob/65924d3be463e7ad3cfe1092707f7e8681c6ffa8/tests/default.nix"
+        ],
+        "gap": null
+      },
+      "darwin": {
+        "state": "not-met",
+        "summary": "Neither the baseline nor current-main workflow includes a Darwin runner. The flake check system list inspected here is Linux-only.",
+        "evidence": [
+          "https://github.com/nix-purifiers/terraform-purifier/actions/runs/42155178681/job/127687513943",
+          "https://github.com/nix-purifiers/terraform-purifier/blob/65924d3be463e7ad3cfe1092707f7e8681c6ffa8/tests/default.nix",
+          "derivation-evidence.json#projects/terraform-purifier/derivations",
+          "https://github.com/nix-purifiers/terraform-purifier/blob/65924d3be463e7ad3cfe1092707f7e8681c6ffa8/.github/workflows/check.yml"
+        ],
+        "derivations": [],
+        "sources": [
+          "https://github.com/nix-purifiers/terraform-purifier/blob/65924d3be463e7ad3cfe1092707f7e8681c6ffa8/.github/workflows/check.yml"
+        ],
+        "gap": "No successful native Darwin CI/check derivation and realized-output binding at this revision."
+      },
+      "oneVersion": {
+        "state": "met",
+        "summary": "Native sample execution establishes exact toolchain points terraform 1.17.0. No untested version interval is inferred.",
+        "evidence": [
+          "https://github.com/nix-purifiers/terraform-purifier/actions/runs/42155178681/job/127687513943",
+          "https://github.com/nix-purifiers/terraform-purifier/blob/65924d3be463e7ad3cfe1092707f7e8681c6ffa8/tests/default.nix",
+          "derivation-evidence.json#projects/terraform-purifier/derivations"
+        ],
+        "derivations": [
+          "offline",
+          "conformance-external",
+          "unit",
+          "editor",
+          "release",
+          "conformance-tampered"
+        ],
+        "sources": [
+          "https://github.com/nix-purifiers/terraform-purifier/blob/65924d3be463e7ad3cfe1092707f7e8681c6ffa8/tests/default.nix"
+        ],
+        "gap": null
+      },
+      "nonEolVersions": {
+        "state": "not-met",
+        "summary": "Executed Terraform 1.17.0 belongs to the current 1.17 line (official latest release API is 1.17.1). The primary support-period page and compatibility page could not be read (web internal error; shell domain access denied), and the repo has no root or .github SECURITY.md at the checked paths. No 1.16 native execution is in the inspected suite. A complete supported-line judgment cannot be established from this evidence; 1.17.0 is not labeled EOL merely because 1.17.1 exists.",
+        "evidence": [
+          "https://github.com/nix-purifiers/terraform-purifier/actions/runs/42155178681/job/127687513943",
+          "https://github.com/nix-purifiers/terraform-purifier/blob/65924d3be463e7ad3cfe1092707f7e8681c6ffa8/tests/default.nix",
+          "derivation-evidence.json#projects/terraform-purifier/derivations",
+          "https://github.com/hashicorp/terraform/releases/tag/v1.17.1",
+          "https://www.hashicorp.com/en/support/period-and-policy",
+          "https://developer.hashicorp.com/terraform/cli/v1-compatibility-promises"
+        ],
+        "derivations": [
+          "offline",
+          "conformance-external",
+          "unit",
+          "editor",
+          "release",
+          "conformance-tampered"
+        ],
+        "sources": [
+          "https://github.com/hashicorp/terraform/releases/tag/v1.17.1",
+          "https://www.hashicorp.com/en/support/period-and-policy",
+          "https://developer.hashicorp.com/terraform/cli/v1-compatibility-promises"
+        ],
+        "gap": "Executed Terraform 1.17.0 belongs to the current 1.17 line (official latest release API is 1.17.1). The primary support-period page and compatibility page could not be read (web internal error; shell domain access denied), and the repo has no root or .github SECURITY.md at the checked paths. No 1.16 native execution is in the inspected suite. A complete supported-line judgment cannot be established from this evidence; 1.17.0 is not labeled EOL merely because 1.17.1 exists."
+      },
+      "manySamples": {
+        "state": "not-met",
+        "summary": "The random-provider example and its external-lock copy are one authored configuration. Local registry/update scenarios exercise behavior but are not independent upstream configurations.",
+        "evidence": [
+          "https://github.com/nix-purifiers/terraform-purifier/actions/runs/42155178681/job/127687513943",
+          "https://github.com/nix-purifiers/terraform-purifier/blob/65924d3be463e7ad3cfe1092707f7e8681c6ffa8/tests/default.nix",
+          "derivation-evidence.json#projects/terraform-purifier/derivations",
+          "https://github.com/nix-purifiers/terraform-purifier/blob/65924d3be463e7ad3cfe1092707f7e8681c6ffa8/tests/default.nix"
+        ],
+        "derivations": [
+          "offline",
+          "conformance-external",
+          "unit",
+          "editor",
+          "release",
+          "conformance-tampered"
+        ],
+        "sources": [
+          "https://github.com/nix-purifiers/terraform-purifier/blob/65924d3be463e7ad3cfe1092707f7e8681c6ffa8/tests/default.nix"
+        ],
+        "gap": "The random-provider example and its external-lock copy are one authored configuration. Local registry/update scenarios exercise behavior but are not independent upstream configurations."
+      },
+      "longCompatibility": {
+        "state": "not-met",
+        "summary": "Only native Terraform 1.17.0 is bound to the inspected checks; provider versions are not historical Terraform runtime versions.",
+        "evidence": [
+          "https://github.com/nix-purifiers/terraform-purifier/actions/runs/42155178681/job/127687513943",
+          "https://github.com/nix-purifiers/terraform-purifier/blob/65924d3be463e7ad3cfe1092707f7e8681c6ffa8/tests/default.nix",
+          "derivation-evidence.json#projects/terraform-purifier/derivations",
+          "https://github.com/nix-purifiers/terraform-purifier/blob/65924d3be463e7ad3cfe1092707f7e8681c6ffa8/tests/default.nix"
+        ],
+        "derivations": [
+          "offline",
+          "conformance-external",
+          "unit",
+          "editor",
+          "release",
+          "conformance-tampered"
+        ],
+        "sources": [
+          "https://github.com/nix-purifiers/terraform-purifier/blob/65924d3be463e7ad3cfe1092707f7e8681c6ffa8/tests/default.nix"
+        ],
+        "gap": "Only native Terraform 1.17.0 is bound to the inspected checks; provider versions are not historical Terraform runtime versions."
+      }
+    },
+    "sampleBuilds": [
+      {
+        "name": "examples/random: authored random-provider Terraform configuration with native tftest",
+        "evidence": [
+          "https://github.com/nix-purifiers/terraform-purifier/actions/runs/42155178681/job/127687513943",
+          "https://github.com/nix-purifiers/terraform-purifier/blob/65924d3be463e7ad3cfe1092707f7e8681c6ffa8/tests/default.nix",
+          "derivation-evidence.json#projects/terraform-purifier/derivations"
+        ]
+      }
+    ]
+  },
+  "tofu-purifier": {
+    "tier": 3,
+    "reviewedRevision": "4106b6066ccb326ddf4def2721a4d5e9ef920766",
+    "reviewedAt": "2026-11-06",
+    "rationale": "Successful native Linux checks and sample derivations are bound to this immutable revision. Test quality has been reviewed; native Darwin execution is absent, so Tier 2 is not established.",
+    "criteria": {
+      "evaluation": {
+        "state": "met",
+        "summary": "All 10 x86_64-linux check attributes evaluate locally; exact drv/output bindings match the successful native CI derivations.",
+        "evidence": [
+          "https://github.com/nix-purifiers/tofu-purifier/actions/runs/42155182708/job/127687527067",
+          "https://github.com/nix-purifiers/tofu-purifier/blob/4106b6066ccb326ddf4def2721a4d5e9ef920766/tests/default.nix",
+          "derivation-evidence.json#projects/tofu-purifier/derivations"
+        ],
+        "derivations": [
+          "conformance-external",
+          "conformance-malformed",
+          "conformance-missing",
+          "conformance-stale",
+          "conformance-tampered",
+          "editor",
+          "environment",
+          "offline",
+          "release",
+          "unit"
+        ],
+        "sources": [
+          "https://github.com/nix-purifiers/tofu-purifier/blob/4106b6066ccb326ddf4def2721a4d5e9ef920766/tests/default.nix"
+        ],
+        "gap": null
+      },
+      "goodTests": {
+        "state": "met",
+        "summary": "Sandboxed offline and external-source checks execute native tofu tests, unit checks compare lock representations, and separate invalid-lock checks reject malformed/missing/stale/tampered inputs. The editor and release checks exercise native consumers, while CI rebuilds and runs native capture/update/relock. This tests the integration contract at runtime.",
+        "evidence": [
+          "https://github.com/nix-purifiers/tofu-purifier/actions/runs/42155182708/job/127687527067",
+          "https://github.com/nix-purifiers/tofu-purifier/blob/4106b6066ccb326ddf4def2721a4d5e9ef920766/tests/default.nix",
+          "derivation-evidence.json#projects/tofu-purifier/derivations"
+        ],
+        "derivations": [
+          "offline",
+          "conformance-external",
+          "unit",
+          "editor",
+          "release",
+          "conformance-tampered"
+        ],
+        "sources": [
+          "https://github.com/nix-purifiers/tofu-purifier/blob/4106b6066ccb326ddf4def2721a4d5e9ef920766/tests/default.nix"
+        ],
+        "gap": null
+      },
+      "linux": {
+        "state": "met",
+        "summary": "The inspected Ubuntu x86_64 job checks out this exact revision and successfully builds every local-evaluated check derivation; the packet records each build/rebuild event, exact output identity and available local NAR hash.",
+        "evidence": [
+          "https://github.com/nix-purifiers/tofu-purifier/actions/runs/42155182708/job/127687527067",
+          "https://github.com/nix-purifiers/tofu-purifier/blob/4106b6066ccb326ddf4def2721a4d5e9ef920766/tests/default.nix",
+          "derivation-evidence.json#projects/tofu-purifier/derivations"
+        ],
+        "derivations": [
+          "offline",
+          "conformance-external",
+          "unit",
+          "editor",
+          "release",
+          "conformance-tampered"
+        ],
+        "sources": [
+          "https://github.com/nix-purifiers/tofu-purifier/blob/4106b6066ccb326ddf4def2721a4d5e9ef920766/tests/default.nix"
+        ],
+        "gap": null
+      },
+      "darwin": {
+        "state": "not-met",
+        "summary": "Neither the baseline nor current-main workflow includes a Darwin runner. The flake check system list inspected here is Linux-only.",
+        "evidence": [
+          "https://github.com/nix-purifiers/tofu-purifier/actions/runs/42155182708/job/127687527067",
+          "https://github.com/nix-purifiers/tofu-purifier/blob/4106b6066ccb326ddf4def2721a4d5e9ef920766/tests/default.nix",
+          "derivation-evidence.json#projects/tofu-purifier/derivations",
+          "https://github.com/nix-purifiers/tofu-purifier/blob/4106b6066ccb326ddf4def2721a4d5e9ef920766/.github/workflows/check.yml"
+        ],
+        "derivations": [],
+        "sources": [
+          "https://github.com/nix-purifiers/tofu-purifier/blob/4106b6066ccb326ddf4def2721a4d5e9ef920766/.github/workflows/check.yml"
+        ],
+        "gap": "No successful native Darwin CI/check derivation and realized-output binding at this revision."
+      },
+      "oneVersion": {
+        "state": "met",
+        "summary": "Native sample execution establishes exact toolchain points opentofu 1.13.2. No untested version interval is inferred.",
+        "evidence": [
+          "https://github.com/nix-purifiers/tofu-purifier/actions/runs/42155182708/job/127687527067",
+          "https://github.com/nix-purifiers/tofu-purifier/blob/4106b6066ccb326ddf4def2721a4d5e9ef920766/tests/default.nix",
+          "derivation-evidence.json#projects/tofu-purifier/derivations"
+        ],
+        "derivations": [
+          "offline",
+          "conformance-external",
+          "unit",
+          "editor",
+          "release",
+          "conformance-tampered"
+        ],
+        "sources": [
+          "https://github.com/nix-purifiers/tofu-purifier/blob/4106b6066ccb326ddf4def2721a4d5e9ef920766/tests/default.nix"
+        ],
+        "gap": null
+      },
+      "nonEolVersions": {
+        "state": "not-met",
+        "summary": "The primary RELEASE.md delegates support duration to per-line CHANGELOG.md. The 1.13 line is supported through 2027-08-01 and 1.12 through 2027-02-01. The successful derivations use OpenTofu 1.13.2; no 1.12 point is executed. Thus supported-line breadth is missing despite valid current-line execution. Latest API 1.13.9 does not itself make 1.13.2 EOL.",
+        "evidence": [
+          "https://github.com/nix-purifiers/tofu-purifier/actions/runs/42155182708/job/127687527067",
+          "https://github.com/nix-purifiers/tofu-purifier/blob/4106b6066ccb326ddf4def2721a4d5e9ef920766/tests/default.nix",
+          "derivation-evidence.json#projects/tofu-purifier/derivations",
+          "https://github.com/opentofu/opentofu/blob/main/RELEASE.md",
+          "https://github.com/opentofu/opentofu/blob/v1.13/CHANGELOG.md",
+          "https://github.com/opentofu/opentofu/blob/v1.12/CHANGELOG.md"
+        ],
+        "derivations": [
+          "offline",
+          "conformance-external",
+          "unit",
+          "editor",
+          "release",
+          "conformance-tampered"
+        ],
+        "sources": [
+          "https://github.com/opentofu/opentofu/blob/main/RELEASE.md",
+          "https://github.com/opentofu/opentofu/blob/v1.13/CHANGELOG.md",
+          "https://github.com/opentofu/opentofu/blob/v1.12/CHANGELOG.md"
+        ],
+        "gap": "The primary RELEASE.md delegates support duration to per-line CHANGELOG.md. The 1.13 line is supported through 2027-08-01 and 1.12 through 2027-02-01. The successful derivations use OpenTofu 1.13.2; no 1.12 point is executed. Thus supported-line breadth is missing despite valid current-line execution. Latest API 1.13.9 does not itself make 1.13.2 EOL."
+      },
+      "manySamples": {
+        "state": "not-met",
+        "summary": "The random-provider configuration and external-source copy are one authored sample; registry variants do not provide independent upstream projects.",
+        "evidence": [
+          "https://github.com/nix-purifiers/tofu-purifier/actions/runs/42155182708/job/127687527067",
+          "https://github.com/nix-purifiers/tofu-purifier/blob/4106b6066ccb326ddf4def2721a4d5e9ef920766/tests/default.nix",
+          "derivation-evidence.json#projects/tofu-purifier/derivations",
+          "https://github.com/nix-purifiers/tofu-purifier/blob/4106b6066ccb326ddf4def2721a4d5e9ef920766/tests/default.nix"
+        ],
+        "derivations": [
+          "offline",
+          "conformance-external",
+          "unit",
+          "editor",
+          "release",
+          "conformance-tampered"
+        ],
+        "sources": [
+          "https://github.com/nix-purifiers/tofu-purifier/blob/4106b6066ccb326ddf4def2721a4d5e9ef920766/tests/default.nix"
+        ],
+        "gap": "The random-provider configuration and external-source copy are one authored sample; registry variants do not provide independent upstream projects."
+      },
+      "longCompatibility": {
+        "state": "not-met",
+        "summary": "Only the exact OpenTofu 1.13.2 compiler is demonstrated; Terraform compatibility promises and provider histories are not executed OpenTofu history.",
+        "evidence": [
+          "https://github.com/nix-purifiers/tofu-purifier/actions/runs/42155182708/job/127687527067",
+          "https://github.com/nix-purifiers/tofu-purifier/blob/4106b6066ccb326ddf4def2721a4d5e9ef920766/tests/default.nix",
+          "derivation-evidence.json#projects/tofu-purifier/derivations",
+          "https://github.com/nix-purifiers/tofu-purifier/blob/4106b6066ccb326ddf4def2721a4d5e9ef920766/tests/default.nix"
+        ],
+        "derivations": [
+          "offline",
+          "conformance-external",
+          "unit",
+          "editor",
+          "release",
+          "conformance-tampered"
+        ],
+        "sources": [
+          "https://github.com/nix-purifiers/tofu-purifier/blob/4106b6066ccb326ddf4def2721a4d5e9ef920766/tests/default.nix"
+        ],
+        "gap": "Only the exact OpenTofu 1.13.2 compiler is demonstrated; Terraform compatibility promises and provider histories are not executed OpenTofu history."
+      }
+    },
+    "sampleBuilds": [
+      {
+        "name": "examples/random: authored random-provider OpenTofu configuration with native tftest",
+        "evidence": [
+          "https://github.com/nix-purifiers/tofu-purifier/actions/runs/42155182708/job/127687527067",
+          "https://github.com/nix-purifiers/tofu-purifier/blob/4106b6066ccb326ddf4def2721a4d5e9ef920766/tests/default.nix",
+          "derivation-evidence.json#projects/tofu-purifier/derivations"
+        ]
+      }
+    ]
+  },
+  "typst-purifier": {
+    "tier": 3,
+    "reviewedRevision": "5a4e265b31b4fd0b9f7f136185aee81c1b0c70d4",
+    "reviewedAt": "2026-11-06",
+    "rationale": "Successful native Linux checks and sample derivations are bound to this immutable revision. Test quality has been reviewed; native Darwin execution is absent, so Tier 2 is not established.",
+    "criteria": {
+      "evaluation": {
+        "state": "met",
+        "summary": "All 5 x86_64-linux check attributes evaluate locally; exact drv/output bindings match the successful native CI derivations.",
+        "evidence": [
+          "https://github.com/nix-purifiers/typst-purifier/actions/runs/42155186138/job/127687538426",
+          "https://github.com/nix-purifiers/typst-purifier/blob/5a4e265b31b4fd0b9f7f136185aee81c1b0c70d4/flake.nix",
+          "derivation-evidence.json#projects/typst-purifier/derivations"
+        ],
+        "derivations": [
+          "cli",
+          "environment",
+          "project",
+          "release",
+          "resources"
+        ],
+        "sources": [
+          "https://github.com/nix-purifiers/typst-purifier/blob/5a4e265b31b4fd0b9f7f136185aee81c1b0c70d4/flake.nix"
+        ],
+        "gap": null
+      },
+      "goodTests": {
+        "state": "met",
+        "summary": "The project derivation builds the document and checks a native Typst query yields 42; ordinary resource consumers are separate executable derivations. CI additionally tests WASM loading, native editor/LSP, metadata mismatch rejection, cache isolation/restoration, publication, capture of empty/configured graphs, external companions and lock validation. The checks test resource identity and native use beyond a PDF existence smoke test.",
+        "evidence": [
+          "https://github.com/nix-purifiers/typst-purifier/actions/runs/42155186138/job/127687538426",
+          "https://github.com/nix-purifiers/typst-purifier/blob/5a4e265b31b4fd0b9f7f136185aee81c1b0c70d4/flake.nix",
+          "derivation-evidence.json#projects/typst-purifier/derivations"
+        ],
+        "derivations": [
+          "project",
+          "resources",
+          "environment",
+          "release"
+        ],
+        "sources": [
+          "https://github.com/nix-purifiers/typst-purifier/blob/5a4e265b31b4fd0b9f7f136185aee81c1b0c70d4/flake.nix"
+        ],
+        "gap": null
+      },
+      "linux": {
+        "state": "met",
+        "summary": "The inspected Ubuntu x86_64 job checks out this exact revision and successfully builds every local-evaluated check derivation; the packet records each build/rebuild event, exact output identity and available local NAR hash.",
+        "evidence": [
+          "https://github.com/nix-purifiers/typst-purifier/actions/runs/42155186138/job/127687538426",
+          "https://github.com/nix-purifiers/typst-purifier/blob/5a4e265b31b4fd0b9f7f136185aee81c1b0c70d4/flake.nix",
+          "derivation-evidence.json#projects/typst-purifier/derivations"
+        ],
+        "derivations": [
+          "project",
+          "resources",
+          "environment",
+          "release"
+        ],
+        "sources": [
+          "https://github.com/nix-purifiers/typst-purifier/blob/5a4e265b31b4fd0b9f7f136185aee81c1b0c70d4/flake.nix"
+        ],
+        "gap": null
+      },
+      "darwin": {
+        "state": "not-met",
+        "summary": "Neither the baseline nor current-main workflow includes a Darwin runner. The flake check system list inspected here is Linux-only.",
+        "evidence": [
+          "https://github.com/nix-purifiers/typst-purifier/actions/runs/42155186138/job/127687538426",
+          "https://github.com/nix-purifiers/typst-purifier/blob/5a4e265b31b4fd0b9f7f136185aee81c1b0c70d4/flake.nix",
+          "derivation-evidence.json#projects/typst-purifier/derivations",
+          "https://github.com/nix-purifiers/typst-purifier/blob/5a4e265b31b4fd0b9f7f136185aee81c1b0c70d4/.github/workflows/check.yml"
+        ],
+        "derivations": [],
+        "sources": [
+          "https://github.com/nix-purifiers/typst-purifier/blob/5a4e265b31b4fd0b9f7f136185aee81c1b0c70d4/.github/workflows/check.yml"
+        ],
+        "gap": "No successful native Darwin CI/check derivation and realized-output binding at this revision."
+      },
+      "oneVersion": {
+        "state": "met",
+        "summary": "Native sample execution establishes exact toolchain points tinymist 0.15.10, typst 0.15.1. No untested version interval is inferred.",
+        "evidence": [
+          "https://github.com/nix-purifiers/typst-purifier/actions/runs/42155186138/job/127687538426",
+          "https://github.com/nix-purifiers/typst-purifier/blob/5a4e265b31b4fd0b9f7f136185aee81c1b0c70d4/flake.nix",
+          "derivation-evidence.json#projects/typst-purifier/derivations"
+        ],
+        "derivations": [
+          "project",
+          "resources",
+          "environment",
+          "release"
+        ],
+        "sources": [
+          "https://github.com/nix-purifiers/typst-purifier/blob/5a4e265b31b4fd0b9f7f136185aee81c1b0c70d4/flake.nix"
+        ],
+        "gap": null
+      },
+      "nonEolVersions": {
+        "state": "met",
+        "summary": "Official current release is Typst 0.15.1, also asserted by the native conformance test; the project input derivation is purifier-native-typst-0.15.1. The upstream roadmap/changelog and release history disclose no separate maintained-old-line policy in the inspected material. Judgment is for this current stable compiler point, not every patch or historical compiler.",
+        "evidence": [
+          "https://github.com/nix-purifiers/typst-purifier/actions/runs/42155186138/job/127687538426",
+          "https://github.com/nix-purifiers/typst-purifier/blob/5a4e265b31b4fd0b9f7f136185aee81c1b0c70d4/flake.nix",
+          "derivation-evidence.json#projects/typst-purifier/derivations",
+          "https://typst.app/docs/changelog/0.15.1/",
+          "https://typst.app/docs/roadmap/",
+          "https://github.com/typst/typst/releases/tag/v0.15.1"
+        ],
+        "derivations": [
+          "project",
+          "resources",
+          "environment",
+          "release"
+        ],
+        "sources": [
+          "https://typst.app/docs/changelog/0.15.1/",
+          "https://typst.app/docs/roadmap/",
+          "https://github.com/typst/typst/releases/tag/v0.15.1"
+        ],
+        "gap": null
+      },
+      "manySamples": {
+        "state": "not-met",
+        "summary": "One authored minimal document exercises package and WASM dependencies. Packages such as cetz and oxifmt are dependencies, not independent compiled upstream document samples.",
+        "evidence": [
+          "https://github.com/nix-purifiers/typst-purifier/actions/runs/42155186138/job/127687538426",
+          "https://github.com/nix-purifiers/typst-purifier/blob/5a4e265b31b4fd0b9f7f136185aee81c1b0c70d4/flake.nix",
+          "derivation-evidence.json#projects/typst-purifier/derivations",
+          "https://github.com/nix-purifiers/typst-purifier/blob/5a4e265b31b4fd0b9f7f136185aee81c1b0c70d4/flake.nix"
+        ],
+        "derivations": [
+          "project",
+          "resources",
+          "environment",
+          "release"
+        ],
+        "sources": [
+          "https://github.com/nix-purifiers/typst-purifier/blob/5a4e265b31b4fd0b9f7f136185aee81c1b0c70d4/flake.nix"
+        ],
+        "gap": "One authored minimal document exercises package and WASM dependencies. Packages such as cetz and oxifmt are dependencies, not independent compiled upstream document samples."
+      },
+      "longCompatibility": {
+        "state": "not-met",
+        "summary": "Only the native Typst 0.15.1 compiler is exercised; package versions and editor version 0.15.10 are separate from historical compiler compatibility.",
+        "evidence": [
+          "https://github.com/nix-purifiers/typst-purifier/actions/runs/42155186138/job/127687538426",
+          "https://github.com/nix-purifiers/typst-purifier/blob/5a4e265b31b4fd0b9f7f136185aee81c1b0c70d4/flake.nix",
+          "derivation-evidence.json#projects/typst-purifier/derivations",
+          "https://github.com/nix-purifiers/typst-purifier/blob/5a4e265b31b4fd0b9f7f136185aee81c1b0c70d4/flake.nix"
+        ],
+        "derivations": [
+          "project",
+          "resources",
+          "environment",
+          "release"
+        ],
+        "sources": [
+          "https://github.com/nix-purifiers/typst-purifier/blob/5a4e265b31b4fd0b9f7f136185aee81c1b0c70d4/flake.nix"
+        ],
+        "gap": "Only the native Typst 0.15.1 compiler is exercised; package versions and editor version 0.15.10 are separate from historical compiler compatibility."
+      }
+    },
+    "sampleBuilds": [
+      {
+        "name": "examples/minimal: authored Typst document with packages/WASM",
+        "evidence": [
+          "https://github.com/nix-purifiers/typst-purifier/actions/runs/42155186138/job/127687538426",
+          "https://github.com/nix-purifiers/typst-purifier/blob/5a4e265b31b4fd0b9f7f136185aee81c1b0c70d4/flake.nix",
+          "derivation-evidence.json#projects/typst-purifier/derivations"
+        ]
+      }
+    ]
+  },
+  "uv-purifier": {
+    "tier": 3,
+    "reviewedRevision": "ea43ef3106cef19ba7f9c0e75140822cd98ebc4f",
+    "reviewedAt": "2026-11-06",
+    "rationale": "Successful native Linux checks and sample derivations are bound to this immutable revision. Test quality has been reviewed; native Darwin execution is absent, so Tier 2 is not established.",
+    "criteria": {
+      "evaluation": {
+        "state": "met",
+        "summary": "All 28 x86_64-linux check attributes evaluate locally; exact drv/output bindings match the successful native CI derivations.",
+        "evidence": [
+          "https://github.com/nix-purifiers/uv-purifier/actions/runs/42155508325/job/127688579087",
+          "https://github.com/nix-purifiers/uv-purifier/blob/ea43ef3106cef19ba7f9c0e75140822cd98ebc4f/tests/default.nix",
+          "derivation-evidence.json#projects/uv-purifier/derivations"
+        ],
+        "derivations": [
+          "cli",
+          "composition-producer",
+          "composition-producer-python312",
+          "conformance-external",
+          "conformance-malformed",
+          "conformance-missing",
+          "conformance-offline",
+          "conformance-stale",
+          "conformance-tampered",
+          "fetches",
+          "flask",
+          "native-check-inputs",
+          "nix-library",
+          "offline-workspace",
+          "outputs",
+          "outside",
+          "overlay",
+          "pythonpath",
+          "rebuild-package",
+          "rebuild-release",
+          "release",
+          "runtime-projections",
+          "simple",
+          "sources",
+          "tests",
+          "treefmt",
+          "unit",
+          "workspace"
+        ],
+        "sources": [
+          "https://github.com/nix-purifiers/uv-purifier/blob/ea43ef3106cef19ba7f9c0e75140822cd98ebc4f/tests/default.nix"
+        ],
+        "gap": null
+      },
+      "goodTests": {
+        "state": "met",
+        "summary": "The Flask check builds upstream Flask, wheel/sdist release artifacts and the project test derivation, then prepares an offline native uv development environment and runs Flask pytest again (494 passed in CI). Unit/library checks, malformed/stale/missing/tampered inputs, package/workspace and local/VCS/sdist sources, offline reconstruction and runtime projections test independent failure and consumer paths. Historical SDK artifacts additionally exercise compiled MarkupSafe and runtime admission.",
+        "evidence": [
+          "https://github.com/nix-purifiers/uv-purifier/actions/runs/42155508325/job/127688579087",
+          "https://github.com/nix-purifiers/uv-purifier/blob/ea43ef3106cef19ba7f9c0e75140822cd98ebc4f/tests/default.nix",
+          "derivation-evidence.json#projects/uv-purifier/derivations"
+        ],
+        "derivations": [
+          "flask",
+          "unit",
+          "tests",
+          "nix-library",
+          "conformance-tampered",
+          "conformance-offline",
+          "offline-workspace",
+          "runtime-projections",
+          "composition-producer-python312"
+        ],
+        "sources": [
+          "https://github.com/nix-purifiers/uv-purifier/blob/ea43ef3106cef19ba7f9c0e75140822cd98ebc4f/tests/default.nix"
+        ],
+        "gap": null
+      },
+      "linux": {
+        "state": "met",
+        "summary": "The inspected Ubuntu x86_64 job checks out this exact revision and successfully builds every local-evaluated check derivation; the packet records each build/rebuild event, exact output identity and available local NAR hash.",
+        "evidence": [
+          "https://github.com/nix-purifiers/uv-purifier/actions/runs/42155508325/job/127688579087",
+          "https://github.com/nix-purifiers/uv-purifier/blob/ea43ef3106cef19ba7f9c0e75140822cd98ebc4f/tests/default.nix",
+          "derivation-evidence.json#projects/uv-purifier/derivations"
+        ],
+        "derivations": [
+          "flask",
+          "unit",
+          "tests",
+          "nix-library",
+          "conformance-tampered",
+          "conformance-offline",
+          "offline-workspace",
+          "runtime-projections",
+          "composition-producer-python312"
+        ],
+        "sources": [
+          "https://github.com/nix-purifiers/uv-purifier/blob/ea43ef3106cef19ba7f9c0e75140822cd98ebc4f/tests/default.nix"
+        ],
+        "gap": null
+      },
+      "darwin": {
+        "state": "not-met",
+        "summary": "Neither the baseline nor current-main workflow includes a Darwin runner. The flake declares aarch64-darwin, but evaluation/declaration is not native execution.",
+        "evidence": [
+          "https://github.com/nix-purifiers/uv-purifier/actions/runs/42155508325/job/127688579087",
+          "https://github.com/nix-purifiers/uv-purifier/blob/ea43ef3106cef19ba7f9c0e75140822cd98ebc4f/tests/default.nix",
+          "derivation-evidence.json#projects/uv-purifier/derivations",
+          "https://github.com/nix-purifiers/uv-purifier/blob/ea43ef3106cef19ba7f9c0e75140822cd98ebc4f/.github/workflows/check.yml"
+        ],
+        "derivations": [],
+        "sources": [
+          "https://github.com/nix-purifiers/uv-purifier/blob/ea43ef3106cef19ba7f9c0e75140822cd98ebc4f/.github/workflows/check.yml"
+        ],
+        "gap": "No successful native Darwin CI/check derivation and realized-output binding at this revision."
+      },
+      "oneVersion": {
+        "state": "met",
+        "summary": "Native sample execution establishes exact toolchain points python3 3.14.8, uv 0.13.5. No untested version interval is inferred.",
+        "evidence": [
+          "https://github.com/nix-purifiers/uv-purifier/actions/runs/42155508325/job/127688579087",
+          "https://github.com/nix-purifiers/uv-purifier/blob/ea43ef3106cef19ba7f9c0e75140822cd98ebc4f/tests/default.nix",
+          "derivation-evidence.json#projects/uv-purifier/derivations"
+        ],
+        "derivations": [
+          "flask",
+          "unit",
+          "tests",
+          "nix-library",
+          "conformance-tampered",
+          "conformance-offline",
+          "offline-workspace",
+          "runtime-projections",
+          "composition-producer-python312"
+        ],
+        "sources": [
+          "https://github.com/nix-purifiers/uv-purifier/blob/ea43ef3106cef19ba7f9c0e75140822cd98ebc4f/tests/default.nix"
+        ],
+        "gap": null
+      },
+      "nonEolVersions": {
+        "state": "not-met",
+        "summary": "The upstream uv versioning policy makes minor changes breaking and patches compatible; its Python policy lists supported modern Python lines. The reviewed native check uses uv 0.13.5 and CPython 3.14.8, with a 3.12 composition check and historical 3.8/3.9 jobs. There are no derivation-bound current 3.11, 3.13 or 3.15 sample points here. Producer is adding current uv 0.13.7 and Python 3.11-3.15; those unpublished/new-source results must be reconciled separately. This is a missing runtime matrix, not an EOL assertion about uv 0.13.5.",
+        "evidence": [
+          "https://github.com/nix-purifiers/uv-purifier/actions/runs/42155508325/job/127688579087",
+          "https://github.com/nix-purifiers/uv-purifier/blob/ea43ef3106cef19ba7f9c0e75140822cd98ebc4f/tests/default.nix",
+          "derivation-evidence.json#projects/uv-purifier/derivations",
+          "https://docs.astral.sh/uv/reference/policies/versioning/",
+          "https://docs.astral.sh/uv/reference/policies/python/",
+          "https://github.com/astral-sh/uv/releases/tag/0.13.7"
+        ],
+        "derivations": [
+          "flask",
+          "unit",
+          "tests",
+          "nix-library",
+          "conformance-tampered",
+          "conformance-offline",
+          "offline-workspace",
+          "runtime-projections",
+          "composition-producer-python312"
+        ],
+        "sources": [
+          "https://docs.astral.sh/uv/reference/policies/versioning/",
+          "https://docs.astral.sh/uv/reference/policies/python/",
+          "https://github.com/astral-sh/uv/releases/tag/0.13.7"
+        ],
+        "gap": "The upstream uv versioning policy makes minor changes breaking and patches compatible; its Python policy lists supported modern Python lines. The reviewed native check uses uv 0.13.5 and CPython 3.14.8, with a 3.12 composition check and historical 3.8/3.9 jobs. There are no derivation-bound current 3.11, 3.13 or 3.15 sample points here. Producer is adding current uv 0.13.7 and Python 3.11-3.15; those unpublished/new-source results must be reconciled separately. This is a missing runtime matrix, not an EOL assertion about uv 0.13.5."
+      },
+      "manySamples": {
+        "state": "not-met",
+        "summary": "Flask is one independent upstream project. Simple/workspace/sources/outside and generated epoch-provider/consumer graphs are authored fixtures, not additional independent projects.",
+        "evidence": [
+          "https://github.com/nix-purifiers/uv-purifier/actions/runs/42155508325/job/127688579087",
+          "https://github.com/nix-purifiers/uv-purifier/blob/ea43ef3106cef19ba7f9c0e75140822cd98ebc4f/tests/default.nix",
+          "derivation-evidence.json#projects/uv-purifier/derivations",
+          "https://github.com/nix-purifiers/uv-purifier/blob/ea43ef3106cef19ba7f9c0e75140822cd98ebc4f/tests/default.nix"
+        ],
+        "derivations": [
+          "flask",
+          "unit",
+          "tests",
+          "nix-library",
+          "conformance-tampered",
+          "conformance-offline",
+          "offline-workspace",
+          "runtime-projections",
+          "composition-producer-python312"
+        ],
+        "sources": [
+          "https://github.com/nix-purifiers/uv-purifier/blob/ea43ef3106cef19ba7f9c0e75140822cd98ebc4f/tests/default.nix"
+        ],
+        "gap": "Flask is one independent upstream project. Simple/workspace/sources/outside and generated epoch-provider/consumer graphs are authored fixtures, not additional independent projects."
+      },
+      "longCompatibility": {
+        "state": "met",
+        "summary": "Native CI artifacts prove uv 0.3.0 with Python 3.8.19 and current uv 0.13.5 with Python 3.8.19/3.9.20, alongside 3.12 and 3.14 checks. The old/new target-helper separation, compiled MarkupSafe, pure producer/incoming builds, ordinary consumers and sandwich/multiple-input assertions demonstrate substantial historical compatibility at those exact tuples. No continuous interval is claimed.",
+        "evidence": [
+          "https://github.com/nix-purifiers/uv-purifier/actions/runs/42155508325/job/127688579087",
+          "https://github.com/nix-purifiers/uv-purifier/blob/ea43ef3106cef19ba7f9c0e75140822cd98ebc4f/tests/default.nix",
+          "derivation-evidence.json#projects/uv-purifier/derivations",
+          "https://github.com/nix-purifiers/uv-purifier/blob/ea43ef3106cef19ba7f9c0e75140822cd98ebc4f/tests/default.nix"
+        ],
+        "derivations": [
+          "flask",
+          "unit",
+          "tests",
+          "nix-library",
+          "conformance-tampered",
+          "conformance-offline",
+          "offline-workspace",
+          "runtime-projections",
+          "composition-producer-python312",
+          "historical-0.13.5-python-3.8.19",
+          "historical-0.3.0-python-3.8.19",
+          "historical-0.13.5-python-3.9.20"
+        ],
+        "sources": [
+          "https://github.com/nix-purifiers/uv-purifier/blob/ea43ef3106cef19ba7f9c0e75140822cd98ebc4f/tests/default.nix"
+        ],
+        "gap": null
+      }
+    },
+    "sampleBuilds": [
+      {
+        "name": "Flask upstream 49943b5a94413a530761350f04e896f76e8d620e",
+        "evidence": [
+          "https://github.com/nix-purifiers/uv-purifier/actions/runs/42155508325/job/127688579087",
+          "https://github.com/nix-purifiers/uv-purifier/blob/ea43ef3106cef19ba7f9c0e75140822cd98ebc4f/tests/default.nix",
+          "derivation-evidence.json#projects/uv-purifier/derivations"
+        ]
+      }
+    ]
+  },
+  "vcpkg-purifier": {
+    "tier": 3,
+    "reviewedRevision": "ceae6750c5b25f7e0fc063595ea9de0ae3271600",
+    "reviewedAt": "2026-11-06",
+    "rationale": "Successful native Linux checks and sample derivations are bound to this immutable revision. Test quality has been reviewed; native Darwin execution is absent, so Tier 2 is not established.",
+    "criteria": {
+      "evaluation": {
+        "state": "met",
+        "summary": "All 5 x86_64-linux check attributes evaluate locally; exact drv/output bindings match the successful native CI derivations.",
+        "evidence": [
+          "https://github.com/nix-purifiers/vcpkg-purifier/actions/runs/42155512188/job/127688590928",
+          "https://github.com/nix-purifiers/vcpkg-purifier/blob/ceae6750c5b25f7e0fc063595ea9de0ae3271600/tests/default.nix",
+          "derivation-evidence.json#projects/vcpkg-purifier/derivations"
+        ],
+        "derivations": [
+          "cli",
+          "environment",
+          "foreign-projections",
+          "project",
+          "release"
+        ],
+        "sources": [
+          "https://github.com/nix-purifiers/vcpkg-purifier/blob/ceae6750c5b25f7e0fc063595ea9de0ae3271600/tests/default.nix"
+        ],
+        "gap": null
+      },
+      "goodTests": {
+        "state": "met",
+        "summary": "The project derivation compiles and runs its CTest consumer; foreign projections separately execute headers/library consumers. CI exercises native Git registry version selection, real HTTP assets, lock/update/relock/external companions/local overlays, readonly/mode/input rejection, clangd compilation database consumption, native install and release behavior. These cover meaningful native and negative integration paths.",
+        "evidence": [
+          "https://github.com/nix-purifiers/vcpkg-purifier/actions/runs/42155512188/job/127688590928",
+          "https://github.com/nix-purifiers/vcpkg-purifier/blob/ceae6750c5b25f7e0fc063595ea9de0ae3271600/tests/default.nix",
+          "derivation-evidence.json#projects/vcpkg-purifier/derivations"
+        ],
+        "derivations": [
+          "project",
+          "foreign-projections",
+          "environment",
+          "release"
+        ],
+        "sources": [
+          "https://github.com/nix-purifiers/vcpkg-purifier/blob/ceae6750c5b25f7e0fc063595ea9de0ae3271600/tests/default.nix"
+        ],
+        "gap": null
+      },
+      "linux": {
+        "state": "met",
+        "summary": "The inspected Ubuntu x86_64 job checks out this exact revision and successfully builds every local-evaluated check derivation; the packet records each build/rebuild event, exact output identity and available local NAR hash.",
+        "evidence": [
+          "https://github.com/nix-purifiers/vcpkg-purifier/actions/runs/42155512188/job/127688590928",
+          "https://github.com/nix-purifiers/vcpkg-purifier/blob/ceae6750c5b25f7e0fc063595ea9de0ae3271600/tests/default.nix",
+          "derivation-evidence.json#projects/vcpkg-purifier/derivations"
+        ],
+        "derivations": [
+          "project",
+          "foreign-projections",
+          "environment",
+          "release"
+        ],
+        "sources": [
+          "https://github.com/nix-purifiers/vcpkg-purifier/blob/ceae6750c5b25f7e0fc063595ea9de0ae3271600/tests/default.nix"
+        ],
+        "gap": null
+      },
+      "darwin": {
+        "state": "not-met",
+        "summary": "Neither the baseline nor current-main workflow includes a Darwin runner. The flake check system list inspected here is Linux-only.",
+        "evidence": [
+          "https://github.com/nix-purifiers/vcpkg-purifier/actions/runs/42155512188/job/127688590928",
+          "https://github.com/nix-purifiers/vcpkg-purifier/blob/ceae6750c5b25f7e0fc063595ea9de0ae3271600/tests/default.nix",
+          "derivation-evidence.json#projects/vcpkg-purifier/derivations",
+          "https://github.com/nix-purifiers/vcpkg-purifier/blob/ceae6750c5b25f7e0fc063595ea9de0ae3271600/.github/workflows/check.yml"
+        ],
+        "derivations": [],
+        "sources": [
+          "https://github.com/nix-purifiers/vcpkg-purifier/blob/ceae6750c5b25f7e0fc063595ea9de0ae3271600/.github/workflows/check.yml"
+        ],
+        "gap": "No successful native Darwin CI/check derivation and realized-output binding at this revision."
+      },
+      "oneVersion": {
+        "state": "met",
+        "summary": "Native sample execution establishes exact toolchain points vcpkg 2026.06.24. No untested version interval is inferred.",
+        "evidence": [
+          "https://github.com/nix-purifiers/vcpkg-purifier/actions/runs/42155512188/job/127688590928",
+          "https://github.com/nix-purifiers/vcpkg-purifier/blob/ceae6750c5b25f7e0fc063595ea9de0ae3271600/tests/default.nix",
+          "derivation-evidence.json#projects/vcpkg-purifier/derivations"
+        ],
+        "derivations": [
+          "project",
+          "foreign-projections",
+          "environment",
+          "release"
+        ],
+        "sources": [
+          "https://github.com/nix-purifiers/vcpkg-purifier/blob/ceae6750c5b25f7e0fc063595ea9de0ae3271600/tests/default.nix"
+        ],
+        "gap": null
+      },
+      "nonEolVersions": {
+        "state": "not-met",
+        "summary": "Microsoft documents current tested hosts and version/baseline semantics rather than a maintained vcpkg tool-version window. The exact successful suite uses native vcpkg 2026.06.24; the native microsoft/vcpkg-tool latest release is 2026-10-29, distinct from the microsoft/vcpkg registry snapshot 2026.10.16. Execution of the current native tool point is absent, and no primary retention policy establishes that the tested older snapshot covers the current claimed maintained tool. This is an unproved current-version point, not a declaration that June is EOL.",
+        "evidence": [
+          "https://github.com/nix-purifiers/vcpkg-purifier/actions/runs/42155512188/job/127688590928",
+          "https://github.com/nix-purifiers/vcpkg-purifier/blob/ceae6750c5b25f7e0fc063595ea9de0ae3271600/tests/default.nix",
+          "derivation-evidence.json#projects/vcpkg-purifier/derivations",
+          "https://learn.microsoft.com/en-us/vcpkg/concepts/supported-hosts",
+          "https://learn.microsoft.com/en-us/vcpkg/users/versioning",
+          "https://github.com/microsoft/vcpkg-tool/releases/tag/2026-10-29",
+          "https://github.com/microsoft/vcpkg/releases/tag/2026.10.16"
+        ],
+        "derivations": [
+          "project",
+          "foreign-projections",
+          "environment",
+          "release"
+        ],
+        "sources": [
+          "https://learn.microsoft.com/en-us/vcpkg/concepts/supported-hosts",
+          "https://learn.microsoft.com/en-us/vcpkg/users/versioning",
+          "https://github.com/microsoft/vcpkg-tool/releases/tag/2026-10-29",
+          "https://github.com/microsoft/vcpkg/releases/tag/2026.10.16"
+        ],
+        "gap": "Microsoft documents current tested hosts and version/baseline semantics rather than a maintained vcpkg tool-version window. The exact successful suite uses native vcpkg 2026.06.24; the native microsoft/vcpkg-tool latest release is 2026-10-29, distinct from the microsoft/vcpkg registry snapshot 2026.10.16. Execution of the current native tool point is absent, and no primary retention policy establishes that the tested older snapshot covers the current claimed maintained tool. This is an unproved current-version point, not a declaration that June is EOL."
+      },
+      "manySamples": {
+        "state": "not-met",
+        "summary": "The minimal CMake/C example and FFI/native resource consumers are authored projects. Local registries and ports are test dependencies, not independent upstream applications.",
+        "evidence": [
+          "https://github.com/nix-purifiers/vcpkg-purifier/actions/runs/42155512188/job/127688590928",
+          "https://github.com/nix-purifiers/vcpkg-purifier/blob/ceae6750c5b25f7e0fc063595ea9de0ae3271600/tests/default.nix",
+          "derivation-evidence.json#projects/vcpkg-purifier/derivations",
+          "https://github.com/nix-purifiers/vcpkg-purifier/blob/ceae6750c5b25f7e0fc063595ea9de0ae3271600/tests/default.nix"
+        ],
+        "derivations": [
+          "project",
+          "foreign-projections",
+          "environment",
+          "release"
+        ],
+        "sources": [
+          "https://github.com/nix-purifiers/vcpkg-purifier/blob/ceae6750c5b25f7e0fc063595ea9de0ae3271600/tests/default.nix"
+        ],
+        "gap": "The minimal CMake/C example and FFI/native resource consumers are authored projects. Local registries and ports are test dependencies, not independent upstream applications."
+      },
+      "longCompatibility": {
+        "state": "not-met",
+        "summary": "One exact vcpkg tool/registry epoch (2026.06.24) is demonstrated; multiple port versions and local registry commits do not establish historical vcpkg tool compatibility.",
+        "evidence": [
+          "https://github.com/nix-purifiers/vcpkg-purifier/actions/runs/42155512188/job/127688590928",
+          "https://github.com/nix-purifiers/vcpkg-purifier/blob/ceae6750c5b25f7e0fc063595ea9de0ae3271600/tests/default.nix",
+          "derivation-evidence.json#projects/vcpkg-purifier/derivations",
+          "https://github.com/nix-purifiers/vcpkg-purifier/blob/ceae6750c5b25f7e0fc063595ea9de0ae3271600/tests/default.nix"
+        ],
+        "derivations": [
+          "project",
+          "foreign-projections",
+          "environment",
+          "release"
+        ],
+        "sources": [
+          "https://github.com/nix-purifiers/vcpkg-purifier/blob/ceae6750c5b25f7e0fc063595ea9de0ae3271600/tests/default.nix"
+        ],
+        "gap": "One exact vcpkg tool/registry epoch (2026.06.24) is demonstrated; multiple port versions and local registry commits do not establish historical vcpkg tool compatibility."
+      }
+    },
+    "sampleBuilds": [
+      {
+        "name": "examples/minimal: authored native C/CMake vcpkg consumer",
+        "evidence": [
+          "https://github.com/nix-purifiers/vcpkg-purifier/actions/runs/42155512188/job/127688590928",
+          "https://github.com/nix-purifiers/vcpkg-purifier/blob/ceae6750c5b25f7e0fc063595ea9de0ae3271600/tests/default.nix",
+          "derivation-evidence.json#projects/vcpkg-purifier/derivations"
+        ]
+      }
+    ]
+  },
+  "west-purifier": {
+    "tier": 3,
+    "reviewedRevision": "c310bd10d8c849ef44cea2c6e8f8277a4cb239f4",
+    "reviewedAt": "2026-11-06",
+    "rationale": "Successful native Linux checks and sample derivations are bound to this immutable revision. Test quality has been reviewed; native Darwin execution is absent, so Tier 2 is not established.",
+    "criteria": {
+      "evaluation": {
+        "state": "met",
+        "summary": "All 4 x86_64-linux check attributes evaluate locally; exact drv/output bindings match the successful native CI derivations.",
+        "evidence": [
+          "https://github.com/nix-purifiers/west-purifier/actions/runs/42155516612/job/127688605220",
+          "https://github.com/nix-purifiers/west-purifier/blob/c310bd10d8c849ef44cea2c6e8f8277a4cb239f4/flake.nix",
+          "derivation-evidence.json#projects/west-purifier/derivations"
+        ],
+        "derivations": [
+          "cli",
+          "environment",
+          "project",
+          "release"
+        ],
+        "sources": [
+          "https://github.com/nix-purifiers/west-purifier/blob/c310bd10d8c849ef44cea2c6e8f8277a4cb239f4/flake.nix"
+        ],
+        "gap": null
+      },
+      "goodTests": {
+        "state": "met",
+        "summary": "The project derivation builds the workspace and runs its installed answer executable, checking 42. CI additionally tests frozen-Git immutability, editable rebuilds, existing-checkout preservation, isolated Python venv, native west status/list, networking boundaries, source consumer, publication/fallback, directory imports and deterministic Git rebuilds. The review treats host tests as complementary CI execution, not as additional named flake checks.",
+        "evidence": [
+          "https://github.com/nix-purifiers/west-purifier/actions/runs/42155516612/job/127688605220",
+          "https://github.com/nix-purifiers/west-purifier/blob/c310bd10d8c849ef44cea2c6e8f8277a4cb239f4/flake.nix",
+          "derivation-evidence.json#projects/west-purifier/derivations"
+        ],
+        "derivations": [
+          "project",
+          "environment",
+          "release"
+        ],
+        "sources": [
+          "https://github.com/nix-purifiers/west-purifier/blob/c310bd10d8c849ef44cea2c6e8f8277a4cb239f4/flake.nix"
+        ],
+        "gap": null
+      },
+      "linux": {
+        "state": "met",
+        "summary": "The inspected Ubuntu x86_64 job checks out this exact revision and successfully builds every local-evaluated check derivation; the packet records each build/rebuild event, exact output identity and available local NAR hash.",
+        "evidence": [
+          "https://github.com/nix-purifiers/west-purifier/actions/runs/42155516612/job/127688605220",
+          "https://github.com/nix-purifiers/west-purifier/blob/c310bd10d8c849ef44cea2c6e8f8277a4cb239f4/flake.nix",
+          "derivation-evidence.json#projects/west-purifier/derivations"
+        ],
+        "derivations": [
+          "project",
+          "environment",
+          "release"
+        ],
+        "sources": [
+          "https://github.com/nix-purifiers/west-purifier/blob/c310bd10d8c849ef44cea2c6e8f8277a4cb239f4/flake.nix"
+        ],
+        "gap": null
+      },
+      "darwin": {
+        "state": "not-met",
+        "summary": "Neither the baseline nor current-main workflow includes a Darwin runner. The flake check system list inspected here is Linux-only.",
+        "evidence": [
+          "https://github.com/nix-purifiers/west-purifier/actions/runs/42155516612/job/127688605220",
+          "https://github.com/nix-purifiers/west-purifier/blob/c310bd10d8c849ef44cea2c6e8f8277a4cb239f4/flake.nix",
+          "derivation-evidence.json#projects/west-purifier/derivations",
+          "https://github.com/nix-purifiers/west-purifier/blob/c310bd10d8c849ef44cea2c6e8f8277a4cb239f4/.github/workflows/check.yml"
+        ],
+        "derivations": [],
+        "sources": [
+          "https://github.com/nix-purifiers/west-purifier/blob/c310bd10d8c849ef44cea2c6e8f8277a4cb239f4/.github/workflows/check.yml"
+        ],
+        "gap": "No successful native Darwin CI/check derivation and realized-output binding at this revision."
+      },
+      "oneVersion": {
+        "state": "met",
+        "summary": "Native sample execution establishes exact toolchain points python3 3.14.8, python3.pkgs.west 1.5.0. No untested version interval is inferred.",
+        "evidence": [
+          "https://github.com/nix-purifiers/west-purifier/actions/runs/42155516612/job/127688605220",
+          "https://github.com/nix-purifiers/west-purifier/blob/c310bd10d8c849ef44cea2c6e8f8277a4cb239f4/flake.nix",
+          "derivation-evidence.json#projects/west-purifier/derivations"
+        ],
+        "derivations": [
+          "project",
+          "environment",
+          "release"
+        ],
+        "sources": [
+          "https://github.com/nix-purifiers/west-purifier/blob/c310bd10d8c849ef44cea2c6e8f8277a4cb239f4/flake.nix"
+        ],
+        "gap": null
+      },
+      "nonEolVersions": {
+        "state": "met",
+        "summary": "Official West release notes and latest GitHub release identify West 1.5.0; the native patched West package is derived from that version. West is a separate project from Zephyr: Zephyr LTS/EOL dates are not applied to the manager. No maintained older West lines were specified in the inspected primary release material. Judgment is for the current West 1.5.0 point.",
+        "evidence": [
+          "https://github.com/nix-purifiers/west-purifier/actions/runs/42155516612/job/127688605220",
+          "https://github.com/nix-purifiers/west-purifier/blob/c310bd10d8c849ef44cea2c6e8f8277a4cb239f4/flake.nix",
+          "derivation-evidence.json#projects/west-purifier/derivations",
+          "https://docs.zephyrproject.org/latest/develop/west/release-notes.html",
+          "https://github.com/zephyrproject-rtos/west/releases/tag/v1.5.0"
+        ],
+        "derivations": [
+          "project",
+          "environment",
+          "release"
+        ],
+        "sources": [
+          "https://docs.zephyrproject.org/latest/develop/west/release-notes.html",
+          "https://github.com/zephyrproject-rtos/west/releases/tag/v1.5.0"
+        ],
+        "gap": null
+      },
+      "manySamples": {
+        "state": "not-met",
+        "summary": "The minimal workspace is an authored jsmn consumer. jsmn and manifest-provider repositories are dependencies of this fixture, not independently reviewed West applications.",
+        "evidence": [
+          "https://github.com/nix-purifiers/west-purifier/actions/runs/42155516612/job/127688605220",
+          "https://github.com/nix-purifiers/west-purifier/blob/c310bd10d8c849ef44cea2c6e8f8277a4cb239f4/flake.nix",
+          "derivation-evidence.json#projects/west-purifier/derivations",
+          "https://github.com/nix-purifiers/west-purifier/blob/c310bd10d8c849ef44cea2c6e8f8277a4cb239f4/flake.nix"
+        ],
+        "derivations": [
+          "project",
+          "environment",
+          "release"
+        ],
+        "sources": [
+          "https://github.com/nix-purifiers/west-purifier/blob/c310bd10d8c849ef44cea2c6e8f8277a4cb239f4/flake.nix"
+        ],
+        "gap": "The minimal workspace is an authored jsmn consumer. jsmn and manifest-provider repositories are dependencies of this fixture, not independently reviewed West applications."
+      },
+      "longCompatibility": {
+        "state": "not-met",
+        "summary": "Only native West 1.5.0 is executed; historical manifest schema documentation is not evidence that old West executables pass these checks.",
+        "evidence": [
+          "https://github.com/nix-purifiers/west-purifier/actions/runs/42155516612/job/127688605220",
+          "https://github.com/nix-purifiers/west-purifier/blob/c310bd10d8c849ef44cea2c6e8f8277a4cb239f4/flake.nix",
+          "derivation-evidence.json#projects/west-purifier/derivations",
+          "https://github.com/nix-purifiers/west-purifier/blob/c310bd10d8c849ef44cea2c6e8f8277a4cb239f4/flake.nix"
+        ],
+        "derivations": [
+          "project",
+          "environment",
+          "release"
+        ],
+        "sources": [
+          "https://github.com/nix-purifiers/west-purifier/blob/c310bd10d8c849ef44cea2c6e8f8277a4cb239f4/flake.nix"
+        ],
+        "gap": "Only native West 1.5.0 is executed; historical manifest schema documentation is not evidence that old West executables pass these checks."
+      }
+    },
+    "sampleBuilds": [
+      {
+        "name": "examples/minimal: authored West workspace/C consumer of pinned jsmn",
+        "evidence": [
+          "https://github.com/nix-purifiers/west-purifier/actions/runs/42155516612/job/127688605220",
+          "https://github.com/nix-purifiers/west-purifier/blob/c310bd10d8c849ef44cea2c6e8f8277a4cb239f4/flake.nix",
+          "derivation-evidence.json#projects/west-purifier/derivations"
+        ]
+      }
+    ]
+  },
+  "xmake-purifier": {
+    "tier": 3,
+    "reviewedRevision": "4a12be2b5b6659d75954c03471b4ae4bc97f7f1b",
+    "reviewedAt": "2026-11-06",
+    "rationale": "Successful native Linux checks and sample derivations are bound to this immutable revision. Test quality has been reviewed; native Darwin execution is absent, so Tier 2 is not established.",
+    "criteria": {
+      "evaluation": {
+        "state": "met",
+        "summary": "All 5 x86_64-linux check attributes evaluate locally; exact drv/output bindings match the successful native CI derivations.",
+        "evidence": [
+          "https://github.com/nix-purifiers/xmake-purifier/actions/runs/42155519885/job/127688616692",
+          "https://github.com/nix-purifiers/xmake-purifier/blob/4a12be2b5b6659d75954c03471b4ae4bc97f7f1b/tests/default.nix",
+          "derivation-evidence.json#projects/xmake-purifier/derivations"
+        ],
+        "derivations": [
+          "cli",
+          "environment",
+          "native-projections",
+          "project",
+          "release"
+        ],
+        "sources": [
+          "https://github.com/nix-purifiers/xmake-purifier/blob/4a12be2b5b6659d75954c03471b4ae4bc97f7f1b/tests/default.nix"
+        ],
+        "gap": null
+      },
+      "goodTests": {
+        "state": "met",
+        "summary": "The project check runs the Xmake smoke test and the native-projection derivation executes foreign-library consumers. CI tests capture/update/relock/external companions, native tasks, merged profiles, editor behavior, readonly invalid/stale locks and deterministic environment/release/project rebuilds. This gives behavioral, negative, editor and foreign-consumer coverage.",
+        "evidence": [
+          "https://github.com/nix-purifiers/xmake-purifier/actions/runs/42155519885/job/127688616692",
+          "https://github.com/nix-purifiers/xmake-purifier/blob/4a12be2b5b6659d75954c03471b4ae4bc97f7f1b/tests/default.nix",
+          "derivation-evidence.json#projects/xmake-purifier/derivations"
+        ],
+        "derivations": [
+          "project",
+          "native-projections",
+          "environment",
+          "release"
+        ],
+        "sources": [
+          "https://github.com/nix-purifiers/xmake-purifier/blob/4a12be2b5b6659d75954c03471b4ae4bc97f7f1b/tests/default.nix"
+        ],
+        "gap": null
+      },
+      "linux": {
+        "state": "met",
+        "summary": "The inspected Ubuntu x86_64 job checks out this exact revision and successfully builds every local-evaluated check derivation; the packet records each build/rebuild event, exact output identity and available local NAR hash.",
+        "evidence": [
+          "https://github.com/nix-purifiers/xmake-purifier/actions/runs/42155519885/job/127688616692",
+          "https://github.com/nix-purifiers/xmake-purifier/blob/4a12be2b5b6659d75954c03471b4ae4bc97f7f1b/tests/default.nix",
+          "derivation-evidence.json#projects/xmake-purifier/derivations"
+        ],
+        "derivations": [
+          "project",
+          "native-projections",
+          "environment",
+          "release"
+        ],
+        "sources": [
+          "https://github.com/nix-purifiers/xmake-purifier/blob/4a12be2b5b6659d75954c03471b4ae4bc97f7f1b/tests/default.nix"
+        ],
+        "gap": null
+      },
+      "darwin": {
+        "state": "not-met",
+        "summary": "Neither the baseline nor current-main workflow includes a Darwin runner. The flake check system list inspected here is Linux-only.",
+        "evidence": [
+          "https://github.com/nix-purifiers/xmake-purifier/actions/runs/42155519885/job/127688616692",
+          "https://github.com/nix-purifiers/xmake-purifier/blob/4a12be2b5b6659d75954c03471b4ae4bc97f7f1b/tests/default.nix",
+          "derivation-evidence.json#projects/xmake-purifier/derivations",
+          "https://github.com/nix-purifiers/xmake-purifier/blob/4a12be2b5b6659d75954c03471b4ae4bc97f7f1b/.github/workflows/check.yml"
+        ],
+        "derivations": [],
+        "sources": [
+          "https://github.com/nix-purifiers/xmake-purifier/blob/4a12be2b5b6659d75954c03471b4ae4bc97f7f1b/.github/workflows/check.yml"
+        ],
+        "gap": "No successful native Darwin CI/check derivation and realized-output binding at this revision."
+      },
+      "oneVersion": {
+        "state": "met",
+        "summary": "Native sample execution establishes exact toolchain points xmake 3.1.2. No untested version interval is inferred.",
+        "evidence": [
+          "https://github.com/nix-purifiers/xmake-purifier/actions/runs/42155519885/job/127688616692",
+          "https://github.com/nix-purifiers/xmake-purifier/blob/4a12be2b5b6659d75954c03471b4ae4bc97f7f1b/tests/default.nix",
+          "derivation-evidence.json#projects/xmake-purifier/derivations"
+        ],
+        "derivations": [
+          "project",
+          "native-projections",
+          "environment",
+          "release"
+        ],
+        "sources": [
+          "https://github.com/nix-purifiers/xmake-purifier/blob/4a12be2b5b6659d75954c03471b4ae4bc97f7f1b/tests/default.nix"
+        ],
+        "gap": null
+      },
+      "nonEolVersions": {
+        "state": "met",
+        "summary": "The official upstream release post/API identifies Xmake 3.1.2 as current and the successful project closure contains patched xmake-3.1.2. No parallel maintained older release lines were found in the inspected upstream release material. The claim is the exact 3.1.2 current compiler point, not every 3.x release.",
+        "evidence": [
+          "https://github.com/nix-purifiers/xmake-purifier/actions/runs/42155519885/job/127688616692",
+          "https://github.com/nix-purifiers/xmake-purifier/blob/4a12be2b5b6659d75954c03471b4ae4bc97f7f1b/tests/default.nix",
+          "derivation-evidence.json#projects/xmake-purifier/derivations",
+          "https://xmake.io/posts/xmake-update-v3.1.2.html",
+          "https://github.com/xmake-io/xmake/releases/tag/v3.1.2"
+        ],
+        "derivations": [
+          "project",
+          "native-projections",
+          "environment",
+          "release"
+        ],
+        "sources": [
+          "https://xmake.io/posts/xmake-update-v3.1.2.html",
+          "https://github.com/xmake-io/xmake/releases/tag/v3.1.2"
+        ],
+        "gap": null
+      },
+      "manySamples": {
+        "state": "not-met",
+        "summary": "Minimal and FFI cases are authored fixtures. Task/native/update variants are behavior variants, not independent upstream Xmake applications.",
+        "evidence": [
+          "https://github.com/nix-purifiers/xmake-purifier/actions/runs/42155519885/job/127688616692",
+          "https://github.com/nix-purifiers/xmake-purifier/blob/4a12be2b5b6659d75954c03471b4ae4bc97f7f1b/tests/default.nix",
+          "derivation-evidence.json#projects/xmake-purifier/derivations",
+          "https://github.com/nix-purifiers/xmake-purifier/blob/4a12be2b5b6659d75954c03471b4ae4bc97f7f1b/tests/default.nix"
+        ],
+        "derivations": [
+          "project",
+          "native-projections",
+          "environment",
+          "release"
+        ],
+        "sources": [
+          "https://github.com/nix-purifiers/xmake-purifier/blob/4a12be2b5b6659d75954c03471b4ae4bc97f7f1b/tests/default.nix"
+        ],
+        "gap": "Minimal and FFI cases are authored fixtures. Task/native/update variants are behavior variants, not independent upstream Xmake applications."
+      },
+      "longCompatibility": {
+        "state": "not-met",
+        "summary": "Only Xmake 3.1.2 is bound to native successful checks; profile merging or dependency version variation is not old-Xmake execution.",
+        "evidence": [
+          "https://github.com/nix-purifiers/xmake-purifier/actions/runs/42155519885/job/127688616692",
+          "https://github.com/nix-purifiers/xmake-purifier/blob/4a12be2b5b6659d75954c03471b4ae4bc97f7f1b/tests/default.nix",
+          "derivation-evidence.json#projects/xmake-purifier/derivations",
+          "https://github.com/nix-purifiers/xmake-purifier/blob/4a12be2b5b6659d75954c03471b4ae4bc97f7f1b/tests/default.nix"
+        ],
+        "derivations": [
+          "project",
+          "native-projections",
+          "environment",
+          "release"
+        ],
+        "sources": [
+          "https://github.com/nix-purifiers/xmake-purifier/blob/4a12be2b5b6659d75954c03471b4ae4bc97f7f1b/tests/default.nix"
+        ],
+        "gap": "Only Xmake 3.1.2 is bound to native successful checks; profile merging or dependency version variation is not old-Xmake execution."
+      }
+    },
+    "sampleBuilds": [
+      {
+        "name": "examples/minimal: authored Xmake C consumer; separate authored FFI projection",
+        "evidence": [
+          "https://github.com/nix-purifiers/xmake-purifier/actions/runs/42155519885/job/127688616692",
+          "https://github.com/nix-purifiers/xmake-purifier/blob/4a12be2b5b6659d75954c03471b4ae4bc97f7f1b/tests/default.nix",
+          "derivation-evidence.json#projects/xmake-purifier/derivations"
+        ]
+      }
+    ]
+  },
+  "yarn-berry-purifier": {
+    "tier": 3,
+    "reviewedRevision": "ed69e6b861bb8e55d871c426c7ef9c27e3bf21db",
+    "reviewedAt": "2026-11-06",
+    "rationale": "Successful native Linux checks and sample derivations are bound to this immutable revision. Test quality has been reviewed; native Darwin execution is absent, so Tier 2 is not established.",
+    "criteria": {
+      "evaluation": {
+        "state": "met",
+        "summary": "All 35 x86_64-linux check attributes evaluate locally; exact drv/output bindings match the successful native CI derivations.",
+        "evidence": [
+          "https://github.com/nix-purifiers/yarn-berry-purifier/actions/runs/42155523744/job/127688629501",
+          "https://github.com/nix-purifiers/yarn-berry-purifier/blob/ed69e6b861bb8e55d871c426c7ef9c27e3bf21db/tests/default.nix",
+          "derivation-evidence.json#projects/yarn-berry-purifier/derivations"
+        ],
+        "derivations": [
+          "app",
+          "app-tests",
+          "browser-projections",
+          "composition-producer",
+          "conformance-external",
+          "conformance-malformed",
+          "conformance-missing",
+          "conformance-offline",
+          "conformance-rebuild",
+          "conformance-relock",
+          "conformance-stale",
+          "conformance-tampered",
+          "conformance-update",
+          "external-record",
+          "external-restore",
+          "external-yarn-lock",
+          "foreign",
+          "git-build",
+          "git-record",
+          "interactive",
+          "locked-hash",
+          "npm-projection",
+          "offline-external",
+          "platform-filter",
+          "prettier",
+          "publish",
+          "publish-tarball",
+          "read-lock",
+          "sources",
+          "tampered-file",
+          "treefmt",
+          "unit",
+          "workspaces-root",
+          "yarn",
+          "yarn-berry-purifier"
+        ],
+        "sources": [
+          "https://github.com/nix-purifiers/yarn-berry-purifier/blob/ed69e6b861bb8e55d871c426c7ef9c27e3bf21db/tests/default.nix"
+        ],
+        "gap": null
+      },
+      "goodTests": {
+        "state": "met",
+        "summary": "The Prettier derivation builds a pinned independent upstream repository and verifies actual formatting output. Separate source/VCS/workspace/linker checks, readonly/invalid locks, cold offline interaction, npm/browser/native resource projections, publish-byte checks and integrity failures exercise substantially different behaviors. The Prettier check is a real formatter smoke assertion; it is not claimed to run all upstream tests.",
+        "evidence": [
+          "https://github.com/nix-purifiers/yarn-berry-purifier/actions/runs/42155523744/job/127688629501",
+          "https://github.com/nix-purifiers/yarn-berry-purifier/blob/ed69e6b861bb8e55d871c426c7ef9c27e3bf21db/tests/default.nix",
+          "derivation-evidence.json#projects/yarn-berry-purifier/derivations"
+        ],
+        "derivations": [
+          "prettier",
+          "conformance-offline",
+          "conformance-tampered",
+          "publish",
+          "interactive",
+          "npm-projection",
+          "browser-projections"
+        ],
+        "sources": [
+          "https://github.com/nix-purifiers/yarn-berry-purifier/blob/ed69e6b861bb8e55d871c426c7ef9c27e3bf21db/tests/default.nix"
+        ],
+        "gap": null
+      },
+      "linux": {
+        "state": "met",
+        "summary": "The inspected Ubuntu x86_64 job checks out this exact revision and successfully builds every local-evaluated check derivation; the packet records each build/rebuild event, exact output identity and available local NAR hash.",
+        "evidence": [
+          "https://github.com/nix-purifiers/yarn-berry-purifier/actions/runs/42155523744/job/127688629501",
+          "https://github.com/nix-purifiers/yarn-berry-purifier/blob/ed69e6b861bb8e55d871c426c7ef9c27e3bf21db/tests/default.nix",
+          "derivation-evidence.json#projects/yarn-berry-purifier/derivations"
+        ],
+        "derivations": [
+          "prettier",
+          "conformance-offline",
+          "conformance-tampered",
+          "publish",
+          "interactive",
+          "npm-projection",
+          "browser-projections"
+        ],
+        "sources": [
+          "https://github.com/nix-purifiers/yarn-berry-purifier/blob/ed69e6b861bb8e55d871c426c7ef9c27e3bf21db/tests/default.nix"
+        ],
+        "gap": null
+      },
+      "darwin": {
+        "state": "not-met",
+        "summary": "Neither the baseline nor current-main workflow includes a Darwin runner. The flake declares aarch64-darwin, but evaluation/declaration is not native execution.",
+        "evidence": [
+          "https://github.com/nix-purifiers/yarn-berry-purifier/actions/runs/42155523744/job/127688629501",
+          "https://github.com/nix-purifiers/yarn-berry-purifier/blob/ed69e6b861bb8e55d871c426c7ef9c27e3bf21db/tests/default.nix",
+          "derivation-evidence.json#projects/yarn-berry-purifier/derivations",
+          "https://github.com/nix-purifiers/yarn-berry-purifier/blob/ed69e6b861bb8e55d871c426c7ef9c27e3bf21db/.github/workflows/check.yml"
+        ],
+        "derivations": [],
+        "sources": [
+          "https://github.com/nix-purifiers/yarn-berry-purifier/blob/ed69e6b861bb8e55d871c426c7ef9c27e3bf21db/.github/workflows/check.yml"
+        ],
+        "gap": "No successful native Darwin CI/check derivation and realized-output binding at this revision."
+      },
+      "oneVersion": {
+        "state": "met",
+        "summary": "Native sample execution establishes exact toolchain points nodejs 24.21.0, yarn-berry 4.18.1. No untested version interval is inferred.",
+        "evidence": [
+          "https://github.com/nix-purifiers/yarn-berry-purifier/actions/runs/42155523744/job/127688629501",
+          "https://github.com/nix-purifiers/yarn-berry-purifier/blob/ed69e6b861bb8e55d871c426c7ef9c27e3bf21db/tests/default.nix",
+          "derivation-evidence.json#projects/yarn-berry-purifier/derivations"
+        ],
+        "derivations": [
+          "prettier",
+          "conformance-offline",
+          "conformance-tampered",
+          "publish",
+          "interactive",
+          "npm-projection",
+          "browser-projections"
+        ],
+        "sources": [
+          "https://github.com/nix-purifiers/yarn-berry-purifier/blob/ed69e6b861bb8e55d871c426c7ef9c27e3bf21db/tests/default.nix"
+        ],
+        "gap": null
+      },
+      "nonEolVersions": {
+        "state": "not-met",
+        "summary": "Upstream Yarn changelog and latest API identify current Modern Yarn 4.18.1; that exact manager executes. Node upstream identifies maintained stable lines 22, 24 and 26 (27 is alpha). The reviewed Berry checks run Node 24.21.0 only, with no native 22/26 target points. Thus current manager support is proved but breadth of supported runtime lines is not. Yarn Classic maintenance status is not treated as Berry EOL.",
+        "evidence": [
+          "https://github.com/nix-purifiers/yarn-berry-purifier/actions/runs/42155523744/job/127688629501",
+          "https://github.com/nix-purifiers/yarn-berry-purifier/blob/ed69e6b861bb8e55d871c426c7ef9c27e3bf21db/tests/default.nix",
+          "derivation-evidence.json#projects/yarn-berry-purifier/derivations",
+          "https://yarnpkg.com/advanced/changelog",
+          "https://yarnpkg.com/getting-started/qa",
+          "https://nodejs.org/en/about/previous-releases"
+        ],
+        "derivations": [
+          "prettier",
+          "conformance-offline",
+          "conformance-tampered",
+          "publish",
+          "interactive",
+          "npm-projection",
+          "browser-projections"
+        ],
+        "sources": [
+          "https://yarnpkg.com/advanced/changelog",
+          "https://yarnpkg.com/getting-started/qa",
+          "https://nodejs.org/en/about/previous-releases"
+        ],
+        "gap": "Upstream Yarn changelog and latest API identify current Modern Yarn 4.18.1; that exact manager executes. Node upstream identifies maintained stable lines 22, 24 and 26 (27 is alpha). The reviewed Berry checks run Node 24.21.0 only, with no native 22/26 target points. Thus current manager support is proved but breadth of supported runtime lines is not. Yarn Classic maintenance status is not treated as Berry EOL."
+      },
+      "manySamples": {
+        "state": "not-met",
+        "summary": "Prettier is one independent upstream sample. app/sources/VCS/workspaces/external/native fixtures remain authored samples, not a many-independent-project corpus.",
+        "evidence": [
+          "https://github.com/nix-purifiers/yarn-berry-purifier/actions/runs/42155523744/job/127688629501",
+          "https://github.com/nix-purifiers/yarn-berry-purifier/blob/ed69e6b861bb8e55d871c426c7ef9c27e3bf21db/tests/default.nix",
+          "derivation-evidence.json#projects/yarn-berry-purifier/derivations",
+          "https://github.com/nix-purifiers/yarn-berry-purifier/blob/ed69e6b861bb8e55d871c426c7ef9c27e3bf21db/tests/default.nix"
+        ],
+        "derivations": [
+          "prettier",
+          "conformance-offline",
+          "conformance-tampered",
+          "publish",
+          "interactive",
+          "npm-projection",
+          "browser-projections"
+        ],
+        "sources": [
+          "https://github.com/nix-purifiers/yarn-berry-purifier/blob/ed69e6b861bb8e55d871c426c7ef9c27e3bf21db/tests/default.nix"
+        ],
+        "gap": "Prettier is one independent upstream sample. app/sources/VCS/workspaces/external/native fixtures remain authored samples, not a many-independent-project corpus."
+      },
+      "longCompatibility": {
+        "state": "not-met",
+        "summary": "Only Modern Yarn 4.18.1 with Node 24.21.0 is exercised by these checks. Fixture repository package-manager metadata does not establish historical Berry runtime execution.",
+        "evidence": [
+          "https://github.com/nix-purifiers/yarn-berry-purifier/actions/runs/42155523744/job/127688629501",
+          "https://github.com/nix-purifiers/yarn-berry-purifier/blob/ed69e6b861bb8e55d871c426c7ef9c27e3bf21db/tests/default.nix",
+          "derivation-evidence.json#projects/yarn-berry-purifier/derivations",
+          "https://github.com/nix-purifiers/yarn-berry-purifier/blob/ed69e6b861bb8e55d871c426c7ef9c27e3bf21db/tests/default.nix"
+        ],
+        "derivations": [
+          "prettier",
+          "conformance-offline",
+          "conformance-tampered",
+          "publish",
+          "interactive",
+          "npm-projection",
+          "browser-projections"
+        ],
+        "sources": [
+          "https://github.com/nix-purifiers/yarn-berry-purifier/blob/ed69e6b861bb8e55d871c426c7ef9c27e3bf21db/tests/default.nix"
+        ],
+        "gap": "Only Modern Yarn 4.18.1 with Node 24.21.0 is exercised by these checks. Fixture repository package-manager metadata does not establish historical Berry runtime execution."
+      }
+    },
+    "sampleBuilds": [
+      {
+        "name": "Prettier upstream bed4edbb1cf2a9db4004215b0ce5707cdb02b5d9",
+        "evidence": [
+          "https://github.com/nix-purifiers/yarn-berry-purifier/actions/runs/42155523744/job/127688629501",
+          "https://github.com/nix-purifiers/yarn-berry-purifier/blob/ed69e6b861bb8e55d871c426c7ef9c27e3bf21db/tests/default.nix",
+          "derivation-evidence.json#projects/yarn-berry-purifier/derivations"
+        ]
+      }
+    ]
+  },
+  "yarn-classic-purifier": {
+    "tier": 3,
+    "reviewedRevision": "6f92a7faca10233f61256e7a2710e6ec09e6136d",
+    "reviewedAt": "2026-11-06",
+    "rationale": "Successful native Linux checks and sample derivations are bound to this immutable revision. Test quality has been reviewed; native Darwin execution is absent, so Tier 2 is not established.",
+    "criteria": {
+      "evaluation": {
+        "state": "met",
+        "summary": "All 64 x86_64-linux check attributes evaluate locally; exact drv/output bindings match the successful native CI derivations.",
+        "evidence": [
+          "https://github.com/nix-purifiers/yarn-classic-purifier/actions/runs/42155830026/job/127689606650",
+          "https://github.com/nix-purifiers/yarn-classic-purifier/blob/6f92a7faca10233f61256e7a2710e6ec09e6136d/tests/default.nix",
+          "derivation-evidence.json#projects/yarn-classic-purifier/derivations"
+        ],
+        "derivations": [
+          "app",
+          "app-tests",
+          "archive-timestamps",
+          "browser-projections",
+          "composition-producer",
+          "conformance-external",
+          "conformance-malformed",
+          "conformance-malformed-json",
+          "conformance-missing",
+          "conformance-offline",
+          "conformance-rebuild",
+          "conformance-relock",
+          "conformance-stale",
+          "conformance-tampered",
+          "conformance-update",
+          "external-yarn-lock",
+          "fetches",
+          "git-dependency",
+          "git-prepare",
+          "git-prepare-generated-lock",
+          "git-urls",
+          "immer",
+          "legacy-node",
+          "legacy-node-0",
+          "legacy-node-0-tools",
+          "legacy-node-4",
+          "legacy-node-4-tools",
+          "legacy-node-addon",
+          "legacy-node-tools",
+          "local-paths",
+          "mirror-names",
+          "node-lts-10",
+          "node-lts-10-tools",
+          "node-lts-14",
+          "node-lts-14-tools",
+          "node-lts-16",
+          "node-lts-16-tools",
+          "node-lts-18",
+          "node-lts-18-tools",
+          "node-lts-20",
+          "node-lts-20-tools",
+          "node-lts-22",
+          "node-lts-22-tools",
+          "node-lts-26",
+          "node-lts-26-tools",
+          "node-lts-6",
+          "node-lts-6-tools",
+          "node-lts-8",
+          "node-lts-8-tools",
+          "npm-projection",
+          "prerelease-node",
+          "publish",
+          "publish-tarball",
+          "purifier-lock",
+          "read-lock",
+          "registry-mirrors",
+          "remote",
+          "sha1-fragment",
+          "tampered-file",
+          "treefmt",
+          "workspaces",
+          "workspaces-root",
+          "yarn",
+          "yarn-classic-purifier"
+        ],
+        "sources": [
+          "https://github.com/nix-purifiers/yarn-classic-purifier/blob/6f92a7faca10233f61256e7a2710e6ec09e6136d/tests/default.nix"
+        ],
+        "gap": null
+      },
+      "goodTests": {
+        "state": "met",
+        "summary": "The independent Immer check builds and tests the source/build products, then asserts produce() works; x86_64 runs the upstream test script including Flow, while aarch64 intentionally runs source/build suites because the old Flow package lacks that binary. Separate lock integrity/staleness, git prepare, workspace/local paths, offline reconstruction, publish tarball byte identity, projection, old ABI/native-addon and target/helper separation derivations give broad positive and negative coverage.",
+        "evidence": [
+          "https://github.com/nix-purifiers/yarn-classic-purifier/actions/runs/42155830026/job/127689606650",
+          "https://github.com/nix-purifiers/yarn-classic-purifier/blob/6f92a7faca10233f61256e7a2710e6ec09e6136d/tests/default.nix",
+          "derivation-evidence.json#projects/yarn-classic-purifier/derivations"
+        ],
+        "derivations": [
+          "immer",
+          "app-tests",
+          "conformance-offline",
+          "conformance-tampered",
+          "publish",
+          "legacy-node-0",
+          "legacy-node-4",
+          "node-lts-22",
+          "node-lts-26"
+        ],
+        "sources": [
+          "https://github.com/nix-purifiers/yarn-classic-purifier/blob/6f92a7faca10233f61256e7a2710e6ec09e6136d/tests/default.nix"
+        ],
+        "gap": null
+      },
+      "linux": {
+        "state": "met",
+        "summary": "The inspected Ubuntu x86_64 job checks out this exact revision and successfully builds every local-evaluated check derivation; the packet records each build/rebuild event, exact output identity and available local NAR hash.",
+        "evidence": [
+          "https://github.com/nix-purifiers/yarn-classic-purifier/actions/runs/42155830026/job/127689606650",
+          "https://github.com/nix-purifiers/yarn-classic-purifier/blob/6f92a7faca10233f61256e7a2710e6ec09e6136d/tests/default.nix",
+          "derivation-evidence.json#projects/yarn-classic-purifier/derivations"
+        ],
+        "derivations": [
+          "immer",
+          "app-tests",
+          "conformance-offline",
+          "conformance-tampered",
+          "publish",
+          "legacy-node-0",
+          "legacy-node-4",
+          "node-lts-22",
+          "node-lts-26"
+        ],
+        "sources": [
+          "https://github.com/nix-purifiers/yarn-classic-purifier/blob/6f92a7faca10233f61256e7a2710e6ec09e6136d/tests/default.nix"
+        ],
+        "gap": null
+      },
+      "darwin": {
+        "state": "not-met",
+        "summary": "Neither the baseline nor current-main workflow includes a Darwin runner. The flake declares aarch64-darwin, but evaluation/declaration is not native execution.",
+        "evidence": [
+          "https://github.com/nix-purifiers/yarn-classic-purifier/actions/runs/42155830026/job/127689606650",
+          "https://github.com/nix-purifiers/yarn-classic-purifier/blob/6f92a7faca10233f61256e7a2710e6ec09e6136d/tests/default.nix",
+          "derivation-evidence.json#projects/yarn-classic-purifier/derivations",
+          "https://github.com/nix-purifiers/yarn-classic-purifier/blob/6f92a7faca10233f61256e7a2710e6ec09e6136d/.github/workflows/check.yml"
+        ],
+        "derivations": [],
+        "sources": [
+          "https://github.com/nix-purifiers/yarn-classic-purifier/blob/6f92a7faca10233f61256e7a2710e6ec09e6136d/.github/workflows/check.yml"
+        ],
+        "gap": "No successful native Darwin CI/check derivation and realized-output binding at this revision."
+      },
+      "oneVersion": {
+        "state": "met",
+        "summary": "Native sample execution establishes exact toolchain points nodejs 24.21.0, yarn 1.22.22. No untested version interval is inferred.",
+        "evidence": [
+          "https://github.com/nix-purifiers/yarn-classic-purifier/actions/runs/42155830026/job/127689606650",
+          "https://github.com/nix-purifiers/yarn-classic-purifier/blob/6f92a7faca10233f61256e7a2710e6ec09e6136d/tests/default.nix",
+          "derivation-evidence.json#projects/yarn-classic-purifier/derivations"
+        ],
+        "derivations": [
+          "immer",
+          "app-tests",
+          "conformance-offline",
+          "conformance-tampered",
+          "publish",
+          "legacy-node-0",
+          "legacy-node-4",
+          "node-lts-22",
+          "node-lts-26"
+        ],
+        "sources": [
+          "https://github.com/nix-purifiers/yarn-classic-purifier/blob/6f92a7faca10233f61256e7a2710e6ec09e6136d/tests/default.nix"
+        ],
+        "gap": null
+      },
+      "nonEolVersions": {
+        "state": "met",
+        "summary": "Official Yarn documentation says Classic entered maintenance in 2020 and will eventually reach EOL, without declaring it EOL now; the QA page still describes necessary 1.x maintenance releases. Exact Yarn 1.22.22 executes. Native named checks cover Node 22.14.0, default 24.21.0 and 26.0.0, matching the current maintained stable Node lines 22/24/26; Node 27 is alpha. These are tested points, not all-patch ranges.",
+        "evidence": [
+          "https://github.com/nix-purifiers/yarn-classic-purifier/actions/runs/42155830026/job/127689606650",
+          "https://github.com/nix-purifiers/yarn-classic-purifier/blob/6f92a7faca10233f61256e7a2710e6ec09e6136d/tests/default.nix",
+          "derivation-evidence.json#projects/yarn-classic-purifier/derivations",
+          "https://classic.yarnpkg.com/en/docs/install/",
+          "https://yarnpkg.com/getting-started/qa",
+          "https://nodejs.org/en/about/previous-releases"
+        ],
+        "derivations": [
+          "immer",
+          "app-tests",
+          "conformance-offline",
+          "conformance-tampered",
+          "publish",
+          "legacy-node-0",
+          "legacy-node-4",
+          "node-lts-22",
+          "node-lts-26"
+        ],
+        "sources": [
+          "https://classic.yarnpkg.com/en/docs/install/",
+          "https://yarnpkg.com/getting-started/qa",
+          "https://nodejs.org/en/about/previous-releases"
+        ],
+        "gap": null
+      },
+      "manySamples": {
+        "state": "not-met",
+        "summary": "Immer is one independent upstream project; authored app/workspaces/legacy-addon/legacy-node fixtures and copied git-prepare repositories exercise behaviors rather than independent project adoption.",
+        "evidence": [
+          "https://github.com/nix-purifiers/yarn-classic-purifier/actions/runs/42155830026/job/127689606650",
+          "https://github.com/nix-purifiers/yarn-classic-purifier/blob/6f92a7faca10233f61256e7a2710e6ec09e6136d/tests/default.nix",
+          "derivation-evidence.json#projects/yarn-classic-purifier/derivations",
+          "https://github.com/nix-purifiers/yarn-classic-purifier/blob/6f92a7faca10233f61256e7a2710e6ec09e6136d/tests/default.nix"
+        ],
+        "derivations": [
+          "immer",
+          "app-tests",
+          "conformance-offline",
+          "conformance-tampered",
+          "publish",
+          "legacy-node-0",
+          "legacy-node-4",
+          "node-lts-22",
+          "node-lts-26"
+        ],
+        "sources": [
+          "https://github.com/nix-purifiers/yarn-classic-purifier/blob/6f92a7faca10233f61256e7a2710e6ec09e6136d/tests/default.nix"
+        ],
+        "gap": "Immer is one independent upstream project; authored app/workspaces/legacy-addon/legacy-node fixtures and copied git-prepare repositories exercise behaviors rather than independent project adoption."
+      },
+      "longCompatibility": {
+        "state": "met",
+        "summary": "Successful named native derivations execute Node 0.12.18 (with separate manager Node 4.9.1), 4.9.1, 6.17.1, 8.17.0, 10.24.1, 12.22.12, 14.21.3, 16.20.2, 18.20.8, 20.19.0, 22.14.0, default 24.21.0 and 26.0.0. Old targets use Yarn 1.10.1 where needed; modern targets use 1.22.22. Tests verify runtime/ABI graph, native lifecycle execution, package/tests/releases and outgoing projection. This is strong historical breadth across more than a decade, scoped to exact points.",
+        "evidence": [
+          "https://github.com/nix-purifiers/yarn-classic-purifier/actions/runs/42155830026/job/127689606650",
+          "https://github.com/nix-purifiers/yarn-classic-purifier/blob/6f92a7faca10233f61256e7a2710e6ec09e6136d/tests/default.nix",
+          "derivation-evidence.json#projects/yarn-classic-purifier/derivations",
+          "https://github.com/nix-purifiers/yarn-classic-purifier/blob/6f92a7faca10233f61256e7a2710e6ec09e6136d/tests/default.nix"
+        ],
+        "derivations": [
+          "legacy-node",
+          "legacy-node-0",
+          "legacy-node-0-tools",
+          "legacy-node-4",
+          "legacy-node-4-tools",
+          "legacy-node-addon",
+          "legacy-node-tools",
+          "node-lts-10",
+          "node-lts-10-tools",
+          "node-lts-14",
+          "node-lts-14-tools",
+          "node-lts-16",
+          "node-lts-16-tools",
+          "node-lts-18",
+          "node-lts-18-tools",
+          "node-lts-20",
+          "node-lts-20-tools",
+          "node-lts-22",
+          "node-lts-22-tools",
+          "node-lts-26",
+          "node-lts-26-tools",
+          "node-lts-6",
+          "node-lts-6-tools",
+          "node-lts-8",
+          "node-lts-8-tools"
+        ],
+        "sources": [
+          "https://github.com/nix-purifiers/yarn-classic-purifier/blob/6f92a7faca10233f61256e7a2710e6ec09e6136d/tests/default.nix"
+        ],
+        "gap": null
+      }
+    },
+    "sampleBuilds": [
+      {
+        "name": "Immer upstream 75a290e44ba14bd723c8ef8546b6559c8ef3ae88",
+        "evidence": [
+          "https://github.com/nix-purifiers/yarn-classic-purifier/actions/runs/42155830026/job/127689606650",
+          "https://github.com/nix-purifiers/yarn-classic-purifier/blob/6f92a7faca10233f61256e7a2710e6ec09e6136d/tests/default.nix",
+          "derivation-evidence.json#projects/yarn-classic-purifier/derivations"
+        ]
+      }
+    ]
+  },
+  "zef-purifier": {
+    "tier": 3,
+    "reviewedRevision": "40df7a0af40c81e5450fc84f2bf9f52967929522",
+    "reviewedAt": "2026-11-06",
+    "rationale": "Successful native Linux checks and sample derivations are bound to this immutable revision. Test quality has been reviewed; native Darwin execution is absent, so Tier 2 is not established.",
+    "criteria": {
+      "evaluation": {
+        "state": "met",
+        "summary": "All 4 x86_64-linux check attributes evaluate locally; exact drv/output bindings match the successful native CI derivations.",
+        "evidence": [
+          "https://github.com/nix-purifiers/zef-purifier/actions/runs/42155833501/job/127689617961",
+          "https://github.com/nix-purifiers/zef-purifier/blob/40df7a0af40c81e5450fc84f2bf9f52967929522/flake.nix",
+          "derivation-evidence.json#projects/zef-purifier/derivations"
+        ],
+        "derivations": [
+          "cli",
+          "environment",
+          "project",
+          "release"
+        ],
+        "sources": [
+          "https://github.com/nix-purifiers/zef-purifier/blob/40df7a0af40c81e5450fc84f2bf9f52967929522/flake.nix"
+        ],
+        "gap": null
+      },
+      "goodTests": {
+        "state": "met",
+        "summary": "The project derivation runs native Raku tests in the locked environment. CI additionally confirms readonly-store precompilation stays in the intended repository, injects a failing Raku test, verifies native child execution, stale-lock rejection, captured/update/empty graphs, source release byte identity and ordinary-tool exit/status fallback. This tests important failure and integration boundaries beyond package installation.",
+        "evidence": [
+          "https://github.com/nix-purifiers/zef-purifier/actions/runs/42155833501/job/127689617961",
+          "https://github.com/nix-purifiers/zef-purifier/blob/40df7a0af40c81e5450fc84f2bf9f52967929522/flake.nix",
+          "derivation-evidence.json#projects/zef-purifier/derivations"
+        ],
+        "derivations": [
+          "project",
+          "environment",
+          "release"
+        ],
+        "sources": [
+          "https://github.com/nix-purifiers/zef-purifier/blob/40df7a0af40c81e5450fc84f2bf9f52967929522/flake.nix"
+        ],
+        "gap": null
+      },
+      "linux": {
+        "state": "met",
+        "summary": "The inspected Ubuntu x86_64 job checks out this exact revision and successfully builds every local-evaluated check derivation; the packet records each build/rebuild event, exact output identity and available local NAR hash.",
+        "evidence": [
+          "https://github.com/nix-purifiers/zef-purifier/actions/runs/42155833501/job/127689617961",
+          "https://github.com/nix-purifiers/zef-purifier/blob/40df7a0af40c81e5450fc84f2bf9f52967929522/flake.nix",
+          "derivation-evidence.json#projects/zef-purifier/derivations"
+        ],
+        "derivations": [
+          "project",
+          "environment",
+          "release"
+        ],
+        "sources": [
+          "https://github.com/nix-purifiers/zef-purifier/blob/40df7a0af40c81e5450fc84f2bf9f52967929522/flake.nix"
+        ],
+        "gap": null
+      },
+      "darwin": {
+        "state": "not-met",
+        "summary": "Neither the baseline nor current-main workflow includes a Darwin runner. The flake check system list inspected here is Linux-only.",
+        "evidence": [
+          "https://github.com/nix-purifiers/zef-purifier/actions/runs/42155833501/job/127689617961",
+          "https://github.com/nix-purifiers/zef-purifier/blob/40df7a0af40c81e5450fc84f2bf9f52967929522/flake.nix",
+          "derivation-evidence.json#projects/zef-purifier/derivations",
+          "https://github.com/nix-purifiers/zef-purifier/blob/40df7a0af40c81e5450fc84f2bf9f52967929522/.github/workflows/check.yml"
+        ],
+        "derivations": [],
+        "sources": [
+          "https://github.com/nix-purifiers/zef-purifier/blob/40df7a0af40c81e5450fc84f2bf9f52967929522/.github/workflows/check.yml"
+        ],
+        "gap": "No successful native Darwin CI/check derivation and realized-output binding at this revision."
+      },
+      "oneVersion": {
+        "state": "met",
+        "summary": "Native sample execution establishes exact toolchain points rakudo 2026.07, zef 1.1.3. No untested version interval is inferred.",
+        "evidence": [
+          "https://github.com/nix-purifiers/zef-purifier/actions/runs/42155833501/job/127689617961",
+          "https://github.com/nix-purifiers/zef-purifier/blob/40df7a0af40c81e5450fc84f2bf9f52967929522/flake.nix",
+          "derivation-evidence.json#projects/zef-purifier/derivations"
+        ],
+        "derivations": [
+          "project",
+          "environment",
+          "release"
+        ],
+        "sources": [
+          "https://github.com/nix-purifiers/zef-purifier/blob/40df7a0af40c81e5450fc84f2bf9f52967929522/flake.nix"
+        ],
+        "gap": null
+      },
+      "nonEolVersions": {
+        "state": "not-met",
+        "summary": "The latest primary upstream Zef release is 1.1.4, while the executed patched manager is 1.1.3 with Rakudo 2026.07. The inspected upstream release/security material does not explicitly promise maintenance for a 1.1 branch or retention of 1.1.3. Same-minor numbering alone cannot establish that support. No 1.1.4 sample derivation is executed in this review. Current supported-version execution is therefore unproved; 1.1.3 is not declared EOL.",
+        "evidence": [
+          "https://github.com/nix-purifiers/zef-purifier/actions/runs/42155833501/job/127689617961",
+          "https://github.com/nix-purifiers/zef-purifier/blob/40df7a0af40c81e5450fc84f2bf9f52967929522/flake.nix",
+          "derivation-evidence.json#projects/zef-purifier/derivations",
+          "https://github.com/ugexe/zef/releases/tag/v1.1.4",
+          "https://github.com/ugexe/zef/security",
+          "https://github.com/ugexe/zef"
+        ],
+        "derivations": [
+          "project",
+          "environment",
+          "release"
+        ],
+        "sources": [
+          "https://github.com/ugexe/zef/releases/tag/v1.1.4",
+          "https://github.com/ugexe/zef/security",
+          "https://github.com/ugexe/zef"
+        ],
+        "gap": "The latest primary upstream Zef release is 1.1.4, while the executed patched manager is 1.1.3 with Rakudo 2026.07. The inspected upstream release/security material does not explicitly promise maintenance for a 1.1 branch or retention of 1.1.3. Same-minor numbering alone cannot establish that support. No 1.1.4 sample derivation is executed in this review. Current supported-version execution is therefore unproved; 1.1.3 is not declared EOL."
+      },
+      "manySamples": {
+        "state": "not-met",
+        "summary": "One authored minimal Raku distribution is tested. Native capture graphs and dependency distributions do not supply independent upstream application builds.",
+        "evidence": [
+          "https://github.com/nix-purifiers/zef-purifier/actions/runs/42155833501/job/127689617961",
+          "https://github.com/nix-purifiers/zef-purifier/blob/40df7a0af40c81e5450fc84f2bf9f52967929522/flake.nix",
+          "derivation-evidence.json#projects/zef-purifier/derivations",
+          "https://github.com/nix-purifiers/zef-purifier/blob/40df7a0af40c81e5450fc84f2bf9f52967929522/flake.nix"
+        ],
+        "derivations": [
+          "project",
+          "environment",
+          "release"
+        ],
+        "sources": [
+          "https://github.com/nix-purifiers/zef-purifier/blob/40df7a0af40c81e5450fc84f2bf9f52967929522/flake.nix"
+        ],
+        "gap": "One authored minimal Raku distribution is tested. Native capture graphs and dependency distributions do not supply independent upstream application builds."
+      },
+      "longCompatibility": {
+        "state": "not-met",
+        "summary": "Only Zef 1.1.3/Rakudo 2026.07 is bound to the inspected checks; Raku language stability is not proof of historical Zef runtime compatibility.",
+        "evidence": [
+          "https://github.com/nix-purifiers/zef-purifier/actions/runs/42155833501/job/127689617961",
+          "https://github.com/nix-purifiers/zef-purifier/blob/40df7a0af40c81e5450fc84f2bf9f52967929522/flake.nix",
+          "derivation-evidence.json#projects/zef-purifier/derivations",
+          "https://github.com/nix-purifiers/zef-purifier/blob/40df7a0af40c81e5450fc84f2bf9f52967929522/flake.nix"
+        ],
+        "derivations": [
+          "project",
+          "environment",
+          "release"
+        ],
+        "sources": [
+          "https://github.com/nix-purifiers/zef-purifier/blob/40df7a0af40c81e5450fc84f2bf9f52967929522/flake.nix"
+        ],
+        "gap": "Only Zef 1.1.3/Rakudo 2026.07 is bound to the inspected checks; Raku language stability is not proof of historical Zef runtime compatibility."
+      }
+    },
+    "sampleBuilds": [
+      {
+        "name": "examples/minimal: authored Raku distribution with basic.rakutest",
+        "evidence": [
+          "https://github.com/nix-purifiers/zef-purifier/actions/runs/42155833501/job/127689617961",
+          "https://github.com/nix-purifiers/zef-purifier/blob/40df7a0af40c81e5450fc84f2bf9f52967929522/flake.nix",
+          "derivation-evidence.json#projects/zef-purifier/derivations"
+        ]
+      }
+    ]
+  },
+  "zig-purifier": {
+    "tier": 3,
+    "reviewedRevision": "fbf3e82f9ddc64dbc84402cc5b55f32431892a39",
+    "reviewedAt": "2026-11-06",
+    "rationale": "Successful native Linux checks and sample derivations are bound to this immutable revision. Test quality has been reviewed; native Darwin execution is absent, so Tier 2 is not established.",
+    "criteria": {
+      "evaluation": {
+        "state": "met",
+        "summary": "All 22 x86_64-linux check attributes evaluate locally; exact drv/output bindings match the successful native CI derivations.",
+        "evidence": [
+          "https://github.com/nix-purifiers/zig-purifier/actions/runs/42155838211/job/127689634241",
+          "https://github.com/nix-purifiers/zig-purifier/blob/fbf3e82f9ddc64dbc84402cc5b55f32431892a39/tests/default.nix",
+          "derivation-evidence.json#projects/zig-purifier/derivations"
+        ],
+        "derivations": [
+          "cli",
+          "conformance-external",
+          "conformance-malformed",
+          "conformance-missing",
+          "conformance-stale",
+          "conformance-tampered",
+          "fixture-hello",
+          "fixture-hello-archive",
+          "fixture-hello-callpackage",
+          "fixture-hello-default-name",
+          "fixture-hello-dependencies",
+          "fixture-hello-files",
+          "fixture-hello-git-clap",
+          "fixture-hello-package",
+          "fixture-hello-release",
+          "fixture-hello-step-run",
+          "fixture-hello-tests",
+          "fixture-readme",
+          "native-projections",
+          "project-zls",
+          "treefmt",
+          "wasm-projections"
+        ],
+        "sources": [
+          "https://github.com/nix-purifiers/zig-purifier/blob/fbf3e82f9ddc64dbc84402cc5b55f32431892a39/tests/default.nix"
+        ],
+        "gap": null
+      },
+      "goodTests": {
+        "state": "met",
+        "summary": "ZLS is built from a pinned independent upstream commit and its installed executable version is asserted. Separate hello test/step/callPackage/archive/lazy-git/path checks, resource/WASM/native FFI consumers and malformed/missing/stale/tampered companion checks exercise the build and lock contract. CI separately executes native relock/update, rebuild and offline commands. ZLS --version is a smoke check, not the full ZLS test suite.",
+        "evidence": [
+          "https://github.com/nix-purifiers/zig-purifier/actions/runs/42155838211/job/127689634241",
+          "https://github.com/nix-purifiers/zig-purifier/blob/fbf3e82f9ddc64dbc84402cc5b55f32431892a39/tests/default.nix",
+          "derivation-evidence.json#projects/zig-purifier/derivations"
+        ],
+        "derivations": [
+          "project-zls",
+          "fixture-readme",
+          "fixture-hello-tests",
+          "fixture-hello-git-clap",
+          "native-projections",
+          "wasm-projections",
+          "conformance-tampered"
+        ],
+        "sources": [
+          "https://github.com/nix-purifiers/zig-purifier/blob/fbf3e82f9ddc64dbc84402cc5b55f32431892a39/tests/default.nix"
+        ],
+        "gap": null
+      },
+      "linux": {
+        "state": "met",
+        "summary": "The inspected Ubuntu x86_64 job checks out this exact revision and successfully builds every local-evaluated check derivation; the packet records each build/rebuild event, exact output identity and available local NAR hash.",
+        "evidence": [
+          "https://github.com/nix-purifiers/zig-purifier/actions/runs/42155838211/job/127689634241",
+          "https://github.com/nix-purifiers/zig-purifier/blob/fbf3e82f9ddc64dbc84402cc5b55f32431892a39/tests/default.nix",
+          "derivation-evidence.json#projects/zig-purifier/derivations"
+        ],
+        "derivations": [
+          "project-zls",
+          "fixture-readme",
+          "fixture-hello-tests",
+          "fixture-hello-git-clap",
+          "native-projections",
+          "wasm-projections",
+          "conformance-tampered"
+        ],
+        "sources": [
+          "https://github.com/nix-purifiers/zig-purifier/blob/fbf3e82f9ddc64dbc84402cc5b55f32431892a39/tests/default.nix"
+        ],
+        "gap": null
+      },
+      "darwin": {
+        "state": "not-met",
+        "summary": "Neither the baseline nor current-main workflow includes a Darwin runner. The flake declares aarch64-darwin, but evaluation/declaration is not native execution.",
+        "evidence": [
+          "https://github.com/nix-purifiers/zig-purifier/actions/runs/42155838211/job/127689634241",
+          "https://github.com/nix-purifiers/zig-purifier/blob/fbf3e82f9ddc64dbc84402cc5b55f32431892a39/tests/default.nix",
+          "derivation-evidence.json#projects/zig-purifier/derivations",
+          "https://github.com/nix-purifiers/zig-purifier/blob/fbf3e82f9ddc64dbc84402cc5b55f32431892a39/.github/workflows/check.yml"
+        ],
+        "derivations": [],
+        "sources": [
+          "https://github.com/nix-purifiers/zig-purifier/blob/fbf3e82f9ddc64dbc84402cc5b55f32431892a39/.github/workflows/check.yml"
+        ],
+        "gap": "No successful native Darwin CI/check derivation and realized-output binding at this revision."
+      },
+      "oneVersion": {
+        "state": "met",
+        "summary": "The pinned upstream ZLS sample compiles and runs with lock-selected Zig 0.15.2; zls --version must equal 0.15.1. A separate native Zig 0.17.0 std.Build dependency/install-file execution is proven, but it does not compile a target application.",
+        "evidence": [
+          "https://github.com/nix-purifiers/zig-purifier/actions/runs/42155838211/job/127689634241",
+          "https://github.com/nix-purifiers/zig-purifier/blob/fbf3e82f9ddc64dbc84402cc5b55f32431892a39/tests/default.nix",
+          "derivation-evidence.json#projects/zig-purifier/derivations"
+        ],
+        "derivations": [
+          "project-zls",
+          "fixture-readme",
+          "fixture-hello-tests",
+          "fixture-hello-git-clap",
+          "native-projections",
+          "wasm-projections",
+          "conformance-tampered"
+        ],
+        "sources": [
+          "https://github.com/nix-purifiers/zig-purifier/blob/fbf3e82f9ddc64dbc84402cc5b55f32431892a39/tests/default.nix"
+        ],
+        "gap": null
+      },
+      "nonEolVersions": {
+        "state": "not-met",
+        "summary": "The official Zig download page identifies current stable line 0.17 (latest 0.17.1 on 2026-11-02). The fixture-readme dependency genuinely executes native Zig 0.17.0 via zig build install, running std.Build dependency resolution and installing a dependency README. It deliberately compiles no target application or dependency code, and the outer check only verifies installed file content. This proves the native build-manager point, but leaves a current 0.17 compiled-target plus runtime representative-project gap. The successful ZLS application uses 0.15.2 and cannot fill that current-compiler gap. Zig 0.17 is not declared unsupported. The stale GitHub latest API 0.15.1 is not the current upstream authority.",
+        "evidence": [
+          "https://github.com/nix-purifiers/zig-purifier/actions/runs/42155838211/job/127689634241",
+          "https://github.com/nix-purifiers/zig-purifier/blob/fbf3e82f9ddc64dbc84402cc5b55f32431892a39/tests/default.nix",
+          "derivation-evidence.json#projects/zig-purifier/derivations",
+          "https://ziglang.org/download/",
+          "https://ziglang.org/learn/platform-support/"
+        ],
+        "derivations": [
+          "project-zls",
+          "fixture-readme",
+          "fixture-hello-tests",
+          "fixture-hello-git-clap",
+          "native-projections",
+          "wasm-projections",
+          "conformance-tampered"
+        ],
+        "sources": [
+          "https://ziglang.org/download/",
+          "https://ziglang.org/learn/platform-support/"
+        ],
+        "gap": "The official Zig download page identifies current stable line 0.17 (latest 0.17.1 on 2026-11-02). The fixture-readme dependency genuinely executes native Zig 0.17.0 via zig build install, running std.Build dependency resolution and installing a dependency README. It deliberately compiles no target application or dependency code, and the outer check only verifies installed file content. This proves the native build-manager point, but leaves a current 0.17 compiled-target plus runtime representative-project gap. The successful ZLS application uses 0.15.2 and cannot fill that current-compiler gap. Zig 0.17 is not declared unsupported. The stale GitHub latest API 0.15.1 is not the current upstream authority."
+      },
+      "manySamples": {
+        "state": "not-met",
+        "summary": "ZLS is one independent upstream project. Hello/greeting/readme/native FFI/WASM fixtures are authored variants; zig-clap is a dependency, not another built upstream application.",
+        "evidence": [
+          "https://github.com/nix-purifiers/zig-purifier/actions/runs/42155838211/job/127689634241",
+          "https://github.com/nix-purifiers/zig-purifier/blob/fbf3e82f9ddc64dbc84402cc5b55f32431892a39/tests/default.nix",
+          "derivation-evidence.json#projects/zig-purifier/derivations",
+          "https://github.com/nix-purifiers/zig-purifier/blob/fbf3e82f9ddc64dbc84402cc5b55f32431892a39/tests/default.nix"
+        ],
+        "derivations": [
+          "project-zls",
+          "fixture-readme",
+          "fixture-hello-tests",
+          "fixture-hello-git-clap",
+          "native-projections",
+          "wasm-projections",
+          "conformance-tampered"
+        ],
+        "sources": [
+          "https://github.com/nix-purifiers/zig-purifier/blob/fbf3e82f9ddc64dbc84402cc5b55f32431892a39/tests/default.nix"
+        ],
+        "gap": "ZLS is one independent upstream project. Hello/greeting/readme/native FFI/WASM fixtures are authored variants; zig-clap is a dependency, not another built upstream application."
+      },
+      "longCompatibility": {
+        "state": "not-met",
+        "summary": "The inspected native builds establish Zig 0.15.2 and 0.17.0 points. That is useful recent compiler diversity, but not a long historical sequence: 0.14/0.16 selectors in the builder are not successful executions.",
+        "evidence": [
+          "https://github.com/nix-purifiers/zig-purifier/actions/runs/42155838211/job/127689634241",
+          "https://github.com/nix-purifiers/zig-purifier/blob/fbf3e82f9ddc64dbc84402cc5b55f32431892a39/tests/default.nix",
+          "derivation-evidence.json#projects/zig-purifier/derivations",
+          "https://github.com/nix-purifiers/zig-purifier/blob/fbf3e82f9ddc64dbc84402cc5b55f32431892a39/tests/default.nix"
+        ],
+        "derivations": [
+          "project-zls",
+          "fixture-readme",
+          "fixture-hello-tests",
+          "fixture-hello-git-clap",
+          "native-projections",
+          "wasm-projections",
+          "conformance-tampered"
+        ],
+        "sources": [
+          "https://github.com/nix-purifiers/zig-purifier/blob/fbf3e82f9ddc64dbc84402cc5b55f32431892a39/tests/default.nix"
+        ],
+        "gap": "The inspected native builds establish Zig 0.15.2 and 0.17.0 points. That is useful recent compiler diversity, but not a long historical sequence: 0.14/0.16 selectors in the builder are not successful executions."
+      }
+    },
+    "sampleBuilds": [
+      {
+        "name": "ZLS upstream f91b2e1e305e5d5bd3725aea90f9f9bfb3dce055 (ZLS 0.15.1)",
+        "evidence": [
+          "https://github.com/nix-purifiers/zig-purifier/actions/runs/42155838211/job/127689634241",
+          "https://github.com/nix-purifiers/zig-purifier/blob/fbf3e82f9ddc64dbc84402cc5b55f32431892a39/tests/default.nix",
+          "derivation-evidence.json#projects/zig-purifier/derivations"
+        ]
+      }
+    ]
+  }
+}
