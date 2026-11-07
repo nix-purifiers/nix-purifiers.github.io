@@ -1,0 +1,174 @@
+{
+  "status": "reviewer-approved-post-freeze-correction",
+  "createdAt": "2026-11-07T03:28:03.358310+00:00",
+  "requestedBy": "01a198d9-493a-79a1-bb09-6c91c2c6838a",
+  "precedence": "Replace only pecl-purifier in frozen assessments.json with correctedAssessment. This supersedes its former all-maintained-PHP-branches execution gap under the managers final tested-maintained-tool/runtime-pair criterion. Tier3 and other judgments remain unchanged. Apply alongside pub-root-adjudication.json.",
+  "baseAssessmentsSha256": "485be95e780b45a32a381fe119acaccc0522ebb2dc36b4fa021cbe0a737536cf",
+  "baseEvidenceSha256": "0943b73f7a49f4badc51c3e24a1a8ec541a49c893894008de47096e960a3352e",
+  "correctedAssessment": {
+    "tier": 3,
+    "reviewedRevision": "3de166825b7f77576aab6f993c5daa6c81f5dba9",
+    "reviewedAt": "2026-11-06",
+    "rationale": "Reviewed native Linux derivations evaluate and execute a concrete sample with substantive tests. Tier3 remains appropriate because native Darwin execution is absent. Independent sample breadth and historical compatibility are not established; maintained-version judgment is limited to the explicitly inspected SDK points.",
+    "criteria": {
+      "evaluation": {
+        "state": "met",
+        "summary": "Current main 3de166825b7f77576aab6f993c5daa6c81f5dba9 check definitions evaluate in successful native Linux CI. project is bound to executable derivation /nix/store/vi648165qhckxhzqpnn074bckjsfxndk-php-purifierproof-0.1.0.drv; local exploratory evaluation is supplementary only.",
+        "evidence": [
+          "https://github.com/nix-purifiers/pecl-purifier/actions/runs/42154273897",
+          "/nix/store/vi648165qhckxhzqpnn074bckjsfxndk-php-purifierproof-0.1.0.drv",
+          "https://github.com/nix-purifiers/pecl-purifier/blob/3de166825b7f77576aab6f993c5daa6c81f5dba9/flake.nix"
+        ]
+      },
+      "goodTests": {
+        "state": "met",
+        "summary": "The project derivation compiles a C extension with phpize and executes test.php against the extension. Successful native conformance covers mutable C source, YAML/msgpack extensions, ABI guards, stale/missing metadata, isolated registry, native consumer and publication; capture and rebuild checks also pass.",
+        "evidence": [
+          "https://github.com/nix-purifiers/pecl-purifier/actions/runs/42154273897",
+          "https://github.com/nix-purifiers/pecl-purifier/blob/3de166825b7f77576aab6f993c5daa6c81f5dba9/flake.nix",
+          "https://github.com/nix-purifiers/pecl-purifier/blob/3de166825b7f77576aab6f993c5daa6c81f5dba9/.github/workflows/check.yml",
+          "/nix/store/vi648165qhckxhzqpnn074bckjsfxndk-php-purifierproof-0.1.0.drv"
+        ]
+      },
+      "linux": {
+        "state": "met",
+        "summary": "Native x86_64-linux and aarch64-linux CI jobs completed successfully and built/run the sample checks. Exact per-system check derivations and successful building traces are retained; ten x86_64 outputs were also realized locally by exact CI drv identity.",
+        "evidence": [
+          "https://github.com/nix-purifiers/pecl-purifier/actions/runs/42154273897",
+          "/nix/store/vi648165qhckxhzqpnn074bckjsfxndk-php-purifierproof-0.1.0.drv",
+          "https://github.com/nix-purifiers/pecl-purifier/blob/3de166825b7f77576aab6f993c5daa6c81f5dba9/flake.nix"
+        ]
+      },
+      "darwin": {
+        "state": "not-met",
+        "summary": "Inspected current-main workflow schedules only ubuntu-latest and ubuntu-24.04-arm runtime jobs. No successful native Darwin check/SDK/output receipt is present. Declared aarch64-darwin support or --all-systems --no-build evaluation does not satisfy runtime execution.",
+        "evidence": [
+          "https://github.com/nix-purifiers/pecl-purifier/blob/3de166825b7f77576aab6f993c5daa6c81f5dba9/.github/workflows/check.yml",
+          "https://github.com/nix-purifiers/pecl-purifier/actions/runs/42154273897"
+        ]
+      },
+      "oneVersion": {
+        "state": "met",
+        "summary": "Native sample execution establishes these exact SDK points: php 8.5.12. Authored purifierproof C extension in examples/minimal, plus locked YAML/msgpack dependencies; dependencies are not counted as separate independent sample projects.",
+        "evidence": [
+          "https://github.com/nix-purifiers/pecl-purifier/actions/runs/42154273897",
+          "/nix/store/vi648165qhckxhzqpnn074bckjsfxndk-php-purifierproof-0.1.0.drv",
+          "https://github.com/nix-purifiers/pecl-purifier/blob/3de166825b7f77576aab6f993c5daa6c81f5dba9/flake.nix"
+        ]
+      },
+      "nonEolVersions": {
+        "state": "met",
+        "summary": "The native PECL/PEAR manager actually reports PEAR1.10.18 and PHP8.5.12; the extension project derivation builds and executes on that pair. The PEAR primary release page identifies1.10.18 as current stable, and PHP8.5 is actively maintained through2027 with security maintenance through2029. Under the managers tested-maintained-pair rule this exact pair suffices; execution of every other maintained PHP branch is not required. PECL is deprecated in favor of PIE, which is not treated as an inferred EOL date. No continuous patch range or untested PHP8.2\u20138.4 support is claimed.",
+        "evidence": [
+          "https://pear.php.net/package/PEAR",
+          "https://www.php.net/supported-versions.php",
+          "https://pecl.php.net/",
+          "https://github.com/nix-purifiers/pecl-purifier/actions/runs/42154273897",
+          "/nix/store/vi648165qhckxhzqpnn074bckjsfxndk-php-purifierproof-0.1.0.drv",
+          "pecl-manager-version-receipt.json"
+        ]
+      },
+      "manySamples": {
+        "state": "not-met",
+        "summary": "Authored purifierproof C extension in examples/minimal, plus locked YAML/msgpack dependencies; dependencies are not counted as separate independent sample projects. Inspection establishes useful concrete cases but not a broad independent upstream sample corpus covering different project structures; authored variants, dependency nodes and tests of one upstream project are not counted as separate projects.",
+        "evidence": [
+          "https://github.com/nix-purifiers/pecl-purifier/actions/runs/42154273897",
+          "https://github.com/nix-purifiers/pecl-purifier/blob/3de166825b7f77576aab6f993c5daa6c81f5dba9/flake.nix",
+          "/nix/store/vi648165qhckxhzqpnn074bckjsfxndk-php-purifierproof-0.1.0.drv"
+        ]
+      },
+      "longCompatibility": {
+        "state": "not-met",
+        "summary": "One PHP ABI8.5.12 and one authored extension family execute; package min-PHP metadata is not execution on earlier PHP branches.",
+        "evidence": [
+          "https://github.com/nix-purifiers/pecl-purifier/actions/runs/42154273897",
+          "https://github.com/nix-purifiers/pecl-purifier/blob/3de166825b7f77576aab6f993c5daa6c81f5dba9/flake.nix",
+          "/nix/store/vi648165qhckxhzqpnn074bckjsfxndk-php-purifierproof-0.1.0.drv"
+        ]
+      }
+    },
+    "sampleBuilds": [
+      {
+        "name": "Authored purifierproof C extension in examples/minimal, plus locked YAML/msgpack dependencies; dependencies are not counted as separate independent sample projects.",
+        "evidence": [
+          "https://github.com/nix-purifiers/pecl-purifier/actions/runs/42154273897",
+          "/nix/store/vi648165qhckxhzqpnn074bckjsfxndk-php-purifierproof-0.1.0.drv",
+          "https://github.com/nix-purifiers/pecl-purifier/blob/3de166825b7f77576aab6f993c5daa6c81f5dba9/flake.nix"
+        ]
+      }
+    ]
+  },
+  "correctedCriteriaBinding": {
+    "state": "met",
+    "derivations": [
+      "pecl-purifier:checks.x86_64-linux.project"
+    ],
+    "sources": [
+      "https://pear.php.net/package/PEAR",
+      "https://www.php.net/supported-versions.php",
+      "https://pecl.php.net/",
+      "https://github.com/nix-purifiers/pecl-purifier/actions/runs/42154273897",
+      "/nix/store/vi648165qhckxhzqpnn074bckjsfxndk-php-purifierproof-0.1.0.drv",
+      "pecl-manager-version-receipt.json"
+    ],
+    "gap": null
+  },
+  "actualSdkVersions": {
+    "pear": "1.10.18",
+    "php": "8.5.12"
+  },
+  "principalCheck": {
+    "drvPath": "/nix/store/vi648165qhckxhzqpnn074bckjsfxndk-php-purifierproof-0.1.0.drv",
+    "outputs": {
+      "dev": "/nix/store/nxb582dbsqww62mqacy0c44v70ldbd4s-php-purifierproof-0.1.0-dev",
+      "out": "/nix/store/3jijf3vrmw5ah04g8df7zy4660alplmh-php-purifierproof-0.1.0"
+    },
+    "outputNarHashes": {
+      "dev": "sha256-+Ggy1QCCPsS4VE147WhlGy5ZZmh4O6+cDxiIsucxYNU=",
+      "out": "sha256-cPV9gqdcHEcRQDu9D8hVumUxr4/unAdvoHl20MASUiw="
+    },
+    "sourceRevision": "3de166825b7f77576aab6f993c5daa6c81f5dba9",
+    "sourceNarHash": "sha256-+0SVAiHB+877gerbY5tMUTINvN2VU0QRDyE8Oh0WoxE=",
+    "build": {
+      "status": "success",
+      "executedSystem": "x86_64-linux",
+      "sourceRevision": "3de166825b7f77576aab6f993c5daa6c81f5dba9",
+      "drvPath": "/nix/store/vi648165qhckxhzqpnn074bckjsfxndk-php-purifierproof-0.1.0.drv",
+      "outputs": {
+        "dev": "/nix/store/nxb582dbsqww62mqacy0c44v70ldbd4s-php-purifierproof-0.1.0-dev",
+        "out": "/nix/store/3jijf3vrmw5ah04g8df7zy4660alplmh-php-purifierproof-0.1.0"
+      },
+      "receipt": "https://github.com/nix-purifiers/pecl-purifier/actions/runs/42154273897/job/127684575492",
+      "artifact": "evidence/pecl-purifier/ci.log",
+      "artifactSha256": "607b6ecbe59c760ef82053eb0113eb7ab00f3398dc136bab0207800fb39b0fc0",
+      "buildingLogLines": [
+        2666
+      ],
+      "conclusion": "success",
+      "sourceNarHash": "sha256-+0SVAiHB+877gerbY5tMUTINvN2VU0QRDyE8Oh0WoxE=",
+      "sdkVersions": {
+        "php": "8.5.12"
+      },
+      "outputNarHashes": {
+        "dev": "sha256-+Ggy1QCCPsS4VE147WhlGy5ZZmh4O6+cDxiIsucxYNU=",
+        "out": "sha256-cPV9gqdcHEcRQDu9D8hVumUxr4/unAdvoHl20MASUiw="
+      }
+    }
+  },
+  "managerBinding": {
+    "drvPath": "/nix/store/xyvgi8cbibxw4984nx33p38brpxjvy2h-pecl-purifier-native.drv",
+    "drvFileSha256": "fb1f9a8aee7ce3387a61a03060edf385920639e30abcc2c9f92c348dbafb30b5",
+    "outputs": {
+      "out": "/nix/store/3z8mdad7wmr71j3jkgg5nrl1rrp2iyrn-pecl-purifier-native"
+    },
+    "outputNarHashes": {
+      "out": "sha256-XwGJDdw3Ky8rtFfIr337GcgOSTC49+dxxafd0P+Ngr0="
+    },
+    "dependencyBinding": "This exact native-manager derivation is a direct input of the reviewed project drv. Its output is the include_path used by the successful version receipt and native project metadata checks.",
+    "versionReceipt": "pecl-manager-version-receipt.json",
+    "versionReceiptSha256": "d2453af67914799500eba4c30bb6731e655cc4ff5206f5bcbeaa5fae43dab6b0"
+  },
+  "policyReceipt": "policy/pecl-maintained-pair-browse.json",
+  "policyReceiptSha256": "35630204e35dee0e8ef73e741f938bdb7921a759f9c7c4ecb2ec94a15c1e3bc2",
+  "reviewedGapCorrection": "Previous missing8.2\u20138.4 matrix was too strict. It is removed as a criterion failure without claiming those additional versions execute. Deprecation and maintained current PEAR base release are both documented."
+}

@@ -1,0 +1,60 @@
+{
+  "version": 1,
+  "group": "group-7",
+  "createdAtUtc": "2026-11-07T03:27:11.487834+00:00",
+  "instruction": "Additive correction only; preserve frozen original packet and all unrelated criteria/tier judgments. No new build or tier promotion.",
+  "baseArtifactsSha256": {
+    "assessments.json": "bd9ccd4b4438ae5f67e63f1958debffedc10c31fc36bac313443ee34cfc94764",
+    "derivation-evidence.json": "0ea2ead32c7aae6976d2bdbc3464ead2f6a1d7e04f2ba2a4336a3d62d881c045",
+    "review-receipt.json": "a0e4cc4b3d5e834f1dc9ebda2b28fcf4c36c8846ad28ef4211af851337cb0302"
+  },
+  "projects": {
+    "rebar3-purifier": {
+      "reviewedRevision": "8cf43df2533f7d2059c2caa34fd998c327e19b7d",
+      "criteria": {
+        "nonEolVersions": {
+          "state": "met",
+          "summary": "Successful native x86_64-linux sample derivations execute Rebar3 3.28.0 with Erlang/OTP 28.5.0.8. The live upstream release API identifies Rebar3 3.28.0 as current stable, and its primary README supports OTP 27\u201329 for this release. The executed OTP 28 pair is therefore within the maintained support set. This criterion requires an actual tested maintained tool/runtime pair; missing separate OTP 27 and 29 executions does not negate that pair. No claim is made that all maintained OTP majors or all patches were tested.",
+          "derivations": [
+            "fixture-hello-tests",
+            "fixture-hello-build",
+            "fixture-umbrella-build",
+            "conformance-external"
+          ],
+          "sources": [
+            "https://rebar3.org/docs/getting-started/",
+            "https://github.com/erlang/rebar3/blob/main/README.md",
+            "https://api.github.com/repos/erlang/rebar3/releases?per_page=5"
+          ],
+          "gap": null
+        }
+      },
+      "correctionRationale": "Root clarified consistent non-EOL criterion across all96 projects: an actually tested maintained tool/runtime pair suffices; an exhaustive maintained-version matrix is not required. The original OTP27/29 matrix gap overconstrained this criterion.",
+      "supersedes": {
+        "state": "not-met",
+        "summary": "Rebar3 3.28.0 is the current stable and executes with Erlang/OTP 28.5.0.8. Upstream's current README identifies 27\u201329 for 3.28.0 and its getting-started policy supports the newest three OTP majors. The inspected derivations provide OTP 28 only; native OTP 27 and 29 executions are missing. No all-patch range is claimed.",
+        "derivations": [
+          "fixture-hello-tests",
+          "fixture-hello-build",
+          "fixture-umbrella-build",
+          "conformance-external"
+        ],
+        "sources": [
+          "https://rebar3.org/docs/getting-started/",
+          "https://github.com/erlang/rebar3/blob/main/README.md",
+          "https://api.github.com/repos/erlang/rebar3/releases?per_page=5"
+        ],
+        "gap": "Rebar3 3.28.0 is the current stable and executes with Erlang/OTP 28.5.0.8. Upstream's current README identifies 27\u201329 for 3.28.0 and its getting-started policy supports the newest three OTP majors. The inspected derivations provide OTP 28 only; native OTP 27 and 29 executions are missing. No all-patch range is claimed."
+      },
+      "tier": 3,
+      "tierChange": false
+    }
+  },
+  "existingProofArtifactsSha256": {
+    "evidence/rebar3-purifier-build-receipt.json": "d5b63cc87dfc7eb45919d254e19dc94b47d408cb88e5eb6378da2f2eb7ddaf5f",
+    "evidence/rebar3-purifier-derivations.log": "781dc62c55b167d08140acdf89a026990a4e6225e0383f93f2b9877b1d623480",
+    "evidence/upstream/rebar3-readme.json": "0ae88e9b6cabb542d47e64332e333c494e4d089beea005dd065bd68c89504d40",
+    "evidence/upstream/rebar3-releases.json": "6e47bc502e8989ca1a8abf44e96feb831e9b1f877a43e30d4c0c8c35e4536d49",
+    "evidence/canonical/rebar3-purifier-metadata.json": "acd805e7b545feaa2e849383ec7b27008635d70a3d17644e5c860185b4fa25c0"
+  }
+}

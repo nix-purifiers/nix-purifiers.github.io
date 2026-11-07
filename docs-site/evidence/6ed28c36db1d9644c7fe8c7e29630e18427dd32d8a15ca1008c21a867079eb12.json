@@ -1,0 +1,126 @@
+{
+  "version": 1,
+  "group": "group-2",
+  "createdAt": "2026-11-07T03:27:31.190534+00:00",
+  "status": "final reviewer correction overlay",
+  "reason": "Manager final common nonEolVersions criterion accepts an actually tested maintained tool/runtime pair; the original requirement to execute every maintained line was too broad.",
+  "policyReviewDate": "2026-11-06",
+  "projects": {
+    "carton-purifier": {
+      "reviewedRevision": "833ccb0b4a4112c0805b97be4a67695368ee06fb",
+      "reviewedAt": "2026-11-06",
+      "unchangedTier": 3,
+      "criteria": {
+        "nonEolVersions": {
+          "state": "met",
+          "summary": "The native sample/environment checks execute Carton 1.0.35 with Perl 5.42.3. Upstream Carton Changes identifies stable 1.0.35, and Perl policy maintains the two most recent stable release series plus recent-series critical security support; 5.42 is a maintained series at the review date. This actually tested maintained tool/runtime pair meets the criterion. Perl 5.44 and other maintained series are unexecuted and are not claimed; an exhaustive matrix is not required.",
+          "evidence": [
+            ".worktrees/tier-review/group-2/derivation-evidence.json#carton-purifier:x86_64-linux:environment",
+            ".worktrees/tier-review/group-2/derivation-evidence.json#carton-purifier:x86_64-linux:installed",
+            ".worktrees/tier-review/group-2/derivation-evidence.json#carton-purifier:x86_64-linux:project",
+            ".worktrees/tier-review/group-2/derivation-evidence.json#carton-purifier:aarch64-linux:environment",
+            ".worktrees/tier-review/group-2/derivation-evidence.json#carton-purifier:aarch64-linux:installed",
+            ".worktrees/tier-review/group-2/derivation-evidence.json#carton-purifier:aarch64-linux:project",
+            "https://github.com/perl-carton/carton/blob/master/Changes",
+            "https://perldoc.perl.org/perlpolicy"
+          ],
+          "derivations": [
+            "carton-purifier:x86_64-linux:environment",
+            "carton-purifier:x86_64-linux:installed",
+            "carton-purifier:x86_64-linux:project",
+            "carton-purifier:aarch64-linux:environment",
+            "carton-purifier:aarch64-linux:installed",
+            "carton-purifier:aarch64-linux:project"
+          ],
+          "sources": [
+            "https://github.com/perl-carton/carton/blob/master/Changes",
+            "https://perldoc.perl.org/perlpolicy"
+          ],
+          "gap": null
+        }
+      },
+      "rationale": "Concrete Linux sample/check derivations execute an actually tested maintained tool/runtime pair and substantial lifecycle/consumer tests. Native Darwin execution is not demonstrated; Tier 3 remains unchanged.",
+      "selectedSdkVersionsActuallyExecuted": {
+        "Carton": "1.0.35",
+        "Perl": "5.42.3"
+      },
+      "explicitRecipeSelection": "nix/environment.nix asserts lock.toolVersions.perl==perl.version and lock.toolVersions.carton==nativeCarton.version; selected toolchain executes carton install --deployment --cached. nix/build-project.nix prepends that toolchain, builds/tests with Perl, and checks.installed executes the produced example and asserts JSON answer=42.",
+      "sampleSelectionReferences": [
+        {
+          "path": ".worktrees/tier-review/group-2/sources/carton-purifier/flake.nix",
+          "sha256": "952410f7f080b20471ded31d0023c7eaec080d020457c07fe5d9967d305e5ff3",
+          "immutableUrl": "https://github.com/nix-purifiers/carton-purifier/blob/833ccb0b4a4112c0805b97be4a67695368ee06fb/flake.nix"
+        },
+        {
+          "path": ".worktrees/tier-review/group-2/sources/carton-purifier/nix/environment.nix",
+          "sha256": "22137055b827772c7546dd0e8834cbd2bae058fc21b67386b5420e2980941e87",
+          "immutableUrl": "https://github.com/nix-purifiers/carton-purifier/blob/833ccb0b4a4112c0805b97be4a67695368ee06fb/nix/environment.nix"
+        },
+        {
+          "path": ".worktrees/tier-review/group-2/sources/carton-purifier/nix/build-project.nix",
+          "sha256": "da2e1efd7f01c0fc22bc7eda6ffe709655b44a9f12cbb836ef46957f113f9eb3",
+          "immutableUrl": "https://github.com/nix-purifiers/carton-purifier/blob/833ccb0b4a4112c0805b97be4a67695368ee06fb/nix/build-project.nix"
+        }
+      ],
+      "originalOverMatrixGapWithdrawn": "Upstream Carton Changes identifies stable 1.0.35, which is executed. Perl policy maintains the two most recent stable series and critical security support for recent series. Only Perl 5.42.3 is bound to the sample derivations; execution with the current 5.44 series and other maintained Perl series is absent. This does not label Perl 5.42 EOL.",
+      "proofScope": "Only exact executed pair and native platforms referenced; no newer SDK execution, all-patch range or all-maintained-version coverage inferred."
+    },
+    "chef-purifier": {
+      "reviewedRevision": "299d246725231f3ca4594ccdd9172b5b42f08878",
+      "reviewedAt": "2026-11-06",
+      "unchangedTier": 3,
+      "criteria": {
+        "nonEolVersions": {
+          "state": "met",
+          "summary": "The native project check executes the packaged Chef 19.3.14 core through cinc-client local-mode convergence and asserts answer=42. Chef primary lifecycle policy identifies 19.x as the current GA/LTS maintained line. This actually tested maintained tool/runtime point meets the criterion. Deprecated-but-maintained 18.x is not executed or claimed; an exhaustive maintained-line matrix is not required.",
+          "evidence": [
+            ".worktrees/tier-review/group-2/derivation-evidence.json#chef-purifier:x86_64-linux:project",
+            ".worktrees/tier-review/group-2/derivation-evidence.json#chef-purifier:aarch64-linux:project",
+            "https://docs.chef.io/versions/"
+          ],
+          "derivations": [
+            "chef-purifier:x86_64-linux:project",
+            "chef-purifier:aarch64-linux:project"
+          ],
+          "sources": [
+            "https://docs.chef.io/versions/"
+          ],
+          "gap": null
+        }
+      },
+      "rationale": "Concrete Linux sample/check derivations execute an actually tested maintained tool/runtime pair and substantial lifecycle/consumer tests. Native Darwin execution is not demonstrated; Tier 3 remains unchanged.",
+      "selectedSdkVersionsActuallyExecuted": {
+        "Chef core": "19.3.14"
+      },
+      "explicitRecipeSelection": "nix/build-project.nix explicitly selects core in nativeBuildInputs, runs driver/bin/cinc-cli export and the flake doCheck command cinc-client --local-mode --minimal-ohai --node-name purifier-proof --config .cinc/config.rb; it checks produced answer=42. Selected core19.3.14 identity is paired with this executed recipe, not inferred from an arbitrary transitive gem.",
+      "sampleSelectionReferences": [
+        {
+          "path": ".worktrees/tier-review/group-2/sources/chef-purifier/flake.nix",
+          "sha256": "001140802e98275aa7dcabc501ce1c529626263dc529208496703a4fe5567f2c",
+          "immutableUrl": "https://github.com/nix-purifiers/chef-purifier/blob/299d246725231f3ca4594ccdd9172b5b42f08878/flake.nix"
+        },
+        {
+          "path": ".worktrees/tier-review/group-2/sources/chef-purifier/nix/build-project.nix",
+          "sha256": "d456cc098deb44faa1230536e1c43e250da424b159155e72b1374fba3b648c84",
+          "immutableUrl": "https://github.com/nix-purifiers/chef-purifier/blob/299d246725231f3ca4594ccdd9172b5b42f08878/nix/build-project.nix"
+        },
+        {
+          "path": ".worktrees/tier-review/group-2/sources/chef-purifier/nix/core.nix",
+          "sha256": "a828bd86a703065b4fb20e2fc0fa3f84072a71cbd1cb933510e1c4a795aa785c",
+          "immutableUrl": "https://github.com/nix-purifiers/chef-purifier/blob/299d246725231f3ca4594ccdd9172b5b42f08878/nix/core.nix"
+        }
+      ],
+      "originalOverMatrixGapWithdrawn": "Chef primary lifecycle documentation lists 19.x as GA/LTS and deprecated 18.x as still supported until August 31, 2027. The check closure executes 19.3.14 through the Cinc command surface; no corresponding 18.x selected-SDK sample build is present. Deprecated is not treated as EOL.",
+      "proofScope": "Only exact executed pair and native platforms referenced; no newer SDK execution, all-patch range or all-maintained-version coverage inferred."
+    }
+  },
+  "frozenFilesUnchanged": {
+    "assessments.json": "4cb542aca1c6ca0d1aadef3a554158606ad87e37d7fe10d5498b149d6303011d",
+    "derivation-evidence.json": "397ef69cfc55be19ae7d3d943cbf10f026d82b3846e8e72966cfa3173b4e9c3b",
+    "review-receipt.json": "264aa45a95aabd56de6369ea0f727262004f2a456f00a53ea6accf18da3f0916",
+    "integration-mapping.json": "66d4459cfd9b164cf5f0259870d17bddb7ed9459891cd1f6d7b217bce60f70d0",
+    "historical-runtime-bindings.json": "e32b1891eb439eb11d6f2cc0578b28e092671bca31b597aaa72094fa0aa17b79"
+  },
+  "unmodifiedJudgments": "All other criteria and all tiers remain unchanged. Blender is outside group2 assignment and is not adjudicated here.",
+  "noNewBuilds": true
+}

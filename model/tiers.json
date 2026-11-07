@@ -1120,7 +1120,7 @@
       "tier": 3,
       "reviewedRevision": "858ef25cef07ffda9486f1e8bd6329e561bbbfe6",
       "reviewedAt": "2026-11-06",
-      "rationale": "Native Linux sample derivations and meaningful regression tests are verified. Darwin runtime execution is absent from the inspected CI; this prevents Tier 2. The upstream-version execution gap is recorded explicitly.",
+      "rationale": "Native Linux sample derivations and meaningful regression tests are verified. The executed ansible-core 2.21.5/Python 3.14.8 pair is maintained. No successful native Darwin receipt was found in the inspected workflows/jobs, so Tier 3 remains unchanged.",
       "criteria": {
         "evaluation": {
           "state": "met",
@@ -1163,12 +1163,13 @@
           ]
         },
         "nonEolVersions": {
-          "state": "not-met",
-          "summary": "Upstream maintains the latest ansible-core release plus two prior releases. The upstream API reports 2.22.0 released 2026-11-02, so maintained lines are 2.22, 2.21 and 2.20. The packet executes only 2.21.5; native 2.20 and 2.22 sample derivations are absent. The tested 2.21 line is not labelled EOL.",
+          "state": "met",
+          "summary": "The successful native sample derivation executes ansible-core 2.21.5 with Python 3.14.8. Primary Ansible policy maintains the latest ansible-core release plus two prior releases; with current 2.22.0, the actually tested 2.21 line is maintained. This executed maintained tool/runtime pair meets the criterion. Untested 2.20 and 2.22 are not claimed and their absence alone does not make this criterion fail.",
           "evidence": [
             "https://github.com/nix-purifiers/ansible-purifier/actions/runs/41807048130/job/126496570276",
             "https://docs.ansible.com/projects/ansible/latest/reference_appendices/release_and_maintenance.html",
-            "https://nix-purifiers.github.io/evidence/b8267b7999536021fd31ecdd1eb0767d5751fc824c4552bbd690f75c71e07b5b.json"
+            "https://nix-purifiers.github.io/evidence/b8267b7999536021fd31ecdd1eb0767d5751fc824c4552bbd690f75c71e07b5b.json",
+            "https://nix-purifiers.github.io/evidence/23e3dcacdd3659d7ec2d9002b85b2a8ddb98741f033e4a76deb0235b56d75c94.json"
           ]
         },
         "manySamples": {
@@ -1275,15 +1276,16 @@
             "summary": "Only the minimal playbook root is independently built. Collection dependencies and capture variants are not distinct upstream playbooks."
           },
           "nonEolVersions": {
-            "derivations": [],
-            "gap": "Upstream maintains the latest ansible-core release plus two prior releases. The upstream API reports 2.22.0 released 2026-11-02, so maintained lines are 2.22, 2.21 and 2.20. The packet executes only 2.21.5; native 2.20 and 2.22 sample derivations are absent. The tested 2.21 line is not labelled EOL.",
-            "sources": [
-              "https://github.com/nix-purifiers/ansible-purifier/actions/runs/41807048130/job/126496570276",
-              "https://docs.ansible.com/projects/ansible/latest/reference_appendices/release_and_maintenance.html",
-              "https://nix-purifiers.github.io/evidence/b8267b7999536021fd31ecdd1eb0767d5751fc824c4552bbd690f75c71e07b5b.json"
+            "state": "met",
+            "summary": "The successful native sample derivation executes ansible-core 2.21.5 with Python 3.14.8. Primary Ansible policy maintains the latest ansible-core release plus two prior releases; with current 2.22.0, the actually tested 2.21 line is maintained. This executed maintained tool/runtime pair meets the criterion. Untested 2.20 and 2.22 are not claimed and their absence alone does not make this criterion fail.",
+            "derivations": [
+              "ansible-purifier:local:project"
             ],
-            "state": "not-met",
-            "summary": "Upstream maintains the latest ansible-core release plus two prior releases. The upstream API reports 2.22.0 released 2026-11-02, so maintained lines are 2.22, 2.21 and 2.20. The packet executes only 2.21.5; native 2.20 and 2.22 sample derivations are absent. The tested 2.21 line is not labelled EOL."
+            "sources": [
+              "https://docs.ansible.com/projects/ansible/latest/reference_appendices/release_and_maintenance.html",
+              "https://nix-purifiers.github.io/evidence/23e3dcacdd3659d7ec2d9002b85b2a8ddb98741f033e4a76deb0235b56d75c94.json"
+            ],
+            "gap": null
           },
           "oneVersion": {
             "derivations": [
@@ -2475,7 +2477,7 @@
       "tier": 3,
       "reviewedRevision": "0a67251800df3d8d38202430b3a466a34e374052",
       "reviewedAt": "2026-11-06",
-      "rationale": "Native Linux sample derivations and meaningful regression tests are verified. Darwin runtime execution is absent from the inspected CI; this prevents Tier 2. The upstream-version execution gap is recorded explicitly.",
+      "rationale": "Native Linux sample derivations and meaningful extension/runtime regression tests are verified. Actual Blender 5.2.2 executes within maintained 5.2 LTS. No successful native Darwin receipt was found in inspected workflows/jobs, so Tier 3 remains unchanged.",
       "criteria": {
         "evaluation": {
           "state": "met",
@@ -2518,12 +2520,13 @@
           ]
         },
         "nonEolVersions": {
-          "state": "not-met",
-          "summary": "Upstream lists both Blender 5.2 LTS and 4.5 LTS as currently maintained, with two years of fixes. Actual execution is 5.2.2 only; no 4.5 LTS sample derivation is demonstrated. The newer 5.2.3 patch alone is not used to declare 5.2.2 EOL.",
+          "state": "met",
+          "summary": "The actual native Blender sample derivation executes Blender 5.2.2 and installs/runs the locked BoltFactory extension. Primary Blender policy lists 5.2 LTS as currently maintained for two years. This actually tested maintained application/extension pair meets the criterion. Missing execution of the separately maintained 4.5 LTS line does not invalidate this bounded point; 4.5 or other untested versions are not claimed. A later 5.2 patch does not make this tested point EOL.",
           "evidence": [
             "https://github.com/nix-purifiers/blender-purifier/actions/runs/41955444401/job/127009140976",
             "https://www.blender.org/download/lts/",
-            "https://nix-purifiers.github.io/evidence/b8267b7999536021fd31ecdd1eb0767d5751fc824c4552bbd690f75c71e07b5b.json"
+            "https://nix-purifiers.github.io/evidence/b8267b7999536021fd31ecdd1eb0767d5751fc824c4552bbd690f75c71e07b5b.json",
+            "https://nix-purifiers.github.io/evidence/23e3dcacdd3659d7ec2d9002b85b2a8ddb98741f033e4a76deb0235b56d75c94.json"
           ]
         },
         "manySamples": {
@@ -2630,15 +2633,16 @@
             "summary": "One owned BoltFactory consumer is demonstrated. Wheel isolation and capture variants are not a broad set of independent upstream Blender projects."
           },
           "nonEolVersions": {
-            "derivations": [],
-            "gap": "Upstream lists both Blender 5.2 LTS and 4.5 LTS as currently maintained, with two years of fixes. Actual execution is 5.2.2 only; no 4.5 LTS sample derivation is demonstrated. The newer 5.2.3 patch alone is not used to declare 5.2.2 EOL.",
-            "sources": [
-              "https://github.com/nix-purifiers/blender-purifier/actions/runs/41955444401/job/127009140976",
-              "https://www.blender.org/download/lts/",
-              "https://nix-purifiers.github.io/evidence/b8267b7999536021fd31ecdd1eb0767d5751fc824c4552bbd690f75c71e07b5b.json"
+            "state": "met",
+            "summary": "The actual native Blender sample derivation executes Blender 5.2.2 and installs/runs the locked BoltFactory extension. Primary Blender policy lists 5.2 LTS as currently maintained for two years. This actually tested maintained application/extension pair meets the criterion. Missing execution of the separately maintained 4.5 LTS line does not invalidate this bounded point; 4.5 or other untested versions are not claimed. A later 5.2 patch does not make this tested point EOL.",
+            "derivations": [
+              "blender-purifier:local:project"
             ],
-            "state": "not-met",
-            "summary": "Upstream lists both Blender 5.2 LTS and 4.5 LTS as currently maintained, with two years of fixes. Actual execution is 5.2.2 only; no 4.5 LTS sample derivation is demonstrated. The newer 5.2.3 patch alone is not used to declare 5.2.2 EOL."
+            "sources": [
+              "https://www.blender.org/download/lts/",
+              "https://nix-purifiers.github.io/evidence/23e3dcacdd3659d7ec2d9002b85b2a8ddb98741f033e4a76deb0235b56d75c94.json"
+            ],
+            "gap": null
           },
           "oneVersion": {
             "derivations": [
@@ -3344,7 +3348,7 @@
         },
         "goodTests": {
           "state": "met",
-          "summary": "Successful executable unit and conformance derivations cover lock parsing, missing/tampered/stale locks, workspaces, source/path/registry packages, releases, builder overrides and offline behavior. The independent Elysia derivation runs 1,616 upstream tests (1,614 pass, two skips). Producer evidence adds a fresh cold pure sandbox loop and empty-cache negative control, but remains unpublished.",
+          "summary": "Successful executable unit and conformance derivations cover lock parsing, missing/tampered/stale locks, workspaces, source/path/registry packages, releases, builder overrides and offline behavior. The independent Elysia derivation runs 1,616 upstream tests (1,614 pass, two skips). Later producer cold pure sandbox and empty-cache negative-control evidence is outside this reviewed baseline.",
           "evidence": [
             "https://github.com/nix-purifiers/bun-purifier/actions/runs/41994711245/job/127134989302",
             "https://nix-purifiers.github.io/evidence/b8267b7999536021fd31ecdd1eb0767d5751fc824c4552bbd690f75c71e07b5b.json"
@@ -3497,7 +3501,7 @@
               "https://nix-purifiers.github.io/evidence/b8267b7999536021fd31ecdd1eb0767d5751fc824c4552bbd690f75c71e07b5b.json"
             ],
             "state": "met",
-            "summary": "Successful executable unit and conformance derivations cover lock parsing, missing/tampered/stale locks, workspaces, source/path/registry packages, releases, builder overrides and offline behavior. The independent Elysia derivation runs 1,616 upstream tests (1,614 pass, two skips). Producer evidence adds a fresh cold pure sandbox loop and empty-cache negative control, but remains unpublished."
+            "summary": "Successful executable unit and conformance derivations cover lock parsing, missing/tampered/stale locks, workspaces, source/path/registry packages, releases, builder overrides and offline behavior. The independent Elysia derivation runs 1,616 upstream tests (1,614 pass, two skips). Later producer cold pure sandbox and empty-cache negative-control evidence is outside this reviewed baseline."
           },
           "linux": {
             "derivations": [
@@ -4685,7 +4689,7 @@
       "tier": 3,
       "reviewedRevision": "bd48bb6b1c1fe893899a301e5c55fc7cc8e92310",
       "reviewedAt": "2026-11-06",
-      "rationale": "Native Linux sample derivations and meaningful regression tests are verified. Darwin runtime execution is absent from the inspected CI; this prevents Tier 2. The upstream-version execution gap is recorded explicitly.",
+      "rationale": "Native Linux fixtures, independent Lobsters sample and meaningful regression tests are verified. The executed Ruby 4.0.9/Bundler 4.0.3 pair is maintained; historical Ruby evidence remains bounded to exact tuples. No successful native Darwin receipt was found in the inspected workflows/jobs, so Tier 3 remains unchanged.",
       "criteria": {
         "evaluation": {
           "state": "met",
@@ -4728,12 +4732,14 @@
           ]
         },
         "nonEolVersions": {
-          "state": "not-met",
-          "summary": "Upstream Ruby maintenance policy currently includes 4.0 and 3.4 in normal maintenance and 3.3 in security maintenance. The executed modern samples use Ruby 3.4.11 and 4.0.9; no Ruby 3.3 sample derivation is demonstrated. Historical Ruby 1.8/2.5 execution does not fill the maintained 3.3 gap. Bundler security material does not define a broader supported range.",
+          "state": "met",
+          "summary": "The successful independent Lobsters sample executes Ruby 4.0.9 and the lock-selected Bundler 4.0.3. Ruby 4.0 is in normal maintenance. The official RubyGems compatibility policy identifies the current Bundler 4.0 series, requiring Ruby >=3.2 and RubyGems >=3.4.1; Ruby 4.0 ships a matching RubyGems/Bundler 4.0 pair. This is an actually tested maintained manager/runtime pair. Ruby 3.4.11 is also demonstrated by fixture-app; missing maintained Ruby 3.3 does not invalidate this bounded judgment. No untested version or all-patch range is claimed.",
           "evidence": [
             "https://github.com/nix-purifiers/bundler-purifier/actions/runs/42008521132/job/127181292088",
             "https://www.ruby-lang.org/en/downloads/branches/",
-            "https://nix-purifiers.github.io/evidence/b8267b7999536021fd31ecdd1eb0767d5751fc824c4552bbd690f75c71e07b5b.json"
+            "https://nix-purifiers.github.io/evidence/b8267b7999536021fd31ecdd1eb0767d5751fc824c4552bbd690f75c71e07b5b.json",
+            "https://guides.rubygems.org/bundler-compatibility/",
+            "https://nix-purifiers.github.io/evidence/23e3dcacdd3659d7ec2d9002b85b2a8ddb98741f033e4a76deb0235b56d75c94.json"
           ]
         },
         "manySamples": {
@@ -4939,15 +4945,17 @@
             "summary": "Lobsters is one independent upstream application. App/library/submodule and historical-greeting fixtures give meaningful scenario coverage, but are authored here and do not establish many independent upstream application builds."
           },
           "nonEolVersions": {
-            "derivations": [],
-            "gap": "Upstream Ruby maintenance policy currently includes 4.0 and 3.4 in normal maintenance and 3.3 in security maintenance. The executed modern samples use Ruby 3.4.11 and 4.0.9; no Ruby 3.3 sample derivation is demonstrated. Historical Ruby 1.8/2.5 execution does not fill the maintained 3.3 gap. Bundler security material does not define a broader supported range.",
-            "sources": [
-              "https://github.com/nix-purifiers/bundler-purifier/actions/runs/42008521132/job/127181292088",
-              "https://www.ruby-lang.org/en/downloads/branches/",
-              "https://nix-purifiers.github.io/evidence/b8267b7999536021fd31ecdd1eb0767d5751fc824c4552bbd690f75c71e07b5b.json"
+            "state": "met",
+            "summary": "The successful independent Lobsters sample executes Ruby 4.0.9 and the lock-selected Bundler 4.0.3. Ruby 4.0 is in normal maintenance. The official RubyGems compatibility policy identifies the current Bundler 4.0 series, requiring Ruby >=3.2 and RubyGems >=3.4.1; Ruby 4.0 ships a matching RubyGems/Bundler 4.0 pair. This is an actually tested maintained manager/runtime pair. Ruby 3.4.11 is also demonstrated by fixture-app; missing maintained Ruby 3.3 does not invalidate this bounded judgment. No untested version or all-patch range is claimed.",
+            "derivations": [
+              "bundler-purifier:local:real-lobsters"
             ],
-            "state": "not-met",
-            "summary": "Upstream Ruby maintenance policy currently includes 4.0 and 3.4 in normal maintenance and 3.3 in security maintenance. The executed modern samples use Ruby 3.4.11 and 4.0.9; no Ruby 3.3 sample derivation is demonstrated. Historical Ruby 1.8/2.5 execution does not fill the maintained 3.3 gap. Bundler security material does not define a broader supported range."
+            "sources": [
+              "https://www.ruby-lang.org/en/downloads/branches/",
+              "https://guides.rubygems.org/bundler-compatibility/",
+              "https://nix-purifiers.github.io/evidence/23e3dcacdd3659d7ec2d9002b85b2a8ddb98741f033e4a76deb0235b56d75c94.json"
+            ],
+            "gap": null
           },
           "oneVersion": {
             "derivations": [
@@ -9527,7 +9535,7 @@
       "tier": 3,
       "reviewedRevision": "833ccb0b4a4112c0805b97be4a67695368ee06fb",
       "reviewedAt": "2026-11-06",
-      "rationale": "Concrete Linux sample/check derivations execute successfully and establish at least one exact SDK point. Native Darwin execution and the specific maintained-version proof described below are not demonstrated.",
+      "rationale": "Concrete Linux sample/check derivations execute an actually tested maintained tool/runtime pair and substantial lifecycle/consumer tests. Native Darwin execution is not demonstrated; Tier 3 remains unchanged.",
       "criteria": {
         "evaluation": {
           "state": "met",
@@ -9566,12 +9574,13 @@
           ]
         },
         "nonEolVersions": {
-          "state": "not-met",
-          "summary": "Upstream Carton Changes identifies stable 1.0.35, which is executed. Perl policy maintains the two most recent stable series and critical security support for recent series. Only Perl 5.42.3 is bound to the sample derivations; execution with the current 5.44 series and other maintained Perl series is absent. This does not label Perl 5.42 EOL.",
+          "state": "met",
+          "summary": "The native sample/environment checks execute Carton 1.0.35 with Perl 5.42.3. Upstream Carton Changes identifies stable 1.0.35, and Perl policy maintains the two most recent stable release series plus recent-series critical security support; 5.42 is a maintained series at the review date. This actually tested maintained tool/runtime pair meets the criterion. Perl 5.44 and other maintained series are unexecuted and are not claimed; an exhaustive matrix is not required.",
           "evidence": [
             "https://github.com/perl-carton/carton/blob/master/Changes",
             "https://perldoc.perl.org/perlpolicy",
-            "https://nix-purifiers.github.io/evidence/397ef69cfc55be19ae7d3d943cbf10f026d82b3846e8e72966cfa3173b4e9c3b.json"
+            "https://nix-purifiers.github.io/evidence/397ef69cfc55be19ae7d3d943cbf10f026d82b3846e8e72966cfa3173b4e9c3b.json",
+            "https://nix-purifiers.github.io/evidence/6ed28c36db1d9644c7fe8c7e29630e18427dd32d8a15ca1008c21a867079eb12.json"
           ]
         },
         "manySamples": {
@@ -9668,15 +9677,19 @@
             "gap": null
           },
           "nonEolVersions": {
-            "state": "not-met",
-            "summary": "Upstream Carton Changes identifies stable 1.0.35, which is executed. Perl policy maintains the two most recent stable series and critical security support for recent series. Only Perl 5.42.3 is bound to the sample derivations; execution with the current 5.44 series and other maintained Perl series is absent. This does not label Perl 5.42 EOL.",
-            "derivations": [],
+            "state": "met",
+            "summary": "The native sample/environment checks execute Carton 1.0.35 with Perl 5.42.3. Upstream Carton Changes identifies stable 1.0.35, and Perl policy maintains the two most recent stable release series plus recent-series critical security support; 5.42 is a maintained series at the review date. This actually tested maintained tool/runtime pair meets the criterion. Perl 5.44 and other maintained series are unexecuted and are not claimed; an exhaustive matrix is not required.",
+            "derivations": [
+              "carton-purifier:x86_64-linux:environment",
+              "carton-purifier:x86_64-linux:installed",
+              "carton-purifier:x86_64-linux:project"
+            ],
             "sources": [
               "https://github.com/perl-carton/carton/blob/master/Changes",
               "https://perldoc.perl.org/perlpolicy",
-              "https://nix-purifiers.github.io/evidence/397ef69cfc55be19ae7d3d943cbf10f026d82b3846e8e72966cfa3173b4e9c3b.json"
+              "https://nix-purifiers.github.io/evidence/6ed28c36db1d9644c7fe8c7e29630e18427dd32d8a15ca1008c21a867079eb12.json"
             ],
-            "gap": "Upstream Carton Changes identifies stable 1.0.35, which is executed. Perl policy maintains the two most recent stable series and critical security support for recent series. Only Perl 5.42.3 is bound to the sample derivations; execution with the current 5.44 series and other maintained Perl series is absent. This does not label Perl 5.42 EOL."
+            "gap": null
           },
           "manySamples": {
             "state": "not-met",
@@ -9964,7 +9977,7 @@
       "tier": 3,
       "reviewedRevision": "299d246725231f3ca4594ccdd9172b5b42f08878",
       "reviewedAt": "2026-11-06",
-      "rationale": "Concrete Linux sample/check derivations execute successfully and establish at least one exact SDK point. Native Darwin execution and the specific maintained-version proof described below are not demonstrated.",
+      "rationale": "Concrete Linux sample/check derivations execute an actually tested maintained tool/runtime pair and substantial lifecycle/consumer tests. Native Darwin execution is not demonstrated; Tier 3 remains unchanged.",
       "criteria": {
         "evaluation": {
           "state": "met",
@@ -10003,11 +10016,12 @@
           ]
         },
         "nonEolVersions": {
-          "state": "not-met",
-          "summary": "Chef primary lifecycle documentation lists 19.x as GA/LTS and deprecated 18.x as still supported until August 31, 2027. The check closure executes 19.3.14 through the Cinc command surface; no corresponding 18.x selected-SDK sample build is present. Deprecated is not treated as EOL.",
+          "state": "met",
+          "summary": "The native project check executes the packaged Chef 19.3.14 core through cinc-client local-mode convergence and asserts answer=42. Chef primary lifecycle policy identifies 19.x as the current GA/LTS maintained line. This actually tested maintained tool/runtime point meets the criterion. Deprecated-but-maintained 18.x is not executed or claimed; an exhaustive maintained-line matrix is not required.",
           "evidence": [
             "https://docs.chef.io/versions/",
-            "https://nix-purifiers.github.io/evidence/397ef69cfc55be19ae7d3d943cbf10f026d82b3846e8e72966cfa3173b4e9c3b.json"
+            "https://nix-purifiers.github.io/evidence/397ef69cfc55be19ae7d3d943cbf10f026d82b3846e8e72966cfa3173b4e9c3b.json",
+            "https://nix-purifiers.github.io/evidence/6ed28c36db1d9644c7fe8c7e29630e18427dd32d8a15ca1008c21a867079eb12.json"
           ]
         },
         "manySamples": {
@@ -10100,14 +10114,16 @@
             "gap": null
           },
           "nonEolVersions": {
-            "state": "not-met",
-            "summary": "Chef primary lifecycle documentation lists 19.x as GA/LTS and deprecated 18.x as still supported until August 31, 2027. The check closure executes 19.3.14 through the Cinc command surface; no corresponding 18.x selected-SDK sample build is present. Deprecated is not treated as EOL.",
-            "derivations": [],
+            "state": "met",
+            "summary": "The native project check executes the packaged Chef 19.3.14 core through cinc-client local-mode convergence and asserts answer=42. Chef primary lifecycle policy identifies 19.x as the current GA/LTS maintained line. This actually tested maintained tool/runtime point meets the criterion. Deprecated-but-maintained 18.x is not executed or claimed; an exhaustive maintained-line matrix is not required.",
+            "derivations": [
+              "chef-purifier:x86_64-linux:project"
+            ],
             "sources": [
               "https://docs.chef.io/versions/",
-              "https://nix-purifiers.github.io/evidence/397ef69cfc55be19ae7d3d943cbf10f026d82b3846e8e72966cfa3173b4e9c3b.json"
+              "https://nix-purifiers.github.io/evidence/6ed28c36db1d9644c7fe8c7e29630e18427dd32d8a15ca1008c21a867079eb12.json"
             ],
-            "gap": "Chef primary lifecycle documentation lists 19.x as GA/LTS and deprecated 18.x as still supported until August 31, 2027. The check closure executes 19.3.14 through the Cinc command surface; no corresponding 18.x selected-SDK sample build is present. Deprecated is not treated as EOL."
+            "gap": null
           },
           "manySamples": {
             "state": "not-met",
@@ -11894,7 +11910,7 @@
         },
         "darwin": {
           "state": "not-met",
-          "summary": "The reviewed workflow runs Linux hosts only and the inspected receipts contain no successful native Darwin project/check execution. Baseline real-world-cpr explicitly returns a skipped marker on Darwin; a new declared macOS workflow in the producer branch is pending runtime proof.",
+          "summary": "The reviewed workflow runs Linux hosts only and the inspected receipts contain no successful native Darwin project/check execution. Baseline real-world-cpr explicitly returns a skipped marker on Darwin. Later macOS workflows and results are outside this reviewed source snapshot.",
           "evidence": [
             "https://github.com/nix-purifiers/cmake-purifier/blob/195cc8d9b3fc7353ff9e5687513bb95210d8f419/.github/workflows/check.yml",
             "https://nix-purifiers.github.io/evidence/397ef69cfc55be19ae7d3d943cbf10f026d82b3846e8e72966cfa3173b4e9c3b.json"
@@ -11917,14 +11933,14 @@
         },
         "manySamples": {
           "state": "not-met",
-          "summary": "One independent cpr project is confirmed at the reviewed revision. Fixture targets, source-transport variants and resource/native consumers are useful tests but not many independent projects. Pending spdlog work is a different unreviewed revision.",
+          "summary": "One independent cpr project is confirmed at the reviewed revision. Fixture targets, source-transport variants and resource/native consumers are useful tests but not many independent projects. Later spdlog sources and results are outside this reviewed baseline.",
           "evidence": [
             "https://nix-purifiers.github.io/evidence/397ef69cfc55be19ae7d3d943cbf10f026d82b3846e8e72966cfa3173b4e9c3b.json"
           ]
         },
         "longCompatibility": {
           "state": "not-met",
-          "summary": "The baseline checks execute CMake 4.4.4. Producer SDK 3.31/4.3/4.4 builds are pending at a different source revision, and the frozen legacy prototype has no matching executed release binding. No historical CMake compatibility is credited from those drafts.",
+          "summary": "The reviewed baseline checks execute CMake 4.4.4. Later SDK 3.31/4.3/4.4 and legacy-prototype sources and results are outside this reviewed source snapshot. No historical CMake compatibility is established by the baseline receipts.",
           "evidence": [
             "https://nix-purifiers.github.io/evidence/397ef69cfc55be19ae7d3d943cbf10f026d82b3846e8e72966cfa3173b4e9c3b.json"
           ]
@@ -12068,7 +12084,7 @@
           },
           "darwin": {
             "state": "not-met",
-            "summary": "The reviewed workflow runs Linux hosts only and the inspected receipts contain no successful native Darwin project/check execution. Baseline real-world-cpr explicitly returns a skipped marker on Darwin; a new declared macOS workflow in the producer branch is pending runtime proof.",
+            "summary": "The reviewed workflow runs Linux hosts only and the inspected receipts contain no successful native Darwin project/check execution. Baseline real-world-cpr explicitly returns a skipped marker on Darwin. Later macOS workflows and results are outside this reviewed source snapshot.",
             "derivations": [],
             "sources": [
               "https://github.com/nix-purifiers/cmake-purifier/blob/195cc8d9b3fc7353ff9e5687513bb95210d8f419/.github/workflows/check.yml",
@@ -12099,21 +12115,21 @@
           },
           "manySamples": {
             "state": "not-met",
-            "summary": "One independent cpr project is confirmed at the reviewed revision. Fixture targets, source-transport variants and resource/native consumers are useful tests but not many independent projects. Pending spdlog work is a different unreviewed revision.",
+            "summary": "One independent cpr project is confirmed at the reviewed revision. Fixture targets, source-transport variants and resource/native consumers are useful tests but not many independent projects. Later spdlog sources and results are outside this reviewed baseline.",
             "derivations": [],
             "sources": [
               "https://nix-purifiers.github.io/evidence/397ef69cfc55be19ae7d3d943cbf10f026d82b3846e8e72966cfa3173b4e9c3b.json"
             ],
-            "gap": "One independent cpr project is confirmed at the reviewed revision. Fixture targets, source-transport variants and resource/native consumers are useful tests but not many independent projects. Pending spdlog work is a different unreviewed revision."
+            "gap": "One independent cpr project is confirmed at the reviewed revision. Fixture targets, source-transport variants and resource/native consumers are useful tests but not many independent projects. Later spdlog sources and results are outside this reviewed baseline."
           },
           "longCompatibility": {
             "state": "not-met",
-            "summary": "The baseline checks execute CMake 4.4.4. Producer SDK 3.31/4.3/4.4 builds are pending at a different source revision, and the frozen legacy prototype has no matching executed release binding. No historical CMake compatibility is credited from those drafts.",
+            "summary": "The reviewed baseline checks execute CMake 4.4.4. Later SDK 3.31/4.3/4.4 and legacy-prototype sources and results are outside this reviewed source snapshot. No historical CMake compatibility is established by the baseline receipts.",
             "derivations": [],
             "sources": [
               "https://nix-purifiers.github.io/evidence/397ef69cfc55be19ae7d3d943cbf10f026d82b3846e8e72966cfa3173b4e9c3b.json"
             ],
-            "gap": "The baseline checks execute CMake 4.4.4. Producer SDK 3.31/4.3/4.4 builds are pending at a different source revision, and the frozen legacy prototype has no matching executed release binding. No historical CMake compatibility is credited from those drafts."
+            "gap": "The reviewed baseline checks execute CMake 4.4.4. Later SDK 3.31/4.3/4.4 and legacy-prototype sources and results are outside this reviewed source snapshot. No historical CMake compatibility is established by the baseline receipts."
           }
         },
         "derivations": {
@@ -19024,7 +19040,7 @@
       "tier": 3,
       "reviewedRevision": "58d2913eabcb0c31409a49f0ed8d91008fd32bdf",
       "reviewedAt": "2026-11-06",
-      "rationale": "Tier3 confirmed by executable native Linux sample derivations. Good tests are demonstrated; native Darwin execution and specific maintained-version coverage remain unproven as documented. Many-sample and long-compatibility Tier1 judgments are not demonstrated.",
+      "rationale": "Tier3 confirmed by actual native Linux sample derivations. Good tests and the explicitly scoped maintained tool/runtime point are demonstrated; native Darwin execution is missing. Broad independent sample corpus and long historical compatibility remain unproven.",
       "criteria": {
         "evaluation": {
           "state": "met",
@@ -19070,11 +19086,13 @@
           ]
         },
         "nonEolVersions": {
-          "state": "not-met",
-          "summary": "Official Docker Engine29 release notes identify29.9.3 as a security update on2026-11-03. The locked package set supplies29.9.2. Execution of29.9.3 is absent; this is a current-release proof gap, not evidence that29.9.2 has a formal EOL date. Producer's Darwin/version-matrix branch is unpublished and has no qualifying receipts yet.",
+          "state": "met",
+          "summary": "Met only for the actually executed Dockerfile-build backend Buildah1.46.0 inside the native x86_64-linux VM. The successful image derivation executes the locked Dockerfile including RUN instructions and exports OCI; upstream marks Buildah1.46.0 (released2026-10-21) as latest. This is a maintained backend/host point. It does not establish DockerEngine29.9.2 or any daemon runtime: that value was package evaluation only, and the offline check only validates OCI layout/blob digests.",
           "evidence": [
             "https://docs.docker.com/engine/release-notes/29/",
-            "https://nix-purifiers.github.io/evidence/8c4a333a81114dd8a45636fbdb0ee982c608d861a2ffb55cf9981c4c1729390a.json"
+            "https://nix-purifiers.github.io/evidence/8c4a333a81114dd8a45636fbdb0ee982c608d861a2ffb55cf9981c4c1729390a.json",
+            "https://github.com/podman-container-tools/buildah/releases/tag/v1.46.0",
+            "https://nix-purifiers.github.io/evidence/f7b695c0c28beba34685c2605aad79c71bb9e2168d75c960f7d9287b3d2c9b3c.json"
           ]
         },
         "manySamples": {
@@ -19087,7 +19105,7 @@
         },
         "longCompatibility": {
           "state": "not-met",
-          "summary": "Executed SDK points are docker=29.9.2. No historical SDK-line execution matrix is present in the reviewed check definitions or successful receipts; target/fixture variants do not demonstrate old toolchain compatibility.",
+          "summary": "The reviewed image derivation executes Buildah 1.46.0 inside a native Linux VM to build the Dockerfile and export OCI. Docker Engine 29.9.2 is a package-set evaluation result, not an executed client or daemon. No historical Buildah-line runtime matrix is established by these successful receipts; fixture and target variants do not demonstrate historical toolchain compatibility.",
           "evidence": [
             "https://github.com/nix-purifiers/docker-purifier/blob/58d2913eabcb0c31409a49f0ed8d91008fd32bdf/tests/default.nix",
             "https://nix-purifiers.github.io/evidence/8c4a333a81114dd8a45636fbdb0ee982c608d861a2ffb55cf9981c4c1729390a.json"
@@ -19172,17 +19190,16 @@
             "gap": null
           },
           "nonEolVersions": {
-            "state": "not-met",
-            "summary": "Official Docker Engine29 release notes identify29.9.3 as a security update on2026-11-03. The locked package set supplies29.9.2. Execution of29.9.3 is absent; this is a current-release proof gap, not evidence that29.9.2 has a formal EOL date. Producer's Darwin/version-matrix branch is unpublished and has no qualifying receipts yet.",
+            "state": "met",
+            "summary": "Met only for the actually executed Dockerfile-build backend Buildah1.46.0 inside the native x86_64-linux VM. The successful image derivation executes the locked Dockerfile including RUN instructions and exports OCI; upstream marks Buildah1.46.0 (released2026-10-21) as latest. This is a maintained backend/host point. It does not establish DockerEngine29.9.2 or any daemon runtime: that value was package evaluation only, and the offline check only validates OCI layout/blob digests.",
             "derivations": [
-              "docker-purifier:x86_64-linux:image",
-              "docker-purifier:x86_64-linux:offline"
+              "docker-purifier:x86_64-linux:image"
             ],
             "sources": [
-              "https://docs.docker.com/engine/release-notes/29/",
-              "https://nix-purifiers.github.io/evidence/8c4a333a81114dd8a45636fbdb0ee982c608d861a2ffb55cf9981c4c1729390a.json"
+              "https://github.com/podman-container-tools/buildah/releases/tag/v1.46.0",
+              "https://nix-purifiers.github.io/evidence/f7b695c0c28beba34685c2605aad79c71bb9e2168d75c960f7d9287b3d2c9b3c.json"
             ],
-            "gap": "Official Docker Engine29 release notes identify29.9.3 as a security update on2026-11-03. The locked package set supplies29.9.2. Execution of29.9.3 is absent; this is a current-release proof gap, not evidence that29.9.2 has a formal EOL date. Producer's Darwin/version-matrix branch is unpublished and has no qualifying receipts yet."
+            "gap": null
           },
           "manySamples": {
             "state": "not-met",
@@ -19199,7 +19216,7 @@
           },
           "longCompatibility": {
             "state": "not-met",
-            "summary": "Executed SDK points are docker=29.9.2. No historical SDK-line execution matrix is present in the reviewed check definitions or successful receipts; target/fixture variants do not demonstrate old toolchain compatibility.",
+            "summary": "The reviewed image derivation executes Buildah 1.46.0 inside a native Linux VM to build the Dockerfile and export OCI. Docker Engine 29.9.2 is a package-set evaluation result, not an executed client or daemon. No historical Buildah-line runtime matrix is established by these successful receipts; fixture and target variants do not demonstrate historical toolchain compatibility.",
             "derivations": [
               "docker-purifier:x86_64-linux:image",
               "docker-purifier:x86_64-linux:offline"
@@ -19872,11 +19889,13 @@
         },
         "nonEolVersions": {
           "state": "not-met",
-          "summary": "Upstream dlang/dub release API reports1.43.0 released2026-11-05; locked package set uses Dub1.42.0 and LDC1.42.0. D release history is not a Dub maintenance/EOL table. No explicit maintained-version set was established, and no1.43.0 execution is present. Full non-EOL coverage is therefore not demonstrated;1.42.0 is not labelled EOL.",
+          "summary": "Successful sample checks execute Dub1.42.0 with LDC1.42.0. Upstream release API identifies newer minor1.43.0, but no primary maintenance statement was established for the tested Dub1.42.0 tool/compiler pair. This specific maintained-status binding remains absent; the newer minor does not itself declare1.42.0 EOL, and exhaustive older-version coverage is not required.",
           "evidence": [
             "https://github.com/dlang/dub/releases",
             "https://dlang.org/changelog/",
-            "https://nix-purifiers.github.io/evidence/8c4a333a81114dd8a45636fbdb0ee982c608d861a2ffb55cf9981c4c1729390a.json"
+            "https://nix-purifiers.github.io/evidence/8c4a333a81114dd8a45636fbdb0ee982c608d861a2ffb55cf9981c4c1729390a.json",
+            "https://nix-purifiers.github.io/evidence/2f7da54e2a6bf6cd7146a5d25feaa60028c646e0e9b4741da04582ee390c32b6.json",
+            "https://nix-purifiers.github.io/evidence/f7b695c0c28beba34685c2605aad79c71bb9e2168d75c960f7d9287b3d2c9b3c.json"
           ]
         },
         "manySamples": {
@@ -19970,16 +19989,17 @@
           },
           "nonEolVersions": {
             "state": "not-met",
-            "summary": "Upstream dlang/dub release API reports1.43.0 released2026-11-05; locked package set uses Dub1.42.0 and LDC1.42.0. D release history is not a Dub maintenance/EOL table. No explicit maintained-version set was established, and no1.43.0 execution is present. Full non-EOL coverage is therefore not demonstrated;1.42.0 is not labelled EOL.",
+            "summary": "Successful sample checks execute Dub1.42.0 with LDC1.42.0. Upstream release API identifies newer minor1.43.0, but no primary maintenance statement was established for the tested Dub1.42.0 tool/compiler pair. This specific maintained-status binding remains absent; the newer minor does not itself declare1.42.0 EOL, and exhaustive older-version coverage is not required.",
             "derivations": [
               "dub-purifier:x86_64-linux:project"
             ],
             "sources": [
               "https://github.com/dlang/dub/releases",
               "https://dlang.org/changelog/",
-              "https://nix-purifiers.github.io/evidence/8c4a333a81114dd8a45636fbdb0ee982c608d861a2ffb55cf9981c4c1729390a.json"
+              "https://nix-purifiers.github.io/evidence/2f7da54e2a6bf6cd7146a5d25feaa60028c646e0e9b4741da04582ee390c32b6.json",
+              "https://nix-purifiers.github.io/evidence/f7b695c0c28beba34685c2605aad79c71bb9e2168d75c960f7d9287b3d2c9b3c.json"
             ],
-            "gap": "Upstream dlang/dub release API reports1.43.0 released2026-11-05; locked package set uses Dub1.42.0 and LDC1.42.0. D release history is not a Dub maintenance/EOL table. No explicit maintained-version set was established, and no1.43.0 execution is present. Full non-EOL coverage is therefore not demonstrated;1.42.0 is not labelled EOL."
+            "gap": "Successful sample checks execute Dub1.42.0 with LDC1.42.0. Upstream release API identifies newer minor1.43.0, but no primary maintenance statement was established for the tested Dub1.42.0 tool/compiler pair. This specific maintained-status binding remains absent; the newer minor does not itself declare1.42.0 EOL, and exhaustive older-version coverage is not required."
           },
           "manySamples": {
             "state": "not-met",
@@ -20130,11 +20150,13 @@
         },
         "nonEolVersions": {
           "state": "not-met",
-          "summary": "Elm's primary news lists0.19.2; the fresher compiler releases API identifies0.19.3 released2026-10-02. This purifier builds a custom0.19.1 compiler, verified by checks.elm_0_19_1-version; ambient locked nixpkgs Elm0.19.2 is not its tested compiler. No0.19.3 execution or explicit upstream maintained-version policy was established. Non-EOL breadth is not demonstrated, without declaring0.19.1 EOL.",
+          "summary": "Successful checks execute Elm0.19.1 and0.19.2, including a real0.19.2 list-extra test run in exact-source native CI. Upstream0.19.3 release notes describe the current compiler and an upgrade, but the inspected primary material does not bind maintained support status to the tested earlier compiler points. This is a maintained-status evidence gap for those exact points;0.19.3 existence alone is not an EOL declaration and no exhaustive patch matrix is required. A primary support statement covering a tested point, or execution of the explicitly current release, would resolve it.",
           "evidence": [
             "https://elm-lang.org/news",
             "https://github.com/elm/compiler/releases",
-            "https://nix-purifiers.github.io/evidence/8c4a333a81114dd8a45636fbdb0ee982c608d861a2ffb55cf9981c4c1729390a.json"
+            "https://nix-purifiers.github.io/evidence/8c4a333a81114dd8a45636fbdb0ee982c608d861a2ffb55cf9981c4c1729390a.json",
+            "https://nix-purifiers.github.io/evidence/8632bac3a55bad46c61ab8184fccb4b7e578d5545efb8a0d44a78b57d73b1b22.json",
+            "https://nix-purifiers.github.io/evidence/f7b695c0c28beba34685c2605aad79c71bb9e2168d75c960f7d9287b3d2c9b3c.json"
           ]
         },
         "manySamples": {
@@ -20260,7 +20282,7 @@
           },
           "nonEolVersions": {
             "state": "not-met",
-            "summary": "Elm's primary news lists0.19.2; the fresher compiler releases API identifies0.19.3 released2026-10-02. This purifier builds a custom0.19.1 compiler, verified by checks.elm_0_19_1-version; ambient locked nixpkgs Elm0.19.2 is not its tested compiler. No0.19.3 execution or explicit upstream maintained-version policy was established. Non-EOL breadth is not demonstrated, without declaring0.19.1 EOL.",
+            "summary": "Successful checks execute Elm0.19.1 and0.19.2, including a real0.19.2 list-extra test run in exact-source native CI. Upstream0.19.3 release notes describe the current compiler and an upgrade, but the inspected primary material does not bind maintained support status to the tested earlier compiler points. This is a maintained-status evidence gap for those exact points;0.19.3 existence alone is not an EOL declaration and no exhaustive patch matrix is required. A primary support statement covering a tested point, or execution of the explicitly current release, would resolve it.",
             "derivations": [
               "elm-purifier:x86_64-linux:conformance-offline",
               "elm-purifier:x86_64-linux:elm_0_19_1-version",
@@ -20272,9 +20294,10 @@
             "sources": [
               "https://elm-lang.org/news",
               "https://github.com/elm/compiler/releases",
-              "https://nix-purifiers.github.io/evidence/8c4a333a81114dd8a45636fbdb0ee982c608d861a2ffb55cf9981c4c1729390a.json"
+              "https://nix-purifiers.github.io/evidence/8632bac3a55bad46c61ab8184fccb4b7e578d5545efb8a0d44a78b57d73b1b22.json",
+              "https://nix-purifiers.github.io/evidence/f7b695c0c28beba34685c2605aad79c71bb9e2168d75c960f7d9287b3d2c9b3c.json"
             ],
-            "gap": "Elm's primary news lists0.19.2; the fresher compiler releases API identifies0.19.3 released2026-10-02. This purifier builds a custom0.19.1 compiler, verified by checks.elm_0_19_1-version; ambient locked nixpkgs Elm0.19.2 is not its tested compiler. No0.19.3 execution or explicit upstream maintained-version policy was established. Non-EOL breadth is not demonstrated, without declaring0.19.1 EOL."
+            "gap": "Successful checks execute Elm0.19.1 and0.19.2, including a real0.19.2 list-extra test run in exact-source native CI. Upstream0.19.3 release notes describe the current compiler and an upgrade, but the inspected primary material does not bind maintained support status to the tested earlier compiler points. This is a maintained-status evidence gap for those exact points;0.19.3 existence alone is not an EOL declaration and no exhaustive patch matrix is required. A primary support statement covering a tested point, or execution of the explicitly current release, would resolve it."
           },
           "manySamples": {
             "state": "not-met",
@@ -20729,10 +20752,12 @@
         },
         "nonEolVersions": {
           "state": "not-met",
-          "summary": "Elpaca upstream requires Emacs>=27.1 and git; its release API identifiesv0.2.0. The tested SDK is the exact locked Elpaca source with an Emacs31 date-table patch and Emacs31.1. A minimum requirement does not establish maintained Emacs/Elpaca version coverage, and no other Emacs versions were executed. Non-EOL breadth remains unproven without assigning invented EOL dates.",
+          "summary": "The real sample executes Emacs31.1 with the locked Elpaca2025-11-06 unstable snapshot plus the date-table patch. Upstream requires Emacs>=27.1 and has a0.2.0 release; the minimum host requirement does not establish that this exact older patched manager snapshot is a currently maintained manager/host pair. The missing fact is maintenance provenance for the executed manager point, not an exhaustive Emacs version matrix. No EOL date is invented.",
           "evidence": [
             "https://github.com/progfolio/elpaca",
-            "https://nix-purifiers.github.io/evidence/8c4a333a81114dd8a45636fbdb0ee982c608d861a2ffb55cf9981c4c1729390a.json"
+            "https://nix-purifiers.github.io/evidence/8c4a333a81114dd8a45636fbdb0ee982c608d861a2ffb55cf9981c4c1729390a.json",
+            "https://nix-purifiers.github.io/evidence/a456eba28c79e536282c22798f279e7d198c91d766882723e84b312deaa212a1.json",
+            "https://nix-purifiers.github.io/evidence/f7b695c0c28beba34685c2605aad79c71bb9e2168d75c960f7d9287b3d2c9b3c.json"
           ]
         },
         "manySamples": {
@@ -20826,15 +20851,16 @@
           },
           "nonEolVersions": {
             "state": "not-met",
-            "summary": "Elpaca upstream requires Emacs>=27.1 and git; its release API identifiesv0.2.0. The tested SDK is the exact locked Elpaca source with an Emacs31 date-table patch and Emacs31.1. A minimum requirement does not establish maintained Emacs/Elpaca version coverage, and no other Emacs versions were executed. Non-EOL breadth remains unproven without assigning invented EOL dates.",
+            "summary": "The real sample executes Emacs31.1 with the locked Elpaca2025-11-06 unstable snapshot plus the date-table patch. Upstream requires Emacs>=27.1 and has a0.2.0 release; the minimum host requirement does not establish that this exact older patched manager snapshot is a currently maintained manager/host pair. The missing fact is maintenance provenance for the executed manager point, not an exhaustive Emacs version matrix. No EOL date is invented.",
             "derivations": [
               "elpaca-purifier:x86_64-linux:project"
             ],
             "sources": [
               "https://github.com/progfolio/elpaca",
-              "https://nix-purifiers.github.io/evidence/8c4a333a81114dd8a45636fbdb0ee982c608d861a2ffb55cf9981c4c1729390a.json"
+              "https://nix-purifiers.github.io/evidence/a456eba28c79e536282c22798f279e7d198c91d766882723e84b312deaa212a1.json",
+              "https://nix-purifiers.github.io/evidence/f7b695c0c28beba34685c2605aad79c71bb9e2168d75c960f7d9287b3d2c9b3c.json"
             ],
-            "gap": "Elpaca upstream requires Emacs>=27.1 and git; its release API identifiesv0.2.0. The tested SDK is the exact locked Elpaca source with an Emacs31 date-table patch and Emacs31.1. A minimum requirement does not establish maintained Emacs/Elpaca version coverage, and no other Emacs versions were executed. Non-EOL breadth remains unproven without assigning invented EOL dates."
+            "gap": "The real sample executes Emacs31.1 with the locked Elpaca2025-11-06 unstable snapshot plus the date-table patch. Upstream requires Emacs>=27.1 and has a0.2.0 release; the minimum host requirement does not establish that this exact older patched manager snapshot is a currently maintained manager/host pair. The missing fact is maintenance provenance for the executed manager point, not an exhaustive Emacs version matrix. No EOL date is invented."
           },
           "manySamples": {
             "state": "not-met",
@@ -20938,7 +20964,7 @@
       "tier": 3,
       "reviewedRevision": "8d883c7d2034035692378529c974a3e38cd6724e",
       "reviewedAt": "2026-11-06",
-      "rationale": "Tier3 confirmed by executable native Linux sample derivations. Good tests are demonstrated; native Darwin execution and specific maintained-version coverage remain unproven as documented. Many-sample and long-compatibility Tier1 judgments are not demonstrated.",
+      "rationale": "Tier3 confirmed by actual native Linux sample derivations. Good tests and the explicitly scoped maintained tool/runtime point are demonstrated; native Darwin execution is missing. Broad independent sample corpus and long historical compatibility remain unproven.",
       "criteria": {
         "evaluation": {
           "state": "met",
@@ -20984,12 +21010,14 @@
           ]
         },
         "nonEolVersions": {
-          "state": "not-met",
-          "summary": "Espressif stable version docs recommend current stable and describe release support periods. Upstream release API identifiesv6.1. The SDK source pins fff9895c82d744c7237be8847347bdd1b07c6643 and labels versionv6.1, and the build receipts prove this point. Other still-maintained ESP-IDF lines under the multi-release support policy are not executed. Consequently non-EOL breadth is not demonstrated;v6.1 itself is not called unsupported.",
+          "state": "met",
+          "summary": "Met for actually executed ESP-IDF6.1 on native x86_64-linux: the project check constructs ESP32-C3 firmware and validates it with esptool; the host check executes the Linux ELF. Upstream identifies6.1 as current stable (released2026-08-27), with30 months support per major/minor release. This proves a maintained exact tool/host pair. Other maintained ESP-IDF lines are not required for this criterion and are not claimed; physical-board runtime remains unproven.",
           "evidence": [
             "https://docs.espressif.com/projects/esp-idf/en/stable/esp32/versions.html",
             "https://github.com/espressif/esp-idf/releases",
-            "https://nix-purifiers.github.io/evidence/8c4a333a81114dd8a45636fbdb0ee982c608d861a2ffb55cf9981c4c1729390a.json"
+            "https://nix-purifiers.github.io/evidence/8c4a333a81114dd8a45636fbdb0ee982c608d861a2ffb55cf9981c4c1729390a.json",
+            "https://github.com/espressif/esp-idf/releases/tag/v6.1",
+            "https://nix-purifiers.github.io/evidence/f7b695c0c28beba34685c2605aad79c71bb9e2168d75c960f7d9287b3d2c9b3c.json"
           ]
         },
         "manySamples": {
@@ -21093,18 +21121,18 @@
             "gap": null
           },
           "nonEolVersions": {
-            "state": "not-met",
-            "summary": "Espressif stable version docs recommend current stable and describe release support periods. Upstream release API identifiesv6.1. The SDK source pins fff9895c82d744c7237be8847347bdd1b07c6643 and labels versionv6.1, and the build receipts prove this point. Other still-maintained ESP-IDF lines under the multi-release support policy are not executed. Consequently non-EOL breadth is not demonstrated;v6.1 itself is not called unsupported.",
+            "state": "met",
+            "summary": "Met for actually executed ESP-IDF6.1 on native x86_64-linux: the project check constructs ESP32-C3 firmware and validates it with esptool; the host check executes the Linux ELF. Upstream identifies6.1 as current stable (released2026-08-27), with30 months support per major/minor release. This proves a maintained exact tool/host pair. Other maintained ESP-IDF lines are not required for this criterion and are not claimed; physical-board runtime remains unproven.",
             "derivations": [
-              "esp-idf-purifier:x86_64-linux:host",
-              "esp-idf-purifier:x86_64-linux:project"
+              "esp-idf-purifier:x86_64-linux:project",
+              "esp-idf-purifier:x86_64-linux:host"
             ],
             "sources": [
               "https://docs.espressif.com/projects/esp-idf/en/stable/esp32/versions.html",
-              "https://github.com/espressif/esp-idf/releases",
-              "https://nix-purifiers.github.io/evidence/8c4a333a81114dd8a45636fbdb0ee982c608d861a2ffb55cf9981c4c1729390a.json"
+              "https://github.com/espressif/esp-idf/releases/tag/v6.1",
+              "https://nix-purifiers.github.io/evidence/f7b695c0c28beba34685c2605aad79c71bb9e2168d75c960f7d9287b3d2c9b3c.json"
             ],
-            "gap": "Espressif stable version docs recommend current stable and describe release support periods. Upstream release API identifiesv6.1. The SDK source pins fff9895c82d744c7237be8847347bdd1b07c6643 and labels versionv6.1, and the build receipts prove this point. Other still-maintained ESP-IDF lines under the multi-release support policy are not executed. Consequently non-EOL breadth is not demonstrated;v6.1 itself is not called unsupported."
+            "gap": null
           },
           "manySamples": {
             "state": "not-met",
@@ -21324,11 +21352,12 @@
         },
         "nonEolVersions": {
           "state": "not-met",
-          "summary": "Fiji publishes rolling latest/stable builds and archived datestamps plus historical life-line downloads. The tested locked Fiji distribution is20250514-1117. An archive entry is not a maintained-support guarantee, and latest/stable current snapshot execution and a maintained-version policy binding are absent. No EOL date is inferred from the distribution age.",
+          "summary": "The real sample executes Fiji20250514-1117. Upstream publishes rolling latest/stable images and datestamped/life-line archives, but the inspected primary material does not designate this exact archived distribution snapshot as a maintained current distribution/runtime pair. Maintenance status for the executed snapshot is the specific missing binding; no EOL date or exhaustive image-version matrix is inferred.",
           "evidence": [
             "https://imagej.net/software/fiji/downloads",
             "https://downloads.imagej.net/fiji/archive/latest/",
-            "https://nix-purifiers.github.io/evidence/8c4a333a81114dd8a45636fbdb0ee982c608d861a2ffb55cf9981c4c1729390a.json"
+            "https://nix-purifiers.github.io/evidence/8c4a333a81114dd8a45636fbdb0ee982c608d861a2ffb55cf9981c4c1729390a.json",
+            "https://nix-purifiers.github.io/evidence/f7b695c0c28beba34685c2605aad79c71bb9e2168d75c960f7d9287b3d2c9b3c.json"
           ]
         },
         "manySamples": {
@@ -21422,16 +21451,16 @@
           },
           "nonEolVersions": {
             "state": "not-met",
-            "summary": "Fiji publishes rolling latest/stable builds and archived datestamps plus historical life-line downloads. The tested locked Fiji distribution is20250514-1117. An archive entry is not a maintained-support guarantee, and latest/stable current snapshot execution and a maintained-version policy binding are absent. No EOL date is inferred from the distribution age.",
+            "summary": "The real sample executes Fiji20250514-1117. Upstream publishes rolling latest/stable images and datestamped/life-line archives, but the inspected primary material does not designate this exact archived distribution snapshot as a maintained current distribution/runtime pair. Maintenance status for the executed snapshot is the specific missing binding; no EOL date or exhaustive image-version matrix is inferred.",
             "derivations": [
               "fiji-purifier:x86_64-linux:project"
             ],
             "sources": [
               "https://imagej.net/software/fiji/downloads",
               "https://downloads.imagej.net/fiji/archive/latest/",
-              "https://nix-purifiers.github.io/evidence/8c4a333a81114dd8a45636fbdb0ee982c608d861a2ffb55cf9981c4c1729390a.json"
+              "https://nix-purifiers.github.io/evidence/f7b695c0c28beba34685c2605aad79c71bb9e2168d75c960f7d9287b3d2c9b3c.json"
             ],
-            "gap": "Fiji publishes rolling latest/stable builds and archived datestamps plus historical life-line downloads. The tested locked Fiji distribution is20250514-1117. An archive entry is not a maintained-support guarantee, and latest/stable current snapshot execution and a maintained-version policy binding are absent. No EOL date is inferred from the distribution age."
+            "gap": "The real sample executes Fiji20250514-1117. Upstream publishes rolling latest/stable images and datestamped/life-line archives, but the inspected primary material does not designate this exact archived distribution snapshot as a maintained current distribution/runtime pair. Maintenance status for the executed snapshot is the specific missing binding; no EOL date or exhaustive image-version matrix is inferred."
           },
           "manySamples": {
             "state": "not-met",
@@ -21533,7 +21562,7 @@
       "tier": 3,
       "reviewedRevision": "6c20931cc8b5f251d1b041531227d9c7ad1c7cda",
       "reviewedAt": "2026-11-06",
-      "rationale": "Tier3 confirmed by executable native Linux sample derivations. Good tests are demonstrated; native Darwin execution and specific maintained-version coverage remain unproven as documented. Many-sample and long-compatibility Tier1 judgments are not demonstrated.",
+      "rationale": "Tier3 confirmed by actual native Linux sample derivations. Good tests and the explicitly scoped maintained tool/runtime point are demonstrated; native Darwin execution is missing. Broad independent sample corpus and long historical compatibility remain unproven.",
       "criteria": {
         "evaluation": {
           "state": "met",
@@ -21579,12 +21608,14 @@
           ]
         },
         "nonEolVersions": {
-          "state": "not-met",
-          "summary": "Mozilla explicitly offers regular Firefox and ESR update channels. The exact locked regular Firefox159.0 is exercised, but no ESR derivation/runtime receipt is present. One regular release cannot establish coverage of the maintained channel set. This does not claim that159.0 has reached EOL.",
+          "state": "met",
+          "summary": "Met for actually executed regular-channel Firefox159.0 on native x86_64-linux. The successful project derivation runs the locked browser/extension workflow and requires its screenshot artifact. Mozilla released159.0 on2026-10-27 and describes the actively maintained regular channel separately from ESR. This proves one maintained regular-browser/host pair; ESR execution is neither required for this criterion nor claimed.",
           "evidence": [
             "https://support.mozilla.org/en-US/kb/choosing-firefox-update-channel",
             "https://support.mozilla.org/en-US/kb/firefox-esr-release-cycle",
-            "https://nix-purifiers.github.io/evidence/8c4a333a81114dd8a45636fbdb0ee982c608d861a2ffb55cf9981c4c1729390a.json"
+            "https://nix-purifiers.github.io/evidence/8c4a333a81114dd8a45636fbdb0ee982c608d861a2ffb55cf9981c4c1729390a.json",
+            "https://www.firefox.com/en-US/firefox/159.0/releasenotes/",
+            "https://nix-purifiers.github.io/evidence/f7b695c0c28beba34685c2605aad79c71bb9e2168d75c960f7d9287b3d2c9b3c.json"
           ]
         },
         "manySamples": {
@@ -21677,17 +21708,17 @@
             "gap": null
           },
           "nonEolVersions": {
-            "state": "not-met",
-            "summary": "Mozilla explicitly offers regular Firefox and ESR update channels. The exact locked regular Firefox159.0 is exercised, but no ESR derivation/runtime receipt is present. One regular release cannot establish coverage of the maintained channel set. This does not claim that159.0 has reached EOL.",
+            "state": "met",
+            "summary": "Met for actually executed regular-channel Firefox159.0 on native x86_64-linux. The successful project derivation runs the locked browser/extension workflow and requires its screenshot artifact. Mozilla released159.0 on2026-10-27 and describes the actively maintained regular channel separately from ESR. This proves one maintained regular-browser/host pair; ESR execution is neither required for this criterion nor claimed.",
             "derivations": [
               "firefox-purifier:x86_64-linux:project"
             ],
             "sources": [
+              "https://www.firefox.com/en-US/firefox/159.0/releasenotes/",
               "https://support.mozilla.org/en-US/kb/choosing-firefox-update-channel",
-              "https://support.mozilla.org/en-US/kb/firefox-esr-release-cycle",
-              "https://nix-purifiers.github.io/evidence/8c4a333a81114dd8a45636fbdb0ee982c608d861a2ffb55cf9981c4c1729390a.json"
+              "https://nix-purifiers.github.io/evidence/f7b695c0c28beba34685c2605aad79c71bb9e2168d75c960f7d9287b3d2c9b3c.json"
             ],
-            "gap": "Mozilla explicitly offers regular Firefox and ESR update channels. The exact locked regular Firefox159.0 is exercised, but no ESR derivation/runtime receipt is present. One regular release cannot establish coverage of the maintained channel set. This does not claim that159.0 has reached EOL."
+            "gap": null
           },
           "manySamples": {
             "state": "not-met",
@@ -22361,7 +22392,7 @@
       "tier": 3,
       "reviewedRevision": "f5092be456722a67bbe5adc5025d49aebdfdf845",
       "reviewedAt": "2026-11-06",
-      "rationale": "Tier3 confirmed by executable native Linux sample derivations. Good tests are demonstrated; native Darwin execution and specific maintained-version coverage remain unproven as documented. Many-sample and long-compatibility Tier1 judgments are not demonstrated.",
+      "rationale": "Tier3 confirmed by actual native Linux sample derivations. Good tests and the explicitly scoped maintained tool/runtime point are demonstrated; native Darwin execution is missing. Broad independent sample corpus and long historical compatibility remain unproven.",
       "criteria": {
         "evaluation": {
           "state": "met",
@@ -22407,12 +22438,14 @@
           ]
         },
         "nonEolVersions": {
-          "state": "not-met",
-          "summary": "GIMP primary downloads list3.2.8 released2026-11-02 and identify3.2 as the current stable line. Locked executed GIMP is3.2.6. No3.2.8 execution is bound to this purifier. This records missing current patched-release coverage and does not invent an EOL date for3.2.6.",
+          "state": "met",
+          "summary": "Met for actually executed GIMP3.2.6 on native x86_64-linux. Its successful project derivation invokes the locked GIMP executable to produce the checked image.ppm. Upstream identifies3.2 as the current stable branch and documents active backports in the3.2.6 release. The later3.2.8 patch does not by itself make the tested3.2.6 point EOL. This claims only the tested maintained3.2-line tool/host point; execution of3.2.8 or every patch is not claimed.",
           "evidence": [
             "https://www.gimp.org/downloads/",
             "https://www.gimp.org/release-notes/",
-            "https://nix-purifiers.github.io/evidence/8c4a333a81114dd8a45636fbdb0ee982c608d861a2ffb55cf9981c4c1729390a.json"
+            "https://nix-purifiers.github.io/evidence/8c4a333a81114dd8a45636fbdb0ee982c608d861a2ffb55cf9981c4c1729390a.json",
+            "https://www.gimp.org/news/2026/09/10/gimp-3-2-6-released/",
+            "https://nix-purifiers.github.io/evidence/f7b695c0c28beba34685c2605aad79c71bb9e2168d75c960f7d9287b3d2c9b3c.json"
           ]
         },
         "manySamples": {
@@ -22508,18 +22541,18 @@
             "gap": null
           },
           "nonEolVersions": {
-            "state": "not-met",
-            "summary": "GIMP primary downloads list3.2.8 released2026-11-02 and identify3.2 as the current stable line. Locked executed GIMP is3.2.6. No3.2.8 execution is bound to this purifier. This records missing current patched-release coverage and does not invent an EOL date for3.2.6.",
+            "state": "met",
+            "summary": "Met for actually executed GIMP3.2.6 on native x86_64-linux. Its successful project derivation invokes the locked GIMP executable to produce the checked image.ppm. Upstream identifies3.2 as the current stable branch and documents active backports in the3.2.6 release. The later3.2.8 patch does not by itself make the tested3.2.6 point EOL. This claims only the tested maintained3.2-line tool/host point; execution of3.2.8 or every patch is not claimed.",
             "derivations": [
-              "gimp-purifier:x86_64-linux:project",
-              "gimp-purifier:x86_64-linux:resources"
+              "gimp-purifier:x86_64-linux:project"
             ],
             "sources": [
-              "https://www.gimp.org/downloads/",
               "https://www.gimp.org/release-notes/",
-              "https://nix-purifiers.github.io/evidence/8c4a333a81114dd8a45636fbdb0ee982c608d861a2ffb55cf9981c4c1729390a.json"
+              "https://www.gimp.org/news/2026/09/10/gimp-3-2-6-released/",
+              "https://www.gimp.org/downloads/",
+              "https://nix-purifiers.github.io/evidence/f7b695c0c28beba34685c2605aad79c71bb9e2168d75c960f7d9287b3d2c9b3c.json"
             ],
-            "gap": "GIMP primary downloads list3.2.8 released2026-11-02 and identify3.2 as the current stable line. Locked executed GIMP is3.2.6. No3.2.8 execution is bound to this purifier. This records missing current patched-release coverage and does not invent an EOL date for3.2.6."
+            "gap": null
           },
           "manySamples": {
             "state": "not-met",
@@ -28073,12 +28106,14 @@
           ]
         },
         "nonEolVersions": {
-          "state": "not-met",
-          "summary": "Primary downloads lists stable1.13.3 and LTS1.10.13. Inspected CI includes1.13.2/1.13.3 native SDK paths, but no1.10 LTS sample/test derivation execution. Not-met specifically because maintained LTS proof is absent, not because1.13.2 is necessarily EOL.",
+          "state": "met",
+          "summary": "The exact-source app and independent JSON3.jl test derivations execute Julia 1.13.2 on native Linux. Upstream currently identifies stable Julia 1.13.3, placing these executed points on the maintained 1.13 line; a newer patch does not by itself make the tested patch EOL. This executed maintained tool/runtime pair meets the criterion. Separate Julia 1.10 LTS execution is not claimed and is not required for this judgment. Sample SDK credit remains 1.13.2; the separate native CLI 1.13.3 point is not substituted for sample execution.",
           "evidence": [
             "https://github.com/nix-purifiers/julia-purifier/actions/runs/42153338689",
             "https://julialang.org/downloads/",
-            "https://nix-purifiers.github.io/evidence/f905624eadd4bdea3fa9fd82569da48fd809823de3948916987d17614a170c11.json"
+            "https://nix-purifiers.github.io/evidence/f905624eadd4bdea3fa9fd82569da48fd809823de3948916987d17614a170c11.json",
+            "https://github.com/nix-purifiers/julia-purifier/blob/dab47130d47fa857f6b62dbed326fdb4aafd0048/tests/default.nix",
+            "https://nix-purifiers.github.io/evidence/7564b36bf894e14d855088631d2ab871cac7975c6dd44b886f7289ff6b4c7ad5.json"
           ]
         },
         "oneVersion": {
@@ -28095,7 +28130,7 @@
           ]
         }
       },
-      "rationale": "Exact-source Linux sample/check derivations execute successfully with reviewed tests. Native Darwin execution is not demonstrated. Current maintained-version execution also has the specific gap documented below.",
+      "rationale": "Exact-source Linux app and JSON3.jl sample/test derivations execute successfully with reviewed tests and a Julia point on the current maintained 1.13 line. Native Darwin execution remains unproven; Tier 3 is unchanged.",
       "reviewedAt": "2026-11-06",
       "reviewedRevision": "dab47130d47fa857f6b62dbed326fdb4aafd0048",
       "sampleBuilds": [
@@ -28235,14 +28270,18 @@
             "gap": null
           },
           "nonEolVersions": {
-            "state": "not-met",
-            "summary": "Primary downloads lists stable1.13.3 and LTS1.10.13. Inspected CI includes1.13.2/1.13.3 native SDK paths, but no1.10 LTS sample/test derivation execution. Not-met specifically because maintained LTS proof is absent, not because1.13.2 is necessarily EOL.",
-            "derivations": [],
+            "state": "met",
+            "summary": "The exact-source app and independent JSON3.jl test derivations execute Julia 1.13.2 on native Linux. Upstream currently identifies stable Julia 1.13.3, placing these executed points on the maintained 1.13 line; a newer patch does not by itself make the tested patch EOL. This executed maintained tool/runtime pair meets the criterion. Separate Julia 1.10 LTS execution is not claimed and is not required for this judgment. Sample SDK credit remains 1.13.2; the separate native CLI 1.13.3 point is not substituted for sample execution.",
+            "derivations": [
+              "julia-purifier:x86_64-linux:app-tests",
+              "julia-purifier:x86_64-linux:realworld-json3-tests"
+            ],
             "sources": [
               "https://julialang.org/downloads/",
-              "https://nix-purifiers.github.io/evidence/f905624eadd4bdea3fa9fd82569da48fd809823de3948916987d17614a170c11.json"
+              "https://github.com/nix-purifiers/julia-purifier/blob/dab47130d47fa857f6b62dbed326fdb4aafd0048/tests/default.nix",
+              "https://nix-purifiers.github.io/evidence/7564b36bf894e14d855088631d2ab871cac7975c6dd44b886f7289ff6b4c7ad5.json"
             ],
-            "gap": "Primary downloads lists stable1.13.3 and LTS1.10.13. Inspected CI includes1.13.2/1.13.3 native SDK paths, but no1.10 LTS sample/test derivation execution. Not-met specifically because maintained LTS proof is absent, not because1.13.2 is necessarily EOL."
+            "gap": null
           },
           "manySamples": {
             "state": "met",
@@ -38239,14 +38278,17 @@
           ]
         },
         "nonEolVersions": {
-          "state": "not-met",
-          "summary": "Apache's primary policy maintains only the last releases of the last two GA series:3.9.16 and3.10.0. Public-main fixture/Gson derivations execute3.10.0; public compatibility jobs execute3.9.11 rather than maintained3.9.16. Producer local3.9.16/3.10.0 receipts are recorded separately pending immutable reviewed-source binding. Thus public-main coverage of both maintained exact points is not yet established.",
+          "state": "met",
+          "summary": "The public-main Gson test derivation actually invokes Maven3.10.0 with JDK21.0.12.1+1 and succeeds. Maven primary history identifies3.10.0 as maintained, and3.10.0 release notes require Java8 or newer. This executed supported pair meets the criterion; execution of 3.9.16 on this reviewed snapshot is not claimed. No other version range or producer revision is substituted.",
           "evidence": [
             "https://github.com/nix-purifiers/maven-purifier/blob/b1560c561b576d5f6cbb2210a085ec0c6da806cb/flake.nix",
             "https://github.com/nix-purifiers/maven-purifier/actions/runs/42153559301/job/127682272029",
             "https://github.com/nix-purifiers/maven-purifier/actions/runs/42153559301/job/127682272201",
             "https://maven.apache.org/docs/history.html",
-            "https://nix-purifiers.github.io/evidence/0bc57a0e1c9de2755f3921906d49b806e854b92f7ef63f18636aa6ef7376c10d.json"
+            "https://nix-purifiers.github.io/evidence/0bc57a0e1c9de2755f3921906d49b806e854b92f7ef63f18636aa6ef7376c10d.json",
+            "https://maven.apache.org/docs/3.10.0/release-notes.html",
+            "https://nix-purifiers.github.io/evidence/8ab96154c2b601d65d8450c5988b27e0c3c3968b8523de39d72a0ab5a02e78bc.json",
+            "https://nix-purifiers.github.io/evidence/25225dd8b3d3e0c7aedc260a9649f7123f29570c0738baacd130bd262a80be2e.json"
           ]
         },
         "manySamples": {
@@ -38426,17 +38468,18 @@
             "gap": null
           },
           "nonEolVersions": {
-            "state": "not-met",
-            "summary": "Apache's primary policy maintains only the last releases of the last two GA series:3.9.16 and3.10.0. Public-main fixture/Gson derivations execute3.10.0; public compatibility jobs execute3.9.11 rather than maintained3.9.16. Producer local3.9.16/3.10.0 receipts are recorded separately pending immutable reviewed-source binding. Thus public-main coverage of both maintained exact points is not yet established.",
-            "derivations": [],
+            "state": "met",
+            "summary": "The public-main Gson test derivation actually invokes Maven3.10.0 with JDK21.0.12.1+1 and succeeds. Maven primary history identifies3.10.0 as maintained, and3.10.0 release notes require Java8 or newer. This executed supported pair meets the criterion; execution of 3.9.16 on this reviewed snapshot is not claimed. No other version range or producer revision is substituted.",
+            "derivations": [
+              "maven-purifier:real-world-gson-tests:x86_64-linux"
+            ],
             "sources": [
               "https://maven.apache.org/docs/history.html",
-              "https://github.com/nix-purifiers/maven-purifier/blob/b1560c561b576d5f6cbb2210a085ec0c6da806cb/flake.nix",
-              "https://github.com/nix-purifiers/maven-purifier/actions/runs/42153559301/job/127682272029",
-              "https://github.com/nix-purifiers/maven-purifier/actions/runs/42153559301/job/127682272201",
-              "https://nix-purifiers.github.io/evidence/0bc57a0e1c9de2755f3921906d49b806e854b92f7ef63f18636aa6ef7376c10d.json"
+              "https://maven.apache.org/docs/3.10.0/release-notes.html",
+              "https://nix-purifiers.github.io/evidence/8ab96154c2b601d65d8450c5988b27e0c3c3968b8523de39d72a0ab5a02e78bc.json",
+              "https://nix-purifiers.github.io/evidence/25225dd8b3d3e0c7aedc260a9649f7123f29570c0738baacd130bd262a80be2e.json"
             ],
-            "gap": "Apache's primary policy maintains only the last releases of the last two GA series:3.9.16 and3.10.0. Public-main fixture/Gson derivations execute3.10.0; public compatibility jobs execute3.9.11 rather than maintained3.9.16. Producer local3.9.16/3.10.0 receipts are recorded separately pending immutable reviewed-source binding. Thus public-main coverage of both maintained exact points is not yet established."
+            "gap": null
           },
           "manySamples": {
             "state": "not-met",
@@ -44758,14 +44801,17 @@
         },
         "nonEolVersions": {
           "state": "not-met",
-          "summary": "The executed Elixir1.18.5 point lies in a security-supported minor under upstream's current last-five-minors policy (1.16 through1.20), but no derivation matrix executes the other supported minors/current1.20 or verifies their OTP combinations. Thus a maintained-version breadth claim is not established.1.18 is not called EOL.",
+          "summary": "Elixir1.18 is security-maintained. The actual reviewed Credo test derivation executes Elixir1.18.5 with Erlang/OTP28.5.0.8; primary current Elixir compatibility table lists OTP25\u201327 for Elixir1.18. The1.18.5 release note is a security fix and gives no OTP28 support exception. Native test success is demonstrated, but an upstream-supported maintained pair is not established for this actual SDK selection. No unexecuted OTP27 alternative is inferred.",
           "evidence": [
             "https://github.com/nix-purifiers/mix-purifier/blob/0145ec2b1d2eb99e796f9ca96a015f9a42ede5c2/flake.nix",
             "https://github.com/nix-purifiers/mix-purifier/actions/runs/42153569505/job/127682304550",
             "https://github.com/nix-purifiers/mix-purifier/actions/runs/42153569505/job/127682304826",
             "https://elixir.hexdocs.pm/main/compatibility-and-deprecations.html",
             "https://elixir-lang.org/docs/",
-            "https://nix-purifiers.github.io/evidence/0bc57a0e1c9de2755f3921906d49b806e854b92f7ef63f18636aa6ef7376c10d.json"
+            "https://nix-purifiers.github.io/evidence/0bc57a0e1c9de2755f3921906d49b806e854b92f7ef63f18636aa6ef7376c10d.json",
+            "https://github.com/elixir-lang/elixir/releases/tag/v1.18.5",
+            "https://nix-purifiers.github.io/evidence/8210c3db9fbfdb9ca73771ad7d21b3c8408db94c47aa1f465f98bfe031ecf8b5.json",
+            "https://nix-purifiers.github.io/evidence/25225dd8b3d3e0c7aedc260a9649f7123f29570c0738baacd130bd262a80be2e.json"
           ]
         },
         "manySamples": {
@@ -44985,17 +45031,18 @@
           },
           "nonEolVersions": {
             "state": "not-met",
-            "summary": "The executed Elixir1.18.5 point lies in a security-supported minor under upstream's current last-five-minors policy (1.16 through1.20), but no derivation matrix executes the other supported minors/current1.20 or verifies their OTP combinations. Thus a maintained-version breadth claim is not established.1.18 is not called EOL.",
-            "derivations": [],
+            "summary": "Elixir1.18 is security-maintained. The actual reviewed Credo test derivation executes Elixir1.18.5 with Erlang/OTP28.5.0.8; primary current Elixir compatibility table lists OTP25\u201327 for Elixir1.18. The1.18.5 release note is a security fix and gives no OTP28 support exception. Native test success is demonstrated, but an upstream-supported maintained pair is not established for this actual SDK selection. No unexecuted OTP27 alternative is inferred.",
+            "derivations": [
+              "mix-purifier:credo-tests:x86_64-linux"
+            ],
             "sources": [
               "https://elixir.hexdocs.pm/main/compatibility-and-deprecations.html",
               "https://elixir-lang.org/docs/",
-              "https://github.com/nix-purifiers/mix-purifier/blob/0145ec2b1d2eb99e796f9ca96a015f9a42ede5c2/flake.nix",
-              "https://github.com/nix-purifiers/mix-purifier/actions/runs/42153569505/job/127682304550",
-              "https://github.com/nix-purifiers/mix-purifier/actions/runs/42153569505/job/127682304826",
-              "https://nix-purifiers.github.io/evidence/0bc57a0e1c9de2755f3921906d49b806e854b92f7ef63f18636aa6ef7376c10d.json"
+              "https://github.com/elixir-lang/elixir/releases/tag/v1.18.5",
+              "https://nix-purifiers.github.io/evidence/8210c3db9fbfdb9ca73771ad7d21b3c8408db94c47aa1f465f98bfe031ecf8b5.json",
+              "https://nix-purifiers.github.io/evidence/25225dd8b3d3e0c7aedc260a9649f7123f29570c0738baacd130bd262a80be2e.json"
             ],
-            "gap": "The executed Elixir1.18.5 point lies in a security-supported minor under upstream's current last-five-minors policy (1.16 through1.20), but no derivation matrix executes the other supported minors/current1.20 or verifies their OTP combinations. Thus a maintained-version breadth claim is not established.1.18 is not called EOL."
+            "gap": "Elixir1.18 is security-maintained. The actual reviewed Credo test derivation executes Elixir1.18.5 with Erlang/OTP28.5.0.8; primary current Elixir compatibility table lists OTP25\u201327 for Elixir1.18. The1.18.5 release note is a security fix and gives no OTP28 support exception. Native test success is demonstrated, but an upstream-supported maintained pair is not established for this actual SDK selection. No unexecuted OTP27 alternative is inferred."
           },
           "manySamples": {
             "state": "not-met",
@@ -47539,7 +47586,7 @@
         },
         "nonEolVersions": {
           "state": "not-met",
-          "summary": "Public-main derivations/native jobs execute maintained Node22/24/26 line points with npm10.9.2/11.19.0/11.12.1. However npm own primary Release Process supports only npm@latest (no npm LTS), and fresh API identifies12.2.2. No public-main derivation executes npm12.2.2. Node-line coverage is real but cannot establish the separate current npm-manager criterion; producer latest-point work is pending and not substituted into this snapshot.",
+          "summary": "The reviewed revision executes maintained Node 22/24/26 line points with npm 10.9.2/11.19.0/11.12.1. However, npm own primary Release Process supports only npm@latest (no npm LTS), and the inspected release API identifies 12.2.2. No derivation at this reviewed revision executes npm 12.2.2. Node-line coverage cannot establish the separate current npm-manager criterion. Later producer sources and results are outside this reviewed baseline.",
           "evidence": [
             "https://github.com/nix-purifiers/npm-purifier/blob/3fa35f99bf459e2692849c1ecd570547c88a9dde/flake.nix",
             "https://github.com/nix-purifiers/npm-purifier/actions/runs/42153843317/job/127683187425",
@@ -47794,7 +47841,7 @@
           },
           "nonEolVersions": {
             "state": "not-met",
-            "summary": "Public-main derivations/native jobs execute maintained Node22/24/26 line points with npm10.9.2/11.19.0/11.12.1. However npm own primary Release Process supports only npm@latest (no npm LTS), and fresh API identifies12.2.2. No public-main derivation executes npm12.2.2. Node-line coverage is real but cannot establish the separate current npm-manager criterion; producer latest-point work is pending and not substituted into this snapshot.",
+            "summary": "The reviewed revision executes maintained Node 22/24/26 line points with npm 10.9.2/11.19.0/11.12.1. However, npm own primary Release Process supports only npm@latest (no npm LTS), and the inspected release API identifies 12.2.2. No derivation at this reviewed revision executes npm 12.2.2. Node-line coverage cannot establish the separate current npm-manager criterion. Later producer sources and results are outside this reviewed baseline.",
             "derivations": [],
             "sources": [
               "https://github.com/nodejs/Release",
@@ -47806,7 +47853,7 @@
               "https://github.com/nix-purifiers/npm-purifier/actions/runs/42153843317/job/127683187827",
               "https://nix-purifiers.github.io/evidence/0bc57a0e1c9de2755f3921906d49b806e854b92f7ef63f18636aa6ef7376c10d.json"
             ],
-            "gap": "Public-main derivations/native jobs execute maintained Node22/24/26 line points with npm10.9.2/11.19.0/11.12.1. However npm own primary Release Process supports only npm@latest (no npm LTS), and fresh API identifies12.2.2. No public-main derivation executes npm12.2.2. Node-line coverage is real but cannot establish the separate current npm-manager criterion; producer latest-point work is pending and not substituted into this snapshot."
+            "gap": "The reviewed revision executes maintained Node 22/24/26 line points with npm 10.9.2/11.19.0/11.12.1. However, npm own primary Release Process supports only npm@latest (no npm LTS), and the inspected release API identifies 12.2.2. No derivation at this reviewed revision executes npm 12.2.2. Node-line coverage cannot establish the separate current npm-manager criterion. Later producer sources and results are outside this reviewed baseline."
           },
           "manySamples": {
             "state": "not-met",
@@ -62839,12 +62886,16 @@
           ]
         },
         "nonEolVersions": {
-          "state": "not-met",
-          "summary": "PHP primary policy maintains branches8.2,8.3,8.4,8.5 on review date. The executed8.5.12 point does not demonstrate8.2\u20138.4.",
+          "state": "met",
+          "summary": "The native PECL/PEAR manager actually reports PEAR1.10.18 and PHP8.5.12; the extension project derivation builds and executes on that pair. The PEAR primary release page identifies1.10.18 as current stable, and PHP8.5 is actively maintained through2027 with security maintenance through2029. This executed maintained pair meets the criterion; other maintained PHP branches are not claimed. PECL is deprecated in favor of PIE, which is not treated as an inferred EOL date. No continuous patch range or untested PHP8.2\u20138.4 support is claimed.",
           "evidence": [
             "https://www.php.net/supported-versions.php",
             "https://github.com/nix-purifiers/pecl-purifier/actions/runs/42154273897",
-            "https://nix-purifiers.github.io/evidence/0943b73f7a49f4badc51c3e24a1a8ec541a49c893894008de47096e960a3352e.json"
+            "https://nix-purifiers.github.io/evidence/0943b73f7a49f4badc51c3e24a1a8ec541a49c893894008de47096e960a3352e.json",
+            "https://pear.php.net/package/PEAR",
+            "https://pecl.php.net/",
+            "https://nix-purifiers.github.io/evidence/d2453af67914799500eba4c30bb6731e655cc4ff5206f5bcbeaa5fae43dab6b0.json",
+            "https://nix-purifiers.github.io/evidence/abd51b2c4edc35f4f2ac0c892940ca294b4ca566c9c5b45f1df854003ff13c52.json"
           ]
         },
         "manySamples": {
@@ -62945,15 +62996,20 @@
             ]
           },
           "nonEolVersions": {
-            "state": "not-met",
-            "summary": "PHP primary policy maintains branches8.2,8.3,8.4,8.5 on review date. The executed8.5.12 point does not demonstrate8.2\u20138.4.",
-            "derivations": [],
-            "gap": "PHP primary policy maintains branches8.2,8.3,8.4,8.5 on review date. The executed8.5.12 point does not demonstrate8.2\u20138.4.",
+            "state": "met",
+            "summary": "The native PECL/PEAR manager actually reports PEAR1.10.18 and PHP8.5.12; the extension project derivation builds and executes on that pair. The PEAR primary release page identifies1.10.18 as current stable, and PHP8.5 is actively maintained through2027 with security maintenance through2029. This executed maintained pair meets the criterion; other maintained PHP branches are not claimed. PECL is deprecated in favor of PIE, which is not treated as an inferred EOL date. No continuous patch range or untested PHP8.2\u20138.4 support is claimed.",
+            "derivations": [
+              "pecl-purifier:checks.x86_64-linux.project"
+            ],
             "sources": [
+              "https://pear.php.net/package/PEAR",
               "https://www.php.net/supported-versions.php",
+              "https://pecl.php.net/",
               "https://github.com/nix-purifiers/pecl-purifier/actions/runs/42154273897",
-              "https://nix-purifiers.github.io/evidence/0943b73f7a49f4badc51c3e24a1a8ec541a49c893894008de47096e960a3352e.json"
-            ]
+              "https://nix-purifiers.github.io/evidence/d2453af67914799500eba4c30bb6731e655cc4ff5206f5bcbeaa5fae43dab6b0.json",
+              "https://nix-purifiers.github.io/evidence/abd51b2c4edc35f4f2ac0c892940ca294b4ca566c9c5b45f1df854003ff13c52.json"
+            ],
+            "gap": null
           },
           "manySamples": {
             "state": "not-met",
@@ -68379,13 +68435,14 @@
           ]
         },
         "nonEolVersions": {
-          "state": "not-met",
-          "summary": "Rebar3 3.28.0 is the current stable and executes with Erlang/OTP 28.5.0.8. Upstream's current README identifies 27\u201329 for 3.28.0 and its getting-started policy supports the newest three OTP majors. The inspected derivations provide OTP 28 only; native OTP 27 and 29 executions are missing. No all-patch range is claimed.",
+          "state": "met",
+          "summary": "Successful native x86_64-linux sample derivations execute Rebar3 3.28.0 with Erlang/OTP 28.5.0.8. The live upstream release API identifies Rebar3 3.28.0 as current stable, and its primary README supports OTP 27\u201329 for this release. The executed OTP 28 pair is therefore within the maintained support set. This criterion requires an actual tested maintained tool/runtime pair; missing separate OTP 27 and 29 executions does not negate that pair. No claim is made that all maintained OTP majors or all patches were tested.",
           "evidence": [
             "https://rebar3.org/docs/getting-started/",
             "https://github.com/erlang/rebar3/blob/main/README.md",
             "https://api.github.com/repos/erlang/rebar3/releases?per_page=5",
-            "https://nix-purifiers.github.io/evidence/0ea2ead32c7aae6976d2bdbc3464ead2f6a1d7e04f2ba2a4336a3d62d881c045.json"
+            "https://nix-purifiers.github.io/evidence/0ea2ead32c7aae6976d2bdbc3464ead2f6a1d7e04f2ba2a4336a3d62d881c045.json",
+            "https://nix-purifiers.github.io/evidence/b5d9b39bef6eaa77feb9c27f2cc2a5bd1096c4834fcc209ec0828d74bb391e55.json"
           ]
         },
         "manySamples": {
@@ -68520,8 +68577,8 @@
             "gap": null
           },
           "nonEolVersions": {
-            "state": "not-met",
-            "summary": "Rebar3 3.28.0 is the current stable and executes with Erlang/OTP 28.5.0.8. Upstream's current README identifies 27\u201329 for 3.28.0 and its getting-started policy supports the newest three OTP majors. The inspected derivations provide OTP 28 only; native OTP 27 and 29 executions are missing. No all-patch range is claimed.",
+            "state": "met",
+            "summary": "Successful native x86_64-linux sample derivations execute Rebar3 3.28.0 with Erlang/OTP 28.5.0.8. The live upstream release API identifies Rebar3 3.28.0 as current stable, and its primary README supports OTP 27\u201329 for this release. The executed OTP 28 pair is therefore within the maintained support set. This criterion requires an actual tested maintained tool/runtime pair; missing separate OTP 27 and 29 executions does not negate that pair. No claim is made that all maintained OTP majors or all patches were tested.",
             "derivations": [
               "fixture-hello-tests",
               "fixture-hello-build",
@@ -68531,9 +68588,10 @@
             "sources": [
               "https://rebar3.org/docs/getting-started/",
               "https://github.com/erlang/rebar3/blob/main/README.md",
-              "https://api.github.com/repos/erlang/rebar3/releases?per_page=5"
+              "https://api.github.com/repos/erlang/rebar3/releases?per_page=5",
+              "https://nix-purifiers.github.io/evidence/b5d9b39bef6eaa77feb9c27f2cc2a5bd1096c4834fcc209ec0828d74bb391e55.json"
             ],
-            "gap": "Rebar3 3.28.0 is the current stable and executes with Erlang/OTP 28.5.0.8. Upstream's current README identifies 27\u201329 for 3.28.0 and its getting-started policy supports the newest three OTP majors. The inspected derivations provide OTP 28 only; native OTP 27 and 29 executions are missing. No all-patch range is claimed."
+            "gap": null
           },
           "manySamples": {
             "state": "not-met",
@@ -68846,7 +68904,7 @@
         },
         "goodTests": {
           "state": "met",
-          "summary": "Executed checks cover R CMD check of hello, dependency loading and provenance for CRAN/archive/GitHub/git/URL/local/Bioconductor, offline prefetch/use, publishing a CRAN-style repository, external lockfiles, old-renv restore, language-server loading and cransays dependency loading. Current CI's later tests/cli.sh external-capture byte comparison fails after flake checks pass: openssl's unchanged bytes moved to an Archive URL. This limits a passing whole-lifecycle claim, but does not erase the broad executable assertions. Manager reports a test-only repair pending publication; it is not counted as released proof here.",
+          "summary": "Executed checks cover R CMD check of hello, dependency loading and provenance for CRAN/archive/GitHub/git/URL/local/Bioconductor, offline prefetch/use, publishing a CRAN-style repository, external lockfiles, old-renv restore, language-server loading and cransays dependency loading. In the captured CI at the reviewed revision, the later tests/cli.sh external-capture byte comparison fails after flake checks pass: openssl unchanged bytes moved to an Archive URL. This limits a passing whole-lifecycle claim while preserving the successful executable assertions. Later test-repair sources and results are outside this reviewed baseline.",
           "evidence": [
             "https://github.com/nix-purifiers/renv-purifier/blob/528729376aab9a8bc148b375c35099bbc5eee52e/flake.nix",
             "https://github.com/nix-purifiers/renv-purifier/blob/528729376aab9a8bc148b375c35099bbc5eee52e/flake.lock",
@@ -68971,7 +69029,7 @@
           },
           "goodTests": {
             "state": "met",
-            "summary": "Executed checks cover R CMD check of hello, dependency loading and provenance for CRAN/archive/GitHub/git/URL/local/Bioconductor, offline prefetch/use, publishing a CRAN-style repository, external lockfiles, old-renv restore, language-server loading and cransays dependency loading. Current CI's later tests/cli.sh external-capture byte comparison fails after flake checks pass: openssl's unchanged bytes moved to an Archive URL. This limits a passing whole-lifecycle claim, but does not erase the broad executable assertions. Manager reports a test-only repair pending publication; it is not counted as released proof here.",
+            "summary": "Executed checks cover R CMD check of hello, dependency loading and provenance for CRAN/archive/GitHub/git/URL/local/Bioconductor, offline prefetch/use, publishing a CRAN-style repository, external lockfiles, old-renv restore, language-server loading and cransays dependency loading. In the captured CI at the reviewed revision, the later tests/cli.sh external-capture byte comparison fails after flake checks pass: openssl unchanged bytes moved to an Archive URL. This limits a passing whole-lifecycle claim while preserving the successful executable assertions. Later test-repair sources and results are outside this reviewed baseline.",
             "derivations": [
               "hello-tests",
               "hello-runs",
@@ -74087,15 +74145,16 @@
           ]
         },
         "nonEolVersions": {
-          "state": "not-met",
-          "summary": "The primary RELEASE.md delegates support duration to per-line CHANGELOG.md. The 1.13 line is supported through 2027-08-01 and 1.12 through 2027-02-01. The successful derivations use OpenTofu 1.13.2; no 1.12 point is executed. Thus supported-line breadth is missing despite valid current-line execution. Latest API 1.13.9 does not itself make 1.13.2 EOL.",
+          "state": "met",
+          "summary": "The authored random-provider sample actually executes OpenTofu1.13.2 in native environment and offline project-test derivations. The primary OpenTofu release policy delegates support windows to each line changelog, and the1.13 changelog explicitly supports that line until2027-08-01. Thus the executed1.13.2 point is in a maintained tool line. Missing execution of the separately maintained1.12 line is not a failure under the bounded one-maintained-point criterion. No untested patch interval, Darwin execution, or other-line support is claimed.",
           "evidence": [
             "https://github.com/nix-purifiers/tofu-purifier/actions/runs/42155182708/job/127687527067",
             "https://github.com/nix-purifiers/tofu-purifier/blob/4106b6066ccb326ddf4def2721a4d5e9ef920766/tests/default.nix",
             "https://github.com/opentofu/opentofu/blob/main/RELEASE.md",
             "https://github.com/opentofu/opentofu/blob/v1.13/CHANGELOG.md",
             "https://github.com/opentofu/opentofu/blob/v1.12/CHANGELOG.md",
-            "https://nix-purifiers.github.io/evidence/ad7f3db195e86597a5e67ce521125fceefeb2542de9c3cb8a827cecfbb2c0ae3.json"
+            "https://nix-purifiers.github.io/evidence/ad7f3db195e86597a5e67ce521125fceefeb2542de9c3cb8a827cecfbb2c0ae3.json",
+            "https://nix-purifiers.github.io/evidence/d863edb930833ec99228141223bc1c64de3ff3337bafc182991afcf6a8e8d569.json"
           ]
         },
         "manySamples": {
@@ -74201,16 +74260,17 @@
             "gap": null
           },
           "nonEolVersions": {
-            "state": "not-met",
-            "summary": "The primary RELEASE.md delegates support duration to per-line CHANGELOG.md. The 1.13 line is supported through 2027-08-01 and 1.12 through 2027-02-01. The successful derivations use OpenTofu 1.13.2; no 1.12 point is executed. Thus supported-line breadth is missing despite valid current-line execution. Latest API 1.13.9 does not itself make 1.13.2 EOL.",
-            "derivations": [],
+            "state": "met",
+            "summary": "The authored random-provider sample actually executes OpenTofu1.13.2 in native environment and offline project-test derivations. The primary OpenTofu release policy delegates support windows to each line changelog, and the1.13 changelog explicitly supports that line until2027-08-01. Thus the executed1.13.2 point is in a maintained tool line. Missing execution of the separately maintained1.12 line is not a failure under the bounded one-maintained-point criterion. No untested patch interval, Darwin execution, or other-line support is claimed.",
+            "derivations": [
+              "offline"
+            ],
             "sources": [
               "https://github.com/opentofu/opentofu/blob/main/RELEASE.md",
               "https://github.com/opentofu/opentofu/blob/v1.13/CHANGELOG.md",
-              "https://github.com/opentofu/opentofu/blob/v1.12/CHANGELOG.md",
-              "https://nix-purifiers.github.io/evidence/ad7f3db195e86597a5e67ce521125fceefeb2542de9c3cb8a827cecfbb2c0ae3.json"
+              "https://nix-purifiers.github.io/evidence/d863edb930833ec99228141223bc1c64de3ff3337bafc182991afcf6a8e8d569.json"
             ],
-            "gap": "The primary RELEASE.md delegates support duration to per-line CHANGELOG.md. The 1.13 line is supported through 2027-08-01 and 1.12 through 2027-02-01. The successful derivations use OpenTofu 1.13.2; no 1.12 point is executed. Thus supported-line breadth is missing despite valid current-line execution. Latest API 1.13.9 does not itself make 1.13.2 EOL."
+            "gap": null
           },
           "manySamples": {
             "state": "not-met",
@@ -74927,15 +74987,16 @@
           ]
         },
         "nonEolVersions": {
-          "state": "not-met",
-          "summary": "The upstream uv versioning policy makes minor changes breaking and patches compatible; its Python policy lists supported modern Python lines. The reviewed native check uses uv 0.13.5 and CPython 3.14.8, with a 3.12 composition check and historical 3.8/3.9 jobs. There are no derivation-bound current 3.11, 3.13 or 3.15 sample points here. Producer is adding current uv 0.13.7 and Python 3.11-3.15; those unpublished/new-source results must be reconciled separately. This is a missing runtime matrix, not an EOL assertion about uv 0.13.5.",
+          "state": "met",
+          "summary": "The actual public-baseline Flask derivation runs uv 0.13.5 with CPython 3.14.8. Upstream currently releases the 0.13 line (latest observed 0.13.7), defines patch changes as non-breaking and minor changes as breaking, and lists Python 3.14 as continuously tested Tier 1. This demonstrates a maintained tool/runtime point under the bounded criterion. No inspected primary policy says a newer patch makes 0.13.5 EOL. This claim covers the executed 0.13.5/3.14.8 tuple only; it does not claim every patch, the full Python-version matrix, or execution of 0.13.7/Python 3.15 from source revisions outside this reviewed baseline.",
           "evidence": [
             "https://github.com/nix-purifiers/uv-purifier/actions/runs/42155508325/job/127688579087",
             "https://github.com/nix-purifiers/uv-purifier/blob/ea43ef3106cef19ba7f9c0e75140822cd98ebc4f/tests/default.nix",
             "https://docs.astral.sh/uv/reference/policies/versioning/",
             "https://docs.astral.sh/uv/reference/policies/python/",
             "https://github.com/astral-sh/uv/releases/tag/0.13.7",
-            "https://nix-purifiers.github.io/evidence/ad7f3db195e86597a5e67ce521125fceefeb2542de9c3cb8a827cecfbb2c0ae3.json"
+            "https://nix-purifiers.github.io/evidence/ad7f3db195e86597a5e67ce521125fceefeb2542de9c3cb8a827cecfbb2c0ae3.json",
+            "https://nix-purifiers.github.io/evidence/d1360d0230ca6825df6b89fcfa859e2130e120d6f8e98f842974708d6d51ea5c.json"
           ]
         },
         "manySamples": {
@@ -75071,16 +75132,18 @@
             "gap": null
           },
           "nonEolVersions": {
-            "state": "not-met",
-            "summary": "The upstream uv versioning policy makes minor changes breaking and patches compatible; its Python policy lists supported modern Python lines. The reviewed native check uses uv 0.13.5 and CPython 3.14.8, with a 3.12 composition check and historical 3.8/3.9 jobs. There are no derivation-bound current 3.11, 3.13 or 3.15 sample points here. Producer is adding current uv 0.13.7 and Python 3.11-3.15; those unpublished/new-source results must be reconciled separately. This is a missing runtime matrix, not an EOL assertion about uv 0.13.5.",
-            "derivations": [],
+            "state": "met",
+            "summary": "The actual public-baseline Flask derivation runs uv 0.13.5 with CPython 3.14.8. Upstream currently releases the 0.13 line (latest observed 0.13.7), defines patch changes as non-breaking and minor changes as breaking, and lists Python 3.14 as continuously tested Tier 1. This demonstrates a maintained tool/runtime point under the bounded criterion. No inspected primary policy says a newer patch makes 0.13.5 EOL. This claim covers the executed 0.13.5/3.14.8 tuple only; it does not claim every patch, the full Python-version matrix, or execution of 0.13.7/Python 3.15 from source revisions outside this reviewed baseline.",
+            "derivations": [
+              "flask"
+            ],
             "sources": [
               "https://docs.astral.sh/uv/reference/policies/versioning/",
               "https://docs.astral.sh/uv/reference/policies/python/",
               "https://github.com/astral-sh/uv/releases/tag/0.13.7",
-              "https://nix-purifiers.github.io/evidence/ad7f3db195e86597a5e67ce521125fceefeb2542de9c3cb8a827cecfbb2c0ae3.json"
+              "https://nix-purifiers.github.io/evidence/d1360d0230ca6825df6b89fcfa859e2130e120d6f8e98f842974708d6d51ea5c.json"
             ],
-            "gap": "The upstream uv versioning policy makes minor changes breaking and patches compatible; its Python policy lists supported modern Python lines. The reviewed native check uses uv 0.13.5 and CPython 3.14.8, with a 3.12 composition check and historical 3.8/3.9 jobs. There are no derivation-bound current 3.11, 3.13 or 3.15 sample points here. Producer is adding current uv 0.13.7 and Python 3.11-3.15; those unpublished/new-source results must be reconciled separately. This is a missing runtime matrix, not an EOL assertion about uv 0.13.5."
+            "gap": null
           },
           "manySamples": {
             "state": "not-met",
@@ -77688,15 +77751,18 @@
           ]
         },
         "nonEolVersions": {
-          "state": "not-met",
-          "summary": "Upstream Yarn changelog and latest API identify current Modern Yarn 4.18.1; that exact manager executes. Node upstream identifies maintained stable lines 22, 24 and 26 (27 is alpha). The reviewed Berry checks run Node 24.21.0 only, with no native 22/26 target points. Thus current manager support is proved but breadth of supported runtime lines is not. Yarn Classic maintenance status is not treated as Berry EOL.",
+          "state": "met",
+          "summary": "The pinned upstream Prettier sample is built through actual native Yarn4.18.1 under Node24.21.0 and its installed formatter output is checked. The current official Yarn release is4.18.1; Node upstream explicitly maintains the24 line through2028-04-30. This is a demonstrated maintained manager/runtime point under the bounded criterion. Missing Node22/26 matrix entries do not negate this point. No all-patch range, other Node line, Darwin execution, or results outside this reviewed source snapshot is claimed.",
           "evidence": [
             "https://github.com/nix-purifiers/yarn-berry-purifier/actions/runs/42155523744/job/127688629501",
             "https://github.com/nix-purifiers/yarn-berry-purifier/blob/ed69e6b861bb8e55d871c426c7ef9c27e3bf21db/tests/default.nix",
             "https://yarnpkg.com/advanced/changelog",
             "https://yarnpkg.com/getting-started/qa",
             "https://nodejs.org/en/about/previous-releases",
-            "https://nix-purifiers.github.io/evidence/ad7f3db195e86597a5e67ce521125fceefeb2542de9c3cb8a827cecfbb2c0ae3.json"
+            "https://nix-purifiers.github.io/evidence/ad7f3db195e86597a5e67ce521125fceefeb2542de9c3cb8a827cecfbb2c0ae3.json",
+            "https://github.com/yarnpkg/berry/releases/tag/%40yarnpkg%2Fcli%2F4.18.1",
+            "https://github.com/nodejs/Release/blob/main/schedule.json",
+            "https://nix-purifiers.github.io/evidence/d863edb930833ec99228141223bc1c64de3ff3337bafc182991afcf6a8e8d569.json"
           ]
         },
         "manySamples": {
@@ -77802,16 +77868,18 @@
             "gap": null
           },
           "nonEolVersions": {
-            "state": "not-met",
-            "summary": "Upstream Yarn changelog and latest API identify current Modern Yarn 4.18.1; that exact manager executes. Node upstream identifies maintained stable lines 22, 24 and 26 (27 is alpha). The reviewed Berry checks run Node 24.21.0 only, with no native 22/26 target points. Thus current manager support is proved but breadth of supported runtime lines is not. Yarn Classic maintenance status is not treated as Berry EOL.",
-            "derivations": [],
-            "sources": [
-              "https://yarnpkg.com/advanced/changelog",
-              "https://yarnpkg.com/getting-started/qa",
-              "https://nodejs.org/en/about/previous-releases",
-              "https://nix-purifiers.github.io/evidence/ad7f3db195e86597a5e67ce521125fceefeb2542de9c3cb8a827cecfbb2c0ae3.json"
+            "state": "met",
+            "summary": "The pinned upstream Prettier sample is built through actual native Yarn4.18.1 under Node24.21.0 and its installed formatter output is checked. The current official Yarn release is4.18.1; Node upstream explicitly maintains the24 line through2028-04-30. This is a demonstrated maintained manager/runtime point under the bounded criterion. Missing Node22/26 matrix entries do not negate this point. No all-patch range, other Node line, Darwin execution, or results outside this reviewed source snapshot is claimed.",
+            "derivations": [
+              "prettier"
             ],
-            "gap": "Upstream Yarn changelog and latest API identify current Modern Yarn 4.18.1; that exact manager executes. Node upstream identifies maintained stable lines 22, 24 and 26 (27 is alpha). The reviewed Berry checks run Node 24.21.0 only, with no native 22/26 target points. Thus current manager support is proved but breadth of supported runtime lines is not. Yarn Classic maintenance status is not treated as Berry EOL."
+            "sources": [
+              "https://github.com/yarnpkg/berry/releases/tag/%40yarnpkg%2Fcli%2F4.18.1",
+              "https://nodejs.org/en/about/previous-releases",
+              "https://github.com/nodejs/Release/blob/main/schedule.json",
+              "https://nix-purifiers.github.io/evidence/d863edb930833ec99228141223bc1c64de3ff3337bafc182991afcf6a8e8d569.json"
+            ],
+            "gap": null
           },
           "manySamples": {
             "state": "not-met",

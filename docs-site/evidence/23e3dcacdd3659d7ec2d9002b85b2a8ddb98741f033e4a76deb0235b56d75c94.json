@@ -1,0 +1,272 @@
+{
+  "version": 1,
+  "group": "group-1",
+  "reviewedAt": "2026-11-06",
+  "reason": "Root final consistency clarification: an actual tested maintained tool/runtime pair suffices; exhaustive coverage of every maintained line is not required. Re-adjudication only, no new execution.",
+  "originalPacketHashes": {
+    "assessments.json": "5d954abd19598e9c2b7e879e21e28faf7c3a3d660e8e9c91a2383cbf54fa8ec3",
+    "derivation-evidence.json": "b8267b7999536021fd31ecdd1eb0767d5751fc824c4552bbd690f75c71e07b5b",
+    "review-receipt.json": "e8beb9624353fd035b57abb5958a92072f015f01804483deb0681daf8928535e"
+  },
+  "projects": {
+    "ansible-purifier": {
+      "reviewedRevision": "858ef25cef07ffda9486f1e8bd6329e561bbbfe6",
+      "tier": 3,
+      "criteria": {
+        "nonEolVersions": {
+          "state": "met",
+          "summary": "The successful native sample derivation executes ansible-core 2.21.5 with Python 3.14.8. Primary Ansible policy maintains the latest ansible-core release plus two prior releases; with current 2.22.0, the actually tested 2.21 line is maintained. Under the clarified criterion, this maintained tool/runtime pair is sufficient. Untested 2.20 and 2.22 are not claimed and their absence alone does not make this criterion fail.",
+          "evidence": [
+            "https://docs.ansible.com/projects/ansible/latest/reference_appendices/release_and_maintenance.html",
+            "/nix/store/x77i2zqbsgc9pa78nm3v6k3qsji9992k-ansible-project.drv",
+            "/nix/store/p62x02npnjy23c3aflfhk80jfbkifglr-ansible-project",
+            "derivation-evidence.json#/projects/ansible-purifier/local",
+            "logs/ansible-purifier-build.json"
+          ],
+          "derivations": [
+            "ansible-purifier:local:project"
+          ],
+          "sources": [
+            "https://docs.ansible.com/projects/ansible/latest/reference_appendices/release_and_maintenance.html"
+          ],
+          "gap": null
+        }
+      },
+      "rationale": "Native Linux sample derivations and meaningful regression tests are verified. The executed ansible-core 2.21.5/Python 3.14.8 pair is maintained. No successful native Darwin receipt was found in the inspected workflows/jobs, so Tier 3 remains unchanged.",
+      "sdkVersions": {
+        "ansible-core": "2.21.5",
+        "Python": "3.14.8"
+      },
+      "proof": {
+        "id": "ansible-purifier:local:project",
+        "repository": "https://github.com/nix-purifiers/ansible-purifier",
+        "revision": "858ef25cef07ffda9486f1e8bd6329e561bbbfe6",
+        "system": "x86_64-linux",
+        "check": {
+          "kind": "flake-attribute",
+          "value": "checks.x86_64-linux.project"
+        },
+        "sourceNarHash": "sha256-bXbjBACaxet6Yr+hEzS4oyjgwd3G5vvTAWZWgHGWiCc=",
+        "sourcePath": "/nix/store/v890qcd4s55gvp54al2am0nx0aykfdfr-source",
+        "drvPath": "/nix/store/x77i2zqbsgc9pa78nm3v6k3qsji9992k-ansible-project.drv",
+        "outputs": {
+          "out": "/nix/store/p62x02npnjy23c3aflfhk80jfbkifglr-ansible-project"
+        },
+        "outputNarHashes": {
+          "out": "sha256-JTj3SKokHctno2/ixeBkOP1vZf2pWOrnZ3erbWIB9Lc="
+        },
+        "sdkReferences": [
+          "/nix/store/0sazmfzn0f2njp8hm45sjx4mqi54w4ac-python3-3.14.8-env",
+          "/nix/store/6f4q67pcs1wryxr5hk2lpg4hbh387rdz-ansible.cfg",
+          "/nix/store/c3k15jk20fccs90qgffdwzhxy15b5fdj-stdenv-linux-no-cc",
+          "/nix/store/iw4j40hrr785150lisfn5n27ls6a9dn8-ansible-native-collections",
+          "/nix/store/nnm9gdr70ihc6zc9298mzz8jpcgaciql-bash-5.3p20",
+          "/nix/store/p62x02npnjy23c3aflfhk80jfbkifglr-ansible-project",
+          "/nix/store/pw073xi7bmd39nva0cbwnyyajbjhcfkf-source"
+        ],
+        "build": {
+          "status": "success",
+          "executedSystem": "x86_64-linux",
+          "sourceRevision": "858ef25cef07ffda9486f1e8bd6329e561bbbfe6",
+          "drvPath": "/nix/store/x77i2zqbsgc9pa78nm3v6k3qsji9992k-ansible-project.drv",
+          "outputs": {
+            "out": "/nix/store/p62x02npnjy23c3aflfhk80jfbkifglr-ansible-project"
+          },
+          "receipt": "logs/ansible-purifier-build.json",
+          "artifactSha256": "f19eff18fa509b52b0cc882528ffc97abc0435b3c4a6b75f87640ed16b465b54",
+          "freshBuildObserved": false,
+          "sdkVersions": {
+            "ansible-core": "2.21.5"
+          }
+        },
+        "sdkVersions": {
+          "ansible-core": "2.21.5"
+        },
+        "sdkClosureReceipt": "ansible-purifier-sample-closure.json",
+        "sdkDerivationDependencies": [
+          "/nix/store/1bymwsr6mlvyvdjrpql3jmn7m2ji0bdl-python3.14-ansible-core-2.21.5.drv"
+        ],
+        "sdkBindingExplanation": "The check derivation dependency closure contains these exact SDK derivations. The pinned source build expression invokes that SDK to build/run the sample, and the successful native build receipt binds the check, system, source and outputs. Dependency presence alone is not used as runtime proof."
+      }
+    },
+    "bundler-purifier": {
+      "reviewedRevision": "bd48bb6b1c1fe893899a301e5c55fc7cc8e92310",
+      "tier": 3,
+      "criteria": {
+        "nonEolVersions": {
+          "state": "met",
+          "summary": "The successful independent Lobsters sample executes Ruby 4.0.9 and the lock-selected Bundler 4.0.3. Ruby 4.0 is in normal maintenance. The official RubyGems compatibility policy identifies the current Bundler 4.0 series, requiring Ruby >=3.2 and RubyGems >=3.4.1; Ruby 4.0 ships a matching RubyGems/Bundler 4.0 pair. This is an actually tested maintained manager/runtime pair. Ruby 3.4.11 is also demonstrated by fixture-app; missing maintained Ruby 3.3 does not invalidate this bounded judgment. No untested version or all-patch range is claimed.",
+          "evidence": [
+            "https://www.ruby-lang.org/en/downloads/branches/",
+            "https://guides.rubygems.org/bundler-compatibility/",
+            "/nix/store/y00bg3154a0x7qrlpbnj4nnm3zk6qkvy-real-lobsters.drv",
+            "/nix/store/ibvjszijykfn360yz2xy9zk2ycg4365n-real-lobsters",
+            "derivation-evidence.json#/projects/bundler-purifier/local",
+            "bundler-sdk-supplement.json",
+            "logs/bundler-purifier-build.json"
+          ],
+          "derivations": [
+            "bundler-purifier:local:real-lobsters"
+          ],
+          "sources": [
+            "https://www.ruby-lang.org/en/downloads/branches/",
+            "https://guides.rubygems.org/bundler-compatibility/"
+          ],
+          "gap": null
+        }
+      },
+      "rationale": "Native Linux fixtures, independent Lobsters sample and meaningful regression tests are verified. The executed Ruby 4.0.9/Bundler 4.0.3 pair is maintained; historical Ruby evidence remains bounded to exact tuples. No successful native Darwin receipt was found in the inspected workflows/jobs, so Tier 3 remains unchanged.",
+      "sdkVersions": {
+        "Ruby": "4.0.9",
+        "Bundler": "4.0.3"
+      },
+      "proof": {
+        "id": "bundler-purifier:local:real-lobsters",
+        "repository": "https://github.com/nix-purifiers/bundler-purifier",
+        "revision": "bd48bb6b1c1fe893899a301e5c55fc7cc8e92310",
+        "system": "x86_64-linux",
+        "check": {
+          "kind": "flake-attribute",
+          "value": "checks.x86_64-linux.real-lobsters"
+        },
+        "sourceNarHash": "sha256-O1+sSynjzbzSC/Xezm2AV95vFwdGB5ksWV0314u00GM=",
+        "sourcePath": "/nix/store/6wdpw1mhjv4qdz23jqkxsp4xasgz006f-source",
+        "drvPath": "/nix/store/y00bg3154a0x7qrlpbnj4nnm3zk6qkvy-real-lobsters.drv",
+        "outputs": {
+          "out": "/nix/store/ibvjszijykfn360yz2xy9zk2ycg4365n-real-lobsters"
+        },
+        "outputNarHashes": {
+          "out": "sha256-ThSkDm0U0lysECsboUK31zYBXaAbMUijt6HD2cYBl/Y="
+        },
+        "sdkReferences": [
+          "/nix/store/c3k15jk20fccs90qgffdwzhxy15b5fdj-stdenv-linux-no-cc",
+          "/nix/store/ibvjszijykfn360yz2xy9zk2ycg4365n-real-lobsters",
+          "/nix/store/jgpfvjzc0zmpvvwkzakzpcn6yj9a1aww-bundle",
+          "/nix/store/nnm9gdr70ihc6zc9298mzz8jpcgaciql-bash-5.3p20",
+          "/nix/store/p8dbfx5nqrs6fwlpzr68k55axqhp9gsr-lobsters"
+        ],
+        "build": {
+          "status": "success",
+          "executedSystem": "x86_64-linux",
+          "sourceRevision": "bd48bb6b1c1fe893899a301e5c55fc7cc8e92310",
+          "drvPath": "/nix/store/y00bg3154a0x7qrlpbnj4nnm3zk6qkvy-real-lobsters.drv",
+          "outputs": {
+            "out": "/nix/store/ibvjszijykfn360yz2xy9zk2ycg4365n-real-lobsters"
+          },
+          "receipt": "logs/bundler-purifier-build.json",
+          "artifactSha256": "91dd59ae43b8f90f0cb90df9cd7764df31556903f3b528f4511879809fdc1e99",
+          "freshBuildObserved": false,
+          "sdkVersions": {
+            "Ruby": "4.0.9"
+          }
+        },
+        "sdkVersions": {
+          "Ruby": "4.0.9"
+        },
+        "sdkClosureReceipt": "bundler-purifier-sample-closure.json",
+        "sdkDerivationDependencies": [
+          "/nix/store/jyi34b79xlx3hk4jaslgipmk972hzs8l-ruby-4.0.9.tar.gz.drv",
+          "/nix/store/dmhdc8gy7d1flh0s82kwlhq2vv8bimw0-ruby-4.0.9.drv"
+        ],
+        "sdkBindingExplanation": "The check derivation dependency closure contains these exact SDK derivations. The pinned source build expression invokes that SDK to build/run the sample, and the successful native build receipt binds the check, system, source and outputs. Dependency presence alone is not used as runtime proof."
+      },
+      "managerBinding": {
+        "sourceLockPath": "/nix/store/p8dbfx5nqrs6fwlpzr68k55axqhp9gsr-lobsters/Gemfile.lock",
+        "sourceLockSha256": "6ec647e08675413ef5a85230eaadcc24c1e86a1fc66e56ab0f51c123d4cf3e19",
+        "sourceLockTrailer": "919f042ef2f399b904013eb3ef6d20dd3a4082e\n  zeitwerk (2.7.5) sha256=d8da92128c09ea6ec62c949011b00ed4a20242b255293dd66bf41545398f73dd\n\nRUBY VERSION\n  ruby 4.0.9\n\nBUNDLED WITH\n  4.0.3\n",
+        "nativeBuildInputs": "/nix/store/jgpfvjzc0zmpvvwkzakzpcn6yj9a1aww-bundle",
+        "runtimeCommands": "export HOME=\"$TMPDIR\"\ncd /nix/store/p8dbfx5nqrs6fwlpzr68k55axqhp9gsr-lobsters\nbundle exec rails --version | tee \"$out\"\ngrep -q '^Rails ' \"$out\"\n# A gem that opens its library at run time finds it.\nbundle exec ruby -e 'require \"vips\"; puts \"libvips #{Vips.version_string}\"' | tee -a \"$out\"\ngrep -q '^libvips ' \"$out\"\n",
+        "selectionSource": "sources/bundler-purifier/nix/lib/build-bundler-project.nix selects the locked Bundler gem and installs/runs it; the actual built Lobsters Gemfile.lock binds BUNDLED WITH 4.0.3, Ruby 4.0.9"
+      }
+    },
+    "blender-purifier": {
+      "reviewedRevision": "0a67251800df3d8d38202430b3a466a34e374052",
+      "tier": 3,
+      "criteria": {
+        "nonEolVersions": {
+          "state": "met",
+          "summary": "The actual native Blender sample derivation executes Blender 5.2.2 and installs/runs the locked BoltFactory extension. Primary Blender policy lists 5.2 LTS as currently maintained for two years. This actually tested maintained application/extension pair satisfies the clarified criterion. Missing execution of the separately maintained 4.5 LTS line does not invalidate this bounded point; 4.5 or other untested versions are not claimed. A later 5.2 patch does not make this tested point EOL.",
+          "evidence": [
+            "https://www.blender.org/download/lts/",
+            "/nix/store/yhy9wlbbin60vgkhw4ywcncl60djl6xz-blender-project.drv",
+            "/nix/store/p9n1467ah10vvi8ssq1qvz180d2pkijc-blender-project",
+            "derivation-evidence.json#/projects/blender-purifier/local",
+            "logs/blender-purifier-build.json"
+          ],
+          "derivations": [
+            "blender-purifier:local:project"
+          ],
+          "sources": [
+            "https://www.blender.org/download/lts/"
+          ],
+          "gap": null
+        }
+      },
+      "rationale": "Native Linux sample derivations and meaningful extension/runtime regression tests are verified. Actual Blender 5.2.2 executes within maintained 5.2 LTS. No successful native Darwin receipt was found in inspected workflows/jobs, so Tier 3 remains unchanged.",
+      "sdkVersions": {
+        "Blender": "5.2.2",
+        "BoltFactory": "0.7.1"
+      },
+      "proof": {
+        "id": "blender-purifier:local:project",
+        "repository": "https://github.com/nix-purifiers/blender-purifier",
+        "revision": "0a67251800df3d8d38202430b3a466a34e374052",
+        "system": "x86_64-linux",
+        "check": {
+          "kind": "flake-attribute",
+          "value": "checks.x86_64-linux.project"
+        },
+        "sourceNarHash": "sha256-ykzKf4Vh+E/HqcFP7Wlrs+r8HgWxIcMtLiUXi4yrdi4=",
+        "sourcePath": "/nix/store/ivxggcpaaj2c3mxhjsh4zss19i733xwg-source",
+        "drvPath": "/nix/store/yhy9wlbbin60vgkhw4ywcncl60djl6xz-blender-project.drv",
+        "outputs": {
+          "out": "/nix/store/p9n1467ah10vvi8ssq1qvz180d2pkijc-blender-project"
+        },
+        "outputNarHashes": {
+          "out": "sha256-yMbyvM5o6s6N6zwfU9vbbebYeCUWftMxQrxDi9ZTXY8="
+        },
+        "sdkReferences": [
+          "/nix/store/c3k15jk20fccs90qgffdwzhxy15b5fdj-stdenv-linux-no-cc",
+          "/nix/store/g31dxnspbq3d8flxkw29m11ravszjbmf-blender-5.2.2",
+          "/nix/store/kg759lhplrxscw520nxd36vfmjaw3lay-blender-purifier-native-scripts",
+          "/nix/store/nnm9gdr70ihc6zc9298mzz8jpcgaciql-bash-5.3p20",
+          "/nix/store/p9n1467ah10vvi8ssq1qvz180d2pkijc-blender-project",
+          "/nix/store/py8a5fl4zlmhqhb67v69mdrf85vjbz9x-source",
+          "/nix/store/pybrhxrcw5fxw175b50i9c28673iqvik-blender-locked-environment",
+          "/nix/store/q9vyjszcsjb03q1x2mbapbq5vnwps11h-startup.py"
+        ],
+        "build": {
+          "status": "success",
+          "executedSystem": "x86_64-linux",
+          "sourceRevision": "0a67251800df3d8d38202430b3a466a34e374052",
+          "drvPath": "/nix/store/yhy9wlbbin60vgkhw4ywcncl60djl6xz-blender-project.drv",
+          "outputs": {
+            "out": "/nix/store/p9n1467ah10vvi8ssq1qvz180d2pkijc-blender-project"
+          },
+          "receipt": "logs/blender-purifier-build.json",
+          "artifactSha256": "1bfe360ff417025dd28d30cd31cf86306d972160c5583c95ea78b7365a9613b6",
+          "freshBuildObserved": false,
+          "sdkVersions": {
+            "Blender": "5.2.2"
+          }
+        },
+        "sdkVersions": {
+          "Blender": "5.2.2"
+        },
+        "sdkClosureReceipt": "blender-purifier-sample-closure.json",
+        "sdkDerivationDependencies": [
+          "/nix/store/m83irb743hw4kjycvcn2ayh4q1jswsz7-blender-5.2.2.drv"
+        ],
+        "sdkBindingExplanation": "The check derivation dependency closure contains these exact SDK derivations. The pinned source build expression invokes that SDK to build/run the sample, and the successful native build receipt binds the check, system, source and outputs. Dependency presence alone is not used as runtime proof."
+      }
+    }
+  },
+  "preservedJudgments": "All other criteria remain unchanged, including Darwin not-met for all three, Bundler bounded historical longCompatibility met, and Tier 3 assessments.",
+  "policyObservations": {
+    "bundlerCompatibility": {
+      "source": "https://guides.rubygems.org/bundler-compatibility/",
+      "observedAt": "2026-11-07T03:28:04.048920+00:00",
+      "facts": "Current Bundler 4.0 is listed with Ruby >=3.2/RubyGems >=3.4.1; Ruby 4.0 ships matching 4.0 manager components. Release series and Ruby normal maintenance support the tested pair. This is a policy input, not execution evidence."
+    }
+  }
+}

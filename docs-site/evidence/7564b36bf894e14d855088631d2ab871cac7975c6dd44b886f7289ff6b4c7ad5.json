@@ -1,0 +1,53 @@
+{
+  "createdAt": "2026-11-07T03:27:20.599854+00:00",
+  "criterionInterpretation": "An actually executed maintained tool/runtime pair suffices; exhaustive coverage of all maintained lines is not required.",
+  "newBuilds": false,
+  "originalPacketHashes": {
+    "assessments.json": "6e0012785e5585768d6efc4e0943c63b49c412515cdb3e37aedb894f128dd831",
+    "derivation-evidence.json": "f905624eadd4bdea3fa9fd82569da48fd809823de3948916987d17614a170c11",
+    "review-receipt.json": "fed92e446728194e433a9f024556461030963f825622914c2b619231ecec99fc",
+    "sample-bindings-receipt.json": "0ce6e6ea1a3e46203894b10de0674d80d231f295e017a1f54a9ceab5662ee8cd",
+    "sample-bindings.json": "693010b11a05a193ad1c57d7b24a140d217ba397147c2296d4b883419b884fcd"
+  },
+  "projects": {
+    "julia-purifier": {
+      "criteria": {
+        "nonEolVersions": {
+          "derivations": [
+            "julia-purifier:x86_64-linux:app-tests",
+            "julia-purifier:x86_64-linux:realworld-json3-tests"
+          ],
+          "evidence": [
+            "https://github.com/nix-purifiers/julia-purifier/actions/runs/42153338689",
+            "https://julialang.org/downloads/",
+            "https://github.com/nix-purifiers/julia-purifier/blob/dab47130d47fa857f6b62dbed326fdb4aafd0048/tests/default.nix"
+          ],
+          "gap": null,
+          "sources": [
+            "https://julialang.org/downloads/",
+            "https://github.com/nix-purifiers/julia-purifier/blob/dab47130d47fa857f6b62dbed326fdb4aafd0048/tests/default.nix"
+          ],
+          "state": "met",
+          "summary": "The exact-source app and independent JSON3.jl test derivations execute Julia 1.13.2 on native Linux. Upstream currently identifies stable Julia 1.13.3, placing these executed points on the maintained 1.13 line; a newer patch does not by itself make the tested patch EOL. Under the clarified criterion, a tested maintained tool/runtime pair is sufficient. Separate Julia 1.10 LTS execution is not claimed and is not required for this judgment. Sample SDK credit remains 1.13.2; the separate native CLI 1.13.3 point is not substituted for sample execution."
+        }
+      },
+      "rationale": "Exact-source Linux app and JSON3.jl sample/test derivations execute successfully with reviewed tests and a Julia point on the current maintained 1.13 line. Native Darwin execution remains unproven; Tier 3 is unchanged.",
+      "remainingLimitations": [
+        "No Julia 1.10 LTS sample execution is asserted.",
+        "No native Darwin execution is established.",
+        "No all-patch version range is asserted."
+      ],
+      "reviewedRevision": "dab47130d47fa857f6b62dbed326fdb4aafd0048",
+      "tier": 3
+    }
+  },
+  "scope": "Additive reviewer correction only; original final packet files remain unchanged.",
+  "supersedes": {
+    "criterion": "nonEolVersions",
+    "file": "assessments.json",
+    "oldGapReason": "Missing separate 1.10 LTS execution was an excessive matrix requirement under the clarified criterion.",
+    "oldState": "not-met",
+    "project": "julia-purifier"
+  },
+  "version": 1
+}

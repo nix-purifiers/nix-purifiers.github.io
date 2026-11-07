@@ -1,0 +1,330 @@
+{
+  "version": 1,
+  "reviewedAt": "2026-11-07T03:27:55.554104+00:00",
+  "criterionRule": "One actually executed maintained native tool/runtime point suffices. Exhaustive maintained-language/runtime matrices are not required.",
+  "supersedesFrozenAssessmentSha256": "1d8cb21b2940d6a46b5f303597140b2845c9ef12aae9c36cee802515f79a4805",
+  "canonicalUvCorrection": {
+    "path": "uv-non-eol-correction.json",
+    "sha256": "d1360d0230ca6825df6b89fcfa859e2130e120d6f8e98f842974708d6d51ea5c",
+    "changedHere": false
+  },
+  "projects": {
+    "yarn-berry-purifier": {
+      "previousState": "not-met",
+      "correctionReason": "Previous rationale overrequired an exhaustive maintained-version matrix rather than the now-clarified bounded maintained native tool/runtime point.",
+      "criteria": {
+        "nonEolVersions": {
+          "state": "met",
+          "summary": "The pinned upstream Prettier sample is built through actual native Yarn4.18.1 under Node24.21.0 and its installed formatter output is checked. The current official Yarn release is4.18.1; Node upstream explicitly maintains the24 line through2028-04-30. This is a demonstrated maintained manager/runtime point under the bounded criterion. Missing Node22/26 matrix entries do not negate this point. No all-patch range, other Node line, Darwin execution, or newer unmerged producer result is claimed.",
+          "evidence": [
+            "https://github.com/nix-purifiers/yarn-berry-purifier/actions/runs/42155523744/job/127688629501",
+            "https://github.com/yarnpkg/berry/releases/tag/%40yarnpkg%2Fcli%2F4.18.1",
+            "https://nodejs.org/en/about/previous-releases",
+            "https://github.com/nodejs/Release/blob/main/schedule.json"
+          ],
+          "derivations": [
+            "prettier"
+          ],
+          "sources": [
+            "https://github.com/yarnpkg/berry/releases/tag/%40yarnpkg%2Fcli%2F4.18.1",
+            "https://nodejs.org/en/about/previous-releases",
+            "https://github.com/nodejs/Release/blob/main/schedule.json"
+          ],
+          "gap": null
+        }
+      },
+      "reviewedRevision": "ed69e6b861bb8e55d871c426c7ef9c27e3bf21db",
+      "sourceNarHash": "sha256-0GpxXX/e8GUg768UMFxwsxN+qtwGC4YTZojJYfVumGE=",
+      "actualNativeBinding": {
+        "existingDerivationId": "prettier",
+        "qualifiedExistingDerivationId": "yarn-berry-purifier/prettier",
+        "check": {
+          "kind": "flake-attribute",
+          "value": "checks.x86_64-linux.prettier"
+        },
+        "drvPath": "/nix/store/f1cq8m5g38rkhmlj4vznn374zgj7vxpf-prettier-check.drv",
+        "outputs": {
+          "out": "/nix/store/q1ww0sq7kzwgazzr3xwkj7nx5lbklr9s-prettier-check"
+        },
+        "outputNarHashes": {},
+        "executedSdkVersions": {
+          "yarn": "4.18.1",
+          "nodejs": "24.21.0"
+        },
+        "receipt": {
+          "status": "success",
+          "executedSystem": "x86_64-linux",
+          "sourceRevision": "ed69e6b861bb8e55d871c426c7ef9c27e3bf21db",
+          "sourceNarHash": "sha256-0GpxXX/e8GUg768UMFxwsxN+qtwGC4YTZojJYfVumGE=",
+          "drvPath": "/nix/store/f1cq8m5g38rkhmlj4vznn374zgj7vxpf-prettier-check.drv",
+          "outputs": {
+            "out": "/nix/store/q1ww0sq7kzwgazzr3xwkj7nx5lbklr9s-prettier-check"
+          },
+          "receipt": "evidence/yarn-berry-purifier/main-job-127688629501.log",
+          "artifactSha256": "fa0cbd0399362de8574c1149488693441d2df9e535675d5225966516ecfd3f93",
+          "jobUrl": "https://github.com/nix-purifiers/yarn-berry-purifier/actions/runs/42155523744/job/127688629501",
+          "jobConclusion": "success",
+          "events": [
+            {
+              "line": 10873,
+              "text": "2026-11-06T03:19:53.5339954Z building '/nix/store/f1cq8m5g38rkhmlj4vznn374zgj7vxpf-prettier-check.drv'..."
+            }
+          ],
+          "completedAt": "2026-11-06T03:20:11Z",
+          "outputIdentityBinding": "Local Nix derivation JSON proves drv\u2192output; this exact drv has a native build/rebuild event in the successful immutable-revision CI job."
+        },
+        "actualSampleSource": {
+          "repository": "https://github.com/prettier/prettier",
+          "revision": "bed4edbb1cf2a9db4004215b0ce5707cdb02b5d9",
+          "path": null,
+          "storePath": "/nix/store/58qsbb92qgppyp352h4yri18ggg9iajk-source",
+          "sourceNarHash": "sha256-Gm9jbi8E8AX2366olEPodeBwCJ42RRGnhKr4Wl9u2UM=",
+          "narHashScope": "Exact builder-consumed source tree (may be filtered/project subtree); not automatically the whole Git repository NAR.",
+          "nixPathInfoReceipt": "evidence/sample-source-info.json"
+        },
+        "actualSdkInvokingPhases": [
+          {
+            "drvPath": "/nix/store/f1cq8m5g38rkhmlj4vznn374zgj7vxpf-prettier-check.drv",
+            "derivationFileSha256": "efd84c894e880bcef390306322d23a4a6f26c1262edcdbaea8f029839f051d14",
+            "nativeBuildEvents": [
+              {
+                "line": 10873,
+                "text": "2026-11-06T03:19:53.5339954Z building '/nix/store/f1cq8m5g38rkhmlj4vznn374zgj7vxpf-prettier-check.drv'..."
+              }
+            ],
+            "commands": {
+              "buildCommand": "printf 'const  a  =  {b:1}\\n' > input.js\nprettier input.js | grep -qx 'const a = { b: 1 };'\ntouch $out\n"
+            },
+            "executableSearchPathInputs": {
+              "nativeBuildInputs": "/nix/store/kavv1fjp49ikj3n09a6qqz2wf8shi5by-prettier-3.10.0-dev"
+            },
+            "directSdkDerivationReferences": [],
+            "commandsOrigin": "Actual instantiated derivation env; match native build event via packet CI log, not closure-only version inference."
+          },
+          {
+            "drvPath": "/nix/store/qwsg8fxq9ji29mfb6qbaqlvc3z73kx6s-prettier-3.10.0-dev.drv",
+            "derivationFileSha256": "5c6f3d70202fc8db28efd3c5a93deaab8a3577a8f91eb1515ce2d9dd0e40b0a3",
+            "nativeBuildEvents": [
+              {
+                "line": 10860,
+                "text": "2026-11-06T03:19:43.5793016Z building '/nix/store/qwsg8fxq9ji29mfb6qbaqlvc3z73kx6s-prettier-3.10.0-dev.drv'..."
+              }
+            ],
+            "commands": {
+              "installPhase": "runHook preInstall\nmodules=\"$out/lib/node_modules\"\nmkdir -p \"$modules\"\nif [ -d /nix/store/xsrbmgcj5hiid68arl1ra87dljq6030m-yarn-project-production-modules/node_modules ]; then\n  cp -a /nix/store/xsrbmgcj5hiid68arl1ra87dljq6030m-yarn-project-production-modules/node_modules/. \"$modules/\"\n  chmod -R u+w \"$modules\"\n  rm -rf \"$modules/.bin\" \"$modules/.yarn-state.yml\"\nfi\nrm -rf \"$modules\"/prettier\nmkdir -p \"$modules\"/prettier\ntar -xzf /nix/store/d4yvw1jv1shw31kv7x7gh2gps16wzl7j-yarn-project-build/prettier.tgz --strip-components=1 \\\n  -C \"$modules\"/prettier\n\n\nchmod -R u+w \"$modules\"\nmkdir -p \"$out/bin\"\ntarget=\"$modules\"/prettier/./bin/prettier.cjs\nchmod +x \"$target\"\nln -s \"$target\" \"$out/bin\"/prettier\n\nrunHook postInstall\n"
+            },
+            "executableSearchPathInputs": {
+              "buildInputs": "/nix/store/j1j9b0w3mhpccdli73ycj5w7nf6fkzqz-nodejs-24.21.0"
+            },
+            "directSdkDerivationReferences": [
+              "/nix/store/a7mzwdph5vkavini0lj77xph53qhgjlf-nodejs-24.21.0.drv"
+            ],
+            "commandsOrigin": "Actual instantiated derivation env; match native build event via packet CI log, not closure-only version inference."
+          },
+          {
+            "drvPath": "/nix/store/kh32817vas1qlkwcrzm3phh9csv7yy00-yarn-project-build.drv",
+            "derivationFileSha256": "8c81cb14eecc56e40a657c145eba62f66c9ecd64b8faa9a49c9d8d6db6c287e4",
+            "nativeBuildEvents": [
+              {
+                "line": 9926,
+                "text": "2026-11-06T03:19:05.3227345Z building '/nix/store/kh32817vas1qlkwcrzm3phh9csv7yy00-yarn-project-build.drv'..."
+              }
+            ],
+            "commands": {
+              "buildPhase": "runHook preBuild\ncp /nix/store/58qsbb92qgppyp352h4yri18ggg9iajk-source/yarn.lock yarn.lock\ncp /nix/store/9qp17iw1f5cl0zjqczpwl91sjf5lyqhc-prettier.lock.json yarn-berry-purifier.lock.json\nchmod u+w yarn.lock yarn-berry-purifier.lock.json\n\n\nexport HOME=\"$TMPDIR/home\"\nmkdir -p \"$HOME\"\ncat > \"$HOME/.yarnrc.yml\" << 'EOF'\nplugins:\n  - path: /nix/store/j70xm6zyiqq9m2qfpmqni84n9s0cqh3y-yarn-berry-purifier-plugin/purifier.cjs\n    spec: \"@nix-purifiers/plugin-yarn-berry-purifier\"\nEOF\nexport BERRY_PURIFIER_SERVE=/nix/store/249njpcjgrvbw13gqsp0jfd13ivbjjxj-yarn-berry-purifier-served\n# When Yarn packs a git dependency with npm or Yarn Classic, npm reads\n# the served tarballs from its cache by integrity, offline, and Yarn\n# Classic reads them from its offline mirror. Yarn passes these settings\n# through to both; it would reject unknown YARN_ settings.\nexport npm_config_cache=\"$TMPDIR/npm-cache\"\nmkdir -p \"$npm_config_cache\"\nif [ -d /nix/store/249njpcjgrvbw13gqsp0jfd13ivbjjxj-yarn-berry-purifier-served/npm-cache ]; then\n  cp -rs --no-preserve=mode /nix/store/249njpcjgrvbw13gqsp0jfd13ivbjjxj-yarn-berry-purifier-served/npm-cache/. \"$npm_config_cache\"\nfi\nexport npm_config_offline=true\nexport npm_config_audit=false\nexport npm_config_fund=false\nexport npm_config_update_notifier=false\nexport npm_config_yarn_offline_mirror=/nix/store/249njpcjgrvbw13gqsp0jfd13ivbjjxj-yarn-berry-purifier-served/yarn-mirror\n# Yarn packs git dependencies in parallel, and Yarn Classic installs\n# into a shared cache that only one Yarn Classic may write at a time.\necho \"--mutex \\\"file:$TMPDIR/yarn-classic.mutex\\\"\" > \"$HOME/.yarnrc\"\n# A git dependency that names npm in packageManager and has no lockfile\n# gets the package-lock.json the lock run resolved for it, from this\n# `npm` in front of npm on the PATH.\nmkdir -p \"$TMPDIR/purifier-bin\"\ncat > \"$TMPDIR/purifier-bin/npm\" << 'EOF'\n#!/nix/store/nnm9gdr70ihc6zc9298mzz8jpcgaciql-bash-5.3p20/bin/bash\nif [ -f package.json ] && [ ! -f package-lock.json ]; then\n  lock=\"/nix/store/249njpcjgrvbw13gqsp0jfd13ivbjjxj-yarn-berry-purifier-served/npm-locks/$(sha256sum package.json | cut -d' ' -f1).json\"\n  if [ -f \"$lock\" ]; then\n    cp \"$lock\" package-lock.json\n    chmod u+w package-lock.json\n  fi\nfi\nexec /nix/store/j1j9b0w3mhpccdli73ycj5w7nf6fkzqz-nodejs-24.21.0/bin/npm \"$@\"\nEOF\nchmod +x \"$TMPDIR/purifier-bin/npm\"\nexport PATH=\"$TMPDIR/purifier-bin:$PATH\"\n# `git clone` of a locked repository clones the copy in the served\n# directory.\nexport GIT_CONFIG_COUNT=1\nexport GIT_CONFIG_KEY_0=safe.directory\nexport GIT_CONFIG_VALUE_0='*'\n\nexport YARN_GLOBAL_FOLDER=\"$TMPDIR/yarn-global\"\nexport YARN_ENABLE_TELEMETRY=0\nexport YARN_ENABLE_INLINE_BUILDS=1\nexport YARN_ENABLE_PROGRESS_BARS=0\n# node-gyp takes the headers of the Node.js that runs it rather than\n# downloading them.\nexport npm_config_nodedir=/nix/store/j1j9b0w3mhpccdli73ycj5w7nf6fkzqz-nodejs-24.21.0\nyarnJs=\"$(realpath ./.yarn/releases/yarn-4.18.1.cjs)\"\nyarn() {\n  /nix/store/j1j9b0w3mhpccdli73ycj5w7nf6fkzqz-nodejs-24.21.0/bin/node \"$yarnJs\" \"$@\"\n}\nexport BERRY_PURIFIER_INPUT_VIEWS='[]'\n\n\npatchInstalled() {\n  local dirs=()\n  while IFS= read -r -d \"\" dir; do\n    dirs+=(\"$dir\")\n  done < <(find . \\( -name node_modules -o -path ./.yarn/unplugged \\) -type d -prune -print0)\n  if [ ${#dirs[@]} -gt 0 ]; then\n    patchShebangs \"${dirs[@]}\" > /dev/null\n    if declare -F autoPatchelf > /dev/null; then\n      autoPatchelf \"${dirs[@]}\"\n    fi\n  fi\n}\n\nYARN_ENABLE_SCRIPTS=0 yarn install --immutable\npatchInstalled\nyarn install --immutable\nrunScript() {\n  if true && node -e 'var scripts = require(\"./package.json\").scripts; process.exit(scripts && scripts[process.argv[1]] ? 0 : 1)' \"$1\"; then\n    yarn run \"$1\"\n  else\n    \n    :\n  fi\n}\n\nfor script in build; do\n  runScript \"$script\"\ndone\nrunHook postBuild\n",
+              "installPhase": "runHook preInstall\nmkdir -p \"$out\"\nyarn  pack --out \"$out\"/prettier.tgz\n\nrunHook postInstall\n"
+            },
+            "executableSearchPathInputs": {
+              "nativeBuildInputs": "/nix/store/j1j9b0w3mhpccdli73ycj5w7nf6fkzqz-nodejs-24.21.0 /nix/store/xgw813vgzl2q0696sq45adpj0xd690jq-git-2.56.0 /nix/store/m5r2g21f5ymnbhwp6lczq0ig4jkcz3lg-python3-3.14.8-env /nix/store/7a84lb77p1c5wqzw9lyk3n65zl4ssbmx-node-gyp-13.1.0 /nix/store/24zxb4wfmwvnbjjk2jdkzmj7irk41w3w-auto-patchelf-hook",
+              "buildInputs": "/nix/store/7a2cjhcgzyym5zaz6m4fksw47qvm150w-gcc-16.2.0-lib"
+            },
+            "directSdkDerivationReferences": [
+              "/nix/store/a7mzwdph5vkavini0lj77xph53qhgjlf-nodejs-24.21.0.drv",
+              "/nix/store/jsskx9gaff84kx4nbyi1sd2adhq0dxp0-python3-3.14.8-env.drv"
+            ],
+            "commandsOrigin": "Actual instantiated derivation env; match native build event via packet CI log, not closure-only version inference."
+          },
+          {
+            "drvPath": "/nix/store/qndpdlhs808dg86p0vwiwvjhn4n2ihrs-yarn-project-production-modules.drv",
+            "derivationFileSha256": "c1bbe4e42a233590994e4adc1ee20f25d313617843dca34dba885abe0d1d2f4a",
+            "nativeBuildEvents": [
+              {
+                "line": 9927,
+                "text": "2026-11-06T03:19:05.3550331Z building '/nix/store/qndpdlhs808dg86p0vwiwvjhn4n2ihrs-yarn-project-production-modules.drv'..."
+              }
+            ],
+            "commands": {
+              "buildPhase": "runHook preBuild\ncp /nix/store/58qsbb92qgppyp352h4yri18ggg9iajk-source/yarn.lock yarn.lock\ncp /nix/store/9qp17iw1f5cl0zjqczpwl91sjf5lyqhc-prettier.lock.json yarn-berry-purifier.lock.json\nchmod u+w yarn.lock yarn-berry-purifier.lock.json\n\nexport HOME=\"$TMPDIR/home\"\nmkdir -p \"$HOME\"\ncat > \"$HOME/.yarnrc.yml\" << 'EOF'\nplugins:\n  - path: /nix/store/j70xm6zyiqq9m2qfpmqni84n9s0cqh3y-yarn-berry-purifier-plugin/purifier.cjs\n    spec: \"@nix-purifiers/plugin-yarn-berry-purifier\"\nEOF\nexport BERRY_PURIFIER_SERVE=/nix/store/249njpcjgrvbw13gqsp0jfd13ivbjjxj-yarn-berry-purifier-served\n# When Yarn packs a git dependency with npm or Yarn Classic, npm reads\n# the served tarballs from its cache by integrity, offline, and Yarn\n# Classic reads them from its offline mirror. Yarn passes these settings\n# through to both; it would reject unknown YARN_ settings.\nexport npm_config_cache=\"$TMPDIR/npm-cache\"\nmkdir -p \"$npm_config_cache\"\nif [ -d /nix/store/249njpcjgrvbw13gqsp0jfd13ivbjjxj-yarn-berry-purifier-served/npm-cache ]; then\n  cp -rs --no-preserve=mode /nix/store/249njpcjgrvbw13gqsp0jfd13ivbjjxj-yarn-berry-purifier-served/npm-cache/. \"$npm_config_cache\"\nfi\nexport npm_config_offline=true\nexport npm_config_audit=false\nexport npm_config_fund=false\nexport npm_config_update_notifier=false\nexport npm_config_yarn_offline_mirror=/nix/store/249njpcjgrvbw13gqsp0jfd13ivbjjxj-yarn-berry-purifier-served/yarn-mirror\n# Yarn packs git dependencies in parallel, and Yarn Classic installs\n# into a shared cache that only one Yarn Classic may write at a time.\necho \"--mutex \\\"file:$TMPDIR/yarn-classic.mutex\\\"\" > \"$HOME/.yarnrc\"\n# A git dependency that names npm in packageManager and has no lockfile\n# gets the package-lock.json the lock run resolved for it, from this\n# `npm` in front of npm on the PATH.\nmkdir -p \"$TMPDIR/purifier-bin\"\ncat > \"$TMPDIR/purifier-bin/npm\" << 'EOF'\n#!/nix/store/nnm9gdr70ihc6zc9298mzz8jpcgaciql-bash-5.3p20/bin/bash\nif [ -f package.json ] && [ ! -f package-lock.json ]; then\n  lock=\"/nix/store/249njpcjgrvbw13gqsp0jfd13ivbjjxj-yarn-berry-purifier-served/npm-locks/$(sha256sum package.json | cut -d' ' -f1).json\"\n  if [ -f \"$lock\" ]; then\n    cp \"$lock\" package-lock.json\n    chmod u+w package-lock.json\n  fi\nfi\nexec /nix/store/j1j9b0w3mhpccdli73ycj5w7nf6fkzqz-nodejs-24.21.0/bin/npm \"$@\"\nEOF\nchmod +x \"$TMPDIR/purifier-bin/npm\"\nexport PATH=\"$TMPDIR/purifier-bin:$PATH\"\n# `git clone` of a locked repository clones the copy in the served\n# directory.\nexport GIT_CONFIG_COUNT=1\nexport GIT_CONFIG_KEY_0=safe.directory\nexport GIT_CONFIG_VALUE_0='*'\n\nexport YARN_GLOBAL_FOLDER=\"$TMPDIR/yarn-global\"\nexport YARN_ENABLE_TELEMETRY=0\nexport YARN_ENABLE_INLINE_BUILDS=1\nexport YARN_ENABLE_PROGRESS_BARS=0\n# node-gyp takes the headers of the Node.js that runs it rather than\n# downloading them.\nexport npm_config_nodedir=/nix/store/j1j9b0w3mhpccdli73ycj5w7nf6fkzqz-nodejs-24.21.0\nyarnJs=\"$(realpath ./.yarn/releases/yarn-4.18.1.cjs)\"\nyarn() {\n  /nix/store/j1j9b0w3mhpccdli73ycj5w7nf6fkzqz-nodejs-24.21.0/bin/node \"$yarnJs\" \"$@\"\n}\nexport BERRY_PURIFIER_INPUT_VIEWS='[]'\n\n\npatchInstalled() {\n  local dirs=()\n  while IFS= read -r -d \"\" dir; do\n    dirs+=(\"$dir\")\n  done < <(find . \\( -name node_modules -o -path ./.yarn/unplugged \\) -type d -prune -print0)\n  if [ ${#dirs[@]} -gt 0 ]; then\n    patchShebangs \"${dirs[@]}\" > /dev/null\n    if declare -F autoPatchelf > /dev/null; then\n      autoPatchelf \"${dirs[@]}\"\n    fi\n  fi\n}\n\nexport YARN_NODE_LINKER=node-modules\nYARN_ENABLE_SCRIPTS=0 yarn workspaces focus --production --all\npatchInstalled\nyarn workspaces focus --production --all\n# A `link:` or `portal:` dependency is a symlink into the project,\n# which the installed packages do not contain, so it becomes a copy of\n# its target.\nfind . -path '*node_modules/*' -not -path '*/.bin/*' -type l -print0 \\\n  | while IFS= read -r -d \"\" link; do\n      target=\"$(readlink -f \"$link\")\"\n      rm \"$link\"\n      cp -r \"$target\" \"$link\"\n    done\nrunHook postBuild\n",
+              "installPhase": "runHook preInstall\nmkdir -p \"$out\"\nfind . -name node_modules -type d -prune -print0 | while IFS= read -r -d \"\" dir; do\n  mkdir -p \"$out/$(dirname \"$dir\")\"\n  cp -a \"$dir\" \"$out/$dir\"\ndone\nrunHook postInstall\n"
+            },
+            "executableSearchPathInputs": {
+              "nativeBuildInputs": "/nix/store/j1j9b0w3mhpccdli73ycj5w7nf6fkzqz-nodejs-24.21.0 /nix/store/xgw813vgzl2q0696sq45adpj0xd690jq-git-2.56.0 /nix/store/m5r2g21f5ymnbhwp6lczq0ig4jkcz3lg-python3-3.14.8-env /nix/store/7a84lb77p1c5wqzw9lyk3n65zl4ssbmx-node-gyp-13.1.0 /nix/store/24zxb4wfmwvnbjjk2jdkzmj7irk41w3w-auto-patchelf-hook",
+              "buildInputs": "/nix/store/7a2cjhcgzyym5zaz6m4fksw47qvm150w-gcc-16.2.0-lib"
+            },
+            "directSdkDerivationReferences": [
+              "/nix/store/a7mzwdph5vkavini0lj77xph53qhgjlf-nodejs-24.21.0.drv",
+              "/nix/store/jsskx9gaff84kx4nbyi1sd2adhq0dxp0-python3-3.14.8-env.drv"
+            ],
+            "commandsOrigin": "Actual instantiated derivation env; match native build event via packet CI log, not closure-only version inference."
+          }
+        ],
+        "outputProvenance": {
+          "ciObserved": "Exact drv building/rebuild event and successful check.",
+          "evaluated": "Named-check output paths independently bound through local instantiated derivation JSON.",
+          "localRealization": "NAR hashes only when actually present in realized-output-info.json; not claimed printed by CI."
+        }
+      },
+      "primaryPolicySnapshots": {
+        "maintained-point-policy/berry-current-release.json": "d0144279cae5780be94560711d548407e7428bed2bb489aa9028c24e62bcfd8c",
+        "maintained-point-policy/node-release-schedule.json": "0ce3f983b7c9bf692d992d5047d694a232445a6cd90ef5dea73b1efbaf1517aa",
+        "maintained-point-policy/node-release-schedule-bytes.json": "50fe35a4df02398f741fdffbc666aceca323fcdb7f46d05af93145bf610d0049"
+      },
+      "tier": 3,
+      "tierChange": null,
+      "darwinGapUnchanged": true
+    },
+    "tofu-purifier": {
+      "previousState": "not-met",
+      "correctionReason": "Previous rationale overrequired an exhaustive maintained-version matrix rather than the now-clarified bounded maintained native tool/runtime point.",
+      "criteria": {
+        "nonEolVersions": {
+          "state": "met",
+          "summary": "The authored random-provider sample actually executes OpenTofu1.13.2 in native environment and offline project-test derivations. The primary OpenTofu release policy delegates support windows to each line changelog, and the1.13 changelog explicitly supports that line until2027-08-01. Thus the executed1.13.2 point is in a maintained tool line. Missing execution of the separately maintained1.12 line is not a failure under the bounded one-maintained-point criterion. No untested patch interval, Darwin execution, or other-line support is claimed.",
+          "evidence": [
+            "https://github.com/nix-purifiers/tofu-purifier/actions/runs/42155182708/job/127687527067",
+            "https://github.com/opentofu/opentofu/blob/main/RELEASE.md",
+            "https://github.com/opentofu/opentofu/blob/v1.13/CHANGELOG.md"
+          ],
+          "derivations": [
+            "offline"
+          ],
+          "sources": [
+            "https://github.com/opentofu/opentofu/blob/main/RELEASE.md",
+            "https://github.com/opentofu/opentofu/blob/v1.13/CHANGELOG.md"
+          ],
+          "gap": null
+        }
+      },
+      "reviewedRevision": "4106b6066ccb326ddf4def2721a4d5e9ef920766",
+      "sourceNarHash": "sha256-3LKotvKsPqSSx5e21T8ngVoy6cnAtPbpEDbVYzjmTGU=",
+      "actualNativeBinding": {
+        "existingDerivationId": "offline",
+        "qualifiedExistingDerivationId": "tofu-purifier/offline",
+        "check": {
+          "kind": "flake-attribute",
+          "value": "checks.x86_64-linux.offline"
+        },
+        "drvPath": "/nix/store/62nxnq0grnvqr9rjkr3n4px1z60jhi2b-tofu-project-tests.drv",
+        "outputs": {
+          "out": "/nix/store/9ym8lic74cf5avny8gda8qsbc6n6x5ph-tofu-project-tests"
+        },
+        "outputNarHashes": {
+          "out": "sha256-d6xi4mKdjkX2JFicDIv5niSzpyI0m/Hnm8GGAIU04kY="
+        },
+        "executedSdkVersions": {
+          "opentofu": "1.13.2"
+        },
+        "receipt": {
+          "status": "success",
+          "executedSystem": "x86_64-linux",
+          "sourceRevision": "4106b6066ccb326ddf4def2721a4d5e9ef920766",
+          "sourceNarHash": "sha256-3LKotvKsPqSSx5e21T8ngVoy6cnAtPbpEDbVYzjmTGU=",
+          "drvPath": "/nix/store/62nxnq0grnvqr9rjkr3n4px1z60jhi2b-tofu-project-tests.drv",
+          "outputs": {
+            "out": "/nix/store/9ym8lic74cf5avny8gda8qsbc6n6x5ph-tofu-project-tests"
+          },
+          "receipt": "evidence/tofu-purifier/main-job-127687527067.log",
+          "artifactSha256": "dea5d8e098203db2d93ae2d07fe9584064b5f474febe23f8eee50e3dd67c9f54",
+          "jobUrl": "https://github.com/nix-purifiers/tofu-purifier/actions/runs/42155182708/job/127687527067",
+          "jobConclusion": "success",
+          "events": [
+            {
+              "line": 887,
+              "text": "2026-11-06T03:18:33.5742928Z building '/nix/store/62nxnq0grnvqr9rjkr3n4px1z60jhi2b-tofu-project-tests.drv'..."
+            }
+          ],
+          "completedAt": "2026-11-06T03:18:38Z",
+          "outputIdentityBinding": "Local Nix derivation JSON proves drv\u2192output; this exact drv has a native build/rebuild event in the successful immutable-revision CI job."
+        },
+        "actualSampleSource": {
+          "repository": "https://github.com/nix-purifiers/tofu-purifier",
+          "revision": "4106b6066ccb326ddf4def2721a4d5e9ef920766",
+          "path": "examples/random",
+          "storePath": "/nix/store/pr24p6rgckgx86agw1v4nfiswwjvr20d-source",
+          "sourceNarHash": "sha256-9FMNcjV+qoLvErXkesZWrFPhkkxSprFr0rpqyKyU0Zk=",
+          "narHashScope": "Exact builder-consumed source tree (may be filtered/project subtree); not automatically the whole Git repository NAR.",
+          "nixPathInfoReceipt": "evidence/sample-source-info.json"
+        },
+        "actualSdkInvokingPhases": [
+          {
+            "drvPath": "/nix/store/62nxnq0grnvqr9rjkr3n4px1z60jhi2b-tofu-project-tests.drv",
+            "derivationFileSha256": "a0ef6714bd817587cbae1c5d59b0e51ff603e85dae42e388abd153abe8f07a37",
+            "nativeBuildEvents": [
+              {
+                "line": 887,
+                "text": "2026-11-06T03:18:33.5742928Z building '/nix/store/62nxnq0grnvqr9rjkr3n4px1z60jhi2b-tofu-project-tests.drv'..."
+              }
+            ],
+            "commands": {
+              "buildCommand": "export HOME=\"$TMPDIR/home\" TF_IN_AUTOMATION=1\nmkdir -p \"$HOME\"\ncp -r /nix/store/b9n65hzc9sahlw2vipkl1pgpl7rz2pyx-tofu-configuration work\nchmod -R u+w work\ncd work\nexport TF_DATA_DIR=\"$PWD/.terraform\" NIX_PURIFIER_NATIVE_LOCKFILE=\"$PWD/.terraform.lock.hcl\"\ntofu test -no-color\ntouch \"$out\"\n"
+            },
+            "executableSearchPathInputs": {
+              "nativeBuildInputs": "/nix/store/1wg69mpidc4035mipqz4p6mcpfd7566w-opentofu-1.13.2"
+            },
+            "directSdkDerivationReferences": [
+              "/nix/store/h8p3xikr7jz8w7vmhw2hg9hxqgqscx7y-opentofu-1.13.2.drv"
+            ],
+            "commandsOrigin": "Actual instantiated derivation env; match native build event via packet CI log, not closure-only version inference."
+          },
+          {
+            "drvPath": "/nix/store/xl10xylxqwk5b35l1i1skxlbq12ll4qz-tofu-configuration.drv",
+            "derivationFileSha256": "2165ba5341ec1a9224b81db9d4127b4fbddcdf755e65b5d2d9840dfe7441d370",
+            "nativeBuildEvents": [
+              {
+                "line": 870,
+                "text": "2026-11-06T03:18:33.2505515Z building '/nix/store/xl10xylxqwk5b35l1i1skxlbq12ll4qz-tofu-configuration.drv'..."
+              },
+              {
+                "line": 909,
+                "text": "2026-11-06T03:18:34.7399427Z checking outputs of '/nix/store/xl10xylxqwk5b35l1i1skxlbq12ll4qz-tofu-configuration.drv'..."
+              }
+            ],
+            "commands": {
+              "buildCommand": "export HOME=\"$TMPDIR/home\" TF_IN_AUTOMATION=1 TF_DATA_DIR=\"$out/.terraform\"\nexport NIX_PURIFIER_NATIVE_LOCKFILE=\"$out/.terraform.lock.hcl\"\nmkdir -p \"$HOME\" \"$out\"\ncp -r /nix/store/pr24p6rgckgx86agw1v4nfiswwjvr20d-source/. \"$out/\"\nchmod -R u+w \"$out\"\ncp /nix/store/ydr2mhw2h6hv2k5ia544pkf7inpj99kg-.terraform.lock.hcl \"$out/.terraform.lock.hcl\"\ncp /nix/store/gn6jdzx2wy0s3fcr32snj1pw9429m627-tofu-purifier.lock.json \"$out/tofu-purifier.lock.json\"\npython /nix/store/v2ppx3hjygwnsd7fdzdh6syl42ksgrrl-materialize.py \"$out\" /nix/store/gn6jdzx2wy0s3fcr32snj1pw9429m627-tofu-purifier.lock.json /nix/store/9jvb6bph04g5y8hczafj4dpz42rj1dq6-tofu-dependencies\ntofu -chdir=\"$out\" init -backend=false -get=false -input=false -lockfile=readonly -no-color -plugin-dir=/nix/store/9jvb6bph04g5y8hczafj4dpz42rj1dq6-tofu-dependencies/providers\ntofu -chdir=\"$out\" validate -no-color\n"
+            },
+            "executableSearchPathInputs": {
+              "nativeBuildInputs": "/nix/store/1wg69mpidc4035mipqz4p6mcpfd7566w-opentofu-1.13.2 /nix/store/6yngrq66r6ni6xbfkvk44a10ik2jpw1l-python3-3.14.8-env"
+            },
+            "directSdkDerivationReferences": [
+              "/nix/store/d16aik1nv7n9r2d2s9wnx17z197j5qnq-python3-3.14.8-env.drv",
+              "/nix/store/h8p3xikr7jz8w7vmhw2hg9hxqgqscx7y-opentofu-1.13.2.drv"
+            ],
+            "commandsOrigin": "Actual instantiated derivation env; match native build event via packet CI log, not closure-only version inference."
+          }
+        ],
+        "outputProvenance": {
+          "ciObserved": "Exact drv building/rebuild event and successful check.",
+          "evaluated": "Named-check output paths independently bound through local instantiated derivation JSON.",
+          "localRealization": "NAR hashes only when actually present in realized-output-info.json; not claimed printed by CI."
+        }
+      },
+      "primaryPolicySnapshots": {
+        "evidence/tofu-purifier/upstream-RELEASE.md": "735c676bd83ee33c08b6fe0672d226e96574d6d94bec62ca2697aa326209091c",
+        "evidence/tofu-purifier/upstream-RELEASE.md.json": "f705f25d134fc6acfd0014ec5df01c816c5d6735fe7b8b362b4286171c9981e1",
+        "evidence/tofu-purifier/upstream-v1.13-changelog.md": "41ddbbc2f2d7aea8781e13536a4db156ba124dcab1f5d3ce367490072a3a5372",
+        "evidence/tofu-purifier/upstream-v1.13-changelog.json": "1fe86a7b602e589432d29fa0bfb25603157f8c3e4d172aa5039ee06d14a63615"
+      },
+      "tier": 3,
+      "tierChange": null,
+      "darwinGapUnchanged": true
+    }
+  },
+  "unchangedJudgments": {
+    "terraform-purifier/nonEolVersions": "not-met: primary support-period/compatibility policy fetch was unavailable, and no explicit maintenance policy was established. This is a support-policy evidence gap, not an assertion that executed Terraform1.17.0 is EOL.",
+    "zef-purifier/nonEolVersions": "not-met: root-adjudicated missing1.1.3 maintenance-retention evidence/latest1.1.4 execution gap retained.",
+    "zig-purifier/nonEolVersions": "not-met: root-adjudicated current compiled-target/runtime representative-project gap retained; native0.17 std.Build point still proven."
+  },
+  "tierChanges": [],
+  "newBuilds": false,
+  "originalFrozenPacketChanged": false
+}
