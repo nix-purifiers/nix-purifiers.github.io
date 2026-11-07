@@ -16,7 +16,8 @@ def relevant(path):
 # Public GitHub-hosted runner labels, reviewed against GitHub's runner reference:
 # https://docs.github.com/en/actions/reference/runners/github-hosted-runners
 RUNNER_SYSTEMS = {'ubuntu-latest': 'x86_64-linux', 'ubuntu-24.04': 'x86_64-linux',
-                  'ubuntu-24.04-arm': 'aarch64-linux', 'macos-latest': 'aarch64-darwin'}
+                  'ubuntu-24.04-arm': 'aarch64-linux', 'macos-latest': 'aarch64-darwin',
+                  'macos-15': 'aarch64-darwin'}
 
 
 def runner_system(labels):

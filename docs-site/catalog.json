@@ -18094,10 +18094,403 @@
             "version": "16.2.0"
           }
         ],
-        "limitations": [],
-        "projectSelections": [],
+        "limitations": [
+          {
+            "evidence": [
+              "https://github.com/nix-purifiers/cmake-purifier/blob/fa095b882aebd925c397521961ae316c76b469d7/.github/workflows/check.yml"
+            ],
+            "sourceRevision": "fa095b882aebd925c397521961ae316c76b469d7",
+            "text": "The recorded matrix is four exact CMake versions on x86_64-linux and aarch64-darwin using the retained FileAPI-backed fixture. It establishes no intervening range, compiler Cartesian matrix, legacy-format4 behavior, or ARM Linux SDK matrix."
+          },
+          {
+            "evidence": [
+              "https://github.com/nix-purifiers/cmake-purifier/blob/31384b9817a67045040ddced0b30fd08a5b23e87/README.md"
+            ],
+            "sourceRevision": "31384b9817a67045040ddced0b30fd08a5b23e87",
+            "text": "For legacy-external-v1, closed format 4 records an observed acquisition closure and native install manifest on x86_64-linux. Named dependency and target metadata are unavailable; target/native/resource projection queries fail closed, and there is no named-dependency update selector. This is distinct from the default format 3 FileAPI-backed flow."
+          },
+          {
+            "evidence": [
+              "https://github.com/nix-purifiers/cmake-purifier/blob/31384b9817a67045040ddced0b30fd08a5b23e87/tests/legacy-external/check.sh",
+              "https://github.com/nix-purifiers/cmake-purifier/blob/31384b9817a67045040ddced0b30fd08a5b23e87/README.md"
+            ],
+            "sourceRevision": "31384b9817a67045040ddced0b30fd08a5b23e87",
+            "text": "Legacy compatibility is measured only at source-built CMake 2.8.12.2 and 3.0.2 on x86_64-linux. The repeatable fixture uses HTTP; HTTPS depends on native SDK TLS support. No SDK range, historical Darwin/ARM, compiler Cartesian matrix, general code confinement, proxy bypass detection or original publication-byte parity is established."
+          }
+        ],
+        "projectSelections": [
+          {
+            "description": "Supply the selected CMake package to the purifier scope for the native CLI and builder, or override the builder CMake package separately. The packaged default is distinct from these tested SDK selections.",
+            "evidence": [
+              "https://github.com/nix-purifiers/cmake-purifier/blob/fa095b882aebd925c397521961ae316c76b469d7/README.md",
+              "https://github.com/nix-purifiers/cmake-purifier/blob/fa095b882aebd925c397521961ae316c76b469d7/tests/toolchains/module.nix",
+              "https://github.com/nix-purifiers/cmake-purifier/blob/fa095b882aebd925c397521961ae316c76b469d7/tests/toolchains/checks.nix"
+            ],
+            "inputs": [
+              "pkgs.cmake-purifier.overrideScope (_: _: { cmake = selectedCmake; })",
+              "pkgs.cmake-purifier.buildCMakeProject.override { cmake = selectedCmake; }"
+            ],
+            "kind": "nix-scope",
+            "name": "CMake",
+            "role": "native-tool",
+            "sourceRevision": "fa095b882aebd925c397521961ae316c76b469d7"
+          },
+          {
+            "description": "Select the native CMake package and explicit legacy-external-v1 scope in consumer Nix source, with exact native project name and adapter schema 1/source archive identity/relative module root. Use that same live scope for CLI and builder; locks never instantiate an SDK from a serialized path. A changed SDK scope requires a new capture into a new lockfile.",
+            "evidence": [
+              "https://github.com/nix-purifiers/cmake-purifier/blob/31384b9817a67045040ddced0b30fd08a5b23e87/README.md",
+              "https://github.com/nix-purifiers/cmake-purifier/blob/31384b9817a67045040ddced0b30fd08a5b23e87/tests/legacy-external/project.nix"
+            ],
+            "inputs": [
+              "pkgs.cmake-purifier.overrideScope",
+              "nativeProfile = \"legacy-external-v1\"",
+              "cmake",
+              "legacyProjectName",
+              "legacySdkAdapter.version = 1",
+              "legacySdkAdapter.package",
+              "legacySdkAdapter.moduleRoot",
+              "legacySdkAdapter.source.url",
+              "legacySdkAdapter.source.sha256"
+            ],
+            "kind": "nix-scope",
+            "name": "CMake legacy acquisition/install profile",
+            "role": "native-tool",
+            "sourceRevision": "31384b9817a67045040ddced0b30fd08a5b23e87"
+          }
+        ],
         "supportedRanges": [],
-        "testedPoints": []
+        "testedPoints": [
+          {
+            "components": [
+              {
+                "name": "CMake",
+                "role": "native-tool",
+                "version": "3.31.12"
+              }
+            ],
+            "evidence": [
+              "https://github.com/nix-purifiers/cmake-purifier/blob/fa095b882aebd925c397521961ae316c76b469d7/tests/toolchains/check.sh",
+              "https://github.com/nix-purifiers/cmake-purifier/blob/fa095b882aebd925c397521961ae316c76b469d7/tests/toolchains/checks.nix",
+              "https://github.com/nix-purifiers/cmake-purifier/actions/runs/42347515152/job/128328354411"
+            ],
+            "id": "cmake-fa095b8-sdk-3_31_12-x86_64-linux",
+            "notes": [
+              "Exact independently selected native SDK; executable/version are asserted in ordinary and pure builds.",
+              "One observed compiler/helper/sysroot tuple for this platform, not a compiler or SDK Cartesian support claim.",
+              "FileAPI-backed format3 fixture; no untested versions, ranges, or opt-in legacy profile credit."
+            ],
+            "operations": [
+              "native-lock",
+              "lock-reproducibility",
+              "native-prefetch",
+              "native-offline-build",
+              "project-build-scripts",
+              "project-test-scripts",
+              "pure-build"
+            ],
+            "sourceRevision": "fa095b882aebd925c397521961ae316c76b469d7",
+            "system": "x86_64-linux"
+          },
+          {
+            "components": [
+              {
+                "name": "CMake",
+                "role": "native-tool",
+                "version": "4.3.6"
+              }
+            ],
+            "evidence": [
+              "https://github.com/nix-purifiers/cmake-purifier/blob/fa095b882aebd925c397521961ae316c76b469d7/tests/toolchains/check.sh",
+              "https://github.com/nix-purifiers/cmake-purifier/blob/fa095b882aebd925c397521961ae316c76b469d7/tests/toolchains/checks.nix",
+              "https://github.com/nix-purifiers/cmake-purifier/actions/runs/42347515152/job/128328354241"
+            ],
+            "id": "cmake-fa095b8-sdk-4_3_6-x86_64-linux",
+            "notes": [
+              "Exact independently selected native SDK; executable/version are asserted in ordinary and pure builds.",
+              "One observed compiler/helper/sysroot tuple for this platform, not a compiler or SDK Cartesian support claim.",
+              "FileAPI-backed format3 fixture; no untested versions, ranges, or opt-in legacy profile credit."
+            ],
+            "operations": [
+              "native-lock",
+              "lock-reproducibility",
+              "native-prefetch",
+              "native-offline-build",
+              "project-build-scripts",
+              "project-test-scripts",
+              "pure-build"
+            ],
+            "sourceRevision": "fa095b882aebd925c397521961ae316c76b469d7",
+            "system": "x86_64-linux"
+          },
+          {
+            "components": [
+              {
+                "name": "CMake",
+                "role": "native-tool",
+                "version": "4.4.5"
+              }
+            ],
+            "evidence": [
+              "https://github.com/nix-purifiers/cmake-purifier/blob/fa095b882aebd925c397521961ae316c76b469d7/tests/toolchains/check.sh",
+              "https://github.com/nix-purifiers/cmake-purifier/blob/fa095b882aebd925c397521961ae316c76b469d7/tests/toolchains/checks.nix",
+              "https://github.com/nix-purifiers/cmake-purifier/actions/runs/42347515152/job/128328354377"
+            ],
+            "id": "cmake-fa095b8-sdk-4_4_5-x86_64-linux",
+            "notes": [
+              "Exact independently selected native SDK; executable/version are asserted in ordinary and pure builds.",
+              "One observed compiler/helper/sysroot tuple for this platform, not a compiler or SDK Cartesian support claim.",
+              "FileAPI-backed format3 fixture; no untested versions, ranges, or opt-in legacy profile credit."
+            ],
+            "operations": [
+              "native-lock",
+              "lock-reproducibility",
+              "native-prefetch",
+              "native-offline-build",
+              "project-build-scripts",
+              "project-test-scripts",
+              "pure-build"
+            ],
+            "sourceRevision": "fa095b882aebd925c397521961ae316c76b469d7",
+            "system": "x86_64-linux"
+          },
+          {
+            "components": [
+              {
+                "name": "CMake",
+                "role": "native-tool",
+                "version": "4.5.0-rc3"
+              }
+            ],
+            "evidence": [
+              "https://github.com/nix-purifiers/cmake-purifier/blob/fa095b882aebd925c397521961ae316c76b469d7/tests/toolchains/check.sh",
+              "https://github.com/nix-purifiers/cmake-purifier/blob/fa095b882aebd925c397521961ae316c76b469d7/tests/toolchains/checks.nix",
+              "https://github.com/nix-purifiers/cmake-purifier/actions/runs/42347515152/job/128328354457"
+            ],
+            "id": "cmake-fa095b8-sdk-4_5_0-rc3-x86_64-linux",
+            "notes": [
+              "Exact independently selected native SDK; executable/version are asserted in ordinary and pure builds.",
+              "One observed compiler/helper/sysroot tuple for this platform, not a compiler or SDK Cartesian support claim.",
+              "FileAPI-backed format3 fixture; no untested versions, ranges, or opt-in legacy profile credit."
+            ],
+            "operations": [
+              "native-lock",
+              "lock-reproducibility",
+              "native-prefetch",
+              "native-offline-build",
+              "project-build-scripts",
+              "project-test-scripts",
+              "pure-build"
+            ],
+            "sourceRevision": "fa095b882aebd925c397521961ae316c76b469d7",
+            "system": "x86_64-linux"
+          },
+          {
+            "components": [
+              {
+                "name": "CMake",
+                "role": "native-tool",
+                "version": "3.31.12"
+              }
+            ],
+            "evidence": [
+              "https://github.com/nix-purifiers/cmake-purifier/blob/fa095b882aebd925c397521961ae316c76b469d7/tests/toolchains/check.sh",
+              "https://github.com/nix-purifiers/cmake-purifier/blob/fa095b882aebd925c397521961ae316c76b469d7/tests/toolchains/checks.nix",
+              "https://github.com/nix-purifiers/cmake-purifier/actions/runs/42347515152/job/128328354345"
+            ],
+            "id": "cmake-fa095b8-sdk-3_31_12-aarch64-darwin",
+            "notes": [
+              "Exact independently selected native SDK; executable/version are asserted in ordinary and pure builds.",
+              "One observed compiler/helper/sysroot tuple for this platform, not a compiler or SDK Cartesian support claim.",
+              "FileAPI-backed format3 fixture; no untested versions, ranges, or opt-in legacy profile credit."
+            ],
+            "operations": [
+              "native-lock",
+              "lock-reproducibility",
+              "native-prefetch",
+              "native-offline-build",
+              "project-build-scripts",
+              "project-test-scripts",
+              "pure-build"
+            ],
+            "sourceRevision": "fa095b882aebd925c397521961ae316c76b469d7",
+            "system": "aarch64-darwin"
+          },
+          {
+            "components": [
+              {
+                "name": "CMake",
+                "role": "native-tool",
+                "version": "4.3.6"
+              }
+            ],
+            "evidence": [
+              "https://github.com/nix-purifiers/cmake-purifier/blob/fa095b882aebd925c397521961ae316c76b469d7/tests/toolchains/check.sh",
+              "https://github.com/nix-purifiers/cmake-purifier/blob/fa095b882aebd925c397521961ae316c76b469d7/tests/toolchains/checks.nix",
+              "https://github.com/nix-purifiers/cmake-purifier/actions/runs/42347515152/job/128328354441"
+            ],
+            "id": "cmake-fa095b8-sdk-4_3_6-aarch64-darwin",
+            "notes": [
+              "Exact independently selected native SDK; executable/version are asserted in ordinary and pure builds.",
+              "One observed compiler/helper/sysroot tuple for this platform, not a compiler or SDK Cartesian support claim.",
+              "FileAPI-backed format3 fixture; no untested versions, ranges, or opt-in legacy profile credit."
+            ],
+            "operations": [
+              "native-lock",
+              "lock-reproducibility",
+              "native-prefetch",
+              "native-offline-build",
+              "project-build-scripts",
+              "project-test-scripts",
+              "pure-build"
+            ],
+            "sourceRevision": "fa095b882aebd925c397521961ae316c76b469d7",
+            "system": "aarch64-darwin"
+          },
+          {
+            "components": [
+              {
+                "name": "CMake",
+                "role": "native-tool",
+                "version": "4.4.5"
+              }
+            ],
+            "evidence": [
+              "https://github.com/nix-purifiers/cmake-purifier/blob/fa095b882aebd925c397521961ae316c76b469d7/tests/toolchains/check.sh",
+              "https://github.com/nix-purifiers/cmake-purifier/blob/fa095b882aebd925c397521961ae316c76b469d7/tests/toolchains/checks.nix",
+              "https://github.com/nix-purifiers/cmake-purifier/actions/runs/42347515152/job/128328354252"
+            ],
+            "id": "cmake-fa095b8-sdk-4_4_5-aarch64-darwin",
+            "notes": [
+              "Exact independently selected native SDK; executable/version are asserted in ordinary and pure builds.",
+              "One observed compiler/helper/sysroot tuple for this platform, not a compiler or SDK Cartesian support claim.",
+              "FileAPI-backed format3 fixture; no untested versions, ranges, or opt-in legacy profile credit."
+            ],
+            "operations": [
+              "native-lock",
+              "lock-reproducibility",
+              "native-prefetch",
+              "native-offline-build",
+              "project-build-scripts",
+              "project-test-scripts",
+              "pure-build"
+            ],
+            "sourceRevision": "fa095b882aebd925c397521961ae316c76b469d7",
+            "system": "aarch64-darwin"
+          },
+          {
+            "components": [
+              {
+                "name": "CMake",
+                "role": "native-tool",
+                "version": "4.5.0-rc3"
+              }
+            ],
+            "evidence": [
+              "https://github.com/nix-purifiers/cmake-purifier/blob/fa095b882aebd925c397521961ae316c76b469d7/tests/toolchains/check.sh",
+              "https://github.com/nix-purifiers/cmake-purifier/blob/fa095b882aebd925c397521961ae316c76b469d7/tests/toolchains/checks.nix",
+              "https://github.com/nix-purifiers/cmake-purifier/actions/runs/42347515152/job/128328354447"
+            ],
+            "id": "cmake-fa095b8-sdk-4_5_0-rc3-aarch64-darwin",
+            "notes": [
+              "Exact independently selected native SDK; executable/version are asserted in ordinary and pure builds.",
+              "One observed compiler/helper/sysroot tuple for this platform, not a compiler or SDK Cartesian support claim.",
+              "FileAPI-backed format3 fixture; no untested versions, ranges, or opt-in legacy profile credit."
+            ],
+            "operations": [
+              "native-lock",
+              "lock-reproducibility",
+              "native-prefetch",
+              "native-offline-build",
+              "project-build-scripts",
+              "project-test-scripts",
+              "pure-build"
+            ],
+            "sourceRevision": "fa095b882aebd925c397521961ae316c76b469d7",
+            "system": "aarch64-darwin"
+          },
+          {
+            "components": [
+              {
+                "name": "CMake",
+                "role": "native-tool",
+                "version": "2.8.12.2"
+              },
+              {
+                "name": "CMake purifier lock",
+                "role": "native-format",
+                "version": "4"
+              }
+            ],
+            "evidence": [
+              "https://github.com/nix-purifiers/cmake-purifier/blob/31384b9817a67045040ddced0b30fd08a5b23e87/tests/legacy-external/check.sh",
+              "https://github.com/nix-purifiers/cmake-purifier/blob/31384b9817a67045040ddced0b30fd08a5b23e87/tests/legacy-external/run.py",
+              "https://github.com/nix-purifiers/cmake-purifier/actions/runs/42363308410/job/128376006863"
+            ],
+            "id": "cmake-31384b9-legacy-external-v1-2_8_12_2-x86_64-linux",
+            "notes": [
+              "Explicit legacy-external-v1 acquisition/install profile with a live consumer-owned SDK adapter; source-built SDK executable/module/full version identities checked at root/middle/leaf.",
+              "Capture/relock/relocation, origin-stopped HTTP replay, installed consumer, pure package/release and deterministic rebuild passed with expected negative controls.",
+              "Named dependency and target metadata are unavailable; target/native/resource projections fail closed. No named-dependency update selector.",
+              "This fixture exercises HTTP; HTTPS depends on the selected old SDK native TLS support. No general code-confinement/proxy-bypass proof.",
+              "Exact Linux point only: no Darwin/ARM/version range or stock original SDK/publication-byte parity claim. CI retained output paths/rebuild result but no remote output NAR hash."
+            ],
+            "operations": [
+              "native-lock",
+              "lock-reproducibility",
+              "relocated-cold-relock",
+              "native-prefetch",
+              "native-offline-build",
+              "project-build-scripts",
+              "project-test-scripts",
+              "pure-build",
+              "release-pack",
+              "ordinary-source-consumer"
+            ],
+            "sourceRevision": "31384b9817a67045040ddced0b30fd08a5b23e87",
+            "system": "x86_64-linux"
+          },
+          {
+            "components": [
+              {
+                "name": "CMake",
+                "role": "native-tool",
+                "version": "3.0.2"
+              },
+              {
+                "name": "CMake purifier lock",
+                "role": "native-format",
+                "version": "4"
+              }
+            ],
+            "evidence": [
+              "https://github.com/nix-purifiers/cmake-purifier/blob/31384b9817a67045040ddced0b30fd08a5b23e87/tests/legacy-external/check.sh",
+              "https://github.com/nix-purifiers/cmake-purifier/blob/31384b9817a67045040ddced0b30fd08a5b23e87/tests/legacy-external/run.py",
+              "https://github.com/nix-purifiers/cmake-purifier/actions/runs/42363308410/job/128376006644"
+            ],
+            "id": "cmake-31384b9-legacy-external-v1-3_0_2-x86_64-linux",
+            "notes": [
+              "Explicit legacy-external-v1 acquisition/install profile with a live consumer-owned SDK adapter; source-built SDK executable/module/full version identities checked at root/middle/leaf.",
+              "Capture/relock/relocation, origin-stopped HTTP replay, installed consumer, pure package/release and deterministic rebuild passed with expected negative controls.",
+              "Named dependency and target metadata are unavailable; target/native/resource projections fail closed. No named-dependency update selector.",
+              "This fixture exercises HTTP; HTTPS depends on the selected old SDK native TLS support. No general code-confinement/proxy-bypass proof.",
+              "Exact Linux point only: no Darwin/ARM/version range or stock original SDK/publication-byte parity claim. CI retained output paths/rebuild result but no remote output NAR hash."
+            ],
+            "operations": [
+              "native-lock",
+              "lock-reproducibility",
+              "relocated-cold-relock",
+              "native-prefetch",
+              "native-offline-build",
+              "project-build-scripts",
+              "project-test-scripts",
+              "pure-build",
+              "release-pack",
+              "ordinary-source-consumer"
+            ],
+            "sourceRevision": "31384b9817a67045040ddced0b30fd08a5b23e87",
+            "system": "x86_64-linux"
+          }
+        ]
       },
       "facts": {
         "build_engine": {

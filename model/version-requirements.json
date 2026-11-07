@@ -550,6 +550,72 @@
         }
       ],
       "limitations": []
+    },
+    "cmake-purifier": {
+      "projectSelections": [
+        {
+          "role": "native-tool",
+          "name": "CMake",
+          "kind": "nix-scope",
+          "inputs": [
+            "pkgs.cmake-purifier.overrideScope (_: _: { cmake = selectedCmake; })",
+            "pkgs.cmake-purifier.buildCMakeProject.override { cmake = selectedCmake; }"
+          ],
+          "description": "Supply the selected CMake package to the purifier scope for the native CLI and builder, or override the builder CMake package separately. The packaged default is distinct from these tested SDK selections.",
+          "sourceRevision": "fa095b882aebd925c397521961ae316c76b469d7",
+          "evidence": [
+            "https://github.com/nix-purifiers/cmake-purifier/blob/fa095b882aebd925c397521961ae316c76b469d7/README.md",
+            "https://github.com/nix-purifiers/cmake-purifier/blob/fa095b882aebd925c397521961ae316c76b469d7/tests/toolchains/module.nix",
+            "https://github.com/nix-purifiers/cmake-purifier/blob/fa095b882aebd925c397521961ae316c76b469d7/tests/toolchains/checks.nix"
+          ]
+        },
+        {
+          "role": "native-tool",
+          "name": "CMake legacy acquisition/install profile",
+          "kind": "nix-scope",
+          "inputs": [
+            "pkgs.cmake-purifier.overrideScope",
+            "nativeProfile = \"legacy-external-v1\"",
+            "cmake",
+            "legacyProjectName",
+            "legacySdkAdapter.version = 1",
+            "legacySdkAdapter.package",
+            "legacySdkAdapter.moduleRoot",
+            "legacySdkAdapter.source.url",
+            "legacySdkAdapter.source.sha256"
+          ],
+          "description": "Select the native CMake package and explicit legacy-external-v1 scope in consumer Nix source, with exact native project name and adapter schema 1/source archive identity/relative module root. Use that same live scope for CLI and builder; locks never instantiate an SDK from a serialized path. A changed SDK scope requires a new capture into a new lockfile.",
+          "sourceRevision": "31384b9817a67045040ddced0b30fd08a5b23e87",
+          "evidence": [
+            "https://github.com/nix-purifiers/cmake-purifier/blob/31384b9817a67045040ddced0b30fd08a5b23e87/README.md",
+            "https://github.com/nix-purifiers/cmake-purifier/blob/31384b9817a67045040ddced0b30fd08a5b23e87/tests/legacy-external/project.nix"
+          ]
+        }
+      ],
+      "limitations": [
+        {
+          "text": "The recorded matrix is four exact CMake versions on x86_64-linux and aarch64-darwin using the retained FileAPI-backed fixture. It establishes no intervening range, compiler Cartesian matrix, legacy-format4 behavior, or ARM Linux SDK matrix.",
+          "sourceRevision": "fa095b882aebd925c397521961ae316c76b469d7",
+          "evidence": [
+            "https://github.com/nix-purifiers/cmake-purifier/blob/fa095b882aebd925c397521961ae316c76b469d7/.github/workflows/check.yml"
+          ]
+        },
+        {
+          "text": "For legacy-external-v1, closed format 4 records an observed acquisition closure and native install manifest on x86_64-linux. Named dependency and target metadata are unavailable; target/native/resource projection queries fail closed, and there is no named-dependency update selector. This is distinct from the default format 3 FileAPI-backed flow.",
+          "sourceRevision": "31384b9817a67045040ddced0b30fd08a5b23e87",
+          "evidence": [
+            "https://github.com/nix-purifiers/cmake-purifier/blob/31384b9817a67045040ddced0b30fd08a5b23e87/README.md"
+          ]
+        },
+        {
+          "text": "Legacy compatibility is measured only at source-built CMake 2.8.12.2 and 3.0.2 on x86_64-linux. The repeatable fixture uses HTTP; HTTPS depends on native SDK TLS support. No SDK range, historical Darwin/ARM, compiler Cartesian matrix, general code confinement, proxy bypass detection or original publication-byte parity is established.",
+          "sourceRevision": "31384b9817a67045040ddced0b30fd08a5b23e87",
+          "evidence": [
+            "https://github.com/nix-purifiers/cmake-purifier/blob/31384b9817a67045040ddced0b30fd08a5b23e87/tests/legacy-external/check.sh",
+            "https://github.com/nix-purifiers/cmake-purifier/blob/31384b9817a67045040ddced0b30fd08a5b23e87/README.md"
+          ]
+        }
+      ]
     }
   }
 }
