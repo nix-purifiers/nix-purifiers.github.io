@@ -15,7 +15,12 @@ jobs:
       - name: Validate the typed behavior model
         run: nix eval --json '.#tests'
       - run: python3 -m unittest discover -s release -v
-      - run: python3 -m unittest discover -s docs-site -v
+      - name: Test documentation and mandatory Python/Nix receipt parity
+        run: |
+          NIXPKGS_LIB="$(nix eval --impure --raw --expr '(builtins.getFlake (toString ./.)).inputs.nixpkgs-lib.outPath')/lib"
+          test -f "$NIXPKGS_LIB/default.nix"
+          export NIXPKGS_LIB
+          python3 -m unittest discover -s docs-site -v
       - name: Check out the Docker integration for shared conformance tests
         uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
         with:

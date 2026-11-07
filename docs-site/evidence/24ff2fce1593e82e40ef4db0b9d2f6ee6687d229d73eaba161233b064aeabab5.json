@@ -1,0 +1,205 @@
+{
+  "scope": "Supplementary per-check SDK execution bindings; no new builds or judgment changes",
+  "project": "bundler-purifier",
+  "entries": {
+    "bundler-purifier:local:fixture-app": {
+      "revision": "bd48bb6b1c1fe893899a301e5c55fc7cc8e92310",
+      "system": "x86_64-linux",
+      "sourceNarHash": "sha256-O1+sSynjzbzSC/Xezm2AV95vFwdGB5ksWV0314u00GM=",
+      "check": {
+        "kind": "flake-attribute",
+        "value": "checks.x86_64-linux.fixture-app"
+      },
+      "drvPath": "/nix/store/4bv6xz4gr7zvqn928mkh7p2ndv4xvfhm-fixture-app-runs.drv",
+      "outputs": {
+        "out": "/nix/store/fga3bxhh677qdwi67xbghmzr34g5dahs-fixture-app-runs"
+      },
+      "outputNarHashes": {
+        "out": "sha256-d6xi4mKdjkX2JFicDIv5niSzpyI0m/Hnm8GGAIU04kY="
+      },
+      "sdkVersions": {
+        "Ruby": "3.4.11"
+      },
+      "sdkDerivationDependencies": [
+        "/nix/store/1vdasz95gwhzfafnj7g0r2i54qndq5qq-ruby-3.4.11.tar.gz.drv",
+        "/nix/store/j6igyjswdxr4zxz198bhqpmync05nmap-ruby-3.4.11.drv"
+      ],
+      "sdkClosureReceipt": "bundler-fixture-app-sdk-closure.json",
+      "sdkClosureReceiptSha256": "efd359f75c53610356bc1aaa9f0c5febd53a62b86f1808d8d1dbf956eb2618c0",
+      "nativeBuildInputs": "/nix/store/j5xnd9b8gdwq92rpn7hb2x97w31x5w6f-bundle",
+      "executedBuildCommand": "export HOME=\"$TMPDIR\"\ncd /nix/store/qfzs87550p07h7b5w7dhbm7qz4766qk5-fixture-app/_parent1/project\noutput=$(bundle exec ruby main.rb)\necho \"$output\"\ncase \"$output\" in\n  *'app purified'*) ;;\n  *) echo \"fixture-app-runs: expected app purified\" >&2; exit 1 ;;\nesac\ntouch \"$out\"\n",
+      "executedCheckPhase": null,
+      "sourceBindings": {
+        "tests/default.nix": {
+          "url": "https://github.com/nix-purifiers/bundler-purifier/blob/bd48bb6b1c1fe893899a301e5c55fc7cc8e92310/tests/default.nix",
+          "sha256": "c280b2256fef75d09cf4e0029212c80491e6670439180959d96b2fcd252db9bb"
+        },
+        "tests/fixtures/app/bundler-purifier.lock.json": {
+          "url": "https://github.com/nix-purifiers/bundler-purifier/blob/bd48bb6b1c1fe893899a301e5c55fc7cc8e92310/tests/fixtures/app/bundler-purifier.lock.json",
+          "sha256": "e33333d5f231f8c9bf65b8ce77fa5a14f014feb07bd2101f762c5f904c73c8bf"
+        },
+        "nix/lib/build-bundler-project.nix": {
+          "url": "https://github.com/nix-purifiers/bundler-purifier/blob/bd48bb6b1c1fe893899a301e5c55fc7cc8e92310/nix/lib/build-bundler-project.nix",
+          "sha256": "fbf11adb3f9f7bd9127def5d6e9bfa1c4cf2c2187cb3ab9d3e3cac608e262b1c"
+        }
+      },
+      "build": {
+        "status": "success",
+        "executedSystem": "x86_64-linux",
+        "sourceRevision": "bd48bb6b1c1fe893899a301e5c55fc7cc8e92310",
+        "drvPath": "/nix/store/4bv6xz4gr7zvqn928mkh7p2ndv4xvfhm-fixture-app-runs.drv",
+        "outputs": {
+          "out": "/nix/store/fga3bxhh677qdwi67xbghmzr34g5dahs-fixture-app-runs"
+        },
+        "receipt": "logs/bundler-purifier-build.json",
+        "artifactSha256": "91dd59ae43b8f90f0cb90df9cd7764df31556903f3b528f4511879809fdc1e99",
+        "freshBuildObserved": false,
+        "sdkVersions": {
+          "Ruby": "3.4.11"
+        }
+      },
+      "executionExplanation": "The app purifier lock records Ruby3.4.11; builder chooses ruby_3_4 from lock.ruby. The check invokes its selected bundle wrapper to run main.rb and assert app purified; the check derivation closure includes ruby-3.4.11 SDK, not a merely evaluated candidate."
+    },
+    "bundler-purifier:local:historical-ruby-native-extension": {
+      "revision": "bd48bb6b1c1fe893899a301e5c55fc7cc8e92310",
+      "system": "x86_64-linux",
+      "sourceNarHash": "sha256-O1+sSynjzbzSC/Xezm2AV95vFwdGB5ksWV0314u00GM=",
+      "check": {
+        "kind": "flake-attribute",
+        "value": "checks.x86_64-linux.historical-ruby-native-extension"
+      },
+      "drvPath": "/nix/store/28g59dw3qqq761g0ydqrqh60hl3c9iyy-bundler-app-tests.drv",
+      "outputs": {
+        "out": "/nix/store/ccf637dr4fxh2fj4szr6qgzx83s6x9rj-bundler-app-tests"
+      },
+      "outputNarHashes": {
+        "out": "sha256-WHXmMtOKiWrh8Jrs1KqOThfiHblLhkD6DAvO6ONQClc="
+      },
+      "sdkVersions": {
+        "Ruby": "2.5.8",
+        "Bundler": "1.17.3",
+        "JSON native extension": "1.8.6"
+      },
+      "sdkDerivationDependencies": [
+        "/nix/store/2s34fclpg6iqf053zha8hwac2w54q82y-ruby-2.5.8.tar.gz.drv",
+        "/nix/store/vw4rp5jyygd9941883bksgpmqw1sjfiv-ruby-2.5.8.drv",
+        "/nix/store/sy4qs7snp1wn7hn7j2y5njaz7fllpc57-ruby-2.5.8.drv"
+      ],
+      "sdkClosureReceipt": "bundler-historical-ruby-native-extension-sdk-closure.json",
+      "sdkClosureReceiptSha256": "06fdd9d48194f95b2f4d4db6265035956583a7ca8e1529bf73cdb6bf23f299d1",
+      "nativeBuildInputs": "/nix/store/jr2kd7sp7bf4yv08v3bw5lz9b9l61vz6-ruby-2.5.8 /nix/store/2wlays4ahsvdx02v84s3x91ri2623qbl-git-minimal-2.56.0 /nix/store/m6h7zh8w6s52clnyskffj5lbkakqgywn-gcc-wrapper-9.2.0",
+      "executedBuildCommand": null,
+      "executedCheckPhase": "runHook preCheck\nbundle exec ruby -Ilib exe/historical-greeting\nrunHook postCheck\n",
+      "sourceBindings": {
+        "tests/historical-toolchains.nix": {
+          "url": "https://github.com/nix-purifiers/bundler-purifier/blob/bd48bb6b1c1fe893899a301e5c55fc7cc8e92310/tests/historical-toolchains.nix",
+          "sha256": "38914de4b9e6cb7f24326cbcd5d1733c06352726ff754f505fcab48a2e0301d7"
+        },
+        "tests/fixtures/historical-ruby/lib/historical_greeting.rb": {
+          "url": "https://github.com/nix-purifiers/bundler-purifier/blob/bd48bb6b1c1fe893899a301e5c55fc7cc8e92310/tests/fixtures/historical-ruby/lib/historical_greeting.rb",
+          "sha256": "0692325c27f802c91c225c9fd3c0170f5ab9f25aba95d9c3ebe5d1444639679e"
+        },
+        "tests/fixtures/historical-ruby/exe/historical-greeting": {
+          "url": "https://github.com/nix-purifiers/bundler-purifier/blob/bd48bb6b1c1fe893899a301e5c55fc7cc8e92310/tests/fixtures/historical-ruby/exe/historical-greeting",
+          "sha256": "3d54cfea1321f2482d8baae54eb6f6c228653dd2a401e954f4df4aa8b97beb1d"
+        },
+        "tests/fixtures/historical-ruby/Gemfile.lock": {
+          "url": "https://github.com/nix-purifiers/bundler-purifier/blob/bd48bb6b1c1fe893899a301e5c55fc7cc8e92310/tests/fixtures/historical-ruby/Gemfile.lock",
+          "sha256": "ca532993c8a4b6d36714c84278264f848092f5e45230396af18e93d8e16bfbc2"
+        }
+      },
+      "build": {
+        "status": "success",
+        "executedSystem": "x86_64-linux",
+        "sourceRevision": "bd48bb6b1c1fe893899a301e5c55fc7cc8e92310",
+        "drvPath": "/nix/store/28g59dw3qqq761g0ydqrqh60hl3c9iyy-bundler-app-tests.drv",
+        "outputs": {
+          "out": "/nix/store/ccf637dr4fxh2fj4szr6qgzx83s6x9rj-bundler-app-tests"
+        },
+        "receipt": "logs/bundler-purifier-build.json",
+        "artifactSha256": "91dd59ae43b8f90f0cb90df9cd7764df31556903f3b528f4511879809fdc1e99",
+        "freshBuildObserved": false,
+        "sdkVersions": {
+          "Ruby": "2.5.8",
+          "Bundler": "1.17.3",
+          "JSON native extension": "1.8.6"
+        }
+      },
+      "executionExplanation": "The historical override explicitly selects old.ruby_2_5; the actual check nativeBuildInputs selects ruby-2.5.8 and executes bundle exec ruby -Ilib exe/historical-greeting. The fixture requires JSON1.8.6 native parser and asserts answer42."
+    },
+    "bundler-purifier:local:ruby18-native-extension": {
+      "revision": "bd48bb6b1c1fe893899a301e5c55fc7cc8e92310",
+      "system": "x86_64-linux",
+      "sourceNarHash": "sha256-O1+sSynjzbzSC/Xezm2AV95vFwdGB5ksWV0314u00GM=",
+      "check": {
+        "kind": "flake-attribute",
+        "value": "checks.x86_64-linux.ruby18-native-extension"
+      },
+      "drvPath": "/nix/store/4kb8cyrkkijnny6l56xrm3ph42k7nbk8-bundler-app-tests.drv",
+      "outputs": {
+        "out": "/nix/store/iyjjpkd21hbifbsqmcc5r7vjp8bwn4as-bundler-app-tests"
+      },
+      "outputNarHashes": {
+        "out": "sha256-a13owpaIit4LFGaW5KPTBr0hc51EtBS6pO37ZlwP1Q8="
+      },
+      "sdkVersions": {
+        "Ruby": "1.8.7-p374",
+        "RubyGems": "2.6.14",
+        "Bundler": "1.17.3",
+        "JSON native extension": "1.8.6"
+      },
+      "sdkDerivationDependencies": [
+        "/nix/store/jiaqm89f11xj3glr3xn5cq1vq9qa3ycw-ruby187-rubygems2614.drv",
+        "/nix/store/smhp6p10slb7ml4aw0ja2z0mxy5zjji7-ruby187-rubygems2614-base.drv",
+        "/nix/store/m2z9kp2v1y7cv2vwjzr8snvvzxgk5b2y-ruby187-bundler117-json186.drv",
+        "/nix/store/pyklyxq2irhvgqjlknqgqpcdnxwcpp5i-ruby187-rubygems2614-sdk.drv"
+      ],
+      "sdkClosureReceipt": "bundler-ruby18-native-extension-sdk-closure.json",
+      "sdkClosureReceiptSha256": "c0c031a899d2e65b23fa35670a7afaeeba2a3a80162d4b56b5c1bb41b221cf98",
+      "nativeBuildInputs": "/nix/store/xy1kq79xcal30g0rzqp69mclagcl9d92-ruby187-rubygems2614-sdk /nix/store/2wlays4ahsvdx02v84s3x91ri2623qbl-git-minimal-2.56.0 /nix/store/ahh31wklr5pk0hcqiaf6dcj60is1wy3r-gcc-wrapper-4.8.3",
+      "executedBuildCommand": null,
+      "executedCheckPhase": "runHook preCheck\nbundle exec ruby -Ilib exe/historical-greeting\nrunHook postCheck\n",
+      "sourceBindings": {
+        "tests/default.nix": {
+          "url": "https://github.com/nix-purifiers/bundler-purifier/blob/bd48bb6b1c1fe893899a301e5c55fc7cc8e92310/tests/default.nix",
+          "sha256": "c280b2256fef75d09cf4e0029212c80491e6670439180959d96b2fcd252db9bb"
+        },
+        "tests/ruby18-sdk.nix": {
+          "url": "https://github.com/nix-purifiers/bundler-purifier/blob/bd48bb6b1c1fe893899a301e5c55fc7cc8e92310/tests/ruby18-sdk.nix",
+          "sha256": "88027bc05d28eb6586c39b3f61b2892d64b61b5beb76bf45c773366637bb6ab7"
+        },
+        "tests/fixtures/ruby18/lib/historical_greeting.rb": {
+          "url": "https://github.com/nix-purifiers/bundler-purifier/blob/bd48bb6b1c1fe893899a301e5c55fc7cc8e92310/tests/fixtures/ruby18/lib/historical_greeting.rb",
+          "sha256": "c7a44f5eec099b0cec29e3ab85c2f1c9098c44365916f21fcf61a46a68b8fcbb"
+        },
+        "tests/fixtures/ruby18/exe/historical-greeting": {
+          "url": "https://github.com/nix-purifiers/bundler-purifier/blob/bd48bb6b1c1fe893899a301e5c55fc7cc8e92310/tests/fixtures/ruby18/exe/historical-greeting",
+          "sha256": "3d54cfea1321f2482d8baae54eb6f6c228653dd2a401e954f4df4aa8b97beb1d"
+        },
+        "tests/fixtures/ruby18/Gemfile.lock": {
+          "url": "https://github.com/nix-purifiers/bundler-purifier/blob/bd48bb6b1c1fe893899a301e5c55fc7cc8e92310/tests/fixtures/ruby18/Gemfile.lock",
+          "sha256": "8142e964578eefc442fc0adea7105fe7e7a2ce3ea3472e192e31f5f30cf752d9"
+        }
+      },
+      "build": {
+        "status": "success",
+        "executedSystem": "x86_64-linux",
+        "sourceRevision": "bd48bb6b1c1fe893899a301e5c55fc7cc8e92310",
+        "drvPath": "/nix/store/4kb8cyrkkijnny6l56xrm3ph42k7nbk8-bundler-app-tests.drv",
+        "outputs": {
+          "out": "/nix/store/iyjjpkd21hbifbsqmcc5r7vjp8bwn4as-bundler-app-tests"
+        },
+        "receipt": "logs/bundler-purifier-build.json",
+        "artifactSha256": "91dd59ae43b8f90f0cb90df9cd7764df31556903f3b528f4511879809fdc1e99",
+        "freshBuildObserved": false,
+        "sdkVersions": {
+          "Ruby": "1.8.7-p374",
+          "RubyGems": "2.6.14",
+          "Bundler": "1.17.3",
+          "JSON native extension": "1.8.6"
+        }
+      },
+      "executionExplanation": "The SDK wrapper explicitly selects old.ruby_1_8, installs RubyGems2.6.14/Bundler1.17.3/json1.8.6, and asserts RUBY_VERSION1.8.7 plus native parser. The actual check nativeBuildInputs selects this wrapper and executes the asserting historical greeting; Gemfile.lock binds p374."
+    }
+  }
+}

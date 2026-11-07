@@ -27,6 +27,7 @@ def build(documentation, destination):
     theme = Path(__file__).parent
     install_theme(destination)
     quality = registry()
+    shutil.copytree(theme / 'evidence', destination / 'evidence', dirs_exist_ok=True)
     (destination / 'tiers.md').write_text('---\nlayout: default\ntitle: Purifier tiers\n---\n\n' + render_tiers(quality))
     (destination / '_config.yml').write_text(json.dumps({
         'title': 'Purifier reference', 'description': 'Structured purifier behavior catalog',

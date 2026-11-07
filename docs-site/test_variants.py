@@ -60,7 +60,8 @@ class ReviewedVariantTests(unittest.TestCase):
         shutil.copyfile(original.parent / 'index.html', self.site / 'index.html')
         shutil.copyfile(original.parent / 'robots.txt', self.site / 'robots.txt')
         (self.site / 'model').mkdir()
-        shutil.copyfile(original.parent / 'model/tiers.json', self.site / 'model/tiers.json')
+        for name in ('tiers.json', 'review-artifacts.json'):
+            shutil.copyfile(original.parent / 'model' / name, self.site / 'model' / name)
         self.checkout = root / 'checkout'
         self.checkout.mkdir()
         subprocess.run(['git', 'init', str(self.checkout)], check=True, capture_output=True)

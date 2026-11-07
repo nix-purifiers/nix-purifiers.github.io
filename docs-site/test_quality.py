@@ -31,12 +31,12 @@ class QualityTests(unittest.TestCase):
     def test_go_exact_points_do_not_establish_broad_compatibility(self):
         go = self.data['projects']['go-purifier']
         self.assertEqual(go['tier'], 2)
-        self.assertEqual(go['criteria']['longCompatibility']['state'], 'unreviewed')
+        self.assertEqual(go['criteria']['longCompatibility']['state'], 'not-met')
         self.assertIn('1.0.3', go['criteria']['longCompatibility']['summary'])
         self.assertIn('1.26.10', go['criteria']['longCompatibility']['summary'])
-        self.assertEqual(go['criteria']['manySamples']['state'], 'unreviewed')
+        self.assertEqual(go['criteria']['manySamples']['state'], 'met')
         self.assertEqual(go['criteria']['nonEolVersions']['state'], 'met')
-        self.assertTrue(any(sample['name'].startswith('fzf ') for sample in go['sampleBuilds']))
+        self.assertTrue(any(sample['name'].startswith('fzf') for sample in go['sampleBuilds']))
 
     def test_platform_declaration_or_evaluation_cannot_promote(self):
         self.q['tier'] = 2
@@ -45,36 +45,56 @@ class QualityTests(unittest.TestCase):
 
     def test_even_tier_four_requires_evaluation(self):
         self.q['tier'] = 4
-        self.q['criteria']['evaluation']['state'] = 'unreviewed'
+        self.q['criteria']['evaluation']['state'] = 'not-met'
+        self.q['derivationReview']['criteria']['evaluation'].update(state='not-met', gap='No execution or evaluation receipt established.')
         with self.assertRaisesRegex(ValueError, 'evaluation evidence'):
             validate(self.q)
 
     def test_missing_sample_prevents_tier_three(self):
         self.q['sampleBuilds'] = []
-        with self.assertRaisesRegex(ValueError, 'evidenced criteria'):
+        self.q['derivationReview']['sampleBuilds'] = []
+        with self.assertRaises(ValueError):
             validate(self.q)
-        self.q['tier'] = 4
-        validate(self.q)
 
-    def test_met_criteria_require_sources(self):
+    def test_met_criteria_require_executable_derivations(self):
+        self.q['derivationReview']['criteria']['linux']['derivations'] = []
+        with self.assertRaisesRegex(ValueError, 'executable evidence'):
+            validate(self.q)
+
+    def test_explanatory_urls_are_not_the_capability_proof(self):
         self.q['criteria']['linux']['evidence'] = []
-        with self.assertRaisesRegex(ValueError, 'require evidence'):
+        validate(self.q)
+
+    def test_unreviewed_and_changed_judgments_rejected(self):
+        self.q['criteria']['manySamples']['state'] = 'unreviewed'
+        with self.assertRaisesRegex(ValueError, 'invalid tier criterion'):
+            validate(self.q)
+        self.q['criteria']['manySamples']['state'] = 'not-met'
+        self.q['criteria']['manySamples']['summary'] = 'Changed without reviewer evidence.'
+        with self.assertRaisesRegex(ValueError, 'differs from assessment judgment'):
             validate(self.q)
 
-    def test_promotion_needs_each_reviewed_judgment(self):
-        for item in self.q['criteria'].values():
-            item.update(state='met', summary='Reviewed test evidence.', evidence=['https://example.test/proof'])
-        self.q['tier'] = 1
-        validate(self.q)
-        self.q['criteria']['manySamples']['state'] = 'unreviewed'
-        with self.assertRaisesRegex(ValueError, 'evidenced criteria'):
+    def test_every_review_is_complete_and_revision_bound(self):
+        self.assertEqual(len(self.data['projects']), 96)
+        for name, q in self.data['projects'].items():
+            self.assertEqual(len(q['criteria']), 8)
+            self.assertNotIn('unreviewed', [c['state'] for c in q['criteria'].values()])
+            changed = copy.deepcopy(q)
+            changed['reviewedRevision'] = '0' * 40
+            with self.assertRaises(ValueError):
+                validate(changed, 'nix-purifiers/' + name)
+
+    def test_sources_cannot_replace_an_execution_receipt(self):
+        for e in self.q['derivationReview']['derivations'].values():
+            if e.get('kind') != 'native-ci-execution':
+                e['build'] = None
+                e['outputNarHashes'] = {}
+        with self.assertRaises(ValueError):
             validate(self.q)
-        self.q['tier'] = 2
-        validate(self.q)
 
     def test_duplicate_samples_do_not_inflate_breadth(self):
         self.q['sampleBuilds'] *= 2
-        with self.assertRaisesRegex(ValueError, 'duplicate sample'):
+        with self.assertRaisesRegex(ValueError, 'samples|duplicate sample'):
             validate(self.q)
 
     def test_unknown_fields_and_boolean_tier_rejected(self):
@@ -127,7 +147,9 @@ class QualityTests(unittest.TestCase):
             self.assertIn(f'### {name}', text)
         self.assertIn('not numerical cutoffs', text)
         self.assertIn('| Met |', text)
-        self.assertIn('| Unreviewed |', text)
+        self.assertNotIn('| Unreviewed |', text)
+        self.assertIn('Not met means the inspected evidence', text)
+        self.assertIn('/nix/store/', text)
         self.assertNotIn('[source 1]', text)
         self.assertNotIn('|\n\n|', text)
 

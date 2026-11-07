@@ -1,0 +1,84 @@
+# SPDX-License-Identifier: MIT
+#
+# Runs on x86_64-linux and aarch64-linux. The job `checks` runs the flake's
+# checks: the conformance checks the sandbox can run, the CLI build, the
+# sandboxed builds of the fixtures and a run of each, luacheck, the publish
+# to a stand-in server, and the formatting. Every other job is a section of
+# tests/interactive.sh of the same name, for what runs outside the sandbox:
+# the conformance checks that need the network or a second build, the
+# interactive mode, the lock run of each kind of source, publishing, and
+# luacheck with its whole test suite.
+name: check
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  sdk-native:
+    strategy:
+      fail-fast: false
+      matrix:
+        runner: [ubuntu-latest, ubuntu-24.04-arm]
+        lua: ['5.1', '5.2', '5.3', '5.4', '5.5', luajit]
+    runs-on: ${{ matrix.runner }}
+    timeout-minutes: 60
+    steps:
+      - uses: actions/checkout@v4
+      - uses: cachix/install-nix-action@v31
+      - name: Native resolution, C module, offline and pure builds, ordinary source-rock consumer
+        run: |
+          tools="$(nix build --no-link --print-out-paths .#cli)"
+          nix shell nixpkgs#python3 -c python3 tests/sdk-native.py "$tools" '${{ matrix.lua }}'
+          if [ '${{ matrix.lua }}' = '5.1' ]; then
+            nix shell nixpkgs#python3 -c python3 tests/capture-manager.py "$tools"
+          fi
+      - name: Native LuaRocks 2.2 metadata, repeated capture and update
+        if: matrix.lua == '5.1' && runner.arch == 'X64'
+        run: |
+          tools="$(nix build --no-link --print-out-paths .#checks.x86_64-linux.legacy-manager-tools)"
+          nix shell nixpkgs#python3 -c python3 tests/capture-manager.py "$tools"
+          nix shell nixpkgs#python3 -c python3 tests/sdk-native.py "$tools" '5.1'
+      - name: Preserve project SDK recipes without IFD or warm-store state
+        if: matrix.lua == '5.1'
+        run: |
+          nix eval --impure --option allow-import-from-derivation false --json --expr 'import ./tests/sdk-context.nix {}'
+          nix shell nixpkgs#python3 -c python3 tests/sdk-portable.py
+
+  checks:
+    strategy:
+      fail-fast: false
+      matrix:
+        runner: [ubuntu-latest, ubuntu-24.04-arm]
+    runs-on: ${{ matrix.runner }}
+    timeout-minutes: 90
+    steps:
+      - uses: actions/checkout@v4
+      - uses: cachix/install-nix-action@v31
+      - run: nix flake check -L
+
+  interactive:
+    strategy:
+      fail-fast: false
+      matrix:
+        runner: [ubuntu-latest, ubuntu-24.04-arm]
+        section:
+          - conformance-relock
+          - conformance-update
+          - conformance-rebuild
+          - conformance-offline
+          - interactive
+          - vcs
+          - publish
+          - real-luacheck
+    name: ${{ matrix.section }} (${{ matrix.runner }})
+    runs-on: ${{ matrix.runner }}
+    timeout-minutes: 90
+    steps:
+      - uses: actions/checkout@v4
+      - uses: cachix/install-nix-action@v31
+      - run: tests/interactive.sh ${{ matrix.section }}

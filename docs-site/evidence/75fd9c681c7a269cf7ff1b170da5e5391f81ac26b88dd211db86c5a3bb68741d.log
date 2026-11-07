@@ -1,0 +1,614 @@
+﻿2026-11-06T03:18:55.2621680Z Current runner version: '2.338.2'
+2026-11-06T03:18:55.2640818Z ##[group]Runner Image Provisioner
+2026-11-06T03:18:55.2641467Z Hosted Compute Agent
+2026-11-06T03:18:55.2641885Z Version: 20261028.624
+2026-11-06T03:18:55.2642262Z Commit: 54898b74c23fde5556c9b3c3a2290865feef0dfe
+2026-11-06T03:18:55.2642752Z Build Date: 2026-10-28T21:51:42Z
+2026-11-06T03:18:55.2643191Z Worker ID: {9ad8f2da-0cde-49c1-b02f-915add25606a}
+2026-11-06T03:18:55.2643718Z Region: centralus
+2026-11-06T03:18:55.2644094Z Cloud: Azure
+2026-11-06T03:18:55.2644555Z ##[endgroup]
+2026-11-06T03:18:55.2645629Z ##[group]Operating System
+2026-11-06T03:18:55.2646003Z Ubuntu
+2026-11-06T03:18:55.2646352Z 24.04.5
+2026-11-06T03:18:55.2646714Z LTS
+2026-11-06T03:18:55.2647038Z ##[endgroup]
+2026-11-06T03:18:55.2647410Z ##[group]Runner Image
+2026-11-06T03:18:55.2647769Z Image: ubuntu-24.04
+2026-11-06T03:18:55.2648167Z Version: 20261101.360.1
+2026-11-06T03:18:55.2648982Z Included Software: https://github.com/actions/runner-images/blob/ubuntu24/20261101.360/images/ubuntu/Ubuntu2404-Readme.md
+2026-11-06T03:18:55.2650152Z Image Release: https://github.com/actions/runner-images/releases/tag/ubuntu24%2F20261101.360
+2026-11-06T03:18:55.2650725Z ##[endgroup]
+2026-11-06T03:18:55.2651551Z ##[group]GITHUB_TOKEN Permissions
+2026-11-06T03:18:55.2652949Z Contents: read
+2026-11-06T03:18:55.2653327Z Metadata: read
+2026-11-06T03:18:55.2653681Z Packages: read
+2026-11-06T03:18:55.2654024Z ##[endgroup]
+2026-11-06T03:18:55.2655639Z Secret source: Actions
+2026-11-06T03:18:55.2656213Z Cache mode: write
+2026-11-06T03:18:55.2656849Z Prepare workflow directory
+2026-11-06T03:18:55.2886518Z Prepare all required actions
+2026-11-06T03:18:55.2930429Z Getting action download info
+2026-11-06T03:18:55.5429908Z Download action repository 'actions/checkout@v5' (SHA:fbc6f3992d24b796d5a048ff273f7fcc4a7b6c09)
+2026-11-06T03:18:55.6626508Z Download action repository 'cachix/install-nix-action@v31' (SHA:75c75c31ebece974e48ebc36b4ad125bd97bd97b)
+2026-11-06T03:18:55.8435037Z Download action repository 'actions/upload-artifact@v4' (SHA:ea165f8d65b6e75b540449e92b4886f43607fa02)
+2026-11-06T03:18:56.0405208Z Complete job name: python-target-epochs (ubuntu-latest, python39)
+2026-11-06T03:18:56.0912682Z ##[group]Run actions/checkout@v5
+2026-11-06T03:18:56.0913081Z with:
+2026-11-06T03:18:56.0913325Z   repository: nix-purifiers/uv-purifier
+2026-11-06T03:18:56.0915311Z   token: ***
+2026-11-06T03:18:56.0915538Z   ssh-strict: true
+2026-11-06T03:18:56.0915772Z   ssh-user: git
+2026-11-06T03:18:56.0916042Z   persist-credentials: true
+2026-11-06T03:18:56.0916302Z   clean: true
+2026-11-06T03:18:56.0916542Z   sparse-checkout-cone-mode: true
+2026-11-06T03:18:56.0916817Z   fetch-depth: 1
+2026-11-06T03:18:56.0917047Z   fetch-tags: false
+2026-11-06T03:18:56.0917283Z   show-progress: true
+2026-11-06T03:18:56.0917518Z   lfs: false
+2026-11-06T03:18:56.0917735Z   submodules: false
+2026-11-06T03:18:56.0917973Z   set-safe-directory: true
+2026-11-06T03:18:56.0918239Z   allow-unsafe-pr-checkout: false
+2026-11-06T03:18:56.0918586Z ##[endgroup]
+2026-11-06T03:18:56.3106962Z Syncing repository: nix-purifiers/uv-purifier
+2026-11-06T03:18:56.3108620Z ##[group]Getting Git version info
+2026-11-06T03:18:56.3109350Z Working directory is '/home/runner/work/uv-purifier/uv-purifier'
+2026-11-06T03:18:56.3110236Z [command]/usr/bin/git version
+2026-11-06T03:18:56.3197269Z git version 2.56.0
+2026-11-06T03:18:56.3222895Z ##[endgroup]
+2026-11-06T03:18:56.3257191Z Temporarily overriding HOME='/home/runner/work/_temp/c556acb3-74b3-4854-9e27-e0fa14848c6b' before making global git config changes
+2026-11-06T03:18:56.3258717Z Adding repository directory to the temporary git global config as a safe directory
+2026-11-06T03:18:56.3264473Z [command]/usr/bin/git config --global --add safe.directory /home/runner/work/uv-purifier/uv-purifier
+2026-11-06T03:18:56.3323733Z Deleting the contents of '/home/runner/work/uv-purifier/uv-purifier'
+2026-11-06T03:18:56.3328191Z ##[group]Initializing the repository
+2026-11-06T03:18:56.3331531Z [command]/usr/bin/git init /home/runner/work/uv-purifier/uv-purifier
+2026-11-06T03:18:56.3438657Z hint: Using 'master' as the name for the initial branch. This default branch name
+2026-11-06T03:18:56.3439415Z hint: will change to "main" in Git 3.0. To configure the initial branch name
+2026-11-06T03:18:56.3439901Z hint: to use in all of your new repositories, which will suppress this warning,
+2026-11-06T03:18:56.3440280Z hint: call:
+2026-11-06T03:18:56.3440492Z hint:
+2026-11-06T03:18:56.3440794Z hint: 	git config --global init.defaultBranch <name>
+2026-11-06T03:18:56.3441114Z hint:
+2026-11-06T03:18:56.3441412Z hint: Names commonly chosen instead of 'master' are 'main', 'trunk' and
+2026-11-06T03:18:56.3441883Z hint: 'development'. The just-created branch can be renamed via this command:
+2026-11-06T03:18:56.3442261Z hint:
+2026-11-06T03:18:56.3442480Z hint: 	git branch -m <name>
+2026-11-06T03:18:56.3442724Z hint:
+2026-11-06T03:18:56.3443047Z hint: Disable this message with "git config set advice.defaultBranchName false"
+2026-11-06T03:18:56.3458488Z Initialized empty Git repository in /home/runner/work/uv-purifier/uv-purifier/.git/
+2026-11-06T03:18:56.3468499Z [command]/usr/bin/git remote add origin https://github.com/nix-purifiers/uv-purifier
+2026-11-06T03:18:56.3520409Z ##[endgroup]
+2026-11-06T03:18:56.3521094Z ##[group]Disabling automatic garbage collection
+2026-11-06T03:18:56.3524129Z [command]/usr/bin/git config --local gc.auto 0
+2026-11-06T03:18:56.3565162Z ##[endgroup]
+2026-11-06T03:18:56.3565827Z ##[group]Setting up auth
+2026-11-06T03:18:56.3570818Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+2026-11-06T03:18:56.3612699Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+2026-11-06T03:18:56.3941186Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+2026-11-06T03:18:56.3979721Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+2026-11-06T03:18:56.4171289Z [command]/usr/bin/git config --local --name-only --get-regexp ^includeIf\.gitdir:
+2026-11-06T03:18:56.4210975Z [command]/usr/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url
+2026-11-06T03:18:56.4417499Z [command]/usr/bin/git config --local http.https://github.com/.extraheader AUTHORIZATION: basic ***
+2026-11-06T03:18:56.4461298Z ##[endgroup]
+2026-11-06T03:18:56.4461789Z ##[group]Fetching the repository
+2026-11-06T03:18:56.4470512Z [command]/usr/bin/git -c protocol.version=2 fetch --no-tags --prune --no-recurse-submodules --depth=1 origin +ea43ef3106cef19ba7f9c0e75140822cd98ebc4f:refs/remotes/origin/main
+2026-11-06T03:18:56.7840526Z From https://github.com/nix-purifiers/uv-purifier
+2026-11-06T03:18:56.7841690Z  * [new ref]         ea43ef3106cef19ba7f9c0e75140822cd98ebc4f -> origin/main
+2026-11-06T03:18:56.7843450Z ##[endgroup]
+2026-11-06T03:18:56.7844106Z ##[group]Determining the checkout info
+2026-11-06T03:18:56.7845121Z ##[endgroup]
+2026-11-06T03:18:56.7845571Z [command]/usr/bin/git sparse-checkout disable
+2026-11-06T03:18:56.7866126Z [command]/usr/bin/git config --local --unset-all extensions.worktreeConfig
+2026-11-06T03:18:56.7902724Z ##[group]Checking out the ref
+2026-11-06T03:18:56.7905771Z [command]/usr/bin/git checkout --progress --force -B main refs/remotes/origin/main
+2026-11-06T03:18:56.8003472Z Switched to a new branch 'main'
+2026-11-06T03:18:56.8006676Z branch 'main' set up to track 'origin/main'.
+2026-11-06T03:18:56.8011805Z ##[endgroup]
+2026-11-06T03:18:56.8054461Z [command]/usr/bin/git log -1 --format=%H
+2026-11-06T03:18:56.8082400Z ea43ef3106cef19ba7f9c0e75140822cd98ebc4f
+2026-11-06T03:18:56.8333332Z ##[group]Run cachix/install-nix-action@v31
+2026-11-06T03:18:56.8334045Z with:
+2026-11-06T03:18:56.8334636Z   enable_kvm: true
+2026-11-06T03:18:56.8335288Z   set_as_trusted_user: true
+2026-11-06T03:18:56.8335835Z ##[endgroup]
+2026-11-06T03:18:56.8383660Z ##[start-action display=Run ${GITHUB_ACTION_PATH}/install-nix.sh;id=__cachix_install-nix-action.__run]
+2026-11-06T03:18:56.8424143Z ##[group]Run ${GITHUB_ACTION_PATH}/install-nix.sh
+2026-11-06T03:18:56.8425083Z [36;1m${GITHUB_ACTION_PATH}/install-nix.sh[0m
+2026-11-06T03:18:56.8505211Z shell: /usr/bin/bash --noprofile --norc -e -o pipefail {0}
+2026-11-06T03:18:56.8505982Z env:
+2026-11-06T03:18:56.8506411Z   INPUT_EXTRA_NIX_CONFIG: 
+2026-11-06T03:18:56.8506944Z   INPUT_GITHUB_ACCESS_TOKEN: 
+2026-11-06T03:18:56.8507490Z   INPUT_INSTALL_OPTIONS: 
+2026-11-06T03:18:56.8507998Z   INPUT_INSTALL_URL: 
+2026-11-06T03:18:56.8508472Z   INPUT_NIX_PATH: 
+2026-11-06T03:18:56.8508933Z   INPUT_ENABLE_KVM: true
+2026-11-06T03:18:56.8509543Z   INPUT_SET_AS_TRUSTED_USER: true
+2026-11-06T03:18:56.8515065Z   GITHUB_TOKEN: ***
+2026-11-06T03:18:56.8515524Z ##[endgroup]
+2026-11-06T03:18:56.8680107Z ##[group]Enabling KVM support
+2026-11-06T03:18:56.8732567Z KERNEL=="kvm", GROUP="kvm", MODE="0666", OPTIONS+="static_node=kvm"
+2026-11-06T03:18:56.8958746Z Enabled KVM
+2026-11-06T03:18:56.8960145Z ##[endgroup]
+2026-11-06T03:18:56.8960950Z ##[group]Installing Nix
+2026-11-06T03:18:56.9156574Z installer options: --no-channel-add --nix-extra-conf-file /tmp/tmp.UuvJmI23pO/nix.conf --daemon --daemon-user-count 8
+2026-11-06T03:19:01.9303393Z * Host releases.nixos.org:443 was resolved.
+2026-11-06T03:19:01.9307767Z * IPv6: 2a04:4e42:26::347
+2026-11-06T03:19:01.9307982Z * IPv4: 140.248.145.91
+2026-11-06T03:19:01.9308167Z *   Trying 140.248.145.91:443...
+2026-11-06T03:19:01.9449627Z * Connected to releases.nixos.org (140.248.145.91) port 443
+2026-11-06T03:19:01.9461663Z * ALPN: curl offers h2,http/1.1
+2026-11-06T03:19:01.9463034Z } [5 bytes data]
+2026-11-06T03:19:01.9463412Z * TLSv1.3 (OUT), TLS handshake, Client hello (1):
+2026-11-06T03:19:01.9463732Z } [512 bytes data]
+2026-11-06T03:19:01.9573239Z *  CAfile: /etc/ssl/certs/ca-certificates.crt
+2026-11-06T03:19:01.9573651Z *  CApath: /etc/ssl/certs
+2026-11-06T03:19:01.9574012Z { [5 bytes data]
+2026-11-06T03:19:01.9574424Z * TLSv1.3 (IN), TLS handshake, Server hello (2):
+2026-11-06T03:19:01.9574772Z { [122 bytes data]
+2026-11-06T03:19:01.9585303Z * TLSv1.3 (IN), TLS handshake, Encrypted Extensions (8):
+2026-11-06T03:19:01.9585719Z { [19 bytes data]
+2026-11-06T03:19:01.9586027Z * TLSv1.3 (IN), TLS handshake, Certificate (11):
+2026-11-06T03:19:01.9586334Z { [4081 bytes data]
+2026-11-06T03:19:01.9586604Z * TLSv1.3 (IN), TLS handshake, CERT verify (15):
+2026-11-06T03:19:01.9586896Z { [264 bytes data]
+2026-11-06T03:19:01.9587159Z * TLSv1.3 (IN), TLS handshake, Finished (20):
+2026-11-06T03:19:01.9587445Z { [36 bytes data]
+2026-11-06T03:19:01.9587778Z * TLSv1.3 (OUT), TLS change cipher, Change cipher spec (1):
+2026-11-06T03:19:01.9588137Z } [1 bytes data]
+2026-11-06T03:19:01.9588402Z * TLSv1.3 (OUT), TLS handshake, Finished (20):
+2026-11-06T03:19:01.9588687Z } [36 bytes data]
+2026-11-06T03:19:01.9589067Z * SSL connection using TLSv1.3 / TLS_AES_128_GCM_SHA256 / X25519 / RSASSA-PSS
+2026-11-06T03:19:01.9589466Z * ALPN: server accepted h2
+2026-11-06T03:19:01.9589717Z * Server certificate:
+2026-11-06T03:19:01.9590017Z *  subject: CN=releases.nixos.org
+2026-11-06T03:19:01.9590280Z *  start date: Sep  9 22:18:06 2026 GMT
+2026-11-06T03:19:01.9590472Z *  expire date: Dec  8 22:18:05 2026 GMT
+2026-11-06T03:19:01.9590743Z *  subjectAltName: host "releases.nixos.org" matched cert's "releases.nixos.org"
+2026-11-06T03:19:01.9591010Z *  issuer: C=US; O=Let's Encrypt; CN=YR1
+2026-11-06T03:19:01.9591202Z *  SSL certificate verify ok.
+2026-11-06T03:19:01.9591499Z *   Certificate level 0: Public key type RSA (2048/112 Bits/secBits), signed using sha256WithRSAEncryption
+2026-11-06T03:19:01.9592410Z *   Certificate level 1: Public key type RSA (2048/112 Bits/secBits), signed using sha256WithRSAEncryption
+2026-11-06T03:19:01.9592801Z *   Certificate level 2: Public key type RSA (4096/152 Bits/secBits), signed using sha256WithRSAEncryption
+2026-11-06T03:19:01.9593312Z *   Certificate level 3: Public key type RSA (4096/152 Bits/secBits), signed using sha256WithRSAEncryption
+2026-11-06T03:19:01.9593584Z { [5 bytes data]
+2026-11-06T03:19:01.9593766Z * TLSv1.3 (IN), TLS handshake, Newsession Ticket (4):
+2026-11-06T03:19:01.9593970Z { [201 bytes data]
+2026-11-06T03:19:01.9594117Z * using HTTP/2
+2026-11-06T03:19:01.9594529Z * [HTTP/2] [1] OPENED stream for https://releases.nixos.org/nix/nix-2.35.4/install
+2026-11-06T03:19:01.9594816Z * [HTTP/2] [1] [:method: GET]
+2026-11-06T03:19:01.9594994Z * [HTTP/2] [1] [:scheme: https]
+2026-11-06T03:19:01.9595185Z * [HTTP/2] [1] [:authority: releases.nixos.org]
+2026-11-06T03:19:01.9595402Z * [HTTP/2] [1] [:path: /nix/nix-2.35.4/install]
+2026-11-06T03:19:01.9595599Z * [HTTP/2] [1] [user-agent: curl/8.5.0]
+2026-11-06T03:19:01.9595790Z * [HTTP/2] [1] [accept: */*]
+2026-11-06T03:19:01.9595951Z } [5 bytes data]
+2026-11-06T03:19:01.9596110Z > GET /nix/nix-2.35.4/install HTTP/2
+2026-11-06T03:19:01.9596291Z > Host: releases.nixos.org
+2026-11-06T03:19:01.9596462Z > User-Agent: curl/8.5.0
+2026-11-06T03:19:01.9596619Z > Accept: */*
+2026-11-06T03:19:01.9596755Z > 
+2026-11-06T03:19:01.9668501Z { [5 bytes data]
+2026-11-06T03:19:01.9685360Z < HTTP/2 200 
+2026-11-06T03:19:01.9685577Z < server: AmazonS3
+2026-11-06T03:19:01.9685843Z < last-modified: Thu, 22 Oct 2026 21:07:55 GMT
+2026-11-06T03:19:01.9686155Z < etag: "10dde0412541ec8bb75185c462f5eb5f"
+2026-11-06T03:19:01.9686448Z < content-type: text/plain
+2026-11-06T03:19:01.9686726Z < x-amz-server-side-encryption: AES256
+2026-11-06T03:19:01.9687016Z < via: 1.1 varnish, 1.1 varnish
+2026-11-06T03:19:01.9687289Z < access-control-allow-origin: *
+2026-11-06T03:19:01.9687586Z < accept-ranges: bytes
+2026-11-06T03:19:01.9687963Z < date: Fri, 06 Nov 2026 03:19:01 GMT
+2026-11-06T03:19:01.9688220Z < age: 124620
+2026-11-06T03:19:01.9688565Z < x-served-by: cache-dub4357-DUB, cache-chi-kmdw8640076-CHI
+2026-11-06T03:19:01.9688900Z < x-cache: HIT, HIT
+2026-11-06T03:19:01.9689121Z < x-cache-hits: 17, 282
+2026-11-06T03:19:01.9689325Z < content-length: 4499
+2026-11-06T03:19:01.9689473Z < 
+2026-11-06T03:19:01.9689609Z { [5 bytes data]
+2026-11-06T03:19:01.9689792Z * Connection #0 to host releases.nixos.org left intact
+2026-11-06T03:19:01.9750012Z downloading Nix 2.35.4 binary tarball for x86_64-linux from 'https://releases.nixos.org/nix/nix-2.35.4/nix-2.35.4-x86_64-linux.tar.xz' to '/tmp/nix-binary-tarball-unpack.1kpEyhg0xN'...
+2026-11-06T03:19:01.9789807Z   % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+2026-11-06T03:19:01.9790205Z                                  Dload  Upload   Total   Spent    Left  Speed
+2026-11-06T03:19:01.9790514Z 
+2026-11-06T03:19:02.1833326Z   0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0
+2026-11-06T03:19:02.1834121Z 100 25.9M  100 25.9M    0     0   126M      0 --:--:-- --:--:-- --:--:--  127M
+2026-11-06T03:19:03.5660179Z Note: a multi-user installation is possible. See https://nix.dev/manual/nix/stable/installation/installing-binary.html#multi-user-installation
+2026-11-06T03:19:03.5669644Z [1;31mSwitching to the Multi-user Installer[0m
+2026-11-06T03:19:03.5749301Z [32mWelcome to the Multi-User Nix Installation
+2026-11-06T03:19:03.5760173Z [0m
+2026-11-06T03:19:03.5760848Z This installation tool will set up your computer with the Nix package
+2026-11-06T03:19:03.5761388Z manager. This will happen in a few stages:
+2026-11-06T03:19:03.5761556Z 
+2026-11-06T03:19:03.5761705Z 1. Make sure your computer doesn't already have Nix. If it does, I
+2026-11-06T03:19:03.5762049Z    will show you instructions on how to clean up your old install.
+2026-11-06T03:19:03.5762262Z 
+2026-11-06T03:19:03.5762393Z 2. Show you what I am going to install and where. Then I will ask
+2026-11-06T03:19:03.5762699Z    if you are ready to continue.
+2026-11-06T03:19:03.5762833Z 
+2026-11-06T03:19:03.5763490Z 3. Create the system users [34m(uids [30001..30008])[0m and groups [34m(gid 30000)[0m
+2026-11-06T03:19:03.5763900Z    that the Nix daemon uses to run builds. To create system users
+2026-11-06T03:19:03.5764563Z    in a different range, exit and run this tool again with
+2026-11-06T03:19:03.5764834Z    NIX_FIRST_BUILD_UID set.
+2026-11-06T03:19:03.5764964Z 
+2026-11-06T03:19:03.5765093Z 4. Perform the basic installation of the Nix files daemon.
+2026-11-06T03:19:03.5765296Z 
+2026-11-06T03:19:03.5765439Z 5. Configure your shell to import special Nix Profile files, so you
+2026-11-06T03:19:03.5765721Z    can use Nix.
+2026-11-06T03:19:03.5765825Z 
+2026-11-06T03:19:03.5765902Z 6. Start the Nix daemon.
+2026-11-06T03:19:03.5766024Z 
+2026-11-06T03:19:03.5766281Z [32m[4;32mWould you like to see a more detailed list of what I will do?
+2026-11-06T03:19:03.5766648Z [0mNo TTY, assuming you would say yes :)
+2026-11-06T03:19:03.5769609Z 
+2026-11-06T03:19:03.5769890Z I will:
+2026-11-06T03:19:03.5770008Z 
+2026-11-06T03:19:03.5770163Z  - make sure your computer doesn't already have Nix files
+2026-11-06T03:19:03.5770495Z    (if it does, I will tell you how to clean them up.)
+2026-11-06T03:19:03.5770861Z  - create local users (see the list above for the users I'll make)
+2026-11-06T03:19:03.5771173Z  - create a local group (nixbld)
+2026-11-06T03:19:03.5771412Z  - install Nix in /nix
+2026-11-06T03:19:03.5771632Z  - create a configuration file in /etc/nix
+2026-11-06T03:19:03.5771949Z  - set up the "default profile" by creating some Nix-related files in
+2026-11-06T03:19:03.5772243Z    /root
+2026-11-06T03:19:03.5789524Z  - back up /etc/bash.bashrc to /etc/bash.bashrc.backup-before-nix
+2026-11-06T03:19:03.5790121Z  - update /etc/bash.bashrc to include some Nix configuration
+2026-11-06T03:19:03.5793197Z  - load and start a service (at /etc/systemd/system/nix-daemon.service
+2026-11-06T03:19:03.5793718Z    and /etc/systemd/system/nix-daemon.socket) for nix-daemon
+2026-11-06T03:19:03.5794099Z 
+2026-11-06T03:19:03.5795836Z [32m[4;32mReady to continue?
+2026-11-06T03:19:03.5796129Z [0mNo TTY, assuming you would say yes :)
+2026-11-06T03:19:03.5813096Z 
+2026-11-06T03:19:03.5813690Z [34m---- let's talk about sudo -----------------------------------------------------
+2026-11-06T03:19:03.5823019Z [0mThis script is going to call sudo a lot. Normally, it would show you
+2026-11-06T03:19:03.5823449Z exactly what commands it is running and why. However, the script is
+2026-11-06T03:19:03.5823761Z run in a headless fashion, like this:
+2026-11-06T03:19:03.5823912Z 
+2026-11-06T03:19:03.5824038Z   $ curl -L https://nixos.org/nix/install | sh
+2026-11-06T03:19:03.5824363Z 
+2026-11-06T03:19:03.5824506Z or maybe in a CI pipeline. Because of that, I'm going to skip the
+2026-11-06T03:19:03.5824810Z verbose output in the interest of brevity.
+2026-11-06T03:19:03.5824973Z 
+2026-11-06T03:19:03.5825046Z If you would like to
+2026-11-06T03:19:03.5825241Z see the output, try like this:
+2026-11-06T03:19:03.5825381Z 
+2026-11-06T03:19:03.5825518Z   $ curl -L -o install-nix https://nixos.org/nix/install
+2026-11-06T03:19:03.5825809Z   $ sh ./install-nix
+2026-11-06T03:19:03.5825916Z 
+2026-11-06T03:19:03.5828454Z 
+2026-11-06T03:19:03.5828753Z [32m~~> Checking for artifacts of previous installs
+2026-11-06T03:19:03.5835029Z [0mBefore I try to install, I'll check for signs Nix already is or has
+2026-11-06T03:19:03.5835575Z been installed on this system.
+2026-11-06T03:19:03.5874750Z 
+2026-11-06T03:19:03.5875301Z [34m---- Nix config report ---------------------------------------------------------
+2026-11-06T03:19:03.5875784Z [0m[1m        Temp Dir[0m:	/tmp/tmp.Ppb2GO6xXg
+2026-11-06T03:19:03.5876083Z [1m        Nix Root[0m:	/nix
+2026-11-06T03:19:03.5876318Z [1m     Build Users[0m:	8
+2026-11-06T03:19:03.5876555Z [1m  Build Group ID[0m:	30000
+2026-11-06T03:19:03.5876804Z [1mBuild Group Name[0m:	nixbld
+2026-11-06T03:19:03.5876959Z 
+2026-11-06T03:19:03.5877051Z [4;34mbuild users:
+2026-11-06T03:19:03.5877281Z [0m[1m    Username[0m:	UID
+2026-11-06T03:19:03.5901617Z [1m     nixbld1[0m:	30001
+2026-11-06T03:19:03.5911249Z [1m     nixbld2[0m:	30002
+2026-11-06T03:19:03.5921402Z [1m     nixbld3[0m:	30003
+2026-11-06T03:19:03.5931858Z [1m     nixbld4[0m:	30004
+2026-11-06T03:19:03.5941991Z [1m     nixbld5[0m:	30005
+2026-11-06T03:19:03.5952148Z [1m     nixbld6[0m:	30006
+2026-11-06T03:19:03.5961728Z [1m     nixbld7[0m:	30007
+2026-11-06T03:19:03.5972252Z [1m     nixbld8[0m:	30008
+2026-11-06T03:19:03.5972456Z 
+2026-11-06T03:19:03.5972662Z [32m[4;32mReady to continue?
+2026-11-06T03:19:03.5972970Z [0mNo TTY, assuming you would say yes :)
+2026-11-06T03:19:03.5973186Z 
+2026-11-06T03:19:03.5973351Z [32m~~> Setting up the build group nixbld
+2026-11-06T03:19:03.6553982Z [0m[1m            Created[0m:	Yes
+2026-11-06T03:19:03.6575058Z 
+2026-11-06T03:19:03.6575480Z [32m~~> Setting up the build user nixbld1
+2026-11-06T03:19:03.6717241Z useradd warning: nixbld1's uid 30001 is greater than SYS_UID_MAX 999
+2026-11-06T03:19:03.6800209Z [0m[1m           Created[0m:	Yes
+2026-11-06T03:19:03.6805097Z [1m            Hidden[0m:	Yes
+2026-11-06T03:19:03.6821446Z [1m    Home Directory[0m:	/var/empty
+2026-11-06T03:19:03.6837734Z [1m              Note[0m:	Nix build user 1
+2026-11-06T03:19:03.6852702Z [1m   Logins Disabled[0m:	Yes
+2026-11-06T03:19:03.6874485Z [1m  Member of nixbld[0m:	Yes
+2026-11-06T03:19:03.6889674Z [1m    PrimaryGroupID[0m:	30000
+2026-11-06T03:19:03.6899153Z 
+2026-11-06T03:19:03.6899498Z [32m~~> Setting up the build user nixbld2
+2026-11-06T03:19:03.7009949Z useradd warning: nixbld2's uid 30002 is greater than SYS_UID_MAX 999
+2026-11-06T03:19:03.7093449Z [0m[1m           Created[0m:	Yes
+2026-11-06T03:19:03.7098393Z [1m            Hidden[0m:	Yes
+2026-11-06T03:19:03.7114776Z [1m    Home Directory[0m:	/var/empty
+2026-11-06T03:19:03.7130314Z [1m              Note[0m:	Nix build user 2
+2026-11-06T03:19:03.7145340Z [1m   Logins Disabled[0m:	Yes
+2026-11-06T03:19:03.7160347Z [1m  Member of nixbld[0m:	Yes
+2026-11-06T03:19:03.7175802Z [1m    PrimaryGroupID[0m:	30000
+2026-11-06T03:19:03.7185397Z 
+2026-11-06T03:19:03.7185689Z [32m~~> Setting up the build user nixbld3
+2026-11-06T03:19:03.7299277Z useradd warning: nixbld3's uid 30003 is greater than SYS_UID_MAX 999
+2026-11-06T03:19:03.7380077Z [0m[1m           Created[0m:	Yes
+2026-11-06T03:19:03.7385121Z [1m            Hidden[0m:	Yes
+2026-11-06T03:19:03.7401080Z [1m    Home Directory[0m:	/var/empty
+2026-11-06T03:19:03.7417052Z [1m              Note[0m:	Nix build user 3
+2026-11-06T03:19:03.7432079Z [1m   Logins Disabled[0m:	Yes
+2026-11-06T03:19:03.7448155Z [1m  Member of nixbld[0m:	Yes
+2026-11-06T03:19:03.7463550Z [1m    PrimaryGroupID[0m:	30000
+2026-11-06T03:19:03.7472693Z 
+2026-11-06T03:19:03.7472907Z [32m~~> Setting up the build user nixbld4
+2026-11-06T03:19:03.7584455Z useradd warning: nixbld4's uid 30004 is greater than SYS_UID_MAX 999
+2026-11-06T03:19:03.7668492Z [0m[1m           Created[0m:	Yes
+2026-11-06T03:19:03.7673523Z [1m            Hidden[0m:	Yes
+2026-11-06T03:19:03.7689766Z [1m    Home Directory[0m:	/var/empty
+2026-11-06T03:19:03.7705600Z [1m              Note[0m:	Nix build user 4
+2026-11-06T03:19:03.7720208Z [1m   Logins Disabled[0m:	Yes
+2026-11-06T03:19:03.7735890Z [1m  Member of nixbld[0m:	Yes
+2026-11-06T03:19:03.7750872Z [1m    PrimaryGroupID[0m:	30000
+2026-11-06T03:19:03.7760793Z 
+2026-11-06T03:19:03.7761035Z [32m~~> Setting up the build user nixbld5
+2026-11-06T03:19:03.7869827Z useradd warning: nixbld5's uid 30005 is greater than SYS_UID_MAX 999
+2026-11-06T03:19:03.7953796Z [0m[1m           Created[0m:	Yes
+2026-11-06T03:19:03.7958695Z [1m            Hidden[0m:	Yes
+2026-11-06T03:19:03.7974664Z [1m    Home Directory[0m:	/var/empty
+2026-11-06T03:19:03.7990529Z [1m              Note[0m:	Nix build user 5
+2026-11-06T03:19:03.8006666Z [1m   Logins Disabled[0m:	Yes
+2026-11-06T03:19:03.8022341Z [1m  Member of nixbld[0m:	Yes
+2026-11-06T03:19:03.8037578Z [1m    PrimaryGroupID[0m:	30000
+2026-11-06T03:19:03.8046770Z 
+2026-11-06T03:19:03.8047306Z [32m~~> Setting up the build user nixbld6
+2026-11-06T03:19:03.8155310Z useradd warning: nixbld6's uid 30006 is greater than SYS_UID_MAX 999
+2026-11-06T03:19:03.8235857Z [0m[1m           Created[0m:	Yes
+2026-11-06T03:19:03.8241468Z [1m            Hidden[0m:	Yes
+2026-11-06T03:19:03.8259592Z [1m    Home Directory[0m:	/var/empty
+2026-11-06T03:19:03.8275432Z [1m              Note[0m:	Nix build user 6
+2026-11-06T03:19:03.8290259Z [1m   Logins Disabled[0m:	Yes
+2026-11-06T03:19:03.8305699Z [1m  Member of nixbld[0m:	Yes
+2026-11-06T03:19:03.8320964Z [1m    PrimaryGroupID[0m:	30000
+2026-11-06T03:19:03.8330190Z 
+2026-11-06T03:19:03.8330435Z [32m~~> Setting up the build user nixbld7
+2026-11-06T03:19:03.8438146Z useradd warning: nixbld7's uid 30007 is greater than SYS_UID_MAX 999
+2026-11-06T03:19:03.8517243Z [0m[1m           Created[0m:	Yes
+2026-11-06T03:19:03.8521721Z [1m            Hidden[0m:	Yes
+2026-11-06T03:19:03.8537384Z [1m    Home Directory[0m:	/var/empty
+2026-11-06T03:19:03.8553165Z [1m              Note[0m:	Nix build user 7
+2026-11-06T03:19:03.8567969Z [1m   Logins Disabled[0m:	Yes
+2026-11-06T03:19:03.8582864Z [1m  Member of nixbld[0m:	Yes
+2026-11-06T03:19:03.8597754Z [1m    PrimaryGroupID[0m:	30000
+2026-11-06T03:19:03.8607249Z 
+2026-11-06T03:19:03.8607551Z [32m~~> Setting up the build user nixbld8
+2026-11-06T03:19:03.8714381Z useradd warning: nixbld8's uid 30008 is greater than SYS_UID_MAX 999
+2026-11-06T03:19:03.8792995Z [0m[1m           Created[0m:	Yes
+2026-11-06T03:19:03.8797947Z [1m            Hidden[0m:	Yes
+2026-11-06T03:19:03.8813875Z [1m    Home Directory[0m:	/var/empty
+2026-11-06T03:19:03.8829982Z [1m              Note[0m:	Nix build user 8
+2026-11-06T03:19:03.8845413Z [1m   Logins Disabled[0m:	Yes
+2026-11-06T03:19:03.8865480Z [1m  Member of nixbld[0m:	Yes
+2026-11-06T03:19:03.8882745Z [1m    PrimaryGroupID[0m:	30000
+2026-11-06T03:19:03.8882938Z 
+2026-11-06T03:19:03.8883088Z [32m~~> Setting up the basic directory structure
+2026-11-06T03:19:03.8952405Z [0minstall: creating directory '/nix'
+2026-11-06T03:19:03.8952604Z install: creating directory '/nix/var'
+2026-11-06T03:19:03.8952769Z install: creating directory '/nix/var/log'
+2026-11-06T03:19:03.8952942Z install: creating directory '/nix/var/log/nix'
+2026-11-06T03:19:03.8953114Z install: creating directory '/nix/var/log/nix/drvs'
+2026-11-06T03:19:03.8953285Z install: creating directory '/nix/var/nix'
+2026-11-06T03:19:03.8953442Z install: creating directory '/nix/var/nix/db'
+2026-11-06T03:19:03.8953609Z install: creating directory '/nix/var/nix/gcroots'
+2026-11-06T03:19:03.8953790Z install: creating directory '/nix/var/nix/profiles'
+2026-11-06T03:19:03.8953974Z install: creating directory '/nix/var/nix/temproots'
+2026-11-06T03:19:03.8954151Z install: creating directory '/nix/var/nix/userpool'
+2026-11-06T03:19:03.8954524Z install: creating directory '/nix/var/nix/daemon-socket'
+2026-11-06T03:19:03.8954844Z install: creating directory '/nix/var/nix/gcroots/per-user'
+2026-11-06T03:19:03.8955126Z install: creating directory '/nix/var/nix/profiles/per-user'
+2026-11-06T03:19:03.9016848Z install: creating directory '/nix/store'
+2026-11-06T03:19:03.9080518Z install: creating directory '/etc/nix'
+2026-11-06T03:19:03.9089045Z 
+2026-11-06T03:19:03.9089299Z [32m~~> Installing Nix
+2026-11-06T03:19:04.0638707Z [0m      Alright! We have our first nix at /nix/store/8lza1b8nnci8lmm4q68p0l33pg975s0q-nix-2.35.4
+2026-11-06T03:19:04.1087317Z       Just finished getting the nix database ready.
+2026-11-06T03:19:04.1089970Z 
+2026-11-06T03:19:04.1090852Z [32m~~> Setting up shell profiles: /etc/bashrc /etc/profile.d/nix.sh /etc/zshrc /etc/bash.bashrc /etc/zsh/zshrc
+2026-11-06T03:19:04.1233553Z [0m
+2026-11-06T03:19:04.1233728Z # Nix
+2026-11-06T03:19:04.1234079Z if [ -e '/nix/var/nix/profiles/default/etc/profile.d/nix-daemon.sh' ]; then
+2026-11-06T03:19:04.1234586Z   . '/nix/var/nix/profiles/default/etc/profile.d/nix-daemon.sh'
+2026-11-06T03:19:04.1234870Z fi
+2026-11-06T03:19:04.1235021Z # End Nix
+2026-11-06T03:19:04.1235117Z 
+2026-11-06T03:19:04.1376591Z 
+2026-11-06T03:19:04.1377025Z # Nix
+2026-11-06T03:19:04.1377335Z if [ -e '/nix/var/nix/profiles/default/etc/profile.d/nix-daemon.sh' ]; then
+2026-11-06T03:19:04.1377807Z   . '/nix/var/nix/profiles/default/etc/profile.d/nix-daemon.sh'
+2026-11-06T03:19:04.1378082Z fi
+2026-11-06T03:19:04.1378235Z # End Nix
+2026-11-06T03:19:04.1378324Z 
+2026-11-06T03:19:04.1514921Z 
+2026-11-06T03:19:04.1517747Z # Nix
+2026-11-06T03:19:04.1518170Z if [ -e '/nix/var/nix/profiles/default/etc/profile.d/nix-daemon.sh' ]; then
+2026-11-06T03:19:04.1518576Z   . '/nix/var/nix/profiles/default/etc/profile.d/nix-daemon.sh'
+2026-11-06T03:19:04.1518853Z fi
+2026-11-06T03:19:04.1519003Z # End Nix
+2026-11-06T03:19:04.1519099Z 
+2026-11-06T03:19:04.1653454Z 
+2026-11-06T03:19:04.1653875Z # Nix
+2026-11-06T03:19:04.1654410Z if [ -e '/nix/var/nix/profiles/default/etc/profile.d/nix-daemon.sh' ]; then
+2026-11-06T03:19:04.1654825Z   . '/nix/var/nix/profiles/default/etc/profile.d/nix-daemon.sh'
+2026-11-06T03:19:04.1655037Z fi
+2026-11-06T03:19:04.1655160Z # End Nix
+2026-11-06T03:19:04.1655226Z 
+2026-11-06T03:19:04.1655313Z # System-wide .bashrc file for interactive bash(1) shells.
+2026-11-06T03:19:04.1655438Z 
+2026-11-06T03:19:04.1655550Z # To enable the settings / commands in this file for login shells as well,
+2026-11-06T03:19:04.1655795Z # this file has to be sourced in /etc/profile.
+2026-11-06T03:19:04.1655957Z 
+2026-11-06T03:19:04.1656060Z # If not running interactively, don't do anything
+2026-11-06T03:19:04.1656292Z [ -z "$PS1" ] && return
+2026-11-06T03:19:04.1656369Z 
+2026-11-06T03:19:04.1656453Z # check the window size after each command and, if necessary,
+2026-11-06T03:19:04.1656637Z # update the values of LINES and COLUMNS.
+2026-11-06T03:19:04.1656785Z shopt -s checkwinsize
+2026-11-06T03:19:04.1656858Z 
+2026-11-06T03:19:04.1656969Z # set variable identifying the chroot you work in (used in the prompt below)
+2026-11-06T03:19:04.1657207Z if [ -z "${debian_chroot:-}" ] && [ -r /etc/debian_chroot ]; then
+2026-11-06T03:19:04.1657394Z     debian_chroot=$(cat /etc/debian_chroot)
+2026-11-06T03:19:04.1657533Z fi
+2026-11-06T03:19:04.1657587Z 
+2026-11-06T03:19:04.1657680Z # set a fancy prompt (non-color, overwrite the one in /etc/profile)
+2026-11-06T03:19:04.1657938Z # but only if not SUDOing and have SUDO_PS1 set; then assume smart user.
+2026-11-06T03:19:04.1658178Z if ! [ -n "${SUDO_USER}" -a -n "${SUDO_PS1}" ]; then
+2026-11-06T03:19:04.1658357Z   PS1='${debian_chroot:+($debian_chroot)}\u@\h:\w\$ '
+2026-11-06T03:19:04.1658507Z fi
+2026-11-06T03:19:04.1658559Z 
+2026-11-06T03:19:04.1658666Z # Commented out, don't overwrite xterm -T "title" -n "icontitle" by default.
+2026-11-06T03:19:04.1658888Z # If this is an xterm set the title to user@host:dir
+2026-11-06T03:19:04.1659043Z #case "$TERM" in
+2026-11-06T03:19:04.1659154Z #xterm*|rxvt*)
+2026-11-06T03:19:04.1659317Z #    PROMPT_COMMAND='echo -ne "\033]0;${USER}@${HOSTNAME}: ${PWD}\007"'
+2026-11-06T03:19:04.1659503Z #    ;;
+2026-11-06T03:19:04.1659598Z #*)
+2026-11-06T03:19:04.1659692Z #    ;;
+2026-11-06T03:19:04.1659789Z #esac
+2026-11-06T03:19:04.1659844Z 
+2026-11-06T03:19:04.1659914Z # enable bash completion in interactive shells
+2026-11-06T03:19:04.1660086Z #if ! shopt -oq posix; then
+2026-11-06T03:19:04.1660252Z #  if [ -f /usr/share/bash-completion/bash_completion ]; then
+2026-11-06T03:19:04.1660439Z #    . /usr/share/bash-completion/bash_completion
+2026-11-06T03:19:04.1660604Z #  elif [ -f /etc/bash_completion ]; then
+2026-11-06T03:19:04.1660749Z #    . /etc/bash_completion
+2026-11-06T03:19:04.1660867Z #  fi
+2026-11-06T03:19:04.1660959Z #fi
+2026-11-06T03:19:04.1661014Z 
+2026-11-06T03:19:04.1661056Z # sudo hint
+2026-11-06T03:19:04.1661223Z if [ ! -e "$HOME/.sudo_as_admin_successful" ] && [ ! -e "$HOME/.hushlogin" ] ; then
+2026-11-06T03:19:04.1661438Z     case " $(groups) " in *\ admin\ *|*\ sudo\ *)
+2026-11-06T03:19:04.1661595Z     if [ -x /usr/bin/sudo ]; then
+2026-11-06T03:19:04.1661726Z 	cat <<-EOF
+2026-11-06T03:19:04.1661881Z 	To run a command as administrator (user "root"), use "sudo <command>".
+2026-11-06T03:19:04.1662267Z 	See "man sudo_root" for details.
+2026-11-06T03:19:04.1662394Z 	
+2026-11-06T03:19:04.1662485Z 	EOF
+2026-11-06T03:19:04.1662578Z     fi
+2026-11-06T03:19:04.1662771Z     esac
+2026-11-06T03:19:04.1662864Z fi
+2026-11-06T03:19:04.1662918Z 
+2026-11-06T03:19:04.1663001Z # if the command-not-found package is installed, use it
+2026-11-06T03:19:04.1663263Z if [ -x /usr/lib/command-not-found -o -x /usr/share/command-not-found/command-not-found ]; then
+2026-11-06T03:19:04.1663498Z 	function command_not_found_handle {
+2026-11-06T03:19:04.1663674Z 	        # check because c-n-f could've been removed in the meantime
+2026-11-06T03:19:04.1663871Z                 if [ -x /usr/lib/command-not-found ]; then
+2026-11-06T03:19:04.1664035Z 		   /usr/lib/command-not-found -- "$1"
+2026-11-06T03:19:04.1664317Z                    return $?
+2026-11-06T03:19:04.1664598Z                 elif [ -x /usr/share/command-not-found/command-not-found ]; then
+2026-11-06T03:19:04.1664883Z 		   /usr/share/command-not-found/command-not-found -- "$1"
+2026-11-06T03:19:04.1665093Z                    return $?
+2026-11-06T03:19:04.1665211Z 		else
+2026-11-06T03:19:04.1665325Z 		   printf "%s: command not found\n" "$1" >&2
+2026-11-06T03:19:04.1665474Z 		   return 127
+2026-11-06T03:19:04.1665576Z 		fi
+2026-11-06T03:19:04.1665670Z 	}
+2026-11-06T03:19:04.1665761Z fi
+2026-11-06T03:19:04.1675850Z 
+2026-11-06T03:19:04.1676690Z [32m~~> Setting up shell profiles for Fish with conf.d/nix.fish inside /etc/fish /usr/local/etc/fish /opt/homebrew/etc/fish /opt/local/etc/fish
+2026-11-06T03:19:04.1801561Z [0m
+2026-11-06T03:19:04.1801773Z [32m~~> Setting up the default profile
+2026-11-06T03:19:04.2047086Z installing 'nix-2.35.4'
+2026-11-06T03:19:04.2193289Z building '/nix/store/pah449n1nfcdzdakbg7ah3p12bgl5lzl-user-environment.drv'...
+2026-11-06T03:19:04.2536091Z installing 'nix-manual-2.35.4-man'
+2026-11-06T03:19:04.2676525Z building '/nix/store/yir75spl505dl0x6w9bpc5z0xd73ywh3-user-environment.drv'...
+2026-11-06T03:19:04.3032526Z installing 'nss-cacert-3.131.1'
+2026-11-06T03:19:04.3174929Z building '/nix/store/xpchy3fjkiphdqlw56i8dd99gknxl1yv-user-environment.drv'...
+2026-11-06T03:19:04.3364329Z [0m
+2026-11-06T03:19:04.3364897Z [32m~~> Setting up the nix-daemon systemd service
+2026-11-06T03:19:04.3680653Z Created symlink /etc/systemd/system/nix-daemon.service → /nix/var/nix/profiles/default/lib/systemd/system/nix-daemon.service.
+2026-11-06T03:19:04.5455578Z Created symlink /etc/systemd/system/nix-daemon.socket → /nix/var/nix/profiles/default/lib/systemd/system/nix-daemon.socket.
+2026-11-06T03:19:04.5456388Z Created symlink /etc/systemd/system/sockets.target.wants/nix-daemon.socket → /nix/var/nix/profiles/default/lib/systemd/system/nix-daemon.socket.
+2026-11-06T03:19:04.9273210Z [0m[32mAlright! We're done!
+2026-11-06T03:19:04.9294018Z [0mTry it! Open a new terminal, and type:
+2026-11-06T03:19:04.9294521Z 
+2026-11-06T03:19:04.9294835Z   $ nix-shell -p nix-info --run "nix-info -m"
+2026-11-06T03:19:04.9295017Z 
+2026-11-06T03:19:04.9295442Z Thank you for using this installer. If you have any feedback or need
+2026-11-06T03:19:04.9295780Z help, don't hesitate:
+2026-11-06T03:19:04.9295938Z 
+2026-11-06T03:19:04.9296019Z You can open an issue at
+2026-11-06T03:19:04.9296550Z https://github.com/NixOS/nix/issues/new?labels=installer&template=installer.md
+2026-11-06T03:19:04.9296911Z 
+2026-11-06T03:19:04.9297055Z Or get in touch with the community: https://nixos.org/community
+2026-11-06T03:19:04.9313794Z 
+2026-11-06T03:19:04.9314735Z [34m---- Reminders -----------------------------------------------------------------
+2026-11-06T03:19:04.9315195Z [0m[34m[ 1 ][0m
+2026-11-06T03:19:04.9315728Z Nix won't work in active shell sessions until you restart them.
+2026-11-06T03:19:04.9315962Z 
+2026-11-06T03:19:04.9951571Z ##[endgroup]
+2026-11-06T03:19:04.9983427Z ##[end-action id=__cachix_install-nix-action.__run;outcome=success;conclusion=success;duration_ms=8159]
+2026-11-06T03:19:05.0029448Z ##[group]Run nix flake archive --json 'github:NixOS/nixpkgs/b134951a4c9f3c995fd7be05f3243f8ecd65d798' > epoch-target.json
+2026-11-06T03:19:05.0029905Z [36;1mnix flake archive --json 'github:NixOS/nixpkgs/b134951a4c9f3c995fd7be05f3243f8ecd65d798' > epoch-target.json[0m
+2026-11-06T03:19:05.0030328Z [36;1mpython3 -B tests/composition-epochs.py \[0m
+2026-11-06T03:19:05.0030542Z [36;1m  --target-nixpkgs "$(jq -r .path epoch-target.json)" \[0m
+2026-11-06T03:19:05.0030748Z [36;1m  --python-attribute 'python39' \[0m
+2026-11-06T03:19:05.0030911Z [36;1m  --state-root .python-epochs[0m
+2026-11-06T03:19:05.0049581Z shell: /usr/bin/bash -e {0}
+2026-11-06T03:19:05.0049719Z env:
+2026-11-06T03:19:05.0049837Z   TMPDIR: /home/runner/work/_temp
+2026-11-06T03:19:05.0050037Z   NIX_PROFILES: /nix/var/nix/profiles/default /home/runner/.nix-profile
+2026-11-06T03:19:05.0050414Z   NIX_SSL_CERT_FILE: /etc/ssl/certs/ca-certificates.crt
+2026-11-06T03:19:05.0050663Z ##[endgroup]
+2026-11-06T03:19:05.0272081Z unpacking 'github:NixOS/nixpkgs/b134951a4c9f3c995fd7be05f3243f8ecd65d798' into the Git cache...
+2026-11-06T03:19:17.6932642Z copying path '/nix/store/lv9bmgm6v1wc3fiz00v29gi4rk13ja6l-source' from 'https://cache.nixos.org'...
+2026-11-06T03:19:50.0751228Z PASS python.epoch.target-runtime
+2026-11-06T03:19:53.7671276Z PASS python.epoch.target-platform-admission
+2026-11-06T03:19:55.3813827Z PASS python.epoch.native-lock
+2026-11-06T03:19:59.6800755Z PASS python.epoch.producer-pure-build
+2026-11-06T03:20:02.3294096Z PASS python.epoch.incoming-lock
+2026-11-06T03:20:05.0292563Z PASS python.epoch.interactive-prefetch
+2026-11-06T03:20:07.9188934Z PASS python.epoch.incoming-pure-build
+2026-11-06T03:20:11.1036259Z PASS python.epoch.publication-dry-run
+2026-11-06T03:20:13.3741305Z PASS python.epoch.ordinary-consumer
+2026-11-06T03:20:23.2486422Z PASS python.epoch.dependency-add-with-nix
+2026-11-06T03:20:32.5626592Z PASS python.epoch.dependency-drop-with-nix
+2026-11-06T03:20:32.5781529Z ##[group]Run actions/upload-artifact@v4
+2026-11-06T03:20:32.5781704Z with:
+2026-11-06T03:20:32.5781845Z   name: python-epochs-ubuntu-latest-python39
+2026-11-06T03:20:32.5782018Z   include-hidden-files: true
+2026-11-06T03:20:32.5782237Z   path: .python-epochs/report.json
+.python-epochs/commands.log
+epoch-target.json
+
+2026-11-06T03:20:32.5782484Z   if-no-files-found: warn
+2026-11-06T03:20:32.5782617Z   compression-level: 6
+2026-11-06T03:20:32.5782739Z   overwrite: false
+2026-11-06T03:20:32.5782851Z env:
+2026-11-06T03:20:32.5782963Z   TMPDIR: /home/runner/work/_temp
+2026-11-06T03:20:32.5783163Z   NIX_PROFILES: /nix/var/nix/profiles/default /home/runner/.nix-profile
+2026-11-06T03:20:32.5783398Z   NIX_SSL_CERT_FILE: /etc/ssl/certs/ca-certificates.crt
+2026-11-06T03:20:32.5783567Z ##[endgroup]
+2026-11-06T03:20:32.6845459Z (node:6115) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.
+2026-11-06T03:20:32.6846057Z (Use `node --trace-deprecation ...` to show where the warning was created)
+2026-11-06T03:20:32.6882500Z Multiple search paths detected. Calculating the least common ancestor of all paths
+2026-11-06T03:20:32.6885992Z The least common ancestor is /home/runner/work/uv-purifier/uv-purifier. This will be the root directory of the artifact
+2026-11-06T03:20:32.6886766Z With the provided path, there will be 3 files uploaded
+2026-11-06T03:20:32.6887629Z Artifact name is valid!
+2026-11-06T03:20:32.6887997Z Root directory input is valid!
+2026-11-06T03:20:32.9543057Z Beginning upload of artifact content to blob storage
+2026-11-06T03:20:32.9768837Z (node:6115) [DEP0169] DeprecationWarning: `url.parse()` behavior is not standardized and prone to errors that have security implications. Use the WHATWG URL API instead. CVEs are not issued for `url.parse()` vulnerabilities.
+2026-11-06T03:20:33.1502365Z Uploaded bytes 19059
+2026-11-06T03:20:33.1905214Z Finished uploading artifact content to blob storage!
+2026-11-06T03:20:33.1905761Z SHA256 digest of uploaded artifact zip is 2ba53808dd253863fb8eb8db8eb2a1ddd1d6f36611ba90672b5f2da0a1b808c7
+2026-11-06T03:20:33.1907263Z Finalizing artifact upload
+2026-11-06T03:20:33.5799942Z Artifact python-epochs-ubuntu-latest-python39.zip successfully finalized. Artifact ID 13475370011
+2026-11-06T03:20:33.5800634Z Artifact python-epochs-ubuntu-latest-python39 has been successfully uploaded! Final size is 19059 bytes. Artifact ID is 13475370011
+2026-11-06T03:20:33.5804651Z Artifact download URL: https://github.com/nix-purifiers/uv-purifier/actions/runs/42155508325/artifacts/13475370011
+2026-11-06T03:20:33.5956651Z Post job cleanup.
+2026-11-06T03:20:33.6495622Z [command]/usr/bin/git version
+2026-11-06T03:20:33.6529122Z git version 2.56.0
+2026-11-06T03:20:33.6583560Z Temporarily overriding HOME='/home/runner/work/_temp/70f8d6dd-9a02-4dc4-ad2e-71f6ccd82f9a' before making global git config changes
+2026-11-06T03:20:33.6584372Z Adding repository directory to the temporary git global config as a safe directory
+2026-11-06T03:20:33.6586986Z [command]/usr/bin/git config --global --add safe.directory /home/runner/work/uv-purifier/uv-purifier
+2026-11-06T03:20:33.6619499Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+2026-11-06T03:20:33.6648709Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+2026-11-06T03:20:33.6867130Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+2026-11-06T03:20:33.6898340Z http.https://github.com/.extraheader
+2026-11-06T03:20:33.6909398Z [command]/usr/bin/git config --local --unset-all http.https://github.com/.extraheader
+2026-11-06T03:20:33.6944073Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+2026-11-06T03:20:33.7156474Z [command]/usr/bin/git config --local --name-only --get-regexp ^includeIf\.gitdir:
+2026-11-06T03:20:33.7193244Z [command]/usr/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url
+2026-11-06T03:20:33.7559308Z Cleaning up orphan processes
+2026-11-06T03:20:33.7798690Z ##[warning]Node.js 20 is deprecated. The following actions target Node.js 20 but are being forced to run on Node.js 24: actions/upload-artifact@v4. For more information see: https://github.blog/changelog/2025-09-19-deprecation-of-node-20-on-github-actions-runners/

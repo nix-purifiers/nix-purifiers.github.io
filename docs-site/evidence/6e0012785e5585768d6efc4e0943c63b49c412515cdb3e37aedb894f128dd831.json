@@ -1,0 +1,2548 @@
+{
+  "go-purifier": {
+    "criteria": {
+      "darwin": {
+        "derivations": [
+          "go-purifier:aarch64-darwin:supported-go-1-26",
+          "go-purifier:aarch64-darwin:supported-go-1-27",
+          "go-purifier:aarch64-darwin:real-world-fzf"
+        ],
+        "evidence": [
+          "https://github.com/nix-purifiers/go-purifier/actions/runs/42162440798",
+          "https://github.com/nix-purifiers/go-purifier/blob/6e560863f727780fed557d514dc5268fbf2f8993/.github/workflows/check.yml"
+        ],
+        "gap": null,
+        "sources": [
+          "https://github.com/nix-purifiers/go-purifier/blob/6e560863f727780fed557d514dc5268fbf2f8993/.github/workflows/check.yml"
+        ],
+        "state": "met",
+        "summary": "Native aarch64-darwin CI actually builds both supported Go suites and the fzf sample at this exact revision; no cross-evaluation credit."
+      },
+      "evaluation": {
+        "derivations": [
+          "go-purifier:x86_64-linux:supported-go-1-26",
+          "go-purifier:x86_64-linux:supported-go-1-27",
+          "go-purifier:x86_64-linux:real-world-fzf",
+          "go-purifier:x86_64-linux:real-world-fzf-tests",
+          "go-purifier:x86_64-linux:conformance-missing",
+          "go-purifier:x86_64-linux:cli-tests"
+        ],
+        "evidence": [
+          "https://github.com/nix-purifiers/go-purifier/actions/runs/42162440798",
+          "https://github.com/nix-purifiers/go-purifier/blob/6e560863f727780fed557d514dc5268fbf2f8993/tests/default.nix",
+          "https://github.com/nix-purifiers/go-purifier/blob/6e560863f727780fed557d514dc5268fbf2f8993/tests/supported-versions.nix",
+          "https://github.com/nix-purifiers/go-purifier/blob/6e560863f727780fed557d514dc5268fbf2f8993/tests/gopath-native.py",
+          "https://github.com/nix-purifiers/go-purifier/blob/6e560863f727780fed557d514dc5268fbf2f8993/.github/workflows/check.yml"
+        ],
+        "gap": null,
+        "sources": [
+          "https://github.com/nix-purifiers/go-purifier/blob/6e560863f727780fed557d514dc5268fbf2f8993/tests/default.nix",
+          "https://github.com/nix-purifiers/go-purifier/blob/6e560863f727780fed557d514dc5268fbf2f8993/tests/supported-versions.nix",
+          "https://github.com/nix-purifiers/go-purifier/blob/6e560863f727780fed557d514dc5268fbf2f8993/tests/gopath-native.py",
+          "https://github.com/nix-purifiers/go-purifier/blob/6e560863f727780fed557d514dc5268fbf2f8993/.github/workflows/check.yml"
+        ],
+        "state": "met",
+        "summary": "Actual no-IFD Nix evaluation at public main 6e560863f727780fed557d514dc5268fbf2f8993 yielded these check derivations; exact paths match successful native CI build traces. Source NAR, derivation bytes and output identities are recorded."
+      },
+      "goodTests": {
+        "derivations": [
+          "go-purifier:x86_64-linux:supported-go-1-26",
+          "go-purifier:x86_64-linux:supported-go-1-27",
+          "go-purifier:x86_64-linux:real-world-fzf",
+          "go-purifier:x86_64-linux:real-world-fzf-tests",
+          "go-purifier:x86_64-linux:conformance-missing",
+          "go-purifier:x86_64-linux:cli-tests"
+        ],
+        "evidence": [
+          "https://github.com/nix-purifiers/go-purifier/actions/runs/42162440798",
+          "https://github.com/nix-purifiers/go-purifier/blob/6e560863f727780fed557d514dc5268fbf2f8993/tests/default.nix",
+          "https://github.com/nix-purifiers/go-purifier/blob/6e560863f727780fed557d514dc5268fbf2f8993/tests/supported-versions.nix",
+          "https://github.com/nix-purifiers/go-purifier/blob/6e560863f727780fed557d514dc5268fbf2f8993/tests/gopath-native.py",
+          "https://github.com/nix-purifiers/go-purifier/blob/6e560863f727780fed557d514dc5268fbf2f8993/.github/workflows/check.yml"
+        ],
+        "gap": null,
+        "sources": [
+          "https://github.com/nix-purifiers/go-purifier/blob/6e560863f727780fed557d514dc5268fbf2f8993/tests/default.nix",
+          "https://github.com/nix-purifiers/go-purifier/blob/6e560863f727780fed557d514dc5268fbf2f8993/tests/supported-versions.nix",
+          "https://github.com/nix-purifiers/go-purifier/blob/6e560863f727780fed557d514dc5268fbf2f8993/tests/gopath-native.py",
+          "https://github.com/nix-purifiers/go-purifier/blob/6e560863f727780fed557d514dc5268fbf2f8993/.github/workflows/check.yml"
+        ],
+        "state": "met",
+        "summary": "The executed suite combines locked proxy/VCS/replace/workspace builds and test-only dependencies with malformed/stale/tampered/missing-lock rejection, ordinary offline/editor lifecycle, native projection consumers and fzf filter/version/upstream tests. Both maintained SDK suites depend on the sample and tests, so this is meaningful behavioral and failure-path coverage rather than evaluation-only assertions."
+      },
+      "linux": {
+        "derivations": [
+          "go-purifier:x86_64-linux:supported-go-1-26",
+          "go-purifier:x86_64-linux:supported-go-1-27",
+          "go-purifier:x86_64-linux:real-world-fzf",
+          "go-purifier:x86_64-linux:real-world-fzf-tests",
+          "go-purifier:x86_64-linux:conformance-missing",
+          "go-purifier:x86_64-linux:cli-tests"
+        ],
+        "evidence": [
+          "https://github.com/nix-purifiers/go-purifier/actions/runs/42162440798",
+          "https://github.com/nix-purifiers/go-purifier/blob/6e560863f727780fed557d514dc5268fbf2f8993/tests/default.nix",
+          "https://github.com/nix-purifiers/go-purifier/blob/6e560863f727780fed557d514dc5268fbf2f8993/tests/supported-versions.nix",
+          "https://github.com/nix-purifiers/go-purifier/blob/6e560863f727780fed557d514dc5268fbf2f8993/tests/gopath-native.py",
+          "https://github.com/nix-purifiers/go-purifier/blob/6e560863f727780fed557d514dc5268fbf2f8993/.github/workflows/check.yml"
+        ],
+        "gap": null,
+        "sources": [
+          "https://github.com/nix-purifiers/go-purifier/blob/6e560863f727780fed557d514dc5268fbf2f8993/tests/default.nix",
+          "https://github.com/nix-purifiers/go-purifier/blob/6e560863f727780fed557d514dc5268fbf2f8993/tests/supported-versions.nix",
+          "https://github.com/nix-purifiers/go-purifier/blob/6e560863f727780fed557d514dc5268fbf2f8993/tests/gopath-native.py",
+          "https://github.com/nix-purifiers/go-purifier/blob/6e560863f727780fed557d514dc5268fbf2f8993/.github/workflows/check.yml"
+        ],
+        "state": "met",
+        "summary": "Successful native x86_64-linux CI jobs actually build the identified check derivations from this exact source. SDK closure and output bindings distinguish execution from declarations/cross-evaluation."
+      },
+      "longCompatibility": {
+        "derivations": [
+          "go-purifier:x86_64-linux:gopath-go10",
+          "go-purifier:x86_64-linux:real-world-fzf",
+          "go-purifier:x86_64-linux:supported-go-1-26",
+          "go-purifier:x86_64-linux:supported-go-1-27"
+        ],
+        "evidence": [
+          "https://github.com/nix-purifiers/go-purifier/actions/runs/42162440798",
+          "https://github.com/nix-purifiers/go-purifier/blob/6e560863f727780fed557d514dc5268fbf2f8993/tests/default.nix",
+          "https://github.com/nix-purifiers/go-purifier/blob/6e560863f727780fed557d514dc5268fbf2f8993/tests/supported-versions.nix",
+          "https://github.com/nix-purifiers/go-purifier/blob/6e560863f727780fed557d514dc5268fbf2f8993/tests/gopath-native.py",
+          "https://github.com/nix-purifiers/go-purifier/blob/6e560863f727780fed557d514dc5268fbf2f8993/.github/workflows/check.yml"
+        ],
+        "gap": "Native Go1.0.3 GOPATH and current1.26.10/1.27.3 checks are real exact points. The historical check exercises a bounded pre-module GOPATH path; the reviewed corpus does not demonstrate the purifier's module/workspace/replace behavior across intervening Go module eras. These endpoints do not establish broad long compatibility.",
+        "sources": [
+          "https://github.com/nix-purifiers/go-purifier/blob/6e560863f727780fed557d514dc5268fbf2f8993/tests/default.nix",
+          "https://github.com/nix-purifiers/go-purifier/blob/6e560863f727780fed557d514dc5268fbf2f8993/tests/supported-versions.nix",
+          "https://github.com/nix-purifiers/go-purifier/blob/6e560863f727780fed557d514dc5268fbf2f8993/tests/gopath-native.py",
+          "https://github.com/nix-purifiers/go-purifier/blob/6e560863f727780fed557d514dc5268fbf2f8993/.github/workflows/check.yml"
+        ],
+        "state": "not-met",
+        "summary": "Native Go1.0.3 GOPATH and current1.26.10/1.27.3 checks are real exact points. The historical check exercises a bounded pre-module GOPATH path; the reviewed corpus does not demonstrate the purifier's module/workspace/replace behavior across intervening Go module eras. These endpoints do not establish broad long compatibility."
+      },
+      "manySamples": {
+        "derivations": [
+          "go-purifier:x86_64-linux:real-world-fzf",
+          "go-purifier:x86_64-linux:real-world-fzf-tests",
+          "go-purifier:x86_64-linux:fixture-hello-greet",
+          "go-purifier:x86_64-linux:fixture-hello-tests",
+          "go-purifier:x86_64-linux:fixture-workspace",
+          "go-purifier:x86_64-linux:fixture-workspace-tests",
+          "go-purifier:x86_64-linux:fixture-replace",
+          "go-purifier:x86_64-linux:fixture-vcs",
+          "go-purifier:x86_64-linux:native-projections"
+        ],
+        "evidence": [
+          "https://github.com/nix-purifiers/go-purifier/actions/runs/42162440798",
+          "https://github.com/nix-purifiers/go-purifier/blob/6e560863f727780fed557d514dc5268fbf2f8993/tests/default.nix"
+        ],
+        "gap": null,
+        "sources": [
+          "https://github.com/nix-purifiers/go-purifier/blob/6e560863f727780fed557d514dc5268fbf2f8993/tests/default.nix"
+        ],
+        "state": "met",
+        "summary": "The executed corpus contains distinct source projects for proxy modules with test-only dependencies and case encoding, a multi-module workspace, an out-of-root replace, Git/VCS dependencies, native C-shared consumers, and pinned fzf upstream filtering/version/tests. These exercise materially different dependency graphs and installed/runtime outputs. Authored fixtures are explicitly identified and count for the behavior they execute; fzf adds an independent upstream consumer. The breadth judgment follows these different successful sample behaviors, not a numerical threshold or a claim that every fixture is upstream."
+      },
+      "nonEolVersions": {
+        "derivations": [
+          "go-purifier:x86_64-linux:gopath-go10",
+          "go-purifier:x86_64-linux:real-world-fzf",
+          "go-purifier:x86_64-linux:supported-go-1-26",
+          "go-purifier:x86_64-linux:supported-go-1-27"
+        ],
+        "evidence": [
+          "https://github.com/nix-purifiers/go-purifier/actions/runs/42162440798",
+          "https://go.dev/doc/devel/release"
+        ],
+        "gap": null,
+        "sources": [
+          "https://go.dev/doc/devel/release"
+        ],
+        "state": "met",
+        "summary": "Upstream supports a major release until two newer major releases exist. Current supported lines1.26 and1.27 are tested at1.26.10 and1.27.3. Exact patches only, no every-patch claim."
+      },
+      "oneVersion": {
+        "derivations": [
+          "go-purifier:x86_64-linux:gopath-go10",
+          "go-purifier:x86_64-linux:real-world-fzf",
+          "go-purifier:x86_64-linux:supported-go-1-26",
+          "go-purifier:x86_64-linux:supported-go-1-27"
+        ],
+        "evidence": [
+          "https://github.com/nix-purifiers/go-purifier/actions/runs/42162440798",
+          "https://github.com/nix-purifiers/go-purifier/blob/6e560863f727780fed557d514dc5268fbf2f8993/tests/default.nix",
+          "https://github.com/nix-purifiers/go-purifier/blob/6e560863f727780fed557d514dc5268fbf2f8993/tests/supported-versions.nix",
+          "https://github.com/nix-purifiers/go-purifier/blob/6e560863f727780fed557d514dc5268fbf2f8993/tests/gopath-native.py",
+          "https://github.com/nix-purifiers/go-purifier/blob/6e560863f727780fed557d514dc5268fbf2f8993/.github/workflows/check.yml"
+        ],
+        "gap": null,
+        "sources": [
+          "https://github.com/nix-purifiers/go-purifier/blob/6e560863f727780fed557d514dc5268fbf2f8993/tests/default.nix",
+          "https://github.com/nix-purifiers/go-purifier/blob/6e560863f727780fed557d514dc5268fbf2f8993/tests/supported-versions.nix",
+          "https://github.com/nix-purifiers/go-purifier/blob/6e560863f727780fed557d514dc5268fbf2f8993/tests/gopath-native.py",
+          "https://github.com/nix-purifiers/go-purifier/blob/6e560863f727780fed557d514dc5268fbf2f8993/.github/workflows/check.yml"
+        ],
+        "state": "met",
+        "summary": "Executed exact SDK point(s): Go1.26.10 and1.27.3 supported suites, plus separate1.0.3 GOPATH point. No patch interval is inferred."
+      }
+    },
+    "rationale": "Both maintained Go lines and the independent fzf sample have exact-source native Linux and Darwin derivation execution; distinct authored sample graphs plus fzf establish sample breadth, while broad historical module-era support is not demonstrated.",
+    "reviewedAt": "2026-11-06",
+    "reviewedRevision": "6e560863f727780fed557d514dc5268fbf2f8993",
+    "sampleBuilds": [
+      {
+        "derivations": [
+          "go-purifier:x86_64-linux:real-world-fzf",
+          "go-purifier:x86_64-linux:real-world-fzf-tests"
+        ],
+        "evidence": [
+          "https://github.com/nix-purifiers/go-purifier/actions/runs/42162440798",
+          "https://github.com/nix-purifiers/go-purifier/blob/6e560863f727780fed557d514dc5268fbf2f8993/tests/default.nix"
+        ],
+        "kind": "independent-upstream",
+        "name": "fzf0.74.5",
+        "repository": "https://github.com/junegunn/fzf",
+        "revision": "c0a193e031f01fb50bf6f7be4381990a3753f7cf"
+      },
+      {
+        "derivations": [
+          "go-purifier:x86_64-linux:fixture-hello-greet",
+          "go-purifier:x86_64-linux:fixture-hello-tests"
+        ],
+        "evidence": [
+          "https://github.com/nix-purifiers/go-purifier/actions/runs/42162440798",
+          "https://github.com/nix-purifiers/go-purifier/blob/6e560863f727780fed557d514dc5268fbf2f8993/tests/default.nix"
+        ],
+        "kind": "repository-fixtures",
+        "name": "hello proxy module with test-only dependency and case-encoded import",
+        "sourcePath": "tests/fixtures/hello"
+      },
+      {
+        "derivations": [
+          "go-purifier:x86_64-linux:fixture-workspace",
+          "go-purifier:x86_64-linux:fixture-workspace-tests"
+        ],
+        "evidence": [
+          "https://github.com/nix-purifiers/go-purifier/actions/runs/42162440798",
+          "https://github.com/nix-purifiers/go-purifier/blob/6e560863f727780fed557d514dc5268fbf2f8993/tests/default.nix"
+        ],
+        "kind": "repository-fixtures",
+        "name": "multi-module workspace",
+        "sourcePath": "tests/fixtures/workspace"
+      },
+      {
+        "derivations": [
+          "go-purifier:x86_64-linux:fixture-replace"
+        ],
+        "evidence": [
+          "https://github.com/nix-purifiers/go-purifier/actions/runs/42162440798",
+          "https://github.com/nix-purifiers/go-purifier/blob/6e560863f727780fed557d514dc5268fbf2f8993/tests/default.nix"
+        ],
+        "kind": "repository-fixtures",
+        "name": "out-of-root replace module",
+        "sourcePath": "tests/fixtures/replace"
+      },
+      {
+        "derivations": [
+          "go-purifier:x86_64-linux:fixture-vcs"
+        ],
+        "evidence": [
+          "https://github.com/nix-purifiers/go-purifier/actions/runs/42162440798",
+          "https://github.com/nix-purifiers/go-purifier/blob/6e560863f727780fed557d514dc5268fbf2f8993/tests/default.nix"
+        ],
+        "kind": "repository-fixtures",
+        "name": "Git/VCS dependency project",
+        "sourcePath": "tests/fixtures/vcs"
+      },
+      {
+        "derivations": [
+          "go-purifier:x86_64-linux:native-projections"
+        ],
+        "evidence": [
+          "https://github.com/nix-purifiers/go-purifier/actions/runs/42162440798",
+          "https://github.com/nix-purifiers/go-purifier/blob/6e560863f727780fed557d514dc5268fbf2f8993/tests/default.nix"
+        ],
+        "kind": "repository-fixtures",
+        "name": "native C-shared projection ordinary consumers",
+        "sourcePath": "tests/fixtures/ffi"
+      }
+    ],
+    "tier": 2
+  },
+  "gradle-purifier": {
+    "criteria": {
+      "darwin": {
+        "derivations": [],
+        "evidence": [
+          "https://github.com/nix-purifiers/gradle-purifier/actions/runs/42291213439",
+          "https://github.com/nix-purifiers/gradle-purifier/blob/9c19f8d47def476f9afe4d8940f0076f0b95318f/.github/workflows/check.yml"
+        ],
+        "gap": "A native Darwin sample/test build receipt with exact source/SDK/drv/output binding is absent.",
+        "sources": [
+          "https://github.com/nix-purifiers/gradle-purifier/blob/9c19f8d47def476f9afe4d8940f0076f0b95318f/.github/workflows/check.yml"
+        ],
+        "state": "not-met",
+        "summary": "Inspected current-main workflow and successful job list have no native Darwin execution. The flake declares/evaluates Darwin, which supplies no runtime credit."
+      },
+      "evaluation": {
+        "derivations": [
+          "gradle-purifier:x86_64-linux:java-library-tests",
+          "gradle-purifier:x86_64-linux:kotlin-app-runs",
+          "gradle-purifier:x86_64-linux:kotlin-native-runs",
+          "gradle-purifier:x86_64-linux:petclinic",
+          "gradle-purifier:x86_64-linux:conformance-missing",
+          "gradle-purifier:x86_64-linux:recorder-unit",
+          "gradle-purifier:x86_64-linux:sdk-source-capture-unit"
+        ],
+        "evidence": [
+          "https://github.com/nix-purifiers/gradle-purifier/actions/runs/42291213439",
+          "https://github.com/nix-purifiers/gradle-purifier/blob/9c19f8d47def476f9afe4d8940f0076f0b95318f/tests/default.nix",
+          "https://github.com/nix-purifiers/gradle-purifier/blob/9c19f8d47def476f9afe4d8940f0076f0b95318f/tests/real-world/petclinic.json",
+          "https://github.com/nix-purifiers/gradle-purifier/blob/9c19f8d47def476f9afe4d8940f0076f0b95318f/.github/workflows/check.yml",
+          "https://github.com/nix-purifiers/gradle-purifier/blob/9c19f8d47def476f9afe4d8940f0076f0b95318f/tests/legacy-maven/basic-56.py",
+          "https://github.com/nix-purifiers/gradle-purifier/blob/9c19f8d47def476f9afe4d8940f0076f0b95318f/tests/legacy-maven/lifecycle.py"
+        ],
+        "gap": null,
+        "sources": [
+          "https://github.com/nix-purifiers/gradle-purifier/blob/9c19f8d47def476f9afe4d8940f0076f0b95318f/tests/default.nix",
+          "https://github.com/nix-purifiers/gradle-purifier/blob/9c19f8d47def476f9afe4d8940f0076f0b95318f/tests/real-world/petclinic.json",
+          "https://github.com/nix-purifiers/gradle-purifier/blob/9c19f8d47def476f9afe4d8940f0076f0b95318f/.github/workflows/check.yml",
+          "https://github.com/nix-purifiers/gradle-purifier/blob/9c19f8d47def476f9afe4d8940f0076f0b95318f/tests/legacy-maven/basic-56.py",
+          "https://github.com/nix-purifiers/gradle-purifier/blob/9c19f8d47def476f9afe4d8940f0076f0b95318f/tests/legacy-maven/lifecycle.py"
+        ],
+        "state": "met",
+        "summary": "Actual no-IFD Nix evaluation at public main 9c19f8d47def476f9afe4d8940f0076f0b95318f yielded these check derivations; exact paths match successful native CI build traces. Source NAR, derivation bytes and output identities are recorded."
+      },
+      "goodTests": {
+        "derivations": [
+          "gradle-purifier:x86_64-linux:java-library-tests",
+          "gradle-purifier:x86_64-linux:kotlin-app-runs",
+          "gradle-purifier:x86_64-linux:kotlin-native-runs",
+          "gradle-purifier:x86_64-linux:petclinic",
+          "gradle-purifier:x86_64-linux:conformance-missing",
+          "gradle-purifier:x86_64-linux:recorder-unit",
+          "gradle-purifier:x86_64-linux:sdk-source-capture-unit"
+        ],
+        "evidence": [
+          "https://github.com/nix-purifiers/gradle-purifier/actions/runs/42291213439",
+          "https://github.com/nix-purifiers/gradle-purifier/blob/9c19f8d47def476f9afe4d8940f0076f0b95318f/tests/default.nix",
+          "https://github.com/nix-purifiers/gradle-purifier/blob/9c19f8d47def476f9afe4d8940f0076f0b95318f/tests/real-world/petclinic.json",
+          "https://github.com/nix-purifiers/gradle-purifier/blob/9c19f8d47def476f9afe4d8940f0076f0b95318f/.github/workflows/check.yml",
+          "https://github.com/nix-purifiers/gradle-purifier/blob/9c19f8d47def476f9afe4d8940f0076f0b95318f/tests/legacy-maven/basic-56.py",
+          "https://github.com/nix-purifiers/gradle-purifier/blob/9c19f8d47def476f9afe4d8940f0076f0b95318f/tests/legacy-maven/lifecycle.py"
+        ],
+        "gap": null,
+        "sources": [
+          "https://github.com/nix-purifiers/gradle-purifier/blob/9c19f8d47def476f9afe4d8940f0076f0b95318f/tests/default.nix",
+          "https://github.com/nix-purifiers/gradle-purifier/blob/9c19f8d47def476f9afe4d8940f0076f0b95318f/tests/real-world/petclinic.json",
+          "https://github.com/nix-purifiers/gradle-purifier/blob/9c19f8d47def476f9afe4d8940f0076f0b95318f/.github/workflows/check.yml",
+          "https://github.com/nix-purifiers/gradle-purifier/blob/9c19f8d47def476f9afe4d8940f0076f0b95318f/tests/legacy-maven/basic-56.py",
+          "https://github.com/nix-purifiers/gradle-purifier/blob/9c19f8d47def476f9afe4d8940f0076f0b95318f/tests/legacy-maven/lifecycle.py"
+        ],
+        "state": "met",
+        "summary": "Successful sandbox checks exercise Java JUnit, Kotlin JVM/app and Kotlin Native builds, archives and class assertions, snapshot publications, missing/malformed/stale/tampered-lock failures, recorder/runtime-metadata/SDK-source units and JVM composition. Required native host jobs additionally test relock/offline/rebuild/update and project SDK closure/source modes. Petclinic's published-main derivation is packaging with doCheck=false and supplies no upstream-test credit."
+      },
+      "linux": {
+        "derivations": [
+          "gradle-purifier:x86_64-linux:java-library-tests",
+          "gradle-purifier:x86_64-linux:kotlin-app-runs",
+          "gradle-purifier:x86_64-linux:kotlin-native-runs",
+          "gradle-purifier:x86_64-linux:petclinic",
+          "gradle-purifier:x86_64-linux:conformance-missing",
+          "gradle-purifier:x86_64-linux:recorder-unit",
+          "gradle-purifier:x86_64-linux:sdk-source-capture-unit"
+        ],
+        "evidence": [
+          "https://github.com/nix-purifiers/gradle-purifier/actions/runs/42291213439",
+          "https://github.com/nix-purifiers/gradle-purifier/blob/9c19f8d47def476f9afe4d8940f0076f0b95318f/tests/default.nix",
+          "https://github.com/nix-purifiers/gradle-purifier/blob/9c19f8d47def476f9afe4d8940f0076f0b95318f/tests/real-world/petclinic.json",
+          "https://github.com/nix-purifiers/gradle-purifier/blob/9c19f8d47def476f9afe4d8940f0076f0b95318f/.github/workflows/check.yml",
+          "https://github.com/nix-purifiers/gradle-purifier/blob/9c19f8d47def476f9afe4d8940f0076f0b95318f/tests/legacy-maven/basic-56.py",
+          "https://github.com/nix-purifiers/gradle-purifier/blob/9c19f8d47def476f9afe4d8940f0076f0b95318f/tests/legacy-maven/lifecycle.py"
+        ],
+        "gap": null,
+        "sources": [
+          "https://github.com/nix-purifiers/gradle-purifier/blob/9c19f8d47def476f9afe4d8940f0076f0b95318f/tests/default.nix",
+          "https://github.com/nix-purifiers/gradle-purifier/blob/9c19f8d47def476f9afe4d8940f0076f0b95318f/tests/real-world/petclinic.json",
+          "https://github.com/nix-purifiers/gradle-purifier/blob/9c19f8d47def476f9afe4d8940f0076f0b95318f/.github/workflows/check.yml",
+          "https://github.com/nix-purifiers/gradle-purifier/blob/9c19f8d47def476f9afe4d8940f0076f0b95318f/tests/legacy-maven/basic-56.py",
+          "https://github.com/nix-purifiers/gradle-purifier/blob/9c19f8d47def476f9afe4d8940f0076f0b95318f/tests/legacy-maven/lifecycle.py"
+        ],
+        "state": "met",
+        "summary": "Successful native x86_64-linux CI jobs actually build the identified check derivations from this exact source. SDK closure and output bindings distinguish execution from declarations/cross-evaluation."
+      },
+      "longCompatibility": {
+        "derivations": [
+          "gradle-purifier:x86_64-linux:java-library",
+          "gradle-purifier:x86_64-linux:kotlin-app",
+          "gradle-purifier:x86_64-linux:kotlin-native",
+          "gradle-purifier:x86_64-linux:petclinic"
+        ],
+        "evidence": [
+          "https://github.com/nix-purifiers/gradle-purifier/actions/runs/42291213439",
+          "https://github.com/nix-purifiers/gradle-purifier/blob/9c19f8d47def476f9afe4d8940f0076f0b95318f/tests/default.nix",
+          "https://github.com/nix-purifiers/gradle-purifier/blob/9c19f8d47def476f9afe4d8940f0076f0b95318f/tests/real-world/petclinic.json",
+          "https://github.com/nix-purifiers/gradle-purifier/blob/9c19f8d47def476f9afe4d8940f0076f0b95318f/.github/workflows/check.yml",
+          "https://github.com/nix-purifiers/gradle-purifier/blob/9c19f8d47def476f9afe4d8940f0076f0b95318f/tests/legacy-maven/basic-56.py",
+          "https://github.com/nix-purifiers/gradle-purifier/blob/9c19f8d47def476f9afe4d8940f0076f0b95318f/tests/legacy-maven/lifecycle.py"
+        ],
+        "gap": "Main CI has real bounded5.6.4 and6.9.4 legacy scenarios,7.6.6 with managerJDK17/projectJDK8, and modern8.14.3/9.1.0/9.5.1 checks. Those native host proofs deserve preservation. The5.6/6.9 scenarios are specific recorder/publication/SDK behaviors and lack a checked sample-build derivation matrix binding historical SDKs to the modern contract; default Test is disabled in the6.9 producer. Thus the full long-compatibility judgment is not established by the derivation-backed sample corpus; no interval or universal-JUnit claim.",
+        "sources": [
+          "https://github.com/nix-purifiers/gradle-purifier/blob/9c19f8d47def476f9afe4d8940f0076f0b95318f/tests/default.nix",
+          "https://github.com/nix-purifiers/gradle-purifier/blob/9c19f8d47def476f9afe4d8940f0076f0b95318f/tests/real-world/petclinic.json",
+          "https://github.com/nix-purifiers/gradle-purifier/blob/9c19f8d47def476f9afe4d8940f0076f0b95318f/.github/workflows/check.yml",
+          "https://github.com/nix-purifiers/gradle-purifier/blob/9c19f8d47def476f9afe4d8940f0076f0b95318f/tests/legacy-maven/basic-56.py",
+          "https://github.com/nix-purifiers/gradle-purifier/blob/9c19f8d47def476f9afe4d8940f0076f0b95318f/tests/legacy-maven/lifecycle.py"
+        ],
+        "state": "not-met",
+        "summary": "Main CI has real bounded5.6.4 and6.9.4 legacy scenarios,7.6.6 with managerJDK17/projectJDK8, and modern8.14.3/9.1.0/9.5.1 checks. Those native host proofs deserve preservation. The5.6/6.9 scenarios are specific recorder/publication/SDK behaviors and lack a checked sample-build derivation matrix binding historical SDKs to the modern contract; default Test is disabled in the6.9 producer. Thus the full long-compatibility judgment is not established by the derivation-backed sample corpus; no interval or universal-JUnit claim."
+      },
+      "manySamples": {
+        "derivations": [
+          "gradle-purifier:x86_64-linux:petclinic",
+          "gradle-purifier:x86_64-linux:java-library",
+          "gradle-purifier:x86_64-linux:java-library-tests",
+          "gradle-purifier:x86_64-linux:kotlin-app",
+          "gradle-purifier:x86_64-linux:kotlin-app-runs",
+          "gradle-purifier:x86_64-linux:kotlin-native",
+          "gradle-purifier:x86_64-linux:kotlin-native-runs",
+          "gradle-purifier:x86_64-linux:snapshot-groovy-tests",
+          "gradle-purifier:x86_64-linux:snapshot-groovy-rebuild"
+        ],
+        "evidence": [
+          "https://github.com/nix-purifiers/gradle-purifier/actions/runs/42291213439",
+          "https://github.com/nix-purifiers/gradle-purifier/blob/9c19f8d47def476f9afe4d8940f0076f0b95318f/tests/default.nix"
+        ],
+        "gap": null,
+        "sources": [
+          "https://github.com/nix-purifiers/gradle-purifier/blob/9c19f8d47def476f9afe4d8940f0076f0b95318f/tests/default.nix"
+        ],
+        "state": "met",
+        "summary": "The executed source corpus includes a Java library with JUnit and Maven/source archives, a Kotlin JVM multi-project application with version catalog/buildSrc/coroutines, Kotlin Native library/executable targets, snapshot Groovy publication with reproducibility assertions, and pinned Spring Petclinic application packaging. These distinct build graphs, languages, target runtimes and publication outputs establish sample breadth. Four controlled authored fixture families are identified as such; the upstream application is separate. Petclinic packaging counts as a successful sample build but supplies no upstream-test credit."
+      },
+      "nonEolVersions": {
+        "derivations": [
+          "gradle-purifier:x86_64-linux:java-library",
+          "gradle-purifier:x86_64-linux:kotlin-app",
+          "gradle-purifier:x86_64-linux:kotlin-native",
+          "gradle-purifier:x86_64-linux:petclinic"
+        ],
+        "evidence": [
+          "https://github.com/nix-purifiers/gradle-purifier/actions/runs/42291213439",
+          "https://docs.gradle.org/current/userguide/feature_lifecycle.html",
+          "https://services.gradle.org/versions/current"
+        ],
+        "gap": "Each new minor supersedes earlier minors of that major; critical/security fixes also reach final minor of previous major. Producer verified current9.9.0 and previous-major8.14 maintained. Inspected public-main checks include8.14/8.14.3 and9.1.0/9.5.1, not successful current9.9.0 lifecycle derivation. New8.14.6+9.9.0 native matrix still producer-owned and unproven.",
+        "sources": [
+          "https://docs.gradle.org/current/userguide/feature_lifecycle.html",
+          "https://services.gradle.org/versions/current"
+        ],
+        "state": "not-met",
+        "summary": "Each new minor supersedes earlier minors of that major; critical/security fixes also reach final minor of previous major. Producer verified current9.9.0 and previous-major8.14 maintained. Inspected public-main checks include8.14/8.14.3 and9.1.0/9.5.1, not successful current9.9.0 lifecycle derivation. New8.14.6+9.9.0 native matrix still producer-owned and unproven."
+      },
+      "oneVersion": {
+        "derivations": [
+          "gradle-purifier:x86_64-linux:java-library",
+          "gradle-purifier:x86_64-linux:kotlin-app",
+          "gradle-purifier:x86_64-linux:kotlin-native",
+          "gradle-purifier:x86_64-linux:petclinic"
+        ],
+        "evidence": [
+          "https://github.com/nix-purifiers/gradle-purifier/actions/runs/42291213439",
+          "https://github.com/nix-purifiers/gradle-purifier/blob/9c19f8d47def476f9afe4d8940f0076f0b95318f/tests/default.nix",
+          "https://github.com/nix-purifiers/gradle-purifier/blob/9c19f8d47def476f9afe4d8940f0076f0b95318f/tests/real-world/petclinic.json",
+          "https://github.com/nix-purifiers/gradle-purifier/blob/9c19f8d47def476f9afe4d8940f0076f0b95318f/.github/workflows/check.yml",
+          "https://github.com/nix-purifiers/gradle-purifier/blob/9c19f8d47def476f9afe4d8940f0076f0b95318f/tests/legacy-maven/basic-56.py",
+          "https://github.com/nix-purifiers/gradle-purifier/blob/9c19f8d47def476f9afe4d8940f0076f0b95318f/tests/legacy-maven/lifecycle.py"
+        ],
+        "gap": null,
+        "sources": [
+          "https://github.com/nix-purifiers/gradle-purifier/blob/9c19f8d47def476f9afe4d8940f0076f0b95318f/tests/default.nix",
+          "https://github.com/nix-purifiers/gradle-purifier/blob/9c19f8d47def476f9afe4d8940f0076f0b95318f/tests/real-world/petclinic.json",
+          "https://github.com/nix-purifiers/gradle-purifier/blob/9c19f8d47def476f9afe4d8940f0076f0b95318f/.github/workflows/check.yml",
+          "https://github.com/nix-purifiers/gradle-purifier/blob/9c19f8d47def476f9afe4d8940f0076f0b95318f/tests/legacy-maven/basic-56.py",
+          "https://github.com/nix-purifiers/gradle-purifier/blob/9c19f8d47def476f9afe4d8940f0076f0b95318f/tests/legacy-maven/lifecycle.py"
+        ],
+        "state": "met",
+        "summary": "Executed exact SDK point(s): Gradle8.14.3 Java,9.1.0 Kotlin and9.5.1 Petclinic packaging. No patch interval is inferred."
+      }
+    },
+    "rationale": "Exact-source Linux sample/check derivations execute successfully with reviewed tests. Native Darwin execution is not demonstrated. Current maintained-version execution also has the specific gap documented below.",
+    "reviewedAt": "2026-11-06",
+    "reviewedRevision": "9c19f8d47def476f9afe4d8940f0076f0b95318f",
+    "sampleBuilds": [
+      {
+        "derivations": [
+          "gradle-purifier:x86_64-linux:petclinic"
+        ],
+        "evidence": [
+          "https://github.com/nix-purifiers/gradle-purifier/actions/runs/42291213439",
+          "https://github.com/nix-purifiers/gradle-purifier/blob/9c19f8d47def476f9afe4d8940f0076f0b95318f/tests/default.nix"
+        ],
+        "kind": "independent-upstream",
+        "limitation": "doCheck=false; successful application packaging, no assertion that Petclinic upstream tests passed",
+        "name": "Spring Petclinic",
+        "repository": "https://github.com/spring-projects/spring-petclinic",
+        "revision": "500158f732419217507c7656904b8e6aa1bcc0d6"
+      },
+      {
+        "derivations": [
+          "gradle-purifier:x86_64-linux:java-library",
+          "gradle-purifier:x86_64-linux:java-library-tests"
+        ],
+        "evidence": [
+          "https://github.com/nix-purifiers/gradle-purifier/actions/runs/42291213439",
+          "https://github.com/nix-purifiers/gradle-purifier/blob/9c19f8d47def476f9afe4d8940f0076f0b95318f/tests/default.nix"
+        ],
+        "kind": "repository-fixtures",
+        "name": "Java library with JUnit and Maven publication",
+        "sourcePath": "tests/fixtures/java-library"
+      },
+      {
+        "derivations": [
+          "gradle-purifier:x86_64-linux:kotlin-app",
+          "gradle-purifier:x86_64-linux:kotlin-app-runs"
+        ],
+        "evidence": [
+          "https://github.com/nix-purifiers/gradle-purifier/actions/runs/42291213439",
+          "https://github.com/nix-purifiers/gradle-purifier/blob/9c19f8d47def476f9afe4d8940f0076f0b95318f/tests/default.nix"
+        ],
+        "kind": "repository-fixtures",
+        "name": "Kotlin JVM application and convention-plugin build",
+        "sourcePath": "tests/fixtures/kotlin-app"
+      },
+      {
+        "derivations": [
+          "gradle-purifier:x86_64-linux:kotlin-native",
+          "gradle-purifier:x86_64-linux:kotlin-native-runs"
+        ],
+        "evidence": [
+          "https://github.com/nix-purifiers/gradle-purifier/actions/runs/42291213439",
+          "https://github.com/nix-purifiers/gradle-purifier/blob/9c19f8d47def476f9afe4d8940f0076f0b95318f/tests/default.nix"
+        ],
+        "kind": "repository-fixtures",
+        "name": "Kotlin Native executable/library",
+        "sourcePath": "tests/fixtures/kotlin-native"
+      },
+      {
+        "derivations": [
+          "gradle-purifier:x86_64-linux:snapshot-groovy-tests",
+          "gradle-purifier:x86_64-linux:snapshot-groovy-rebuild"
+        ],
+        "evidence": [
+          "https://github.com/nix-purifiers/gradle-purifier/actions/runs/42291213439",
+          "https://github.com/nix-purifiers/gradle-purifier/blob/9c19f8d47def476f9afe4d8940f0076f0b95318f/tests/default.nix"
+        ],
+        "kind": "repository-fixtures",
+        "name": "snapshot Groovy publication/rebuild",
+        "sourcePath": "tests/fixtures/snapshot-groovy"
+      }
+    ],
+    "tier": 3
+  },
+  "haxelib-purifier": {
+    "criteria": {
+      "darwin": {
+        "derivations": [],
+        "evidence": [
+          "https://github.com/nix-purifiers/haxelib-purifier/actions/runs/42152994749",
+          "https://github.com/nix-purifiers/haxelib-purifier/blob/316ec558f411f63270e1fd0794482c94072566ff/.github/workflows/check.yml"
+        ],
+        "gap": "A native Darwin sample/test build receipt with exact source/SDK/drv/output binding is absent.",
+        "sources": [
+          "https://github.com/nix-purifiers/haxelib-purifier/blob/316ec558f411f63270e1fd0794482c94072566ff/.github/workflows/check.yml"
+        ],
+        "state": "not-met",
+        "summary": "Inspected current-main workflow and successful job list have no native Darwin execution. The exported checks and required jobs cover Linux only."
+      },
+      "evaluation": {
+        "derivations": [
+          "haxelib-purifier:x86_64-linux:project",
+          "haxelib-purifier:x86_64-linux:installed",
+          "haxelib-purifier:x86_64-linux:environment",
+          "haxelib-purifier:x86_64-linux:release",
+          "haxelib-purifier:x86_64-linux:cli"
+        ],
+        "evidence": [
+          "https://github.com/nix-purifiers/haxelib-purifier/actions/runs/42152994749",
+          "https://github.com/nix-purifiers/haxelib-purifier/blob/316ec558f411f63270e1fd0794482c94072566ff/flake.nix",
+          "https://github.com/nix-purifiers/haxelib-purifier/blob/316ec558f411f63270e1fd0794482c94072566ff/tests/conformance.py",
+          "https://github.com/nix-purifiers/haxelib-purifier/blob/316ec558f411f63270e1fd0794482c94072566ff/tests/capture.py",
+          "https://github.com/nix-purifiers/haxelib-purifier/blob/316ec558f411f63270e1fd0794482c94072566ff/tests/eval-errors.py",
+          "https://github.com/nix-purifiers/haxelib-purifier/blob/316ec558f411f63270e1fd0794482c94072566ff/.github/workflows/check.yml"
+        ],
+        "gap": null,
+        "sources": [
+          "https://github.com/nix-purifiers/haxelib-purifier/blob/316ec558f411f63270e1fd0794482c94072566ff/flake.nix",
+          "https://github.com/nix-purifiers/haxelib-purifier/blob/316ec558f411f63270e1fd0794482c94072566ff/tests/conformance.py",
+          "https://github.com/nix-purifiers/haxelib-purifier/blob/316ec558f411f63270e1fd0794482c94072566ff/tests/capture.py",
+          "https://github.com/nix-purifiers/haxelib-purifier/blob/316ec558f411f63270e1fd0794482c94072566ff/tests/eval-errors.py",
+          "https://github.com/nix-purifiers/haxelib-purifier/blob/316ec558f411f63270e1fd0794482c94072566ff/.github/workflows/check.yml"
+        ],
+        "state": "met",
+        "summary": "Actual no-IFD Nix evaluation at public main 316ec558f411f63270e1fd0794482c94072566ff yielded these check derivations; exact paths match successful native CI build traces. Source NAR, derivation bytes and output identities are recorded."
+      },
+      "goodTests": {
+        "derivations": [
+          "haxelib-purifier:x86_64-linux:project",
+          "haxelib-purifier:x86_64-linux:installed",
+          "haxelib-purifier:x86_64-linux:environment",
+          "haxelib-purifier:x86_64-linux:release",
+          "haxelib-purifier:x86_64-linux:cli"
+        ],
+        "evidence": [
+          "https://github.com/nix-purifiers/haxelib-purifier/actions/runs/42152994749",
+          "https://github.com/nix-purifiers/haxelib-purifier/blob/316ec558f411f63270e1fd0794482c94072566ff/flake.nix",
+          "https://github.com/nix-purifiers/haxelib-purifier/blob/316ec558f411f63270e1fd0794482c94072566ff/tests/conformance.py",
+          "https://github.com/nix-purifiers/haxelib-purifier/blob/316ec558f411f63270e1fd0794482c94072566ff/tests/capture.py",
+          "https://github.com/nix-purifiers/haxelib-purifier/blob/316ec558f411f63270e1fd0794482c94072566ff/tests/eval-errors.py",
+          "https://github.com/nix-purifiers/haxelib-purifier/blob/316ec558f411f63270e1fd0794482c94072566ff/.github/workflows/check.yml"
+        ],
+        "gap": null,
+        "sources": [
+          "https://github.com/nix-purifiers/haxelib-purifier/blob/316ec558f411f63270e1fd0794482c94072566ff/flake.nix",
+          "https://github.com/nix-purifiers/haxelib-purifier/blob/316ec558f411f63270e1fd0794482c94072566ff/tests/conformance.py",
+          "https://github.com/nix-purifiers/haxelib-purifier/blob/316ec558f411f63270e1fd0794482c94072566ff/tests/capture.py",
+          "https://github.com/nix-purifiers/haxelib-purifier/blob/316ec558f411f63270e1fd0794482c94072566ff/tests/eval-errors.py",
+          "https://github.com/nix-purifiers/haxelib-purifier/blob/316ec558f411f63270e1fd0794482c94072566ff/.github/workflows/check.yml"
+        ],
+        "state": "met",
+        "summary": "The compiled minimal project and an installed downstream Haxe consumer actually run with locked dependencies and produce answer42. Required host checks cover byte-stable relock, ordinary native execution, stale/mismatched state rejection, captured dependency/input selection, publishing archive bytes and output rebuild checking. The installed-consumer derivation specifically catches packaging failures that project compilation alone would miss."
+      },
+      "linux": {
+        "derivations": [
+          "haxelib-purifier:x86_64-linux:project",
+          "haxelib-purifier:x86_64-linux:installed",
+          "haxelib-purifier:x86_64-linux:environment",
+          "haxelib-purifier:x86_64-linux:release",
+          "haxelib-purifier:x86_64-linux:cli"
+        ],
+        "evidence": [
+          "https://github.com/nix-purifiers/haxelib-purifier/actions/runs/42152994749",
+          "https://github.com/nix-purifiers/haxelib-purifier/blob/316ec558f411f63270e1fd0794482c94072566ff/flake.nix",
+          "https://github.com/nix-purifiers/haxelib-purifier/blob/316ec558f411f63270e1fd0794482c94072566ff/tests/conformance.py",
+          "https://github.com/nix-purifiers/haxelib-purifier/blob/316ec558f411f63270e1fd0794482c94072566ff/tests/capture.py",
+          "https://github.com/nix-purifiers/haxelib-purifier/blob/316ec558f411f63270e1fd0794482c94072566ff/tests/eval-errors.py",
+          "https://github.com/nix-purifiers/haxelib-purifier/blob/316ec558f411f63270e1fd0794482c94072566ff/.github/workflows/check.yml"
+        ],
+        "gap": null,
+        "sources": [
+          "https://github.com/nix-purifiers/haxelib-purifier/blob/316ec558f411f63270e1fd0794482c94072566ff/flake.nix",
+          "https://github.com/nix-purifiers/haxelib-purifier/blob/316ec558f411f63270e1fd0794482c94072566ff/tests/conformance.py",
+          "https://github.com/nix-purifiers/haxelib-purifier/blob/316ec558f411f63270e1fd0794482c94072566ff/tests/capture.py",
+          "https://github.com/nix-purifiers/haxelib-purifier/blob/316ec558f411f63270e1fd0794482c94072566ff/tests/eval-errors.py",
+          "https://github.com/nix-purifiers/haxelib-purifier/blob/316ec558f411f63270e1fd0794482c94072566ff/.github/workflows/check.yml"
+        ],
+        "state": "met",
+        "summary": "Successful native x86_64-linux CI jobs actually build the identified check derivations from this exact source. SDK closure and output bindings distinguish execution from declarations/cross-evaluation."
+      },
+      "longCompatibility": {
+        "derivations": [
+          "haxelib-purifier:x86_64-linux:installed",
+          "haxelib-purifier:x86_64-linux:project"
+        ],
+        "evidence": [
+          "https://github.com/nix-purifiers/haxelib-purifier/actions/runs/42152994749",
+          "https://github.com/nix-purifiers/haxelib-purifier/blob/316ec558f411f63270e1fd0794482c94072566ff/flake.nix",
+          "https://github.com/nix-purifiers/haxelib-purifier/blob/316ec558f411f63270e1fd0794482c94072566ff/tests/conformance.py",
+          "https://github.com/nix-purifiers/haxelib-purifier/blob/316ec558f411f63270e1fd0794482c94072566ff/tests/capture.py",
+          "https://github.com/nix-purifiers/haxelib-purifier/blob/316ec558f411f63270e1fd0794482c94072566ff/tests/eval-errors.py",
+          "https://github.com/nix-purifiers/haxelib-purifier/blob/316ec558f411f63270e1fd0794482c94072566ff/.github/workflows/check.yml"
+        ],
+        "gap": "The project/installed consumer execute Haxe4.3.7 with patched Haxelib4.1.1. No additional historical Haxe/Haxelib compiler-manager combination has a sample execution receipt; multiple dependency versions inside one lock do not establish historical toolchain compatibility.",
+        "sources": [
+          "https://github.com/nix-purifiers/haxelib-purifier/blob/316ec558f411f63270e1fd0794482c94072566ff/flake.nix",
+          "https://github.com/nix-purifiers/haxelib-purifier/blob/316ec558f411f63270e1fd0794482c94072566ff/tests/conformance.py",
+          "https://github.com/nix-purifiers/haxelib-purifier/blob/316ec558f411f63270e1fd0794482c94072566ff/tests/capture.py",
+          "https://github.com/nix-purifiers/haxelib-purifier/blob/316ec558f411f63270e1fd0794482c94072566ff/tests/eval-errors.py",
+          "https://github.com/nix-purifiers/haxelib-purifier/blob/316ec558f411f63270e1fd0794482c94072566ff/.github/workflows/check.yml"
+        ],
+        "state": "not-met",
+        "summary": "The project/installed consumer execute Haxe4.3.7 with patched Haxelib4.1.1. No additional historical Haxe/Haxelib compiler-manager combination has a sample execution receipt; multiple dependency versions inside one lock do not establish historical toolchain compatibility."
+      },
+      "manySamples": {
+        "derivations": [
+          "haxelib-purifier:x86_64-linux:project",
+          "haxelib-purifier:x86_64-linux:installed"
+        ],
+        "evidence": [
+          "https://github.com/nix-purifiers/haxelib-purifier/actions/runs/42152994749",
+          "https://github.com/nix-purifiers/haxelib-purifier/blob/316ec558f411f63270e1fd0794482c94072566ff/flake.nix"
+        ],
+        "gap": "There is one authored minimal Haxe project and an authored consumer. Its haxelib dependencies and capture variants are not independent sample projects. The corpus does not establish breadth across independent Haxe applications. Authored samples are eligible; this judgment reflects the narrow demonstrated consumer/build behavior rather than excluding fixtures solely by provenance.",
+        "sources": [
+          "https://github.com/nix-purifiers/haxelib-purifier/blob/316ec558f411f63270e1fd0794482c94072566ff/flake.nix"
+        ],
+        "state": "not-met",
+        "summary": "There is one authored minimal Haxe project and an authored consumer. Its haxelib dependencies and capture variants are not independent sample projects. The corpus does not establish breadth across independent Haxe applications. Authored samples are eligible; this judgment reflects the narrow demonstrated consumer/build behavior rather than excluding fixtures solely by provenance."
+      },
+      "nonEolVersions": {
+        "derivations": [
+          "haxelib-purifier:x86_64-linux:installed",
+          "haxelib-purifier:x86_64-linux:project"
+        ],
+        "evidence": [
+          "https://github.com/nix-purifiers/haxelib-purifier/actions/runs/42152994749",
+          "https://haxe.org/download/",
+          "https://github.com/HaxeFoundation/haxelib/releases/tag/4.2.0"
+        ],
+        "gap": "Haxe4.3.7 is current stable and actually executes. But the native manager is built from bundled haxe.src and nix/native.nix explicitly asserts Haxelib4.1.1; fresh upstream GitHub latest releaseAPI identifies Haxelib4.2.0 published2025-07-14. No4.2.0 patched-manager lock/replay/sample derivation execution was found. This missing current manager execution prevents criterion; it is not a claim4.1.1 is EOL.",
+        "sources": [
+          "https://haxe.org/download/",
+          "https://github.com/HaxeFoundation/haxelib/releases/tag/4.2.0"
+        ],
+        "state": "not-met",
+        "summary": "Haxe4.3.7 is current stable and actually executes. But the native manager is built from bundled haxe.src and nix/native.nix explicitly asserts Haxelib4.1.1; fresh upstream GitHub latest releaseAPI identifies Haxelib4.2.0 published2025-07-14. No4.2.0 patched-manager lock/replay/sample derivation execution was found. This missing current manager execution prevents criterion; it is not a claim4.1.1 is EOL."
+      },
+      "oneVersion": {
+        "derivations": [
+          "haxelib-purifier:x86_64-linux:installed",
+          "haxelib-purifier:x86_64-linux:project"
+        ],
+        "evidence": [
+          "https://github.com/nix-purifiers/haxelib-purifier/actions/runs/42152994749",
+          "https://github.com/nix-purifiers/haxelib-purifier/blob/316ec558f411f63270e1fd0794482c94072566ff/flake.nix",
+          "https://github.com/nix-purifiers/haxelib-purifier/blob/316ec558f411f63270e1fd0794482c94072566ff/tests/conformance.py",
+          "https://github.com/nix-purifiers/haxelib-purifier/blob/316ec558f411f63270e1fd0794482c94072566ff/tests/capture.py",
+          "https://github.com/nix-purifiers/haxelib-purifier/blob/316ec558f411f63270e1fd0794482c94072566ff/tests/eval-errors.py",
+          "https://github.com/nix-purifiers/haxelib-purifier/blob/316ec558f411f63270e1fd0794482c94072566ff/.github/workflows/check.yml"
+        ],
+        "gap": null,
+        "sources": [
+          "https://github.com/nix-purifiers/haxelib-purifier/blob/316ec558f411f63270e1fd0794482c94072566ff/flake.nix",
+          "https://github.com/nix-purifiers/haxelib-purifier/blob/316ec558f411f63270e1fd0794482c94072566ff/tests/conformance.py",
+          "https://github.com/nix-purifiers/haxelib-purifier/blob/316ec558f411f63270e1fd0794482c94072566ff/tests/capture.py",
+          "https://github.com/nix-purifiers/haxelib-purifier/blob/316ec558f411f63270e1fd0794482c94072566ff/tests/eval-errors.py",
+          "https://github.com/nix-purifiers/haxelib-purifier/blob/316ec558f411f63270e1fd0794482c94072566ff/.github/workflows/check.yml"
+        ],
+        "state": "met",
+        "summary": "Executed exact SDK point(s): Haxe4.3.7 with patched Haxelib4.1.1. No patch interval is inferred."
+      }
+    },
+    "rationale": "Exact-source Linux sample/check derivations execute successfully with reviewed tests. Native Darwin execution is not demonstrated. Current maintained-version execution also has the specific gap documented below.",
+    "reviewedAt": "2026-11-06",
+    "reviewedRevision": "316ec558f411f63270e1fd0794482c94072566ff",
+    "sampleBuilds": [
+      {
+        "derivations": [
+          "haxelib-purifier:x86_64-linux:project",
+          "haxelib-purifier:x86_64-linux:installed"
+        ],
+        "evidence": [
+          "https://github.com/nix-purifiers/haxelib-purifier/actions/runs/42152994749",
+          "https://github.com/nix-purifiers/haxelib-purifier/blob/316ec558f411f63270e1fd0794482c94072566ff/flake.nix"
+        ],
+        "kind": "repository-fixtures",
+        "name": "examples/minimal plus installed downstream Consumer"
+      }
+    ],
+    "tier": 3
+  },
+  "helm-purifier": {
+    "criteria": {
+      "darwin": {
+        "derivations": [],
+        "evidence": [
+          "https://github.com/nix-purifiers/helm-purifier/actions/runs/42152998756",
+          "https://github.com/nix-purifiers/helm-purifier/blob/aa131a68d313284a291693b706e6dd7d35a47cb4/.github/workflows/check.yml"
+        ],
+        "gap": "A native Darwin sample/test build receipt with exact source/SDK/drv/output binding is absent.",
+        "sources": [
+          "https://github.com/nix-purifiers/helm-purifier/blob/aa131a68d313284a291693b706e6dd7d35a47cb4/.github/workflows/check.yml"
+        ],
+        "state": "not-met",
+        "summary": "Inspected current-main workflow and successful job list have no native Darwin execution. The exported checks and required jobs cover Linux only."
+      },
+      "evaluation": {
+        "derivations": [
+          "helm-purifier:x86_64-linux:fixture-tests",
+          "helm-purifier:x86_64-linux:conformance-offline",
+          "helm-purifier:x86_64-linux:conformance-missing",
+          "helm-purifier:x86_64-linux:conformance-external",
+          "helm-purifier:x86_64-linux:oci-tests",
+          "helm-purifier:x86_64-linux:unit"
+        ],
+        "evidence": [
+          "https://github.com/nix-purifiers/helm-purifier/actions/runs/42152998756",
+          "https://github.com/nix-purifiers/helm-purifier/blob/aa131a68d313284a291693b706e6dd7d35a47cb4/tests/default.nix",
+          "https://github.com/nix-purifiers/helm-purifier/blob/aa131a68d313284a291693b706e6dd7d35a47cb4/tests/host-conformance.py",
+          "https://github.com/nix-purifiers/helm-purifier/blob/aa131a68d313284a291693b706e6dd7d35a47cb4/nix/build-project.nix",
+          "https://github.com/nix-purifiers/helm-purifier/blob/aa131a68d313284a291693b706e6dd7d35a47cb4/.github/workflows/check.yml"
+        ],
+        "gap": null,
+        "sources": [
+          "https://github.com/nix-purifiers/helm-purifier/blob/aa131a68d313284a291693b706e6dd7d35a47cb4/tests/default.nix",
+          "https://github.com/nix-purifiers/helm-purifier/blob/aa131a68d313284a291693b706e6dd7d35a47cb4/tests/host-conformance.py",
+          "https://github.com/nix-purifiers/helm-purifier/blob/aa131a68d313284a291693b706e6dd7d35a47cb4/nix/build-project.nix",
+          "https://github.com/nix-purifiers/helm-purifier/blob/aa131a68d313284a291693b706e6dd7d35a47cb4/.github/workflows/check.yml"
+        ],
+        "state": "met",
+        "summary": "Actual no-IFD Nix evaluation at public main aa131a68d313284a291693b706e6dd7d35a47cb4 yielded these check derivations; exact paths match successful native CI build traces. Source NAR, derivation bytes and output identities are recorded."
+      },
+      "goodTests": {
+        "derivations": [
+          "helm-purifier:x86_64-linux:fixture-tests",
+          "helm-purifier:x86_64-linux:conformance-offline",
+          "helm-purifier:x86_64-linux:conformance-missing",
+          "helm-purifier:x86_64-linux:conformance-external",
+          "helm-purifier:x86_64-linux:oci-tests",
+          "helm-purifier:x86_64-linux:unit"
+        ],
+        "evidence": [
+          "https://github.com/nix-purifiers/helm-purifier/actions/runs/42152998756",
+          "https://github.com/nix-purifiers/helm-purifier/blob/aa131a68d313284a291693b706e6dd7d35a47cb4/tests/default.nix",
+          "https://github.com/nix-purifiers/helm-purifier/blob/aa131a68d313284a291693b706e6dd7d35a47cb4/tests/host-conformance.py",
+          "https://github.com/nix-purifiers/helm-purifier/blob/aa131a68d313284a291693b706e6dd7d35a47cb4/nix/build-project.nix",
+          "https://github.com/nix-purifiers/helm-purifier/blob/aa131a68d313284a291693b706e6dd7d35a47cb4/.github/workflows/check.yml"
+        ],
+        "gap": null,
+        "sources": [
+          "https://github.com/nix-purifiers/helm-purifier/blob/aa131a68d313284a291693b706e6dd7d35a47cb4/tests/default.nix",
+          "https://github.com/nix-purifiers/helm-purifier/blob/aa131a68d313284a291693b706e6dd7d35a47cb4/tests/host-conformance.py",
+          "https://github.com/nix-purifiers/helm-purifier/blob/aa131a68d313284a291693b706e6dd7d35a47cb4/nix/build-project.nix",
+          "https://github.com/nix-purifiers/helm-purifier/blob/aa131a68d313284a291693b706e6dd7d35a47cb4/.github/workflows/check.yml"
+        ],
+        "state": "met",
+        "summary": "The checked chart render/test and OCI chart build run Helm4.3.1, while offline execution compares rendered YAML and runs helm lint. Unit/parser and malformed/missing/stale/tampered-lock checks exercise error paths; external-lock comparison and native host relock/update/rebuild check lock replay. OCI tests explicitly skip deployment tests, so these are render/lint/package checks, not a live Kubernetes deployment claim."
+      },
+      "linux": {
+        "derivations": [
+          "helm-purifier:x86_64-linux:fixture-tests",
+          "helm-purifier:x86_64-linux:conformance-offline",
+          "helm-purifier:x86_64-linux:conformance-missing",
+          "helm-purifier:x86_64-linux:conformance-external",
+          "helm-purifier:x86_64-linux:oci-tests",
+          "helm-purifier:x86_64-linux:unit"
+        ],
+        "evidence": [
+          "https://github.com/nix-purifiers/helm-purifier/actions/runs/42152998756",
+          "https://github.com/nix-purifiers/helm-purifier/blob/aa131a68d313284a291693b706e6dd7d35a47cb4/tests/default.nix",
+          "https://github.com/nix-purifiers/helm-purifier/blob/aa131a68d313284a291693b706e6dd7d35a47cb4/tests/host-conformance.py",
+          "https://github.com/nix-purifiers/helm-purifier/blob/aa131a68d313284a291693b706e6dd7d35a47cb4/nix/build-project.nix",
+          "https://github.com/nix-purifiers/helm-purifier/blob/aa131a68d313284a291693b706e6dd7d35a47cb4/.github/workflows/check.yml"
+        ],
+        "gap": null,
+        "sources": [
+          "https://github.com/nix-purifiers/helm-purifier/blob/aa131a68d313284a291693b706e6dd7d35a47cb4/tests/default.nix",
+          "https://github.com/nix-purifiers/helm-purifier/blob/aa131a68d313284a291693b706e6dd7d35a47cb4/tests/host-conformance.py",
+          "https://github.com/nix-purifiers/helm-purifier/blob/aa131a68d313284a291693b706e6dd7d35a47cb4/nix/build-project.nix",
+          "https://github.com/nix-purifiers/helm-purifier/blob/aa131a68d313284a291693b706e6dd7d35a47cb4/.github/workflows/check.yml"
+        ],
+        "state": "met",
+        "summary": "Successful native x86_64-linux CI jobs actually build the identified check derivations from this exact source. SDK closure and output bindings distinguish execution from declarations/cross-evaluation."
+      },
+      "longCompatibility": {
+        "derivations": [
+          "helm-purifier:x86_64-linux:conformance-offline",
+          "helm-purifier:x86_64-linux:fixture-tests"
+        ],
+        "evidence": [
+          "https://github.com/nix-purifiers/helm-purifier/actions/runs/42152998756",
+          "https://github.com/nix-purifiers/helm-purifier/blob/aa131a68d313284a291693b706e6dd7d35a47cb4/tests/default.nix",
+          "https://github.com/nix-purifiers/helm-purifier/blob/aa131a68d313284a291693b706e6dd7d35a47cb4/tests/host-conformance.py",
+          "https://github.com/nix-purifiers/helm-purifier/blob/aa131a68d313284a291693b706e6dd7d35a47cb4/nix/build-project.nix",
+          "https://github.com/nix-purifiers/helm-purifier/blob/aa131a68d313284a291693b706e6dd7d35a47cb4/.github/workflows/check.yml"
+        ],
+        "gap": "All reviewed chart execution binds Helm4.3.1. No separate Helm3 or older4.x sample derivation execution establishes historical compatibility, and YAML-format acceptance alone would not prove those tools run.",
+        "sources": [
+          "https://github.com/nix-purifiers/helm-purifier/blob/aa131a68d313284a291693b706e6dd7d35a47cb4/tests/default.nix",
+          "https://github.com/nix-purifiers/helm-purifier/blob/aa131a68d313284a291693b706e6dd7d35a47cb4/tests/host-conformance.py",
+          "https://github.com/nix-purifiers/helm-purifier/blob/aa131a68d313284a291693b706e6dd7d35a47cb4/nix/build-project.nix",
+          "https://github.com/nix-purifiers/helm-purifier/blob/aa131a68d313284a291693b706e6dd7d35a47cb4/.github/workflows/check.yml"
+        ],
+        "state": "not-met",
+        "summary": "All reviewed chart execution binds Helm4.3.1. No separate Helm3 or older4.x sample derivation execution establishes historical compatibility, and YAML-format acceptance alone would not prove those tools run."
+      },
+      "manySamples": {
+        "derivations": [
+          "helm-purifier:x86_64-linux:fixture-tests",
+          "helm-purifier:x86_64-linux:oci-tests"
+        ],
+        "evidence": [
+          "https://github.com/nix-purifiers/helm-purifier/actions/runs/42152998756",
+          "https://github.com/nix-purifiers/helm-purifier/blob/aa131a68d313284a291693b706e6dd7d35a47cb4/tests/default.nix"
+        ],
+        "gap": "Hello, OCI and JSON-values charts are controlled repository samples testing transport/projection differences. Fetched dependency charts are inputs of those fixtures, not separately executed independent consumer projects; the small corpus does not establish many independent samples. Authored samples are eligible; this judgment reflects the narrow demonstrated consumer/build behavior rather than excluding fixtures solely by provenance.",
+        "sources": [
+          "https://github.com/nix-purifiers/helm-purifier/blob/aa131a68d313284a291693b706e6dd7d35a47cb4/tests/default.nix"
+        ],
+        "state": "not-met",
+        "summary": "Hello, OCI and JSON-values charts are controlled repository samples testing transport/projection differences. Fetched dependency charts are inputs of those fixtures, not separately executed independent consumer projects; the small corpus does not establish many independent samples. Authored samples are eligible; this judgment reflects the narrow demonstrated consumer/build behavior rather than excluding fixtures solely by provenance."
+      },
+      "nonEolVersions": {
+        "derivations": [
+          "helm-purifier:x86_64-linux:conformance-offline",
+          "helm-purifier:x86_64-linux:fixture-tests"
+        ],
+        "evidence": [
+          "https://github.com/nix-purifiers/helm-purifier/actions/runs/42152998756",
+          "https://helm.sh/docs/topics/version_skew/"
+        ],
+        "gap": null,
+        "sources": [
+          "https://helm.sh/docs/topics/version_skew/"
+        ],
+        "state": "met",
+        "summary": "Upstream maintains the most recent minor release branch; page identifies4.3.1. Native CI runs kubernetes-helm4.3.1 for locked chart rendering/lint and offline checks. This proves a patch on current maintained4.3, not all patch versions or cluster deployments."
+      },
+      "oneVersion": {
+        "derivations": [
+          "helm-purifier:x86_64-linux:conformance-offline",
+          "helm-purifier:x86_64-linux:fixture-tests"
+        ],
+        "evidence": [
+          "https://github.com/nix-purifiers/helm-purifier/actions/runs/42152998756",
+          "https://github.com/nix-purifiers/helm-purifier/blob/aa131a68d313284a291693b706e6dd7d35a47cb4/tests/default.nix",
+          "https://github.com/nix-purifiers/helm-purifier/blob/aa131a68d313284a291693b706e6dd7d35a47cb4/tests/host-conformance.py",
+          "https://github.com/nix-purifiers/helm-purifier/blob/aa131a68d313284a291693b706e6dd7d35a47cb4/nix/build-project.nix",
+          "https://github.com/nix-purifiers/helm-purifier/blob/aa131a68d313284a291693b706e6dd7d35a47cb4/.github/workflows/check.yml"
+        ],
+        "gap": null,
+        "sources": [
+          "https://github.com/nix-purifiers/helm-purifier/blob/aa131a68d313284a291693b706e6dd7d35a47cb4/tests/default.nix",
+          "https://github.com/nix-purifiers/helm-purifier/blob/aa131a68d313284a291693b706e6dd7d35a47cb4/tests/host-conformance.py",
+          "https://github.com/nix-purifiers/helm-purifier/blob/aa131a68d313284a291693b706e6dd7d35a47cb4/nix/build-project.nix",
+          "https://github.com/nix-purifiers/helm-purifier/blob/aa131a68d313284a291693b706e6dd7d35a47cb4/.github/workflows/check.yml"
+        ],
+        "state": "met",
+        "summary": "Executed exact SDK point(s): Helm4.3.1 chart render/lint checks. No patch interval is inferred."
+      }
+    },
+    "rationale": "Exact-source Linux sample/check derivations execute successfully with reviewed tests. Native Darwin execution is not demonstrated. A tested point on the current maintained release line is identified; no all-patch claim.",
+    "reviewedAt": "2026-11-06",
+    "reviewedRevision": "aa131a68d313284a291693b706e6dd7d35a47cb4",
+    "sampleBuilds": [
+      {
+        "derivations": [
+          "helm-purifier:x86_64-linux:fixture-tests",
+          "helm-purifier:x86_64-linux:oci-tests"
+        ],
+        "evidence": [
+          "https://github.com/nix-purifiers/helm-purifier/actions/runs/42152998756",
+          "https://github.com/nix-purifiers/helm-purifier/blob/aa131a68d313284a291693b706e6dd7d35a47cb4/tests/default.nix"
+        ],
+        "kind": "repository-fixtures",
+        "name": "examples/hello and examples/oci locked charts"
+      }
+    ],
+    "tier": 3
+  },
+  "herdr-purifier": {
+    "criteria": {
+      "darwin": {
+        "derivations": [],
+        "evidence": [
+          "https://github.com/nix-purifiers/herdr-purifier/actions/runs/42153008153",
+          "https://github.com/nix-purifiers/herdr-purifier/blob/ec8ca1cfd2221a6cf6a6d25248ce63ef5cfe125d/.github/workflows/check.yml"
+        ],
+        "gap": "A native Darwin sample/test build receipt with exact source/SDK/drv/output binding is absent.",
+        "sources": [
+          "https://github.com/nix-purifiers/herdr-purifier/blob/ec8ca1cfd2221a6cf6a6d25248ce63ef5cfe125d/.github/workflows/check.yml"
+        ],
+        "state": "not-met",
+        "summary": "Inspected current-main workflow and successful job list have no native Darwin execution. The exported checks and required jobs cover Linux only."
+      },
+      "evaluation": {
+        "derivations": [
+          "herdr-purifier:x86_64-linux:project",
+          "herdr-purifier:x86_64-linux:environment",
+          "herdr-purifier:x86_64-linux:release",
+          "herdr-purifier:x86_64-linux:cli"
+        ],
+        "evidence": [
+          "https://github.com/nix-purifiers/herdr-purifier/actions/runs/42153008153",
+          "https://github.com/nix-purifiers/herdr-purifier/blob/ec8ca1cfd2221a6cf6a6d25248ce63ef5cfe125d/tests/default.nix",
+          "https://github.com/nix-purifiers/herdr-purifier/blob/ec8ca1cfd2221a6cf6a6d25248ce63ef5cfe125d/nix/environment.nix",
+          "https://github.com/nix-purifiers/herdr-purifier/blob/ec8ca1cfd2221a6cf6a6d25248ce63ef5cfe125d/tests/host-conformance.py",
+          "https://github.com/nix-purifiers/herdr-purifier/blob/ec8ca1cfd2221a6cf6a6d25248ce63ef5cfe125d/tests/eval-errors.py",
+          "https://github.com/nix-purifiers/herdr-purifier/blob/ec8ca1cfd2221a6cf6a6d25248ce63ef5cfe125d/.github/workflows/check.yml"
+        ],
+        "gap": null,
+        "sources": [
+          "https://github.com/nix-purifiers/herdr-purifier/blob/ec8ca1cfd2221a6cf6a6d25248ce63ef5cfe125d/tests/default.nix",
+          "https://github.com/nix-purifiers/herdr-purifier/blob/ec8ca1cfd2221a6cf6a6d25248ce63ef5cfe125d/nix/environment.nix",
+          "https://github.com/nix-purifiers/herdr-purifier/blob/ec8ca1cfd2221a6cf6a6d25248ce63ef5cfe125d/tests/host-conformance.py",
+          "https://github.com/nix-purifiers/herdr-purifier/blob/ec8ca1cfd2221a6cf6a6d25248ce63ef5cfe125d/tests/eval-errors.py",
+          "https://github.com/nix-purifiers/herdr-purifier/blob/ec8ca1cfd2221a6cf6a6d25248ce63ef5cfe125d/.github/workflows/check.yml"
+        ],
+        "state": "met",
+        "summary": "Actual no-IFD Nix evaluation at public main ec8ca1cfd2221a6cf6a6d25248ce63ef5cfe125d yielded these check derivations; exact paths match successful native CI build traces. Source NAR, derivation bytes and output identities are recorded."
+      },
+      "goodTests": {
+        "derivations": [
+          "herdr-purifier:x86_64-linux:project",
+          "herdr-purifier:x86_64-linux:environment",
+          "herdr-purifier:x86_64-linux:release",
+          "herdr-purifier:x86_64-linux:cli"
+        ],
+        "evidence": [
+          "https://github.com/nix-purifiers/herdr-purifier/actions/runs/42153008153",
+          "https://github.com/nix-purifiers/herdr-purifier/blob/ec8ca1cfd2221a6cf6a6d25248ce63ef5cfe125d/tests/default.nix",
+          "https://github.com/nix-purifiers/herdr-purifier/blob/ec8ca1cfd2221a6cf6a6d25248ce63ef5cfe125d/nix/environment.nix",
+          "https://github.com/nix-purifiers/herdr-purifier/blob/ec8ca1cfd2221a6cf6a6d25248ce63ef5cfe125d/tests/host-conformance.py",
+          "https://github.com/nix-purifiers/herdr-purifier/blob/ec8ca1cfd2221a6cf6a6d25248ce63ef5cfe125d/tests/eval-errors.py",
+          "https://github.com/nix-purifiers/herdr-purifier/blob/ec8ca1cfd2221a6cf6a6d25248ce63ef5cfe125d/.github/workflows/check.yml"
+        ],
+        "gap": null,
+        "sources": [
+          "https://github.com/nix-purifiers/herdr-purifier/blob/ec8ca1cfd2221a6cf6a6d25248ce63ef5cfe125d/tests/default.nix",
+          "https://github.com/nix-purifiers/herdr-purifier/blob/ec8ca1cfd2221a6cf6a6d25248ce63ef5cfe125d/nix/environment.nix",
+          "https://github.com/nix-purifiers/herdr-purifier/blob/ec8ca1cfd2221a6cf6a6d25248ce63ef5cfe125d/tests/host-conformance.py",
+          "https://github.com/nix-purifiers/herdr-purifier/blob/ec8ca1cfd2221a6cf6a6d25248ce63ef5cfe125d/tests/eval-errors.py",
+          "https://github.com/nix-purifiers/herdr-purifier/blob/ec8ca1cfd2221a6cf6a6d25248ce63ef5cfe125d/.github/workflows/check.yml"
+        ],
+        "state": "met",
+        "summary": "The project/environment derivation executes native Herdr plugin listing and build hooks. Successful native host cases test Git-plugin lock/relock/update/external registries, offline actions, independent ordinary and locked server sockets/sessions, toggling plugin state, output actions, stale declarations and archive bytes. Those semantic assertions make meaningful tests despite the project and environment attributes sharing one derivation."
+      },
+      "linux": {
+        "derivations": [
+          "herdr-purifier:x86_64-linux:project",
+          "herdr-purifier:x86_64-linux:environment",
+          "herdr-purifier:x86_64-linux:release",
+          "herdr-purifier:x86_64-linux:cli"
+        ],
+        "evidence": [
+          "https://github.com/nix-purifiers/herdr-purifier/actions/runs/42153008153",
+          "https://github.com/nix-purifiers/herdr-purifier/blob/ec8ca1cfd2221a6cf6a6d25248ce63ef5cfe125d/tests/default.nix",
+          "https://github.com/nix-purifiers/herdr-purifier/blob/ec8ca1cfd2221a6cf6a6d25248ce63ef5cfe125d/nix/environment.nix",
+          "https://github.com/nix-purifiers/herdr-purifier/blob/ec8ca1cfd2221a6cf6a6d25248ce63ef5cfe125d/tests/host-conformance.py",
+          "https://github.com/nix-purifiers/herdr-purifier/blob/ec8ca1cfd2221a6cf6a6d25248ce63ef5cfe125d/tests/eval-errors.py",
+          "https://github.com/nix-purifiers/herdr-purifier/blob/ec8ca1cfd2221a6cf6a6d25248ce63ef5cfe125d/.github/workflows/check.yml"
+        ],
+        "gap": null,
+        "sources": [
+          "https://github.com/nix-purifiers/herdr-purifier/blob/ec8ca1cfd2221a6cf6a6d25248ce63ef5cfe125d/tests/default.nix",
+          "https://github.com/nix-purifiers/herdr-purifier/blob/ec8ca1cfd2221a6cf6a6d25248ce63ef5cfe125d/nix/environment.nix",
+          "https://github.com/nix-purifiers/herdr-purifier/blob/ec8ca1cfd2221a6cf6a6d25248ce63ef5cfe125d/tests/host-conformance.py",
+          "https://github.com/nix-purifiers/herdr-purifier/blob/ec8ca1cfd2221a6cf6a6d25248ce63ef5cfe125d/tests/eval-errors.py",
+          "https://github.com/nix-purifiers/herdr-purifier/blob/ec8ca1cfd2221a6cf6a6d25248ce63ef5cfe125d/.github/workflows/check.yml"
+        ],
+        "state": "met",
+        "summary": "Successful native x86_64-linux CI jobs actually build the identified check derivations from this exact source. SDK closure and output bindings distinguish execution from declarations/cross-evaluation."
+      },
+      "longCompatibility": {
+        "derivations": [
+          "herdr-purifier:x86_64-linux:project"
+        ],
+        "evidence": [
+          "https://github.com/nix-purifiers/herdr-purifier/actions/runs/42153008153",
+          "https://github.com/nix-purifiers/herdr-purifier/blob/ec8ca1cfd2221a6cf6a6d25248ce63ef5cfe125d/tests/default.nix",
+          "https://github.com/nix-purifiers/herdr-purifier/blob/ec8ca1cfd2221a6cf6a6d25248ce63ef5cfe125d/nix/environment.nix",
+          "https://github.com/nix-purifiers/herdr-purifier/blob/ec8ca1cfd2221a6cf6a6d25248ce63ef5cfe125d/tests/host-conformance.py",
+          "https://github.com/nix-purifiers/herdr-purifier/blob/ec8ca1cfd2221a6cf6a6d25248ce63ef5cfe125d/tests/eval-errors.py",
+          "https://github.com/nix-purifiers/herdr-purifier/blob/ec8ca1cfd2221a6cf6a6d25248ce63ef5cfe125d/.github/workflows/check.yml"
+        ],
+        "gap": "The locked plugin and native session executions bind patched Herdr0.9.5. Plugin manifest min_herdr_version values describe requirements; they are not execution evidence for0.7 or other historical native SDKs.",
+        "sources": [
+          "https://github.com/nix-purifiers/herdr-purifier/blob/ec8ca1cfd2221a6cf6a6d25248ce63ef5cfe125d/tests/default.nix",
+          "https://github.com/nix-purifiers/herdr-purifier/blob/ec8ca1cfd2221a6cf6a6d25248ce63ef5cfe125d/nix/environment.nix",
+          "https://github.com/nix-purifiers/herdr-purifier/blob/ec8ca1cfd2221a6cf6a6d25248ce63ef5cfe125d/tests/host-conformance.py",
+          "https://github.com/nix-purifiers/herdr-purifier/blob/ec8ca1cfd2221a6cf6a6d25248ce63ef5cfe125d/tests/eval-errors.py",
+          "https://github.com/nix-purifiers/herdr-purifier/blob/ec8ca1cfd2221a6cf6a6d25248ce63ef5cfe125d/.github/workflows/check.yml"
+        ],
+        "state": "not-met",
+        "summary": "The locked plugin and native session executions bind patched Herdr0.9.5. Plugin manifest min_herdr_version values describe requirements; they are not execution evidence for0.7 or other historical native SDKs."
+      },
+      "manySamples": {
+        "derivations": [
+          "herdr-purifier:x86_64-linux:project"
+        ],
+        "evidence": [
+          "https://github.com/nix-purifiers/herdr-purifier/actions/runs/42153008153",
+          "https://github.com/nix-purifiers/herdr-purifier/blob/ec8ca1cfd2221a6cf6a6d25248ce63ef5cfe125d/tests/default.nix"
+        ],
+        "gap": "The minimal plugin environment plus fixture.first/fixture.second Git repositories are controlled test inputs. Multiple plugins/actions are not multiple independent Herdr-consuming projects, and project/environment alias the same output. No many-sample breadth is demonstrated. Authored samples are eligible; this judgment reflects the narrow demonstrated consumer/build behavior rather than excluding fixtures solely by provenance.",
+        "sources": [
+          "https://github.com/nix-purifiers/herdr-purifier/blob/ec8ca1cfd2221a6cf6a6d25248ce63ef5cfe125d/tests/default.nix"
+        ],
+        "state": "not-met",
+        "summary": "The minimal plugin environment plus fixture.first/fixture.second Git repositories are controlled test inputs. Multiple plugins/actions are not multiple independent Herdr-consuming projects, and project/environment alias the same output. No many-sample breadth is demonstrated. Authored samples are eligible; this judgment reflects the narrow demonstrated consumer/build behavior rather than excluding fixtures solely by provenance."
+      },
+      "nonEolVersions": {
+        "derivations": [
+          "herdr-purifier:x86_64-linux:project"
+        ],
+        "evidence": [
+          "https://github.com/nix-purifiers/herdr-purifier/actions/runs/42153008153",
+          "https://github.com/herdrdev/herdr/releases/tag/v0.9.5"
+        ],
+        "gap": null,
+        "sources": [
+          "https://github.com/herdrdev/herdr/releases/tag/v0.9.5"
+        ],
+        "state": "met",
+        "summary": "Primary latest-release redirect is0.9.5, matching native SDK in successful CI. No comprehensive maintained-branch/EOL statement established in reviewed release evidence; no execution matrix across any additional maintained versions. Current-version match alone is not exhaustive support proof. Judgment scope: exact executed current stable release point is sufficient for the current maintained line; absence of an EOL calendar is not a failure and does not establish additional supported lines."
+      },
+      "oneVersion": {
+        "derivations": [
+          "herdr-purifier:x86_64-linux:project"
+        ],
+        "evidence": [
+          "https://github.com/nix-purifiers/herdr-purifier/actions/runs/42153008153",
+          "https://github.com/nix-purifiers/herdr-purifier/blob/ec8ca1cfd2221a6cf6a6d25248ce63ef5cfe125d/tests/default.nix",
+          "https://github.com/nix-purifiers/herdr-purifier/blob/ec8ca1cfd2221a6cf6a6d25248ce63ef5cfe125d/nix/environment.nix",
+          "https://github.com/nix-purifiers/herdr-purifier/blob/ec8ca1cfd2221a6cf6a6d25248ce63ef5cfe125d/tests/host-conformance.py",
+          "https://github.com/nix-purifiers/herdr-purifier/blob/ec8ca1cfd2221a6cf6a6d25248ce63ef5cfe125d/tests/eval-errors.py",
+          "https://github.com/nix-purifiers/herdr-purifier/blob/ec8ca1cfd2221a6cf6a6d25248ce63ef5cfe125d/.github/workflows/check.yml"
+        ],
+        "gap": null,
+        "sources": [
+          "https://github.com/nix-purifiers/herdr-purifier/blob/ec8ca1cfd2221a6cf6a6d25248ce63ef5cfe125d/tests/default.nix",
+          "https://github.com/nix-purifiers/herdr-purifier/blob/ec8ca1cfd2221a6cf6a6d25248ce63ef5cfe125d/nix/environment.nix",
+          "https://github.com/nix-purifiers/herdr-purifier/blob/ec8ca1cfd2221a6cf6a6d25248ce63ef5cfe125d/tests/host-conformance.py",
+          "https://github.com/nix-purifiers/herdr-purifier/blob/ec8ca1cfd2221a6cf6a6d25248ce63ef5cfe125d/tests/eval-errors.py",
+          "https://github.com/nix-purifiers/herdr-purifier/blob/ec8ca1cfd2221a6cf6a6d25248ce63ef5cfe125d/.github/workflows/check.yml"
+        ],
+        "state": "met",
+        "summary": "Executed exact SDK point(s): patched Herdr0.9.5 plugin/session paths. No patch interval is inferred."
+      }
+    },
+    "rationale": "Exact-source Linux sample/check derivations execute successfully with reviewed tests. Native Darwin execution is not demonstrated. A tested point on the current maintained release line is identified; no all-patch claim.",
+    "reviewedAt": "2026-11-06",
+    "reviewedRevision": "ec8ca1cfd2221a6cf6a6d25248ce63ef5cfe125d",
+    "sampleBuilds": [
+      {
+        "derivations": [
+          "herdr-purifier:x86_64-linux:project"
+        ],
+        "evidence": [
+          "https://github.com/nix-purifiers/herdr-purifier/actions/runs/42153008153",
+          "https://github.com/nix-purifiers/herdr-purifier/blob/ec8ca1cfd2221a6cf6a6d25248ce63ef5cfe125d/tests/default.nix"
+        ],
+        "kind": "repository-fixtures",
+        "name": "examples/minimal locked plugins and controlled host plugin fixtures"
+      }
+    ],
+    "tier": 3
+  },
+  "idris2-purifier": {
+    "criteria": {
+      "darwin": {
+        "derivations": [],
+        "evidence": [
+          "https://github.com/nix-purifiers/idris2-purifier/actions/runs/42153012366",
+          "https://github.com/nix-purifiers/idris2-purifier/blob/37ddb0a496a571ac2c8312b7b66cfd4906248dbe/.github/workflows/check.yml"
+        ],
+        "gap": "A native Darwin sample/test build receipt with exact source/SDK/drv/output binding is absent.",
+        "sources": [
+          "https://github.com/nix-purifiers/idris2-purifier/blob/37ddb0a496a571ac2c8312b7b66cfd4906248dbe/.github/workflows/check.yml"
+        ],
+        "state": "not-met",
+        "summary": "Inspected current-main workflow and successful job list have no native Darwin execution. The exported checks and required jobs cover Linux only."
+      },
+      "evaluation": {
+        "derivations": [
+          "idris2-purifier:x86_64-linux:project",
+          "idris2-purifier:x86_64-linux:environment",
+          "idris2-purifier:x86_64-linux:release",
+          "idris2-purifier:x86_64-linux:cli"
+        ],
+        "evidence": [
+          "https://github.com/nix-purifiers/idris2-purifier/actions/runs/42153012366",
+          "https://github.com/nix-purifiers/idris2-purifier/blob/37ddb0a496a571ac2c8312b7b66cfd4906248dbe/flake.nix",
+          "https://github.com/nix-purifiers/idris2-purifier/blob/37ddb0a496a571ac2c8312b7b66cfd4906248dbe/tests/conformance.py",
+          "https://github.com/nix-purifiers/idris2-purifier/blob/37ddb0a496a571ac2c8312b7b66cfd4906248dbe/tests/capture.py",
+          "https://github.com/nix-purifiers/idris2-purifier/blob/37ddb0a496a571ac2c8312b7b66cfd4906248dbe/tests/rebuild.py",
+          "https://github.com/nix-purifiers/idris2-purifier/blob/37ddb0a496a571ac2c8312b7b66cfd4906248dbe/tests/eval-errors.py",
+          "https://github.com/nix-purifiers/idris2-purifier/blob/37ddb0a496a571ac2c8312b7b66cfd4906248dbe/.github/workflows/check.yml"
+        ],
+        "gap": null,
+        "sources": [
+          "https://github.com/nix-purifiers/idris2-purifier/blob/37ddb0a496a571ac2c8312b7b66cfd4906248dbe/flake.nix",
+          "https://github.com/nix-purifiers/idris2-purifier/blob/37ddb0a496a571ac2c8312b7b66cfd4906248dbe/tests/conformance.py",
+          "https://github.com/nix-purifiers/idris2-purifier/blob/37ddb0a496a571ac2c8312b7b66cfd4906248dbe/tests/capture.py",
+          "https://github.com/nix-purifiers/idris2-purifier/blob/37ddb0a496a571ac2c8312b7b66cfd4906248dbe/tests/rebuild.py",
+          "https://github.com/nix-purifiers/idris2-purifier/blob/37ddb0a496a571ac2c8312b7b66cfd4906248dbe/tests/eval-errors.py",
+          "https://github.com/nix-purifiers/idris2-purifier/blob/37ddb0a496a571ac2c8312b7b66cfd4906248dbe/.github/workflows/check.yml"
+        ],
+        "state": "met",
+        "summary": "Actual no-IFD Nix evaluation at public main 37ddb0a496a571ac2c8312b7b66cfd4906248dbe yielded these check derivations; exact paths match successful native CI build traces. Source NAR, derivation bytes and output identities are recorded."
+      },
+      "goodTests": {
+        "derivations": [
+          "idris2-purifier:x86_64-linux:project",
+          "idris2-purifier:x86_64-linux:environment",
+          "idris2-purifier:x86_64-linux:release",
+          "idris2-purifier:x86_64-linux:cli"
+        ],
+        "evidence": [
+          "https://github.com/nix-purifiers/idris2-purifier/actions/runs/42153012366",
+          "https://github.com/nix-purifiers/idris2-purifier/blob/37ddb0a496a571ac2c8312b7b66cfd4906248dbe/flake.nix",
+          "https://github.com/nix-purifiers/idris2-purifier/blob/37ddb0a496a571ac2c8312b7b66cfd4906248dbe/tests/conformance.py",
+          "https://github.com/nix-purifiers/idris2-purifier/blob/37ddb0a496a571ac2c8312b7b66cfd4906248dbe/tests/capture.py",
+          "https://github.com/nix-purifiers/idris2-purifier/blob/37ddb0a496a571ac2c8312b7b66cfd4906248dbe/tests/rebuild.py",
+          "https://github.com/nix-purifiers/idris2-purifier/blob/37ddb0a496a571ac2c8312b7b66cfd4906248dbe/tests/eval-errors.py",
+          "https://github.com/nix-purifiers/idris2-purifier/blob/37ddb0a496a571ac2c8312b7b66cfd4906248dbe/.github/workflows/check.yml"
+        ],
+        "gap": null,
+        "sources": [
+          "https://github.com/nix-purifiers/idris2-purifier/blob/37ddb0a496a571ac2c8312b7b66cfd4906248dbe/flake.nix",
+          "https://github.com/nix-purifiers/idris2-purifier/blob/37ddb0a496a571ac2c8312b7b66cfd4906248dbe/tests/conformance.py",
+          "https://github.com/nix-purifiers/idris2-purifier/blob/37ddb0a496a571ac2c8312b7b66cfd4906248dbe/tests/capture.py",
+          "https://github.com/nix-purifiers/idris2-purifier/blob/37ddb0a496a571ac2c8312b7b66cfd4906248dbe/tests/rebuild.py",
+          "https://github.com/nix-purifiers/idris2-purifier/blob/37ddb0a496a571ac2c8312b7b66cfd4906248dbe/tests/eval-errors.py",
+          "https://github.com/nix-purifiers/idris2-purifier/blob/37ddb0a496a571ac2c8312b7b66cfd4906248dbe/.github/workflows/check.yml"
+        ],
+        "state": "met",
+        "summary": "The compiled proof sample and locked libraries execute with Idris0.8.0. Host assertions run pack/run and the compiled executable to obtain42, edit to43 and restore42, check missing packages/stale inputs, captured native compiler/collection selection, ordinary fallback and output-library rebuild checks. Evaluation errors also reject damaged lock data. This covers compilation, runtime, lock capture and negative paths."
+      },
+      "linux": {
+        "derivations": [
+          "idris2-purifier:x86_64-linux:project",
+          "idris2-purifier:x86_64-linux:environment",
+          "idris2-purifier:x86_64-linux:release",
+          "idris2-purifier:x86_64-linux:cli"
+        ],
+        "evidence": [
+          "https://github.com/nix-purifiers/idris2-purifier/actions/runs/42153012366",
+          "https://github.com/nix-purifiers/idris2-purifier/blob/37ddb0a496a571ac2c8312b7b66cfd4906248dbe/flake.nix",
+          "https://github.com/nix-purifiers/idris2-purifier/blob/37ddb0a496a571ac2c8312b7b66cfd4906248dbe/tests/conformance.py",
+          "https://github.com/nix-purifiers/idris2-purifier/blob/37ddb0a496a571ac2c8312b7b66cfd4906248dbe/tests/capture.py",
+          "https://github.com/nix-purifiers/idris2-purifier/blob/37ddb0a496a571ac2c8312b7b66cfd4906248dbe/tests/rebuild.py",
+          "https://github.com/nix-purifiers/idris2-purifier/blob/37ddb0a496a571ac2c8312b7b66cfd4906248dbe/tests/eval-errors.py",
+          "https://github.com/nix-purifiers/idris2-purifier/blob/37ddb0a496a571ac2c8312b7b66cfd4906248dbe/.github/workflows/check.yml"
+        ],
+        "gap": null,
+        "sources": [
+          "https://github.com/nix-purifiers/idris2-purifier/blob/37ddb0a496a571ac2c8312b7b66cfd4906248dbe/flake.nix",
+          "https://github.com/nix-purifiers/idris2-purifier/blob/37ddb0a496a571ac2c8312b7b66cfd4906248dbe/tests/conformance.py",
+          "https://github.com/nix-purifiers/idris2-purifier/blob/37ddb0a496a571ac2c8312b7b66cfd4906248dbe/tests/capture.py",
+          "https://github.com/nix-purifiers/idris2-purifier/blob/37ddb0a496a571ac2c8312b7b66cfd4906248dbe/tests/rebuild.py",
+          "https://github.com/nix-purifiers/idris2-purifier/blob/37ddb0a496a571ac2c8312b7b66cfd4906248dbe/tests/eval-errors.py",
+          "https://github.com/nix-purifiers/idris2-purifier/blob/37ddb0a496a571ac2c8312b7b66cfd4906248dbe/.github/workflows/check.yml"
+        ],
+        "state": "met",
+        "summary": "Successful native x86_64-linux CI jobs actually build the identified check derivations from this exact source. SDK closure and output bindings distinguish execution from declarations/cross-evaluation."
+      },
+      "longCompatibility": {
+        "derivations": [
+          "idris2-purifier:x86_64-linux:project"
+        ],
+        "evidence": [
+          "https://github.com/nix-purifiers/idris2-purifier/actions/runs/42153012366",
+          "https://github.com/nix-purifiers/idris2-purifier/blob/37ddb0a496a571ac2c8312b7b66cfd4906248dbe/flake.nix",
+          "https://github.com/nix-purifiers/idris2-purifier/blob/37ddb0a496a571ac2c8312b7b66cfd4906248dbe/tests/conformance.py",
+          "https://github.com/nix-purifiers/idris2-purifier/blob/37ddb0a496a571ac2c8312b7b66cfd4906248dbe/tests/capture.py",
+          "https://github.com/nix-purifiers/idris2-purifier/blob/37ddb0a496a571ac2c8312b7b66cfd4906248dbe/tests/rebuild.py",
+          "https://github.com/nix-purifiers/idris2-purifier/blob/37ddb0a496a571ac2c8312b7b66cfd4906248dbe/tests/eval-errors.py",
+          "https://github.com/nix-purifiers/idris2-purifier/blob/37ddb0a496a571ac2c8312b7b66cfd4906248dbe/.github/workflows/check.yml"
+        ],
+        "gap": "The lock names compiler0.8.0 atc35a6bd16ca2adea9484c64507bfc2041ceec75a and a pack collection. No older compiler collection has a separate executed sample derivation. Library version bounds do not prove historical compiler compatibility.",
+        "sources": [
+          "https://github.com/nix-purifiers/idris2-purifier/blob/37ddb0a496a571ac2c8312b7b66cfd4906248dbe/flake.nix",
+          "https://github.com/nix-purifiers/idris2-purifier/blob/37ddb0a496a571ac2c8312b7b66cfd4906248dbe/tests/conformance.py",
+          "https://github.com/nix-purifiers/idris2-purifier/blob/37ddb0a496a571ac2c8312b7b66cfd4906248dbe/tests/capture.py",
+          "https://github.com/nix-purifiers/idris2-purifier/blob/37ddb0a496a571ac2c8312b7b66cfd4906248dbe/tests/rebuild.py",
+          "https://github.com/nix-purifiers/idris2-purifier/blob/37ddb0a496a571ac2c8312b7b66cfd4906248dbe/tests/eval-errors.py",
+          "https://github.com/nix-purifiers/idris2-purifier/blob/37ddb0a496a571ac2c8312b7b66cfd4906248dbe/.github/workflows/check.yml"
+        ],
+        "state": "not-met",
+        "summary": "The lock names compiler0.8.0 atc35a6bd16ca2adea9484c64507bfc2041ceec75a and a pack collection. No older compiler collection has a separate executed sample derivation. Library version bounds do not prove historical compiler compatibility."
+      },
+      "manySamples": {
+        "derivations": [
+          "idris2-purifier:x86_64-linux:project"
+        ],
+        "evidence": [
+          "https://github.com/nix-purifiers/idris2-purifier/actions/runs/42153012366",
+          "https://github.com/nix-purifiers/idris2-purifier/blob/37ddb0a496a571ac2c8312b7b66cfd4906248dbe/flake.nix"
+        ],
+        "gap": "There is one authored proof project; algebra/elab-util/refined are compiled dependency packages of it. The rebuild check verifies those dependencies but does not make them separate purifier consumer samples. No broad independent consumer corpus is established. Authored samples are eligible; this judgment reflects the narrow demonstrated consumer/build behavior rather than excluding fixtures solely by provenance.",
+        "sources": [
+          "https://github.com/nix-purifiers/idris2-purifier/blob/37ddb0a496a571ac2c8312b7b66cfd4906248dbe/flake.nix"
+        ],
+        "state": "not-met",
+        "summary": "There is one authored proof project; algebra/elab-util/refined are compiled dependency packages of it. The rebuild check verifies those dependencies but does not make them separate purifier consumer samples. No broad independent consumer corpus is established. Authored samples are eligible; this judgment reflects the narrow demonstrated consumer/build behavior rather than excluding fixtures solely by provenance."
+      },
+      "nonEolVersions": {
+        "derivations": [
+          "idris2-purifier:x86_64-linux:project"
+        ],
+        "evidence": [
+          "https://github.com/nix-purifiers/idris2-purifier/actions/runs/42153012366",
+          "https://idris-lang.org/pages/download.html",
+          "https://api.github.com/repos/idris-lang/Idris2/git/ref/tags/v0.8.0"
+        ],
+        "gap": "Primary download calls v0.8.0 formal stable and recommends cutting-edge pack collections. Fresh upstream tagAPI binds formalv0.8.0 to15a3e4e70843f7a34100f6470c04b791330788df. The actual project uses mkCompiler on locked pack-nightly compiler sourcec35a6bd16ca2adea9484c64507bfc2041ceec75a with version label0.8.0. Native sample succeeds at that snapshot; identical label is not proof of the formal-release source. No separate formal-tag sample derivation execution was found. Neither source is declared EOL.",
+        "sources": [
+          "https://idris-lang.org/pages/download.html",
+          "https://api.github.com/repos/idris-lang/Idris2/git/ref/tags/v0.8.0"
+        ],
+        "state": "not-met",
+        "summary": "Primary download calls v0.8.0 formal stable and recommends cutting-edge pack collections. Fresh upstream tagAPI binds formalv0.8.0 to15a3e4e70843f7a34100f6470c04b791330788df. The actual project uses mkCompiler on locked pack-nightly compiler sourcec35a6bd16ca2adea9484c64507bfc2041ceec75a with version label0.8.0. Native sample succeeds at that snapshot; identical label is not proof of the formal-release source. No separate formal-tag sample derivation execution was found. Neither source is declared EOL."
+      },
+      "oneVersion": {
+        "derivations": [
+          "idris2-purifier:x86_64-linux:project"
+        ],
+        "evidence": [
+          "https://github.com/nix-purifiers/idris2-purifier/actions/runs/42153012366",
+          "https://github.com/nix-purifiers/idris2-purifier/blob/37ddb0a496a571ac2c8312b7b66cfd4906248dbe/flake.nix",
+          "https://github.com/nix-purifiers/idris2-purifier/blob/37ddb0a496a571ac2c8312b7b66cfd4906248dbe/tests/conformance.py",
+          "https://github.com/nix-purifiers/idris2-purifier/blob/37ddb0a496a571ac2c8312b7b66cfd4906248dbe/tests/capture.py",
+          "https://github.com/nix-purifiers/idris2-purifier/blob/37ddb0a496a571ac2c8312b7b66cfd4906248dbe/tests/rebuild.py",
+          "https://github.com/nix-purifiers/idris2-purifier/blob/37ddb0a496a571ac2c8312b7b66cfd4906248dbe/tests/eval-errors.py",
+          "https://github.com/nix-purifiers/idris2-purifier/blob/37ddb0a496a571ac2c8312b7b66cfd4906248dbe/.github/workflows/check.yml"
+        ],
+        "gap": null,
+        "sources": [
+          "https://github.com/nix-purifiers/idris2-purifier/blob/37ddb0a496a571ac2c8312b7b66cfd4906248dbe/flake.nix",
+          "https://github.com/nix-purifiers/idris2-purifier/blob/37ddb0a496a571ac2c8312b7b66cfd4906248dbe/tests/conformance.py",
+          "https://github.com/nix-purifiers/idris2-purifier/blob/37ddb0a496a571ac2c8312b7b66cfd4906248dbe/tests/capture.py",
+          "https://github.com/nix-purifiers/idris2-purifier/blob/37ddb0a496a571ac2c8312b7b66cfd4906248dbe/tests/rebuild.py",
+          "https://github.com/nix-purifiers/idris2-purifier/blob/37ddb0a496a571ac2c8312b7b66cfd4906248dbe/tests/eval-errors.py",
+          "https://github.com/nix-purifiers/idris2-purifier/blob/37ddb0a496a571ac2c8312b7b66cfd4906248dbe/.github/workflows/check.yml"
+        ],
+        "state": "met",
+        "summary": "Executed exact SDK point(s): Idris compiler sourcec35a6bd16ca2adea9484c64507bfc2041ceec75a from nightly-261102, reporting0.8.0; not equated to formal tag15a3e4e. No patch interval is inferred."
+      }
+    },
+    "rationale": "Exact-source Linux sample/check derivations execute successfully with reviewed tests. Native Darwin execution is not demonstrated. Current maintained-version execution also has the specific gap documented below.",
+    "reviewedAt": "2026-11-06",
+    "reviewedRevision": "37ddb0a496a571ac2c8312b7b66cfd4906248dbe",
+    "sampleBuilds": [
+      {
+        "derivations": [
+          "idris2-purifier:x86_64-linux:project"
+        ],
+        "evidence": [
+          "https://github.com/nix-purifiers/idris2-purifier/actions/runs/42153012366",
+          "https://github.com/nix-purifiers/idris2-purifier/blob/37ddb0a496a571ac2c8312b7b66cfd4906248dbe/flake.nix"
+        ],
+        "kind": "repository-fixtures",
+        "name": "examples/minimal proof with algebra/elab-util/refined dependencies"
+      }
+    ],
+    "tier": 3
+  },
+  "inkscape-purifier": {
+    "criteria": {
+      "darwin": {
+        "derivations": [],
+        "evidence": [
+          "https://github.com/nix-purifiers/inkscape-purifier/actions/runs/41955587866",
+          "https://github.com/nix-purifiers/inkscape-purifier/blob/dae945612e8420dce7784067db93facda003b9f5/.github/workflows/check.yml"
+        ],
+        "gap": "A native Darwin sample/test build receipt with exact source/SDK/drv/output binding is absent.",
+        "sources": [
+          "https://github.com/nix-purifiers/inkscape-purifier/blob/dae945612e8420dce7784067db93facda003b9f5/.github/workflows/check.yml"
+        ],
+        "state": "not-met",
+        "summary": "Inspected current-main workflow and successful job list have no native Darwin execution. The exported checks and required jobs cover Linux only."
+      },
+      "evaluation": {
+        "derivations": [
+          "inkscape-purifier:x86_64-linux:project",
+          "inkscape-purifier:x86_64-linux:environment",
+          "inkscape-purifier:x86_64-linux:release",
+          "inkscape-purifier:x86_64-linux:cli"
+        ],
+        "evidence": [
+          "https://github.com/nix-purifiers/inkscape-purifier/actions/runs/41955587866",
+          "https://github.com/nix-purifiers/inkscape-purifier/blob/dae945612e8420dce7784067db93facda003b9f5/flake.nix",
+          "https://github.com/nix-purifiers/inkscape-purifier/blob/dae945612e8420dce7784067db93facda003b9f5/tests/native.py",
+          "https://github.com/nix-purifiers/inkscape-purifier/blob/dae945612e8420dce7784067db93facda003b9f5/tests/artifacts.py",
+          "https://github.com/nix-purifiers/inkscape-purifier/blob/dae945612e8420dce7784067db93facda003b9f5/tests/capture.py",
+          "https://github.com/nix-purifiers/inkscape-purifier/blob/dae945612e8420dce7784067db93facda003b9f5/.github/workflows/check.yml"
+        ],
+        "gap": null,
+        "sources": [
+          "https://github.com/nix-purifiers/inkscape-purifier/blob/dae945612e8420dce7784067db93facda003b9f5/flake.nix",
+          "https://github.com/nix-purifiers/inkscape-purifier/blob/dae945612e8420dce7784067db93facda003b9f5/tests/native.py",
+          "https://github.com/nix-purifiers/inkscape-purifier/blob/dae945612e8420dce7784067db93facda003b9f5/tests/artifacts.py",
+          "https://github.com/nix-purifiers/inkscape-purifier/blob/dae945612e8420dce7784067db93facda003b9f5/tests/capture.py",
+          "https://github.com/nix-purifiers/inkscape-purifier/blob/dae945612e8420dce7784067db93facda003b9f5/.github/workflows/check.yml"
+        ],
+        "state": "met",
+        "summary": "Actual no-IFD Nix evaluation at public main dae945612e8420dce7784067db93facda003b9f5 yielded these check derivations; exact paths match successful native CI build traces. Source NAR, derivation bytes and output identities are recorded."
+      },
+      "goodTests": {
+        "derivations": [
+          "inkscape-purifier:x86_64-linux:project",
+          "inkscape-purifier:x86_64-linux:environment",
+          "inkscape-purifier:x86_64-linux:release",
+          "inkscape-purifier:x86_64-linux:cli"
+        ],
+        "evidence": [
+          "https://github.com/nix-purifiers/inkscape-purifier/actions/runs/41955587866",
+          "https://github.com/nix-purifiers/inkscape-purifier/blob/dae945612e8420dce7784067db93facda003b9f5/flake.nix",
+          "https://github.com/nix-purifiers/inkscape-purifier/blob/dae945612e8420dce7784067db93facda003b9f5/tests/native.py",
+          "https://github.com/nix-purifiers/inkscape-purifier/blob/dae945612e8420dce7784067db93facda003b9f5/tests/artifacts.py",
+          "https://github.com/nix-purifiers/inkscape-purifier/blob/dae945612e8420dce7784067db93facda003b9f5/tests/capture.py",
+          "https://github.com/nix-purifiers/inkscape-purifier/blob/dae945612e8420dce7784067db93facda003b9f5/.github/workflows/check.yml"
+        ],
+        "gap": null,
+        "sources": [
+          "https://github.com/nix-purifiers/inkscape-purifier/blob/dae945612e8420dce7784067db93facda003b9f5/flake.nix",
+          "https://github.com/nix-purifiers/inkscape-purifier/blob/dae945612e8420dce7784067db93facda003b9f5/tests/native.py",
+          "https://github.com/nix-purifiers/inkscape-purifier/blob/dae945612e8420dce7784067db93facda003b9f5/tests/artifacts.py",
+          "https://github.com/nix-purifiers/inkscape-purifier/blob/dae945612e8420dce7784067db93facda003b9f5/tests/capture.py",
+          "https://github.com/nix-purifiers/inkscape-purifier/blob/dae945612e8420dce7784067db93facda003b9f5/.github/workflows/check.yml"
+        ],
+        "state": "met",
+        "summary": "The project derivation runs locked extensions under Inkscape1.4.4 and produces checked SVG/artifacts. Required native/GUI tests verify immutable Python providers, reject unlocked extension/interpreter state, allow project networking, validate width40, and inspect/replay release archive bytes. Capture rejects changed selection; output rebuild checks confirm deterministic realization. This is substantially stronger than merely loading the extension package."
+      },
+      "linux": {
+        "derivations": [
+          "inkscape-purifier:x86_64-linux:project",
+          "inkscape-purifier:x86_64-linux:environment",
+          "inkscape-purifier:x86_64-linux:release",
+          "inkscape-purifier:x86_64-linux:cli"
+        ],
+        "evidence": [
+          "https://github.com/nix-purifiers/inkscape-purifier/actions/runs/41955587866",
+          "https://github.com/nix-purifiers/inkscape-purifier/blob/dae945612e8420dce7784067db93facda003b9f5/flake.nix",
+          "https://github.com/nix-purifiers/inkscape-purifier/blob/dae945612e8420dce7784067db93facda003b9f5/tests/native.py",
+          "https://github.com/nix-purifiers/inkscape-purifier/blob/dae945612e8420dce7784067db93facda003b9f5/tests/artifacts.py",
+          "https://github.com/nix-purifiers/inkscape-purifier/blob/dae945612e8420dce7784067db93facda003b9f5/tests/capture.py",
+          "https://github.com/nix-purifiers/inkscape-purifier/blob/dae945612e8420dce7784067db93facda003b9f5/.github/workflows/check.yml"
+        ],
+        "gap": null,
+        "sources": [
+          "https://github.com/nix-purifiers/inkscape-purifier/blob/dae945612e8420dce7784067db93facda003b9f5/flake.nix",
+          "https://github.com/nix-purifiers/inkscape-purifier/blob/dae945612e8420dce7784067db93facda003b9f5/tests/native.py",
+          "https://github.com/nix-purifiers/inkscape-purifier/blob/dae945612e8420dce7784067db93facda003b9f5/tests/artifacts.py",
+          "https://github.com/nix-purifiers/inkscape-purifier/blob/dae945612e8420dce7784067db93facda003b9f5/tests/capture.py",
+          "https://github.com/nix-purifiers/inkscape-purifier/blob/dae945612e8420dce7784067db93facda003b9f5/.github/workflows/check.yml"
+        ],
+        "state": "met",
+        "summary": "Successful native x86_64-linux CI jobs actually build the identified check derivations from this exact source. SDK closure and output bindings distinguish execution from declarations/cross-evaluation."
+      },
+      "longCompatibility": {
+        "derivations": [
+          "inkscape-purifier:x86_64-linux:project"
+        ],
+        "evidence": [
+          "https://github.com/nix-purifiers/inkscape-purifier/actions/runs/41955587866",
+          "https://github.com/nix-purifiers/inkscape-purifier/blob/dae945612e8420dce7784067db93facda003b9f5/flake.nix",
+          "https://github.com/nix-purifiers/inkscape-purifier/blob/dae945612e8420dce7784067db93facda003b9f5/tests/native.py",
+          "https://github.com/nix-purifiers/inkscape-purifier/blob/dae945612e8420dce7784067db93facda003b9f5/tests/artifacts.py",
+          "https://github.com/nix-purifiers/inkscape-purifier/blob/dae945612e8420dce7784067db93facda003b9f5/tests/capture.py",
+          "https://github.com/nix-purifiers/inkscape-purifier/blob/dae945612e8420dce7784067db93facda003b9f5/.github/workflows/check.yml"
+        ],
+        "gap": "The native execution and patched SDK bind Inkscape1.4.4 only. Extension compatibility metadata and older SVG format claims do not establish successful purifier execution with historical Inkscape SDKs.",
+        "sources": [
+          "https://github.com/nix-purifiers/inkscape-purifier/blob/dae945612e8420dce7784067db93facda003b9f5/flake.nix",
+          "https://github.com/nix-purifiers/inkscape-purifier/blob/dae945612e8420dce7784067db93facda003b9f5/tests/native.py",
+          "https://github.com/nix-purifiers/inkscape-purifier/blob/dae945612e8420dce7784067db93facda003b9f5/tests/artifacts.py",
+          "https://github.com/nix-purifiers/inkscape-purifier/blob/dae945612e8420dce7784067db93facda003b9f5/tests/capture.py",
+          "https://github.com/nix-purifiers/inkscape-purifier/blob/dae945612e8420dce7784067db93facda003b9f5/.github/workflows/check.yml"
+        ],
+        "state": "not-met",
+        "summary": "The native execution and patched SDK bind Inkscape1.4.4 only. Extension compatibility metadata and older SVG format claims do not establish successful purifier execution with historical Inkscape SDKs."
+      },
+      "manySamples": {
+        "derivations": [
+          "inkscape-purifier:x86_64-linux:project"
+        ],
+        "evidence": [
+          "https://github.com/nix-purifiers/inkscape-purifier/actions/runs/41955587866",
+          "https://github.com/nix-purifiers/inkscape-purifier/blob/dae945612e8420dce7784067db93facda003b9f5/flake.nix"
+        ],
+        "gap": "The minimal SVG project plus its extension/dependency and controlled GUI/provider tests form one consumer scenario. An installed upstream extension is a dependency, not a separate independent sample project. Independent application/document breadth is not demonstrated. Authored samples are eligible; this judgment reflects the narrow demonstrated consumer/build behavior rather than excluding fixtures solely by provenance.",
+        "sources": [
+          "https://github.com/nix-purifiers/inkscape-purifier/blob/dae945612e8420dce7784067db93facda003b9f5/flake.nix"
+        ],
+        "state": "not-met",
+        "summary": "The minimal SVG project plus its extension/dependency and controlled GUI/provider tests form one consumer scenario. An installed upstream extension is a dependency, not a separate independent sample project. Independent application/document breadth is not demonstrated. Authored samples are eligible; this judgment reflects the narrow demonstrated consumer/build behavior rather than excluding fixtures solely by provenance."
+      },
+      "nonEolVersions": {
+        "derivations": [
+          "inkscape-purifier:x86_64-linux:project"
+        ],
+        "evidence": [
+          "https://github.com/nix-purifiers/inkscape-purifier/actions/runs/41955587866",
+          "https://lists.inkscape.org/hyperkitty/list/inkscape-docs%40lists.inkscape.org/message/OCEYDBJCKK2ZF65O3FNKZOSTL7JBTZND/",
+          "https://wiki.inkscape.org/wiki/Release_notes/1.4.4"
+        ],
+        "gap": null,
+        "sources": [
+          "https://lists.inkscape.org/hyperkitty/list/inkscape-docs%40lists.inkscape.org/message/OCEYDBJCKK2ZF65O3FNKZOSTL7JBTZND/",
+          "https://wiki.inkscape.org/wiki/Release_notes/1.4.4"
+        ],
+        "state": "met",
+        "summary": "Primary Inkscape mailing-list announcement identifies1.4.4 as maintenance/bugfix release dated2026-05-06; CI executes1.4.4. Reviewed upstream notes identify1.5 as planned. This supports exact maintenance point on current1.4 stable line. Main release page403/GitLab API inaccessible preserved; no inferred EOL calendar or all-patch claim."
+      },
+      "oneVersion": {
+        "derivations": [
+          "inkscape-purifier:x86_64-linux:project"
+        ],
+        "evidence": [
+          "https://github.com/nix-purifiers/inkscape-purifier/actions/runs/41955587866",
+          "https://github.com/nix-purifiers/inkscape-purifier/blob/dae945612e8420dce7784067db93facda003b9f5/flake.nix",
+          "https://github.com/nix-purifiers/inkscape-purifier/blob/dae945612e8420dce7784067db93facda003b9f5/tests/native.py",
+          "https://github.com/nix-purifiers/inkscape-purifier/blob/dae945612e8420dce7784067db93facda003b9f5/tests/artifacts.py",
+          "https://github.com/nix-purifiers/inkscape-purifier/blob/dae945612e8420dce7784067db93facda003b9f5/tests/capture.py",
+          "https://github.com/nix-purifiers/inkscape-purifier/blob/dae945612e8420dce7784067db93facda003b9f5/.github/workflows/check.yml"
+        ],
+        "gap": null,
+        "sources": [
+          "https://github.com/nix-purifiers/inkscape-purifier/blob/dae945612e8420dce7784067db93facda003b9f5/flake.nix",
+          "https://github.com/nix-purifiers/inkscape-purifier/blob/dae945612e8420dce7784067db93facda003b9f5/tests/native.py",
+          "https://github.com/nix-purifiers/inkscape-purifier/blob/dae945612e8420dce7784067db93facda003b9f5/tests/artifacts.py",
+          "https://github.com/nix-purifiers/inkscape-purifier/blob/dae945612e8420dce7784067db93facda003b9f5/tests/capture.py",
+          "https://github.com/nix-purifiers/inkscape-purifier/blob/dae945612e8420dce7784067db93facda003b9f5/.github/workflows/check.yml"
+        ],
+        "state": "met",
+        "summary": "Executed exact SDK point(s): Inkscape1.4.4 patched locked extension SDK. No patch interval is inferred."
+      }
+    },
+    "rationale": "Exact-source Linux sample/check derivations execute successfully with reviewed tests. Native Darwin execution is not demonstrated. A tested point on the current maintained release line is identified; no all-patch claim.",
+    "reviewedAt": "2026-11-06",
+    "reviewedRevision": "dae945612e8420dce7784067db93facda003b9f5",
+    "sampleBuilds": [
+      {
+        "derivations": [
+          "inkscape-purifier:x86_64-linux:project"
+        ],
+        "evidence": [
+          "https://github.com/nix-purifiers/inkscape-purifier/actions/runs/41955587866",
+          "https://github.com/nix-purifiers/inkscape-purifier/blob/dae945612e8420dce7784067db93facda003b9f5/flake.nix"
+        ],
+        "kind": "repository-fixtures",
+        "name": "examples/minimal extension-driven SVG project"
+      }
+    ],
+    "tier": 3
+  },
+  "jb-purifier": {
+    "criteria": {
+      "darwin": {
+        "derivations": [],
+        "evidence": [
+          "https://github.com/nix-purifiers/jb-purifier/actions/runs/42153015867",
+          "https://github.com/nix-purifiers/jb-purifier/blob/6dddf87ece2fc7376d770e69b3cebeb4ba16e508/.github/workflows/check.yml"
+        ],
+        "gap": "A native Darwin sample/test build receipt with exact source/SDK/drv/output binding is absent.",
+        "sources": [
+          "https://github.com/nix-purifiers/jb-purifier/blob/6dddf87ece2fc7376d770e69b3cebeb4ba16e508/.github/workflows/check.yml"
+        ],
+        "state": "not-met",
+        "summary": "Inspected current-main workflow and successful job list have no native Darwin execution. The exported checks and required jobs cover Linux only."
+      },
+      "evaluation": {
+        "derivations": [
+          "jb-purifier:x86_64-linux:fixture-tests",
+          "jb-purifier:x86_64-linux:conformance-offline",
+          "jb-purifier:x86_64-linux:conformance-missing",
+          "jb-purifier:x86_64-linux:conformance-external",
+          "jb-purifier:x86_64-linux:unit",
+          "jb-purifier:x86_64-linux:json-projection",
+          "jb-purifier:x86_64-linux:cli-package"
+        ],
+        "evidence": [
+          "https://github.com/nix-purifiers/jb-purifier/actions/runs/42153015867",
+          "https://github.com/nix-purifiers/jb-purifier/blob/6dddf87ece2fc7376d770e69b3cebeb4ba16e508/tests/default.nix",
+          "https://github.com/nix-purifiers/jb-purifier/blob/6dddf87ece2fc7376d770e69b3cebeb4ba16e508/tests/host-conformance.py",
+          "https://github.com/nix-purifiers/jb-purifier/blob/6dddf87ece2fc7376d770e69b3cebeb4ba16e508/tests/editor.py",
+          "https://github.com/nix-purifiers/jb-purifier/blob/6dddf87ece2fc7376d770e69b3cebeb4ba16e508/.github/workflows/check.yml"
+        ],
+        "gap": null,
+        "sources": [
+          "https://github.com/nix-purifiers/jb-purifier/blob/6dddf87ece2fc7376d770e69b3cebeb4ba16e508/tests/default.nix",
+          "https://github.com/nix-purifiers/jb-purifier/blob/6dddf87ece2fc7376d770e69b3cebeb4ba16e508/tests/host-conformance.py",
+          "https://github.com/nix-purifiers/jb-purifier/blob/6dddf87ece2fc7376d770e69b3cebeb4ba16e508/tests/editor.py",
+          "https://github.com/nix-purifiers/jb-purifier/blob/6dddf87ece2fc7376d770e69b3cebeb4ba16e508/.github/workflows/check.yml"
+        ],
+        "state": "met",
+        "summary": "Actual no-IFD Nix evaluation at public main 6dddf87ece2fc7376d770e69b3cebeb4ba16e508 yielded these check derivations; exact paths match successful native CI build traces. Source NAR, derivation bytes and output identities are recorded."
+      },
+      "goodTests": {
+        "derivations": [
+          "jb-purifier:x86_64-linux:fixture-tests",
+          "jb-purifier:x86_64-linux:conformance-offline",
+          "jb-purifier:x86_64-linux:conformance-missing",
+          "jb-purifier:x86_64-linux:conformance-external",
+          "jb-purifier:x86_64-linux:unit",
+          "jb-purifier:x86_64-linux:json-projection",
+          "jb-purifier:x86_64-linux:cli-package"
+        ],
+        "evidence": [
+          "https://github.com/nix-purifiers/jb-purifier/actions/runs/42153015867",
+          "https://github.com/nix-purifiers/jb-purifier/blob/6dddf87ece2fc7376d770e69b3cebeb4ba16e508/tests/default.nix",
+          "https://github.com/nix-purifiers/jb-purifier/blob/6dddf87ece2fc7376d770e69b3cebeb4ba16e508/tests/host-conformance.py",
+          "https://github.com/nix-purifiers/jb-purifier/blob/6dddf87ece2fc7376d770e69b3cebeb4ba16e508/tests/editor.py",
+          "https://github.com/nix-purifiers/jb-purifier/blob/6dddf87ece2fc7376d770e69b3cebeb4ba16e508/.github/workflows/check.yml"
+        ],
+        "gap": null,
+        "sources": [
+          "https://github.com/nix-purifiers/jb-purifier/blob/6dddf87ece2fc7376d770e69b3cebeb4ba16e508/tests/default.nix",
+          "https://github.com/nix-purifiers/jb-purifier/blob/6dddf87ece2fc7376d770e69b3cebeb4ba16e508/tests/host-conformance.py",
+          "https://github.com/nix-purifiers/jb-purifier/blob/6dddf87ece2fc7376d770e69b3cebeb4ba16e508/tests/editor.py",
+          "https://github.com/nix-purifiers/jb-purifier/blob/6dddf87ece2fc7376d770e69b3cebeb4ba16e508/.github/workflows/check.yml"
+        ],
+        "state": "met",
+        "summary": "The ASCII Jsonnet sample evaluates and tests with the locked vendor tree. Offline Jsonnet output is compared byte-for-byte and the editor path is exercised. Unit/parser and malformed/missing/stale/tampered lock checks cover failure paths; external companion/native locks, relock/update and rebuild are required native jobs. The JSON projection is also consumed by an ordinary downstream check."
+      },
+      "linux": {
+        "derivations": [
+          "jb-purifier:x86_64-linux:fixture-tests",
+          "jb-purifier:x86_64-linux:conformance-offline",
+          "jb-purifier:x86_64-linux:conformance-missing",
+          "jb-purifier:x86_64-linux:conformance-external",
+          "jb-purifier:x86_64-linux:unit",
+          "jb-purifier:x86_64-linux:json-projection",
+          "jb-purifier:x86_64-linux:cli-package"
+        ],
+        "evidence": [
+          "https://github.com/nix-purifiers/jb-purifier/actions/runs/42153015867",
+          "https://github.com/nix-purifiers/jb-purifier/blob/6dddf87ece2fc7376d770e69b3cebeb4ba16e508/tests/default.nix",
+          "https://github.com/nix-purifiers/jb-purifier/blob/6dddf87ece2fc7376d770e69b3cebeb4ba16e508/tests/host-conformance.py",
+          "https://github.com/nix-purifiers/jb-purifier/blob/6dddf87ece2fc7376d770e69b3cebeb4ba16e508/tests/editor.py",
+          "https://github.com/nix-purifiers/jb-purifier/blob/6dddf87ece2fc7376d770e69b3cebeb4ba16e508/.github/workflows/check.yml"
+        ],
+        "gap": null,
+        "sources": [
+          "https://github.com/nix-purifiers/jb-purifier/blob/6dddf87ece2fc7376d770e69b3cebeb4ba16e508/tests/default.nix",
+          "https://github.com/nix-purifiers/jb-purifier/blob/6dddf87ece2fc7376d770e69b3cebeb4ba16e508/tests/host-conformance.py",
+          "https://github.com/nix-purifiers/jb-purifier/blob/6dddf87ece2fc7376d770e69b3cebeb4ba16e508/tests/editor.py",
+          "https://github.com/nix-purifiers/jb-purifier/blob/6dddf87ece2fc7376d770e69b3cebeb4ba16e508/.github/workflows/check.yml"
+        ],
+        "state": "met",
+        "summary": "Successful native x86_64-linux CI jobs actually build the identified check derivations from this exact source. SDK closure and output bindings distinguish execution from declarations/cross-evaluation."
+      },
+      "longCompatibility": {
+        "derivations": [
+          "jb-purifier:x86_64-linux:conformance-offline",
+          "jb-purifier:x86_64-linux:fixture-tests",
+          "jb-purifier:x86_64-linux:cli-package"
+        ],
+        "evidence": [
+          "https://github.com/nix-purifiers/jb-purifier/actions/runs/42153015867",
+          "https://github.com/nix-purifiers/jb-purifier/blob/6dddf87ece2fc7376d770e69b3cebeb4ba16e508/tests/default.nix",
+          "https://github.com/nix-purifiers/jb-purifier/blob/6dddf87ece2fc7376d770e69b3cebeb4ba16e508/tests/host-conformance.py",
+          "https://github.com/nix-purifiers/jb-purifier/blob/6dddf87ece2fc7376d770e69b3cebeb4ba16e508/tests/editor.py",
+          "https://github.com/nix-purifiers/jb-purifier/blob/6dddf87ece2fc7376d770e69b3cebeb4ba16e508/.github/workflows/check.yml"
+        ],
+        "gap": "CI executes Jsonnet Bundler0.6.0 host locking plus Jsonnet0.21.0 evaluation. No separate older native bundler/interpreter SDK has an executed sample check, so historical support cannot be inferred from the lock schema.",
+        "sources": [
+          "https://github.com/nix-purifiers/jb-purifier/blob/6dddf87ece2fc7376d770e69b3cebeb4ba16e508/tests/default.nix",
+          "https://github.com/nix-purifiers/jb-purifier/blob/6dddf87ece2fc7376d770e69b3cebeb4ba16e508/tests/host-conformance.py",
+          "https://github.com/nix-purifiers/jb-purifier/blob/6dddf87ece2fc7376d770e69b3cebeb4ba16e508/tests/editor.py",
+          "https://github.com/nix-purifiers/jb-purifier/blob/6dddf87ece2fc7376d770e69b3cebeb4ba16e508/.github/workflows/check.yml"
+        ],
+        "state": "not-met",
+        "summary": "CI executes Jsonnet Bundler0.6.0 host locking plus Jsonnet0.21.0 evaluation. No separate older native bundler/interpreter SDK has an executed sample check, so historical support cannot be inferred from the lock schema."
+      },
+      "manySamples": {
+        "derivations": [
+          "jb-purifier:x86_64-linux:fixture-tests"
+        ],
+        "evidence": [
+          "https://github.com/nix-purifiers/jb-purifier/actions/runs/42153015867",
+          "https://github.com/nix-purifiers/jb-purifier/blob/6dddf87ece2fc7376d770e69b3cebeb4ba16e508/tests/default.nix"
+        ],
+        "gap": "ASCII is a repository fixture. Its vendored Jsonnet library and ordinary JSON projection consumer add dependency/composition coverage but are not a collection of independent upstream consumer samples. Many-sample breadth is not demonstrated. Authored samples are eligible; this judgment reflects the narrow demonstrated consumer/build behavior rather than excluding fixtures solely by provenance.",
+        "sources": [
+          "https://github.com/nix-purifiers/jb-purifier/blob/6dddf87ece2fc7376d770e69b3cebeb4ba16e508/tests/default.nix"
+        ],
+        "state": "not-met",
+        "summary": "ASCII is a repository fixture. Its vendored Jsonnet library and ordinary JSON projection consumer add dependency/composition coverage but are not a collection of independent upstream consumer samples. Many-sample breadth is not demonstrated. Authored samples are eligible; this judgment reflects the narrow demonstrated consumer/build behavior rather than excluding fixtures solely by provenance."
+      },
+      "nonEolVersions": {
+        "derivations": [
+          "jb-purifier:x86_64-linux:conformance-offline",
+          "jb-purifier:x86_64-linux:fixture-tests",
+          "jb-purifier:x86_64-linux:cli-package"
+        ],
+        "evidence": [
+          "https://github.com/nix-purifiers/jb-purifier/actions/runs/42153015867",
+          "https://github.com/jsonnet-bundler/jsonnet-bundler/releases/tag/v0.6.0"
+        ],
+        "gap": null,
+        "sources": [
+          "https://github.com/jsonnet-bundler/jsonnet-bundler/releases/tag/v0.6.0"
+        ],
+        "state": "met",
+        "summary": "Primary latest release is Jsonnet Bundler0.6.0, matching CI. Reviewed release metadata supplies no exhaustive supported-branch/EOL policy; Jsonnet interpreter and language-server combinations also are not a supported-version matrix. No claim older versions are EOL. Judgment scope: exact executed current stable release point is sufficient for the current maintained line; absence of an EOL calendar is not a failure and does not establish additional supported lines."
+      },
+      "oneVersion": {
+        "derivations": [
+          "jb-purifier:x86_64-linux:conformance-offline",
+          "jb-purifier:x86_64-linux:fixture-tests",
+          "jb-purifier:x86_64-linux:cli-package"
+        ],
+        "evidence": [
+          "https://github.com/nix-purifiers/jb-purifier/actions/runs/42153015867",
+          "https://github.com/nix-purifiers/jb-purifier/blob/6dddf87ece2fc7376d770e69b3cebeb4ba16e508/tests/default.nix",
+          "https://github.com/nix-purifiers/jb-purifier/blob/6dddf87ece2fc7376d770e69b3cebeb4ba16e508/tests/host-conformance.py",
+          "https://github.com/nix-purifiers/jb-purifier/blob/6dddf87ece2fc7376d770e69b3cebeb4ba16e508/tests/editor.py",
+          "https://github.com/nix-purifiers/jb-purifier/blob/6dddf87ece2fc7376d770e69b3cebeb4ba16e508/.github/workflows/check.yml"
+        ],
+        "gap": null,
+        "sources": [
+          "https://github.com/nix-purifiers/jb-purifier/blob/6dddf87ece2fc7376d770e69b3cebeb4ba16e508/tests/default.nix",
+          "https://github.com/nix-purifiers/jb-purifier/blob/6dddf87ece2fc7376d770e69b3cebeb4ba16e508/tests/host-conformance.py",
+          "https://github.com/nix-purifiers/jb-purifier/blob/6dddf87ece2fc7376d770e69b3cebeb4ba16e508/tests/editor.py",
+          "https://github.com/nix-purifiers/jb-purifier/blob/6dddf87ece2fc7376d770e69b3cebeb4ba16e508/.github/workflows/check.yml"
+        ],
+        "state": "met",
+        "summary": "Executed exact SDK point(s): Jsonnet0.21.0 evaluation and Jsonnet Bundler0.6.0 native lock/replay. No patch interval is inferred."
+      }
+    },
+    "rationale": "Exact-source Linux sample/check derivations execute successfully with reviewed tests. Native Darwin execution is not demonstrated. A tested point on the current maintained release line is identified; no all-patch claim.",
+    "reviewedAt": "2026-11-06",
+    "reviewedRevision": "6dddf87ece2fc7376d770e69b3cebeb4ba16e508",
+    "sampleBuilds": [
+      {
+        "derivations": [
+          "jb-purifier:x86_64-linux:fixture-tests"
+        ],
+        "evidence": [
+          "https://github.com/nix-purifiers/jb-purifier/actions/runs/42153015867",
+          "https://github.com/nix-purifiers/jb-purifier/blob/6dddf87ece2fc7376d770e69b3cebeb4ba16e508/tests/default.nix"
+        ],
+        "kind": "repository-fixtures",
+        "name": "examples/ascii Jsonnet consumer"
+      }
+    ],
+    "tier": 3
+  },
+  "joplin-purifier": {
+    "criteria": {
+      "darwin": {
+        "derivations": [],
+        "evidence": [
+          "https://github.com/nix-purifiers/joplin-purifier/actions/runs/41955597874",
+          "https://github.com/nix-purifiers/joplin-purifier/blob/24660498c294841721be1fa651507b3c46243324/.github/workflows/check.yml"
+        ],
+        "gap": "A native Darwin sample/test build receipt with exact source/SDK/drv/output binding is absent.",
+        "sources": [
+          "https://github.com/nix-purifiers/joplin-purifier/blob/24660498c294841721be1fa651507b3c46243324/.github/workflows/check.yml"
+        ],
+        "state": "not-met",
+        "summary": "Inspected current-main workflow and successful job list have no native Darwin execution. The exported checks and required jobs cover Linux only."
+      },
+      "evaluation": {
+        "derivations": [
+          "joplin-purifier:x86_64-linux:project",
+          "joplin-purifier:x86_64-linux:environment",
+          "joplin-purifier:x86_64-linux:release",
+          "joplin-purifier:x86_64-linux:cli"
+        ],
+        "evidence": [
+          "https://github.com/nix-purifiers/joplin-purifier/actions/runs/41955597874",
+          "https://github.com/nix-purifiers/joplin-purifier/blob/24660498c294841721be1fa651507b3c46243324/flake.nix",
+          "https://github.com/nix-purifiers/joplin-purifier/blob/24660498c294841721be1fa651507b3c46243324/tests/desktop.py",
+          "https://github.com/nix-purifiers/joplin-purifier/blob/24660498c294841721be1fa651507b3c46243324/tests/conformance.py",
+          "https://github.com/nix-purifiers/joplin-purifier/blob/24660498c294841721be1fa651507b3c46243324/tests/artifacts.py",
+          "https://github.com/nix-purifiers/joplin-purifier/blob/24660498c294841721be1fa651507b3c46243324/tests/capture.py",
+          "https://github.com/nix-purifiers/joplin-purifier/blob/24660498c294841721be1fa651507b3c46243324/.github/workflows/check.yml"
+        ],
+        "gap": null,
+        "sources": [
+          "https://github.com/nix-purifiers/joplin-purifier/blob/24660498c294841721be1fa651507b3c46243324/flake.nix",
+          "https://github.com/nix-purifiers/joplin-purifier/blob/24660498c294841721be1fa651507b3c46243324/tests/desktop.py",
+          "https://github.com/nix-purifiers/joplin-purifier/blob/24660498c294841721be1fa651507b3c46243324/tests/conformance.py",
+          "https://github.com/nix-purifiers/joplin-purifier/blob/24660498c294841721be1fa651507b3c46243324/tests/artifacts.py",
+          "https://github.com/nix-purifiers/joplin-purifier/blob/24660498c294841721be1fa651507b3c46243324/tests/capture.py",
+          "https://github.com/nix-purifiers/joplin-purifier/blob/24660498c294841721be1fa651507b3c46243324/.github/workflows/check.yml"
+        ],
+        "state": "met",
+        "summary": "Actual no-IFD Nix evaluation at public main 24660498c294841721be1fa651507b3c46243324 yielded these check derivations; exact paths match successful native CI build traces. Source NAR, derivation bytes and output identities are recorded."
+      },
+      "goodTests": {
+        "derivations": [
+          "joplin-purifier:x86_64-linux:project",
+          "joplin-purifier:x86_64-linux:environment",
+          "joplin-purifier:x86_64-linux:release",
+          "joplin-purifier:x86_64-linux:cli"
+        ],
+        "evidence": [
+          "https://github.com/nix-purifiers/joplin-purifier/actions/runs/41955597874",
+          "https://github.com/nix-purifiers/joplin-purifier/blob/24660498c294841721be1fa651507b3c46243324/flake.nix",
+          "https://github.com/nix-purifiers/joplin-purifier/blob/24660498c294841721be1fa651507b3c46243324/tests/desktop.py",
+          "https://github.com/nix-purifiers/joplin-purifier/blob/24660498c294841721be1fa651507b3c46243324/tests/conformance.py",
+          "https://github.com/nix-purifiers/joplin-purifier/blob/24660498c294841721be1fa651507b3c46243324/tests/artifacts.py",
+          "https://github.com/nix-purifiers/joplin-purifier/blob/24660498c294841721be1fa651507b3c46243324/tests/capture.py",
+          "https://github.com/nix-purifiers/joplin-purifier/blob/24660498c294841721be1fa651507b3c46243324/.github/workflows/check.yml"
+        ],
+        "gap": null,
+        "sources": [
+          "https://github.com/nix-purifiers/joplin-purifier/blob/24660498c294841721be1fa651507b3c46243324/flake.nix",
+          "https://github.com/nix-purifiers/joplin-purifier/blob/24660498c294841721be1fa651507b3c46243324/tests/desktop.py",
+          "https://github.com/nix-purifiers/joplin-purifier/blob/24660498c294841721be1fa651507b3c46243324/tests/conformance.py",
+          "https://github.com/nix-purifiers/joplin-purifier/blob/24660498c294841721be1fa651507b3c46243324/tests/artifacts.py",
+          "https://github.com/nix-purifiers/joplin-purifier/blob/24660498c294841721be1fa651507b3c46243324/tests/capture.py",
+          "https://github.com/nix-purifiers/joplin-purifier/blob/24660498c294841721be1fa651507b3c46243324/.github/workflows/check.yml"
+        ],
+        "state": "met",
+        "summary": "The native project derivation produces Markdown via locked Joplin plugins. Required desktop tests actually launch the application, assert passed markers and profile-lock exclusion; conformance edits/restores selected plugins and rejects stale selection. Artifact checks assert exact Markdown and archive bytes, while capture and rebuild validate lock replay. These tests cover host lifecycle and produced content rather than treating plugin installation as sufficient."
+      },
+      "linux": {
+        "derivations": [
+          "joplin-purifier:x86_64-linux:project",
+          "joplin-purifier:x86_64-linux:environment",
+          "joplin-purifier:x86_64-linux:release",
+          "joplin-purifier:x86_64-linux:cli"
+        ],
+        "evidence": [
+          "https://github.com/nix-purifiers/joplin-purifier/actions/runs/41955597874",
+          "https://github.com/nix-purifiers/joplin-purifier/blob/24660498c294841721be1fa651507b3c46243324/flake.nix",
+          "https://github.com/nix-purifiers/joplin-purifier/blob/24660498c294841721be1fa651507b3c46243324/tests/desktop.py",
+          "https://github.com/nix-purifiers/joplin-purifier/blob/24660498c294841721be1fa651507b3c46243324/tests/conformance.py",
+          "https://github.com/nix-purifiers/joplin-purifier/blob/24660498c294841721be1fa651507b3c46243324/tests/artifacts.py",
+          "https://github.com/nix-purifiers/joplin-purifier/blob/24660498c294841721be1fa651507b3c46243324/tests/capture.py",
+          "https://github.com/nix-purifiers/joplin-purifier/blob/24660498c294841721be1fa651507b3c46243324/.github/workflows/check.yml"
+        ],
+        "gap": null,
+        "sources": [
+          "https://github.com/nix-purifiers/joplin-purifier/blob/24660498c294841721be1fa651507b3c46243324/flake.nix",
+          "https://github.com/nix-purifiers/joplin-purifier/blob/24660498c294841721be1fa651507b3c46243324/tests/desktop.py",
+          "https://github.com/nix-purifiers/joplin-purifier/blob/24660498c294841721be1fa651507b3c46243324/tests/conformance.py",
+          "https://github.com/nix-purifiers/joplin-purifier/blob/24660498c294841721be1fa651507b3c46243324/tests/artifacts.py",
+          "https://github.com/nix-purifiers/joplin-purifier/blob/24660498c294841721be1fa651507b3c46243324/tests/capture.py",
+          "https://github.com/nix-purifiers/joplin-purifier/blob/24660498c294841721be1fa651507b3c46243324/.github/workflows/check.yml"
+        ],
+        "state": "met",
+        "summary": "Successful native x86_64-linux CI jobs actually build the identified check derivations from this exact source. SDK closure and output bindings distinguish execution from declarations/cross-evaluation."
+      },
+      "longCompatibility": {
+        "derivations": [
+          "joplin-purifier:x86_64-linux:project"
+        ],
+        "evidence": [
+          "https://github.com/nix-purifiers/joplin-purifier/actions/runs/41955597874",
+          "https://github.com/nix-purifiers/joplin-purifier/blob/24660498c294841721be1fa651507b3c46243324/flake.nix",
+          "https://github.com/nix-purifiers/joplin-purifier/blob/24660498c294841721be1fa651507b3c46243324/tests/desktop.py",
+          "https://github.com/nix-purifiers/joplin-purifier/blob/24660498c294841721be1fa651507b3c46243324/tests/conformance.py",
+          "https://github.com/nix-purifiers/joplin-purifier/blob/24660498c294841721be1fa651507b3c46243324/tests/artifacts.py",
+          "https://github.com/nix-purifiers/joplin-purifier/blob/24660498c294841721be1fa651507b3c46243324/tests/capture.py",
+          "https://github.com/nix-purifiers/joplin-purifier/blob/24660498c294841721be1fa651507b3c46243324/.github/workflows/check.yml"
+        ],
+        "gap": "All native desktop/project execution binds Joplin3.7.21. app_min_version1.8.1 in plugin manifests is a dependency declaration, not a successful historical Joplin SDK execution. No long native-version corpus is established.",
+        "sources": [
+          "https://github.com/nix-purifiers/joplin-purifier/blob/24660498c294841721be1fa651507b3c46243324/flake.nix",
+          "https://github.com/nix-purifiers/joplin-purifier/blob/24660498c294841721be1fa651507b3c46243324/tests/desktop.py",
+          "https://github.com/nix-purifiers/joplin-purifier/blob/24660498c294841721be1fa651507b3c46243324/tests/conformance.py",
+          "https://github.com/nix-purifiers/joplin-purifier/blob/24660498c294841721be1fa651507b3c46243324/tests/artifacts.py",
+          "https://github.com/nix-purifiers/joplin-purifier/blob/24660498c294841721be1fa651507b3c46243324/tests/capture.py",
+          "https://github.com/nix-purifiers/joplin-purifier/blob/24660498c294841721be1fa651507b3c46243324/.github/workflows/check.yml"
+        ],
+        "state": "not-met",
+        "summary": "All native desktop/project execution binds Joplin3.7.21. app_min_version1.8.1 in plugin manifests is a dependency declaration, not a successful historical Joplin SDK execution. No long native-version corpus is established."
+      },
+      "manySamples": {
+        "derivations": [
+          "joplin-purifier:x86_64-linux:project"
+        ],
+        "evidence": [
+          "https://github.com/nix-purifiers/joplin-purifier/actions/runs/41955597874",
+          "https://github.com/nix-purifiers/joplin-purifier/blob/24660498c294841721be1fa651507b3c46243324/flake.nix"
+        ],
+        "gap": "The notes and selected plugins belong to one authored project; desktop profile/provider tests are controlled variants. Multiple notes/plugins do not establish separate independent upstream sample projects. Authored samples are eligible; this judgment reflects the narrow demonstrated consumer/build behavior rather than excluding fixtures solely by provenance.",
+        "sources": [
+          "https://github.com/nix-purifiers/joplin-purifier/blob/24660498c294841721be1fa651507b3c46243324/flake.nix"
+        ],
+        "state": "not-met",
+        "summary": "The notes and selected plugins belong to one authored project; desktop profile/provider tests are controlled variants. Multiple notes/plugins do not establish separate independent upstream sample projects. Authored samples are eligible; this judgment reflects the narrow demonstrated consumer/build behavior rather than excluding fixtures solely by provenance."
+      },
+      "nonEolVersions": {
+        "derivations": [
+          "joplin-purifier:x86_64-linux:project"
+        ],
+        "evidence": [
+          "https://github.com/nix-purifiers/joplin-purifier/actions/runs/41955597874",
+          "https://joplinapp.org/help/about/release_cycle/",
+          "https://joplinapp.org/help/about/changelog/desktop/"
+        ],
+        "gap": null,
+        "sources": [
+          "https://joplinapp.org/help/about/release_cycle/",
+          "https://joplinapp.org/help/about/changelog/desktop/"
+        ],
+        "state": "met",
+        "summary": "Release-cycle and changelog inspected; latest listed3.7.22 dated2026-10-28 while CI binds3.7.21. A newer patch does not itself make3.7.21 EOL. No primary exhaustive maintained set plus corresponding executable SDK matrix established. Judgment scope: executed3.7.21 is a point on current3.7 stable line;3.7.22 is a patch update, not evidence that the tested line is EOL. No all-patch claim."
+      },
+      "oneVersion": {
+        "derivations": [
+          "joplin-purifier:x86_64-linux:project"
+        ],
+        "evidence": [
+          "https://github.com/nix-purifiers/joplin-purifier/actions/runs/41955597874",
+          "https://github.com/nix-purifiers/joplin-purifier/blob/24660498c294841721be1fa651507b3c46243324/flake.nix",
+          "https://github.com/nix-purifiers/joplin-purifier/blob/24660498c294841721be1fa651507b3c46243324/tests/desktop.py",
+          "https://github.com/nix-purifiers/joplin-purifier/blob/24660498c294841721be1fa651507b3c46243324/tests/conformance.py",
+          "https://github.com/nix-purifiers/joplin-purifier/blob/24660498c294841721be1fa651507b3c46243324/tests/artifacts.py",
+          "https://github.com/nix-purifiers/joplin-purifier/blob/24660498c294841721be1fa651507b3c46243324/tests/capture.py",
+          "https://github.com/nix-purifiers/joplin-purifier/blob/24660498c294841721be1fa651507b3c46243324/.github/workflows/check.yml"
+        ],
+        "gap": null,
+        "sources": [
+          "https://github.com/nix-purifiers/joplin-purifier/blob/24660498c294841721be1fa651507b3c46243324/flake.nix",
+          "https://github.com/nix-purifiers/joplin-purifier/blob/24660498c294841721be1fa651507b3c46243324/tests/desktop.py",
+          "https://github.com/nix-purifiers/joplin-purifier/blob/24660498c294841721be1fa651507b3c46243324/tests/conformance.py",
+          "https://github.com/nix-purifiers/joplin-purifier/blob/24660498c294841721be1fa651507b3c46243324/tests/artifacts.py",
+          "https://github.com/nix-purifiers/joplin-purifier/blob/24660498c294841721be1fa651507b3c46243324/tests/capture.py",
+          "https://github.com/nix-purifiers/joplin-purifier/blob/24660498c294841721be1fa651507b3c46243324/.github/workflows/check.yml"
+        ],
+        "state": "met",
+        "summary": "Executed exact SDK point(s): Joplin Desktop3.7.21. No patch interval is inferred."
+      }
+    },
+    "rationale": "Exact-source Linux sample/check derivations execute successfully with reviewed tests. Native Darwin execution is not demonstrated. A tested point on the current maintained release line is identified; no all-patch claim.",
+    "reviewedAt": "2026-11-06",
+    "reviewedRevision": "24660498c294841721be1fa651507b3c46243324",
+    "sampleBuilds": [
+      {
+        "derivations": [
+          "joplin-purifier:x86_64-linux:project"
+        ],
+        "evidence": [
+          "https://github.com/nix-purifiers/joplin-purifier/actions/runs/41955597874",
+          "https://github.com/nix-purifiers/joplin-purifier/blob/24660498c294841721be1fa651507b3c46243324/flake.nix"
+        ],
+        "kind": "repository-fixtures",
+        "name": "examples/minimal notes/plugin project"
+      }
+    ],
+    "tier": 3
+  },
+  "julia-purifier": {
+    "criteria": {
+      "darwin": {
+        "derivations": [],
+        "evidence": [
+          "https://github.com/nix-purifiers/julia-purifier/actions/runs/42153338689",
+          "https://github.com/nix-purifiers/julia-purifier/blob/dab47130d47fa857f6b62dbed326fdb4aafd0048/.github/workflows/check.yml"
+        ],
+        "gap": "A native Darwin sample/test build receipt with exact source/SDK/drv/output binding is absent.",
+        "sources": [
+          "https://github.com/nix-purifiers/julia-purifier/blob/dab47130d47fa857f6b62dbed326fdb4aafd0048/.github/workflows/check.yml"
+        ],
+        "state": "not-met",
+        "summary": "Inspected current-main workflow and successful job list have no native Darwin execution. The flake declares/evaluates Darwin, which supplies no runtime credit."
+      },
+      "evaluation": {
+        "derivations": [
+          "julia-purifier:x86_64-linux:app-tests",
+          "julia-purifier:x86_64-linux:app-checked",
+          "julia-purifier:x86_64-linux:realworld-json3-tests",
+          "julia-purifier:x86_64-linux:conformance-offline",
+          "julia-purifier:x86_64-linux:conformance-missing",
+          "julia-purifier:x86_64-linux:workspace-tests",
+          "julia-purifier:x86_64-linux:buildscript"
+        ],
+        "evidence": [
+          "https://github.com/nix-purifiers/julia-purifier/actions/runs/42153338689",
+          "https://github.com/nix-purifiers/julia-purifier/blob/dab47130d47fa857f6b62dbed326fdb4aafd0048/tests/default.nix",
+          "https://github.com/nix-purifiers/julia-purifier/blob/dab47130d47fa857f6b62dbed326fdb4aafd0048/tests/dependencies/flake.nix",
+          "https://github.com/nix-purifiers/julia-purifier/blob/dab47130d47fa857f6b62dbed326fdb4aafd0048/tests/cli.sh",
+          "https://github.com/nix-purifiers/julia-purifier/blob/dab47130d47fa857f6b62dbed326fdb4aafd0048/nix/lib/build-julia-project.nix",
+          "https://github.com/nix-purifiers/julia-purifier/blob/dab47130d47fa857f6b62dbed326fdb4aafd0048/.github/workflows/check.yml"
+        ],
+        "gap": null,
+        "sources": [
+          "https://github.com/nix-purifiers/julia-purifier/blob/dab47130d47fa857f6b62dbed326fdb4aafd0048/tests/default.nix",
+          "https://github.com/nix-purifiers/julia-purifier/blob/dab47130d47fa857f6b62dbed326fdb4aafd0048/tests/dependencies/flake.nix",
+          "https://github.com/nix-purifiers/julia-purifier/blob/dab47130d47fa857f6b62dbed326fdb4aafd0048/tests/cli.sh",
+          "https://github.com/nix-purifiers/julia-purifier/blob/dab47130d47fa857f6b62dbed326fdb4aafd0048/nix/lib/build-julia-project.nix",
+          "https://github.com/nix-purifiers/julia-purifier/blob/dab47130d47fa857f6b62dbed326fdb4aafd0048/.github/workflows/check.yml"
+        ],
+        "state": "met",
+        "summary": "Actual no-IFD Nix evaluation at public main dab47130d47fa857f6b62dbed326fdb4aafd0048 yielded these check derivations; exact paths match successful native CI build traces. Source NAR, derivation bytes and output identities are recorded."
+      },
+      "goodTests": {
+        "derivations": [
+          "julia-purifier:x86_64-linux:app-tests",
+          "julia-purifier:x86_64-linux:app-checked",
+          "julia-purifier:x86_64-linux:realworld-json3-tests",
+          "julia-purifier:x86_64-linux:conformance-offline",
+          "julia-purifier:x86_64-linux:conformance-missing",
+          "julia-purifier:x86_64-linux:workspace-tests",
+          "julia-purifier:x86_64-linux:buildscript"
+        ],
+        "evidence": [
+          "https://github.com/nix-purifiers/julia-purifier/actions/runs/42153338689",
+          "https://github.com/nix-purifiers/julia-purifier/blob/dab47130d47fa857f6b62dbed326fdb4aafd0048/tests/default.nix",
+          "https://github.com/nix-purifiers/julia-purifier/blob/dab47130d47fa857f6b62dbed326fdb4aafd0048/tests/dependencies/flake.nix",
+          "https://github.com/nix-purifiers/julia-purifier/blob/dab47130d47fa857f6b62dbed326fdb4aafd0048/tests/cli.sh",
+          "https://github.com/nix-purifiers/julia-purifier/blob/dab47130d47fa857f6b62dbed326fdb4aafd0048/nix/lib/build-julia-project.nix",
+          "https://github.com/nix-purifiers/julia-purifier/blob/dab47130d47fa857f6b62dbed326fdb4aafd0048/.github/workflows/check.yml"
+        ],
+        "gap": null,
+        "sources": [
+          "https://github.com/nix-purifiers/julia-purifier/blob/dab47130d47fa857f6b62dbed326fdb4aafd0048/tests/default.nix",
+          "https://github.com/nix-purifiers/julia-purifier/blob/dab47130d47fa857f6b62dbed326fdb4aafd0048/tests/dependencies/flake.nix",
+          "https://github.com/nix-purifiers/julia-purifier/blob/dab47130d47fa857f6b62dbed326fdb4aafd0048/tests/cli.sh",
+          "https://github.com/nix-purifiers/julia-purifier/blob/dab47130d47fa857f6b62dbed326fdb4aafd0048/nix/lib/build-julia-project.nix",
+          "https://github.com/nix-purifiers/julia-purifier/blob/dab47130d47fa857f6b62dbed326fdb4aafd0048/.github/workflows/check.yml"
+        ],
+        "state": "met",
+        "summary": "The suite executes authored app/workspace tests, test-only dependencies, package build scripts and binary artifacts, plus pinned independent JSON3.jl upstream tests. External manifests, stale/tampered/missing/malformed locks, offline native/editor use and relock/update/rebuild are checked. app-checked explicitly enables doCheck; JSON3 tests run separately from the default package build, so test credit attaches to test derivations."
+      },
+      "linux": {
+        "derivations": [
+          "julia-purifier:x86_64-linux:app-tests",
+          "julia-purifier:x86_64-linux:app-checked",
+          "julia-purifier:x86_64-linux:realworld-json3-tests",
+          "julia-purifier:x86_64-linux:conformance-offline",
+          "julia-purifier:x86_64-linux:conformance-missing",
+          "julia-purifier:x86_64-linux:workspace-tests",
+          "julia-purifier:x86_64-linux:buildscript"
+        ],
+        "evidence": [
+          "https://github.com/nix-purifiers/julia-purifier/actions/runs/42153338689",
+          "https://github.com/nix-purifiers/julia-purifier/blob/dab47130d47fa857f6b62dbed326fdb4aafd0048/tests/default.nix",
+          "https://github.com/nix-purifiers/julia-purifier/blob/dab47130d47fa857f6b62dbed326fdb4aafd0048/tests/dependencies/flake.nix",
+          "https://github.com/nix-purifiers/julia-purifier/blob/dab47130d47fa857f6b62dbed326fdb4aafd0048/tests/cli.sh",
+          "https://github.com/nix-purifiers/julia-purifier/blob/dab47130d47fa857f6b62dbed326fdb4aafd0048/nix/lib/build-julia-project.nix",
+          "https://github.com/nix-purifiers/julia-purifier/blob/dab47130d47fa857f6b62dbed326fdb4aafd0048/.github/workflows/check.yml"
+        ],
+        "gap": null,
+        "sources": [
+          "https://github.com/nix-purifiers/julia-purifier/blob/dab47130d47fa857f6b62dbed326fdb4aafd0048/tests/default.nix",
+          "https://github.com/nix-purifiers/julia-purifier/blob/dab47130d47fa857f6b62dbed326fdb4aafd0048/tests/dependencies/flake.nix",
+          "https://github.com/nix-purifiers/julia-purifier/blob/dab47130d47fa857f6b62dbed326fdb4aafd0048/tests/cli.sh",
+          "https://github.com/nix-purifiers/julia-purifier/blob/dab47130d47fa857f6b62dbed326fdb4aafd0048/nix/lib/build-julia-project.nix",
+          "https://github.com/nix-purifiers/julia-purifier/blob/dab47130d47fa857f6b62dbed326fdb4aafd0048/.github/workflows/check.yml"
+        ],
+        "state": "met",
+        "summary": "Successful native x86_64-linux CI jobs actually build the identified check derivations from this exact source. SDK closure and output bindings distinguish execution from declarations/cross-evaluation."
+      },
+      "longCompatibility": {
+        "derivations": [
+          "julia-purifier:x86_64-linux:app-tests",
+          "julia-purifier:x86_64-linux:realworld-json3-tests"
+        ],
+        "evidence": [
+          "https://github.com/nix-purifiers/julia-purifier/actions/runs/42153338689",
+          "https://github.com/nix-purifiers/julia-purifier/blob/dab47130d47fa857f6b62dbed326fdb4aafd0048/tests/default.nix",
+          "https://github.com/nix-purifiers/julia-purifier/blob/dab47130d47fa857f6b62dbed326fdb4aafd0048/tests/dependencies/flake.nix",
+          "https://github.com/nix-purifiers/julia-purifier/blob/dab47130d47fa857f6b62dbed326fdb4aafd0048/tests/cli.sh",
+          "https://github.com/nix-purifiers/julia-purifier/blob/dab47130d47fa857f6b62dbed326fdb4aafd0048/nix/lib/build-julia-project.nix",
+          "https://github.com/nix-purifiers/julia-purifier/blob/dab47130d47fa857f6b62dbed326fdb4aafd0048/.github/workflows/check.yml"
+        ],
+        "gap": "The executed sample/test derivation closures bind Julia1.13.2; native CLI also has1.13.3. Code offers manifest-selection attributes for1.10/1.11/1.12 but no corresponding executed sample derivations were found. Declared selectors are not historical runtime proof.",
+        "sources": [
+          "https://github.com/nix-purifiers/julia-purifier/blob/dab47130d47fa857f6b62dbed326fdb4aafd0048/tests/default.nix",
+          "https://github.com/nix-purifiers/julia-purifier/blob/dab47130d47fa857f6b62dbed326fdb4aafd0048/tests/dependencies/flake.nix",
+          "https://github.com/nix-purifiers/julia-purifier/blob/dab47130d47fa857f6b62dbed326fdb4aafd0048/tests/cli.sh",
+          "https://github.com/nix-purifiers/julia-purifier/blob/dab47130d47fa857f6b62dbed326fdb4aafd0048/nix/lib/build-julia-project.nix",
+          "https://github.com/nix-purifiers/julia-purifier/blob/dab47130d47fa857f6b62dbed326fdb4aafd0048/.github/workflows/check.yml"
+        ],
+        "state": "not-met",
+        "summary": "The executed sample/test derivation closures bind Julia1.13.2; native CLI also has1.13.3. Code offers manifest-selection attributes for1.10/1.11/1.12 but no corresponding executed sample derivations were found. Declared selectors are not historical runtime proof."
+      },
+      "manySamples": {
+        "derivations": [
+          "julia-purifier:x86_64-linux:realworld-json3",
+          "julia-purifier:x86_64-linux:realworld-json3-tests",
+          "julia-purifier:x86_64-linux:app-checked",
+          "julia-purifier:x86_64-linux:app-tests",
+          "julia-purifier:x86_64-linux:workspace",
+          "julia-purifier:x86_64-linux:workspace-tests",
+          "julia-purifier:x86_64-linux:buildscript"
+        ],
+        "evidence": [
+          "https://github.com/nix-purifiers/julia-purifier/actions/runs/42153338689",
+          "https://github.com/nix-purifiers/julia-purifier/blob/dab47130d47fa857f6b62dbed326fdb4aafd0048/tests/default.nix"
+        ],
+        "gap": null,
+        "sources": [
+          "https://github.com/nix-purifiers/julia-purifier/blob/dab47130d47fa857f6b62dbed326fdb4aafd0048/tests/default.nix"
+        ],
+        "state": "met",
+        "summary": "The executed samples are a package/command with General-registry, Git, binary-artifact and test-only dependencies; a workspace with path and Git-subdirectory library/command members; an environment whose dependency build.jl executes offline; and pinned independent JSON3.jl with its upstream tests, Arrow extension and JLL artifacts. These are materially different successful source/graph/build behaviors, not just repeated assertions over one project. The three controlled fixtures and the independent upstream package retain separate provenance, with no numerical cutoff or upstream-only requirement."
+      },
+      "nonEolVersions": {
+        "derivations": [
+          "julia-purifier:x86_64-linux:app-tests",
+          "julia-purifier:x86_64-linux:realworld-json3-tests"
+        ],
+        "evidence": [
+          "https://github.com/nix-purifiers/julia-purifier/actions/runs/42153338689",
+          "https://julialang.org/downloads/"
+        ],
+        "gap": "Primary downloads lists stable1.13.3 and LTS1.10.13. Inspected CI includes1.13.2/1.13.3 native SDK paths, but no1.10 LTS sample/test derivation execution. Not-met specifically because maintained LTS proof is absent, not because1.13.2 is necessarily EOL.",
+        "sources": [
+          "https://julialang.org/downloads/"
+        ],
+        "state": "not-met",
+        "summary": "Primary downloads lists stable1.13.3 and LTS1.10.13. Inspected CI includes1.13.2/1.13.3 native SDK paths, but no1.10 LTS sample/test derivation execution. Not-met specifically because maintained LTS proof is absent, not because1.13.2 is necessarily EOL."
+      },
+      "oneVersion": {
+        "derivations": [
+          "julia-purifier:x86_64-linux:app-tests",
+          "julia-purifier:x86_64-linux:realworld-json3-tests"
+        ],
+        "evidence": [
+          "https://github.com/nix-purifiers/julia-purifier/actions/runs/42153338689",
+          "https://github.com/nix-purifiers/julia-purifier/blob/dab47130d47fa857f6b62dbed326fdb4aafd0048/tests/default.nix",
+          "https://github.com/nix-purifiers/julia-purifier/blob/dab47130d47fa857f6b62dbed326fdb4aafd0048/tests/dependencies/flake.nix",
+          "https://github.com/nix-purifiers/julia-purifier/blob/dab47130d47fa857f6b62dbed326fdb4aafd0048/tests/cli.sh",
+          "https://github.com/nix-purifiers/julia-purifier/blob/dab47130d47fa857f6b62dbed326fdb4aafd0048/nix/lib/build-julia-project.nix",
+          "https://github.com/nix-purifiers/julia-purifier/blob/dab47130d47fa857f6b62dbed326fdb4aafd0048/.github/workflows/check.yml"
+        ],
+        "gap": null,
+        "sources": [
+          "https://github.com/nix-purifiers/julia-purifier/blob/dab47130d47fa857f6b62dbed326fdb4aafd0048/tests/default.nix",
+          "https://github.com/nix-purifiers/julia-purifier/blob/dab47130d47fa857f6b62dbed326fdb4aafd0048/tests/dependencies/flake.nix",
+          "https://github.com/nix-purifiers/julia-purifier/blob/dab47130d47fa857f6b62dbed326fdb4aafd0048/tests/cli.sh",
+          "https://github.com/nix-purifiers/julia-purifier/blob/dab47130d47fa857f6b62dbed326fdb4aafd0048/nix/lib/build-julia-project.nix",
+          "https://github.com/nix-purifiers/julia-purifier/blob/dab47130d47fa857f6b62dbed326fdb4aafd0048/.github/workflows/check.yml"
+        ],
+        "state": "met",
+        "summary": "Executed exact SDK point(s): Julia1.13.2 in sample/test derivation closures (CLI separately includes1.13.3). No patch interval is inferred."
+      }
+    },
+    "rationale": "Exact-source Linux sample/check derivations execute successfully with reviewed tests. Native Darwin execution is not demonstrated. Current maintained-version execution also has the specific gap documented below.",
+    "reviewedAt": "2026-11-06",
+    "reviewedRevision": "dab47130d47fa857f6b62dbed326fdb4aafd0048",
+    "sampleBuilds": [
+      {
+        "derivations": [
+          "julia-purifier:x86_64-linux:realworld-json3",
+          "julia-purifier:x86_64-linux:realworld-json3-tests"
+        ],
+        "evidence": [
+          "https://github.com/nix-purifiers/julia-purifier/actions/runs/42153338689",
+          "https://github.com/nix-purifiers/julia-purifier/blob/dab47130d47fa857f6b62dbed326fdb4aafd0048/tests/default.nix"
+        ],
+        "kind": "independent-upstream",
+        "name": "JSON3.jl1.14.4",
+        "repository": "https://github.com/quinnj/JSON3.jl",
+        "revision": "15061b1226f85fdc9c6665b9342e6ec01b5cb768"
+      },
+      {
+        "derivations": [
+          "julia-purifier:x86_64-linux:app-checked",
+          "julia-purifier:x86_64-linux:app-tests"
+        ],
+        "evidence": [
+          "https://github.com/nix-purifiers/julia-purifier/actions/runs/42153338689",
+          "https://github.com/nix-purifiers/julia-purifier/blob/dab47130d47fa857f6b62dbed326fdb4aafd0048/tests/default.nix"
+        ],
+        "kind": "repository-fixtures",
+        "name": "package/command with registry, git, artifact and test extras",
+        "sourcePath": "tests/fixtures/app"
+      },
+      {
+        "derivations": [
+          "julia-purifier:x86_64-linux:workspace",
+          "julia-purifier:x86_64-linux:workspace-tests"
+        ],
+        "evidence": [
+          "https://github.com/nix-purifiers/julia-purifier/actions/runs/42153338689",
+          "https://github.com/nix-purifiers/julia-purifier/blob/dab47130d47fa857f6b62dbed326fdb4aafd0048/tests/default.nix"
+        ],
+        "kind": "repository-fixtures",
+        "name": "workspace library and command with path/subdirectory dependencies",
+        "sourcePath": "tests/fixtures/workspace"
+      },
+      {
+        "derivations": [
+          "julia-purifier:x86_64-linux:buildscript"
+        ],
+        "evidence": [
+          "https://github.com/nix-purifiers/julia-purifier/actions/runs/42153338689",
+          "https://github.com/nix-purifiers/julia-purifier/blob/dab47130d47fa857f6b62dbed326fdb4aafd0048/tests/default.nix"
+        ],
+        "kind": "repository-fixtures",
+        "name": "environment with offline dependency build.jl",
+        "sourcePath": "tests/fixtures/buildscript"
+      }
+    ],
+    "tier": 3
+  },
+  "kicad-purifier": {
+    "criteria": {
+      "darwin": {
+        "derivations": [],
+        "evidence": [
+          "https://github.com/nix-purifiers/kicad-purifier/actions/runs/41963379890",
+          "https://github.com/nix-purifiers/kicad-purifier/blob/4169bf815c24d866053c0ced56084024e40a196c/.github/workflows/check.yml"
+        ],
+        "gap": "A native Darwin sample/test build receipt with exact source/SDK/drv/output binding is absent.",
+        "sources": [
+          "https://github.com/nix-purifiers/kicad-purifier/blob/4169bf815c24d866053c0ced56084024e40a196c/.github/workflows/check.yml"
+        ],
+        "state": "not-met",
+        "summary": "Inspected current-main workflow and successful job list have no native Darwin execution. The exported checks and required jobs cover Linux only."
+      },
+      "evaluation": {
+        "derivations": [
+          "kicad-purifier:x86_64-linux:project",
+          "kicad-purifier:x86_64-linux:environment",
+          "kicad-purifier:x86_64-linux:release",
+          "kicad-purifier:x86_64-linux:cli"
+        ],
+        "evidence": [
+          "https://github.com/nix-purifiers/kicad-purifier/actions/runs/41963379890",
+          "https://github.com/nix-purifiers/kicad-purifier/blob/4169bf815c24d866053c0ced56084024e40a196c/flake.nix",
+          "https://github.com/nix-purifiers/kicad-purifier/blob/4169bf815c24d866053c0ced56084024e40a196c/tests/native.py",
+          "https://github.com/nix-purifiers/kicad-purifier/blob/4169bf815c24d866053c0ced56084024e40a196c/tests/gui.py",
+          "https://github.com/nix-purifiers/kicad-purifier/blob/4169bf815c24d866053c0ced56084024e40a196c/tests/provider.py",
+          "https://github.com/nix-purifiers/kicad-purifier/blob/4169bf815c24d866053c0ced56084024e40a196c/tests/artifacts.py",
+          "https://github.com/nix-purifiers/kicad-purifier/blob/4169bf815c24d866053c0ced56084024e40a196c/tests/capture.py",
+          "https://github.com/nix-purifiers/kicad-purifier/blob/4169bf815c24d866053c0ced56084024e40a196c/.github/workflows/check.yml"
+        ],
+        "gap": null,
+        "sources": [
+          "https://github.com/nix-purifiers/kicad-purifier/blob/4169bf815c24d866053c0ced56084024e40a196c/flake.nix",
+          "https://github.com/nix-purifiers/kicad-purifier/blob/4169bf815c24d866053c0ced56084024e40a196c/tests/native.py",
+          "https://github.com/nix-purifiers/kicad-purifier/blob/4169bf815c24d866053c0ced56084024e40a196c/tests/gui.py",
+          "https://github.com/nix-purifiers/kicad-purifier/blob/4169bf815c24d866053c0ced56084024e40a196c/tests/provider.py",
+          "https://github.com/nix-purifiers/kicad-purifier/blob/4169bf815c24d866053c0ced56084024e40a196c/tests/artifacts.py",
+          "https://github.com/nix-purifiers/kicad-purifier/blob/4169bf815c24d866053c0ced56084024e40a196c/tests/capture.py",
+          "https://github.com/nix-purifiers/kicad-purifier/blob/4169bf815c24d866053c0ced56084024e40a196c/.github/workflows/check.yml"
+        ],
+        "state": "met",
+        "summary": "Actual no-IFD Nix evaluation at public main 4169bf815c24d866053c0ced56084024e40a196c yielded these check derivations; exact paths match successful native CI build traces. Source NAR, derivation bytes and output identities are recorded."
+      },
+      "goodTests": {
+        "derivations": [
+          "kicad-purifier:x86_64-linux:project",
+          "kicad-purifier:x86_64-linux:environment",
+          "kicad-purifier:x86_64-linux:release",
+          "kicad-purifier:x86_64-linux:cli"
+        ],
+        "evidence": [
+          "https://github.com/nix-purifiers/kicad-purifier/actions/runs/41963379890",
+          "https://github.com/nix-purifiers/kicad-purifier/blob/4169bf815c24d866053c0ced56084024e40a196c/flake.nix",
+          "https://github.com/nix-purifiers/kicad-purifier/blob/4169bf815c24d866053c0ced56084024e40a196c/tests/native.py",
+          "https://github.com/nix-purifiers/kicad-purifier/blob/4169bf815c24d866053c0ced56084024e40a196c/tests/gui.py",
+          "https://github.com/nix-purifiers/kicad-purifier/blob/4169bf815c24d866053c0ced56084024e40a196c/tests/provider.py",
+          "https://github.com/nix-purifiers/kicad-purifier/blob/4169bf815c24d866053c0ced56084024e40a196c/tests/artifacts.py",
+          "https://github.com/nix-purifiers/kicad-purifier/blob/4169bf815c24d866053c0ced56084024e40a196c/tests/capture.py",
+          "https://github.com/nix-purifiers/kicad-purifier/blob/4169bf815c24d866053c0ced56084024e40a196c/.github/workflows/check.yml"
+        ],
+        "gap": null,
+        "sources": [
+          "https://github.com/nix-purifiers/kicad-purifier/blob/4169bf815c24d866053c0ced56084024e40a196c/flake.nix",
+          "https://github.com/nix-purifiers/kicad-purifier/blob/4169bf815c24d866053c0ced56084024e40a196c/tests/native.py",
+          "https://github.com/nix-purifiers/kicad-purifier/blob/4169bf815c24d866053c0ced56084024e40a196c/tests/gui.py",
+          "https://github.com/nix-purifiers/kicad-purifier/blob/4169bf815c24d866053c0ced56084024e40a196c/tests/provider.py",
+          "https://github.com/nix-purifiers/kicad-purifier/blob/4169bf815c24d866053c0ced56084024e40a196c/tests/artifacts.py",
+          "https://github.com/nix-purifiers/kicad-purifier/blob/4169bf815c24d866053c0ced56084024e40a196c/tests/capture.py",
+          "https://github.com/nix-purifiers/kicad-purifier/blob/4169bf815c24d866053c0ced56084024e40a196c/.github/workflows/check.yml"
+        ],
+        "state": "met",
+        "summary": "The project derivation builds native plugin outputs and HTML BOM with KiCad10.0.7. Required provider/native/GUI tests assert plugin origins are immutable store paths, invoke InteractiveHtmlBomPlugin, allow project networking, reject unlocked plugin state, and test source-edit/restoration behavior. Artifact checks inspect resistor fields, PCB metadata/footprints/edges and release archive bytes; capture and rebuild validate lock replay."
+      },
+      "linux": {
+        "derivations": [
+          "kicad-purifier:x86_64-linux:project",
+          "kicad-purifier:x86_64-linux:environment",
+          "kicad-purifier:x86_64-linux:release",
+          "kicad-purifier:x86_64-linux:cli"
+        ],
+        "evidence": [
+          "https://github.com/nix-purifiers/kicad-purifier/actions/runs/41963379890",
+          "https://github.com/nix-purifiers/kicad-purifier/blob/4169bf815c24d866053c0ced56084024e40a196c/flake.nix",
+          "https://github.com/nix-purifiers/kicad-purifier/blob/4169bf815c24d866053c0ced56084024e40a196c/tests/native.py",
+          "https://github.com/nix-purifiers/kicad-purifier/blob/4169bf815c24d866053c0ced56084024e40a196c/tests/gui.py",
+          "https://github.com/nix-purifiers/kicad-purifier/blob/4169bf815c24d866053c0ced56084024e40a196c/tests/provider.py",
+          "https://github.com/nix-purifiers/kicad-purifier/blob/4169bf815c24d866053c0ced56084024e40a196c/tests/artifacts.py",
+          "https://github.com/nix-purifiers/kicad-purifier/blob/4169bf815c24d866053c0ced56084024e40a196c/tests/capture.py",
+          "https://github.com/nix-purifiers/kicad-purifier/blob/4169bf815c24d866053c0ced56084024e40a196c/.github/workflows/check.yml"
+        ],
+        "gap": null,
+        "sources": [
+          "https://github.com/nix-purifiers/kicad-purifier/blob/4169bf815c24d866053c0ced56084024e40a196c/flake.nix",
+          "https://github.com/nix-purifiers/kicad-purifier/blob/4169bf815c24d866053c0ced56084024e40a196c/tests/native.py",
+          "https://github.com/nix-purifiers/kicad-purifier/blob/4169bf815c24d866053c0ced56084024e40a196c/tests/gui.py",
+          "https://github.com/nix-purifiers/kicad-purifier/blob/4169bf815c24d866053c0ced56084024e40a196c/tests/provider.py",
+          "https://github.com/nix-purifiers/kicad-purifier/blob/4169bf815c24d866053c0ced56084024e40a196c/tests/artifacts.py",
+          "https://github.com/nix-purifiers/kicad-purifier/blob/4169bf815c24d866053c0ced56084024e40a196c/tests/capture.py",
+          "https://github.com/nix-purifiers/kicad-purifier/blob/4169bf815c24d866053c0ced56084024e40a196c/.github/workflows/check.yml"
+        ],
+        "state": "met",
+        "summary": "Successful native x86_64-linux CI jobs actually build the identified check derivations from this exact source. SDK closure and output bindings distinguish execution from declarations/cross-evaluation."
+      },
+      "longCompatibility": {
+        "derivations": [
+          "kicad-purifier:x86_64-linux:project"
+        ],
+        "evidence": [
+          "https://github.com/nix-purifiers/kicad-purifier/actions/runs/41963379890",
+          "https://github.com/nix-purifiers/kicad-purifier/blob/4169bf815c24d866053c0ced56084024e40a196c/flake.nix",
+          "https://github.com/nix-purifiers/kicad-purifier/blob/4169bf815c24d866053c0ced56084024e40a196c/tests/native.py",
+          "https://github.com/nix-purifiers/kicad-purifier/blob/4169bf815c24d866053c0ced56084024e40a196c/tests/gui.py",
+          "https://github.com/nix-purifiers/kicad-purifier/blob/4169bf815c24d866053c0ced56084024e40a196c/tests/provider.py",
+          "https://github.com/nix-purifiers/kicad-purifier/blob/4169bf815c24d866053c0ced56084024e40a196c/tests/artifacts.py",
+          "https://github.com/nix-purifiers/kicad-purifier/blob/4169bf815c24d866053c0ced56084024e40a196c/tests/capture.py",
+          "https://github.com/nix-purifiers/kicad-purifier/blob/4169bf815c24d866053c0ced56084024e40a196c/.github/workflows/check.yml"
+        ],
+        "gap": "The successful native plugin/project build binds KiCad10.0.7 only. Plugin manifest kicad_version6.0/kicad_version_max10 expresses compatibility bounds, not execution with6\u20139. No historical KiCad SDK sample checks establish long compatibility.",
+        "sources": [
+          "https://github.com/nix-purifiers/kicad-purifier/blob/4169bf815c24d866053c0ced56084024e40a196c/flake.nix",
+          "https://github.com/nix-purifiers/kicad-purifier/blob/4169bf815c24d866053c0ced56084024e40a196c/tests/native.py",
+          "https://github.com/nix-purifiers/kicad-purifier/blob/4169bf815c24d866053c0ced56084024e40a196c/tests/gui.py",
+          "https://github.com/nix-purifiers/kicad-purifier/blob/4169bf815c24d866053c0ced56084024e40a196c/tests/provider.py",
+          "https://github.com/nix-purifiers/kicad-purifier/blob/4169bf815c24d866053c0ced56084024e40a196c/tests/artifacts.py",
+          "https://github.com/nix-purifiers/kicad-purifier/blob/4169bf815c24d866053c0ced56084024e40a196c/tests/capture.py",
+          "https://github.com/nix-purifiers/kicad-purifier/blob/4169bf815c24d866053c0ced56084024e40a196c/.github/workflows/check.yml"
+        ],
+        "state": "not-met",
+        "summary": "The successful native plugin/project build binds KiCad10.0.7 only. Plugin manifest kicad_version6.0/kicad_version_max10 expresses compatibility bounds, not execution with6\u20139. No historical KiCad SDK sample checks establish long compatibility."
+      },
+      "manySamples": {
+        "derivations": [
+          "kicad-purifier:x86_64-linux:project"
+        ],
+        "evidence": [
+          "https://github.com/nix-purifiers/kicad-purifier/actions/runs/41963379890",
+          "https://github.com/nix-purifiers/kicad-purifier/blob/4169bf815c24d866053c0ced56084024e40a196c/flake.nix"
+        ],
+        "gap": "One authored PCB/BOM project and controlled GUI/native-provider variants are demonstrated. InteractiveHtmlBom is an upstream dependency; its presence does not supply an additional independent purifier-consuming board/project sample. Authored samples are eligible; this judgment reflects the narrow demonstrated consumer/build behavior rather than excluding fixtures solely by provenance.",
+        "sources": [
+          "https://github.com/nix-purifiers/kicad-purifier/blob/4169bf815c24d866053c0ced56084024e40a196c/flake.nix"
+        ],
+        "state": "not-met",
+        "summary": "One authored PCB/BOM project and controlled GUI/native-provider variants are demonstrated. InteractiveHtmlBom is an upstream dependency; its presence does not supply an additional independent purifier-consuming board/project sample. Authored samples are eligible; this judgment reflects the narrow demonstrated consumer/build behavior rather than excluding fixtures solely by provenance."
+      },
+      "nonEolVersions": {
+        "derivations": [
+          "kicad-purifier:x86_64-linux:project"
+        ],
+        "evidence": [
+          "https://github.com/nix-purifiers/kicad-purifier/actions/runs/41963379890",
+          "https://dev-docs.kicad.org/en/rules-guidelines/release-policy/",
+          "https://www.kicad.org/blog/2026/10/KiCad-10.0.7-Release/"
+        ],
+        "gap": null,
+        "sources": [
+          "https://dev-docs.kicad.org/en/rules-guidelines/release-policy/",
+          "https://www.kicad.org/blog/2026/10/KiCad-10.0.7-Release/"
+        ],
+        "state": "met",
+        "summary": "Primary stable release policy says prior stable major becomes unsupported after a new stable major; bugfixes target current stable branch.10.0.7 announcement identifies10.0 current stable branch. Successful native CI binds10.0.7. Exact tested patch on maintained major, not every patch or plugin compatibility range."
+      },
+      "oneVersion": {
+        "derivations": [
+          "kicad-purifier:x86_64-linux:project"
+        ],
+        "evidence": [
+          "https://github.com/nix-purifiers/kicad-purifier/actions/runs/41963379890",
+          "https://github.com/nix-purifiers/kicad-purifier/blob/4169bf815c24d866053c0ced56084024e40a196c/flake.nix",
+          "https://github.com/nix-purifiers/kicad-purifier/blob/4169bf815c24d866053c0ced56084024e40a196c/tests/native.py",
+          "https://github.com/nix-purifiers/kicad-purifier/blob/4169bf815c24d866053c0ced56084024e40a196c/tests/gui.py",
+          "https://github.com/nix-purifiers/kicad-purifier/blob/4169bf815c24d866053c0ced56084024e40a196c/tests/provider.py",
+          "https://github.com/nix-purifiers/kicad-purifier/blob/4169bf815c24d866053c0ced56084024e40a196c/tests/artifacts.py",
+          "https://github.com/nix-purifiers/kicad-purifier/blob/4169bf815c24d866053c0ced56084024e40a196c/tests/capture.py",
+          "https://github.com/nix-purifiers/kicad-purifier/blob/4169bf815c24d866053c0ced56084024e40a196c/.github/workflows/check.yml"
+        ],
+        "gap": null,
+        "sources": [
+          "https://github.com/nix-purifiers/kicad-purifier/blob/4169bf815c24d866053c0ced56084024e40a196c/flake.nix",
+          "https://github.com/nix-purifiers/kicad-purifier/blob/4169bf815c24d866053c0ced56084024e40a196c/tests/native.py",
+          "https://github.com/nix-purifiers/kicad-purifier/blob/4169bf815c24d866053c0ced56084024e40a196c/tests/gui.py",
+          "https://github.com/nix-purifiers/kicad-purifier/blob/4169bf815c24d866053c0ced56084024e40a196c/tests/provider.py",
+          "https://github.com/nix-purifiers/kicad-purifier/blob/4169bf815c24d866053c0ced56084024e40a196c/tests/artifacts.py",
+          "https://github.com/nix-purifiers/kicad-purifier/blob/4169bf815c24d866053c0ced56084024e40a196c/tests/capture.py",
+          "https://github.com/nix-purifiers/kicad-purifier/blob/4169bf815c24d866053c0ced56084024e40a196c/.github/workflows/check.yml"
+        ],
+        "state": "met",
+        "summary": "Executed exact SDK point(s): KiCad10.0.7 with native locked plugin provider. No patch interval is inferred."
+      }
+    },
+    "rationale": "Exact-source Linux sample/check derivations execute successfully with reviewed tests. Native Darwin execution is not demonstrated. A tested point on the current maintained release line is identified; no all-patch claim.",
+    "reviewedAt": "2026-11-06",
+    "reviewedRevision": "4169bf815c24d866053c0ced56084024e40a196c",
+    "sampleBuilds": [
+      {
+        "derivations": [
+          "kicad-purifier:x86_64-linux:project"
+        ],
+        "evidence": [
+          "https://github.com/nix-purifiers/kicad-purifier/actions/runs/41963379890",
+          "https://github.com/nix-purifiers/kicad-purifier/blob/4169bf815c24d866053c0ced56084024e40a196c/flake.nix"
+        ],
+        "kind": "repository-fixtures",
+        "name": "examples/minimal PCB and HTML BOM project"
+      }
+    ],
+    "tier": 3
+  },
+  "lake-purifier": {
+    "criteria": {
+      "darwin": {
+        "derivations": [],
+        "evidence": [
+          "https://github.com/nix-purifiers/lake-purifier/actions/runs/42153342577",
+          "https://github.com/nix-purifiers/lake-purifier/blob/dfa4895e848b0b5b8881a4151fbdc9d6140d65bd/.github/workflows/check.yml"
+        ],
+        "gap": "A native Darwin sample/test build receipt with exact source/SDK/drv/output binding is absent.",
+        "sources": [
+          "https://github.com/nix-purifiers/lake-purifier/blob/dfa4895e848b0b5b8881a4151fbdc9d6140d65bd/.github/workflows/check.yml"
+        ],
+        "state": "not-met",
+        "summary": "Inspected current-main workflow and successful job list have no native Darwin execution. The exported checks and required jobs cover Linux only."
+      },
+      "evaluation": {
+        "derivations": [
+          "lake-purifier:x86_64-linux:project",
+          "lake-purifier:x86_64-linux:environment",
+          "lake-purifier:x86_64-linux:release",
+          "lake-purifier:x86_64-linux:cli"
+        ],
+        "evidence": [
+          "https://github.com/nix-purifiers/lake-purifier/actions/runs/42153342577",
+          "https://github.com/nix-purifiers/lake-purifier/blob/dfa4895e848b0b5b8881a4151fbdc9d6140d65bd/flake.nix",
+          "https://github.com/nix-purifiers/lake-purifier/blob/dfa4895e848b0b5b8881a4151fbdc9d6140d65bd/tests/conformance.py",
+          "https://github.com/nix-purifiers/lake-purifier/blob/dfa4895e848b0b5b8881a4151fbdc9d6140d65bd/tests/capture.py",
+          "https://github.com/nix-purifiers/lake-purifier/blob/dfa4895e848b0b5b8881a4151fbdc9d6140d65bd/tests/eval-errors.py",
+          "https://github.com/nix-purifiers/lake-purifier/blob/dfa4895e848b0b5b8881a4151fbdc9d6140d65bd/.github/workflows/check.yml"
+        ],
+        "gap": null,
+        "sources": [
+          "https://github.com/nix-purifiers/lake-purifier/blob/dfa4895e848b0b5b8881a4151fbdc9d6140d65bd/flake.nix",
+          "https://github.com/nix-purifiers/lake-purifier/blob/dfa4895e848b0b5b8881a4151fbdc9d6140d65bd/tests/conformance.py",
+          "https://github.com/nix-purifiers/lake-purifier/blob/dfa4895e848b0b5b8881a4151fbdc9d6140d65bd/tests/capture.py",
+          "https://github.com/nix-purifiers/lake-purifier/blob/dfa4895e848b0b5b8881a4151fbdc9d6140d65bd/tests/eval-errors.py",
+          "https://github.com/nix-purifiers/lake-purifier/blob/dfa4895e848b0b5b8881a4151fbdc9d6140d65bd/.github/workflows/check.yml"
+        ],
+        "state": "met",
+        "summary": "Actual no-IFD Nix evaluation at public main dfa4895e848b0b5b8881a4151fbdc9d6140d65bd yielded these check derivations; exact paths match successful native CI build traces. Source NAR, derivation bytes and output identities are recorded."
+      },
+      "goodTests": {
+        "derivations": [
+          "lake-purifier:x86_64-linux:project",
+          "lake-purifier:x86_64-linux:environment",
+          "lake-purifier:x86_64-linux:release",
+          "lake-purifier:x86_64-linux:cli"
+        ],
+        "evidence": [
+          "https://github.com/nix-purifiers/lake-purifier/actions/runs/42153342577",
+          "https://github.com/nix-purifiers/lake-purifier/blob/dfa4895e848b0b5b8881a4151fbdc9d6140d65bd/flake.nix",
+          "https://github.com/nix-purifiers/lake-purifier/blob/dfa4895e848b0b5b8881a4151fbdc9d6140d65bd/tests/conformance.py",
+          "https://github.com/nix-purifiers/lake-purifier/blob/dfa4895e848b0b5b8881a4151fbdc9d6140d65bd/tests/capture.py",
+          "https://github.com/nix-purifiers/lake-purifier/blob/dfa4895e848b0b5b8881a4151fbdc9d6140d65bd/tests/eval-errors.py",
+          "https://github.com/nix-purifiers/lake-purifier/blob/dfa4895e848b0b5b8881a4151fbdc9d6140d65bd/.github/workflows/check.yml"
+        ],
+        "gap": null,
+        "sources": [
+          "https://github.com/nix-purifiers/lake-purifier/blob/dfa4895e848b0b5b8881a4151fbdc9d6140d65bd/flake.nix",
+          "https://github.com/nix-purifiers/lake-purifier/blob/dfa4895e848b0b5b8881a4151fbdc9d6140d65bd/tests/conformance.py",
+          "https://github.com/nix-purifiers/lake-purifier/blob/dfa4895e848b0b5b8881a4151fbdc9d6140d65bd/tests/capture.py",
+          "https://github.com/nix-purifiers/lake-purifier/blob/dfa4895e848b0b5b8881a4151fbdc9d6140d65bd/tests/eval-errors.py",
+          "https://github.com/nix-purifiers/lake-purifier/blob/dfa4895e848b0b5b8881a4151fbdc9d6140d65bd/.github/workflows/check.yml"
+        ],
+        "state": "met",
+        "summary": "The Lean proof project compiles locked aesop/batteries dependencies and runs answer42. Required native conformance edits the proof, checks expected failure, restores it, resolves source paths, rejects changed metadata and checks ordinary/locked tool paths. Capture verifies selected inputs and companion-lock stability, while rebuild rechecks compiled dependency derivations. This covers proof failure and native replay as well as successful compilation."
+      },
+      "linux": {
+        "derivations": [
+          "lake-purifier:x86_64-linux:project",
+          "lake-purifier:x86_64-linux:environment",
+          "lake-purifier:x86_64-linux:release",
+          "lake-purifier:x86_64-linux:cli"
+        ],
+        "evidence": [
+          "https://github.com/nix-purifiers/lake-purifier/actions/runs/42153342577",
+          "https://github.com/nix-purifiers/lake-purifier/blob/dfa4895e848b0b5b8881a4151fbdc9d6140d65bd/flake.nix",
+          "https://github.com/nix-purifiers/lake-purifier/blob/dfa4895e848b0b5b8881a4151fbdc9d6140d65bd/tests/conformance.py",
+          "https://github.com/nix-purifiers/lake-purifier/blob/dfa4895e848b0b5b8881a4151fbdc9d6140d65bd/tests/capture.py",
+          "https://github.com/nix-purifiers/lake-purifier/blob/dfa4895e848b0b5b8881a4151fbdc9d6140d65bd/tests/eval-errors.py",
+          "https://github.com/nix-purifiers/lake-purifier/blob/dfa4895e848b0b5b8881a4151fbdc9d6140d65bd/.github/workflows/check.yml"
+        ],
+        "gap": null,
+        "sources": [
+          "https://github.com/nix-purifiers/lake-purifier/blob/dfa4895e848b0b5b8881a4151fbdc9d6140d65bd/flake.nix",
+          "https://github.com/nix-purifiers/lake-purifier/blob/dfa4895e848b0b5b8881a4151fbdc9d6140d65bd/tests/conformance.py",
+          "https://github.com/nix-purifiers/lake-purifier/blob/dfa4895e848b0b5b8881a4151fbdc9d6140d65bd/tests/capture.py",
+          "https://github.com/nix-purifiers/lake-purifier/blob/dfa4895e848b0b5b8881a4151fbdc9d6140d65bd/tests/eval-errors.py",
+          "https://github.com/nix-purifiers/lake-purifier/blob/dfa4895e848b0b5b8881a4151fbdc9d6140d65bd/.github/workflows/check.yml"
+        ],
+        "state": "met",
+        "summary": "Successful native x86_64-linux CI jobs actually build the identified check derivations from this exact source. SDK closure and output bindings distinguish execution from declarations/cross-evaluation."
+      },
+      "longCompatibility": {
+        "derivations": [
+          "lake-purifier:x86_64-linux:project"
+        ],
+        "evidence": [
+          "https://github.com/nix-purifiers/lake-purifier/actions/runs/42153342577",
+          "https://github.com/nix-purifiers/lake-purifier/blob/dfa4895e848b0b5b8881a4151fbdc9d6140d65bd/flake.nix",
+          "https://github.com/nix-purifiers/lake-purifier/blob/dfa4895e848b0b5b8881a4151fbdc9d6140d65bd/tests/conformance.py",
+          "https://github.com/nix-purifiers/lake-purifier/blob/dfa4895e848b0b5b8881a4151fbdc9d6140d65bd/tests/capture.py",
+          "https://github.com/nix-purifiers/lake-purifier/blob/dfa4895e848b0b5b8881a4151fbdc9d6140d65bd/tests/eval-errors.py",
+          "https://github.com/nix-purifiers/lake-purifier/blob/dfa4895e848b0b5b8881a4151fbdc9d6140d65bd/.github/workflows/check.yml"
+        ],
+        "gap": "The executed compiler is Lean4.35.0. Locked dependency revisions and Lean-version constraints do not show older Lean or Lake SDK execution. No historical compiler/project derivation matrix establishes long compatibility.",
+        "sources": [
+          "https://github.com/nix-purifiers/lake-purifier/blob/dfa4895e848b0b5b8881a4151fbdc9d6140d65bd/flake.nix",
+          "https://github.com/nix-purifiers/lake-purifier/blob/dfa4895e848b0b5b8881a4151fbdc9d6140d65bd/tests/conformance.py",
+          "https://github.com/nix-purifiers/lake-purifier/blob/dfa4895e848b0b5b8881a4151fbdc9d6140d65bd/tests/capture.py",
+          "https://github.com/nix-purifiers/lake-purifier/blob/dfa4895e848b0b5b8881a4151fbdc9d6140d65bd/tests/eval-errors.py",
+          "https://github.com/nix-purifiers/lake-purifier/blob/dfa4895e848b0b5b8881a4151fbdc9d6140d65bd/.github/workflows/check.yml"
+        ],
+        "state": "not-met",
+        "summary": "The executed compiler is Lean4.35.0. Locked dependency revisions and Lean-version constraints do not show older Lean or Lake SDK execution. No historical compiler/project derivation matrix establishes long compatibility."
+      },
+      "manySamples": {
+        "derivations": [
+          "lake-purifier:x86_64-linux:project"
+        ],
+        "evidence": [
+          "https://github.com/nix-purifiers/lake-purifier/actions/runs/42153342577",
+          "https://github.com/nix-purifiers/lake-purifier/blob/dfa4895e848b0b5b8881a4151fbdc9d6140d65bd/flake.nix"
+        ],
+        "gap": "One authored proof project is executed. Aesop/batteries are compiled dependencies, and capture/subdirectory variations reuse that project. They do not establish a broad collection of independent Lean consumer samples. Authored samples are eligible; this judgment reflects the narrow demonstrated consumer/build behavior rather than excluding fixtures solely by provenance.",
+        "sources": [
+          "https://github.com/nix-purifiers/lake-purifier/blob/dfa4895e848b0b5b8881a4151fbdc9d6140d65bd/flake.nix"
+        ],
+        "state": "not-met",
+        "summary": "One authored proof project is executed. Aesop/batteries are compiled dependencies, and capture/subdirectory variations reuse that project. They do not establish a broad collection of independent Lean consumer samples. Authored samples are eligible; this judgment reflects the narrow demonstrated consumer/build behavior rather than excluding fixtures solely by provenance."
+      },
+      "nonEolVersions": {
+        "derivations": [
+          "lake-purifier:x86_64-linux:project"
+        ],
+        "evidence": [
+          "https://github.com/nix-purifiers/lake-purifier/actions/runs/42153342577",
+          "https://lean-lang.org/doc/reference/latest/releases/",
+          "https://lean-lang.org/doc/reference/latest/platforms/"
+        ],
+        "gap": null,
+        "sources": [
+          "https://lean-lang.org/doc/reference/latest/releases/",
+          "https://lean-lang.org/doc/reference/latest/platforms/"
+        ],
+        "state": "met",
+        "summary": "Primary notes identify4.35.0 stable and4.36.0-rc2 preview. Native CI binds Lean4.35.0. Release notes/platform availability do not identify exhaustive maintained versions; no broader compiler execution matrix. Older version EOL is not inferred. Judgment scope: exact executed current stable release point is sufficient for the current maintained line; absence of an EOL calendar is not a failure and does not establish additional supported lines."
+      },
+      "oneVersion": {
+        "derivations": [
+          "lake-purifier:x86_64-linux:project"
+        ],
+        "evidence": [
+          "https://github.com/nix-purifiers/lake-purifier/actions/runs/42153342577",
+          "https://github.com/nix-purifiers/lake-purifier/blob/dfa4895e848b0b5b8881a4151fbdc9d6140d65bd/flake.nix",
+          "https://github.com/nix-purifiers/lake-purifier/blob/dfa4895e848b0b5b8881a4151fbdc9d6140d65bd/tests/conformance.py",
+          "https://github.com/nix-purifiers/lake-purifier/blob/dfa4895e848b0b5b8881a4151fbdc9d6140d65bd/tests/capture.py",
+          "https://github.com/nix-purifiers/lake-purifier/blob/dfa4895e848b0b5b8881a4151fbdc9d6140d65bd/tests/eval-errors.py",
+          "https://github.com/nix-purifiers/lake-purifier/blob/dfa4895e848b0b5b8881a4151fbdc9d6140d65bd/.github/workflows/check.yml"
+        ],
+        "gap": null,
+        "sources": [
+          "https://github.com/nix-purifiers/lake-purifier/blob/dfa4895e848b0b5b8881a4151fbdc9d6140d65bd/flake.nix",
+          "https://github.com/nix-purifiers/lake-purifier/blob/dfa4895e848b0b5b8881a4151fbdc9d6140d65bd/tests/conformance.py",
+          "https://github.com/nix-purifiers/lake-purifier/blob/dfa4895e848b0b5b8881a4151fbdc9d6140d65bd/tests/capture.py",
+          "https://github.com/nix-purifiers/lake-purifier/blob/dfa4895e848b0b5b8881a4151fbdc9d6140d65bd/tests/eval-errors.py",
+          "https://github.com/nix-purifiers/lake-purifier/blob/dfa4895e848b0b5b8881a4151fbdc9d6140d65bd/.github/workflows/check.yml"
+        ],
+        "state": "met",
+        "summary": "Executed exact SDK point(s): Lean/Lake4.35.0. No patch interval is inferred."
+      }
+    },
+    "rationale": "Exact-source Linux sample/check derivations execute successfully with reviewed tests. Native Darwin execution is not demonstrated. A tested point on the current maintained release line is identified; no all-patch claim.",
+    "reviewedAt": "2026-11-06",
+    "reviewedRevision": "dfa4895e848b0b5b8881a4151fbdc9d6140d65bd",
+    "sampleBuilds": [
+      {
+        "derivations": [
+          "lake-purifier:x86_64-linux:project"
+        ],
+        "evidence": [
+          "https://github.com/nix-purifiers/lake-purifier/actions/runs/42153342577",
+          "https://github.com/nix-purifiers/lake-purifier/blob/dfa4895e848b0b5b8881a4151fbdc9d6140d65bd/flake.nix"
+        ],
+        "kind": "repository-fixtures",
+        "name": "examples/minimal Lean proof with aesop/batteries"
+      }
+    ],
+    "tier": 3
+  }
+}

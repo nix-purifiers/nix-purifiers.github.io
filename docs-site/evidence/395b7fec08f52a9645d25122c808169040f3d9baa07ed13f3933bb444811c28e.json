@@ -1,0 +1,1332 @@
+{
+  "lazy-purifier": {
+    "tier": 3,
+    "reviewedRevision": "46980849b3ce70be29e950008859dbb8a32cd56f",
+    "reviewedAt": "2026-11-06",
+    "rationale": "Native Linux executable checks and at least one exact-version sample are demonstrated. Higher-tier promotion is not justified without native Darwin execution; further criterion-specific judgments and proof limits are recorded.",
+    "criteria": {
+      "evaluation": {
+        "state": "met",
+        "summary": "Exact revision 46980849b3ce70be29e950008859dbb8a32cd56f evaluates its x86_64-linux check set; successful Nix realization receipts bind executable check attributes to derivation/output paths.",
+        "evidence": [
+          "https://github.com/nix-purifiers/lazy-purifier/blob/46980849b3ce70be29e950008859dbb8a32cd56f/flake.nix",
+          "https://github.com/nix-purifiers/lazy-purifier/actions/runs/42153346426/job/127681580454",
+          "https://github.com/nix-purifiers/lazy-purifier/actions/runs/42153346426/job/127681580663",
+          ".worktrees/tier-review/group-5/derivation-evidence.json#/projects/lazy-purifier"
+        ]
+      },
+      "goodTests": {
+        "state": "met",
+        "summary": "The project derivation runs headless Neovim and asserts popup/plenary loading and answer42. Exact-main CI additionally executes eval-errors, capture and native conformance/rebuild scripts: failed startup/build-hook negative controls, repeated unchanged locks, empty selection, selected-plugin changes, persistent editor state, SDK closure membership, subdirectory/external locks, offline runtime and publication bytes. These directly test material plugin capture/replay and lifecycle risks; sample diversity remains a separate unmet judgment.",
+        "evidence": [
+          "https://github.com/nix-purifiers/lazy-purifier/blob/46980849b3ce70be29e950008859dbb8a32cd56f/flake.nix",
+          "https://github.com/nix-purifiers/lazy-purifier/actions/runs/42153346426/job/127681580454",
+          "https://github.com/nix-purifiers/lazy-purifier/actions/runs/42153346426/job/127681580663",
+          ".worktrees/tier-review/group-5/derivation-evidence.json#/projects/lazy-purifier",
+          "https://github.com/nix-purifiers/lazy-purifier/blob/46980849b3ce70be29e950008859dbb8a32cd56f/flake.nix"
+        ]
+      },
+      "linux": {
+        "state": "met",
+        "summary": "Native x86_64-linux check realization succeeds with exact drv/output receipts; same-source successful Ubuntu x86_64 and ARM CI logs record executable check builds. Cached local realization is distinguished from original CI execution.",
+        "evidence": [
+          "https://github.com/nix-purifiers/lazy-purifier/blob/46980849b3ce70be29e950008859dbb8a32cd56f/flake.nix",
+          "https://github.com/nix-purifiers/lazy-purifier/actions/runs/42153346426/job/127681580454",
+          "https://github.com/nix-purifiers/lazy-purifier/actions/runs/42153346426/job/127681580663",
+          ".worktrees/tier-review/group-5/derivation-evidence.json#/projects/lazy-purifier"
+        ]
+      },
+      "darwin": {
+        "state": "not-met",
+        "summary": "The inspected successful workflows execute Ubuntu x86_64/ARM only; no native Darwin SDK/build/test/output receipt exists for this public revision. Linux execution, Darwin lock entries or conditional systems do not establish Darwin runtime.",
+        "evidence": [
+          "https://github.com/nix-purifiers/lazy-purifier/blob/46980849b3ce70be29e950008859dbb8a32cd56f/.github/workflows/check.yml"
+        ]
+      },
+      "oneVersion": {
+        "state": "met",
+        "summary": "Successful sample execution binds the exact pinned SDK point(s): Neovim 0.12.6, lazy.nvim 11.17.5. Wider version intervals are not inferred.",
+        "evidence": [
+          "https://github.com/nix-purifiers/lazy-purifier/blob/46980849b3ce70be29e950008859dbb8a32cd56f/flake.nix",
+          "https://github.com/nix-purifiers/lazy-purifier/actions/runs/42153346426/job/127681580454",
+          "https://github.com/nix-purifiers/lazy-purifier/actions/runs/42153346426/job/127681580663",
+          ".worktrees/tier-review/group-5/derivation-evidence.json#/projects/lazy-purifier"
+        ]
+      },
+      "nonEolVersions": {
+        "state": "met",
+        "summary": "The successful project derivation executes Neovim0.12.6 and lazy.nvim11.17.5. Fresh upstream release API receipts identify these as the latest stable release points, consistent with Neovim0.12 stable and lazy minimum Neovim0.8 requirement. This proves those exact current points, not every patch or older maintained line.",
+        "evidence": [
+          "https://github.com/nix-purifiers/lazy-purifier/blob/46980849b3ce70be29e950008859dbb8a32cd56f/flake.nix",
+          "https://github.com/nix-purifiers/lazy-purifier/actions/runs/42153346426/job/127681580454",
+          "https://github.com/nix-purifiers/lazy-purifier/actions/runs/42153346426/job/127681580663",
+          ".worktrees/tier-review/group-5/derivation-evidence.json#/projects/lazy-purifier",
+          "https://neovim.io/",
+          "https://github.com/folke/lazy.nvim/blob/main/README.md"
+        ]
+      },
+      "manySamples": {
+        "state": "not-met",
+        "summary": "One repository configuration is built. popup/plenary are dependencies of that configuration, not separate consumer sample builds; no independent configuration corpus is established.",
+        "evidence": [
+          "https://github.com/nix-purifiers/lazy-purifier/blob/46980849b3ce70be29e950008859dbb8a32cd56f/flake.nix",
+          "https://github.com/nix-purifiers/lazy-purifier/actions/runs/42153346426/job/127681580454",
+          "https://github.com/nix-purifiers/lazy-purifier/actions/runs/42153346426/job/127681580663",
+          ".worktrees/tier-review/group-5/derivation-evidence.json#/projects/lazy-purifier"
+        ]
+      },
+      "longCompatibility": {
+        "state": "not-met",
+        "summary": "The project derivation executes one pinned Neovim/lazy.nvim pair. No historical runtime matrix is wired into the flake or successful reviewed workflow; a minimum upstream requirement is not execution evidence.",
+        "evidence": [
+          "https://github.com/nix-purifiers/lazy-purifier/blob/46980849b3ce70be29e950008859dbb8a32cd56f/flake.nix",
+          "https://github.com/nix-purifiers/lazy-purifier/actions/runs/42153346426/job/127681580454",
+          "https://github.com/nix-purifiers/lazy-purifier/actions/runs/42153346426/job/127681580663",
+          ".worktrees/tier-review/group-5/derivation-evidence.json#/projects/lazy-purifier"
+        ]
+      }
+    },
+    "sampleBuilds": [
+      {
+        "name": "Repository examples/minimal Neovim configuration (fixture)",
+        "evidence": [
+          "https://github.com/nix-purifiers/lazy-purifier/blob/46980849b3ce70be29e950008859dbb8a32cd56f/examples/minimal",
+          "/nix/store/d311nr8krdaiyd3pq3rij2d2fc237r0m-lazy-configuration.drv",
+          "https://github.com/nix-purifiers/lazy-purifier/actions/runs/42153346426/job/127681580454",
+          "https://github.com/nix-purifiers/lazy-purifier/actions/runs/42153346426/job/127681580663"
+        ]
+      }
+    ]
+  },
+  "lein-purifier": {
+    "tier": 3,
+    "reviewedRevision": "3fcd98f5fd7c19b9f49bf5176e56305b239d64eb",
+    "reviewedAt": "2026-11-06",
+    "rationale": "Native Linux executable checks and at least one exact-version sample are demonstrated. Higher-tier promotion is not justified without native Darwin execution; further criterion-specific judgments and proof limits are recorded.",
+    "criteria": {
+      "evaluation": {
+        "state": "met",
+        "summary": "Exact revision 3fcd98f5fd7c19b9f49bf5176e56305b239d64eb evaluates its x86_64-linux check set; successful Nix realization receipts bind executable check attributes to derivation/output paths.",
+        "evidence": [
+          "https://github.com/nix-purifiers/lein-purifier/blob/3fcd98f5fd7c19b9f49bf5176e56305b239d64eb/flake.nix",
+          "https://github.com/nix-purifiers/lein-purifier/actions/runs/42312051022/job/128215623560",
+          "https://github.com/nix-purifiers/lein-purifier/actions/runs/42312051022/job/128215623775",
+          ".worktrees/tier-review/group-5/derivation-evidence.json#/projects/lein-purifier"
+        ]
+      },
+      "goodTests": {
+        "state": "met",
+        "summary": "Executable Nix checks cover a running uberjar and tests, Maven/Clojars artifacts, SNAPSHOT/ranged/local repositories, both subproject layouts, five Ring subproject suites, malformed/tampered/stale/missing locks including actual offline failure, external locks, publication layout and scope/builder overrides. Successful exact-main checks and native lifecycle jobs support a substantive quality judgment beyond smoke evaluation.",
+        "evidence": [
+          "https://github.com/nix-purifiers/lein-purifier/blob/3fcd98f5fd7c19b9f49bf5176e56305b239d64eb/flake.nix",
+          "https://github.com/nix-purifiers/lein-purifier/actions/runs/42312051022/job/128215623560",
+          "https://github.com/nix-purifiers/lein-purifier/actions/runs/42312051022/job/128215623775",
+          ".worktrees/tier-review/group-5/derivation-evidence.json#/projects/lein-purifier",
+          "https://github.com/nix-purifiers/lein-purifier/blob/3fcd98f5fd7c19b9f49bf5176e56305b239d64eb/tests/default.nix"
+        ]
+      },
+      "linux": {
+        "state": "met",
+        "summary": "Native x86_64-linux check realization succeeds with exact drv/output receipts; same-source successful Ubuntu x86_64 and ARM CI logs record executable check builds. Cached local realization is distinguished from original CI execution.",
+        "evidence": [
+          "https://github.com/nix-purifiers/lein-purifier/blob/3fcd98f5fd7c19b9f49bf5176e56305b239d64eb/flake.nix",
+          "https://github.com/nix-purifiers/lein-purifier/actions/runs/42312051022/job/128215623560",
+          "https://github.com/nix-purifiers/lein-purifier/actions/runs/42312051022/job/128215623775",
+          ".worktrees/tier-review/group-5/derivation-evidence.json#/projects/lein-purifier"
+        ]
+      },
+      "darwin": {
+        "state": "not-met",
+        "summary": "The inspected successful workflows execute Ubuntu x86_64/ARM only; no native Darwin SDK/build/test/output receipt exists for this public revision. Linux execution, Darwin lock entries or conditional systems do not establish Darwin runtime.",
+        "evidence": [
+          "https://github.com/nix-purifiers/lein-purifier/blob/3fcd98f5fd7c19b9f49bf5176e56305b239d64eb/.github/workflows/check.yml"
+        ]
+      },
+      "oneVersion": {
+        "state": "met",
+        "summary": "Successful sample execution binds the exact pinned SDK point(s): Leiningen 2.12.0, JDK 21.0.12.1+1. Wider version intervals are not inferred.",
+        "evidence": [
+          "https://github.com/nix-purifiers/lein-purifier/blob/3fcd98f5fd7c19b9f49bf5176e56305b239d64eb/flake.nix",
+          "https://github.com/nix-purifiers/lein-purifier/actions/runs/42312051022/job/128215623560",
+          "https://github.com/nix-purifiers/lein-purifier/actions/runs/42312051022/job/128215623775",
+          ".worktrees/tier-review/group-5/derivation-evidence.json#/projects/lein-purifier"
+        ]
+      },
+      "nonEolVersions": {
+        "state": "not-met",
+        "summary": "The successful derivations execute Leiningen2.12.0/JDK21. Fresh upstream release API identifies current Leiningen2.13.0, which is not executed by the reviewed checks; no primary policy establishes2.12.0 as the complete maintained scope. This is a missing current-point execution proof, not a claim that2.12.0 is EOL. Clojure release policy is kept separate from Leiningen.",
+        "evidence": [
+          "https://github.com/nix-purifiers/lein-purifier/blob/3fcd98f5fd7c19b9f49bf5176e56305b239d64eb/flake.nix",
+          "https://github.com/nix-purifiers/lein-purifier/actions/runs/42312051022/job/128215623560",
+          "https://github.com/nix-purifiers/lein-purifier/actions/runs/42312051022/job/128215623775",
+          ".worktrees/tier-review/group-5/derivation-evidence.json#/projects/lein-purifier",
+          "https://leiningen.org/",
+          "https://clojure.org/releases/downloads"
+        ]
+      },
+      "manySamples": {
+        "state": "not-met",
+        "summary": "Ring is one independent upstream project. Its five subprojects and four repository fixture families cover useful module/repository behaviors but do not constitute a broad independent consumer corpus.",
+        "evidence": [
+          "https://github.com/nix-purifiers/lein-purifier/blob/3fcd98f5fd7c19b9f49bf5176e56305b239d64eb/flake.nix",
+          "https://github.com/nix-purifiers/lein-purifier/actions/runs/42312051022/job/128215623560",
+          "https://github.com/nix-purifiers/lein-purifier/actions/runs/42312051022/job/128215623775",
+          ".worktrees/tier-review/group-5/derivation-evidence.json#/projects/lein-purifier"
+        ]
+      },
+      "longCompatibility": {
+        "state": "not-met",
+        "summary": "All committed fixture and Ring locks select Leiningen 2.12.0 with Java major21. The wrong-version refusal test deliberately rejects a fake tool version; it does not execute historical Leiningen/JDK combinations.",
+        "evidence": [
+          "https://github.com/nix-purifiers/lein-purifier/blob/3fcd98f5fd7c19b9f49bf5176e56305b239d64eb/flake.nix",
+          "https://github.com/nix-purifiers/lein-purifier/actions/runs/42312051022/job/128215623560",
+          "https://github.com/nix-purifiers/lein-purifier/actions/runs/42312051022/job/128215623775",
+          ".worktrees/tier-review/group-5/derivation-evidence.json#/projects/lein-purifier"
+        ]
+      }
+    },
+    "sampleBuilds": [
+      {
+        "name": "ring-clojure/ring (independent-upstream)",
+        "evidence": [
+          "https://github.com/nix-purifiers/lein-purifier/blob/3fcd98f5fd7c19b9f49bf5176e56305b239d64eb/tests/default.nix",
+          "/nix/store/zxvs0f1rb88gaykd6b67p4zvh7byvlp4-example-ring.drv",
+          "/nix/store/4ag5j1mjgpnb0lmfy3z3ziy6ilbip7gy-lein-purifier-tests.drv",
+          "https://github.com/nix-purifiers/lein-purifier/actions/runs/42312051022/job/128215623560",
+          "https://github.com/nix-purifiers/lein-purifier/actions/runs/42312051022/job/128215623775"
+        ]
+      },
+      {
+        "name": "hello, sources, multi-sub and monolith (fixtures)",
+        "evidence": [
+          "https://github.com/nix-purifiers/lein-purifier/blob/3fcd98f5fd7c19b9f49bf5176e56305b239d64eb/tests/fixtures",
+          "/nix/store/nij30nqbykl7bc897bbxdbpg7r5n58f1-lein-purifier-tests.drv",
+          "/nix/store/1dvjnv5ji3ckn1sgnj7v8khvj2wch6h7-sources-runs.drv",
+          "/nix/store/095g1l8wnplykrw3nsphhqirgd5qljgg-lein-purifier-tests.drv",
+          "/nix/store/y4ask2n5k0acf8gm0pcinf2prq0iyfmm-monolith-runs.drv",
+          "https://github.com/nix-purifiers/lein-purifier/actions/runs/42312051022/job/128215623560",
+          "https://github.com/nix-purifiers/lein-purifier/actions/runs/42312051022/job/128215623775"
+        ]
+      }
+    ]
+  },
+  "luarocks-purifier": {
+    "tier": 3,
+    "reviewedRevision": "b27fe736fe2328c7eec64cbf130607397ed79f95",
+    "reviewedAt": "2026-11-06",
+    "rationale": "Native Linux executable checks and at least one exact-version sample are demonstrated. Higher-tier promotion is not justified without native Darwin execution; further criterion-specific judgments and proof limits are recorded.",
+    "criteria": {
+      "evaluation": {
+        "state": "met",
+        "summary": "Exact revision b27fe736fe2328c7eec64cbf130607397ed79f95 evaluates its x86_64-linux check set; successful Nix realization receipts bind executable check attributes to derivation/output paths.",
+        "evidence": [
+          "https://github.com/nix-purifiers/luarocks-purifier/blob/b27fe736fe2328c7eec64cbf130607397ed79f95/flake.nix",
+          "https://github.com/nix-purifiers/luarocks-purifier/actions/runs/42153354814/job/127681607962",
+          "https://github.com/nix-purifiers/luarocks-purifier/actions/runs/42153354814/job/127681608165",
+          "https://github.com/nix-purifiers/luarocks-purifier/actions/runs/42153354814/job/127681608454",
+          "https://github.com/nix-purifiers/luarocks-purifier/actions/runs/42153354814/job/127681608457",
+          ".worktrees/tier-review/group-5/derivation-evidence.json#/projects/luarocks-purifier"
+        ]
+      },
+      "goodTests": {
+        "state": "met",
+        "summary": "Nix checks run dependency-loaded Lua programs, app tests, C/VCS source cases, source rock/publication layouts, parser/lock failures and luacheck against unchanged upstream source. Successful native SDK jobs execute ABI compilation, offline native and pure tests, upload-byte equality and ordinary install for Lua5.1/5.2/5.3/5.4/5.5 and LuaJIT, adding direct protection at ABI boundaries.",
+        "evidence": [
+          "https://github.com/nix-purifiers/luarocks-purifier/blob/b27fe736fe2328c7eec64cbf130607397ed79f95/flake.nix",
+          "https://github.com/nix-purifiers/luarocks-purifier/actions/runs/42153354814/job/127681607962",
+          "https://github.com/nix-purifiers/luarocks-purifier/actions/runs/42153354814/job/127681608165",
+          "https://github.com/nix-purifiers/luarocks-purifier/actions/runs/42153354814/job/127681608454",
+          "https://github.com/nix-purifiers/luarocks-purifier/actions/runs/42153354814/job/127681608457",
+          ".worktrees/tier-review/group-5/derivation-evidence.json#/projects/luarocks-purifier",
+          "https://github.com/nix-purifiers/luarocks-purifier/blob/b27fe736fe2328c7eec64cbf130607397ed79f95/tests/default.nix"
+        ]
+      },
+      "linux": {
+        "state": "met",
+        "summary": "Native x86_64-linux check realization succeeds with exact drv/output receipts; same-source successful Ubuntu x86_64 and ARM CI logs record executable check builds. Cached local realization is distinguished from original CI execution.",
+        "evidence": [
+          "https://github.com/nix-purifiers/luarocks-purifier/blob/b27fe736fe2328c7eec64cbf130607397ed79f95/flake.nix",
+          "https://github.com/nix-purifiers/luarocks-purifier/actions/runs/42153354814/job/127681607962",
+          "https://github.com/nix-purifiers/luarocks-purifier/actions/runs/42153354814/job/127681608165",
+          "https://github.com/nix-purifiers/luarocks-purifier/actions/runs/42153354814/job/127681608454",
+          "https://github.com/nix-purifiers/luarocks-purifier/actions/runs/42153354814/job/127681608457",
+          ".worktrees/tier-review/group-5/derivation-evidence.json#/projects/luarocks-purifier"
+        ]
+      },
+      "darwin": {
+        "state": "not-met",
+        "summary": "The inspected successful workflows execute Ubuntu x86_64/ARM only; no native Darwin SDK/build/test/output receipt exists for this public revision. Linux execution, Darwin lock entries or conditional systems do not establish Darwin runtime.",
+        "evidence": [
+          "https://github.com/nix-purifiers/luarocks-purifier/blob/b27fe736fe2328c7eec64cbf130607397ed79f95/.github/workflows/check.yml"
+        ]
+      },
+      "oneVersion": {
+        "state": "met",
+        "summary": "Successful sample execution binds the exact pinned SDK point(s): Lua 5.1.5, LuaRocks 3.13.0. Wider version intervals are not inferred.",
+        "evidence": [
+          "https://github.com/nix-purifiers/luarocks-purifier/blob/b27fe736fe2328c7eec64cbf130607397ed79f95/flake.nix",
+          "https://github.com/nix-purifiers/luarocks-purifier/actions/runs/42153354814/job/127681607962",
+          "https://github.com/nix-purifiers/luarocks-purifier/actions/runs/42153354814/job/127681608165",
+          "https://github.com/nix-purifiers/luarocks-purifier/actions/runs/42153354814/job/127681608454",
+          "https://github.com/nix-purifiers/luarocks-purifier/actions/runs/42153354814/job/127681608457",
+          ".worktrees/tier-review/group-5/derivation-evidence.json#/projects/luarocks-purifier"
+        ]
+      },
+      "nonEolVersions": {
+        "state": "met",
+        "summary": "The successful sdk-native5.5 job builds and executes Lua5.5.1 with LuaRocks3.13.0, both current upstream releases. Lua's primary version history explicitly says5.4 and older have no future releases; these older executed points are retained only as historical compatibility, not maintained-version claims. No all-patch range is inferred.",
+        "evidence": [
+          "https://github.com/nix-purifiers/luarocks-purifier/blob/b27fe736fe2328c7eec64cbf130607397ed79f95/flake.nix",
+          "https://github.com/nix-purifiers/luarocks-purifier/actions/runs/42153354814/job/127681607962",
+          "https://github.com/nix-purifiers/luarocks-purifier/actions/runs/42153354814/job/127681608165",
+          "https://github.com/nix-purifiers/luarocks-purifier/actions/runs/42153354814/job/127681608454",
+          "https://github.com/nix-purifiers/luarocks-purifier/actions/runs/42153354814/job/127681608457",
+          ".worktrees/tier-review/group-5/derivation-evidence.json#/projects/luarocks-purifier",
+          "https://www.lua.org/versions.html",
+          "https://github.com/luarocks/luarocks/releases/tag/v3.13.0"
+        ]
+      },
+      "manySamples": {
+        "state": "not-met",
+        "summary": "luacheck is one independent upstream consumer; the app/lib/VCS rocks are controlled fixtures and SDK reruns of them are not new independent projects. The evidence does not establish a broad consumer corpus.",
+        "evidence": [
+          "https://github.com/nix-purifiers/luarocks-purifier/blob/b27fe736fe2328c7eec64cbf130607397ed79f95/flake.nix",
+          "https://github.com/nix-purifiers/luarocks-purifier/actions/runs/42153354814/job/127681607962",
+          "https://github.com/nix-purifiers/luarocks-purifier/actions/runs/42153354814/job/127681608165",
+          "https://github.com/nix-purifiers/luarocks-purifier/actions/runs/42153354814/job/127681608454",
+          "https://github.com/nix-purifiers/luarocks-purifier/actions/runs/42153354814/job/127681608457",
+          ".worktrees/tier-review/group-5/derivation-evidence.json#/projects/luarocks-purifier"
+        ]
+      },
+      "longCompatibility": {
+        "state": "met",
+        "summary": "Successful native jobs exercise distinct Lua ABI points5.1.5,5.2.4,5.3.6,5.4.9,5.5.1 and LuaJIT2.1.1785763465. The5.1 job additionally executes the historical LuaRocks distribution whose source archive is2.2.0-rc1 and binary reports2.2.0, versus current3.13.0; capture, C ABI, offline pure/native tests and publication/ordinary installation pass. This spans meaningful old manager/runtime behavior, with exact source caveat preserved and no continuous-range claim.",
+        "evidence": [
+          "https://github.com/nix-purifiers/luarocks-purifier/blob/b27fe736fe2328c7eec64cbf130607397ed79f95/flake.nix",
+          "https://github.com/nix-purifiers/luarocks-purifier/actions/runs/42153354814/job/127681607962",
+          "https://github.com/nix-purifiers/luarocks-purifier/actions/runs/42153354814/job/127681608165",
+          "https://github.com/nix-purifiers/luarocks-purifier/actions/runs/42153354814/job/127681608454",
+          "https://github.com/nix-purifiers/luarocks-purifier/actions/runs/42153354814/job/127681608457",
+          ".worktrees/tier-review/group-5/derivation-evidence.json#/projects/luarocks-purifier",
+          "https://github.com/nix-purifiers/luarocks-purifier/actions/runs/42153354814/job/127681608233",
+          "https://github.com/nix-purifiers/luarocks-purifier/actions/runs/42153354814/job/127681608273",
+          "https://github.com/nix-purifiers/luarocks-purifier/actions/runs/42153354814/job/127681608326",
+          "https://github.com/nix-purifiers/luarocks-purifier/actions/runs/42153354814/job/127681608359",
+          "https://github.com/nix-purifiers/luarocks-purifier/actions/runs/42153354814/job/127681608361",
+          "https://github.com/nix-purifiers/luarocks-purifier/actions/runs/42153354814/job/127681608411",
+          "https://github.com/nix-purifiers/luarocks-purifier/actions/runs/42153354814/job/127681608427",
+          "https://github.com/nix-purifiers/luarocks-purifier/actions/runs/42153354814/job/127681608449",
+          "https://github.com/nix-purifiers/luarocks-purifier/actions/runs/42153354814/job/127681608450",
+          "https://github.com/nix-purifiers/luarocks-purifier/actions/runs/42153354814/job/127681608456",
+          "https://github.com/nix-purifiers/luarocks-purifier/actions/runs/42153354814/job/127681608530",
+          "https://github.com/nix-purifiers/luarocks-purifier/actions/runs/42153354814/job/127681608746"
+        ]
+      }
+    },
+    "sampleBuilds": [
+      {
+        "name": "luacheck v1.2.0 (independent-upstream)",
+        "evidence": [
+          "https://github.com/nix-purifiers/luarocks-purifier/blob/b27fe736fe2328c7eec64cbf130607397ed79f95/tests/default.nix",
+          "/nix/store/261hjzviz5bmlhcbmdigkxixs9j5svfw-real-luacheck.drv",
+          "https://github.com/nix-purifiers/luarocks-purifier/actions/runs/42153354814/job/127681607962",
+          "https://github.com/nix-purifiers/luarocks-purifier/actions/runs/42153354814/job/127681608165",
+          "https://github.com/nix-purifiers/luarocks-purifier/actions/runs/42153354814/job/127681608454",
+          "https://github.com/nix-purifiers/luarocks-purifier/actions/runs/42153354814/job/127681608457"
+        ]
+      },
+      {
+        "name": "app/lib and VCS rocks (fixtures)",
+        "evidence": [
+          "https://github.com/nix-purifiers/luarocks-purifier/blob/b27fe736fe2328c7eec64cbf130607397ed79f95/tests/fixtures",
+          "/nix/store/3dbpmrxsj07m5jw79waj336rqdy98pnh-tests.drv",
+          "https://github.com/nix-purifiers/luarocks-purifier/actions/runs/42153354814/job/127681607962",
+          "https://github.com/nix-purifiers/luarocks-purifier/actions/runs/42153354814/job/127681608165",
+          "https://github.com/nix-purifiers/luarocks-purifier/actions/runs/42153354814/job/127681608454",
+          "https://github.com/nix-purifiers/luarocks-purifier/actions/runs/42153354814/job/127681608457"
+        ]
+      }
+    ]
+  },
+  "maven-purifier": {
+    "tier": 3,
+    "reviewedRevision": "b1560c561b576d5f6cbb2210a085ec0c6da806cb",
+    "reviewedAt": "2026-11-06",
+    "rationale": "Native Linux executable checks and at least one exact-version sample are demonstrated. Higher-tier promotion is not justified without native Darwin execution; further criterion-specific judgments and proof limits are recorded.",
+    "criteria": {
+      "evaluation": {
+        "state": "met",
+        "summary": "Exact revision b1560c561b576d5f6cbb2210a085ec0c6da806cb evaluates its x86_64-linux check set; successful Nix realization receipts bind executable check attributes to derivation/output paths.",
+        "evidence": [
+          "https://github.com/nix-purifiers/maven-purifier/blob/b1560c561b576d5f6cbb2210a085ec0c6da806cb/flake.nix",
+          "https://github.com/nix-purifiers/maven-purifier/actions/runs/42153559301/job/127682272029",
+          "https://github.com/nix-purifiers/maven-purifier/actions/runs/42153559301/job/127682272201",
+          ".worktrees/tier-review/group-5/derivation-evidence.json#/projects/maven-purifier"
+        ]
+      },
+      "goodTests": {
+        "state": "met",
+        "summary": "Nix checks compile and test a multi-module reactor, run the main class, verify deployed artifacts, SNAPSHOT/mirror/plugin/extension behavior, an actual wrapper Maven3.9.11, Gson/protobuf/JPMS test outputs and negative lock errors. Successful compatibility jobs also run selected old/new Maven versions with Java8/17 and native/pure publication/composition, so the suite addresses material resolver/build/lifecycle risks.",
+        "evidence": [
+          "https://github.com/nix-purifiers/maven-purifier/blob/b1560c561b576d5f6cbb2210a085ec0c6da806cb/flake.nix",
+          "https://github.com/nix-purifiers/maven-purifier/actions/runs/42153559301/job/127682272029",
+          "https://github.com/nix-purifiers/maven-purifier/actions/runs/42153559301/job/127682272201",
+          ".worktrees/tier-review/group-5/derivation-evidence.json#/projects/maven-purifier",
+          "https://github.com/nix-purifiers/maven-purifier/blob/b1560c561b576d5f6cbb2210a085ec0c6da806cb/tests/default.nix"
+        ]
+      },
+      "linux": {
+        "state": "met",
+        "summary": "Native x86_64-linux check realization succeeds with exact drv/output receipts; same-source successful Ubuntu x86_64 and ARM CI logs record executable check builds. Cached local realization is distinguished from original CI execution.",
+        "evidence": [
+          "https://github.com/nix-purifiers/maven-purifier/blob/b1560c561b576d5f6cbb2210a085ec0c6da806cb/flake.nix",
+          "https://github.com/nix-purifiers/maven-purifier/actions/runs/42153559301/job/127682272029",
+          "https://github.com/nix-purifiers/maven-purifier/actions/runs/42153559301/job/127682272201",
+          ".worktrees/tier-review/group-5/derivation-evidence.json#/projects/maven-purifier"
+        ]
+      },
+      "darwin": {
+        "state": "not-met",
+        "summary": "The inspected successful workflows execute Ubuntu x86_64/ARM only; no native Darwin SDK/build/test/output receipt exists for this public revision. Linux execution, Darwin lock entries or conditional systems do not establish Darwin runtime.",
+        "evidence": [
+          "https://github.com/nix-purifiers/maven-purifier/blob/b1560c561b576d5f6cbb2210a085ec0c6da806cb/.github/workflows/check.yml"
+        ]
+      },
+      "oneVersion": {
+        "state": "met",
+        "summary": "Successful sample execution binds the exact pinned SDK point(s): Maven 3.10.0, JDK 21.0.12.1+1. Wider version intervals are not inferred.",
+        "evidence": [
+          "https://github.com/nix-purifiers/maven-purifier/blob/b1560c561b576d5f6cbb2210a085ec0c6da806cb/flake.nix",
+          "https://github.com/nix-purifiers/maven-purifier/actions/runs/42153559301/job/127682272029",
+          "https://github.com/nix-purifiers/maven-purifier/actions/runs/42153559301/job/127682272201",
+          ".worktrees/tier-review/group-5/derivation-evidence.json#/projects/maven-purifier"
+        ]
+      },
+      "nonEolVersions": {
+        "state": "not-met",
+        "summary": "Apache's primary policy maintains only the last releases of the last two GA series:3.9.16 and3.10.0. Public-main fixture/Gson derivations execute3.10.0; public compatibility jobs execute3.9.11 rather than maintained3.9.16. Producer local3.9.16/3.10.0 receipts are recorded separately pending immutable reviewed-source binding. Thus public-main coverage of both maintained exact points is not yet established.",
+        "evidence": [
+          "https://github.com/nix-purifiers/maven-purifier/blob/b1560c561b576d5f6cbb2210a085ec0c6da806cb/flake.nix",
+          "https://github.com/nix-purifiers/maven-purifier/actions/runs/42153559301/job/127682272029",
+          "https://github.com/nix-purifiers/maven-purifier/actions/runs/42153559301/job/127682272201",
+          ".worktrees/tier-review/group-5/derivation-evidence.json#/projects/maven-purifier",
+          "https://maven.apache.org/docs/history.html"
+        ]
+      },
+      "manySamples": {
+        "state": "not-met",
+        "summary": "Gson is one independent upstream reactor, including protobuf/JPMS modules; modules and controlled multi/sources/wrapper fixtures are not separate independently selected projects. The corpus is not broad enough to establish the many-samples judgment.",
+        "evidence": [
+          "https://github.com/nix-purifiers/maven-purifier/blob/b1560c561b576d5f6cbb2210a085ec0c6da806cb/flake.nix",
+          "https://github.com/nix-purifiers/maven-purifier/actions/runs/42153559301/job/127682272029",
+          "https://github.com/nix-purifiers/maven-purifier/actions/runs/42153559301/job/127682272201",
+          ".worktrees/tier-review/group-5/derivation-evidence.json#/projects/maven-purifier"
+        ]
+      },
+      "longCompatibility": {
+        "state": "met",
+        "summary": "Exact-main successful compatibility jobs execute Maven2.2.1/Java8,3.0.5/Java8,3.3.9/Java17,3.8.8/Java17,3.9.11/Java17 and4.0.0-rc-7/Java17, with recorded Nix build/test/runtime derivations. These selected points cross Maven2/3/4 lifecycle and repository behavior over a long period.4.0 remains prerelease; unexecuted intermediate patches are not claimed.",
+        "evidence": [
+          "https://github.com/nix-purifiers/maven-purifier/blob/b1560c561b576d5f6cbb2210a085ec0c6da806cb/flake.nix",
+          "https://github.com/nix-purifiers/maven-purifier/actions/runs/42153559301/job/127682272029",
+          "https://github.com/nix-purifiers/maven-purifier/actions/runs/42153559301/job/127682272201",
+          ".worktrees/tier-review/group-5/derivation-evidence.json#/projects/maven-purifier",
+          "https://github.com/nix-purifiers/maven-purifier/actions/runs/42153559301/job/127682272052",
+          "https://github.com/nix-purifiers/maven-purifier/actions/runs/42153559301/job/127682272063",
+          "https://github.com/nix-purifiers/maven-purifier/actions/runs/42153559301/job/127682272078",
+          "https://github.com/nix-purifiers/maven-purifier/actions/runs/42153559301/job/127682272084",
+          "https://github.com/nix-purifiers/maven-purifier/actions/runs/42153559301/job/127682272271",
+          "https://github.com/nix-purifiers/maven-purifier/actions/runs/42153559301/job/127682272277"
+        ]
+      }
+    },
+    "sampleBuilds": [
+      {
+        "name": "google/gson gson-parent-2.15.0 (independent-upstream)",
+        "evidence": [
+          "https://github.com/nix-purifiers/maven-purifier/blob/b1560c561b576d5f6cbb2210a085ec0c6da806cb/tests/default.nix",
+          "/nix/store/z1apz7sabqibwvvbqhz2kjm94imwil8x-gson.drv",
+          "/nix/store/0sm4v9pbszmdlf9cbqk099yak27s7263-proto.drv",
+          "/nix/store/h935j1fsd4qd0wb3b20ifz2zp0nlnh8x-maven-tests.drv",
+          "https://github.com/nix-purifiers/maven-purifier/actions/runs/42153559301/job/127682272029",
+          "https://github.com/nix-purifiers/maven-purifier/actions/runs/42153559301/job/127682272201"
+        ]
+      },
+      {
+        "name": "multi reactor, sources, wrapper and external (fixtures)",
+        "evidence": [
+          "https://github.com/nix-purifiers/maven-purifier/blob/b1560c561b576d5f6cbb2210a085ec0c6da806cb/tests/fixtures",
+          "/nix/store/z4ccgmn70qii7f0r97jr8nif7ar6bz71-maven-tests.drv",
+          "/nix/store/k64ki6yk4cdmbbg6ahpri5xzxyw3nzw4-maven-purifier-test-multi-runs.drv",
+          "/nix/store/3rk2rdyxljgh06xpccsidlhbac6rkig2-maven-purifier-test-wrapper-version.drv",
+          "https://github.com/nix-purifiers/maven-purifier/actions/runs/42153559301/job/127682272029",
+          "https://github.com/nix-purifiers/maven-purifier/actions/runs/42153559301/job/127682272201"
+        ]
+      }
+    ]
+  },
+  "meson-purifier": {
+    "tier": 3,
+    "reviewedRevision": "64f252d0df2f08cd81f3baad09d0faa69f9e0217",
+    "reviewedAt": "2026-11-06",
+    "rationale": "Native Linux executable checks and at least one exact-version sample are demonstrated. Higher-tier promotion is not justified without native Darwin execution; further criterion-specific judgments and proof limits are recorded.",
+    "criteria": {
+      "evaluation": {
+        "state": "met",
+        "summary": "Exact revision 64f252d0df2f08cd81f3baad09d0faa69f9e0217 evaluates its x86_64-linux check set; successful Nix realization receipts bind executable check attributes to derivation/output paths.",
+        "evidence": [
+          "https://github.com/nix-purifiers/meson-purifier/blob/64f252d0df2f08cd81f3baad09d0faa69f9e0217/flake.nix",
+          "https://github.com/nix-purifiers/meson-purifier/actions/runs/42153562690/job/127682283186",
+          "https://github.com/nix-purifiers/meson-purifier/actions/runs/42153562690/job/127682283290",
+          ".worktrees/tier-review/group-5/derivation-evidence.json#/projects/meson-purifier"
+        ]
+      },
+      "goodTests": {
+        "state": "met",
+        "summary": "Executable Nix checks build and run the C fixture with Git/Hg/SVN/file wraps and patch directories, exercise external locks, malformed/stale/tampered/missing entries, resource schema and native FFI; Rizin's built binaries must report0.8.2 and assemble x86 instruction bytes correctly. This is meaningful resolver/artifact/runtime coverage. The public Rizin check is a binary smoke check, not the full Rizin upstream suite; producer's broader tests remain separate.",
+        "evidence": [
+          "https://github.com/nix-purifiers/meson-purifier/blob/64f252d0df2f08cd81f3baad09d0faa69f9e0217/flake.nix",
+          "https://github.com/nix-purifiers/meson-purifier/actions/runs/42153562690/job/127682283186",
+          "https://github.com/nix-purifiers/meson-purifier/actions/runs/42153562690/job/127682283290",
+          ".worktrees/tier-review/group-5/derivation-evidence.json#/projects/meson-purifier",
+          "https://github.com/nix-purifiers/meson-purifier/blob/64f252d0df2f08cd81f3baad09d0faa69f9e0217/tests/default.nix"
+        ]
+      },
+      "linux": {
+        "state": "met",
+        "summary": "Native x86_64-linux check realization succeeds with exact drv/output receipts; same-source successful Ubuntu x86_64 and ARM CI logs record executable check builds. Cached local realization is distinguished from original CI execution.",
+        "evidence": [
+          "https://github.com/nix-purifiers/meson-purifier/blob/64f252d0df2f08cd81f3baad09d0faa69f9e0217/flake.nix",
+          "https://github.com/nix-purifiers/meson-purifier/actions/runs/42153562690/job/127682283186",
+          "https://github.com/nix-purifiers/meson-purifier/actions/runs/42153562690/job/127682283290",
+          ".worktrees/tier-review/group-5/derivation-evidence.json#/projects/meson-purifier"
+        ]
+      },
+      "darwin": {
+        "state": "not-met",
+        "summary": "The inspected successful workflows execute Ubuntu x86_64/ARM only; no native Darwin SDK/build/test/output receipt exists for this public revision. Linux execution, Darwin lock entries or conditional systems do not establish Darwin runtime.",
+        "evidence": [
+          "https://github.com/nix-purifiers/meson-purifier/blob/64f252d0df2f08cd81f3baad09d0faa69f9e0217/.github/workflows/check.yml"
+        ]
+      },
+      "oneVersion": {
+        "state": "met",
+        "summary": "Successful sample execution binds the exact pinned SDK point(s): Meson 1.12.1. Wider version intervals are not inferred.",
+        "evidence": [
+          "https://github.com/nix-purifiers/meson-purifier/blob/64f252d0df2f08cd81f3baad09d0faa69f9e0217/flake.nix",
+          "https://github.com/nix-purifiers/meson-purifier/actions/runs/42153562690/job/127682283186",
+          "https://github.com/nix-purifiers/meson-purifier/actions/runs/42153562690/job/127682283290",
+          ".worktrees/tier-review/group-5/derivation-evidence.json#/projects/meson-purifier"
+        ]
+      },
+      "nonEolVersions": {
+        "state": "met",
+        "summary": "The successful public-main checks execute Meson1.12.1, identified by the upstream release page as the current latest release. This judgment is limited to that exact maintained current point; the WIP upstream release-procedure page is not treated as an approved EOL/support interval.",
+        "evidence": [
+          "https://github.com/nix-purifiers/meson-purifier/blob/64f252d0df2f08cd81f3baad09d0faa69f9e0217/flake.nix",
+          "https://github.com/nix-purifiers/meson-purifier/actions/runs/42153562690/job/127682283186",
+          "https://github.com/nix-purifiers/meson-purifier/actions/runs/42153562690/job/127682283290",
+          ".worktrees/tier-review/group-5/derivation-evidence.json#/projects/meson-purifier",
+          "https://github.com/mesonbuild/meson/releases/tag/1.12.1",
+          "https://mesonbuild.com/Release-procedure.html"
+        ]
+      },
+      "manySamples": {
+        "state": "not-met",
+        "summary": "Rizin is one independent upstream project; the app and external/FFI/schema fixtures plus their wrap dependencies are not independent consumer samples. The executed corpus lacks broad independent consumer diversity.",
+        "evidence": [
+          "https://github.com/nix-purifiers/meson-purifier/blob/64f252d0df2f08cd81f3baad09d0faa69f9e0217/flake.nix",
+          "https://github.com/nix-purifiers/meson-purifier/actions/runs/42153562690/job/127682283186",
+          "https://github.com/nix-purifiers/meson-purifier/actions/runs/42153562690/job/127682283290",
+          ".worktrees/tier-review/group-5/derivation-evidence.json#/projects/meson-purifier"
+        ]
+      },
+      "longCompatibility": {
+        "state": "not-met",
+        "summary": "Public checks execute one pinned Meson1.12.1 toolchain. Fixture package version1.0.0 and Rizin0.8.2 are consumer versions, not old Meson runtime points, and do not establish historical Meson compatibility.",
+        "evidence": [
+          "https://github.com/nix-purifiers/meson-purifier/blob/64f252d0df2f08cd81f3baad09d0faa69f9e0217/flake.nix",
+          "https://github.com/nix-purifiers/meson-purifier/actions/runs/42153562690/job/127682283186",
+          "https://github.com/nix-purifiers/meson-purifier/actions/runs/42153562690/job/127682283290",
+          ".worktrees/tier-review/group-5/derivation-evidence.json#/projects/meson-purifier"
+        ]
+      }
+    },
+    "sampleBuilds": [
+      {
+        "name": "rizinorg/rizin0.8.2 (independent-upstream)",
+        "evidence": [
+          "https://github.com/nix-purifiers/meson-purifier/blob/64f252d0df2f08cd81f3baad09d0faa69f9e0217/tests/default.nix",
+          "/nix/store/kva5g5yz9s8f7f9nf6ykw0qrq8bpw8lr-real-world-rizin.drv",
+          "https://github.com/nix-purifiers/meson-purifier/actions/runs/42153562690/job/127682283186",
+          "https://github.com/nix-purifiers/meson-purifier/actions/runs/42153562690/job/127682283290"
+        ]
+      },
+      {
+        "name": "C app, external wraps, native FFI and resource-schema (fixtures)",
+        "evidence": [
+          "https://github.com/nix-purifiers/meson-purifier/blob/64f252d0df2f08cd81f3baad09d0faa69f9e0217/tests/fixtures",
+          "/nix/store/a22azy3hy5ha0xx4d6vvrgzjvikv52h2-purifier-fixture-tests-1.0.0.drv",
+          "/nix/store/dgyk29bicwx2p9nl773g6qc3d9y977nh-meson-native-foreign-consumer.drv",
+          "/nix/store/80nnyhngw00jdf1l0z8vmald5fviwhap-installed-schema-ordinary-consumers.drv",
+          "https://github.com/nix-purifiers/meson-purifier/actions/runs/42153562690/job/127682283186",
+          "https://github.com/nix-purifiers/meson-purifier/actions/runs/42153562690/job/127682283290"
+        ]
+      }
+    ]
+  },
+  "mill-purifier": {
+    "tier": 3,
+    "reviewedRevision": "d2979cf74e3ce08bd1a40304d5a6581d34eb2027",
+    "reviewedAt": "2026-11-06",
+    "rationale": "Native Linux executable checks and at least one exact-version sample are demonstrated. Higher-tier promotion is not justified without native Darwin execution; further criterion-specific judgments and proof limits are recorded.",
+    "criteria": {
+      "evaluation": {
+        "state": "met",
+        "summary": "Exact revision d2979cf74e3ce08bd1a40304d5a6581d34eb2027 evaluates its x86_64-linux check set; successful Nix realization receipts bind executable check attributes to derivation/output paths.",
+        "evidence": [
+          "https://github.com/nix-purifiers/mill-purifier/blob/d2979cf74e3ce08bd1a40304d5a6581d34eb2027/flake.nix",
+          "https://github.com/nix-purifiers/mill-purifier/actions/runs/42153566787/job/127682296719",
+          "https://github.com/nix-purifiers/mill-purifier/actions/runs/42153566787/job/127682296871",
+          ".worktrees/tier-review/group-5/derivation-evidence.json#/projects/mill-purifier"
+        ]
+      },
+      "goodTests": {
+        "state": "met",
+        "summary": "Nix checks run Scala tests, evaluate malformed/stale/tampered/missing locks, verify artifacts/publication/projections, dynamic ranges and Java/Kotlin/Scala polyglot outputs, plus pinned fansi's JVM tests and multi-platform package outputs. Native composition and relock-real-world CI jobs pass at the same revision, providing lifecycle checks beyond package existence.",
+        "evidence": [
+          "https://github.com/nix-purifiers/mill-purifier/blob/d2979cf74e3ce08bd1a40304d5a6581d34eb2027/flake.nix",
+          "https://github.com/nix-purifiers/mill-purifier/actions/runs/42153566787/job/127682296719",
+          "https://github.com/nix-purifiers/mill-purifier/actions/runs/42153566787/job/127682296871",
+          ".worktrees/tier-review/group-5/derivation-evidence.json#/projects/mill-purifier",
+          "https://github.com/nix-purifiers/mill-purifier/blob/d2979cf74e3ce08bd1a40304d5a6581d34eb2027/tests/default.nix"
+        ]
+      },
+      "linux": {
+        "state": "met",
+        "summary": "Native x86_64-linux check realization succeeds with exact drv/output receipts; same-source successful Ubuntu x86_64 and ARM CI logs record executable check builds. Cached local realization is distinguished from original CI execution.",
+        "evidence": [
+          "https://github.com/nix-purifiers/mill-purifier/blob/d2979cf74e3ce08bd1a40304d5a6581d34eb2027/flake.nix",
+          "https://github.com/nix-purifiers/mill-purifier/actions/runs/42153566787/job/127682296719",
+          "https://github.com/nix-purifiers/mill-purifier/actions/runs/42153566787/job/127682296871",
+          ".worktrees/tier-review/group-5/derivation-evidence.json#/projects/mill-purifier"
+        ]
+      },
+      "darwin": {
+        "state": "not-met",
+        "summary": "The inspected successful workflows execute Ubuntu x86_64/ARM only; no native Darwin SDK/build/test/output receipt exists for this public revision. Linux execution, Darwin lock entries or conditional systems do not establish Darwin runtime.",
+        "evidence": [
+          "https://github.com/nix-purifiers/mill-purifier/blob/d2979cf74e3ce08bd1a40304d5a6581d34eb2027/.github/workflows/check.yml"
+        ]
+      },
+      "oneVersion": {
+        "state": "met",
+        "summary": "Successful sample execution binds the exact pinned SDK point(s): MillFixture 1.3.1, MillFansi 1.0.0. Wider version intervals are not inferred.",
+        "evidence": [
+          "https://github.com/nix-purifiers/mill-purifier/blob/d2979cf74e3ce08bd1a40304d5a6581d34eb2027/flake.nix",
+          "https://github.com/nix-purifiers/mill-purifier/actions/runs/42153566787/job/127682296719",
+          "https://github.com/nix-purifiers/mill-purifier/actions/runs/42153566787/job/127682296871",
+          ".worktrees/tier-review/group-5/derivation-evidence.json#/projects/mill-purifier"
+        ]
+      },
+      "nonEolVersions": {
+        "state": "met",
+        "summary": "The successful fixture derivations execute Mill1.3.1, which fresh upstream release API identifies as the latest stable1.x point. Fansi additionally executes1.0.0 as a distinct older point. No unsupported EOL date or all-patch interval is inferred; this judgment covers current1.3.1 only.",
+        "evidence": [
+          "https://github.com/nix-purifiers/mill-purifier/blob/d2979cf74e3ce08bd1a40304d5a6581d34eb2027/flake.nix",
+          "https://github.com/nix-purifiers/mill-purifier/actions/runs/42153566787/job/127682296719",
+          "https://github.com/nix-purifiers/mill-purifier/actions/runs/42153566787/job/127682296871",
+          ".worktrees/tier-review/group-5/derivation-evidence.json#/projects/mill-purifier",
+          "https://github.com/com-lihaoyi/mill/blob/main/changelog.adoc",
+          "https://mill-build.org/mill/cli/installation-ide.html"
+        ]
+      },
+      "manySamples": {
+        "state": "not-met",
+        "summary": "fansi is one independent consumer. JVM/JS/Native and Scala-axis outputs are modules of that project; simple/ranged/polyglot are synthetic fixtures. This establishes useful feature breadth but not a broad independent project corpus.",
+        "evidence": [
+          "https://github.com/nix-purifiers/mill-purifier/blob/d2979cf74e3ce08bd1a40304d5a6581d34eb2027/flake.nix",
+          "https://github.com/nix-purifiers/mill-purifier/actions/runs/42153566787/job/127682296719",
+          "https://github.com/nix-purifiers/mill-purifier/actions/runs/42153566787/job/127682296871",
+          ".worktrees/tier-review/group-5/derivation-evidence.json#/projects/mill-purifier"
+        ]
+      },
+      "longCompatibility": {
+        "state": "not-met",
+        "summary": "Mill1.0.0 and1.3.1 exercise two release points and distinct project layouts, but both are recent1.x behavior. No executed old0.x build grammar/manager generations or comparably long historical sequence is present; Scala axis variants do not substitute for old Mill execution.",
+        "evidence": [
+          "https://github.com/nix-purifiers/mill-purifier/blob/d2979cf74e3ce08bd1a40304d5a6581d34eb2027/flake.nix",
+          "https://github.com/nix-purifiers/mill-purifier/actions/runs/42153566787/job/127682296719",
+          "https://github.com/nix-purifiers/mill-purifier/actions/runs/42153566787/job/127682296871",
+          ".worktrees/tier-review/group-5/derivation-evidence.json#/projects/mill-purifier"
+        ]
+      }
+    },
+    "sampleBuilds": [
+      {
+        "name": "com-lihaoyi/fansi0.5.1 (independent-upstream)",
+        "evidence": [
+          "https://github.com/nix-purifiers/mill-purifier/blob/d2979cf74e3ce08bd1a40304d5a6581d34eb2027/tests/default.nix",
+          "/nix/store/6v8q606rfvcfkl8q50n50v3lddkdjpna-mill-tests.drv",
+          "/nix/store/2y22r1ch0zdxksw4wgr8zq1664gwzlqr-real-world-fansi-packages.drv",
+          "https://github.com/nix-purifiers/mill-purifier/actions/runs/42153566787/job/127682296719",
+          "https://github.com/nix-purifiers/mill-purifier/actions/runs/42153566787/job/127682296871"
+        ]
+      },
+      {
+        "name": "simple, ranged and polyglot (fixtures)",
+        "evidence": [
+          "https://github.com/nix-purifiers/mill-purifier/blob/d2979cf74e3ce08bd1a40304d5a6581d34eb2027/tests/fixtures",
+          "/nix/store/wpbnbpyg8bs7c31anh6s18wga1z0rxb1-mill-tests.drv",
+          "/nix/store/b7nz3l6rc6nri4fkj6zw8knkl5h9j682-polyglot-versioned-run.drv",
+          "https://github.com/nix-purifiers/mill-purifier/actions/runs/42153566787/job/127682296719",
+          "https://github.com/nix-purifiers/mill-purifier/actions/runs/42153566787/job/127682296871"
+        ]
+      }
+    ]
+  },
+  "mix-purifier": {
+    "tier": 3,
+    "reviewedRevision": "0145ec2b1d2eb99e796f9ca96a015f9a42ede5c2",
+    "reviewedAt": "2026-11-06",
+    "rationale": "Native Linux executable checks and at least one exact-version sample are demonstrated. Higher-tier promotion is not justified without native Darwin execution; further criterion-specific judgments and proof limits are recorded.",
+    "criteria": {
+      "evaluation": {
+        "state": "met",
+        "summary": "Exact revision 0145ec2b1d2eb99e796f9ca96a015f9a42ede5c2 evaluates its x86_64-linux check set; successful Nix realization receipts bind executable check attributes to derivation/output paths.",
+        "evidence": [
+          "https://github.com/nix-purifiers/mix-purifier/blob/0145ec2b1d2eb99e796f9ca96a015f9a42ede5c2/flake.nix",
+          "https://github.com/nix-purifiers/mix-purifier/actions/runs/42153569505/job/127682304550",
+          "https://github.com/nix-purifiers/mix-purifier/actions/runs/42153569505/job/127682304826",
+          ".worktrees/tier-review/group-5/derivation-evidence.json#/projects/mix-purifier"
+        ]
+      },
+      "goodTests": {
+        "state": "met",
+        "summary": "Nix checks cover compiled Hex and Erlang dependencies, ExUnit, git/path/umbrella/named repositories, release and escript execution, source-byte/checksum failures, offline native compile with a missing-dependency negative control, mocked Hex upload bytes, rebuild comparisons and unchanged upstream Credo tests. Credo docs are explicitly not checked because its pinned upstream ExDoc configuration fails; the quality judgment does not claim docs validation.",
+        "evidence": [
+          "https://github.com/nix-purifiers/mix-purifier/blob/0145ec2b1d2eb99e796f9ca96a015f9a42ede5c2/flake.nix",
+          "https://github.com/nix-purifiers/mix-purifier/actions/runs/42153569505/job/127682304550",
+          "https://github.com/nix-purifiers/mix-purifier/actions/runs/42153569505/job/127682304826",
+          ".worktrees/tier-review/group-5/derivation-evidence.json#/projects/mix-purifier",
+          "https://github.com/nix-purifiers/mix-purifier/blob/0145ec2b1d2eb99e796f9ca96a015f9a42ede5c2/tests/default.nix"
+        ]
+      },
+      "linux": {
+        "state": "met",
+        "summary": "Native x86_64-linux check realization succeeds with exact drv/output receipts; same-source successful Ubuntu x86_64 and ARM CI logs record executable check builds. Cached local realization is distinguished from original CI execution.",
+        "evidence": [
+          "https://github.com/nix-purifiers/mix-purifier/blob/0145ec2b1d2eb99e796f9ca96a015f9a42ede5c2/flake.nix",
+          "https://github.com/nix-purifiers/mix-purifier/actions/runs/42153569505/job/127682304550",
+          "https://github.com/nix-purifiers/mix-purifier/actions/runs/42153569505/job/127682304826",
+          ".worktrees/tier-review/group-5/derivation-evidence.json#/projects/mix-purifier"
+        ]
+      },
+      "darwin": {
+        "state": "not-met",
+        "summary": "The inspected successful workflows execute Ubuntu x86_64/ARM only; no native Darwin SDK/build/test/output receipt exists for this public revision. Linux execution, Darwin lock entries or conditional systems do not establish Darwin runtime.",
+        "evidence": [
+          "https://github.com/nix-purifiers/mix-purifier/blob/0145ec2b1d2eb99e796f9ca96a015f9a42ede5c2/.github/workflows/check.yml"
+        ]
+      },
+      "oneVersion": {
+        "state": "met",
+        "summary": "Successful sample execution binds the exact pinned SDK point(s): Elixir 1.18.5, ErlangOTP 28.5.0.8. Wider version intervals are not inferred.",
+        "evidence": [
+          "https://github.com/nix-purifiers/mix-purifier/blob/0145ec2b1d2eb99e796f9ca96a015f9a42ede5c2/flake.nix",
+          "https://github.com/nix-purifiers/mix-purifier/actions/runs/42153569505/job/127682304550",
+          "https://github.com/nix-purifiers/mix-purifier/actions/runs/42153569505/job/127682304826",
+          ".worktrees/tier-review/group-5/derivation-evidence.json#/projects/mix-purifier"
+        ]
+      },
+      "nonEolVersions": {
+        "state": "not-met",
+        "summary": "The executed Elixir1.18.5 point lies in a security-supported minor under upstream's current last-five-minors policy (1.16 through1.20), but no derivation matrix executes the other supported minors/current1.20 or verifies their OTP combinations. Thus a maintained-version breadth claim is not established.1.18 is not called EOL.",
+        "evidence": [
+          "https://github.com/nix-purifiers/mix-purifier/blob/0145ec2b1d2eb99e796f9ca96a015f9a42ede5c2/flake.nix",
+          "https://github.com/nix-purifiers/mix-purifier/actions/runs/42153569505/job/127682304550",
+          "https://github.com/nix-purifiers/mix-purifier/actions/runs/42153569505/job/127682304826",
+          ".worktrees/tier-review/group-5/derivation-evidence.json#/projects/mix-purifier",
+          "https://elixir.hexdocs.pm/main/compatibility-and-deprecations.html",
+          "https://elixir-lang.org/docs/"
+        ]
+      },
+      "manySamples": {
+        "state": "not-met",
+        "summary": "Credo is one independent upstream consumer. Its release/escript/Hex outputs and the controlled dependency-layout fixtures are not independent projects, so broad consumer diversity is not demonstrated.",
+        "evidence": [
+          "https://github.com/nix-purifiers/mix-purifier/blob/0145ec2b1d2eb99e796f9ca96a015f9a42ede5c2/flake.nix",
+          "https://github.com/nix-purifiers/mix-purifier/actions/runs/42153569505/job/127682304550",
+          "https://github.com/nix-purifiers/mix-purifier/actions/runs/42153569505/job/127682304826",
+          ".worktrees/tier-review/group-5/derivation-evidence.json#/projects/mix-purifier"
+        ]
+      },
+      "longCompatibility": {
+        "state": "not-met",
+        "summary": "All checked builds use the pinned Elixir1.18.5/OTP28 toolchain; Hex package versions and multiple Mix project layouts are not historical Elixir/OTP runtime points.",
+        "evidence": [
+          "https://github.com/nix-purifiers/mix-purifier/blob/0145ec2b1d2eb99e796f9ca96a015f9a42ede5c2/flake.nix",
+          "https://github.com/nix-purifiers/mix-purifier/actions/runs/42153569505/job/127682304550",
+          "https://github.com/nix-purifiers/mix-purifier/actions/runs/42153569505/job/127682304826",
+          ".worktrees/tier-review/group-5/derivation-evidence.json#/projects/mix-purifier"
+        ]
+      }
+    },
+    "sampleBuilds": [
+      {
+        "name": "rrrene/credo1.7.19 (independent-upstream)",
+        "evidence": [
+          "https://github.com/nix-purifiers/mix-purifier/blob/0145ec2b1d2eb99e796f9ca96a015f9a42ede5c2/tests/real-world/credo.nix",
+          "/nix/store/nplhlsrycv172kq2n13i7w2hclckl0ri-credo-tests-1.7.19.drv",
+          "/nix/store/sfyvj94cj1y413bf0rpr4axd9yhs7xnq-mix-purifier-test-credo-escript.drv",
+          "/nix/store/khxj68483b8kp5w3q25v962vkf1801lk-mix-purifier-test-credo-hex-package.drv",
+          "https://github.com/nix-purifiers/mix-purifier/actions/runs/42153569505/job/127682304550",
+          "https://github.com/nix-purifiers/mix-purifier/actions/runs/42153569505/job/127682304826"
+        ]
+      },
+      {
+        "name": "Hex, git, umbrella, path and named-repository projects (fixtures)",
+        "evidence": [
+          "https://github.com/nix-purifiers/mix-purifier/blob/0145ec2b1d2eb99e796f9ca96a015f9a42ede5c2/tests/fixtures",
+          "/nix/store/j0v3fqlyfbjpcnjknn0027175161s1z8-git_dep-tests-0.2.0.drv",
+          "/nix/store/1ikcypaw7q9pv77imjc187biki6pwm3z-mix-purifier-test-basic-runs.drv",
+          "/nix/store/zipif0z2rjynabggh981i6wakfz4afp0-mix-purifier-test-umbrella-runs.drv",
+          "/nix/store/1dy3i9kakfcqv1z9rmpvavdaqx5paj1q-mix-purifier-test-pathdep-runs.drv",
+          "https://github.com/nix-purifiers/mix-purifier/actions/runs/42153569505/job/127682304550",
+          "https://github.com/nix-purifiers/mix-purifier/actions/runs/42153569505/job/127682304826"
+        ]
+      }
+    ]
+  },
+  "nimble-purifier": {
+    "tier": 3,
+    "reviewedRevision": "b2cf33a6d5a6ed716b1cb48e9eb836e271af29a6",
+    "reviewedAt": "2026-11-06",
+    "rationale": "Native Linux executable checks and at least one exact-version sample are demonstrated. Higher-tier promotion is not justified without native Darwin execution; further criterion-specific judgments and proof limits are recorded.",
+    "criteria": {
+      "evaluation": {
+        "state": "met",
+        "summary": "Exact revision b2cf33a6d5a6ed716b1cb48e9eb836e271af29a6 evaluates its x86_64-linux check set; successful Nix realization receipts bind executable check attributes to derivation/output paths.",
+        "evidence": [
+          "https://github.com/nix-purifiers/nimble-purifier/blob/b2cf33a6d5a6ed716b1cb48e9eb836e271af29a6/flake.nix",
+          "https://github.com/nix-purifiers/nimble-purifier/actions/runs/42153573560/job/127682317409",
+          "https://github.com/nix-purifiers/nimble-purifier/actions/runs/42153573560/job/127682317673",
+          ".worktrees/tier-review/group-5/derivation-evidence.json#/projects/nimble-purifier"
+        ]
+      },
+      "goodTests": {
+        "state": "met",
+        "summary": "The project derivation compiles and runs the minimal Nim test; exact-main native conformance jobs also test relock/update/external locks, task-only dependencies, hermetic Nimble paths, unchanged native locks, rejected configuration/manifest changes, release archive contents, empty dependencies and impure fallback exit behavior. Editor integration asserts definition-provider capabilities and Nix-delivered dependency locations. This is substantive lifecycle/negative/runtime coverage despite the separate lack of independent sample breadth.",
+        "evidence": [
+          "https://github.com/nix-purifiers/nimble-purifier/blob/b2cf33a6d5a6ed716b1cb48e9eb836e271af29a6/flake.nix",
+          "https://github.com/nix-purifiers/nimble-purifier/actions/runs/42153573560/job/127682317409",
+          "https://github.com/nix-purifiers/nimble-purifier/actions/runs/42153573560/job/127682317673",
+          ".worktrees/tier-review/group-5/derivation-evidence.json#/projects/nimble-purifier",
+          "https://github.com/nix-purifiers/nimble-purifier/blob/b2cf33a6d5a6ed716b1cb48e9eb836e271af29a6/tests/default.nix"
+        ]
+      },
+      "linux": {
+        "state": "met",
+        "summary": "Native x86_64-linux check realization succeeds with exact drv/output receipts; same-source successful Ubuntu x86_64 and ARM CI logs record executable check builds. Cached local realization is distinguished from original CI execution.",
+        "evidence": [
+          "https://github.com/nix-purifiers/nimble-purifier/blob/b2cf33a6d5a6ed716b1cb48e9eb836e271af29a6/flake.nix",
+          "https://github.com/nix-purifiers/nimble-purifier/actions/runs/42153573560/job/127682317409",
+          "https://github.com/nix-purifiers/nimble-purifier/actions/runs/42153573560/job/127682317673",
+          ".worktrees/tier-review/group-5/derivation-evidence.json#/projects/nimble-purifier"
+        ]
+      },
+      "darwin": {
+        "state": "not-met",
+        "summary": "The inspected successful workflows execute Ubuntu x86_64/ARM only; no native Darwin SDK/build/test/output receipt exists for this public revision. Linux execution, Darwin lock entries or conditional systems do not establish Darwin runtime.",
+        "evidence": [
+          "https://github.com/nix-purifiers/nimble-purifier/blob/b2cf33a6d5a6ed716b1cb48e9eb836e271af29a6/.github/workflows/check.yml"
+        ]
+      },
+      "oneVersion": {
+        "state": "met",
+        "summary": "Successful sample execution binds the exact pinned SDK point(s): Nim 2.2.12, Nimble 0.26.0. Wider version intervals are not inferred.",
+        "evidence": [
+          "https://github.com/nix-purifiers/nimble-purifier/blob/b2cf33a6d5a6ed716b1cb48e9eb836e271af29a6/flake.nix",
+          "https://github.com/nix-purifiers/nimble-purifier/actions/runs/42153573560/job/127682317409",
+          "https://github.com/nix-purifiers/nimble-purifier/actions/runs/42153573560/job/127682317673",
+          ".worktrees/tier-review/group-5/derivation-evidence.json#/projects/nimble-purifier"
+        ]
+      },
+      "nonEolVersions": {
+        "state": "not-met",
+        "summary": "The executed pair is Nim2.2.12/Nimble0.26.0. Fresh primary release API identifies current Nimble0.26.2 and Nim downloads list2.2.14/2.4.0; none is executed by the reviewed Nix sample. This is a specific current SDK execution gap; no EOL status is inferred for the old pair merely from newer releases.",
+        "evidence": [
+          "https://github.com/nix-purifiers/nimble-purifier/blob/b2cf33a6d5a6ed716b1cb48e9eb836e271af29a6/flake.nix",
+          "https://github.com/nix-purifiers/nimble-purifier/actions/runs/42153573560/job/127682317409",
+          "https://github.com/nix-purifiers/nimble-purifier/actions/runs/42153573560/job/127682317673",
+          ".worktrees/tier-review/group-5/derivation-evidence.json#/projects/nimble-purifier",
+          "https://nim-lang.org/install.html",
+          "https://nim-lang.org/faq.html"
+        ]
+      },
+      "manySamples": {
+        "state": "not-met",
+        "summary": "Only examples/minimal is built as a consumer. Dependencies and repeated lifecycle runs of that project are not separate independently selected upstream projects.",
+        "evidence": [
+          "https://github.com/nix-purifiers/nimble-purifier/blob/b2cf33a6d5a6ed716b1cb48e9eb836e271af29a6/flake.nix",
+          "https://github.com/nix-purifiers/nimble-purifier/actions/runs/42153573560/job/127682317409",
+          "https://github.com/nix-purifiers/nimble-purifier/actions/runs/42153573560/job/127682317673",
+          ".worktrees/tier-review/group-5/derivation-evidence.json#/projects/nimble-purifier"
+        ]
+      },
+      "longCompatibility": {
+        "state": "not-met",
+        "summary": "The check set fixes Nim2.2.12/Nimble0.26.0; no old compiler/Nimble runtime matrix is executed. Profiles/editor checks vary workflow context rather than historical tool versions.",
+        "evidence": [
+          "https://github.com/nix-purifiers/nimble-purifier/blob/b2cf33a6d5a6ed716b1cb48e9eb836e271af29a6/flake.nix",
+          "https://github.com/nix-purifiers/nimble-purifier/actions/runs/42153573560/job/127682317409",
+          "https://github.com/nix-purifiers/nimble-purifier/actions/runs/42153573560/job/127682317673",
+          ".worktrees/tier-review/group-5/derivation-evidence.json#/projects/nimble-purifier"
+        ]
+      }
+    },
+    "sampleBuilds": [
+      {
+        "name": "Repository examples/minimal Nim project (fixture)",
+        "evidence": [
+          "https://github.com/nix-purifiers/nimble-purifier/blob/b2cf33a6d5a6ed716b1cb48e9eb836e271af29a6/examples/minimal",
+          "/nix/store/knp9wzzn6zqy1b0flzivvrjx23bfq81w-purified-nimble-project.drv",
+          "https://github.com/nix-purifiers/nimble-purifier/actions/runs/42153573560/job/127682317409",
+          "https://github.com/nix-purifiers/nimble-purifier/actions/runs/42153573560/job/127682317673"
+        ]
+      }
+    ]
+  },
+  "npm-purifier": {
+    "tier": 3,
+    "reviewedRevision": "3fa35f99bf459e2692849c1ecd570547c88a9dde",
+    "reviewedAt": "2026-11-06",
+    "rationale": "Native Linux executable checks and at least one exact-version sample are demonstrated. Higher-tier promotion is not justified without native Darwin execution; further criterion-specific judgments and proof limits are recorded.",
+    "criteria": {
+      "evaluation": {
+        "state": "met",
+        "summary": "Exact revision 3fa35f99bf459e2692849c1ecd570547c88a9dde evaluates its x86_64-linux check set; successful Nix realization receipts bind executable check attributes to derivation/output paths.",
+        "evidence": [
+          "https://github.com/nix-purifiers/npm-purifier/blob/3fa35f99bf459e2692849c1ecd570547c88a9dde/flake.nix",
+          "https://github.com/nix-purifiers/npm-purifier/actions/runs/42153843317/job/127683187425",
+          "https://github.com/nix-purifiers/npm-purifier/actions/runs/42153843317/job/127683187827",
+          ".worktrees/tier-review/group-5/derivation-evidence.json#/projects/npm-purifier"
+        ]
+      },
+      "goodTests": {
+        "state": "met",
+        "summary": "Executable checks exercise workspace/local paths, lifecycle scripts, prepared Git dependencies, platform filtering, malformed/missing-integrity/old locks, publication projections and two unchanged upstream test suites (commander with TypeScript and http-server). Native CI additionally checks ordinary registry consumers, shrinkwrap and SDK cold-store copy, so the quality judgment covers material resolver, packaging and compatibility behavior.",
+        "evidence": [
+          "https://github.com/nix-purifiers/npm-purifier/blob/3fa35f99bf459e2692849c1ecd570547c88a9dde/flake.nix",
+          "https://github.com/nix-purifiers/npm-purifier/actions/runs/42153843317/job/127683187425",
+          "https://github.com/nix-purifiers/npm-purifier/actions/runs/42153843317/job/127683187827",
+          ".worktrees/tier-review/group-5/derivation-evidence.json#/projects/npm-purifier",
+          "https://github.com/nix-purifiers/npm-purifier/blob/3fa35f99bf459e2692849c1ecd570547c88a9dde/tests/default.nix"
+        ]
+      },
+      "linux": {
+        "state": "met",
+        "summary": "Native x86_64-linux check realization succeeds with exact drv/output receipts; same-source successful Ubuntu x86_64 and ARM CI logs record executable check builds. Cached local realization is distinguished from original CI execution.",
+        "evidence": [
+          "https://github.com/nix-purifiers/npm-purifier/blob/3fa35f99bf459e2692849c1ecd570547c88a9dde/flake.nix",
+          "https://github.com/nix-purifiers/npm-purifier/actions/runs/42153843317/job/127683187425",
+          "https://github.com/nix-purifiers/npm-purifier/actions/runs/42153843317/job/127683187827",
+          ".worktrees/tier-review/group-5/derivation-evidence.json#/projects/npm-purifier"
+        ]
+      },
+      "darwin": {
+        "state": "not-met",
+        "summary": "The inspected successful workflows execute Ubuntu x86_64/ARM only; no native Darwin SDK/build/test/output receipt exists for this public revision. Linux execution, Darwin lock entries or conditional systems do not establish Darwin runtime.",
+        "evidence": [
+          "https://github.com/nix-purifiers/npm-purifier/blob/3fa35f99bf459e2692849c1ecd570547c88a9dde/.github/workflows/check.yml"
+        ]
+      },
+      "oneVersion": {
+        "state": "met",
+        "summary": "Successful sample execution binds the exact pinned SDK point(s): Node 24.21.0, npm 11.19.0. Wider version intervals are not inferred.",
+        "evidence": [
+          "https://github.com/nix-purifiers/npm-purifier/blob/3fa35f99bf459e2692849c1ecd570547c88a9dde/flake.nix",
+          "https://github.com/nix-purifiers/npm-purifier/actions/runs/42153843317/job/127683187425",
+          "https://github.com/nix-purifiers/npm-purifier/actions/runs/42153843317/job/127683187827",
+          ".worktrees/tier-review/group-5/derivation-evidence.json#/projects/npm-purifier"
+        ]
+      },
+      "nonEolVersions": {
+        "state": "not-met",
+        "summary": "Public-main derivations/native jobs execute maintained Node22/24/26 line points with npm10.9.2/11.19.0/11.12.1. However npm own primary Release Process supports only npm@latest (no npm LTS), and fresh API identifies12.2.2. No public-main derivation executes npm12.2.2. Node-line coverage is real but cannot establish the separate current npm-manager criterion; producer latest-point work is pending and not substituted into this snapshot.",
+        "evidence": [
+          "https://github.com/nix-purifiers/npm-purifier/blob/3fa35f99bf459e2692849c1ecd570547c88a9dde/flake.nix",
+          "https://github.com/nix-purifiers/npm-purifier/actions/runs/42153843317/job/127683187425",
+          "https://github.com/nix-purifiers/npm-purifier/actions/runs/42153843317/job/127683187827",
+          ".worktrees/tier-review/group-5/derivation-evidence.json#/projects/npm-purifier",
+          "https://github.com/nodejs/Release",
+          "https://nodejs.org/en/about/previous-releases",
+          "https://github.com/npm/cli/wiki/Release-Process",
+          "https://docs.npmjs.com/about-npm-versions/"
+        ]
+      },
+      "manySamples": {
+        "state": "not-met",
+        "summary": "Commander and http-server supply independent library/CLI samples and meaningful test coverage, but they remain a narrow JavaScript consumer set. Workspace/path/Git/WebJar/legacy fixture variants do not add independent consumers; there is no broad corpus exercising distinct native-addon/framework/application projects, so the Tier1 many-samples judgment is not demonstrated.",
+        "evidence": [
+          "https://github.com/nix-purifiers/npm-purifier/blob/3fa35f99bf459e2692849c1ecd570547c88a9dde/flake.nix",
+          "https://github.com/nix-purifiers/npm-purifier/actions/runs/42153843317/job/127683187425",
+          "https://github.com/nix-purifiers/npm-purifier/actions/runs/42153843317/job/127683187827",
+          ".worktrees/tier-review/group-5/derivation-evidence.json#/projects/npm-purifier"
+        ]
+      },
+      "longCompatibility": {
+        "state": "met",
+        "summary": "Successful native/shrinkwrap CI logs bind selected Node4.9.1/npm2.15.11,6.17.1/npm3.10.10 and later8/10/12/14/16/18/20/22/26 runtime points to Nix tool/build derivations. Offline native install/build/test, actual publication and ordinary consumers exercise pre-package-lock and later lock semantics across several manager generations. These are exact points, not continuous version ranges.",
+        "evidence": [
+          "https://github.com/nix-purifiers/npm-purifier/blob/3fa35f99bf459e2692849c1ecd570547c88a9dde/flake.nix",
+          "https://github.com/nix-purifiers/npm-purifier/actions/runs/42153843317/job/127683187425",
+          "https://github.com/nix-purifiers/npm-purifier/actions/runs/42153843317/job/127683187827",
+          ".worktrees/tier-review/group-5/derivation-evidence.json#/projects/npm-purifier",
+          "https://github.com/nix-purifiers/npm-purifier/actions/runs/42153843317/job/127683187596",
+          "https://github.com/nix-purifiers/npm-purifier/actions/runs/42153843317/job/127683187706"
+        ]
+      }
+    },
+    "sampleBuilds": [
+      {
+        "name": "tj/commander.js15.0.0 (independent-upstream)",
+        "evidence": [
+          "https://github.com/nix-purifiers/npm-purifier/blob/3fa35f99bf459e2692849c1ecd570547c88a9dde/tests/real-world.nix",
+          "/nix/store/j2g56bfxy9nzpsvycwhqygvw2w1vyalq-commander-15.0.0.drv",
+          "https://github.com/nix-purifiers/npm-purifier/actions/runs/42153843317/job/127683187425",
+          "https://github.com/nix-purifiers/npm-purifier/actions/runs/42153843317/job/127683187827"
+        ]
+      },
+      {
+        "name": "http-party/http-server14.1.2 (independent-upstream)",
+        "evidence": [
+          "https://github.com/nix-purifiers/npm-purifier/blob/3fa35f99bf459e2692849c1ecd570547c88a9dde/tests/real-world.nix",
+          "/nix/store/wih709h29qj96g6svyxrvsyvs1mpc107-real-http-server-check.drv",
+          "https://github.com/nix-purifiers/npm-purifier/actions/runs/42153843317/job/127683187425",
+          "https://github.com/nix-purifiers/npm-purifier/actions/runs/42153843317/job/127683187827"
+        ]
+      },
+      {
+        "name": "app/workspaces/path/git/webjar/legacy node (fixtures)",
+        "evidence": [
+          "https://github.com/nix-purifiers/npm-purifier/blob/3fa35f99bf459e2692849c1ecd570547c88a9dde/tests/fixtures",
+          "/nix/store/krz7lp91a7k3lqv8fsmaza8frz1adzaa-workspaces-check.drv",
+          "/nix/store/sg71v5k5ic5irpyshmskkln3nkygigqd-paths-check.drv",
+          "/nix/store/89i53g6lpjvxrhn5z1w80mp0r056kcyy-git-check.drv",
+          "https://github.com/nix-purifiers/npm-purifier/actions/runs/42153843317/job/127683187425",
+          "https://github.com/nix-purifiers/npm-purifier/actions/runs/42153843317/job/127683187827"
+        ]
+      }
+    ]
+  },
+  "octave-purifier": {
+    "tier": 3,
+    "reviewedRevision": "af2480a8e2d62611a4342309884ca23136a85eee",
+    "reviewedAt": "2026-11-06",
+    "rationale": "Native Linux executable checks and at least one exact-version sample are demonstrated. Higher-tier promotion is not justified without native Darwin execution; further criterion-specific judgments and proof limits are recorded.",
+    "criteria": {
+      "evaluation": {
+        "state": "met",
+        "summary": "Exact revision af2480a8e2d62611a4342309884ca23136a85eee evaluates its x86_64-linux check set; successful Nix realization receipts bind executable check attributes to derivation/output paths.",
+        "evidence": [
+          "https://github.com/nix-purifiers/octave-purifier/blob/af2480a8e2d62611a4342309884ca23136a85eee/flake.nix",
+          "https://github.com/nix-purifiers/octave-purifier/actions/runs/42153847605/job/127683199180",
+          "https://github.com/nix-purifiers/octave-purifier/actions/runs/42153847605/job/127683199468",
+          ".worktrees/tier-review/group-5/derivation-evidence.json#/projects/octave-purifier"
+        ]
+      },
+      "goodTests": {
+        "state": "met",
+        "summary": "The project derivation loads purifierproof and asserts answer42. Exact-main capture/conformance CI additionally checks empty selection, metadata mismatch refusal, control/signal selection, stale input diagnostics, SDK/closure references, offline runtime and ordinary impure fallback, incompatible running-Octave rejection and exact published contents. These test meaningful package-resolution/runtime boundaries beyond a single successful smoke assertion; independent consumer breadth remains unmet.",
+        "evidence": [
+          "https://github.com/nix-purifiers/octave-purifier/blob/af2480a8e2d62611a4342309884ca23136a85eee/flake.nix",
+          "https://github.com/nix-purifiers/octave-purifier/actions/runs/42153847605/job/127683199180",
+          "https://github.com/nix-purifiers/octave-purifier/actions/runs/42153847605/job/127683199468",
+          ".worktrees/tier-review/group-5/derivation-evidence.json#/projects/octave-purifier",
+          "https://github.com/nix-purifiers/octave-purifier/blob/af2480a8e2d62611a4342309884ca23136a85eee/flake.nix"
+        ]
+      },
+      "linux": {
+        "state": "met",
+        "summary": "Native x86_64-linux check realization succeeds with exact drv/output receipts; same-source successful Ubuntu x86_64 and ARM CI logs record executable check builds. Cached local realization is distinguished from original CI execution.",
+        "evidence": [
+          "https://github.com/nix-purifiers/octave-purifier/blob/af2480a8e2d62611a4342309884ca23136a85eee/flake.nix",
+          "https://github.com/nix-purifiers/octave-purifier/actions/runs/42153847605/job/127683199180",
+          "https://github.com/nix-purifiers/octave-purifier/actions/runs/42153847605/job/127683199468",
+          ".worktrees/tier-review/group-5/derivation-evidence.json#/projects/octave-purifier"
+        ]
+      },
+      "darwin": {
+        "state": "not-met",
+        "summary": "The inspected successful workflows execute Ubuntu x86_64/ARM only; no native Darwin SDK/build/test/output receipt exists for this public revision. Linux execution, Darwin lock entries or conditional systems do not establish Darwin runtime.",
+        "evidence": [
+          "https://github.com/nix-purifiers/octave-purifier/blob/af2480a8e2d62611a4342309884ca23136a85eee/.github/workflows/check.yml"
+        ]
+      },
+      "oneVersion": {
+        "state": "met",
+        "summary": "Successful sample execution binds the exact pinned SDK point(s): Octave 11.3.0. Wider version intervals are not inferred.",
+        "evidence": [
+          "https://github.com/nix-purifiers/octave-purifier/blob/af2480a8e2d62611a4342309884ca23136a85eee/flake.nix",
+          "https://github.com/nix-purifiers/octave-purifier/actions/runs/42153847605/job/127683199180",
+          "https://github.com/nix-purifiers/octave-purifier/actions/runs/42153847605/job/127683199468",
+          ".worktrees/tier-review/group-5/derivation-evidence.json#/projects/octave-purifier"
+        ]
+      },
+      "nonEolVersions": {
+        "state": "met",
+        "summary": "The executed sample derivation uses Octave11.3.0, identified by the upstream download page as the latest stable release. The claim is this exact current stable point only; the primary pages inspected do not define an older-version EOL interval and none is invented.",
+        "evidence": [
+          "https://github.com/nix-purifiers/octave-purifier/blob/af2480a8e2d62611a4342309884ca23136a85eee/flake.nix",
+          "https://github.com/nix-purifiers/octave-purifier/actions/runs/42153847605/job/127683199180",
+          "https://github.com/nix-purifiers/octave-purifier/actions/runs/42153847605/job/127683199468",
+          ".worktrees/tier-review/group-5/derivation-evidence.json#/projects/octave-purifier",
+          "https://octave.org/download",
+          "https://octave.org/news/release/2026/06/01/octave-11.3.0-released.html"
+        ]
+      },
+      "manySamples": {
+        "state": "not-met",
+        "summary": "purifierproof is one controlled package fixture. Installed control dependencies and repeated environment/project/release outputs are not independent consumer samples.",
+        "evidence": [
+          "https://github.com/nix-purifiers/octave-purifier/blob/af2480a8e2d62611a4342309884ca23136a85eee/flake.nix",
+          "https://github.com/nix-purifiers/octave-purifier/actions/runs/42153847605/job/127683199180",
+          "https://github.com/nix-purifiers/octave-purifier/actions/runs/42153847605/job/127683199468",
+          ".worktrees/tier-review/group-5/derivation-evidence.json#/projects/octave-purifier"
+        ]
+      },
+      "longCompatibility": {
+        "state": "not-met",
+        "summary": "All sample checks use Octave11.3.0; the lock's SDK hash pins that environment rather than defining a historical Octave runtime matrix.",
+        "evidence": [
+          "https://github.com/nix-purifiers/octave-purifier/blob/af2480a8e2d62611a4342309884ca23136a85eee/flake.nix",
+          "https://github.com/nix-purifiers/octave-purifier/actions/runs/42153847605/job/127683199180",
+          "https://github.com/nix-purifiers/octave-purifier/actions/runs/42153847605/job/127683199468",
+          ".worktrees/tier-review/group-5/derivation-evidence.json#/projects/octave-purifier"
+        ]
+      }
+    },
+    "sampleBuilds": [
+      {
+        "name": "Repository purifierproof Octave package (fixture)",
+        "evidence": [
+          "https://github.com/nix-purifiers/octave-purifier/blob/af2480a8e2d62611a4342309884ca23136a85eee/examples/minimal",
+          "/nix/store/2d474d437c4zdrgjp3nb7xpylij2bgd3-octave-project.drv",
+          "https://github.com/nix-purifiers/octave-purifier/actions/runs/42153847605/job/127683199180",
+          "https://github.com/nix-purifiers/octave-purifier/actions/runs/42153847605/job/127683199468"
+        ]
+      }
+    ]
+  },
+  "opam-purifier": {
+    "tier": 3,
+    "reviewedRevision": "8ee439250ca39763a4ddbda0c4ebdc7f61cd80f2",
+    "reviewedAt": "2026-11-06",
+    "rationale": "Native Linux executable checks and at least one exact-version sample are demonstrated. Higher-tier promotion is not justified without native Darwin execution; further criterion-specific judgments and proof limits are recorded.",
+    "criteria": {
+      "evaluation": {
+        "state": "met",
+        "summary": "Exact revision 8ee439250ca39763a4ddbda0c4ebdc7f61cd80f2 evaluates its x86_64-linux check set; successful Nix realization receipts bind executable check attributes to derivation/output paths.",
+        "evidence": [
+          "https://github.com/nix-purifiers/opam-purifier/blob/8ee439250ca39763a4ddbda0c4ebdc7f61cd80f2/flake.nix",
+          "https://github.com/nix-purifiers/opam-purifier/actions/runs/42153852837/job/127683214739",
+          "https://github.com/nix-purifiers/opam-purifier/actions/runs/42153852837/job/127683215186",
+          ".worktrees/tier-review/group-5/derivation-evidence.json#/projects/opam-purifier"
+        ]
+      },
+      "goodTests": {
+        "state": "met",
+        "summary": "Executable Nix checks run hello/workspace programs, local/git/URL pins, parser agreement against all committed opam sources, output metadata, byte-identical release archives, URI's upstream tests and malformed/stale/tampered/missing/external locks. Missing-download tests actually refuse an absent URL, and successful interactive CI covers native lifecycle/publication/VCS behavior, yielding substantive test coverage.",
+        "evidence": [
+          "https://github.com/nix-purifiers/opam-purifier/blob/8ee439250ca39763a4ddbda0c4ebdc7f61cd80f2/flake.nix",
+          "https://github.com/nix-purifiers/opam-purifier/actions/runs/42153852837/job/127683214739",
+          "https://github.com/nix-purifiers/opam-purifier/actions/runs/42153852837/job/127683215186",
+          ".worktrees/tier-review/group-5/derivation-evidence.json#/projects/opam-purifier",
+          "https://github.com/nix-purifiers/opam-purifier/blob/8ee439250ca39763a4ddbda0c4ebdc7f61cd80f2/tests/default.nix"
+        ]
+      },
+      "linux": {
+        "state": "met",
+        "summary": "Native x86_64-linux check realization succeeds with exact drv/output receipts; same-source successful Ubuntu x86_64 and ARM CI logs record executable check builds. Cached local realization is distinguished from original CI execution.",
+        "evidence": [
+          "https://github.com/nix-purifiers/opam-purifier/blob/8ee439250ca39763a4ddbda0c4ebdc7f61cd80f2/flake.nix",
+          "https://github.com/nix-purifiers/opam-purifier/actions/runs/42153852837/job/127683214739",
+          "https://github.com/nix-purifiers/opam-purifier/actions/runs/42153852837/job/127683215186",
+          ".worktrees/tier-review/group-5/derivation-evidence.json#/projects/opam-purifier"
+        ]
+      },
+      "darwin": {
+        "state": "not-met",
+        "summary": "The inspected successful workflows execute Ubuntu x86_64/ARM only; no native Darwin SDK/build/test/output receipt exists for this public revision. Linux execution, Darwin lock entries or conditional systems do not establish Darwin runtime.",
+        "evidence": [
+          "https://github.com/nix-purifiers/opam-purifier/blob/8ee439250ca39763a4ddbda0c4ebdc7f61cd80f2/.github/workflows/check.yml"
+        ]
+      },
+      "oneVersion": {
+        "state": "met",
+        "summary": "Successful sample execution binds the exact pinned SDK point(s): opam 2.6.1, OCaml 5.2.1. Wider version intervals are not inferred.",
+        "evidence": [
+          "https://github.com/nix-purifiers/opam-purifier/blob/8ee439250ca39763a4ddbda0c4ebdc7f61cd80f2/flake.nix",
+          "https://github.com/nix-purifiers/opam-purifier/actions/runs/42153852837/job/127683214739",
+          "https://github.com/nix-purifiers/opam-purifier/actions/runs/42153852837/job/127683215186",
+          ".worktrees/tier-review/group-5/derivation-evidence.json#/projects/opam-purifier"
+        ]
+      },
+      "nonEolVersions": {
+        "state": "not-met",
+        "summary": "The executed manager is current opam2.6.1, but the compiled consumer locks select OCaml5.2.1. Primary OCaml history identifies5.5.2 as current with security fixes and4.14.4 as a separately security-fixed line; neither compiler point is executed in the reviewed checks. Complete current manager/compiler support is therefore not established. No EOL status is invented for5.2.1.",
+        "evidence": [
+          "https://github.com/nix-purifiers/opam-purifier/blob/8ee439250ca39763a4ddbda0c4ebdc7f61cd80f2/flake.nix",
+          "https://github.com/nix-purifiers/opam-purifier/actions/runs/42153852837/job/127683214739",
+          "https://github.com/nix-purifiers/opam-purifier/actions/runs/42153852837/job/127683215186",
+          ".worktrees/tier-review/group-5/derivation-evidence.json#/projects/opam-purifier",
+          "https://opam.ocaml.org/",
+          "https://ocaml.org/releases"
+        ]
+      },
+      "manySamples": {
+        "state": "not-met",
+        "summary": "ocaml-uri is one independent upstream project; uri/uri-re/uri-sexp outputs are its subpackages. Hello/workspace are controlled fixtures, so the corpus lacks independent consumer breadth.",
+        "evidence": [
+          "https://github.com/nix-purifiers/opam-purifier/blob/8ee439250ca39763a4ddbda0c4ebdc7f61cd80f2/flake.nix",
+          "https://github.com/nix-purifiers/opam-purifier/actions/runs/42153852837/job/127683214739",
+          "https://github.com/nix-purifiers/opam-purifier/actions/runs/42153852837/job/127683215186",
+          ".worktrees/tier-review/group-5/derivation-evidence.json#/projects/opam-purifier"
+        ]
+      },
+      "longCompatibility": {
+        "state": "not-met",
+        "summary": "The check source selects current opam and one locked compiler environment per fixture; no historical opam1.x/2.x or older compiler generation execution matrix is established. Multiple packages/pins exercise source types rather than historical compatibility.",
+        "evidence": [
+          "https://github.com/nix-purifiers/opam-purifier/blob/8ee439250ca39763a4ddbda0c4ebdc7f61cd80f2/flake.nix",
+          "https://github.com/nix-purifiers/opam-purifier/actions/runs/42153852837/job/127683214739",
+          "https://github.com/nix-purifiers/opam-purifier/actions/runs/42153852837/job/127683215186",
+          ".worktrees/tier-review/group-5/derivation-evidence.json#/projects/opam-purifier"
+        ]
+      }
+    },
+    "sampleBuilds": [
+      {
+        "name": "mirage/ocaml-uri4.4.0 (independent-upstream)",
+        "evidence": [
+          "https://github.com/nix-purifiers/opam-purifier/blob/8ee439250ca39763a4ddbda0c4ebdc7f61cd80f2/tests/default.nix",
+          "/nix/store/ak3m8xlzy3cri8nz2hvq9vgg38vwdrlh-opam-project-tests.drv",
+          "/nix/store/nwa3wsyrf40iq399qs77pyzj36rwss2d-real-world-uri-outputs.drv",
+          "https://github.com/nix-purifiers/opam-purifier/actions/runs/42153852837/job/127683214739",
+          "https://github.com/nix-purifiers/opam-purifier/actions/runs/42153852837/job/127683215186"
+        ]
+      },
+      {
+        "name": "hello and workspace URL/git/local pins (fixtures)",
+        "evidence": [
+          "https://github.com/nix-purifiers/opam-purifier/blob/8ee439250ca39763a4ddbda0c4ebdc7f61cd80f2/tests/fixtures",
+          "/nix/store/7acp910pkia4fkv8qja844c9yfp0l4bi-opam-project-tests.drv",
+          "/nix/store/qhy1aa36l9sn0mcv1ij5nar3i2nysh93-workspace-runs.drv",
+          "https://github.com/nix-purifiers/opam-purifier/actions/runs/42153852837/job/127683214739",
+          "https://github.com/nix-purifiers/opam-purifier/actions/runs/42153852837/job/127683215186"
+        ]
+      }
+    ]
+  },
+  "package-el-purifier": {
+    "tier": 3,
+    "reviewedRevision": "1b4166f241998d42985dcc02d6c53ca3836a5852",
+    "reviewedAt": "2026-11-06",
+    "rationale": "Native Linux executable checks and at least one exact-version sample are demonstrated. Higher-tier promotion is not justified without native Darwin execution; further criterion-specific judgments and proof limits are recorded.",
+    "criteria": {
+      "evaluation": {
+        "state": "met",
+        "summary": "Exact revision 1b4166f241998d42985dcc02d6c53ca3836a5852 evaluates its x86_64-linux check set; successful Nix realization receipts bind executable check attributes to derivation/output paths.",
+        "evidence": [
+          "https://github.com/nix-purifiers/package-el-purifier/blob/1b4166f241998d42985dcc02d6c53ca3836a5852/flake.nix",
+          "https://github.com/nix-purifiers/package-el-purifier/actions/runs/42153856467/job/127683225560",
+          "https://github.com/nix-purifiers/package-el-purifier/actions/runs/42153856467/job/127683226027",
+          ".worktrees/tier-review/group-5/derivation-evidence.json#/projects/package-el-purifier"
+        ]
+      },
+      "goodTests": {
+        "state": "met",
+        "summary": "Executable Nix checks run Python CLI/lock unit tests, ERT tests for locked Vertico loading, remote refresh network prohibition, unlocked install refusal and missing-lock fallback, actual native package.el installation of the generated ELPA package, external lock equality and stale/tampered/missing/malformed diagnostics. Successful host relock/update/rebuild jobs complement these direct native integration assertions.",
+        "evidence": [
+          "https://github.com/nix-purifiers/package-el-purifier/blob/1b4166f241998d42985dcc02d6c53ca3836a5852/flake.nix",
+          "https://github.com/nix-purifiers/package-el-purifier/actions/runs/42153856467/job/127683225560",
+          "https://github.com/nix-purifiers/package-el-purifier/actions/runs/42153856467/job/127683226027",
+          ".worktrees/tier-review/group-5/derivation-evidence.json#/projects/package-el-purifier",
+          "https://github.com/nix-purifiers/package-el-purifier/blob/1b4166f241998d42985dcc02d6c53ca3836a5852/tests/default.nix"
+        ]
+      },
+      "linux": {
+        "state": "met",
+        "summary": "Native x86_64-linux check realization succeeds with exact drv/output receipts; same-source successful Ubuntu x86_64 and ARM CI logs record executable check builds. Cached local realization is distinguished from original CI execution.",
+        "evidence": [
+          "https://github.com/nix-purifiers/package-el-purifier/blob/1b4166f241998d42985dcc02d6c53ca3836a5852/flake.nix",
+          "https://github.com/nix-purifiers/package-el-purifier/actions/runs/42153856467/job/127683225560",
+          "https://github.com/nix-purifiers/package-el-purifier/actions/runs/42153856467/job/127683226027",
+          ".worktrees/tier-review/group-5/derivation-evidence.json#/projects/package-el-purifier"
+        ]
+      },
+      "darwin": {
+        "state": "not-met",
+        "summary": "The inspected successful workflows execute Ubuntu x86_64/ARM only; no native Darwin SDK/build/test/output receipt exists for this public revision. Linux execution, Darwin lock entries or conditional systems do not establish Darwin runtime.",
+        "evidence": [
+          "https://github.com/nix-purifiers/package-el-purifier/blob/1b4166f241998d42985dcc02d6c53ca3836a5852/.github/workflows/check.yml"
+        ]
+      },
+      "oneVersion": {
+        "state": "met",
+        "summary": "Successful sample execution binds the exact pinned SDK point(s): Emacs 31.1. Wider version intervals are not inferred.",
+        "evidence": [
+          "https://github.com/nix-purifiers/package-el-purifier/blob/1b4166f241998d42985dcc02d6c53ca3836a5852/flake.nix",
+          "https://github.com/nix-purifiers/package-el-purifier/actions/runs/42153856467/job/127683225560",
+          "https://github.com/nix-purifiers/package-el-purifier/actions/runs/42153856467/job/127683226027",
+          ".worktrees/tier-review/group-5/derivation-evidence.json#/projects/package-el-purifier"
+        ]
+      },
+      "nonEolVersions": {
+        "state": "met",
+        "summary": "The lock and executed Emacs derivation bind31.1, confirmed by upstream Emacs HISTORY as the current stable release (2026-08-24). This is support for that exact current point; the older cached GNU homepage showing30.2 is stale and no all-patch or multi-major maintenance interval is inferred.",
+        "evidence": [
+          "https://github.com/nix-purifiers/package-el-purifier/blob/1b4166f241998d42985dcc02d6c53ca3836a5852/flake.nix",
+          "https://github.com/nix-purifiers/package-el-purifier/actions/runs/42153856467/job/127683225560",
+          "https://github.com/nix-purifiers/package-el-purifier/actions/runs/42153856467/job/127683226027",
+          ".worktrees/tier-review/group-5/derivation-evidence.json#/projects/package-el-purifier",
+          "https://github.com/emacs-mirror/emacs/blob/master/etc/HISTORY",
+          "https://www.gnu.org/software/emacs/manual/html_node/efaq/Latest-version-of-Emacs.html"
+        ]
+      },
+      "manySamples": {
+        "state": "not-met",
+        "summary": "The only consumer configuration is the repository's Vertico example; Vertico is a dependency, not an independently packaged configuration sample. Native installation of the purifier itself tests distribution, not independent consumer breadth.",
+        "evidence": [
+          "https://github.com/nix-purifiers/package-el-purifier/blob/1b4166f241998d42985dcc02d6c53ca3836a5852/flake.nix",
+          "https://github.com/nix-purifiers/package-el-purifier/actions/runs/42153856467/job/127683225560",
+          "https://github.com/nix-purifiers/package-el-purifier/actions/runs/42153856467/job/127683226027",
+          ".worktrees/tier-review/group-5/derivation-evidence.json#/projects/package-el-purifier"
+        ]
+      },
+      "longCompatibility": {
+        "state": "not-met",
+        "summary": "The example lock fixes Emacs31.1 and the Nix checks execute that selection only. Native package.el integration does not establish execution on historical Emacs majors.",
+        "evidence": [
+          "https://github.com/nix-purifiers/package-el-purifier/blob/1b4166f241998d42985dcc02d6c53ca3836a5852/flake.nix",
+          "https://github.com/nix-purifiers/package-el-purifier/actions/runs/42153856467/job/127683225560",
+          "https://github.com/nix-purifiers/package-el-purifier/actions/runs/42153856467/job/127683226027",
+          ".worktrees/tier-review/group-5/derivation-evidence.json#/projects/package-el-purifier"
+        ]
+      }
+    },
+    "sampleBuilds": [
+      {
+        "name": "Repository examples/config using Vertico (fixture)",
+        "evidence": [
+          "https://github.com/nix-purifiers/package-el-purifier/blob/1b4166f241998d42985dcc02d6c53ca3836a5852/examples/config",
+          "/nix/store/6ic7f9vl974mkjbzzkjpn5wavpx5kd2h-package-el-project-tests.drv",
+          "/nix/store/724n3bkplijmmsk292d58kz6rzh2qxqh-purified-emacs-environment.drv",
+          "https://github.com/nix-purifiers/package-el-purifier/actions/runs/42153856467/job/127683225560",
+          "https://github.com/nix-purifiers/package-el-purifier/actions/runs/42153856467/job/127683226027"
+        ]
+      }
+    ]
+  }
+}

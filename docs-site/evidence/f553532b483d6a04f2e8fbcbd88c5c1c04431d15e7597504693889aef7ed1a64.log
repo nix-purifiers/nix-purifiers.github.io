@@ -1,0 +1,172 @@
+# SPDX-License-Identifier: MIT
+#
+# Runs every check of the flake on each system it supports, on a runner of
+# that system: `nix flake check` builds the checks of the system it runs on.
+# Three checks of the purifier contract need what the Nix sandbox does not
+# have, so they are jobs here:
+# - conformance-relock relocks every fixture with the network and fails
+#   when a lockfile differs from the committed one.
+# - conformance-rebuild builds two outputs of a fixture again with
+#   `nix build --rebuild`, which fails when the second build differs.
+# - conformance-update runs `uv-purifier update` on a fixture that pins an
+#   old version, with the network, and checks that both lockfiles then
+#   pass the stale check.
+name: check
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+jobs:
+  check:
+    strategy:
+      fail-fast: false
+      matrix:
+        runner: [ubuntu-latest, ubuntu-24.04-arm]
+    runs-on: ${{ matrix.runner }}
+    steps:
+      - uses: actions/checkout@v5
+      - uses: cachix/install-nix-action@v31
+      - run: nix flake check -L
+
+  conformance-relock:
+    strategy:
+      fail-fast: false
+      matrix:
+        runner: [ubuntu-latest, ubuntu-24.04-arm]
+    runs-on: ${{ matrix.runner }}
+    steps:
+      - uses: actions/checkout@v5
+      - uses: cachix/install-nix-action@v31
+      - run: tests/relock-fixtures.sh
+      - run: git diff --exit-code
+
+  conformance-rebuild:
+    strategy:
+      fail-fast: false
+      matrix:
+        runner: [ubuntu-latest, ubuntu-24.04-arm]
+    runs-on: ${{ matrix.runner }}
+    steps:
+      - uses: actions/checkout@v5
+      - uses: cachix/install-nix-action@v31
+      - run: |
+          system=$(nix eval --raw --impure --expr builtins.currentSystem)
+          checks=(".#checks.$system.rebuild-release" ".#checks.$system.rebuild-package")
+          nix build -L "${checks[@]}"
+          nix build -L --rebuild "${checks[@]}"
+
+  conformance-update:
+    strategy:
+      fail-fast: false
+      matrix:
+        runner: [ubuntu-latest, ubuntu-24.04-arm]
+    runs-on: ${{ matrix.runner }}
+    steps:
+      - uses: actions/checkout@v5
+      - uses: cachix/install-nix-action@v31
+      - run: tests/conformance-update.sh
+
+  composition-native:
+    strategy:
+      fail-fast: false
+      matrix:
+        runner: [ubuntu-latest, ubuntu-24.04-arm]
+    runs-on: ${{ matrix.runner }}
+    timeout-minutes: 60
+    steps:
+      - uses: actions/checkout@v5
+      - uses: cachix/install-nix-action@v31
+      - run: python3 tests/composition-native.py
+      - run: python3 tests/composition-python.py
+      - run: python3 tests/composition-lifecycle.py
+
+  python-target-epochs:
+    strategy:
+      fail-fast: false
+      matrix:
+        runner: [ubuntu-latest, ubuntu-24.04-arm]
+        python: [python38, python39]
+        include:
+          - python: python38
+            nixpkgs: 205fd4226592cc83fd4c0885a3e4c9c400efabb5
+          - python: python39
+            nixpkgs: b134951a4c9f3c995fd7be05f3243f8ecd65d798
+    runs-on: ${{ matrix.runner }}
+    timeout-minutes: 60
+    steps:
+      - uses: actions/checkout@v5
+      - uses: cachix/install-nix-action@v31
+      - name: Exercise the exact historical target with the default shared input
+        run: |
+          nix flake archive --json 'github:NixOS/nixpkgs/${{ matrix.nixpkgs }}' > epoch-target.json
+          python3 -B tests/composition-epochs.py \
+            --target-nixpkgs "$(jq -r .path epoch-target.json)" \
+            --python-attribute '${{ matrix.python }}' \
+            --state-root .python-epochs
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: python-epochs-${{ matrix.runner }}-${{ matrix.python }}
+          include-hidden-files: true
+          path: |
+            .python-epochs/report.json
+            .python-epochs/commands.log
+            epoch-target.json
+
+  native-manager-epoch:
+    strategy:
+      fail-fast: false
+      matrix:
+        runner: [ubuntu-latest, ubuntu-24.04-arm]
+    runs-on: ${{ matrix.runner }}
+    timeout-minutes: 60
+    steps:
+      - uses: actions/checkout@v5
+      - uses: cachix/install-nix-action@v31
+      - name: Preserve the uv 0.3 resolver with independent helper and target Python
+        run: |
+          nix flake archive --json github:NixOS/nixpkgs/205fd4226592cc83fd4c0885a3e4c9c400efabb5 > epoch-target.json
+          python3 -B tests/composition-epochs.py \
+            --target-nixpkgs "$(jq -r .path epoch-target.json)" \
+            --python-attribute python38 --native-uv-epoch uv-0.3.0 \
+            --sandwiches --multiple-inputs \
+            --state-root .native-uv-epoch
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: native-uv-epoch-${{ matrix.runner }}
+          include-hidden-files: true
+          path: |
+            .native-uv-epoch/report.json
+            .native-uv-epoch/commands.log
+            epoch-target.json
+
+  python-free-threaded:
+    strategy:
+      fail-fast: false
+      matrix:
+        runner: [ubuntu-latest, ubuntu-24.04-arm]
+    runs-on: ${{ matrix.runner }}
+    timeout-minutes: 60
+    steps:
+      - uses: actions/checkout@v5
+      - uses: cachix/install-nix-action@v31
+      - name: Exercise the actual free-threaded target and compiled dependency
+        run: |
+          nix flake archive --json > abi-sdk.json
+          python3 -B tests/composition-epochs.py \
+            --target-nixpkgs "$(jq -r .inputs.nixpkgs.path abi-sdk.json)" \
+            --python-attribute python314FreeThreading --compiled-dependency-version 3.0.3 \
+            --sandwiches --multiple-inputs \
+            --state-root .python-free-threaded
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: python-free-threaded-${{ matrix.runner }}
+          include-hidden-files: true
+          path: |
+            .python-free-threaded/report.json
+            .python-free-threaded/commands.log
+            abi-sdk.json

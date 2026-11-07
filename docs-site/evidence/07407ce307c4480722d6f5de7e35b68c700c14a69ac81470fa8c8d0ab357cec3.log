@@ -1,0 +1,1582 @@
+﻿2026-11-06T03:01:10.7792702Z Current runner version: '2.338.2'
+2026-11-06T03:01:10.7815103Z ##[group]Runner Image Provisioner
+2026-11-06T03:01:10.7815817Z Hosted Compute Agent
+2026-11-06T03:01:10.7816426Z Version: 20261028.624
+2026-11-06T03:01:10.7817043Z Commit: 54898b74c23fde5556c9b3c3a2290865feef0dfe
+2026-11-06T03:01:10.7817661Z Build Date: 2026-10-28T21:51:42Z
+2026-11-06T03:01:10.7818309Z Worker ID: {995f262b-aa0c-45d8-8982-4ccc05879132}
+2026-11-06T03:01:10.7818907Z Region: westus
+2026-11-06T03:01:10.7819367Z Cloud: Azure
+2026-11-06T03:01:10.7819939Z ##[endgroup]
+2026-11-06T03:01:10.7821444Z ##[group]Operating System
+2026-11-06T03:01:10.7822044Z Ubuntu
+2026-11-06T03:01:10.7822506Z 24.04.5
+2026-11-06T03:01:10.7822943Z LTS
+2026-11-06T03:01:10.7823450Z ##[endgroup]
+2026-11-06T03:01:10.7823935Z ##[group]Runner Image
+2026-11-06T03:01:10.7824489Z Image: ubuntu-24.04
+2026-11-06T03:01:10.7825005Z Version: 20261101.360.1
+2026-11-06T03:01:10.7826114Z Included Software: https://github.com/actions/runner-images/blob/ubuntu24/20261101.360/images/ubuntu/Ubuntu2404-Readme.md
+2026-11-06T03:01:10.7827444Z Image Release: https://github.com/actions/runner-images/releases/tag/ubuntu24%2F20261101.360
+2026-11-06T03:01:10.7828552Z ##[endgroup]
+2026-11-06T03:01:10.7829535Z ##[group]GITHUB_TOKEN Permissions
+2026-11-06T03:01:10.7831551Z Contents: read
+2026-11-06T03:01:10.7832163Z Metadata: read
+2026-11-06T03:01:10.7832633Z ##[endgroup]
+2026-11-06T03:01:10.7834450Z Secret source: Actions
+2026-11-06T03:01:10.7835232Z Cache mode: write
+2026-11-06T03:01:10.7836065Z Prepare workflow directory
+2026-11-06T03:01:10.8098566Z Prepare all required actions
+2026-11-06T03:01:10.8138499Z Getting action download info
+2026-11-06T03:01:11.1568473Z Download action repository 'actions/checkout@v4' (SHA:11d5960a326750d5838078e36cf38b85af677262)
+2026-11-06T03:01:11.2549933Z Download action repository 'cachix/install-nix-action@v31' (SHA:75c75c31ebece974e48ebc36b4ad125bd97bd97b)
+2026-11-06T03:01:11.5756924Z Complete job name: sdk-native (ubuntu-latest, 5.1)
+2026-11-06T03:01:11.6437431Z ##[group]Run actions/checkout@v4
+2026-11-06T03:01:11.6438129Z with:
+2026-11-06T03:01:11.6438530Z   repository: nix-purifiers/luarocks-purifier
+2026-11-06T03:01:11.6441769Z   token: ***
+2026-11-06T03:01:11.6442130Z   ssh-strict: true
+2026-11-06T03:01:11.6442498Z   ssh-user: git
+2026-11-06T03:01:11.6442861Z   persist-credentials: true
+2026-11-06T03:01:11.6443257Z   clean: true
+2026-11-06T03:01:11.6443622Z   sparse-checkout-cone-mode: true
+2026-11-06T03:01:11.6444040Z   fetch-depth: 1
+2026-11-06T03:01:11.6444394Z   fetch-tags: false
+2026-11-06T03:01:11.6444751Z   show-progress: true
+2026-11-06T03:01:11.6445117Z   lfs: false
+2026-11-06T03:01:11.6445453Z   submodules: false
+2026-11-06T03:01:11.6445823Z   set-safe-directory: true
+2026-11-06T03:01:11.6446245Z   allow-unsafe-pr-checkout: false
+2026-11-06T03:01:11.6446821Z ##[endgroup]
+2026-11-06T03:01:11.8272864Z Syncing repository: nix-purifiers/luarocks-purifier
+2026-11-06T03:01:11.8275028Z ##[group]Getting Git version info
+2026-11-06T03:01:11.8276074Z Working directory is '/home/runner/work/luarocks-purifier/luarocks-purifier'
+2026-11-06T03:01:11.8277289Z [command]/usr/bin/git version
+2026-11-06T03:01:11.8331209Z git version 2.56.0
+2026-11-06T03:01:11.8349806Z ##[endgroup]
+2026-11-06T03:01:11.8363144Z Temporarily overriding HOME='/home/runner/work/_temp/0d2ac30e-9d7a-4128-a488-ad10040bc853' before making global git config changes
+2026-11-06T03:01:11.8364335Z Adding repository directory to the temporary git global config as a safe directory
+2026-11-06T03:01:11.8367056Z [command]/usr/bin/git config --global --add safe.directory /home/runner/work/luarocks-purifier/luarocks-purifier
+2026-11-06T03:01:11.8424204Z Deleting the contents of '/home/runner/work/luarocks-purifier/luarocks-purifier'
+2026-11-06T03:01:11.8427352Z ##[group]Initializing the repository
+2026-11-06T03:01:11.8428431Z [command]/usr/bin/git init /home/runner/work/luarocks-purifier/luarocks-purifier
+2026-11-06T03:01:11.8516057Z hint: Using 'master' as the name for the initial branch. This default branch name
+2026-11-06T03:01:11.8517902Z hint: will change to "main" in Git 3.0. To configure the initial branch name
+2026-11-06T03:01:11.8519239Z hint: to use in all of your new repositories, which will suppress this warning,
+2026-11-06T03:01:11.8520473Z hint: call:
+2026-11-06T03:01:11.8521076Z hint:
+2026-11-06T03:01:11.8521813Z hint: 	git config --global init.defaultBranch <name>
+2026-11-06T03:01:11.8522722Z hint:
+2026-11-06T03:01:11.8523543Z hint: Names commonly chosen instead of 'master' are 'main', 'trunk' and
+2026-11-06T03:01:11.8524788Z hint: 'development'. The just-created branch can be renamed via this command:
+2026-11-06T03:01:11.8526619Z hint:
+2026-11-06T03:01:11.8528109Z hint: 	git branch -m <name>
+2026-11-06T03:01:11.8528800Z hint:
+2026-11-06T03:01:11.8529704Z hint: Disable this message with "git config set advice.defaultBranchName false"
+2026-11-06T03:01:11.8531427Z Initialized empty Git repository in /home/runner/work/luarocks-purifier/luarocks-purifier/.git/
+2026-11-06T03:01:11.8534658Z [command]/usr/bin/git remote add origin https://github.com/nix-purifiers/luarocks-purifier
+2026-11-06T03:01:11.8580244Z ##[endgroup]
+2026-11-06T03:01:11.8581362Z ##[group]Disabling automatic garbage collection
+2026-11-06T03:01:11.8586830Z [command]/usr/bin/git config --local gc.auto 0
+2026-11-06T03:01:11.8625022Z ##[endgroup]
+2026-11-06T03:01:11.8626021Z ##[group]Setting up auth
+2026-11-06T03:01:11.8642343Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+2026-11-06T03:01:11.8680306Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+2026-11-06T03:01:11.9032807Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+2026-11-06T03:01:11.9083014Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+2026-11-06T03:01:11.9276866Z [command]/usr/bin/git config --local --name-only --get-regexp ^includeIf\.gitdir:
+2026-11-06T03:01:11.9313286Z [command]/usr/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url
+2026-11-06T03:01:11.9513775Z [command]/usr/bin/git config --local http.https://github.com/.extraheader AUTHORIZATION: basic ***
+2026-11-06T03:01:11.9555516Z ##[endgroup]
+2026-11-06T03:01:11.9556472Z ##[group]Fetching the repository
+2026-11-06T03:01:11.9565969Z [command]/usr/bin/git -c protocol.version=2 fetch --no-tags --prune --no-recurse-submodules --depth=1 origin +b27fe736fe2328c7eec64cbf130607397ed79f95:refs/remotes/origin/main
+2026-11-06T03:01:12.3312486Z From https://github.com/nix-purifiers/luarocks-purifier
+2026-11-06T03:01:12.3313612Z  * [new ref]         b27fe736fe2328c7eec64cbf130607397ed79f95 -> origin/main
+2026-11-06T03:01:12.3316935Z ##[endgroup]
+2026-11-06T03:01:12.3317711Z ##[group]Determining the checkout info
+2026-11-06T03:01:12.3318809Z ##[endgroup]
+2026-11-06T03:01:12.3324098Z [command]/usr/bin/git sparse-checkout disable
+2026-11-06T03:01:12.3375454Z [command]/usr/bin/git config --local --unset-all extensions.worktreeConfig
+2026-11-06T03:01:12.3408721Z ##[group]Checking out the ref
+2026-11-06T03:01:12.3412207Z [command]/usr/bin/git checkout --progress --force -B main refs/remotes/origin/main
+2026-11-06T03:01:12.3504862Z Switched to a new branch 'main'
+2026-11-06T03:01:12.3509039Z branch 'main' set up to track 'origin/main'.
+2026-11-06T03:01:12.3514155Z ##[endgroup]
+2026-11-06T03:01:12.3552986Z [command]/usr/bin/git log -1 --format=%H
+2026-11-06T03:01:12.3580544Z b27fe736fe2328c7eec64cbf130607397ed79f95
+2026-11-06T03:01:12.3804610Z ##[group]Run cachix/install-nix-action@v31
+2026-11-06T03:01:12.3805083Z with:
+2026-11-06T03:01:12.3805417Z   enable_kvm: true
+2026-11-06T03:01:12.3805771Z   set_as_trusted_user: true
+2026-11-06T03:01:12.3806158Z ##[endgroup]
+2026-11-06T03:01:12.3867167Z ##[start-action display=Run ${GITHUB_ACTION_PATH}/install-nix.sh;id=__cachix_install-nix-action.__run]
+2026-11-06T03:01:12.3906102Z ##[group]Run ${GITHUB_ACTION_PATH}/install-nix.sh
+2026-11-06T03:01:12.3906716Z [36;1m${GITHUB_ACTION_PATH}/install-nix.sh[0m
+2026-11-06T03:01:12.3927939Z shell: /usr/bin/bash --noprofile --norc -e -o pipefail {0}
+2026-11-06T03:01:12.3928480Z env:
+2026-11-06T03:01:12.3928818Z   INPUT_EXTRA_NIX_CONFIG: 
+2026-11-06T03:01:12.3929215Z   INPUT_GITHUB_ACCESS_TOKEN: 
+2026-11-06T03:01:12.3929619Z   INPUT_INSTALL_OPTIONS: 
+2026-11-06T03:01:12.3930003Z   INPUT_INSTALL_URL: 
+2026-11-06T03:01:12.3930532Z   INPUT_NIX_PATH: 
+2026-11-06T03:01:12.3930890Z   INPUT_ENABLE_KVM: true
+2026-11-06T03:01:12.3931311Z   INPUT_SET_AS_TRUSTED_USER: true
+2026-11-06T03:01:12.3934351Z   GITHUB_TOKEN: ***
+2026-11-06T03:01:12.3934714Z ##[endgroup]
+2026-11-06T03:01:12.4015535Z ##[group]Enabling KVM support
+2026-11-06T03:01:12.4074540Z KERNEL=="kvm", GROUP="kvm", MODE="0666", OPTIONS+="static_node=kvm"
+2026-11-06T03:01:12.4348391Z Enabled KVM
+2026-11-06T03:01:12.4349606Z ##[endgroup]
+2026-11-06T03:01:12.4350567Z ##[group]Installing Nix
+2026-11-06T03:01:12.4591599Z installer options: --no-channel-add --nix-extra-conf-file /tmp/tmp.K8dyIcKx8o/nix.conf --daemon --daemon-user-count 8
+2026-11-06T03:01:12.4698668Z * Host releases.nixos.org:443 was resolved.
+2026-11-06T03:01:12.4703488Z * IPv6: 2a04:4e42:a::347
+2026-11-06T03:01:12.4703912Z * IPv4: 151.101.201.91
+2026-11-06T03:01:12.4704291Z *   Trying 151.101.201.91:443...
+2026-11-06T03:01:12.4709082Z * Connected to releases.nixos.org (151.101.201.91) port 443
+2026-11-06T03:01:12.4720939Z * ALPN: curl offers h2,http/1.1
+2026-11-06T03:01:12.4722466Z } [5 bytes data]
+2026-11-06T03:01:12.4723058Z * TLSv1.3 (OUT), TLS handshake, Client hello (1):
+2026-11-06T03:01:12.4723536Z } [512 bytes data]
+2026-11-06T03:01:12.4853707Z *  CAfile: /etc/ssl/certs/ca-certificates.crt
+2026-11-06T03:01:12.4854491Z *  CApath: /etc/ssl/certs
+2026-11-06T03:01:12.4855073Z { [5 bytes data]
+2026-11-06T03:01:12.4855682Z * TLSv1.3 (IN), TLS handshake, Server hello (2):
+2026-11-06T03:01:12.4856402Z { [122 bytes data]
+2026-11-06T03:01:12.4857075Z * TLSv1.3 (IN), TLS handshake, Encrypted Extensions (8):
+2026-11-06T03:01:12.4857830Z { [19 bytes data]
+2026-11-06T03:01:12.4858427Z * TLSv1.3 (IN), TLS handshake, Certificate (11):
+2026-11-06T03:01:12.4859157Z { [4081 bytes data]
+2026-11-06T03:01:12.4865028Z * TLSv1.3 (IN), TLS handshake, CERT verify (15):
+2026-11-06T03:01:12.4865788Z { [264 bytes data]
+2026-11-06T03:01:12.4866378Z * TLSv1.3 (IN), TLS handshake, Finished (20):
+2026-11-06T03:01:12.4867062Z { [36 bytes data]
+2026-11-06T03:01:12.4867682Z * TLSv1.3 (OUT), TLS change cipher, Change cipher spec (1):
+2026-11-06T03:01:12.4868478Z } [1 bytes data]
+2026-11-06T03:01:12.4869087Z * TLSv1.3 (OUT), TLS handshake, Finished (20):
+2026-11-06T03:01:12.4869775Z } [36 bytes data]
+2026-11-06T03:01:12.4944094Z * SSL connection using TLSv1.3 / TLS_AES_128_GCM_SHA256 / X25519 / RSASSA-PSS
+2026-11-06T03:01:12.4945291Z * ALPN: server accepted h2
+2026-11-06T03:01:12.4946015Z * Server certificate:
+2026-11-06T03:01:12.4946606Z *  subject: CN=releases.nixos.org
+2026-11-06T03:01:12.4947287Z *  start date: Sep  9 22:18:06 2026 GMT
+2026-11-06T03:01:12.4947968Z *  expire date: Dec  8 22:18:05 2026 GMT
+2026-11-06T03:01:12.4948956Z *  subjectAltName: host "releases.nixos.org" matched cert's "releases.nixos.org"
+2026-11-06T03:01:12.4949906Z *  issuer: C=US; O=Let's Encrypt; CN=YR1
+2026-11-06T03:01:12.4950698Z *  SSL certificate verify ok.
+2026-11-06T03:01:12.4951662Z *   Certificate level 0: Public key type RSA (2048/112 Bits/secBits), signed using sha256WithRSAEncryption
+2026-11-06T03:01:12.4953421Z *   Certificate level 1: Public key type RSA (2048/112 Bits/secBits), signed using sha256WithRSAEncryption
+2026-11-06T03:01:12.4954901Z *   Certificate level 2: Public key type RSA (4096/152 Bits/secBits), signed using sha256WithRSAEncryption
+2026-11-06T03:01:12.4956448Z *   Certificate level 3: Public key type RSA (4096/152 Bits/secBits), signed using sha256WithRSAEncryption
+2026-11-06T03:01:12.4957590Z { [5 bytes data]
+2026-11-06T03:01:12.4958197Z * TLSv1.3 (IN), TLS handshake, Newsession Ticket (4):
+2026-11-06T03:01:12.4958924Z { [201 bytes data]
+2026-11-06T03:01:12.4959440Z * using HTTP/2
+2026-11-06T03:01:12.4960355Z * [HTTP/2] [1] OPENED stream for https://releases.nixos.org/nix/nix-2.35.4/install
+2026-11-06T03:01:12.4961107Z * [HTTP/2] [1] [:method: GET]
+2026-11-06T03:01:12.4961516Z * [HTTP/2] [1] [:scheme: https]
+2026-11-06T03:01:12.4961966Z * [HTTP/2] [1] [:authority: releases.nixos.org]
+2026-11-06T03:01:12.4962482Z * [HTTP/2] [1] [:path: /nix/nix-2.35.4/install]
+2026-11-06T03:01:12.4962952Z * [HTTP/2] [1] [user-agent: curl/8.5.0]
+2026-11-06T03:01:12.4963395Z * [HTTP/2] [1] [accept: */*]
+2026-11-06T03:01:12.4963786Z } [5 bytes data]
+2026-11-06T03:01:12.4964143Z > GET /nix/nix-2.35.4/install HTTP/2
+2026-11-06T03:01:12.4964578Z > Host: releases.nixos.org
+2026-11-06T03:01:12.4964970Z > User-Agent: curl/8.5.0
+2026-11-06T03:01:12.4965337Z > Accept: */*
+2026-11-06T03:01:12.4965673Z > 
+2026-11-06T03:01:12.4965994Z { [5 bytes data]
+2026-11-06T03:01:12.4966330Z < HTTP/2 200 
+2026-11-06T03:01:12.4966654Z < server: AmazonS3
+2026-11-06T03:01:12.4967033Z < last-modified: Thu, 22 Oct 2026 21:07:55 GMT
+2026-11-06T03:01:12.4967513Z < etag: "10dde0412541ec8bb75185c462f5eb5f"
+2026-11-06T03:01:12.4967952Z < content-type: text/plain
+2026-11-06T03:01:12.4968373Z < x-amz-server-side-encryption: AES256
+2026-11-06T03:01:12.4968818Z < via: 1.1 varnish, 1.1 varnish
+2026-11-06T03:01:12.4969227Z < access-control-allow-origin: *
+2026-11-06T03:01:12.4969640Z < accept-ranges: bytes
+2026-11-06T03:01:12.4970030Z < date: Fri, 06 Nov 2026 03:01:12 GMT
+2026-11-06T03:01:12.4970654Z < age: 123551
+2026-11-06T03:01:12.4971106Z < x-served-by: cache-dub4357-DUB, cache-pao-kpao1770055-PAO
+2026-11-06T03:01:12.4971615Z < x-cache: HIT, HIT
+2026-11-06T03:01:12.4971965Z < x-cache-hits: 898, 72
+2026-11-06T03:01:12.4972328Z < content-length: 4499
+2026-11-06T03:01:12.4972679Z < 
+2026-11-06T03:01:12.4972991Z { [4499 bytes data]
+2026-11-06T03:01:12.4973404Z * Connection #0 to host releases.nixos.org left intact
+2026-11-06T03:01:12.5009815Z downloading Nix 2.35.4 binary tarball for x86_64-linux from 'https://releases.nixos.org/nix/nix-2.35.4/nix-2.35.4-x86_64-linux.tar.xz' to '/tmp/nix-binary-tarball-unpack.hX4WWVfPV8'...
+2026-11-06T03:01:12.5052591Z   % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+2026-11-06T03:01:12.5053425Z                                  Dload  Upload   Total   Spent    Left  Speed
+2026-11-06T03:01:12.5053796Z 
+2026-11-06T03:01:12.7403896Z   0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0
+2026-11-06T03:01:12.7405165Z 100 25.9M  100 25.9M    0     0   110M      0 --:--:-- --:--:-- --:--:--  110M
+2026-11-06T03:01:14.1866974Z Note: a multi-user installation is possible. See https://nix.dev/manual/nix/stable/installation/installing-binary.html#multi-user-installation
+2026-11-06T03:01:14.1875983Z [1;31mSwitching to the Multi-user Installer[0m
+2026-11-06T03:01:14.1966126Z [32mWelcome to the Multi-User Nix Installation
+2026-11-06T03:01:14.1975886Z [0m
+2026-11-06T03:01:14.1976376Z This installation tool will set up your computer with the Nix package
+2026-11-06T03:01:14.1976965Z manager. This will happen in a few stages:
+2026-11-06T03:01:14.1977265Z 
+2026-11-06T03:01:14.1977517Z 1. Make sure your computer doesn't already have Nix. If it does, I
+2026-11-06T03:01:14.1978126Z    will show you instructions on how to clean up your old install.
+2026-11-06T03:01:14.1978496Z 
+2026-11-06T03:01:14.1978789Z 2. Show you what I am going to install and where. Then I will ask
+2026-11-06T03:01:14.1979320Z    if you are ready to continue.
+2026-11-06T03:01:14.1979569Z 
+2026-11-06T03:01:14.1980498Z 3. Create the system users [34m(uids [30001..30008])[0m and groups [34m(gid 30000)[0m
+2026-11-06T03:01:14.1981988Z    that the Nix daemon uses to run builds. To create system users
+2026-11-06T03:01:14.1982661Z    in a different range, exit and run this tool again with
+2026-11-06T03:01:14.1983417Z    NIX_FIRST_BUILD_UID set.
+2026-11-06T03:01:14.1983660Z 
+2026-11-06T03:01:14.1983883Z 4. Perform the basic installation of the Nix files daemon.
+2026-11-06T03:01:14.1984250Z 
+2026-11-06T03:01:14.1984507Z 5. Configure your shell to import special Nix Profile files, so you
+2026-11-06T03:01:14.1985086Z    can use Nix.
+2026-11-06T03:01:14.1985268Z 
+2026-11-06T03:01:14.1985423Z 6. Start the Nix daemon.
+2026-11-06T03:01:14.1985636Z 
+2026-11-06T03:01:14.1986047Z [32m[4;32mWould you like to see a more detailed list of what I will do?
+2026-11-06T03:01:14.1986750Z [0mNo TTY, assuming you would say yes :)
+2026-11-06T03:01:14.1987640Z 
+2026-11-06T03:01:14.1987807Z I will:
+2026-11-06T03:01:14.1988021Z 
+2026-11-06T03:01:14.1988258Z  - make sure your computer doesn't already have Nix files
+2026-11-06T03:01:14.1988809Z    (if it does, I will tell you how to clean them up.)
+2026-11-06T03:01:14.1989386Z  - create local users (see the list above for the users I'll make)
+2026-11-06T03:01:14.1989930Z  - create a local group (nixbld)
+2026-11-06T03:01:14.1990508Z  - install Nix in /nix
+2026-11-06T03:01:14.1990881Z  - create a configuration file in /etc/nix
+2026-11-06T03:01:14.1991355Z  - set up the "default profile" by creating some Nix-related files in
+2026-11-06T03:01:14.1993128Z    /root
+2026-11-06T03:01:14.2023915Z  - back up /etc/bash.bashrc to /etc/bash.bashrc.backup-before-nix
+2026-11-06T03:01:14.2024601Z  - update /etc/bash.bashrc to include some Nix configuration
+2026-11-06T03:01:14.2034506Z  - load and start a service (at /etc/systemd/system/nix-daemon.service
+2026-11-06T03:01:14.2034945Z    and /etc/systemd/system/nix-daemon.socket) for nix-daemon
+2026-11-06T03:01:14.2035302Z 
+2026-11-06T03:01:14.2036423Z [32m[4;32mReady to continue?
+2026-11-06T03:01:14.2036903Z [0mNo TTY, assuming you would say yes :)
+2026-11-06T03:01:14.2053197Z 
+2026-11-06T03:01:14.2053761Z [34m---- let's talk about sudo -----------------------------------------------------
+2026-11-06T03:01:14.2062824Z [0mThis script is going to call sudo a lot. Normally, it would show you
+2026-11-06T03:01:14.2063483Z exactly what commands it is running and why. However, the script is
+2026-11-06T03:01:14.2063880Z run in a headless fashion, like this:
+2026-11-06T03:01:14.2064046Z 
+2026-11-06T03:01:14.2064202Z   $ curl -L https://nixos.org/nix/install | sh
+2026-11-06T03:01:14.2064515Z 
+2026-11-06T03:01:14.2064723Z or maybe in a CI pipeline. Because of that, I'm going to skip the
+2026-11-06T03:01:14.2065056Z verbose output in the interest of brevity.
+2026-11-06T03:01:14.2065234Z 
+2026-11-06T03:01:14.2065325Z If you would like to
+2026-11-06T03:01:14.2065554Z see the output, try like this:
+2026-11-06T03:01:14.2065705Z 
+2026-11-06T03:01:14.2065909Z   $ curl -L -o install-nix https://nixos.org/nix/install
+2026-11-06T03:01:14.2066212Z   $ sh ./install-nix
+2026-11-06T03:01:14.2066384Z 
+2026-11-06T03:01:14.2066412Z 
+2026-11-06T03:01:14.2066813Z [32m~~> Checking for artifacts of previous installs
+2026-11-06T03:01:14.2073894Z [0mBefore I try to install, I'll check for signs Nix already is or has
+2026-11-06T03:01:14.2074276Z been installed on this system.
+2026-11-06T03:01:14.2115688Z 
+2026-11-06T03:01:14.2116503Z [34m---- Nix config report ---------------------------------------------------------
+2026-11-06T03:01:14.2117211Z [0m[1m        Temp Dir[0m:	/tmp/tmp.aWearEPkuF
+2026-11-06T03:01:14.2117738Z [1m        Nix Root[0m:	/nix
+2026-11-06T03:01:14.2118141Z [1m     Build Users[0m:	8
+2026-11-06T03:01:14.2118551Z [1m  Build Group ID[0m:	30000
+2026-11-06T03:01:14.2118961Z [1mBuild Group Name[0m:	nixbld
+2026-11-06T03:01:14.2119189Z 
+2026-11-06T03:01:14.2119311Z [4;34mbuild users:
+2026-11-06T03:01:14.2119562Z [0m[1m    Username[0m:	UID
+2026-11-06T03:01:14.2144233Z [1m     nixbld1[0m:	30001
+2026-11-06T03:01:14.2153869Z [1m     nixbld2[0m:	30002
+2026-11-06T03:01:14.2163693Z [1m     nixbld3[0m:	30003
+2026-11-06T03:01:14.2173714Z [1m     nixbld4[0m:	30004
+2026-11-06T03:01:14.2183288Z [1m     nixbld5[0m:	30005
+2026-11-06T03:01:14.2192694Z [1m     nixbld6[0m:	30006
+2026-11-06T03:01:14.2202165Z [1m     nixbld7[0m:	30007
+2026-11-06T03:01:14.2211663Z [1m     nixbld8[0m:	30008
+2026-11-06T03:01:14.2211956Z 
+2026-11-06T03:01:14.2212154Z [32m[4;32mReady to continue?
+2026-11-06T03:01:14.2212604Z [0mNo TTY, assuming you would say yes :)
+2026-11-06T03:01:14.2212881Z 
+2026-11-06T03:01:14.2213095Z [32m~~> Setting up the build group nixbld
+2026-11-06T03:01:14.2711044Z [0m[1m            Created[0m:	Yes
+2026-11-06T03:01:14.2733573Z 
+2026-11-06T03:01:14.2734357Z [32m~~> Setting up the build user nixbld1
+2026-11-06T03:01:14.3016307Z useradd warning: nixbld1's uid 30001 is greater than SYS_UID_MAX 999
+2026-11-06T03:01:14.3121383Z [0m[1m           Created[0m:	Yes
+2026-11-06T03:01:14.3128511Z [1m            Hidden[0m:	Yes
+2026-11-06T03:01:14.3148100Z [1m    Home Directory[0m:	/var/empty
+2026-11-06T03:01:14.3167806Z [1m              Note[0m:	Nix build user 1
+2026-11-06T03:01:14.3184332Z [1m   Logins Disabled[0m:	Yes
+2026-11-06T03:01:14.3205976Z [1m  Member of nixbld[0m:	Yes
+2026-11-06T03:01:14.3224027Z [1m    PrimaryGroupID[0m:	30000
+2026-11-06T03:01:14.3234574Z 
+2026-11-06T03:01:14.3235066Z [32m~~> Setting up the build user nixbld2
+2026-11-06T03:01:14.3356914Z useradd warning: nixbld2's uid 30002 is greater than SYS_UID_MAX 999
+2026-11-06T03:01:14.3446022Z [0m[1m           Created[0m:	Yes
+2026-11-06T03:01:14.3451903Z [1m            Hidden[0m:	Yes
+2026-11-06T03:01:14.3469745Z [1m    Home Directory[0m:	/var/empty
+2026-11-06T03:01:14.3488414Z [1m              Note[0m:	Nix build user 2
+2026-11-06T03:01:14.3505421Z [1m   Logins Disabled[0m:	Yes
+2026-11-06T03:01:14.3522789Z [1m  Member of nixbld[0m:	Yes
+2026-11-06T03:01:14.3539356Z [1m    PrimaryGroupID[0m:	30000
+2026-11-06T03:01:14.3550229Z 
+2026-11-06T03:01:14.3550572Z [32m~~> Setting up the build user nixbld3
+2026-11-06T03:01:14.3671321Z useradd warning: nixbld3's uid 30003 is greater than SYS_UID_MAX 999
+2026-11-06T03:01:14.3757388Z [0m[1m           Created[0m:	Yes
+2026-11-06T03:01:14.3762867Z [1m            Hidden[0m:	Yes
+2026-11-06T03:01:14.3779875Z [1m    Home Directory[0m:	/var/empty
+2026-11-06T03:01:14.3797784Z [1m              Note[0m:	Nix build user 3
+2026-11-06T03:01:14.3814969Z [1m   Logins Disabled[0m:	Yes
+2026-11-06T03:01:14.3832618Z [1m  Member of nixbld[0m:	Yes
+2026-11-06T03:01:14.3849416Z [1m    PrimaryGroupID[0m:	30000
+2026-11-06T03:01:14.3860418Z 
+2026-11-06T03:01:14.3860763Z [32m~~> Setting up the build user nixbld4
+2026-11-06T03:01:14.3983063Z useradd warning: nixbld4's uid 30004 is greater than SYS_UID_MAX 999
+2026-11-06T03:01:14.4069693Z [0m[1m           Created[0m:	Yes
+2026-11-06T03:01:14.4075257Z [1m            Hidden[0m:	Yes
+2026-11-06T03:01:14.4092503Z [1m    Home Directory[0m:	/var/empty
+2026-11-06T03:01:14.4110670Z [1m              Note[0m:	Nix build user 4
+2026-11-06T03:01:14.4127110Z [1m   Logins Disabled[0m:	Yes
+2026-11-06T03:01:14.4145421Z [1m  Member of nixbld[0m:	Yes
+2026-11-06T03:01:14.4165623Z [1m    PrimaryGroupID[0m:	30000
+2026-11-06T03:01:14.4176587Z 
+2026-11-06T03:01:14.4176979Z [32m~~> Setting up the build user nixbld5
+2026-11-06T03:01:14.4299796Z useradd warning: nixbld5's uid 30005 is greater than SYS_UID_MAX 999
+2026-11-06T03:01:14.4389092Z [0m[1m           Created[0m:	Yes
+2026-11-06T03:01:14.4394528Z [1m            Hidden[0m:	Yes
+2026-11-06T03:01:14.4415656Z [1m    Home Directory[0m:	/var/empty
+2026-11-06T03:01:14.4438990Z [1m              Note[0m:	Nix build user 5
+2026-11-06T03:01:14.4458909Z [1m   Logins Disabled[0m:	Yes
+2026-11-06T03:01:14.4481861Z [1m  Member of nixbld[0m:	Yes
+2026-11-06T03:01:14.4502279Z [1m    PrimaryGroupID[0m:	30000
+2026-11-06T03:01:14.4514688Z 
+2026-11-06T03:01:14.4515462Z [32m~~> Setting up the build user nixbld6
+2026-11-06T03:01:14.4633027Z useradd warning: nixbld6's uid 30006 is greater than SYS_UID_MAX 999
+2026-11-06T03:01:14.4717755Z [0m[1m           Created[0m:	Yes
+2026-11-06T03:01:14.4723546Z [1m            Hidden[0m:	Yes
+2026-11-06T03:01:14.4741297Z [1m    Home Directory[0m:	/var/empty
+2026-11-06T03:01:14.4759764Z [1m              Note[0m:	Nix build user 6
+2026-11-06T03:01:14.4776712Z [1m   Logins Disabled[0m:	Yes
+2026-11-06T03:01:14.4794493Z [1m  Member of nixbld[0m:	Yes
+2026-11-06T03:01:14.4811639Z [1m    PrimaryGroupID[0m:	30000
+2026-11-06T03:01:14.4822559Z 
+2026-11-06T03:01:14.4822997Z [32m~~> Setting up the build user nixbld7
+2026-11-06T03:01:14.4949119Z useradd warning: nixbld7's uid 30007 is greater than SYS_UID_MAX 999
+2026-11-06T03:01:14.5033509Z [0m[1m           Created[0m:	Yes
+2026-11-06T03:01:14.5038612Z [1m            Hidden[0m:	Yes
+2026-11-06T03:01:14.5057171Z [1m    Home Directory[0m:	/var/empty
+2026-11-06T03:01:14.5075288Z [1m              Note[0m:	Nix build user 7
+2026-11-06T03:01:14.5092304Z [1m   Logins Disabled[0m:	Yes
+2026-11-06T03:01:14.5109756Z [1m  Member of nixbld[0m:	Yes
+2026-11-06T03:01:14.5126780Z [1m    PrimaryGroupID[0m:	30000
+2026-11-06T03:01:14.5137914Z 
+2026-11-06T03:01:14.5138419Z [32m~~> Setting up the build user nixbld8
+2026-11-06T03:01:14.5359346Z useradd warning: nixbld8's uid 30008 is greater than SYS_UID_MAX 999
+2026-11-06T03:01:14.5446353Z [0m[1m           Created[0m:	Yes
+2026-11-06T03:01:14.5451613Z [1m            Hidden[0m:	Yes
+2026-11-06T03:01:14.5471027Z [1m    Home Directory[0m:	/var/empty
+2026-11-06T03:01:14.5489389Z [1m              Note[0m:	Nix build user 8
+2026-11-06T03:01:14.5506950Z [1m   Logins Disabled[0m:	Yes
+2026-11-06T03:01:14.5526058Z [1m  Member of nixbld[0m:	Yes
+2026-11-06T03:01:14.5546996Z [1m    PrimaryGroupID[0m:	30000
+2026-11-06T03:01:14.5547321Z 
+2026-11-06T03:01:14.5547577Z [32m~~> Setting up the basic directory structure
+2026-11-06T03:01:14.5626861Z [0minstall: creating directory '/nix'
+2026-11-06T03:01:14.5627383Z install: creating directory '/nix/var'
+2026-11-06T03:01:14.5627743Z install: creating directory '/nix/var/log'
+2026-11-06T03:01:14.5628041Z install: creating directory '/nix/var/log/nix'
+2026-11-06T03:01:14.5628379Z install: creating directory '/nix/var/log/nix/drvs'
+2026-11-06T03:01:14.5628703Z install: creating directory '/nix/var/nix'
+2026-11-06T03:01:14.5628982Z install: creating directory '/nix/var/nix/db'
+2026-11-06T03:01:14.5629287Z install: creating directory '/nix/var/nix/gcroots'
+2026-11-06T03:01:14.5629590Z install: creating directory '/nix/var/nix/profiles'
+2026-11-06T03:01:14.5629896Z install: creating directory '/nix/var/nix/temproots'
+2026-11-06T03:01:14.5630378Z install: creating directory '/nix/var/nix/userpool'
+2026-11-06T03:01:14.5630710Z install: creating directory '/nix/var/nix/daemon-socket'
+2026-11-06T03:01:14.5631055Z install: creating directory '/nix/var/nix/gcroots/per-user'
+2026-11-06T03:01:14.5631419Z install: creating directory '/nix/var/nix/profiles/per-user'
+2026-11-06T03:01:14.5707443Z install: creating directory '/nix/store'
+2026-11-06T03:01:14.5800607Z install: creating directory '/etc/nix'
+2026-11-06T03:01:14.5812202Z 
+2026-11-06T03:01:14.5812703Z [32m~~> Installing Nix
+2026-11-06T03:01:14.7471514Z [0m      Alright! We have our first nix at /nix/store/8lza1b8nnci8lmm4q68p0l33pg975s0q-nix-2.35.4
+2026-11-06T03:01:14.7983821Z       Just finished getting the nix database ready.
+2026-11-06T03:01:14.7986431Z 
+2026-11-06T03:01:14.7987401Z [32m~~> Setting up shell profiles: /etc/bashrc /etc/profile.d/nix.sh /etc/zshrc /etc/bash.bashrc /etc/zsh/zshrc
+2026-11-06T03:01:14.8139789Z [0m
+2026-11-06T03:01:14.8140006Z # Nix
+2026-11-06T03:01:14.8140546Z if [ -e '/nix/var/nix/profiles/default/etc/profile.d/nix-daemon.sh' ]; then
+2026-11-06T03:01:14.8141048Z   . '/nix/var/nix/profiles/default/etc/profile.d/nix-daemon.sh'
+2026-11-06T03:01:14.8141445Z fi
+2026-11-06T03:01:14.8141649Z # End Nix
+2026-11-06T03:01:14.8141762Z 
+2026-11-06T03:01:14.8292121Z 
+2026-11-06T03:01:14.8292290Z # Nix
+2026-11-06T03:01:14.8292688Z if [ -e '/nix/var/nix/profiles/default/etc/profile.d/nix-daemon.sh' ]; then
+2026-11-06T03:01:14.8293156Z   . '/nix/var/nix/profiles/default/etc/profile.d/nix-daemon.sh'
+2026-11-06T03:01:14.8293555Z fi
+2026-11-06T03:01:14.8293971Z # End Nix
+2026-11-06T03:01:14.8294107Z 
+2026-11-06T03:01:14.8442538Z 
+2026-11-06T03:01:14.8443060Z # Nix
+2026-11-06T03:01:14.8443512Z if [ -e '/nix/var/nix/profiles/default/etc/profile.d/nix-daemon.sh' ]; then
+2026-11-06T03:01:14.8444080Z   . '/nix/var/nix/profiles/default/etc/profile.d/nix-daemon.sh'
+2026-11-06T03:01:14.8444397Z fi
+2026-11-06T03:01:14.8444616Z # End Nix
+2026-11-06T03:01:14.8444748Z 
+2026-11-06T03:01:14.8587644Z 
+2026-11-06T03:01:14.8588238Z # Nix
+2026-11-06T03:01:14.8588779Z if [ -e '/nix/var/nix/profiles/default/etc/profile.d/nix-daemon.sh' ]; then
+2026-11-06T03:01:14.8589247Z   . '/nix/var/nix/profiles/default/etc/profile.d/nix-daemon.sh'
+2026-11-06T03:01:14.8589630Z fi
+2026-11-06T03:01:14.8589905Z # End Nix
+2026-11-06T03:01:14.8590171Z 
+2026-11-06T03:01:14.8590344Z # System-wide .bashrc file for interactive bash(1) shells.
+2026-11-06T03:01:14.8590527Z 
+2026-11-06T03:01:14.8590684Z # To enable the settings / commands in this file for login shells as well,
+2026-11-06T03:01:14.8591022Z # this file has to be sourced in /etc/profile.
+2026-11-06T03:01:14.8591181Z 
+2026-11-06T03:01:14.8591281Z # If not running interactively, don't do anything
+2026-11-06T03:01:14.8591519Z [ -z "$PS1" ] && return
+2026-11-06T03:01:14.8591637Z 
+2026-11-06T03:01:14.8591764Z # check the window size after each command and, if necessary,
+2026-11-06T03:01:14.8592042Z # update the values of LINES and COLUMNS.
+2026-11-06T03:01:14.8592268Z shopt -s checkwinsize
+2026-11-06T03:01:14.8592378Z 
+2026-11-06T03:01:14.8592548Z # set variable identifying the chroot you work in (used in the prompt below)
+2026-11-06T03:01:14.8592899Z if [ -z "${debian_chroot:-}" ] && [ -r /etc/debian_chroot ]; then
+2026-11-06T03:01:14.8593244Z     debian_chroot=$(cat /etc/debian_chroot)
+2026-11-06T03:01:14.8593455Z fi
+2026-11-06T03:01:14.8593541Z 
+2026-11-06T03:01:14.8593681Z # set a fancy prompt (non-color, overwrite the one in /etc/profile)
+2026-11-06T03:01:14.8594017Z # but only if not SUDOing and have SUDO_PS1 set; then assume smart user.
+2026-11-06T03:01:14.8594356Z if ! [ -n "${SUDO_USER}" -a -n "${SUDO_PS1}" ]; then
+2026-11-06T03:01:14.8594629Z   PS1='${debian_chroot:+($debian_chroot)}\u@\h:\w\$ '
+2026-11-06T03:01:14.8594865Z fi
+2026-11-06T03:01:14.8594945Z 
+2026-11-06T03:01:14.8595113Z # Commented out, don't overwrite xterm -T "title" -n "icontitle" by default.
+2026-11-06T03:01:14.8595438Z # If this is an xterm set the title to user@host:dir
+2026-11-06T03:01:14.8595670Z #case "$TERM" in
+2026-11-06T03:01:14.8595838Z #xterm*|rxvt*)
+2026-11-06T03:01:14.8596080Z #    PROMPT_COMMAND='echo -ne "\033]0;${USER}@${HOSTNAME}: ${PWD}\007"'
+2026-11-06T03:01:14.8596347Z #    ;;
+2026-11-06T03:01:14.8596490Z #*)
+2026-11-06T03:01:14.8596643Z #    ;;
+2026-11-06T03:01:14.8596791Z #esac
+2026-11-06T03:01:14.8596874Z 
+2026-11-06T03:01:14.8596977Z # enable bash completion in interactive shells
+2026-11-06T03:01:14.8597237Z #if ! shopt -oq posix; then
+2026-11-06T03:01:14.8597480Z #  if [ -f /usr/share/bash-completion/bash_completion ]; then
+2026-11-06T03:01:14.8597765Z #    . /usr/share/bash-completion/bash_completion
+2026-11-06T03:01:14.8598004Z #  elif [ -f /etc/bash_completion ]; then
+2026-11-06T03:01:14.8598225Z #    . /etc/bash_completion
+2026-11-06T03:01:14.8598457Z #  fi
+2026-11-06T03:01:14.8598658Z #fi
+2026-11-06T03:01:14.8598766Z 
+2026-11-06T03:01:14.8598861Z # sudo hint
+2026-11-06T03:01:14.8599125Z if [ ! -e "$HOME/.sudo_as_admin_successful" ] && [ ! -e "$HOME/.hushlogin" ] ; then
+2026-11-06T03:01:14.8599438Z     case " $(groups) " in *\ admin\ *|*\ sudo\ *)
+2026-11-06T03:01:14.8599667Z     if [ -x /usr/bin/sudo ]; then
+2026-11-06T03:01:14.8599864Z 	cat <<-EOF
+2026-11-06T03:01:14.8600261Z 	To run a command as administrator (user "root"), use "sudo <command>".
+2026-11-06T03:01:14.8600785Z 	See "man sudo_root" for details.
+2026-11-06T03:01:14.8600974Z 	
+2026-11-06T03:01:14.8601113Z 	EOF
+2026-11-06T03:01:14.8601256Z     fi
+2026-11-06T03:01:14.8601412Z     esac
+2026-11-06T03:01:14.8601555Z fi
+2026-11-06T03:01:14.8601631Z 
+2026-11-06T03:01:14.8601860Z # if the command-not-found package is installed, use it
+2026-11-06T03:01:14.8602243Z if [ -x /usr/lib/command-not-found -o -x /usr/share/command-not-found/command-not-found ]; then
+2026-11-06T03:01:14.8602587Z 	function command_not_found_handle {
+2026-11-06T03:01:14.8602847Z 	        # check because c-n-f could've been removed in the meantime
+2026-11-06T03:01:14.8603134Z                 if [ -x /usr/lib/command-not-found ]; then
+2026-11-06T03:01:14.8603377Z 		   /usr/lib/command-not-found -- "$1"
+2026-11-06T03:01:14.8603586Z                    return $?
+2026-11-06T03:01:14.8603841Z                 elif [ -x /usr/share/command-not-found/command-not-found ]; then
+2026-11-06T03:01:14.8604171Z 		   /usr/share/command-not-found/command-not-found -- "$1"
+2026-11-06T03:01:14.8604413Z                    return $?
+2026-11-06T03:01:14.8604582Z 		else
+2026-11-06T03:01:14.8604756Z 		   printf "%s: command not found\n" "$1" >&2
+2026-11-06T03:01:14.8604973Z 		   return 127
+2026-11-06T03:01:14.8605126Z 		fi
+2026-11-06T03:01:14.8605285Z 	}
+2026-11-06T03:01:14.8605422Z fi
+2026-11-06T03:01:14.8610274Z 
+2026-11-06T03:01:14.8611103Z [32m~~> Setting up shell profiles for Fish with conf.d/nix.fish inside /etc/fish /usr/local/etc/fish /opt/homebrew/etc/fish /opt/local/etc/fish
+2026-11-06T03:01:14.8810938Z [0m
+2026-11-06T03:01:14.8811198Z [32m~~> Setting up the default profile
+2026-11-06T03:01:14.9086508Z installing 'nix-2.35.4'
+2026-11-06T03:01:14.9229798Z building '/nix/store/pah449n1nfcdzdakbg7ah3p12bgl5lzl-user-environment.drv'...
+2026-11-06T03:01:14.9586938Z installing 'nix-manual-2.35.4-man'
+2026-11-06T03:01:14.9730861Z building '/nix/store/yir75spl505dl0x6w9bpc5z0xd73ywh3-user-environment.drv'...
+2026-11-06T03:01:15.0103646Z installing 'nss-cacert-3.131.1'
+2026-11-06T03:01:15.0235698Z building '/nix/store/xpchy3fjkiphdqlw56i8dd99gknxl1yv-user-environment.drv'...
+2026-11-06T03:01:15.0426761Z [0m
+2026-11-06T03:01:15.0754769Z Created symlink /etc/systemd/system/nix-daemon.service → /nix/var/nix/profiles/default/lib/systemd/system/nix-daemon.service.
+2026-11-06T03:01:15.0755640Z [32m~~> Setting up the nix-daemon systemd service
+2026-11-06T03:01:15.2947419Z Created symlink /etc/systemd/system/nix-daemon.socket → /nix/var/nix/profiles/default/lib/systemd/system/nix-daemon.socket.
+2026-11-06T03:01:15.2948818Z Created symlink /etc/systemd/system/sockets.target.wants/nix-daemon.socket → /nix/var/nix/profiles/default/lib/systemd/system/nix-daemon.socket.
+2026-11-06T03:01:15.7396286Z [0m[32mAlright! We're done!
+2026-11-06T03:01:15.7413172Z [0mTry it! Open a new terminal, and type:
+2026-11-06T03:01:15.7413654Z 
+2026-11-06T03:01:15.7413846Z   $ nix-shell -p nix-info --run "nix-info -m"
+2026-11-06T03:01:15.7414109Z 
+2026-11-06T03:01:15.7414360Z Thank you for using this installer. If you have any feedback or need
+2026-11-06T03:01:15.7414806Z help, don't hesitate:
+2026-11-06T03:01:15.7414967Z 
+2026-11-06T03:01:15.7415085Z You can open an issue at
+2026-11-06T03:01:15.7415582Z https://github.com/NixOS/nix/issues/new?labels=installer&template=installer.md
+2026-11-06T03:01:15.7416012Z 
+2026-11-06T03:01:15.7433621Z Or get in touch with the community: https://nixos.org/community
+2026-11-06T03:01:15.7433954Z 
+2026-11-06T03:01:15.7434521Z [34m---- Reminders -----------------------------------------------------------------
+2026-11-06T03:01:15.7435169Z [0m[34m[ 1 ][0m
+2026-11-06T03:01:15.7435682Z Nix won't work in active shell sessions until you restart them.
+2026-11-06T03:01:15.7436239Z 
+2026-11-06T03:01:15.8129099Z ##[endgroup]
+2026-11-06T03:01:15.8164974Z ##[end-action id=__cachix_install-nix-action.__run;outcome=success;conclusion=success;duration_ms=3429]
+2026-11-06T03:01:15.8216568Z ##[group]Run tools="$(nix build --no-link --print-out-paths .#cli)"
+2026-11-06T03:01:15.8216934Z [36;1mtools="$(nix build --no-link --print-out-paths .#cli)"[0m
+2026-11-06T03:01:15.8217310Z [36;1mnix shell nixpkgs#python3 -c python3 tests/sdk-native.py "$tools" '5.1'[0m
+2026-11-06T03:01:15.8217624Z [36;1mif [ '5.1' = '5.1' ]; then[0m
+2026-11-06T03:01:15.8218108Z [36;1m  nix shell nixpkgs#python3 -c python3 tests/capture-manager.py "$tools"[0m
+2026-11-06T03:01:15.8218406Z [36;1mfi[0m
+2026-11-06T03:01:15.8239220Z shell: /usr/bin/bash -e {0}
+2026-11-06T03:01:15.8239441Z env:
+2026-11-06T03:01:15.8239622Z   TMPDIR: /home/runner/work/_temp
+2026-11-06T03:01:15.8239915Z   NIX_PROFILES: /nix/var/nix/profiles/default /home/runner/.nix-profile
+2026-11-06T03:01:15.8240456Z   NIX_SSL_CERT_FILE: /etc/ssl/certs/ca-certificates.crt
+2026-11-06T03:01:15.8240695Z ##[endgroup]
+2026-11-06T03:01:16.1256012Z unpacking 'github:nix-caisson/caisson/ec291bc9637a95606f7fa9df942d5e803705d8f5?narHash=sha256-FAixpwyAWmhrzmh0fMGt7y0KIcNLqBIGICfMvbExRLo%3D' into the Git cache...
+2026-11-06T03:01:16.8331160Z unpacking 'github:nix-caisson/caisson-core/6868bca2682e96d56714bc9c9adcf0048fbe132f?narHash=sha256-OzlG2Nhl/kU2UUPq%2BARH/GKUHmOqAxQu5Ug/%2BaT1ECc%3D' into the Git cache...
+2026-11-06T03:01:17.3882927Z unpacking 'github:nix-community/nixpkgs.lib/b91d4f1bc958e0bdfd6cb3db4a280486006f5002?narHash=sha256-XtTdVeJX6X/gU%2BvGIUEJHirotv/lYP5%2BQ9irMH6HWPY%3D' into the Git cache...
+2026-11-06T03:01:17.9165606Z unpacking 'github:hercules-ci/flake-parts/31729ca8cbdb4fa927b34e5f4353e6a83f39e993?narHash=sha256-glZLQlzIn1fXH6PazR2iUmTo7kzzyYSshrWhLS9TqCU%3D' into the Git cache...
+2026-11-06T03:01:18.4075661Z unpacking 'github:nix-purifiers/purifier/9873ad31f6b9076abe3984f7f31c4a6b9121ec51?narHash=sha256-D9fXTDqtt75b1aQOdqPilZ9jxBsYUn2%2BYju49X7D91A%3D' into the Git cache...
+2026-11-06T03:01:19.0432361Z unpacking 'github:nix-community/nixpkgs.lib/7851ba61fd862b277cb6a9cef37394bc18bb94e4?narHash=sha256-ThkfL3D/FhCiZFc9%2B3BtxwuMmpuK%2B/bGtXCSo1%2ByVew%3D' into the Git cache...
+2026-11-06T03:01:19.6045138Z unpacking 'github:hercules-ci/flake-parts/024633cd702b10285db5cb19b40ad48d2399ba60?narHash=sha256-zTwuwezD0w3hpga6a6P8emidzAZFyWqlNeRBlpWOOl8%3D' into the Git cache...
+2026-11-06T03:01:19.9811899Z copying path '/nix/store/cm5m4hjjh37s6z82rwa0vhkbcga3m8bq-source' from 'https://cache.nixos.org'...
+2026-11-06T03:01:43.4075896Z these 3 derivations will be built:
+2026-11-06T03:01:43.4079917Z   /nix/store/cpyanxm0rjf6h7950d5cmb80jdzbqy2x-lua-project-sdks.nix.drv
+2026-11-06T03:01:43.4080556Z   /nix/store/jr1zyv558mpn5w6gwdbfxfgq07kbn00p-luarocks-purifier-shims-0.1.0.drv
+2026-11-06T03:01:43.4081279Z   /nix/store/xx965lgpwld9zi8bzmgdbhi0idpm0qp5-luarocks-purifier-0.1.0.drv
+2026-11-06T03:01:43.4081926Z these 242 paths will be fetched (395.7 MiB download, 1.2 GiB unpacked):
+2026-11-06T03:01:43.4082772Z   /nix/store/42f9bwnz7klk5sj2xplk9brihx1w12h3-abseil-cpp-20260817.0
+2026-11-06T03:01:43.4083315Z   /nix/store/3hk1ngk4hsk4s53v2s7sg096irdania4-acl-2.4.0
+2026-11-06T03:01:43.4083763Z   /nix/store/mmvljr1swinz20idribg8wr29dsn8cqb-apr-1.7.6
+2026-11-06T03:01:43.4084238Z   /nix/store/bclb1gfiqjqzik45ifcy7icz3h5lmb29-apr-util-1.6.5
+2026-11-06T03:01:43.4084738Z   /nix/store/pnwvsvwppd1lsamcxmiw6g7fp1k1g2j0-attr-2.6.0
+2026-11-06T03:01:43.4085212Z   /nix/store/9n8r19wpgq70vv1kwll66k2m0hvs02y4-aws-lc-5.12.0
+2026-11-06T03:01:43.4085671Z   /nix/store/nnm9gdr70ihc6zc9298mzz8jpcgaciql-bash-5.3p20
+2026-11-06T03:01:43.4086008Z   /nix/store/y6ri2r743ckh5kk160r461czl9n2f2wf-binutils-2.46
+2026-11-06T03:01:43.4086324Z   /nix/store/nrlcj9nncvchvk481zb3pg6df8gsj0pn-binutils-2.46-lib
+2026-11-06T03:01:43.4086678Z   /nix/store/fi98g122a3kzbschgvbvsqvpyxrmqvvl-binutils-wrapper-2.46
+2026-11-06T03:01:43.4087019Z   /nix/store/b8g0didzv422qhw67dh67wldkc9wkpdf-brotli-1.2.0-lib
+2026-11-06T03:01:43.4087330Z   /nix/store/zx4ag3v11v9rl0iqvg6vzbpflzlg0dk2-bzip2-1.0.8
+2026-11-06T03:01:43.4087646Z   /nix/store/ai2km55ba8bxrn64xx7p9lgvrrzdzv43-bzip2-1.0.8-bin
+2026-11-06T03:01:43.4088563Z   /nix/store/rlpcs1h48m058z811xxkn5672v77p5qj-cmake-4.4.4
+2026-11-06T03:01:43.4089027Z   /nix/store/cb987zkxvsv0490753ilrvn5yk7ylgxi-coreutils-9.12
+2026-11-06T03:01:43.4089531Z   /nix/store/0si2wn578xyhaj86njfyd35m3ss166d2-curl-8.22.0
+2026-11-06T03:01:43.4089985Z   /nix/store/p9i1b7jgfj4fl5bx557jnwbdsafl434i-curl-8.22.0
+2026-11-06T03:01:43.4090597Z   /nix/store/5lpg7j8y8lf8c4zv318yi4rmgyn5yhip-curl-8.22.0-bin
+2026-11-06T03:01:43.4091275Z   /nix/store/qmkj26wch25xynf19n85j58dyly5x72s-cvs-1.12.13+real-30
+2026-11-06T03:01:43.4091822Z   /nix/store/kggg99nn8zvnxdb47pg6ydpb8vnww44a-cyrus-sasl-2.1.28
+2026-11-06T03:01:43.4092345Z   /nix/store/kz7mfvlxjm7hq7jizl72lzqj2pgam4n4-darcs-2.18.5
+2026-11-06T03:01:43.4092808Z   /nix/store/cg4vskbr8139w0nkwbf3bpl3n79vz1d6-db-5.3.28
+2026-11-06T03:01:43.4093254Z   /nix/store/06il2mnivfxvf14xzkyb1vwcgvzidybq-die-hook
+2026-11-06T03:01:43.4093734Z   /nix/store/9mpja553cbkr2rc37kzdg8zbbg2dyyvl-diffutils-3.12
+2026-11-06T03:01:43.4094261Z   /nix/store/77d0rlxs1c4sx71ss06vnmfpjcd5mm22-ed-1.22.6
+2026-11-06T03:01:43.4094733Z   /nix/store/bvfkqam1y3zmsb3k41iml0zwx13sknjl-elfutils-0.195
+2026-11-06T03:01:43.4095281Z   /nix/store/jkz7a5kgwa1h16d8hkhjqlgm0xy5bkhw-expand-response-params
+2026-11-06T03:01:43.4095878Z   /nix/store/7rx5im6jbgyfhrl0lc0kyxd9yf14rdxc-expat-2.9.0
+2026-11-06T03:01:43.4096355Z   /nix/store/2qpmak7162vhqxjwfik4aqs9lff6sn7w-file-5.48
+2026-11-06T03:01:43.4096804Z   /nix/store/3dl20ncpnlxr3ls3235smsg5ln849a1d-file-5.48
+2026-11-06T03:01:43.4097273Z   /nix/store/99v13ig4382mngi6ggf0csqi7rfa04j5-findutils-4.11.0
+2026-11-06T03:01:43.4097756Z   /nix/store/bhxg6jvvl69712303nri5y270skv559q-fossil-2.28
+2026-11-06T03:01:43.4098212Z   /nix/store/h96s16mjssibkvk62pvmfm3lwfc3wnwp-gawk-5.4.1
+2026-11-06T03:01:43.4098664Z   /nix/store/xpaz3fi6ibqxb9sla4gjlp0c82v566y8-gcc-16.2.0
+2026-11-06T03:01:43.4099094Z   /nix/store/7a2cjhcgzyym5zaz6m4fksw47qvm150w-gcc-16.2.0-lib
+2026-11-06T03:01:43.4099605Z   /nix/store/3sj8msrsym648f35mk3gb3pp385hhk8r-gcc-16.2.0-libgcc
+2026-11-06T03:01:43.4100324Z   /nix/store/r5ri78axx1qggkjq3vawywlzglg70b5w-gcc-wrapper-16.2.0
+2026-11-06T03:01:43.4100865Z   /nix/store/pfav6492acf7d8m41lggwqghpprkq9di-gdbm-1.26-lib
+2026-11-06T03:01:43.4101369Z   /nix/store/8qdw9shgr7dd3315jim8sfva2dnhq86c-gettext-1.0
+2026-11-06T03:01:43.4101825Z   /nix/store/xgw813vgzl2q0696sq45adpj0xd690jq-git-2.56.0
+2026-11-06T03:01:43.4102295Z   /nix/store/mb5kkl4yar0i9m20f6bglah9l7a28fcs-git-2.56.0-doc
+2026-11-06T03:01:43.4102803Z   /nix/store/11zj9zypq35gd8kmwhjvzs2rws3h4b66-git-lfs-3.8.1
+2026-11-06T03:01:43.4103342Z   /nix/store/2wlays4ahsvdx02v84s3x91ri2623qbl-git-minimal-2.56.0
+2026-11-06T03:01:43.4103898Z   /nix/store/pqyiidz5mi73wv5f91d48s9plcqyj5bz-glibc-2.44-57
+2026-11-06T03:01:43.4104416Z   /nix/store/j64r0mf0yy7pvcbavlqidfnpsdnrldj2-glibc-2.44-57-bin
+2026-11-06T03:01:43.4104963Z   /nix/store/3zlgjcfm8j3nscrldjv8izxciybg0nh3-glibc-2.44-57-dev
+2026-11-06T03:01:43.4105480Z   /nix/store/v730lk2kw7kwbvlvq60zjbznd462mgrq-gmp-6.3.0
+2026-11-06T03:01:43.4105996Z   /nix/store/7whfqxz5vs4kn8jiybvdj5k7ib6h4442-gmp-with-cxx-6.3.0
+2026-11-06T03:01:43.4106540Z   /nix/store/vs4bjcgq2r93adg875isf55hyn29dk09-gmp-with-cxx-6.3.0
+2026-11-06T03:01:43.4107108Z   /nix/store/b01kc8kdswrnfzlqpq0y3q9akijvn620-gnu-config-2024-01-01
+2026-11-06T03:01:43.4107672Z   /nix/store/c3f45pxlb81gzz4w1nym7lpznfypva7s-gnugrep-3.12
+2026-11-06T03:01:43.4108169Z   /nix/store/8xz4d9wp4jy49mhl306wyg55096wis3p-gnumake-4.4.1
+2026-11-06T03:01:43.4108648Z   /nix/store/vs2sa1msvkjxbb70h47819zq8a9srj21-gnumake-4.4.1
+2026-11-06T03:01:43.4109137Z   /nix/store/9wc73n5izv0m7ppjbibi4hbr68rba1lj-gnused-4.10
+2026-11-06T03:01:43.4109599Z   /nix/store/f9shc46n2300jbm0h60f6s4m69j0smyp-gnutar-1.35
+2026-11-06T03:01:43.4110202Z   /nix/store/n318yf1q5vysgh2qn6fd1q8yjy9vmwvh-gnutar-1.35
+2026-11-06T03:01:43.4110682Z   /nix/store/65sjy017bdrypxl0hb2pzbdshgq20lpf-gtest-1.18.0
+2026-11-06T03:01:43.4111162Z   /nix/store/rpswfv0ff4wap9anx7k1224x2m94pfcc-gzip-1.15
+2026-11-06T03:01:43.4111647Z   /nix/store/j1dffl1f3g8wphn77q69k4y4ccw36bzw-iana-etc-20251215
+2026-11-06T03:01:43.4112374Z   /nix/store/9wwqcw8hr8z47avkdcigdyhclkq62f0a-icu4c-78.3
+2026-11-06T03:01:43.4112916Z   /nix/store/pkqxj99ylqbxch7maydvdvpzi9ba6xx5-install-shell-files
+2026-11-06T03:01:43.4113425Z   /nix/store/yi5d8g9kma5bhskfjllrjypd5d2xhvl1-isl-0.20
+2026-11-06T03:01:43.4113884Z   /nix/store/hcagcif4hcac22rrspzgg8p9g0aqs741-jq-1.8.2
+2026-11-06T03:01:43.4114328Z   /nix/store/9l0j15jg8634hkb6d4c9y95mpxl0nhrd-jq-1.8.2-bin
+2026-11-06T03:01:43.4114949Z   /nix/store/z10rxaxcalb7dis6bjgkqi4604llmgyv-json-c-0.18
+2026-11-06T03:01:43.4115458Z   /nix/store/djf269aylbphr1ynvd52nh3dana5jh91-keyutils-1.6.3-lib
+2026-11-06T03:01:43.4116008Z   /nix/store/qbvmi6qgfw0ipjvfndy9f6k69rnip42m-krb5-1.22.2-lib
+2026-11-06T03:01:43.4116566Z   /nix/store/wqqc647lmjjs970cyk7ai36qxbiwgzsv-libarchive-3.8.9-lib
+2026-11-06T03:01:43.4117103Z   /nix/store/pfds9zw10xksh0zr7qplqg1lj9avs2gz-libffi-3.8.0
+2026-11-06T03:01:43.4117644Z   /nix/store/hsbx1hya0qvmsj13vphbvciz9mk1kd21-libgit2-1.9.7-lib
+2026-11-06T03:01:43.4118173Z   /nix/store/00fs4zz9c0jjcvs62wg39b91dydz7zqb-libidn2-2.3.8
+2026-11-06T03:01:43.4118728Z   /nix/store/2l15gqrda27bvdh82bxrzipcsl68dnwk-libmpc-1.4.1
+2026-11-06T03:01:43.4119203Z   /nix/store/njx84z0ra0xj8498l67y4yczhkg7wca7-libpsl-0.21.5
+2026-11-06T03:01:43.4119820Z   /nix/store/ylrmlriaq8104pniihwd8iqw8wg2lf23-libsodium-1.0.22-unstable-2026-09-28
+2026-11-06T03:01:43.4120627Z   /nix/store/hy7qsmyk9nbhcylcxbsf2aapsx8c6khb-libssh2-1.11.1
+2026-11-06T03:01:43.4121166Z   /nix/store/dspggxr946ixbkqmrakiqw2i1fryfxz7-libtool-2.6.2-lib
+2026-11-06T03:01:43.4121698Z   /nix/store/bx7jdvkba26sy20ryr4l617qqmzj9hff-libunistring-1.4.2
+2026-11-06T03:01:43.4122214Z   /nix/store/1g70k04n1887qkfn4xn26av35jwcd8n9-libuv-1.53.0
+2026-11-06T03:01:43.4122710Z   /nix/store/30qgvhl60m3lpnj99l3xjprk776qg3ik-libxcrypt-4.5.2
+2026-11-06T03:01:43.4123229Z   /nix/store/m5s1ak7s1swmhmy64yqvya342g0603s7-libxml2-2.15.4
+2026-11-06T03:01:43.4123744Z   /nix/store/15c5vkz8dsk3hrzpvlbc7pp0imgsslky-libyaml-0.2.5
+2026-11-06T03:01:43.4124270Z   /nix/store/d2pxlphy1s0qcjafl9r23rwr73g8zpyj-linux-headers-7.2
+2026-11-06T03:01:43.4124796Z   /nix/store/kawnc9b3i2asg422vd4xvhpsry9flmh0-llhttp-9.4.3
+2026-11-06T03:01:43.4125328Z   /nix/store/w3s39b7gz8mm1xsr0map8101rrcz28f7-lua-5.1.5
+2026-11-06T03:01:43.4125777Z   /nix/store/jizh2zappxvzzwx68r8ddjri9b107wiy-lua-5.2.4
+2026-11-06T03:01:43.4126221Z   /nix/store/9h9kmwgh29ybpmkrdxqggf6gk7ffybk4-lua-5.3.6
+2026-11-06T03:01:43.4126688Z   /nix/store/9mzgzmmnv4ygdligs99zzla2izgc5pvg-lua-5.4.9
+2026-11-06T03:01:43.4127124Z   /nix/store/777w57bdbgmiidmrxsk23g5vb8jllwfj-lua-5.5.1
+2026-11-06T03:01:43.4127651Z   /nix/store/lisg0a2vq90b21mcrki7a2y5yqsq0h6b-lua5.1-luarocks-3.13.0-1
+2026-11-06T03:01:43.4128274Z   /nix/store/lgxm86xpiac13i760c6vbmbi1acxmrkv-lua5.2-luarocks-3.13.0-1
+2026-11-06T03:01:43.4128937Z   /nix/store/dyraj7nm1zxlzywh7x3skmkc3x51xl9i-lua5.3-luarocks-3.13.0-1
+2026-11-06T03:01:43.4129563Z   /nix/store/9npwsh8csigkha8rm8xh82npdl69j73p-lua5.4-luarocks-3.13.0-1
+2026-11-06T03:01:43.4130321Z   /nix/store/z2b7qjqbx1rq7ak546zkhkgflf6gggpb-lua5.5-luarocks-3.13.0-1
+2026-11-06T03:01:43.4130926Z   /nix/store/k5n0h079afl26rppwz1ca98d2rwdjcwf-luajit-2.1.1785763465
+2026-11-06T03:01:43.4131515Z   /nix/store/rsyhyinykv7h3n03jvl2i572qpd78584-luajit2.1-luarocks-3.13.0-1
+2026-11-06T03:01:43.4132180Z   /nix/store/akpafky1c8wyzw61zrrda7lnzrnhc1bm-luarocks-luarocks-config.lua
+2026-11-06T03:01:43.4132840Z   /nix/store/bc9vp3bh14y7m2gz37znhx4d7c1jd49a-luarocks-luarocks-config.lua
+2026-11-06T03:01:43.4133550Z   /nix/store/j6hhibqm281v49cw0zfzwdmza79xbpzl-luarocks-luarocks-config.lua
+2026-11-06T03:01:43.4134230Z   /nix/store/kba78r1jzdjn8pv05f52sgsys4dwh64i-luarocks-luarocks-config.lua
+2026-11-06T03:01:43.4134931Z   /nix/store/qrd1hprzg03a5m1f8c1g0npzjljd6xiz-luarocks-luarocks-config.lua
+2026-11-06T03:01:43.4135598Z   /nix/store/rvav4np8ksas576nh3j8nidzkfnwmr5w-luarocks-luarocks-config.lua
+2026-11-06T03:01:43.4136213Z   /nix/store/04am42mk4i9myjhl3y3rd0037v5b5vdk-luarocks_bootstrap-3.13.0
+2026-11-06T03:01:43.4137031Z   /nix/store/04x5b53sh8ks5jcy7j6imwh6nm717wd6-luarocks_bootstrap-3.13.0
+2026-11-06T03:01:43.4137603Z   /nix/store/50b23y9wimv3w2d50l1iqfvly3sl92q7-luarocks_bootstrap-3.13.0
+2026-11-06T03:01:43.4138199Z   /nix/store/d5hclalx9kbz7kmd8kaa060dfg0rfzal-luarocks_bootstrap-3.13.0
+2026-11-06T03:01:43.4138794Z   /nix/store/hhnm6yypzsdycj6p95fc3rx4ri5km55q-luarocks_bootstrap-3.13.0
+2026-11-06T03:01:43.4139388Z   /nix/store/njpammdmzgs7nwyfqncvv0bh4crnwj3f-luarocks_bootstrap-3.13.0
+2026-11-06T03:01:43.4140217Z   /nix/store/7xkwycvjhvfyq2sjhq8yqf75y0afikaj-lz4-1.10.0-lib
+2026-11-06T03:01:43.4140752Z   /nix/store/i68jrr4ixqmpb5dk5phddx7bnhlwqffs-mailcap-2.1.54
+2026-11-06T03:01:43.4141314Z   /nix/store/wnxl2v5a9rm80kixrg45k99d0s78zqsv-make-shell-wrapper-hook
+2026-11-06T03:01:43.4141872Z   /nix/store/6i3r8651z0a8zva25fb8lqw4n5r4wxgv-mercurial-7.2.2
+2026-11-06T03:01:43.4142387Z   /nix/store/qwzgw6wlb5ghsy3ph0x1p9mvf3mxwms5-mpdecimal-4.0.1
+2026-11-06T03:01:43.4142867Z   /nix/store/17215c0jn632z03h33fbwql4pdjb8bfi-mpfr-4.2.2
+2026-11-06T03:01:43.4143315Z   /nix/store/9zllgi6r0g0g5p43zsv2fz8g6c71jiiy-nano-9.3
+2026-11-06T03:01:43.4143775Z   /nix/store/r9nlzwasmr1hgcbrfzcp2b2cz33scij2-ncurses-6.6
+2026-11-06T03:01:43.4144290Z   /nix/store/2aw3zp99m9jc250ajl42rhaankp2kjav-nghttp2-1.70.0-lib
+2026-11-06T03:01:43.4144834Z   /nix/store/p40lblcsw1qwzqja83rfdpq0l15w4xv7-nghttp3-1.18.0
+2026-11-06T03:01:43.4145345Z   /nix/store/2b7h6rnav6a0s6npjk8y76f6rjs86lvw-ngtcp2-1.23.0
+2026-11-06T03:01:43.4145891Z   /nix/store/ba9zrb4ff65xf21sikjlv0nidr3j76kn-nix-prefetch-bzr-26.11
+2026-11-06T03:01:43.4146538Z   /nix/store/qg6ryvv6yb5m4agc0psjafybxiv55ibz-nix-prefetch-cvs-26.11
+2026-11-06T03:01:43.4147140Z   /nix/store/i3vy24ws87wb3527g0saal2x3pgc41sz-nix-prefetch-darcs-26.11
+2026-11-06T03:01:43.4147764Z   /nix/store/hzrzgd1qxz0rcpkdzm0wpw1gz9fgn92b-nix-prefetch-fossil-26.11
+2026-11-06T03:01:43.4148380Z   /nix/store/w9grjw32g6zikxip4gmca0sry7f1p91w-nix-prefetch-git-26.11
+2026-11-06T03:01:43.4148984Z   /nix/store/fbqm5da2s2w8s39r4idfmqyhsmzyx91x-nix-prefetch-hg-26.11
+2026-11-06T03:01:43.4149650Z   /nix/store/fc7zabsbckh81gpk1nplfsa772gd5mpj-nix-prefetch-pijul-26.11
+2026-11-06T03:01:43.4150554Z   /nix/store/dlc2z9hlrwy3y33x9vk99zfaj0rjyf1j-nix-prefetch-scripts
+2026-11-06T03:01:43.4151160Z   /nix/store/hszz4rj5fs450qmm5kbnc6scqx7w92d5-nix-prefetch-svn-26.11
+2026-11-06T03:01:43.4151733Z   /nix/store/fprs4zi8r6227x12qbsd1grvfrpz6201-nss-cacert-3.131.1
+2026-11-06T03:01:43.4152292Z   /nix/store/vbmxpq22lm0hhb37mhykinj45aa0ljc3-numactl-2.0.18
+2026-11-06T03:01:43.4152833Z   /nix/store/90slnrlyxdl8yamw602y236fa8jcyxwd-oniguruma-6.9.10-lib
+2026-11-06T03:01:43.4153389Z   /nix/store/lmgi1sadfpn64nl8mxai9rlawcz2jp4k-openldap-2.6.13
+2026-11-06T03:01:43.4153907Z   /nix/store/lazac5vw20j0pyahzbaxz8z8hyf7m9zf-openssl-3.5.9
+2026-11-06T03:01:43.4154392Z   /nix/store/d5jz315vxbphknfawsrjs192ci9bc6df-patch-2.8
+2026-11-06T03:01:43.4154884Z   /nix/store/dl38pix4jvabi5smb9wywhp6pimmpva6-patchelf-0.19.2
+2026-11-06T03:01:43.4155394Z   /nix/store/p5dwcn4wpyjmhnnzj6iwwwjynyc6yif0-pcre2-10.49
+2026-11-06T03:01:43.4155880Z   /nix/store/y1gmkixqpkfwayj9iqxn3c8brm6zkn1m-perl-5.42.3
+2026-11-06T03:01:43.4156453Z   /nix/store/86c5q81pmzq11lriiry3pazlb01gggww-perl5.42.3-Authen-SASL-2.2100
+2026-11-06T03:01:43.4157081Z   /nix/store/z2pfix6anjs8j8nplw18zlhqm2g9jygj-perl5.42.3-CGI-4.59
+2026-11-06T03:01:43.4157659Z   /nix/store/y2fv5szkflkflgj2hws2mhlhr5bz7c7b-perl5.42.3-CGI-Fast-2.16
+2026-11-06T03:01:43.4158292Z   /nix/store/gyycdbp1gz3fvf50fx80pv570y0cs0gp-perl5.42.3-Clone-0.46
+2026-11-06T03:01:43.4158961Z   /nix/store/53c7ak3cz6ann26k3x34h394adxdjjd8-perl5.42.3-Compress-Raw-Bzip2-2.218
+2026-11-06T03:01:43.4159718Z   /nix/store/7rks4wrl4567nmwd30pg507hbrp680wv-perl5.42.3-Compress-Raw-Zlib-2.222
+2026-11-06T03:01:43.4160554Z   /nix/store/c74icicyxl49zs706jhxf2f97dgw0big-perl5.42.3-Crypt-URandom-0.55
+2026-11-06T03:01:43.4161245Z   /nix/store/x5a9anjlhrsp9rmr1j2rdf1czlxlzxnk-perl5.42.3-Digest-HMAC-1.05
+2026-11-06T03:01:43.4161934Z   /nix/store/31r6mhxj6dhpvsgg330mchqnvdkipllm-perl5.42.3-Encode-Locale-1.05
+2026-11-06T03:01:43.4162744Z   /nix/store/9drfa3mrps11k2169s62h354mpj86q7l-perl5.42.3-FCGI-0.82
+2026-11-06T03:01:43.4163411Z   /nix/store/ncpfrkxdi790dnky93p1dpvn50m7icaj-perl5.42.3-FCGI-ProcManager-0.28
+2026-11-06T03:01:43.4164112Z   /nix/store/frkfc5bylinm83zajl3wm03m214kkaks-perl5.42.3-File-Listing-6.16
+2026-11-06T03:01:43.4164789Z   /nix/store/sixp6a2yhv1rqyjvi4q0vkz85z8r0rnr-perl5.42.3-HTML-Parser-3.85
+2026-11-06T03:01:43.4165674Z   /nix/store/spr79kzwpcsmfbvppf7br727bvn4gsdm-perl5.42.3-HTML-TagCloud-0.38
+2026-11-06T03:01:43.4166356Z   /nix/store/a7jy06vpv6bhkrgm6hipn6px8pgfbnws-perl5.42.3-HTML-Tagset-3.20
+2026-11-06T03:01:43.4167061Z   /nix/store/ikw3fgpqk7zj582g0hxqf8hbbmgl2z39-perl5.42.3-HTTP-CookieJar-0.014
+2026-11-06T03:01:43.4167762Z   /nix/store/45pnjysl42ch94rxmc0c2kd8y2hl6h9i-perl5.42.3-HTTP-Cookies-6.10
+2026-11-06T03:01:43.4168432Z   /nix/store/013la2bf3dqkvvyxpyl4pgvx51d2jwnv-perl5.42.3-HTTP-Daemon-6.17
+2026-11-06T03:01:43.4169098Z   /nix/store/8qc02dniix9i7cz4arhzbibb5zksqymy-perl5.42.3-HTTP-Date-6.08
+2026-11-06T03:01:43.4169767Z   /nix/store/rcha0vx95xd6dxlwqmj3iqv79aqjwq1z-perl5.42.3-HTTP-Message-7.02
+2026-11-06T03:01:43.4170571Z   /nix/store/pf6ph2hr3p286qxdsl04jis0n4vcc0gi-perl5.42.3-HTTP-Negotiate-6.01
+2026-11-06T03:01:43.4171271Z   /nix/store/y3q0hfq2n0jj0nkr6qpxap3dpkvla3j3-perl5.42.3-IO-Compress-2.221
+2026-11-06T03:01:43.4171919Z   /nix/store/y42liys36jfaqdw19v6sff4rr1d309id-perl5.42.3-IO-HTML-1.004
+2026-11-06T03:01:43.4172598Z   /nix/store/jsvghrcvyikk422yvr17g52qxscn5qg5-perl5.42.3-IO-Socket-SSL-2.083
+2026-11-06T03:01:43.4173301Z   /nix/store/gw9cv5x21gfiy3afdn0848h25hk74jf4-perl5.42.3-LWP-MediaTypes-6.04
+2026-11-06T03:01:43.4173983Z   /nix/store/9ywrmani4xx0n9j96f6nx4gqk1q2k99b-perl5.42.3-MIME-Base32-1.303
+2026-11-06T03:01:43.4174663Z   /nix/store/5lwxnmrms4yppfbrnb2v47fbj604131k-perl5.42.3-Mozilla-CA-20230821
+2026-11-06T03:01:43.4175361Z   /nix/store/pvhqwaydycmypa3hcfrr0lqmy8nhap0g-perl5.42.3-Net-HTTP-6.23
+2026-11-06T03:01:43.4176026Z   /nix/store/k1xcmhfmkpzcxlimqd8fpbi0xqxaxm2j-perl5.42.3-Net-SMTP-SSL-1.04
+2026-11-06T03:01:43.4176712Z   /nix/store/rab3bl91k7xksrdpdw69pcpkj6p1z78q-perl5.42.3-Net-SSLeay-1.92
+2026-11-06T03:01:43.4177345Z   /nix/store/m7677iiw5w36mqw5d7kzws7067qi6ry8-perl5.42.3-TermReadKey-2.38
+2026-11-06T03:01:43.4178009Z   /nix/store/hslif2q3kfcw9lj9syl25hpm0y67v8da-perl5.42.3-Test-Fatal-0.017
+2026-11-06T03:01:43.4178688Z   /nix/store/czcwl43cyddmgy8z67cbq2ag8avi73qx-perl5.42.3-Test-Needs-0.002010
+2026-11-06T03:01:43.4179436Z   /nix/store/yxczdrywz8cj9fgpkllfv383smz54pgp-perl5.42.3-Test-RequiresInternet-0.05
+2026-11-06T03:01:43.4200668Z   /nix/store/bf61yikkg1xg2xsqghdiy1i8ypz9m9ls-perl5.42.3-TimeDate-2.33
+2026-11-06T03:01:43.4201404Z   /nix/store/fdnr93sypziw6z896s57qmgn2a3mpani-perl5.42.3-Try-Tiny-0.31
+2026-11-06T03:01:43.4202010Z   /nix/store/fq0lrn9lsg7qadvbc3hgclx6ijqrkprf-perl5.42.3-URI-5.36
+2026-11-06T03:01:43.4202647Z   /nix/store/dbg2yqnjnqqsln5li7wfsc5bg70avjxx-perl5.42.3-WWW-RobotRules-6.02
+2026-11-06T03:01:43.4203309Z   /nix/store/plix5s7ffq1fp9p8yhxj3adl0ah4hhqz-perl5.42.3-libnet-3.15
+2026-11-06T03:01:43.4203956Z   /nix/store/0f9na660n2568sn5drb8r3p5aknxy5r8-perl5.42.3-libwww-perl-6.83
+2026-11-06T03:01:43.4204592Z   /nix/store/axdvprdh3ydwmn395n1ma4h6n6fy02qx-pijul-1.0.0-beta.24
+2026-11-06T03:01:43.4205286Z   /nix/store/m27950v147ga4008dr5xwnjq22ysr49q-publicsuffix-list-0-unstable-2026-09-02
+2026-11-06T03:01:43.4205985Z   /nix/store/s1z5f7kmy2fpw5f2p7ck5vjqh85fym2q-pybind11-setup-hook
+2026-11-06T03:01:43.4206580Z   /nix/store/xahxrjs30p3mw0a42bqg9ikgkikskw8m-python3-3.14.8
+2026-11-06T03:01:43.4207168Z   /nix/store/wgyapl0fph0y5yljvjqfnm07f5hrkwxn-python3-minimal-3.14.8
+2026-11-06T03:01:43.4207821Z   /nix/store/v67plmgzzczslz0lc8v3yjk2v6k80iap-python3.14-breezy-3.3.21
+2026-11-06T03:01:43.4208494Z   /nix/store/nzx1klznsi9j3lwnm82icv70im8kwv73-python3.14-certifi-2026.07.22
+2026-11-06T03:01:43.4209137Z   /nix/store/m58vkbls4mg0nh4drn3b8xlx88b7zm78-python3.14-cffi-2.1.1
+2026-11-06T03:01:43.4209834Z   /nix/store/8d2cy5fha3x9pibimjvdqvkv8pasf8g9-python3.14-charset-normalizer-3.5.1
+2026-11-06T03:01:43.4210851Z   /nix/store/iixwgsf46j8gd7da3w81vmqdbfyf38wa-python3.14-configobj-5.0.9
+2026-11-06T03:01:43.4211542Z   /nix/store/0w4wam3pjqija61hk2cwirahisw51nb2-python3.14-cryptography-50.0.2
+2026-11-06T03:01:43.4212253Z   /nix/store/nh87c220yjz06hy5z1dgpf1v6kr6jg2s-python3.14-deprecated-1.3.1
+2026-11-06T03:01:43.4212902Z   /nix/store/j2ivqxfj90cl9cvnr0svhdm98yj9jalc-python3.14-distro-1.9.0
+2026-11-06T03:01:43.4213672Z   /nix/store/pbwgqfb95s0nq9ifcqz51f1wn9yrmayn-python3.14-dulwich-1.2.17
+2026-11-06T03:01:43.4214369Z   /nix/store/zyjjjkaa7f24bqldcfcn50nmw8l125pi-python3.14-fastbencode-0.3.11
+2026-11-06T03:01:43.4215064Z   /nix/store/7d8rff359aiwp65d4m840090vccs31az-python3.14-fastimport-0.9.16
+2026-11-06T03:01:43.4215771Z   /nix/store/9z91l9d9q2hsiw1nqddgfdgyrgyizp09-python3.14-google-re2-1.1.20251105
+2026-11-06T03:01:43.4216486Z   /nix/store/mvy843mg9ddpan15d1wvk31zn27zyr4h-python3.14-httplib2-0.32.0
+2026-11-06T03:01:43.4217133Z   /nix/store/0jlci0gnz2xfd3pqgiiznnb5jl8qbgfw-python3.14-idna-3.18
+2026-11-06T03:01:43.4217798Z   /nix/store/h4za7m80nyqhdipsv8s1586mi815n3pm-python3.14-launchpadlib-2.1.0
+2026-11-06T03:01:43.4218597Z   /nix/store/72dpa33fdkzjlgzi1a7wfvfm1y4qmfv3-python3.14-lazr-restfulclient-0.14.6
+2026-11-06T03:01:43.4219338Z   /nix/store/kwkm6jzhnyijjynybvql8vbci9vf51zq-python3.14-lazr-uri-1.0.8
+2026-11-06T03:01:43.4219987Z   /nix/store/n2b96sgf0ajy0r9vw8wsxrg5p0nm338a-python3.14-merge3-0.0.16
+2026-11-06T03:01:43.4220741Z   /nix/store/1qm7xs77cbr0qls2825qp4r1y73b7g6f-python3.14-oauthlib-3.3.1
+2026-11-06T03:01:43.4221420Z   /nix/store/b5j6y55gzbqz4p66b42ipcycfn1g7i3q-python3.14-patiencediff-0.2.19
+2026-11-06T03:01:43.4222087Z   /nix/store/ixc6j8cd5pj0cqp6dadi1695gd8ia1w2-python3.14-pybind11-3.1.0
+2026-11-06T03:01:43.4222721Z   /nix/store/3p96yc808l6vzckls096x7nbyb6hdkp9-python3.14-pycparser-3.00
+2026-11-06T03:01:43.4223371Z   /nix/store/3gx1m4jd847vksdmpjaw2l7mp83prxyz-python3.14-pygithub-2.8.1
+2026-11-06T03:01:43.4223999Z   /nix/store/fmrai54lmb0y5s23352jipld560dfs46-python3.14-pyjwt-2.15.1
+2026-11-06T03:01:43.4224636Z   /nix/store/ra8zqdpnbnb15cxs6pssiq2vjm6gvvp7-python3.14-pynacl-1.6.2
+2026-11-06T03:01:43.4225287Z   /nix/store/rczhm9nj2qmwy6xkqnnjpm6acxq68klz-python3.14-pyparsing-3.3.2
+2026-11-06T03:01:43.4225938Z   /nix/store/4w3qqylc0gssfarw7ydjm4r73n7b97wm-python3.14-pyyaml-6.0.3
+2026-11-06T03:01:43.4226579Z   /nix/store/k08xy0a5hw7pg3g4w4vk72ifb8glinpc-python3.14-requests-2.34.2
+2026-11-06T03:01:43.4227239Z   /nix/store/d13f804szzqg28s2i8rbqwlcz2wg63w9-python3.14-setuptools-83.0.0
+2026-11-06T03:01:43.4227896Z   /nix/store/3lc9v39gw3zfzi2ibk76f017vhx8hfw6-python3.14-six-1.17.0
+2026-11-06T03:01:43.4228579Z   /nix/store/16ci48rw59pvq3hdgcgkjhycj17rmyz5-python3.14-typing-extensions-4.16.0
+2026-11-06T03:01:43.4229306Z   /nix/store/nky6wcs66m0ysgwxwb6qjpfx7xlxbcr0-python3.14-tzlocal-5.4.4
+2026-11-06T03:01:43.4229964Z   /nix/store/q2n37ah7crichqzf43kr8fvyprjr3x1g-python3.14-urllib3-2.7.0
+2026-11-06T03:01:43.4230863Z   /nix/store/1q3441gzgg4vplpvnzdaf717w7wmm4i5-python3.14-wadllib-2.1.0
+2026-11-06T03:01:43.4231357Z   /nix/store/1a3gji0gvzvlhh6l1qs7711fp5x7ac1y-python3.14-wrapt-2.2.2
+2026-11-06T03:01:43.4231835Z   /nix/store/j9hzkvxh6wcb38cnn0rx5xdgm7kmg6kb-re2-2025-11-05
+2026-11-06T03:01:43.4232251Z   /nix/store/j9436i4mh2hlhnlqlk59fq5dc2sprs4i-readline-8.3p3
+2026-11-06T03:01:43.4232573Z   /nix/store/80anshz7jxkmq48p1m6z82w3xnpwpcaw-rhash-1.4.6
+2026-11-06T03:01:43.4232955Z   /nix/store/6av6c32i7bhxrqgcbfjqyaf5wvbn51hr-serf-1.3.10
+2026-11-06T03:01:43.4233273Z   /nix/store/xrzzvmqkmx68f6yj1hy16gjvc1r2bmr8-sqlite-3.53.3
+2026-11-06T03:01:43.4233682Z   /nix/store/c3k15jk20fccs90qgffdwzhxy15b5fdj-stdenv-linux-no-cc
+2026-11-06T03:01:43.4234026Z   /nix/store/13afr0rkh554vvx2qw5df60lghbpmcqc-subversion-1.14.5
+2026-11-06T03:01:43.4234440Z   /nix/store/fsrw69w5mx838p7xydbdvywhwl6wnbjw-tzdata-2026e
+2026-11-06T03:01:43.4234767Z   /nix/store/9ika5s969fh9ayh4js9kd3j1n4lq8knq-unzip-6.0
+2026-11-06T03:01:43.4235218Z   /nix/store/yj2m2q5r6ncrb0hnm5w2xagvd7fvrhsj-update-autotools-gnu-config-scripts-hook
+2026-11-06T03:01:43.4235893Z   /nix/store/cxmk05a5clavm6dazhxy252lkf1z7s2h-utf8proc-2.12.0
+2026-11-06T03:01:43.4236369Z   /nix/store/zsvigijjqf64yym31xg8y8ab37q1bdkg-util-linux-minimal-2.42.4-lib
+2026-11-06T03:01:43.4236784Z   /nix/store/amc08awcxvz178lqqc0y5n568ch1bzxg-version-check-hook
+2026-11-06T03:01:43.4237203Z   /nix/store/27niwi1xkxjmr07b48zsmj7bqyiccl5g-wrap-lua-hook
+2026-11-06T03:01:43.4237520Z   /nix/store/a4pgvll4bggp19c5hmqvp3348396j08q-wrap-lua-hook
+2026-11-06T03:01:43.4238011Z   /nix/store/jncdfs73yahh3f0rvzci1wk9ay6511np-wrap-lua-hook
+2026-11-06T03:01:43.4238349Z   /nix/store/pc4cqrsc6n1csdzsg63vgqlqw5h5ri2j-wrap-lua-hook
+2026-11-06T03:01:43.4238711Z   /nix/store/sysvg6smgbi5kx6ni119bl807fr3vbxx-wrap-lua-hook
+2026-11-06T03:01:43.4239052Z   /nix/store/yl1hkg6dfq1l2i69683qj8xiwdi49125-wrap-lua-hook
+2026-11-06T03:01:43.4239420Z   /nix/store/pkkjnyk4z46n18fkyqwlg24p272apb69-xgcc-16.2.0-libgcc
+2026-11-06T03:01:43.4239809Z   /nix/store/3xaspbv6nwvihmc3ybmlv0wjjksvpamq-xz-5.8.4
+2026-11-06T03:01:43.4240278Z   /nix/store/nflpm51il93hxh2rba6dvz59kaff0i7v-xz-5.8.4-bin
+2026-11-06T03:01:43.4240653Z   /nix/store/2562wqrkss8xv8z2blaa4cvgg2yknlkq-zip-3.0
+2026-11-06T03:01:43.4240964Z   /nix/store/ji36842higmp6b06hbbpmzbd59g1c07c-zlib-1.3.2
+2026-11-06T03:01:43.4241342Z   /nix/store/42in9mqs4kcmha55xd0i3ahbnibbzwkb-zlib-ng-2.3.3
+2026-11-06T03:01:43.4241644Z   /nix/store/f5r77q40xh7rj30dfkajv8y6jwbf4xh2-zstd-1.5.7
+2026-11-06T03:01:43.4266291Z copying path '/nix/store/06il2mnivfxvf14xzkyb1vwcgvzidybq-die-hook' from 'https://cache.nixos.org'...
+2026-11-06T03:01:43.4306902Z copying path '/nix/store/3sj8msrsym648f35mk3gb3pp385hhk8r-gcc-16.2.0-libgcc' from 'https://cache.nixos.org'...
+2026-11-06T03:01:43.4308546Z copying path '/nix/store/pkqxj99ylqbxch7maydvdvpzi9ba6xx5-install-shell-files' from 'https://cache.nixos.org'...
+2026-11-06T03:01:43.4312567Z copying path '/nix/store/b01kc8kdswrnfzlqpq0y3q9akijvn620-gnu-config-2024-01-01' from 'https://cache.nixos.org'...
+2026-11-06T03:01:43.4313896Z copying path '/nix/store/bx7jdvkba26sy20ryr4l617qqmzj9hff-libunistring-1.4.2' from 'https://cache.nixos.org'...
+2026-11-06T03:01:43.4315162Z copying path '/nix/store/d2pxlphy1s0qcjafl9r23rwr73g8zpyj-linux-headers-7.2' from 'https://cache.nixos.org'...
+2026-11-06T03:01:43.4316389Z copying path '/nix/store/fprs4zi8r6227x12qbsd1grvfrpz6201-nss-cacert-3.131.1' from 'https://cache.nixos.org'...
+2026-11-06T03:01:43.4317641Z copying path '/nix/store/i68jrr4ixqmpb5dk5phddx7bnhlwqffs-mailcap-2.1.54' from 'https://cache.nixos.org'...
+2026-11-06T03:01:43.4324966Z copying path '/nix/store/m27950v147ga4008dr5xwnjq22ysr49q-publicsuffix-list-0-unstable-2026-09-02' from 'https://cache.nixos.org'...
+2026-11-06T03:01:43.4326394Z copying path '/nix/store/fsrw69w5mx838p7xydbdvywhwl6wnbjw-tzdata-2026e' from 'https://cache.nixos.org'...
+2026-11-06T03:01:43.4332208Z copying path '/nix/store/pkkjnyk4z46n18fkyqwlg24p272apb69-xgcc-16.2.0-libgcc' from 'https://cache.nixos.org'...
+2026-11-06T03:01:43.4400562Z copying path '/nix/store/mb5kkl4yar0i9m20f6bglah9l7a28fcs-git-2.56.0-doc' from 'https://cache.nixos.org'...
+2026-11-06T03:01:43.4401618Z copying path '/nix/store/j1dffl1f3g8wphn77q69k4y4ccw36bzw-iana-etc-20251215' from 'https://cache.nixos.org'...
+2026-11-06T03:01:43.4409896Z copying path '/nix/store/x5a9anjlhrsp9rmr1j2rdf1czlxlzxnk-perl5.42.3-Digest-HMAC-1.05' from 'https://cache.nixos.org'...
+2026-11-06T03:01:43.4413450Z copying path '/nix/store/ncpfrkxdi790dnky93p1dpvn50m7icaj-perl5.42.3-FCGI-ProcManager-0.28' from 'https://cache.nixos.org'...
+2026-11-06T03:01:43.4417301Z copying path '/nix/store/spr79kzwpcsmfbvppf7br727bvn4gsdm-perl5.42.3-HTML-TagCloud-0.38' from 'https://cache.nixos.org'...
+2026-11-06T03:01:43.4426033Z copying path '/nix/store/plix5s7ffq1fp9p8yhxj3adl0ah4hhqz-perl5.42.3-libnet-3.15' from 'https://cache.nixos.org'...
+2026-11-06T03:01:43.4466946Z copying path '/nix/store/31r6mhxj6dhpvsgg330mchqnvdkipllm-perl5.42.3-Encode-Locale-1.05' from 'https://cache.nixos.org'...
+2026-11-06T03:01:43.4474833Z copying path '/nix/store/gw9cv5x21gfiy3afdn0848h25hk74jf4-perl5.42.3-LWP-MediaTypes-6.04' from 'https://cache.nixos.org'...
+2026-11-06T03:01:43.4475976Z copying path '/nix/store/9ywrmani4xx0n9j96f6nx4gqk1q2k99b-perl5.42.3-MIME-Base32-1.303' from 'https://cache.nixos.org'...
+2026-11-06T03:01:43.4477100Z copying path '/nix/store/a7jy06vpv6bhkrgm6hipn6px8pgfbnws-perl5.42.3-HTML-Tagset-3.20' from 'https://cache.nixos.org'...
+2026-11-06T03:01:43.4479132Z copying path '/nix/store/5lwxnmrms4yppfbrnb2v47fbj604131k-perl5.42.3-Mozilla-CA-20230821' from 'https://cache.nixos.org'...
+2026-11-06T03:01:43.4494067Z copying path '/nix/store/y42liys36jfaqdw19v6sff4rr1d309id-perl5.42.3-IO-HTML-1.004' from 'https://cache.nixos.org'...
+2026-11-06T03:01:43.4515853Z copying path '/nix/store/yj2m2q5r6ncrb0hnm5w2xagvd7fvrhsj-update-autotools-gnu-config-scripts-hook' from 'https://cache.nixos.org'...
+2026-11-06T03:01:43.4704553Z copying path '/nix/store/00fs4zz9c0jjcvs62wg39b91dydz7zqb-libidn2-2.3.8' from 'https://cache.nixos.org'...
+2026-11-06T03:01:43.4705688Z copying path '/nix/store/bf61yikkg1xg2xsqghdiy1i8ypz9m9ls-perl5.42.3-TimeDate-2.33' from 'https://cache.nixos.org'...
+2026-11-06T03:01:43.4709175Z copying path '/nix/store/czcwl43cyddmgy8z67cbq2ag8avi73qx-perl5.42.3-Test-Needs-0.002010' from 'https://cache.nixos.org'...
+2026-11-06T03:01:43.4733183Z copying path '/nix/store/yxczdrywz8cj9fgpkllfv383smz54pgp-perl5.42.3-Test-RequiresInternet-0.05' from 'https://cache.nixos.org'...
+2026-11-06T03:01:43.4737925Z copying path '/nix/store/fdnr93sypziw6z896s57qmgn2a3mpani-perl5.42.3-Try-Tiny-0.31' from 'https://cache.nixos.org'...
+2026-11-06T03:01:43.4739355Z copying path '/nix/store/fq0lrn9lsg7qadvbc3hgclx6ijqrkprf-perl5.42.3-URI-5.36' from 'https://cache.nixos.org'...
+2026-11-06T03:01:43.4831176Z copying path '/nix/store/8qc02dniix9i7cz4arhzbibb5zksqymy-perl5.42.3-HTTP-Date-6.08' from 'https://cache.nixos.org'...
+2026-11-06T03:01:43.4890954Z copying path '/nix/store/hslif2q3kfcw9lj9syl25hpm0y67v8da-perl5.42.3-Test-Fatal-0.017' from 'https://cache.nixos.org'...
+2026-11-06T03:01:43.4907487Z copying path '/nix/store/pqyiidz5mi73wv5f91d48s9plcqyj5bz-glibc-2.44-57' from 'https://cache.nixos.org'...
+2026-11-06T03:01:43.4958320Z copying path '/nix/store/frkfc5bylinm83zajl3wm03m214kkaks-perl5.42.3-File-Listing-6.16' from 'https://cache.nixos.org'...
+2026-11-06T03:01:43.4959762Z copying path '/nix/store/ikw3fgpqk7zj582g0hxqf8hbbmgl2z39-perl5.42.3-HTTP-CookieJar-0.014' from 'https://cache.nixos.org'...
+2026-11-06T03:01:43.5028087Z copying path '/nix/store/pvhqwaydycmypa3hcfrr0lqmy8nhap0g-perl5.42.3-Net-HTTP-6.23' from 'https://cache.nixos.org'...
+2026-11-06T03:01:43.5029483Z copying path '/nix/store/dbg2yqnjnqqsln5li7wfsc5bg70avjxx-perl5.42.3-WWW-RobotRules-6.02' from 'https://cache.nixos.org'...
+2026-11-06T03:01:43.6743515Z copying path '/nix/store/3hk1ngk4hsk4s53v2s7sg096irdania4-acl-2.4.0' from 'https://cache.nixos.org'...
+2026-11-06T03:01:43.6747930Z copying path '/nix/store/mmvljr1swinz20idribg8wr29dsn8cqb-apr-1.7.6' from 'https://cache.nixos.org'...
+2026-11-06T03:01:43.6750766Z copying path '/nix/store/7rx5im6jbgyfhrl0lc0kyxd9yf14rdxc-expat-2.9.0' from 'https://cache.nixos.org'...
+2026-11-06T03:01:43.6752131Z copying path '/nix/store/h96s16mjssibkvk62pvmfm3lwfc3wnwp-gawk-5.4.1' from 'https://cache.nixos.org'...
+2026-11-06T03:01:43.6753362Z copying path '/nix/store/jkz7a5kgwa1h16d8hkhjqlgm0xy5bkhw-expand-response-params' from 'https://cache.nixos.org'...
+2026-11-06T03:01:43.6754579Z copying path '/nix/store/nnm9gdr70ihc6zc9298mzz8jpcgaciql-bash-5.3p20' from 'https://cache.nixos.org'...
+2026-11-06T03:01:43.6755695Z copying path '/nix/store/b8g0didzv422qhw67dh67wldkc9wkpdf-brotli-1.2.0-lib' from 'https://cache.nixos.org'...
+2026-11-06T03:01:43.6760442Z copying path '/nix/store/77d0rlxs1c4sx71ss06vnmfpjcd5mm22-ed-1.22.6' from 'https://cache.nixos.org'...
+2026-11-06T03:01:43.6761612Z copying path '/nix/store/zx4ag3v11v9rl0iqvg6vzbpflzlg0dk2-bzip2-1.0.8' from 'https://cache.nixos.org'...
+2026-11-06T03:01:43.6762713Z copying path '/nix/store/pnwvsvwppd1lsamcxmiw6g7fp1k1g2j0-attr-2.6.0' from 'https://cache.nixos.org'...
+2026-11-06T03:01:43.6764071Z copying path '/nix/store/7a2cjhcgzyym5zaz6m4fksw47qvm150w-gcc-16.2.0-lib' from 'https://cache.nixos.org'...
+2026-11-06T03:01:43.6765248Z copying path '/nix/store/pfav6492acf7d8m41lggwqghpprkq9di-gdbm-1.26-lib' from 'https://cache.nixos.org'...
+2026-11-06T03:01:43.6766453Z copying path '/nix/store/11zj9zypq35gd8kmwhjvzs2rws3h4b66-git-lfs-3.8.1' from 'https://cache.nixos.org'...
+2026-11-06T03:01:43.6767789Z copying path '/nix/store/v730lk2kw7kwbvlvq60zjbznd462mgrq-gmp-6.3.0' from 'https://cache.nixos.org'...
+2026-11-06T03:01:43.6768874Z copying path '/nix/store/8xz4d9wp4jy49mhl306wyg55096wis3p-gnumake-4.4.1' from 'https://cache.nixos.org'...
+2026-11-06T03:01:43.6770221Z copying path '/nix/store/j64r0mf0yy7pvcbavlqidfnpsdnrldj2-glibc-2.44-57-bin' from 'https://cache.nixos.org'...
+2026-11-06T03:01:43.6792564Z copying path '/nix/store/vs2sa1msvkjxbb70h47819zq8a9srj21-gnumake-4.4.1' from 'https://cache.nixos.org'...
+2026-11-06T03:01:43.6802734Z copying path '/nix/store/rpswfv0ff4wap9anx7k1224x2m94pfcc-gzip-1.15' from 'https://cache.nixos.org'...
+2026-11-06T03:01:43.6830341Z copying path '/nix/store/f9shc46n2300jbm0h60f6s4m69j0smyp-gnutar-1.35' from 'https://cache.nixos.org'...
+2026-11-06T03:01:43.6882436Z copying path '/nix/store/2562wqrkss8xv8z2blaa4cvgg2yknlkq-zip-3.0' from 'https://cache.nixos.org'...
+2026-11-06T03:01:43.6883984Z copying path '/nix/store/1g70k04n1887qkfn4xn26av35jwcd8n9-libuv-1.53.0' from 'https://cache.nixos.org'...
+2026-11-06T03:01:43.6886973Z copying path '/nix/store/80anshz7jxkmq48p1m6z82w3xnpwpcaw-rhash-1.4.6' from 'https://cache.nixos.org'...
+2026-11-06T03:01:43.6927741Z copying path '/nix/store/ai2km55ba8bxrn64xx7p9lgvrrzdzv43-bzip2-1.0.8-bin' from 'https://cache.nixos.org'...
+2026-11-06T03:01:43.6932311Z copying path '/nix/store/ji36842higmp6b06hbbpmzbd59g1c07c-zlib-1.3.2' from 'https://cache.nixos.org'...
+2026-11-06T03:01:43.6935804Z copying path '/nix/store/2aw3zp99m9jc250ajl42rhaankp2kjav-nghttp2-1.70.0-lib' from 'https://cache.nixos.org'...
+2026-11-06T03:01:43.6997015Z copying path '/nix/store/lazac5vw20j0pyahzbaxz8z8hyf7m9zf-openssl-3.5.9' from 'https://cache.nixos.org'...
+2026-11-06T03:01:43.7005454Z copying path '/nix/store/njx84z0ra0xj8498l67y4yczhkg7wca7-libpsl-0.21.5' from 'https://cache.nixos.org'...
+2026-11-06T03:01:43.7156114Z copying path '/nix/store/p40lblcsw1qwzqja83rfdpq0l15w4xv7-nghttp3-1.18.0' from 'https://cache.nixos.org'...
+2026-11-06T03:01:43.7185210Z copying path '/nix/store/42in9mqs4kcmha55xd0i3ahbnibbzwkb-zlib-ng-2.3.3' from 'https://cache.nixos.org'...
+2026-11-06T03:01:43.7218878Z copying path '/nix/store/9wc73n5izv0m7ppjbibi4hbr68rba1lj-gnused-4.10' from 'https://cache.nixos.org'...
+2026-11-06T03:01:43.7283271Z copying path '/nix/store/3zlgjcfm8j3nscrldjv8izxciybg0nh3-glibc-2.44-57-dev' from 'https://cache.nixos.org'...
+2026-11-06T03:01:43.7284492Z copying path '/nix/store/r9nlzwasmr1hgcbrfzcp2b2cz33scij2-ncurses-6.6' from 'https://cache.nixos.org'...
+2026-11-06T03:01:43.7292227Z copying path '/nix/store/m5s1ak7s1swmhmy64yqvya342g0603s7-libxml2-2.15.4' from 'https://cache.nixos.org'...
+2026-11-06T03:01:43.7356948Z copying path '/nix/store/17215c0jn632z03h33fbwql4pdjb8bfi-mpfr-4.2.2' from 'https://cache.nixos.org'...
+2026-11-06T03:01:43.7359526Z copying path '/nix/store/d5jz315vxbphknfawsrjs192ci9bc6df-patch-2.8' from 'https://cache.nixos.org'...
+2026-11-06T03:01:43.7379868Z copying path '/nix/store/n318yf1q5vysgh2qn6fd1q8yjy9vmwvh-gnutar-1.35' from 'https://cache.nixos.org'...
+2026-11-06T03:01:43.7419085Z copying path '/nix/store/2qpmak7162vhqxjwfik4aqs9lff6sn7w-file-5.48' from 'https://cache.nixos.org'...
+2026-11-06T03:01:43.7567578Z copying path '/nix/store/p5dwcn4wpyjmhnnzj6iwwwjynyc6yif0-pcre2-10.49' from 'https://cache.nixos.org'...
+2026-11-06T03:01:43.7647165Z copying path '/nix/store/yi5d8g9kma5bhskfjllrjypd5d2xhvl1-isl-0.20' from 'https://cache.nixos.org'...
+2026-11-06T03:01:43.7653857Z copying path '/nix/store/djf269aylbphr1ynvd52nh3dana5jh91-keyutils-1.6.3-lib' from 'https://cache.nixos.org'...
+2026-11-06T03:01:43.7684303Z copying path '/nix/store/7xkwycvjhvfyq2sjhq8yqf75y0afikaj-lz4-1.10.0-lib' from 'https://cache.nixos.org'...
+2026-11-06T03:01:43.7813134Z copying path '/nix/store/cxmk05a5clavm6dazhxy252lkf1z7s2h-utf8proc-2.12.0' from 'https://cache.nixos.org'...
+2026-11-06T03:01:43.7917695Z copying path '/nix/store/xrzzvmqkmx68f6yj1hy16gjvc1r2bmr8-sqlite-3.53.3' from 'https://cache.nixos.org'...
+2026-11-06T03:01:43.7926400Z copying path '/nix/store/3xaspbv6nwvihmc3ybmlv0wjjksvpamq-xz-5.8.4' from 'https://cache.nixos.org'...
+2026-11-06T03:01:43.7938238Z copying path '/nix/store/2l15gqrda27bvdh82bxrzipcsl68dnwk-libmpc-1.4.1' from 'https://cache.nixos.org'...
+2026-11-06T03:01:43.8049279Z copying path '/nix/store/30qgvhl60m3lpnj99l3xjprk776qg3ik-libxcrypt-4.5.2' from 'https://cache.nixos.org'...
+2026-11-06T03:01:43.8126454Z copying path '/nix/store/vs4bjcgq2r93adg875isf55hyn29dk09-gmp-with-cxx-6.3.0' from 'https://cache.nixos.org'...
+2026-11-06T03:01:43.8130547Z copying path '/nix/store/k5n0h079afl26rppwz1ca98d2rwdjcwf-luajit-2.1.1785763465' from 'https://cache.nixos.org'...
+2026-11-06T03:01:43.8131557Z copying path '/nix/store/c3f45pxlb81gzz4w1nym7lpznfypva7s-gnugrep-3.12' from 'https://cache.nixos.org'...
+2026-11-06T03:01:43.8134210Z copying path '/nix/store/f5r77q40xh7rj30dfkajv8y6jwbf4xh2-zstd-1.5.7' from 'https://cache.nixos.org'...
+2026-11-06T03:01:43.8221304Z copying path '/nix/store/cg4vskbr8139w0nkwbf3bpl3n79vz1d6-db-5.3.28' from 'https://cache.nixos.org'...
+2026-11-06T03:01:43.8223253Z copying path '/nix/store/dl38pix4jvabi5smb9wywhp6pimmpva6-patchelf-0.19.2' from 'https://cache.nixos.org'...
+2026-11-06T03:01:43.8351992Z copying path '/nix/store/3dl20ncpnlxr3ls3235smsg5ln849a1d-file-5.48' from 'https://cache.nixos.org'...
+2026-11-06T03:01:43.8353519Z copying path '/nix/store/pfds9zw10xksh0zr7qplqg1lj9avs2gz-libffi-3.8.0' from 'https://cache.nixos.org'...
+2026-11-06T03:01:43.8371937Z copying path '/nix/store/cb987zkxvsv0490753ilrvn5yk7ylgxi-coreutils-9.12' from 'https://cache.nixos.org'...
+2026-11-06T03:01:43.8448136Z copying path '/nix/store/nflpm51il93hxh2rba6dvz59kaff0i7v-xz-5.8.4-bin' from 'https://cache.nixos.org'...
+2026-11-06T03:01:43.8453803Z copying path '/nix/store/qwzgw6wlb5ghsy3ph0x1p9mvf3mxwms5-mpdecimal-4.0.1' from 'https://cache.nixos.org'...
+2026-11-06T03:01:43.8502586Z copying path '/nix/store/zsvigijjqf64yym31xg8y8ab37q1bdkg-util-linux-minimal-2.42.4-lib' from 'https://cache.nixos.org'...
+2026-11-06T03:01:43.8545450Z copying path '/nix/store/nrlcj9nncvchvk481zb3pg6df8gsj0pn-binutils-2.46-lib' from 'https://cache.nixos.org'...
+2026-11-06T03:01:43.8626480Z copying path '/nix/store/7whfqxz5vs4kn8jiybvdj5k7ib6h4442-gmp-with-cxx-6.3.0' from 'https://cache.nixos.org'...
+2026-11-06T03:01:43.8650370Z copying path '/nix/store/vbmxpq22lm0hhb37mhykinj45aa0ljc3-numactl-2.0.18' from 'https://cache.nixos.org'...
+2026-11-06T03:01:43.8699931Z copying path '/nix/store/xpaz3fi6ibqxb9sla4gjlp0c82v566y8-gcc-16.2.0' from 'https://cache.nixos.org'...
+2026-11-06T03:01:43.8721859Z copying path '/nix/store/9drfa3mrps11k2169s62h354mpj86q7l-perl5.42.3-FCGI-0.82' from 'https://cache.nixos.org'...
+2026-11-06T03:01:43.8754155Z copying path '/nix/store/m7677iiw5w36mqw5d7kzws7067qi6ry8-perl5.42.3-TermReadKey-2.38' from 'https://cache.nixos.org'...
+2026-11-06T03:01:43.8775818Z copying path '/nix/store/90slnrlyxdl8yamw602y236fa8jcyxwd-oniguruma-6.9.10-lib' from 'https://cache.nixos.org'...
+2026-11-06T03:01:43.8840553Z copying path '/nix/store/dspggxr946ixbkqmrakiqw2i1fryfxz7-libtool-2.6.2-lib' from 'https://cache.nixos.org'...
+2026-11-06T03:01:43.8906486Z copying path '/nix/store/99v13ig4382mngi6ggf0csqi7rfa04j5-findutils-4.11.0' from 'https://cache.nixos.org'...
+2026-11-06T03:01:43.8927835Z copying path '/nix/store/amc08awcxvz178lqqc0y5n568ch1bzxg-version-check-hook' from 'https://cache.nixos.org'...
+2026-11-06T03:01:43.8936730Z copying path '/nix/store/9mpja553cbkr2rc37kzdg8zbbg2dyyvl-diffutils-3.12' from 'https://cache.nixos.org'...
+2026-11-06T03:01:43.9009090Z copying path '/nix/store/y1gmkixqpkfwayj9iqxn3c8brm6zkn1m-perl-5.42.3' from 'https://cache.nixos.org'...
+2026-11-06T03:01:43.9024144Z copying path '/nix/store/ylrmlriaq8104pniihwd8iqw8wg2lf23-libsodium-1.0.22-unstable-2026-09-28' from 'https://cache.nixos.org'...
+2026-11-06T03:01:43.9037447Z copying path '/nix/store/9n8r19wpgq70vv1kwll66k2m0hvs02y4-aws-lc-5.12.0' from 'https://cache.nixos.org'...
+2026-11-06T03:01:43.9045227Z copying path '/nix/store/9wwqcw8hr8z47avkdcigdyhclkq62f0a-icu4c-78.3' from 'https://cache.nixos.org'...
+2026-11-06T03:01:43.9071533Z copying path '/nix/store/y6ri2r743ckh5kk160r461czl9n2f2wf-binutils-2.46' from 'https://cache.nixos.org'...
+2026-11-06T03:01:43.9084775Z copying path '/nix/store/65sjy017bdrypxl0hb2pzbdshgq20lpf-gtest-1.18.0' from 'https://cache.nixos.org'...
+2026-11-06T03:01:43.9139078Z copying path '/nix/store/z10rxaxcalb7dis6bjgkqi4604llmgyv-json-c-0.18' from 'https://cache.nixos.org'...
+2026-11-06T03:01:43.9159801Z copying path '/nix/store/kawnc9b3i2asg422vd4xvhpsry9flmh0-llhttp-9.4.3' from 'https://cache.nixos.org'...
+2026-11-06T03:01:43.9231993Z copying path '/nix/store/hcagcif4hcac22rrspzgg8p9g0aqs741-jq-1.8.2' from 'https://cache.nixos.org'...
+2026-11-06T03:01:43.9327179Z copying path '/nix/store/c74icicyxl49zs706jhxf2f97dgw0big-perl5.42.3-Crypt-URandom-0.55' from 'https://cache.nixos.org'...
+2026-11-06T03:01:43.9385013Z copying path '/nix/store/7rks4wrl4567nmwd30pg507hbrp680wv-perl5.42.3-Compress-Raw-Zlib-2.222' from 'https://cache.nixos.org'...
+2026-11-06T03:01:43.9392350Z copying path '/nix/store/53c7ak3cz6ann26k3x34h394adxdjjd8-perl5.42.3-Compress-Raw-Bzip2-2.218' from 'https://cache.nixos.org'...
+2026-11-06T03:01:43.9410716Z copying path '/nix/store/wqqc647lmjjs970cyk7ai36qxbiwgzsv-libarchive-3.8.9-lib' from 'https://cache.nixos.org'...
+2026-11-06T03:01:43.9497021Z copying path '/nix/store/2b7h6rnav6a0s6npjk8y76f6rjs86lvw-ngtcp2-1.23.0' from 'https://cache.nixos.org'...
+2026-11-06T03:01:43.9548633Z copying path '/nix/store/hy7qsmyk9nbhcylcxbsf2aapsx8c6khb-libssh2-1.11.1' from 'https://cache.nixos.org'...
+2026-11-06T03:01:43.9587536Z copying path '/nix/store/qbvmi6qgfw0ipjvfndy9f6k69rnip42m-krb5-1.22.2-lib' from 'https://cache.nixos.org'...
+2026-11-06T03:01:43.9773257Z copying path '/nix/store/bhxg6jvvl69712303nri5y270skv559q-fossil-2.28' from 'https://cache.nixos.org'...
+2026-11-06T03:01:43.9897076Z copying path '/nix/store/777w57bdbgmiidmrxsk23g5vb8jllwfj-lua-5.5.1' from 'https://cache.nixos.org'...
+2026-11-06T03:01:43.9916378Z copying path '/nix/store/wnxl2v5a9rm80kixrg45k99d0s78zqsv-make-shell-wrapper-hook' from 'https://cache.nixos.org'...
+2026-11-06T03:01:43.9918295Z copying path '/nix/store/wgyapl0fph0y5yljvjqfnm07f5hrkwxn-python3-minimal-3.14.8' from 'https://cache.nixos.org'...
+2026-11-06T03:01:44.0012634Z copying path '/nix/store/9ika5s969fh9ayh4js9kd3j1n4lq8knq-unzip-6.0' from 'https://cache.nixos.org'...
+2026-11-06T03:01:44.0074841Z copying path '/nix/store/9zllgi6r0g0g5p43zsv2fz8g6c71jiiy-nano-9.3' from 'https://cache.nixos.org'...
+2026-11-06T03:01:44.0101561Z copying path '/nix/store/8qdw9shgr7dd3315jim8sfva2dnhq86c-gettext-1.0' from 'https://cache.nixos.org'...
+2026-11-06T03:01:44.0201191Z copying path '/nix/store/j9436i4mh2hlhnlqlk59fq5dc2sprs4i-readline-8.3p3' from 'https://cache.nixos.org'...
+2026-11-06T03:01:44.0243234Z copying path '/nix/store/9l0j15jg8634hkb6d4c9y95mpxl0nhrd-jq-1.8.2-bin' from 'https://cache.nixos.org'...
+2026-11-06T03:01:44.0278428Z copying path '/nix/store/86c5q81pmzq11lriiry3pazlb01gggww-perl5.42.3-Authen-SASL-2.2100' from 'https://cache.nixos.org'...
+2026-11-06T03:01:44.0582686Z copying path '/nix/store/rab3bl91k7xksrdpdw69pcpkj6p1z78q-perl5.42.3-Net-SSLeay-1.92' from 'https://cache.nixos.org'...
+2026-11-06T03:01:44.0823207Z copying path '/nix/store/0si2wn578xyhaj86njfyd35m3ss166d2-curl-8.22.0' from 'https://cache.nixos.org'...
+2026-11-06T03:01:44.0904521Z copying path '/nix/store/p9i1b7jgfj4fl5bx557jnwbdsafl434i-curl-8.22.0' from 'https://cache.nixos.org'...
+2026-11-06T03:01:44.0913938Z copying path '/nix/store/kggg99nn8zvnxdb47pg6ydpb8vnww44a-cyrus-sasl-2.1.28' from 'https://cache.nixos.org'...
+2026-11-06T03:01:44.1181287Z copying path '/nix/store/hsbx1hya0qvmsj13vphbvciz9mk1kd21-libgit2-1.9.7-lib' from 'https://cache.nixos.org'...
+2026-11-06T03:01:44.1339235Z copying path '/nix/store/w3s39b7gz8mm1xsr0map8101rrcz28f7-lua-5.1.5' from 'https://cache.nixos.org'...
+2026-11-06T03:01:44.1423134Z copying path '/nix/store/jizh2zappxvzzwx68r8ddjri9b107wiy-lua-5.2.4' from 'https://cache.nixos.org'...
+2026-11-06T03:01:44.1436984Z copying path '/nix/store/qmkj26wch25xynf19n85j58dyly5x72s-cvs-1.12.13+real-30' from 'https://cache.nixos.org'...
+2026-11-06T03:01:44.2237117Z copying path '/nix/store/9h9kmwgh29ybpmkrdxqggf6gk7ffybk4-lua-5.3.6' from 'https://cache.nixos.org'...
+2026-11-06T03:01:44.2306350Z copying path '/nix/store/9mzgzmmnv4ygdligs99zzla2izgc5pvg-lua-5.4.9' from 'https://cache.nixos.org'...
+2026-11-06T03:01:44.2403124Z copying path '/nix/store/xahxrjs30p3mw0a42bqg9ikgkikskw8m-python3-3.14.8' from 'https://cache.nixos.org'...
+2026-11-06T03:01:44.2639339Z copying path '/nix/store/fi98g122a3kzbschgvbvsqvpyxrmqvvl-binutils-wrapper-2.46' from 'https://cache.nixos.org'...
+2026-11-06T03:01:44.2696454Z copying path '/nix/store/rlpcs1h48m058z811xxkn5672v77p5qj-cmake-4.4.4' from 'https://cache.nixos.org'...
+2026-11-06T03:01:44.2748197Z copying path '/nix/store/5lpg7j8y8lf8c4zv318yi4rmgyn5yhip-curl-8.22.0-bin' from 'https://cache.nixos.org'...
+2026-11-06T03:01:44.2969625Z copying path '/nix/store/hzrzgd1qxz0rcpkdzm0wpw1gz9fgn92b-nix-prefetch-fossil-26.11' from 'https://cache.nixos.org'...
+2026-11-06T03:01:44.3033473Z copying path '/nix/store/c3k15jk20fccs90qgffdwzhxy15b5fdj-stdenv-linux-no-cc' from 'https://cache.nixos.org'...
+2026-11-06T03:01:44.3094325Z copying path '/nix/store/lmgi1sadfpn64nl8mxai9rlawcz2jp4k-openldap-2.6.13' from 'https://cache.nixos.org'...
+2026-11-06T03:01:44.3099953Z copying path '/nix/store/2wlays4ahsvdx02v84s3x91ri2623qbl-git-minimal-2.56.0' from 'https://cache.nixos.org'...
+2026-11-06T03:01:44.3220806Z copying path '/nix/store/axdvprdh3ydwmn395n1ma4h6n6fy02qx-pijul-1.0.0-beta.24' from 'https://cache.nixos.org'...
+2026-11-06T03:01:44.3300862Z copying path '/nix/store/bvfkqam1y3zmsb3k41iml0zwx13sknjl-elfutils-0.195' from 'https://cache.nixos.org'...
+2026-11-06T03:01:44.3645931Z copying path '/nix/store/qg6ryvv6yb5m4agc0psjafybxiv55ibz-nix-prefetch-cvs-26.11' from 'https://cache.nixos.org'...
+2026-11-06T03:01:44.3691667Z copying path '/nix/store/jsvghrcvyikk422yvr17g52qxscn5qg5-perl5.42.3-IO-Socket-SSL-2.083' from 'https://cache.nixos.org'...
+2026-11-06T03:01:44.3733214Z copying path '/nix/store/42f9bwnz7klk5sj2xplk9brihx1w12h3-abseil-cpp-20260817.0' from 'https://cache.nixos.org'...
+2026-11-06T03:01:44.3815228Z copying path '/nix/store/gyycdbp1gz3fvf50fx80pv570y0cs0gp-perl5.42.3-Clone-0.46' from 'https://cache.nixos.org'...
+2026-11-06T03:01:44.3924174Z copying path '/nix/store/15c5vkz8dsk3hrzpvlbc7pp0imgsslky-libyaml-0.2.5' from 'https://cache.nixos.org'...
+2026-11-06T03:01:44.5998799Z building '/nix/store/cpyanxm0rjf6h7950d5cmb80jdzbqy2x-lua-project-sdks.nix.drv'...
+2026-11-06T03:01:44.6115614Z copying path '/nix/store/kz7mfvlxjm7hq7jizl72lzqj2pgam4n4-darcs-2.18.5' from 'https://cache.nixos.org'...
+2026-11-06T03:01:44.6118067Z copying path '/nix/store/y3q0hfq2n0jj0nkr6qpxap3dpkvla3j3-perl5.42.3-IO-Compress-2.221' from 'https://cache.nixos.org'...
+2026-11-06T03:01:44.6139786Z copying path '/nix/store/bclb1gfiqjqzik45ifcy7icz3h5lmb29-apr-util-1.6.5' from 'https://cache.nixos.org'...
+2026-11-06T03:01:44.7106482Z building '/nix/store/jr1zyv558mpn5w6gwdbfxfgq07kbn00p-luarocks-purifier-shims-0.1.0.drv'...
+2026-11-06T03:01:44.7107768Z copying path '/nix/store/k1xcmhfmkpzcxlimqd8fpbi0xqxaxm2j-perl5.42.3-Net-SMTP-SSL-1.04' from 'https://cache.nixos.org'...
+2026-11-06T03:01:44.7123134Z copying path '/nix/store/j9hzkvxh6wcb38cnn0rx5xdgm7kmg6kb-re2-2025-11-05' from 'https://cache.nixos.org'...
+2026-11-06T03:01:44.8431549Z copying path '/nix/store/6av6c32i7bhxrqgcbfjqyaf5wvbn51hr-serf-1.3.10' from 'https://cache.nixos.org'...
+2026-11-06T03:01:44.8508760Z copying path '/nix/store/rcha0vx95xd6dxlwqmj3iqv79aqjwq1z-perl5.42.3-HTTP-Message-7.02' from 'https://cache.nixos.org'...
+2026-11-06T03:01:44.9901938Z copying path '/nix/store/13afr0rkh554vvx2qw5df60lghbpmcqc-subversion-1.14.5' from 'https://cache.nixos.org'...
+2026-11-06T03:01:44.9927829Z copying path '/nix/store/sixp6a2yhv1rqyjvi4q0vkz85z8r0rnr-perl5.42.3-HTML-Parser-3.85' from 'https://cache.nixos.org'...
+2026-11-06T03:01:44.9928541Z copying path '/nix/store/45pnjysl42ch94rxmc0c2kd8y2hl6h9i-perl5.42.3-HTTP-Cookies-6.10' from 'https://cache.nixos.org'...
+2026-11-06T03:01:44.9932916Z copying path '/nix/store/013la2bf3dqkvvyxpyl4pgvx51d2jwnv-perl5.42.3-HTTP-Daemon-6.17' from 'https://cache.nixos.org'...
+2026-11-06T03:01:44.9937660Z copying path '/nix/store/pf6ph2hr3p286qxdsl04jis0n4vcc0gi-perl5.42.3-HTTP-Negotiate-6.01' from 'https://cache.nixos.org'...
+2026-11-06T03:01:45.0456181Z copying path '/nix/store/i3vy24ws87wb3527g0saal2x3pgc41sz-nix-prefetch-darcs-26.11' from 'https://cache.nixos.org'...
+2026-11-06T03:01:45.0833182Z copying path '/nix/store/z2pfix6anjs8j8nplw18zlhqm2g9jygj-perl5.42.3-CGI-4.59' from 'https://cache.nixos.org'...
+2026-11-06T03:01:45.0860922Z copying path '/nix/store/0f9na660n2568sn5drb8r3p5aknxy5r8-perl5.42.3-libwww-perl-6.83' from 'https://cache.nixos.org'...
+2026-11-06T03:01:45.3065853Z copying path '/nix/store/y2fv5szkflkflgj2hws2mhlhr5bz7c7b-perl5.42.3-CGI-Fast-2.16' from 'https://cache.nixos.org'...
+2026-11-06T03:01:45.3346320Z copying path '/nix/store/hszz4rj5fs450qmm5kbnc6scqx7w92d5-nix-prefetch-svn-26.11' from 'https://cache.nixos.org'...
+2026-11-06T03:01:45.3465528Z copying path '/nix/store/fc7zabsbckh81gpk1nplfsa772gd5mpj-nix-prefetch-pijul-26.11' from 'https://cache.nixos.org'...
+2026-11-06T03:01:45.4635521Z copying path '/nix/store/04x5b53sh8ks5jcy7j6imwh6nm717wd6-luarocks_bootstrap-3.13.0' from 'https://cache.nixos.org'...
+2026-11-06T03:01:45.4639684Z copying path '/nix/store/04am42mk4i9myjhl3y3rd0037v5b5vdk-luarocks_bootstrap-3.13.0' from 'https://cache.nixos.org'...
+2026-11-06T03:01:45.4641546Z copying path '/nix/store/hhnm6yypzsdycj6p95fc3rx4ri5km55q-luarocks_bootstrap-3.13.0' from 'https://cache.nixos.org'...
+2026-11-06T03:01:45.4642908Z copying path '/nix/store/50b23y9wimv3w2d50l1iqfvly3sl92q7-luarocks_bootstrap-3.13.0' from 'https://cache.nixos.org'...
+2026-11-06T03:01:45.4644595Z copying path '/nix/store/njpammdmzgs7nwyfqncvv0bh4crnwj3f-luarocks_bootstrap-3.13.0' from 'https://cache.nixos.org'...
+2026-11-06T03:01:45.4645949Z copying path '/nix/store/d5hclalx9kbz7kmd8kaa060dfg0rfzal-luarocks_bootstrap-3.13.0' from 'https://cache.nixos.org'...
+2026-11-06T03:01:45.4995071Z copying path '/nix/store/pc4cqrsc6n1csdzsg63vgqlqw5h5ri2j-wrap-lua-hook' from 'https://cache.nixos.org'...
+2026-11-06T03:01:45.5039499Z copying path '/nix/store/27niwi1xkxjmr07b48zsmj7bqyiccl5g-wrap-lua-hook' from 'https://cache.nixos.org'...
+2026-11-06T03:01:45.5065680Z copying path '/nix/store/jncdfs73yahh3f0rvzci1wk9ay6511np-wrap-lua-hook' from 'https://cache.nixos.org'...
+2026-11-06T03:01:45.5081922Z copying path '/nix/store/sysvg6smgbi5kx6ni119bl807fr3vbxx-wrap-lua-hook' from 'https://cache.nixos.org'...
+2026-11-06T03:01:45.5091683Z copying path '/nix/store/a4pgvll4bggp19c5hmqvp3348396j08q-wrap-lua-hook' from 'https://cache.nixos.org'...
+2026-11-06T03:01:45.5155496Z copying path '/nix/store/qrd1hprzg03a5m1f8c1g0npzjljd6xiz-luarocks-luarocks-config.lua' from 'https://cache.nixos.org'...
+2026-11-06T03:01:45.5156753Z copying path '/nix/store/kba78r1jzdjn8pv05f52sgsys4dwh64i-luarocks-luarocks-config.lua' from 'https://cache.nixos.org'...
+2026-11-06T03:01:45.5163181Z copying path '/nix/store/bc9vp3bh14y7m2gz37znhx4d7c1jd49a-luarocks-luarocks-config.lua' from 'https://cache.nixos.org'...
+2026-11-06T03:01:45.5164500Z copying path '/nix/store/rvav4np8ksas576nh3j8nidzkfnwmr5w-luarocks-luarocks-config.lua' from 'https://cache.nixos.org'...
+2026-11-06T03:01:45.5239239Z copying path '/nix/store/lgxm86xpiac13i760c6vbmbi1acxmrkv-lua5.2-luarocks-3.13.0-1' from 'https://cache.nixos.org'...
+2026-11-06T03:01:45.5247739Z copying path '/nix/store/dyraj7nm1zxlzywh7x3skmkc3x51xl9i-lua5.3-luarocks-3.13.0-1' from 'https://cache.nixos.org'...
+2026-11-06T03:01:45.5519507Z copying path '/nix/store/yl1hkg6dfq1l2i69683qj8xiwdi49125-wrap-lua-hook' from 'https://cache.nixos.org'...
+2026-11-06T03:01:45.5805507Z copying path '/nix/store/akpafky1c8wyzw61zrrda7lnzrnhc1bm-luarocks-luarocks-config.lua' from 'https://cache.nixos.org'...
+2026-11-06T03:01:45.5871179Z copying path '/nix/store/lisg0a2vq90b21mcrki7a2y5yqsq0h6b-lua5.1-luarocks-3.13.0-1' from 'https://cache.nixos.org'...
+2026-11-06T03:01:45.5886979Z copying path '/nix/store/rsyhyinykv7h3n03jvl2i572qpd78584-luajit2.1-luarocks-3.13.0-1' from 'https://cache.nixos.org'...
+2026-11-06T03:01:45.5989079Z copying path '/nix/store/z2b7qjqbx1rq7ak546zkhkgflf6gggpb-lua5.5-luarocks-3.13.0-1' from 'https://cache.nixos.org'...
+2026-11-06T03:01:45.6241977Z copying path '/nix/store/j6hhibqm281v49cw0zfzwdmza79xbpzl-luarocks-luarocks-config.lua' from 'https://cache.nixos.org'...
+2026-11-06T03:01:45.6965212Z copying path '/nix/store/9npwsh8csigkha8rm8xh82npdl69j73p-lua5.4-luarocks-3.13.0-1' from 'https://cache.nixos.org'...
+2026-11-06T03:01:45.7459416Z copying path '/nix/store/xgw813vgzl2q0696sq45adpj0xd690jq-git-2.56.0' from 'https://cache.nixos.org'...
+2026-11-06T03:01:45.7461515Z copying path '/nix/store/s1z5f7kmy2fpw5f2p7ck5vjqh85fym2q-pybind11-setup-hook' from 'https://cache.nixos.org'...
+2026-11-06T03:01:45.7465651Z copying path '/nix/store/j2ivqxfj90cl9cvnr0svhdm98yj9jalc-python3.14-distro-1.9.0' from 'https://cache.nixos.org'...
+2026-11-06T03:01:45.7467431Z copying path '/nix/store/nzx1klznsi9j3lwnm82icv70im8kwv73-python3.14-certifi-2026.07.22' from 'https://cache.nixos.org'...
+2026-11-06T03:01:45.7468873Z copying path '/nix/store/0jlci0gnz2xfd3pqgiiznnb5jl8qbgfw-python3.14-idna-3.18' from 'https://cache.nixos.org'...
+2026-11-06T03:01:45.7470730Z copying path '/nix/store/n2b96sgf0ajy0r9vw8wsxrg5p0nm338a-python3.14-merge3-0.0.16' from 'https://cache.nixos.org'...
+2026-11-06T03:01:45.7473309Z copying path '/nix/store/8d2cy5fha3x9pibimjvdqvkv8pasf8g9-python3.14-charset-normalizer-3.5.1' from 'https://cache.nixos.org'...
+2026-11-06T03:01:45.7474642Z copying path '/nix/store/1qm7xs77cbr0qls2825qp4r1y73b7g6f-python3.14-oauthlib-3.3.1' from 'https://cache.nixos.org'...
+2026-11-06T03:01:45.7476002Z copying path '/nix/store/zyjjjkaa7f24bqldcfcn50nmw8l125pi-python3.14-fastbencode-0.3.11' from 'https://cache.nixos.org'...
+2026-11-06T03:01:45.7477491Z copying path '/nix/store/7d8rff359aiwp65d4m840090vccs31az-python3.14-fastimport-0.9.16' from 'https://cache.nixos.org'...
+2026-11-06T03:01:45.7478875Z copying path '/nix/store/3p96yc808l6vzckls096x7nbyb6hdkp9-python3.14-pycparser-3.00' from 'https://cache.nixos.org'...
+2026-11-06T03:01:45.7480215Z copying path '/nix/store/4w3qqylc0gssfarw7ydjm4r73n7b97wm-python3.14-pyyaml-6.0.3' from 'https://cache.nixos.org'...
+2026-11-06T03:01:45.7482699Z copying path '/nix/store/b5j6y55gzbqz4p66b42ipcycfn1g7i3q-python3.14-patiencediff-0.2.19' from 'https://cache.nixos.org'...
+2026-11-06T03:01:45.7484181Z copying path '/nix/store/fmrai54lmb0y5s23352jipld560dfs46-python3.14-pyjwt-2.15.1' from 'https://cache.nixos.org'...
+2026-11-06T03:01:45.7485640Z copying path '/nix/store/rczhm9nj2qmwy6xkqnnjpm6acxq68klz-python3.14-pyparsing-3.3.2' from 'https://cache.nixos.org'...
+2026-11-06T03:01:45.8594683Z copying path '/nix/store/16ci48rw59pvq3hdgcgkjhycj17rmyz5-python3.14-typing-extensions-4.16.0' from 'https://cache.nixos.org'...
+2026-11-06T03:01:45.8657232Z copying path '/nix/store/1a3gji0gvzvlhh6l1qs7711fp5x7ac1y-python3.14-wrapt-2.2.2' from 'https://cache.nixos.org'...
+2026-11-06T03:01:45.8669902Z copying path '/nix/store/ixc6j8cd5pj0cqp6dadi1695gd8ia1w2-python3.14-pybind11-3.1.0' from 'https://cache.nixos.org'...
+2026-11-06T03:01:45.8671380Z copying path '/nix/store/3lc9v39gw3zfzi2ibk76f017vhx8hfw6-python3.14-six-1.17.0' from 'https://cache.nixos.org'...
+2026-11-06T03:01:45.8720790Z copying path '/nix/store/d13f804szzqg28s2i8rbqwlcz2wg63w9-python3.14-setuptools-83.0.0' from 'https://cache.nixos.org'...
+2026-11-06T03:01:45.8728495Z copying path '/nix/store/nky6wcs66m0ysgwxwb6qjpfx7xlxbcr0-python3.14-tzlocal-5.4.4' from 'https://cache.nixos.org'...
+2026-11-06T03:01:45.8770408Z copying path '/nix/store/q2n37ah7crichqzf43kr8fvyprjr3x1g-python3.14-urllib3-2.7.0' from 'https://cache.nixos.org'...
+2026-11-06T03:01:45.8868673Z copying path '/nix/store/m58vkbls4mg0nh4drn3b8xlx88b7zm78-python3.14-cffi-2.1.1' from 'https://cache.nixos.org'...
+2026-11-06T03:01:45.8888499Z copying path '/nix/store/mvy843mg9ddpan15d1wvk31zn27zyr4h-python3.14-httplib2-0.32.0' from 'https://cache.nixos.org'...
+2026-11-06T03:01:45.9323084Z copying path '/nix/store/iixwgsf46j8gd7da3w81vmqdbfyf38wa-python3.14-configobj-5.0.9' from 'https://cache.nixos.org'...
+2026-11-06T03:01:45.9341716Z copying path '/nix/store/nh87c220yjz06hy5z1dgpf1v6kr6jg2s-python3.14-deprecated-1.3.1' from 'https://cache.nixos.org'...
+2026-11-06T03:01:45.9651708Z copying path '/nix/store/pbwgqfb95s0nq9ifcqz51f1wn9yrmayn-python3.14-dulwich-1.2.17' from 'https://cache.nixos.org'...
+2026-11-06T03:01:45.9653454Z copying path '/nix/store/k08xy0a5hw7pg3g4w4vk72ifb8glinpc-python3.14-requests-2.34.2' from 'https://cache.nixos.org'...
+2026-11-06T03:01:45.9949883Z copying path '/nix/store/0w4wam3pjqija61hk2cwirahisw51nb2-python3.14-cryptography-50.0.2' from 'https://cache.nixos.org'...
+2026-11-06T03:01:45.9952966Z copying path '/nix/store/ra8zqdpnbnb15cxs6pssiq2vjm6gvvp7-python3.14-pynacl-1.6.2' from 'https://cache.nixos.org'...
+2026-11-06T03:01:46.1247901Z copying path '/nix/store/kwkm6jzhnyijjynybvql8vbci9vf51zq-python3.14-lazr-uri-1.0.8' from 'https://cache.nixos.org'...
+2026-11-06T03:01:46.1355482Z copying path '/nix/store/3gx1m4jd847vksdmpjaw2l7mp83prxyz-python3.14-pygithub-2.8.1' from 'https://cache.nixos.org'...
+2026-11-06T03:01:46.1405700Z copying path '/nix/store/1q3441gzgg4vplpvnzdaf717w7wmm4i5-python3.14-wadllib-2.1.0' from 'https://cache.nixos.org'...
+2026-11-06T03:01:46.1624031Z copying path '/nix/store/72dpa33fdkzjlgzi1a7wfvfm1y4qmfv3-python3.14-lazr-restfulclient-0.14.6' from 'https://cache.nixos.org'...
+2026-11-06T03:01:46.1641261Z copying path '/nix/store/9z91l9d9q2hsiw1nqddgfdgyrgyizp09-python3.14-google-re2-1.1.20251105' from 'https://cache.nixos.org'...
+2026-11-06T03:01:46.1794067Z copying path '/nix/store/6i3r8651z0a8zva25fb8lqw4n5r4wxgv-mercurial-7.2.2' from 'https://cache.nixos.org'...
+2026-11-06T03:01:46.1797114Z copying path '/nix/store/h4za7m80nyqhdipsv8s1586mi815n3pm-python3.14-launchpadlib-2.1.0' from 'https://cache.nixos.org'...
+2026-11-06T03:01:46.2343063Z copying path '/nix/store/v67plmgzzczslz0lc8v3yjk2v6k80iap-python3.14-breezy-3.3.21' from 'https://cache.nixos.org'...
+2026-11-06T03:01:46.3848851Z copying path '/nix/store/r5ri78axx1qggkjq3vawywlzglg70b5w-gcc-wrapper-16.2.0' from 'https://cache.nixos.org'...
+2026-11-06T03:01:46.4707208Z copying path '/nix/store/w9grjw32g6zikxip4gmca0sry7f1p91w-nix-prefetch-git-26.11' from 'https://cache.nixos.org'...
+2026-11-06T03:01:46.5206268Z copying path '/nix/store/fbqm5da2s2w8s39r4idfmqyhsmzyx91x-nix-prefetch-hg-26.11' from 'https://cache.nixos.org'...
+2026-11-06T03:01:47.2031163Z copying path '/nix/store/ba9zrb4ff65xf21sikjlv0nidr3j76kn-nix-prefetch-bzr-26.11' from 'https://cache.nixos.org'...
+2026-11-06T03:01:47.2110293Z copying path '/nix/store/dlc2z9hlrwy3y33x9vk99zfaj0rjyf1j-nix-prefetch-scripts' from 'https://cache.nixos.org'...
+2026-11-06T03:01:47.3716660Z building '/nix/store/xx965lgpwld9zi8bzmgdbhi0idpm0qp5-luarocks-purifier-0.1.0.drv'...
+2026-11-06T03:01:48.1671855Z unpacking 'https://channels.nixos.org/nixpkgs-unstable/nixexprs.tar.zst' into the Git cache...
+2026-11-06T03:02:00.4417122Z Making manifest for /home/runner/work/_temp/lua-sdk-native-x9zh9834/project/rocks
+2026-11-06T03:02:00.4536862Z Generating index.html for /home/runner/work/_temp/lua-sdk-native-x9zh9834/project/rocks
+2026-11-06T03:02:01.1403074Z this derivation will be built:
+2026-11-06T03:02:01.1403840Z   /nix/store/67nw23kmqddxvfacn0l3lcnz7xrw91i7-luarocks-purifier-libc.drv
+2026-11-06T03:02:01.1404485Z these 6 paths will be fetched (35.6 MiB download, 57.5 MiB unpacked):
+2026-11-06T03:02:01.1405311Z   /nix/store/a8f28w4iij63dixxcws9s0sdrxkp5a9b-bash-static-5.3
+2026-11-06T03:02:01.1405836Z   /nix/store/v2d3x3nah3fja4mlhmzfw44r0brgi0rx-glibc-2.44-57-debug
+2026-11-06T03:02:01.1406353Z   /nix/store/6cz4wzbi3x34ii46hgfk3mvs7nal1c5l-glibc-2.44-57-getent
+2026-11-06T03:02:01.1406886Z   /nix/store/z49jwydvhdkyiahji56zppsif4i7gs5x-glibc-2.44-57-static
+2026-11-06T03:02:01.1407426Z   /nix/store/jq00nlpdcxgcj5xwx25jibn61a611234-glibc-2.44.tar.xz
+2026-11-06T03:02:01.1408279Z   /nix/store/6dvdar2gsd9x0amsx5lx842b5l91xllj-lndir-1.0.6
+2026-11-06T03:02:01.1430463Z copying path '/nix/store/6cz4wzbi3x34ii46hgfk3mvs7nal1c5l-glibc-2.44-57-getent' from 'https://cache.nixos.org'...
+2026-11-06T03:02:01.1431693Z copying path '/nix/store/z49jwydvhdkyiahji56zppsif4i7gs5x-glibc-2.44-57-static' from 'https://cache.nixos.org'...
+2026-11-06T03:02:01.1432880Z copying path '/nix/store/6dvdar2gsd9x0amsx5lx842b5l91xllj-lndir-1.0.6' from 'https://cache.nixos.org'...
+2026-11-06T03:02:01.1437827Z copying path '/nix/store/a8f28w4iij63dixxcws9s0sdrxkp5a9b-bash-static-5.3' from 'https://cache.nixos.org'...
+2026-11-06T03:02:01.1438946Z copying path '/nix/store/jq00nlpdcxgcj5xwx25jibn61a611234-glibc-2.44.tar.xz' from 'https://cache.nixos.org'...
+2026-11-06T03:02:01.5745225Z copying path '/nix/store/v2d3x3nah3fja4mlhmzfw44r0brgi0rx-glibc-2.44-57-debug' from 'https://cache.nixos.org'...
+2026-11-06T03:02:01.7898813Z building '/nix/store/67nw23kmqddxvfacn0l3lcnz7xrw91i7-luarocks-purifier-libc.drv'...
+2026-11-06T03:02:02.0429754Z luarocks-purifier: locking application-1.0-1.rockspec
+2026-11-06T03:02:02.3815151Z 
+2026-11-06T03:02:02.3815741Z Missing dependencies for application 1.0-1:
+2026-11-06T03:02:02.3816171Z    answer 1.0 (not installed)
+2026-11-06T03:02:02.3816368Z 
+2026-11-06T03:02:02.3816679Z application 1.0-1 depends on lua >= 5.1 (5.1-1 provided by VM: success)
+2026-11-06T03:02:02.3817245Z application 1.0-1 depends on answer 1.0 (not installed)
+2026-11-06T03:02:02.3818046Z Installing /home/runner/work/_temp/lua-sdk-native-x9zh9834/project/.luarocks-purifier/lock-run/src/rocks/answer-1.0-1.rockspec
+2026-11-06T03:02:02.3953286Z 
+2026-11-06T03:02:02.3953294Z 
+2026-11-06T03:02:02.3953663Z answer 1.0-1 depends on lua >= 5.1 (5.1-1 provided by VM: success)
+2026-11-06T03:02:02.4232112Z No existing manifest. Attempting to rebuild...
+2026-11-06T03:02:02.5065498Z answer 1.0-1 is now installed in /home/runner/work/_temp/lua-sdk-native-x9zh9834/project/.luarocks-purifier/lock-run/tree
+2026-11-06T03:02:02.5066261Z 
+2026-11-06T03:02:02.5066675Z gcc -O2 -fPIC -I/nix/store/w3s39b7gz8mm1xsr0map8101rrcz28f7-lua-5.1.5/include -c native.c -o native.o
+2026-11-06T03:02:02.5067833Z gcc  -shared -o /home/runner/work/_temp/lua-sdk-native-x9zh9834/project/.luarocks-purifier/lock-run/tmp/luarocks_build-application-1.0-1-5148426/native.so native.o
+2026-11-06T03:02:02.5411345Z application 1.0-1 is now installed in /home/runner/work/_temp/lua-sdk-native-x9zh9834/project/.luarocks-purifier/lock-run/tree
+2026-11-06T03:02:02.5411744Z 
+2026-11-06T03:02:02.6564039Z 
+2026-11-06T03:02:02.6564636Z application 1.0-1 depends on lua >= 5.1 (5.1-1 provided by VM: success)
+2026-11-06T03:02:02.6565051Z application 1.0-1 depends on answer 1.0 (1.0-1 installed: success)
+2026-11-06T03:02:02.6565269Z 
+2026-11-06T03:02:02.6565290Z 
+2026-11-06T03:02:02.6585123Z luarocks-purifier: wrote /home/runner/work/_temp/lua-sdk-native-x9zh9834/project/luarocks-purifier.lock.json (1 downloads)
+2026-11-06T03:02:03.1776799Z luarocks-purifier: locking application-1.0-1.rockspec
+2026-11-06T03:02:03.4395061Z 
+2026-11-06T03:02:03.4395402Z Missing dependencies for application 1.0-1:
+2026-11-06T03:02:03.4395695Z    answer 1.0 (not installed)
+2026-11-06T03:02:03.4395835Z 
+2026-11-06T03:02:03.4396062Z application 1.0-1 depends on lua >= 5.1 (5.1-1 provided by VM: success)
+2026-11-06T03:02:03.4396488Z application 1.0-1 depends on answer 1.0 (not installed)
+2026-11-06T03:02:03.4396974Z Installing /home/runner/work/_temp/lua-sdk-native-x9zh9834/project/.luarocks-purifier/lock-run/src/rocks/answer-1.0-1.rockspec
+2026-11-06T03:02:03.4532846Z 
+2026-11-06T03:02:03.4532855Z 
+2026-11-06T03:02:03.4533427Z answer 1.0-1 depends on lua >= 5.1 (5.1-1 provided by VM: success)
+2026-11-06T03:02:03.4746414Z No existing manifest. Attempting to rebuild...
+2026-11-06T03:02:03.5568362Z answer 1.0-1 is now installed in /home/runner/work/_temp/lua-sdk-native-x9zh9834/project/.luarocks-purifier/lock-run/tree
+2026-11-06T03:02:03.5569037Z 
+2026-11-06T03:02:03.5569489Z gcc -O2 -fPIC -I/nix/store/w3s39b7gz8mm1xsr0map8101rrcz28f7-lua-5.1.5/include -c native.c -o native.o
+2026-11-06T03:02:03.5571366Z gcc  -shared -o /home/runner/work/_temp/lua-sdk-native-x9zh9834/project/.luarocks-purifier/lock-run/tmp/luarocks_build-application-1.0-1-8786065/native.so native.o
+2026-11-06T03:02:03.5914466Z application 1.0-1 is now installed in /home/runner/work/_temp/lua-sdk-native-x9zh9834/project/.luarocks-purifier/lock-run/tree
+2026-11-06T03:02:03.5914959Z 
+2026-11-06T03:02:03.6918002Z 
+2026-11-06T03:02:03.6918386Z application 1.0-1 depends on lua >= 5.1 (5.1-1 provided by VM: success)
+2026-11-06T03:02:03.6918807Z application 1.0-1 depends on answer 1.0 (1.0-1 installed: success)
+2026-11-06T03:02:03.6919023Z 
+2026-11-06T03:02:03.6919026Z 
+2026-11-06T03:02:03.6939724Z luarocks-purifier: wrote /home/runner/work/_temp/lua-sdk-native-x9zh9834/project/luarocks-purifier.lock.json (1 downloads)
+2026-11-06T03:02:04.0572122Z unpacking 'github:nix-caisson/caisson/ec291bc9637a95606f7fa9df942d5e803705d8f5?narHash=sha256-FAixpwyAWmhrzmh0fMGt7y0KIcNLqBIGICfMvbExRLo%3D' into the Git cache...
+2026-11-06T03:02:04.5471764Z unpacking 'github:nix-caisson/caisson-core/6868bca2682e96d56714bc9c9adcf0048fbe132f?narHash=sha256-OzlG2Nhl/kU2UUPq%2BARH/GKUHmOqAxQu5Ug/%2BaT1ECc%3D' into the Git cache...
+2026-11-06T03:02:04.8453286Z unpacking 'github:nix-community/nixpkgs.lib/b91d4f1bc958e0bdfd6cb3db4a280486006f5002?narHash=sha256-XtTdVeJX6X/gU%2BvGIUEJHirotv/lYP5%2BQ9irMH6HWPY%3D' into the Git cache...
+2026-11-06T03:02:05.2117714Z unpacking 'github:hercules-ci/flake-parts/31729ca8cbdb4fa927b34e5f4353e6a83f39e993?narHash=sha256-glZLQlzIn1fXH6PazR2iUmTo7kzzyYSshrWhLS9TqCU%3D' into the Git cache...
+2026-11-06T03:02:05.4682848Z unpacking 'github:nix-community/nixpkgs.lib/7851ba61fd862b277cb6a9cef37394bc18bb94e4?narHash=sha256-ThkfL3D/FhCiZFc9%2B3BtxwuMmpuK%2B/bGtXCSo1%2ByVew%3D' into the Git cache...
+2026-11-06T03:02:05.7859178Z unpacking 'github:hercules-ci/flake-parts/024633cd702b10285db5cb19b40ad48d2399ba60?narHash=sha256-zTwuwezD0w3hpga6a6P8emidzAZFyWqlNeRBlpWOOl8%3D' into the Git cache...
+2026-11-06T03:02:06.7298168Z these 5 derivations will be built:
+2026-11-06T03:02:06.7305532Z   /nix/store/il1mh6v53yzjsd1gvgkl7va7r3an2gwh-answer-1.0.tar.gz.drv
+2026-11-06T03:02:06.7306135Z   /nix/store/6dy3zg8jmdmxil43gbrpzp4dfpnj44h1-files.json.drv
+2026-11-06T03:02:06.7306701Z   /nix/store/da130w5vyjcqfpn91wyzwyzsrj1vn344-checkouts.json.drv
+2026-11-06T03:02:06.7307185Z   /nix/store/idmvc2yml1ppr5mgbm2d9871dfcflm5d-externals.json.drv
+2026-11-06T03:02:06.7307585Z   /nix/store/67fb9zd7y80v02xlia5qkgkrlzdhm8yq-luarocks-purifier-cache.drv
+2026-11-06T03:02:06.7307997Z these 17 paths will be fetched (7.1 MiB download, 20.1 MiB unpacked):
+2026-11-06T03:02:06.7308339Z   /nix/store/p818ycwlk0hvs8f2niq701jhc9h2hq0y-curl-8.22.0
+2026-11-06T03:02:06.7308664Z   /nix/store/8x021nxbxz26sak24ngwk3zvx40p6yg4-curl-8.22.0-bin
+2026-11-06T03:02:06.7308990Z   /nix/store/mxsppj348yslmh2qx0mv6klymh9q9v3d-curl-8.22.0-dev
+2026-11-06T03:02:06.7309302Z   /nix/store/aqlpr73g15c370nsshjb05dxav7rhbjl-curl-8.22.0-man
+2026-11-06T03:02:06.7309618Z   /nix/store/k6fmf03py9rmxd56kjnpwx2gvhmd9ycl-krb5-1.22.2
+2026-11-06T03:02:06.7309920Z   /nix/store/3g35j32k0hq244llbm7rp64xf64xswac-krb5-1.22.2-dev
+2026-11-06T03:02:06.7310446Z   /nix/store/zcahp8a07ikm6jbsmp6b6n9kvbl2iqgf-krb5-1.22.2-lib
+2026-11-06T03:02:06.7310765Z   /nix/store/nkilrx0m320p2p9g4aqzsbmzj72scp6d-libssh2-1.11.1
+2026-11-06T03:02:06.7311091Z   /nix/store/dz3qh5appb7glr35p56bvj4k0xgzgkrb-libssh2-1.11.1-dev
+2026-11-06T03:02:06.7311417Z   /nix/store/511b7w9vlpx6n0wfhamayip4g6g20x3f-nghttp2-1.70.0
+2026-11-06T03:02:06.7312036Z   /nix/store/w79p9x5q3lfxwpav5c2sra104124cwd3-nghttp2-1.70.0-dev
+2026-11-06T03:02:06.7312364Z   /nix/store/58949875l9zbnb8031s069zqai1s2ysx-nghttp2-1.70.0-lib
+2026-11-06T03:02:06.7312676Z   /nix/store/q3d2405gjapmi8d90xyjwwp14s1cz7nk-openssl-3.5.9
+2026-11-06T03:02:06.7313000Z   /nix/store/9gflnsrvhv58lwhkn5f8fxwb6v0wmff0-openssl-3.5.9-bin
+2026-11-06T03:02:06.7313323Z   /nix/store/rh04ir7fv0gp5z1pyyxrl8cp8jh7g1az-openssl-3.5.9-dev
+2026-11-06T03:02:06.7313765Z   /nix/store/a76rmqrp6l3w6h9pppfwzb3s6dzi0y4g-zlib-1.3.2-dev
+2026-11-06T03:02:06.7314080Z   /nix/store/hka7hr5qp0n92dmfv6gdigcabx9dai9r-zlib-1.3.2-static
+2026-11-06T03:02:06.7466998Z building '/nix/store/da130w5vyjcqfpn91wyzwyzsrj1vn344-checkouts.json.drv'...
+2026-11-06T03:02:06.7561067Z building '/nix/store/idmvc2yml1ppr5mgbm2d9871dfcflm5d-externals.json.drv'...
+2026-11-06T03:02:06.7561750Z structuredAttrs is enabled
+2026-11-06T03:02:06.7577343Z structuredAttrs is enabled
+2026-11-06T03:02:06.7598166Z copying path '/nix/store/58949875l9zbnb8031s069zqai1s2ysx-nghttp2-1.70.0-lib' from 'https://cache.nixos.org'...
+2026-11-06T03:02:06.7599663Z copying path '/nix/store/q3d2405gjapmi8d90xyjwwp14s1cz7nk-openssl-3.5.9' from 'https://cache.nixos.org'...
+2026-11-06T03:02:06.7603553Z copying path '/nix/store/aqlpr73g15c370nsshjb05dxav7rhbjl-curl-8.22.0-man' from 'https://cache.nixos.org'...
+2026-11-06T03:02:06.7612092Z copying path '/nix/store/511b7w9vlpx6n0wfhamayip4g6g20x3f-nghttp2-1.70.0' from 'https://cache.nixos.org'...
+2026-11-06T03:02:06.7619911Z copying path '/nix/store/hka7hr5qp0n92dmfv6gdigcabx9dai9r-zlib-1.3.2-static' from 'https://cache.nixos.org'...
+2026-11-06T03:02:06.7703410Z copying path '/nix/store/w79p9x5q3lfxwpav5c2sra104124cwd3-nghttp2-1.70.0-dev' from 'https://cache.nixos.org'...
+2026-11-06T03:02:06.7791611Z copying path '/nix/store/a76rmqrp6l3w6h9pppfwzb3s6dzi0y4g-zlib-1.3.2-dev' from 'https://cache.nixos.org'...
+2026-11-06T03:02:06.8139824Z copying path '/nix/store/zcahp8a07ikm6jbsmp6b6n9kvbl2iqgf-krb5-1.22.2-lib' from 'https://cache.nixos.org'...
+2026-11-06T03:02:06.8140803Z copying path '/nix/store/nkilrx0m320p2p9g4aqzsbmzj72scp6d-libssh2-1.11.1' from 'https://cache.nixos.org'...
+2026-11-06T03:02:06.8141593Z copying path '/nix/store/9gflnsrvhv58lwhkn5f8fxwb6v0wmff0-openssl-3.5.9-bin' from 'https://cache.nixos.org'...
+2026-11-06T03:02:06.8266665Z copying path '/nix/store/rh04ir7fv0gp5z1pyyxrl8cp8jh7g1az-openssl-3.5.9-dev' from 'https://cache.nixos.org'...
+2026-11-06T03:02:06.8309788Z copying path '/nix/store/p818ycwlk0hvs8f2niq701jhc9h2hq0y-curl-8.22.0' from 'https://cache.nixos.org'...
+2026-11-06T03:02:06.8313036Z copying path '/nix/store/k6fmf03py9rmxd56kjnpwx2gvhmd9ycl-krb5-1.22.2' from 'https://cache.nixos.org'...
+2026-11-06T03:02:06.8431225Z copying path '/nix/store/dz3qh5appb7glr35p56bvj4k0xgzgkrb-libssh2-1.11.1-dev' from 'https://cache.nixos.org'...
+2026-11-06T03:02:06.8446496Z copying path '/nix/store/8x021nxbxz26sak24ngwk3zvx40p6yg4-curl-8.22.0-bin' from 'https://cache.nixos.org'...
+2026-11-06T03:02:06.8447268Z copying path '/nix/store/3g35j32k0hq244llbm7rp64xf64xswac-krb5-1.22.2-dev' from 'https://cache.nixos.org'...
+2026-11-06T03:02:06.8551642Z copying path '/nix/store/mxsppj348yslmh2qx0mv6klymh9q9v3d-curl-8.22.0-dev' from 'https://cache.nixos.org'...
+2026-11-06T03:02:06.8712616Z building '/nix/store/il1mh6v53yzjsd1gvgkl7va7r3an2gwh-answer-1.0.tar.gz.drv'...
+2026-11-06T03:02:06.8732837Z structuredAttrs is enabled
+2026-11-06T03:02:06.9021887Z 
+2026-11-06T03:02:06.9022351Z trying http://127.0.0.1:43141/answer-1.0.tar.gz
+2026-11-06T03:02:06.9056325Z   % Total    % Received % Xferd  Average Speed  Time    Time    Time   Current
+2026-11-06T03:02:06.9056838Z                                  Dload  Upload  Total   Spent   Left   Speed
+2026-11-06T03:02:06.9057103Z 
+2026-11-06T03:02:06.9061339Z   0      0   0      0   0      0      0      0                              0
+2026-11-06T03:02:06.9062052Z 100    257 100    257   0      0 308.3k      0                              0
+2026-11-06T03:02:06.9062466Z 100    257 100    257   0      0 272.2k      0                              0
+2026-11-06T03:02:06.9063471Z 100    257 100    257   0      0 252.4k      0                              0
+2026-11-06T03:02:06.9339396Z building '/nix/store/6dy3zg8jmdmxil43gbrpzp4dfpnj44h1-files.json.drv'...
+2026-11-06T03:02:06.9357335Z structuredAttrs is enabled
+2026-11-06T03:02:07.0159399Z building '/nix/store/67fb9zd7y80v02xlia5qkgkrlzdhm8yq-luarocks-purifier-cache.drv'...
+2026-11-06T03:02:07.0915393Z Making manifest for /nix/store/7vfhc9p72m34raickch70gg4qbl1a6yk-luarocks-purifier-cache/server
+2026-11-06T03:02:07.0986548Z Generating index.html for /nix/store/7vfhc9p72m34raickch70gg4qbl1a6yk-luarocks-purifier-cache/server
+2026-11-06T03:02:07.3730967Z Missing dependencies for application 1.0-1:
+2026-11-06T03:02:07.3731429Z    answer 1.0 (not installed)
+2026-11-06T03:02:07.3731632Z 
+2026-11-06T03:02:07.3731865Z application 1.0-1 depends on lua >= 5.1 (5.1-1 provided by VM: success)
+2026-11-06T03:02:07.3732499Z application 1.0-1 depends on answer 1.0 (not installed)
+2026-11-06T03:02:07.3733147Z Installing /home/runner/work/_temp/lua-sdk-native-x9zh9834/project/rocks/answer-1.0-1.rockspec
+2026-11-06T03:02:07.3868987Z 
+2026-11-06T03:02:07.3869343Z 
+2026-11-06T03:02:07.3869726Z answer 1.0-1 depends on lua >= 5.1 (5.1-1 provided by VM: success)
+2026-11-06T03:02:07.4081534Z No existing manifest. Attempting to rebuild...
+2026-11-06T03:02:07.4153351Z answer 1.0-1 is now installed in /home/runner/work/_temp/lua-sdk-native-x9zh9834/project/lua_modules
+2026-11-06T03:02:07.4153702Z 
+2026-11-06T03:02:07.4153843Z Stopping after installing dependencies for application 1.0-1
+2026-11-06T03:02:07.4154046Z 
+2026-11-06T03:02:07.9054210Z 
+2026-11-06T03:02:07.9054887Z application 1.0-1 depends on lua >= 5.1 (5.1-1 provided by VM: success)
+2026-11-06T03:02:07.9055499Z application 1.0-1 depends on answer 1.0 (1.0-1 installed: success)
+2026-11-06T03:02:07.9055828Z 
+2026-11-06T03:02:07.9055832Z 
+2026-11-06T03:02:07.9059452Z luarocks-purifier: prefetched /home/runner/work/_temp/lua-sdk-native-x9zh9834/project/luarocks-purifier.lock.json; the dependencies are in lua_modules
+2026-11-06T03:02:09.1710810Z 
+2026-11-06T03:02:09.1710822Z 
+2026-11-06T03:02:09.1711465Z application 1.0-1 depends on lua >= 5.1 (5.1-1 provided by VM: success)
+2026-11-06T03:02:09.1711973Z application 1.0-1 depends on answer 1.0 (1.0-1 installed: success)
+2026-11-06T03:02:09.1712578Z gcc -O2 -fPIC -I/nix/store/w3s39b7gz8mm1xsr0map8101rrcz28f7-lua-5.1.5/include -c native.c -o native.o
+2026-11-06T03:02:09.1713489Z gcc  -shared -o /home/runner/work/_temp/lua-sdk-native-x9zh9834/project/.luarocks-purifier/tmp/luarocks_build-application-1.0-1-5672086/native.so native.o
+2026-11-06T03:02:09.2100361Z application 1.0-1 is now installed in /home/runner/work/_temp/lua-sdk-native-x9zh9834/project/lua_modules
+2026-11-06T03:02:09.2100725Z 
+2026-11-06T03:02:09.8839558Z 
+2026-11-06T03:02:09.8840299Z application 1.0-1 depends on lua >= 5.1 (5.1-1 provided by VM: success)
+2026-11-06T03:02:09.8840919Z application 1.0-1 depends on answer 1.0 (1.0-1 installed: success)
+2026-11-06T03:02:09.8841297Z 
+2026-11-06T03:02:09.8841302Z 
+2026-11-06T03:02:10.6257781Z these 5 derivations will be built:
+2026-11-06T03:02:10.6264005Z   /nix/store/bb5p95z0455piqwf6fqqdr48dnjndg1w-application-1.0-1.drv
+2026-11-06T03:02:10.6264688Z   /nix/store/dj0yhwfnbf7rpq7kjrqp1w1h669d2b1y-application-tests-1.0-1.drv
+2026-11-06T03:02:10.6265253Z   /nix/store/ds54ci0q3nw0h130mq7b0xai7dqxyf0s-tests.drv
+2026-11-06T03:02:10.6265834Z   /nix/store/w1lj5dczdmn2d10fnr7yr74g9dk2855y-application-src-rock-1.0-1.drv
+2026-11-06T03:02:10.6266248Z   /nix/store/q2ykyhsk1qs8i4s501y9blq1j8nmy3d7-release.drv
+2026-11-06T03:02:10.6266735Z these 3 paths will be fetched (74.2 KiB download, 297.0 KiB unpacked):
+2026-11-06T03:02:10.6267260Z   /nix/store/spahkc8n306pyh52fzfp5chzrcsaibhx-bzip2-1.0.8-dev
+2026-11-06T03:02:10.6267759Z   /nix/store/an9g93vg5b02j74y38zfajswa0f10p2z-stdenv-linux
+2026-11-06T03:02:10.6268242Z   /nix/store/jap556ak4j04r0r74a9z7bybv29z2d7r-xz-5.8.4-dev
+2026-11-06T03:02:10.6320581Z copying path '/nix/store/spahkc8n306pyh52fzfp5chzrcsaibhx-bzip2-1.0.8-dev' from 'https://cache.nixos.org'...
+2026-11-06T03:02:10.6321917Z copying path '/nix/store/an9g93vg5b02j74y38zfajswa0f10p2z-stdenv-linux' from 'https://cache.nixos.org'...
+2026-11-06T03:02:10.6324505Z copying path '/nix/store/jap556ak4j04r0r74a9z7bybv29z2d7r-xz-5.8.4-dev' from 'https://cache.nixos.org'...
+2026-11-06T03:02:10.7095872Z building '/nix/store/bb5p95z0455piqwf6fqqdr48dnjndg1w-application-1.0-1.drv'...
+2026-11-06T03:02:10.7219321Z building '/nix/store/w1lj5dczdmn2d10fnr7yr74g9dk2855y-application-src-rock-1.0-1.drv'...
+2026-11-06T03:02:10.7333427Z building '/nix/store/dj0yhwfnbf7rpq7kjrqp1w1h669d2b1y-application-tests-1.0-1.drv'...
+2026-11-06T03:02:11.3659731Z building '/nix/store/q2ykyhsk1qs8i4s501y9blq1j8nmy3d7-release.drv'...
+2026-11-06T03:02:11.6536950Z building '/nix/store/ds54ci0q3nw0h130mq7b0xai7dqxyf0s-tests.drv'...
+2026-11-06T03:02:12.4092956Z luarocks-purifier: uploading application-1.0-1.rockspec with /nix/store/r8rq1nyxjxyn27xlw13pkmc195jq6ica-release/application-1.0-1.src.rock
+2026-11-06T03:02:12.4832099Z Warning: your LuaRocks is out of date, consider upgrading.
+2026-11-06T03:02:12.5181502Z Sending application-1.0-1.rockspec ...
+2026-11-06T03:02:12.5181811Z Will create new module (application)
+2026-11-06T03:02:12.5182190Z Sending /nix/store/r8rq1nyxjxyn27xlw13pkmc195jq6ica-release/application-1.0-1.src.rock ...
+2026-11-06T03:02:12.5182489Z 
+2026-11-06T03:02:12.5182618Z Done: http://127.0.0.1/m
+2026-11-06T03:02:12.5182753Z 
+2026-11-06T03:02:12.6658712Z 
+2026-11-06T03:02:12.6659230Z Missing dependencies for application 1.0-1:
+2026-11-06T03:02:12.6659661Z    answer 1.0 (not installed)
+2026-11-06T03:02:12.6659861Z 
+2026-11-06T03:02:12.6660026Z application 1.0-1 depends on lua >= 5.1 (5.1-1 provided by VM: success)
+2026-11-06T03:02:12.6660520Z application 1.0-1 depends on answer 1.0 (not installed)
+2026-11-06T03:02:12.6660922Z Installing /home/runner/work/_temp/lua-sdk-native-x9zh9834/project/rocks/answer-1.0-1.rockspec
+2026-11-06T03:02:12.6773996Z 
+2026-11-06T03:02:12.6774048Z 
+2026-11-06T03:02:12.6774347Z answer 1.0-1 depends on lua >= 5.1 (5.1-1 provided by VM: success)
+2026-11-06T03:02:12.6991440Z No existing manifest. Attempting to rebuild...
+2026-11-06T03:02:12.7814860Z answer 1.0-1 is now installed in /home/runner/work/_temp/lua-sdk-native-x9zh9834/consumer/tree
+2026-11-06T03:02:12.7815270Z 
+2026-11-06T03:02:12.7815545Z gcc -O2 -fPIC -I/nix/store/w3s39b7gz8mm1xsr0map8101rrcz28f7-lua-5.1.5/include -c native.c -o native.o
+2026-11-06T03:02:12.7816110Z gcc  -shared -o /home/runner/work/_temp/luarocks_build-application-1.0-1-4494707/native.so native.o
+2026-11-06T03:02:12.8172010Z application 1.0-1 is now installed in /home/runner/work/_temp/lua-sdk-native-x9zh9834/consumer/tree
+2026-11-06T03:02:12.8172349Z 
+2026-11-06T03:02:13.1645879Z Native runtime: Lua 5.1.5  Copyright (C) 1994-2012 Lua.org, PUC-Rio native manager: 3.13.0
+2026-11-06T03:02:13.1646568Z PASS native Lua 5.1.5 / 5.1 / LuaRocks 3.13.0: capture, dependency, C ABI, offline native/pure tests, source rock, byte-equal native upload and ordinary install
+2026-11-06T03:02:13.7516850Z luarocks-purifier: locking legacy-1.0-1.rockspec
+2026-11-06T03:02:13.8143113Z 
+2026-11-06T03:02:13.8144310Z 
+2026-11-06T03:02:13.8144823Z legacy 1.0-1 depends on lua >= 5.1 (5.1-1 provided by VM: success)
+2026-11-06T03:02:13.8367216Z No existing manifest. Attempting to rebuild...
+2026-11-06T03:02:13.8423819Z legacy 1.0-1 is now installed in /home/runner/work/_temp/manager-capture-pcodu2or/.luarocks-purifier/lock-run/tree
+2026-11-06T03:02:13.8424407Z 
+2026-11-06T03:02:13.8865285Z luarocks-purifier: wrote /home/runner/work/_temp/manager-capture-pcodu2or/luarocks-purifier.lock.json (0 downloads)
+2026-11-06T03:02:14.4279591Z luarocks-purifier: locking legacy-1.0-1.rockspec
+2026-11-06T03:02:14.4866421Z 
+2026-11-06T03:02:14.4866432Z 
+2026-11-06T03:02:14.4866910Z legacy 1.0-1 depends on lua >= 5.1 (5.1-1 provided by VM: success)
+2026-11-06T03:02:14.5093366Z No existing manifest. Attempting to rebuild...
+2026-11-06T03:02:14.5151165Z legacy 1.0-1 is now installed in /home/runner/work/_temp/manager-capture-pcodu2or/.luarocks-purifier/lock-run/tree
+2026-11-06T03:02:14.5151732Z 
+2026-11-06T03:02:14.5588184Z luarocks-purifier: wrote /home/runner/work/_temp/manager-capture-pcodu2or/luarocks-purifier.lock.json (0 downloads)
+2026-11-06T03:02:15.0700253Z luarocks-purifier: locking legacy-1.0-1.rockspec
+2026-11-06T03:02:15.1413844Z 
+2026-11-06T03:02:15.1414233Z 
+2026-11-06T03:02:15.1414828Z legacy 1.0-1 depends on lua >= 5.1 (5.1-1 provided by VM: success)
+2026-11-06T03:02:15.1639426Z No existing manifest. Attempting to rebuild...
+2026-11-06T03:02:15.1696776Z legacy 1.0-1 is now installed in /home/runner/work/_temp/manager-capture-pcodu2or/.luarocks-purifier/lock-run/tree
+2026-11-06T03:02:15.1697331Z 
+2026-11-06T03:02:15.2717207Z luarocks-purifier: wrote /home/runner/work/_temp/manager-capture-pcodu2or/luarocks.lock
+2026-11-06T03:02:15.2731014Z luarocks-purifier: wrote /home/runner/work/_temp/manager-capture-pcodu2or/luarocks-purifier.lock.json (0 downloads)
+2026-11-06T03:02:15.7957587Z luarocks-purifier: locking legacy-1.0-1.rockspec
+2026-11-06T03:02:15.8544978Z Using dependencies pinned in lockfile: /home/runner/work/_temp/manager-capture-pcodu2or/.luarocks-purifier/lock-run/src/luarocks.lock
+2026-11-06T03:02:15.8545877Z 
+2026-11-06T03:02:15.8546016Z 
+2026-11-06T03:02:15.8546282Z legacy 1.0-1 depends on lua >= 5.1 (5.1-1 provided by VM: success)
+2026-11-06T03:02:15.8809232Z No existing manifest. Attempting to rebuild...
+2026-11-06T03:02:15.8867407Z legacy 1.0-1 is now installed in /home/runner/work/_temp/manager-capture-pcodu2or/.luarocks-purifier/lock-run/tree
+2026-11-06T03:02:15.8867949Z 
+2026-11-06T03:02:15.9309773Z luarocks-purifier: wrote /home/runner/work/_temp/manager-capture-pcodu2or/luarocks-purifier.lock.json (0 downloads)
+2026-11-06T03:02:15.9388643Z PASS native manager show/list metadata, repeated capture, update and unchanged sources
+2026-11-06T03:02:15.9500387Z ##[group]Run tools="$(nix build --no-link --print-out-paths .#checks.x86_64-linux.legacy-manager-tools)"
+2026-11-06T03:02:15.9500960Z [36;1mtools="$(nix build --no-link --print-out-paths .#checks.x86_64-linux.legacy-manager-tools)"[0m
+2026-11-06T03:02:15.9501422Z [36;1mnix shell nixpkgs#python3 -c python3 tests/capture-manager.py "$tools"[0m
+2026-11-06T03:02:15.9501825Z [36;1mnix shell nixpkgs#python3 -c python3 tests/sdk-native.py "$tools" '5.1'[0m
+2026-11-06T03:02:15.9521097Z shell: /usr/bin/bash -e {0}
+2026-11-06T03:02:15.9521306Z env:
+2026-11-06T03:02:15.9521473Z   TMPDIR: /home/runner/work/_temp
+2026-11-06T03:02:15.9521794Z   NIX_PROFILES: /nix/var/nix/profiles/default /home/runner/.nix-profile
+2026-11-06T03:02:15.9522147Z   NIX_SSL_CERT_FILE: /etc/ssl/certs/ca-certificates.crt
+2026-11-06T03:02:15.9522525Z ##[endgroup]
+2026-11-06T03:02:16.1833030Z unpacking 'github:numtide/treefmt-nix/0d6d739a833ba9a9c93034862e4a7b061a062a1c?narHash=sha256-C3alQ2MEt0zVrUSho5NUDo3jmhbff72%2B%2BbfwoqT9Omo%3D' into the Git cache...
+2026-11-06T03:02:16.9859626Z unpacking 'https://github.com/NixOS/nixpkgs/archive/770822493e3962d795739fafd522e771bfe06e3d.tar.gz' into the Git cache...
+2026-11-06T03:02:22.2334919Z these 6 derivations will be built:
+2026-11-06T03:02:22.2340900Z   /nix/store/p5kiyhcfrmxa2lj5dlhv0ly65xmqiq23-lua-5.1.5.drv
+2026-11-06T03:02:22.2341412Z   /nix/store/wkj72l7is00ilxbc3f9smxjc1y7ib0ph-luarocks-2.2.0-rc1.tar.gz.drv
+2026-11-06T03:02:22.2341806Z   /nix/store/lf7q9gy5nazr0fg4538hv2j480pz0hm3-luarocks-2.2.0.drv
+2026-11-06T03:02:22.2342257Z   /nix/store/f0ncp68jsx3w7725claj55xkjm6i9nri-luarocks-2.2.0-with-json.drv
+2026-11-06T03:02:22.2342860Z   /nix/store/g4s24743cchy6770jbqfivxgr53adn9a-lua-project-sdks.nix.drv
+2026-11-06T03:02:22.2343457Z   /nix/store/wbsiq6wyy9r5nmrpa9nwq9fm6brm078p-luarocks-purifier-0.1.0.drv
+2026-11-06T03:02:22.2344030Z these 39 paths will be fetched (50.3 MiB download, 240.6 MiB unpacked):
+2026-11-06T03:02:22.2344568Z   /nix/store/1d15qk8k5ysb4xc7z4m4d72jh05nji2r-CVE-2014-5461.patch
+2026-11-06T03:02:22.2345039Z   /nix/store/8b1jjbgnwwd5h7r9xn4xanw1i23ysqrz-acl-2.2.52
+2026-11-06T03:02:22.2345494Z   /nix/store/yh8kyahfc2wc7rr0dblgwwz8yhz8m6ik-attr-2.4.47
+2026-11-06T03:02:22.2345955Z   /nix/store/pxfx4r4dj0w9d17dlrybi0kb2k965awk-bash-4.3-p30
+2026-11-06T03:02:22.2346444Z   /nix/store/ld68ry8b1447kjdi2qqx7mbn2iqnnxvs-binutils-2.23.1
+2026-11-06T03:02:22.2346926Z   /nix/store/cm5rcmabgr649b9gcn5bfm3n6ywpg1c1-bzip2-1.0.6
+2026-11-06T03:02:22.2347392Z   /nix/store/5l6mna1x70alq4581q5a2sl6jmr51g88-coreutils-8.23
+2026-11-06T03:02:22.2348123Z   /nix/store/mn8rnx1gl9imp5hapn4lkx4by99cxpa1-curl-7.42.1
+2026-11-06T03:02:22.2348646Z   /nix/store/sz9y5jlamx3rhx709ca51sncmlgrrwfj-diffutils-3.3
+2026-11-06T03:02:22.2349099Z   /nix/store/0bdd2gi6fjw9yxyh6nb2dydwj3dnqpp6-ed-1.10
+2026-11-06T03:02:22.2349612Z   /nix/store/fjakli9k1m7klppy1a58gfrs17nlwnjm-findutils-4.4.2
+2026-11-06T03:02:22.2350286Z   /nix/store/m388056il6jsczli43jzlyz7l7vb4cga-gawk-4.1.0
+2026-11-06T03:02:22.2350742Z   /nix/store/ngxwnkmsxjyyk9r2f0z9cblg6rfs7wzj-gcc-4.8.3
+2026-11-06T03:02:22.2351276Z   /nix/store/ahh31wklr5pk0hcqiaf6dcj60is1wy3r-gcc-wrapper-4.8.3
+2026-11-06T03:02:22.2351779Z   /nix/store/apx1bc715mzj89nwrci85h570rydqmjj-glibc-2.20
+2026-11-06T03:02:22.2352259Z   /nix/store/jqr5hh2papszig5g929ga069kw5dq46f-gnugrep-2.20
+2026-11-06T03:02:22.2352731Z   /nix/store/jn1imdyqh5vqypnqz4n4c3r0q9ygwkhi-gnumake-3.82
+2026-11-06T03:02:22.2353196Z   /nix/store/f23nk1glj0llbvwzi6xdxshjh0ng9w8f-gnused-4.2.2
+2026-11-06T03:02:22.2353689Z   /nix/store/9asjsfl642ibwb62zfjcqisckfxbi6p1-gnutar-1.27.1
+2026-11-06T03:02:22.2354159Z   /nix/store/d3g7yhc5jk6r832fc7y0mpxv7vi9qk4c-gzip-1.6
+2026-11-06T03:02:22.2354595Z   /nix/store/i0mdicdqxzs47jikl8y36qgh0ywfvflf-hook
+2026-11-06T03:02:22.2355044Z   /nix/store/6mjjqigx4y0l9j0qjszq3z165i2zd421-libsigsegv-2.10
+2026-11-06T03:02:22.2355552Z   /nix/store/0ns1cy74w6sas3yap3yxd8r9j845mqx4-libssh2-1.4.3
+2026-11-06T03:02:22.2356342Z   /nix/store/x07ckac7pn0pj1xzy84b4k3i3q7ap116-linux-headers-3.12.32
+2026-11-06T03:02:22.2356891Z   /nix/store/bf00q7hqymsba5abkqn5d4pf501bpmc4-lua-5.1.5.tar.gz
+2026-11-06T03:02:22.2357428Z   /nix/store/jx2icbh1lhv3s42cmnxx7zr53yvr83nq-lua-arch.patch
+2026-11-06T03:02:22.2358008Z   /nix/store/cpagbbs1dmybrjb94mhjkyg0qw0hdjhb-lua5.1-dkjson-2.11-1
+2026-11-06T03:02:22.2358540Z   /nix/store/d1dsk8h8hr1x0vxwdvivp7x94hl2jkl0-ncurses-5.9
+2026-11-06T03:02:22.2359047Z   /nix/store/7k51rqspgizlhd0x0d0qh4ark674815y-openssl-1.0.1p
+2026-11-06T03:02:22.2359566Z   /nix/store/fackir11awgn350kc8zwbn5w3lsp3dkx-patch-2.7.1
+2026-11-06T03:02:22.2360213Z   /nix/store/pdx3iwi6npb5yyvafhy5nia78qzvfx3c-patchelf-0.8
+2026-11-06T03:02:22.2360699Z   /nix/store/6iwvjgdyisd8vdb146vh9bdh6cgk037w-paxctl-0.9
+2026-11-06T03:02:22.2361154Z   /nix/store/fm4kyq51293h9vmz2i396jik3dyfqxfm-pcre-8.36
+2026-11-06T03:02:22.2361619Z   /nix/store/qmgr4kf36ygbb5j6h3cr8vmndilfld02-perl-5.20.1
+2026-11-06T03:02:22.2362146Z   /nix/store/rnfnmqwkzgjws19m8zp54x1wv5pgyjnp-readline-6.3p08
+2026-11-06T03:02:22.2362692Z   /nix/store/ds9spcknbbnmrklcfzbq2vrrpblagbnh-stdenv
+2026-11-06T03:02:22.2363140Z   /nix/store/53x87s5wf4jhckrkfr08rxw91fjd2a9a-which-2.20
+2026-11-06T03:02:22.2363593Z   /nix/store/7jli3cxj5l11qwhsm3pcc6vkivv0dw1x-xz-5.0.7
+2026-11-06T03:02:22.2364087Z   /nix/store/2mr2zkaw1nvqmgkr9zk22y6mbq1v7m4i-zlib-1.2.8
+2026-11-06T03:02:22.3191144Z building '/nix/store/g4s24743cchy6770jbqfivxgr53adn9a-lua-project-sdks.nix.drv'...
+2026-11-06T03:02:22.3204712Z copying path '/nix/store/cpagbbs1dmybrjb94mhjkyg0qw0hdjhb-lua5.1-dkjson-2.11-1' from 'https://cache.nixos.org'...
+2026-11-06T03:02:22.3224055Z copying path '/nix/store/i0mdicdqxzs47jikl8y36qgh0ywfvflf-hook' from 'https://cache.nixos.org'...
+2026-11-06T03:02:22.3361945Z building '/nix/store/wkj72l7is00ilxbc3f9smxjc1y7ib0ph-luarocks-2.2.0-rc1.tar.gz.drv'...
+2026-11-06T03:02:22.3393798Z copying path '/nix/store/1d15qk8k5ysb4xc7z4m4d72jh05nji2r-CVE-2014-5461.patch' from 'https://cache.nixos.org'...
+2026-11-06T03:02:22.3394779Z copying path '/nix/store/bf00q7hqymsba5abkqn5d4pf501bpmc4-lua-5.1.5.tar.gz' from 'https://cache.nixos.org'...
+2026-11-06T03:02:22.3395547Z copying path '/nix/store/jx2icbh1lhv3s42cmnxx7zr53yvr83nq-lua-arch.patch' from 'https://cache.nixos.org'...
+2026-11-06T03:02:22.3408594Z copying path '/nix/store/6mjjqigx4y0l9j0qjszq3z165i2zd421-libsigsegv-2.10' from 'https://cache.nixos.org'...
+2026-11-06T03:02:22.3420909Z copying path '/nix/store/x07ckac7pn0pj1xzy84b4k3i3q7ap116-linux-headers-3.12.32' from 'https://cache.nixos.org'...
+2026-11-06T03:02:22.4703027Z copying path '/nix/store/apx1bc715mzj89nwrci85h570rydqmjj-glibc-2.20' from 'https://cache.nixos.org'...
+2026-11-06T03:02:23.1651507Z copying path '/nix/store/yh8kyahfc2wc7rr0dblgwwz8yhz8m6ik-attr-2.4.47' from 'https://cache.nixos.org'...
+2026-11-06T03:02:23.1653025Z copying path '/nix/store/pxfx4r4dj0w9d17dlrybi0kb2k965awk-bash-4.3-p30' from 'https://cache.nixos.org'...
+2026-11-06T03:02:23.1654582Z copying path '/nix/store/cm5rcmabgr649b9gcn5bfm3n6ywpg1c1-bzip2-1.0.6' from 'https://cache.nixos.org'...
+2026-11-06T03:02:23.1656995Z copying path '/nix/store/d3g7yhc5jk6r832fc7y0mpxv7vi9qk4c-gzip-1.6' from 'https://cache.nixos.org'...
+2026-11-06T03:02:23.1660311Z copying path '/nix/store/53x87s5wf4jhckrkfr08rxw91fjd2a9a-which-2.20' from 'https://cache.nixos.org'...
+2026-11-06T03:02:23.1661157Z copying path '/nix/store/2mr2zkaw1nvqmgkr9zk22y6mbq1v7m4i-zlib-1.2.8' from 'https://cache.nixos.org'...
+2026-11-06T03:02:23.1664953Z copying path '/nix/store/6iwvjgdyisd8vdb146vh9bdh6cgk037w-paxctl-0.9' from 'https://cache.nixos.org'...
+2026-11-06T03:02:23.1666163Z copying path '/nix/store/jn1imdyqh5vqypnqz4n4c3r0q9ygwkhi-gnumake-3.82' from 'https://cache.nixos.org'...
+2026-11-06T03:02:23.1667303Z copying path '/nix/store/m388056il6jsczli43jzlyz7l7vb4cga-gawk-4.1.0' from 'https://cache.nixos.org'...
+2026-11-06T03:02:23.1668215Z copying path '/nix/store/f23nk1glj0llbvwzi6xdxshjh0ng9w8f-gnused-4.2.2' from 'https://cache.nixos.org'...
+2026-11-06T03:02:23.1669193Z copying path '/nix/store/0bdd2gi6fjw9yxyh6nb2dydwj3dnqpp6-ed-1.10' from 'https://cache.nixos.org'...
+2026-11-06T03:02:23.1669895Z copying path '/nix/store/7jli3cxj5l11qwhsm3pcc6vkivv0dw1x-xz-5.0.7' from 'https://cache.nixos.org'...
+2026-11-06T03:02:23.1670984Z copying path '/nix/store/9asjsfl642ibwb62zfjcqisckfxbi6p1-gnutar-1.27.1' from 'https://cache.nixos.org'...
+2026-11-06T03:02:23.2573333Z copying path '/nix/store/fackir11awgn350kc8zwbn5w3lsp3dkx-patch-2.7.1' from 'https://cache.nixos.org'...
+2026-11-06T03:02:23.2574675Z copying path '/nix/store/ngxwnkmsxjyyk9r2f0z9cblg6rfs7wzj-gcc-4.8.3' from 'https://cache.nixos.org'...
+2026-11-06T03:02:23.2607897Z copying path '/nix/store/8b1jjbgnwwd5h7r9xn4xanw1i23ysqrz-acl-2.2.52' from 'https://cache.nixos.org'...
+2026-11-06T03:02:23.3510424Z copying path '/nix/store/5l6mna1x70alq4581q5a2sl6jmr51g88-coreutils-8.23' from 'https://cache.nixos.org'...
+2026-11-06T03:02:23.3511501Z copying path '/nix/store/d1dsk8h8hr1x0vxwdvivp7x94hl2jkl0-ncurses-5.9' from 'https://cache.nixos.org'...
+2026-11-06T03:02:23.5748591Z copying path '/nix/store/rnfnmqwkzgjws19m8zp54x1wv5pgyjnp-readline-6.3p08' from 'https://cache.nixos.org'...
+2026-11-06T03:02:23.6001848Z copying path '/nix/store/sz9y5jlamx3rhx709ca51sncmlgrrwfj-diffutils-3.3' from 'https://cache.nixos.org'...
+2026-11-06T03:02:23.6003043Z copying path '/nix/store/fjakli9k1m7klppy1a58gfrs17nlwnjm-findutils-4.4.2' from 'https://cache.nixos.org'...
+2026-11-06T03:02:24.9928846Z copying path '/nix/store/pdx3iwi6npb5yyvafhy5nia78qzvfx3c-patchelf-0.8' from 'https://cache.nixos.org'...
+2026-11-06T03:02:24.9930540Z copying path '/nix/store/ld68ry8b1447kjdi2qqx7mbn2iqnnxvs-binutils-2.23.1' from 'https://cache.nixos.org'...
+2026-11-06T03:02:24.9931694Z copying path '/nix/store/fm4kyq51293h9vmz2i396jik3dyfqxfm-pcre-8.36' from 'https://cache.nixos.org'...
+2026-11-06T03:02:24.9932883Z copying path '/nix/store/qmgr4kf36ygbb5j6h3cr8vmndilfld02-perl-5.20.1' from 'https://cache.nixos.org'...
+2026-11-06T03:02:25.1002899Z copying path '/nix/store/jqr5hh2papszig5g929ga069kw5dq46f-gnugrep-2.20' from 'https://cache.nixos.org'...
+2026-11-06T03:02:25.4150666Z copying path '/nix/store/ahh31wklr5pk0hcqiaf6dcj60is1wy3r-gcc-wrapper-4.8.3' from 'https://cache.nixos.org'...
+2026-11-06T03:02:25.4917966Z copying path '/nix/store/ds9spcknbbnmrklcfzbq2vrrpblagbnh-stdenv' from 'https://cache.nixos.org'...
+2026-11-06T03:02:25.6418967Z building '/nix/store/p5kiyhcfrmxa2lj5dlhv0ly65xmqiq23-lua-5.1.5.drv'...
+2026-11-06T03:02:26.6297353Z copying path '/nix/store/7k51rqspgizlhd0x0d0qh4ark674815y-openssl-1.0.1p' from 'https://cache.nixos.org'...
+2026-11-06T03:02:26.8780991Z copying path '/nix/store/0ns1cy74w6sas3yap3yxd8r9j845mqx4-libssh2-1.4.3' from 'https://cache.nixos.org'...
+2026-11-06T03:02:26.9681975Z copying path '/nix/store/mn8rnx1gl9imp5hapn4lkx4by99cxpa1-curl-7.42.1' from 'https://cache.nixos.org'...
+2026-11-06T03:02:30.7007782Z building '/nix/store/lf7q9gy5nazr0fg4538hv2j480pz0hm3-luarocks-2.2.0.drv'...
+2026-11-06T03:02:31.4938015Z building '/nix/store/f0ncp68jsx3w7725claj55xkjm6i9nri-luarocks-2.2.0-with-json.drv'...
+2026-11-06T03:02:31.6326257Z building '/nix/store/wbsiq6wyy9r5nmrpa9nwq9fm6brm078p-luarocks-purifier-0.1.0.drv'...
+2026-11-06T03:02:32.5829956Z luarocks-purifier: locking legacy-1.0-1.rockspec
+2026-11-06T03:02:32.6364976Z No existing manifest. Attempting to rebuild...
+2026-11-06T03:02:32.6379630Z Updating manifest for /home/runner/work/_temp/manager-capture-stgmg4yi/.luarocks-purifier/lock-run/tree/lib/luarocks/rocks
+2026-11-06T03:02:32.6999982Z legacy 1.0-1 is now built and installed in /home/runner/work/_temp/manager-capture-stgmg4yi/.luarocks-purifier/lock-run/tree 
+2026-11-06T03:02:32.7000755Z 
+2026-11-06T03:02:32.7375316Z luarocks-purifier: wrote /home/runner/work/_temp/manager-capture-stgmg4yi/luarocks-purifier.lock.json (0 downloads)
+2026-11-06T03:02:33.2854603Z luarocks-purifier: locking legacy-1.0-1.rockspec
+2026-11-06T03:02:33.3377159Z No existing manifest. Attempting to rebuild...
+2026-11-06T03:02:33.3391049Z Updating manifest for /home/runner/work/_temp/manager-capture-stgmg4yi/.luarocks-purifier/lock-run/tree/lib/luarocks/rocks
+2026-11-06T03:02:33.3445420Z legacy 1.0-1 is now built and installed in /home/runner/work/_temp/manager-capture-stgmg4yi/.luarocks-purifier/lock-run/tree 
+2026-11-06T03:02:33.3445979Z 
+2026-11-06T03:02:33.3584517Z luarocks-purifier: wrote /home/runner/work/_temp/manager-capture-stgmg4yi/luarocks-purifier.lock.json (0 downloads)
+2026-11-06T03:02:33.8787502Z luarocks-purifier: locking legacy-1.0-1.rockspec
+2026-11-06T03:02:33.9298354Z No existing manifest. Attempting to rebuild...
+2026-11-06T03:02:33.9312333Z Updating manifest for /home/runner/work/_temp/manager-capture-stgmg4yi/.luarocks-purifier/lock-run/tree/lib/luarocks/rocks
+2026-11-06T03:02:33.9363755Z legacy 1.0-1 is now built and installed in /home/runner/work/_temp/manager-capture-stgmg4yi/.luarocks-purifier/lock-run/tree 
+2026-11-06T03:02:33.9364343Z 
+2026-11-06T03:02:33.9582511Z luarocks-purifier: wrote /home/runner/work/_temp/manager-capture-stgmg4yi/luarocks.lock
+2026-11-06T03:02:33.9597756Z luarocks-purifier: wrote /home/runner/work/_temp/manager-capture-stgmg4yi/luarocks-purifier.lock.json (0 downloads)
+2026-11-06T03:02:34.4838446Z luarocks-purifier: locking legacy-1.0-1.rockspec
+2026-11-06T03:02:34.5347922Z No existing manifest. Attempting to rebuild...
+2026-11-06T03:02:34.5362876Z Updating manifest for /home/runner/work/_temp/manager-capture-stgmg4yi/.luarocks-purifier/lock-run/tree/lib/luarocks/rocks
+2026-11-06T03:02:34.5414936Z legacy 1.0-1 is now built and installed in /home/runner/work/_temp/manager-capture-stgmg4yi/.luarocks-purifier/lock-run/tree 
+2026-11-06T03:02:34.5415625Z 
+2026-11-06T03:02:34.5552104Z luarocks-purifier: wrote /home/runner/work/_temp/manager-capture-stgmg4yi/luarocks-purifier.lock.json (0 downloads)
+2026-11-06T03:02:34.5641333Z PASS native manager show/list metadata, repeated capture, update and unchanged sources
+2026-11-06T03:02:35.2433341Z Making manifest for /home/runner/work/_temp/lua-sdk-native-c7ahaem1/project/rocks
+2026-11-06T03:02:35.2485234Z Generating index.html for /home/runner/work/_temp/lua-sdk-native-c7ahaem1/project/rocks
+2026-11-06T03:02:35.7830325Z luarocks-purifier: locking application-1.0-1.rockspec
+2026-11-06T03:02:35.7975403Z 
+2026-11-06T03:02:35.7975795Z Missing dependencies for application:
+2026-11-06T03:02:35.7976193Z answer == 1.0
+2026-11-06T03:02:35.7976350Z 
+2026-11-06T03:02:36.0212656Z Using /home/runner/work/_temp/lua-sdk-native-c7ahaem1/project/.luarocks-purifier/lock-run/src/rocks/answer-1.0-1.rockspec... switching to 'build' mode
+2026-11-06T03:02:36.0463154Z No existing manifest. Attempting to rebuild...
+2026-11-06T03:02:36.0478266Z Updating manifest for /home/runner/work/_temp/lua-sdk-native-c7ahaem1/project/.luarocks-purifier/lock-run/tree/lib/luarocks/rocks
+2026-11-06T03:02:36.1285132Z answer 1.0-1 is now built and installed in /home/runner/work/_temp/lua-sdk-native-c7ahaem1/project/.luarocks-purifier/lock-run/tree 
+2026-11-06T03:02:36.1285813Z 
+2026-11-06T03:02:36.1286110Z gcc -O2 -fPIC -I/nix/store/i8fr3ympqywx97yl5w0wzf0jcw86j5jj-lua-5.1.5/include -c native.c -o native.o
+2026-11-06T03:02:36.1286665Z gcc -shared -o native.so -L/nix/store/i8fr3ympqywx97yl5w0wzf0jcw86j5jj-lua-5.1.5/lib native.o
+2026-11-06T03:02:36.1646575Z Updating manifest for /home/runner/work/_temp/lua-sdk-native-c7ahaem1/project/.luarocks-purifier/lock-run/tree/lib/luarocks/rocks
+2026-11-06T03:02:36.1647659Z application 1.0-1 is now built and installed in /home/runner/work/_temp/lua-sdk-native-c7ahaem1/project/.luarocks-purifier/lock-run/tree 
+2026-11-06T03:02:36.1648171Z 
+2026-11-06T03:02:36.1786657Z luarocks-purifier: wrote /home/runner/work/_temp/lua-sdk-native-c7ahaem1/project/luarocks-purifier.lock.json (1 downloads)
+2026-11-06T03:02:36.7277090Z luarocks-purifier: locking application-1.0-1.rockspec
+2026-11-06T03:02:36.7420404Z 
+2026-11-06T03:02:36.7420654Z Missing dependencies for application:
+2026-11-06T03:02:36.7420974Z answer == 1.0
+2026-11-06T03:02:36.7421090Z 
+2026-11-06T03:02:36.9627287Z Using /home/runner/work/_temp/lua-sdk-native-c7ahaem1/project/.luarocks-purifier/lock-run/src/rocks/answer-1.0-1.rockspec... switching to 'build' mode
+2026-11-06T03:02:36.9879316Z No existing manifest. Attempting to rebuild...
+2026-11-06T03:02:36.9893565Z Updating manifest for /home/runner/work/_temp/lua-sdk-native-c7ahaem1/project/.luarocks-purifier/lock-run/tree/lib/luarocks/rocks
+2026-11-06T03:02:37.0696577Z answer 1.0-1 is now built and installed in /home/runner/work/_temp/lua-sdk-native-c7ahaem1/project/.luarocks-purifier/lock-run/tree 
+2026-11-06T03:02:37.0696995Z 
+2026-11-06T03:02:37.0697257Z gcc -O2 -fPIC -I/nix/store/i8fr3ympqywx97yl5w0wzf0jcw86j5jj-lua-5.1.5/include -c native.c -o native.o
+2026-11-06T03:02:37.0697843Z gcc -shared -o native.so -L/nix/store/i8fr3ympqywx97yl5w0wzf0jcw86j5jj-lua-5.1.5/lib native.o
+2026-11-06T03:02:37.1056785Z Updating manifest for /home/runner/work/_temp/lua-sdk-native-c7ahaem1/project/.luarocks-purifier/lock-run/tree/lib/luarocks/rocks
+2026-11-06T03:02:37.1057743Z application 1.0-1 is now built and installed in /home/runner/work/_temp/lua-sdk-native-c7ahaem1/project/.luarocks-purifier/lock-run/tree 
+2026-11-06T03:02:37.1058247Z 
+2026-11-06T03:02:37.1195761Z luarocks-purifier: wrote /home/runner/work/_temp/lua-sdk-native-c7ahaem1/project/luarocks-purifier.lock.json (1 downloads)
+2026-11-06T03:02:37.4817685Z unpacking 'github:nix-caisson/caisson/ec291bc9637a95606f7fa9df942d5e803705d8f5?narHash=sha256-FAixpwyAWmhrzmh0fMGt7y0KIcNLqBIGICfMvbExRLo%3D' into the Git cache...
+2026-11-06T03:02:38.0753864Z unpacking 'github:nix-caisson/caisson-core/6868bca2682e96d56714bc9c9adcf0048fbe132f?narHash=sha256-OzlG2Nhl/kU2UUPq%2BARH/GKUHmOqAxQu5Ug/%2BaT1ECc%3D' into the Git cache...
+2026-11-06T03:02:38.4399829Z unpacking 'github:nix-community/nixpkgs.lib/b91d4f1bc958e0bdfd6cb3db4a280486006f5002?narHash=sha256-XtTdVeJX6X/gU%2BvGIUEJHirotv/lYP5%2BQ9irMH6HWPY%3D' into the Git cache...
+2026-11-06T03:02:38.9045311Z unpacking 'github:hercules-ci/flake-parts/31729ca8cbdb4fa927b34e5f4353e6a83f39e993?narHash=sha256-glZLQlzIn1fXH6PazR2iUmTo7kzzyYSshrWhLS9TqCU%3D' into the Git cache...
+2026-11-06T03:02:39.2876423Z unpacking 'github:nix-community/nixpkgs.lib/7851ba61fd862b277cb6a9cef37394bc18bb94e4?narHash=sha256-ThkfL3D/FhCiZFc9%2B3BtxwuMmpuK%2B/bGtXCSo1%2ByVew%3D' into the Git cache...
+2026-11-06T03:02:39.6672207Z unpacking 'github:hercules-ci/flake-parts/024633cd702b10285db5cb19b40ad48d2399ba60?narHash=sha256-zTwuwezD0w3hpga6a6P8emidzAZFyWqlNeRBlpWOOl8%3D' into the Git cache...
+2026-11-06T03:02:40.5675938Z these 3 derivations will be built:
+2026-11-06T03:02:40.5678897Z   /nix/store/m3snq7h63m6ikdjl7wwiwipq25hw6nrr-answer-1.0.tar.gz.drv
+2026-11-06T03:02:40.5679704Z   /nix/store/q63c2z0kxaf9phwcsmmc0s1bi2p3221a-files.json.drv
+2026-11-06T03:02:40.5680233Z   /nix/store/hnkbgkrzvdqwg116b3mdvynhbdg8xrvi-luarocks-purifier-cache.drv
+2026-11-06T03:02:40.5843916Z building '/nix/store/m3snq7h63m6ikdjl7wwiwipq25hw6nrr-answer-1.0.tar.gz.drv'...
+2026-11-06T03:02:40.5862592Z structuredAttrs is enabled
+2026-11-06T03:02:40.6148973Z 
+2026-11-06T03:02:40.6149432Z trying http://127.0.0.1:37367/answer-1.0.tar.gz
+2026-11-06T03:02:40.6182927Z   % Total    % Received % Xferd  Average Speed  Time    Time    Time   Current
+2026-11-06T03:02:40.6183735Z                                  Dload  Upload  Total   Spent   Left   Speed
+2026-11-06T03:02:40.6183992Z 
+2026-11-06T03:02:40.6188488Z   0      0   0      0   0      0      0      0                              0
+2026-11-06T03:02:40.6189381Z 100    261 100    261   0      0 321.8k      0                              0
+2026-11-06T03:02:40.6190240Z 100    261 100    261   0      0 287.0k      0                              0
+2026-11-06T03:02:40.6203871Z 100    261 100    261   0      0 264.1k      0                              0
+2026-11-06T03:02:40.6350509Z building '/nix/store/q63c2z0kxaf9phwcsmmc0s1bi2p3221a-files.json.drv'...
+2026-11-06T03:02:40.6366059Z structuredAttrs is enabled
+2026-11-06T03:02:40.7145630Z building '/nix/store/hnkbgkrzvdqwg116b3mdvynhbdg8xrvi-luarocks-purifier-cache.drv'...
+2026-11-06T03:02:40.7578022Z Making manifest for /nix/store/63c2vb6jidljfbd5lkwinsly3l96mfzn-luarocks-purifier-cache/server
+2026-11-06T03:02:40.7602382Z Generating index.html for /nix/store/63c2vb6jidljfbd5lkwinsly3l96mfzn-luarocks-purifier-cache/server
+2026-11-06T03:02:40.7966519Z 
+2026-11-06T03:02:40.7966917Z Missing dependencies for application:
+2026-11-06T03:02:40.7967180Z answer == 1.0
+2026-11-06T03:02:40.7967358Z 
+2026-11-06T03:02:41.0100689Z Using /home/runner/work/_temp/lua-sdk-native-c7ahaem1/project/rocks/answer-1.0-1.rockspec... switching to 'build' mode
+2026-11-06T03:02:41.0348489Z No existing manifest. Attempting to rebuild...
+2026-11-06T03:02:41.0363084Z Updating manifest for /home/runner/work/_temp/lua-sdk-native-c7ahaem1/project/lua_modules/lib/luarocks/rocks
+2026-11-06T03:02:41.1163577Z answer 1.0-1 is now built and installed in /home/runner/work/_temp/lua-sdk-native-c7ahaem1/project/lua_modules 
+2026-11-06T03:02:41.1164083Z 
+2026-11-06T03:02:41.1164365Z gcc -O2 -fPIC -I/nix/store/i8fr3ympqywx97yl5w0wzf0jcw86j5jj-lua-5.1.5/include -c native.c -o native.o
+2026-11-06T03:02:41.1164914Z gcc -shared -o native.so -L/nix/store/i8fr3ympqywx97yl5w0wzf0jcw86j5jj-lua-5.1.5/lib native.o
+2026-11-06T03:02:41.1523532Z Updating manifest for /home/runner/work/_temp/lua-sdk-native-c7ahaem1/project/lua_modules/lib/luarocks/rocks
+2026-11-06T03:02:41.1524277Z application 1.0-1 is now built and installed in /home/runner/work/_temp/lua-sdk-native-c7ahaem1/project/lua_modules 
+2026-11-06T03:02:41.1524613Z 
+2026-11-06T03:02:41.1525688Z luarocks-purifier: prefetched /home/runner/work/_temp/lua-sdk-native-c7ahaem1/project/luarocks-purifier.lock.json; the dependencies are in lua_modules
+2026-11-06T03:02:42.3248264Z gcc -O2 -fPIC -I/nix/store/i8fr3ympqywx97yl5w0wzf0jcw86j5jj-lua-5.1.5/include -c native.c -o native.o
+2026-11-06T03:02:42.3248944Z gcc -shared -o native.so -L/nix/store/i8fr3ympqywx97yl5w0wzf0jcw86j5jj-lua-5.1.5/lib native.o
+2026-11-06T03:02:42.3596502Z Updating manifest for /home/runner/work/_temp/lua-sdk-native-c7ahaem1/project/lua_modules/lib/luarocks/rocks
+2026-11-06T03:02:42.3597269Z application 1.0-1 is now built and installed in /home/runner/work/_temp/lua-sdk-native-c7ahaem1/project/lua_modules 
+2026-11-06T03:02:42.3597615Z 
+2026-11-06T03:02:43.0578595Z these 4 derivations will be built:
+2026-11-06T03:02:43.0583591Z   /nix/store/xvvirsslk0bxwmrq6831xkr7vi1pamj5-application-src-rock-1.0-1.drv
+2026-11-06T03:02:43.0584015Z   /nix/store/84gf99yaizj4dyakg6a8fqyrr4bdcdqd-release.drv
+2026-11-06T03:02:43.0584357Z   /nix/store/d53ms0qsb4acl70p4vgnr36bp5b6xls2-application-1.0-1.drv
+2026-11-06T03:02:43.0584680Z   /nix/store/j6s1nsynayyldc77zhm5h3qdlpjsd5sa-tests.drv
+2026-11-06T03:02:43.1249821Z building '/nix/store/d53ms0qsb4acl70p4vgnr36bp5b6xls2-application-1.0-1.drv'...
+2026-11-06T03:02:43.1351413Z building '/nix/store/j6s1nsynayyldc77zhm5h3qdlpjsd5sa-tests.drv'...
+2026-11-06T03:02:43.1562536Z building '/nix/store/xvvirsslk0bxwmrq6831xkr7vi1pamj5-application-src-rock-1.0-1.drv'...
+2026-11-06T03:02:43.5701670Z building '/nix/store/84gf99yaizj4dyakg6a8fqyrr4bdcdqd-release.drv'...
+2026-11-06T03:02:44.3810873Z luarocks-purifier: uploading application-1.0-1.rockspec with /nix/store/5bf2jgl4pfbrlxyb12m9pdh5z0jj128m-release/application-1.0-1.src.rock
+2026-11-06T03:02:44.3945800Z /home/runner/work/_temp/lua-sdk-native-c7ahaem1/project/.luarocks-purifier/publish/upload_config.lua
+2026-11-06T03:02:44.4027749Z Warning: Your LuaRocks is out of date, consider upgrading.
+2026-11-06T03:02:44.4325399Z Sending application-1.0-1.rockspec ...
+2026-11-06T03:02:44.4325702Z Will create new module (application)
+2026-11-06T03:02:44.4325957Z Packing application
+2026-11-06T03:02:44.4326312Z Sending /nix/store/5bf2jgl4pfbrlxyb12m9pdh5z0jj128m-release/application-1.0-1.src.rock ...
+2026-11-06T03:02:44.4326671Z 
+2026-11-06T03:02:44.4326783Z Done: http://127.0.0.1/m
+2026-11-06T03:02:44.4326945Z 
+2026-11-06T03:02:44.4590782Z 
+2026-11-06T03:02:44.4591165Z Missing dependencies for application:
+2026-11-06T03:02:44.4591542Z answer == 1.0
+2026-11-06T03:02:44.4591695Z 
+2026-11-06T03:02:44.4928232Z Using /nix/store/5bf2jgl4pfbrlxyb12m9pdh5z0jj128m-release/application-1.0-1.src.rock... switching to 'build' mode
+2026-11-06T03:02:44.4929249Z Using /home/runner/work/_temp/lua-sdk-native-c7ahaem1/project/rocks/answer-1.0-1.rockspec... switching to 'build' mode
+2026-11-06T03:02:44.5172077Z No existing manifest. Attempting to rebuild...
+2026-11-06T03:02:44.5185626Z Updating manifest for /home/runner/work/_temp/lua-sdk-native-c7ahaem1/consumer/tree/lib/luarocks/rocks
+2026-11-06T03:02:44.6003187Z answer 1.0-1 is now built and installed in /home/runner/work/_temp/lua-sdk-native-c7ahaem1/consumer/tree 
+2026-11-06T03:02:44.6003739Z 
+2026-11-06T03:02:44.6004169Z gcc -O2 -fPIC -I/nix/store/i8fr3ympqywx97yl5w0wzf0jcw86j5jj-lua-5.1.5/include -c native.c -o native.o
+2026-11-06T03:02:44.6005025Z gcc -shared -o native.so -L/nix/store/i8fr3ympqywx97yl5w0wzf0jcw86j5jj-lua-5.1.5/lib native.o
+2026-11-06T03:02:44.6369455Z Updating manifest for /home/runner/work/_temp/lua-sdk-native-c7ahaem1/consumer/tree/lib/luarocks/rocks
+2026-11-06T03:02:44.6370302Z application 1.0-1 is now built and installed in /home/runner/work/_temp/lua-sdk-native-c7ahaem1/consumer/tree 
+2026-11-06T03:02:44.6370753Z 
+2026-11-06T03:02:44.9807806Z Native runtime: Lua 5.1.5  Copyright (C) 1994-2012 Lua.org, PUC-Rio native manager: 2.2.0
+2026-11-06T03:02:44.9808625Z PASS native Lua 5.1.5 / 5.1 / LuaRocks 2.2.0: capture, dependency, C ABI, offline native/pure tests, source rock, byte-equal native upload and ordinary install
+2026-11-06T03:02:44.9930529Z ##[group]Run nix eval --impure --option allow-import-from-derivation false --json --expr 'import ./tests/sdk-context.nix {}'
+2026-11-06T03:02:44.9931234Z [36;1mnix eval --impure --option allow-import-from-derivation false --json --expr 'import ./tests/sdk-context.nix {}'[0m
+2026-11-06T03:02:44.9931732Z [36;1mnix shell nixpkgs#python3 -c python3 tests/sdk-portable.py[0m
+2026-11-06T03:02:44.9950180Z shell: /usr/bin/bash -e {0}
+2026-11-06T03:02:44.9950375Z env:
+2026-11-06T03:02:44.9950541Z   TMPDIR: /home/runner/work/_temp
+2026-11-06T03:02:44.9950821Z   NIX_PROFILES: /nix/var/nix/profiles/default /home/runner/.nix-profile
+2026-11-06T03:02:44.9951154Z   NIX_SSL_CERT_FILE: /etc/ssl/certs/ca-certificates.crt
+2026-11-06T03:02:44.9951393Z ##[endgroup]
+2026-11-06T03:02:45.3822022Z {"managerDerivation":"/nix/store/7qxy63kpv8mz6hhk9ib6z7b1a9ggl488-unbuildable-manager.drv","noSdkBuildRequired":true,"runtimeDerivation":"/nix/store/2a6pl8sizxh3qphkz46v0z21gyiz6xbn-unbuildable-runtime.drv","selectedOutput":"secondary","system":"x86_64-linux"}
+2026-11-06T03:02:45.9413571Z this derivation will be built:
+2026-11-06T03:02:45.9414366Z   /nix/store/gdnvvv028kq8zcvmp4k80417dkfpng7j-sdk-matrix.nix.drv
+2026-11-06T03:02:45.9548628Z building '/nix/store/gdnvvv028kq8zcvmp4k80417dkfpng7j-sdk-matrix.nix.drv'...
+2026-11-06T03:02:46.0402236Z copying 3 paths...
+2026-11-06T03:02:46.0404099Z copying path '/nix/store/33hv1lvdxpzxs8jwbbjq60qq3bi9ydry-manager-must-remain-unbuilt.drv' to 'file:///home/runner/work/_temp/lua-sdk-copy-ezg4u34b/cache'...
+2026-11-06T03:02:46.0408980Z copying path '/nix/store/mwmakvs6nsd92xl00qrdqvnljivb57hy-sdk-matrix.nix' to 'file:///home/runner/work/_temp/lua-sdk-copy-ezg4u34b/cache'...
+2026-11-06T03:02:46.0410787Z copying path '/nix/store/b2wchxbrn1caxgak0fnzdlh6c40hv07f-runtime-must-remain-unbuilt.drv' to 'file:///home/runner/work/_temp/lua-sdk-copy-ezg4u34b/cache'...
+2026-11-06T03:02:46.0874094Z copying 3 paths...
+2026-11-06T03:02:46.0878773Z copying path '/nix/store/33hv1lvdxpzxs8jwbbjq60qq3bi9ydry-manager-must-remain-unbuilt.drv' from 'file:///home/runner/work/_temp/lua-sdk-copy-ezg4u34b/cache'...
+2026-11-06T03:02:46.0880909Z copying path '/nix/store/b2wchxbrn1caxgak0fnzdlh6c40hv07f-runtime-must-remain-unbuilt.drv' from 'file:///home/runner/work/_temp/lua-sdk-copy-ezg4u34b/cache'...
+2026-11-06T03:02:46.0889530Z copying path '/nix/store/mwmakvs6nsd92xl00qrdqvnljivb57hy-sdk-matrix.nix' from 'file:///home/runner/work/_temp/lua-sdk-copy-ezg4u34b/cache'...
+2026-11-06T03:02:46.1159898Z PASS both selected SDK recipes survive cold-store copy without realization or IFD
+2026-11-06T03:02:46.1326464Z Post job cleanup.
+2026-11-06T03:02:46.2016485Z [command]/usr/bin/git version
+2026-11-06T03:02:46.2085800Z git version 2.56.0
+2026-11-06T03:02:46.2116330Z Temporarily overriding HOME='/home/runner/work/_temp/803eb435-b532-4bd5-9afd-fff5462cedb7' before making global git config changes
+2026-11-06T03:02:46.2117362Z Adding repository directory to the temporary git global config as a safe directory
+2026-11-06T03:02:46.2121357Z [command]/usr/bin/git config --global --add safe.directory /home/runner/work/luarocks-purifier/luarocks-purifier
+2026-11-06T03:02:46.2155964Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+2026-11-06T03:02:46.2189209Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+2026-11-06T03:02:46.2410293Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+2026-11-06T03:02:46.2435447Z http.https://github.com/.extraheader
+2026-11-06T03:02:46.2444863Z [command]/usr/bin/git config --local --unset-all http.https://github.com/.extraheader
+2026-11-06T03:02:46.2485595Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+2026-11-06T03:02:46.2703313Z [command]/usr/bin/git config --local --name-only --get-regexp ^includeIf\.gitdir:
+2026-11-06T03:02:46.2759203Z [command]/usr/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url
+2026-11-06T03:02:46.3084762Z Cleaning up orphan processes
+2026-11-06T03:02:46.3396606Z ##[warning]Node.js 20 is deprecated. The following actions target Node.js 20 but are being forced to run on Node.js 24: actions/checkout@v4. For more information see: https://github.blog/changelog/2025-09-19-deprecation-of-node-20-on-github-actions-runners/

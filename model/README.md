@@ -12,13 +12,23 @@ exports the complete registry, including purifiers outside the structured
 behavior catalog. Modeled projects also expose their assessment as `quality`.
 
 The four definitions are stored in the registry. Every assignment records its
-reviewed revision and date, confirmed sample-build evidence, and each criterion's
-state, explanation and source links. “Good
-tests,” “many samples” and long compatibility are reviewed judgments rather
+reviewed revision and date, confirmed sample builds, and a completed `met` or
+`not-met` judgment for all eight criteria. `not-met` means the inspected evidence
+does not demonstrate the criterion; it does not establish a tool failure.
+
+Version 2 binds each capability claim through `derivationReview` to executable
+Nix derivations, immutable source revisions, native systems, actual SDK roles,
+and retained execution receipts. Evaluation-only receipts establish evaluation.
+Local realization may reuse outputs; native CI execution and observed output
+identities are recorded separately. Unobserved NAR hashes and missing historical
+replay files remain explicit. Original receipt bytes are content-addressed under
+`docs-site/evidence/` and indexed by `review-artifacts.json`. Definition and
+maintenance-policy references explain the review; they do not prove execution.
+
+“Good tests,” “many samples” and long compatibility are reviewed judgments rather
 than numerical thresholds. Declaring Darwin or evaluating its derivations does
 not establish that Darwin works; old version points do not establish coverage
-of upstream non-EOL versions. Unreviewed evidence prevents promotion without
-asserting a known failure.
+of upstream non-EOL versions.
 
 Promotion requires all the tier's criteria and supporting evidence. Even Tier 4
 requires evaluation evidence. Local drafts and proof-only experiments are not

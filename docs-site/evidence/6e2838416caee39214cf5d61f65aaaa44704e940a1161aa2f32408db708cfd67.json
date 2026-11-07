@@ -1,0 +1,1913 @@
+{
+  "version": 1,
+  "group": "group-7",
+  "projects": {
+    "quarto-purifier": {
+      "criteriaToDerivationIds": {
+        "evaluation": [
+          "project",
+          "resources"
+        ],
+        "goodTests": [
+          "project",
+          "resources"
+        ],
+        "linux": [
+          "project",
+          "resources"
+        ],
+        "darwin": [
+          "project",
+          "resources"
+        ],
+        "oneVersion": [
+          "project",
+          "resources"
+        ],
+        "nonEolVersions": [
+          "project",
+          "resources"
+        ],
+        "manySamples": [
+          "project",
+          "resources"
+        ],
+        "longCompatibility": [
+          "project",
+          "resources"
+        ]
+      },
+      "samples": [
+        {
+          "name": "quarto-purifier:examples/minimal",
+          "kind": "authored-fixture",
+          "upstream": {
+            "repository": "https://github.com/nix-purifiers/quarto-purifier",
+            "revision": "5d1892a23c66355a6d1a0b7c8679e07769400dfc",
+            "sourceNarHash": "sha256-WtP9oT33W/LbWyVNRl2wlzfZB7ADJUUdeqAaCQGk8SY="
+          },
+          "sourceSubdirectory": "examples/minimal",
+          "sourceNarScope": "Whole immutable source repository; subdirectory explicitly identifies fixture, not a claimed independently fetched repository.",
+          "derivations": [
+            "project",
+            "resources"
+          ],
+          "executedSdkRoles": {
+            "quarto": "1.10.18"
+          },
+          "executionBinding": "build-project invokes patched core/bin/quarto render; project check greps fa-check in HTML, resources consumes rendered resource projection.",
+          "receipts": {
+            "project": [
+              {
+                "kind": "local-native-realization",
+                "receipt": "evidence/quarto-purifier-build-receipt.json",
+                "artifactSha256": "9acd57eacb752209595e628b19b2c466d3c918e98ead02a27caeac2233e8e702",
+                "log": "evidence/quarto-purifier-build.log",
+                "executedSystem": "x86_64-linux",
+                "status": "success",
+                "cacheCaveat": "Nix realization may reuse an already built or substituted exact output; no forced rebuild claimed."
+              },
+              {
+                "kind": "native-ci-check",
+                "receipt": "https://github.com/nix-purifiers/quarto-purifier/actions/runs/42154719605/job/127686019979",
+                "log": "evidence/quarto-purifier-42154719605-127686019979.log",
+                "artifactSha256": "37615e8271db68bcd9b4dc7d21c21cb4ddd3a07d2c7143db0ff7772bf60f4ea3",
+                "executedSystem": "x86_64-linux",
+                "status": "success",
+                "run": 42154719605,
+                "job": 127686019979,
+                "binding": "Immutable head SHA in jobs/run metadata; exact derivation basename occurs in successful native job log."
+              }
+            ],
+            "resources": [
+              {
+                "kind": "local-native-realization",
+                "receipt": "evidence/quarto-purifier-build-receipt.json",
+                "artifactSha256": "9acd57eacb752209595e628b19b2c466d3c918e98ead02a27caeac2233e8e702",
+                "log": "evidence/quarto-purifier-build.log",
+                "executedSystem": "x86_64-linux",
+                "status": "success",
+                "cacheCaveat": "Nix realization may reuse an already built or substituted exact output; no forced rebuild claimed."
+              },
+              {
+                "kind": "native-ci-check",
+                "receipt": "https://github.com/nix-purifiers/quarto-purifier/actions/runs/42154719605/job/127686019979",
+                "log": "evidence/quarto-purifier-42154719605-127686019979.log",
+                "artifactSha256": "37615e8271db68bcd9b4dc7d21c21cb4ddd3a07d2c7143db0ff7772bf60f4ea3",
+                "executedSystem": "x86_64-linux",
+                "status": "success",
+                "run": 42154719605,
+                "job": 127686019979,
+                "binding": "Immutable head SHA in jobs/run metadata; exact derivation basename occurs in successful native job log."
+              }
+            ]
+          }
+        }
+      ],
+      "sdkUseCaveat": "Only these selected sample/check roles are asserted to execute. Broad project SDK annotations in negative/library metadata are not independent native executions.",
+      "darwin": "not-met: no native Darwin receipt",
+      "sampleCoverage": "Mapped selected samplechecks only. Other authored fixtures add behavioral coverage but are not silently counted as independent samples."
+    },
+    "racket-purifier": {
+      "criteriaToDerivationIds": {
+        "evaluation": [
+          "project",
+          "installed"
+        ],
+        "goodTests": [
+          "project",
+          "installed"
+        ],
+        "linux": [
+          "project",
+          "installed"
+        ],
+        "darwin": [
+          "project",
+          "installed"
+        ],
+        "oneVersion": [
+          "project",
+          "installed"
+        ],
+        "nonEolVersions": [
+          "project",
+          "installed"
+        ],
+        "manySamples": [
+          "project",
+          "installed"
+        ],
+        "longCompatibility": [
+          "project",
+          "installed"
+        ]
+      },
+      "samples": [
+        {
+          "name": "racket-purifier:examples/minimal",
+          "kind": "authored-fixture",
+          "upstream": {
+            "repository": "https://github.com/nix-purifiers/racket-purifier",
+            "revision": "af1fd5f01bf9ad422fad039edc34540eb7b85d4b",
+            "sourceNarHash": "sha256-NVObo7AiTqU8UHC3GZ9vGS7CqaMT1CDLnzF3y5Ytcuk="
+          },
+          "sourceSubdirectory": "examples/minimal",
+          "sourceNarScope": "Whole immutable source repository; subdirectory explicitly identifies fixture, not a claimed independently fetched repository.",
+          "derivations": [
+            "project",
+            "installed"
+          ],
+          "executedSdkRoles": {
+            "racket": "9.3",
+            "gcc": "16.2.0"
+          },
+          "executionBinding": "build-project asserts lock toolVersions equals nativeRacket/gcc/sdk and runs raco test; installed loads purifier-example and asserts answer42.",
+          "receipts": {
+            "project": [
+              {
+                "kind": "local-native-realization",
+                "receipt": "evidence/racket-purifier-build-receipt.json",
+                "artifactSha256": "aba1e18e6f25270a548d10e56f0a05f304ab91f867c123463824c9962454cea0",
+                "log": "evidence/racket-purifier-build.log",
+                "executedSystem": "x86_64-linux",
+                "status": "success",
+                "cacheCaveat": "Nix realization may reuse an already built or substituted exact output; no forced rebuild claimed."
+              },
+              {
+                "kind": "native-ci-check",
+                "receipt": "https://github.com/nix-purifiers/racket-purifier/actions/runs/42154722233/job/127686028792",
+                "log": "evidence/racket-purifier-42154722233-127686028792.log",
+                "artifactSha256": "9e2b8c2f5b3db34e6618d5653a66ad07ce9e4ad093b870862854ba212c602b4a",
+                "executedSystem": "x86_64-linux",
+                "status": "success",
+                "run": 42154722233,
+                "job": 127686028792,
+                "binding": "Immutable head SHA in jobs/run metadata; exact derivation basename occurs in successful native job log."
+              }
+            ],
+            "installed": [
+              {
+                "kind": "local-native-realization",
+                "receipt": "evidence/racket-purifier-build-receipt.json",
+                "artifactSha256": "aba1e18e6f25270a548d10e56f0a05f304ab91f867c123463824c9962454cea0",
+                "log": "evidence/racket-purifier-build.log",
+                "executedSystem": "x86_64-linux",
+                "status": "success",
+                "cacheCaveat": "Nix realization may reuse an already built or substituted exact output; no forced rebuild claimed."
+              },
+              {
+                "kind": "native-ci-check",
+                "receipt": "https://github.com/nix-purifiers/racket-purifier/actions/runs/42154722233/job/127686028792",
+                "log": "evidence/racket-purifier-42154722233-127686028792.log",
+                "artifactSha256": "9e2b8c2f5b3db34e6618d5653a66ad07ce9e4ad093b870862854ba212c602b4a",
+                "executedSystem": "x86_64-linux",
+                "status": "success",
+                "run": 42154722233,
+                "job": 127686028792,
+                "binding": "Immutable head SHA in jobs/run metadata; exact derivation basename occurs in successful native job log."
+              }
+            ]
+          }
+        }
+      ],
+      "sdkUseCaveat": "Only these selected sample/check roles are asserted to execute. Broad project SDK annotations in negative/library metadata are not independent native executions.",
+      "darwin": "not-met: no native Darwin receipt",
+      "sampleCoverage": "Mapped selected samplechecks only. Other authored fixtures add behavioral coverage but are not silently counted as independent samples."
+    },
+    "rebar3-purifier": {
+      "criteriaToDerivationIds": {
+        "evaluation": [
+          "fixture-hello-tests",
+          "fixture-hello-build",
+          "fixture-umbrella-build",
+          "conformance-external"
+        ],
+        "goodTests": [
+          "fixture-hello-tests",
+          "fixture-hello-build",
+          "fixture-umbrella-build",
+          "conformance-external"
+        ],
+        "linux": [
+          "fixture-hello-tests",
+          "fixture-hello-build",
+          "fixture-umbrella-build",
+          "conformance-external"
+        ],
+        "darwin": [
+          "fixture-hello-tests",
+          "fixture-hello-build",
+          "fixture-umbrella-build",
+          "conformance-external"
+        ],
+        "oneVersion": [
+          "fixture-hello-tests",
+          "fixture-hello-build",
+          "fixture-umbrella-build",
+          "conformance-external"
+        ],
+        "nonEolVersions": [
+          "fixture-hello-tests",
+          "fixture-hello-build",
+          "fixture-umbrella-build",
+          "conformance-external"
+        ],
+        "manySamples": [
+          "fixture-hello-tests",
+          "fixture-hello-build",
+          "fixture-umbrella-build",
+          "conformance-external"
+        ],
+        "longCompatibility": [
+          "fixture-hello-tests",
+          "fixture-hello-build",
+          "fixture-umbrella-build",
+          "conformance-external"
+        ]
+      },
+      "samples": [
+        {
+          "name": "rebar3-purifier:tests/fixtures/hello",
+          "kind": "authored-fixture",
+          "upstream": {
+            "repository": "https://github.com/nix-purifiers/rebar3-purifier",
+            "revision": "8cf43df2533f7d2059c2caa34fd998c327e19b7d",
+            "sourceNarHash": "sha256-V7B9iOCFshpEMHhOx1i2Aam73Y6YqdwlRo+Fc2wg+Dw="
+          },
+          "sourceSubdirectory": "tests/fixtures/hello",
+          "sourceNarScope": "Whole immutable source repository; subdirectory explicitly identifies fixture, not a claimed independently fetched repository.",
+          "derivations": [
+            "fixture-hello-tests",
+            "fixture-hello-build",
+            "conformance-external"
+          ],
+          "executedSdkRoles": {
+            "rebar3": "3.28.0",
+            "erlang": "28.5.0.8"
+          },
+          "executionBinding": "hello.tests runs native EUnit; external lock consumers execute escript-hello and compare JSON. Native rebar3 and OTP paths are in retained derivation inputs.",
+          "receipts": {
+            "fixture-hello-tests": [
+              {
+                "kind": "local-native-realization",
+                "receipt": "evidence/rebar3-purifier-build-receipt.json",
+                "artifactSha256": "d5b63cc87dfc7eb45919d254e19dc94b47d408cb88e5eb6378da2f2eb7ddaf5f",
+                "log": "evidence/rebar3-purifier-build.log",
+                "executedSystem": "x86_64-linux",
+                "status": "success",
+                "cacheCaveat": "Nix realization may reuse an already built or substituted exact output; no forced rebuild claimed."
+              },
+              {
+                "kind": "native-ci-check",
+                "receipt": "https://github.com/nix-purifiers/rebar3-purifier/actions/runs/42154726437/job/127686042186",
+                "log": "evidence/rebar3-purifier-42154726437-127686042186.log",
+                "artifactSha256": "2a9ef16d843788ca6e999016269aa9f21be652440907a303d2ef9b0b9008d1aa",
+                "executedSystem": "x86_64-linux",
+                "status": "success",
+                "run": 42154726437,
+                "job": 127686042186,
+                "binding": "Immutable head SHA in jobs/run metadata; exact derivation basename occurs in successful native job log."
+              }
+            ],
+            "fixture-hello-build": [
+              {
+                "kind": "local-native-realization",
+                "receipt": "evidence/rebar3-purifier-build-receipt.json",
+                "artifactSha256": "d5b63cc87dfc7eb45919d254e19dc94b47d408cb88e5eb6378da2f2eb7ddaf5f",
+                "log": "evidence/rebar3-purifier-build.log",
+                "executedSystem": "x86_64-linux",
+                "status": "success",
+                "cacheCaveat": "Nix realization may reuse an already built or substituted exact output; no forced rebuild claimed."
+              },
+              {
+                "kind": "native-ci-check",
+                "receipt": "https://github.com/nix-purifiers/rebar3-purifier/actions/runs/42154726437/job/127686042186",
+                "log": "evidence/rebar3-purifier-42154726437-127686042186.log",
+                "artifactSha256": "2a9ef16d843788ca6e999016269aa9f21be652440907a303d2ef9b0b9008d1aa",
+                "executedSystem": "x86_64-linux",
+                "status": "success",
+                "run": 42154726437,
+                "job": 127686042186,
+                "binding": "Immutable head SHA in jobs/run metadata; exact derivation basename occurs in successful native job log."
+              }
+            ],
+            "conformance-external": [
+              {
+                "kind": "local-native-realization",
+                "receipt": "evidence/rebar3-purifier-build-receipt.json",
+                "artifactSha256": "d5b63cc87dfc7eb45919d254e19dc94b47d408cb88e5eb6378da2f2eb7ddaf5f",
+                "log": "evidence/rebar3-purifier-build.log",
+                "executedSystem": "x86_64-linux",
+                "status": "success",
+                "cacheCaveat": "Nix realization may reuse an already built or substituted exact output; no forced rebuild claimed."
+              },
+              {
+                "kind": "native-ci-check",
+                "receipt": "https://github.com/nix-purifiers/rebar3-purifier/actions/runs/42154726437/job/127686042186",
+                "log": "evidence/rebar3-purifier-42154726437-127686042186.log",
+                "artifactSha256": "2a9ef16d843788ca6e999016269aa9f21be652440907a303d2ef9b0b9008d1aa",
+                "executedSystem": "x86_64-linux",
+                "status": "success",
+                "run": 42154726437,
+                "job": 127686042186,
+                "binding": "Immutable head SHA in jobs/run metadata; exact derivation basename occurs in successful native job log."
+              }
+            ]
+          }
+        },
+        {
+          "name": "rebar3-purifier:tests/fixtures/umbrella",
+          "kind": "authored-fixture",
+          "upstream": {
+            "repository": "https://github.com/nix-purifiers/rebar3-purifier",
+            "revision": "8cf43df2533f7d2059c2caa34fd998c327e19b7d",
+            "sourceNarHash": "sha256-V7B9iOCFshpEMHhOx1i2Aam73Y6YqdwlRo+Fc2wg+Dw="
+          },
+          "sourceSubdirectory": "tests/fixtures/umbrella",
+          "sourceNarScope": "Whole immutable source repository; subdirectory explicitly identifies fixture, not a claimed independently fetched repository.",
+          "derivations": [
+            "fixture-umbrella-build"
+          ],
+          "executedSdkRoles": {
+            "rebar3": "3.28.0",
+            "erlang": "28.5.0.8"
+          },
+          "executionBinding": "umbrella project build uses native Rebar3/OTP on locked git/plugin dependencies; build-only selected root, no assertion that this root is EUnit.",
+          "receipts": {
+            "fixture-umbrella-build": [
+              {
+                "kind": "local-native-realization",
+                "receipt": "evidence/rebar3-purifier-build-receipt.json",
+                "artifactSha256": "d5b63cc87dfc7eb45919d254e19dc94b47d408cb88e5eb6378da2f2eb7ddaf5f",
+                "log": "evidence/rebar3-purifier-build.log",
+                "executedSystem": "x86_64-linux",
+                "status": "success",
+                "cacheCaveat": "Nix realization may reuse an already built or substituted exact output; no forced rebuild claimed."
+              },
+              {
+                "kind": "native-ci-check",
+                "receipt": "https://github.com/nix-purifiers/rebar3-purifier/actions/runs/42154726437/job/127686042186",
+                "log": "evidence/rebar3-purifier-42154726437-127686042186.log",
+                "artifactSha256": "2a9ef16d843788ca6e999016269aa9f21be652440907a303d2ef9b0b9008d1aa",
+                "executedSystem": "x86_64-linux",
+                "status": "success",
+                "run": 42154726437,
+                "job": 127686042186,
+                "binding": "Immutable head SHA in jobs/run metadata; exact derivation basename occurs in successful native job log."
+              }
+            ]
+          }
+        }
+      ],
+      "sdkUseCaveat": "Only these selected sample/check roles are asserted to execute. Broad project SDK annotations in negative/library metadata are not independent native executions.",
+      "darwin": "not-met: no native Darwin receipt",
+      "sampleCoverage": "Mapped selected samplechecks only. Other authored fixtures add behavioral coverage but are not silently counted as independent samples."
+    },
+    "renv-purifier": {
+      "criteriaToDerivationIds": {
+        "evaluation": [
+          "hello-tests",
+          "hello-runs",
+          "cransays-runs",
+          "conformance-offline",
+          "old-renv-runs"
+        ],
+        "goodTests": [
+          "hello-tests",
+          "hello-runs",
+          "cransays-runs",
+          "conformance-offline",
+          "old-renv-runs"
+        ],
+        "linux": [
+          "hello-tests",
+          "hello-runs",
+          "cransays-runs",
+          "conformance-offline",
+          "old-renv-runs"
+        ],
+        "darwin": [
+          "hello-tests",
+          "hello-runs",
+          "cransays-runs",
+          "conformance-offline",
+          "old-renv-runs"
+        ],
+        "oneVersion": [
+          "hello-tests",
+          "hello-runs",
+          "cransays-runs",
+          "conformance-offline",
+          "old-renv-runs"
+        ],
+        "nonEolVersions": [
+          "hello-tests",
+          "hello-runs",
+          "cransays-runs",
+          "conformance-offline",
+          "old-renv-runs"
+        ],
+        "manySamples": [
+          "hello-tests",
+          "hello-runs",
+          "cransays-runs",
+          "conformance-offline",
+          "old-renv-runs"
+        ],
+        "longCompatibility": [
+          "hello-tests",
+          "hello-runs",
+          "cransays-runs",
+          "conformance-offline",
+          "old-renv-runs"
+        ]
+      },
+      "samples": [
+        {
+          "name": "renv-purifier:tests/fixtures/hello",
+          "kind": "authored-fixture",
+          "upstream": {
+            "repository": "https://github.com/nix-purifiers/renv-purifier",
+            "revision": "528729376aab9a8bc148b375c35099bbc5eee52e",
+            "sourceNarHash": "sha256-e7LX/Alx507EewoOpJOeHxdNXvG75bXzf55Xyyc+nGc="
+          },
+          "sourceSubdirectory": "tests/fixtures/hello",
+          "sourceNarScope": "Whole immutable source repository; subdirectory explicitly identifies fixture, not a claimed independently fetched repository.",
+          "derivations": [
+            "hello-tests",
+            "hello-runs",
+            "conformance-offline"
+          ],
+          "executedSdkRoles": {
+            "R": "4.6.1",
+            "renvRestorer": "1.3.1"
+          },
+          "executionBinding": "hello.tests runs R CMD check; hello-runs invokes installed Rscript hello and checksJSON/glue/size; offline prefetch then loads project packages.",
+          "receipts": {
+            "hello-tests": [
+              {
+                "kind": "local-native-realization",
+                "receipt": "evidence/renv-purifier-build-receipt.json",
+                "artifactSha256": "a4413cb7d07e4280748c8dfc6726d0e607620cbaac938555dcae6452ae4c6bb7",
+                "log": "evidence/renv-purifier-build.log",
+                "executedSystem": "x86_64-linux",
+                "status": "success",
+                "cacheCaveat": "Nix realization may reuse an already built or substituted exact output; no forced rebuild claimed."
+              }
+            ],
+            "hello-runs": [
+              {
+                "kind": "local-native-realization",
+                "receipt": "evidence/renv-purifier-build-receipt.json",
+                "artifactSha256": "a4413cb7d07e4280748c8dfc6726d0e607620cbaac938555dcae6452ae4c6bb7",
+                "log": "evidence/renv-purifier-build.log",
+                "executedSystem": "x86_64-linux",
+                "status": "success",
+                "cacheCaveat": "Nix realization may reuse an already built or substituted exact output; no forced rebuild claimed."
+              }
+            ],
+            "conformance-offline": [
+              {
+                "kind": "local-native-realization",
+                "receipt": "evidence/renv-purifier-build-receipt.json",
+                "artifactSha256": "a4413cb7d07e4280748c8dfc6726d0e607620cbaac938555dcae6452ae4c6bb7",
+                "log": "evidence/renv-purifier-build.log",
+                "executedSystem": "x86_64-linux",
+                "status": "success",
+                "cacheCaveat": "Nix realization may reuse an already built or substituted exact output; no forced rebuild claimed."
+              }
+            ]
+          }
+        },
+        {
+          "name": "renv-purifier:tests/fixtures/old-renv",
+          "kind": "authored-fixture",
+          "upstream": {
+            "repository": "https://github.com/nix-purifiers/renv-purifier",
+            "revision": "528729376aab9a8bc148b375c35099bbc5eee52e",
+            "sourceNarHash": "sha256-e7LX/Alx507EewoOpJOeHxdNXvG75bXzf55Xyyc+nGc="
+          },
+          "sourceSubdirectory": "tests/fixtures/old-renv",
+          "sourceNarScope": "Whole immutable source repository; subdirectory explicitly identifies fixture, not a claimed independently fetched repository.",
+          "derivations": [
+            "old-renv-runs"
+          ],
+          "executedSdkRoles": {
+            "R": "4.6.1",
+            "renvRestorer": "1.3.1",
+            "restoredProjectRenv": "1.2.3"
+          },
+          "executionBinding": "Rscript stopifnot(packageVersion(\"renv\")==\"1.2.3\") plus loaded praise/BiocGenerics. Restorer version is separate from restored package version.",
+          "receipts": {
+            "old-renv-runs": [
+              {
+                "kind": "local-native-realization",
+                "receipt": "evidence/renv-purifier-build-receipt.json",
+                "artifactSha256": "a4413cb7d07e4280748c8dfc6726d0e607620cbaac938555dcae6452ae4c6bb7",
+                "log": "evidence/renv-purifier-build.log",
+                "executedSystem": "x86_64-linux",
+                "status": "success",
+                "cacheCaveat": "Nix realization may reuse an already built or substituted exact output; no forced rebuild claimed."
+              }
+            ]
+          }
+        },
+        {
+          "name": "r-hub/cransays dependency library (dashboard not rendered)",
+          "kind": "independent-upstream",
+          "upstream": {
+            "repository": "https://github.com/r-hub/cransays",
+            "revision": "aeaa1397fdb453e0a5b710ddc03a3fa04a89cf39",
+            "sourceNarHash": "sha256-pTht5lw1iQD0eks1TxLxcDSWxbwRQ9c66Px3jWL7Pww="
+          },
+          "sourceSubdirectory": ".",
+          "derivations": [
+            "cransays",
+            "cransays-runs"
+          ],
+          "executedSdkRoles": {
+            "R": "4.6.1",
+            "renvRestorer": "1.3.1"
+          },
+          "executionBinding": "cransays-runs loads packages in restored dependency library; no Quarto dashboard rendering.",
+          "receipts": {
+            "cransays": [
+              {
+                "kind": "local-native-realization",
+                "receipt": "evidence/renv-purifier-build-receipt.json",
+                "artifactSha256": "a4413cb7d07e4280748c8dfc6726d0e607620cbaac938555dcae6452ae4c6bb7",
+                "log": "evidence/renv-purifier-build.log",
+                "executedSystem": "x86_64-linux",
+                "status": "success",
+                "cacheCaveat": "Nix realization may reuse an already built or substituted exact output; no forced rebuild claimed."
+              }
+            ],
+            "cransays-runs": [
+              {
+                "kind": "local-native-realization",
+                "receipt": "evidence/renv-purifier-build-receipt.json",
+                "artifactSha256": "a4413cb7d07e4280748c8dfc6726d0e607620cbaac938555dcae6452ae4c6bb7",
+                "log": "evidence/renv-purifier-build.log",
+                "executedSystem": "x86_64-linux",
+                "status": "success",
+                "cacheCaveat": "Nix realization may reuse an already built or substituted exact output; no forced rebuild claimed."
+              }
+            ]
+          }
+        }
+      ],
+      "sdkUseCaveat": "Only these selected sample/check roles are asserted to execute. Broad project SDK annotations in negative/library metadata are not independent native executions.",
+      "darwin": "not-met: no native Darwin receipt",
+      "sampleCoverage": "Mapped selected samplechecks only. Other authored fixtures add behavioral coverage but are not silently counted as independent samples."
+    },
+    "sbt-purifier": {
+      "criteriaToDerivationIds": {
+        "evaluation": [
+          "legacy-build",
+          "legacy-ivy-build",
+          "externalized-multi",
+          "externalized-sbt2",
+          "consumer-repository"
+        ],
+        "goodTests": [
+          "legacy-build",
+          "legacy-ivy-build",
+          "externalized-multi",
+          "externalized-sbt2",
+          "consumer-repository"
+        ],
+        "linux": [
+          "legacy-build",
+          "legacy-ivy-build",
+          "externalized-multi",
+          "externalized-sbt2",
+          "consumer-repository"
+        ],
+        "darwin": [
+          "legacy-build",
+          "legacy-ivy-build",
+          "externalized-multi",
+          "externalized-sbt2",
+          "consumer-repository"
+        ],
+        "oneVersion": [
+          "legacy-build",
+          "legacy-ivy-build",
+          "externalized-multi",
+          "externalized-sbt2",
+          "consumer-repository"
+        ],
+        "nonEolVersions": [
+          "legacy-build",
+          "legacy-ivy-build",
+          "externalized-multi",
+          "externalized-sbt2",
+          "consumer-repository"
+        ],
+        "manySamples": [
+          "legacy-build",
+          "legacy-ivy-build",
+          "externalized-multi",
+          "externalized-sbt2",
+          "consumer-repository"
+        ],
+        "longCompatibility": [
+          "legacy-build",
+          "legacy-ivy-build",
+          "externalized-multi",
+          "externalized-sbt2",
+          "consumer-repository"
+        ]
+      },
+      "samples": [
+        {
+          "name": "sbt-purifier:tests/fixtures/sbt013",
+          "kind": "authored-fixture",
+          "upstream": {
+            "repository": "https://github.com/nix-purifiers/sbt-purifier",
+            "revision": "694028d9262526adedc8a942b82e84e2c2b7630b",
+            "sourceNarHash": "sha256-6GkSVDHqX30woXIuwys/g12rImkv4+BOZJkF4EyTVtU="
+          },
+          "sourceSubdirectory": "tests/fixtures/sbt013",
+          "sourceNarScope": "Whole immutable source repository; subdirectory explicitly identifies fixture, not a claimed independently fetched repository.",
+          "derivations": [
+            "legacy-build",
+            "legacy-ivy-build"
+          ],
+          "executedSdkRoles": {
+            "sbt": "0.13.18",
+            "jdk": "8u504-b01"
+          },
+          "executionBinding": "tests/default legacy build explicitly doCheck=true; native legacy builder publishes package+Ivy products and runs tests. Exact old-checkdrvs appear CI127657202273 and local build receipt.",
+          "receipts": {
+            "legacy-build": [
+              {
+                "kind": "local-native-realization",
+                "receipt": "evidence/sbt-purifier-build-receipt.json",
+                "artifactSha256": "b430d7db174775669202f62ff194da8ab5503c9268bb882e19bc8a6edf4d61ac",
+                "log": "evidence/sbt-purifier-build.log",
+                "executedSystem": "x86_64-linux",
+                "status": "success",
+                "cacheCaveat": "Nix realization may reuse an already built or substituted exact output; no forced rebuild claimed."
+              },
+              {
+                "kind": "native-ci-check",
+                "receipt": "https://github.com/nix-purifiers/sbt-purifier/actions/runs/42145908928/job/127657202273",
+                "log": "evidence/sbt-purifier-42145908928-127657202273.log",
+                "artifactSha256": "71f9432d52153e8c2b1369e9c2a533be6182efd2f68c9c50b1267b6f8b6501ad",
+                "executedSystem": "x86_64-linux",
+                "status": "success",
+                "run": 42145908928,
+                "job": 127657202273,
+                "binding": "Immutable head SHA in jobs/run metadata; exact derivation basename occurs in successful native job log."
+              }
+            ],
+            "legacy-ivy-build": [
+              {
+                "kind": "local-native-realization",
+                "receipt": "evidence/sbt-purifier-build-receipt.json",
+                "artifactSha256": "b430d7db174775669202f62ff194da8ab5503c9268bb882e19bc8a6edf4d61ac",
+                "log": "evidence/sbt-purifier-build.log",
+                "executedSystem": "x86_64-linux",
+                "status": "success",
+                "cacheCaveat": "Nix realization may reuse an already built or substituted exact output; no forced rebuild claimed."
+              },
+              {
+                "kind": "native-ci-check",
+                "receipt": "https://github.com/nix-purifiers/sbt-purifier/actions/runs/42145908928/job/127657202273",
+                "log": "evidence/sbt-purifier-42145908928-127657202273.log",
+                "artifactSha256": "71f9432d52153e8c2b1369e9c2a533be6182efd2f68c9c50b1267b6f8b6501ad",
+                "executedSystem": "x86_64-linux",
+                "status": "success",
+                "run": 42145908928,
+                "job": 127657202273,
+                "binding": "Immutable head SHA in jobs/run metadata; exact derivation basename occurs in successful native job log."
+              }
+            ]
+          }
+        },
+        {
+          "name": "sbt-purifier:tests/fixtures/multi",
+          "kind": "authored-fixture",
+          "upstream": {
+            "repository": "https://github.com/nix-purifiers/sbt-purifier",
+            "revision": "694028d9262526adedc8a942b82e84e2c2b7630b",
+            "sourceNarHash": "sha256-6GkSVDHqX30woXIuwys/g12rImkv4+BOZJkF4EyTVtU="
+          },
+          "sourceSubdirectory": "tests/fixtures/multi",
+          "sourceNarScope": "Whole immutable source repository; subdirectory explicitly identifies fixture, not a claimed independently fetched repository.",
+          "derivations": [
+            "externalized-multi"
+          ],
+          "executedSdkRoles": {
+            "sbt": "1.13.1",
+            "jdk": "21.0.12.1+1"
+          },
+          "executionBinding": "multi explicitly doCheck=true, munit checks dependency/license; externalized-multi depends on native built products and checks exact artifact link set.",
+          "receipts": {
+            "externalized-multi": [
+              {
+                "kind": "local-native-realization",
+                "receipt": "evidence/sbt-purifier-build-receipt.json",
+                "artifactSha256": "b430d7db174775669202f62ff194da8ab5503c9268bb882e19bc8a6edf4d61ac",
+                "log": "evidence/sbt-purifier-build.log",
+                "executedSystem": "x86_64-linux",
+                "status": "success",
+                "cacheCaveat": "Nix realization may reuse an already built or substituted exact output; no forced rebuild claimed."
+              },
+              {
+                "kind": "native-ci-check",
+                "receipt": "https://github.com/nix-purifiers/sbt-purifier/actions/runs/42145908928/job/127657202273",
+                "log": "evidence/sbt-purifier-42145908928-127657202273.log",
+                "artifactSha256": "71f9432d52153e8c2b1369e9c2a533be6182efd2f68c9c50b1267b6f8b6501ad",
+                "executedSystem": "x86_64-linux",
+                "status": "success",
+                "run": 42145908928,
+                "job": 127657202273,
+                "binding": "Immutable head SHA in jobs/run metadata; exact derivation basename occurs in successful native job log."
+              }
+            ]
+          }
+        },
+        {
+          "name": "sbt-purifier:tests/fixtures/sbt2",
+          "kind": "authored-fixture",
+          "upstream": {
+            "repository": "https://github.com/nix-purifiers/sbt-purifier",
+            "revision": "694028d9262526adedc8a942b82e84e2c2b7630b",
+            "sourceNarHash": "sha256-6GkSVDHqX30woXIuwys/g12rImkv4+BOZJkF4EyTVtU="
+          },
+          "sourceSubdirectory": "tests/fixtures/sbt2",
+          "sourceNarScope": "Whole immutable source repository; subdirectory explicitly identifies fixture, not a claimed independently fetched repository.",
+          "derivations": [
+            "externalized-sbt2"
+          ],
+          "executedSdkRoles": {
+            "sbt": "2.0.12",
+            "jdk": "21.0.12.1+1"
+          },
+          "executionBinding": "sbt2 explicitly doCheck=true; externalized-sbt2 verifies product/variant artifacts from native sbt2 build.",
+          "receipts": {
+            "externalized-sbt2": [
+              {
+                "kind": "local-native-realization",
+                "receipt": "evidence/sbt-purifier-build-receipt.json",
+                "artifactSha256": "b430d7db174775669202f62ff194da8ab5503c9268bb882e19bc8a6edf4d61ac",
+                "log": "evidence/sbt-purifier-build.log",
+                "executedSystem": "x86_64-linux",
+                "status": "success",
+                "cacheCaveat": "Nix realization may reuse an already built or substituted exact output; no forced rebuild claimed."
+              },
+              {
+                "kind": "native-ci-check",
+                "receipt": "https://github.com/nix-purifiers/sbt-purifier/actions/runs/42145908928/job/127657202273",
+                "log": "evidence/sbt-purifier-42145908928-127657202273.log",
+                "artifactSha256": "71f9432d52153e8c2b1369e9c2a533be6182efd2f68c9c50b1267b6f8b6501ad",
+                "executedSystem": "x86_64-linux",
+                "status": "success",
+                "run": 42145908928,
+                "job": 127657202273,
+                "binding": "Immutable head SHA in jobs/run metadata; exact derivation basename occurs in successful native job log."
+              }
+            ]
+          }
+        },
+        {
+          "name": "sbt-purifier:tests/fixtures/consumer",
+          "kind": "authored-fixture",
+          "upstream": {
+            "repository": "https://github.com/nix-purifiers/sbt-purifier",
+            "revision": "694028d9262526adedc8a942b82e84e2c2b7630b",
+            "sourceNarHash": "sha256-6GkSVDHqX30woXIuwys/g12rImkv4+BOZJkF4EyTVtU="
+          },
+          "sourceSubdirectory": "tests/fixtures/consumer",
+          "sourceNarScope": "Whole immutable source repository; subdirectory explicitly identifies fixture, not a claimed independently fetched repository.",
+          "derivations": [
+            "consumer-repository"
+          ],
+          "executedSdkRoles": {
+            "sbtProjectBuild": "1.11.7",
+            "sbtRepositoryResolver": "1.13.1",
+            "jdk": "21.0.12.1+1"
+          },
+          "executionBinding": "consumer source lock binds1.11.7; runFromRepository/resolveFromRepository launches native sbt from multi locked cache1.13.1 and runs exported module against only file repository inputs. Separate build/resolver roles.",
+          "receipts": {
+            "consumer-repository": [
+              {
+                "kind": "local-native-realization",
+                "receipt": "evidence/sbt-purifier-build-receipt.json",
+                "artifactSha256": "b430d7db174775669202f62ff194da8ab5503c9268bb882e19bc8a6edf4d61ac",
+                "log": "evidence/sbt-purifier-build.log",
+                "executedSystem": "x86_64-linux",
+                "status": "success",
+                "cacheCaveat": "Nix realization may reuse an already built or substituted exact output; no forced rebuild claimed."
+              },
+              {
+                "kind": "native-ci-check",
+                "receipt": "https://github.com/nix-purifiers/sbt-purifier/actions/runs/42145908928/job/127657202273",
+                "log": "evidence/sbt-purifier-42145908928-127657202273.log",
+                "artifactSha256": "71f9432d52153e8c2b1369e9c2a533be6182efd2f68c9c50b1267b6f8b6501ad",
+                "executedSystem": "x86_64-linux",
+                "status": "success",
+                "run": 42145908928,
+                "job": 127657202273,
+                "binding": "Immutable head SHA in jobs/run metadata; exact derivation basename occurs in successful native job log."
+              }
+            ]
+          }
+        }
+      ],
+      "sdkUseCaveat": "Only these selected sample/check roles are asserted to execute. Broad project SDK annotations in negative/library metadata are not independent native executions.",
+      "darwin": "not-met: no native Darwin receipt",
+      "sampleCoverage": "Mapped selected samplechecks only. Other authored fixtures add behavioral coverage but are not silently counted as independent samples."
+    },
+    "scala-cli-purifier": {
+      "criteriaToDerivationIds": {
+        "evaluation": [
+          "hello-runs",
+          "hello-tests",
+          "script-runs",
+          "js-runs",
+          "native-runs",
+          "example-besom-core"
+        ],
+        "goodTests": [
+          "hello-runs",
+          "hello-tests",
+          "script-runs",
+          "js-runs",
+          "native-runs",
+          "example-besom-core"
+        ],
+        "linux": [
+          "hello-runs",
+          "hello-tests",
+          "script-runs",
+          "js-runs",
+          "native-runs",
+          "example-besom-core"
+        ],
+        "darwin": [
+          "hello-runs",
+          "hello-tests",
+          "script-runs",
+          "js-runs",
+          "native-runs",
+          "example-besom-core"
+        ],
+        "oneVersion": [
+          "hello-runs",
+          "hello-tests",
+          "script-runs",
+          "js-runs",
+          "native-runs",
+          "example-besom-core"
+        ],
+        "nonEolVersions": [
+          "hello-runs",
+          "hello-tests",
+          "script-runs",
+          "js-runs",
+          "native-runs",
+          "example-besom-core"
+        ],
+        "manySamples": [
+          "hello-runs",
+          "hello-tests",
+          "script-runs",
+          "js-runs",
+          "native-runs",
+          "example-besom-core"
+        ],
+        "longCompatibility": [
+          "hello-runs",
+          "hello-tests",
+          "script-runs",
+          "js-runs",
+          "native-runs",
+          "example-besom-core"
+        ]
+      },
+      "samples": [
+        {
+          "name": "scala-cli-purifier:tests/fixtures/hello",
+          "kind": "authored-fixture",
+          "upstream": {
+            "repository": "https://github.com/nix-purifiers/scala-cli-purifier",
+            "revision": "37c32a9ec3e7489ee4976ee40d882585f5c6d793",
+            "sourceNarHash": "sha256-LN5ZEFnTeNJRyiWTXpZPLtcx9mY30Pn98aGude5oKgQ="
+          },
+          "sourceSubdirectory": "tests/fixtures/hello",
+          "sourceNarScope": "Whole immutable source repository; subdirectory explicitly identifies fixture, not a claimed independently fetched repository.",
+          "derivations": [
+            "hello-runs",
+            "hello-tests"
+          ],
+          "executedSdkRoles": {
+            "scala-cli": "1.18.0",
+            "java": "21.0.12.1",
+            "scalaCompiler": "3.3.4"
+          },
+          "executionBinding": "native ScalaCLI compiles fixture with using scala3.3.4 and lock compiler entries, test runner executes tests; hello-runs compares JSON runtime output.",
+          "receipts": {
+            "hello-runs": [
+              {
+                "kind": "local-native-realization",
+                "receipt": "evidence/scala-cli-purifier-build-receipt.json",
+                "artifactSha256": "c50bcaf02ed381e54775a1af106a402e6cde391eecd585f90c1f70784ba0ba03",
+                "log": "evidence/scala-cli-purifier-build.log",
+                "executedSystem": "x86_64-linux",
+                "status": "success",
+                "cacheCaveat": "Nix realization may reuse an already built or substituted exact output; no forced rebuild claimed."
+              },
+              {
+                "kind": "native-ci-check",
+                "receipt": "https://github.com/nix-purifiers/scala-cli-purifier/actions/runs/42315155356/job/128225833309",
+                "log": "evidence/scala-cli-purifier-42315155356-128225833309.log",
+                "artifactSha256": "63429dcac5929d8df9f4e72d16b8840685ae3c5a9e0917ed6b58cff6cb761075",
+                "executedSystem": "x86_64-linux",
+                "status": "success",
+                "run": 42315155356,
+                "job": 128225833309,
+                "binding": "Immutable head SHA in jobs/run metadata; exact derivation basename occurs in successful native job log."
+              }
+            ],
+            "hello-tests": [
+              {
+                "kind": "local-native-realization",
+                "receipt": "evidence/scala-cli-purifier-build-receipt.json",
+                "artifactSha256": "c50bcaf02ed381e54775a1af106a402e6cde391eecd585f90c1f70784ba0ba03",
+                "log": "evidence/scala-cli-purifier-build.log",
+                "executedSystem": "x86_64-linux",
+                "status": "success",
+                "cacheCaveat": "Nix realization may reuse an already built or substituted exact output; no forced rebuild claimed."
+              },
+              {
+                "kind": "native-ci-check",
+                "receipt": "https://github.com/nix-purifiers/scala-cli-purifier/actions/runs/42315155356/job/128225833309",
+                "log": "evidence/scala-cli-purifier-42315155356-128225833309.log",
+                "artifactSha256": "63429dcac5929d8df9f4e72d16b8840685ae3c5a9e0917ed6b58cff6cb761075",
+                "executedSystem": "x86_64-linux",
+                "status": "success",
+                "run": 42315155356,
+                "job": 128225833309,
+                "binding": "Immutable head SHA in jobs/run metadata; exact derivation basename occurs in successful native job log."
+              }
+            ]
+          }
+        },
+        {
+          "name": "scala-cli-purifier:tests/fixtures/script",
+          "kind": "authored-fixture",
+          "upstream": {
+            "repository": "https://github.com/nix-purifiers/scala-cli-purifier",
+            "revision": "37c32a9ec3e7489ee4976ee40d882585f5c6d793",
+            "sourceNarHash": "sha256-LN5ZEFnTeNJRyiWTXpZPLtcx9mY30Pn98aGude5oKgQ="
+          },
+          "sourceSubdirectory": "tests/fixtures/script",
+          "sourceNarScope": "Whole immutable source repository; subdirectory explicitly identifies fixture, not a claimed independently fetched repository.",
+          "derivations": [
+            "script-runs"
+          ],
+          "executedSdkRoles": {
+            "scala-cli": "1.18.0",
+            "java": "21.0.12.1",
+            "scalaCompiler": "2.13.15"
+          },
+          "executionBinding": "native ScalaCLI compiles using scala2.13.15 script; script-runs compares output script on Scala2.13.",
+          "receipts": {
+            "script-runs": [
+              {
+                "kind": "local-native-realization",
+                "receipt": "evidence/scala-cli-purifier-build-receipt.json",
+                "artifactSha256": "c50bcaf02ed381e54775a1af106a402e6cde391eecd585f90c1f70784ba0ba03",
+                "log": "evidence/scala-cli-purifier-build.log",
+                "executedSystem": "x86_64-linux",
+                "status": "success",
+                "cacheCaveat": "Nix realization may reuse an already built or substituted exact output; no forced rebuild claimed."
+              },
+              {
+                "kind": "native-ci-check",
+                "receipt": "https://github.com/nix-purifiers/scala-cli-purifier/actions/runs/42315155356/job/128225833309",
+                "log": "evidence/scala-cli-purifier-42315155356-128225833309.log",
+                "artifactSha256": "63429dcac5929d8df9f4e72d16b8840685ae3c5a9e0917ed6b58cff6cb761075",
+                "executedSystem": "x86_64-linux",
+                "status": "success",
+                "run": 42315155356,
+                "job": 128225833309,
+                "binding": "Immutable head SHA in jobs/run metadata; exact derivation basename occurs in successful native job log."
+              }
+            ]
+          }
+        },
+        {
+          "name": "scala-cli-purifier:tests/fixtures/js",
+          "kind": "authored-fixture",
+          "upstream": {
+            "repository": "https://github.com/nix-purifiers/scala-cli-purifier",
+            "revision": "37c32a9ec3e7489ee4976ee40d882585f5c6d793",
+            "sourceNarHash": "sha256-LN5ZEFnTeNJRyiWTXpZPLtcx9mY30Pn98aGude5oKgQ="
+          },
+          "sourceSubdirectory": "tests/fixtures/js",
+          "sourceNarScope": "Whole immutable source repository; subdirectory explicitly identifies fixture, not a claimed independently fetched repository.",
+          "derivations": [
+            "js-runs"
+          ],
+          "executedSdkRoles": {
+            "scala-cli": "1.18.0",
+            "java": "21.0.12.1",
+            "scalaCompiler": "3.3.4"
+          },
+          "executionBinding": "native ScalaCLI builds Scala.js then Node executes it; no claim that Node is a Darwin compiler runtime.",
+          "receipts": {
+            "js-runs": [
+              {
+                "kind": "local-native-realization",
+                "receipt": "evidence/scala-cli-purifier-build-receipt.json",
+                "artifactSha256": "c50bcaf02ed381e54775a1af106a402e6cde391eecd585f90c1f70784ba0ba03",
+                "log": "evidence/scala-cli-purifier-build.log",
+                "executedSystem": "x86_64-linux",
+                "status": "success",
+                "cacheCaveat": "Nix realization may reuse an already built or substituted exact output; no forced rebuild claimed."
+              },
+              {
+                "kind": "native-ci-check",
+                "receipt": "https://github.com/nix-purifiers/scala-cli-purifier/actions/runs/42315155356/job/128225833309",
+                "log": "evidence/scala-cli-purifier-42315155356-128225833309.log",
+                "artifactSha256": "63429dcac5929d8df9f4e72d16b8840685ae3c5a9e0917ed6b58cff6cb761075",
+                "executedSystem": "x86_64-linux",
+                "status": "success",
+                "run": 42315155356,
+                "job": 128225833309,
+                "binding": "Immutable head SHA in jobs/run metadata; exact derivation basename occurs in successful native job log."
+              }
+            ]
+          }
+        },
+        {
+          "name": "scala-cli-purifier:tests/fixtures/native",
+          "kind": "authored-fixture",
+          "upstream": {
+            "repository": "https://github.com/nix-purifiers/scala-cli-purifier",
+            "revision": "37c32a9ec3e7489ee4976ee40d882585f5c6d793",
+            "sourceNarHash": "sha256-LN5ZEFnTeNJRyiWTXpZPLtcx9mY30Pn98aGude5oKgQ="
+          },
+          "sourceSubdirectory": "tests/fixtures/native",
+          "sourceNarScope": "Whole immutable source repository; subdirectory explicitly identifies fixture, not a claimed independently fetched repository.",
+          "derivations": [
+            "native-runs"
+          ],
+          "executedSdkRoles": {
+            "scala-cli": "1.18.0",
+            "java": "21.0.12.1",
+            "scalaCompiler": "3.3.4"
+          },
+          "executionBinding": "native ScalaCLI compiles ScalaNative output and native-runs executes expected greeting.",
+          "receipts": {
+            "native-runs": [
+              {
+                "kind": "local-native-realization",
+                "receipt": "evidence/scala-cli-purifier-build-receipt.json",
+                "artifactSha256": "c50bcaf02ed381e54775a1af106a402e6cde391eecd585f90c1f70784ba0ba03",
+                "log": "evidence/scala-cli-purifier-build.log",
+                "executedSystem": "x86_64-linux",
+                "status": "success",
+                "cacheCaveat": "Nix realization may reuse an already built or substituted exact output; no forced rebuild claimed."
+              },
+              {
+                "kind": "native-ci-check",
+                "receipt": "https://github.com/nix-purifiers/scala-cli-purifier/actions/runs/42315155356/job/128225833309",
+                "log": "evidence/scala-cli-purifier-42315155356-128225833309.log",
+                "artifactSha256": "63429dcac5929d8df9f4e72d16b8840685ae3c5a9e0917ed6b58cff6cb761075",
+                "executedSystem": "x86_64-linux",
+                "status": "success",
+                "run": 42315155356,
+                "job": 128225833309,
+                "binding": "Immutable head SHA in jobs/run metadata; exact derivation basename occurs in successful native job log."
+              }
+            ]
+          }
+        },
+        {
+          "name": "VirtusLab/besom core library (compiled jar/class assertion)",
+          "kind": "independent-upstream",
+          "upstream": {
+            "repository": "https://github.com/VirtusLab/besom",
+            "revision": "6017c8814ac885df3c10d06969d90e2c2d8b3f9d",
+            "sourceNarHash": "sha256-5xGg+8oQBmjO6oHCsTjIlQQar/xd/n1ouzfArj2vh70="
+          },
+          "sourceSubdirectory": "core",
+          "derivations": [
+            "example-besom-core"
+          ],
+          "executedSdkRoles": {
+            "scala-cli": "1.18.0",
+            "java": "21.0.12.1",
+            "scalaCompiler": "3.3.7"
+          },
+          "executionBinding": "example-besom-core requires besom/internal/Context.class in actual compiledjar; no public-main Besom API runtime invocation asserted.",
+          "receipts": {
+            "example-besom-core": [
+              {
+                "kind": "local-native-realization",
+                "receipt": "evidence/scala-cli-purifier-build-receipt.json",
+                "artifactSha256": "c50bcaf02ed381e54775a1af106a402e6cde391eecd585f90c1f70784ba0ba03",
+                "log": "evidence/scala-cli-purifier-build.log",
+                "executedSystem": "x86_64-linux",
+                "status": "success",
+                "cacheCaveat": "Nix realization may reuse an already built or substituted exact output; no forced rebuild claimed."
+              },
+              {
+                "kind": "native-ci-check",
+                "receipt": "https://github.com/nix-purifiers/scala-cli-purifier/actions/runs/42315155356/job/128225833309",
+                "log": "evidence/scala-cli-purifier-42315155356-128225833309.log",
+                "artifactSha256": "63429dcac5929d8df9f4e72d16b8840685ae3c5a9e0917ed6b58cff6cb761075",
+                "executedSystem": "x86_64-linux",
+                "status": "success",
+                "run": 42315155356,
+                "job": 128225833309,
+                "binding": "Immutable head SHA in jobs/run metadata; exact derivation basename occurs in successful native job log."
+              }
+            ]
+          }
+        }
+      ],
+      "sdkUseCaveat": "Only these selected sample/check roles are asserted to execute. Broad project SDK annotations in negative/library metadata are not independent native executions.",
+      "darwin": "not-met: no native Darwin receipt",
+      "sampleCoverage": "Mapped selected samplechecks only. Other authored fixtures add behavioral coverage but are not silently counted as independent samples."
+    },
+    "shards-purifier": {
+      "criteriaToDerivationIds": {
+        "evaluation": [
+          "project",
+          "editor"
+        ],
+        "goodTests": [
+          "project",
+          "editor"
+        ],
+        "linux": [
+          "project",
+          "editor"
+        ],
+        "darwin": [
+          "project",
+          "editor"
+        ],
+        "oneVersion": [
+          "project",
+          "editor"
+        ],
+        "nonEolVersions": [
+          "project",
+          "editor"
+        ],
+        "manySamples": [
+          "project",
+          "editor"
+        ],
+        "longCompatibility": [
+          "project",
+          "editor"
+        ]
+      },
+      "samples": [
+        {
+          "name": "shards-purifier:examples/minimal",
+          "kind": "authored-fixture",
+          "upstream": {
+            "repository": "https://github.com/nix-purifiers/shards-purifier",
+            "revision": "05babcd2f430e9ca2fe5527bd8be9d1b48c1f64a",
+            "sourceNarHash": "sha256-wNGkPwxML3JmQ7fa0/c0kYX7Qk+09RqFVXr6GoDUDUA="
+          },
+          "sourceSubdirectory": "examples/minimal",
+          "sourceNarScope": "Whole immutable source repository; subdirectory explicitly identifies fixture, not a claimed independently fetched repository.",
+          "derivations": [
+            "project",
+            "editor"
+          ],
+          "executedSdkRoles": {
+            "shards": "0.20.0",
+            "crystal": "1.21.1"
+          },
+          "executionBinding": "native shards --frozen --local build followed by crystal spec in build-project; editor check consumes that environment.",
+          "receipts": {
+            "project": [
+              {
+                "kind": "local-native-realization",
+                "receipt": "evidence/shards-purifier-build-receipt.json",
+                "artifactSha256": "1263f8191f6157c1c5822f55d5cf7bef89e9305fefd7b4e54aab70804085941f",
+                "log": "evidence/shards-purifier-build.log",
+                "executedSystem": "x86_64-linux",
+                "status": "success",
+                "cacheCaveat": "Nix realization may reuse an already built or substituted exact output; no forced rebuild claimed."
+              },
+              {
+                "kind": "native-ci-check",
+                "receipt": "https://github.com/nix-purifiers/shards-purifier/actions/runs/42154917045/job/127686648146",
+                "log": "evidence/shards-purifier-42154917045-127686648146.log",
+                "artifactSha256": "4f381a56787b4be1f18fdc7216a391a027aa8c4f88df9cc4de81a8ba7268923e",
+                "executedSystem": "x86_64-linux",
+                "status": "success",
+                "run": 42154917045,
+                "job": 127686648146,
+                "binding": "Immutable head SHA in jobs/run metadata; exact derivation basename occurs in successful native job log."
+              }
+            ],
+            "editor": [
+              {
+                "kind": "local-native-realization",
+                "receipt": "evidence/shards-purifier-build-receipt.json",
+                "artifactSha256": "1263f8191f6157c1c5822f55d5cf7bef89e9305fefd7b4e54aab70804085941f",
+                "log": "evidence/shards-purifier-build.log",
+                "executedSystem": "x86_64-linux",
+                "status": "success",
+                "cacheCaveat": "Nix realization may reuse an already built or substituted exact output; no forced rebuild claimed."
+              },
+              {
+                "kind": "native-ci-check",
+                "receipt": "https://github.com/nix-purifiers/shards-purifier/actions/runs/42154917045/job/127686648146",
+                "log": "evidence/shards-purifier-42154917045-127686648146.log",
+                "artifactSha256": "4f381a56787b4be1f18fdc7216a391a027aa8c4f88df9cc4de81a8ba7268923e",
+                "executedSystem": "x86_64-linux",
+                "status": "success",
+                "run": 42154917045,
+                "job": 127686648146,
+                "binding": "Immutable head SHA in jobs/run metadata; exact derivation basename occurs in successful native job log."
+              }
+            ]
+          }
+        }
+      ],
+      "sdkUseCaveat": "Only these selected sample/check roles are asserted to execute. Broad project SDK annotations in negative/library metadata are not independent native executions.",
+      "darwin": "not-met: no native Darwin receipt",
+      "sampleCoverage": "Mapped selected samplechecks only. Other authored fixtures add behavioral coverage but are not silently counted as independent samples."
+    },
+    "soldeer-purifier": {
+      "criteriaToDerivationIds": {
+        "evaluation": [
+          "package",
+          "offline",
+          "conformance-external"
+        ],
+        "goodTests": [
+          "package",
+          "offline",
+          "conformance-external"
+        ],
+        "linux": [
+          "package",
+          "offline",
+          "conformance-external"
+        ],
+        "darwin": [
+          "package",
+          "offline",
+          "conformance-external"
+        ],
+        "oneVersion": [
+          "package",
+          "offline",
+          "conformance-external"
+        ],
+        "nonEolVersions": [
+          "package",
+          "offline",
+          "conformance-external"
+        ],
+        "manySamples": [
+          "package",
+          "offline",
+          "conformance-external"
+        ],
+        "longCompatibility": [
+          "package",
+          "offline",
+          "conformance-external"
+        ]
+      },
+      "samples": [
+        {
+          "name": "soldeer-purifier:examples/counter",
+          "kind": "authored-fixture",
+          "upstream": {
+            "repository": "https://github.com/nix-purifiers/soldeer-purifier",
+            "revision": "4a6b6d20f8cec707a425b3155aac92eb01c6e37d",
+            "sourceNarHash": "sha256-zwcye6Upyh0fSX2ZJLeufAbmtQc/VL+EOz4WAsjDHb8="
+          },
+          "sourceSubdirectory": "examples/counter",
+          "sourceNarScope": "Whole immutable source repository; subdirectory explicitly identifies fixture, not a claimed independently fetched repository.",
+          "derivations": [
+            "package",
+            "offline",
+            "conformance-external"
+          ],
+          "executedSdkRoles": {
+            "foundry": "1.8.4",
+            "solc": "0.8.33"
+          },
+          "executionBinding": "native Forge compiles contracts and offline Forge tests run; external check compares Counter.sol/Counter.json artifacts. This sample executes Forge/solc; Soldeer0.12.0 native version is separately executed in evidence/soldeer-native-version.json, not inferred from Forge version or claimed to run in pure sample.",
+          "receipts": {
+            "package": [
+              {
+                "kind": "local-native-realization",
+                "receipt": "evidence/soldeer-purifier-build-receipt.json",
+                "artifactSha256": "2035f6cc78c08a701a7d5b37c1f4939d5ef5054d628c2ea5b5c82d12750183b4",
+                "log": "evidence/soldeer-purifier-build.log",
+                "executedSystem": "x86_64-linux",
+                "status": "success",
+                "cacheCaveat": "Nix realization may reuse an already built or substituted exact output; no forced rebuild claimed."
+              },
+              {
+                "kind": "native-ci-check",
+                "receipt": "https://github.com/nix-purifiers/soldeer-purifier/actions/runs/42154920538/job/127686660256",
+                "log": "evidence/soldeer-purifier-42154920538-127686660256.log",
+                "artifactSha256": "7fce268417045505d7915d9e2f8f863bb2f09f87be74453466f5f9e2de94a7e3",
+                "executedSystem": "x86_64-linux",
+                "status": "success",
+                "run": 42154920538,
+                "job": 127686660256,
+                "binding": "Immutable head SHA in jobs/run metadata; exact derivation basename occurs in successful native job log."
+              }
+            ],
+            "offline": [
+              {
+                "kind": "local-native-realization",
+                "receipt": "evidence/soldeer-purifier-build-receipt.json",
+                "artifactSha256": "2035f6cc78c08a701a7d5b37c1f4939d5ef5054d628c2ea5b5c82d12750183b4",
+                "log": "evidence/soldeer-purifier-build.log",
+                "executedSystem": "x86_64-linux",
+                "status": "success",
+                "cacheCaveat": "Nix realization may reuse an already built or substituted exact output; no forced rebuild claimed."
+              },
+              {
+                "kind": "native-ci-check",
+                "receipt": "https://github.com/nix-purifiers/soldeer-purifier/actions/runs/42154920538/job/127686660256",
+                "log": "evidence/soldeer-purifier-42154920538-127686660256.log",
+                "artifactSha256": "7fce268417045505d7915d9e2f8f863bb2f09f87be74453466f5f9e2de94a7e3",
+                "executedSystem": "x86_64-linux",
+                "status": "success",
+                "run": 42154920538,
+                "job": 127686660256,
+                "binding": "Immutable head SHA in jobs/run metadata; exact derivation basename occurs in successful native job log."
+              }
+            ],
+            "conformance-external": [
+              {
+                "kind": "local-native-realization",
+                "receipt": "evidence/soldeer-purifier-build-receipt.json",
+                "artifactSha256": "2035f6cc78c08a701a7d5b37c1f4939d5ef5054d628c2ea5b5c82d12750183b4",
+                "log": "evidence/soldeer-purifier-build.log",
+                "executedSystem": "x86_64-linux",
+                "status": "success",
+                "cacheCaveat": "Nix realization may reuse an already built or substituted exact output; no forced rebuild claimed."
+              },
+              {
+                "kind": "native-ci-check",
+                "receipt": "https://github.com/nix-purifiers/soldeer-purifier/actions/runs/42154920538/job/127686660256",
+                "log": "evidence/soldeer-purifier-42154920538-127686660256.log",
+                "artifactSha256": "7fce268417045505d7915d9e2f8f863bb2f09f87be74453466f5f9e2de94a7e3",
+                "executedSystem": "x86_64-linux",
+                "status": "success",
+                "run": 42154920538,
+                "job": 127686660256,
+                "binding": "Immutable head SHA in jobs/run metadata; exact derivation basename occurs in successful native job log."
+              }
+            ]
+          }
+        }
+      ],
+      "sdkUseCaveat": "Only these selected sample/check roles are asserted to execute. Broad project SDK annotations in negative/library metadata are not independent native executions.",
+      "darwin": "not-met: no native Darwin receipt",
+      "sampleCoverage": "Mapped selected samplechecks only. Other authored fixtures add behavioral coverage but are not silently counted as independent samples."
+    },
+    "spago-purifier": {
+      "criteriaToDerivationIds": {
+        "evaluation": [
+          "project"
+        ],
+        "goodTests": [
+          "project"
+        ],
+        "linux": [
+          "project"
+        ],
+        "darwin": [
+          "project"
+        ],
+        "oneVersion": [
+          "project"
+        ],
+        "nonEolVersions": [
+          "project"
+        ],
+        "manySamples": [
+          "project"
+        ],
+        "longCompatibility": [
+          "project"
+        ]
+      },
+      "samples": [
+        {
+          "name": "spago-purifier:examples/minimal",
+          "kind": "authored-fixture",
+          "upstream": {
+            "repository": "https://github.com/nix-purifiers/spago-purifier",
+            "revision": "2aafeacbdd12d8211c09f9ed0f39dee03608b5ad",
+            "sourceNarHash": "sha256-mtkxGBgbwb59GWdU753bitow+uTMuiC+tMIDFY03ewM="
+          },
+          "sourceSubdirectory": "examples/minimal",
+          "sourceNarScope": "Whole immutable source repository; subdirectory explicitly identifies fixture, not a claimed independently fetched repository.",
+          "derivations": [
+            "project"
+          ],
+          "executedSdkRoles": {
+            "spago": "1.0.5",
+            "purescript": "0.15.16"
+          },
+          "executionBinding": "native Spago build uses native toolchain and default spago test command; lock tool tuple bound to native packages.",
+          "receipts": {
+            "project": [
+              {
+                "kind": "local-native-realization",
+                "receipt": "evidence/spago-purifier-build-receipt.json",
+                "artifactSha256": "aae4d048859889d52213ac239a4fdb62976285e54e5a023067333daf3d4f4c06",
+                "log": "evidence/spago-purifier-build.log",
+                "executedSystem": "x86_64-linux",
+                "status": "success",
+                "cacheCaveat": "Nix realization may reuse an already built or substituted exact output; no forced rebuild claimed."
+              },
+              {
+                "kind": "native-ci-check",
+                "receipt": "https://github.com/nix-purifiers/spago-purifier/actions/runs/42154924564/job/127686673493",
+                "log": "evidence/spago-purifier-42154924564-127686673493.log",
+                "artifactSha256": "96827e4840304775bc52371242bd39081b7f830da43a1971af0196b3eb0cbd3f",
+                "executedSystem": "x86_64-linux",
+                "status": "success",
+                "run": 42154924564,
+                "job": 127686673493,
+                "binding": "Immutable head SHA in jobs/run metadata; exact derivation basename occurs in successful native job log."
+              }
+            ]
+          }
+        }
+      ],
+      "sdkUseCaveat": "Only these selected sample/check roles are asserted to execute. Broad project SDK annotations in negative/library metadata are not independent native executions.",
+      "darwin": "not-met: no native Darwin receipt",
+      "sampleCoverage": "Mapped selected samplechecks only. Other authored fixtures add behavioral coverage but are not silently counted as independent samples."
+    },
+    "stack-purifier": {
+      "criteriaToDerivationIds": {
+        "evaluation": [
+          "project"
+        ],
+        "goodTests": [
+          "project"
+        ],
+        "linux": [
+          "project"
+        ],
+        "darwin": [
+          "project"
+        ],
+        "oneVersion": [
+          "project"
+        ],
+        "nonEolVersions": [
+          "project"
+        ],
+        "manySamples": [
+          "project"
+        ],
+        "longCompatibility": [
+          "project"
+        ]
+      },
+      "samples": [
+        {
+          "name": "stack-purifier:examples/minimal",
+          "kind": "authored-fixture",
+          "upstream": {
+            "repository": "https://github.com/nix-purifiers/stack-purifier",
+            "revision": "1499697d48d4e8e795d9f78cb9f829176b36ab50",
+            "sourceNarHash": "sha256-o0sdMBSvDgOJGlranKAB1T0d4N2mnNUHmV3HDgAjHtI="
+          },
+          "sourceSubdirectory": "examples/minimal",
+          "sourceNarScope": "Whole immutable source repository; subdirectory explicitly identifies fixture, not a claimed independently fetched repository.",
+          "derivations": [
+            "project"
+          ],
+          "executedSdkRoles": {
+            "stack": "3.9.3",
+            "ghc": "9.10.3"
+          },
+          "executionBinding": "native Stack --no-nix build --test --bench --no-run-benchmarks; build then installs binaries. Locked x86 profile binds actualStack/GHC tuple.",
+          "receipts": {
+            "project": [
+              {
+                "kind": "local-native-realization",
+                "receipt": "evidence/stack-purifier-build-receipt.json",
+                "artifactSha256": "86db1a280bc76892531d7fc9fada2f9b0b439f36f08bf6667a7fbe18dee3e054",
+                "log": "evidence/stack-purifier-build.log",
+                "executedSystem": "x86_64-linux",
+                "status": "success",
+                "cacheCaveat": "Nix realization may reuse an already built or substituted exact output; no forced rebuild claimed."
+              },
+              {
+                "kind": "native-ci-check",
+                "receipt": "https://github.com/nix-purifiers/stack-purifier/actions/runs/42154928405/job/127686685989",
+                "log": "evidence/stack-purifier-42154928405-127686685989.log",
+                "artifactSha256": "6babbfccdb387ac5332358dd2d00ad9b2ff38b13b2fb5b25245b276898e4aded",
+                "executedSystem": "x86_64-linux",
+                "status": "success",
+                "run": 42154928405,
+                "job": 127686685989,
+                "binding": "Immutable head SHA in jobs/run metadata; exact derivation basename occurs in successful native job log."
+              }
+            ]
+          }
+        }
+      ],
+      "sdkUseCaveat": "Only these selected sample/check roles are asserted to execute. Broad project SDK annotations in negative/library metadata are not independent native executions.",
+      "darwin": "not-met: no native Darwin receipt",
+      "sampleCoverage": "Mapped selected samplechecks only. Other authored fixtures add behavioral coverage but are not silently counted as independent samples."
+    },
+    "straight-purifier": {
+      "criteriaToDerivationIds": {
+        "evaluation": [
+          "project"
+        ],
+        "goodTests": [
+          "project"
+        ],
+        "linux": [
+          "project"
+        ],
+        "darwin": [
+          "project"
+        ],
+        "oneVersion": [
+          "project"
+        ],
+        "nonEolVersions": [
+          "project"
+        ],
+        "manySamples": [
+          "project"
+        ],
+        "longCompatibility": [
+          "project"
+        ]
+      },
+      "samples": [
+        {
+          "name": "straight-purifier:examples/config",
+          "kind": "authored-fixture",
+          "upstream": {
+            "repository": "https://github.com/nix-purifiers/straight-purifier",
+            "revision": "d7cc8f167b0c8cf204b5d4bc775f41e50113f56d",
+            "sourceNarHash": "sha256-Kbg9Scg7Zy6t/3gPjv+9hfyReLyQSS9YkDNB9fJrCko="
+          },
+          "sourceSubdirectory": "examples/config",
+          "sourceNarScope": "Whole immutable source repository; subdirectory explicitly identifies fixture, not a claimed independently fetched repository.",
+          "derivations": [
+            "project"
+          ],
+          "executedSdkRoles": {
+            "emacs": "31.1",
+            "straight": "3ad4414072ba512e39e19e8a7101bdfcb8318410"
+          },
+          "executionBinding": "Emacs --batch loads installed nativeStraight environment and tests/integration.el then ert-run-tests-batch-and-exit; asserts native package/store definition and refuses unlocked mutation.",
+          "receipts": {
+            "project": [
+              {
+                "kind": "local-native-realization",
+                "receipt": "evidence/straight-purifier-build-receipt.json",
+                "artifactSha256": "a360c2f18fcad2fac94fa3938bf223625c695842af15b139cf832e8db68abe19",
+                "log": "evidence/straight-purifier-build.log",
+                "executedSystem": "x86_64-linux",
+                "status": "success",
+                "cacheCaveat": "Nix realization may reuse an already built or substituted exact output; no forced rebuild claimed."
+              },
+              {
+                "kind": "native-ci-check",
+                "receipt": "https://github.com/nix-purifiers/straight-purifier/actions/runs/42154932568/job/127686699430",
+                "log": "evidence/straight-purifier-42154932568-127686699430.log",
+                "artifactSha256": "e2056169e2a9c91334fd83a19a70a61f3d38ef3a761a9857e391ee3ffe265ea5",
+                "executedSystem": "x86_64-linux",
+                "status": "success",
+                "run": 42154932568,
+                "job": 127686699430,
+                "binding": "Immutable head SHA in jobs/run metadata; exact derivation basename occurs in successful native job log."
+              }
+            ]
+          }
+        }
+      ],
+      "sdkUseCaveat": "Only these selected sample/check roles are asserted to execute. Broad project SDK annotations in negative/library metadata are not independent native executions.",
+      "darwin": "not-met: no native Darwin receipt",
+      "sampleCoverage": "Mapped selected samplechecks only. Other authored fixtures add behavioral coverage but are not silently counted as independent samples."
+    },
+    "swiftpm-purifier": {
+      "criteriaToDerivationIds": {
+        "evaluation": [
+          "fixture-hello",
+          "fixture-hello-tests",
+          "fixture-macro",
+          "project-toolbox",
+          "native-projections"
+        ],
+        "goodTests": [
+          "fixture-hello",
+          "fixture-hello-tests",
+          "fixture-macro",
+          "project-toolbox",
+          "native-projections"
+        ],
+        "linux": [
+          "fixture-hello",
+          "fixture-hello-tests",
+          "fixture-macro",
+          "project-toolbox",
+          "native-projections"
+        ],
+        "darwin": [
+          "fixture-hello",
+          "fixture-hello-tests",
+          "fixture-macro",
+          "project-toolbox",
+          "native-projections"
+        ],
+        "oneVersion": [
+          "fixture-hello",
+          "fixture-hello-tests",
+          "fixture-macro",
+          "project-toolbox",
+          "native-projections"
+        ],
+        "nonEolVersions": [
+          "fixture-hello",
+          "fixture-hello-tests",
+          "fixture-macro",
+          "project-toolbox",
+          "native-projections"
+        ],
+        "manySamples": [
+          "fixture-hello",
+          "fixture-hello-tests",
+          "fixture-macro",
+          "project-toolbox",
+          "native-projections"
+        ],
+        "longCompatibility": [
+          "fixture-hello",
+          "fixture-hello-tests",
+          "fixture-macro",
+          "project-toolbox",
+          "native-projections"
+        ]
+      },
+      "samples": [
+        {
+          "name": "swiftpm-purifier:tests/fixtures/hello",
+          "kind": "authored-fixture",
+          "upstream": {
+            "repository": "https://github.com/nix-purifiers/swiftpm-purifier",
+            "revision": "c6b194164b4fa1774b689257a58297bebfee19b5",
+            "sourceNarHash": "sha256-ZTL5hsnZ4XPTPgFxhZjslPV5mgksd2bJZNHjbk+A1pw="
+          },
+          "sourceSubdirectory": "tests/fixtures/hello",
+          "sourceNarScope": "Whole immutable source repository; subdirectory explicitly identifies fixture, not a claimed independently fetched repository.",
+          "derivations": [
+            "fixture-hello",
+            "fixture-hello-tests"
+          ],
+          "executedSdkRoles": {
+            "swift": "6.3.3",
+            "swiftpm": "6.3.3"
+          },
+          "executionBinding": "native SwiftPM compiles hello; fixture-hello executes resulting binary and compares greeting; Linux hello.tests runs XCTest.",
+          "receipts": {
+            "fixture-hello": [
+              {
+                "kind": "local-native-realization",
+                "receipt": "evidence/swiftpm-purifier-build-receipt.json",
+                "artifactSha256": "f7ec94cbb15eb40246ad4192ae2c6e23db52a6f2e359cd5ae43d6cb007f8bc8d",
+                "log": "evidence/swiftpm-purifier-build.log",
+                "executedSystem": "x86_64-linux",
+                "status": "success",
+                "cacheCaveat": "Nix realization may reuse an already built or substituted exact output; no forced rebuild claimed."
+              },
+              {
+                "kind": "native-ci-check",
+                "receipt": "https://github.com/nix-purifiers/swiftpm-purifier/actions/runs/42155170691/job/127687488331",
+                "log": "evidence/swiftpm-purifier-42155170691-127687488331.log",
+                "artifactSha256": "f400fded1a93de6fabba96136b35b3e053fd8057a5c8d00ccf566b62aaeb0e55",
+                "executedSystem": "x86_64-linux",
+                "status": "success",
+                "run": 42155170691,
+                "job": 127687488331,
+                "binding": "Immutable head SHA in jobs/run metadata; exact derivation basename occurs in successful native job log."
+              }
+            ],
+            "fixture-hello-tests": [
+              {
+                "kind": "local-native-realization",
+                "receipt": "evidence/swiftpm-purifier-build-receipt.json",
+                "artifactSha256": "f7ec94cbb15eb40246ad4192ae2c6e23db52a6f2e359cd5ae43d6cb007f8bc8d",
+                "log": "evidence/swiftpm-purifier-build.log",
+                "executedSystem": "x86_64-linux",
+                "status": "success",
+                "cacheCaveat": "Nix realization may reuse an already built or substituted exact output; no forced rebuild claimed."
+              },
+              {
+                "kind": "native-ci-check",
+                "receipt": "https://github.com/nix-purifiers/swiftpm-purifier/actions/runs/42155170691/job/127687488331",
+                "log": "evidence/swiftpm-purifier-42155170691-127687488331.log",
+                "artifactSha256": "f400fded1a93de6fabba96136b35b3e053fd8057a5c8d00ccf566b62aaeb0e55",
+                "executedSystem": "x86_64-linux",
+                "status": "success",
+                "run": 42155170691,
+                "job": 127687488331,
+                "binding": "Immutable head SHA in jobs/run metadata; exact derivation basename occurs in successful native job log."
+              }
+            ]
+          }
+        },
+        {
+          "name": "swiftpm-purifier:tests/fixtures/macro",
+          "kind": "authored-fixture",
+          "upstream": {
+            "repository": "https://github.com/nix-purifiers/swiftpm-purifier",
+            "revision": "c6b194164b4fa1774b689257a58297bebfee19b5",
+            "sourceNarHash": "sha256-ZTL5hsnZ4XPTPgFxhZjslPV5mgksd2bJZNHjbk+A1pw="
+          },
+          "sourceSubdirectory": "tests/fixtures/macro",
+          "sourceNarScope": "Whole immutable source repository; subdirectory explicitly identifies fixture, not a claimed independently fetched repository.",
+          "derivations": [
+            "fixture-macro"
+          ],
+          "executedSdkRoles": {
+            "swift": "6.3.3",
+            "swiftpm": "6.3.3"
+          },
+          "executionBinding": "native SwiftPM builds macro against swift-syntax; resulting program must print6*7=42.",
+          "receipts": {
+            "fixture-macro": [
+              {
+                "kind": "local-native-realization",
+                "receipt": "evidence/swiftpm-purifier-build-receipt.json",
+                "artifactSha256": "f7ec94cbb15eb40246ad4192ae2c6e23db52a6f2e359cd5ae43d6cb007f8bc8d",
+                "log": "evidence/swiftpm-purifier-build.log",
+                "executedSystem": "x86_64-linux",
+                "status": "success",
+                "cacheCaveat": "Nix realization may reuse an already built or substituted exact output; no forced rebuild claimed."
+              },
+              {
+                "kind": "native-ci-check",
+                "receipt": "https://github.com/nix-purifiers/swiftpm-purifier/actions/runs/42155170691/job/127687488331",
+                "log": "evidence/swiftpm-purifier-42155170691-127687488331.log",
+                "artifactSha256": "f400fded1a93de6fabba96136b35b3e053fd8057a5c8d00ccf566b62aaeb0e55",
+                "executedSystem": "x86_64-linux",
+                "status": "success",
+                "run": 42155170691,
+                "job": 127687488331,
+                "binding": "Immutable head SHA in jobs/run metadata; exact derivation basename occurs in successful native job log."
+              }
+            ]
+          }
+        },
+        {
+          "name": "swiftpm-purifier:tests/fixtures/native-proof",
+          "kind": "authored-fixture",
+          "upstream": {
+            "repository": "https://github.com/nix-purifiers/swiftpm-purifier",
+            "revision": "c6b194164b4fa1774b689257a58297bebfee19b5",
+            "sourceNarHash": "sha256-ZTL5hsnZ4XPTPgFxhZjslPV5mgksd2bJZNHjbk+A1pw="
+          },
+          "sourceSubdirectory": "tests/fixtures/native-proof",
+          "sourceNarScope": "Whole immutable source repository; subdirectory explicitly identifies fixture, not a claimed independently fetched repository.",
+          "derivations": [
+            "native-projections"
+          ],
+          "executedSdkRoles": {
+            "swift": "6.3.3",
+            "swiftpm": "6.3.3"
+          },
+          "executionBinding": "native-projections ordinary consumers use Swift environment/products; exact expression source retained tests/native-projections.nix; no separate upstream application asserted.",
+          "receipts": {
+            "native-projections": [
+              {
+                "kind": "local-native-realization",
+                "receipt": "evidence/swiftpm-purifier-build-receipt.json",
+                "artifactSha256": "f7ec94cbb15eb40246ad4192ae2c6e23db52a6f2e359cd5ae43d6cb007f8bc8d",
+                "log": "evidence/swiftpm-purifier-build.log",
+                "executedSystem": "x86_64-linux",
+                "status": "success",
+                "cacheCaveat": "Nix realization may reuse an already built or substituted exact output; no forced rebuild claimed."
+              },
+              {
+                "kind": "native-ci-check",
+                "receipt": "https://github.com/nix-purifiers/swiftpm-purifier/actions/runs/42155170691/job/127687488331",
+                "log": "evidence/swiftpm-purifier-42155170691-127687488331.log",
+                "artifactSha256": "f400fded1a93de6fabba96136b35b3e053fd8057a5c8d00ccf566b62aaeb0e55",
+                "executedSystem": "x86_64-linux",
+                "status": "success",
+                "run": 42155170691,
+                "job": 127687488331,
+                "binding": "Immutable head SHA in jobs/run metadata; exact derivation basename occurs in successful native job log."
+              }
+            ]
+          }
+        },
+        {
+          "name": "vapor/toolbox 20.0.2 (vapor --help runtime assertion)",
+          "kind": "independent-upstream",
+          "upstream": {
+            "repository": "https://github.com/vapor/toolbox",
+            "revision": "9046ddadc17ac8400e1923a2db3bdca054172874",
+            "sourceNarHash": "sha256-iChpUR0aH0Rq4bQtd09O1O/eMgrXw4FlaHGZv58TP5k="
+          },
+          "sourceSubdirectory": ".",
+          "derivations": [
+            "project-toolbox"
+          ],
+          "executedSdkRoles": {
+            "swift": "6.3.3",
+            "swiftpm": "6.3.3"
+          },
+          "executionBinding": "project-toolbox runs actual vapor executable --help and greps OVERVIEW.",
+          "receipts": {
+            "project-toolbox": [
+              {
+                "kind": "local-native-realization",
+                "receipt": "evidence/swiftpm-purifier-build-receipt.json",
+                "artifactSha256": "f7ec94cbb15eb40246ad4192ae2c6e23db52a6f2e359cd5ae43d6cb007f8bc8d",
+                "log": "evidence/swiftpm-purifier-build.log",
+                "executedSystem": "x86_64-linux",
+                "status": "success",
+                "cacheCaveat": "Nix realization may reuse an already built or substituted exact output; no forced rebuild claimed."
+              },
+              {
+                "kind": "native-ci-check",
+                "receipt": "https://github.com/nix-purifiers/swiftpm-purifier/actions/runs/42155170691/job/127687488331",
+                "log": "evidence/swiftpm-purifier-42155170691-127687488331.log",
+                "artifactSha256": "f400fded1a93de6fabba96136b35b3e053fd8057a5c8d00ccf566b62aaeb0e55",
+                "executedSystem": "x86_64-linux",
+                "status": "success",
+                "run": 42155170691,
+                "job": 127687488331,
+                "binding": "Immutable head SHA in jobs/run metadata; exact derivation basename occurs in successful native job log."
+              }
+            ]
+          }
+        }
+      ],
+      "sdkUseCaveat": "Only these selected sample/check roles are asserted to execute. Broad project SDK annotations in negative/library metadata are not independent native executions.",
+      "darwin": "not-met: no native Darwin receipt",
+      "sampleCoverage": "Mapped selected samplechecks only. Other authored fixtures add behavioral coverage but are not silently counted as independent samples."
+    }
+  }
+}

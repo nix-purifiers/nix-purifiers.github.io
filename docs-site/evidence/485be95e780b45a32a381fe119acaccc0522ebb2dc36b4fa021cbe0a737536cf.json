@@ -1,0 +1,1144 @@
+{
+  "pdm-purifier": {
+    "tier": 3,
+    "reviewedRevision": "adadfa08bb99fd51df0835e5e4950740791b009d",
+    "reviewedAt": "2026-11-06",
+    "rationale": "Reviewed native Linux derivations evaluate and execute a concrete sample with substantive tests. Tier3 remains appropriate because native Darwin execution is absent. Independent sample breadth and historical compatibility are not established; maintained-version judgment is limited to the explicitly inspected SDK points.",
+    "criteria": {
+      "evaluation": {
+        "state": "met",
+        "summary": "Current main adadfa08bb99fd51df0835e5e4950740791b009d check definitions evaluate in successful native Linux CI. simple-runs is bound to executable derivation /nix/store/k6jap54mr74myj1gcni8dmrdxyzxpzzh-simple-runs.drv; local exploratory evaluation is supplementary only.",
+        "evidence": [
+          "https://github.com/nix-purifiers/pdm-purifier/actions/runs/42153861458",
+          "/nix/store/k6jap54mr74myj1gcni8dmrdxyzxpzzh-simple-runs.drv",
+          "https://github.com/nix-purifiers/pdm-purifier/blob/adadfa08bb99fd51df0835e5e4950740791b009d/tests/default.nix"
+        ]
+      },
+      "goodTests": {
+        "state": "met",
+        "summary": "Unit transport/lock tests, stale/tampered/missing/malformed refusals, byte comparison rebuilds, offline sync/run/pytest/build, source/VCS fixtures and downstream wheel projection execute as Nix checks. Independent PDM self-build also passes native CI.",
+        "evidence": [
+          "https://github.com/nix-purifiers/pdm-purifier/actions/runs/42153861458",
+          "https://github.com/nix-purifiers/pdm-purifier/blob/adadfa08bb99fd51df0835e5e4950740791b009d/tests/default.nix",
+          "https://github.com/nix-purifiers/pdm-purifier/blob/adadfa08bb99fd51df0835e5e4950740791b009d/.github/workflows/check.yml",
+          "/nix/store/sx3wlsjbrbgdjq09qiql8lmjaqh12bs9-unit-tests.drv",
+          "/nix/store/9a7p7nqvcz43pv1w01m8dyv0437g2lsq-conformance-stale.drv",
+          "/nix/store/3b2ldr6hsi6g11cr0mz6i6ayqpgsg70m-conformance-tampered.drv",
+          "/nix/store/ggwg6lnrpf5bzizr75jy03bsd4cd2jna-conformance-missing.drv",
+          "/nix/store/vi6j4syp4ixckw2na0j09qfvpkxnj2wi-conformance-malformed.drv",
+          "/nix/store/im6qzxwm6ldiha6cnijimf3ciwbgwdbc-conformance-rebuild.drv",
+          "/nix/store/vn1ky89c6ybz0v5lhn3cl800z15zcbfs-conformance-offline.drv",
+          "/nix/store/1z2s8l8afygzdlcm61ax4q13jgz2r5w4-conformance-update.drv",
+          "/nix/store/51spcwrsdp9a9df9iwswr7i499p4z7qs-conformance-external.drv",
+          "/nix/store/xvwbc63jzh49q0h97403yfy2lxmk5c0q-pdm-python-projection-downstream.drv",
+          "/nix/store/y1bw636avfypgcpkg9iki4wd5v2llrmq-pdm-native-sources-projection-downstream.drv"
+        ]
+      },
+      "linux": {
+        "state": "met",
+        "summary": "Native x86_64-linux and aarch64-linux CI jobs completed successfully, including sample runtime checks; exact per-system derivations and successful builder traces are retained. These are native jobs, not cross-evaluation. The exact x86_64 sample check was also freshly built locally; command, builder log, output and NAR identity are retained.",
+        "evidence": [
+          "https://github.com/nix-purifiers/pdm-purifier/actions/runs/42153861458",
+          "/nix/store/k6jap54mr74myj1gcni8dmrdxyzxpzzh-simple-runs.drv",
+          "https://github.com/nix-purifiers/pdm-purifier/blob/adadfa08bb99fd51df0835e5e4950740791b009d/tests/default.nix"
+        ]
+      },
+      "darwin": {
+        "state": "not-met",
+        "summary": "Inspected current-main workflow schedules only ubuntu-latest and ubuntu-24.04-arm runtime jobs. No successful native Darwin check/SDK/output receipt is present. Declared aarch64-darwin support or --all-systems --no-build evaluation does not satisfy runtime execution.",
+        "evidence": [
+          "https://github.com/nix-purifiers/pdm-purifier/blob/adadfa08bb99fd51df0835e5e4950740791b009d/.github/workflows/check.yml",
+          "https://github.com/nix-purifiers/pdm-purifier/actions/runs/42153861458"
+        ]
+      },
+      "oneVersion": {
+        "state": "met",
+        "summary": "Native sample execution establishes these exact SDK points: pdm 2.27.0, python 3.14.8. Authored simple/sources/VCS fixtures; independent pdm-project/pdm at09c95b7842844f4e857c88f669e1c666db405c71, relocked before sandbox environment/package builds and pdm --version.",
+        "evidence": [
+          "https://github.com/nix-purifiers/pdm-purifier/actions/runs/42153861458",
+          "/nix/store/k6jap54mr74myj1gcni8dmrdxyzxpzzh-simple-runs.drv",
+          "https://github.com/nix-purifiers/pdm-purifier/blob/adadfa08bb99fd51df0835e5e4950740791b009d/tests/default.nix"
+        ]
+      },
+      "nonEolVersions": {
+        "state": "not-met",
+        "summary": "Current upstream release2.29.7 was published2026-11-06. Inspected installation docs require Python 3.10+ but give no maintained PDM branch calendar. Execution of2.27.0 does not demonstrate the current2.29 line; no EOL date is inferred.",
+        "evidence": [
+          "https://pdm-project.org/latest/",
+          "https://github.com/nix-purifiers/pdm-purifier/actions/runs/42153861458",
+          "/nix/store/k6jap54mr74myj1gcni8dmrdxyzxpzzh-simple-runs.drv"
+        ]
+      },
+      "manySamples": {
+        "state": "not-met",
+        "summary": "Authored simple/sources/VCS fixtures; independent pdm-project/pdm at09c95b7842844f4e857c88f669e1c666db405c71, relocked before sandbox environment/package builds and pdm --version. Inspection establishes useful concrete cases but not a broad independent upstream sample corpus covering different project structures; authored variants, dependency nodes and tests of one upstream project are not counted as separate projects.",
+        "evidence": [
+          "https://github.com/nix-purifiers/pdm-purifier/actions/runs/42153861458",
+          "https://github.com/nix-purifiers/pdm-purifier/blob/adadfa08bb99fd51df0835e5e4950740791b009d/tests/default.nix",
+          "/nix/store/k6jap54mr74myj1gcni8dmrdxyzxpzzh-simple-runs.drv"
+        ]
+      },
+      "longCompatibility": {
+        "state": "not-met",
+        "summary": "The PDM self-build and fixtures use PDM 2.27.0. Old dependency versions and several VCS transports do not establish old PDM compatibility.",
+        "evidence": [
+          "https://github.com/nix-purifiers/pdm-purifier/actions/runs/42153861458",
+          "https://github.com/nix-purifiers/pdm-purifier/blob/adadfa08bb99fd51df0835e5e4950740791b009d/tests/default.nix",
+          "/nix/store/k6jap54mr74myj1gcni8dmrdxyzxpzzh-simple-runs.drv"
+        ]
+      }
+    },
+    "sampleBuilds": [
+      {
+        "name": "Authored simple/sources/VCS fixtures; independent pdm-project/pdm at09c95b7842844f4e857c88f669e1c666db405c71, relocked before sandbox environment/package builds and pdm --version.",
+        "evidence": [
+          "https://github.com/nix-purifiers/pdm-purifier/actions/runs/42153861458",
+          "/nix/store/k6jap54mr74myj1gcni8dmrdxyzxpzzh-simple-runs.drv",
+          "https://github.com/nix-purifiers/pdm-purifier/blob/adadfa08bb99fd51df0835e5e4950740791b009d/tests/default.nix"
+        ]
+      }
+    ]
+  },
+  "pecl-purifier": {
+    "tier": 3,
+    "reviewedRevision": "3de166825b7f77576aab6f993c5daa6c81f5dba9",
+    "reviewedAt": "2026-11-06",
+    "rationale": "Reviewed native Linux derivations evaluate and execute a concrete sample with substantive tests. Tier3 remains appropriate because native Darwin execution is absent. Independent sample breadth and historical compatibility are not established; maintained-version judgment is limited to the explicitly inspected SDK points.",
+    "criteria": {
+      "evaluation": {
+        "state": "met",
+        "summary": "Current main 3de166825b7f77576aab6f993c5daa6c81f5dba9 check definitions evaluate in successful native Linux CI. project is bound to executable derivation /nix/store/vi648165qhckxhzqpnn074bckjsfxndk-php-purifierproof-0.1.0.drv; local exploratory evaluation is supplementary only.",
+        "evidence": [
+          "https://github.com/nix-purifiers/pecl-purifier/actions/runs/42154273897",
+          "/nix/store/vi648165qhckxhzqpnn074bckjsfxndk-php-purifierproof-0.1.0.drv",
+          "https://github.com/nix-purifiers/pecl-purifier/blob/3de166825b7f77576aab6f993c5daa6c81f5dba9/flake.nix"
+        ]
+      },
+      "goodTests": {
+        "state": "met",
+        "summary": "The project derivation compiles a C extension with phpize and executes test.php against the extension. Successful native conformance covers mutable C source, YAML/msgpack extensions, ABI guards, stale/missing metadata, isolated registry, native consumer and publication; capture and rebuild checks also pass.",
+        "evidence": [
+          "https://github.com/nix-purifiers/pecl-purifier/actions/runs/42154273897",
+          "https://github.com/nix-purifiers/pecl-purifier/blob/3de166825b7f77576aab6f993c5daa6c81f5dba9/flake.nix",
+          "https://github.com/nix-purifiers/pecl-purifier/blob/3de166825b7f77576aab6f993c5daa6c81f5dba9/.github/workflows/check.yml",
+          "/nix/store/vi648165qhckxhzqpnn074bckjsfxndk-php-purifierproof-0.1.0.drv"
+        ]
+      },
+      "linux": {
+        "state": "met",
+        "summary": "Native x86_64-linux and aarch64-linux CI jobs completed successfully and built/run the sample checks. Exact per-system check derivations and successful building traces are retained; ten x86_64 outputs were also realized locally by exact CI drv identity.",
+        "evidence": [
+          "https://github.com/nix-purifiers/pecl-purifier/actions/runs/42154273897",
+          "/nix/store/vi648165qhckxhzqpnn074bckjsfxndk-php-purifierproof-0.1.0.drv",
+          "https://github.com/nix-purifiers/pecl-purifier/blob/3de166825b7f77576aab6f993c5daa6c81f5dba9/flake.nix"
+        ]
+      },
+      "darwin": {
+        "state": "not-met",
+        "summary": "Inspected current-main workflow schedules only ubuntu-latest and ubuntu-24.04-arm runtime jobs. No successful native Darwin check/SDK/output receipt is present. Declared aarch64-darwin support or --all-systems --no-build evaluation does not satisfy runtime execution.",
+        "evidence": [
+          "https://github.com/nix-purifiers/pecl-purifier/blob/3de166825b7f77576aab6f993c5daa6c81f5dba9/.github/workflows/check.yml",
+          "https://github.com/nix-purifiers/pecl-purifier/actions/runs/42154273897"
+        ]
+      },
+      "oneVersion": {
+        "state": "met",
+        "summary": "Native sample execution establishes these exact SDK points: php 8.5.12. Authored purifierproof C extension in examples/minimal, plus locked YAML/msgpack dependencies; dependencies are not counted as separate independent sample projects.",
+        "evidence": [
+          "https://github.com/nix-purifiers/pecl-purifier/actions/runs/42154273897",
+          "/nix/store/vi648165qhckxhzqpnn074bckjsfxndk-php-purifierproof-0.1.0.drv",
+          "https://github.com/nix-purifiers/pecl-purifier/blob/3de166825b7f77576aab6f993c5daa6c81f5dba9/flake.nix"
+        ]
+      },
+      "nonEolVersions": {
+        "state": "not-met",
+        "summary": "PHP primary policy maintains branches8.2,8.3,8.4,8.5 on review date. The executed8.5.12 point does not demonstrate8.2\u20138.4.",
+        "evidence": [
+          "https://www.php.net/supported-versions.php",
+          "https://github.com/nix-purifiers/pecl-purifier/actions/runs/42154273897",
+          "/nix/store/vi648165qhckxhzqpnn074bckjsfxndk-php-purifierproof-0.1.0.drv"
+        ]
+      },
+      "manySamples": {
+        "state": "not-met",
+        "summary": "Authored purifierproof C extension in examples/minimal, plus locked YAML/msgpack dependencies; dependencies are not counted as separate independent sample projects. Inspection establishes useful concrete cases but not a broad independent upstream sample corpus covering different project structures; authored variants, dependency nodes and tests of one upstream project are not counted as separate projects.",
+        "evidence": [
+          "https://github.com/nix-purifiers/pecl-purifier/actions/runs/42154273897",
+          "https://github.com/nix-purifiers/pecl-purifier/blob/3de166825b7f77576aab6f993c5daa6c81f5dba9/flake.nix",
+          "/nix/store/vi648165qhckxhzqpnn074bckjsfxndk-php-purifierproof-0.1.0.drv"
+        ]
+      },
+      "longCompatibility": {
+        "state": "not-met",
+        "summary": "One PHP ABI8.5.12 and one authored extension family execute; package min-PHP metadata is not execution on earlier PHP branches.",
+        "evidence": [
+          "https://github.com/nix-purifiers/pecl-purifier/actions/runs/42154273897",
+          "https://github.com/nix-purifiers/pecl-purifier/blob/3de166825b7f77576aab6f993c5daa6c81f5dba9/flake.nix",
+          "/nix/store/vi648165qhckxhzqpnn074bckjsfxndk-php-purifierproof-0.1.0.drv"
+        ]
+      }
+    },
+    "sampleBuilds": [
+      {
+        "name": "Authored purifierproof C extension in examples/minimal, plus locked YAML/msgpack dependencies; dependencies are not counted as separate independent sample projects.",
+        "evidence": [
+          "https://github.com/nix-purifiers/pecl-purifier/actions/runs/42154273897",
+          "/nix/store/vi648165qhckxhzqpnn074bckjsfxndk-php-purifierproof-0.1.0.drv",
+          "https://github.com/nix-purifiers/pecl-purifier/blob/3de166825b7f77576aab6f993c5daa6c81f5dba9/flake.nix"
+        ]
+      }
+    ]
+  },
+  "pip-purifier": {
+    "tier": 3,
+    "reviewedRevision": "58d939104c2fe3cd7c0e7549c46a0713f4349404",
+    "reviewedAt": "2026-11-06",
+    "rationale": "Reviewed native Linux derivations evaluate and execute a concrete sample with substantive tests. Tier3 remains appropriate because native Darwin execution is absent. Independent sample breadth and historical compatibility are not established; maintained-version judgment is limited to the explicitly inspected SDK points.",
+    "criteria": {
+      "evaluation": {
+        "state": "met",
+        "summary": "Current main 58d939104c2fe3cd7c0e7549c46a0713f4349404 check definitions evaluate in successful native Linux CI. project is bound to executable derivation /nix/store/qzka2r5bf9m89gvf5z69n24r251sa4ax-pip-purifier-test-project.drv; local exploratory evaluation is supplementary only.",
+        "evidence": [
+          "https://github.com/nix-purifiers/pip-purifier/actions/runs/42154277973",
+          "/nix/store/qzka2r5bf9m89gvf5z69n24r251sa4ax-pip-purifier-test-project.drv",
+          "https://github.com/nix-purifiers/pip-purifier/blob/58d939104c2fe3cd7c0e7549c46a0713f4349404/tests/default.nix"
+        ]
+      },
+      "goodTests": {
+        "state": "met",
+        "summary": "Nix checks exercise ordinary requirements, editable extras, sdists/wheels/VCS/local paths, pylock, failure refusals, isolated installer SDK, offline replay and downstream wheel projection. Independent Click sandbox tests and prefetched development tests each report628 passed,21 skipped,1 xfailed in native CI.",
+        "evidence": [
+          "https://github.com/nix-purifiers/pip-purifier/actions/runs/42154277973",
+          "https://github.com/nix-purifiers/pip-purifier/blob/58d939104c2fe3cd7c0e7549c46a0713f4349404/tests/default.nix",
+          "https://github.com/nix-purifiers/pip-purifier/blob/58d939104c2fe3cd7c0e7549c46a0713f4349404/.github/workflows/check.yml",
+          "/nix/store/qzka2r5bf9m89gvf5z69n24r251sa4ax-pip-purifier-test-project.drv",
+          "/nix/store/lwg5d2s55s5v5700v6g6bycn1sly9d6x-pip-purifier-test-unit.drv",
+          "/nix/store/r5x7r5kgh3jqddz8qvydh2nh5200z2cf-pip-native-projection-downstream.drv",
+          "/nix/store/8gj46yb4davnrz51ii33waa42lxq0lni-pip-purifier-test-project-package.drv",
+          "/nix/store/cg30l0vr9y0swbjky4a6z483rilkv6nn-pip-purifier-conformance-offline.drv",
+          "/nix/store/1cml413aj2187sam6q9x58g6bnabmr6i-greet-0.1.0-dist.drv",
+          "/nix/store/dri8n9yyp825sjzmp8k458b5m5b6k7d2-pip-purifier-conformance-external.drv",
+          "/nix/store/x3x72fhr4ivp942jnylr9izw3z3bwgk1-pip-purifier-conformance-stale.drv",
+          "/nix/store/3ab226kv7ycc17x80dmcx8kskar1lfhh-pip-purifier-conformance-tampered.drv",
+          "/nix/store/jqjkb3r5skzj0gacd6skxiv85f5dlfz9-pip-purifier-conformance-malformed.drv",
+          "/nix/store/c0sphpgyrx60amjvrv2bv0mk0w4gkf0k-pip-purifier-conformance-missing.drv"
+        ]
+      },
+      "linux": {
+        "state": "met",
+        "summary": "Native x86_64-linux and aarch64-linux CI jobs completed successfully and built/run the sample checks. Exact per-system check derivations and successful building traces are retained; ten x86_64 outputs were also realized locally by exact CI drv identity.",
+        "evidence": [
+          "https://github.com/nix-purifiers/pip-purifier/actions/runs/42154277973",
+          "/nix/store/qzka2r5bf9m89gvf5z69n24r251sa4ax-pip-purifier-test-project.drv",
+          "https://github.com/nix-purifiers/pip-purifier/blob/58d939104c2fe3cd7c0e7549c46a0713f4349404/tests/default.nix"
+        ]
+      },
+      "darwin": {
+        "state": "not-met",
+        "summary": "Inspected current-main workflow schedules only ubuntu-latest and ubuntu-24.04-arm runtime jobs. No successful native Darwin check/SDK/output receipt is present. Declared aarch64-darwin support or --all-systems --no-build evaluation does not satisfy runtime execution.",
+        "evidence": [
+          "https://github.com/nix-purifiers/pip-purifier/blob/58d939104c2fe3cd7c0e7549c46a0713f4349404/.github/workflows/check.yml",
+          "https://github.com/nix-purifiers/pip-purifier/actions/runs/42154277973"
+        ]
+      },
+      "oneVersion": {
+        "state": "met",
+        "summary": "Native sample execution establishes these exact SDK points: pip 26.1.2, python 3.14.8. Authored greet/source/pylock fixtures; independent pallets/click8.1.8 at934813e4d421071a1b3db3973c02fe2721359a6e, sandbox tests/package plus prefetched tests. Host prefetched tests do not themselves prove a network namespace cut.",
+        "evidence": [
+          "https://github.com/nix-purifiers/pip-purifier/actions/runs/42154277973",
+          "/nix/store/qzka2r5bf9m89gvf5z69n24r251sa4ax-pip-purifier-test-project.drv",
+          "https://github.com/nix-purifiers/pip-purifier/blob/58d939104c2fe3cd7c0e7549c46a0713f4349404/tests/default.nix"
+        ]
+      },
+      "nonEolVersions": {
+        "state": "not-met",
+        "summary": "Primary pip stable documentation is26.3; CPython maintains3.11\u20133.15 on review date. Current main  checks use Python 3.14.8; they do not establish native purifier execution across3.11\u20133.15 or current installer26.3. Producer candidate is separate.",
+        "evidence": [
+          "https://pip.pypa.io/en/stable/development/release-process/",
+          "https://github.com/nix-purifiers/pip-purifier/actions/runs/42154277973",
+          "/nix/store/qzka2r5bf9m89gvf5z69n24r251sa4ax-pip-purifier-test-project.drv",
+          "https://devguide.python.org/versions/"
+        ]
+      },
+      "manySamples": {
+        "state": "not-met",
+        "summary": "Authored greet/source/pylock fixtures; independent pallets/click8.1.8 at934813e4d421071a1b3db3973c02fe2721359a6e, sandbox tests/package plus prefetched tests. Host prefetched tests do not themselves prove a network namespace cut. Inspection establishes useful concrete cases but not a broad independent upstream sample corpus covering different project structures; authored variants, dependency nodes and tests of one upstream project are not counted as separate projects.",
+        "evidence": [
+          "https://github.com/nix-purifiers/pip-purifier/actions/runs/42154277973",
+          "https://github.com/nix-purifiers/pip-purifier/blob/58d939104c2fe3cd7c0e7549c46a0713f4349404/tests/default.nix",
+          "/nix/store/qzka2r5bf9m89gvf5z69n24r251sa4ax-pip-purifier-test-project.drv"
+        ]
+      },
+      "longCompatibility": {
+        "state": "not-met",
+        "summary": "The independent Click version and old dependency versions are not a pip history matrix. Main installer SDK26.1.2 and isolated26.2.2 wheel tests are exact points, not years of pip/Python compatibility.",
+        "evidence": [
+          "https://github.com/nix-purifiers/pip-purifier/actions/runs/42154277973",
+          "https://github.com/nix-purifiers/pip-purifier/blob/58d939104c2fe3cd7c0e7549c46a0713f4349404/tests/default.nix",
+          "/nix/store/qzka2r5bf9m89gvf5z69n24r251sa4ax-pip-purifier-test-project.drv"
+        ]
+      }
+    },
+    "sampleBuilds": [
+      {
+        "name": "Authored greet/source/pylock fixtures; independent pallets/click8.1.8 at934813e4d421071a1b3db3973c02fe2721359a6e, sandbox tests/package plus prefetched tests. Host prefetched tests do not themselves prove a network namespace cut.",
+        "evidence": [
+          "https://github.com/nix-purifiers/pip-purifier/actions/runs/42154277973",
+          "/nix/store/qzka2r5bf9m89gvf5z69n24r251sa4ax-pip-purifier-test-project.drv",
+          "https://github.com/nix-purifiers/pip-purifier/blob/58d939104c2fe3cd7c0e7549c46a0713f4349404/tests/default.nix"
+        ]
+      }
+    ]
+  },
+  "pipenv-purifier": {
+    "tier": 3,
+    "reviewedRevision": "5bd4bc9b23692825cc27b2284b29538738834a96",
+    "reviewedAt": "2026-11-06",
+    "rationale": "Reviewed native Linux derivations evaluate and execute a concrete sample with substantive tests. Tier3 remains appropriate because native Darwin execution is absent. Independent sample breadth and historical compatibility are not established; maintained-version judgment is limited to the explicitly inspected SDK points.",
+    "criteria": {
+      "evaluation": {
+        "state": "met",
+        "summary": "Current main 5bd4bc9b23692825cc27b2284b29538738834a96 check definitions evaluate in successful native Linux CI. real-world-pipenv is bound to executable derivation /nix/store/nhn6yldya81ajcg5p56hs9phzxjg4k23-pipenv-purifier-test-real-world-pipenv.drv; local exploratory evaluation is supplementary only.",
+        "evidence": [
+          "https://github.com/nix-purifiers/pipenv-purifier/actions/runs/42154281729",
+          "/nix/store/nhn6yldya81ajcg5p56hs9phzxjg4k23-pipenv-purifier-test-real-world-pipenv.drv",
+          "https://github.com/nix-purifiers/pipenv-purifier/blob/5bd4bc9b23692825cc27b2284b29538738834a96/tests/default.nix"
+        ]
+      },
+      "goodTests": {
+        "state": "met",
+        "summary": "Nix tests exercise categories, prefetch, stale/tampered/missing/malformed locks, local-index relock/update, environment isolation, publication, reproducible rebuild and source forms. Independent Pipenv tests report1853 passed,10 skipped,8 deselected; release-task module and live-network cases are explicitly excluded in the executable source.",
+        "evidence": [
+          "https://github.com/nix-purifiers/pipenv-purifier/actions/runs/42154281729",
+          "https://github.com/nix-purifiers/pipenv-purifier/blob/5bd4bc9b23692825cc27b2284b29538738834a96/tests/default.nix",
+          "https://github.com/nix-purifiers/pipenv-purifier/blob/5bd4bc9b23692825cc27b2284b29538738834a96/.github/workflows/check.yml",
+          "/nix/store/5dafz7l7cyf40938wzrnggg2517hb5a3-pipenv-purifier-test-unit.drv",
+          "/nix/store/bczkcn6gc9r23k6my9n053sn7s2xh5yy-pipenv-native-projection-downstream.drv",
+          "/nix/store/3bq2cy8y37yqf8fbp1bv89x5mvyb3ac0-pipenv-purifier-test-conformance-offline.drv",
+          "/nix/store/s5kq9kqd01mg95fp8syz4n39khkr0057-pipenv-purifier-test-conformance-stale.drv",
+          "/nix/store/bqm14qxq4bh554a956l4dx775f0nbh8d-pipenv-purifier-test-conformance-tampered.drv",
+          "/nix/store/pbjbfwq3b9sl99jb8gq1j7v3b0hd9dmp-pipenv-purifier-test-conformance-missing.drv",
+          "/nix/store/qb2jaw3c3hnp8wk2aspfa1a91zwysmg2-pipenv-purifier-test-conformance-malformed.drv",
+          "/nix/store/rwg9hpbgazv9zz17b431mk57q6rzmri7-pipenv-purifier-test-conformance-relock.drv",
+          "/nix/store/vfnm4cgrbr456qn059q7m8n7w605rx2j-pipenv-purifier-test-conformance-update.drv",
+          "/nix/store/6c4dg7vgdasdhk7qr755sg6s7gw8h7sf-pipenv-purifier-test-conformance-rebuild.drv",
+          "/nix/store/063mppy292n0b5wl3v7r05d9nxpi5rci-pipenv-purifier-test-conformance-external.drv"
+        ]
+      },
+      "linux": {
+        "state": "met",
+        "summary": "Native x86_64-linux and aarch64-linux CI jobs completed successfully and built/run the sample checks. Exact per-system check derivations and successful building traces are retained; ten x86_64 outputs were also realized locally by exact CI drv identity.",
+        "evidence": [
+          "https://github.com/nix-purifiers/pipenv-purifier/actions/runs/42154281729",
+          "/nix/store/nhn6yldya81ajcg5p56hs9phzxjg4k23-pipenv-purifier-test-real-world-pipenv.drv",
+          "https://github.com/nix-purifiers/pipenv-purifier/blob/5bd4bc9b23692825cc27b2284b29538738834a96/tests/default.nix"
+        ]
+      },
+      "darwin": {
+        "state": "not-met",
+        "summary": "Inspected current-main workflow schedules only ubuntu-latest and ubuntu-24.04-arm runtime jobs. No successful native Darwin check/SDK/output receipt is present. Declared aarch64-darwin support or --all-systems --no-build evaluation does not satisfy runtime execution.",
+        "evidence": [
+          "https://github.com/nix-purifiers/pipenv-purifier/blob/5bd4bc9b23692825cc27b2284b29538738834a96/.github/workflows/check.yml",
+          "https://github.com/nix-purifiers/pipenv-purifier/actions/runs/42154281729"
+        ]
+      },
+      "oneVersion": {
+        "state": "met",
+        "summary": "Native sample execution establishes these exact SDK points: pipenv 2026.5.1, python 3.14.8. Independent pypa/pipenv atfef029307389de23d0704407e4d0ebf1d1b17758 with committed external companion lock and default/develop categories; authored simple/sources/outside fixtures are not independent projects.",
+        "evidence": [
+          "https://github.com/nix-purifiers/pipenv-purifier/actions/runs/42154281729",
+          "/nix/store/nhn6yldya81ajcg5p56hs9phzxjg4k23-pipenv-purifier-test-real-world-pipenv.drv",
+          "https://github.com/nix-purifiers/pipenv-purifier/blob/5bd4bc9b23692825cc27b2284b29538738834a96/tests/default.nix"
+        ]
+      },
+      "nonEolVersions": {
+        "state": "not-met",
+        "summary": "Primary documentation identifies2026.10.5 and latest GitHub release is2026.10.6 (Nov5). The executed SDK is2026.5.1; current-release execution is missing. No explicit EOL date for2026.5.1 is asserted.",
+        "evidence": [
+          "https://pipenv.pypa.io/en/latest/",
+          "https://github.com/nix-purifiers/pipenv-purifier/actions/runs/42154281729",
+          "/nix/store/nhn6yldya81ajcg5p56hs9phzxjg4k23-pipenv-purifier-test-real-world-pipenv.drv"
+        ]
+      },
+      "manySamples": {
+        "state": "not-met",
+        "summary": "Independent pypa/pipenv atfef029307389de23d0704407e4d0ebf1d1b17758 with committed external companion lock and default/develop categories; authored simple/sources/outside fixtures are not independent projects. Inspection establishes useful concrete cases but not a broad independent upstream sample corpus covering different project structures; authored variants, dependency nodes and tests of one upstream project are not counted as separate projects.",
+        "evidence": [
+          "https://github.com/nix-purifiers/pipenv-purifier/actions/runs/42154281729",
+          "https://github.com/nix-purifiers/pipenv-purifier/blob/5bd4bc9b23692825cc27b2284b29538738834a96/tests/default.nix",
+          "/nix/store/nhn6yldya81ajcg5p56hs9phzxjg4k23-pipenv-purifier-test-real-world-pipenv.drv"
+        ]
+      },
+      "longCompatibility": {
+        "state": "not-met",
+        "summary": "The Pipenv upstream sample and SDK2026.5.1 do not establish earlier Pipenv release lines. Historical six versions test dependency update behavior only.",
+        "evidence": [
+          "https://github.com/nix-purifiers/pipenv-purifier/actions/runs/42154281729",
+          "https://github.com/nix-purifiers/pipenv-purifier/blob/5bd4bc9b23692825cc27b2284b29538738834a96/tests/default.nix",
+          "/nix/store/nhn6yldya81ajcg5p56hs9phzxjg4k23-pipenv-purifier-test-real-world-pipenv.drv"
+        ]
+      }
+    },
+    "sampleBuilds": [
+      {
+        "name": "Independent pypa/pipenv atfef029307389de23d0704407e4d0ebf1d1b17758 with committed external companion lock and default/develop categories; authored simple/sources/outside fixtures are not independent projects.",
+        "evidence": [
+          "https://github.com/nix-purifiers/pipenv-purifier/actions/runs/42154281729",
+          "/nix/store/nhn6yldya81ajcg5p56hs9phzxjg4k23-pipenv-purifier-test-real-world-pipenv.drv",
+          "https://github.com/nix-purifiers/pipenv-purifier/blob/5bd4bc9b23692825cc27b2284b29538738834a96/tests/default.nix"
+        ]
+      }
+    ]
+  },
+  "pixi-purifier": {
+    "tier": 3,
+    "reviewedRevision": "8888c060e7395232f8cae03482dd194ee90b2eee",
+    "reviewedAt": "2026-11-06",
+    "rationale": "Reviewed native Linux derivations evaluate and execute a concrete sample with substantive tests. Tier3 remains appropriate because native Darwin execution is absent. Independent sample breadth and historical compatibility are not established; maintained-version judgment is limited to the explicitly inspected SDK points.",
+    "criteria": {
+      "evaluation": {
+        "state": "met",
+        "summary": "Current main 8888c060e7395232f8cae03482dd194ee90b2eee check definitions evaluate in successful native Linux CI. offline is bound to executable derivation /nix/store/fv5mjn5ikdk7q8hxwswp0aqq5nzifxx4-pixi-project-tests.drv; local exploratory evaluation is supplementary only.",
+        "evidence": [
+          "https://github.com/nix-purifiers/pixi-purifier/actions/runs/42154285543",
+          "/nix/store/fv5mjn5ikdk7q8hxwswp0aqq5nzifxx4-pixi-project-tests.drv",
+          "https://github.com/nix-purifiers/pixi-purifier/blob/8888c060e7395232f8cae03482dd194ee90b2eee/tests/default.nix"
+        ]
+      },
+      "goodTests": {
+        "state": "met",
+        "summary": "Nix checks build the locked Conda/PyPI workspace, execute its offline tasks and editor integration, compare native YAML parsing and exercise external/malformed/stale/tampered/missing locks. Successful native host conformance tests solver updates/relock, store environment, fallback and atomic failure; rebuild is verified separately.",
+        "evidence": [
+          "https://github.com/nix-purifiers/pixi-purifier/actions/runs/42154285543",
+          "https://github.com/nix-purifiers/pixi-purifier/blob/8888c060e7395232f8cae03482dd194ee90b2eee/tests/default.nix",
+          "https://github.com/nix-purifiers/pixi-purifier/blob/8888c060e7395232f8cae03482dd194ee90b2eee/.github/workflows/check.yml",
+          "/nix/store/xsxvg5kk0dlddjf18d6wa884cn492c3z-pixi-unit.drv",
+          "/nix/store/fv5mjn5ikdk7q8hxwswp0aqq5nzifxx4-pixi-project-tests.drv",
+          "/nix/store/nvxmf4hb5x97c667scwfznrydwpr5vxr-pixi-project-tests.drv",
+          "/nix/store/vzmr6ac6fsamq1vgnpr69hy6bj6kb9vd-pixi-stale.drv",
+          "/nix/store/xwr3n6fhigh58iz2wlaczcibadm4gn74-pixi-tampered.drv",
+          "/nix/store/wrzs06w5gi5ml385m9ybksqif2d9ia7c-pixi-missing.drv",
+          "/nix/store/99navqwgbqh3xnc9pay6bsjjqkhllpdy-pixi-malformed.drv"
+        ]
+      },
+      "linux": {
+        "state": "met",
+        "summary": "Native x86_64-linux and aarch64-linux CI jobs completed successfully and built/run the sample checks. Exact per-system check derivations and successful building traces are retained; ten x86_64 outputs were also realized locally by exact CI drv identity.",
+        "evidence": [
+          "https://github.com/nix-purifiers/pixi-purifier/actions/runs/42154285543",
+          "/nix/store/fv5mjn5ikdk7q8hxwswp0aqq5nzifxx4-pixi-project-tests.drv",
+          "https://github.com/nix-purifiers/pixi-purifier/blob/8888c060e7395232f8cae03482dd194ee90b2eee/tests/default.nix"
+        ]
+      },
+      "darwin": {
+        "state": "not-met",
+        "summary": "Inspected current-main workflow schedules only ubuntu-latest and ubuntu-24.04-arm runtime jobs. No successful native Darwin check/SDK/output receipt is present. Declared aarch64-darwin support or --all-systems --no-build evaluation does not satisfy runtime execution.",
+        "evidence": [
+          "https://github.com/nix-purifiers/pixi-purifier/blob/8888c060e7395232f8cae03482dd194ee90b2eee/.github/workflows/check.yml",
+          "https://github.com/nix-purifiers/pixi-purifier/actions/runs/42154285543"
+        ]
+      },
+      "oneVersion": {
+        "state": "met",
+        "summary": "Native sample execution establishes these exact SDK points: pixi 0.82.1. Authored examples/python workspace and local-channel demo/other variants in host-conformance; these do not establish an independent upstream workspace corpus.",
+        "evidence": [
+          "https://github.com/nix-purifiers/pixi-purifier/actions/runs/42154285543",
+          "/nix/store/fv5mjn5ikdk7q8hxwswp0aqq5nzifxx4-pixi-project-tests.drv",
+          "https://github.com/nix-purifiers/pixi-purifier/blob/8888c060e7395232f8cae03482dd194ee90b2eee/tests/default.nix"
+        ]
+      },
+      "nonEolVersions": {
+        "state": "not-met",
+        "summary": "Primary latest release isv0.84.1 (Nov4); executable checks use0.82.1. Inspected primary docs do not define a maintained0.82 branch. Current0.84 execution is missing; old0.82 is not labeled EOL.",
+        "evidence": [
+          "https://pixi.prefix.dev/latest/",
+          "https://github.com/nix-purifiers/pixi-purifier/actions/runs/42154285543",
+          "/nix/store/fv5mjn5ikdk7q8hxwswp0aqq5nzifxx4-pixi-project-tests.drv"
+        ]
+      },
+      "manySamples": {
+        "state": "not-met",
+        "summary": "Authored examples/python workspace and local-channel demo/other variants in host-conformance; these do not establish an independent upstream workspace corpus. Inspection establishes useful concrete cases but not a broad independent upstream sample corpus covering different project structures; authored variants, dependency nodes and tests of one upstream project are not counted as separate projects.",
+        "evidence": [
+          "https://github.com/nix-purifiers/pixi-purifier/actions/runs/42154285543",
+          "https://github.com/nix-purifiers/pixi-purifier/blob/8888c060e7395232f8cae03482dd194ee90b2eee/tests/default.nix",
+          "/nix/store/fv5mjn5ikdk7q8hxwswp0aqq5nzifxx4-pixi-project-tests.drv"
+        ]
+      },
+      "longCompatibility": {
+        "state": "not-met",
+        "summary": "Pixi 0.82.1 and local package1\u21922 update scenarios do not establish historic Pixi or lock-format compatibility.",
+        "evidence": [
+          "https://github.com/nix-purifiers/pixi-purifier/actions/runs/42154285543",
+          "https://github.com/nix-purifiers/pixi-purifier/blob/8888c060e7395232f8cae03482dd194ee90b2eee/tests/default.nix",
+          "/nix/store/fv5mjn5ikdk7q8hxwswp0aqq5nzifxx4-pixi-project-tests.drv"
+        ]
+      }
+    },
+    "sampleBuilds": [
+      {
+        "name": "Authored examples/python workspace and local-channel demo/other variants in host-conformance; these do not establish an independent upstream workspace corpus.",
+        "evidence": [
+          "https://github.com/nix-purifiers/pixi-purifier/actions/runs/42154285543",
+          "/nix/store/fv5mjn5ikdk7q8hxwswp0aqq5nzifxx4-pixi-project-tests.drv",
+          "https://github.com/nix-purifiers/pixi-purifier/blob/8888c060e7395232f8cae03482dd194ee90b2eee/tests/default.nix"
+        ]
+      }
+    ]
+  },
+  "platformio-purifier": {
+    "tier": 3,
+    "reviewedRevision": "307e94ed452d3156617f86c705cfffdc034400a9",
+    "reviewedAt": "2026-11-06",
+    "rationale": "Reviewed native Linux derivations evaluate and execute a concrete sample with substantive tests. Tier3 remains appropriate because native Darwin execution is absent. Independent sample breadth and historical compatibility are not established; maintained-version judgment is limited to the explicitly inspected SDK points.",
+    "criteria": {
+      "evaluation": {
+        "state": "met",
+        "summary": "Current main 307e94ed452d3156617f86c705cfffdc034400a9 check definitions evaluate in successful native Linux CI. project is bound to executable derivation /nix/store/rhz0nhd11ywa49a0nl2cdpf4037j78kx-platformio-firmware.drv; local exploratory evaluation is supplementary only.",
+        "evidence": [
+          "https://github.com/nix-purifiers/platformio-purifier/actions/runs/42154289786",
+          "/nix/store/rhz0nhd11ywa49a0nl2cdpf4037j78kx-platformio-firmware.drv",
+          "https://github.com/nix-purifiers/platformio-purifier/blob/307e94ed452d3156617f86c705cfffdc034400a9/flake.nix"
+        ]
+      },
+      "goodTests": {
+        "state": "met",
+        "summary": "The Nix project check produces nonempty Uno firmware.hex. Native successful conformance covers source edit/rebuild hashes, compilation, analysis, immutable package guards, debugger/objcopy artifact consumption, publication, fallback and atomic capture. This tests functional firmware construction, not only CLI help.",
+        "evidence": [
+          "https://github.com/nix-purifiers/platformio-purifier/actions/runs/42154289786",
+          "https://github.com/nix-purifiers/platformio-purifier/blob/307e94ed452d3156617f86c705cfffdc034400a9/flake.nix",
+          "https://github.com/nix-purifiers/platformio-purifier/blob/307e94ed452d3156617f86c705cfffdc034400a9/.github/workflows/check.yml",
+          "/nix/store/rhz0nhd11ywa49a0nl2cdpf4037j78kx-platformio-firmware.drv"
+        ]
+      },
+      "linux": {
+        "state": "met",
+        "summary": "Native x86_64-linux and aarch64-linux CI jobs completed successfully and built/run the sample checks. Exact per-system check derivations and successful building traces are retained; ten x86_64 outputs were also realized locally by exact CI drv identity.",
+        "evidence": [
+          "https://github.com/nix-purifiers/platformio-purifier/actions/runs/42154289786",
+          "/nix/store/rhz0nhd11ywa49a0nl2cdpf4037j78kx-platformio-firmware.drv",
+          "https://github.com/nix-purifiers/platformio-purifier/blob/307e94ed452d3156617f86c705cfffdc034400a9/flake.nix"
+        ]
+      },
+      "darwin": {
+        "state": "not-met",
+        "summary": "Inspected current-main workflow schedules only ubuntu-latest and ubuntu-24.04-arm runtime jobs. No successful native Darwin check/SDK/output receipt is present. Declared aarch64-darwin support or --all-systems --no-build evaluation does not satisfy runtime execution.",
+        "evidence": [
+          "https://github.com/nix-purifiers/platformio-purifier/blob/307e94ed452d3156617f86c705cfffdc034400a9/.github/workflows/check.yml",
+          "https://github.com/nix-purifiers/platformio-purifier/actions/runs/42154289786"
+        ]
+      },
+      "oneVersion": {
+        "state": "met",
+        "summary": "Native sample execution establishes these exact SDK points: platformio 6.2.0, python 3.14.8. Authored Uno firmware in examples/minimal, with locked AVR/framework/library dependencies and native objcopy/GDB consumers; no board hardware execution is claimed.",
+        "evidence": [
+          "https://github.com/nix-purifiers/platformio-purifier/actions/runs/42154289786",
+          "/nix/store/rhz0nhd11ywa49a0nl2cdpf4037j78kx-platformio-firmware.drv",
+          "https://github.com/nix-purifiers/platformio-purifier/blob/307e94ed452d3156617f86c705cfffdc034400a9/flake.nix"
+        ]
+      },
+      "nonEolVersions": {
+        "state": "met",
+        "summary": "Official stable history and latest GitHub release identify Core 6.2.0 (Sep5); that exact stable Core executes in the firmware derivation and native conformance. This establishes a current stable point, without a patch-range or every-board claim.",
+        "evidence": [
+          "https://docs.platformio.org/en/stable/core/history.html",
+          "https://github.com/nix-purifiers/platformio-purifier/actions/runs/42154289786",
+          "/nix/store/rhz0nhd11ywa49a0nl2cdpf4037j78kx-platformio-firmware.drv"
+        ]
+      },
+      "manySamples": {
+        "state": "not-met",
+        "summary": "Authored Uno firmware in examples/minimal, with locked AVR/framework/library dependencies and native objcopy/GDB consumers; no board hardware execution is claimed. Inspection establishes useful concrete cases but not a broad independent upstream sample corpus covering different project structures; authored variants, dependency nodes and tests of one upstream project are not counted as separate projects.",
+        "evidence": [
+          "https://github.com/nix-purifiers/platformio-purifier/actions/runs/42154289786",
+          "https://github.com/nix-purifiers/platformio-purifier/blob/307e94ed452d3156617f86c705cfffdc034400a9/flake.nix",
+          "/nix/store/rhz0nhd11ywa49a0nl2cdpf4037j78kx-platformio-firmware.drv"
+        ]
+      },
+      "longCompatibility": {
+        "state": "not-met",
+        "summary": "One Core 6.2.0 and Uno/AVR workflow execute; historical platform package metadata is not a Core release history matrix.",
+        "evidence": [
+          "https://github.com/nix-purifiers/platformio-purifier/actions/runs/42154289786",
+          "https://github.com/nix-purifiers/platformio-purifier/blob/307e94ed452d3156617f86c705cfffdc034400a9/flake.nix",
+          "/nix/store/rhz0nhd11ywa49a0nl2cdpf4037j78kx-platformio-firmware.drv"
+        ]
+      }
+    },
+    "sampleBuilds": [
+      {
+        "name": "Authored Uno firmware in examples/minimal, with locked AVR/framework/library dependencies and native objcopy/GDB consumers; no board hardware execution is claimed.",
+        "evidence": [
+          "https://github.com/nix-purifiers/platformio-purifier/actions/runs/42154289786",
+          "/nix/store/rhz0nhd11ywa49a0nl2cdpf4037j78kx-platformio-firmware.drv",
+          "https://github.com/nix-purifiers/platformio-purifier/blob/307e94ed452d3156617f86c705cfffdc034400a9/flake.nix"
+        ]
+      }
+    ]
+  },
+  "pnpm-purifier": {
+    "tier": 3,
+    "reviewedRevision": "09af9ee2cd606cd2a90ad932acec18908e5b272f",
+    "reviewedAt": "2026-11-06",
+    "rationale": "Reviewed native Linux derivations evaluate and execute a concrete sample with substantive tests. Tier3 remains appropriate because native Darwin execution is absent. Independent sample breadth and historical compatibility are not established; maintained-version judgment is limited to the explicitly inspected SDK points.",
+    "criteria": {
+      "evaluation": {
+        "state": "met",
+        "summary": "Current main  09af9ee2cd606cd2a90ad932acec18908e5b272f evaluates and natively builds checks.x86_64-linux.fixture-tests at /nix/store/jf0hqv0c91ry8k61lzk9b9g6f6c52l2y-workspace-root-tests.drv. The separate real-world giget check uses pnpm 11.27.0, while the workspace test uses pnpm 12.9.0.",
+        "evidence": [
+          "https://github.com/nix-purifiers/pnpm-purifier/actions/runs/42154533709",
+          "/nix/store/jf0hqv0c91ry8k61lzk9b9g6f6c52l2y-workspace-root-tests.drv",
+          "https://github.com/nix-purifiers/pnpm-purifier/blob/09af9ee2cd606cd2a90ad932acec18908e5b272f/tests/default.nix"
+        ]
+      },
+      "goodTests": {
+        "state": "met",
+        "summary": "Nix checks build/run workspace packages and tests, giget, source/prepare hooks, browser and npm projections, integrity, platform filters, malformed/stale/tampered locks and local publication. Native CI separately verifies relock/update/offline/rebuild. Available-pnpm is an evaluation assertion, not an alternate-version runtime test.",
+        "evidence": [
+          "https://github.com/nix-purifiers/pnpm-purifier/actions/runs/42154533709",
+          "https://github.com/nix-purifiers/pnpm-purifier/blob/09af9ee2cd606cd2a90ad932acec18908e5b272f/tests/default.nix",
+          "https://github.com/nix-purifiers/pnpm-purifier/blob/09af9ee2cd606cd2a90ad932acec18908e5b272f/.github/workflows/check.yml",
+          "/nix/store/mvb53ij6ynjsw62s1ykz0jb1q4q9bapl-unit.drv",
+          "/nix/store/44w7jdvaiz6is8807wfmd6f8pzsd756w-browser-webjar-ordinary-consumers.drv",
+          "/nix/store/9a7p7nqvcz43pv1w01m8dyv0437g2lsq-conformance-stale.drv",
+          "/nix/store/3b2ldr6hsi6g11cr0mz6i6ayqpgsg70m-conformance-tampered.drv",
+          "/nix/store/c1a7vcg0c93k9cxisvkw50mnw8vybir0-conformance-missing.drv",
+          "/nix/store/vi6j4syp4ixckw2na0j09qfvpkxnj2wi-conformance-malformed.drv",
+          "/nix/store/8wvmgrbpjpdiv9r1qfq0h33i78rj2ph8-conformance-external.drv"
+        ]
+      },
+      "linux": {
+        "state": "met",
+        "summary": "Native x86_64-linux and aarch64-linux CI jobs completed successfully and built/run the sample checks. Exact per-system check derivations and successful building traces are retained; ten x86_64 outputs were also realized locally by exact CI drv identity.",
+        "evidence": [
+          "https://github.com/nix-purifiers/pnpm-purifier/actions/runs/42154533709",
+          "/nix/store/jf0hqv0c91ry8k61lzk9b9g6f6c52l2y-workspace-root-tests.drv",
+          "https://github.com/nix-purifiers/pnpm-purifier/blob/09af9ee2cd606cd2a90ad932acec18908e5b272f/tests/default.nix"
+        ]
+      },
+      "darwin": {
+        "state": "not-met",
+        "summary": "Inspected current-main workflow schedules only ubuntu-latest and ubuntu-24.04-arm runtime jobs. No successful native Darwin check/SDK/output receipt is present. Declared aarch64-darwin support or --all-systems --no-build evaluation does not satisfy runtime execution.",
+        "evidence": [
+          "https://github.com/nix-purifiers/pnpm-purifier/blob/09af9ee2cd606cd2a90ad932acec18908e5b272f/.github/workflows/check.yml",
+          "https://github.com/nix-purifiers/pnpm-purifier/actions/runs/42154533709"
+        ]
+      },
+      "oneVersion": {
+        "state": "met",
+        "summary": "Native workspace builds/tests execute pnpm 12.9.0 and Node24.21.0; the independent giget3.3.1 build/help check executes pnpm 11.27.0 with Node24.21.0. Those are separate exact SDK bindings, not a continuous version range.",
+        "evidence": [
+          "https://github.com/nix-purifiers/pnpm-purifier/actions/runs/42154533709",
+          "/nix/store/jf0hqv0c91ry8k61lzk9b9g6f6c52l2y-workspace-root-tests.drv",
+          "https://github.com/nix-purifiers/pnpm-purifier/blob/09af9ee2cd606cd2a90ad932acec18908e5b272f/tests/default.nix"
+        ]
+      },
+      "nonEolVersions": {
+        "state": "met",
+        "summary": "Official installation policy identifies12 as current release line; exact12.9.0 executes with Node24.21.0. GitHub latest12.18.0 is newer, but no primary policy makes every earlier12 patch EOL. This passes for the current supported line point, without claiming latest-patch execution or all12.x patches.",
+        "evidence": [
+          "https://pnpm.io/installation",
+          "https://github.com/nix-purifiers/pnpm-purifier/actions/runs/42154533709",
+          "/nix/store/jf0hqv0c91ry8k61lzk9b9g6f6c52l2y-workspace-root-tests.drv",
+          "/nix/store/jf0hqv0c91ry8k61lzk9b9g6f6c52l2y-workspace-root-tests.drv"
+        ]
+      },
+      "manySamples": {
+        "state": "not-met",
+        "summary": "Independent unjs/giget3.3.1 atf1dad453055b97a81d5227edce7262c8dcaf53d2, built in sandbox and invoked with --help; authored workspace/source/prepare fixtures are not independent samples. Inspection establishes useful concrete cases but not a broad independent upstream sample corpus covering different project structures; authored variants, dependency nodes and tests of one upstream project are not counted as separate projects.",
+        "evidence": [
+          "https://github.com/nix-purifiers/pnpm-purifier/actions/runs/42154533709",
+          "https://github.com/nix-purifiers/pnpm-purifier/blob/09af9ee2cd606cd2a90ad932acec18908e5b272f/tests/default.nix",
+          "/nix/store/0q1h0kfkbxw5xbb0bkvsp3a0zj7s82y9-real-world.drv"
+        ]
+      },
+      "longCompatibility": {
+        "state": "not-met",
+        "summary": "Current-major12.9.0 execution and fixtures do not establish years of pnpm compatibility. Producer candidate adds exact10/11/12 runtime points but remains separate and does not imply continuous ranges.",
+        "evidence": [
+          "https://github.com/nix-purifiers/pnpm-purifier/actions/runs/42154533709",
+          "https://github.com/nix-purifiers/pnpm-purifier/blob/09af9ee2cd606cd2a90ad932acec18908e5b272f/tests/default.nix",
+          "/nix/store/0q1h0kfkbxw5xbb0bkvsp3a0zj7s82y9-real-world.drv"
+        ]
+      }
+    },
+    "sampleBuilds": [
+      {
+        "name": "Independent unjs/giget3.3.1 atf1dad453055b97a81d5227edce7262c8dcaf53d2, built in sandbox and invoked with --help; authored workspace/source/prepare fixtures are not independent samples.",
+        "evidence": [
+          "https://github.com/nix-purifiers/pnpm-purifier/actions/runs/42154533709",
+          "/nix/store/0q1h0kfkbxw5xbb0bkvsp3a0zj7s82y9-real-world.drv",
+          "https://github.com/nix-purifiers/pnpm-purifier/blob/09af9ee2cd606cd2a90ad932acec18908e5b272f/tests/default.nix"
+        ]
+      }
+    ]
+  },
+  "poetry-purifier": {
+    "tier": 3,
+    "reviewedRevision": "933aaf6872af7927df6f6546ca6b36742c68e36d",
+    "reviewedAt": "2026-11-06",
+    "rationale": "Reviewed native Linux derivations evaluate and execute a concrete sample with substantive tests. Tier3 remains appropriate because native Darwin execution is absent. Independent sample breadth and historical compatibility are not established; maintained-version judgment is limited to the explicitly inspected SDK points.",
+    "criteria": {
+      "evaluation": {
+        "state": "met",
+        "summary": "Current main 933aaf6872af7927df6f6546ca6b36742c68e36d check definitions evaluate in successful native Linux CI. app-runs is bound to executable derivation /nix/store/3s81l1gblpqjk0f3r1sf5rdidw9vngcm-app-runs.drv; local exploratory evaluation is supplementary only.",
+        "evidence": [
+          "https://github.com/nix-purifiers/poetry-purifier/actions/runs/42154538545",
+          "/nix/store/3s81l1gblpqjk0f3r1sf5rdidw9vngcm-app-runs.drv",
+          "https://github.com/nix-purifiers/poetry-purifier/blob/933aaf6872af7927df6f6546ca6b36742c68e36d/tests/default.nix"
+        ]
+      },
+      "goodTests": {
+        "state": "met",
+        "summary": "Nix checks run the app and tests, lock validation failures, groups/path/git/submodule installation, downstream wheel consumption and local publication; native CI runs relock/offline/update/rebuild. The independent Rich derivation builds its release and runs the upstream pytest suite before a runtime import/render assertion.",
+        "evidence": [
+          "https://github.com/nix-purifiers/poetry-purifier/actions/runs/42154538545",
+          "https://github.com/nix-purifiers/poetry-purifier/blob/933aaf6872af7927df6f6546ca6b36742c68e36d/tests/default.nix",
+          "https://github.com/nix-purifiers/poetry-purifier/blob/933aaf6872af7927df6f6546ca6b36742c68e36d/.github/workflows/check.yml",
+          "/nix/store/xj5mjszg4diqgcjcfnysl879vdivb3mw-unit.drv",
+          "/nix/store/065vv1jc0ljjqjq2k3x2435nwbk8rvwz-poetry-native-projection-downstream.drv",
+          "/nix/store/4vqk4mxk69s8ipd7v2jr8mygzvavqs16-conformance-stale.drv",
+          "/nix/store/15vczdq3ghi04zc686f8bxcxdfk2dv98-conformance-tampered.drv",
+          "/nix/store/h22az2sw1jd4rxs3xay01y7v8d53qd8d-conformance-missing.drv",
+          "/nix/store/ay4x2jhm7fhz716w13ggpk7bqqgfx5ma-conformance-malformed.drv",
+          "/nix/store/dn0kvyvyr24g1a8f0sr4jyjaq7i8ql4c-conformance-external.drv",
+          "/nix/store/szg452r1bp3vnc6i9488wgqbkbca4w52-path-dependency-installed.drv"
+        ]
+      },
+      "linux": {
+        "state": "met",
+        "summary": "Native x86_64-linux and aarch64-linux CI jobs completed successfully, including sample runtime checks; exact per-system derivations and successful builder traces are retained. These are native jobs, not cross-evaluation. The exact x86_64 sample check was also freshly built locally; command, builder log, output and NAR identity are retained.",
+        "evidence": [
+          "https://github.com/nix-purifiers/poetry-purifier/actions/runs/42154538545",
+          "/nix/store/3s81l1gblpqjk0f3r1sf5rdidw9vngcm-app-runs.drv",
+          "https://github.com/nix-purifiers/poetry-purifier/blob/933aaf6872af7927df6f6546ca6b36742c68e36d/tests/default.nix"
+        ]
+      },
+      "darwin": {
+        "state": "not-met",
+        "summary": "Inspected current-main workflow schedules only ubuntu-latest and ubuntu-24.04-arm runtime jobs. No successful native Darwin check/SDK/output receipt is present. Declared aarch64-darwin support or --all-systems --no-build evaluation does not satisfy runtime execution.",
+        "evidence": [
+          "https://github.com/nix-purifiers/poetry-purifier/blob/933aaf6872af7927df6f6546ca6b36742c68e36d/.github/workflows/check.yml",
+          "https://github.com/nix-purifiers/poetry-purifier/actions/runs/42154538545"
+        ]
+      },
+      "oneVersion": {
+        "state": "met",
+        "summary": "Native sample execution establishes these exact SDK points: poetry 2.5.1, python 3.14.8. Independent Textualize/rich15.0.0 at6ac483cbea39cab124dfd3483bba70ffafb71050 with committed relocked poetry.lock and companion lock; authored app and path/VCS dependencies are one fixture family.",
+        "evidence": [
+          "https://github.com/nix-purifiers/poetry-purifier/actions/runs/42154538545",
+          "/nix/store/3s81l1gblpqjk0f3r1sf5rdidw9vngcm-app-runs.drv",
+          "https://github.com/nix-purifiers/poetry-purifier/blob/933aaf6872af7927df6f6546ca6b36742c68e36d/tests/default.nix"
+        ]
+      },
+      "nonEolVersions": {
+        "state": "met",
+        "summary": "Primary docs are Poetry 2.5 and latest GitHub release is2.5.1 (Sep20). Exact2.5.1 executes both fixtures and independent Rich tests. This passes for that current stable Poetry point; Python target-version or all-patch ranges are not inferred.",
+        "evidence": [
+          "https://python-poetry.org/docs/",
+          "https://github.com/nix-purifiers/poetry-purifier/actions/runs/42154538545",
+          "/nix/store/3s81l1gblpqjk0f3r1sf5rdidw9vngcm-app-runs.drv"
+        ]
+      },
+      "manySamples": {
+        "state": "not-met",
+        "summary": "Independent Textualize/rich15.0.0 at6ac483cbea39cab124dfd3483bba70ffafb71050 with committed relocked poetry.lock and companion lock; authored app and path/VCS dependencies are one fixture family. Inspection establishes useful concrete cases but not a broad independent upstream sample corpus covering different project structures; authored variants, dependency nodes and tests of one upstream project are not counted as separate projects.",
+        "evidence": [
+          "https://github.com/nix-purifiers/poetry-purifier/actions/runs/42154538545",
+          "https://github.com/nix-purifiers/poetry-purifier/blob/933aaf6872af7927df6f6546ca6b36742c68e36d/tests/default.nix",
+          "/nix/store/3s81l1gblpqjk0f3r1sf5rdidw9vngcm-app-runs.drv"
+        ]
+      },
+      "longCompatibility": {
+        "state": "not-met",
+        "summary": "Poetry 2.5.1 builds a Rich source whose original lock was2.1.3 and is relocked by2.5.1. That does not prove execution of Poetry 2.1.3 or old Poetry release lines.",
+        "evidence": [
+          "https://github.com/nix-purifiers/poetry-purifier/actions/runs/42154538545",
+          "https://github.com/nix-purifiers/poetry-purifier/blob/933aaf6872af7927df6f6546ca6b36742c68e36d/tests/default.nix",
+          "/nix/store/3s81l1gblpqjk0f3r1sf5rdidw9vngcm-app-runs.drv"
+        ]
+      }
+    },
+    "sampleBuilds": [
+      {
+        "name": "Independent Textualize/rich15.0.0 at6ac483cbea39cab124dfd3483bba70ffafb71050 with committed relocked poetry.lock and companion lock; authored app and path/VCS dependencies are one fixture family.",
+        "evidence": [
+          "https://github.com/nix-purifiers/poetry-purifier/actions/runs/42154538545",
+          "/nix/store/3s81l1gblpqjk0f3r1sf5rdidw9vngcm-app-runs.drv",
+          "https://github.com/nix-purifiers/poetry-purifier/blob/933aaf6872af7927df6f6546ca6b36742c68e36d/tests/default.nix"
+        ]
+      }
+    ]
+  },
+  "pub-purifier": {
+    "tier": 3,
+    "reviewedRevision": "8a21150b1cae4f21f7e71dc61d393953caaaeaae",
+    "reviewedAt": "2026-11-06",
+    "rationale": "Reviewed native Linux derivations evaluate and execute a concrete sample with substantive tests. Tier3 remains appropriate because native Darwin execution is absent. Independent sample breadth and historical compatibility are not established; maintained-version judgment is limited to the explicitly inspected SDK points.",
+    "criteria": {
+      "evaluation": {
+        "state": "met",
+        "summary": "Current main 8a21150b1cae4f21f7e71dc61d393953caaaeaae check definitions evaluate in successful native Linux CI. offline is bound to executable derivation /nix/store/lcyb27warc0lbcybw46zfx92sfysmrfy-pub-project-tests.drv; local exploratory evaluation is supplementary only.",
+        "evidence": [
+          "https://github.com/nix-purifiers/pub-purifier/actions/runs/42154542339",
+          "/nix/store/lcyb27warc0lbcybw46zfx92sfysmrfy-pub-project-tests.drv",
+          "https://github.com/nix-purifiers/pub-purifier/blob/8a21150b1cae4f21f7e71dc61d393953caaaeaae/tests/default.nix"
+        ]
+      },
+      "goodTests": {
+        "state": "met",
+        "summary": "Nix checks compile/run the hello project offline, build cache/release, exercise editor resolution and external/stale/tampered/malformed/missing locks. Native host-conformance tests local pub solver relock/selective/full update, offline run, atomic refusal, fallback and rebuild, with executable result assertions.",
+        "evidence": [
+          "https://github.com/nix-purifiers/pub-purifier/actions/runs/42154542339",
+          "https://github.com/nix-purifiers/pub-purifier/blob/8a21150b1cae4f21f7e71dc61d393953caaaeaae/tests/default.nix",
+          "https://github.com/nix-purifiers/pub-purifier/blob/8a21150b1cae4f21f7e71dc61d393953caaaeaae/.github/workflows/check.yml",
+          "/nix/store/5631qqv2zpyk0r2iqz08p7h2iyijiqx5-pub-unit.drv",
+          "/nix/store/lcyb27warc0lbcybw46zfx92sfysmrfy-pub-project-tests.drv",
+          "/nix/store/yf1zpib08v91y0ran64s0h1fr3rn1wx1-pub-external-locks.drv",
+          "/nix/store/hw2xsz3r6zfcgiphsb9wrvic11g9mph0-pub-stale.drv",
+          "/nix/store/izdisnkzfay3dyip44my3zpjcjpcz7q5-pub-tampered.drv",
+          "/nix/store/8y6ja85f0zalb0ydzjbx63wm707gr6nw-pub-missing.drv",
+          "/nix/store/6zdfbhkgmiilxf2wg2sjbbgfiy51b6in-pub-malformed.drv"
+        ]
+      },
+      "linux": {
+        "state": "met",
+        "summary": "Native x86_64-linux and aarch64-linux CI jobs completed successfully and built/run the sample checks. Exact per-system check derivations and successful building traces are retained; ten x86_64 outputs were also realized locally by exact CI drv identity.",
+        "evidence": [
+          "https://github.com/nix-purifiers/pub-purifier/actions/runs/42154542339",
+          "/nix/store/lcyb27warc0lbcybw46zfx92sfysmrfy-pub-project-tests.drv",
+          "https://github.com/nix-purifiers/pub-purifier/blob/8a21150b1cae4f21f7e71dc61d393953caaaeaae/tests/default.nix"
+        ]
+      },
+      "darwin": {
+        "state": "not-met",
+        "summary": "Inspected current-main workflow schedules only ubuntu-latest and ubuntu-24.04-arm runtime jobs. No successful native Darwin check/SDK/output receipt is present. Declared aarch64-darwin support or --all-systems --no-build evaluation does not satisfy runtime execution.",
+        "evidence": [
+          "https://github.com/nix-purifiers/pub-purifier/blob/8a21150b1cae4f21f7e71dc61d393953caaaeaae/.github/workflows/check.yml",
+          "https://github.com/nix-purifiers/pub-purifier/actions/runs/42154542339"
+        ]
+      },
+      "oneVersion": {
+        "state": "met",
+        "summary": "Native sample execution establishes these exact SDK points: dart 3.13.0. Authored hello Dart project and demo/other local package-index variants; no independent upstream application is established.",
+        "evidence": [
+          "https://github.com/nix-purifiers/pub-purifier/actions/runs/42154542339",
+          "/nix/store/lcyb27warc0lbcybw46zfx92sfysmrfy-pub-project-tests.drv",
+          "https://github.com/nix-purifiers/pub-purifier/blob/8a21150b1cae4f21f7e71dc61d393953caaaeaae/tests/default.nix"
+        ]
+      },
+      "nonEolVersions": {
+        "state": "met",
+        "summary": "Primary Dart docs identify the stable3.13 line (site reflects3.13.7), and archive policy distinguishes production stable from beta/dev. Exact3.13.0 compiles/runs the fixture. Current stable-line point is demonstrated; latest3.13.7 and all-patch execution are not claimed. Live archive VERSION endpoint was inaccessible during review.",
+        "evidence": [
+          "https://dart.dev/get-dart/archive",
+          "https://github.com/nix-purifiers/pub-purifier/actions/runs/42154542339",
+          "/nix/store/lcyb27warc0lbcybw46zfx92sfysmrfy-pub-project-tests.drv",
+          "https://dart.dev/overview",
+          "https://dart.dev/resources/language/evolution",
+          "https://dart.dev/overview",
+          "https://dart.dev/resources/language/evolution"
+        ]
+      },
+      "manySamples": {
+        "state": "not-met",
+        "summary": "Authored hello Dart project and demo/other local package-index variants; no independent upstream application is established. Inspection establishes useful concrete cases but not a broad independent upstream sample corpus covering different project structures; authored variants, dependency nodes and tests of one upstream project are not counted as separate projects.",
+        "evidence": [
+          "https://github.com/nix-purifiers/pub-purifier/actions/runs/42154542339",
+          "https://github.com/nix-purifiers/pub-purifier/blob/8a21150b1cae4f21f7e71dc61d393953caaaeaae/tests/default.nix",
+          "/nix/store/lcyb27warc0lbcybw46zfx92sfysmrfy-pub-project-tests.drv"
+        ]
+      },
+      "longCompatibility": {
+        "state": "not-met",
+        "summary": "One Dart 3.13.0 executable and synthetic dependency1\u21922 updates establish no earlier Dart SDK compatibility.",
+        "evidence": [
+          "https://github.com/nix-purifiers/pub-purifier/actions/runs/42154542339",
+          "https://github.com/nix-purifiers/pub-purifier/blob/8a21150b1cae4f21f7e71dc61d393953caaaeaae/tests/default.nix",
+          "/nix/store/lcyb27warc0lbcybw46zfx92sfysmrfy-pub-project-tests.drv"
+        ]
+      }
+    },
+    "sampleBuilds": [
+      {
+        "name": "Authored hello Dart project and demo/other local package-index variants; no independent upstream application is established.",
+        "evidence": [
+          "https://github.com/nix-purifiers/pub-purifier/actions/runs/42154542339",
+          "/nix/store/lcyb27warc0lbcybw46zfx92sfysmrfy-pub-project-tests.drv",
+          "https://github.com/nix-purifiers/pub-purifier/blob/8a21150b1cae4f21f7e71dc61d393953caaaeaae/tests/default.nix"
+        ]
+      }
+    ]
+  },
+  "pulumi-purifier": {
+    "tier": 3,
+    "reviewedRevision": "2118c92988fc00dd53351aabe485f622f51df4cb",
+    "reviewedAt": "2026-11-06",
+    "rationale": "Reviewed native Linux derivations evaluate and execute a concrete sample with substantive tests. Tier3 remains appropriate because native Darwin execution is absent. Independent sample breadth and historical compatibility are not established; maintained-version judgment is limited to the explicitly inspected SDK points.",
+    "criteria": {
+      "evaluation": {
+        "state": "met",
+        "summary": "Current main 2118c92988fc00dd53351aabe485f622f51df4cb check definitions evaluate in successful native Linux CI. project is bound to executable derivation /nix/store/gkcdbiybc519lslzva9wxkc543ij59gp-pulumi-native-project.drv; local exploratory evaluation is supplementary only.",
+        "evidence": [
+          "https://github.com/nix-purifiers/pulumi-purifier/actions/runs/42154546028",
+          "/nix/store/gkcdbiybc519lslzva9wxkc543ij59gp-pulumi-native-project.drv",
+          "https://github.com/nix-purifiers/pulumi-purifier/blob/2118c92988fc00dd53351aabe485f622f51df4cb/flake.nix"
+        ]
+      },
+      "goodTests": {
+        "state": "met",
+        "summary": "Nix builds locked plugin environment/project/release; native conformance uses real Pulumi up/preview with42\u219243\u219242 output assertions, plugin-selection guards, isolated state, private plugin closure, source consumer, publication, fallback, atomic capture and rebuild. This is substantive native-engine behavior with an authored test language plugin.",
+        "evidence": [
+          "https://github.com/nix-purifiers/pulumi-purifier/actions/runs/42154546028",
+          "https://github.com/nix-purifiers/pulumi-purifier/blob/2118c92988fc00dd53351aabe485f622f51df4cb/flake.nix",
+          "https://github.com/nix-purifiers/pulumi-purifier/blob/2118c92988fc00dd53351aabe485f622f51df4cb/.github/workflows/check.yml",
+          "/nix/store/gkcdbiybc519lslzva9wxkc543ij59gp-pulumi-native-project.drv"
+        ]
+      },
+      "linux": {
+        "state": "met",
+        "summary": "Native x86_64-linux and aarch64-linux CI jobs completed successfully and built/run the sample checks. Exact per-system check derivations and successful building traces are retained; ten x86_64 outputs were also realized locally by exact CI drv identity.",
+        "evidence": [
+          "https://github.com/nix-purifiers/pulumi-purifier/actions/runs/42154546028",
+          "/nix/store/gkcdbiybc519lslzva9wxkc543ij59gp-pulumi-native-project.drv",
+          "https://github.com/nix-purifiers/pulumi-purifier/blob/2118c92988fc00dd53351aabe485f622f51df4cb/flake.nix"
+        ]
+      },
+      "darwin": {
+        "state": "not-met",
+        "summary": "Inspected current-main workflow schedules only ubuntu-latest and ubuntu-24.04-arm runtime jobs. No successful native Darwin check/SDK/output receipt is present. Declared aarch64-darwin support or --all-systems --no-build evaluation does not satisfy runtime execution.",
+        "evidence": [
+          "https://github.com/nix-purifiers/pulumi-purifier/blob/2118c92988fc00dd53351aabe485f622f51df4cb/.github/workflows/check.yml",
+          "https://github.com/nix-purifiers/pulumi-purifier/actions/runs/42154546028"
+        ]
+      },
+      "oneVersion": {
+        "state": "met",
+        "summary": "Native sample execution establishes these exact SDK points: pulumi 3.268.0. Authored examples/minimal project and controlled language plugin protocol fixture; plugin identities and variants do not form independent user projects.",
+        "evidence": [
+          "https://github.com/nix-purifiers/pulumi-purifier/actions/runs/42154546028",
+          "/nix/store/gkcdbiybc519lslzva9wxkc543ij59gp-pulumi-native-project.drv",
+          "https://github.com/nix-purifiers/pulumi-purifier/blob/2118c92988fc00dd53351aabe485f622f51df4cb/flake.nix"
+        ]
+      },
+      "nonEolVersions": {
+        "state": "not-met",
+        "summary": "Latest primary GitHub release isv3.274.1 (Nov5); native tests execute3.268.0. Inspected support docs do not establish3.268 as a separately maintained branch. Current-release execution remains missing;3.268 is not asserted EOL.",
+        "evidence": [
+          "https://www.pulumi.com/docs/support/",
+          "https://github.com/nix-purifiers/pulumi-purifier/actions/runs/42154546028",
+          "/nix/store/gkcdbiybc519lslzva9wxkc543ij59gp-pulumi-native-project.drv"
+        ]
+      },
+      "manySamples": {
+        "state": "not-met",
+        "summary": "Authored examples/minimal project and controlled language plugin protocol fixture; plugin identities and variants do not form independent user projects. Inspection establishes useful concrete cases but not a broad independent upstream sample corpus covering different project structures; authored variants, dependency nodes and tests of one upstream project are not counted as separate projects.",
+        "evidence": [
+          "https://github.com/nix-purifiers/pulumi-purifier/actions/runs/42154546028",
+          "https://github.com/nix-purifiers/pulumi-purifier/blob/2118c92988fc00dd53351aabe485f622f51df4cb/flake.nix",
+          "/nix/store/gkcdbiybc519lslzva9wxkc543ij59gp-pulumi-native-project.drv"
+        ]
+      },
+      "longCompatibility": {
+        "state": "not-met",
+        "summary": "One Pulumi 3.268.0 engine point and mutable source42\u219243\u219242 regression tests do not demonstrate old Pulumi compatibility.",
+        "evidence": [
+          "https://github.com/nix-purifiers/pulumi-purifier/actions/runs/42154546028",
+          "https://github.com/nix-purifiers/pulumi-purifier/blob/2118c92988fc00dd53351aabe485f622f51df4cb/flake.nix",
+          "/nix/store/gkcdbiybc519lslzva9wxkc543ij59gp-pulumi-native-project.drv"
+        ]
+      }
+    },
+    "sampleBuilds": [
+      {
+        "name": "Authored examples/minimal project and controlled language plugin protocol fixture; plugin identities and variants do not form independent user projects.",
+        "evidence": [
+          "https://github.com/nix-purifiers/pulumi-purifier/actions/runs/42154546028",
+          "/nix/store/gkcdbiybc519lslzva9wxkc543ij59gp-pulumi-native-project.drv",
+          "https://github.com/nix-purifiers/pulumi-purifier/blob/2118c92988fc00dd53351aabe485f622f51df4cb/flake.nix"
+        ]
+      }
+    ]
+  },
+  "qgis-purifier": {
+    "tier": 3,
+    "reviewedRevision": "1ffe47723f6a3be3b0e3ebc267c0e7eed89800c3",
+    "reviewedAt": "2026-11-06",
+    "rationale": "Reviewed native Linux derivations evaluate and execute a concrete sample with substantive tests. Tier3 remains appropriate because native Darwin execution is absent. Independent sample breadth and historical compatibility are not established; maintained-version judgment is limited to the explicitly inspected SDK points.",
+    "criteria": {
+      "evaluation": {
+        "state": "met",
+        "summary": "Current main 1ffe47723f6a3be3b0e3ebc267c0e7eed89800c3 check definitions evaluate in successful native Linux CI. project is bound to executable derivation /nix/store/pg2b9zwfflcq4v74qlj1qraqaynzrnpn-qgis-project.drv; local exploratory evaluation is supplementary only.",
+        "evidence": [
+          "https://github.com/nix-purifiers/qgis-purifier/actions/runs/41955521536",
+          "/nix/store/pg2b9zwfflcq4v74qlj1qraqaynzrnpn-qgis-project.drv",
+          "https://github.com/nix-purifiers/qgis-purifier/blob/1ffe47723f6a3be3b0e3ebc267c0e7eed89800c3/flake.nix"
+        ]
+      },
+      "goodTests": {
+        "state": "met",
+        "summary": "Nix checks build locked environment/project/release and native CI additionally exercises processing/geometry output, source edits, preferences, startup-code guards, networking, fallback, artifact consumption, atomic capture and actual LatLonTools GUI activation under Xvfb. The tests include real QGIS behavior, not only loading a manifest.",
+        "evidence": [
+          "https://github.com/nix-purifiers/qgis-purifier/actions/runs/41955521536",
+          "https://github.com/nix-purifiers/qgis-purifier/blob/1ffe47723f6a3be3b0e3ebc267c0e7eed89800c3/flake.nix",
+          "https://github.com/nix-purifiers/qgis-purifier/blob/1ffe47723f6a3be3b0e3ebc267c0e7eed89800c3/.github/workflows/check.yml",
+          "/nix/store/pg2b9zwfflcq4v74qlj1qraqaynzrnpn-qgis-project.drv"
+        ]
+      },
+      "linux": {
+        "state": "met",
+        "summary": "Native x86_64-linux and aarch64-linux CI jobs completed successfully and built/run the sample checks. Exact per-system check derivations and successful building traces are retained; ten x86_64 outputs were also realized locally by exact CI drv identity.",
+        "evidence": [
+          "https://github.com/nix-purifiers/qgis-purifier/actions/runs/41955521536",
+          "/nix/store/pg2b9zwfflcq4v74qlj1qraqaynzrnpn-qgis-project.drv",
+          "https://github.com/nix-purifiers/qgis-purifier/blob/1ffe47723f6a3be3b0e3ebc267c0e7eed89800c3/flake.nix"
+        ]
+      },
+      "darwin": {
+        "state": "not-met",
+        "summary": "Inspected current-main workflow schedules only ubuntu-latest and ubuntu-24.04-arm runtime jobs. No successful native Darwin check/SDK/output receipt is present. Declared aarch64-darwin support or --all-systems --no-build evaluation does not satisfy runtime execution.",
+        "evidence": [
+          "https://github.com/nix-purifiers/qgis-purifier/blob/1ffe47723f6a3be3b0e3ebc267c0e7eed89800c3/.github/workflows/check.yml",
+          "https://github.com/nix-purifiers/qgis-purifier/actions/runs/41955521536"
+        ]
+      },
+      "oneVersion": {
+        "state": "met",
+        "summary": "Native sample execution establishes these exact SDK points: qgis 4.2.3. Authored minimal processing project with independent LatLonTools4.0.4 archive pinned by content hash, plus GUI activation. A plugin dependency and fixture variants are not a broad independent project corpus.",
+        "evidence": [
+          "https://github.com/nix-purifiers/qgis-purifier/actions/runs/41955521536",
+          "/nix/store/pg2b9zwfflcq4v74qlj1qraqaynzrnpn-qgis-project.drv",
+          "https://github.com/nix-purifiers/qgis-purifier/blob/1ffe47723f6a3be3b0e3ebc267c0e7eed89800c3/flake.nix"
+        ]
+      },
+      "nonEolVersions": {
+        "state": "not-met",
+        "summary": "Official roadmap distinguishes latest release and long-term-release maintenance. CI executes QGIS4.2.3, but no successful derivation for the separately maintained3.44 LTR is present. The LTR execution gap prevents maintained-line coverage.",
+        "evidence": [
+          "https://qgis.org/resources/roadmap/",
+          "https://github.com/nix-purifiers/qgis-purifier/actions/runs/41955521536",
+          "/nix/store/pg2b9zwfflcq4v74qlj1qraqaynzrnpn-qgis-project.drv"
+        ]
+      },
+      "manySamples": {
+        "state": "not-met",
+        "summary": "Authored minimal processing project with independent LatLonTools4.0.4 archive pinned by content hash, plus GUI activation. A plugin dependency and fixture variants are not a broad independent project corpus. Inspection establishes useful concrete cases but not a broad independent upstream sample corpus covering different project structures; authored variants, dependency nodes and tests of one upstream project are not counted as separate projects.",
+        "evidence": [
+          "https://github.com/nix-purifiers/qgis-purifier/actions/runs/41955521536",
+          "https://github.com/nix-purifiers/qgis-purifier/blob/1ffe47723f6a3be3b0e3ebc267c0e7eed89800c3/flake.nix",
+          "/nix/store/pg2b9zwfflcq4v74qlj1qraqaynzrnpn-qgis-project.drv"
+        ]
+      },
+      "longCompatibility": {
+        "state": "not-met",
+        "summary": "One QGIS4.2.3 plus LatLonTools4.0.4 does not show old QGIS/Qt/Python compatibility across releases.",
+        "evidence": [
+          "https://github.com/nix-purifiers/qgis-purifier/actions/runs/41955521536",
+          "https://github.com/nix-purifiers/qgis-purifier/blob/1ffe47723f6a3be3b0e3ebc267c0e7eed89800c3/flake.nix",
+          "/nix/store/pg2b9zwfflcq4v74qlj1qraqaynzrnpn-qgis-project.drv"
+        ]
+      }
+    },
+    "sampleBuilds": [
+      {
+        "name": "Authored minimal processing project with independent LatLonTools4.0.4 archive pinned by content hash, plus GUI activation. A plugin dependency and fixture variants are not a broad independent project corpus.",
+        "evidence": [
+          "https://github.com/nix-purifiers/qgis-purifier/actions/runs/41955521536",
+          "/nix/store/pg2b9zwfflcq4v74qlj1qraqaynzrnpn-qgis-project.drv",
+          "https://github.com/nix-purifiers/qgis-purifier/blob/1ffe47723f6a3be3b0e3ebc267c0e7eed89800c3/flake.nix"
+        ]
+      }
+    ]
+  },
+  "qlot-purifier": {
+    "tier": 3,
+    "reviewedRevision": "cc6e1da6c9ae4b5ff4f9c59edebc36a0898feeae",
+    "reviewedAt": "2026-11-06",
+    "rationale": "Reviewed native Linux derivations evaluate and execute a concrete sample with substantive tests. Tier3 remains appropriate because native Darwin execution is absent. Independent sample breadth and historical compatibility are not established; maintained-version judgment is limited to the explicitly inspected SDK points.",
+    "criteria": {
+      "evaluation": {
+        "state": "met",
+        "summary": "Current main cc6e1da6c9ae4b5ff4f9c59edebc36a0898feeae check definitions evaluate in successful native Linux CI. installed is bound to executable derivation /nix/store/7rm7lrfxipnh35ymbmiflgqpzjk8ygb4-installed-common-lisp-consumer.drv; local exploratory evaluation is supplementary only.",
+        "evidence": [
+          "https://github.com/nix-purifiers/qlot-purifier/actions/runs/42154550389",
+          "/nix/store/7rm7lrfxipnh35ymbmiflgqpzjk8ygb4-installed-common-lisp-consumer.drv",
+          "https://github.com/nix-purifiers/qlot-purifier/blob/cc6e1da6c9ae4b5ff4f9c59edebc36a0898feeae/flake.nix"
+        ]
+      },
+      "goodTests": {
+        "state": "met",
+        "summary": "Nix checks construct the locked Lisp environment/project/release and installed consumer quickloads purifier-example then verifies serialized JSON42. Native tests cover FASL rebuilding after source mutation, Quicklisp inventory, stale/missing selection refusal, pin/update capture, atomic failure, artifact roundtrip and fallback.",
+        "evidence": [
+          "https://github.com/nix-purifiers/qlot-purifier/actions/runs/42154550389",
+          "https://github.com/nix-purifiers/qlot-purifier/blob/cc6e1da6c9ae4b5ff4f9c59edebc36a0898feeae/flake.nix",
+          "https://github.com/nix-purifiers/qlot-purifier/blob/cc6e1da6c9ae4b5ff4f9c59edebc36a0898feeae/.github/workflows/check.yml",
+          "/nix/store/4jadk64akr73g0cixjx2x7l82q1b0280-purified-common-lisp-project.drv",
+          "/nix/store/7rm7lrfxipnh35ymbmiflgqpzjk8ygb4-installed-common-lisp-consumer.drv"
+        ]
+      },
+      "linux": {
+        "state": "met",
+        "summary": "Native x86_64-linux and aarch64-linux CI jobs completed successfully and built/run the sample checks. Exact per-system check derivations and successful building traces are retained; ten x86_64 outputs were also realized locally by exact CI drv identity.",
+        "evidence": [
+          "https://github.com/nix-purifiers/qlot-purifier/actions/runs/42154550389",
+          "/nix/store/7rm7lrfxipnh35ymbmiflgqpzjk8ygb4-installed-common-lisp-consumer.drv",
+          "https://github.com/nix-purifiers/qlot-purifier/blob/cc6e1da6c9ae4b5ff4f9c59edebc36a0898feeae/flake.nix"
+        ]
+      },
+      "darwin": {
+        "state": "not-met",
+        "summary": "Inspected current-main workflow schedules only ubuntu-latest and ubuntu-24.04-arm runtime jobs. No successful native Darwin check/SDK/output receipt is present. Declared aarch64-darwin support or --all-systems --no-build evaluation does not satisfy runtime execution.",
+        "evidence": [
+          "https://github.com/nix-purifiers/qlot-purifier/blob/cc6e1da6c9ae4b5ff4f9c59edebc36a0898feeae/.github/workflows/check.yml",
+          "https://github.com/nix-purifiers/qlot-purifier/actions/runs/42154550389"
+        ]
+      },
+      "oneVersion": {
+        "state": "met",
+        "summary": "Native sample execution establishes these exact SDK points: qlot 1.5.2, sbcl 2.6.8. Authored purifier-example ASDF project and locked Quicklisp dependencies, with an installed native SBCL consumer. Library dependencies are not independent purifier sample projects.",
+        "evidence": [
+          "https://github.com/nix-purifiers/qlot-purifier/actions/runs/42154550389",
+          "/nix/store/7rm7lrfxipnh35ymbmiflgqpzjk8ygb4-installed-common-lisp-consumer.drv",
+          "https://github.com/nix-purifiers/qlot-purifier/blob/cc6e1da6c9ae4b5ff4f9c59edebc36a0898feeae/flake.nix"
+        ]
+      },
+      "nonEolVersions": {
+        "state": "not-met",
+        "summary": "Latest primary Qlot release is1.8.4 (May31); Nix toolchain executes1.5.2/SBCL 2.6.8. Inspected release material provides no separately maintained1.5 policy. Current1.8 execution is missing; the old pin is not called EOL.",
+        "evidence": [
+          "https://github.com/fukamachi/qlot/releases/tag/1.8.4",
+          "https://github.com/nix-purifiers/qlot-purifier/actions/runs/42154550389",
+          "/nix/store/7rm7lrfxipnh35ymbmiflgqpzjk8ygb4-installed-common-lisp-consumer.drv"
+        ]
+      },
+      "manySamples": {
+        "state": "not-met",
+        "summary": "Authored purifier-example ASDF project and locked Quicklisp dependencies, with an installed native SBCL consumer. Library dependencies are not independent purifier sample projects. Inspection establishes useful concrete cases but not a broad independent upstream sample corpus covering different project structures; authored variants, dependency nodes and tests of one upstream project are not counted as separate projects.",
+        "evidence": [
+          "https://github.com/nix-purifiers/qlot-purifier/actions/runs/42154550389",
+          "https://github.com/nix-purifiers/qlot-purifier/blob/cc6e1da6c9ae4b5ff4f9c59edebc36a0898feeae/flake.nix",
+          "/nix/store/7rm7lrfxipnh35ymbmiflgqpzjk8ygb4-installed-common-lisp-consumer.drv"
+        ]
+      },
+      "longCompatibility": {
+        "state": "not-met",
+        "summary": "Qlot 1.5.2/SBCL 2.6.8 and Quicklisp2024-10-12 pin/update test data do not establish execution of old Qlot/SBCL versions.",
+        "evidence": [
+          "https://github.com/nix-purifiers/qlot-purifier/actions/runs/42154550389",
+          "https://github.com/nix-purifiers/qlot-purifier/blob/cc6e1da6c9ae4b5ff4f9c59edebc36a0898feeae/flake.nix",
+          "/nix/store/7rm7lrfxipnh35ymbmiflgqpzjk8ygb4-installed-common-lisp-consumer.drv"
+        ]
+      }
+    },
+    "sampleBuilds": [
+      {
+        "name": "Authored purifier-example ASDF project and locked Quicklisp dependencies, with an installed native SBCL consumer. Library dependencies are not independent purifier sample projects.",
+        "evidence": [
+          "https://github.com/nix-purifiers/qlot-purifier/actions/runs/42154550389",
+          "/nix/store/7rm7lrfxipnh35ymbmiflgqpzjk8ygb4-installed-common-lisp-consumer.drv",
+          "https://github.com/nix-purifiers/qlot-purifier/blob/cc6e1da6c9ae4b5ff4f9c59edebc36a0898feeae/flake.nix"
+        ]
+      }
+    ]
+  }
+}

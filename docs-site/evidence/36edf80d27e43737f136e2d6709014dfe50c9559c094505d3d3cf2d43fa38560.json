@@ -1,0 +1,2012 @@
+{
+  "docker-purifier": {
+    "tier": 3,
+    "reviewedRevision": "58d2913eabcb0c31409a49f0ed8d91008fd32bdf",
+    "reviewedAt": "2026-11-06",
+    "rationale": "Tier3 confirmed by executable native Linux sample derivations. Good tests are demonstrated; native Darwin execution and specific maintained-version coverage remain unproven as documented. Many-sample and long-compatibility Tier1 judgments are not demonstrated.",
+    "criteria": {
+      "evaluation": {
+        "state": "met",
+        "summary": "Current reviewed source evaluates to executable Nix checks, with actual successful sample derivation realization.",
+        "evidence": [
+          "/home/chris/Projects/ch-nix-workspace/.worktrees/tier-review/group-3/derivation-evidence.json#docker-purifier:x86_64-linux:image",
+          "/home/chris/Projects/ch-nix-workspace/.worktrees/tier-review/group-3/derivation-evidence.json#docker-purifier:x86_64-linux:offline",
+          "https://github.com/nix-purifiers/docker-purifier/blob/58d2913eabcb0c31409a49f0ed8d91008fd32bdf/flake.nix"
+        ],
+        "derivations": [
+          "docker-purifier:x86_64-linux:image",
+          "docker-purifier:x86_64-linux:offline"
+        ],
+        "sources": [
+          "https://github.com/nix-purifiers/docker-purifier/blob/58d2913eabcb0c31409a49f0ed8d91008fd32bdf/flake.nix"
+        ],
+        "gap": null
+      },
+      "goodTests": {
+        "state": "met",
+        "summary": "checks.unit exercises parser/lock logic; conformance stale/tampered/missing/malformed and external-lock checks reject invalid inputs; checks.image builds the Dockerfile in a Linux VM and checks.offline runs the image. Successful current-main Linux CI also exercises native/relock/update paths. This covers positive, negative, offline and consumer behavior sufficiently for goodTests.",
+        "evidence": [
+          "/home/chris/Projects/ch-nix-workspace/.worktrees/tier-review/group-3/derivation-evidence.json#docker-purifier:x86_64-linux:conformance-stale",
+          "/home/chris/Projects/ch-nix-workspace/.worktrees/tier-review/group-3/derivation-evidence.json#docker-purifier:x86_64-linux:image",
+          "/home/chris/Projects/ch-nix-workspace/.worktrees/tier-review/group-3/derivation-evidence.json#docker-purifier:x86_64-linux:offline",
+          "/home/chris/Projects/ch-nix-workspace/.worktrees/tier-review/group-3/derivation-evidence.json#docker-purifier:x86_64-linux:unit",
+          "https://github.com/nix-purifiers/docker-purifier/blob/58d2913eabcb0c31409a49f0ed8d91008fd32bdf/tests/default.nix",
+          "https://github.com/nix-purifiers/docker-purifier/blob/58d2913eabcb0c31409a49f0ed8d91008fd32bdf/.github/workflows/check.yml",
+          "https://github.com/nix-purifiers/docker-purifier/actions/runs/42152606313"
+        ],
+        "derivations": [
+          "docker-purifier:x86_64-linux:conformance-stale",
+          "docker-purifier:x86_64-linux:image",
+          "docker-purifier:x86_64-linux:offline",
+          "docker-purifier:x86_64-linux:unit"
+        ],
+        "sources": [
+          "https://github.com/nix-purifiers/docker-purifier/blob/58d2913eabcb0c31409a49f0ed8d91008fd32bdf/tests/default.nix",
+          "https://github.com/nix-purifiers/docker-purifier/blob/58d2913eabcb0c31409a49f0ed8d91008fd32bdf/.github/workflows/check.yml",
+          "https://github.com/nix-purifiers/docker-purifier/actions/runs/42152606313"
+        ],
+        "gap": null
+      },
+      "linux": {
+        "state": "met",
+        "summary": "Successful native x86_64-linux sample realization at this exact source; exact-SHA successful Linux CI retained.",
+        "evidence": [
+          "/home/chris/Projects/ch-nix-workspace/.worktrees/tier-review/group-3/derivation-evidence.json#docker-purifier:x86_64-linux:image",
+          "/home/chris/Projects/ch-nix-workspace/.worktrees/tier-review/group-3/derivation-evidence.json#docker-purifier:x86_64-linux:offline",
+          "https://github.com/nix-purifiers/docker-purifier/actions/runs/42152606313"
+        ],
+        "derivations": [
+          "docker-purifier:x86_64-linux:image",
+          "docker-purifier:x86_64-linux:offline"
+        ],
+        "sources": [
+          "https://github.com/nix-purifiers/docker-purifier/actions/runs/42152606313"
+        ],
+        "gap": null
+      },
+      "darwin": {
+        "state": "not-met",
+        "summary": "The reviewed current-main CI matrix executes only Linux. The public flake check outputs are Linux-only; no native Darwin sample build/runtime receipt was found.",
+        "evidence": [
+          "https://github.com/nix-purifiers/docker-purifier/blob/58d2913eabcb0c31409a49f0ed8d91008fd32bdf/flake.nix",
+          "https://github.com/nix-purifiers/docker-purifier/blob/58d2913eabcb0c31409a49f0ed8d91008fd32bdf/.github/workflows/check.yml",
+          "/home/chris/Projects/ch-nix-workspace/.worktrees/tier-review/group-3/docker-purifier/jobs.json"
+        ],
+        "derivations": [],
+        "sources": [
+          "https://github.com/nix-purifiers/docker-purifier/blob/58d2913eabcb0c31409a49f0ed8d91008fd32bdf/flake.nix",
+          "https://github.com/nix-purifiers/docker-purifier/blob/58d2913eabcb0c31409a49f0ed8d91008fd32bdf/.github/workflows/check.yml",
+          "/home/chris/Projects/ch-nix-workspace/.worktrees/tier-review/group-3/docker-purifier/jobs.json"
+        ],
+        "gap": "Missing native Darwin source/SDK/check derivation and successful runtime/output receipt at reviewed revision."
+      },
+      "oneVersion": {
+        "state": "met",
+        "summary": "The actual successful sample derivation uses exact locked SDK/tool points: docker=29.9.2. No unexecuted version range is inferred.",
+        "evidence": [
+          "/home/chris/Projects/ch-nix-workspace/.worktrees/tier-review/group-3/derivation-evidence.json#docker-purifier:x86_64-linux:image",
+          "/home/chris/Projects/ch-nix-workspace/.worktrees/tier-review/group-3/derivation-evidence.json#docker-purifier:x86_64-linux:offline",
+          "/home/chris/Projects/ch-nix-workspace/.worktrees/tier-review/group-3/docker-purifier/sdk-versions.json",
+          "https://github.com/nix-purifiers/docker-purifier/blob/58d2913eabcb0c31409a49f0ed8d91008fd32bdf/flake.lock"
+        ],
+        "derivations": [
+          "docker-purifier:x86_64-linux:image",
+          "docker-purifier:x86_64-linux:offline"
+        ],
+        "sources": [
+          "/home/chris/Projects/ch-nix-workspace/.worktrees/tier-review/group-3/docker-purifier/sdk-versions.json",
+          "https://github.com/nix-purifiers/docker-purifier/blob/58d2913eabcb0c31409a49f0ed8d91008fd32bdf/flake.lock"
+        ],
+        "gap": null
+      },
+      "nonEolVersions": {
+        "state": "not-met",
+        "summary": "Official Docker Engine29 release notes identify29.9.3 as a security update on2026-11-03. The locked package set supplies29.9.2. Execution of29.9.3 is absent; this is a current-release proof gap, not evidence that29.9.2 has a formal EOL date. Producer's Darwin/version-matrix branch is unpublished and has no qualifying receipts yet.",
+        "evidence": [
+          "/home/chris/Projects/ch-nix-workspace/.worktrees/tier-review/group-3/derivation-evidence.json#docker-purifier:x86_64-linux:image",
+          "/home/chris/Projects/ch-nix-workspace/.worktrees/tier-review/group-3/derivation-evidence.json#docker-purifier:x86_64-linux:offline",
+          "https://docs.docker.com/engine/release-notes/29/"
+        ],
+        "derivations": [
+          "docker-purifier:x86_64-linux:image",
+          "docker-purifier:x86_64-linux:offline"
+        ],
+        "sources": [
+          "https://docs.docker.com/engine/release-notes/29/"
+        ],
+        "gap": "Official Docker Engine29 release notes identify29.9.3 as a security update on2026-11-03. The locked package set supplies29.9.2. Execution of29.9.3 is absent; this is a current-release proof gap, not evidence that29.9.2 has a formal EOL date. Producer's Darwin/version-matrix branch is unpublished and has no qualifying receipts yet."
+      },
+      "manySamples": {
+        "state": "not-met",
+        "summary": "examples/hello Dockerfile image and its offline execution; this is a repository fixture, not an independent upstream Dockerfile project. BusyBox base image is a dependency, not a second consumer sample. This reviewed sample set does not establish broad independently authored consumer coverage for the Tier1 judgment.",
+        "evidence": [
+          "/home/chris/Projects/ch-nix-workspace/.worktrees/tier-review/group-3/derivation-evidence.json#docker-purifier:x86_64-linux:image",
+          "/home/chris/Projects/ch-nix-workspace/.worktrees/tier-review/group-3/derivation-evidence.json#docker-purifier:x86_64-linux:offline",
+          "https://github.com/nix-purifiers/docker-purifier/blob/58d2913eabcb0c31409a49f0ed8d91008fd32bdf/tests/default.nix"
+        ],
+        "derivations": [
+          "docker-purifier:x86_64-linux:image",
+          "docker-purifier:x86_64-linux:offline"
+        ],
+        "sources": [
+          "https://github.com/nix-purifiers/docker-purifier/blob/58d2913eabcb0c31409a49f0ed8d91008fd32bdf/tests/default.nix"
+        ],
+        "gap": "Additional distinct upstream consumer builds, beyond these fixtures/dependencies/selected projects, have not been demonstrated."
+      },
+      "longCompatibility": {
+        "state": "not-met",
+        "summary": "Executed SDK points are docker=29.9.2. No historical SDK-line execution matrix is present in the reviewed check definitions or successful receipts; target/fixture variants do not demonstrate old toolchain compatibility.",
+        "evidence": [
+          "/home/chris/Projects/ch-nix-workspace/.worktrees/tier-review/group-3/derivation-evidence.json#docker-purifier:x86_64-linux:image",
+          "/home/chris/Projects/ch-nix-workspace/.worktrees/tier-review/group-3/derivation-evidence.json#docker-purifier:x86_64-linux:offline",
+          "https://github.com/nix-purifiers/docker-purifier/blob/58d2913eabcb0c31409a49f0ed8d91008fd32bdf/tests/default.nix"
+        ],
+        "derivations": [
+          "docker-purifier:x86_64-linux:image",
+          "docker-purifier:x86_64-linux:offline"
+        ],
+        "sources": [
+          "https://github.com/nix-purifiers/docker-purifier/blob/58d2913eabcb0c31409a49f0ed8d91008fd32bdf/tests/default.nix"
+        ],
+        "gap": "Missing executed historical toolchain-line matrix with successful source/SDK/check/output bindings; no all-patch range is inferred."
+      }
+    },
+    "sampleBuilds": [
+      {
+        "name": "examples/hello Dockerfile image and its offline execution; this is a repository fixture, not an independent upstream Dockerfile project. BusyBox base image is a dependency, not a second consumer sample.",
+        "evidence": [
+          "/home/chris/Projects/ch-nix-workspace/.worktrees/tier-review/group-3/derivation-evidence.json#docker-purifier:x86_64-linux:image",
+          "/home/chris/Projects/ch-nix-workspace/.worktrees/tier-review/group-3/derivation-evidence.json#docker-purifier:x86_64-linux:offline",
+          "https://github.com/nix-purifiers/docker-purifier/blob/58d2913eabcb0c31409a49f0ed8d91008fd32bdf/tests/default.nix"
+        ],
+        "derivations": [
+          "docker-purifier:x86_64-linux:image",
+          "docker-purifier:x86_64-linux:offline"
+        ]
+      }
+    ]
+  },
+  "dotnet-purifier": {
+    "tier": 3,
+    "reviewedRevision": "827b7a8206ac6b7262515a326a933291490abdb8",
+    "reviewedAt": "2026-11-06",
+    "rationale": "Tier3 confirmed by executable native Linux sample derivations. Good tests and current maintained SDK-line points are demonstrated; native Darwin execution is missing. Many-sample and long-compatibility Tier1 judgments are not demonstrated.",
+    "criteria": {
+      "evaluation": {
+        "state": "met",
+        "summary": "Current reviewed source evaluates to executable Nix checks, with actual successful sample derivation realization.",
+        "evidence": [
+          "/home/chris/Projects/ch-nix-workspace/.worktrees/tier-review/group-3/derivation-evidence.json#dotnet-purifier:x86_64-linux:multi-app-runs",
+          "/home/chris/Projects/ch-nix-workspace/.worktrees/tier-review/group-3/derivation-evidence.json#dotnet-purifier:x86_64-linux:realworld-fluentvalidation-tests",
+          "/home/chris/Projects/ch-nix-workspace/.worktrees/tier-review/group-3/derivation-evidence.json#dotnet-purifier:x86_64-linux:realworld-fluentvalidation",
+          "https://github.com/nix-purifiers/dotnet-purifier/blob/827b7a8206ac6b7262515a326a933291490abdb8/flake.nix"
+        ],
+        "derivations": [
+          "dotnet-purifier:x86_64-linux:multi-app-runs",
+          "dotnet-purifier:x86_64-linux:realworld-fluentvalidation-tests",
+          "dotnet-purifier:x86_64-linux:realworld-fluentvalidation"
+        ],
+        "sources": [
+          "https://github.com/nix-purifiers/dotnet-purifier/blob/827b7a8206ac6b7262515a326a933291490abdb8/flake.nix"
+        ],
+        "gap": null
+      },
+      "goodTests": {
+        "state": "met",
+        "summary": "tests/default.nix covers unit parsing, stale/tampered/malformed/missing locks, external locks, source mapping and local feeds, local tools, self-contained/ASP.NET execution, WebAssembly relinking, package publication and consumption. Native FluentValidation tests and multi-app execution have successful local derivation receipts. This is substantial positive/negative and real-consumer coverage.",
+        "evidence": [
+          "/home/chris/Projects/ch-nix-workspace/.worktrees/tier-review/group-3/derivation-evidence.json#dotnet-purifier:x86_64-linux:multi-app-runs",
+          "/home/chris/Projects/ch-nix-workspace/.worktrees/tier-review/group-3/derivation-evidence.json#dotnet-purifier:x86_64-linux:realworld-fluentvalidation-tests",
+          "/home/chris/Projects/ch-nix-workspace/.worktrees/tier-review/group-3/derivation-evidence.json#dotnet-purifier:x86_64-linux:realworld-fluentvalidation",
+          "/home/chris/Projects/ch-nix-workspace/.worktrees/tier-review/group-3/derivation-evidence.json#dotnet-purifier:x86_64-linux:unit-tests",
+          "https://github.com/nix-purifiers/dotnet-purifier/blob/827b7a8206ac6b7262515a326a933291490abdb8/tests/default.nix",
+          "https://github.com/nix-purifiers/dotnet-purifier/blob/827b7a8206ac6b7262515a326a933291490abdb8/.github/workflows/check.yml",
+          "https://github.com/nix-purifiers/dotnet-purifier/actions/runs/42152610779"
+        ],
+        "derivations": [
+          "dotnet-purifier:x86_64-linux:multi-app-runs",
+          "dotnet-purifier:x86_64-linux:realworld-fluentvalidation-tests",
+          "dotnet-purifier:x86_64-linux:realworld-fluentvalidation",
+          "dotnet-purifier:x86_64-linux:unit-tests"
+        ],
+        "sources": [
+          "https://github.com/nix-purifiers/dotnet-purifier/blob/827b7a8206ac6b7262515a326a933291490abdb8/tests/default.nix",
+          "https://github.com/nix-purifiers/dotnet-purifier/blob/827b7a8206ac6b7262515a326a933291490abdb8/.github/workflows/check.yml",
+          "https://github.com/nix-purifiers/dotnet-purifier/actions/runs/42152610779"
+        ],
+        "gap": null
+      },
+      "linux": {
+        "state": "met",
+        "summary": "Successful native x86_64-linux sample realization at this exact source; exact-SHA successful Linux CI retained.",
+        "evidence": [
+          "/home/chris/Projects/ch-nix-workspace/.worktrees/tier-review/group-3/derivation-evidence.json#dotnet-purifier:x86_64-linux:multi-app-runs",
+          "/home/chris/Projects/ch-nix-workspace/.worktrees/tier-review/group-3/derivation-evidence.json#dotnet-purifier:x86_64-linux:realworld-fluentvalidation-tests",
+          "/home/chris/Projects/ch-nix-workspace/.worktrees/tier-review/group-3/derivation-evidence.json#dotnet-purifier:x86_64-linux:realworld-fluentvalidation",
+          "https://github.com/nix-purifiers/dotnet-purifier/actions/runs/42152610779"
+        ],
+        "derivations": [
+          "dotnet-purifier:x86_64-linux:multi-app-runs",
+          "dotnet-purifier:x86_64-linux:realworld-fluentvalidation-tests",
+          "dotnet-purifier:x86_64-linux:realworld-fluentvalidation"
+        ],
+        "sources": [
+          "https://github.com/nix-purifiers/dotnet-purifier/actions/runs/42152610779"
+        ],
+        "gap": null
+      },
+      "darwin": {
+        "state": "not-met",
+        "summary": "The reviewed current-main CI matrix executes only Linux. aarch64-darwin is declared, but no native Darwin build/runtime receipt was found.",
+        "evidence": [
+          "https://github.com/nix-purifiers/dotnet-purifier/blob/827b7a8206ac6b7262515a326a933291490abdb8/flake.nix",
+          "https://github.com/nix-purifiers/dotnet-purifier/blob/827b7a8206ac6b7262515a326a933291490abdb8/.github/workflows/check.yml",
+          "/home/chris/Projects/ch-nix-workspace/.worktrees/tier-review/group-3/dotnet-purifier/jobs.json"
+        ],
+        "derivations": [],
+        "sources": [
+          "https://github.com/nix-purifiers/dotnet-purifier/blob/827b7a8206ac6b7262515a326a933291490abdb8/flake.nix",
+          "https://github.com/nix-purifiers/dotnet-purifier/blob/827b7a8206ac6b7262515a326a933291490abdb8/.github/workflows/check.yml",
+          "/home/chris/Projects/ch-nix-workspace/.worktrees/tier-review/group-3/dotnet-purifier/jobs.json"
+        ],
+        "gap": "Missing native Darwin source/SDK/check derivation and successful runtime/output receipt at reviewed revision."
+      },
+      "oneVersion": {
+        "state": "met",
+        "summary": "The actual successful sample derivation uses exact locked SDK/tool points: dotnetSDK=10.0.403, dotnetRuntime8=8.0.33, dotnetRuntime9=9.0.22, dotnetRuntime10=10.0.14. No unexecuted version range is inferred.",
+        "evidence": [
+          "/home/chris/Projects/ch-nix-workspace/.worktrees/tier-review/group-3/derivation-evidence.json#dotnet-purifier:x86_64-linux:multi-app-runs",
+          "/home/chris/Projects/ch-nix-workspace/.worktrees/tier-review/group-3/derivation-evidence.json#dotnet-purifier:x86_64-linux:realworld-fluentvalidation-tests",
+          "/home/chris/Projects/ch-nix-workspace/.worktrees/tier-review/group-3/derivation-evidence.json#dotnet-purifier:x86_64-linux:realworld-fluentvalidation",
+          "/home/chris/Projects/ch-nix-workspace/.worktrees/tier-review/group-3/dotnet-purifier/sdk-versions.json",
+          "https://github.com/nix-purifiers/dotnet-purifier/blob/827b7a8206ac6b7262515a326a933291490abdb8/flake.lock"
+        ],
+        "derivations": [
+          "dotnet-purifier:x86_64-linux:multi-app-runs",
+          "dotnet-purifier:x86_64-linux:realworld-fluentvalidation-tests",
+          "dotnet-purifier:x86_64-linux:realworld-fluentvalidation"
+        ],
+        "sources": [
+          "/home/chris/Projects/ch-nix-workspace/.worktrees/tier-review/group-3/dotnet-purifier/sdk-versions.json",
+          "https://github.com/nix-purifiers/dotnet-purifier/blob/827b7a8206ac6b7262515a326a933291490abdb8/flake.lock"
+        ],
+        "gap": null
+      },
+      "nonEolVersions": {
+        "state": "met",
+        "summary": "Microsoft policy updated2026-10-25 lists .NET8.0.33,9.0.22 and10.0.14 as supported on2026-11-06, with8/9 ending2026-11-10 and10 ending2028-11-14. FluentValidation native tests target net8.0/net9.0/net10.0 using the exact locked runtime points; SDK10.0.403 builds them. This meets current maintained .NET runtime-line coverage at these points only, not every SDK feature band or patch.",
+        "evidence": [
+          "/home/chris/Projects/ch-nix-workspace/.worktrees/tier-review/group-3/derivation-evidence.json#dotnet-purifier:x86_64-linux:multi-app-runs",
+          "/home/chris/Projects/ch-nix-workspace/.worktrees/tier-review/group-3/derivation-evidence.json#dotnet-purifier:x86_64-linux:realworld-fluentvalidation-tests",
+          "/home/chris/Projects/ch-nix-workspace/.worktrees/tier-review/group-3/derivation-evidence.json#dotnet-purifier:x86_64-linux:realworld-fluentvalidation",
+          "https://dotnet.microsoft.com/en-us/platform/support/policy"
+        ],
+        "derivations": [
+          "dotnet-purifier:x86_64-linux:multi-app-runs",
+          "dotnet-purifier:x86_64-linux:realworld-fluentvalidation-tests",
+          "dotnet-purifier:x86_64-linux:realworld-fluentvalidation"
+        ],
+        "sources": [
+          "https://dotnet.microsoft.com/en-us/platform/support/policy"
+        ],
+        "gap": null
+      },
+      "manySamples": {
+        "state": "not-met",
+        "summary": "Independent FluentValidation at f95dbd5c8166a10e38f7a8bca4d752abd641a453 is fetched with a fixed hash; checks.realworld-fluentvalidation builds its release and checks.realworld-fluentvalidation-tests runs its tests. multi, sources and workloads are fixtures, not additional independent upstream samples. This reviewed sample set does not establish broad independently authored consumer coverage for the Tier1 judgment.",
+        "evidence": [
+          "/home/chris/Projects/ch-nix-workspace/.worktrees/tier-review/group-3/derivation-evidence.json#dotnet-purifier:x86_64-linux:multi-app-runs",
+          "/home/chris/Projects/ch-nix-workspace/.worktrees/tier-review/group-3/derivation-evidence.json#dotnet-purifier:x86_64-linux:realworld-fluentvalidation-tests",
+          "/home/chris/Projects/ch-nix-workspace/.worktrees/tier-review/group-3/derivation-evidence.json#dotnet-purifier:x86_64-linux:realworld-fluentvalidation",
+          "https://github.com/nix-purifiers/dotnet-purifier/blob/827b7a8206ac6b7262515a326a933291490abdb8/tests/default.nix"
+        ],
+        "derivations": [
+          "dotnet-purifier:x86_64-linux:multi-app-runs",
+          "dotnet-purifier:x86_64-linux:realworld-fluentvalidation-tests",
+          "dotnet-purifier:x86_64-linux:realworld-fluentvalidation"
+        ],
+        "sources": [
+          "https://github.com/nix-purifiers/dotnet-purifier/blob/827b7a8206ac6b7262515a326a933291490abdb8/tests/default.nix"
+        ],
+        "gap": "Additional distinct upstream consumer builds, beyond these fixtures/dependencies/selected projects, have not been demonstrated."
+      },
+      "longCompatibility": {
+        "state": "not-met",
+        "summary": "Executed .NET8/9/10 points cover the currently supported runtime lines, but not a long historical compatibility span across older SDK/runtime generations.",
+        "evidence": [
+          "/home/chris/Projects/ch-nix-workspace/.worktrees/tier-review/group-3/derivation-evidence.json#dotnet-purifier:x86_64-linux:multi-app-runs",
+          "/home/chris/Projects/ch-nix-workspace/.worktrees/tier-review/group-3/derivation-evidence.json#dotnet-purifier:x86_64-linux:realworld-fluentvalidation-tests",
+          "/home/chris/Projects/ch-nix-workspace/.worktrees/tier-review/group-3/derivation-evidence.json#dotnet-purifier:x86_64-linux:realworld-fluentvalidation",
+          "https://github.com/nix-purifiers/dotnet-purifier/blob/827b7a8206ac6b7262515a326a933291490abdb8/tests/default.nix"
+        ],
+        "derivations": [
+          "dotnet-purifier:x86_64-linux:multi-app-runs",
+          "dotnet-purifier:x86_64-linux:realworld-fluentvalidation-tests",
+          "dotnet-purifier:x86_64-linux:realworld-fluentvalidation"
+        ],
+        "sources": [
+          "https://github.com/nix-purifiers/dotnet-purifier/blob/827b7a8206ac6b7262515a326a933291490abdb8/tests/default.nix"
+        ],
+        "gap": "Missing executed historical toolchain-line matrix with successful source/SDK/check/output bindings; no all-patch range is inferred."
+      }
+    },
+    "sampleBuilds": [
+      {
+        "name": "Independent FluentValidation at f95dbd5c8166a10e38f7a8bca4d752abd641a453 is fetched with a fixed hash; checks.realworld-fluentvalidation builds its release and checks.realworld-fluentvalidation-tests runs its tests. multi, sources and workloads are fixtures, not additional independent upstream samples.",
+        "evidence": [
+          "/home/chris/Projects/ch-nix-workspace/.worktrees/tier-review/group-3/derivation-evidence.json#dotnet-purifier:x86_64-linux:multi-app-runs",
+          "/home/chris/Projects/ch-nix-workspace/.worktrees/tier-review/group-3/derivation-evidence.json#dotnet-purifier:x86_64-linux:realworld-fluentvalidation-tests",
+          "/home/chris/Projects/ch-nix-workspace/.worktrees/tier-review/group-3/derivation-evidence.json#dotnet-purifier:x86_64-linux:realworld-fluentvalidation",
+          "https://github.com/nix-purifiers/dotnet-purifier/blob/827b7a8206ac6b7262515a326a933291490abdb8/tests/default.nix"
+        ],
+        "derivations": [
+          "dotnet-purifier:x86_64-linux:multi-app-runs",
+          "dotnet-purifier:x86_64-linux:realworld-fluentvalidation-tests",
+          "dotnet-purifier:x86_64-linux:realworld-fluentvalidation"
+        ]
+      }
+    ]
+  },
+  "dub-purifier": {
+    "tier": 3,
+    "reviewedRevision": "6fae322e73cc8aa1ff7d09a13e6d78ca4023143d",
+    "reviewedAt": "2026-11-06",
+    "rationale": "Tier3 confirmed by executable native Linux sample derivations. Good tests are demonstrated; native Darwin execution and specific maintained-version coverage remain unproven as documented. Many-sample and long-compatibility Tier1 judgments are not demonstrated.",
+    "criteria": {
+      "evaluation": {
+        "state": "met",
+        "summary": "Current reviewed source evaluates to executable Nix checks, with actual successful sample derivation realization.",
+        "evidence": [
+          "/home/chris/Projects/ch-nix-workspace/.worktrees/tier-review/group-3/derivation-evidence.json#dub-purifier:x86_64-linux:project",
+          "https://github.com/nix-purifiers/dub-purifier/blob/6fae322e73cc8aa1ff7d09a13e6d78ca4023143d/flake.nix"
+        ],
+        "derivations": [
+          "dub-purifier:x86_64-linux:project"
+        ],
+        "sources": [
+          "https://github.com/nix-purifiers/dub-purifier/blob/6fae322e73cc8aa1ff7d09a13e6d78ca4023143d/flake.nix"
+        ],
+        "gap": null
+      },
+      "goodTests": {
+        "state": "met",
+        "summary": "checks.project runs the locked minimal D program through built.tests. Current-main CI additionally runs task handling, external lock, native, relock, update and rebuild checks on x86_64 and aarch64 Linux. tests/eval-errors.py checks unsupported lock formats, empty profiles, path traversal, wrong system/build type, malformed hashes and URLs, altered selection hashes and stale manifests against a successful control. The executed project derivation and positive/negative native paths support goodTests.",
+        "evidence": [
+          "/home/chris/Projects/ch-nix-workspace/.worktrees/tier-review/group-3/derivation-evidence.json#dub-purifier:x86_64-linux:project",
+          "https://github.com/nix-purifiers/dub-purifier/blob/6fae322e73cc8aa1ff7d09a13e6d78ca4023143d/tests/default.nix",
+          "https://github.com/nix-purifiers/dub-purifier/blob/6fae322e73cc8aa1ff7d09a13e6d78ca4023143d/.github/workflows/check.yml",
+          "https://github.com/nix-purifiers/dub-purifier/actions/runs/42157205591"
+        ],
+        "derivations": [
+          "dub-purifier:x86_64-linux:project"
+        ],
+        "sources": [
+          "https://github.com/nix-purifiers/dub-purifier/blob/6fae322e73cc8aa1ff7d09a13e6d78ca4023143d/tests/default.nix",
+          "https://github.com/nix-purifiers/dub-purifier/blob/6fae322e73cc8aa1ff7d09a13e6d78ca4023143d/.github/workflows/check.yml",
+          "https://github.com/nix-purifiers/dub-purifier/actions/runs/42157205591"
+        ],
+        "gap": null
+      },
+      "linux": {
+        "state": "met",
+        "summary": "Successful native x86_64-linux sample realization at this exact source; exact-SHA successful Linux CI retained.",
+        "evidence": [
+          "/home/chris/Projects/ch-nix-workspace/.worktrees/tier-review/group-3/derivation-evidence.json#dub-purifier:x86_64-linux:project",
+          "https://github.com/nix-purifiers/dub-purifier/actions/runs/42157205591"
+        ],
+        "derivations": [
+          "dub-purifier:x86_64-linux:project"
+        ],
+        "sources": [
+          "https://github.com/nix-purifiers/dub-purifier/actions/runs/42157205591"
+        ],
+        "gap": null
+      },
+      "darwin": {
+        "state": "not-met",
+        "summary": "The reviewed current-main CI matrix executes only Linux. The public flake check outputs are Linux-only; no native Darwin sample build/runtime receipt was found.",
+        "evidence": [
+          "https://github.com/nix-purifiers/dub-purifier/blob/6fae322e73cc8aa1ff7d09a13e6d78ca4023143d/flake.nix",
+          "https://github.com/nix-purifiers/dub-purifier/blob/6fae322e73cc8aa1ff7d09a13e6d78ca4023143d/.github/workflows/check.yml",
+          "/home/chris/Projects/ch-nix-workspace/.worktrees/tier-review/group-3/dub-purifier/jobs.json"
+        ],
+        "derivations": [],
+        "sources": [
+          "https://github.com/nix-purifiers/dub-purifier/blob/6fae322e73cc8aa1ff7d09a13e6d78ca4023143d/flake.nix",
+          "https://github.com/nix-purifiers/dub-purifier/blob/6fae322e73cc8aa1ff7d09a13e6d78ca4023143d/.github/workflows/check.yml",
+          "/home/chris/Projects/ch-nix-workspace/.worktrees/tier-review/group-3/dub-purifier/jobs.json"
+        ],
+        "gap": "Missing native Darwin source/SDK/check derivation and successful runtime/output receipt at reviewed revision."
+      },
+      "oneVersion": {
+        "state": "met",
+        "summary": "The actual successful sample derivation uses exact locked SDK/tool points: dub=1.42.0, ldc=1.42.0. No unexecuted version range is inferred.",
+        "evidence": [
+          "/home/chris/Projects/ch-nix-workspace/.worktrees/tier-review/group-3/derivation-evidence.json#dub-purifier:x86_64-linux:project",
+          "/home/chris/Projects/ch-nix-workspace/.worktrees/tier-review/group-3/dub-purifier/sdk-versions.json",
+          "https://github.com/nix-purifiers/dub-purifier/blob/6fae322e73cc8aa1ff7d09a13e6d78ca4023143d/flake.lock"
+        ],
+        "derivations": [
+          "dub-purifier:x86_64-linux:project"
+        ],
+        "sources": [
+          "/home/chris/Projects/ch-nix-workspace/.worktrees/tier-review/group-3/dub-purifier/sdk-versions.json",
+          "https://github.com/nix-purifiers/dub-purifier/blob/6fae322e73cc8aa1ff7d09a13e6d78ca4023143d/flake.lock"
+        ],
+        "gap": null
+      },
+      "nonEolVersions": {
+        "state": "not-met",
+        "summary": "Upstream dlang/dub release API reports1.43.0 released2026-11-05; locked package set uses Dub1.42.0 and LDC1.42.0. D release history is not a Dub maintenance/EOL table. No explicit maintained-version set was established, and no1.43.0 execution is present. Full non-EOL coverage is therefore not demonstrated;1.42.0 is not labelled EOL.",
+        "evidence": [
+          "/home/chris/Projects/ch-nix-workspace/.worktrees/tier-review/group-3/derivation-evidence.json#dub-purifier:x86_64-linux:project",
+          "https://github.com/dlang/dub/releases",
+          "https://dlang.org/changelog/",
+          "/home/chris/Projects/ch-nix-workspace/.worktrees/tier-review/group-3/dub-purifier/upstream-latest-release.json"
+        ],
+        "derivations": [
+          "dub-purifier:x86_64-linux:project"
+        ],
+        "sources": [
+          "https://github.com/dlang/dub/releases",
+          "https://dlang.org/changelog/",
+          "/home/chris/Projects/ch-nix-workspace/.worktrees/tier-review/group-3/dub-purifier/upstream-latest-release.json"
+        ],
+        "gap": "Upstream dlang/dub release API reports1.43.0 released2026-11-05; locked package set uses Dub1.42.0 and LDC1.42.0. D release history is not a Dub maintenance/EOL table. No explicit maintained-version set was established, and no1.43.0 execution is present. Full non-EOL coverage is therefore not demonstrated;1.42.0 is not labelled EOL."
+      },
+      "manySamples": {
+        "state": "not-met",
+        "summary": "examples/minimal is one D consumer fixture using semver0.3.4; semver is its dependency, not another independently built application. This reviewed sample set does not establish broad independently authored consumer coverage for the Tier1 judgment.",
+        "evidence": [
+          "/home/chris/Projects/ch-nix-workspace/.worktrees/tier-review/group-3/derivation-evidence.json#dub-purifier:x86_64-linux:project",
+          "https://github.com/nix-purifiers/dub-purifier/blob/6fae322e73cc8aa1ff7d09a13e6d78ca4023143d/tests/default.nix"
+        ],
+        "derivations": [
+          "dub-purifier:x86_64-linux:project"
+        ],
+        "sources": [
+          "https://github.com/nix-purifiers/dub-purifier/blob/6fae322e73cc8aa1ff7d09a13e6d78ca4023143d/tests/default.nix"
+        ],
+        "gap": "Additional distinct upstream consumer builds, beyond these fixtures/dependencies/selected projects, have not been demonstrated."
+      },
+      "longCompatibility": {
+        "state": "not-met",
+        "summary": "Executed SDK points are dub=1.42.0, ldc=1.42.0. No historical SDK-line execution matrix is present in the reviewed check definitions or successful receipts; target/fixture variants do not demonstrate old toolchain compatibility.",
+        "evidence": [
+          "/home/chris/Projects/ch-nix-workspace/.worktrees/tier-review/group-3/derivation-evidence.json#dub-purifier:x86_64-linux:project",
+          "https://github.com/nix-purifiers/dub-purifier/blob/6fae322e73cc8aa1ff7d09a13e6d78ca4023143d/tests/default.nix"
+        ],
+        "derivations": [
+          "dub-purifier:x86_64-linux:project"
+        ],
+        "sources": [
+          "https://github.com/nix-purifiers/dub-purifier/blob/6fae322e73cc8aa1ff7d09a13e6d78ca4023143d/tests/default.nix"
+        ],
+        "gap": "Missing executed historical toolchain-line matrix with successful source/SDK/check/output bindings; no all-patch range is inferred."
+      }
+    },
+    "sampleBuilds": [
+      {
+        "name": "examples/minimal is one D consumer fixture using semver0.3.4; semver is its dependency, not another independently built application.",
+        "evidence": [
+          "/home/chris/Projects/ch-nix-workspace/.worktrees/tier-review/group-3/derivation-evidence.json#dub-purifier:x86_64-linux:project",
+          "https://github.com/nix-purifiers/dub-purifier/blob/6fae322e73cc8aa1ff7d09a13e6d78ca4023143d/tests/default.nix"
+        ],
+        "derivations": [
+          "dub-purifier:x86_64-linux:project"
+        ]
+      }
+    ]
+  },
+  "elm-purifier": {
+    "tier": 3,
+    "reviewedRevision": "e79677828b366534448a14cb6e07c0632ea23193",
+    "reviewedAt": "2026-11-06",
+    "rationale": "Tier3 confirmed by executable native Linux sample derivations. Good tests are demonstrated; native Darwin execution and specific maintained-version coverage remain unproven as documented. Many-sample and long-compatibility Tier1 judgments are not demonstrated.",
+    "criteria": {
+      "evaluation": {
+        "state": "met",
+        "summary": "Current reviewed source evaluates to executable Nix checks, with actual successful sample derivation realization.",
+        "evidence": [
+          "/home/chris/Projects/ch-nix-workspace/.worktrees/tier-review/group-3/derivation-evidence.json#elm-purifier:x86_64-linux:conformance-offline",
+          "/home/chris/Projects/ch-nix-workspace/.worktrees/tier-review/group-3/derivation-evidence.json#elm-purifier:x86_64-linux:elm_0_19_1-version",
+          "/home/chris/Projects/ch-nix-workspace/.worktrees/tier-review/group-3/derivation-evidence.json#elm-purifier:x86_64-linux:real-world-elm-spa-example-tests",
+          "/home/chris/Projects/ch-nix-workspace/.worktrees/tier-review/group-3/derivation-evidence.json#elm-purifier:x86_64-linux:real-world-elm-spa-example",
+          "/home/chris/Projects/ch-nix-workspace/.worktrees/tier-review/group-3/derivation-evidence.json#elm-purifier:x86_64-linux:real-world-list-extra-tests",
+          "/home/chris/Projects/ch-nix-workspace/.worktrees/tier-review/group-3/derivation-evidence.json#elm-purifier:x86_64-linux:real-world-list-extra",
+          "https://github.com/nix-purifiers/elm-purifier/blob/e79677828b366534448a14cb6e07c0632ea23193/flake.nix"
+        ],
+        "derivations": [
+          "elm-purifier:x86_64-linux:conformance-offline",
+          "elm-purifier:x86_64-linux:elm_0_19_1-version",
+          "elm-purifier:x86_64-linux:real-world-elm-spa-example-tests",
+          "elm-purifier:x86_64-linux:real-world-elm-spa-example",
+          "elm-purifier:x86_64-linux:real-world-list-extra-tests",
+          "elm-purifier:x86_64-linux:real-world-list-extra"
+        ],
+        "sources": [
+          "https://github.com/nix-purifiers/elm-purifier/blob/e79677828b366534448a14cb6e07c0632ea23193/flake.nix"
+        ],
+        "gap": null
+      },
+      "goodTests": {
+        "state": "met",
+        "summary": "tests/default.nix checks actual Node worker output, app/package tests, docs and release content, repeated compiler-cache writes, shared/external source layouts, stale/tampered/missing/malformed locks, reproducible outputs and offline compiler/test/formatter/LSP use. Both independent upstream consumers and their test suites have successful local derivation receipts. This supplies broad meaningful test coverage.",
+        "evidence": [
+          "/home/chris/Projects/ch-nix-workspace/.worktrees/tier-review/group-3/derivation-evidence.json#elm-purifier:x86_64-linux:conformance-offline",
+          "/home/chris/Projects/ch-nix-workspace/.worktrees/tier-review/group-3/derivation-evidence.json#elm-purifier:x86_64-linux:elm_0_19_1-version",
+          "/home/chris/Projects/ch-nix-workspace/.worktrees/tier-review/group-3/derivation-evidence.json#elm-purifier:x86_64-linux:real-world-elm-spa-example-tests",
+          "/home/chris/Projects/ch-nix-workspace/.worktrees/tier-review/group-3/derivation-evidence.json#elm-purifier:x86_64-linux:real-world-elm-spa-example",
+          "/home/chris/Projects/ch-nix-workspace/.worktrees/tier-review/group-3/derivation-evidence.json#elm-purifier:x86_64-linux:real-world-list-extra-tests",
+          "/home/chris/Projects/ch-nix-workspace/.worktrees/tier-review/group-3/derivation-evidence.json#elm-purifier:x86_64-linux:real-world-list-extra",
+          "/home/chris/Projects/ch-nix-workspace/.worktrees/tier-review/group-3/derivation-evidence.json#elm-purifier:x86_64-linux:unit",
+          "https://github.com/nix-purifiers/elm-purifier/blob/e79677828b366534448a14cb6e07c0632ea23193/tests/default.nix",
+          "https://github.com/nix-purifiers/elm-purifier/blob/e79677828b366534448a14cb6e07c0632ea23193/.github/workflows/check.yml",
+          "https://github.com/nix-purifiers/elm-purifier/actions/runs/42152619081"
+        ],
+        "derivations": [
+          "elm-purifier:x86_64-linux:conformance-offline",
+          "elm-purifier:x86_64-linux:elm_0_19_1-version",
+          "elm-purifier:x86_64-linux:real-world-elm-spa-example-tests",
+          "elm-purifier:x86_64-linux:real-world-elm-spa-example",
+          "elm-purifier:x86_64-linux:real-world-list-extra-tests",
+          "elm-purifier:x86_64-linux:real-world-list-extra",
+          "elm-purifier:x86_64-linux:unit"
+        ],
+        "sources": [
+          "https://github.com/nix-purifiers/elm-purifier/blob/e79677828b366534448a14cb6e07c0632ea23193/tests/default.nix",
+          "https://github.com/nix-purifiers/elm-purifier/blob/e79677828b366534448a14cb6e07c0632ea23193/.github/workflows/check.yml",
+          "https://github.com/nix-purifiers/elm-purifier/actions/runs/42152619081"
+        ],
+        "gap": null
+      },
+      "linux": {
+        "state": "met",
+        "summary": "Successful native x86_64-linux sample realization at this exact source; exact-SHA successful Linux CI retained.",
+        "evidence": [
+          "/home/chris/Projects/ch-nix-workspace/.worktrees/tier-review/group-3/derivation-evidence.json#elm-purifier:x86_64-linux:conformance-offline",
+          "/home/chris/Projects/ch-nix-workspace/.worktrees/tier-review/group-3/derivation-evidence.json#elm-purifier:x86_64-linux:elm_0_19_1-version",
+          "/home/chris/Projects/ch-nix-workspace/.worktrees/tier-review/group-3/derivation-evidence.json#elm-purifier:x86_64-linux:real-world-elm-spa-example-tests",
+          "/home/chris/Projects/ch-nix-workspace/.worktrees/tier-review/group-3/derivation-evidence.json#elm-purifier:x86_64-linux:real-world-elm-spa-example",
+          "/home/chris/Projects/ch-nix-workspace/.worktrees/tier-review/group-3/derivation-evidence.json#elm-purifier:x86_64-linux:real-world-list-extra-tests",
+          "/home/chris/Projects/ch-nix-workspace/.worktrees/tier-review/group-3/derivation-evidence.json#elm-purifier:x86_64-linux:real-world-list-extra",
+          "https://github.com/nix-purifiers/elm-purifier/actions/runs/42152619081"
+        ],
+        "derivations": [
+          "elm-purifier:x86_64-linux:conformance-offline",
+          "elm-purifier:x86_64-linux:elm_0_19_1-version",
+          "elm-purifier:x86_64-linux:real-world-elm-spa-example-tests",
+          "elm-purifier:x86_64-linux:real-world-elm-spa-example",
+          "elm-purifier:x86_64-linux:real-world-list-extra-tests",
+          "elm-purifier:x86_64-linux:real-world-list-extra"
+        ],
+        "sources": [
+          "https://github.com/nix-purifiers/elm-purifier/actions/runs/42152619081"
+        ],
+        "gap": null
+      },
+      "darwin": {
+        "state": "not-met",
+        "summary": "The reviewed current-main CI matrix executes only Linux. aarch64-darwin is declared, but no native Darwin build/runtime receipt was found.",
+        "evidence": [
+          "https://github.com/nix-purifiers/elm-purifier/blob/e79677828b366534448a14cb6e07c0632ea23193/flake.nix",
+          "https://github.com/nix-purifiers/elm-purifier/blob/e79677828b366534448a14cb6e07c0632ea23193/.github/workflows/check.yml",
+          "/home/chris/Projects/ch-nix-workspace/.worktrees/tier-review/group-3/elm-purifier/jobs.json"
+        ],
+        "derivations": [],
+        "sources": [
+          "https://github.com/nix-purifiers/elm-purifier/blob/e79677828b366534448a14cb6e07c0632ea23193/flake.nix",
+          "https://github.com/nix-purifiers/elm-purifier/blob/e79677828b366534448a14cb6e07c0632ea23193/.github/workflows/check.yml",
+          "/home/chris/Projects/ch-nix-workspace/.worktrees/tier-review/group-3/elm-purifier/jobs.json"
+        ],
+        "gap": "Missing native Darwin source/SDK/check derivation and successful runtime/output receipt at reviewed revision."
+      },
+      "oneVersion": {
+        "state": "met",
+        "summary": "The actual successful sample derivation uses exact locked SDK/tool points: elm=0.19.1. No unexecuted version range is inferred.",
+        "evidence": [
+          "/home/chris/Projects/ch-nix-workspace/.worktrees/tier-review/group-3/derivation-evidence.json#elm-purifier:x86_64-linux:conformance-offline",
+          "/home/chris/Projects/ch-nix-workspace/.worktrees/tier-review/group-3/derivation-evidence.json#elm-purifier:x86_64-linux:elm_0_19_1-version",
+          "/home/chris/Projects/ch-nix-workspace/.worktrees/tier-review/group-3/derivation-evidence.json#elm-purifier:x86_64-linux:real-world-elm-spa-example-tests",
+          "/home/chris/Projects/ch-nix-workspace/.worktrees/tier-review/group-3/derivation-evidence.json#elm-purifier:x86_64-linux:real-world-elm-spa-example",
+          "/home/chris/Projects/ch-nix-workspace/.worktrees/tier-review/group-3/derivation-evidence.json#elm-purifier:x86_64-linux:real-world-list-extra-tests",
+          "/home/chris/Projects/ch-nix-workspace/.worktrees/tier-review/group-3/derivation-evidence.json#elm-purifier:x86_64-linux:real-world-list-extra",
+          "/home/chris/Projects/ch-nix-workspace/.worktrees/tier-review/group-3/elm-purifier/sdk-versions.json",
+          "https://github.com/nix-purifiers/elm-purifier/blob/e79677828b366534448a14cb6e07c0632ea23193/flake.lock"
+        ],
+        "derivations": [
+          "elm-purifier:x86_64-linux:conformance-offline",
+          "elm-purifier:x86_64-linux:elm_0_19_1-version",
+          "elm-purifier:x86_64-linux:real-world-elm-spa-example-tests",
+          "elm-purifier:x86_64-linux:real-world-elm-spa-example",
+          "elm-purifier:x86_64-linux:real-world-list-extra-tests",
+          "elm-purifier:x86_64-linux:real-world-list-extra"
+        ],
+        "sources": [
+          "/home/chris/Projects/ch-nix-workspace/.worktrees/tier-review/group-3/elm-purifier/sdk-versions.json",
+          "https://github.com/nix-purifiers/elm-purifier/blob/e79677828b366534448a14cb6e07c0632ea23193/flake.lock"
+        ],
+        "gap": null
+      },
+      "nonEolVersions": {
+        "state": "not-met",
+        "summary": "Elm's primary news lists0.19.2; the fresher compiler releases API identifies0.19.3 released2026-10-02. This purifier builds a custom0.19.1 compiler, verified by checks.elm_0_19_1-version; ambient locked nixpkgs Elm0.19.2 is not its tested compiler. No0.19.3 execution or explicit upstream maintained-version policy was established. Non-EOL breadth is not demonstrated, without declaring0.19.1 EOL.",
+        "evidence": [
+          "/home/chris/Projects/ch-nix-workspace/.worktrees/tier-review/group-3/derivation-evidence.json#elm-purifier:x86_64-linux:conformance-offline",
+          "/home/chris/Projects/ch-nix-workspace/.worktrees/tier-review/group-3/derivation-evidence.json#elm-purifier:x86_64-linux:elm_0_19_1-version",
+          "/home/chris/Projects/ch-nix-workspace/.worktrees/tier-review/group-3/derivation-evidence.json#elm-purifier:x86_64-linux:real-world-elm-spa-example-tests",
+          "/home/chris/Projects/ch-nix-workspace/.worktrees/tier-review/group-3/derivation-evidence.json#elm-purifier:x86_64-linux:real-world-elm-spa-example",
+          "/home/chris/Projects/ch-nix-workspace/.worktrees/tier-review/group-3/derivation-evidence.json#elm-purifier:x86_64-linux:real-world-list-extra-tests",
+          "/home/chris/Projects/ch-nix-workspace/.worktrees/tier-review/group-3/derivation-evidence.json#elm-purifier:x86_64-linux:real-world-list-extra",
+          "https://elm-lang.org/news",
+          "https://github.com/elm/compiler/releases",
+          "/home/chris/Projects/ch-nix-workspace/.worktrees/tier-review/group-3/elm-purifier/upstream-latest-release.json"
+        ],
+        "derivations": [
+          "elm-purifier:x86_64-linux:conformance-offline",
+          "elm-purifier:x86_64-linux:elm_0_19_1-version",
+          "elm-purifier:x86_64-linux:real-world-elm-spa-example-tests",
+          "elm-purifier:x86_64-linux:real-world-elm-spa-example",
+          "elm-purifier:x86_64-linux:real-world-list-extra-tests",
+          "elm-purifier:x86_64-linux:real-world-list-extra"
+        ],
+        "sources": [
+          "https://elm-lang.org/news",
+          "https://github.com/elm/compiler/releases",
+          "/home/chris/Projects/ch-nix-workspace/.worktrees/tier-review/group-3/elm-purifier/upstream-latest-release.json"
+        ],
+        "gap": "Elm's primary news lists0.19.2; the fresher compiler releases API identifies0.19.3 released2026-10-02. This purifier builds a custom0.19.1 compiler, verified by checks.elm_0_19_1-version; ambient locked nixpkgs Elm0.19.2 is not its tested compiler. No0.19.3 execution or explicit upstream maintained-version policy was established. Non-EOL breadth is not demonstrated, without declaring0.19.1 EOL."
+      },
+      "manySamples": {
+        "state": "not-met",
+        "summary": "Independent rtfeldman/elm-spa-example cb32acd73c3d346d0064e7923049867d8ce67193 and elm-community/list-extra46a4817f2df99ce3379390db21348177ac95056d each have build and test derivations. App/package/shared fixture variants are not additional independent projects. Two selected app/library projects do not yet show a broad ecosystem corpus for manySamples. This reviewed sample set does not establish broad independently authored consumer coverage for the Tier1 judgment.",
+        "evidence": [
+          "/home/chris/Projects/ch-nix-workspace/.worktrees/tier-review/group-3/derivation-evidence.json#elm-purifier:x86_64-linux:conformance-offline",
+          "/home/chris/Projects/ch-nix-workspace/.worktrees/tier-review/group-3/derivation-evidence.json#elm-purifier:x86_64-linux:elm_0_19_1-version",
+          "/home/chris/Projects/ch-nix-workspace/.worktrees/tier-review/group-3/derivation-evidence.json#elm-purifier:x86_64-linux:real-world-elm-spa-example-tests",
+          "/home/chris/Projects/ch-nix-workspace/.worktrees/tier-review/group-3/derivation-evidence.json#elm-purifier:x86_64-linux:real-world-elm-spa-example",
+          "/home/chris/Projects/ch-nix-workspace/.worktrees/tier-review/group-3/derivation-evidence.json#elm-purifier:x86_64-linux:real-world-list-extra-tests",
+          "/home/chris/Projects/ch-nix-workspace/.worktrees/tier-review/group-3/derivation-evidence.json#elm-purifier:x86_64-linux:real-world-list-extra",
+          "https://github.com/nix-purifiers/elm-purifier/blob/e79677828b366534448a14cb6e07c0632ea23193/tests/default.nix"
+        ],
+        "derivations": [
+          "elm-purifier:x86_64-linux:conformance-offline",
+          "elm-purifier:x86_64-linux:elm_0_19_1-version",
+          "elm-purifier:x86_64-linux:real-world-elm-spa-example-tests",
+          "elm-purifier:x86_64-linux:real-world-elm-spa-example",
+          "elm-purifier:x86_64-linux:real-world-list-extra-tests",
+          "elm-purifier:x86_64-linux:real-world-list-extra"
+        ],
+        "sources": [
+          "https://github.com/nix-purifiers/elm-purifier/blob/e79677828b366534448a14cb6e07c0632ea23193/tests/default.nix"
+        ],
+        "gap": "Additional distinct upstream consumer builds, beyond these fixtures/dependencies/selected projects, have not been demonstrated."
+      },
+      "longCompatibility": {
+        "state": "not-met",
+        "summary": "Executed SDK points are elm=0.19.1. No historical SDK-line execution matrix is present in the reviewed check definitions or successful receipts; target/fixture variants do not demonstrate old toolchain compatibility.",
+        "evidence": [
+          "/home/chris/Projects/ch-nix-workspace/.worktrees/tier-review/group-3/derivation-evidence.json#elm-purifier:x86_64-linux:conformance-offline",
+          "/home/chris/Projects/ch-nix-workspace/.worktrees/tier-review/group-3/derivation-evidence.json#elm-purifier:x86_64-linux:elm_0_19_1-version",
+          "/home/chris/Projects/ch-nix-workspace/.worktrees/tier-review/group-3/derivation-evidence.json#elm-purifier:x86_64-linux:real-world-elm-spa-example-tests",
+          "/home/chris/Projects/ch-nix-workspace/.worktrees/tier-review/group-3/derivation-evidence.json#elm-purifier:x86_64-linux:real-world-elm-spa-example",
+          "/home/chris/Projects/ch-nix-workspace/.worktrees/tier-review/group-3/derivation-evidence.json#elm-purifier:x86_64-linux:real-world-list-extra-tests",
+          "/home/chris/Projects/ch-nix-workspace/.worktrees/tier-review/group-3/derivation-evidence.json#elm-purifier:x86_64-linux:real-world-list-extra",
+          "https://github.com/nix-purifiers/elm-purifier/blob/e79677828b366534448a14cb6e07c0632ea23193/tests/default.nix"
+        ],
+        "derivations": [
+          "elm-purifier:x86_64-linux:conformance-offline",
+          "elm-purifier:x86_64-linux:elm_0_19_1-version",
+          "elm-purifier:x86_64-linux:real-world-elm-spa-example-tests",
+          "elm-purifier:x86_64-linux:real-world-elm-spa-example",
+          "elm-purifier:x86_64-linux:real-world-list-extra-tests",
+          "elm-purifier:x86_64-linux:real-world-list-extra"
+        ],
+        "sources": [
+          "https://github.com/nix-purifiers/elm-purifier/blob/e79677828b366534448a14cb6e07c0632ea23193/tests/default.nix"
+        ],
+        "gap": "Missing executed historical toolchain-line matrix with successful source/SDK/check/output bindings; no all-patch range is inferred."
+      }
+    },
+    "sampleBuilds": [
+      {
+        "name": "Independent rtfeldman/elm-spa-example cb32acd73c3d346d0064e7923049867d8ce67193 and elm-community/list-extra46a4817f2df99ce3379390db21348177ac95056d each have build and test derivations. App/package/shared fixture variants are not additional independent projects. Two selected app/library projects do not yet show a broad ecosystem corpus for manySamples.",
+        "evidence": [
+          "/home/chris/Projects/ch-nix-workspace/.worktrees/tier-review/group-3/derivation-evidence.json#elm-purifier:x86_64-linux:conformance-offline",
+          "/home/chris/Projects/ch-nix-workspace/.worktrees/tier-review/group-3/derivation-evidence.json#elm-purifier:x86_64-linux:elm_0_19_1-version",
+          "/home/chris/Projects/ch-nix-workspace/.worktrees/tier-review/group-3/derivation-evidence.json#elm-purifier:x86_64-linux:real-world-elm-spa-example-tests",
+          "/home/chris/Projects/ch-nix-workspace/.worktrees/tier-review/group-3/derivation-evidence.json#elm-purifier:x86_64-linux:real-world-elm-spa-example",
+          "/home/chris/Projects/ch-nix-workspace/.worktrees/tier-review/group-3/derivation-evidence.json#elm-purifier:x86_64-linux:real-world-list-extra-tests",
+          "/home/chris/Projects/ch-nix-workspace/.worktrees/tier-review/group-3/derivation-evidence.json#elm-purifier:x86_64-linux:real-world-list-extra",
+          "https://github.com/nix-purifiers/elm-purifier/blob/e79677828b366534448a14cb6e07c0632ea23193/tests/default.nix"
+        ],
+        "derivations": [
+          "elm-purifier:x86_64-linux:conformance-offline",
+          "elm-purifier:x86_64-linux:elm_0_19_1-version",
+          "elm-purifier:x86_64-linux:real-world-elm-spa-example-tests",
+          "elm-purifier:x86_64-linux:real-world-elm-spa-example",
+          "elm-purifier:x86_64-linux:real-world-list-extra-tests",
+          "elm-purifier:x86_64-linux:real-world-list-extra"
+        ]
+      }
+    ]
+  },
+  "elpaca-purifier": {
+    "tier": 3,
+    "reviewedRevision": "37489af3b1d7dabf00643d04ff2d075310875790",
+    "reviewedAt": "2026-11-06",
+    "rationale": "Tier3 confirmed by executable native Linux sample derivations. Good tests are demonstrated; native Darwin execution and specific maintained-version coverage remain unproven as documented. Many-sample and long-compatibility Tier1 judgments are not demonstrated.",
+    "criteria": {
+      "evaluation": {
+        "state": "met",
+        "summary": "Current reviewed source evaluates to executable Nix checks, with actual successful sample derivation realization.",
+        "evidence": [
+          "/home/chris/Projects/ch-nix-workspace/.worktrees/tier-review/group-3/derivation-evidence.json#elpaca-purifier:x86_64-linux:project",
+          "https://github.com/nix-purifiers/elpaca-purifier/blob/37489af3b1d7dabf00643d04ff2d075310875790/flake.nix"
+        ],
+        "derivations": [
+          "elpaca-purifier:x86_64-linux:project"
+        ],
+        "sources": [
+          "https://github.com/nix-purifiers/elpaca-purifier/blob/37489af3b1d7dabf00643d04ff2d075310875790/flake.nix"
+        ],
+        "gap": null
+      },
+      "goodTests": {
+        "state": "met",
+        "summary": "The project derivation requires the real f package and checks f-filename plus answer42 through batch Emacs. CI conformance uses a poisoned EMACSLOADPATH, source edits42/43/42, immutable store-loaded package origin, preserved ambient checkout/locks, external source and frozen manager behavior; rebuild checks cover dependencies/project/release. This demonstrates integration and regression behavior beyond an empty evaluation check.",
+        "evidence": [
+          "/home/chris/Projects/ch-nix-workspace/.worktrees/tier-review/group-3/derivation-evidence.json#elpaca-purifier:x86_64-linux:project",
+          "https://github.com/nix-purifiers/elpaca-purifier/blob/37489af3b1d7dabf00643d04ff2d075310875790/flake.nix",
+          "https://github.com/nix-purifiers/elpaca-purifier/blob/37489af3b1d7dabf00643d04ff2d075310875790/.github/workflows/check.yml",
+          "https://github.com/nix-purifiers/elpaca-purifier/actions/runs/42152623362"
+        ],
+        "derivations": [
+          "elpaca-purifier:x86_64-linux:project"
+        ],
+        "sources": [
+          "https://github.com/nix-purifiers/elpaca-purifier/blob/37489af3b1d7dabf00643d04ff2d075310875790/flake.nix",
+          "https://github.com/nix-purifiers/elpaca-purifier/blob/37489af3b1d7dabf00643d04ff2d075310875790/.github/workflows/check.yml",
+          "https://github.com/nix-purifiers/elpaca-purifier/actions/runs/42152623362"
+        ],
+        "gap": null
+      },
+      "linux": {
+        "state": "met",
+        "summary": "Successful native x86_64-linux sample realization at this exact source; exact-SHA successful Linux CI retained.",
+        "evidence": [
+          "/home/chris/Projects/ch-nix-workspace/.worktrees/tier-review/group-3/derivation-evidence.json#elpaca-purifier:x86_64-linux:project",
+          "https://github.com/nix-purifiers/elpaca-purifier/actions/runs/42152623362"
+        ],
+        "derivations": [
+          "elpaca-purifier:x86_64-linux:project"
+        ],
+        "sources": [
+          "https://github.com/nix-purifiers/elpaca-purifier/actions/runs/42152623362"
+        ],
+        "gap": null
+      },
+      "darwin": {
+        "state": "not-met",
+        "summary": "The reviewed current-main CI matrix executes only Linux. The public flake check outputs are Linux-only; no native Darwin sample build/runtime receipt was found.",
+        "evidence": [
+          "https://github.com/nix-purifiers/elpaca-purifier/blob/37489af3b1d7dabf00643d04ff2d075310875790/flake.nix",
+          "https://github.com/nix-purifiers/elpaca-purifier/blob/37489af3b1d7dabf00643d04ff2d075310875790/.github/workflows/check.yml",
+          "/home/chris/Projects/ch-nix-workspace/.worktrees/tier-review/group-3/elpaca-purifier/jobs.json"
+        ],
+        "derivations": [],
+        "sources": [
+          "https://github.com/nix-purifiers/elpaca-purifier/blob/37489af3b1d7dabf00643d04ff2d075310875790/flake.nix",
+          "https://github.com/nix-purifiers/elpaca-purifier/blob/37489af3b1d7dabf00643d04ff2d075310875790/.github/workflows/check.yml",
+          "/home/chris/Projects/ch-nix-workspace/.worktrees/tier-review/group-3/elpaca-purifier/jobs.json"
+        ],
+        "gap": "Missing native Darwin source/SDK/check derivation and successful runtime/output receipt at reviewed revision."
+      },
+      "oneVersion": {
+        "state": "met",
+        "summary": "The actual successful sample derivation uses exact locked SDK/tool points: emacs=31.1, elpaca=locked source plus native/emacs31-date.patch; see source manifest and lock. No unexecuted version range is inferred.",
+        "evidence": [
+          "/home/chris/Projects/ch-nix-workspace/.worktrees/tier-review/group-3/derivation-evidence.json#elpaca-purifier:x86_64-linux:project",
+          "/home/chris/Projects/ch-nix-workspace/.worktrees/tier-review/group-3/elpaca-purifier/sdk-versions.json",
+          "https://github.com/nix-purifiers/elpaca-purifier/blob/37489af3b1d7dabf00643d04ff2d075310875790/flake.lock"
+        ],
+        "derivations": [
+          "elpaca-purifier:x86_64-linux:project"
+        ],
+        "sources": [
+          "/home/chris/Projects/ch-nix-workspace/.worktrees/tier-review/group-3/elpaca-purifier/sdk-versions.json",
+          "https://github.com/nix-purifiers/elpaca-purifier/blob/37489af3b1d7dabf00643d04ff2d075310875790/flake.lock"
+        ],
+        "gap": null
+      },
+      "nonEolVersions": {
+        "state": "not-met",
+        "summary": "Elpaca upstream requires Emacs>=27.1 and git; its release API identifiesv0.2.0. The tested SDK is the exact locked Elpaca source with an Emacs31 date-table patch and Emacs31.1. A minimum requirement does not establish maintained Emacs/Elpaca version coverage, and no other Emacs versions were executed. Non-EOL breadth remains unproven without assigning invented EOL dates.",
+        "evidence": [
+          "/home/chris/Projects/ch-nix-workspace/.worktrees/tier-review/group-3/derivation-evidence.json#elpaca-purifier:x86_64-linux:project",
+          "https://github.com/progfolio/elpaca",
+          "/home/chris/Projects/ch-nix-workspace/.worktrees/tier-review/group-3/elpaca-purifier/upstream-latest-release.json"
+        ],
+        "derivations": [
+          "elpaca-purifier:x86_64-linux:project"
+        ],
+        "sources": [
+          "https://github.com/progfolio/elpaca",
+          "/home/chris/Projects/ch-nix-workspace/.worktrees/tier-review/group-3/elpaca-purifier/upstream-latest-release.json"
+        ],
+        "gap": "Elpaca upstream requires Emacs>=27.1 and git; its release API identifiesv0.2.0. The tested SDK is the exact locked Elpaca source with an Emacs31 date-table patch and Emacs31.1. A minimum requirement does not establish maintained Emacs/Elpaca version coverage, and no other Emacs versions were executed. Non-EOL breadth remains unproven without assigning invented EOL dates."
+      },
+      "manySamples": {
+        "state": "not-met",
+        "summary": "examples/minimal is one Emacs configuration fixture requiring the upstream f library; locked Elpaca/f sources are dependencies, not independent user configurations. This reviewed sample set does not establish broad independently authored consumer coverage for the Tier1 judgment.",
+        "evidence": [
+          "/home/chris/Projects/ch-nix-workspace/.worktrees/tier-review/group-3/derivation-evidence.json#elpaca-purifier:x86_64-linux:project",
+          "https://github.com/nix-purifiers/elpaca-purifier/blob/37489af3b1d7dabf00643d04ff2d075310875790/flake.nix"
+        ],
+        "derivations": [
+          "elpaca-purifier:x86_64-linux:project"
+        ],
+        "sources": [
+          "https://github.com/nix-purifiers/elpaca-purifier/blob/37489af3b1d7dabf00643d04ff2d075310875790/flake.nix"
+        ],
+        "gap": "Additional distinct upstream consumer builds, beyond these fixtures/dependencies/selected projects, have not been demonstrated."
+      },
+      "longCompatibility": {
+        "state": "not-met",
+        "summary": "Executed SDK points are emacs=31.1, elpaca=locked source plus native/emacs31-date.patch; see source manifest and lock. No historical SDK-line execution matrix is present in the reviewed check definitions or successful receipts; target/fixture variants do not demonstrate old toolchain compatibility.",
+        "evidence": [
+          "/home/chris/Projects/ch-nix-workspace/.worktrees/tier-review/group-3/derivation-evidence.json#elpaca-purifier:x86_64-linux:project",
+          "https://github.com/nix-purifiers/elpaca-purifier/blob/37489af3b1d7dabf00643d04ff2d075310875790/flake.nix"
+        ],
+        "derivations": [
+          "elpaca-purifier:x86_64-linux:project"
+        ],
+        "sources": [
+          "https://github.com/nix-purifiers/elpaca-purifier/blob/37489af3b1d7dabf00643d04ff2d075310875790/flake.nix"
+        ],
+        "gap": "Missing executed historical toolchain-line matrix with successful source/SDK/check/output bindings; no all-patch range is inferred."
+      }
+    },
+    "sampleBuilds": [
+      {
+        "name": "examples/minimal is one Emacs configuration fixture requiring the upstream f library; locked Elpaca/f sources are dependencies, not independent user configurations.",
+        "evidence": [
+          "/home/chris/Projects/ch-nix-workspace/.worktrees/tier-review/group-3/derivation-evidence.json#elpaca-purifier:x86_64-linux:project",
+          "https://github.com/nix-purifiers/elpaca-purifier/blob/37489af3b1d7dabf00643d04ff2d075310875790/flake.nix"
+        ],
+        "derivations": [
+          "elpaca-purifier:x86_64-linux:project"
+        ]
+      }
+    ]
+  },
+  "esp-idf-purifier": {
+    "tier": 3,
+    "reviewedRevision": "8d883c7d2034035692378529c974a3e38cd6724e",
+    "reviewedAt": "2026-11-06",
+    "rationale": "Tier3 confirmed by executable native Linux sample derivations. Good tests are demonstrated; native Darwin execution and specific maintained-version coverage remain unproven as documented. Many-sample and long-compatibility Tier1 judgments are not demonstrated.",
+    "criteria": {
+      "evaluation": {
+        "state": "met",
+        "summary": "Current reviewed source evaluates to executable Nix checks, with actual successful sample derivation realization.",
+        "evidence": [
+          "/home/chris/Projects/ch-nix-workspace/.worktrees/tier-review/group-3/derivation-evidence.json#esp-idf-purifier:x86_64-linux:host",
+          "/home/chris/Projects/ch-nix-workspace/.worktrees/tier-review/group-3/derivation-evidence.json#esp-idf-purifier:x86_64-linux:project",
+          "https://github.com/nix-purifiers/esp-idf-purifier/blob/8d883c7d2034035692378529c974a3e38cd6724e/flake.nix"
+        ],
+        "derivations": [
+          "esp-idf-purifier:x86_64-linux:host",
+          "esp-idf-purifier:x86_64-linux:project"
+        ],
+        "sources": [
+          "https://github.com/nix-purifiers/esp-idf-purifier/blob/8d883c7d2034035692378529c974a3e38cd6724e/flake.nix"
+        ],
+        "gap": null
+      },
+      "goodTests": {
+        "state": "met",
+        "summary": "checks.project builds real ESP32-C3 firmware and invokes esptool image-info; checks.host executes a Linux ELF and checks answer42. Native CI tests inspect42/43 source edits, poisoned ambient cache, unchanged locks, immutable managed components, incremental behavior and stale-selection rejection; artifacts/capture/rebuild checks also execute. This is meaningful firmware and host integration coverage, while no board execution is claimed.",
+        "evidence": [
+          "/home/chris/Projects/ch-nix-workspace/.worktrees/tier-review/group-3/derivation-evidence.json#esp-idf-purifier:x86_64-linux:host",
+          "/home/chris/Projects/ch-nix-workspace/.worktrees/tier-review/group-3/derivation-evidence.json#esp-idf-purifier:x86_64-linux:project",
+          "https://github.com/nix-purifiers/esp-idf-purifier/blob/8d883c7d2034035692378529c974a3e38cd6724e/flake.nix",
+          "https://github.com/nix-purifiers/esp-idf-purifier/blob/8d883c7d2034035692378529c974a3e38cd6724e/.github/workflows/check.yml",
+          "https://github.com/nix-purifiers/esp-idf-purifier/actions/runs/42152826718"
+        ],
+        "derivations": [
+          "esp-idf-purifier:x86_64-linux:host",
+          "esp-idf-purifier:x86_64-linux:project"
+        ],
+        "sources": [
+          "https://github.com/nix-purifiers/esp-idf-purifier/blob/8d883c7d2034035692378529c974a3e38cd6724e/flake.nix",
+          "https://github.com/nix-purifiers/esp-idf-purifier/blob/8d883c7d2034035692378529c974a3e38cd6724e/.github/workflows/check.yml",
+          "https://github.com/nix-purifiers/esp-idf-purifier/actions/runs/42152826718"
+        ],
+        "gap": null
+      },
+      "linux": {
+        "state": "met",
+        "summary": "Successful native x86_64-linux sample realization at this exact source; successful Linux CI additionally retained. ESP firmware cross-compilation is not physical-board or Darwin runtime evidence.",
+        "evidence": [
+          "/home/chris/Projects/ch-nix-workspace/.worktrees/tier-review/group-3/derivation-evidence.json#esp-idf-purifier:x86_64-linux:host",
+          "/home/chris/Projects/ch-nix-workspace/.worktrees/tier-review/group-3/derivation-evidence.json#esp-idf-purifier:x86_64-linux:project",
+          "https://github.com/nix-purifiers/esp-idf-purifier/actions/runs/42152826718"
+        ],
+        "derivations": [
+          "esp-idf-purifier:x86_64-linux:host",
+          "esp-idf-purifier:x86_64-linux:project"
+        ],
+        "sources": [
+          "https://github.com/nix-purifiers/esp-idf-purifier/actions/runs/42152826718"
+        ],
+        "gap": null
+      },
+      "darwin": {
+        "state": "not-met",
+        "summary": "The reviewed current-main CI matrix executes only Linux. The public flake check outputs are Linux-only; no native Darwin sample build/runtime receipt was found.",
+        "evidence": [
+          "https://github.com/nix-purifiers/esp-idf-purifier/blob/8d883c7d2034035692378529c974a3e38cd6724e/flake.nix",
+          "https://github.com/nix-purifiers/esp-idf-purifier/blob/8d883c7d2034035692378529c974a3e38cd6724e/.github/workflows/check.yml",
+          "/home/chris/Projects/ch-nix-workspace/.worktrees/tier-review/group-3/esp-idf-purifier/jobs.json"
+        ],
+        "derivations": [],
+        "sources": [
+          "https://github.com/nix-purifiers/esp-idf-purifier/blob/8d883c7d2034035692378529c974a3e38cd6724e/flake.nix",
+          "https://github.com/nix-purifiers/esp-idf-purifier/blob/8d883c7d2034035692378529c974a3e38cd6724e/.github/workflows/check.yml",
+          "/home/chris/Projects/ch-nix-workspace/.worktrees/tier-review/group-3/esp-idf-purifier/jobs.json"
+        ],
+        "gap": "Missing native Darwin source/SDK/check derivation and successful runtime/output receipt at reviewed revision."
+      },
+      "oneVersion": {
+        "state": "met",
+        "summary": "The actual successful sample derivation uses exact locked SDK/tool points: esp-idf=6.1, esp-idf-source=fff9895c82d744c7237be8847347bdd1b07c6643. No unexecuted version range is inferred.",
+        "evidence": [
+          "/home/chris/Projects/ch-nix-workspace/.worktrees/tier-review/group-3/derivation-evidence.json#esp-idf-purifier:x86_64-linux:host",
+          "/home/chris/Projects/ch-nix-workspace/.worktrees/tier-review/group-3/derivation-evidence.json#esp-idf-purifier:x86_64-linux:project",
+          "/home/chris/Projects/ch-nix-workspace/.worktrees/tier-review/group-3/esp-idf-purifier/sdk-versions.json",
+          "https://github.com/nix-purifiers/esp-idf-purifier/blob/8d883c7d2034035692378529c974a3e38cd6724e/flake.lock"
+        ],
+        "derivations": [
+          "esp-idf-purifier:x86_64-linux:host",
+          "esp-idf-purifier:x86_64-linux:project"
+        ],
+        "sources": [
+          "/home/chris/Projects/ch-nix-workspace/.worktrees/tier-review/group-3/esp-idf-purifier/sdk-versions.json",
+          "https://github.com/nix-purifiers/esp-idf-purifier/blob/8d883c7d2034035692378529c974a3e38cd6724e/flake.lock"
+        ],
+        "gap": null
+      },
+      "nonEolVersions": {
+        "state": "not-met",
+        "summary": "Espressif stable version docs recommend current stable and describe release support periods. Upstream release API identifiesv6.1. The SDK source pins fff9895c82d744c7237be8847347bdd1b07c6643 and labels versionv6.1, and the build receipts prove this point. Other still-maintained ESP-IDF lines under the multi-release support policy are not executed. Consequently non-EOL breadth is not demonstrated;v6.1 itself is not called unsupported.",
+        "evidence": [
+          "/home/chris/Projects/ch-nix-workspace/.worktrees/tier-review/group-3/derivation-evidence.json#esp-idf-purifier:x86_64-linux:host",
+          "/home/chris/Projects/ch-nix-workspace/.worktrees/tier-review/group-3/derivation-evidence.json#esp-idf-purifier:x86_64-linux:project",
+          "https://docs.espressif.com/projects/esp-idf/en/stable/esp32/versions.html",
+          "https://github.com/espressif/esp-idf/releases",
+          "/home/chris/Projects/ch-nix-workspace/.worktrees/tier-review/group-3/esp-idf-purifier/upstream-latest-release.json"
+        ],
+        "derivations": [
+          "esp-idf-purifier:x86_64-linux:host",
+          "esp-idf-purifier:x86_64-linux:project"
+        ],
+        "sources": [
+          "https://docs.espressif.com/projects/esp-idf/en/stable/esp32/versions.html",
+          "https://github.com/espressif/esp-idf/releases",
+          "/home/chris/Projects/ch-nix-workspace/.worktrees/tier-review/group-3/esp-idf-purifier/upstream-latest-release.json"
+        ],
+        "gap": "Espressif stable version docs recommend current stable and describe release support periods. Upstream release API identifiesv6.1. The SDK source pins fff9895c82d744c7237be8847347bdd1b07c6643 and labels versionv6.1, and the build receipts prove this point. Other still-maintained ESP-IDF lines under the multi-release support policy are not executed. Consequently non-EOL breadth is not demonstrated;v6.1 itself is not called unsupported."
+      },
+      "manySamples": {
+        "state": "not-met",
+        "summary": "examples/minimal ESP32-C3 firmware and examples/host Linux program are author fixtures using managed cJSON, not two independent upstream projects. Firmware construction/image validation is distinct from physical hardware execution. This reviewed sample set does not establish broad independently authored consumer coverage for the Tier1 judgment.",
+        "evidence": [
+          "/home/chris/Projects/ch-nix-workspace/.worktrees/tier-review/group-3/derivation-evidence.json#esp-idf-purifier:x86_64-linux:host",
+          "/home/chris/Projects/ch-nix-workspace/.worktrees/tier-review/group-3/derivation-evidence.json#esp-idf-purifier:x86_64-linux:project",
+          "https://github.com/nix-purifiers/esp-idf-purifier/blob/8d883c7d2034035692378529c974a3e38cd6724e/flake.nix"
+        ],
+        "derivations": [
+          "esp-idf-purifier:x86_64-linux:host",
+          "esp-idf-purifier:x86_64-linux:project"
+        ],
+        "sources": [
+          "https://github.com/nix-purifiers/esp-idf-purifier/blob/8d883c7d2034035692378529c974a3e38cd6724e/flake.nix"
+        ],
+        "gap": "Additional distinct upstream consumer builds, beyond these fixtures/dependencies/selected projects, have not been demonstrated."
+      },
+      "longCompatibility": {
+        "state": "not-met",
+        "summary": "Executed SDK points are esp-idf=6.1, esp-idf-source=fff9895c82d744c7237be8847347bdd1b07c6643. No historical SDK-line execution matrix is present in the reviewed check definitions or successful receipts; target/fixture variants do not demonstrate old toolchain compatibility.",
+        "evidence": [
+          "/home/chris/Projects/ch-nix-workspace/.worktrees/tier-review/group-3/derivation-evidence.json#esp-idf-purifier:x86_64-linux:host",
+          "/home/chris/Projects/ch-nix-workspace/.worktrees/tier-review/group-3/derivation-evidence.json#esp-idf-purifier:x86_64-linux:project",
+          "https://github.com/nix-purifiers/esp-idf-purifier/blob/8d883c7d2034035692378529c974a3e38cd6724e/flake.nix"
+        ],
+        "derivations": [
+          "esp-idf-purifier:x86_64-linux:host",
+          "esp-idf-purifier:x86_64-linux:project"
+        ],
+        "sources": [
+          "https://github.com/nix-purifiers/esp-idf-purifier/blob/8d883c7d2034035692378529c974a3e38cd6724e/flake.nix"
+        ],
+        "gap": "Missing executed historical toolchain-line matrix with successful source/SDK/check/output bindings; no all-patch range is inferred."
+      }
+    },
+    "sampleBuilds": [
+      {
+        "name": "examples/minimal ESP32-C3 firmware and examples/host Linux program are author fixtures using managed cJSON, not two independent upstream projects. Firmware construction/image validation is distinct from physical hardware execution.",
+        "evidence": [
+          "/home/chris/Projects/ch-nix-workspace/.worktrees/tier-review/group-3/derivation-evidence.json#esp-idf-purifier:x86_64-linux:host",
+          "/home/chris/Projects/ch-nix-workspace/.worktrees/tier-review/group-3/derivation-evidence.json#esp-idf-purifier:x86_64-linux:project",
+          "https://github.com/nix-purifiers/esp-idf-purifier/blob/8d883c7d2034035692378529c974a3e38cd6724e/flake.nix"
+        ],
+        "derivations": [
+          "esp-idf-purifier:x86_64-linux:host",
+          "esp-idf-purifier:x86_64-linux:project"
+        ]
+      }
+    ]
+  },
+  "fiji-purifier": {
+    "tier": 3,
+    "reviewedRevision": "ed546b5a94043d02e068c241503b8c5f9440cfca",
+    "reviewedAt": "2026-11-06",
+    "rationale": "Tier3 confirmed by executable native Linux sample derivations. Good tests are demonstrated; native Darwin execution and specific maintained-version coverage remain unproven as documented. Many-sample and long-compatibility Tier1 judgments are not demonstrated.",
+    "criteria": {
+      "evaluation": {
+        "state": "met",
+        "summary": "Current reviewed source evaluates to executable Nix checks, with actual successful sample derivation realization.",
+        "evidence": [
+          "/home/chris/Projects/ch-nix-workspace/.worktrees/tier-review/group-3/derivation-evidence.json#fiji-purifier:x86_64-linux:project",
+          "https://github.com/nix-purifiers/fiji-purifier/blob/ed546b5a94043d02e068c241503b8c5f9440cfca/flake.nix"
+        ],
+        "derivations": [
+          "fiji-purifier:x86_64-linux:project"
+        ],
+        "sources": [
+          "https://github.com/nix-purifiers/fiji-purifier/blob/ed546b5a94043d02e068c241503b8c5f9440cfca/flake.nix"
+        ],
+        "gap": null
+      },
+      "goodTests": {
+        "state": "met",
+        "summary": "checks.project runs the image-processing pipeline and requires dilated.tif; SDK/environment/project/release are rebuilt in successful CI. Native tests compare changed/restored project outputs, preserve locks, verify frozen updater behavior and ambient-plugin isolation; GUI and artifact checks execute too. The real plugin/image integration and negative mutation checks support goodTests.",
+        "evidence": [
+          "/home/chris/Projects/ch-nix-workspace/.worktrees/tier-review/group-3/derivation-evidence.json#fiji-purifier:x86_64-linux:project",
+          "https://github.com/nix-purifiers/fiji-purifier/blob/ed546b5a94043d02e068c241503b8c5f9440cfca/flake.nix",
+          "https://github.com/nix-purifiers/fiji-purifier/blob/ed546b5a94043d02e068c241503b8c5f9440cfca/.github/workflows/check.yml",
+          "https://github.com/nix-purifiers/fiji-purifier/actions/runs/41955556148"
+        ],
+        "derivations": [
+          "fiji-purifier:x86_64-linux:project"
+        ],
+        "sources": [
+          "https://github.com/nix-purifiers/fiji-purifier/blob/ed546b5a94043d02e068c241503b8c5f9440cfca/flake.nix",
+          "https://github.com/nix-purifiers/fiji-purifier/blob/ed546b5a94043d02e068c241503b8c5f9440cfca/.github/workflows/check.yml",
+          "https://github.com/nix-purifiers/fiji-purifier/actions/runs/41955556148"
+        ],
+        "gap": null
+      },
+      "linux": {
+        "state": "met",
+        "summary": "Successful native x86_64-linux sample realization at this exact source; exact-SHA successful Linux CI retained.",
+        "evidence": [
+          "/home/chris/Projects/ch-nix-workspace/.worktrees/tier-review/group-3/derivation-evidence.json#fiji-purifier:x86_64-linux:project",
+          "https://github.com/nix-purifiers/fiji-purifier/actions/runs/41955556148"
+        ],
+        "derivations": [
+          "fiji-purifier:x86_64-linux:project"
+        ],
+        "sources": [
+          "https://github.com/nix-purifiers/fiji-purifier/actions/runs/41955556148"
+        ],
+        "gap": null
+      },
+      "darwin": {
+        "state": "not-met",
+        "summary": "The reviewed current-main CI matrix executes only Linux. The public flake check outputs are Linux-only; no native Darwin sample build/runtime receipt was found.",
+        "evidence": [
+          "https://github.com/nix-purifiers/fiji-purifier/blob/ed546b5a94043d02e068c241503b8c5f9440cfca/flake.nix",
+          "https://github.com/nix-purifiers/fiji-purifier/blob/ed546b5a94043d02e068c241503b8c5f9440cfca/.github/workflows/check.yml",
+          "/home/chris/Projects/ch-nix-workspace/.worktrees/tier-review/group-3/fiji-purifier/jobs.json"
+        ],
+        "derivations": [],
+        "sources": [
+          "https://github.com/nix-purifiers/fiji-purifier/blob/ed546b5a94043d02e068c241503b8c5f9440cfca/flake.nix",
+          "https://github.com/nix-purifiers/fiji-purifier/blob/ed546b5a94043d02e068c241503b8c5f9440cfca/.github/workflows/check.yml",
+          "/home/chris/Projects/ch-nix-workspace/.worktrees/tier-review/group-3/fiji-purifier/jobs.json"
+        ],
+        "gap": "Missing native Darwin source/SDK/check derivation and successful runtime/output receipt at reviewed revision."
+      },
+      "oneVersion": {
+        "state": "met",
+        "summary": "The actual successful sample derivation uses exact locked SDK/tool points: fiji=20250514-1117. No unexecuted version range is inferred.",
+        "evidence": [
+          "/home/chris/Projects/ch-nix-workspace/.worktrees/tier-review/group-3/derivation-evidence.json#fiji-purifier:x86_64-linux:project",
+          "/home/chris/Projects/ch-nix-workspace/.worktrees/tier-review/group-3/fiji-purifier/sdk-versions.json",
+          "https://github.com/nix-purifiers/fiji-purifier/blob/ed546b5a94043d02e068c241503b8c5f9440cfca/flake.lock"
+        ],
+        "derivations": [
+          "fiji-purifier:x86_64-linux:project"
+        ],
+        "sources": [
+          "/home/chris/Projects/ch-nix-workspace/.worktrees/tier-review/group-3/fiji-purifier/sdk-versions.json",
+          "https://github.com/nix-purifiers/fiji-purifier/blob/ed546b5a94043d02e068c241503b8c5f9440cfca/flake.lock"
+        ],
+        "gap": null
+      },
+      "nonEolVersions": {
+        "state": "not-met",
+        "summary": "Fiji publishes rolling latest/stable builds and archived datestamps plus historical life-line downloads. The tested locked Fiji distribution is20250514-1117. An archive entry is not a maintained-support guarantee, and latest/stable current snapshot execution and a maintained-version policy binding are absent. No EOL date is inferred from the distribution age.",
+        "evidence": [
+          "/home/chris/Projects/ch-nix-workspace/.worktrees/tier-review/group-3/derivation-evidence.json#fiji-purifier:x86_64-linux:project",
+          "https://imagej.net/software/fiji/downloads",
+          "https://downloads.imagej.net/fiji/archive/latest/"
+        ],
+        "derivations": [
+          "fiji-purifier:x86_64-linux:project"
+        ],
+        "sources": [
+          "https://imagej.net/software/fiji/downloads",
+          "https://downloads.imagej.net/fiji/archive/latest/"
+        ],
+        "gap": "Fiji publishes rolling latest/stable builds and archived datestamps plus historical life-line downloads. The tested locked Fiji distribution is20250514-1117. An archive entry is not a maintained-support guarantee, and latest/stable current snapshot execution and a maintained-version policy binding are absent. No EOL date is inferred from the distribution age."
+      },
+      "manySamples": {
+        "state": "not-met",
+        "summary": "examples/minimal is one authored Fiji image-processing workflow; ImageJ/MorphoLibJ and other update-site plugins are dependencies rather than independent workflows. This reviewed sample set does not establish broad independently authored consumer coverage for the Tier1 judgment.",
+        "evidence": [
+          "/home/chris/Projects/ch-nix-workspace/.worktrees/tier-review/group-3/derivation-evidence.json#fiji-purifier:x86_64-linux:project",
+          "https://github.com/nix-purifiers/fiji-purifier/blob/ed546b5a94043d02e068c241503b8c5f9440cfca/flake.nix"
+        ],
+        "derivations": [
+          "fiji-purifier:x86_64-linux:project"
+        ],
+        "sources": [
+          "https://github.com/nix-purifiers/fiji-purifier/blob/ed546b5a94043d02e068c241503b8c5f9440cfca/flake.nix"
+        ],
+        "gap": "Additional distinct upstream consumer builds, beyond these fixtures/dependencies/selected projects, have not been demonstrated."
+      },
+      "longCompatibility": {
+        "state": "not-met",
+        "summary": "Executed SDK points are fiji=20250514-1117. No historical SDK-line execution matrix is present in the reviewed check definitions or successful receipts; target/fixture variants do not demonstrate old toolchain compatibility.",
+        "evidence": [
+          "/home/chris/Projects/ch-nix-workspace/.worktrees/tier-review/group-3/derivation-evidence.json#fiji-purifier:x86_64-linux:project",
+          "https://github.com/nix-purifiers/fiji-purifier/blob/ed546b5a94043d02e068c241503b8c5f9440cfca/flake.nix"
+        ],
+        "derivations": [
+          "fiji-purifier:x86_64-linux:project"
+        ],
+        "sources": [
+          "https://github.com/nix-purifiers/fiji-purifier/blob/ed546b5a94043d02e068c241503b8c5f9440cfca/flake.nix"
+        ],
+        "gap": "Missing executed historical toolchain-line matrix with successful source/SDK/check/output bindings; no all-patch range is inferred."
+      }
+    },
+    "sampleBuilds": [
+      {
+        "name": "examples/minimal is one authored Fiji image-processing workflow; ImageJ/MorphoLibJ and other update-site plugins are dependencies rather than independent workflows.",
+        "evidence": [
+          "/home/chris/Projects/ch-nix-workspace/.worktrees/tier-review/group-3/derivation-evidence.json#fiji-purifier:x86_64-linux:project",
+          "https://github.com/nix-purifiers/fiji-purifier/blob/ed546b5a94043d02e068c241503b8c5f9440cfca/flake.nix"
+        ],
+        "derivations": [
+          "fiji-purifier:x86_64-linux:project"
+        ]
+      }
+    ]
+  },
+  "firefox-purifier": {
+    "tier": 3,
+    "reviewedRevision": "6c20931cc8b5f251d1b041531227d9c7ad1c7cda",
+    "reviewedAt": "2026-11-06",
+    "rationale": "Tier3 confirmed by executable native Linux sample derivations. Good tests are demonstrated; native Darwin execution and specific maintained-version coverage remain unproven as documented. Many-sample and long-compatibility Tier1 judgments are not demonstrated.",
+    "criteria": {
+      "evaluation": {
+        "state": "met",
+        "summary": "Current reviewed source evaluates to executable Nix checks, with actual successful sample derivation realization.",
+        "evidence": [
+          "/home/chris/Projects/ch-nix-workspace/.worktrees/tier-review/group-3/derivation-evidence.json#firefox-purifier:x86_64-linux:project",
+          "https://github.com/nix-purifiers/firefox-purifier/blob/6c20931cc8b5f251d1b041531227d9c7ad1c7cda/flake.nix"
+        ],
+        "derivations": [
+          "firefox-purifier:x86_64-linux:project"
+        ],
+        "sources": [
+          "https://github.com/nix-purifiers/firefox-purifier/blob/6c20931cc8b5f251d1b041531227d9c7ad1c7cda/flake.nix"
+        ],
+        "gap": null
+      },
+      "goodTests": {
+        "state": "met",
+        "summary": "checks.project runs the locked Firefox extension environment and requires page.png. Successful CI additionally exercises extension activation from store JARs, frozen manager and profile state, stale-selection rejection, temporary profiles, ambient cache/fallback behavior and rebuilt SDK/environment/screenshot/release. This checks real browser behavior and negative paths.",
+        "evidence": [
+          "/home/chris/Projects/ch-nix-workspace/.worktrees/tier-review/group-3/derivation-evidence.json#firefox-purifier:x86_64-linux:project",
+          "https://github.com/nix-purifiers/firefox-purifier/blob/6c20931cc8b5f251d1b041531227d9c7ad1c7cda/flake.nix",
+          "https://github.com/nix-purifiers/firefox-purifier/blob/6c20931cc8b5f251d1b041531227d9c7ad1c7cda/.github/workflows/check.yml",
+          "https://github.com/nix-purifiers/firefox-purifier/actions/runs/41955614992"
+        ],
+        "derivations": [
+          "firefox-purifier:x86_64-linux:project"
+        ],
+        "sources": [
+          "https://github.com/nix-purifiers/firefox-purifier/blob/6c20931cc8b5f251d1b041531227d9c7ad1c7cda/flake.nix",
+          "https://github.com/nix-purifiers/firefox-purifier/blob/6c20931cc8b5f251d1b041531227d9c7ad1c7cda/.github/workflows/check.yml",
+          "https://github.com/nix-purifiers/firefox-purifier/actions/runs/41955614992"
+        ],
+        "gap": null
+      },
+      "linux": {
+        "state": "met",
+        "summary": "Successful native x86_64-linux sample realization at this exact source; exact-SHA successful Linux CI retained.",
+        "evidence": [
+          "/home/chris/Projects/ch-nix-workspace/.worktrees/tier-review/group-3/derivation-evidence.json#firefox-purifier:x86_64-linux:project",
+          "https://github.com/nix-purifiers/firefox-purifier/actions/runs/41955614992"
+        ],
+        "derivations": [
+          "firefox-purifier:x86_64-linux:project"
+        ],
+        "sources": [
+          "https://github.com/nix-purifiers/firefox-purifier/actions/runs/41955614992"
+        ],
+        "gap": null
+      },
+      "darwin": {
+        "state": "not-met",
+        "summary": "The reviewed current-main CI matrix executes only Linux. The public flake check outputs are Linux-only; no native Darwin sample build/runtime receipt was found.",
+        "evidence": [
+          "https://github.com/nix-purifiers/firefox-purifier/blob/6c20931cc8b5f251d1b041531227d9c7ad1c7cda/flake.nix",
+          "https://github.com/nix-purifiers/firefox-purifier/blob/6c20931cc8b5f251d1b041531227d9c7ad1c7cda/.github/workflows/check.yml",
+          "/home/chris/Projects/ch-nix-workspace/.worktrees/tier-review/group-3/firefox-purifier/jobs.json"
+        ],
+        "derivations": [],
+        "sources": [
+          "https://github.com/nix-purifiers/firefox-purifier/blob/6c20931cc8b5f251d1b041531227d9c7ad1c7cda/flake.nix",
+          "https://github.com/nix-purifiers/firefox-purifier/blob/6c20931cc8b5f251d1b041531227d9c7ad1c7cda/.github/workflows/check.yml",
+          "/home/chris/Projects/ch-nix-workspace/.worktrees/tier-review/group-3/firefox-purifier/jobs.json"
+        ],
+        "gap": "Missing native Darwin source/SDK/check derivation and successful runtime/output receipt at reviewed revision."
+      },
+      "oneVersion": {
+        "state": "met",
+        "summary": "The actual successful sample derivation uses exact locked SDK/tool points: firefox=159.0. No unexecuted version range is inferred.",
+        "evidence": [
+          "/home/chris/Projects/ch-nix-workspace/.worktrees/tier-review/group-3/derivation-evidence.json#firefox-purifier:x86_64-linux:project",
+          "/home/chris/Projects/ch-nix-workspace/.worktrees/tier-review/group-3/firefox-purifier/sdk-versions.json",
+          "https://github.com/nix-purifiers/firefox-purifier/blob/6c20931cc8b5f251d1b041531227d9c7ad1c7cda/flake.lock"
+        ],
+        "derivations": [
+          "firefox-purifier:x86_64-linux:project"
+        ],
+        "sources": [
+          "/home/chris/Projects/ch-nix-workspace/.worktrees/tier-review/group-3/firefox-purifier/sdk-versions.json",
+          "https://github.com/nix-purifiers/firefox-purifier/blob/6c20931cc8b5f251d1b041531227d9c7ad1c7cda/flake.lock"
+        ],
+        "gap": null
+      },
+      "nonEolVersions": {
+        "state": "not-met",
+        "summary": "Mozilla explicitly offers regular Firefox and ESR update channels. The exact locked regular Firefox159.0 is exercised, but no ESR derivation/runtime receipt is present. One regular release cannot establish coverage of the maintained channel set. This does not claim that159.0 has reached EOL.",
+        "evidence": [
+          "/home/chris/Projects/ch-nix-workspace/.worktrees/tier-review/group-3/derivation-evidence.json#firefox-purifier:x86_64-linux:project",
+          "https://support.mozilla.org/en-US/kb/choosing-firefox-update-channel",
+          "https://support.mozilla.org/en-US/kb/firefox-esr-release-cycle"
+        ],
+        "derivations": [
+          "firefox-purifier:x86_64-linux:project"
+        ],
+        "sources": [
+          "https://support.mozilla.org/en-US/kb/choosing-firefox-update-channel",
+          "https://support.mozilla.org/en-US/kb/firefox-esr-release-cycle"
+        ],
+        "gap": "Mozilla explicitly offers regular Firefox and ESR update channels. The exact locked regular Firefox159.0 is exercised, but no ESR derivation/runtime receipt is present. One regular release cannot establish coverage of the maintained channel set. This does not claim that159.0 has reached EOL."
+      },
+      "manySamples": {
+        "state": "not-met",
+        "summary": "examples/minimal is one authored browser/extension screenshot workflow; DarkReader and other extension variants are dependencies/test variants, not independent browser consumer projects. This reviewed sample set does not establish broad independently authored consumer coverage for the Tier1 judgment.",
+        "evidence": [
+          "/home/chris/Projects/ch-nix-workspace/.worktrees/tier-review/group-3/derivation-evidence.json#firefox-purifier:x86_64-linux:project",
+          "https://github.com/nix-purifiers/firefox-purifier/blob/6c20931cc8b5f251d1b041531227d9c7ad1c7cda/flake.nix"
+        ],
+        "derivations": [
+          "firefox-purifier:x86_64-linux:project"
+        ],
+        "sources": [
+          "https://github.com/nix-purifiers/firefox-purifier/blob/6c20931cc8b5f251d1b041531227d9c7ad1c7cda/flake.nix"
+        ],
+        "gap": "Additional distinct upstream consumer builds, beyond these fixtures/dependencies/selected projects, have not been demonstrated."
+      },
+      "longCompatibility": {
+        "state": "not-met",
+        "summary": "Executed SDK points are firefox=159.0. No historical SDK-line execution matrix is present in the reviewed check definitions or successful receipts; target/fixture variants do not demonstrate old toolchain compatibility.",
+        "evidence": [
+          "/home/chris/Projects/ch-nix-workspace/.worktrees/tier-review/group-3/derivation-evidence.json#firefox-purifier:x86_64-linux:project",
+          "https://github.com/nix-purifiers/firefox-purifier/blob/6c20931cc8b5f251d1b041531227d9c7ad1c7cda/flake.nix"
+        ],
+        "derivations": [
+          "firefox-purifier:x86_64-linux:project"
+        ],
+        "sources": [
+          "https://github.com/nix-purifiers/firefox-purifier/blob/6c20931cc8b5f251d1b041531227d9c7ad1c7cda/flake.nix"
+        ],
+        "gap": "Missing executed historical toolchain-line matrix with successful source/SDK/check/output bindings; no all-patch range is inferred."
+      }
+    },
+    "sampleBuilds": [
+      {
+        "name": "examples/minimal is one authored browser/extension screenshot workflow; DarkReader and other extension variants are dependencies/test variants, not independent browser consumer projects.",
+        "evidence": [
+          "/home/chris/Projects/ch-nix-workspace/.worktrees/tier-review/group-3/derivation-evidence.json#firefox-purifier:x86_64-linux:project",
+          "https://github.com/nix-purifiers/firefox-purifier/blob/6c20931cc8b5f251d1b041531227d9c7ad1c7cda/flake.nix"
+        ],
+        "derivations": [
+          "firefox-purifier:x86_64-linux:project"
+        ]
+      }
+    ]
+  },
+  "fpm-purifier": {
+    "tier": 3,
+    "reviewedRevision": "a11ffb7d5dc547d3502284a5b21a2aeca06d7f37",
+    "reviewedAt": "2026-11-06",
+    "rationale": "Tier3 confirmed by executable native Linux sample derivations. Good tests and current maintained SDK-line points are demonstrated; native Darwin execution is missing. Many-sample and long-compatibility Tier1 judgments are not demonstrated.",
+    "criteria": {
+      "evaluation": {
+        "state": "met",
+        "summary": "Current reviewed source evaluates to executable Nix checks, with actual successful sample derivation realization.",
+        "evidence": [
+          "/home/chris/Projects/ch-nix-workspace/.worktrees/tier-review/group-3/derivation-evidence.json#fpm-purifier:x86_64-linux:installed",
+          "/home/chris/Projects/ch-nix-workspace/.worktrees/tier-review/group-3/derivation-evidence.json#fpm-purifier:x86_64-linux:project",
+          "https://github.com/nix-purifiers/fpm-purifier/blob/a11ffb7d5dc547d3502284a5b21a2aeca06d7f37/flake.nix"
+        ],
+        "derivations": [
+          "fpm-purifier:x86_64-linux:installed",
+          "fpm-purifier:x86_64-linux:project"
+        ],
+        "sources": [
+          "https://github.com/nix-purifiers/fpm-purifier/blob/a11ffb7d5dc547d3502284a5b21a2aeca06d7f37/flake.nix"
+        ],
+        "gap": null
+      },
+      "goodTests": {
+        "state": "met",
+        "summary": "checks.project runs Fortran tests and checks.installed compiles/runs a separate Fortran consumer of the installed archive/module API. Successful native conformance tests cover poisoned compiler/build flags, nested project location, extra optimization flags, changed/restored source, immutable prebuilt dependencies and locks. Rebuild/capture checks add regression coverage. The independent installed consumer specifically validates the output API.",
+        "evidence": [
+          "/home/chris/Projects/ch-nix-workspace/.worktrees/tier-review/group-3/derivation-evidence.json#fpm-purifier:x86_64-linux:installed",
+          "/home/chris/Projects/ch-nix-workspace/.worktrees/tier-review/group-3/derivation-evidence.json#fpm-purifier:x86_64-linux:project",
+          "https://github.com/nix-purifiers/fpm-purifier/blob/a11ffb7d5dc547d3502284a5b21a2aeca06d7f37/flake.nix",
+          "https://github.com/nix-purifiers/fpm-purifier/blob/a11ffb7d5dc547d3502284a5b21a2aeca06d7f37/.github/workflows/check.yml",
+          "https://github.com/nix-purifiers/fpm-purifier/actions/runs/42189215545"
+        ],
+        "derivations": [
+          "fpm-purifier:x86_64-linux:installed",
+          "fpm-purifier:x86_64-linux:project"
+        ],
+        "sources": [
+          "https://github.com/nix-purifiers/fpm-purifier/blob/a11ffb7d5dc547d3502284a5b21a2aeca06d7f37/flake.nix",
+          "https://github.com/nix-purifiers/fpm-purifier/blob/a11ffb7d5dc547d3502284a5b21a2aeca06d7f37/.github/workflows/check.yml",
+          "https://github.com/nix-purifiers/fpm-purifier/actions/runs/42189215545"
+        ],
+        "gap": null
+      },
+      "linux": {
+        "state": "met",
+        "summary": "Successful native x86_64-linux sample realization at this exact source; exact-SHA successful Linux CI retained.",
+        "evidence": [
+          "/home/chris/Projects/ch-nix-workspace/.worktrees/tier-review/group-3/derivation-evidence.json#fpm-purifier:x86_64-linux:installed",
+          "/home/chris/Projects/ch-nix-workspace/.worktrees/tier-review/group-3/derivation-evidence.json#fpm-purifier:x86_64-linux:project",
+          "https://github.com/nix-purifiers/fpm-purifier/actions/runs/42189215545"
+        ],
+        "derivations": [
+          "fpm-purifier:x86_64-linux:installed",
+          "fpm-purifier:x86_64-linux:project"
+        ],
+        "sources": [
+          "https://github.com/nix-purifiers/fpm-purifier/actions/runs/42189215545"
+        ],
+        "gap": null
+      },
+      "darwin": {
+        "state": "not-met",
+        "summary": "The reviewed current-main CI matrix executes only Linux. The public flake check outputs are Linux-only; no native Darwin sample build/runtime receipt was found.",
+        "evidence": [
+          "https://github.com/nix-purifiers/fpm-purifier/blob/a11ffb7d5dc547d3502284a5b21a2aeca06d7f37/flake.nix",
+          "https://github.com/nix-purifiers/fpm-purifier/blob/a11ffb7d5dc547d3502284a5b21a2aeca06d7f37/.github/workflows/check.yml",
+          "/home/chris/Projects/ch-nix-workspace/.worktrees/tier-review/group-3/fpm-purifier/jobs.json"
+        ],
+        "derivations": [],
+        "sources": [
+          "https://github.com/nix-purifiers/fpm-purifier/blob/a11ffb7d5dc547d3502284a5b21a2aeca06d7f37/flake.nix",
+          "https://github.com/nix-purifiers/fpm-purifier/blob/a11ffb7d5dc547d3502284a5b21a2aeca06d7f37/.github/workflows/check.yml",
+          "/home/chris/Projects/ch-nix-workspace/.worktrees/tier-review/group-3/fpm-purifier/jobs.json"
+        ],
+        "gap": "Missing native Darwin source/SDK/check derivation and successful runtime/output receipt at reviewed revision."
+      },
+      "oneVersion": {
+        "state": "met",
+        "summary": "The actual successful sample derivation uses exact locked SDK/tool points: fpm=0.13.0, gfortran=16.2.0. No unexecuted version range is inferred.",
+        "evidence": [
+          "/home/chris/Projects/ch-nix-workspace/.worktrees/tier-review/group-3/derivation-evidence.json#fpm-purifier:x86_64-linux:installed",
+          "/home/chris/Projects/ch-nix-workspace/.worktrees/tier-review/group-3/derivation-evidence.json#fpm-purifier:x86_64-linux:project",
+          "/home/chris/Projects/ch-nix-workspace/.worktrees/tier-review/group-3/fpm-purifier/sdk-versions.json",
+          "https://github.com/nix-purifiers/fpm-purifier/blob/a11ffb7d5dc547d3502284a5b21a2aeca06d7f37/flake.lock"
+        ],
+        "derivations": [
+          "fpm-purifier:x86_64-linux:installed",
+          "fpm-purifier:x86_64-linux:project"
+        ],
+        "sources": [
+          "/home/chris/Projects/ch-nix-workspace/.worktrees/tier-review/group-3/fpm-purifier/sdk-versions.json",
+          "https://github.com/nix-purifiers/fpm-purifier/blob/a11ffb7d5dc547d3502284a5b21a2aeca06d7f37/flake.lock"
+        ],
+        "gap": null
+      },
+      "nonEolVersions": {
+        "state": "met",
+        "summary": "Upstream fpm primary release/news identify0.13.0 as current stable, matching the actual locked fpm0.13.0 used with gfortran16.2.0 in successful project and installed-consumer derivations. This meets current stable fpm-line coverage at that exact point. No historical/all-patch/compiler-range support is inferred, and absence of an EOL calendar is not treated as failure.",
+        "evidence": [
+          "/home/chris/Projects/ch-nix-workspace/.worktrees/tier-review/group-3/derivation-evidence.json#fpm-purifier:x86_64-linux:installed",
+          "/home/chris/Projects/ch-nix-workspace/.worktrees/tier-review/group-3/derivation-evidence.json#fpm-purifier:x86_64-linux:project",
+          "https://fpm.fortran-lang.org/news/archive.html",
+          "https://github.com/fortran-lang/fpm/releases/tag/v0.13.0",
+          "/home/chris/Projects/ch-nix-workspace/.worktrees/tier-review/group-3/fpm-purifier/upstream-latest-release.json"
+        ],
+        "derivations": [
+          "fpm-purifier:x86_64-linux:installed",
+          "fpm-purifier:x86_64-linux:project"
+        ],
+        "sources": [
+          "https://fpm.fortran-lang.org/news/archive.html",
+          "https://github.com/fortran-lang/fpm/releases/tag/v0.13.0",
+          "/home/chris/Projects/ch-nix-workspace/.worktrees/tier-review/group-3/fpm-purifier/upstream-latest-release.json"
+        ],
+        "gap": null
+      },
+      "manySamples": {
+        "state": "not-met",
+        "summary": "examples/minimal is an authored Fortran library/test fixture; installed is a generated consumer of that same fixture. Its toml-f dependency and C/Java/ctypes projection fixtures are not independent upstream fpm application builds. This reviewed sample set does not establish broad independently authored consumer coverage for the Tier1 judgment.",
+        "evidence": [
+          "/home/chris/Projects/ch-nix-workspace/.worktrees/tier-review/group-3/derivation-evidence.json#fpm-purifier:x86_64-linux:installed",
+          "/home/chris/Projects/ch-nix-workspace/.worktrees/tier-review/group-3/derivation-evidence.json#fpm-purifier:x86_64-linux:project",
+          "https://github.com/nix-purifiers/fpm-purifier/blob/a11ffb7d5dc547d3502284a5b21a2aeca06d7f37/flake.nix"
+        ],
+        "derivations": [
+          "fpm-purifier:x86_64-linux:installed",
+          "fpm-purifier:x86_64-linux:project"
+        ],
+        "sources": [
+          "https://github.com/nix-purifiers/fpm-purifier/blob/a11ffb7d5dc547d3502284a5b21a2aeca06d7f37/flake.nix"
+        ],
+        "gap": "Additional distinct upstream consumer builds, beyond these fixtures/dependencies/selected projects, have not been demonstrated."
+      },
+      "longCompatibility": {
+        "state": "not-met",
+        "summary": "Executed SDK points are fpm=0.13.0, gfortran=16.2.0. No historical SDK-line execution matrix is present in the reviewed check definitions or successful receipts; target/fixture variants do not demonstrate old toolchain compatibility.",
+        "evidence": [
+          "/home/chris/Projects/ch-nix-workspace/.worktrees/tier-review/group-3/derivation-evidence.json#fpm-purifier:x86_64-linux:installed",
+          "/home/chris/Projects/ch-nix-workspace/.worktrees/tier-review/group-3/derivation-evidence.json#fpm-purifier:x86_64-linux:project",
+          "https://github.com/nix-purifiers/fpm-purifier/blob/a11ffb7d5dc547d3502284a5b21a2aeca06d7f37/flake.nix"
+        ],
+        "derivations": [
+          "fpm-purifier:x86_64-linux:installed",
+          "fpm-purifier:x86_64-linux:project"
+        ],
+        "sources": [
+          "https://github.com/nix-purifiers/fpm-purifier/blob/a11ffb7d5dc547d3502284a5b21a2aeca06d7f37/flake.nix"
+        ],
+        "gap": "Missing executed historical toolchain-line matrix with successful source/SDK/check/output bindings; no all-patch range is inferred."
+      }
+    },
+    "sampleBuilds": [
+      {
+        "name": "examples/minimal is an authored Fortran library/test fixture; installed is a generated consumer of that same fixture. Its toml-f dependency and C/Java/ctypes projection fixtures are not independent upstream fpm application builds.",
+        "evidence": [
+          "/home/chris/Projects/ch-nix-workspace/.worktrees/tier-review/group-3/derivation-evidence.json#fpm-purifier:x86_64-linux:installed",
+          "/home/chris/Projects/ch-nix-workspace/.worktrees/tier-review/group-3/derivation-evidence.json#fpm-purifier:x86_64-linux:project",
+          "https://github.com/nix-purifiers/fpm-purifier/blob/a11ffb7d5dc547d3502284a5b21a2aeca06d7f37/flake.nix"
+        ],
+        "derivations": [
+          "fpm-purifier:x86_64-linux:installed",
+          "fpm-purifier:x86_64-linux:project"
+        ]
+      }
+    ]
+  },
+  "freecad-purifier": {
+    "tier": 3,
+    "reviewedRevision": "ae1b271b40b40928a543696bfc516d7c08a3bae4",
+    "reviewedAt": "2026-11-06",
+    "rationale": "Tier3 confirmed by executable native Linux sample derivations. Good tests and current maintained SDK-line points are demonstrated; native Darwin execution is missing. Many-sample and long-compatibility Tier1 judgments are not demonstrated.",
+    "criteria": {
+      "evaluation": {
+        "state": "met",
+        "summary": "Current reviewed source evaluates to executable Nix checks, with actual successful sample derivation realization.",
+        "evidence": [
+          "/home/chris/Projects/ch-nix-workspace/.worktrees/tier-review/group-3/derivation-evidence.json#freecad-purifier:x86_64-linux:project",
+          "https://github.com/nix-purifiers/freecad-purifier/blob/ae1b271b40b40928a543696bfc516d7c08a3bae4/flake.nix"
+        ],
+        "derivations": [
+          "freecad-purifier:x86_64-linux:project"
+        ],
+        "sources": [
+          "https://github.com/nix-purifiers/freecad-purifier/blob/ae1b271b40b40928a543696bfc516d7c08a3bae4/flake.nix"
+        ],
+        "gap": null
+      },
+      "goodTests": {
+        "state": "met",
+        "summary": "The project derivation executes FreeCADCmd, loads FastenersCmd, constructs an M6 bolt and asserts valid non-null geometry before exporting BREP/geometry.json. Successful CI also tests native source edits/cache isolation, GUI workbench registration/frozen AddonInstaller, artifacts and rebuilt geometry/release. These are substantive geometry/add-on checks, despite doCheck defaulting false because the script itself asserts geometry.",
+        "evidence": [
+          "/home/chris/Projects/ch-nix-workspace/.worktrees/tier-review/group-3/derivation-evidence.json#freecad-purifier:x86_64-linux:project",
+          "https://github.com/nix-purifiers/freecad-purifier/blob/ae1b271b40b40928a543696bfc516d7c08a3bae4/flake.nix",
+          "https://github.com/nix-purifiers/freecad-purifier/blob/ae1b271b40b40928a543696bfc516d7c08a3bae4/.github/workflows/check.yml",
+          "https://github.com/nix-purifiers/freecad-purifier/actions/runs/41955510181"
+        ],
+        "derivations": [
+          "freecad-purifier:x86_64-linux:project"
+        ],
+        "sources": [
+          "https://github.com/nix-purifiers/freecad-purifier/blob/ae1b271b40b40928a543696bfc516d7c08a3bae4/flake.nix",
+          "https://github.com/nix-purifiers/freecad-purifier/blob/ae1b271b40b40928a543696bfc516d7c08a3bae4/.github/workflows/check.yml",
+          "https://github.com/nix-purifiers/freecad-purifier/actions/runs/41955510181"
+        ],
+        "gap": null
+      },
+      "linux": {
+        "state": "met",
+        "summary": "Successful native x86_64-linux sample realization at this exact source; exact-SHA successful Linux CI retained.",
+        "evidence": [
+          "/home/chris/Projects/ch-nix-workspace/.worktrees/tier-review/group-3/derivation-evidence.json#freecad-purifier:x86_64-linux:project",
+          "https://github.com/nix-purifiers/freecad-purifier/actions/runs/41955510181"
+        ],
+        "derivations": [
+          "freecad-purifier:x86_64-linux:project"
+        ],
+        "sources": [
+          "https://github.com/nix-purifiers/freecad-purifier/actions/runs/41955510181"
+        ],
+        "gap": null
+      },
+      "darwin": {
+        "state": "not-met",
+        "summary": "The reviewed current-main CI matrix executes only Linux. The public flake check outputs are Linux-only; no native Darwin sample build/runtime receipt was found.",
+        "evidence": [
+          "https://github.com/nix-purifiers/freecad-purifier/blob/ae1b271b40b40928a543696bfc516d7c08a3bae4/flake.nix",
+          "https://github.com/nix-purifiers/freecad-purifier/blob/ae1b271b40b40928a543696bfc516d7c08a3bae4/.github/workflows/check.yml",
+          "/home/chris/Projects/ch-nix-workspace/.worktrees/tier-review/group-3/freecad-purifier/jobs.json"
+        ],
+        "derivations": [],
+        "sources": [
+          "https://github.com/nix-purifiers/freecad-purifier/blob/ae1b271b40b40928a543696bfc516d7c08a3bae4/flake.nix",
+          "https://github.com/nix-purifiers/freecad-purifier/blob/ae1b271b40b40928a543696bfc516d7c08a3bae4/.github/workflows/check.yml",
+          "/home/chris/Projects/ch-nix-workspace/.worktrees/tier-review/group-3/freecad-purifier/jobs.json"
+        ],
+        "gap": "Missing native Darwin source/SDK/check derivation and successful runtime/output receipt at reviewed revision."
+      },
+      "oneVersion": {
+        "state": "met",
+        "summary": "The actual successful sample derivation uses exact locked SDK/tool points: freecad=1.1.4. No unexecuted version range is inferred.",
+        "evidence": [
+          "/home/chris/Projects/ch-nix-workspace/.worktrees/tier-review/group-3/derivation-evidence.json#freecad-purifier:x86_64-linux:project",
+          "/home/chris/Projects/ch-nix-workspace/.worktrees/tier-review/group-3/freecad-purifier/sdk-versions.json",
+          "https://github.com/nix-purifiers/freecad-purifier/blob/ae1b271b40b40928a543696bfc516d7c08a3bae4/flake.lock"
+        ],
+        "derivations": [
+          "freecad-purifier:x86_64-linux:project"
+        ],
+        "sources": [
+          "/home/chris/Projects/ch-nix-workspace/.worktrees/tier-review/group-3/freecad-purifier/sdk-versions.json",
+          "https://github.com/nix-purifiers/freecad-purifier/blob/ae1b271b40b40928a543696bfc516d7c08a3bae4/flake.lock"
+        ],
+        "gap": null
+      },
+      "nonEolVersions": {
+        "state": "met",
+        "summary": "FreeCAD1.1.4 primary release calls itself the last planned1.1 maintenance release and recommends upgrading for security fixes; API marks1.1.4 latest. The locked executable matches1.1.4 and successful geometry derivation executes that release. This meets current stable-line coverage at1.1.4, without an all-patch or historical compatibility claim.",
+        "evidence": [
+          "/home/chris/Projects/ch-nix-workspace/.worktrees/tier-review/group-3/derivation-evidence.json#freecad-purifier:x86_64-linux:project",
+          "https://github.com/FreeCAD/FreeCAD/releases/tag/1.1.4",
+          "/home/chris/Projects/ch-nix-workspace/.worktrees/tier-review/group-3/freecad-purifier/upstream-latest-release.json"
+        ],
+        "derivations": [
+          "freecad-purifier:x86_64-linux:project"
+        ],
+        "sources": [
+          "https://github.com/FreeCAD/FreeCAD/releases/tag/1.1.4",
+          "/home/chris/Projects/ch-nix-workspace/.worktrees/tier-review/group-3/freecad-purifier/upstream-latest-release.json"
+        ],
+        "gap": null
+      },
+      "manySamples": {
+        "state": "not-met",
+        "summary": "examples/minimal is one authored CAD workflow using Fasteners Workbench; the upstream workbench is a dependency, not a separately built independent CAD consumer. This reviewed sample set does not establish broad independently authored consumer coverage for the Tier1 judgment.",
+        "evidence": [
+          "/home/chris/Projects/ch-nix-workspace/.worktrees/tier-review/group-3/derivation-evidence.json#freecad-purifier:x86_64-linux:project",
+          "https://github.com/nix-purifiers/freecad-purifier/blob/ae1b271b40b40928a543696bfc516d7c08a3bae4/flake.nix"
+        ],
+        "derivations": [
+          "freecad-purifier:x86_64-linux:project"
+        ],
+        "sources": [
+          "https://github.com/nix-purifiers/freecad-purifier/blob/ae1b271b40b40928a543696bfc516d7c08a3bae4/flake.nix"
+        ],
+        "gap": "Additional distinct upstream consumer builds, beyond these fixtures/dependencies/selected projects, have not been demonstrated."
+      },
+      "longCompatibility": {
+        "state": "not-met",
+        "summary": "Executed SDK points are freecad=1.1.4. No historical SDK-line execution matrix is present in the reviewed check definitions or successful receipts; target/fixture variants do not demonstrate old toolchain compatibility.",
+        "evidence": [
+          "/home/chris/Projects/ch-nix-workspace/.worktrees/tier-review/group-3/derivation-evidence.json#freecad-purifier:x86_64-linux:project",
+          "https://github.com/nix-purifiers/freecad-purifier/blob/ae1b271b40b40928a543696bfc516d7c08a3bae4/flake.nix"
+        ],
+        "derivations": [
+          "freecad-purifier:x86_64-linux:project"
+        ],
+        "sources": [
+          "https://github.com/nix-purifiers/freecad-purifier/blob/ae1b271b40b40928a543696bfc516d7c08a3bae4/flake.nix"
+        ],
+        "gap": "Missing executed historical toolchain-line matrix with successful source/SDK/check/output bindings; no all-patch range is inferred."
+      }
+    },
+    "sampleBuilds": [
+      {
+        "name": "examples/minimal is one authored CAD workflow using Fasteners Workbench; the upstream workbench is a dependency, not a separately built independent CAD consumer.",
+        "evidence": [
+          "/home/chris/Projects/ch-nix-workspace/.worktrees/tier-review/group-3/derivation-evidence.json#freecad-purifier:x86_64-linux:project",
+          "https://github.com/nix-purifiers/freecad-purifier/blob/ae1b271b40b40928a543696bfc516d7c08a3bae4/flake.nix"
+        ],
+        "derivations": [
+          "freecad-purifier:x86_64-linux:project"
+        ]
+      }
+    ]
+  },
+  "gimp-purifier": {
+    "tier": 3,
+    "reviewedRevision": "f5092be456722a67bbe5adc5025d49aebdfdf845",
+    "reviewedAt": "2026-11-06",
+    "rationale": "Tier3 confirmed by executable native Linux sample derivations. Good tests are demonstrated; native Darwin execution and specific maintained-version coverage remain unproven as documented. Many-sample and long-compatibility Tier1 judgments are not demonstrated.",
+    "criteria": {
+      "evaluation": {
+        "state": "met",
+        "summary": "Current reviewed source evaluates to executable Nix checks, with actual successful sample derivation realization.",
+        "evidence": [
+          "/home/chris/Projects/ch-nix-workspace/.worktrees/tier-review/group-3/derivation-evidence.json#gimp-purifier:x86_64-linux:project",
+          "/home/chris/Projects/ch-nix-workspace/.worktrees/tier-review/group-3/derivation-evidence.json#gimp-purifier:x86_64-linux:resources",
+          "https://github.com/nix-purifiers/gimp-purifier/blob/f5092be456722a67bbe5adc5025d49aebdfdf845/flake.nix"
+        ],
+        "derivations": [
+          "gimp-purifier:x86_64-linux:project",
+          "gimp-purifier:x86_64-linux:resources"
+        ],
+        "sources": [
+          "https://github.com/nix-purifiers/gimp-purifier/blob/f5092be456722a67bbe5adc5025d49aebdfdf845/flake.nix"
+        ],
+        "gap": null
+      },
+      "goodTests": {
+        "state": "met",
+        "summary": "checks.project invokes real GIMP and requires image.ppm; checks.resources builds ordinary resource consumers for projections. Native/GUI CI tests exercise actual locked plugin activation, editable root changes, dependency isolation, frozen manager behavior and output artifacts. Successful project/resource derivations plus rebuilt outputs provide positive, negative and consumer coverage.",
+        "evidence": [
+          "/home/chris/Projects/ch-nix-workspace/.worktrees/tier-review/group-3/derivation-evidence.json#gimp-purifier:x86_64-linux:project",
+          "/home/chris/Projects/ch-nix-workspace/.worktrees/tier-review/group-3/derivation-evidence.json#gimp-purifier:x86_64-linux:resources",
+          "https://github.com/nix-purifiers/gimp-purifier/blob/f5092be456722a67bbe5adc5025d49aebdfdf845/flake.nix",
+          "https://github.com/nix-purifiers/gimp-purifier/blob/f5092be456722a67bbe5adc5025d49aebdfdf845/.github/workflows/check.yml",
+          "https://github.com/nix-purifiers/gimp-purifier/actions/runs/42154904989"
+        ],
+        "derivations": [
+          "gimp-purifier:x86_64-linux:project",
+          "gimp-purifier:x86_64-linux:resources"
+        ],
+        "sources": [
+          "https://github.com/nix-purifiers/gimp-purifier/blob/f5092be456722a67bbe5adc5025d49aebdfdf845/flake.nix",
+          "https://github.com/nix-purifiers/gimp-purifier/blob/f5092be456722a67bbe5adc5025d49aebdfdf845/.github/workflows/check.yml",
+          "https://github.com/nix-purifiers/gimp-purifier/actions/runs/42154904989"
+        ],
+        "gap": null
+      },
+      "linux": {
+        "state": "met",
+        "summary": "Successful native x86_64-linux sample realization at this exact source; exact-SHA successful Linux CI retained.",
+        "evidence": [
+          "/home/chris/Projects/ch-nix-workspace/.worktrees/tier-review/group-3/derivation-evidence.json#gimp-purifier:x86_64-linux:project",
+          "/home/chris/Projects/ch-nix-workspace/.worktrees/tier-review/group-3/derivation-evidence.json#gimp-purifier:x86_64-linux:resources",
+          "https://github.com/nix-purifiers/gimp-purifier/actions/runs/42154904989"
+        ],
+        "derivations": [
+          "gimp-purifier:x86_64-linux:project",
+          "gimp-purifier:x86_64-linux:resources"
+        ],
+        "sources": [
+          "https://github.com/nix-purifiers/gimp-purifier/actions/runs/42154904989"
+        ],
+        "gap": null
+      },
+      "darwin": {
+        "state": "not-met",
+        "summary": "The reviewed current-main CI matrix executes only Linux. The public flake check outputs are Linux-only; no native Darwin sample build/runtime receipt was found.",
+        "evidence": [
+          "https://github.com/nix-purifiers/gimp-purifier/blob/f5092be456722a67bbe5adc5025d49aebdfdf845/flake.nix",
+          "https://github.com/nix-purifiers/gimp-purifier/blob/f5092be456722a67bbe5adc5025d49aebdfdf845/.github/workflows/check.yml",
+          "/home/chris/Projects/ch-nix-workspace/.worktrees/tier-review/group-3/gimp-purifier/jobs.json"
+        ],
+        "derivations": [],
+        "sources": [
+          "https://github.com/nix-purifiers/gimp-purifier/blob/f5092be456722a67bbe5adc5025d49aebdfdf845/flake.nix",
+          "https://github.com/nix-purifiers/gimp-purifier/blob/f5092be456722a67bbe5adc5025d49aebdfdf845/.github/workflows/check.yml",
+          "/home/chris/Projects/ch-nix-workspace/.worktrees/tier-review/group-3/gimp-purifier/jobs.json"
+        ],
+        "gap": "Missing native Darwin source/SDK/check derivation and successful runtime/output receipt at reviewed revision."
+      },
+      "oneVersion": {
+        "state": "met",
+        "summary": "The actual successful sample derivation uses exact locked SDK/tool points: gimp=3.2.6. No unexecuted version range is inferred.",
+        "evidence": [
+          "/home/chris/Projects/ch-nix-workspace/.worktrees/tier-review/group-3/derivation-evidence.json#gimp-purifier:x86_64-linux:project",
+          "/home/chris/Projects/ch-nix-workspace/.worktrees/tier-review/group-3/derivation-evidence.json#gimp-purifier:x86_64-linux:resources",
+          "/home/chris/Projects/ch-nix-workspace/.worktrees/tier-review/group-3/gimp-purifier/sdk-versions.json",
+          "https://github.com/nix-purifiers/gimp-purifier/blob/f5092be456722a67bbe5adc5025d49aebdfdf845/flake.lock"
+        ],
+        "derivations": [
+          "gimp-purifier:x86_64-linux:project",
+          "gimp-purifier:x86_64-linux:resources"
+        ],
+        "sources": [
+          "/home/chris/Projects/ch-nix-workspace/.worktrees/tier-review/group-3/gimp-purifier/sdk-versions.json",
+          "https://github.com/nix-purifiers/gimp-purifier/blob/f5092be456722a67bbe5adc5025d49aebdfdf845/flake.lock"
+        ],
+        "gap": null
+      },
+      "nonEolVersions": {
+        "state": "not-met",
+        "summary": "GIMP primary downloads list3.2.8 released2026-11-02 and identify3.2 as the current stable line. Locked executed GIMP is3.2.6. No3.2.8 execution is bound to this purifier. This records missing current patched-release coverage and does not invent an EOL date for3.2.6.",
+        "evidence": [
+          "/home/chris/Projects/ch-nix-workspace/.worktrees/tier-review/group-3/derivation-evidence.json#gimp-purifier:x86_64-linux:project",
+          "/home/chris/Projects/ch-nix-workspace/.worktrees/tier-review/group-3/derivation-evidence.json#gimp-purifier:x86_64-linux:resources",
+          "https://www.gimp.org/downloads/",
+          "https://www.gimp.org/release-notes/"
+        ],
+        "derivations": [
+          "gimp-purifier:x86_64-linux:project",
+          "gimp-purifier:x86_64-linux:resources"
+        ],
+        "sources": [
+          "https://www.gimp.org/downloads/",
+          "https://www.gimp.org/release-notes/"
+        ],
+        "gap": "GIMP primary downloads list3.2.8 released2026-11-02 and identify3.2 as the current stable line. Locked executed GIMP is3.2.6. No3.2.8 execution is bound to this purifier. This records missing current patched-release coverage and does not invent an EOL date for3.2.6."
+      },
+      "manySamples": {
+        "state": "not-met",
+        "summary": "examples/minimal is an authored image-processing workflow; resource projection consumers and plugin variants test facets of the same integration, not a corpus of independent upstream GIMP projects. This reviewed sample set does not establish broad independently authored consumer coverage for the Tier1 judgment.",
+        "evidence": [
+          "/home/chris/Projects/ch-nix-workspace/.worktrees/tier-review/group-3/derivation-evidence.json#gimp-purifier:x86_64-linux:project",
+          "/home/chris/Projects/ch-nix-workspace/.worktrees/tier-review/group-3/derivation-evidence.json#gimp-purifier:x86_64-linux:resources",
+          "https://github.com/nix-purifiers/gimp-purifier/blob/f5092be456722a67bbe5adc5025d49aebdfdf845/flake.nix"
+        ],
+        "derivations": [
+          "gimp-purifier:x86_64-linux:project",
+          "gimp-purifier:x86_64-linux:resources"
+        ],
+        "sources": [
+          "https://github.com/nix-purifiers/gimp-purifier/blob/f5092be456722a67bbe5adc5025d49aebdfdf845/flake.nix"
+        ],
+        "gap": "Additional distinct upstream consumer builds, beyond these fixtures/dependencies/selected projects, have not been demonstrated."
+      },
+      "longCompatibility": {
+        "state": "not-met",
+        "summary": "Executed SDK points are gimp=3.2.6. No historical SDK-line execution matrix is present in the reviewed check definitions or successful receipts; target/fixture variants do not demonstrate old toolchain compatibility.",
+        "evidence": [
+          "/home/chris/Projects/ch-nix-workspace/.worktrees/tier-review/group-3/derivation-evidence.json#gimp-purifier:x86_64-linux:project",
+          "/home/chris/Projects/ch-nix-workspace/.worktrees/tier-review/group-3/derivation-evidence.json#gimp-purifier:x86_64-linux:resources",
+          "https://github.com/nix-purifiers/gimp-purifier/blob/f5092be456722a67bbe5adc5025d49aebdfdf845/flake.nix"
+        ],
+        "derivations": [
+          "gimp-purifier:x86_64-linux:project",
+          "gimp-purifier:x86_64-linux:resources"
+        ],
+        "sources": [
+          "https://github.com/nix-purifiers/gimp-purifier/blob/f5092be456722a67bbe5adc5025d49aebdfdf845/flake.nix"
+        ],
+        "gap": "Missing executed historical toolchain-line matrix with successful source/SDK/check/output bindings; no all-patch range is inferred."
+      }
+    },
+    "sampleBuilds": [
+      {
+        "name": "examples/minimal is an authored image-processing workflow; resource projection consumers and plugin variants test facets of the same integration, not a corpus of independent upstream GIMP projects.",
+        "evidence": [
+          "/home/chris/Projects/ch-nix-workspace/.worktrees/tier-review/group-3/derivation-evidence.json#gimp-purifier:x86_64-linux:project",
+          "/home/chris/Projects/ch-nix-workspace/.worktrees/tier-review/group-3/derivation-evidence.json#gimp-purifier:x86_64-linux:resources",
+          "https://github.com/nix-purifiers/gimp-purifier/blob/f5092be456722a67bbe5adc5025d49aebdfdf845/flake.nix"
+        ],
+        "derivations": [
+          "gimp-purifier:x86_64-linux:project",
+          "gimp-purifier:x86_64-linux:resources"
+        ]
+      }
+    ]
+  },
+  "gleam-purifier": {
+    "tier": 3,
+    "reviewedRevision": "c70321b5a2222a8eae4b73dbe4e88e5637bfdf79",
+    "reviewedAt": "2026-11-06",
+    "rationale": "Tier3 confirmed by executable native Linux sample derivations. Good tests and current maintained SDK-line points are demonstrated; native Darwin execution is missing. Many-sample and long-compatibility Tier1 judgments are not demonstrated.",
+    "criteria": {
+      "evaluation": {
+        "state": "met",
+        "summary": "Current reviewed source evaluates to executable Nix checks, with actual successful sample derivation realization.",
+        "evidence": [
+          "/home/chris/Projects/ch-nix-workspace/.worktrees/tier-review/group-3/derivation-evidence.json#gleam-purifier:x86_64-linux:editor",
+          "/home/chris/Projects/ch-nix-workspace/.worktrees/tier-review/group-3/derivation-evidence.json#gleam-purifier:x86_64-linux:erlang",
+          "/home/chris/Projects/ch-nix-workspace/.worktrees/tier-review/group-3/derivation-evidence.json#gleam-purifier:x86_64-linux:project",
+          "https://github.com/nix-purifiers/gleam-purifier/blob/c70321b5a2222a8eae4b73dbe4e88e5637bfdf79/flake.nix"
+        ],
+        "derivations": [
+          "gleam-purifier:x86_64-linux:editor",
+          "gleam-purifier:x86_64-linux:erlang",
+          "gleam-purifier:x86_64-linux:project"
+        ],
+        "sources": [
+          "https://github.com/nix-purifiers/gleam-purifier/blob/c70321b5a2222a8eae4b73dbe4e88e5637bfdf79/flake.nix"
+        ],
+        "gap": null
+      },
+      "goodTests": {
+        "state": "met",
+        "summary": "checks.project executes JavaScript target tests, checks.erlang runs Erlang target tests, and checks.editor exercises the LSP against the locked environment. Successful native/relock/update/external CI jobs and rebuilds exercise input and consumer paths. These derivation-backed dual-target runtime and editor assertions provide goodTests.",
+        "evidence": [
+          "/home/chris/Projects/ch-nix-workspace/.worktrees/tier-review/group-3/derivation-evidence.json#gleam-purifier:x86_64-linux:editor",
+          "/home/chris/Projects/ch-nix-workspace/.worktrees/tier-review/group-3/derivation-evidence.json#gleam-purifier:x86_64-linux:erlang",
+          "/home/chris/Projects/ch-nix-workspace/.worktrees/tier-review/group-3/derivation-evidence.json#gleam-purifier:x86_64-linux:project",
+          "https://github.com/nix-purifiers/gleam-purifier/blob/c70321b5a2222a8eae4b73dbe4e88e5637bfdf79/tests/default.nix",
+          "https://github.com/nix-purifiers/gleam-purifier/blob/c70321b5a2222a8eae4b73dbe4e88e5637bfdf79/.github/workflows/check.yml",
+          "https://github.com/nix-purifiers/gleam-purifier/actions/runs/42152834094"
+        ],
+        "derivations": [
+          "gleam-purifier:x86_64-linux:editor",
+          "gleam-purifier:x86_64-linux:erlang",
+          "gleam-purifier:x86_64-linux:project"
+        ],
+        "sources": [
+          "https://github.com/nix-purifiers/gleam-purifier/blob/c70321b5a2222a8eae4b73dbe4e88e5637bfdf79/tests/default.nix",
+          "https://github.com/nix-purifiers/gleam-purifier/blob/c70321b5a2222a8eae4b73dbe4e88e5637bfdf79/.github/workflows/check.yml",
+          "https://github.com/nix-purifiers/gleam-purifier/actions/runs/42152834094"
+        ],
+        "gap": null
+      },
+      "linux": {
+        "state": "met",
+        "summary": "Successful native x86_64-linux sample realization at this exact source; exact-SHA successful Linux CI retained.",
+        "evidence": [
+          "/home/chris/Projects/ch-nix-workspace/.worktrees/tier-review/group-3/derivation-evidence.json#gleam-purifier:x86_64-linux:editor",
+          "/home/chris/Projects/ch-nix-workspace/.worktrees/tier-review/group-3/derivation-evidence.json#gleam-purifier:x86_64-linux:erlang",
+          "/home/chris/Projects/ch-nix-workspace/.worktrees/tier-review/group-3/derivation-evidence.json#gleam-purifier:x86_64-linux:project",
+          "https://github.com/nix-purifiers/gleam-purifier/actions/runs/42152834094"
+        ],
+        "derivations": [
+          "gleam-purifier:x86_64-linux:editor",
+          "gleam-purifier:x86_64-linux:erlang",
+          "gleam-purifier:x86_64-linux:project"
+        ],
+        "sources": [
+          "https://github.com/nix-purifiers/gleam-purifier/actions/runs/42152834094"
+        ],
+        "gap": null
+      },
+      "darwin": {
+        "state": "not-met",
+        "summary": "The reviewed current-main CI matrix executes only Linux. The public flake check outputs are Linux-only; no native Darwin sample build/runtime receipt was found.",
+        "evidence": [
+          "https://github.com/nix-purifiers/gleam-purifier/blob/c70321b5a2222a8eae4b73dbe4e88e5637bfdf79/flake.nix",
+          "https://github.com/nix-purifiers/gleam-purifier/blob/c70321b5a2222a8eae4b73dbe4e88e5637bfdf79/.github/workflows/check.yml",
+          "/home/chris/Projects/ch-nix-workspace/.worktrees/tier-review/group-3/gleam-purifier/jobs.json"
+        ],
+        "derivations": [],
+        "sources": [
+          "https://github.com/nix-purifiers/gleam-purifier/blob/c70321b5a2222a8eae4b73dbe4e88e5637bfdf79/flake.nix",
+          "https://github.com/nix-purifiers/gleam-purifier/blob/c70321b5a2222a8eae4b73dbe4e88e5637bfdf79/.github/workflows/check.yml",
+          "/home/chris/Projects/ch-nix-workspace/.worktrees/tier-review/group-3/gleam-purifier/jobs.json"
+        ],
+        "gap": "Missing native Darwin source/SDK/check derivation and successful runtime/output receipt at reviewed revision."
+      },
+      "oneVersion": {
+        "state": "met",
+        "summary": "The actual successful sample derivation uses exact locked SDK/tool points: gleam=1.19.2, erlang=28.5.0.8, nodejs=24.21.0. No unexecuted version range is inferred.",
+        "evidence": [
+          "/home/chris/Projects/ch-nix-workspace/.worktrees/tier-review/group-3/derivation-evidence.json#gleam-purifier:x86_64-linux:editor",
+          "/home/chris/Projects/ch-nix-workspace/.worktrees/tier-review/group-3/derivation-evidence.json#gleam-purifier:x86_64-linux:erlang",
+          "/home/chris/Projects/ch-nix-workspace/.worktrees/tier-review/group-3/derivation-evidence.json#gleam-purifier:x86_64-linux:project",
+          "/home/chris/Projects/ch-nix-workspace/.worktrees/tier-review/group-3/gleam-purifier/sdk-versions.json",
+          "https://github.com/nix-purifiers/gleam-purifier/blob/c70321b5a2222a8eae4b73dbe4e88e5637bfdf79/flake.lock"
+        ],
+        "derivations": [
+          "gleam-purifier:x86_64-linux:editor",
+          "gleam-purifier:x86_64-linux:erlang",
+          "gleam-purifier:x86_64-linux:project"
+        ],
+        "sources": [
+          "/home/chris/Projects/ch-nix-workspace/.worktrees/tier-review/group-3/gleam-purifier/sdk-versions.json",
+          "https://github.com/nix-purifiers/gleam-purifier/blob/c70321b5a2222a8eae4b73dbe4e88e5637bfdf79/flake.lock"
+        ],
+        "gap": null
+      },
+      "nonEolVersions": {
+        "state": "met",
+        "summary": "Gleam compatibility policy says normally only the latest minor receives fixes; upstream API identifies1.19.2 as latest and actual successful JavaScript/Erlang sample derivations execute locked compiler1.19.2. This meets current maintained compiler-line coverage at that exact point. Actual backends are supported OTP28.5.0.8 and Node24.21.0; OTP29 and all patch versions are not claimed.",
+        "evidence": [
+          "/home/chris/Projects/ch-nix-workspace/.worktrees/tier-review/group-3/derivation-evidence.json#gleam-purifier:x86_64-linux:editor",
+          "/home/chris/Projects/ch-nix-workspace/.worktrees/tier-review/group-3/derivation-evidence.json#gleam-purifier:x86_64-linux:erlang",
+          "/home/chris/Projects/ch-nix-workspace/.worktrees/tier-review/group-3/derivation-evidence.json#gleam-purifier:x86_64-linux:project",
+          "https://gleam.run/documentation/compatibility-reference/",
+          "https://github.com/gleam-lang/gleam/releases/tag/v1.19.2",
+          "/home/chris/Projects/ch-nix-workspace/.worktrees/tier-review/group-3/gleam-purifier/upstream-latest-release.json"
+        ],
+        "derivations": [
+          "gleam-purifier:x86_64-linux:editor",
+          "gleam-purifier:x86_64-linux:erlang",
+          "gleam-purifier:x86_64-linux:project"
+        ],
+        "sources": [
+          "https://gleam.run/documentation/compatibility-reference/",
+          "https://github.com/gleam-lang/gleam/releases/tag/v1.19.2",
+          "/home/chris/Projects/ch-nix-workspace/.worktrees/tier-review/group-3/gleam-purifier/upstream-latest-release.json"
+        ],
+        "gap": null
+      },
+      "manySamples": {
+        "state": "not-met",
+        "summary": "examples/minimal is one authored Gleam application/test fixture, built for two targets. The targets and downloaded Hex packages are not separate independent upstream projects. This reviewed sample set does not establish broad independently authored consumer coverage for the Tier1 judgment.",
+        "evidence": [
+          "/home/chris/Projects/ch-nix-workspace/.worktrees/tier-review/group-3/derivation-evidence.json#gleam-purifier:x86_64-linux:editor",
+          "/home/chris/Projects/ch-nix-workspace/.worktrees/tier-review/group-3/derivation-evidence.json#gleam-purifier:x86_64-linux:erlang",
+          "/home/chris/Projects/ch-nix-workspace/.worktrees/tier-review/group-3/derivation-evidence.json#gleam-purifier:x86_64-linux:project",
+          "https://github.com/nix-purifiers/gleam-purifier/blob/c70321b5a2222a8eae4b73dbe4e88e5637bfdf79/tests/default.nix"
+        ],
+        "derivations": [
+          "gleam-purifier:x86_64-linux:editor",
+          "gleam-purifier:x86_64-linux:erlang",
+          "gleam-purifier:x86_64-linux:project"
+        ],
+        "sources": [
+          "https://github.com/nix-purifiers/gleam-purifier/blob/c70321b5a2222a8eae4b73dbe4e88e5637bfdf79/tests/default.nix"
+        ],
+        "gap": "Additional distinct upstream consumer builds, beyond these fixtures/dependencies/selected projects, have not been demonstrated."
+      },
+      "longCompatibility": {
+        "state": "not-met",
+        "summary": "Executed SDK points are gleam=1.19.2, erlang=28.5.0.8, nodejs=24.21.0. No historical SDK-line execution matrix is present in the reviewed check definitions or successful receipts; target/fixture variants do not demonstrate old toolchain compatibility.",
+        "evidence": [
+          "/home/chris/Projects/ch-nix-workspace/.worktrees/tier-review/group-3/derivation-evidence.json#gleam-purifier:x86_64-linux:editor",
+          "/home/chris/Projects/ch-nix-workspace/.worktrees/tier-review/group-3/derivation-evidence.json#gleam-purifier:x86_64-linux:erlang",
+          "/home/chris/Projects/ch-nix-workspace/.worktrees/tier-review/group-3/derivation-evidence.json#gleam-purifier:x86_64-linux:project",
+          "https://github.com/nix-purifiers/gleam-purifier/blob/c70321b5a2222a8eae4b73dbe4e88e5637bfdf79/tests/default.nix"
+        ],
+        "derivations": [
+          "gleam-purifier:x86_64-linux:editor",
+          "gleam-purifier:x86_64-linux:erlang",
+          "gleam-purifier:x86_64-linux:project"
+        ],
+        "sources": [
+          "https://github.com/nix-purifiers/gleam-purifier/blob/c70321b5a2222a8eae4b73dbe4e88e5637bfdf79/tests/default.nix"
+        ],
+        "gap": "Missing executed historical toolchain-line matrix with successful source/SDK/check/output bindings; no all-patch range is inferred."
+      }
+    },
+    "sampleBuilds": [
+      {
+        "name": "examples/minimal is one authored Gleam application/test fixture, built for two targets. The targets and downloaded Hex packages are not separate independent upstream projects.",
+        "evidence": [
+          "/home/chris/Projects/ch-nix-workspace/.worktrees/tier-review/group-3/derivation-evidence.json#gleam-purifier:x86_64-linux:editor",
+          "/home/chris/Projects/ch-nix-workspace/.worktrees/tier-review/group-3/derivation-evidence.json#gleam-purifier:x86_64-linux:erlang",
+          "/home/chris/Projects/ch-nix-workspace/.worktrees/tier-review/group-3/derivation-evidence.json#gleam-purifier:x86_64-linux:project",
+          "https://github.com/nix-purifiers/gleam-purifier/blob/c70321b5a2222a8eae4b73dbe4e88e5637bfdf79/tests/default.nix"
+        ],
+        "derivations": [
+          "gleam-purifier:x86_64-linux:editor",
+          "gleam-purifier:x86_64-linux:erlang",
+          "gleam-purifier:x86_64-linux:project"
+        ]
+      }
+    ]
+  }
+}

@@ -1,0 +1,2830 @@
+{
+  "hostOnlySdkExecution": {
+    "jb-purifier": {
+      "packageBinding": "jb-purifier:x86_64-linux:cli-package",
+      "receipt": "https://github.com/nix-purifiers/jb-purifier/actions/runs/42153015867",
+      "scope": "Required native host relock/update/external cases invoke the native bundler through the compiled wrapper; fixture evaluator itself is Jsonnet0.21.0.",
+      "sdkVersions": {
+        "JsonnetBundler": "0.6.0"
+      },
+      "source": "nix/cli.nix and tests/host-conformance.py"
+    }
+  },
+  "packetFilesUnchanged": {
+    "assessments.json": "6e0012785e5585768d6efc4e0943c63b49c412515cdb3e37aedb894f128dd831",
+    "derivation-evidence.json": "f905624eadd4bdea3fa9fd82569da48fd809823de3948916987d17614a170c11",
+    "review-receipt.json": "fed92e446728194e433a9f024556461030963f825622914c2b619231ecec99fc"
+  },
+  "projects": {
+    "go-purifier": {
+      "criterionDerivations": {
+        "darwin": [
+          "go-purifier:aarch64-darwin:supported-go-1-26",
+          "go-purifier:aarch64-darwin:supported-go-1-27",
+          "go-purifier:aarch64-darwin:real-world-fzf"
+        ],
+        "evaluation": [
+          "go-purifier:x86_64-linux:supported-go-1-26",
+          "go-purifier:x86_64-linux:supported-go-1-27",
+          "go-purifier:x86_64-linux:real-world-fzf",
+          "go-purifier:x86_64-linux:real-world-fzf-tests",
+          "go-purifier:x86_64-linux:conformance-missing",
+          "go-purifier:x86_64-linux:cli-tests"
+        ],
+        "goodTests": [
+          "go-purifier:x86_64-linux:supported-go-1-26",
+          "go-purifier:x86_64-linux:supported-go-1-27",
+          "go-purifier:x86_64-linux:real-world-fzf",
+          "go-purifier:x86_64-linux:real-world-fzf-tests",
+          "go-purifier:x86_64-linux:conformance-missing",
+          "go-purifier:x86_64-linux:cli-tests"
+        ],
+        "linux": [
+          "go-purifier:x86_64-linux:supported-go-1-26",
+          "go-purifier:x86_64-linux:supported-go-1-27",
+          "go-purifier:x86_64-linux:real-world-fzf",
+          "go-purifier:x86_64-linux:real-world-fzf-tests",
+          "go-purifier:x86_64-linux:conformance-missing",
+          "go-purifier:x86_64-linux:cli-tests"
+        ],
+        "longCompatibility": [
+          "go-purifier:x86_64-linux:gopath-go10",
+          "go-purifier:x86_64-linux:real-world-fzf",
+          "go-purifier:x86_64-linux:supported-go-1-26",
+          "go-purifier:x86_64-linux:supported-go-1-27"
+        ],
+        "manySamples": [
+          "go-purifier:x86_64-linux:real-world-fzf",
+          "go-purifier:x86_64-linux:real-world-fzf-tests",
+          "go-purifier:x86_64-linux:fixture-hello-greet",
+          "go-purifier:x86_64-linux:fixture-hello-tests",
+          "go-purifier:x86_64-linux:fixture-workspace",
+          "go-purifier:x86_64-linux:fixture-workspace-tests",
+          "go-purifier:x86_64-linux:fixture-replace",
+          "go-purifier:x86_64-linux:fixture-vcs",
+          "go-purifier:x86_64-linux:native-projections"
+        ],
+        "nonEolVersions": [
+          "go-purifier:x86_64-linux:gopath-go10",
+          "go-purifier:x86_64-linux:real-world-fzf",
+          "go-purifier:x86_64-linux:supported-go-1-26",
+          "go-purifier:x86_64-linux:supported-go-1-27"
+        ],
+        "oneVersion": [
+          "go-purifier:x86_64-linux:gopath-go10",
+          "go-purifier:x86_64-linux:real-world-fzf",
+          "go-purifier:x86_64-linux:supported-go-1-26",
+          "go-purifier:x86_64-linux:supported-go-1-27"
+        ]
+      },
+      "manySamplesJudgment": {
+        "derivations": [
+          "go-purifier:x86_64-linux:real-world-fzf",
+          "go-purifier:x86_64-linux:real-world-fzf-tests",
+          "go-purifier:x86_64-linux:fixture-hello-greet",
+          "go-purifier:x86_64-linux:fixture-hello-tests",
+          "go-purifier:x86_64-linux:fixture-workspace",
+          "go-purifier:x86_64-linux:fixture-workspace-tests",
+          "go-purifier:x86_64-linux:fixture-replace",
+          "go-purifier:x86_64-linux:fixture-vcs",
+          "go-purifier:x86_64-linux:native-projections"
+        ],
+        "evidence": [
+          "https://github.com/nix-purifiers/go-purifier/actions/runs/42162440798",
+          "https://github.com/nix-purifiers/go-purifier/blob/6e560863f727780fed557d514dc5268fbf2f8993/tests/default.nix"
+        ],
+        "gap": null,
+        "sources": [
+          "https://github.com/nix-purifiers/go-purifier/blob/6e560863f727780fed557d514dc5268fbf2f8993/tests/default.nix"
+        ],
+        "state": "met",
+        "summary": "The executed corpus contains distinct source projects for proxy modules with test-only dependencies and case encoding, a multi-module workspace, an out-of-root replace, Git/VCS dependencies, native C-shared consumers, and pinned fzf upstream filtering/version/tests. These exercise materially different dependency graphs and installed/runtime outputs. Authored fixtures are explicitly identified and count for the behavior they execute; fzf adds an independent upstream consumer. The breadth judgment follows these different successful sample behaviors, not a numerical threshold or a claim that every fixture is upstream."
+      },
+      "samples": [
+        {
+          "checkDrvBindings": [
+            {
+              "check": {
+                "kind": "flake-attribute",
+                "value": "checks.x86_64-linux.real-world-fzf"
+              },
+              "drvPath": "/nix/store/nik7gdpkcammwxy064p2icjy3cbbrgxi-real-world-fzf.drv",
+              "outputNarHashes": {
+                "out": "sha256-d6xi4mKdjkX2JFicDIv5niSzpyI0m/Hnm8GGAIU04kY="
+              },
+              "outputs": {
+                "out": "/nix/store/v46159hl986a7z2gdyns4hzj215q2qfv-real-world-fzf"
+              },
+              "revision": "6e560863f727780fed557d514dc5268fbf2f8993",
+              "system": "x86_64-linux"
+            },
+            {
+              "check": {
+                "kind": "flake-attribute",
+                "value": "checks.x86_64-linux.real-world-fzf-tests"
+              },
+              "drvPath": "/nix/store/n82mdn50ki6z63r9hnknb51j4z8hnwnb-fzf-tests-locked.drv",
+              "outputNarHashes": {
+                "out": "sha256-d6xi4mKdjkX2JFicDIv5niSzpyI0m/Hnm8GGAIU04kY="
+              },
+              "outputs": {
+                "out": "/nix/store/s1v8l3d2xkmc22r6wh989bfmr2d3f0cd-fzf-tests-locked"
+              },
+              "revision": "6e560863f727780fed557d514dc5268fbf2f8993",
+              "system": "x86_64-linux"
+            }
+          ],
+          "derivations": [
+            "go-purifier:x86_64-linux:real-world-fzf",
+            "go-purifier:x86_64-linux:real-world-fzf-tests"
+          ],
+          "executedSdkPoints": {
+            "Go": "1.26.10"
+          },
+          "executionEvidence": {
+            "artifacts": [
+              ".worktrees/tier-review/group-4/raw/go-purifier-ci.log"
+            ],
+            "exactTraceReferences": {
+              "go-purifier:x86_64-linux:real-world-fzf": [
+                {
+                  "line": 29996,
+                  "text": "flake-check (ubuntu-latest)\tUNKNOWN STEP\t2026-11-06T04:29:41.9271418Z building '/nix/store/nik7gdpkcammwxy064p2icjy3cbbrgxi-real-world-fzf.drv'..."
+                },
+                {
+                  "line": 32091,
+                  "text": "supported-go (ubuntu-latest, 1-26)\tUNKNOWN STEP\t2026-11-06T04:27:37.1069724Z building '/nix/store/nik7gdpkcammwxy064p2icjy3cbbrgxi-real-world-fzf.drv'..."
+                }
+              ],
+              "go-purifier:x86_64-linux:real-world-fzf-tests": [
+                {
+                  "line": 29944,
+                  "text": "flake-check (ubuntu-latest)\tUNKNOWN STEP\t2026-11-06T04:29:15.0045450Z building '/nix/store/n82mdn50ki6z63r9hnknb51j4z8hnwnb-fzf-tests-locked.drv'..."
+                },
+                {
+                  "line": 32035,
+                  "text": "supported-go (ubuntu-latest, 1-26)\tUNKNOWN STEP\t2026-11-06T04:27:09.6636262Z building '/nix/store/n82mdn50ki6z63r9hnknb51j4z8hnwnb-fzf-tests-locked.drv'..."
+                }
+              ]
+            },
+            "run": "https://github.com/nix-purifiers/go-purifier/actions/runs/42162440798"
+          },
+          "kind": "independent-upstream",
+          "name": "fzf0.74.5",
+          "sdkExecutionBasis": "tests/default.nix selects buildGoProject, which invokes the selected Go SDK for distinct fixture packages; sample check executes compiled output/upstream tests. supported-go-1-26 and1-27 explicitly depend on these builds under separate SDK overlays.",
+          "source": {
+            "externalLockfileEvidence": "https://github.com/nix-purifiers/go-purifier/blob/6e560863f727780fed557d514dc5268fbf2f8993/tests/default.nix",
+            "narEvidence": "sample-source-path-info.json",
+            "purifierRevision": "6e560863f727780fed557d514dc5268fbf2f8993",
+            "purifierSourceNarHash": "sha256-H/T0LlAuJVaGU35hqA8wpijnUsD9UmGyK/d/HntUUJI=",
+            "repository": "https://github.com/junegunn/fzf",
+            "revision": "c0a193e031f01fb50bf6f7be4381990a3753f7cf",
+            "sourceNarHash": "sha256-+v3oSlf3HBpPkNqS3QxRV/B1yHYb07/a70WYuS0aopY=",
+            "sourcePath": ".",
+            "sourceStorePath": "/nix/store/1dmha6pipvw7nxr8vnzm62sxh02qkrkx-source"
+          }
+        },
+        {
+          "checkDrvBindings": [
+            {
+              "check": {
+                "kind": "flake-attribute",
+                "value": "checks.x86_64-linux.fixture-hello-greet"
+              },
+              "drvPath": "/nix/store/rx2k9pvvah4hfmbzfghb4z7k1glp3v3h-fixture-hello-greet.drv",
+              "outputNarHashes": {
+                "out": "sha256-d6xi4mKdjkX2JFicDIv5niSzpyI0m/Hnm8GGAIU04kY="
+              },
+              "outputs": {
+                "out": "/nix/store/3633blx8sashfiyjqjy24ks7lkzjqrbx-fixture-hello-greet"
+              },
+              "revision": "6e560863f727780fed557d514dc5268fbf2f8993",
+              "system": "x86_64-linux"
+            },
+            {
+              "check": {
+                "kind": "flake-attribute",
+                "value": "checks.x86_64-linux.fixture-hello-tests"
+              },
+              "drvPath": "/nix/store/rmrbkc6a82d5ihn8bhw54h8z275xnn6x-greet-tests-locked.drv",
+              "outputNarHashes": {
+                "out": "sha256-d6xi4mKdjkX2JFicDIv5niSzpyI0m/Hnm8GGAIU04kY="
+              },
+              "outputs": {
+                "out": "/nix/store/4snrzg90kahbhf11aa9y60dfcqznq8vr-greet-tests-locked"
+              },
+              "revision": "6e560863f727780fed557d514dc5268fbf2f8993",
+              "system": "x86_64-linux"
+            }
+          ],
+          "derivations": [
+            "go-purifier:x86_64-linux:fixture-hello-greet",
+            "go-purifier:x86_64-linux:fixture-hello-tests"
+          ],
+          "executedSdkPoints": {
+            "Go": "1.26.10"
+          },
+          "executionEvidence": {
+            "artifacts": [
+              ".worktrees/tier-review/group-4/raw/go-purifier-ci.log"
+            ],
+            "exactTraceReferences": {
+              "go-purifier:x86_64-linux:fixture-hello-greet": [
+                {
+                  "line": 29764,
+                  "text": "flake-check (ubuntu-latest)\tUNKNOWN STEP\t2026-11-06T04:28:42.9744777Z building '/nix/store/rx2k9pvvah4hfmbzfghb4z7k1glp3v3h-fixture-hello-greet.drv'..."
+                },
+                {
+                  "line": 31901,
+                  "text": "supported-go (ubuntu-latest, 1-26)\tUNKNOWN STEP\t2026-11-06T04:27:01.9972856Z building '/nix/store/rx2k9pvvah4hfmbzfghb4z7k1glp3v3h-fixture-hello-greet.drv'..."
+                }
+              ],
+              "go-purifier:x86_64-linux:fixture-hello-tests": [
+                {
+                  "line": 29563,
+                  "text": "flake-check (ubuntu-latest)\tUNKNOWN STEP\t2026-11-06T04:27:57.3934914Z building '/nix/store/rmrbkc6a82d5ihn8bhw54h8z275xnn6x-greet-tests-locked.drv'..."
+                },
+                {
+                  "line": 31761,
+                  "text": "supported-go (ubuntu-latest, 1-26)\tUNKNOWN STEP\t2026-11-06T04:26:08.5813057Z building '/nix/store/rmrbkc6a82d5ihn8bhw54h8z275xnn6x-greet-tests-locked.drv'..."
+                }
+              ]
+            },
+            "run": "https://github.com/nix-purifiers/go-purifier/actions/runs/42162440798"
+          },
+          "kind": "repository-fixtures",
+          "name": "hello proxy module with test-only dependency and case-encoded import",
+          "sdkExecutionBasis": "tests/default.nix selects buildGoProject, which invokes the selected Go SDK for distinct fixture packages; sample check executes compiled output/upstream tests. supported-go-1-26 and1-27 explicitly depend on these builds under separate SDK overlays.",
+          "source": {
+            "fixtureFilesSha256": {
+              "tests/fixtures/hello/cmd/greet/main.go": "f57a99d166d2a647874e8973e39d08c568262c27633552bad771ab6fbad1ca3f",
+              "tests/fixtures/hello/cmd/uuidgen/main.go": "ae2f38456a000a948176a0bc9c68eae43c7e6db7aeafe55535710b393bbed656",
+              "tests/fixtures/hello/go-purifier.lock.json": "fa68c9bf7028be4ddbb6249608c8c1318427d42aa43a13a3a3a219589e289aba",
+              "tests/fixtures/hello/go.mod": "2eee19f3ba85c71c825704150efaa038c0e673821a802cec3b506cb0deee5982",
+              "tests/fixtures/hello/go.sum": "ebe90d20f4a4e3f907ae9a1a1b1c4259023b8f14a8eea2bbc6b93acea8ff8428",
+              "tests/fixtures/hello/internal/greeting/greeting.go": "d2288fedaee0ec86e5e1f0d83ca6e1a2d4adcff626dbbc2a5020031575673013",
+              "tests/fixtures/hello/internal/greeting/greeting_test.go": "fc3ffaca2abc41a9a6639455eb938bffbfa6b4a5b3d978f67c20d9bea69a5309"
+            },
+            "fixtureOnlyNarHash": null,
+            "gap": "A separate filtered fixture-root NAR was not recovered; exact parent repository NAR, source paths and tracked file hashes are bound. Do not relabel the parent-tree hash as the filtered-subdirectory hash.",
+            "repository": "https://github.com/nix-purifiers/go-purifier",
+            "revision": "6e560863f727780fed557d514dc5268fbf2f8993",
+            "sourceNarHash": "sha256-H/T0LlAuJVaGU35hqA8wpijnUsD9UmGyK/d/HntUUJI=",
+            "sourceNarScope": "whole purifier repository; fixture selected by sourcePaths below",
+            "sourcePaths": [
+              "tests/fixtures/hello"
+            ]
+          }
+        },
+        {
+          "checkDrvBindings": [
+            {
+              "check": {
+                "kind": "flake-attribute",
+                "value": "checks.x86_64-linux.fixture-workspace"
+              },
+              "drvPath": "/nix/store/39qam9i01il9ag6i2481ja4gbmk5aqp8-fixture-workspace.drv",
+              "outputNarHashes": {
+                "out": "sha256-d6xi4mKdjkX2JFicDIv5niSzpyI0m/Hnm8GGAIU04kY="
+              },
+              "outputs": {
+                "out": "/nix/store/8w6arsk27q7xf1aj1b4kqgc7zfvy1w73-fixture-workspace"
+              },
+              "revision": "6e560863f727780fed557d514dc5268fbf2f8993",
+              "system": "x86_64-linux"
+            },
+            {
+              "check": {
+                "kind": "flake-attribute",
+                "value": "checks.x86_64-linux.fixture-workspace-tests"
+              },
+              "drvPath": "/nix/store/3f9gd5b4mw0hbfcyz72f8f8q0mfqps8g-app-tests-locked.drv",
+              "outputNarHashes": {
+                "out": "sha256-d6xi4mKdjkX2JFicDIv5niSzpyI0m/Hnm8GGAIU04kY="
+              },
+              "outputs": {
+                "out": "/nix/store/si7q0g447ax65w7fbqaqxbwv1a6yr2h6-app-tests-locked"
+              },
+              "revision": "6e560863f727780fed557d514dc5268fbf2f8993",
+              "system": "x86_64-linux"
+            }
+          ],
+          "derivations": [
+            "go-purifier:x86_64-linux:fixture-workspace",
+            "go-purifier:x86_64-linux:fixture-workspace-tests"
+          ],
+          "executedSdkPoints": {
+            "Go": "1.26.10"
+          },
+          "executionEvidence": {
+            "artifacts": [
+              ".worktrees/tier-review/group-4/raw/go-purifier-ci.log"
+            ],
+            "exactTraceReferences": {
+              "go-purifier:x86_64-linux:fixture-workspace": [
+                {
+                  "line": 29705,
+                  "text": "flake-check (ubuntu-latest)\tUNKNOWN STEP\t2026-11-06T04:28:26.7488938Z building '/nix/store/39qam9i01il9ag6i2481ja4gbmk5aqp8-fixture-workspace.drv'..."
+                },
+                {
+                  "line": 32075,
+                  "text": "supported-go (ubuntu-latest, 1-26)\tUNKNOWN STEP\t2026-11-06T04:27:20.0409246Z building '/nix/store/39qam9i01il9ag6i2481ja4gbmk5aqp8-fixture-workspace.drv'..."
+                }
+              ],
+              "go-purifier:x86_64-linux:fixture-workspace-tests": [
+                {
+                  "line": 29454,
+                  "text": "flake-check (ubuntu-latest)\tUNKNOWN STEP\t2026-11-06T04:27:32.0167939Z building '/nix/store/3f9gd5b4mw0hbfcyz72f8f8q0mfqps8g-app-tests-locked.drv'..."
+                },
+                {
+                  "line": 31839,
+                  "text": "supported-go (ubuntu-latest, 1-26)\tUNKNOWN STEP\t2026-11-06T04:26:37.9228482Z building '/nix/store/3f9gd5b4mw0hbfcyz72f8f8q0mfqps8g-app-tests-locked.drv'..."
+                }
+              ]
+            },
+            "run": "https://github.com/nix-purifiers/go-purifier/actions/runs/42162440798"
+          },
+          "kind": "repository-fixtures",
+          "name": "multi-module workspace",
+          "sdkExecutionBasis": "tests/default.nix selects buildGoProject, which invokes the selected Go SDK for distinct fixture packages; sample check executes compiled output/upstream tests. supported-go-1-26 and1-27 explicitly depend on these builds under separate SDK overlays.",
+          "source": {
+            "fixtureFilesSha256": {
+              "tests/fixtures/workspace/app/go.mod": "22314076900e631e3037236bcae47a2b36a04a7ec02471507178181d1356cebb",
+              "tests/fixtures/workspace/app/main.go": "b100706485e7f2fdb35c844668993adeafd213cd6e739e55765209501d30a3a9",
+              "tests/fixtures/workspace/go-purifier.lock.json": "985eea16f2276da1ad813ffaaad8ea156c0fed0fb60ceffb21ba397d433a6c1b",
+              "tests/fixtures/workspace/go.work": "66d3def2daad7ea7eee8265fa4f117d635e3c8982e352a708047d6431de54f76",
+              "tests/fixtures/workspace/go.work.sum": "157f1efba00047e2c6b8248a85efd57799db4fa4bda48264a8e62380f5d777f1",
+              "tests/fixtures/workspace/lib/go.mod": "a6c35852d6c1847c184894538520c7be70b92352078c9d8325191e6c0127a71b",
+              "tests/fixtures/workspace/lib/go.sum": "f052df0336ea6f028ac4701fd626f0a57b7bf3826ac3a382e5693757a20c7916",
+              "tests/fixtures/workspace/lib/lib.go": "529d821f298f46305cf01120a1b25f40747e52f90203461153066103f7a23b08",
+              "tests/fixtures/workspace/lib/lib_test.go": "91c0e712a59ddd61a5da49db1df55fd99b5f486776dcad6c3daf6ea304916e16"
+            },
+            "fixtureOnlyNarHash": null,
+            "gap": "A separate filtered fixture-root NAR was not recovered; exact parent repository NAR, source paths and tracked file hashes are bound. Do not relabel the parent-tree hash as the filtered-subdirectory hash.",
+            "repository": "https://github.com/nix-purifiers/go-purifier",
+            "revision": "6e560863f727780fed557d514dc5268fbf2f8993",
+            "sourceNarHash": "sha256-H/T0LlAuJVaGU35hqA8wpijnUsD9UmGyK/d/HntUUJI=",
+            "sourceNarScope": "whole purifier repository; fixture selected by sourcePaths below",
+            "sourcePaths": [
+              "tests/fixtures/workspace"
+            ]
+          }
+        },
+        {
+          "checkDrvBindings": [
+            {
+              "check": {
+                "kind": "flake-attribute",
+                "value": "checks.x86_64-linux.fixture-replace"
+              },
+              "drvPath": "/nix/store/xx29lswipr3lqka7c8slx1hc2nldrxjd-fixture-replace.drv",
+              "outputNarHashes": {
+                "out": "sha256-d6xi4mKdjkX2JFicDIv5niSzpyI0m/Hnm8GGAIU04kY="
+              },
+              "outputs": {
+                "out": "/nix/store/hggag9m9vyx5kh8mv19ffflgv5xccwav-fixture-replace"
+              },
+              "revision": "6e560863f727780fed557d514dc5268fbf2f8993",
+              "system": "x86_64-linux"
+            }
+          ],
+          "derivations": [
+            "go-purifier:x86_64-linux:fixture-replace"
+          ],
+          "executedSdkPoints": {
+            "Go": "1.26.10"
+          },
+          "executionEvidence": {
+            "artifacts": [
+              ".worktrees/tier-review/group-4/raw/go-purifier-ci.log"
+            ],
+            "exactTraceReferences": {
+              "go-purifier:x86_64-linux:fixture-replace": [
+                {
+                  "line": 29120,
+                  "text": "flake-check (ubuntu-latest)\tUNKNOWN STEP\t2026-11-06T04:26:57.9811886Z building '/nix/store/xx29lswipr3lqka7c8slx1hc2nldrxjd-fixture-replace.drv'..."
+                },
+                {
+                  "line": 31902,
+                  "text": "supported-go (ubuntu-latest, 1-26)\tUNKNOWN STEP\t2026-11-06T04:27:02.4062921Z building '/nix/store/xx29lswipr3lqka7c8slx1hc2nldrxjd-fixture-replace.drv'..."
+                }
+              ]
+            },
+            "run": "https://github.com/nix-purifiers/go-purifier/actions/runs/42162440798"
+          },
+          "kind": "repository-fixtures",
+          "name": "out-of-root replace module",
+          "sdkExecutionBasis": "tests/default.nix selects buildGoProject, which invokes the selected Go SDK for distinct fixture packages; sample check executes compiled output/upstream tests. supported-go-1-26 and1-27 explicitly depend on these builds under separate SDK overlays.",
+          "source": {
+            "fixtureFilesSha256": {
+              "tests/fixtures/replace/app/go-purifier.lock.json": "63eb018ce9ffbabc51f8a44008cb0b35b37e85de8ad18fd564fa9a080608029c",
+              "tests/fixtures/replace/app/go.mod": "552f442b68259316242745d8e0f5cc888078998834c30beca9a1896fedce2fac",
+              "tests/fixtures/replace/app/go.sum": "0bc3ed6c0782aa9090e414e133f44c5f4cb8bc2ff942b89fc3298c52eee332fd",
+              "tests/fixtures/replace/app/main.go": "73cb516193a51c3d5585f99946a60e64cf410cb80f20ff7dd432cd247fd1c870",
+              "tests/fixtures/replace/greeter/go.mod": "fa486139e6c4d19ae194b4a7c49f006a48fcfde21b81bb22e905d1b2c558f2c1",
+              "tests/fixtures/replace/greeter/go.sum": "0bc3ed6c0782aa9090e414e133f44c5f4cb8bc2ff942b89fc3298c52eee332fd",
+              "tests/fixtures/replace/greeter/greeter.go": "5a96bee2718bdf88aca10b1c2c568a3ff3be04c9d7ca0fd04552c40b5db15f53"
+            },
+            "fixtureOnlyNarHash": null,
+            "gap": "A separate filtered fixture-root NAR was not recovered; exact parent repository NAR, source paths and tracked file hashes are bound. Do not relabel the parent-tree hash as the filtered-subdirectory hash.",
+            "repository": "https://github.com/nix-purifiers/go-purifier",
+            "revision": "6e560863f727780fed557d514dc5268fbf2f8993",
+            "sourceNarHash": "sha256-H/T0LlAuJVaGU35hqA8wpijnUsD9UmGyK/d/HntUUJI=",
+            "sourceNarScope": "whole purifier repository; fixture selected by sourcePaths below",
+            "sourcePaths": [
+              "tests/fixtures/replace"
+            ]
+          }
+        },
+        {
+          "checkDrvBindings": [
+            {
+              "check": {
+                "kind": "flake-attribute",
+                "value": "checks.x86_64-linux.fixture-vcs"
+              },
+              "drvPath": "/nix/store/7r5kg6b87f0125p9rgjjv23jawi7myaz-fixture-vcs.drv",
+              "outputNarHashes": {
+                "out": "sha256-d6xi4mKdjkX2JFicDIv5niSzpyI0m/Hnm8GGAIU04kY="
+              },
+              "outputs": {
+                "out": "/nix/store/h2lsrci4252wwx5aakxbqckzzngmb79n-fixture-vcs"
+              },
+              "revision": "6e560863f727780fed557d514dc5268fbf2f8993",
+              "system": "x86_64-linux"
+            }
+          ],
+          "derivations": [
+            "go-purifier:x86_64-linux:fixture-vcs"
+          ],
+          "executedSdkPoints": {
+            "Go": "1.26.10"
+          },
+          "executionEvidence": {
+            "artifacts": [
+              ".worktrees/tier-review/group-4/raw/go-purifier-ci.log"
+            ],
+            "exactTraceReferences": {
+              "go-purifier:x86_64-linux:fixture-vcs": [
+                {
+                  "line": 29998,
+                  "text": "flake-check (ubuntu-latest)\tUNKNOWN STEP\t2026-11-06T04:29:42.2894306Z building '/nix/store/7r5kg6b87f0125p9rgjjv23jawi7myaz-fixture-vcs.drv'..."
+                },
+                {
+                  "line": 32063,
+                  "text": "supported-go (ubuntu-latest, 1-26)\tUNKNOWN STEP\t2026-11-06T04:27:19.0717772Z building '/nix/store/7r5kg6b87f0125p9rgjjv23jawi7myaz-fixture-vcs.drv'..."
+                }
+              ]
+            },
+            "run": "https://github.com/nix-purifiers/go-purifier/actions/runs/42162440798"
+          },
+          "kind": "repository-fixtures",
+          "name": "Git/VCS dependency project",
+          "sdkExecutionBasis": "tests/default.nix selects buildGoProject, which invokes the selected Go SDK for distinct fixture packages; sample check executes compiled output/upstream tests. supported-go-1-26 and1-27 explicitly depend on these builds under separate SDK overlays.",
+          "source": {
+            "fixtureFilesSha256": {
+              "tests/fixtures/vcs/go-purifier.lock.json": "2ae3839e4290caaaab08c79eea284dc606d4433a68ba568298b703fd0f81529b",
+              "tests/fixtures/vcs/go.mod": "0eb0b7fe07414926667f6590c95d22c6d6d4323adb3e05ec295e3e4ff145abc4",
+              "tests/fixtures/vcs/go.sum": "a8473b99164ef3a07c977fcf9915443a9a2bc93278deffa2c9a1d12c7d2c7282",
+              "tests/fixtures/vcs/main.go": "8a6dcb53a8cc41691cf33b34a169fb40cc3d59a7be34af47ce401c09b43e325b"
+            },
+            "fixtureOnlyNarHash": null,
+            "gap": "A separate filtered fixture-root NAR was not recovered; exact parent repository NAR, source paths and tracked file hashes are bound. Do not relabel the parent-tree hash as the filtered-subdirectory hash.",
+            "repository": "https://github.com/nix-purifiers/go-purifier",
+            "revision": "6e560863f727780fed557d514dc5268fbf2f8993",
+            "sourceNarHash": "sha256-H/T0LlAuJVaGU35hqA8wpijnUsD9UmGyK/d/HntUUJI=",
+            "sourceNarScope": "whole purifier repository; fixture selected by sourcePaths below",
+            "sourcePaths": [
+              "tests/fixtures/vcs"
+            ]
+          }
+        },
+        {
+          "checkDrvBindings": [
+            {
+              "check": {
+                "kind": "flake-attribute",
+                "value": "checks.x86_64-linux.native-projections"
+              },
+              "drvPath": "/nix/store/fxzlcz7d35q7165kh94rm1hyw49kmigq-go-c-shared-ordinary-consumers.drv",
+              "outputNarHashes": {
+                "out": "sha256-d6xi4mKdjkX2JFicDIv5niSzpyI0m/Hnm8GGAIU04kY="
+              },
+              "outputs": {
+                "out": "/nix/store/q4xxjg8yipl20sak0w06391a6f57kf31-go-c-shared-ordinary-consumers"
+              },
+              "revision": "6e560863f727780fed557d514dc5268fbf2f8993",
+              "system": "x86_64-linux"
+            }
+          ],
+          "derivations": [
+            "go-purifier:x86_64-linux:native-projections"
+          ],
+          "executedSdkPoints": {
+            "Go": "1.26.10"
+          },
+          "executionEvidence": {
+            "artifacts": [
+              ".worktrees/tier-review/group-4/raw/go-purifier-ci.log"
+            ],
+            "exactTraceReferences": {
+              "go-purifier:x86_64-linux:native-projections": [
+                {
+                  "line": 28161,
+                  "text": "flake-check (ubuntu-latest)\tUNKNOWN STEP\t2026-11-06T04:26:39.4615061Z building '/nix/store/fxzlcz7d35q7165kh94rm1hyw49kmigq-go-c-shared-ordinary-consumers.drv'..."
+                }
+              ]
+            },
+            "run": "https://github.com/nix-purifiers/go-purifier/actions/runs/42162440798"
+          },
+          "kind": "repository-fixtures",
+          "name": "native C-shared projection ordinary consumers",
+          "sdkExecutionBasis": "tests/default.nix selects buildGoProject, which invokes the selected Go SDK for distinct fixture packages; sample check executes compiled output/upstream tests. supported-go-1-26 and1-27 explicitly depend on these builds under separate SDK overlays.",
+          "source": {
+            "fixtureFilesSha256": {
+              "tests/fixtures/ffi/go-purifier.lock.json": "1686459073dca76b37e1fc0e53f1505eb55cc531d08c2e9435c12261e720ed6f",
+              "tests/fixtures/ffi/go.mod": "a372efbc63fafacf51175c75dd219b154382697c6cfb4ab26c62f52d029c9568",
+              "tests/fixtures/ffi/go.sum": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+              "tests/fixtures/ffi/main.go": "57efb6186c9bf53f3ba6b19a39ba778e8111120dc7d38474a847134d02d818fb"
+            },
+            "fixtureOnlyNarHash": null,
+            "gap": "A separate filtered fixture-root NAR was not recovered; exact parent repository NAR, source paths and tracked file hashes are bound. Do not relabel the parent-tree hash as the filtered-subdirectory hash.",
+            "repository": "https://github.com/nix-purifiers/go-purifier",
+            "revision": "6e560863f727780fed557d514dc5268fbf2f8993",
+            "sourceNarHash": "sha256-H/T0LlAuJVaGU35hqA8wpijnUsD9UmGyK/d/HntUUJI=",
+            "sourceNarScope": "whole purifier repository; fixture selected by sourcePaths below",
+            "sourcePaths": [
+              "tests/fixtures/ffi"
+            ]
+          }
+        }
+      ]
+    },
+    "gradle-purifier": {
+      "criterionDerivations": {
+        "darwin": [],
+        "evaluation": [
+          "gradle-purifier:x86_64-linux:java-library-tests",
+          "gradle-purifier:x86_64-linux:kotlin-app-runs",
+          "gradle-purifier:x86_64-linux:kotlin-native-runs",
+          "gradle-purifier:x86_64-linux:petclinic",
+          "gradle-purifier:x86_64-linux:conformance-missing",
+          "gradle-purifier:x86_64-linux:recorder-unit",
+          "gradle-purifier:x86_64-linux:sdk-source-capture-unit"
+        ],
+        "goodTests": [
+          "gradle-purifier:x86_64-linux:java-library-tests",
+          "gradle-purifier:x86_64-linux:kotlin-app-runs",
+          "gradle-purifier:x86_64-linux:kotlin-native-runs",
+          "gradle-purifier:x86_64-linux:petclinic",
+          "gradle-purifier:x86_64-linux:conformance-missing",
+          "gradle-purifier:x86_64-linux:recorder-unit",
+          "gradle-purifier:x86_64-linux:sdk-source-capture-unit"
+        ],
+        "linux": [
+          "gradle-purifier:x86_64-linux:java-library-tests",
+          "gradle-purifier:x86_64-linux:kotlin-app-runs",
+          "gradle-purifier:x86_64-linux:kotlin-native-runs",
+          "gradle-purifier:x86_64-linux:petclinic",
+          "gradle-purifier:x86_64-linux:conformance-missing",
+          "gradle-purifier:x86_64-linux:recorder-unit",
+          "gradle-purifier:x86_64-linux:sdk-source-capture-unit"
+        ],
+        "longCompatibility": [
+          "gradle-purifier:x86_64-linux:java-library",
+          "gradle-purifier:x86_64-linux:kotlin-app",
+          "gradle-purifier:x86_64-linux:kotlin-native",
+          "gradle-purifier:x86_64-linux:petclinic"
+        ],
+        "manySamples": [
+          "gradle-purifier:x86_64-linux:petclinic",
+          "gradle-purifier:x86_64-linux:java-library",
+          "gradle-purifier:x86_64-linux:java-library-tests",
+          "gradle-purifier:x86_64-linux:kotlin-app",
+          "gradle-purifier:x86_64-linux:kotlin-app-runs",
+          "gradle-purifier:x86_64-linux:kotlin-native",
+          "gradle-purifier:x86_64-linux:kotlin-native-runs",
+          "gradle-purifier:x86_64-linux:snapshot-groovy-tests",
+          "gradle-purifier:x86_64-linux:snapshot-groovy-rebuild"
+        ],
+        "nonEolVersions": [
+          "gradle-purifier:x86_64-linux:java-library",
+          "gradle-purifier:x86_64-linux:kotlin-app",
+          "gradle-purifier:x86_64-linux:kotlin-native",
+          "gradle-purifier:x86_64-linux:petclinic"
+        ],
+        "oneVersion": [
+          "gradle-purifier:x86_64-linux:java-library",
+          "gradle-purifier:x86_64-linux:kotlin-app",
+          "gradle-purifier:x86_64-linux:kotlin-native",
+          "gradle-purifier:x86_64-linux:petclinic"
+        ]
+      },
+      "manySamplesJudgment": {
+        "derivations": [
+          "gradle-purifier:x86_64-linux:petclinic",
+          "gradle-purifier:x86_64-linux:java-library",
+          "gradle-purifier:x86_64-linux:java-library-tests",
+          "gradle-purifier:x86_64-linux:kotlin-app",
+          "gradle-purifier:x86_64-linux:kotlin-app-runs",
+          "gradle-purifier:x86_64-linux:kotlin-native",
+          "gradle-purifier:x86_64-linux:kotlin-native-runs",
+          "gradle-purifier:x86_64-linux:snapshot-groovy-tests",
+          "gradle-purifier:x86_64-linux:snapshot-groovy-rebuild"
+        ],
+        "evidence": [
+          "https://github.com/nix-purifiers/gradle-purifier/actions/runs/42291213439",
+          "https://github.com/nix-purifiers/gradle-purifier/blob/9c19f8d47def476f9afe4d8940f0076f0b95318f/tests/default.nix"
+        ],
+        "gap": null,
+        "sources": [
+          "https://github.com/nix-purifiers/gradle-purifier/blob/9c19f8d47def476f9afe4d8940f0076f0b95318f/tests/default.nix"
+        ],
+        "state": "met",
+        "summary": "The executed source corpus includes a Java library with JUnit and Maven/source archives, a Kotlin JVM multi-project application with version catalog/buildSrc/coroutines, Kotlin Native library/executable targets, snapshot Groovy publication with reproducibility assertions, and pinned Spring Petclinic application packaging. These distinct build graphs, languages, target runtimes and publication outputs establish sample breadth. Four controlled authored fixture families are identified as such; the upstream application is separate. Petclinic packaging counts as a successful sample build but supplies no upstream-test credit."
+      },
+      "samples": [
+        {
+          "checkDrvBindings": [
+            {
+              "check": {
+                "kind": "flake-attribute",
+                "value": "checks.x86_64-linux.petclinic"
+              },
+              "drvPath": "/nix/store/jw2wg0rf99iq1fpfr4847241z7ip29p6-petclinic.drv",
+              "outputNarHashes": {
+                "out": "sha256-d6xi4mKdjkX2JFicDIv5niSzpyI0m/Hnm8GGAIU04kY="
+              },
+              "outputs": {
+                "out": "/nix/store/cpi1pzx0krmzm2ir5rv5jyk63nj2b48m-petclinic"
+              },
+              "revision": "9c19f8d47def476f9afe4d8940f0076f0b95318f",
+              "system": "x86_64-linux"
+            }
+          ],
+          "derivations": [
+            "gradle-purifier:x86_64-linux:petclinic"
+          ],
+          "executedSdkPoints": {
+            "Gradle": "9.5.1",
+            "GradleManagerJDK": "17.0.20.1+1"
+          },
+          "executionEvidence": {
+            "artifacts": [
+              ".worktrees/tier-review/group-4/raw/gradle-purifier-ci.log"
+            ],
+            "exactTraceReferences": {
+              "gradle-purifier:x86_64-linux:petclinic": [
+                {
+                  "line": 41072,
+                  "text": "check (ubuntu-latest)\tUNKNOWN STEP\t2026-11-06T20:54:06.0457546Z building '/nix/store/jw2wg0rf99iq1fpfr4847241z7ip29p6-petclinic.drv'..."
+                }
+              ]
+            },
+            "run": "https://github.com/nix-purifiers/gradle-purifier/actions/runs/42291213439"
+          },
+          "kind": "independent-upstream",
+          "managerJavaHome": "/nix/store/ry8szmmd7pymhc0cgdnwf7mb5083j5mc-openjdk-headless-17.0.20.1+1/lib/openjdk",
+          "managerJdkBasis": "Actual producer derivation buildPhase exports this exact JAVA_HOME before invoking the selected Gradle. This does not claim it is every compiler/test runtime SDK configured by that project.",
+          "name": "Spring Petclinic",
+          "sdkExecutionBasis": "tests/default.nix passes each distinct source root to buildGradleProject. The producer derivation buildPhase invokes its wrapper-selected Gradle and chosen JAVA_HOME; check drv tests execute/assert the resulting application/archive. Petclinic sets GRADLE_PURIFIER_CHECK=0 and supplies packaging only.",
+          "source": {
+            "externalLockfileEvidence": "https://github.com/nix-purifiers/gradle-purifier/blob/9c19f8d47def476f9afe4d8940f0076f0b95318f/tests/default.nix",
+            "narEvidence": "sample-source-path-info.json",
+            "purifierRevision": "9c19f8d47def476f9afe4d8940f0076f0b95318f",
+            "purifierSourceNarHash": "sha256-uaxKqJNrdcYuoMNfV/MdB7c64Gq+W43tS7weqM93FVo=",
+            "repository": "https://github.com/spring-projects/spring-petclinic",
+            "revision": "500158f732419217507c7656904b8e6aa1bcc0d6",
+            "sourceNarHash": "sha256-j3Uiz+Wn9jWegwrJvCZZymLNrzo5zn5GyPBIn6+6V2w=",
+            "sourcePath": ".",
+            "sourceStorePath": "/nix/store/xg2brc3fpy4mj9z2lqc7c0z562yvi4a2-source"
+          },
+          "testLimitation": "doCheck=false; packaging success only, no Petclinic upstream test success claimed."
+        },
+        {
+          "checkDrvBindings": [
+            {
+              "check": {
+                "kind": "flake-attribute",
+                "value": "checks.x86_64-linux.java-library"
+              },
+              "drvPath": "/nix/store/85rqa035zmy5zbv9ffhl3bfbd91jpa2h-greeting.drv",
+              "outputNarHashes": {
+                "out": "sha256-vdqW2qqTmzNEswh+CfLc+7YxP/F1pQ7IQkfX8mj50VY="
+              },
+              "outputs": {
+                "out": "/nix/store/6sh999h69jkwa2kdblafjs8i5v8x9607-greeting"
+              },
+              "revision": "9c19f8d47def476f9afe4d8940f0076f0b95318f",
+              "system": "x86_64-linux"
+            },
+            {
+              "check": {
+                "kind": "flake-attribute",
+                "value": "checks.x86_64-linux.java-library-tests"
+              },
+              "drvPath": "/nix/store/0iwdgb6z9a2a67m0f4yabirjbbhi03lb-greeting-tests.drv",
+              "outputNarHashes": {
+                "out": "sha256-pQpattmS9VmO3ZIQUFn66az8GSmB4IvYhTTCFn6SUmo="
+              },
+              "outputs": {
+                "out": "/nix/store/g0vgjranjhx6w0hj77p2x3lh1x2068a7-greeting-tests"
+              },
+              "revision": "9c19f8d47def476f9afe4d8940f0076f0b95318f",
+              "system": "x86_64-linux"
+            }
+          ],
+          "derivations": [
+            "gradle-purifier:x86_64-linux:java-library",
+            "gradle-purifier:x86_64-linux:java-library-tests"
+          ],
+          "executedSdkPoints": {
+            "Gradle": "8.14.3",
+            "GradleManagerJDK": "21.0.12.1+1"
+          },
+          "executionEvidence": {
+            "artifacts": [
+              ".worktrees/tier-review/group-4/raw/gradle-purifier-ci.log"
+            ],
+            "exactTraceReferences": {
+              "gradle-purifier:x86_64-linux:java-library": [
+                {
+                  "line": 40629,
+                  "text": "check (ubuntu-latest)\tUNKNOWN STEP\t2026-11-06T20:51:47.3538777Z building '/nix/store/85rqa035zmy5zbv9ffhl3bfbd91jpa2h-greeting.drv'..."
+                },
+                {
+                  "line": 50848,
+                  "text": "conformance-rebuild (ubuntu-latest)\tUNKNOWN STEP\t2026-11-06T20:47:17.3578297Z building '/nix/store/85rqa035zmy5zbv9ffhl3bfbd91jpa2h-greeting.drv'..."
+                },
+                {
+                  "line": 50861,
+                  "text": "conformance-rebuild (ubuntu-latest)\tUNKNOWN STEP\t2026-11-06T20:50:35.2712759Z checking outputs of '/nix/store/85rqa035zmy5zbv9ffhl3bfbd91jpa2h-greeting.drv'..."
+                }
+              ],
+              "gradle-purifier:x86_64-linux:java-library-tests": [
+                {
+                  "line": 40598,
+                  "text": "check (ubuntu-latest)\tUNKNOWN STEP\t2026-11-06T20:51:28.7710938Z building '/nix/store/0iwdgb6z9a2a67m0f4yabirjbbhi03lb-greeting-tests.drv'..."
+                }
+              ]
+            },
+            "run": "https://github.com/nix-purifiers/gradle-purifier/actions/runs/42291213439"
+          },
+          "kind": "repository-fixtures",
+          "managerJavaHome": "/nix/store/8av96xmb7arqavl2n3nwskrhk5q31h85-openjdk-headless-21.0.12.1+1/lib/openjdk",
+          "managerJdkBasis": "Actual producer derivation buildPhase exports this exact JAVA_HOME before invoking the selected Gradle. This does not claim it is every compiler/test runtime SDK configured by that project.",
+          "name": "Java library with JUnit and Maven publication",
+          "sdkExecutionBasis": "tests/default.nix passes each distinct source root to buildGradleProject. The producer derivation buildPhase invokes its wrapper-selected Gradle and chosen JAVA_HOME; check drv tests execute/assert the resulting application/archive. Petclinic sets GRADLE_PURIFIER_CHECK=0 and supplies packaging only.",
+          "source": {
+            "fixtureFilesSha256": {
+              "tests/fixtures/java-library/build.gradle": "63f61e5e2316c0a6f77adcf15549fd9205041dcc6a4405d9406e4d2c81c46130",
+              "tests/fixtures/java-library/gradle-purifier.lock.json": "f3286b5b586ede5721c52b938c116e7bea5afe101cd017a533dccfb49ec2a7cc",
+              "tests/fixtures/java-library/gradle/wrapper/gradle-wrapper.properties": "8f0bb0c9ccd5aa3ca33b2194296055f49d524aa9ac0e1d0eab7efdeabcc6d597",
+              "tests/fixtures/java-library/settings.gradle": "b80fe3fa93666c05d88fc3b3d23a69b3787a498b450deaabc93150857add52e4",
+              "tests/fixtures/java-library/shout/build.gradle": "db484ece5a2f663b63b60cd6cc2aeec738701cfa59ed06eb7f914d41919fe7c5",
+              "tests/fixtures/java-library/shout/settings.gradle": "f210942a33242c2cd9261a2eedb00a958ed9bd1e97f956cd47045ca103c8be56",
+              "tests/fixtures/java-library/shout/src/main/java/example/shout/Shout.java": "8f4fe95b8ae0bfa68c17a4d6f6edef620224767ac6f5f5e430ff10cb54e80bf1",
+              "tests/fixtures/java-library/src/main/java/example/Greeting.java": "0c980153d55c9fbd5def9d0c41dd6afcb240ff00bc9dceb44e3b7dff1aadd7c3",
+              "tests/fixtures/java-library/src/test/java/example/GreetingTest.java": "4e21c6dfccd3188fe7b0307027d5a149a1fea1c3cfaccfc00a31345df403db4f"
+            },
+            "fixtureOnlyNarHash": null,
+            "gap": "A separate filtered fixture-root NAR was not recovered; exact parent repository NAR, source paths and tracked file hashes are bound. Do not relabel the parent-tree hash as the filtered-subdirectory hash.",
+            "repository": "https://github.com/nix-purifiers/gradle-purifier",
+            "revision": "9c19f8d47def476f9afe4d8940f0076f0b95318f",
+            "sourceNarHash": "sha256-uaxKqJNrdcYuoMNfV/MdB7c64Gq+W43tS7weqM93FVo=",
+            "sourceNarScope": "whole purifier repository; fixture selected by sourcePaths below",
+            "sourcePaths": [
+              "tests/fixtures/java-library"
+            ]
+          }
+        },
+        {
+          "checkDrvBindings": [
+            {
+              "check": {
+                "kind": "flake-attribute",
+                "value": "checks.x86_64-linux.kotlin-app"
+              },
+              "drvPath": "/nix/store/x8ar2gipphns98a4xdl70g9vww9mbz84-app.drv",
+              "outputNarHashes": {
+                "out": "sha256-2wT9LEz011XZQNXK0Qhywf6RvYE9cBBXYwsJC3MJzvc="
+              },
+              "outputs": {
+                "out": "/nix/store/4yajxivq0m80m4m18jml4bb436xydwgp-app"
+              },
+              "revision": "9c19f8d47def476f9afe4d8940f0076f0b95318f",
+              "system": "x86_64-linux"
+            },
+            {
+              "check": {
+                "kind": "flake-attribute",
+                "value": "checks.x86_64-linux.kotlin-app-runs"
+              },
+              "drvPath": "/nix/store/mrk9qdmfkdab65gkq4s4rhqq8mdmxhji-kotlin-app-runs.drv",
+              "outputNarHashes": {
+                "out": "sha256-d6xi4mKdjkX2JFicDIv5niSzpyI0m/Hnm8GGAIU04kY="
+              },
+              "outputs": {
+                "out": "/nix/store/ccq1184nw4qj6kpbqbbalmkcc6lzzjg4-kotlin-app-runs"
+              },
+              "revision": "9c19f8d47def476f9afe4d8940f0076f0b95318f",
+              "system": "x86_64-linux"
+            }
+          ],
+          "derivations": [
+            "gradle-purifier:x86_64-linux:kotlin-app",
+            "gradle-purifier:x86_64-linux:kotlin-app-runs"
+          ],
+          "executedSdkPoints": {
+            "Gradle": "9.1.0",
+            "GradleManagerJDK": "21.0.12.1+1"
+          },
+          "executionEvidence": {
+            "artifacts": [
+              ".worktrees/tier-review/group-4/raw/gradle-purifier-ci.log"
+            ],
+            "exactTraceReferences": {
+              "gradle-purifier:x86_64-linux:kotlin-app": [
+                {
+                  "line": 40560,
+                  "text": "check (ubuntu-latest)\tUNKNOWN STEP\t2026-11-06T20:51:22.8881423Z building '/nix/store/x8ar2gipphns98a4xdl70g9vww9mbz84-app.drv'..."
+                },
+                {
+                  "line": 50856,
+                  "text": "conformance-rebuild (ubuntu-latest)\tUNKNOWN STEP\t2026-11-06T20:47:20.7233141Z building '/nix/store/x8ar2gipphns98a4xdl70g9vww9mbz84-app.drv'..."
+                },
+                {
+                  "line": 50859,
+                  "text": "conformance-rebuild (ubuntu-latest)\tUNKNOWN STEP\t2026-11-06T20:50:35.2524055Z checking outputs of '/nix/store/x8ar2gipphns98a4xdl70g9vww9mbz84-app.drv'..."
+                }
+              ],
+              "gradle-purifier:x86_64-linux:kotlin-app-runs": [
+                {
+                  "line": 40759,
+                  "text": "check (ubuntu-latest)\tUNKNOWN STEP\t2026-11-06T20:53:03.8918867Z building '/nix/store/mrk9qdmfkdab65gkq4s4rhqq8mdmxhji-kotlin-app-runs.drv'..."
+                }
+              ]
+            },
+            "run": "https://github.com/nix-purifiers/gradle-purifier/actions/runs/42291213439"
+          },
+          "kind": "repository-fixtures",
+          "managerJavaHome": "/nix/store/8av96xmb7arqavl2n3nwskrhk5q31h85-openjdk-headless-21.0.12.1+1/lib/openjdk",
+          "managerJdkBasis": "Actual producer derivation buildPhase exports this exact JAVA_HOME before invoking the selected Gradle. This does not claim it is every compiler/test runtime SDK configured by that project.",
+          "name": "Kotlin JVM application and convention-plugin build",
+          "sdkExecutionBasis": "tests/default.nix passes each distinct source root to buildGradleProject. The producer derivation buildPhase invokes its wrapper-selected Gradle and chosen JAVA_HOME; check drv tests execute/assert the resulting application/archive. Petclinic sets GRADLE_PURIFIER_CHECK=0 and supplies packaging only.",
+          "source": {
+            "fixtureFilesSha256": {
+              "tests/fixtures/kotlin-app/app/build.gradle.kts": "f1995abfc14fc44503069935118d734bbd3523e8e764ca140748e127fb61a3f1",
+              "tests/fixtures/kotlin-app/app/src/main/kotlin/example/app/Main.kt": "9095f5f58bddb1a23dae5697a6dba9dbdc10c0086b0a9a4cdb56fca3ba4cec7e",
+              "tests/fixtures/kotlin-app/buildSrc/build.gradle.kts": "038709cf8afbb40ea3f70d598485f96c6614163a4d0da0e22469640000331a52",
+              "tests/fixtures/kotlin-app/buildSrc/settings.gradle.kts": "65a0ff3e732b5e6b21e07b974713b798b37d455f3bfdf8d156e6d24c706fac27",
+              "tests/fixtures/kotlin-app/buildSrc/src/main/kotlin/kotlin-conventions.gradle.kts": "7d8fbcd00cda8532cb3f217572dd33fc832f52078a59d84ba348c95bbf7af1d9",
+              "tests/fixtures/kotlin-app/core/build.gradle.kts": "ec22666809abe4f6201367259f99fdf60e93df2ca40d967400ef8cb989e2abf7",
+              "tests/fixtures/kotlin-app/core/src/main/kotlin/example/core/Greeter.kt": "f8448f695ee9f3e227a0d8c00aead2e0036c24ef1f0e684a1aeb1a2962b9e662",
+              "tests/fixtures/kotlin-app/core/src/test/kotlin/example/core/GreeterTest.kt": "f2fa13137605aa08b3f25db1b9de3b2f158b1f7131e66779a9bff7d58b2cd56d",
+              "tests/fixtures/kotlin-app/gradle-purifier.lock.json": "24628e1e4a1cb9a8d0af2a8862da5f18e6c2c5901dd8a45d4e541bf288dfedab",
+              "tests/fixtures/kotlin-app/gradle/libs.versions.toml": "8dcfc8b28ddba1804b3e060199d218c667fc6365ffacd4a1019b9aa6cdfb058d",
+              "tests/fixtures/kotlin-app/gradle/wrapper/gradle-wrapper.properties": "5239b89447bae0c276109ac585b12f241a1e630a38448daa620eb9653987b508",
+              "tests/fixtures/kotlin-app/settings.gradle.kts": "7075f32478526dbd194bdd548d63a939602c76c1851b907217a014910b9df3d1",
+              "tests/fixtures/kotlin-app/shared/build.gradle.kts": "9dcc09d7027116f92137cf9ff91796136cb47c214e98f4a1242ea8f6848546de",
+              "tests/fixtures/kotlin-app/shared/src/commonMain/kotlin/example/shared/Punctuation.kt": "bb623aa647f91c1d6ad4e1f9dc0c564eba4740d4e55074b198570afb4745c1b9",
+              "tests/fixtures/kotlin-app/shared/src/commonTest/kotlin/example/shared/PunctuationTest.kt": "5dcfa6e86b2c6396046fd56f84b54645fe3b6831b27cecefe3dd9cf99cfa9806"
+            },
+            "fixtureOnlyNarHash": null,
+            "gap": "A separate filtered fixture-root NAR was not recovered; exact parent repository NAR, source paths and tracked file hashes are bound. Do not relabel the parent-tree hash as the filtered-subdirectory hash.",
+            "repository": "https://github.com/nix-purifiers/gradle-purifier",
+            "revision": "9c19f8d47def476f9afe4d8940f0076f0b95318f",
+            "sourceNarHash": "sha256-uaxKqJNrdcYuoMNfV/MdB7c64Gq+W43tS7weqM93FVo=",
+            "sourceNarScope": "whole purifier repository; fixture selected by sourcePaths below",
+            "sourcePaths": [
+              "tests/fixtures/kotlin-app"
+            ]
+          }
+        },
+        {
+          "checkDrvBindings": [
+            {
+              "check": {
+                "kind": "flake-attribute",
+                "value": "checks.x86_64-linux.kotlin-native"
+              },
+              "drvPath": "/nix/store/0xj2f3mhzjbzdp9rbgapnhk15h1qs76v-kotlin-native.drv",
+              "outputNarHashes": {
+                "out": "sha256-p8C2tJ4DNK7xI90P2PDLw/OBrT7LSPjhd07j2WqirGQ="
+              },
+              "outputs": {
+                "out": "/nix/store/kzis46dxnkwfvdlrak7rgjsmxmxdqqz9-kotlin-native"
+              },
+              "revision": "9c19f8d47def476f9afe4d8940f0076f0b95318f",
+              "system": "x86_64-linux"
+            },
+            {
+              "check": {
+                "kind": "flake-attribute",
+                "value": "checks.x86_64-linux.kotlin-native-runs"
+              },
+              "drvPath": "/nix/store/yimqk2qbavijra40a4blbcac3bz2h1wj-kotlin-native-runs.drv",
+              "outputNarHashes": {
+                "out": "sha256-d6xi4mKdjkX2JFicDIv5niSzpyI0m/Hnm8GGAIU04kY="
+              },
+              "outputs": {
+                "out": "/nix/store/7w88ak6psbjpkzyc4m101vfz739530ds-kotlin-native-runs"
+              },
+              "revision": "9c19f8d47def476f9afe4d8940f0076f0b95318f",
+              "system": "x86_64-linux"
+            }
+          ],
+          "derivations": [
+            "gradle-purifier:x86_64-linux:kotlin-native",
+            "gradle-purifier:x86_64-linux:kotlin-native-runs"
+          ],
+          "executedSdkPoints": {
+            "Gradle": "9.1.0",
+            "GradleManagerJDK": "17.0.20.1+1"
+          },
+          "executionEvidence": {
+            "artifacts": [
+              ".worktrees/tier-review/group-4/raw/gradle-purifier-ci.log"
+            ],
+            "exactTraceReferences": {
+              "gradle-purifier:x86_64-linux:kotlin-native": [
+                {
+                  "line": 40404,
+                  "text": "check (ubuntu-latest)\tUNKNOWN STEP\t2026-11-06T20:49:40.3821535Z building '/nix/store/0xj2f3mhzjbzdp9rbgapnhk15h1qs76v-kotlin-native.drv'..."
+                }
+              ],
+              "gradle-purifier:x86_64-linux:kotlin-native-runs": [
+                {
+                  "line": 40760,
+                  "text": "check (ubuntu-latest)\tUNKNOWN STEP\t2026-11-06T20:53:04.0469640Z building '/nix/store/yimqk2qbavijra40a4blbcac3bz2h1wj-kotlin-native-runs.drv'..."
+                }
+              ]
+            },
+            "run": "https://github.com/nix-purifiers/gradle-purifier/actions/runs/42291213439"
+          },
+          "kind": "repository-fixtures",
+          "managerJavaHome": "/nix/store/ry8szmmd7pymhc0cgdnwf7mb5083j5mc-openjdk-headless-17.0.20.1+1/lib/openjdk",
+          "managerJdkBasis": "Actual producer derivation buildPhase exports this exact JAVA_HOME before invoking the selected Gradle. This does not claim it is every compiler/test runtime SDK configured by that project.",
+          "name": "Kotlin Native executable/library",
+          "sdkExecutionBasis": "tests/default.nix passes each distinct source root to buildGradleProject. The producer derivation buildPhase invokes its wrapper-selected Gradle and chosen JAVA_HOME; check drv tests execute/assert the resulting application/archive. Petclinic sets GRADLE_PURIFIER_CHECK=0 and supplies packaging only.",
+          "source": {
+            "fixtureFilesSha256": {
+              "tests/fixtures/kotlin-native/build.gradle.kts": "e12dedf686bcb89cd6420993c547d05ef2ad365555cf09ddd66f6bbdf2eb521c",
+              "tests/fixtures/kotlin-native/gradle-purifier.lock.json": "1aa264c0b2130214e028180993418da3817b06136ac5117ed14607cc0d529b4b",
+              "tests/fixtures/kotlin-native/gradle/wrapper/gradle-wrapper.properties": "5239b89447bae0c276109ac585b12f241a1e630a38448daa620eb9653987b508",
+              "tests/fixtures/kotlin-native/settings.gradle.kts": "b0574686ab8f8e5616754b549e5cae9d4d9cf4379144cea5618d82a96f886aff",
+              "tests/fixtures/kotlin-native/src/commonMain/kotlin/example/hello/Hello.kt": "dc35007ccc635bfae1bf462426b72f61fa3a078430537f3c5e86fdd03aa80f1b",
+              "tests/fixtures/kotlin-native/src/commonTest/kotlin/example/hello/HelloTest.kt": "53f041b287a00acc2c8e5293b601fee8fb97b4836c30575ad3e2e69dd9e20e6d"
+            },
+            "fixtureOnlyNarHash": null,
+            "gap": "A separate filtered fixture-root NAR was not recovered; exact parent repository NAR, source paths and tracked file hashes are bound. Do not relabel the parent-tree hash as the filtered-subdirectory hash.",
+            "repository": "https://github.com/nix-purifiers/gradle-purifier",
+            "revision": "9c19f8d47def476f9afe4d8940f0076f0b95318f",
+            "sourceNarHash": "sha256-uaxKqJNrdcYuoMNfV/MdB7c64Gq+W43tS7weqM93FVo=",
+            "sourceNarScope": "whole purifier repository; fixture selected by sourcePaths below",
+            "sourcePaths": [
+              "tests/fixtures/kotlin-native"
+            ]
+          }
+        },
+        {
+          "checkDrvBindings": [
+            {
+              "check": {
+                "kind": "flake-attribute",
+                "value": "checks.x86_64-linux.snapshot-groovy-tests"
+              },
+              "drvPath": "/nix/store/d2ai22hfhhjycrmvqxzs2pywi4whwfb4-snapshot-groovy-tests.drv",
+              "outputNarHashes": {
+                "out": "sha256-pQpattmS9VmO3ZIQUFn66az8GSmB4IvYhTTCFn6SUmo="
+              },
+              "outputs": {
+                "out": "/nix/store/lkg6ni6dgk7nh1hj7g8476b2mj1g4hnd-snapshot-groovy-tests"
+              },
+              "revision": "9c19f8d47def476f9afe4d8940f0076f0b95318f",
+              "system": "x86_64-linux"
+            },
+            {
+              "check": {
+                "kind": "flake-attribute",
+                "value": "checks.x86_64-linux.snapshot-groovy-rebuild"
+              },
+              "drvPath": "/nix/store/71d43716dzqfdad7kjj4si3hyx380jj4-snapshot-groovy-rebuild.drv",
+              "outputNarHashes": {
+                "out": "sha256-d6xi4mKdjkX2JFicDIv5niSzpyI0m/Hnm8GGAIU04kY="
+              },
+              "outputs": {
+                "out": "/nix/store/zk1jhn11aa42fbl8dajy9nim3az1yqc0-snapshot-groovy-rebuild"
+              },
+              "revision": "9c19f8d47def476f9afe4d8940f0076f0b95318f",
+              "system": "x86_64-linux"
+            }
+          ],
+          "derivations": [
+            "gradle-purifier:x86_64-linux:snapshot-groovy-tests",
+            "gradle-purifier:x86_64-linux:snapshot-groovy-rebuild"
+          ],
+          "executedSdkPoints": {
+            "Gradle": "8.14"
+          },
+          "executionEvidence": {
+            "artifacts": [
+              ".worktrees/tier-review/group-4/raw/gradle-purifier-ci.log"
+            ],
+            "exactTraceReferences": {
+              "gradle-purifier:x86_64-linux:snapshot-groovy-rebuild": [
+                {
+                  "line": 39380,
+                  "text": "check (ubuntu-latest)\tUNKNOWN STEP\t2026-11-06T20:49:12.9279284Z building '/nix/store/71d43716dzqfdad7kjj4si3hyx380jj4-snapshot-groovy-rebuild.drv'..."
+                }
+              ],
+              "gradle-purifier:x86_64-linux:snapshot-groovy-tests": [
+                {
+                  "line": 39369,
+                  "text": "check (ubuntu-latest)\tUNKNOWN STEP\t2026-11-06T20:49:10.1174133Z building '/nix/store/d2ai22hfhhjycrmvqxzs2pywi4whwfb4-snapshot-groovy-tests.drv'..."
+                }
+              ]
+            },
+            "run": "https://github.com/nix-purifiers/gradle-purifier/actions/runs/42291213439"
+          },
+          "kind": "repository-fixtures",
+          "managerJdkGap": "Snapshot fixture manager JAVA_HOME was not independently extracted in this supplement; only its wrapper Gradle8.14 execution is claimed.",
+          "name": "snapshot Groovy publication/rebuild",
+          "sdkExecutionBasis": "tests/default.nix passes each distinct source root to buildGradleProject. The producer derivation buildPhase invokes its wrapper-selected Gradle and chosen JAVA_HOME; check drv tests execute/assert the resulting application/archive. Petclinic sets GRADLE_PURIFIER_CHECK=0 and supplies packaging only.",
+          "source": {
+            "fixtureFilesSha256": {
+              "tests/fixtures/snapshot-groovy/build.gradle": "99b0333490f5d8967c6dac96da2607b2a7011d15902a01596c92c58fd94c0f91",
+              "tests/fixtures/snapshot-groovy/gradle-purifier.lock.json": "0fb39a7dcd64fc0781af274d397f90b4301406283b130855e351a10d194ad2fe",
+              "tests/fixtures/snapshot-groovy/gradle/wrapper/gradle-wrapper.properties": "e5756cd1d01093ab6dabe55fef70a61103907951a29c40a336cecdcba998ec22",
+              "tests/fixtures/snapshot-groovy/settings.gradle": "6fab647f563b003f85c7361ca63007160d95c12b12a1281562a31ed954ed8e3c",
+              "tests/fixtures/snapshot-groovy/src/main/groovy/example/Greeting.groovy": "cf635fb655406d37253f64b109d3fe2aff25e1584b14726628483a596a49a3aa",
+              "tests/fixtures/snapshot-groovy/src/test/groovy/example/GreetingTest.groovy": "7aff37a34c7fc1d1deca708b828e128871b8f8174c65939d9c29874e8e7e2fd8"
+            },
+            "fixtureOnlyNarHash": null,
+            "gap": "A separate filtered fixture-root NAR was not recovered; exact parent repository NAR, source paths and tracked file hashes are bound. Do not relabel the parent-tree hash as the filtered-subdirectory hash.",
+            "repository": "https://github.com/nix-purifiers/gradle-purifier",
+            "revision": "9c19f8d47def476f9afe4d8940f0076f0b95318f",
+            "sourceNarHash": "sha256-uaxKqJNrdcYuoMNfV/MdB7c64Gq+W43tS7weqM93FVo=",
+            "sourceNarScope": "whole purifier repository; fixture selected by sourcePaths below",
+            "sourcePaths": [
+              "tests/fixtures/snapshot-groovy"
+            ]
+          }
+        }
+      ]
+    },
+    "haxelib-purifier": {
+      "criterionDerivations": {
+        "darwin": [],
+        "evaluation": [
+          "haxelib-purifier:x86_64-linux:project",
+          "haxelib-purifier:x86_64-linux:installed",
+          "haxelib-purifier:x86_64-linux:environment",
+          "haxelib-purifier:x86_64-linux:release",
+          "haxelib-purifier:x86_64-linux:cli"
+        ],
+        "goodTests": [
+          "haxelib-purifier:x86_64-linux:project",
+          "haxelib-purifier:x86_64-linux:installed",
+          "haxelib-purifier:x86_64-linux:environment",
+          "haxelib-purifier:x86_64-linux:release",
+          "haxelib-purifier:x86_64-linux:cli"
+        ],
+        "linux": [
+          "haxelib-purifier:x86_64-linux:project",
+          "haxelib-purifier:x86_64-linux:installed",
+          "haxelib-purifier:x86_64-linux:environment",
+          "haxelib-purifier:x86_64-linux:release",
+          "haxelib-purifier:x86_64-linux:cli"
+        ],
+        "longCompatibility": [
+          "haxelib-purifier:x86_64-linux:installed",
+          "haxelib-purifier:x86_64-linux:project"
+        ],
+        "manySamples": [
+          "haxelib-purifier:x86_64-linux:project",
+          "haxelib-purifier:x86_64-linux:installed"
+        ],
+        "nonEolVersions": [
+          "haxelib-purifier:x86_64-linux:installed",
+          "haxelib-purifier:x86_64-linux:project"
+        ],
+        "oneVersion": [
+          "haxelib-purifier:x86_64-linux:installed",
+          "haxelib-purifier:x86_64-linux:project"
+        ]
+      },
+      "manySamplesJudgment": {
+        "derivations": [
+          "haxelib-purifier:x86_64-linux:project",
+          "haxelib-purifier:x86_64-linux:installed"
+        ],
+        "evidence": [
+          "https://github.com/nix-purifiers/haxelib-purifier/actions/runs/42152994749",
+          "https://github.com/nix-purifiers/haxelib-purifier/blob/316ec558f411f63270e1fd0794482c94072566ff/flake.nix"
+        ],
+        "gap": "There is one authored minimal Haxe project and an authored consumer. Its haxelib dependencies and capture variants are not independent sample projects. The corpus does not establish breadth across independent Haxe applications. Authored samples are eligible; this judgment reflects the narrow demonstrated consumer/build behavior rather than excluding fixtures solely by provenance.",
+        "sources": [
+          "https://github.com/nix-purifiers/haxelib-purifier/blob/316ec558f411f63270e1fd0794482c94072566ff/flake.nix"
+        ],
+        "state": "not-met",
+        "summary": "There is one authored minimal Haxe project and an authored consumer. Its haxelib dependencies and capture variants are not independent sample projects. The corpus does not establish breadth across independent Haxe applications. Authored samples are eligible; this judgment reflects the narrow demonstrated consumer/build behavior rather than excluding fixtures solely by provenance."
+      },
+      "samples": [
+        {
+          "checkDrvBindings": [
+            {
+              "check": {
+                "kind": "flake-attribute",
+                "value": "checks.x86_64-linux.project"
+              },
+              "drvPath": "/nix/store/nb7vgi0xv900xwaqww0fvcbqllzipns3-purified-haxe-project.drv",
+              "outputNarHashes": {
+                "out": "sha256-H7f1PkV2x+UH6EZM74r2NCqLKebdClciTc2iRBWRNzM="
+              },
+              "outputs": {
+                "out": "/nix/store/312qdqhlsb9db50xwz0i0aw18lxfs6qk-purified-haxe-project"
+              },
+              "revision": "316ec558f411f63270e1fd0794482c94072566ff",
+              "system": "x86_64-linux"
+            },
+            {
+              "check": {
+                "kind": "flake-attribute",
+                "value": "checks.x86_64-linux.installed"
+              },
+              "drvPath": "/nix/store/fhklygh45bxm0czll920822512xvnyvr-haxe-installed-consumer.drv",
+              "outputNarHashes": {
+                "out": "sha256-9xzUtF/lgiBuONJxM4hKOugpv1bdBL5nSJffajMNbsw="
+              },
+              "outputs": {
+                "out": "/nix/store/qy8a7nkwsfldapk4i5487xzgl61abghk-haxe-installed-consumer"
+              },
+              "revision": "316ec558f411f63270e1fd0794482c94072566ff",
+              "system": "x86_64-linux"
+            }
+          ],
+          "derivations": [
+            "haxelib-purifier:x86_64-linux:project",
+            "haxelib-purifier:x86_64-linux:installed"
+          ],
+          "executedSdkPoints": {
+            "Haxe": "4.3.7",
+            "Haxelib": "4.1.1"
+          },
+          "executionEvidence": {
+            "artifacts": [
+              ".worktrees/tier-review/group-4/raw/haxelib-purifier-ci.log"
+            ],
+            "exactTraceReferences": {
+              "haxelib-purifier:x86_64-linux:installed": [
+                {
+                  "line": 913,
+                  "text": "check (ubuntu-latest)\tUNKNOWN STEP\t2026-11-06T02:52:34.1132445Z building '/nix/store/fhklygh45bxm0czll920822512xvnyvr-haxe-installed-consumer.drv'..."
+                }
+              ],
+              "haxelib-purifier:x86_64-linux:project": [
+                {
+                  "line": 906,
+                  "text": "check (ubuntu-latest)\tUNKNOWN STEP\t2026-11-06T02:52:33.1709723Z building '/nix/store/nb7vgi0xv900xwaqww0fvcbqllzipns3-purified-haxe-project.drv'..."
+                },
+                {
+                  "line": 960,
+                  "text": "check (ubuntu-latest)\tUNKNOWN STEP\t2026-11-06T02:53:22.3626124Z checking outputs of '/nix/store/nb7vgi0xv900xwaqww0fvcbqllzipns3-purified-haxe-project.drv'..."
+                }
+              ]
+            },
+            "run": "https://github.com/nix-purifiers/haxelib-purifier/actions/runs/42152994749"
+          },
+          "kind": "repository-fixtures",
+          "name": "examples/minimal plus installed downstream Consumer",
+          "sdkExecutionBasis": "Project derivation buildCommand calls haxe build.hxml with PATH=/...-haxelib-purifier-toolchain/bin; prepare calls the actual patched Haxelib4.1.1 and native installed consumer runs Haxe.",
+          "source": {
+            "fixtureFilesSha256": {
+              "examples/minimal/build.hxml": "515adfa6472d01363e90515d41d517ea6bb840a185aa469cd943d9cd5e426b3a",
+              "examples/minimal/haxelib-purifier.lock.json": "a5448cfbface49cb234b914460a396daf95e1a5b0d8da39cdeee98526bd956c9",
+              "examples/minimal/haxelib.json": "a4b6a6e82d278f92106befbbb645b2f037a97def1ba614647216ebd238f9032e",
+              "examples/minimal/src/PurifierExample.hx": "6097655ee3dd818d13d26fa5ec3f5e269b3b66606b79c37a80ccd83317070393",
+              "examples/minimal/tests/Main.hx": "b92080ae5211b76b2d76f01bfc357858a6ff3d3fd8b44a3c8970d0664577ed66"
+            },
+            "fixtureOnlyNarHash": null,
+            "gap": "A separate filtered fixture-root NAR was not recovered; exact parent repository NAR, source paths and tracked file hashes are bound. Do not relabel the parent-tree hash as the filtered-subdirectory hash.",
+            "repository": "https://github.com/nix-purifiers/haxelib-purifier",
+            "revision": "316ec558f411f63270e1fd0794482c94072566ff",
+            "sourceNarHash": "sha256-5K9EnjVJe5tBaIdUGGyoJsR15uqjzxXQ8Uo24CUZX9o=",
+            "sourceNarScope": "whole purifier repository; fixture selected by sourcePaths below",
+            "sourcePaths": [
+              "examples/minimal"
+            ]
+          }
+        }
+      ]
+    },
+    "helm-purifier": {
+      "criterionDerivations": {
+        "darwin": [],
+        "evaluation": [
+          "helm-purifier:x86_64-linux:fixture-tests",
+          "helm-purifier:x86_64-linux:conformance-offline",
+          "helm-purifier:x86_64-linux:conformance-missing",
+          "helm-purifier:x86_64-linux:conformance-external",
+          "helm-purifier:x86_64-linux:oci-tests",
+          "helm-purifier:x86_64-linux:unit"
+        ],
+        "goodTests": [
+          "helm-purifier:x86_64-linux:fixture-tests",
+          "helm-purifier:x86_64-linux:conformance-offline",
+          "helm-purifier:x86_64-linux:conformance-missing",
+          "helm-purifier:x86_64-linux:conformance-external",
+          "helm-purifier:x86_64-linux:oci-tests",
+          "helm-purifier:x86_64-linux:unit"
+        ],
+        "linux": [
+          "helm-purifier:x86_64-linux:fixture-tests",
+          "helm-purifier:x86_64-linux:conformance-offline",
+          "helm-purifier:x86_64-linux:conformance-missing",
+          "helm-purifier:x86_64-linux:conformance-external",
+          "helm-purifier:x86_64-linux:oci-tests",
+          "helm-purifier:x86_64-linux:unit"
+        ],
+        "longCompatibility": [
+          "helm-purifier:x86_64-linux:conformance-offline",
+          "helm-purifier:x86_64-linux:fixture-tests"
+        ],
+        "manySamples": [
+          "helm-purifier:x86_64-linux:fixture-tests",
+          "helm-purifier:x86_64-linux:oci-tests"
+        ],
+        "nonEolVersions": [
+          "helm-purifier:x86_64-linux:conformance-offline",
+          "helm-purifier:x86_64-linux:fixture-tests"
+        ],
+        "oneVersion": [
+          "helm-purifier:x86_64-linux:conformance-offline",
+          "helm-purifier:x86_64-linux:fixture-tests"
+        ]
+      },
+      "manySamplesJudgment": {
+        "derivations": [
+          "helm-purifier:x86_64-linux:fixture-tests",
+          "helm-purifier:x86_64-linux:oci-tests"
+        ],
+        "evidence": [
+          "https://github.com/nix-purifiers/helm-purifier/actions/runs/42152998756",
+          "https://github.com/nix-purifiers/helm-purifier/blob/aa131a68d313284a291693b706e6dd7d35a47cb4/tests/default.nix"
+        ],
+        "gap": "Hello, OCI and JSON-values charts are controlled repository samples testing transport/projection differences. Fetched dependency charts are inputs of those fixtures, not separately executed independent consumer projects; the small corpus does not establish many independent samples. Authored samples are eligible; this judgment reflects the narrow demonstrated consumer/build behavior rather than excluding fixtures solely by provenance.",
+        "sources": [
+          "https://github.com/nix-purifiers/helm-purifier/blob/aa131a68d313284a291693b706e6dd7d35a47cb4/tests/default.nix"
+        ],
+        "state": "not-met",
+        "summary": "Hello, OCI and JSON-values charts are controlled repository samples testing transport/projection differences. Fetched dependency charts are inputs of those fixtures, not separately executed independent consumer projects; the small corpus does not establish many independent samples. Authored samples are eligible; this judgment reflects the narrow demonstrated consumer/build behavior rather than excluding fixtures solely by provenance."
+      },
+      "samples": [
+        {
+          "checkDrvBindings": [
+            {
+              "check": {
+                "kind": "flake-attribute",
+                "value": "checks.x86_64-linux.fixture-tests"
+              },
+              "drvPath": "/nix/store/lql86zdyxg01xlbmy6h59ajnqjqds3wb-helm-chart-tests.drv",
+              "outputNarHashes": {
+                "out": "sha256-d6xi4mKdjkX2JFicDIv5niSzpyI0m/Hnm8GGAIU04kY="
+              },
+              "outputs": {
+                "out": "/nix/store/gyxhxgmnpy1zaqdfmh921kgd3ky0z83r-helm-chart-tests"
+              },
+              "revision": "aa131a68d313284a291693b706e6dd7d35a47cb4",
+              "system": "x86_64-linux"
+            },
+            {
+              "check": {
+                "kind": "flake-attribute",
+                "value": "checks.x86_64-linux.oci-tests"
+              },
+              "drvPath": "/nix/store/h9km2agqnw8x4zm4nm159y8lqdaipcbc-helm-chart-tests.drv",
+              "outputNarHashes": {
+                "out": "sha256-d6xi4mKdjkX2JFicDIv5niSzpyI0m/Hnm8GGAIU04kY="
+              },
+              "outputs": {
+                "out": "/nix/store/xz61jkz0m0mf3x476aik0bpb426jd1ky-helm-chart-tests"
+              },
+              "revision": "aa131a68d313284a291693b706e6dd7d35a47cb4",
+              "system": "x86_64-linux"
+            }
+          ],
+          "derivations": [
+            "helm-purifier:x86_64-linux:fixture-tests",
+            "helm-purifier:x86_64-linux:oci-tests"
+          ],
+          "executedSdkPoints": {
+            "Helm": "4.3.1"
+          },
+          "executionEvidence": {
+            "artifacts": [
+              ".worktrees/tier-review/group-4/raw/helm-purifier-ci.log"
+            ],
+            "exactTraceReferences": {
+              "helm-purifier:x86_64-linux:fixture-tests": [
+                {
+                  "line": 5213,
+                  "text": "check (ubuntu-latest)\tUNKNOWN STEP\t2026-11-06T02:54:32.5237051Z building '/nix/store/lql86zdyxg01xlbmy6h59ajnqjqds3wb-helm-chart-tests.drv'..."
+                }
+              ],
+              "helm-purifier:x86_64-linux:oci-tests": [
+                {
+                  "line": 5306,
+                  "text": "check (ubuntu-latest)\tUNKNOWN STEP\t2026-11-06T02:54:35.4594268Z building '/nix/store/h9km2agqnw8x4zm4nm159y8lqdaipcbc-helm-chart-tests.drv'..."
+                }
+              ]
+            },
+            "run": "https://github.com/nix-purifiers/helm-purifier/actions/runs/42152998756"
+          },
+          "kind": "repository-fixtures",
+          "name": "examples/hello and examples/oci locked charts",
+          "sdkExecutionBasis": "fixture tests run chart rendering/lint; conformance-offline buildCommand calls helm template and helm lint, with kubernetes-helm4.3.1 as native input. OCI fixture skipTests=true does not claim cluster tests.",
+          "source": {
+            "fixtureFilesSha256": {
+              "examples/hello/.helmignore": "972aecbc770453985d85265952bec921865e17c1883497072294c58bcaa88557",
+              "examples/hello/Chart.lock": "86d95d186719379bc4eed3e3682a882a3894447cd866e4b6ace6d19f4a35bcab",
+              "examples/hello/Chart.yaml": "d381bcf4b25e9179b30298171078d8a907eed04fc99c5fef6eb851772152b9a7",
+              "examples/hello/helm-purifier.lock.json": "d210def842cb8aacb44e7557e1be42623ccff3b3af51e9f575036dedaed976b2",
+              "examples/hello/templates/message.yaml": "2dbb53e156aedf959f395a79d849bf16172b105eab4501dc9e3669f229aad183",
+              "examples/hello/values.yaml": "ca3d163bab055381827226140568f3bef7eaac187cebd76878e0b63e9e442356",
+              "examples/oci/.helmignore": "972aecbc770453985d85265952bec921865e17c1883497072294c58bcaa88557",
+              "examples/oci/Chart.lock": "da5282370a3e59acc92e0d2796bc4c4399a6525a1d8365f8dd0a61efd717e3c6",
+              "examples/oci/Chart.yaml": "91729404ba6506fb14ca904f34f2ac3b85160a6bfead3a67f32887481e16408d",
+              "examples/oci/helm-purifier.lock.json": "a3f711e96c15cf068d96af3bf5216ab873951867ff649fd286ac07887e3c87d4",
+              "examples/oci/values.yaml": "ca3d163bab055381827226140568f3bef7eaac187cebd76878e0b63e9e442356"
+            },
+            "fixtureOnlyNarHash": null,
+            "gap": "A separate filtered fixture-root NAR was not recovered; exact parent repository NAR, source paths and tracked file hashes are bound. Do not relabel the parent-tree hash as the filtered-subdirectory hash.",
+            "repository": "https://github.com/nix-purifiers/helm-purifier",
+            "revision": "aa131a68d313284a291693b706e6dd7d35a47cb4",
+            "sourceNarHash": "sha256-8b33/8W4r7STV3sIF7CrcD3A2wLfRRvH1Yy+BIQWYzE=",
+            "sourceNarScope": "whole purifier repository; fixture selected by sourcePaths below",
+            "sourcePaths": [
+              "examples/hello",
+              "examples/oci"
+            ]
+          }
+        }
+      ]
+    },
+    "herdr-purifier": {
+      "criterionDerivations": {
+        "darwin": [],
+        "evaluation": [
+          "herdr-purifier:x86_64-linux:project",
+          "herdr-purifier:x86_64-linux:environment",
+          "herdr-purifier:x86_64-linux:release",
+          "herdr-purifier:x86_64-linux:cli"
+        ],
+        "goodTests": [
+          "herdr-purifier:x86_64-linux:project",
+          "herdr-purifier:x86_64-linux:environment",
+          "herdr-purifier:x86_64-linux:release",
+          "herdr-purifier:x86_64-linux:cli"
+        ],
+        "linux": [
+          "herdr-purifier:x86_64-linux:project",
+          "herdr-purifier:x86_64-linux:environment",
+          "herdr-purifier:x86_64-linux:release",
+          "herdr-purifier:x86_64-linux:cli"
+        ],
+        "longCompatibility": [
+          "herdr-purifier:x86_64-linux:project"
+        ],
+        "manySamples": [
+          "herdr-purifier:x86_64-linux:project"
+        ],
+        "nonEolVersions": [
+          "herdr-purifier:x86_64-linux:project"
+        ],
+        "oneVersion": [
+          "herdr-purifier:x86_64-linux:project"
+        ]
+      },
+      "manySamplesJudgment": {
+        "derivations": [
+          "herdr-purifier:x86_64-linux:project"
+        ],
+        "evidence": [
+          "https://github.com/nix-purifiers/herdr-purifier/actions/runs/42153008153",
+          "https://github.com/nix-purifiers/herdr-purifier/blob/ec8ca1cfd2221a6cf6a6d25248ce63ef5cfe125d/tests/default.nix"
+        ],
+        "gap": "The minimal plugin environment plus fixture.first/fixture.second Git repositories are controlled test inputs. Multiple plugins/actions are not multiple independent Herdr-consuming projects, and project/environment alias the same output. No many-sample breadth is demonstrated. Authored samples are eligible; this judgment reflects the narrow demonstrated consumer/build behavior rather than excluding fixtures solely by provenance.",
+        "sources": [
+          "https://github.com/nix-purifiers/herdr-purifier/blob/ec8ca1cfd2221a6cf6a6d25248ce63ef5cfe125d/tests/default.nix"
+        ],
+        "state": "not-met",
+        "summary": "The minimal plugin environment plus fixture.first/fixture.second Git repositories are controlled test inputs. Multiple plugins/actions are not multiple independent Herdr-consuming projects, and project/environment alias the same output. No many-sample breadth is demonstrated. Authored samples are eligible; this judgment reflects the narrow demonstrated consumer/build behavior rather than excluding fixtures solely by provenance."
+      },
+      "samples": [
+        {
+          "checkDrvBindings": [
+            {
+              "check": {
+                "kind": "flake-attribute",
+                "value": "checks.x86_64-linux.project"
+              },
+              "drvPath": "/nix/store/kl4k6w0skn3q0kfqi774r25srdbd96sv-purified-herdr-plugins.drv",
+              "outputNarHashes": {
+                "out": "sha256-bwc9h0rb0PlJevtBJrWFM1oRWy+BGkb4aHvRaPfPT2w="
+              },
+              "outputs": {
+                "out": "/nix/store/p1rvhsh2lf3gzggdxskckhh2l2mkwnmx-purified-herdr-plugins"
+              },
+              "revision": "ec8ca1cfd2221a6cf6a6d25248ce63ef5cfe125d",
+              "system": "x86_64-linux"
+            }
+          ],
+          "derivations": [
+            "herdr-purifier:x86_64-linux:project"
+          ],
+          "executedSdkPoints": {
+            "Herdr": "0.9.5"
+          },
+          "executionEvidence": {
+            "artifacts": [
+              ".worktrees/tier-review/group-4/raw/herdr-purifier-ci.log"
+            ],
+            "exactTraceReferences": {
+              "herdr-purifier:x86_64-linux:project": [
+                {
+                  "line": 6404,
+                  "text": "check (ubuntu-latest)\tUNKNOWN STEP\t2026-11-06T03:03:11.2968117Z building '/nix/store/kl4k6w0skn3q0kfqi774r25srdbd96sv-purified-herdr-plugins.drv'..."
+                },
+                {
+                  "line": 6446,
+                  "text": "check (ubuntu-latest)\tUNKNOWN STEP\t2026-11-06T03:03:13.5213295Z checking outputs of '/nix/store/kl4k6w0skn3q0kfqi774r25srdbd96sv-purified-herdr-plugins.drv'..."
+                }
+              ]
+            },
+            "run": "https://github.com/nix-purifiers/herdr-purifier/actions/runs/42153008153"
+          },
+          "kind": "repository-fixtures",
+          "name": "examples/minimal locked plugins and controlled host plugin fixtures",
+          "sdkExecutionBasis": "nix/environment.nix calls actual nativeHerdr plugin registry/list/build hooks; host-conformance native case runs native server/session and plugin action assertions at0.9.5.",
+          "source": {
+            "fixtureFilesSha256": {
+              "examples/minimal/herdr-plugins.lock.json": "6d5526a45bb687ec83d233192df17e9543e8e414edd501efb6981975e80879e6",
+              "examples/minimal/herdr-purifier.lock.json": "8d89b5ab8ecb1b9ed147af1909c524a290be6503bbe911a768401e774c39e572",
+              "examples/minimal/herdr-purifier.toml": "ef8874785eb9961da260a3d2898a52b2eb1d8c90047ea49f70c559d859d06cc0"
+            },
+            "fixtureOnlyNarHash": null,
+            "gap": "A separate filtered fixture-root NAR was not recovered; exact parent repository NAR, source paths and tracked file hashes are bound. Do not relabel the parent-tree hash as the filtered-subdirectory hash.",
+            "repository": "https://github.com/nix-purifiers/herdr-purifier",
+            "revision": "ec8ca1cfd2221a6cf6a6d25248ce63ef5cfe125d",
+            "sourceNarHash": "sha256-GpIM1SDIWalcUnwVeF1BJ2KBP1LZFgGxlaeFAWa1XUM=",
+            "sourceNarScope": "whole purifier repository; fixture selected by sourcePaths below",
+            "sourcePaths": [
+              "examples/minimal"
+            ]
+          }
+        }
+      ]
+    },
+    "idris2-purifier": {
+      "criterionDerivations": {
+        "darwin": [],
+        "evaluation": [
+          "idris2-purifier:x86_64-linux:project",
+          "idris2-purifier:x86_64-linux:environment",
+          "idris2-purifier:x86_64-linux:release",
+          "idris2-purifier:x86_64-linux:cli"
+        ],
+        "goodTests": [
+          "idris2-purifier:x86_64-linux:project",
+          "idris2-purifier:x86_64-linux:environment",
+          "idris2-purifier:x86_64-linux:release",
+          "idris2-purifier:x86_64-linux:cli"
+        ],
+        "linux": [
+          "idris2-purifier:x86_64-linux:project",
+          "idris2-purifier:x86_64-linux:environment",
+          "idris2-purifier:x86_64-linux:release",
+          "idris2-purifier:x86_64-linux:cli"
+        ],
+        "longCompatibility": [
+          "idris2-purifier:x86_64-linux:project"
+        ],
+        "manySamples": [
+          "idris2-purifier:x86_64-linux:project"
+        ],
+        "nonEolVersions": [
+          "idris2-purifier:x86_64-linux:project"
+        ],
+        "oneVersion": [
+          "idris2-purifier:x86_64-linux:project"
+        ]
+      },
+      "manySamplesJudgment": {
+        "derivations": [
+          "idris2-purifier:x86_64-linux:project"
+        ],
+        "evidence": [
+          "https://github.com/nix-purifiers/idris2-purifier/actions/runs/42153012366",
+          "https://github.com/nix-purifiers/idris2-purifier/blob/37ddb0a496a571ac2c8312b7b66cfd4906248dbe/flake.nix"
+        ],
+        "gap": "There is one authored proof project; algebra/elab-util/refined are compiled dependency packages of it. The rebuild check verifies those dependencies but does not make them separate purifier consumer samples. No broad independent consumer corpus is established. Authored samples are eligible; this judgment reflects the narrow demonstrated consumer/build behavior rather than excluding fixtures solely by provenance.",
+        "sources": [
+          "https://github.com/nix-purifiers/idris2-purifier/blob/37ddb0a496a571ac2c8312b7b66cfd4906248dbe/flake.nix"
+        ],
+        "state": "not-met",
+        "summary": "There is one authored proof project; algebra/elab-util/refined are compiled dependency packages of it. The rebuild check verifies those dependencies but does not make them separate purifier consumer samples. No broad independent consumer corpus is established. Authored samples are eligible; this judgment reflects the narrow demonstrated consumer/build behavior rather than excluding fixtures solely by provenance."
+      },
+      "samples": [
+        {
+          "checkDrvBindings": [
+            {
+              "check": {
+                "kind": "flake-attribute",
+                "value": "checks.x86_64-linux.project"
+              },
+              "drvPath": "/nix/store/r1aabcz7b0rl3kg3wpswr7d3y8w08dms-proof-0.1.0.drv",
+              "outputNarHashes": {
+                "out": "sha256-3hEU3a6++nuUG1TN+7Fb0oz9qZJmdiZCVqahZ77+KSs="
+              },
+              "outputs": {
+                "out": "/nix/store/gz1frgycc1f8pnnd17c39m8j4p0dlgs8-proof-0.1.0"
+              },
+              "revision": "37ddb0a496a571ac2c8312b7b66cfd4906248dbe",
+              "system": "x86_64-linux"
+            }
+          ],
+          "derivations": [
+            "idris2-purifier:x86_64-linux:project"
+          ],
+          "executedSdkPoints": {
+            "Idris": "0.8.0 (snapshot c35a6bd16ca2adea9484c64507bfc2041ceec75a)"
+          },
+          "executionEvidence": {
+            "artifacts": [
+              ".worktrees/tier-review/group-4/raw/idris2-purifier-ci.log"
+            ],
+            "exactTraceReferences": {
+              "idris2-purifier:x86_64-linux:project": [
+                {
+                  "line": 9198,
+                  "text": "check (ubuntu-latest)\tUNKNOWN STEP\t2026-11-06T03:03:27.6182359Z building '/nix/store/r1aabcz7b0rl3kg3wpswr7d3y8w08dms-proof-0.1.0.drv'..."
+                },
+                {
+                  "line": 9261,
+                  "text": "check (ubuntu-latest)\tUNKNOWN STEP\t2026-11-06T03:05:18.1312158Z checking outputs of '/nix/store/r1aabcz7b0rl3kg3wpswr7d3y8w08dms-proof-0.1.0.drv'..."
+                }
+              ]
+            },
+            "run": "https://github.com/nix-purifiers/idris2-purifier/actions/runs/42153012366"
+          },
+          "kind": "repository-fixtures",
+          "name": "examples/minimal proof with algebra/elab-util/refined dependencies",
+          "sdkExecutionBasis": "nix/environment.nix constructs mkCompiler from lock.data.compiler.entry, version and snapshot rev; project buildCommand calls idris2 --build and native proof execution. Reported0.8.0 is not the formal release tag.",
+          "source": {
+            "fixtureFilesSha256": {
+              "examples/minimal/Main.idr": "e5c00e6391595269b5a4ba5024125ff66d1ad1577481638967cb7a5d3c10e0be",
+              "examples/minimal/idris2-purifier.lock.json": "0d75b844276a716954f2dc0321eeadadff3dcf742a9b8e16ca28d48643073212",
+              "examples/minimal/pack.toml": "33041611c45673eae57bee64bd32c1162cdcb2f1d54a5daf923292da75d68b01",
+              "examples/minimal/proof.ipkg": "5b3fb659c4deb9988b068bdc30e37ae99ba9be3624255ac48744970d37da5782"
+            },
+            "fixtureOnlyNarHash": null,
+            "gap": "A separate filtered fixture-root NAR was not recovered; exact parent repository NAR, source paths and tracked file hashes are bound. Do not relabel the parent-tree hash as the filtered-subdirectory hash.",
+            "repository": "https://github.com/nix-purifiers/idris2-purifier",
+            "revision": "37ddb0a496a571ac2c8312b7b66cfd4906248dbe",
+            "sourceNarHash": "sha256-B3RWmI6HLuUNmwW26QBGJdNA/h8ZUz2nsI7nfM4FYL8=",
+            "sourceNarScope": "whole purifier repository; fixture selected by sourcePaths below",
+            "sourcePaths": [
+              "examples/minimal"
+            ]
+          }
+        }
+      ]
+    },
+    "inkscape-purifier": {
+      "criterionDerivations": {
+        "darwin": [],
+        "evaluation": [
+          "inkscape-purifier:x86_64-linux:project",
+          "inkscape-purifier:x86_64-linux:environment",
+          "inkscape-purifier:x86_64-linux:release",
+          "inkscape-purifier:x86_64-linux:cli"
+        ],
+        "goodTests": [
+          "inkscape-purifier:x86_64-linux:project",
+          "inkscape-purifier:x86_64-linux:environment",
+          "inkscape-purifier:x86_64-linux:release",
+          "inkscape-purifier:x86_64-linux:cli"
+        ],
+        "linux": [
+          "inkscape-purifier:x86_64-linux:project",
+          "inkscape-purifier:x86_64-linux:environment",
+          "inkscape-purifier:x86_64-linux:release",
+          "inkscape-purifier:x86_64-linux:cli"
+        ],
+        "longCompatibility": [
+          "inkscape-purifier:x86_64-linux:project"
+        ],
+        "manySamples": [
+          "inkscape-purifier:x86_64-linux:project"
+        ],
+        "nonEolVersions": [
+          "inkscape-purifier:x86_64-linux:project"
+        ],
+        "oneVersion": [
+          "inkscape-purifier:x86_64-linux:project"
+        ]
+      },
+      "manySamplesJudgment": {
+        "derivations": [
+          "inkscape-purifier:x86_64-linux:project"
+        ],
+        "evidence": [
+          "https://github.com/nix-purifiers/inkscape-purifier/actions/runs/41955587866",
+          "https://github.com/nix-purifiers/inkscape-purifier/blob/dae945612e8420dce7784067db93facda003b9f5/flake.nix"
+        ],
+        "gap": "The minimal SVG project plus its extension/dependency and controlled GUI/provider tests form one consumer scenario. An installed upstream extension is a dependency, not a separate independent sample project. Independent application/document breadth is not demonstrated. Authored samples are eligible; this judgment reflects the narrow demonstrated consumer/build behavior rather than excluding fixtures solely by provenance.",
+        "sources": [
+          "https://github.com/nix-purifiers/inkscape-purifier/blob/dae945612e8420dce7784067db93facda003b9f5/flake.nix"
+        ],
+        "state": "not-met",
+        "summary": "The minimal SVG project plus its extension/dependency and controlled GUI/provider tests form one consumer scenario. An installed upstream extension is a dependency, not a separate independent sample project. Independent application/document breadth is not demonstrated. Authored samples are eligible; this judgment reflects the narrow demonstrated consumer/build behavior rather than excluding fixtures solely by provenance."
+      },
+      "samples": [
+        {
+          "checkDrvBindings": [
+            {
+              "check": {
+                "kind": "flake-attribute",
+                "value": "checks.x86_64-linux.project"
+              },
+              "drvPath": "/nix/store/kk3mpw4258g8xbknh5rxnvkds4yw8dw6-inkscape-project.drv",
+              "outputNarHashes": {
+                "out": "sha256-MdAfKyb9qoEqTS9ENFVb67/expTmD2FLsRBVx7OoAI0="
+              },
+              "outputs": {
+                "out": "/nix/store/cl9ak0z1pazn90l29hyizykjzxhlhikk-inkscape-project"
+              },
+              "revision": "dae945612e8420dce7784067db93facda003b9f5",
+              "system": "x86_64-linux"
+            }
+          ],
+          "derivations": [
+            "inkscape-purifier:x86_64-linux:project"
+          ],
+          "executedSdkPoints": {
+            "Inkscape": "1.4.4"
+          },
+          "executionEvidence": {
+            "artifacts": [
+              ".worktrees/tier-review/group-4/raw/inkscape-purifier-ci.log"
+            ],
+            "exactTraceReferences": {
+              "inkscape-purifier:x86_64-linux:project": [
+                {
+                  "line": 169168,
+                  "text": "check (ubuntu-latest)\tUNKNOWN STEP\t2026-11-05T02:54:15.4920112Z building '/nix/store/kk3mpw4258g8xbknh5rxnvkds4yw8dw6-inkscape-project.drv'..."
+                },
+                {
+                  "line": 169288,
+                  "text": "check (ubuntu-latest)\tUNKNOWN STEP\t2026-11-05T02:56:01.5980776Z checking outputs of '/nix/store/kk3mpw4258g8xbknh5rxnvkds4yw8dw6-inkscape-project.drv'..."
+                }
+              ]
+            },
+            "run": "https://github.com/nix-purifiers/inkscape-purifier/actions/runs/41955587866"
+          },
+          "kind": "repository-fixtures",
+          "name": "examples/minimal extension-driven SVG project",
+          "sdkExecutionBasis": "Project builder/required native host checks run the locked Inkscape SDK and extension paths to produce/inspect SVG and artifact width40, not just an extension install.",
+          "source": {
+            "fixtureFilesSha256": {
+              "examples/minimal/build.py": "076913bd18158330a010eed2b2c70d5807beae06c1e37203c2f479e2959dfdd5",
+              "examples/minimal/inkscape-purifier.json": "233fcc05dc86bfa30e072691c58200a918cbc1934d5821f565046c62dd7c7101",
+              "examples/minimal/inkscape-purifier.lock.json": "3b03476e7fce88b43952d4ebca5472d9497c55ebd844e0d79597436fc762457a",
+              "examples/minimal/source.svg": "82ee18db7d5f02832e02caba3fbb5b7306f7042224655a459e9326ff0991e9e2"
+            },
+            "fixtureOnlyNarHash": null,
+            "gap": "A separate filtered fixture-root NAR was not recovered; exact parent repository NAR, source paths and tracked file hashes are bound. Do not relabel the parent-tree hash as the filtered-subdirectory hash.",
+            "repository": "https://github.com/nix-purifiers/inkscape-purifier",
+            "revision": "dae945612e8420dce7784067db93facda003b9f5",
+            "sourceNarHash": "sha256-fivOAl/FbnFzkOON7CoiuNvrX2d2miEMTmYBh0Oy900=",
+            "sourceNarScope": "whole purifier repository; fixture selected by sourcePaths below",
+            "sourcePaths": [
+              "examples/minimal"
+            ]
+          }
+        }
+      ]
+    },
+    "jb-purifier": {
+      "criterionDerivations": {
+        "darwin": [],
+        "evaluation": [
+          "jb-purifier:x86_64-linux:fixture-tests",
+          "jb-purifier:x86_64-linux:conformance-offline",
+          "jb-purifier:x86_64-linux:conformance-missing",
+          "jb-purifier:x86_64-linux:conformance-external",
+          "jb-purifier:x86_64-linux:unit",
+          "jb-purifier:x86_64-linux:json-projection",
+          "jb-purifier:x86_64-linux:cli-package"
+        ],
+        "goodTests": [
+          "jb-purifier:x86_64-linux:fixture-tests",
+          "jb-purifier:x86_64-linux:conformance-offline",
+          "jb-purifier:x86_64-linux:conformance-missing",
+          "jb-purifier:x86_64-linux:conformance-external",
+          "jb-purifier:x86_64-linux:unit",
+          "jb-purifier:x86_64-linux:json-projection",
+          "jb-purifier:x86_64-linux:cli-package"
+        ],
+        "linux": [
+          "jb-purifier:x86_64-linux:fixture-tests",
+          "jb-purifier:x86_64-linux:conformance-offline",
+          "jb-purifier:x86_64-linux:conformance-missing",
+          "jb-purifier:x86_64-linux:conformance-external",
+          "jb-purifier:x86_64-linux:unit",
+          "jb-purifier:x86_64-linux:json-projection",
+          "jb-purifier:x86_64-linux:cli-package"
+        ],
+        "longCompatibility": [
+          "jb-purifier:x86_64-linux:conformance-offline",
+          "jb-purifier:x86_64-linux:fixture-tests",
+          "jb-purifier:x86_64-linux:cli-package"
+        ],
+        "manySamples": [
+          "jb-purifier:x86_64-linux:fixture-tests"
+        ],
+        "nonEolVersions": [
+          "jb-purifier:x86_64-linux:conformance-offline",
+          "jb-purifier:x86_64-linux:fixture-tests",
+          "jb-purifier:x86_64-linux:cli-package"
+        ],
+        "oneVersion": [
+          "jb-purifier:x86_64-linux:conformance-offline",
+          "jb-purifier:x86_64-linux:fixture-tests",
+          "jb-purifier:x86_64-linux:cli-package"
+        ]
+      },
+      "manySamplesJudgment": {
+        "derivations": [
+          "jb-purifier:x86_64-linux:fixture-tests"
+        ],
+        "evidence": [
+          "https://github.com/nix-purifiers/jb-purifier/actions/runs/42153015867",
+          "https://github.com/nix-purifiers/jb-purifier/blob/6dddf87ece2fc7376d770e69b3cebeb4ba16e508/tests/default.nix"
+        ],
+        "gap": "ASCII is a repository fixture. Its vendored Jsonnet library and ordinary JSON projection consumer add dependency/composition coverage but are not a collection of independent upstream consumer samples. Many-sample breadth is not demonstrated. Authored samples are eligible; this judgment reflects the narrow demonstrated consumer/build behavior rather than excluding fixtures solely by provenance.",
+        "sources": [
+          "https://github.com/nix-purifiers/jb-purifier/blob/6dddf87ece2fc7376d770e69b3cebeb4ba16e508/tests/default.nix"
+        ],
+        "state": "not-met",
+        "summary": "ASCII is a repository fixture. Its vendored Jsonnet library and ordinary JSON projection consumer add dependency/composition coverage but are not a collection of independent upstream consumer samples. Many-sample breadth is not demonstrated. Authored samples are eligible; this judgment reflects the narrow demonstrated consumer/build behavior rather than excluding fixtures solely by provenance."
+      },
+      "samples": [
+        {
+          "checkDrvBindings": [
+            {
+              "check": {
+                "kind": "flake-attribute",
+                "value": "checks.x86_64-linux.fixture-tests"
+              },
+              "drvPath": "/nix/store/imhrf7pmhs9hg74xfy0qlp4a1y8v5y7d-jb-project-tests.drv",
+              "outputNarHashes": {
+                "out": "sha256-d6xi4mKdjkX2JFicDIv5niSzpyI0m/Hnm8GGAIU04kY="
+              },
+              "outputs": {
+                "out": "/nix/store/g28vhrn9mgm0i1g5wy64h9f9jag8f2yq-jb-project-tests"
+              },
+              "revision": "6dddf87ece2fc7376d770e69b3cebeb4ba16e508",
+              "system": "x86_64-linux"
+            }
+          ],
+          "derivations": [
+            "jb-purifier:x86_64-linux:fixture-tests"
+          ],
+          "executedSdkPoints": {
+            "Jsonnet": "0.21.0"
+          },
+          "executionEvidence": {
+            "artifacts": [
+              ".worktrees/tier-review/group-4/raw/jb-purifier-ci.log"
+            ],
+            "exactTraceReferences": {
+              "jb-purifier:x86_64-linux:fixture-tests": [
+                {
+                  "line": 762,
+                  "text": "check (ubuntu-latest)\tUNKNOWN STEP\t2026-11-06T02:53:48.7834720Z building '/nix/store/imhrf7pmhs9hg74xfy0qlp4a1y8v5y7d-jb-project-tests.drv'..."
+                }
+              ]
+            },
+            "run": "https://github.com/nix-purifiers/jb-purifier/actions/runs/42153015867"
+          },
+          "kind": "repository-fixtures",
+          "name": "examples/ascii Jsonnet consumer",
+          "sdkExecutionBasis": "fixture-tests and conformance-offline invoke jsonnet -J vendor main.jsonnet; the selected sample executes Jsonnet0.21.0. Jsonnet Bundler0.6.0 is used by separate required host lock/relock jobs and CLI-package; it is not claimed as the fixture evaluator.",
+          "source": {
+            "fixtureFilesSha256": {
+              "examples/ascii/jb-purifier.lock.json": "38f6d614da7fdc7754b9b46de308090e742f9eba13e9abfd27abef7a9298dde9",
+              "examples/ascii/jsonnetfile.json": "4b98d08cd187a9243f050656654470261ea79caa200cf5e7f717ee54223d0e0b",
+              "examples/ascii/jsonnetfile.lock.json": "dff0e6156af869de4d0bf879df006977621aa400380115bbf074304d34460dda",
+              "examples/ascii/main.jsonnet": "4bc68349584b656bf9986262e084f8dcfa5f96c8ccd26a182d0a6ff636c996c0"
+            },
+            "fixtureOnlyNarHash": null,
+            "gap": "A separate filtered fixture-root NAR was not recovered; exact parent repository NAR, source paths and tracked file hashes are bound. Do not relabel the parent-tree hash as the filtered-subdirectory hash.",
+            "repository": "https://github.com/nix-purifiers/jb-purifier",
+            "revision": "6dddf87ece2fc7376d770e69b3cebeb4ba16e508",
+            "sourceNarHash": "sha256-UcVqV7FcbAFXlJmCxRy1ikvYkWJmlL922Q3CoErmpJ4=",
+            "sourceNarScope": "whole purifier repository; fixture selected by sourcePaths below",
+            "sourcePaths": [
+              "examples/ascii"
+            ]
+          }
+        }
+      ]
+    },
+    "joplin-purifier": {
+      "criterionDerivations": {
+        "darwin": [],
+        "evaluation": [
+          "joplin-purifier:x86_64-linux:project",
+          "joplin-purifier:x86_64-linux:environment",
+          "joplin-purifier:x86_64-linux:release",
+          "joplin-purifier:x86_64-linux:cli"
+        ],
+        "goodTests": [
+          "joplin-purifier:x86_64-linux:project",
+          "joplin-purifier:x86_64-linux:environment",
+          "joplin-purifier:x86_64-linux:release",
+          "joplin-purifier:x86_64-linux:cli"
+        ],
+        "linux": [
+          "joplin-purifier:x86_64-linux:project",
+          "joplin-purifier:x86_64-linux:environment",
+          "joplin-purifier:x86_64-linux:release",
+          "joplin-purifier:x86_64-linux:cli"
+        ],
+        "longCompatibility": [
+          "joplin-purifier:x86_64-linux:project"
+        ],
+        "manySamples": [
+          "joplin-purifier:x86_64-linux:project"
+        ],
+        "nonEolVersions": [
+          "joplin-purifier:x86_64-linux:project"
+        ],
+        "oneVersion": [
+          "joplin-purifier:x86_64-linux:project"
+        ]
+      },
+      "manySamplesJudgment": {
+        "derivations": [
+          "joplin-purifier:x86_64-linux:project"
+        ],
+        "evidence": [
+          "https://github.com/nix-purifiers/joplin-purifier/actions/runs/41955597874",
+          "https://github.com/nix-purifiers/joplin-purifier/blob/24660498c294841721be1fa651507b3c46243324/flake.nix"
+        ],
+        "gap": "The notes and selected plugins belong to one authored project; desktop profile/provider tests are controlled variants. Multiple notes/plugins do not establish separate independent upstream sample projects. Authored samples are eligible; this judgment reflects the narrow demonstrated consumer/build behavior rather than excluding fixtures solely by provenance.",
+        "sources": [
+          "https://github.com/nix-purifiers/joplin-purifier/blob/24660498c294841721be1fa651507b3c46243324/flake.nix"
+        ],
+        "state": "not-met",
+        "summary": "The notes and selected plugins belong to one authored project; desktop profile/provider tests are controlled variants. Multiple notes/plugins do not establish separate independent upstream sample projects. Authored samples are eligible; this judgment reflects the narrow demonstrated consumer/build behavior rather than excluding fixtures solely by provenance."
+      },
+      "samples": [
+        {
+          "checkDrvBindings": [
+            {
+              "check": {
+                "kind": "flake-attribute",
+                "value": "checks.x86_64-linux.project"
+              },
+              "drvPath": "/nix/store/q4m85rw9n0h05xfagbq91afd9zsgzpl8-joplin-project.drv",
+              "outputNarHashes": {
+                "out": "sha256-SEm5AWwi7DYK3Q7aLtUGyAoPDMd5eKa0z3nLul0Z2bc="
+              },
+              "outputs": {
+                "out": "/nix/store/4zaj22s5i081qys6jn70gi9gdji82gkf-joplin-project"
+              },
+              "revision": "24660498c294841721be1fa651507b3c46243324",
+              "system": "x86_64-linux"
+            }
+          ],
+          "derivations": [
+            "joplin-purifier:x86_64-linux:project"
+          ],
+          "executedSdkPoints": {
+            "JoplinDesktop": "3.7.21"
+          },
+          "executionEvidence": {
+            "artifacts": [
+              ".worktrees/tier-review/group-4/raw/joplin-purifier-ci.log"
+            ],
+            "exactTraceReferences": {
+              "joplin-purifier:x86_64-linux:project": [
+                {
+                  "line": 1055,
+                  "text": "check (ubuntu-latest)\tUNKNOWN STEP\t2026-11-05T02:30:52.2165116Z building '/nix/store/q4m85rw9n0h05xfagbq91afd9zsgzpl8-joplin-project.drv'..."
+                },
+                {
+                  "line": 1203,
+                  "text": "check (ubuntu-latest)\tUNKNOWN STEP\t2026-11-05T02:34:35.4310598Z checking outputs of '/nix/store/q4m85rw9n0h05xfagbq91afd9zsgzpl8-joplin-project.drv'..."
+                }
+              ]
+            },
+            "run": "https://github.com/nix-purifiers/joplin-purifier/actions/runs/41955597874"
+          },
+          "kind": "repository-fixtures",
+          "name": "examples/minimal notes/plugin project",
+          "sdkExecutionBasis": "Project builder calls the locked Joplin SDK to generate Markdown; required desktop job runs native application and asserts profile-lock and passed markers.",
+          "source": {
+            "fixtureFilesSha256": {
+              "examples/minimal/answer.json": "fdb9fe0faf0e570bc433d422f64b214b86743c31755224cbafe49115b9d4dcff",
+              "examples/minimal/build.cjs": "0675abb23d0fcd74ed0be48d678bd0d37f23831df80bfdb730b5dbc3aaeb69af",
+              "examples/minimal/joplin-purifier.json": "7aa670b4415dd0f24994fcba9f4cb740f2cab30a64cc9387e50ef25b66198e7e",
+              "examples/minimal/joplin-purifier.lock.json": "5e1cde1426909bd9312be9406a2e9c933a8e2e5d2b25f1f7e042f5fd49ccd030"
+            },
+            "fixtureOnlyNarHash": null,
+            "gap": "A separate filtered fixture-root NAR was not recovered; exact parent repository NAR, source paths and tracked file hashes are bound. Do not relabel the parent-tree hash as the filtered-subdirectory hash.",
+            "repository": "https://github.com/nix-purifiers/joplin-purifier",
+            "revision": "24660498c294841721be1fa651507b3c46243324",
+            "sourceNarHash": "sha256-uARn8jBaJYMzXStp6EoGC5oCVownLMy8A7qo/GjSx6s=",
+            "sourceNarScope": "whole purifier repository; fixture selected by sourcePaths below",
+            "sourcePaths": [
+              "examples/minimal"
+            ]
+          }
+        }
+      ]
+    },
+    "julia-purifier": {
+      "criterionDerivations": {
+        "darwin": [],
+        "evaluation": [
+          "julia-purifier:x86_64-linux:app-tests",
+          "julia-purifier:x86_64-linux:app-checked",
+          "julia-purifier:x86_64-linux:realworld-json3-tests",
+          "julia-purifier:x86_64-linux:conformance-offline",
+          "julia-purifier:x86_64-linux:conformance-missing",
+          "julia-purifier:x86_64-linux:workspace-tests",
+          "julia-purifier:x86_64-linux:buildscript"
+        ],
+        "goodTests": [
+          "julia-purifier:x86_64-linux:app-tests",
+          "julia-purifier:x86_64-linux:app-checked",
+          "julia-purifier:x86_64-linux:realworld-json3-tests",
+          "julia-purifier:x86_64-linux:conformance-offline",
+          "julia-purifier:x86_64-linux:conformance-missing",
+          "julia-purifier:x86_64-linux:workspace-tests",
+          "julia-purifier:x86_64-linux:buildscript"
+        ],
+        "linux": [
+          "julia-purifier:x86_64-linux:app-tests",
+          "julia-purifier:x86_64-linux:app-checked",
+          "julia-purifier:x86_64-linux:realworld-json3-tests",
+          "julia-purifier:x86_64-linux:conformance-offline",
+          "julia-purifier:x86_64-linux:conformance-missing",
+          "julia-purifier:x86_64-linux:workspace-tests",
+          "julia-purifier:x86_64-linux:buildscript"
+        ],
+        "longCompatibility": [
+          "julia-purifier:x86_64-linux:app-tests",
+          "julia-purifier:x86_64-linux:realworld-json3-tests"
+        ],
+        "manySamples": [
+          "julia-purifier:x86_64-linux:realworld-json3",
+          "julia-purifier:x86_64-linux:realworld-json3-tests",
+          "julia-purifier:x86_64-linux:app-checked",
+          "julia-purifier:x86_64-linux:app-tests",
+          "julia-purifier:x86_64-linux:workspace",
+          "julia-purifier:x86_64-linux:workspace-tests",
+          "julia-purifier:x86_64-linux:buildscript"
+        ],
+        "nonEolVersions": [
+          "julia-purifier:x86_64-linux:app-tests",
+          "julia-purifier:x86_64-linux:realworld-json3-tests"
+        ],
+        "oneVersion": [
+          "julia-purifier:x86_64-linux:app-tests",
+          "julia-purifier:x86_64-linux:realworld-json3-tests"
+        ]
+      },
+      "manySamplesJudgment": {
+        "derivations": [
+          "julia-purifier:x86_64-linux:realworld-json3",
+          "julia-purifier:x86_64-linux:realworld-json3-tests",
+          "julia-purifier:x86_64-linux:app-checked",
+          "julia-purifier:x86_64-linux:app-tests",
+          "julia-purifier:x86_64-linux:workspace",
+          "julia-purifier:x86_64-linux:workspace-tests",
+          "julia-purifier:x86_64-linux:buildscript"
+        ],
+        "evidence": [
+          "https://github.com/nix-purifiers/julia-purifier/actions/runs/42153338689",
+          "https://github.com/nix-purifiers/julia-purifier/blob/dab47130d47fa857f6b62dbed326fdb4aafd0048/tests/default.nix"
+        ],
+        "gap": null,
+        "sources": [
+          "https://github.com/nix-purifiers/julia-purifier/blob/dab47130d47fa857f6b62dbed326fdb4aafd0048/tests/default.nix"
+        ],
+        "state": "met",
+        "summary": "The executed samples are a package/command with General-registry, Git, binary-artifact and test-only dependencies; a workspace with path and Git-subdirectory library/command members; an environment whose dependency build.jl executes offline; and pinned independent JSON3.jl with its upstream tests, Arrow extension and JLL artifacts. These are materially different successful source/graph/build behaviors, not just repeated assertions over one project. The three controlled fixtures and the independent upstream package retain separate provenance, with no numerical cutoff or upstream-only requirement."
+      },
+      "samples": [
+        {
+          "checkDrvBindings": [
+            {
+              "check": {
+                "kind": "flake-attribute",
+                "value": "checks.x86_64-linux.realworld-json3"
+              },
+              "drvPath": "/nix/store/a5ghk295g334bsilq5aav59n6y1yid7h-realworld-json3-check.drv",
+              "outputNarHashes": {
+                "out": "sha256-d6xi4mKdjkX2JFicDIv5niSzpyI0m/Hnm8GGAIU04kY="
+              },
+              "outputs": {
+                "out": "/nix/store/ma2ibk8f3bz01cpi9q90sr6jk0b16ihn-realworld-json3-check"
+              },
+              "revision": "dab47130d47fa857f6b62dbed326fdb4aafd0048",
+              "system": "x86_64-linux"
+            },
+            {
+              "check": {
+                "kind": "flake-attribute",
+                "value": "checks.x86_64-linux.realworld-json3-tests"
+              },
+              "drvPath": "/nix/store/w2zd4jvy3di4dl3mjm6yb7isr2splxk1-julia-purifier-tests.drv",
+              "outputNarHashes": {
+                "out": "sha256-KU8oMZkBvZY01aypwUnasYvlOqK6jkWOSCTZQTP460A="
+              },
+              "outputs": {
+                "out": "/nix/store/qpi8a75gllwi274f0zydqfmsqpsmg9ki-julia-purifier-tests"
+              },
+              "revision": "dab47130d47fa857f6b62dbed326fdb4aafd0048",
+              "system": "x86_64-linux"
+            }
+          ],
+          "derivations": [
+            "julia-purifier:x86_64-linux:realworld-json3",
+            "julia-purifier:x86_64-linux:realworld-json3-tests"
+          ],
+          "executedSdkPoints": {
+            "Julia": "1.13.2"
+          },
+          "executionEvidence": {
+            "artifacts": [
+              ".worktrees/tier-review/group-4/raw/julia-purifier-ci.log"
+            ],
+            "exactTraceReferences": {
+              "julia-purifier:x86_64-linux:realworld-json3": [
+                {
+                  "line": 21473,
+                  "text": "check (ubuntu-latest)\tUNKNOWN STEP\t2026-11-06T02:56:30.2391732Z building '/nix/store/a5ghk295g334bsilq5aav59n6y1yid7h-realworld-json3-check.drv'..."
+                }
+              ],
+              "julia-purifier:x86_64-linux:realworld-json3-tests": [
+                {
+                  "line": 27394,
+                  "text": "check (ubuntu-latest)\tUNKNOWN STEP\t2026-11-06T02:59:33.5528062Z building '/nix/store/w2zd4jvy3di4dl3mjm6yb7isr2splxk1-julia-purifier-tests.drv'..."
+                }
+              ]
+            },
+            "run": "https://github.com/nix-purifiers/julia-purifier/actions/runs/42153338689"
+          },
+          "kind": "independent-upstream",
+          "name": "JSON3.jl1.14.4",
+          "sdkExecutionBasis": "nix/lib/build-julia-project.nix selects Julia from the manifest, and actual test derivation buildCommand invokes julia --startup-file=no --project=... runtests.jl (or package build.jl/buildscript). Sample/test closures bind1.13.2; CLI1.13.3 is not substituted for sample execution.",
+          "source": {
+            "externalLockfileEvidence": "https://github.com/nix-purifiers/julia-purifier/blob/dab47130d47fa857f6b62dbed326fdb4aafd0048/tests/default.nix",
+            "narEvidence": "sample-source-path-info.json",
+            "purifierRevision": "dab47130d47fa857f6b62dbed326fdb4aafd0048",
+            "purifierSourceNarHash": "sha256-XlQ7LMTaawzCD0qt827uoONkONOgh+96O7cncdFSLDY=",
+            "repository": "https://github.com/quinnj/JSON3.jl",
+            "revision": "15061b1226f85fdc9c6665b9342e6ec01b5cb768",
+            "sourceNarHash": "sha256-qJypVlFPet1qWQGpogjMiIqpmjuNjYtYNKYprWMCKPc=",
+            "sourcePath": ".",
+            "sourceStorePath": "/nix/store/ff99dqrjb7ck06pm3s2xffk3cmild4ij-source"
+          }
+        },
+        {
+          "checkDrvBindings": [
+            {
+              "check": {
+                "kind": "flake-attribute",
+                "value": "checks.x86_64-linux.app-checked"
+              },
+              "drvPath": "/nix/store/b0cjh74370qc4s5v6lcs6xxxyrxj87wy-HelloPurifier-0.1.0.drv",
+              "outputNarHashes": {
+                "out": "sha256-HKBv1zJnUlNhnEa9WJO+NYQuAblb05cS/lDqsQpDcWE="
+              },
+              "outputs": {
+                "out": "/nix/store/r98bx19yy3b5a131jr5lzvfibw3ravg4-HelloPurifier-0.1.0"
+              },
+              "revision": "dab47130d47fa857f6b62dbed326fdb4aafd0048",
+              "system": "x86_64-linux"
+            },
+            {
+              "check": {
+                "kind": "flake-attribute",
+                "value": "checks.x86_64-linux.app-tests"
+              },
+              "drvPath": "/nix/store/xm0gz8nm8ixz0vwk61d9vkdzmgwl5g6y-julia-purifier-tests.drv",
+              "outputNarHashes": {
+                "out": "sha256-0gstjGOZceJcgF9VytUcY9ceU8QSNUBULJ4W6GAhjl8="
+              },
+              "outputs": {
+                "out": "/nix/store/y9m0yr5rz2q2skzbnawlg5i5p1al2xfk-julia-purifier-tests"
+              },
+              "revision": "dab47130d47fa857f6b62dbed326fdb4aafd0048",
+              "system": "x86_64-linux"
+            }
+          ],
+          "derivations": [
+            "julia-purifier:x86_64-linux:app-checked",
+            "julia-purifier:x86_64-linux:app-tests"
+          ],
+          "executedSdkPoints": {
+            "Julia": "1.13.2"
+          },
+          "executionEvidence": {
+            "artifacts": [
+              ".worktrees/tier-review/group-4/raw/julia-purifier-ci.log"
+            ],
+            "exactTraceReferences": {
+              "julia-purifier:x86_64-linux:app-checked": [
+                {
+                  "line": 27206,
+                  "text": "check (ubuntu-latest)\tUNKNOWN STEP\t2026-11-06T02:59:24.4067298Z building '/nix/store/b0cjh74370qc4s5v6lcs6xxxyrxj87wy-HelloPurifier-0.1.0.drv'..."
+                }
+              ],
+              "julia-purifier:x86_64-linux:app-tests": [
+                {
+                  "line": 27207,
+                  "text": "check (ubuntu-latest)\tUNKNOWN STEP\t2026-11-06T02:59:24.4203218Z building '/nix/store/xm0gz8nm8ixz0vwk61d9vkdzmgwl5g6y-julia-purifier-tests.drv'..."
+                }
+              ]
+            },
+            "run": "https://github.com/nix-purifiers/julia-purifier/actions/runs/42153338689"
+          },
+          "kind": "repository-fixtures",
+          "name": "package/command with registry, git, artifact and test extras",
+          "sdkExecutionBasis": "nix/lib/build-julia-project.nix selects Julia from the manifest, and actual test derivation buildCommand invokes julia --startup-file=no --project=... runtests.jl (or package build.jl/buildscript). Sample/test closures bind1.13.2; CLI1.13.3 is not substituted for sample execution.",
+          "source": {
+            "fixtureFilesSha256": {
+              "tests/fixtures/app/Manifest.toml": "bd30d6de0daabafdaffabee3f87d05d940aeec2fdfd1565fb8094e379a61f74b",
+              "tests/fixtures/app/Project.toml": "187223454905232290cdec4236d917f1b081d5a8d6536a09b9ddfb36ca738d7e",
+              "tests/fixtures/app/julia-purifier.lock.json": "672b689458f537fe1515efda30d12ace67da9a719c840fb029bdc9cbeeebbbbc",
+              "tests/fixtures/app/src/HelloPurifier.jl": "c01374e33a5b8da2c7f554db8248b9b780cd2ff3b16cf1505109477eed1e658a",
+              "tests/fixtures/app/test/runtests.jl": "ef9365a22d4a9a9be88ae26467b17e299e2efe747948a381f2ef6067f462e5d4"
+            },
+            "fixtureOnlyNarHash": null,
+            "gap": "A separate filtered fixture-root NAR was not recovered; exact parent repository NAR, source paths and tracked file hashes are bound. Do not relabel the parent-tree hash as the filtered-subdirectory hash.",
+            "repository": "https://github.com/nix-purifiers/julia-purifier",
+            "revision": "dab47130d47fa857f6b62dbed326fdb4aafd0048",
+            "sourceNarHash": "sha256-XlQ7LMTaawzCD0qt827uoONkONOgh+96O7cncdFSLDY=",
+            "sourceNarScope": "whole purifier repository; fixture selected by sourcePaths below",
+            "sourcePaths": [
+              "tests/fixtures/app"
+            ]
+          }
+        },
+        {
+          "checkDrvBindings": [
+            {
+              "check": {
+                "kind": "flake-attribute",
+                "value": "checks.x86_64-linux.workspace"
+              },
+              "drvPath": "/nix/store/p9kbnqawyg56a2qcnxdnm6jw776wczmx-workspace-check.drv",
+              "outputNarHashes": {
+                "out": "sha256-d6xi4mKdjkX2JFicDIv5niSzpyI0m/Hnm8GGAIU04kY="
+              },
+              "outputs": {
+                "out": "/nix/store/6hvn7kj9j6qlyr2xc3khqyj1wvkkcxxy-workspace-check"
+              },
+              "revision": "dab47130d47fa857f6b62dbed326fdb4aafd0048",
+              "system": "x86_64-linux"
+            },
+            {
+              "check": {
+                "kind": "flake-attribute",
+                "value": "checks.x86_64-linux.workspace-tests"
+              },
+              "drvPath": "/nix/store/gid9zkcwvsb6921gyh5anvafb77adrm2-Greeting-tests.drv",
+              "outputNarHashes": {
+                "out": "sha256-d6xi4mKdjkX2JFicDIv5niSzpyI0m/Hnm8GGAIU04kY="
+              },
+              "outputs": {
+                "out": "/nix/store/27rwjcalnclzyykq4hnxm2i68872vgkz-Greeting-tests"
+              },
+              "revision": "dab47130d47fa857f6b62dbed326fdb4aafd0048",
+              "system": "x86_64-linux"
+            }
+          ],
+          "derivations": [
+            "julia-purifier:x86_64-linux:workspace",
+            "julia-purifier:x86_64-linux:workspace-tests"
+          ],
+          "executedSdkPoints": {
+            "Julia": "1.13.2"
+          },
+          "executionEvidence": {
+            "artifacts": [
+              ".worktrees/tier-review/group-4/raw/julia-purifier-ci.log"
+            ],
+            "exactTraceReferences": {
+              "julia-purifier:x86_64-linux:workspace": [
+                {
+                  "line": 20463,
+                  "text": "check (ubuntu-latest)\tUNKNOWN STEP\t2026-11-06T02:56:12.8901493Z building '/nix/store/p9kbnqawyg56a2qcnxdnm6jw776wczmx-workspace-check.drv'..."
+                }
+              ],
+              "julia-purifier:x86_64-linux:workspace-tests": [
+                {
+                  "line": 20195,
+                  "text": "check (ubuntu-latest)\tUNKNOWN STEP\t2026-11-06T02:56:08.6696908Z building '/nix/store/gid9zkcwvsb6921gyh5anvafb77adrm2-Greeting-tests.drv'..."
+                }
+              ]
+            },
+            "run": "https://github.com/nix-purifiers/julia-purifier/actions/runs/42153338689"
+          },
+          "kind": "repository-fixtures",
+          "name": "workspace library and command with path/subdirectory dependencies",
+          "sdkExecutionBasis": "nix/lib/build-julia-project.nix selects Julia from the manifest, and actual test derivation buildCommand invokes julia --startup-file=no --project=... runtests.jl (or package build.jl/buildscript). Sample/test closures bind1.13.2; CLI1.13.3 is not substituted for sample execution.",
+          "source": {
+            "fixtureFilesSha256": {
+              "tests/fixtures/workspace/Greeter/Project.toml": "70a3000cf9d11934bb6892697c6079e6a9c942345164f6d0bb91e03ef73af9b4",
+              "tests/fixtures/workspace/Greeter/src/Greeter.jl": "7cfba31932c74cffda7bf88a8008fd3f9caf29bae55d9063e030beefc0198077",
+              "tests/fixtures/workspace/Greeting/Project.toml": "882c3ba179474107e2386ddb498d9ab68434eb4fbc2260ba317e045170975e66",
+              "tests/fixtures/workspace/Greeting/src/Greeting.jl": "93ab7267cc053255e6232a1500889165eb3c9a8d5401595d182969f41adca4b5",
+              "tests/fixtures/workspace/Greeting/test/Project.toml": "501ef75168913170b75312f1fc76c562060fbfe36e031f89927cc834fca46d58",
+              "tests/fixtures/workspace/Greeting/test/runtests.jl": "3a7c34890e0d9e06d5129edadf34dba53ce4e74338cf3af17276407694d4f540",
+              "tests/fixtures/workspace/Manifest.toml": "7c9c5c5fa19fdaa11e721a9fe9fbbabc216413a2277a6ddb9345617161e0b70c",
+              "tests/fixtures/workspace/Project.toml": "0fda5825dc8db811d376faa5b3aa65ad0e53244e9c496fd09bb8576f97d497a8",
+              "tests/fixtures/workspace/julia-purifier.lock.json": "934110749eed579089ba6ffcca85ec98e1353d16c173cf82fa67d31ac253b076"
+            },
+            "fixtureOnlyNarHash": null,
+            "gap": "A separate filtered fixture-root NAR was not recovered; exact parent repository NAR, source paths and tracked file hashes are bound. Do not relabel the parent-tree hash as the filtered-subdirectory hash.",
+            "repository": "https://github.com/nix-purifiers/julia-purifier",
+            "revision": "dab47130d47fa857f6b62dbed326fdb4aafd0048",
+            "sourceNarHash": "sha256-XlQ7LMTaawzCD0qt827uoONkONOgh+96O7cncdFSLDY=",
+            "sourceNarScope": "whole purifier repository; fixture selected by sourcePaths below",
+            "sourcePaths": [
+              "tests/fixtures/workspace"
+            ]
+          }
+        },
+        {
+          "checkDrvBindings": [
+            {
+              "check": {
+                "kind": "flake-attribute",
+                "value": "checks.x86_64-linux.buildscript"
+              },
+              "drvPath": "/nix/store/1w0ffnddi4nvqshw185083xcwgi2wcy4-buildscript-check.drv",
+              "outputNarHashes": {
+                "out": "sha256-d6xi4mKdjkX2JFicDIv5niSzpyI0m/Hnm8GGAIU04kY="
+              },
+              "outputs": {
+                "out": "/nix/store/kg007j1p91djhlpby19ky5plgfz5wjaq-buildscript-check"
+              },
+              "revision": "dab47130d47fa857f6b62dbed326fdb4aafd0048",
+              "system": "x86_64-linux"
+            }
+          ],
+          "derivations": [
+            "julia-purifier:x86_64-linux:buildscript"
+          ],
+          "executedSdkPoints": {
+            "Julia": "1.13.2"
+          },
+          "executionEvidence": {
+            "artifacts": [
+              ".worktrees/tier-review/group-4/raw/julia-purifier-ci.log"
+            ],
+            "exactTraceReferences": {
+              "julia-purifier:x86_64-linux:buildscript": [
+                {
+                  "line": 23489,
+                  "text": "check (ubuntu-latest)\tUNKNOWN STEP\t2026-11-06T02:57:20.6946420Z building '/nix/store/1w0ffnddi4nvqshw185083xcwgi2wcy4-buildscript-check.drv'..."
+                }
+              ]
+            },
+            "run": "https://github.com/nix-purifiers/julia-purifier/actions/runs/42153338689"
+          },
+          "kind": "repository-fixtures",
+          "name": "environment with offline dependency build.jl",
+          "sdkExecutionBasis": "nix/lib/build-julia-project.nix selects Julia from the manifest, and actual test derivation buildCommand invokes julia --startup-file=no --project=... runtests.jl (or package build.jl/buildscript). Sample/test closures bind1.13.2; CLI1.13.3 is not substituted for sample execution.",
+          "source": {
+            "fixtureFilesSha256": {
+              "tests/fixtures/buildscript/Manifest.toml": "6314950ead028d9568c1e10d82d01f726c905bca33c5bc4f9d680ec8d40813f7",
+              "tests/fixtures/buildscript/Project.toml": "76ebc7bae57bc98fb694ec3fd05951ab7dd38cf7054bb3cb404dcaa1a5301665",
+              "tests/fixtures/buildscript/julia-purifier.lock.json": "157a1179ce36973ba8c604348b0ee4516ea97d144b7f26ed44812dcbd80e07ef"
+            },
+            "fixtureOnlyNarHash": null,
+            "gap": "A separate filtered fixture-root NAR was not recovered; exact parent repository NAR, source paths and tracked file hashes are bound. Do not relabel the parent-tree hash as the filtered-subdirectory hash.",
+            "repository": "https://github.com/nix-purifiers/julia-purifier",
+            "revision": "dab47130d47fa857f6b62dbed326fdb4aafd0048",
+            "sourceNarHash": "sha256-XlQ7LMTaawzCD0qt827uoONkONOgh+96O7cncdFSLDY=",
+            "sourceNarScope": "whole purifier repository; fixture selected by sourcePaths below",
+            "sourcePaths": [
+              "tests/fixtures/buildscript"
+            ]
+          }
+        }
+      ]
+    },
+    "kicad-purifier": {
+      "criterionDerivations": {
+        "darwin": [],
+        "evaluation": [
+          "kicad-purifier:x86_64-linux:project",
+          "kicad-purifier:x86_64-linux:environment",
+          "kicad-purifier:x86_64-linux:release",
+          "kicad-purifier:x86_64-linux:cli"
+        ],
+        "goodTests": [
+          "kicad-purifier:x86_64-linux:project",
+          "kicad-purifier:x86_64-linux:environment",
+          "kicad-purifier:x86_64-linux:release",
+          "kicad-purifier:x86_64-linux:cli"
+        ],
+        "linux": [
+          "kicad-purifier:x86_64-linux:project",
+          "kicad-purifier:x86_64-linux:environment",
+          "kicad-purifier:x86_64-linux:release",
+          "kicad-purifier:x86_64-linux:cli"
+        ],
+        "longCompatibility": [
+          "kicad-purifier:x86_64-linux:project"
+        ],
+        "manySamples": [
+          "kicad-purifier:x86_64-linux:project"
+        ],
+        "nonEolVersions": [
+          "kicad-purifier:x86_64-linux:project"
+        ],
+        "oneVersion": [
+          "kicad-purifier:x86_64-linux:project"
+        ]
+      },
+      "manySamplesJudgment": {
+        "derivations": [
+          "kicad-purifier:x86_64-linux:project"
+        ],
+        "evidence": [
+          "https://github.com/nix-purifiers/kicad-purifier/actions/runs/41963379890",
+          "https://github.com/nix-purifiers/kicad-purifier/blob/4169bf815c24d866053c0ced56084024e40a196c/flake.nix"
+        ],
+        "gap": "One authored PCB/BOM project and controlled GUI/native-provider variants are demonstrated. InteractiveHtmlBom is an upstream dependency; its presence does not supply an additional independent purifier-consuming board/project sample. Authored samples are eligible; this judgment reflects the narrow demonstrated consumer/build behavior rather than excluding fixtures solely by provenance.",
+        "sources": [
+          "https://github.com/nix-purifiers/kicad-purifier/blob/4169bf815c24d866053c0ced56084024e40a196c/flake.nix"
+        ],
+        "state": "not-met",
+        "summary": "One authored PCB/BOM project and controlled GUI/native-provider variants are demonstrated. InteractiveHtmlBom is an upstream dependency; its presence does not supply an additional independent purifier-consuming board/project sample. Authored samples are eligible; this judgment reflects the narrow demonstrated consumer/build behavior rather than excluding fixtures solely by provenance."
+      },
+      "samples": [
+        {
+          "checkDrvBindings": [
+            {
+              "check": {
+                "kind": "flake-attribute",
+                "value": "checks.x86_64-linux.project"
+              },
+              "drvPath": "/nix/store/w7djgaydb28gqwircck214rl1i5rnczy-kicad-project.drv",
+              "outputNarHashes": {
+                "out": "sha256-9yB/EOvCmBr2NLqG+WamK5ZjVrr4sdrmBUD4m9wf2O8="
+              },
+              "outputs": {
+                "out": "/nix/store/2pqczv38jhmlx17jb1b67lz7zhk4r4rq-kicad-project"
+              },
+              "revision": "4169bf815c24d866053c0ced56084024e40a196c",
+              "system": "x86_64-linux"
+            }
+          ],
+          "derivations": [
+            "kicad-purifier:x86_64-linux:project"
+          ],
+          "executedSdkPoints": {
+            "KiCad": "10.0.7"
+          },
+          "executionEvidence": {
+            "artifacts": [
+              ".worktrees/tier-review/group-4/raw/kicad-purifier-ci.log"
+            ],
+            "exactTraceReferences": {
+              "kicad-purifier:x86_64-linux:project": [
+                {
+                  "line": 997,
+                  "text": "check (ubuntu-latest)\tUNKNOWN STEP\t2026-11-05T03:45:15.3359598Z building '/nix/store/w7djgaydb28gqwircck214rl1i5rnczy-kicad-project.drv'..."
+                },
+                {
+                  "line": 1235,
+                  "text": "check (ubuntu-latest)\tUNKNOWN STEP\t2026-11-05T03:46:33.6377025Z checking outputs of '/nix/store/w7djgaydb28gqwircck214rl1i5rnczy-kicad-project.drv'..."
+                }
+              ]
+            },
+            "run": "https://github.com/nix-purifiers/kicad-purifier/actions/runs/41963379890"
+          },
+          "kind": "repository-fixtures",
+          "name": "examples/minimal PCB and HTML BOM project",
+          "sdkExecutionBasis": "Project builder invokes locked native KiCad/InteractiveHtmlBom plugin to generate HTML BOM; required GUI/native jobs exercise plugin installation origins and application invocation.",
+          "source": {
+            "fixtureFilesSha256": {
+              "examples/minimal/board.kicad_pcb": "a84de42f486b91213eb6d5c34be7ffff5c99b952d92fa5580b0cfc1d30149164",
+              "examples/minimal/build.py": "4edc24790944545386a6746925da6ddec6ccb908c67ffeef756f93756181d08d",
+              "examples/minimal/kicad-purifier.json": "b59c45b6e0262e8e187e4fd9c70cc6bfd9b6ee470255f53c1b31066c719e4ff4",
+              "examples/minimal/kicad-purifier.lock.json": "e314f72caa17eaed9e945f9bc560587542eefbbc7cd3a313ce667fbe61c42cb3"
+            },
+            "fixtureOnlyNarHash": null,
+            "gap": "A separate filtered fixture-root NAR was not recovered; exact parent repository NAR, source paths and tracked file hashes are bound. Do not relabel the parent-tree hash as the filtered-subdirectory hash.",
+            "repository": "https://github.com/nix-purifiers/kicad-purifier",
+            "revision": "4169bf815c24d866053c0ced56084024e40a196c",
+            "sourceNarHash": "sha256-wzRVfHwI8G352I+s+I5ESUz8sFYTfIHdpEp+vX6b7kE=",
+            "sourceNarScope": "whole purifier repository; fixture selected by sourcePaths below",
+            "sourcePaths": [
+              "examples/minimal"
+            ]
+          }
+        }
+      ]
+    },
+    "lake-purifier": {
+      "criterionDerivations": {
+        "darwin": [],
+        "evaluation": [
+          "lake-purifier:x86_64-linux:project",
+          "lake-purifier:x86_64-linux:environment",
+          "lake-purifier:x86_64-linux:release",
+          "lake-purifier:x86_64-linux:cli"
+        ],
+        "goodTests": [
+          "lake-purifier:x86_64-linux:project",
+          "lake-purifier:x86_64-linux:environment",
+          "lake-purifier:x86_64-linux:release",
+          "lake-purifier:x86_64-linux:cli"
+        ],
+        "linux": [
+          "lake-purifier:x86_64-linux:project",
+          "lake-purifier:x86_64-linux:environment",
+          "lake-purifier:x86_64-linux:release",
+          "lake-purifier:x86_64-linux:cli"
+        ],
+        "longCompatibility": [
+          "lake-purifier:x86_64-linux:project"
+        ],
+        "manySamples": [
+          "lake-purifier:x86_64-linux:project"
+        ],
+        "nonEolVersions": [
+          "lake-purifier:x86_64-linux:project"
+        ],
+        "oneVersion": [
+          "lake-purifier:x86_64-linux:project"
+        ]
+      },
+      "manySamplesJudgment": {
+        "derivations": [
+          "lake-purifier:x86_64-linux:project"
+        ],
+        "evidence": [
+          "https://github.com/nix-purifiers/lake-purifier/actions/runs/42153342577",
+          "https://github.com/nix-purifiers/lake-purifier/blob/dfa4895e848b0b5b8881a4151fbdc9d6140d65bd/flake.nix"
+        ],
+        "gap": "One authored proof project is executed. Aesop/batteries are compiled dependencies, and capture/subdirectory variations reuse that project. They do not establish a broad collection of independent Lean consumer samples. Authored samples are eligible; this judgment reflects the narrow demonstrated consumer/build behavior rather than excluding fixtures solely by provenance.",
+        "sources": [
+          "https://github.com/nix-purifiers/lake-purifier/blob/dfa4895e848b0b5b8881a4151fbdc9d6140d65bd/flake.nix"
+        ],
+        "state": "not-met",
+        "summary": "One authored proof project is executed. Aesop/batteries are compiled dependencies, and capture/subdirectory variations reuse that project. They do not establish a broad collection of independent Lean consumer samples. Authored samples are eligible; this judgment reflects the narrow demonstrated consumer/build behavior rather than excluding fixtures solely by provenance."
+      },
+      "samples": [
+        {
+          "checkDrvBindings": [
+            {
+              "check": {
+                "kind": "flake-attribute",
+                "value": "checks.x86_64-linux.project"
+              },
+              "drvPath": "/nix/store/pfy48yv5svinw56n7vnzlxm87n020nwa-purified-lake-purifierProof-0.1.0.drv",
+              "outputNarHashes": {
+                "out": "sha256-uZaKUhr1zxs/j+4xTrO85Mb91j182CEQLkaTbE70vwA="
+              },
+              "outputs": {
+                "out": "/nix/store/0zr9ig07bf2h9fj8rfnzaxs8zhlzn3h9-purified-lake-purifierProof-0.1.0"
+              },
+              "revision": "dfa4895e848b0b5b8881a4151fbdc9d6140d65bd",
+              "system": "x86_64-linux"
+            }
+          ],
+          "derivations": [
+            "lake-purifier:x86_64-linux:project"
+          ],
+          "executedSdkPoints": {
+            "Lean": "4.35.0"
+          },
+          "executionEvidence": {
+            "artifacts": [
+              ".worktrees/tier-review/group-4/raw/lake-purifier-ci.log"
+            ],
+            "exactTraceReferences": {
+              "lake-purifier:x86_64-linux:project": [
+                {
+                  "line": 6744,
+                  "text": "check (ubuntu-latest)\tUNKNOWN STEP\t2026-11-06T03:02:46.9722472Z building '/nix/store/pfy48yv5svinw56n7vnzlxm87n020nwa-purified-lake-purifierProof-0.1.0.drv'..."
+                },
+                {
+                  "line": 6818,
+                  "text": "check (ubuntu-latest)\tUNKNOWN STEP\t2026-11-06T03:05:33.4163816Z checking outputs of '/nix/store/pfy48yv5svinw56n7vnzlxm87n020nwa-purified-lake-purifierProof-0.1.0.drv'..."
+                }
+              ]
+            },
+            "run": "https://github.com/nix-purifiers/lake-purifier/actions/runs/42153342577"
+          },
+          "kind": "repository-fixtures",
+          "name": "examples/minimal Lean proof with aesop/batteries",
+          "sdkExecutionBasis": "Project builder calls Lean/Lake with locked aesop/batteries environment, compiles proof, and host conformance invokes lake exe proof yielding42; dependency rebuild has exact native drv checking.",
+          "source": {
+            "fixtureFilesSha256": {
+              "examples/minimal/Main.lean": "45d56d434111795f723f3d06a1d1147ba711d34da2caf6fa13d46b2565a5532f",
+              "examples/minimal/PurifierProof.lean": "02114c781646d06d2c793fadca3f05c891aefa1907d01f6b8bf680777f6f636b",
+              "examples/minimal/lake-manifest.json": "803dc1429c2b45f00eb4328477006c1579bed129270aa15f980a4168966dbfdf",
+              "examples/minimal/lake-purifier.lock.json": "fbabca9daa1268a76bd350c392bec1c2109364d85a478bdb1bceec3c58c8699e",
+              "examples/minimal/lakefile.toml": "1097446f21c1702b5110196f6459222a934bb227e6bfe566a52fc11832d8efac",
+              "examples/minimal/lean-toolchain": "ca5f1f601d34c49079e38d7e7041eb0f2a9c227fbc1df0f404820069a052330c"
+            },
+            "fixtureOnlyNarHash": null,
+            "gap": "A separate filtered fixture-root NAR was not recovered; exact parent repository NAR, source paths and tracked file hashes are bound. Do not relabel the parent-tree hash as the filtered-subdirectory hash.",
+            "repository": "https://github.com/nix-purifiers/lake-purifier",
+            "revision": "dfa4895e848b0b5b8881a4151fbdc9d6140d65bd",
+            "sourceNarHash": "sha256-n51dD4IdoEUVfPOeaA+eOVA8W6YXZDaTuIxwuiaazLs=",
+            "sourceNarScope": "whole purifier repository; fixture selected by sourcePaths below",
+            "sourcePaths": [
+              "examples/minimal"
+            ]
+          }
+        }
+      ]
+    }
+  },
+  "runtimeSdkOverrideRule": "For integration, use runtimeSdkVersionsByDerivation instead of the mechanically enumerated transitive sdkVersions field in the frozen original evidence packet. An empty map makes no SDK execution claim for that auxiliary check. Compiler bootstrap/vendor/source-fetch entries remain audit-only in sdkBindings. SampleSdk points are backed by inspected actual invocation paths and native CI execution, and separate host-only bundler execution is described explicitly in the sample basis.",
+  "runtimeSdkVersionsByDerivation": {
+    "go-purifier:aarch64-darwin:real-world-fzf": {
+      "Go": "1.26.10"
+    },
+    "go-purifier:aarch64-darwin:supported-go-1-26": {
+      "Go": "1.26.10"
+    },
+    "go-purifier:aarch64-darwin:supported-go-1-27": {
+      "Go": "1.27.3"
+    },
+    "go-purifier:x86_64-linux:cli": {},
+    "go-purifier:x86_64-linux:cli-tests": {},
+    "go-purifier:x86_64-linux:composition-native-export": {},
+    "go-purifier:x86_64-linux:conformance-external": {},
+    "go-purifier:x86_64-linux:conformance-external-go-sum": {},
+    "go-purifier:x86_64-linux:conformance-malformed": {},
+    "go-purifier:x86_64-linux:conformance-missing": {},
+    "go-purifier:x86_64-linux:conformance-stale": {},
+    "go-purifier:x86_64-linux:conformance-tampered": {},
+    "go-purifier:x86_64-linux:fixture-fetches": {},
+    "go-purifier:x86_64-linux:fixture-hello-build": {},
+    "go-purifier:x86_64-linux:fixture-hello-greet": {
+      "Go": "1.26.10"
+    },
+    "go-purifier:x86_64-linux:fixture-hello-tests": {
+      "Go": "1.26.10"
+    },
+    "go-purifier:x86_64-linux:fixture-hello-uuidgen": {},
+    "go-purifier:x86_64-linux:fixture-proxy-layout": {},
+    "go-purifier:x86_64-linux:fixture-release": {},
+    "go-purifier:x86_64-linux:fixture-replace": {
+      "Go": "1.26.10"
+    },
+    "go-purifier:x86_64-linux:fixture-vcs": {
+      "Go": "1.26.10"
+    },
+    "go-purifier:x86_64-linux:fixture-workspace": {
+      "Go": "1.26.10"
+    },
+    "go-purifier:x86_64-linux:fixture-workspace-tests": {
+      "Go": "1.26.10"
+    },
+    "go-purifier:x86_64-linux:gopath-current": {},
+    "go-purifier:x86_64-linux:gopath-go10": {},
+    "go-purifier:x86_64-linux:gopath-go10-tools": {},
+    "go-purifier:x86_64-linux:lock-version": {},
+    "go-purifier:x86_64-linux:native-projections": {
+      "Go": "1.26.10"
+    },
+    "go-purifier:x86_64-linux:overlay-adds-the-scope": {},
+    "go-purifier:x86_64-linux:overlay-consumer": {},
+    "go-purifier:x86_64-linux:overlay-override": {},
+    "go-purifier:x86_64-linux:overlay-override-scope": {},
+    "go-purifier:x86_64-linux:proxy-version-metadata": {},
+    "go-purifier:x86_64-linux:read-lock": {},
+    "go-purifier:x86_64-linux:real-world-fzf": {
+      "Go": "1.26.10"
+    },
+    "go-purifier:x86_64-linux:real-world-fzf-tests": {
+      "Go": "1.26.10"
+    },
+    "go-purifier:x86_64-linux:real-world-fzf-version": {},
+    "go-purifier:x86_64-linux:replace-outside-src": {},
+    "go-purifier:x86_64-linux:supported-go-1-26": {
+      "Go": "1.26.10"
+    },
+    "go-purifier:x86_64-linux:supported-go-1-26-tools": {},
+    "go-purifier:x86_64-linux:supported-go-1-27": {
+      "Go": "1.27.3"
+    },
+    "go-purifier:x86_64-linux:supported-go-1-27-tools": {},
+    "go-purifier:x86_64-linux:toolchain": {},
+    "go-purifier:x86_64-linux:treefmt": {},
+    "gradle-purifier:x86_64-linux:cli-unit": {},
+    "gradle-purifier:x86_64-linux:composition": {},
+    "gradle-purifier:x86_64-linux:conformance-external": {},
+    "gradle-purifier:x86_64-linux:conformance-malformed": {},
+    "gradle-purifier:x86_64-linux:conformance-missing": {},
+    "gradle-purifier:x86_64-linux:conformance-stale": {},
+    "gradle-purifier:x86_64-linux:conformance-tampered": {},
+    "gradle-purifier:x86_64-linux:gradle-flags-unit": {},
+    "gradle-purifier:x86_64-linux:gradle-purifier": {},
+    "gradle-purifier:x86_64-linux:java-library": {
+      "Gradle": "8.14.3",
+      "GradleManagerJDK": "21.0.12.1+1"
+    },
+    "gradle-purifier:x86_64-linux:java-library-archives": {},
+    "gradle-purifier:x86_64-linux:java-library-artifacts": {},
+    "gradle-purifier:x86_64-linux:java-library-classes": {},
+    "gradle-purifier:x86_64-linux:java-library-ivy-resource": {},
+    "gradle-purifier:x86_64-linux:java-library-release": {},
+    "gradle-purifier:x86_64-linux:java-library-tests": {
+      "Gradle": "8.14.3",
+      "GradleManagerJDK": "21.0.12.1+1"
+    },
+    "gradle-purifier:x86_64-linux:jvm-projection": {},
+    "gradle-purifier:x86_64-linux:kotlin-app": {
+      "Gradle": "9.1.0",
+      "GradleManagerJDK": "21.0.12.1+1"
+    },
+    "gradle-purifier:x86_64-linux:kotlin-app-runs": {
+      "Gradle": "9.1.0",
+      "GradleManagerJDK": "21.0.12.1+1"
+    },
+    "gradle-purifier:x86_64-linux:kotlin-core": {},
+    "gradle-purifier:x86_64-linux:kotlin-core-classes": {},
+    "gradle-purifier:x86_64-linux:kotlin-native": {
+      "Gradle": "9.1.0",
+      "GradleManagerJDK": "17.0.20.1+1"
+    },
+    "gradle-purifier:x86_64-linux:kotlin-native-artifacts": {},
+    "gradle-purifier:x86_64-linux:kotlin-native-runs": {
+      "Gradle": "9.1.0",
+      "GradleManagerJDK": "17.0.20.1+1"
+    },
+    "gradle-purifier:x86_64-linux:kotlin-shared": {},
+    "gradle-purifier:x86_64-linux:kotlin-shared-artifacts": {},
+    "gradle-purifier:x86_64-linux:kotlin-shared-classes": {},
+    "gradle-purifier:x86_64-linux:petclinic": {
+      "Gradle": "9.5.1",
+      "GradleManagerJDK": "17.0.20.1+1"
+    },
+    "gradle-purifier:x86_64-linux:publication-unit": {},
+    "gradle-purifier:x86_64-linux:recorder-unit": {},
+    "gradle-purifier:x86_64-linux:runtime-metadata-unit": {},
+    "gradle-purifier:x86_64-linux:sdk-source-capture-unit": {},
+    "gradle-purifier:x86_64-linux:snapshot-groovy-publication": {},
+    "gradle-purifier:x86_64-linux:snapshot-groovy-rebuild": {
+      "Gradle": "8.14"
+    },
+    "gradle-purifier:x86_64-linux:snapshot-groovy-tests": {
+      "Gradle": "8.14"
+    },
+    "gradle-purifier:x86_64-linux:standalone-projection": {},
+    "gradle-purifier:x86_64-linux:treefmt": {},
+    "haxelib-purifier:x86_64-linux:cli": {},
+    "haxelib-purifier:x86_64-linux:environment": {},
+    "haxelib-purifier:x86_64-linux:installed": {
+      "Haxe": "4.3.7",
+      "Haxelib": "4.1.1"
+    },
+    "haxelib-purifier:x86_64-linux:project": {
+      "Haxe": "4.3.7",
+      "Haxelib": "4.1.1"
+    },
+    "haxelib-purifier:x86_64-linux:release": {},
+    "helm-purifier:x86_64-linux:conformance-external": {},
+    "helm-purifier:x86_64-linux:conformance-malformed": {},
+    "helm-purifier:x86_64-linux:conformance-missing": {},
+    "helm-purifier:x86_64-linux:conformance-offline": {},
+    "helm-purifier:x86_64-linux:conformance-stale": {},
+    "helm-purifier:x86_64-linux:conformance-tampered": {},
+    "helm-purifier:x86_64-linux:fixture": {},
+    "helm-purifier:x86_64-linux:fixture-tests": {
+      "Helm": "4.3.1"
+    },
+    "helm-purifier:x86_64-linux:formatting": {},
+    "helm-purifier:x86_64-linux:json-values": {},
+    "helm-purifier:x86_64-linux:oci-fixture": {},
+    "helm-purifier:x86_64-linux:oci-release": {},
+    "helm-purifier:x86_64-linux:oci-tests": {
+      "Helm": "4.3.1"
+    },
+    "helm-purifier:x86_64-linux:release": {},
+    "helm-purifier:x86_64-linux:unit": {},
+    "herdr-purifier:x86_64-linux:cli": {},
+    "herdr-purifier:x86_64-linux:environment": {},
+    "herdr-purifier:x86_64-linux:project": {
+      "Herdr": "0.9.5"
+    },
+    "herdr-purifier:x86_64-linux:release": {},
+    "idris2-purifier:x86_64-linux:cli": {},
+    "idris2-purifier:x86_64-linux:environment": {},
+    "idris2-purifier:x86_64-linux:project": {
+      "Idris": "0.8.0 (snapshot c35a6bd16ca2adea9484c64507bfc2041ceec75a)"
+    },
+    "idris2-purifier:x86_64-linux:release": {},
+    "inkscape-purifier:x86_64-linux:cli": {},
+    "inkscape-purifier:x86_64-linux:environment": {},
+    "inkscape-purifier:x86_64-linux:project": {
+      "Inkscape": "1.4.4"
+    },
+    "inkscape-purifier:x86_64-linux:release": {},
+    "jb-purifier:x86_64-linux:cli-package": {},
+    "jb-purifier:x86_64-linux:conformance-external": {},
+    "jb-purifier:x86_64-linux:conformance-malformed": {},
+    "jb-purifier:x86_64-linux:conformance-missing": {},
+    "jb-purifier:x86_64-linux:conformance-offline": {},
+    "jb-purifier:x86_64-linux:conformance-stale": {},
+    "jb-purifier:x86_64-linux:conformance-tampered": {},
+    "jb-purifier:x86_64-linux:fixture": {},
+    "jb-purifier:x86_64-linux:fixture-tests": {
+      "Jsonnet": "0.21.0"
+    },
+    "jb-purifier:x86_64-linux:formatting": {},
+    "jb-purifier:x86_64-linux:json-projection": {},
+    "jb-purifier:x86_64-linux:release": {},
+    "jb-purifier:x86_64-linux:unit": {},
+    "joplin-purifier:x86_64-linux:cli": {},
+    "joplin-purifier:x86_64-linux:environment": {},
+    "joplin-purifier:x86_64-linux:project": {
+      "JoplinDesktop": "3.7.21"
+    },
+    "joplin-purifier:x86_64-linux:release": {},
+    "julia-purifier:x86_64-linux:app": {},
+    "julia-purifier:x86_64-linux:app-checked": {
+      "Julia": "1.13.2"
+    },
+    "julia-purifier:x86_64-linux:app-environment": {},
+    "julia-purifier:x86_64-linux:app-release": {},
+    "julia-purifier:x86_64-linux:app-tests": {
+      "Julia": "1.13.2"
+    },
+    "julia-purifier:x86_64-linux:builder-override": {},
+    "julia-purifier:x86_64-linux:buildscript": {
+      "Julia": "1.13.2"
+    },
+    "julia-purifier:x86_64-linux:cli": {},
+    "julia-purifier:x86_64-linux:conformance-external": {},
+    "julia-purifier:x86_64-linux:conformance-malformed": {},
+    "julia-purifier:x86_64-linux:conformance-missing": {},
+    "julia-purifier:x86_64-linux:conformance-offline": {},
+    "julia-purifier:x86_64-linux:conformance-rebuild": {},
+    "julia-purifier:x86_64-linux:conformance-stale": {},
+    "julia-purifier:x86_64-linux:conformance-tampered": {},
+    "julia-purifier:x86_64-linux:consumer": {},
+    "julia-purifier:x86_64-linux:lock-intact": {},
+    "julia-purifier:x86_64-linux:lock-unit": {},
+    "julia-purifier:x86_64-linux:outputs": {},
+    "julia-purifier:x86_64-linux:realworld-json3": {
+      "Julia": "1.13.2"
+    },
+    "julia-purifier:x86_64-linux:realworld-json3-tests": {
+      "Julia": "1.13.2"
+    },
+    "julia-purifier:x86_64-linux:treefmt": {},
+    "julia-purifier:x86_64-linux:unlocked-system": {},
+    "julia-purifier:x86_64-linux:workspace": {
+      "Julia": "1.13.2"
+    },
+    "julia-purifier:x86_64-linux:workspace-tests": {
+      "Julia": "1.13.2"
+    },
+    "kicad-purifier:x86_64-linux:cli": {},
+    "kicad-purifier:x86_64-linux:environment": {},
+    "kicad-purifier:x86_64-linux:project": {
+      "KiCad": "10.0.7"
+    },
+    "kicad-purifier:x86_64-linux:release": {},
+    "lake-purifier:x86_64-linux:cli": {},
+    "lake-purifier:x86_64-linux:environment": {},
+    "lake-purifier:x86_64-linux:project": {
+      "Lean": "4.35.0"
+    },
+    "lake-purifier:x86_64-linux:release": {}
+  },
+  "sdkScopeRule": "sdkBindings in derivation-evidence includes transitive build dependencies for audit. Do not treat bootstrap compilers, vendor FODs, JDKs or every closure entry as the SDK run by a selected sample. Only executedSdkPoints below are claimed, supported by inspected builder commands plus exact native CI build traces.",
+  "sourceNarScopeRule": "Authored fixtures bind the immutable entire purifier source NAR plus exact relative source paths and file hashes. This is a parent-tree identity, not an invented NAR for a filtered subdirectory. Independent upstream sample source NARs below were queried from actual realized source store paths and match the pinned source hashes.",
+  "version": 1
+}
