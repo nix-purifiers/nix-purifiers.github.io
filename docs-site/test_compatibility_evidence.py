@@ -100,6 +100,33 @@ class Evidence(unittest.TestCase):
         with self.assertRaisesRegex(ValueError, 'uncommitted'):
             audit_source(self.root, self.review)
 
+    def test_macos15_ci_requires_reviewed_platform_and_rejects_other_runner_labels(self):
+        registry, catalog = copy.deepcopy(self.registry), copy.deepcopy(self.catalog)
+        entry = registry['projects']['example']
+        entry['testedPoints'][0]['system'] = 'aarch64-darwin'
+        catalog['example']['compatibility']['testedPoints'][0]['system'] = 'aarch64-darwin'
+        review = entry['reviews'][0]
+        review['ci'][0]['jobs'][0]['system'] = 'aarch64-darwin'
+        validate_registry(registry, catalog)
+        run = dict(head_sha=self.revision, run_attempt=1)
+        job = dict(run_id=123, head_sha=self.revision, name='native',
+                   status='completed', conclusion='success')
+        original = subprocess.check_output
+        for labels, accepted in [(['macos-15'], True), (['macos-15-intel'], False),
+                                 (['macos-15', 'self-hosted'], False),
+                                 (['macos-15', 'ubuntu-latest'], False)]:
+            observed_job = dict(job, labels=labels)
+            def response(args, **kwargs):
+                if args[0] == 'gh':
+                    return json.dumps(observed_job if '/actions/jobs/' in args[-1] else run)
+                return original(args, **kwargs)
+            with self.subTest(labels=labels), patch('compatibility_evidence.subprocess.check_output', side_effect=response):
+                if accepted:
+                    verify_ci('nix-purifiers/example', review, self.root)
+                else:
+                    with self.assertRaises(ValueError):
+                        verify_ci('nix-purifiers/example', review, self.root)
+
     def test_remote_ci_must_match_the_recorded_attempt_source_and_successful_job(self):
         (self.root/'main.py').write_text('different implementation\n'); self.commit()
         changed_revision = self.git('rev-parse', 'HEAD').strip()
