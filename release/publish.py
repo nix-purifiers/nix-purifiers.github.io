@@ -21,14 +21,26 @@ def api(repository, suffix):
     return json.loads(run("gh", "api", f"repos/{repository}/{suffix}"))
 
 
-def fingerprint(root, revision):
+# These fixtures are exported by purifier's nix/lib/default.nix and consumed
+# by other repositories. Their source is part of its public release surface.
+EXPORTED_FIXTURES = {
+    "nix-purifiers/purifier": frozenset({
+        "tests/python/native_composition.py",
+        "tests/json-consumer.nix",
+    }),
+}
+
+
+def fingerprint(root, revision, repository=None):
     tree = subprocess.check_output(["git", "ls-tree", "-r", "-z", revision], cwd=root)
+    exported = EXPORTED_FIXTURES.get(repository, ())
     entries = []
     for item in tree.split(b"\0"):
         if not item:
             continue
         name = item.split(b"\t", 1)[1].decode()
-        if name.startswith(("tests/", "docs/", ".github/")) or name in ("README.md", ".gitignore"):
+        excluded = name.startswith(("tests/", "docs/", ".github/")) or name in ("README.md", ".gitignore")
+        if excluded and name not in exported:
             continue
         entries.append(item)
     return hashlib.sha256(b"\0".join(entries)).hexdigest()
@@ -78,7 +90,7 @@ def main():
         return
     if not wait_for_checked(args.repository, sha):
         raise RuntimeError("This main commit has no successful check workflow; refusing to tag it")
-    identity = fingerprint(root, sha)
+    identity = fingerprint(root, sha, args.repository)
     releases = api(args.repository, "releases?per_page=100")
     for release in releases:
         if release["draft"] or release["prerelease"]:

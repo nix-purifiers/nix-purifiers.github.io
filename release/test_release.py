@@ -3,6 +3,7 @@ import io
 import json
 import os
 from pathlib import Path
+import subprocess
 import tempfile
 import unittest
 from unittest.mock import patch
@@ -15,6 +16,64 @@ import repository
 
 
 class ReleaseTests(unittest.TestCase):
+    def test_exported_fixture_fingerprints_use_real_git_trees(self):
+        with tempfile.TemporaryDirectory() as temporary:
+            root = Path(temporary)
+
+            def git(*arguments):
+                return subprocess.check_output(["git", *arguments], cwd=root, text=True).strip()
+
+            git("init", "-q")
+            git("config", "user.name", "Release fixture")
+            git("config", "user.email", "fixture@example.invalid")
+            git("config", "core.filemode", "true")
+            fixtures = ("tests/python/native_composition.py", "tests/json-consumer.nix")
+            files = (*fixtures, "tests/internal.py", "README.md", "docs/guide.md", "nix/lib/default.nix", "flake.lock")
+            for name in files:
+                path = root / name
+                path.parent.mkdir(parents=True, exist_ok=True)
+                path.write_text("original\n")
+                path.chmod(0o644)
+            git("add", ".")
+            git("commit", "-qm", "base")
+            base = git("rev-parse", "HEAD")
+            core = "nix-purifiers/purifier"
+            other = "nix-purifiers/pip-purifier"
+            original_core = publish.fingerprint(root, base, core)
+            original_other = publish.fingerprint(root, base, other)
+            self.assertEqual(original_other, publish.fingerprint(root, base))
+            # The default/other-repository policy retains its exact old bytes.
+            tree = subprocess.check_output(["git", "ls-tree", "-r", "-z", base], cwd=root)
+            included = [item for item in tree.split(b"\0") if item and
+                        not item.split(b"\t", 1)[1].decode().startswith(("tests/", "docs/", ".github/")) and
+                        item.split(b"\t", 1)[1].decode() not in ("README.md", ".gitignore")]
+            self.assertEqual(original_other, hashlib.sha256(b"\0".join(included)).hexdigest())
+            for name in fixtures:
+                for change in ("blob", "mode", "delete"):
+                    with self.subTest(path=name, change=change):
+                        git("reset", "--hard", base)
+                        path = root / name
+                        if change == "blob":
+                            path.write_text("changed\n")
+                        elif change == "mode":
+                            path.chmod(0o755)
+                        else:
+                            path.unlink()
+                        git("add", "-A")
+                        git("commit", "-qm", change)
+                        self.assertNotEqual(publish.fingerprint(root, "HEAD", core), original_core)
+                        self.assertEqual(publish.fingerprint(root, "HEAD", other), original_other)
+                        self.assertEqual(publish.fingerprint(root, "HEAD"), original_other)
+            for name in ("tests/internal.py", "README.md", "docs/guide.md", "nix/lib/default.nix", "flake.lock"):
+                with self.subTest(path=name):
+                    git("reset", "--hard", base)
+                    (root / name).write_text("changed\n")
+                    git("add", "-A")
+                    git("commit", "-qm", "change")
+                    production = name in ("nix/lib/default.nix", "flake.lock")
+                    self.assertEqual(publish.fingerprint(root, "HEAD", core) == original_core, not production)
+                    self.assertEqual(publish.fingerprint(root, "HEAD", other) == original_other, not production)
+
     def test_version_series_and_existing_tags(self):
         self.assertEqual(publish.next_version("0.1", ["v0.1.2", "v0.1.10", "v1.0.50", "notes"]), "0.1.11")
         self.assertEqual(publish.next_version("0.2", ["v0.1.10"]), "0.2.1")
