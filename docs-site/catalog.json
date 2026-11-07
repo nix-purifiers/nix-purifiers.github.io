@@ -58366,1036 +58366,1090 @@
         "criteria": {
           "darwin": {
             "evidence": [
-              "https://github.com/nix-purifiers/meson-purifier/blob/64f252d0df2f08cd81f3baad09d0faa69f9e0217/.github/workflows/check.yml",
-              "https://nix-purifiers.github.io/evidence/0bc57a0e1c9de2755f3921906d49b806e854b92f7ef63f18636aa6ef7376c10d.json"
+              "https://nix-purifiers.github.io/evidence/cb4c495ac6de21575770182a7b7a5cf846a36a7b726e2a68e30cb69711a79887.json",
+              "https://nix-purifiers.github.io/evidence/9be9a95a65a1208c0b0981e94d9bb0a7fa5e2061731173a24c89098239f3de6b.json",
+              "https://nix-purifiers.github.io/evidence/0f3d00fed8d2d4535b26adfcadd58243bf932a0aeb2a19cd3b56448ac125ac38.json"
             ],
-            "state": "not-met",
-            "summary": "The inspected successful workflows execute Ubuntu x86_64/ARM only; no native Darwin SDK/build/test/output receipt exists for this public revision. Linux execution, Darwin lock entries or conditional systems do not establish Darwin runtime."
+            "state": "met",
+            "summary": "Two native aarch64-darwin jobs each compile the fixture in a clean store with output absent beforehand, execute pure and cold ordinary checks, and run inih tests/installed consumer under sandbox=true. Their compiled fixture full NARs, including signatures, match strictly in a separate Linux receipt-comparison job. A failed in-place Darwin rebuild diagnostic remains failed; no signature normalization, Intel Darwin or unsupported runtime matrix is inferred."
           },
           "evaluation": {
             "evidence": [
-              "https://github.com/nix-purifiers/meson-purifier/blob/64f252d0df2f08cd81f3baad09d0faa69f9e0217/flake.nix",
-              "https://github.com/nix-purifiers/meson-purifier/actions/runs/42153562690/job/127682283186",
-              "https://github.com/nix-purifiers/meson-purifier/actions/runs/42153562690/job/127682283290",
-              "https://nix-purifiers.github.io/evidence/0bc57a0e1c9de2755f3921906d49b806e854b92f7ef63f18636aa6ef7376c10d.json"
+              "https://nix-purifiers.github.io/evidence/cb4c495ac6de21575770182a7b7a5cf846a36a7b726e2a68e30cb69711a79887.json",
+              "https://nix-purifiers.github.io/evidence/9be9a95a65a1208c0b0981e94d9bb0a7fa5e2061731173a24c89098239f3de6b.json",
+              "https://nix-purifiers.github.io/evidence/0f3d00fed8d2d4535b26adfcadd58243bf932a0aeb2a19cd3b56448ac125ac38.json"
             ],
             "state": "met",
-            "summary": "Exact revision 64f252d0df2f08cd81f3baad09d0faa69f9e0217 evaluates its x86_64-linux check set; successful Nix realization receipts bind executable check attributes to derivation/output paths."
+            "summary": "Actual main passes all14 CI jobs, including native Linux full flake checks and Linux/Darwin runtime profiles. Nine source/SDK/drv/output/NAR tuples and the separate Linux receipt-comparison helper independently metadata-evaluate exactly. Expression arguments and reconstructed source/locks are retained; this is not a new integration build."
           },
           "goodTests": {
             "evidence": [
+              "https://nix-purifiers.github.io/evidence/cb4c495ac6de21575770182a7b7a5cf846a36a7b726e2a68e30cb69711a79887.json",
+              "https://nix-purifiers.github.io/evidence/9be9a95a65a1208c0b0981e94d9bb0a7fa5e2061731173a24c89098239f3de6b.json",
+              "https://nix-purifiers.github.io/evidence/0f3d00fed8d2d4535b26adfcadd58243bf932a0aeb2a19cd3b56448ac125ac38.json",
               "https://github.com/nix-purifiers/meson-purifier/blob/64f252d0df2f08cd81f3baad09d0faa69f9e0217/flake.nix",
               "https://github.com/nix-purifiers/meson-purifier/actions/runs/42153562690/job/127682283186",
               "https://github.com/nix-purifiers/meson-purifier/actions/runs/42153562690/job/127682283290",
+              "https://nix-purifiers.github.io/evidence/0bc57a0e1c9de2755f3921906d49b806e854b92f7ef63f18636aa6ef7376c10d.json",
               "https://github.com/nix-purifiers/meson-purifier/blob/64f252d0df2f08cd81f3baad09d0faa69f9e0217/tests/default.nix",
-              "https://nix-purifiers.github.io/evidence/0bc57a0e1c9de2755f3921906d49b806e854b92f7ef63f18636aa6ef7376c10d.json"
+              "https://github.com/nix-purifiers/meson-purifier/blob/64f252d0df2f08cd81f3baad09d0faa69f9e0217/.github/workflows/check.yml",
+              "https://github.com/mesonbuild/meson/releases/tag/1.12.1",
+              "https://mesonbuild.com/Release-procedure.html"
             ],
             "state": "met",
-            "summary": "Executable Nix checks build and run the C fixture with Git/Hg/SVN/file wraps and patch directories, exercise external locks, malformed/stale/tampered/missing entries, resource schema and native FFI; Rizin's built binaries must report0.8.2 and assemble x86 instruction bytes correctly. This is meaningful resolver/artifact/runtime coverage. The public Rizin check is a binary smoke check, not the full Rizin upstream suite; producer's broader tests remain separate."
+            "summary": "The authored external fixture executes18 tests with a nonempty zlib1.3.2/inih-r62 wrap graph, cold ordinary nodownload configuration and missing-cache/stale-wrap controls. Unmodified independent inih-r63 executes17 upstream C/C++ tests, cold ordinary sandbox tests and an installed-library consumer returning42 on native Linux/Darwin. Prior source-specific Rizin package/runtime smoke remains separate; supplemental full suites failed1/126 and3/153 and are not claimed successful."
           },
           "linux": {
             "evidence": [
-              "https://github.com/nix-purifiers/meson-purifier/blob/64f252d0df2f08cd81f3baad09d0faa69f9e0217/flake.nix",
-              "https://github.com/nix-purifiers/meson-purifier/actions/runs/42153562690/job/127682283186",
-              "https://github.com/nix-purifiers/meson-purifier/actions/runs/42153562690/job/127682283290",
-              "https://nix-purifiers.github.io/evidence/0bc57a0e1c9de2755f3921906d49b806e854b92f7ef63f18636aa6ef7376c10d.json"
+              "https://nix-purifiers.github.io/evidence/cb4c495ac6de21575770182a7b7a5cf846a36a7b726e2a68e30cb69711a79887.json",
+              "https://nix-purifiers.github.io/evidence/9be9a95a65a1208c0b0981e94d9bb0a7fa5e2061731173a24c89098239f3de6b.json",
+              "https://nix-purifiers.github.io/evidence/0f3d00fed8d2d4535b26adfcadd58243bf932a0aeb2a19cd3b56448ac125ac38.json"
             ],
             "state": "met",
-            "summary": "Native x86_64-linux check realization succeeds with exact drv/output receipts; same-source successful Ubuntu x86_64 and ARM CI logs record executable check builds. Cached local realization is distinguished from original CI execution."
+            "summary": "Actual-main native x86_64-linux runtime receipts bind compiled fixture and cold ordinary/runtime/installed-consumer checks under sandbox=true. Native aarch64-linux full flake/conformance checks also pass in the14-job run; the new measured runtime SDK tuples are not generalized to ARM Linux or arbitrary compiler/Python combinations."
           },
           "longCompatibility": {
             "evidence": [
-              "https://github.com/nix-purifiers/meson-purifier/blob/64f252d0df2f08cd81f3baad09d0faa69f9e0217/flake.nix",
-              "https://github.com/nix-purifiers/meson-purifier/actions/runs/42153562690/job/127682283186",
-              "https://github.com/nix-purifiers/meson-purifier/actions/runs/42153562690/job/127682283290",
-              "https://nix-purifiers.github.io/evidence/0bc57a0e1c9de2755f3921906d49b806e854b92f7ef63f18636aa6ef7376c10d.json"
+              "https://nix-purifiers.github.io/evidence/cb4c495ac6de21575770182a7b7a5cf846a36a7b726e2a68e30cb69711a79887.json",
+              "https://nix-purifiers.github.io/evidence/9be9a95a65a1208c0b0981e94d9bb0a7fa5e2061731173a24c89098239f3de6b.json",
+              "https://nix-purifiers.github.io/evidence/0f3d00fed8d2d4535b26adfcadd58243bf932a0aeb2a19cd3b56448ac125ac38.json"
             ],
             "state": "not-met",
-            "summary": "Public checks execute one pinned Meson1.12.1 toolchain. Fixture package version1.0.0 and Rizin0.8.2 are consumer versions, not old Meson runtime points, and do not establish historical Meson compatibility."
+            "summary": "The actual runtime points execute Meson1.12.1. Fixture version1.0.0, inih releases and Rizin consumer versions are not older Meson SDK epochs. No substantially earlier Meson workflow execution or continuous compatibility interval is established."
           },
           "manySamples": {
             "evidence": [
+              "https://nix-purifiers.github.io/evidence/cb4c495ac6de21575770182a7b7a5cf846a36a7b726e2a68e30cb69711a79887.json",
+              "https://nix-purifiers.github.io/evidence/9be9a95a65a1208c0b0981e94d9bb0a7fa5e2061731173a24c89098239f3de6b.json",
+              "https://nix-purifiers.github.io/evidence/0f3d00fed8d2d4535b26adfcadd58243bf932a0aeb2a19cd3b56448ac125ac38.json",
               "https://github.com/nix-purifiers/meson-purifier/blob/64f252d0df2f08cd81f3baad09d0faa69f9e0217/flake.nix",
               "https://github.com/nix-purifiers/meson-purifier/actions/runs/42153562690/job/127682283186",
               "https://github.com/nix-purifiers/meson-purifier/actions/runs/42153562690/job/127682283290",
-              "https://nix-purifiers.github.io/evidence/0bc57a0e1c9de2755f3921906d49b806e854b92f7ef63f18636aa6ef7376c10d.json"
+              "https://nix-purifiers.github.io/evidence/0bc57a0e1c9de2755f3921906d49b806e854b92f7ef63f18636aa6ef7376c10d.json",
+              "https://github.com/nix-purifiers/meson-purifier/blob/64f252d0df2f08cd81f3baad09d0faa69f9e0217/tests/default.nix",
+              "https://github.com/nix-purifiers/meson-purifier/blob/64f252d0df2f08cd81f3baad09d0faa69f9e0217/.github/workflows/check.yml",
+              "https://github.com/mesonbuild/meson/releases/tag/1.12.1",
+              "https://mesonbuild.com/Release-procedure.html"
             ],
             "state": "not-met",
-            "summary": "Rizin is one independent upstream project; the app and external/FFI/schema fixtures plus their wrap dependencies are not independent consumer samples. The executed corpus lacks broad independent consumer diversity."
+            "summary": "inih-r63 is one new independent upstream full-suite consumer. Prior Rizin package/runtime smoke remains scoped to its retained source-specific evidence, with unsuccessful extra full-suite diagnostics explicit. These limited upstream cases and authored fixture/wrap variants do not establish many independent consumer projects."
           },
           "nonEolVersions": {
             "evidence": [
-              "https://github.com/nix-purifiers/meson-purifier/blob/64f252d0df2f08cd81f3baad09d0faa69f9e0217/flake.nix",
-              "https://github.com/nix-purifiers/meson-purifier/actions/runs/42153562690/job/127682283186",
-              "https://github.com/nix-purifiers/meson-purifier/actions/runs/42153562690/job/127682283290",
+              "https://nix-purifiers.github.io/evidence/cb4c495ac6de21575770182a7b7a5cf846a36a7b726e2a68e30cb69711a79887.json",
+              "https://nix-purifiers.github.io/evidence/9be9a95a65a1208c0b0981e94d9bb0a7fa5e2061731173a24c89098239f3de6b.json",
+              "https://nix-purifiers.github.io/evidence/0f3d00fed8d2d4535b26adfcadd58243bf932a0aeb2a19cd3b56448ac125ac38.json",
+              "https://mesonbuild.com/FAQ.html",
               "https://github.com/mesonbuild/meson/releases/tag/1.12.1",
-              "https://mesonbuild.com/Release-procedure.html",
-              "https://nix-purifiers.github.io/evidence/0bc57a0e1c9de2755f3921906d49b806e854b92f7ef63f18636aa6ef7376c10d.json"
+              "https://nix-purifiers.github.io/evidence/34657dea085eba596c905c468c07ddd5f1e83b748bc83938cb9faacab9b357a3.json"
             ],
             "state": "met",
-            "summary": "The successful public-main checks execute Meson1.12.1, identified by the upstream release page as the current latest release. This judgment is limited to that exact maintained current point; the WIP upstream release-procedure page is not treated as an approved EOL/support interval."
+            "summary": "Actual native CI executes maintained Meson1.12.1 at the explicitly recorded compiler/Python/platform points. The official release page labels1.12.1 Latest at review; the FAQ offers case-by-case LTS/backports rather than a fixed historical EOL interval. This credits the executed current point, not every patch, SDK family, compiler/Python Cartesian product or historical range."
           },
           "oneVersion": {
             "evidence": [
-              "https://github.com/nix-purifiers/meson-purifier/blob/64f252d0df2f08cd81f3baad09d0faa69f9e0217/flake.nix",
-              "https://github.com/nix-purifiers/meson-purifier/actions/runs/42153562690/job/127682283186",
-              "https://github.com/nix-purifiers/meson-purifier/actions/runs/42153562690/job/127682283290",
-              "https://nix-purifiers.github.io/evidence/0bc57a0e1c9de2755f3921906d49b806e854b92f7ef63f18636aa6ef7376c10d.json"
+              "https://nix-purifiers.github.io/evidence/cb4c495ac6de21575770182a7b7a5cf846a36a7b726e2a68e30cb69711a79887.json",
+              "https://nix-purifiers.github.io/evidence/9be9a95a65a1208c0b0981e94d9bb0a7fa5e2061731173a24c89098239f3de6b.json",
+              "https://nix-purifiers.github.io/evidence/0f3d00fed8d2d4535b26adfcadd58243bf932a0aeb2a19cd3b56448ac125ac38.json"
             ],
             "state": "met",
-            "summary": "Successful sample execution binds the exact pinned SDK point(s): Meson 1.12.1. Wider version intervals are not inferred."
+            "summary": "Exact Meson1.12.1 executes with Python3.14.8 and compiler16.2.0 on x86_64-linux, and Python3.14.8/compiler21.1.8 on native aarch64-darwin. The compiled fixture, runtime wrapper and inih runtime/consumer identities are distinct. The compiled inih tests drv is observed, but no separate compiled-inih output NAR is fabricated from its runtime wrapper."
           }
         },
         "derivationReview": {
           "criteria": {
             "darwin": {
-              "derivations": [],
-              "gap": "The inspected successful workflows execute Ubuntu x86_64/ARM only; no native Darwin SDK/build/test/output receipt exists for this public revision. Linux execution, Darwin lock entries or conditional systems do not establish Darwin runtime.",
-              "sources": [
-                "https://github.com/nix-purifiers/meson-purifier/blob/64f252d0df2f08cd81f3baad09d0faa69f9e0217/.github/workflows/check.yml",
-                "https://nix-purifiers.github.io/evidence/0bc57a0e1c9de2755f3921906d49b806e854b92f7ef63f18636aa6ef7376c10d.json"
+              "derivations": [
+                "meson-purifier@2082710:darwin-one:compiledFixture",
+                "meson-purifier@2082710:darwin-one:fixtureRuntimeEvidence",
+                "meson-purifier@2082710:darwin-one:independentInihRuntimeAndConsumer",
+                "meson-purifier@2082710:darwin-two:compiledFixture",
+                "meson-purifier@2082710:darwin-two:fixtureRuntimeEvidence",
+                "meson-purifier@2082710:darwin-two:independentInihRuntimeAndConsumer"
               ],
-              "state": "not-met",
-              "summary": "The inspected successful workflows execute Ubuntu x86_64/ARM only; no native Darwin SDK/build/test/output receipt exists for this public revision. Linux execution, Darwin lock entries or conditional systems do not establish Darwin runtime."
+              "gap": null,
+              "sources": [
+                "https://nix-purifiers.github.io/evidence/cb4c495ac6de21575770182a7b7a5cf846a36a7b726e2a68e30cb69711a79887.json",
+                "https://nix-purifiers.github.io/evidence/9be9a95a65a1208c0b0981e94d9bb0a7fa5e2061731173a24c89098239f3de6b.json",
+                "https://nix-purifiers.github.io/evidence/0f3d00fed8d2d4535b26adfcadd58243bf932a0aeb2a19cd3b56448ac125ac38.json"
+              ],
+              "state": "met",
+              "summary": "Two native aarch64-darwin jobs each compile the fixture in a clean store with output absent beforehand, execute pure and cold ordinary checks, and run inih tests/installed consumer under sandbox=true. Their compiled fixture full NARs, including signatures, match strictly in a separate Linux receipt-comparison job. A failed in-place Darwin rebuild diagnostic remains failed; no signature normalization, Intel Darwin or unsupported runtime matrix is inferred."
             },
             "evaluation": {
               "derivations": [
-                "meson-purifier:real-world-rizin:x86_64-linux",
-                "meson-purifier:fixture-tests:x86_64-linux",
-                "meson-purifier:native-ffi:x86_64-linux",
-                "meson-purifier:resource-schema:x86_64-linux",
-                "meson-purifier:builder-package:x86_64-linux",
-                "meson-purifier:cli:x86_64-linux",
-                "meson-purifier:conformance-external:x86_64-linux",
-                "meson-purifier:conformance-malformed:x86_64-linux",
-                "meson-purifier:conformance-missing:x86_64-linux",
-                "meson-purifier:conformance-stale:x86_64-linux",
-                "meson-purifier:conformance-tampered:x86_64-linux",
-                "meson-purifier:fixture-app:x86_64-linux",
-                "meson-purifier:fixture-fetches:x86_64-linux",
-                "meson-purifier:fixture-packages:x86_64-linux",
-                "meson-purifier:fixture-release:x86_64-linux",
-                "meson-purifier:toolchain:x86_64-linux",
-                "meson-purifier:treefmt:x86_64-linux",
-                "meson-purifier:wrap-file-reader:x86_64-linux"
+                "meson-purifier@2082710:linux:compiledFixture",
+                "meson-purifier@2082710:linux:fixtureRuntimeEvidence",
+                "meson-purifier@2082710:linux:independentInihRuntimeAndConsumer",
+                "meson-purifier@2082710:darwin-one:compiledFixture",
+                "meson-purifier@2082710:darwin-one:fixtureRuntimeEvidence",
+                "meson-purifier@2082710:darwin-one:independentInihRuntimeAndConsumer",
+                "meson-purifier@2082710:darwin-two:compiledFixture",
+                "meson-purifier@2082710:darwin-two:fixtureRuntimeEvidence",
+                "meson-purifier@2082710:darwin-two:independentInihRuntimeAndConsumer",
+                "meson-purifier@2082710:x86_64-linux:canonical-receipt-comparison"
               ],
               "gap": null,
               "sources": [
-                "https://github.com/nix-purifiers/meson-purifier/blob/64f252d0df2f08cd81f3baad09d0faa69f9e0217/flake.nix",
-                "https://github.com/nix-purifiers/meson-purifier/actions/runs/42153562690/job/127682283186",
-                "https://github.com/nix-purifiers/meson-purifier/actions/runs/42153562690/job/127682283290",
-                "https://nix-purifiers.github.io/evidence/0bc57a0e1c9de2755f3921906d49b806e854b92f7ef63f18636aa6ef7376c10d.json"
+                "https://nix-purifiers.github.io/evidence/cb4c495ac6de21575770182a7b7a5cf846a36a7b726e2a68e30cb69711a79887.json",
+                "https://nix-purifiers.github.io/evidence/9be9a95a65a1208c0b0981e94d9bb0a7fa5e2061731173a24c89098239f3de6b.json",
+                "https://nix-purifiers.github.io/evidence/0f3d00fed8d2d4535b26adfcadd58243bf932a0aeb2a19cd3b56448ac125ac38.json"
               ],
               "state": "met",
-              "summary": "Exact revision 64f252d0df2f08cd81f3baad09d0faa69f9e0217 evaluates its x86_64-linux check set; successful Nix realization receipts bind executable check attributes to derivation/output paths."
+              "summary": "Actual main passes all14 CI jobs, including native Linux full flake checks and Linux/Darwin runtime profiles. Nine source/SDK/drv/output/NAR tuples and the separate Linux receipt-comparison helper independently metadata-evaluate exactly. Expression arguments and reconstructed source/locks are retained; this is not a new integration build."
             },
             "goodTests": {
               "derivations": [
-                "meson-purifier:real-world-rizin:x86_64-linux",
-                "meson-purifier:fixture-tests:x86_64-linux",
-                "meson-purifier:native-ffi:x86_64-linux",
-                "meson-purifier:resource-schema:x86_64-linux",
-                "meson-purifier:builder-package:x86_64-linux",
-                "meson-purifier:conformance-external:x86_64-linux",
-                "meson-purifier:conformance-malformed:x86_64-linux",
-                "meson-purifier:conformance-missing:x86_64-linux",
-                "meson-purifier:conformance-stale:x86_64-linux",
-                "meson-purifier:conformance-tampered:x86_64-linux",
-                "meson-purifier:fixture-app:x86_64-linux",
-                "meson-purifier:fixture-fetches:x86_64-linux",
-                "meson-purifier:fixture-packages:x86_64-linux",
-                "meson-purifier:fixture-release:x86_64-linux",
-                "meson-purifier:toolchain:x86_64-linux",
-                "meson-purifier:wrap-file-reader:x86_64-linux"
+                "meson-purifier@2082710:linux:compiledFixture",
+                "meson-purifier@2082710:linux:fixtureRuntimeEvidence",
+                "meson-purifier@2082710:linux:independentInihRuntimeAndConsumer",
+                "meson-purifier@2082710:darwin-one:compiledFixture",
+                "meson-purifier@2082710:darwin-one:fixtureRuntimeEvidence",
+                "meson-purifier@2082710:darwin-one:independentInihRuntimeAndConsumer",
+                "meson-purifier@2082710:darwin-two:compiledFixture",
+                "meson-purifier@2082710:darwin-two:fixtureRuntimeEvidence",
+                "meson-purifier@2082710:darwin-two:independentInihRuntimeAndConsumer",
+                "meson-purifier@2082710:x86_64-linux:canonical-receipt-comparison"
               ],
               "gap": null,
               "sources": [
+                "https://nix-purifiers.github.io/evidence/cb4c495ac6de21575770182a7b7a5cf846a36a7b726e2a68e30cb69711a79887.json",
+                "https://nix-purifiers.github.io/evidence/9be9a95a65a1208c0b0981e94d9bb0a7fa5e2061731173a24c89098239f3de6b.json",
+                "https://nix-purifiers.github.io/evidence/0f3d00fed8d2d4535b26adfcadd58243bf932a0aeb2a19cd3b56448ac125ac38.json",
                 "https://github.com/nix-purifiers/meson-purifier/blob/64f252d0df2f08cd81f3baad09d0faa69f9e0217/flake.nix",
                 "https://github.com/nix-purifiers/meson-purifier/actions/runs/42153562690/job/127682283186",
                 "https://github.com/nix-purifiers/meson-purifier/actions/runs/42153562690/job/127682283290",
+                "https://nix-purifiers.github.io/evidence/0bc57a0e1c9de2755f3921906d49b806e854b92f7ef63f18636aa6ef7376c10d.json",
                 "https://github.com/nix-purifiers/meson-purifier/blob/64f252d0df2f08cd81f3baad09d0faa69f9e0217/tests/default.nix",
-                "https://nix-purifiers.github.io/evidence/0bc57a0e1c9de2755f3921906d49b806e854b92f7ef63f18636aa6ef7376c10d.json"
+                "https://github.com/nix-purifiers/meson-purifier/blob/64f252d0df2f08cd81f3baad09d0faa69f9e0217/.github/workflows/check.yml",
+                "https://github.com/mesonbuild/meson/releases/tag/1.12.1",
+                "https://mesonbuild.com/Release-procedure.html"
               ],
               "state": "met",
-              "summary": "Executable Nix checks build and run the C fixture with Git/Hg/SVN/file wraps and patch directories, exercise external locks, malformed/stale/tampered/missing entries, resource schema and native FFI; Rizin's built binaries must report0.8.2 and assemble x86 instruction bytes correctly. This is meaningful resolver/artifact/runtime coverage. The public Rizin check is a binary smoke check, not the full Rizin upstream suite; producer's broader tests remain separate."
+              "summary": "The authored external fixture executes18 tests with a nonempty zlib1.3.2/inih-r62 wrap graph, cold ordinary nodownload configuration and missing-cache/stale-wrap controls. Unmodified independent inih-r63 executes17 upstream C/C++ tests, cold ordinary sandbox tests and an installed-library consumer returning42 on native Linux/Darwin. Prior source-specific Rizin package/runtime smoke remains separate; supplemental full suites failed1/126 and3/153 and are not claimed successful."
             },
             "linux": {
               "derivations": [
-                "meson-purifier:real-world-rizin:x86_64-linux",
-                "meson-purifier:fixture-tests:x86_64-linux",
-                "meson-purifier:native-ffi:x86_64-linux",
-                "meson-purifier:resource-schema:x86_64-linux"
+                "meson-purifier@2082710:linux:compiledFixture",
+                "meson-purifier@2082710:linux:fixtureRuntimeEvidence",
+                "meson-purifier@2082710:linux:independentInihRuntimeAndConsumer"
               ],
               "gap": null,
               "sources": [
-                "https://github.com/nix-purifiers/meson-purifier/blob/64f252d0df2f08cd81f3baad09d0faa69f9e0217/flake.nix",
-                "https://github.com/nix-purifiers/meson-purifier/actions/runs/42153562690/job/127682283186",
-                "https://github.com/nix-purifiers/meson-purifier/actions/runs/42153562690/job/127682283290",
-                "https://nix-purifiers.github.io/evidence/0bc57a0e1c9de2755f3921906d49b806e854b92f7ef63f18636aa6ef7376c10d.json"
+                "https://nix-purifiers.github.io/evidence/cb4c495ac6de21575770182a7b7a5cf846a36a7b726e2a68e30cb69711a79887.json",
+                "https://nix-purifiers.github.io/evidence/9be9a95a65a1208c0b0981e94d9bb0a7fa5e2061731173a24c89098239f3de6b.json",
+                "https://nix-purifiers.github.io/evidence/0f3d00fed8d2d4535b26adfcadd58243bf932a0aeb2a19cd3b56448ac125ac38.json"
               ],
               "state": "met",
-              "summary": "Native x86_64-linux check realization succeeds with exact drv/output receipts; same-source successful Ubuntu x86_64 and ARM CI logs record executable check builds. Cached local realization is distinguished from original CI execution."
+              "summary": "Actual-main native x86_64-linux runtime receipts bind compiled fixture and cold ordinary/runtime/installed-consumer checks under sandbox=true. Native aarch64-linux full flake/conformance checks also pass in the14-job run; the new measured runtime SDK tuples are not generalized to ARM Linux or arbitrary compiler/Python combinations."
             },
             "longCompatibility": {
-              "derivations": [],
-              "gap": "Public checks execute one pinned Meson1.12.1 toolchain. Fixture package version1.0.0 and Rizin0.8.2 are consumer versions, not old Meson runtime points, and do not establish historical Meson compatibility.",
+              "derivations": [
+                "meson-purifier@2082710:linux:compiledFixture",
+                "meson-purifier@2082710:linux:fixtureRuntimeEvidence",
+                "meson-purifier@2082710:linux:independentInihRuntimeAndConsumer",
+                "meson-purifier@2082710:darwin-one:compiledFixture",
+                "meson-purifier@2082710:darwin-one:fixtureRuntimeEvidence",
+                "meson-purifier@2082710:darwin-one:independentInihRuntimeAndConsumer",
+                "meson-purifier@2082710:darwin-two:compiledFixture",
+                "meson-purifier@2082710:darwin-two:fixtureRuntimeEvidence",
+                "meson-purifier@2082710:darwin-two:independentInihRuntimeAndConsumer",
+                "meson-purifier@2082710:x86_64-linux:canonical-receipt-comparison"
+              ],
+              "gap": "The actual runtime points execute Meson1.12.1. Fixture version1.0.0, inih releases and Rizin consumer versions are not older Meson SDK epochs. No substantially earlier Meson workflow execution or continuous compatibility interval is established.",
               "sources": [
-                "https://github.com/nix-purifiers/meson-purifier/blob/64f252d0df2f08cd81f3baad09d0faa69f9e0217/flake.nix",
-                "https://github.com/nix-purifiers/meson-purifier/actions/runs/42153562690/job/127682283186",
-                "https://github.com/nix-purifiers/meson-purifier/actions/runs/42153562690/job/127682283290",
-                "https://nix-purifiers.github.io/evidence/0bc57a0e1c9de2755f3921906d49b806e854b92f7ef63f18636aa6ef7376c10d.json"
+                "https://nix-purifiers.github.io/evidence/cb4c495ac6de21575770182a7b7a5cf846a36a7b726e2a68e30cb69711a79887.json",
+                "https://nix-purifiers.github.io/evidence/9be9a95a65a1208c0b0981e94d9bb0a7fa5e2061731173a24c89098239f3de6b.json",
+                "https://nix-purifiers.github.io/evidence/0f3d00fed8d2d4535b26adfcadd58243bf932a0aeb2a19cd3b56448ac125ac38.json"
               ],
               "state": "not-met",
-              "summary": "Public checks execute one pinned Meson1.12.1 toolchain. Fixture package version1.0.0 and Rizin0.8.2 are consumer versions, not old Meson runtime points, and do not establish historical Meson compatibility."
+              "summary": "The actual runtime points execute Meson1.12.1. Fixture version1.0.0, inih releases and Rizin consumer versions are not older Meson SDK epochs. No substantially earlier Meson workflow execution or continuous compatibility interval is established."
             },
             "manySamples": {
-              "derivations": [],
-              "gap": "Rizin is one independent upstream project; the app and external/FFI/schema fixtures plus their wrap dependencies are not independent consumer samples. The executed corpus lacks broad independent consumer diversity.",
+              "derivations": [
+                "meson-purifier@2082710:linux:independentInihRuntimeAndConsumer",
+                "meson-purifier@2082710:darwin-one:independentInihRuntimeAndConsumer",
+                "meson-purifier@2082710:darwin-two:independentInihRuntimeAndConsumer"
+              ],
+              "gap": "inih-r63 is one new independent upstream full-suite consumer. Prior Rizin package/runtime smoke remains scoped to its retained source-specific evidence, with unsuccessful extra full-suite diagnostics explicit. These limited upstream cases and authored fixture/wrap variants do not establish many independent consumer projects.",
               "sources": [
+                "https://nix-purifiers.github.io/evidence/cb4c495ac6de21575770182a7b7a5cf846a36a7b726e2a68e30cb69711a79887.json",
+                "https://nix-purifiers.github.io/evidence/9be9a95a65a1208c0b0981e94d9bb0a7fa5e2061731173a24c89098239f3de6b.json",
+                "https://nix-purifiers.github.io/evidence/0f3d00fed8d2d4535b26adfcadd58243bf932a0aeb2a19cd3b56448ac125ac38.json",
                 "https://github.com/nix-purifiers/meson-purifier/blob/64f252d0df2f08cd81f3baad09d0faa69f9e0217/flake.nix",
                 "https://github.com/nix-purifiers/meson-purifier/actions/runs/42153562690/job/127682283186",
                 "https://github.com/nix-purifiers/meson-purifier/actions/runs/42153562690/job/127682283290",
-                "https://nix-purifiers.github.io/evidence/0bc57a0e1c9de2755f3921906d49b806e854b92f7ef63f18636aa6ef7376c10d.json"
+                "https://nix-purifiers.github.io/evidence/0bc57a0e1c9de2755f3921906d49b806e854b92f7ef63f18636aa6ef7376c10d.json",
+                "https://github.com/nix-purifiers/meson-purifier/blob/64f252d0df2f08cd81f3baad09d0faa69f9e0217/tests/default.nix",
+                "https://github.com/nix-purifiers/meson-purifier/blob/64f252d0df2f08cd81f3baad09d0faa69f9e0217/.github/workflows/check.yml",
+                "https://github.com/mesonbuild/meson/releases/tag/1.12.1",
+                "https://mesonbuild.com/Release-procedure.html"
               ],
               "state": "not-met",
-              "summary": "Rizin is one independent upstream project; the app and external/FFI/schema fixtures plus their wrap dependencies are not independent consumer samples. The executed corpus lacks broad independent consumer diversity."
+              "summary": "inih-r63 is one new independent upstream full-suite consumer. Prior Rizin package/runtime smoke remains scoped to its retained source-specific evidence, with unsuccessful extra full-suite diagnostics explicit. These limited upstream cases and authored fixture/wrap variants do not establish many independent consumer projects."
             },
             "nonEolVersions": {
               "derivations": [
-                "meson-purifier:real-world-rizin:x86_64-linux",
-                "meson-purifier:fixture-tests:x86_64-linux",
-                "meson-purifier:native-ffi:x86_64-linux"
+                "meson-purifier@2082710:linux:compiledFixture",
+                "meson-purifier@2082710:linux:fixtureRuntimeEvidence",
+                "meson-purifier@2082710:linux:independentInihRuntimeAndConsumer",
+                "meson-purifier@2082710:darwin-one:compiledFixture",
+                "meson-purifier@2082710:darwin-one:fixtureRuntimeEvidence",
+                "meson-purifier@2082710:darwin-one:independentInihRuntimeAndConsumer",
+                "meson-purifier@2082710:darwin-two:compiledFixture",
+                "meson-purifier@2082710:darwin-two:fixtureRuntimeEvidence",
+                "meson-purifier@2082710:darwin-two:independentInihRuntimeAndConsumer"
               ],
               "gap": null,
               "sources": [
+                "https://nix-purifiers.github.io/evidence/cb4c495ac6de21575770182a7b7a5cf846a36a7b726e2a68e30cb69711a79887.json",
+                "https://nix-purifiers.github.io/evidence/9be9a95a65a1208c0b0981e94d9bb0a7fa5e2061731173a24c89098239f3de6b.json",
+                "https://nix-purifiers.github.io/evidence/0f3d00fed8d2d4535b26adfcadd58243bf932a0aeb2a19cd3b56448ac125ac38.json",
+                "https://mesonbuild.com/FAQ.html",
                 "https://github.com/mesonbuild/meson/releases/tag/1.12.1",
-                "https://mesonbuild.com/Release-procedure.html",
-                "https://github.com/nix-purifiers/meson-purifier/blob/64f252d0df2f08cd81f3baad09d0faa69f9e0217/flake.nix",
-                "https://github.com/nix-purifiers/meson-purifier/actions/runs/42153562690/job/127682283186",
-                "https://github.com/nix-purifiers/meson-purifier/actions/runs/42153562690/job/127682283290",
-                "https://nix-purifiers.github.io/evidence/0bc57a0e1c9de2755f3921906d49b806e854b92f7ef63f18636aa6ef7376c10d.json"
+                "https://nix-purifiers.github.io/evidence/34657dea085eba596c905c468c07ddd5f1e83b748bc83938cb9faacab9b357a3.json"
               ],
               "state": "met",
-              "summary": "The successful public-main checks execute Meson1.12.1, identified by the upstream release page as the current latest release. This judgment is limited to that exact maintained current point; the WIP upstream release-procedure page is not treated as an approved EOL/support interval."
+              "summary": "Actual native CI executes maintained Meson1.12.1 at the explicitly recorded compiler/Python/platform points. The official release page labels1.12.1 Latest at review; the FAQ offers case-by-case LTS/backports rather than a fixed historical EOL interval. This credits the executed current point, not every patch, SDK family, compiler/Python Cartesian product or historical range."
             },
             "oneVersion": {
               "derivations": [
-                "meson-purifier:real-world-rizin:x86_64-linux",
-                "meson-purifier:fixture-tests:x86_64-linux",
-                "meson-purifier:native-ffi:x86_64-linux"
+                "meson-purifier@2082710:linux:compiledFixture",
+                "meson-purifier@2082710:linux:fixtureRuntimeEvidence",
+                "meson-purifier@2082710:linux:independentInihRuntimeAndConsumer",
+                "meson-purifier@2082710:darwin-one:compiledFixture",
+                "meson-purifier@2082710:darwin-one:fixtureRuntimeEvidence",
+                "meson-purifier@2082710:darwin-one:independentInihRuntimeAndConsumer",
+                "meson-purifier@2082710:darwin-two:compiledFixture",
+                "meson-purifier@2082710:darwin-two:fixtureRuntimeEvidence",
+                "meson-purifier@2082710:darwin-two:independentInihRuntimeAndConsumer"
               ],
               "gap": null,
               "sources": [
-                "https://github.com/nix-purifiers/meson-purifier/blob/64f252d0df2f08cd81f3baad09d0faa69f9e0217/flake.nix",
-                "https://github.com/nix-purifiers/meson-purifier/actions/runs/42153562690/job/127682283186",
-                "https://github.com/nix-purifiers/meson-purifier/actions/runs/42153562690/job/127682283290",
-                "https://nix-purifiers.github.io/evidence/0bc57a0e1c9de2755f3921906d49b806e854b92f7ef63f18636aa6ef7376c10d.json"
+                "https://nix-purifiers.github.io/evidence/cb4c495ac6de21575770182a7b7a5cf846a36a7b726e2a68e30cb69711a79887.json",
+                "https://nix-purifiers.github.io/evidence/9be9a95a65a1208c0b0981e94d9bb0a7fa5e2061731173a24c89098239f3de6b.json",
+                "https://nix-purifiers.github.io/evidence/0f3d00fed8d2d4535b26adfcadd58243bf932a0aeb2a19cd3b56448ac125ac38.json"
               ],
               "state": "met",
-              "summary": "Successful sample execution binds the exact pinned SDK point(s): Meson 1.12.1. Wider version intervals are not inferred."
+              "summary": "Exact Meson1.12.1 executes with Python3.14.8 and compiler16.2.0 on x86_64-linux, and Python3.14.8/compiler21.1.8 on native aarch64-darwin. The compiled fixture, runtime wrapper and inih runtime/consumer identities are distinct. The compiled inih tests drv is observed, but no separate compiled-inih output NAR is fabricated from its runtime wrapper."
             }
           },
           "derivations": {
-            "meson-purifier:builder-package:x86_64-linux": {
+            "meson-purifier@2082710:darwin-one:compiledFixture": {
               "build": {
-                "artifactSha256": "e3bdeb5bd839634288b697a256b28afca897326741ae895a76929965cb3d6bda",
-                "drvPath": "/nix/store/wl1mnb7phpwp8nabb7yjs7v60gjf90r5-builder-package.drv",
-                "executedSystem": "x86_64-linux",
+                "artifactSha256": "5a68592ad8a7e6ab5c126a920c8ec581adad2bb6d430148216f23868dc550ae2",
+                "drvPath": "/nix/store/s4k68zhz26q5jgnpwwqrwr9zv1n7f1cm-external-fixture-tests-1.0.0.drv",
+                "executedSystem": "aarch64-darwin",
                 "outputNarHashes": {
-                  "out": "sha256-d6xi4mKdjkX2JFicDIv5niSzpyI0m/Hnm8GGAIU04kY="
+                  "out": "sha256-bm2hG09fm4QPpQrRx/JhrV5W6+xn5DQW+DtbE1yBw3w="
                 },
                 "outputs": {
-                  "out": "/nix/store/b48djp4hh4hqrfki09wm0cynb46x0dpi-builder-package"
+                  "out": "/nix/store/inklzdkrj2z0kidmm7cawr9fdd0b6c0s-external-fixture-tests-1.0.0"
                 },
-                "receipt": "https://nix-purifiers.github.io/evidence/e3bdeb5bd839634288b697a256b28afca897326741ae895a76929965cb3d6bda.json",
+                "receipt": "https://nix-purifiers.github.io/evidence/5a68592ad8a7e6ab5c126a920c8ec581adad2bb6d430148216f23868dc550ae2.json",
                 "sampleSources": [],
-                "sdkVersions": {},
-                "sourceNarHash": "sha256-vlcv16SJ6BNSqZ8ntZ9OxZCb5S8vKqgpsN52SLakxrQ=",
-                "sourceRevision": "64f252d0df2f08cd81f3baad09d0faa69f9e0217",
+                "sdkVersions": {
+                  "C/C++ compiler": "21.1.8",
+                  "Meson": "1.12.1",
+                  "Python": "3.14.8"
+                },
+                "sourceNarHash": "sha256-vi8H7QfkAdJhhYEOUPhfD6S8UjHutWoRzRIHF6j0Jd0=",
+                "sourceRevision": "20827109606eaafeaf14f2494062af8899d6967f",
                 "status": "success"
               },
               "check": {
-                "kind": "flake-attribute",
-                "replay": null,
-                "value": "checks.x86_64-linux.builder-package"
+                "kind": "expression",
+                "replay": {
+                  "arguments": {
+                    "MESON_PROJECT": "restore projectFiles to an arbitrary local directory",
+                    "MESON_REPO": "restore immutable producer208 source with verified sourceNarHash",
+                    "NIX_EVALUATION_SYSTEM": "pass --system aarch64-darwin for metadata replay"
+                  },
+                  "artifactSha256": "0753fd1fb4704761c775ac50fe0e38207a94787700b176d80a408b6bd254a4fe",
+                  "artifactUrl": "https://nix-purifiers.github.io/evidence/0753fd1fb4704761c775ac50fe0e38207a94787700b176d80a408b6bd254a4fe.json",
+                  "expressionSha256": "33024171c80269c5f2ede2eb5e8eb962a3764a8eae725a4472f6ee7f391195ea"
+                },
+                "value": "import ((builtins.getEnv \"MESON_REPO\") + \"/tests/tier2-build.nix\") { repository = builtins.getEnv \"MESON_REPO\"; project = builtins.getEnv \"MESON_PROJECT\"; result=\"tests\"; }"
               },
-              "drvPath": "/nix/store/wl1mnb7phpwp8nabb7yjs7v60gjf90r5-builder-package.drv",
-              "evaluation": null,
+              "drvPath": "/nix/store/s4k68zhz26q5jgnpwwqrwr9zv1n7f1cm-external-fixture-tests-1.0.0.drv",
+              "evaluation": {
+                "artifactSha256": "1bad4665db6f52788ef7a33d48797db385f4c3ee706abb720d3fac15df519708",
+                "check": {
+                  "kind": "expression",
+                  "replay": {
+                    "arguments": {
+                      "MESON_PROJECT": "restore projectFiles to an arbitrary local directory",
+                      "MESON_REPO": "restore immutable producer208 source with verified sourceNarHash",
+                      "NIX_EVALUATION_SYSTEM": "pass --system aarch64-darwin for metadata replay"
+                    },
+                    "artifactSha256": "0753fd1fb4704761c775ac50fe0e38207a94787700b176d80a408b6bd254a4fe",
+                    "artifactUrl": "https://nix-purifiers.github.io/evidence/0753fd1fb4704761c775ac50fe0e38207a94787700b176d80a408b6bd254a4fe.json",
+                    "expressionSha256": "33024171c80269c5f2ede2eb5e8eb962a3764a8eae725a4472f6ee7f391195ea"
+                  },
+                  "value": "import ((builtins.getEnv \"MESON_REPO\") + \"/tests/tier2-build.nix\") { repository = builtins.getEnv \"MESON_REPO\"; project = builtins.getEnv \"MESON_PROJECT\"; result=\"tests\"; }"
+                },
+                "drvPath": "/nix/store/s4k68zhz26q5jgnpwwqrwr9zv1n7f1cm-external-fixture-tests-1.0.0.drv",
+                "receipt": "https://nix-purifiers.github.io/evidence/1bad4665db6f52788ef7a33d48797db385f4c3ee706abb720d3fac15df519708.json",
+                "sourceNarHash": "sha256-vi8H7QfkAdJhhYEOUPhfD6S8UjHutWoRzRIHF6j0Jd0=",
+                "sourceRevision": "20827109606eaafeaf14f2494062af8899d6967f"
+              },
               "outputNarHashes": {
-                "out": "sha256-d6xi4mKdjkX2JFicDIv5niSzpyI0m/Hnm8GGAIU04kY="
+                "out": "sha256-bm2hG09fm4QPpQrRx/JhrV5W6+xn5DQW+DtbE1yBw3w="
               },
               "outputs": {
-                "out": "/nix/store/b48djp4hh4hqrfki09wm0cynb46x0dpi-builder-package"
+                "out": "/nix/store/inklzdkrj2z0kidmm7cawr9fdd0b6c0s-external-fixture-tests-1.0.0"
               },
               "repository": "nix-purifiers/meson-purifier",
-              "revision": "64f252d0df2f08cd81f3baad09d0faa69f9e0217",
+              "revision": "20827109606eaafeaf14f2494062af8899d6967f",
               "sampleSources": [],
-              "sdkVersions": {},
-              "sourceNarHash": "sha256-vlcv16SJ6BNSqZ8ntZ9OxZCb5S8vKqgpsN52SLakxrQ=",
-              "system": "x86_64-linux"
+              "sdkVersions": {
+                "C/C++ compiler": "21.1.8",
+                "Meson": "1.12.1",
+                "Python": "3.14.8"
+              },
+              "sourceNarHash": "sha256-vi8H7QfkAdJhhYEOUPhfD6S8UjHutWoRzRIHF6j0Jd0=",
+              "system": "aarch64-darwin"
             },
-            "meson-purifier:cli:x86_64-linux": {
+            "meson-purifier@2082710:darwin-one:fixtureRuntimeEvidence": {
               "build": {
-                "artifactSha256": "e3bdeb5bd839634288b697a256b28afca897326741ae895a76929965cb3d6bda",
-                "drvPath": "/nix/store/z6a8r8fy8r8bmr0hk2b87was3sa38sfz-meson-purifier-0.1.0.drv",
-                "executedSystem": "x86_64-linux",
+                "artifactSha256": "b9d363c866c5e49c40322343f604c821f73b2ac8baeb18a3d73ed4c3509a7447",
+                "drvPath": "/nix/store/q1snyq5bv10hvib9ah22m8kfbx6wv447-meson-external-fixture-runtime-evidence.drv",
+                "executedSystem": "aarch64-darwin",
                 "outputNarHashes": {
-                  "out": "sha256-d7gwTA9jJFjCvG57nYHWNahHnKoArTabAQp7TaJyBZc="
+                  "out": "sha256-3pKEiFh4ELWLjQ2qIrrr/KosXUqTquswd/vRxnj8tlE="
                 },
                 "outputs": {
-                  "out": "/nix/store/7y5rlaf0sg91xbbn3hz1ms7ga0jsky2w-meson-purifier-0.1.0"
+                  "out": "/nix/store/j23pqw0argp231dr5pmx113xmlpq1458-meson-external-fixture-runtime-evidence"
                 },
-                "receipt": "https://nix-purifiers.github.io/evidence/e3bdeb5bd839634288b697a256b28afca897326741ae895a76929965cb3d6bda.json",
+                "receipt": "https://nix-purifiers.github.io/evidence/b9d363c866c5e49c40322343f604c821f73b2ac8baeb18a3d73ed4c3509a7447.json",
                 "sampleSources": [],
-                "sdkVersions": {},
-                "sourceNarHash": "sha256-vlcv16SJ6BNSqZ8ntZ9OxZCb5S8vKqgpsN52SLakxrQ=",
-                "sourceRevision": "64f252d0df2f08cd81f3baad09d0faa69f9e0217",
+                "sdkVersions": {
+                  "C/C++ compiler": "21.1.8",
+                  "Meson": "1.12.1",
+                  "Python": "3.14.8"
+                },
+                "sourceNarHash": "sha256-vi8H7QfkAdJhhYEOUPhfD6S8UjHutWoRzRIHF6j0Jd0=",
+                "sourceRevision": "20827109606eaafeaf14f2494062af8899d6967f",
                 "status": "success"
               },
               "check": {
-                "kind": "flake-attribute",
-                "replay": null,
-                "value": "checks.x86_64-linux.cli"
+                "kind": "expression",
+                "replay": {
+                  "arguments": {
+                    "MESON_PROJECT": "restore projectFiles to an arbitrary local directory",
+                    "MESON_REPO": "restore immutable producer208 source with verified sourceNarHash",
+                    "NIX_EVALUATION_SYSTEM": "pass --system aarch64-darwin for metadata replay"
+                  },
+                  "artifactSha256": "f907c82df27ad8a43c02ec02eb897d0122a7980fbfbe79a8d7201238e665e430",
+                  "artifactUrl": "https://nix-purifiers.github.io/evidence/f907c82df27ad8a43c02ec02eb897d0122a7980fbfbe79a8d7201238e665e430.json",
+                  "expressionSha256": "6ce9586934126d16ea7c4d25b0131055b96defaa77d977f35a6b5ca60f7e0636"
+                },
+                "value": "import ((builtins.getEnv \"MESON_REPO\") + \"/tests/tier2-build.nix\") { repository = builtins.getEnv \"MESON_REPO\"; project = builtins.getEnv \"MESON_PROJECT\"; }"
               },
-              "drvPath": "/nix/store/z6a8r8fy8r8bmr0hk2b87was3sa38sfz-meson-purifier-0.1.0.drv",
-              "evaluation": null,
+              "drvPath": "/nix/store/q1snyq5bv10hvib9ah22m8kfbx6wv447-meson-external-fixture-runtime-evidence.drv",
+              "evaluation": {
+                "artifactSha256": "106b767d8ef6f45c477e9a3d21a32d60248753c04fb408acc50bda590afbfec9",
+                "check": {
+                  "kind": "expression",
+                  "replay": {
+                    "arguments": {
+                      "MESON_PROJECT": "restore projectFiles to an arbitrary local directory",
+                      "MESON_REPO": "restore immutable producer208 source with verified sourceNarHash",
+                      "NIX_EVALUATION_SYSTEM": "pass --system aarch64-darwin for metadata replay"
+                    },
+                    "artifactSha256": "f907c82df27ad8a43c02ec02eb897d0122a7980fbfbe79a8d7201238e665e430",
+                    "artifactUrl": "https://nix-purifiers.github.io/evidence/f907c82df27ad8a43c02ec02eb897d0122a7980fbfbe79a8d7201238e665e430.json",
+                    "expressionSha256": "6ce9586934126d16ea7c4d25b0131055b96defaa77d977f35a6b5ca60f7e0636"
+                  },
+                  "value": "import ((builtins.getEnv \"MESON_REPO\") + \"/tests/tier2-build.nix\") { repository = builtins.getEnv \"MESON_REPO\"; project = builtins.getEnv \"MESON_PROJECT\"; }"
+                },
+                "drvPath": "/nix/store/q1snyq5bv10hvib9ah22m8kfbx6wv447-meson-external-fixture-runtime-evidence.drv",
+                "receipt": "https://nix-purifiers.github.io/evidence/106b767d8ef6f45c477e9a3d21a32d60248753c04fb408acc50bda590afbfec9.json",
+                "sourceNarHash": "sha256-vi8H7QfkAdJhhYEOUPhfD6S8UjHutWoRzRIHF6j0Jd0=",
+                "sourceRevision": "20827109606eaafeaf14f2494062af8899d6967f"
+              },
               "outputNarHashes": {
-                "out": "sha256-d7gwTA9jJFjCvG57nYHWNahHnKoArTabAQp7TaJyBZc="
+                "out": "sha256-3pKEiFh4ELWLjQ2qIrrr/KosXUqTquswd/vRxnj8tlE="
               },
               "outputs": {
-                "out": "/nix/store/7y5rlaf0sg91xbbn3hz1ms7ga0jsky2w-meson-purifier-0.1.0"
+                "out": "/nix/store/j23pqw0argp231dr5pmx113xmlpq1458-meson-external-fixture-runtime-evidence"
               },
               "repository": "nix-purifiers/meson-purifier",
-              "revision": "64f252d0df2f08cd81f3baad09d0faa69f9e0217",
+              "revision": "20827109606eaafeaf14f2494062af8899d6967f",
               "sampleSources": [],
-              "sdkVersions": {},
-              "sourceNarHash": "sha256-vlcv16SJ6BNSqZ8ntZ9OxZCb5S8vKqgpsN52SLakxrQ=",
-              "system": "x86_64-linux"
+              "sdkVersions": {
+                "C/C++ compiler": "21.1.8",
+                "Meson": "1.12.1",
+                "Python": "3.14.8"
+              },
+              "sourceNarHash": "sha256-vi8H7QfkAdJhhYEOUPhfD6S8UjHutWoRzRIHF6j0Jd0=",
+              "system": "aarch64-darwin"
             },
-            "meson-purifier:conformance-external:x86_64-linux": {
+            "meson-purifier@2082710:darwin-one:independentInihRuntimeAndConsumer": {
               "build": {
-                "artifactSha256": "e3bdeb5bd839634288b697a256b28afca897326741ae895a76929965cb3d6bda",
-                "drvPath": "/nix/store/0b1k8ly89zqqh0ancnci4ad49q43hrr1-conformance-external.drv",
-                "executedSystem": "x86_64-linux",
+                "artifactSha256": "ad5e8c43b5d61340fe20e8a8f67fa09acb0fb20351aae1ca0ee556eaffa1c7e8",
+                "drvPath": "/nix/store/djycjnnr4641kxdm1l4hccywy6gy9vzk-meson-inih-runtime-evidence.drv",
+                "executedSystem": "aarch64-darwin",
                 "outputNarHashes": {
-                  "out": "sha256-d6xi4mKdjkX2JFicDIv5niSzpyI0m/Hnm8GGAIU04kY="
+                  "out": "sha256-/bQW4HzdE01tmwnqCQZaFfmCSz8GdtrkfiYHi53tvXE="
                 },
                 "outputs": {
-                  "out": "/nix/store/nhk431yhnwnr4xvr63j4vjd9hx576fgj-conformance-external"
+                  "out": "/nix/store/kimn1gfvr09434cq586l9lavzb8h1axw-meson-inih-runtime-evidence"
                 },
-                "receipt": "https://nix-purifiers.github.io/evidence/e3bdeb5bd839634288b697a256b28afca897326741ae895a76929965cb3d6bda.json",
-                "sampleSources": [],
-                "sdkVersions": {},
-                "sourceNarHash": "sha256-vlcv16SJ6BNSqZ8ntZ9OxZCb5S8vKqgpsN52SLakxrQ=",
-                "sourceRevision": "64f252d0df2f08cd81f3baad09d0faa69f9e0217",
-                "status": "success"
-              },
-              "check": {
-                "kind": "flake-attribute",
-                "replay": null,
-                "value": "checks.x86_64-linux.conformance-external"
-              },
-              "drvPath": "/nix/store/0b1k8ly89zqqh0ancnci4ad49q43hrr1-conformance-external.drv",
-              "evaluation": null,
-              "outputNarHashes": {
-                "out": "sha256-d6xi4mKdjkX2JFicDIv5niSzpyI0m/Hnm8GGAIU04kY="
-              },
-              "outputs": {
-                "out": "/nix/store/nhk431yhnwnr4xvr63j4vjd9hx576fgj-conformance-external"
-              },
-              "repository": "nix-purifiers/meson-purifier",
-              "revision": "64f252d0df2f08cd81f3baad09d0faa69f9e0217",
-              "sampleSources": [],
-              "sdkVersions": {},
-              "sourceNarHash": "sha256-vlcv16SJ6BNSqZ8ntZ9OxZCb5S8vKqgpsN52SLakxrQ=",
-              "system": "x86_64-linux"
-            },
-            "meson-purifier:conformance-malformed:x86_64-linux": {
-              "build": {
-                "artifactSha256": "e3bdeb5bd839634288b697a256b28afca897326741ae895a76929965cb3d6bda",
-                "drvPath": "/nix/store/crm5zlkybcp0jmzg6h00rsxlvsi4hdah-conformance-malformed.drv",
-                "executedSystem": "x86_64-linux",
-                "outputNarHashes": {
-                  "out": "sha256-d6xi4mKdjkX2JFicDIv5niSzpyI0m/Hnm8GGAIU04kY="
-                },
-                "outputs": {
-                  "out": "/nix/store/991m1bnzs48ljpcdsm2ra9n3fz0l7gs4-conformance-malformed"
-                },
-                "receipt": "https://nix-purifiers.github.io/evidence/e3bdeb5bd839634288b697a256b28afca897326741ae895a76929965cb3d6bda.json",
-                "sampleSources": [],
-                "sdkVersions": {},
-                "sourceNarHash": "sha256-vlcv16SJ6BNSqZ8ntZ9OxZCb5S8vKqgpsN52SLakxrQ=",
-                "sourceRevision": "64f252d0df2f08cd81f3baad09d0faa69f9e0217",
-                "status": "success"
-              },
-              "check": {
-                "kind": "flake-attribute",
-                "replay": null,
-                "value": "checks.x86_64-linux.conformance-malformed"
-              },
-              "drvPath": "/nix/store/crm5zlkybcp0jmzg6h00rsxlvsi4hdah-conformance-malformed.drv",
-              "evaluation": null,
-              "outputNarHashes": {
-                "out": "sha256-d6xi4mKdjkX2JFicDIv5niSzpyI0m/Hnm8GGAIU04kY="
-              },
-              "outputs": {
-                "out": "/nix/store/991m1bnzs48ljpcdsm2ra9n3fz0l7gs4-conformance-malformed"
-              },
-              "repository": "nix-purifiers/meson-purifier",
-              "revision": "64f252d0df2f08cd81f3baad09d0faa69f9e0217",
-              "sampleSources": [],
-              "sdkVersions": {},
-              "sourceNarHash": "sha256-vlcv16SJ6BNSqZ8ntZ9OxZCb5S8vKqgpsN52SLakxrQ=",
-              "system": "x86_64-linux"
-            },
-            "meson-purifier:conformance-missing:x86_64-linux": {
-              "build": {
-                "artifactSha256": "e3bdeb5bd839634288b697a256b28afca897326741ae895a76929965cb3d6bda",
-                "drvPath": "/nix/store/fmrgn8ils28c8n51r9hfi8i745b6bqzy-conformance-missing.drv",
-                "executedSystem": "x86_64-linux",
-                "outputNarHashes": {
-                  "out": "sha256-d6xi4mKdjkX2JFicDIv5niSzpyI0m/Hnm8GGAIU04kY="
-                },
-                "outputs": {
-                  "out": "/nix/store/liwh9xj036nyikgam5ym7hqc9p7vl2ag-conformance-missing"
-                },
-                "receipt": "https://nix-purifiers.github.io/evidence/e3bdeb5bd839634288b697a256b28afca897326741ae895a76929965cb3d6bda.json",
-                "sampleSources": [],
-                "sdkVersions": {},
-                "sourceNarHash": "sha256-vlcv16SJ6BNSqZ8ntZ9OxZCb5S8vKqgpsN52SLakxrQ=",
-                "sourceRevision": "64f252d0df2f08cd81f3baad09d0faa69f9e0217",
-                "status": "success"
-              },
-              "check": {
-                "kind": "flake-attribute",
-                "replay": null,
-                "value": "checks.x86_64-linux.conformance-missing"
-              },
-              "drvPath": "/nix/store/fmrgn8ils28c8n51r9hfi8i745b6bqzy-conformance-missing.drv",
-              "evaluation": null,
-              "outputNarHashes": {
-                "out": "sha256-d6xi4mKdjkX2JFicDIv5niSzpyI0m/Hnm8GGAIU04kY="
-              },
-              "outputs": {
-                "out": "/nix/store/liwh9xj036nyikgam5ym7hqc9p7vl2ag-conformance-missing"
-              },
-              "repository": "nix-purifiers/meson-purifier",
-              "revision": "64f252d0df2f08cd81f3baad09d0faa69f9e0217",
-              "sampleSources": [],
-              "sdkVersions": {},
-              "sourceNarHash": "sha256-vlcv16SJ6BNSqZ8ntZ9OxZCb5S8vKqgpsN52SLakxrQ=",
-              "system": "x86_64-linux"
-            },
-            "meson-purifier:conformance-stale:x86_64-linux": {
-              "build": {
-                "artifactSha256": "e3bdeb5bd839634288b697a256b28afca897326741ae895a76929965cb3d6bda",
-                "drvPath": "/nix/store/h7cl26mwc20kzrfhnqf1zyp3pm9vl5x8-conformance-stale.drv",
-                "executedSystem": "x86_64-linux",
-                "outputNarHashes": {
-                  "out": "sha256-d6xi4mKdjkX2JFicDIv5niSzpyI0m/Hnm8GGAIU04kY="
-                },
-                "outputs": {
-                  "out": "/nix/store/q0zpr7kwa9502rvkpdk9k1gspy7fafic-conformance-stale"
-                },
-                "receipt": "https://nix-purifiers.github.io/evidence/e3bdeb5bd839634288b697a256b28afca897326741ae895a76929965cb3d6bda.json",
-                "sampleSources": [],
-                "sdkVersions": {},
-                "sourceNarHash": "sha256-vlcv16SJ6BNSqZ8ntZ9OxZCb5S8vKqgpsN52SLakxrQ=",
-                "sourceRevision": "64f252d0df2f08cd81f3baad09d0faa69f9e0217",
-                "status": "success"
-              },
-              "check": {
-                "kind": "flake-attribute",
-                "replay": null,
-                "value": "checks.x86_64-linux.conformance-stale"
-              },
-              "drvPath": "/nix/store/h7cl26mwc20kzrfhnqf1zyp3pm9vl5x8-conformance-stale.drv",
-              "evaluation": null,
-              "outputNarHashes": {
-                "out": "sha256-d6xi4mKdjkX2JFicDIv5niSzpyI0m/Hnm8GGAIU04kY="
-              },
-              "outputs": {
-                "out": "/nix/store/q0zpr7kwa9502rvkpdk9k1gspy7fafic-conformance-stale"
-              },
-              "repository": "nix-purifiers/meson-purifier",
-              "revision": "64f252d0df2f08cd81f3baad09d0faa69f9e0217",
-              "sampleSources": [],
-              "sdkVersions": {},
-              "sourceNarHash": "sha256-vlcv16SJ6BNSqZ8ntZ9OxZCb5S8vKqgpsN52SLakxrQ=",
-              "system": "x86_64-linux"
-            },
-            "meson-purifier:conformance-tampered:x86_64-linux": {
-              "build": {
-                "artifactSha256": "e3bdeb5bd839634288b697a256b28afca897326741ae895a76929965cb3d6bda",
-                "drvPath": "/nix/store/g7hn2j7i3z9hilwx796wmshhf5gviv6z-conformance-tampered.drv",
-                "executedSystem": "x86_64-linux",
-                "outputNarHashes": {
-                  "out": "sha256-d6xi4mKdjkX2JFicDIv5niSzpyI0m/Hnm8GGAIU04kY="
-                },
-                "outputs": {
-                  "out": "/nix/store/rrgzzyzr4k5y2k459hixaqrs7bisg5fl-conformance-tampered"
-                },
-                "receipt": "https://nix-purifiers.github.io/evidence/e3bdeb5bd839634288b697a256b28afca897326741ae895a76929965cb3d6bda.json",
-                "sampleSources": [],
-                "sdkVersions": {},
-                "sourceNarHash": "sha256-vlcv16SJ6BNSqZ8ntZ9OxZCb5S8vKqgpsN52SLakxrQ=",
-                "sourceRevision": "64f252d0df2f08cd81f3baad09d0faa69f9e0217",
-                "status": "success"
-              },
-              "check": {
-                "kind": "flake-attribute",
-                "replay": null,
-                "value": "checks.x86_64-linux.conformance-tampered"
-              },
-              "drvPath": "/nix/store/g7hn2j7i3z9hilwx796wmshhf5gviv6z-conformance-tampered.drv",
-              "evaluation": null,
-              "outputNarHashes": {
-                "out": "sha256-d6xi4mKdjkX2JFicDIv5niSzpyI0m/Hnm8GGAIU04kY="
-              },
-              "outputs": {
-                "out": "/nix/store/rrgzzyzr4k5y2k459hixaqrs7bisg5fl-conformance-tampered"
-              },
-              "repository": "nix-purifiers/meson-purifier",
-              "revision": "64f252d0df2f08cd81f3baad09d0faa69f9e0217",
-              "sampleSources": [],
-              "sdkVersions": {},
-              "sourceNarHash": "sha256-vlcv16SJ6BNSqZ8ntZ9OxZCb5S8vKqgpsN52SLakxrQ=",
-              "system": "x86_64-linux"
-            },
-            "meson-purifier:fixture-app:x86_64-linux": {
-              "build": {
-                "artifactSha256": "e3bdeb5bd839634288b697a256b28afca897326741ae895a76929965cb3d6bda",
-                "drvPath": "/nix/store/l1cd99k2jm2lmfgyp442mgvpx3l97mgh-run-purifier-fixture.drv",
-                "executedSystem": "x86_64-linux",
-                "outputNarHashes": {
-                  "out": "sha256-d6xi4mKdjkX2JFicDIv5niSzpyI0m/Hnm8GGAIU04kY="
-                },
-                "outputs": {
-                  "out": "/nix/store/30nhb61mm4hbrbay536va4s93cvva1ak-run-purifier-fixture"
-                },
-                "receipt": "https://nix-purifiers.github.io/evidence/e3bdeb5bd839634288b697a256b28afca897326741ae895a76929965cb3d6bda.json",
-                "sampleSources": [],
-                "sdkVersions": {},
-                "sourceNarHash": "sha256-vlcv16SJ6BNSqZ8ntZ9OxZCb5S8vKqgpsN52SLakxrQ=",
-                "sourceRevision": "64f252d0df2f08cd81f3baad09d0faa69f9e0217",
-                "status": "success"
-              },
-              "check": {
-                "kind": "flake-attribute",
-                "replay": null,
-                "value": "checks.x86_64-linux.fixture-app"
-              },
-              "drvPath": "/nix/store/l1cd99k2jm2lmfgyp442mgvpx3l97mgh-run-purifier-fixture.drv",
-              "evaluation": null,
-              "outputNarHashes": {
-                "out": "sha256-d6xi4mKdjkX2JFicDIv5niSzpyI0m/Hnm8GGAIU04kY="
-              },
-              "outputs": {
-                "out": "/nix/store/30nhb61mm4hbrbay536va4s93cvva1ak-run-purifier-fixture"
-              },
-              "repository": "nix-purifiers/meson-purifier",
-              "revision": "64f252d0df2f08cd81f3baad09d0faa69f9e0217",
-              "sampleSources": [],
-              "sdkVersions": {},
-              "sourceNarHash": "sha256-vlcv16SJ6BNSqZ8ntZ9OxZCb5S8vKqgpsN52SLakxrQ=",
-              "system": "x86_64-linux"
-            },
-            "meson-purifier:fixture-fetches:x86_64-linux": {
-              "build": {
-                "artifactSha256": "e3bdeb5bd839634288b697a256b28afca897326741ae895a76929965cb3d6bda",
-                "drvPath": "/nix/store/37mjkxly8dcs7blzd1q0408bkyslyvw5-fixture-fetches.drv",
-                "executedSystem": "x86_64-linux",
-                "outputNarHashes": {
-                  "out": "sha256-d6xi4mKdjkX2JFicDIv5niSzpyI0m/Hnm8GGAIU04kY="
-                },
-                "outputs": {
-                  "out": "/nix/store/q8bg2hwdlcsv7sqijmzf7sqdzmdy3fxs-fixture-fetches"
-                },
-                "receipt": "https://nix-purifiers.github.io/evidence/e3bdeb5bd839634288b697a256b28afca897326741ae895a76929965cb3d6bda.json",
-                "sampleSources": [],
-                "sdkVersions": {},
-                "sourceNarHash": "sha256-vlcv16SJ6BNSqZ8ntZ9OxZCb5S8vKqgpsN52SLakxrQ=",
-                "sourceRevision": "64f252d0df2f08cd81f3baad09d0faa69f9e0217",
-                "status": "success"
-              },
-              "check": {
-                "kind": "flake-attribute",
-                "replay": null,
-                "value": "checks.x86_64-linux.fixture-fetches"
-              },
-              "drvPath": "/nix/store/37mjkxly8dcs7blzd1q0408bkyslyvw5-fixture-fetches.drv",
-              "evaluation": null,
-              "outputNarHashes": {
-                "out": "sha256-d6xi4mKdjkX2JFicDIv5niSzpyI0m/Hnm8GGAIU04kY="
-              },
-              "outputs": {
-                "out": "/nix/store/q8bg2hwdlcsv7sqijmzf7sqdzmdy3fxs-fixture-fetches"
-              },
-              "repository": "nix-purifiers/meson-purifier",
-              "revision": "64f252d0df2f08cd81f3baad09d0faa69f9e0217",
-              "sampleSources": [],
-              "sdkVersions": {},
-              "sourceNarHash": "sha256-vlcv16SJ6BNSqZ8ntZ9OxZCb5S8vKqgpsN52SLakxrQ=",
-              "system": "x86_64-linux"
-            },
-            "meson-purifier:fixture-packages:x86_64-linux": {
-              "build": {
-                "artifactSha256": "e3bdeb5bd839634288b697a256b28afca897326741ae895a76929965cb3d6bda",
-                "drvPath": "/nix/store/qhj22vbkzdjl7pq1sf2czkswlzy3byp0-fixture-packages.drv",
-                "executedSystem": "x86_64-linux",
-                "outputNarHashes": {
-                  "out": "sha256-d6xi4mKdjkX2JFicDIv5niSzpyI0m/Hnm8GGAIU04kY="
-                },
-                "outputs": {
-                  "out": "/nix/store/fjzisiy11kahkx3ny4x9hb28q7zl9kay-fixture-packages"
-                },
-                "receipt": "https://nix-purifiers.github.io/evidence/e3bdeb5bd839634288b697a256b28afca897326741ae895a76929965cb3d6bda.json",
-                "sampleSources": [],
-                "sdkVersions": {},
-                "sourceNarHash": "sha256-vlcv16SJ6BNSqZ8ntZ9OxZCb5S8vKqgpsN52SLakxrQ=",
-                "sourceRevision": "64f252d0df2f08cd81f3baad09d0faa69f9e0217",
-                "status": "success"
-              },
-              "check": {
-                "kind": "flake-attribute",
-                "replay": null,
-                "value": "checks.x86_64-linux.fixture-packages"
-              },
-              "drvPath": "/nix/store/qhj22vbkzdjl7pq1sf2czkswlzy3byp0-fixture-packages.drv",
-              "evaluation": null,
-              "outputNarHashes": {
-                "out": "sha256-d6xi4mKdjkX2JFicDIv5niSzpyI0m/Hnm8GGAIU04kY="
-              },
-              "outputs": {
-                "out": "/nix/store/fjzisiy11kahkx3ny4x9hb28q7zl9kay-fixture-packages"
-              },
-              "repository": "nix-purifiers/meson-purifier",
-              "revision": "64f252d0df2f08cd81f3baad09d0faa69f9e0217",
-              "sampleSources": [],
-              "sdkVersions": {},
-              "sourceNarHash": "sha256-vlcv16SJ6BNSqZ8ntZ9OxZCb5S8vKqgpsN52SLakxrQ=",
-              "system": "x86_64-linux"
-            },
-            "meson-purifier:fixture-release:x86_64-linux": {
-              "build": {
-                "artifactSha256": "e3bdeb5bd839634288b697a256b28afca897326741ae895a76929965cb3d6bda",
-                "drvPath": "/nix/store/166mpciqcdwhxxq3vx213hwzv0fl100z-fixture-release.drv",
-                "executedSystem": "x86_64-linux",
-                "outputNarHashes": {
-                  "out": "sha256-d6xi4mKdjkX2JFicDIv5niSzpyI0m/Hnm8GGAIU04kY="
-                },
-                "outputs": {
-                  "out": "/nix/store/s9yissyy7jj5n0rl8dcashf2j6walm92-fixture-release"
-                },
-                "receipt": "https://nix-purifiers.github.io/evidence/e3bdeb5bd839634288b697a256b28afca897326741ae895a76929965cb3d6bda.json",
-                "sampleSources": [],
-                "sdkVersions": {},
-                "sourceNarHash": "sha256-vlcv16SJ6BNSqZ8ntZ9OxZCb5S8vKqgpsN52SLakxrQ=",
-                "sourceRevision": "64f252d0df2f08cd81f3baad09d0faa69f9e0217",
-                "status": "success"
-              },
-              "check": {
-                "kind": "flake-attribute",
-                "replay": null,
-                "value": "checks.x86_64-linux.fixture-release"
-              },
-              "drvPath": "/nix/store/166mpciqcdwhxxq3vx213hwzv0fl100z-fixture-release.drv",
-              "evaluation": null,
-              "outputNarHashes": {
-                "out": "sha256-d6xi4mKdjkX2JFicDIv5niSzpyI0m/Hnm8GGAIU04kY="
-              },
-              "outputs": {
-                "out": "/nix/store/s9yissyy7jj5n0rl8dcashf2j6walm92-fixture-release"
-              },
-              "repository": "nix-purifiers/meson-purifier",
-              "revision": "64f252d0df2f08cd81f3baad09d0faa69f9e0217",
-              "sampleSources": [],
-              "sdkVersions": {},
-              "sourceNarHash": "sha256-vlcv16SJ6BNSqZ8ntZ9OxZCb5S8vKqgpsN52SLakxrQ=",
-              "system": "x86_64-linux"
-            },
-            "meson-purifier:fixture-tests:x86_64-linux": {
-              "build": {
-                "artifactSha256": "e3bdeb5bd839634288b697a256b28afca897326741ae895a76929965cb3d6bda",
-                "drvPath": "/nix/store/a22azy3hy5ha0xx4d6vvrgzjvikv52h2-purifier-fixture-tests-1.0.0.drv",
-                "executedSystem": "x86_64-linux",
-                "outputNarHashes": {
-                  "out": "sha256-LOBz+rpOZ8AW5DnfJJubjsK5k+9AFlh9G4+JUT/LFqI="
-                },
-                "outputs": {
-                  "out": "/nix/store/847d77qsk6nhzx1q2j9ck0rqvqsd74a5-purifier-fixture-tests-1.0.0"
-                },
-                "receipt": "https://nix-purifiers.github.io/evidence/e3bdeb5bd839634288b697a256b28afca897326741ae895a76929965cb3d6bda.json",
+                "receipt": "https://nix-purifiers.github.io/evidence/ad5e8c43b5d61340fe20e8a8f67fa09acb0fb20351aae1ca0ee556eaffa1c7e8.json",
                 "sampleSources": [
                   {
-                    "repository": "https://github.com/nix-purifiers/meson-purifier",
-                    "revision": "64f252d0df2f08cd81f3baad09d0faa69f9e0217",
-                    "sourceNarHash": "sha256-vlcv16SJ6BNSqZ8ntZ9OxZCb5S8vKqgpsN52SLakxrQ="
+                    "repository": "https://github.com/benhoyt/inih",
+                    "revision": "611ab51f8dd7ec583543815b0de693495045fbf8",
+                    "sourceNarHash": "sha256-HiVkrWzCzthwNNTxPVJnlcQ+o+gQW2sIRitZGJvWVmU="
                   }
                 ],
                 "sdkVersions": {
-                  "Meson": "1.12.1"
+                  "C/C++ compiler": "21.1.8",
+                  "Meson": "1.12.1",
+                  "Python": "3.14.8"
                 },
-                "sourceNarHash": "sha256-vlcv16SJ6BNSqZ8ntZ9OxZCb5S8vKqgpsN52SLakxrQ=",
-                "sourceRevision": "64f252d0df2f08cd81f3baad09d0faa69f9e0217",
+                "sourceNarHash": "sha256-vi8H7QfkAdJhhYEOUPhfD6S8UjHutWoRzRIHF6j0Jd0=",
+                "sourceRevision": "20827109606eaafeaf14f2494062af8899d6967f",
                 "status": "success"
               },
               "check": {
-                "kind": "flake-attribute",
-                "replay": null,
-                "value": "checks.x86_64-linux.fixture-tests"
+                "kind": "expression",
+                "replay": {
+                  "arguments": {
+                    "MESON_PROJECT": "restore projectFiles to an arbitrary local directory",
+                    "MESON_REPO": "restore immutable producer208 source with verified sourceNarHash",
+                    "NIX_EVALUATION_SYSTEM": "pass --system aarch64-darwin for metadata replay"
+                  },
+                  "artifactSha256": "df42bf0b468e5a0abab1580f03e8540db33244e6bc40dd94fa7d626dc5b3333b",
+                  "artifactUrl": "https://nix-purifiers.github.io/evidence/df42bf0b468e5a0abab1580f03e8540db33244e6bc40dd94fa7d626dc5b3333b.json",
+                  "expressionSha256": "a6c4a653d4ab68cda319223490860dfa81f8cbb540b36e84ba27adaa440efed9"
+                },
+                "value": "import ((builtins.getEnv \"MESON_REPO\") + \"/tests/tier2-build.nix\") { repository = builtins.getEnv \"MESON_REPO\"; project = builtins.getEnv \"MESON_PROJECT\"; pname=\"inih\"; version=\"63\"; }"
               },
-              "drvPath": "/nix/store/a22azy3hy5ha0xx4d6vvrgzjvikv52h2-purifier-fixture-tests-1.0.0.drv",
-              "evaluation": null,
+              "drvPath": "/nix/store/djycjnnr4641kxdm1l4hccywy6gy9vzk-meson-inih-runtime-evidence.drv",
+              "evaluation": {
+                "artifactSha256": "5134733a33825932c3ab1aa140e3789daef5948eaddf03670e3403554c64d055",
+                "check": {
+                  "kind": "expression",
+                  "replay": {
+                    "arguments": {
+                      "MESON_PROJECT": "restore projectFiles to an arbitrary local directory",
+                      "MESON_REPO": "restore immutable producer208 source with verified sourceNarHash",
+                      "NIX_EVALUATION_SYSTEM": "pass --system aarch64-darwin for metadata replay"
+                    },
+                    "artifactSha256": "df42bf0b468e5a0abab1580f03e8540db33244e6bc40dd94fa7d626dc5b3333b",
+                    "artifactUrl": "https://nix-purifiers.github.io/evidence/df42bf0b468e5a0abab1580f03e8540db33244e6bc40dd94fa7d626dc5b3333b.json",
+                    "expressionSha256": "a6c4a653d4ab68cda319223490860dfa81f8cbb540b36e84ba27adaa440efed9"
+                  },
+                  "value": "import ((builtins.getEnv \"MESON_REPO\") + \"/tests/tier2-build.nix\") { repository = builtins.getEnv \"MESON_REPO\"; project = builtins.getEnv \"MESON_PROJECT\"; pname=\"inih\"; version=\"63\"; }"
+                },
+                "drvPath": "/nix/store/djycjnnr4641kxdm1l4hccywy6gy9vzk-meson-inih-runtime-evidence.drv",
+                "receipt": "https://nix-purifiers.github.io/evidence/5134733a33825932c3ab1aa140e3789daef5948eaddf03670e3403554c64d055.json",
+                "sourceNarHash": "sha256-vi8H7QfkAdJhhYEOUPhfD6S8UjHutWoRzRIHF6j0Jd0=",
+                "sourceRevision": "20827109606eaafeaf14f2494062af8899d6967f"
+              },
               "outputNarHashes": {
-                "out": "sha256-LOBz+rpOZ8AW5DnfJJubjsK5k+9AFlh9G4+JUT/LFqI="
+                "out": "sha256-/bQW4HzdE01tmwnqCQZaFfmCSz8GdtrkfiYHi53tvXE="
               },
               "outputs": {
-                "out": "/nix/store/847d77qsk6nhzx1q2j9ck0rqvqsd74a5-purifier-fixture-tests-1.0.0"
+                "out": "/nix/store/kimn1gfvr09434cq586l9lavzb8h1axw-meson-inih-runtime-evidence"
               },
               "repository": "nix-purifiers/meson-purifier",
-              "revision": "64f252d0df2f08cd81f3baad09d0faa69f9e0217",
+              "revision": "20827109606eaafeaf14f2494062af8899d6967f",
               "sampleSources": [
                 {
-                  "repository": "https://github.com/nix-purifiers/meson-purifier",
-                  "revision": "64f252d0df2f08cd81f3baad09d0faa69f9e0217",
-                  "sourceNarHash": "sha256-vlcv16SJ6BNSqZ8ntZ9OxZCb5S8vKqgpsN52SLakxrQ="
+                  "repository": "https://github.com/benhoyt/inih",
+                  "revision": "611ab51f8dd7ec583543815b0de693495045fbf8",
+                  "sourceNarHash": "sha256-HiVkrWzCzthwNNTxPVJnlcQ+o+gQW2sIRitZGJvWVmU="
                 }
               ],
               "sdkVersions": {
-                "Meson": "1.12.1"
+                "C/C++ compiler": "21.1.8",
+                "Meson": "1.12.1",
+                "Python": "3.14.8"
               },
-              "sourceNarHash": "sha256-vlcv16SJ6BNSqZ8ntZ9OxZCb5S8vKqgpsN52SLakxrQ=",
-              "system": "x86_64-linux"
+              "sourceNarHash": "sha256-vi8H7QfkAdJhhYEOUPhfD6S8UjHutWoRzRIHF6j0Jd0=",
+              "system": "aarch64-darwin"
             },
-            "meson-purifier:native-ffi:x86_64-linux": {
+            "meson-purifier@2082710:darwin-two:compiledFixture": {
               "build": {
-                "artifactSha256": "e3bdeb5bd839634288b697a256b28afca897326741ae895a76929965cb3d6bda",
-                "drvPath": "/nix/store/dgyk29bicwx2p9nl773g6qc3d9y977nh-meson-native-foreign-consumer.drv",
-                "executedSystem": "x86_64-linux",
+                "artifactSha256": "5ed3b2704db25d97638be6cb06b84e224a345301a8a6bc3b9fec42b973325793",
+                "drvPath": "/nix/store/s4k68zhz26q5jgnpwwqrwr9zv1n7f1cm-external-fixture-tests-1.0.0.drv",
+                "executedSystem": "aarch64-darwin",
                 "outputNarHashes": {
-                  "out": "sha256-d6xi4mKdjkX2JFicDIv5niSzpyI0m/Hnm8GGAIU04kY="
+                  "out": "sha256-bm2hG09fm4QPpQrRx/JhrV5W6+xn5DQW+DtbE1yBw3w="
                 },
                 "outputs": {
-                  "out": "/nix/store/55a1kab29x282apvj9hn916g87y5nhc0-meson-native-foreign-consumer"
+                  "out": "/nix/store/inklzdkrj2z0kidmm7cawr9fdd0b6c0s-external-fixture-tests-1.0.0"
                 },
-                "receipt": "https://nix-purifiers.github.io/evidence/e3bdeb5bd839634288b697a256b28afca897326741ae895a76929965cb3d6bda.json",
+                "receipt": "https://nix-purifiers.github.io/evidence/5ed3b2704db25d97638be6cb06b84e224a345301a8a6bc3b9fec42b973325793.json",
+                "sampleSources": [],
+                "sdkVersions": {
+                  "C/C++ compiler": "21.1.8",
+                  "Meson": "1.12.1",
+                  "Python": "3.14.8"
+                },
+                "sourceNarHash": "sha256-vi8H7QfkAdJhhYEOUPhfD6S8UjHutWoRzRIHF6j0Jd0=",
+                "sourceRevision": "20827109606eaafeaf14f2494062af8899d6967f",
+                "status": "success"
+              },
+              "check": {
+                "kind": "expression",
+                "replay": {
+                  "arguments": {
+                    "MESON_PROJECT": "restore projectFiles to an arbitrary local directory",
+                    "MESON_REPO": "restore immutable producer208 source with verified sourceNarHash",
+                    "NIX_EVALUATION_SYSTEM": "pass --system aarch64-darwin for metadata replay"
+                  },
+                  "artifactSha256": "20defaabf3b91fa053631401e97f7422004de1ca9af19995de363d5e89a833e8",
+                  "artifactUrl": "https://nix-purifiers.github.io/evidence/20defaabf3b91fa053631401e97f7422004de1ca9af19995de363d5e89a833e8.json",
+                  "expressionSha256": "33024171c80269c5f2ede2eb5e8eb962a3764a8eae725a4472f6ee7f391195ea"
+                },
+                "value": "import ((builtins.getEnv \"MESON_REPO\") + \"/tests/tier2-build.nix\") { repository = builtins.getEnv \"MESON_REPO\"; project = builtins.getEnv \"MESON_PROJECT\"; result=\"tests\"; }"
+              },
+              "drvPath": "/nix/store/s4k68zhz26q5jgnpwwqrwr9zv1n7f1cm-external-fixture-tests-1.0.0.drv",
+              "evaluation": {
+                "artifactSha256": "bb4763b2f94495e5474ddb588f8b82e57a792ba0cbdd4a6b5874cb34fd7adbb9",
+                "check": {
+                  "kind": "expression",
+                  "replay": {
+                    "arguments": {
+                      "MESON_PROJECT": "restore projectFiles to an arbitrary local directory",
+                      "MESON_REPO": "restore immutable producer208 source with verified sourceNarHash",
+                      "NIX_EVALUATION_SYSTEM": "pass --system aarch64-darwin for metadata replay"
+                    },
+                    "artifactSha256": "20defaabf3b91fa053631401e97f7422004de1ca9af19995de363d5e89a833e8",
+                    "artifactUrl": "https://nix-purifiers.github.io/evidence/20defaabf3b91fa053631401e97f7422004de1ca9af19995de363d5e89a833e8.json",
+                    "expressionSha256": "33024171c80269c5f2ede2eb5e8eb962a3764a8eae725a4472f6ee7f391195ea"
+                  },
+                  "value": "import ((builtins.getEnv \"MESON_REPO\") + \"/tests/tier2-build.nix\") { repository = builtins.getEnv \"MESON_REPO\"; project = builtins.getEnv \"MESON_PROJECT\"; result=\"tests\"; }"
+                },
+                "drvPath": "/nix/store/s4k68zhz26q5jgnpwwqrwr9zv1n7f1cm-external-fixture-tests-1.0.0.drv",
+                "receipt": "https://nix-purifiers.github.io/evidence/bb4763b2f94495e5474ddb588f8b82e57a792ba0cbdd4a6b5874cb34fd7adbb9.json",
+                "sourceNarHash": "sha256-vi8H7QfkAdJhhYEOUPhfD6S8UjHutWoRzRIHF6j0Jd0=",
+                "sourceRevision": "20827109606eaafeaf14f2494062af8899d6967f"
+              },
+              "outputNarHashes": {
+                "out": "sha256-bm2hG09fm4QPpQrRx/JhrV5W6+xn5DQW+DtbE1yBw3w="
+              },
+              "outputs": {
+                "out": "/nix/store/inklzdkrj2z0kidmm7cawr9fdd0b6c0s-external-fixture-tests-1.0.0"
+              },
+              "repository": "nix-purifiers/meson-purifier",
+              "revision": "20827109606eaafeaf14f2494062af8899d6967f",
+              "sampleSources": [],
+              "sdkVersions": {
+                "C/C++ compiler": "21.1.8",
+                "Meson": "1.12.1",
+                "Python": "3.14.8"
+              },
+              "sourceNarHash": "sha256-vi8H7QfkAdJhhYEOUPhfD6S8UjHutWoRzRIHF6j0Jd0=",
+              "system": "aarch64-darwin"
+            },
+            "meson-purifier@2082710:darwin-two:fixtureRuntimeEvidence": {
+              "build": {
+                "artifactSha256": "3be3b27b581a7ee5ce66e84616b21229aba0e8644ff8a680de74f39b1881217a",
+                "drvPath": "/nix/store/q1snyq5bv10hvib9ah22m8kfbx6wv447-meson-external-fixture-runtime-evidence.drv",
+                "executedSystem": "aarch64-darwin",
+                "outputNarHashes": {
+                  "out": "sha256-3pKEiFh4ELWLjQ2qIrrr/KosXUqTquswd/vRxnj8tlE="
+                },
+                "outputs": {
+                  "out": "/nix/store/j23pqw0argp231dr5pmx113xmlpq1458-meson-external-fixture-runtime-evidence"
+                },
+                "receipt": "https://nix-purifiers.github.io/evidence/3be3b27b581a7ee5ce66e84616b21229aba0e8644ff8a680de74f39b1881217a.json",
+                "sampleSources": [],
+                "sdkVersions": {
+                  "C/C++ compiler": "21.1.8",
+                  "Meson": "1.12.1",
+                  "Python": "3.14.8"
+                },
+                "sourceNarHash": "sha256-vi8H7QfkAdJhhYEOUPhfD6S8UjHutWoRzRIHF6j0Jd0=",
+                "sourceRevision": "20827109606eaafeaf14f2494062af8899d6967f",
+                "status": "success"
+              },
+              "check": {
+                "kind": "expression",
+                "replay": {
+                  "arguments": {
+                    "MESON_PROJECT": "restore projectFiles to an arbitrary local directory",
+                    "MESON_REPO": "restore immutable producer208 source with verified sourceNarHash",
+                    "NIX_EVALUATION_SYSTEM": "pass --system aarch64-darwin for metadata replay"
+                  },
+                  "artifactSha256": "87a3aa14577d2f656929ca476c5dee212e8d07229d727a7e66c6e507dc7f6903",
+                  "artifactUrl": "https://nix-purifiers.github.io/evidence/87a3aa14577d2f656929ca476c5dee212e8d07229d727a7e66c6e507dc7f6903.json",
+                  "expressionSha256": "6ce9586934126d16ea7c4d25b0131055b96defaa77d977f35a6b5ca60f7e0636"
+                },
+                "value": "import ((builtins.getEnv \"MESON_REPO\") + \"/tests/tier2-build.nix\") { repository = builtins.getEnv \"MESON_REPO\"; project = builtins.getEnv \"MESON_PROJECT\"; }"
+              },
+              "drvPath": "/nix/store/q1snyq5bv10hvib9ah22m8kfbx6wv447-meson-external-fixture-runtime-evidence.drv",
+              "evaluation": {
+                "artifactSha256": "3df6a89e5655a0a56fe155fd26619c5d5d8746df02d10de8ccc2862fcad56367",
+                "check": {
+                  "kind": "expression",
+                  "replay": {
+                    "arguments": {
+                      "MESON_PROJECT": "restore projectFiles to an arbitrary local directory",
+                      "MESON_REPO": "restore immutable producer208 source with verified sourceNarHash",
+                      "NIX_EVALUATION_SYSTEM": "pass --system aarch64-darwin for metadata replay"
+                    },
+                    "artifactSha256": "87a3aa14577d2f656929ca476c5dee212e8d07229d727a7e66c6e507dc7f6903",
+                    "artifactUrl": "https://nix-purifiers.github.io/evidence/87a3aa14577d2f656929ca476c5dee212e8d07229d727a7e66c6e507dc7f6903.json",
+                    "expressionSha256": "6ce9586934126d16ea7c4d25b0131055b96defaa77d977f35a6b5ca60f7e0636"
+                  },
+                  "value": "import ((builtins.getEnv \"MESON_REPO\") + \"/tests/tier2-build.nix\") { repository = builtins.getEnv \"MESON_REPO\"; project = builtins.getEnv \"MESON_PROJECT\"; }"
+                },
+                "drvPath": "/nix/store/q1snyq5bv10hvib9ah22m8kfbx6wv447-meson-external-fixture-runtime-evidence.drv",
+                "receipt": "https://nix-purifiers.github.io/evidence/3df6a89e5655a0a56fe155fd26619c5d5d8746df02d10de8ccc2862fcad56367.json",
+                "sourceNarHash": "sha256-vi8H7QfkAdJhhYEOUPhfD6S8UjHutWoRzRIHF6j0Jd0=",
+                "sourceRevision": "20827109606eaafeaf14f2494062af8899d6967f"
+              },
+              "outputNarHashes": {
+                "out": "sha256-3pKEiFh4ELWLjQ2qIrrr/KosXUqTquswd/vRxnj8tlE="
+              },
+              "outputs": {
+                "out": "/nix/store/j23pqw0argp231dr5pmx113xmlpq1458-meson-external-fixture-runtime-evidence"
+              },
+              "repository": "nix-purifiers/meson-purifier",
+              "revision": "20827109606eaafeaf14f2494062af8899d6967f",
+              "sampleSources": [],
+              "sdkVersions": {
+                "C/C++ compiler": "21.1.8",
+                "Meson": "1.12.1",
+                "Python": "3.14.8"
+              },
+              "sourceNarHash": "sha256-vi8H7QfkAdJhhYEOUPhfD6S8UjHutWoRzRIHF6j0Jd0=",
+              "system": "aarch64-darwin"
+            },
+            "meson-purifier@2082710:darwin-two:independentInihRuntimeAndConsumer": {
+              "build": {
+                "artifactSha256": "a8bb89b34c41cb45e705e3b08b80152def0a06b57197e088bb2a64977372d8e4",
+                "drvPath": "/nix/store/djycjnnr4641kxdm1l4hccywy6gy9vzk-meson-inih-runtime-evidence.drv",
+                "executedSystem": "aarch64-darwin",
+                "outputNarHashes": {
+                  "out": "sha256-/bQW4HzdE01tmwnqCQZaFfmCSz8GdtrkfiYHi53tvXE="
+                },
+                "outputs": {
+                  "out": "/nix/store/kimn1gfvr09434cq586l9lavzb8h1axw-meson-inih-runtime-evidence"
+                },
+                "receipt": "https://nix-purifiers.github.io/evidence/a8bb89b34c41cb45e705e3b08b80152def0a06b57197e088bb2a64977372d8e4.json",
                 "sampleSources": [
                   {
-                    "repository": "https://github.com/nix-purifiers/meson-purifier",
-                    "revision": "64f252d0df2f08cd81f3baad09d0faa69f9e0217",
-                    "sourceNarHash": "sha256-vlcv16SJ6BNSqZ8ntZ9OxZCb5S8vKqgpsN52SLakxrQ="
+                    "repository": "https://github.com/benhoyt/inih",
+                    "revision": "611ab51f8dd7ec583543815b0de693495045fbf8",
+                    "sourceNarHash": "sha256-HiVkrWzCzthwNNTxPVJnlcQ+o+gQW2sIRitZGJvWVmU="
                   }
                 ],
                 "sdkVersions": {
-                  "Meson": "1.12.1"
+                  "C/C++ compiler": "21.1.8",
+                  "Meson": "1.12.1",
+                  "Python": "3.14.8"
                 },
-                "sourceNarHash": "sha256-vlcv16SJ6BNSqZ8ntZ9OxZCb5S8vKqgpsN52SLakxrQ=",
-                "sourceRevision": "64f252d0df2f08cd81f3baad09d0faa69f9e0217",
+                "sourceNarHash": "sha256-vi8H7QfkAdJhhYEOUPhfD6S8UjHutWoRzRIHF6j0Jd0=",
+                "sourceRevision": "20827109606eaafeaf14f2494062af8899d6967f",
                 "status": "success"
               },
               "check": {
-                "kind": "flake-attribute",
-                "replay": null,
-                "value": "checks.x86_64-linux.native-ffi"
+                "kind": "expression",
+                "replay": {
+                  "arguments": {
+                    "MESON_PROJECT": "restore projectFiles to an arbitrary local directory",
+                    "MESON_REPO": "restore immutable producer208 source with verified sourceNarHash",
+                    "NIX_EVALUATION_SYSTEM": "pass --system aarch64-darwin for metadata replay"
+                  },
+                  "artifactSha256": "ddf2bb71601faa7e2ed0c087fe03d48c287007eb38340ca4374b1eaaafbbf3c0",
+                  "artifactUrl": "https://nix-purifiers.github.io/evidence/ddf2bb71601faa7e2ed0c087fe03d48c287007eb38340ca4374b1eaaafbbf3c0.json",
+                  "expressionSha256": "a6c4a653d4ab68cda319223490860dfa81f8cbb540b36e84ba27adaa440efed9"
+                },
+                "value": "import ((builtins.getEnv \"MESON_REPO\") + \"/tests/tier2-build.nix\") { repository = builtins.getEnv \"MESON_REPO\"; project = builtins.getEnv \"MESON_PROJECT\"; pname=\"inih\"; version=\"63\"; }"
               },
-              "drvPath": "/nix/store/dgyk29bicwx2p9nl773g6qc3d9y977nh-meson-native-foreign-consumer.drv",
-              "evaluation": null,
+              "drvPath": "/nix/store/djycjnnr4641kxdm1l4hccywy6gy9vzk-meson-inih-runtime-evidence.drv",
+              "evaluation": {
+                "artifactSha256": "1b2414f692c6068c3ea16f6a88159016f6ba903cb050d3a3ecf4f8a238d00512",
+                "check": {
+                  "kind": "expression",
+                  "replay": {
+                    "arguments": {
+                      "MESON_PROJECT": "restore projectFiles to an arbitrary local directory",
+                      "MESON_REPO": "restore immutable producer208 source with verified sourceNarHash",
+                      "NIX_EVALUATION_SYSTEM": "pass --system aarch64-darwin for metadata replay"
+                    },
+                    "artifactSha256": "ddf2bb71601faa7e2ed0c087fe03d48c287007eb38340ca4374b1eaaafbbf3c0",
+                    "artifactUrl": "https://nix-purifiers.github.io/evidence/ddf2bb71601faa7e2ed0c087fe03d48c287007eb38340ca4374b1eaaafbbf3c0.json",
+                    "expressionSha256": "a6c4a653d4ab68cda319223490860dfa81f8cbb540b36e84ba27adaa440efed9"
+                  },
+                  "value": "import ((builtins.getEnv \"MESON_REPO\") + \"/tests/tier2-build.nix\") { repository = builtins.getEnv \"MESON_REPO\"; project = builtins.getEnv \"MESON_PROJECT\"; pname=\"inih\"; version=\"63\"; }"
+                },
+                "drvPath": "/nix/store/djycjnnr4641kxdm1l4hccywy6gy9vzk-meson-inih-runtime-evidence.drv",
+                "receipt": "https://nix-purifiers.github.io/evidence/1b2414f692c6068c3ea16f6a88159016f6ba903cb050d3a3ecf4f8a238d00512.json",
+                "sourceNarHash": "sha256-vi8H7QfkAdJhhYEOUPhfD6S8UjHutWoRzRIHF6j0Jd0=",
+                "sourceRevision": "20827109606eaafeaf14f2494062af8899d6967f"
+              },
               "outputNarHashes": {
-                "out": "sha256-d6xi4mKdjkX2JFicDIv5niSzpyI0m/Hnm8GGAIU04kY="
+                "out": "sha256-/bQW4HzdE01tmwnqCQZaFfmCSz8GdtrkfiYHi53tvXE="
               },
               "outputs": {
-                "out": "/nix/store/55a1kab29x282apvj9hn916g87y5nhc0-meson-native-foreign-consumer"
+                "out": "/nix/store/kimn1gfvr09434cq586l9lavzb8h1axw-meson-inih-runtime-evidence"
               },
               "repository": "nix-purifiers/meson-purifier",
-              "revision": "64f252d0df2f08cd81f3baad09d0faa69f9e0217",
+              "revision": "20827109606eaafeaf14f2494062af8899d6967f",
               "sampleSources": [
                 {
-                  "repository": "https://github.com/nix-purifiers/meson-purifier",
-                  "revision": "64f252d0df2f08cd81f3baad09d0faa69f9e0217",
-                  "sourceNarHash": "sha256-vlcv16SJ6BNSqZ8ntZ9OxZCb5S8vKqgpsN52SLakxrQ="
+                  "repository": "https://github.com/benhoyt/inih",
+                  "revision": "611ab51f8dd7ec583543815b0de693495045fbf8",
+                  "sourceNarHash": "sha256-HiVkrWzCzthwNNTxPVJnlcQ+o+gQW2sIRitZGJvWVmU="
                 }
               ],
               "sdkVersions": {
-                "Meson": "1.12.1"
+                "C/C++ compiler": "21.1.8",
+                "Meson": "1.12.1",
+                "Python": "3.14.8"
               },
-              "sourceNarHash": "sha256-vlcv16SJ6BNSqZ8ntZ9OxZCb5S8vKqgpsN52SLakxrQ=",
-              "system": "x86_64-linux"
+              "sourceNarHash": "sha256-vi8H7QfkAdJhhYEOUPhfD6S8UjHutWoRzRIHF6j0Jd0=",
+              "system": "aarch64-darwin"
             },
-            "meson-purifier:real-world-rizin:x86_64-linux": {
+            "meson-purifier@2082710:linux:compiledFixture": {
               "build": {
-                "artifactSha256": "e3bdeb5bd839634288b697a256b28afca897326741ae895a76929965cb3d6bda",
-                "drvPath": "/nix/store/kva5g5yz9s8f7f9nf6ykw0qrq8bpw8lr-real-world-rizin.drv",
+                "artifactSha256": "6e0904c7b7d19d6dc53f1c46c1c0600ca4aed3df3d67da6ce83498aab2bd4496",
+                "drvPath": "/nix/store/y0wlw0qaqrakd5rz7v8gq0kkh89rzyam-external-fixture-tests-1.0.0.drv",
                 "executedSystem": "x86_64-linux",
                 "outputNarHashes": {
-                  "out": "sha256-d6xi4mKdjkX2JFicDIv5niSzpyI0m/Hnm8GGAIU04kY="
+                  "out": "sha256-Ev4RuLILLgdxDONDjc1aybswq9KlHD+nxIVg4J0joag="
                 },
                 "outputs": {
-                  "out": "/nix/store/s2hwaf3kc41l2qz0h5srg5a5g75jsm3y-real-world-rizin"
+                  "out": "/nix/store/d5g3hcfs4yhhazazz3m3917qayvdcnnp-external-fixture-tests-1.0.0"
                 },
-                "receipt": "https://nix-purifiers.github.io/evidence/e3bdeb5bd839634288b697a256b28afca897326741ae895a76929965cb3d6bda.json",
+                "receipt": "https://nix-purifiers.github.io/evidence/6e0904c7b7d19d6dc53f1c46c1c0600ca4aed3df3d67da6ce83498aab2bd4496.json",
+                "sampleSources": [],
+                "sdkVersions": {
+                  "C/C++ compiler": "16.2.0",
+                  "Meson": "1.12.1",
+                  "Python": "3.14.8"
+                },
+                "sourceNarHash": "sha256-vi8H7QfkAdJhhYEOUPhfD6S8UjHutWoRzRIHF6j0Jd0=",
+                "sourceRevision": "20827109606eaafeaf14f2494062af8899d6967f",
+                "status": "success"
+              },
+              "check": {
+                "kind": "expression",
+                "replay": {
+                  "arguments": {
+                    "MESON_PROJECT": "restore projectFiles to an arbitrary local directory",
+                    "MESON_REPO": "restore immutable producer208 source with verified sourceNarHash",
+                    "NIX_EVALUATION_SYSTEM": "pass --system x86_64-linux for metadata replay"
+                  },
+                  "artifactSha256": "c857a273ffc6685446d6d5d352e35b54abbbabf9af38b69ad7518684604c48ec",
+                  "artifactUrl": "https://nix-purifiers.github.io/evidence/c857a273ffc6685446d6d5d352e35b54abbbabf9af38b69ad7518684604c48ec.json",
+                  "expressionSha256": "33024171c80269c5f2ede2eb5e8eb962a3764a8eae725a4472f6ee7f391195ea"
+                },
+                "value": "import ((builtins.getEnv \"MESON_REPO\") + \"/tests/tier2-build.nix\") { repository = builtins.getEnv \"MESON_REPO\"; project = builtins.getEnv \"MESON_PROJECT\"; result=\"tests\"; }"
+              },
+              "drvPath": "/nix/store/y0wlw0qaqrakd5rz7v8gq0kkh89rzyam-external-fixture-tests-1.0.0.drv",
+              "evaluation": {
+                "artifactSha256": "c24d7ea21564218977ca11cd468be816c59e1a55a4dc72dad2b2e5f2ae485744",
+                "check": {
+                  "kind": "expression",
+                  "replay": {
+                    "arguments": {
+                      "MESON_PROJECT": "restore projectFiles to an arbitrary local directory",
+                      "MESON_REPO": "restore immutable producer208 source with verified sourceNarHash",
+                      "NIX_EVALUATION_SYSTEM": "pass --system x86_64-linux for metadata replay"
+                    },
+                    "artifactSha256": "c857a273ffc6685446d6d5d352e35b54abbbabf9af38b69ad7518684604c48ec",
+                    "artifactUrl": "https://nix-purifiers.github.io/evidence/c857a273ffc6685446d6d5d352e35b54abbbabf9af38b69ad7518684604c48ec.json",
+                    "expressionSha256": "33024171c80269c5f2ede2eb5e8eb962a3764a8eae725a4472f6ee7f391195ea"
+                  },
+                  "value": "import ((builtins.getEnv \"MESON_REPO\") + \"/tests/tier2-build.nix\") { repository = builtins.getEnv \"MESON_REPO\"; project = builtins.getEnv \"MESON_PROJECT\"; result=\"tests\"; }"
+                },
+                "drvPath": "/nix/store/y0wlw0qaqrakd5rz7v8gq0kkh89rzyam-external-fixture-tests-1.0.0.drv",
+                "receipt": "https://nix-purifiers.github.io/evidence/c24d7ea21564218977ca11cd468be816c59e1a55a4dc72dad2b2e5f2ae485744.json",
+                "sourceNarHash": "sha256-vi8H7QfkAdJhhYEOUPhfD6S8UjHutWoRzRIHF6j0Jd0=",
+                "sourceRevision": "20827109606eaafeaf14f2494062af8899d6967f"
+              },
+              "outputNarHashes": {
+                "out": "sha256-Ev4RuLILLgdxDONDjc1aybswq9KlHD+nxIVg4J0joag="
+              },
+              "outputs": {
+                "out": "/nix/store/d5g3hcfs4yhhazazz3m3917qayvdcnnp-external-fixture-tests-1.0.0"
+              },
+              "repository": "nix-purifiers/meson-purifier",
+              "revision": "20827109606eaafeaf14f2494062af8899d6967f",
+              "sampleSources": [],
+              "sdkVersions": {
+                "C/C++ compiler": "16.2.0",
+                "Meson": "1.12.1",
+                "Python": "3.14.8"
+              },
+              "sourceNarHash": "sha256-vi8H7QfkAdJhhYEOUPhfD6S8UjHutWoRzRIHF6j0Jd0=",
+              "system": "x86_64-linux"
+            },
+            "meson-purifier@2082710:linux:fixtureRuntimeEvidence": {
+              "build": {
+                "artifactSha256": "65150a88694ee49b9ab3a1e02341932235506ac826dc69006b0b1f0c42d1f563",
+                "drvPath": "/nix/store/p9cr5y7yhfg0dgqy6l3hmji1m0p05hl6-meson-external-fixture-runtime-evidence.drv",
+                "executedSystem": "x86_64-linux",
+                "outputNarHashes": {
+                  "out": "sha256-aExsNGYql35NPQi2iLQm8s+5O9oTqvpp3c2fe88HIY8="
+                },
+                "outputs": {
+                  "out": "/nix/store/7ffwsc74v5lfvfqy9d7cjmcg15ia0rw6-meson-external-fixture-runtime-evidence"
+                },
+                "receipt": "https://nix-purifiers.github.io/evidence/65150a88694ee49b9ab3a1e02341932235506ac826dc69006b0b1f0c42d1f563.json",
+                "sampleSources": [],
+                "sdkVersions": {
+                  "C/C++ compiler": "16.2.0",
+                  "Meson": "1.12.1",
+                  "Python": "3.14.8"
+                },
+                "sourceNarHash": "sha256-vi8H7QfkAdJhhYEOUPhfD6S8UjHutWoRzRIHF6j0Jd0=",
+                "sourceRevision": "20827109606eaafeaf14f2494062af8899d6967f",
+                "status": "success"
+              },
+              "check": {
+                "kind": "expression",
+                "replay": {
+                  "arguments": {
+                    "MESON_PROJECT": "restore projectFiles to an arbitrary local directory",
+                    "MESON_REPO": "restore immutable producer208 source with verified sourceNarHash",
+                    "NIX_EVALUATION_SYSTEM": "pass --system x86_64-linux for metadata replay"
+                  },
+                  "artifactSha256": "0c9bb6f1f34d7ee44635bfe8267c0fecc9b4ecd5b67c7ee3176bb18be1f26cdd",
+                  "artifactUrl": "https://nix-purifiers.github.io/evidence/0c9bb6f1f34d7ee44635bfe8267c0fecc9b4ecd5b67c7ee3176bb18be1f26cdd.json",
+                  "expressionSha256": "6ce9586934126d16ea7c4d25b0131055b96defaa77d977f35a6b5ca60f7e0636"
+                },
+                "value": "import ((builtins.getEnv \"MESON_REPO\") + \"/tests/tier2-build.nix\") { repository = builtins.getEnv \"MESON_REPO\"; project = builtins.getEnv \"MESON_PROJECT\"; }"
+              },
+              "drvPath": "/nix/store/p9cr5y7yhfg0dgqy6l3hmji1m0p05hl6-meson-external-fixture-runtime-evidence.drv",
+              "evaluation": {
+                "artifactSha256": "6631dd0d797f5c5da2ed82032fffd8b0a7c7d8bfd2dcfa6bd44a64fb488c7185",
+                "check": {
+                  "kind": "expression",
+                  "replay": {
+                    "arguments": {
+                      "MESON_PROJECT": "restore projectFiles to an arbitrary local directory",
+                      "MESON_REPO": "restore immutable producer208 source with verified sourceNarHash",
+                      "NIX_EVALUATION_SYSTEM": "pass --system x86_64-linux for metadata replay"
+                    },
+                    "artifactSha256": "0c9bb6f1f34d7ee44635bfe8267c0fecc9b4ecd5b67c7ee3176bb18be1f26cdd",
+                    "artifactUrl": "https://nix-purifiers.github.io/evidence/0c9bb6f1f34d7ee44635bfe8267c0fecc9b4ecd5b67c7ee3176bb18be1f26cdd.json",
+                    "expressionSha256": "6ce9586934126d16ea7c4d25b0131055b96defaa77d977f35a6b5ca60f7e0636"
+                  },
+                  "value": "import ((builtins.getEnv \"MESON_REPO\") + \"/tests/tier2-build.nix\") { repository = builtins.getEnv \"MESON_REPO\"; project = builtins.getEnv \"MESON_PROJECT\"; }"
+                },
+                "drvPath": "/nix/store/p9cr5y7yhfg0dgqy6l3hmji1m0p05hl6-meson-external-fixture-runtime-evidence.drv",
+                "receipt": "https://nix-purifiers.github.io/evidence/6631dd0d797f5c5da2ed82032fffd8b0a7c7d8bfd2dcfa6bd44a64fb488c7185.json",
+                "sourceNarHash": "sha256-vi8H7QfkAdJhhYEOUPhfD6S8UjHutWoRzRIHF6j0Jd0=",
+                "sourceRevision": "20827109606eaafeaf14f2494062af8899d6967f"
+              },
+              "outputNarHashes": {
+                "out": "sha256-aExsNGYql35NPQi2iLQm8s+5O9oTqvpp3c2fe88HIY8="
+              },
+              "outputs": {
+                "out": "/nix/store/7ffwsc74v5lfvfqy9d7cjmcg15ia0rw6-meson-external-fixture-runtime-evidence"
+              },
+              "repository": "nix-purifiers/meson-purifier",
+              "revision": "20827109606eaafeaf14f2494062af8899d6967f",
+              "sampleSources": [],
+              "sdkVersions": {
+                "C/C++ compiler": "16.2.0",
+                "Meson": "1.12.1",
+                "Python": "3.14.8"
+              },
+              "sourceNarHash": "sha256-vi8H7QfkAdJhhYEOUPhfD6S8UjHutWoRzRIHF6j0Jd0=",
+              "system": "x86_64-linux"
+            },
+            "meson-purifier@2082710:linux:independentInihRuntimeAndConsumer": {
+              "build": {
+                "artifactSha256": "c5f679959843c545398dce6b20a1687969bb9e5a73ff655aa6631019a80d77d5",
+                "drvPath": "/nix/store/bbg98mwfxm1538an24dfx5phzf7hkk0l-meson-inih-runtime-evidence.drv",
+                "executedSystem": "x86_64-linux",
+                "outputNarHashes": {
+                  "out": "sha256-76kHV364Oje3cktUigzXlbAYpUNgBsIVIf+XstMX7/o="
+                },
+                "outputs": {
+                  "out": "/nix/store/s5fymqkpw8rk1hj9wiq9kywl2y5c2c85-meson-inih-runtime-evidence"
+                },
+                "receipt": "https://nix-purifiers.github.io/evidence/c5f679959843c545398dce6b20a1687969bb9e5a73ff655aa6631019a80d77d5.json",
                 "sampleSources": [
                   {
-                    "repository": "https://github.com/rizinorg/rizin",
-                    "revision": "5a611eee2999d312317ff90d600e37dde0f58992",
-                    "sourceNarHash": "sha256-+3p3urhcRBASLMAExXbSq0BnmlPqF8OSSnBPmGVTPZU="
+                    "repository": "https://github.com/benhoyt/inih",
+                    "revision": "611ab51f8dd7ec583543815b0de693495045fbf8",
+                    "sourceNarHash": "sha256-HiVkrWzCzthwNNTxPVJnlcQ+o+gQW2sIRitZGJvWVmU="
                   }
                 ],
                 "sdkVersions": {
-                  "Meson": "1.12.1"
+                  "C/C++ compiler": "16.2.0",
+                  "Meson": "1.12.1",
+                  "Python": "3.14.8"
                 },
-                "sourceNarHash": "sha256-vlcv16SJ6BNSqZ8ntZ9OxZCb5S8vKqgpsN52SLakxrQ=",
-                "sourceRevision": "64f252d0df2f08cd81f3baad09d0faa69f9e0217",
+                "sourceNarHash": "sha256-vi8H7QfkAdJhhYEOUPhfD6S8UjHutWoRzRIHF6j0Jd0=",
+                "sourceRevision": "20827109606eaafeaf14f2494062af8899d6967f",
                 "status": "success"
               },
               "check": {
-                "kind": "flake-attribute",
-                "replay": null,
-                "value": "checks.x86_64-linux.real-world-rizin"
+                "kind": "expression",
+                "replay": {
+                  "arguments": {
+                    "MESON_PROJECT": "restore projectFiles to an arbitrary local directory",
+                    "MESON_REPO": "restore immutable producer208 source with verified sourceNarHash",
+                    "NIX_EVALUATION_SYSTEM": "pass --system x86_64-linux for metadata replay"
+                  },
+                  "artifactSha256": "2358a9f631e1bba0873d09c690fa946f000122a2b9817819e512e4da3d5bbd2a",
+                  "artifactUrl": "https://nix-purifiers.github.io/evidence/2358a9f631e1bba0873d09c690fa946f000122a2b9817819e512e4da3d5bbd2a.json",
+                  "expressionSha256": "a6c4a653d4ab68cda319223490860dfa81f8cbb540b36e84ba27adaa440efed9"
+                },
+                "value": "import ((builtins.getEnv \"MESON_REPO\") + \"/tests/tier2-build.nix\") { repository = builtins.getEnv \"MESON_REPO\"; project = builtins.getEnv \"MESON_PROJECT\"; pname=\"inih\"; version=\"63\"; }"
               },
-              "drvPath": "/nix/store/kva5g5yz9s8f7f9nf6ykw0qrq8bpw8lr-real-world-rizin.drv",
-              "evaluation": null,
+              "drvPath": "/nix/store/bbg98mwfxm1538an24dfx5phzf7hkk0l-meson-inih-runtime-evidence.drv",
+              "evaluation": {
+                "artifactSha256": "71abdafde8740f77fa75ed8485db7706e1b27168e99289487f236f3f781892c0",
+                "check": {
+                  "kind": "expression",
+                  "replay": {
+                    "arguments": {
+                      "MESON_PROJECT": "restore projectFiles to an arbitrary local directory",
+                      "MESON_REPO": "restore immutable producer208 source with verified sourceNarHash",
+                      "NIX_EVALUATION_SYSTEM": "pass --system x86_64-linux for metadata replay"
+                    },
+                    "artifactSha256": "2358a9f631e1bba0873d09c690fa946f000122a2b9817819e512e4da3d5bbd2a",
+                    "artifactUrl": "https://nix-purifiers.github.io/evidence/2358a9f631e1bba0873d09c690fa946f000122a2b9817819e512e4da3d5bbd2a.json",
+                    "expressionSha256": "a6c4a653d4ab68cda319223490860dfa81f8cbb540b36e84ba27adaa440efed9"
+                  },
+                  "value": "import ((builtins.getEnv \"MESON_REPO\") + \"/tests/tier2-build.nix\") { repository = builtins.getEnv \"MESON_REPO\"; project = builtins.getEnv \"MESON_PROJECT\"; pname=\"inih\"; version=\"63\"; }"
+                },
+                "drvPath": "/nix/store/bbg98mwfxm1538an24dfx5phzf7hkk0l-meson-inih-runtime-evidence.drv",
+                "receipt": "https://nix-purifiers.github.io/evidence/71abdafde8740f77fa75ed8485db7706e1b27168e99289487f236f3f781892c0.json",
+                "sourceNarHash": "sha256-vi8H7QfkAdJhhYEOUPhfD6S8UjHutWoRzRIHF6j0Jd0=",
+                "sourceRevision": "20827109606eaafeaf14f2494062af8899d6967f"
+              },
               "outputNarHashes": {
-                "out": "sha256-d6xi4mKdjkX2JFicDIv5niSzpyI0m/Hnm8GGAIU04kY="
+                "out": "sha256-76kHV364Oje3cktUigzXlbAYpUNgBsIVIf+XstMX7/o="
               },
               "outputs": {
-                "out": "/nix/store/s2hwaf3kc41l2qz0h5srg5a5g75jsm3y-real-world-rizin"
+                "out": "/nix/store/s5fymqkpw8rk1hj9wiq9kywl2y5c2c85-meson-inih-runtime-evidence"
               },
               "repository": "nix-purifiers/meson-purifier",
-              "revision": "64f252d0df2f08cd81f3baad09d0faa69f9e0217",
+              "revision": "20827109606eaafeaf14f2494062af8899d6967f",
               "sampleSources": [
                 {
-                  "repository": "https://github.com/rizinorg/rizin",
-                  "revision": "5a611eee2999d312317ff90d600e37dde0f58992",
-                  "sourceNarHash": "sha256-+3p3urhcRBASLMAExXbSq0BnmlPqF8OSSnBPmGVTPZU="
+                  "repository": "https://github.com/benhoyt/inih",
+                  "revision": "611ab51f8dd7ec583543815b0de693495045fbf8",
+                  "sourceNarHash": "sha256-HiVkrWzCzthwNNTxPVJnlcQ+o+gQW2sIRitZGJvWVmU="
                 }
               ],
               "sdkVersions": {
-                "Meson": "1.12.1"
+                "C/C++ compiler": "16.2.0",
+                "Meson": "1.12.1",
+                "Python": "3.14.8"
               },
-              "sourceNarHash": "sha256-vlcv16SJ6BNSqZ8ntZ9OxZCb5S8vKqgpsN52SLakxrQ=",
+              "sourceNarHash": "sha256-vi8H7QfkAdJhhYEOUPhfD6S8UjHutWoRzRIHF6j0Jd0=",
               "system": "x86_64-linux"
             },
-            "meson-purifier:resource-schema:x86_64-linux": {
+            "meson-purifier@2082710:x86_64-linux:canonical-receipt-comparison": {
               "build": {
-                "artifactSha256": "e3bdeb5bd839634288b697a256b28afca897326741ae895a76929965cb3d6bda",
-                "drvPath": "/nix/store/80nnyhngw00jdf1l0z8vmald5fviwhap-installed-schema-ordinary-consumers.drv",
+                "artifactSha256": "d37efe04014218bfb8674b25d63329b1575c37dc663237bb1bbb379697793067",
+                "drvPath": "/nix/store/3g2vd7alhsmyzwwpkpfm7761xd2aq83b-meson-native-canonical-reproducibility.drv",
                 "executedSystem": "x86_64-linux",
                 "outputNarHashes": {
-                  "out": "sha256-d6xi4mKdjkX2JFicDIv5niSzpyI0m/Hnm8GGAIU04kY="
+                  "out": "sha256-YAQgXo9EPXzB0tavUHQ6VQN8irFMqtgMlB7sNu0e8Z8="
                 },
                 "outputs": {
-                  "out": "/nix/store/7xdhcn917fyyg49bil3bmnrw7a2r9vry-installed-schema-ordinary-consumers"
+                  "out": "/nix/store/qck72ihwr418c76h6lkrczggdpwnzn9f-meson-native-canonical-reproducibility"
                 },
-                "receipt": "https://nix-purifiers.github.io/evidence/e3bdeb5bd839634288b697a256b28afca897326741ae895a76929965cb3d6bda.json",
-                "sampleSources": [
-                  {
-                    "repository": "https://github.com/nix-purifiers/meson-purifier",
-                    "revision": "64f252d0df2f08cd81f3baad09d0faa69f9e0217",
-                    "sourceNarHash": "sha256-vlcv16SJ6BNSqZ8ntZ9OxZCb5S8vKqgpsN52SLakxrQ="
-                  }
-                ],
+                "receipt": "https://nix-purifiers.github.io/evidence/d37efe04014218bfb8674b25d63329b1575c37dc663237bb1bbb379697793067.json",
+                "sampleSources": [],
                 "sdkVersions": {
-                  "Meson": "1.12.1"
+                  "comparison Python": "3.14.8"
                 },
-                "sourceNarHash": "sha256-vlcv16SJ6BNSqZ8ntZ9OxZCb5S8vKqgpsN52SLakxrQ=",
-                "sourceRevision": "64f252d0df2f08cd81f3baad09d0faa69f9e0217",
+                "sourceNarHash": "sha256-vi8H7QfkAdJhhYEOUPhfD6S8UjHutWoRzRIHF6j0Jd0=",
+                "sourceRevision": "20827109606eaafeaf14f2494062af8899d6967f",
                 "status": "success"
               },
               "check": {
-                "kind": "flake-attribute",
-                "replay": null,
-                "value": "checks.x86_64-linux.resource-schema"
+                "kind": "expression",
+                "replay": {
+                  "arguments": {
+                    "MESON_FIRST": "restore canonicalFirstReceipts files byte-for-byte, regular nonexecutable files",
+                    "MESON_REPO": "restore immutable208 source",
+                    "MESON_SECOND": "restore canonicalSecondReceipts files byte-for-byte, regular nonexecutable files",
+                    "NIX_EVALUATION_SYSTEM": "pass --system x86_64-linux"
+                  },
+                  "artifactSha256": "9520216f2e98012e2ccb801767084f12150aa787faeae41cbedce4a9cb8673a9",
+                  "artifactUrl": "https://nix-purifiers.github.io/evidence/9520216f2e98012e2ccb801767084f12150aa787faeae41cbedce4a9cb8673a9.json",
+                  "expressionSha256": "00df4d0bd9de9e3341a13ec18e19d406dbdd7fd6432c403549031cdb34f2798c"
+                },
+                "value": "import ((builtins.getEnv \"MESON_REPO\") + \"/tests/compare-repro.nix\") { repository=builtins.getEnv \"MESON_REPO\"; first=builtins.getEnv \"MESON_FIRST\"; second=builtins.getEnv \"MESON_SECOND\"; }"
               },
-              "drvPath": "/nix/store/80nnyhngw00jdf1l0z8vmald5fviwhap-installed-schema-ordinary-consumers.drv",
-              "evaluation": null,
+              "drvPath": "/nix/store/3g2vd7alhsmyzwwpkpfm7761xd2aq83b-meson-native-canonical-reproducibility.drv",
+              "evaluation": {
+                "artifactSha256": "480c474e5b0a9485052ce292a9772dc18bbd39df99d66dc75969d0dd6684ebca",
+                "check": {
+                  "kind": "expression",
+                  "replay": {
+                    "arguments": {
+                      "MESON_FIRST": "restore canonicalFirstReceipts files byte-for-byte, regular nonexecutable files",
+                      "MESON_REPO": "restore immutable208 source",
+                      "MESON_SECOND": "restore canonicalSecondReceipts files byte-for-byte, regular nonexecutable files",
+                      "NIX_EVALUATION_SYSTEM": "pass --system x86_64-linux"
+                    },
+                    "artifactSha256": "9520216f2e98012e2ccb801767084f12150aa787faeae41cbedce4a9cb8673a9",
+                    "artifactUrl": "https://nix-purifiers.github.io/evidence/9520216f2e98012e2ccb801767084f12150aa787faeae41cbedce4a9cb8673a9.json",
+                    "expressionSha256": "00df4d0bd9de9e3341a13ec18e19d406dbdd7fd6432c403549031cdb34f2798c"
+                  },
+                  "value": "import ((builtins.getEnv \"MESON_REPO\") + \"/tests/compare-repro.nix\") { repository=builtins.getEnv \"MESON_REPO\"; first=builtins.getEnv \"MESON_FIRST\"; second=builtins.getEnv \"MESON_SECOND\"; }"
+                },
+                "drvPath": "/nix/store/3g2vd7alhsmyzwwpkpfm7761xd2aq83b-meson-native-canonical-reproducibility.drv",
+                "receipt": "https://nix-purifiers.github.io/evidence/480c474e5b0a9485052ce292a9772dc18bbd39df99d66dc75969d0dd6684ebca.json",
+                "sourceNarHash": "sha256-vi8H7QfkAdJhhYEOUPhfD6S8UjHutWoRzRIHF6j0Jd0=",
+                "sourceRevision": "20827109606eaafeaf14f2494062af8899d6967f"
+              },
               "outputNarHashes": {
-                "out": "sha256-d6xi4mKdjkX2JFicDIv5niSzpyI0m/Hnm8GGAIU04kY="
+                "out": "sha256-YAQgXo9EPXzB0tavUHQ6VQN8irFMqtgMlB7sNu0e8Z8="
               },
               "outputs": {
-                "out": "/nix/store/7xdhcn917fyyg49bil3bmnrw7a2r9vry-installed-schema-ordinary-consumers"
+                "out": "/nix/store/qck72ihwr418c76h6lkrczggdpwnzn9f-meson-native-canonical-reproducibility"
               },
               "repository": "nix-purifiers/meson-purifier",
-              "revision": "64f252d0df2f08cd81f3baad09d0faa69f9e0217",
-              "sampleSources": [
-                {
-                  "repository": "https://github.com/nix-purifiers/meson-purifier",
-                  "revision": "64f252d0df2f08cd81f3baad09d0faa69f9e0217",
-                  "sourceNarHash": "sha256-vlcv16SJ6BNSqZ8ntZ9OxZCb5S8vKqgpsN52SLakxrQ="
-                }
-              ],
+              "revision": "20827109606eaafeaf14f2494062af8899d6967f",
+              "sampleSources": [],
               "sdkVersions": {
-                "Meson": "1.12.1"
+                "comparison Python": "3.14.8"
               },
-              "sourceNarHash": "sha256-vlcv16SJ6BNSqZ8ntZ9OxZCb5S8vKqgpsN52SLakxrQ=",
-              "system": "x86_64-linux"
-            },
-            "meson-purifier:toolchain:x86_64-linux": {
-              "build": {
-                "artifactSha256": "e3bdeb5bd839634288b697a256b28afca897326741ae895a76929965cb3d6bda",
-                "drvPath": "/nix/store/ix5i8csc20qxzv1hgk0g92wvbacikwnh-meson-purifier-meson-1.12.1.drv",
-                "executedSystem": "x86_64-linux",
-                "outputNarHashes": {
-                  "out": "sha256-ANOFVCakHmldpOjZTC9hdeS3j6yxPxJdSnO1fy63XPY="
-                },
-                "outputs": {
-                  "out": "/nix/store/9ilg385kdwlf2lf6j95sgwd7wn7qcizr-meson-purifier-meson-1.12.1"
-                },
-                "receipt": "https://nix-purifiers.github.io/evidence/e3bdeb5bd839634288b697a256b28afca897326741ae895a76929965cb3d6bda.json",
-                "sampleSources": [],
-                "sdkVersions": {},
-                "sourceNarHash": "sha256-vlcv16SJ6BNSqZ8ntZ9OxZCb5S8vKqgpsN52SLakxrQ=",
-                "sourceRevision": "64f252d0df2f08cd81f3baad09d0faa69f9e0217",
-                "status": "success"
-              },
-              "check": {
-                "kind": "flake-attribute",
-                "replay": null,
-                "value": "checks.x86_64-linux.toolchain"
-              },
-              "drvPath": "/nix/store/ix5i8csc20qxzv1hgk0g92wvbacikwnh-meson-purifier-meson-1.12.1.drv",
-              "evaluation": null,
-              "outputNarHashes": {
-                "out": "sha256-ANOFVCakHmldpOjZTC9hdeS3j6yxPxJdSnO1fy63XPY="
-              },
-              "outputs": {
-                "out": "/nix/store/9ilg385kdwlf2lf6j95sgwd7wn7qcizr-meson-purifier-meson-1.12.1"
-              },
-              "repository": "nix-purifiers/meson-purifier",
-              "revision": "64f252d0df2f08cd81f3baad09d0faa69f9e0217",
-              "sampleSources": [],
-              "sdkVersions": {},
-              "sourceNarHash": "sha256-vlcv16SJ6BNSqZ8ntZ9OxZCb5S8vKqgpsN52SLakxrQ=",
-              "system": "x86_64-linux"
-            },
-            "meson-purifier:treefmt:x86_64-linux": {
-              "build": {
-                "artifactSha256": "e3bdeb5bd839634288b697a256b28afca897326741ae895a76929965cb3d6bda",
-                "drvPath": "/nix/store/h3nr2966l25fq7pfag5mqwq3l88flml8-treefmt-check.drv",
-                "executedSystem": "x86_64-linux",
-                "outputNarHashes": {
-                  "out": "sha256-d6xi4mKdjkX2JFicDIv5niSzpyI0m/Hnm8GGAIU04kY="
-                },
-                "outputs": {
-                  "out": "/nix/store/ak17ba35r4df5b9sikyncnxi8dfghg6f-treefmt-check"
-                },
-                "receipt": "https://nix-purifiers.github.io/evidence/e3bdeb5bd839634288b697a256b28afca897326741ae895a76929965cb3d6bda.json",
-                "sampleSources": [],
-                "sdkVersions": {},
-                "sourceNarHash": "sha256-vlcv16SJ6BNSqZ8ntZ9OxZCb5S8vKqgpsN52SLakxrQ=",
-                "sourceRevision": "64f252d0df2f08cd81f3baad09d0faa69f9e0217",
-                "status": "success"
-              },
-              "check": {
-                "kind": "flake-attribute",
-                "replay": null,
-                "value": "checks.x86_64-linux.treefmt"
-              },
-              "drvPath": "/nix/store/h3nr2966l25fq7pfag5mqwq3l88flml8-treefmt-check.drv",
-              "evaluation": null,
-              "outputNarHashes": {
-                "out": "sha256-d6xi4mKdjkX2JFicDIv5niSzpyI0m/Hnm8GGAIU04kY="
-              },
-              "outputs": {
-                "out": "/nix/store/ak17ba35r4df5b9sikyncnxi8dfghg6f-treefmt-check"
-              },
-              "repository": "nix-purifiers/meson-purifier",
-              "revision": "64f252d0df2f08cd81f3baad09d0faa69f9e0217",
-              "sampleSources": [],
-              "sdkVersions": {},
-              "sourceNarHash": "sha256-vlcv16SJ6BNSqZ8ntZ9OxZCb5S8vKqgpsN52SLakxrQ=",
-              "system": "x86_64-linux"
-            },
-            "meson-purifier:wrap-file-reader:x86_64-linux": {
-              "build": {
-                "artifactSha256": "e3bdeb5bd839634288b697a256b28afca897326741ae895a76929965cb3d6bda",
-                "drvPath": "/nix/store/3n4wsil9920kq9njcc6ppk71xj4lvgkw-wrap-file-reader.drv",
-                "executedSystem": "x86_64-linux",
-                "outputNarHashes": {
-                  "out": "sha256-d6xi4mKdjkX2JFicDIv5niSzpyI0m/Hnm8GGAIU04kY="
-                },
-                "outputs": {
-                  "out": "/nix/store/wqqyfd1m0p1qvzij78m49j3nc5bn5b1g-wrap-file-reader"
-                },
-                "receipt": "https://nix-purifiers.github.io/evidence/e3bdeb5bd839634288b697a256b28afca897326741ae895a76929965cb3d6bda.json",
-                "sampleSources": [],
-                "sdkVersions": {},
-                "sourceNarHash": "sha256-vlcv16SJ6BNSqZ8ntZ9OxZCb5S8vKqgpsN52SLakxrQ=",
-                "sourceRevision": "64f252d0df2f08cd81f3baad09d0faa69f9e0217",
-                "status": "success"
-              },
-              "check": {
-                "kind": "flake-attribute",
-                "replay": null,
-                "value": "checks.x86_64-linux.wrap-file-reader"
-              },
-              "drvPath": "/nix/store/3n4wsil9920kq9njcc6ppk71xj4lvgkw-wrap-file-reader.drv",
-              "evaluation": null,
-              "outputNarHashes": {
-                "out": "sha256-d6xi4mKdjkX2JFicDIv5niSzpyI0m/Hnm8GGAIU04kY="
-              },
-              "outputs": {
-                "out": "/nix/store/wqqyfd1m0p1qvzij78m49j3nc5bn5b1g-wrap-file-reader"
-              },
-              "repository": "nix-purifiers/meson-purifier",
-              "revision": "64f252d0df2f08cd81f3baad09d0faa69f9e0217",
-              "sampleSources": [],
-              "sdkVersions": {},
-              "sourceNarHash": "sha256-vlcv16SJ6BNSqZ8ntZ9OxZCb5S8vKqgpsN52SLakxrQ=",
+              "sourceNarHash": "sha256-vi8H7QfkAdJhhYEOUPhfD6S8UjHutWoRzRIHF6j0Jd0=",
               "system": "x86_64-linux"
             }
           },
           "sampleBuilds": [
             {
               "derivations": [
-                "meson-purifier:real-world-rizin:x86_64-linux"
+                "meson-purifier@2082710:linux:independentInihRuntimeAndConsumer",
+                "meson-purifier@2082710:darwin-one:independentInihRuntimeAndConsumer",
+                "meson-purifier@2082710:darwin-two:independentInihRuntimeAndConsumer"
               ],
-              "name": "rizinorg/rizin0.8.2 (independent-upstream)",
+              "name": "benhoyt/inih r63 (one new pinned unmodified full-suite upstream sample)",
               "upstream": {
-                "repository": "https://github.com/rizinorg/rizin",
-                "revision": "5a611eee2999d312317ff90d600e37dde0f58992",
-                "sourceNarHash": "sha256-+3p3urhcRBASLMAExXbSq0BnmlPqF8OSSnBPmGVTPZU="
-              }
-            },
-            {
-              "derivations": [
-                "meson-purifier:fixture-tests:x86_64-linux",
-                "meson-purifier:native-ffi:x86_64-linux",
-                "meson-purifier:resource-schema:x86_64-linux"
-              ],
-              "name": "C app, external wraps, native FFI and resource-schema (fixtures)",
-              "upstream": {
-                "repository": "https://github.com/nix-purifiers/meson-purifier",
-                "revision": "64f252d0df2f08cd81f3baad09d0faa69f9e0217",
-                "sourceNarHash": "sha256-vlcv16SJ6BNSqZ8ntZ9OxZCb5S8vKqgpsN52SLakxrQ="
+                "repository": "https://github.com/benhoyt/inih",
+                "revision": "611ab51f8dd7ec583543815b0de693495045fbf8",
+                "sourceNarHash": "sha256-HiVkrWzCzthwNNTxPVJnlcQ+o+gQW2sIRitZGJvWVmU="
               }
             }
           ]
         },
-        "rationale": "Native Linux executable checks and at least one exact-version sample are demonstrated. Higher-tier promotion is not justified without native Darwin execution; further criterion-specific judgments and proof limits are recorded.",
-        "reviewedAt": "2026-11-06",
-        "reviewedRevision": "64f252d0df2f08cd81f3baad09d0faa69f9e0217",
+        "rationale": "Actual released-main native Linux/Darwin runtime and independent inih full-suite/ordinary installed-consumer evidence support Tier2 at exact Meson1.12.1 SDK tuples. Nine native records and a separate Linux comparison helper independently metadata-match. Strict Darwin canonical full-output equality is separate from an explicitly failed in-place rebuild diagnostic. Compiled fixture, inih runtime wrapper and unrecorded compiled-inih NAR scopes are kept distinct; broad sample diversity and old workflow compatibility remain unproven.",
+        "reviewedAt": "2026-11-07",
+        "reviewedRevision": "20827109606eaafeaf14f2494062af8899d6967f",
         "sampleBuilds": [
           {
             "evidence": [
-              "https://github.com/nix-purifiers/meson-purifier/blob/64f252d0df2f08cd81f3baad09d0faa69f9e0217/tests/default.nix",
-              "https://github.com/nix-purifiers/meson-purifier/actions/runs/42153562690/job/127682283186",
-              "https://github.com/nix-purifiers/meson-purifier/actions/runs/42153562690/job/127682283290",
-              "https://nix-purifiers.github.io/evidence/0bc57a0e1c9de2755f3921906d49b806e854b92f7ef63f18636aa6ef7376c10d.json"
+              "https://nix-purifiers.github.io/evidence/cb4c495ac6de21575770182a7b7a5cf846a36a7b726e2a68e30cb69711a79887.json",
+              "https://nix-purifiers.github.io/evidence/9be9a95a65a1208c0b0981e94d9bb0a7fa5e2061731173a24c89098239f3de6b.json",
+              "https://nix-purifiers.github.io/evidence/0f3d00fed8d2d4535b26adfcadd58243bf932a0aeb2a19cd3b56448ac125ac38.json"
             ],
-            "name": "rizinorg/rizin0.8.2 (independent-upstream)"
-          },
-          {
-            "evidence": [
-              "https://github.com/nix-purifiers/meson-purifier/blob/64f252d0df2f08cd81f3baad09d0faa69f9e0217/tests/fixtures",
-              "https://github.com/nix-purifiers/meson-purifier/actions/runs/42153562690/job/127682283186",
-              "https://github.com/nix-purifiers/meson-purifier/actions/runs/42153562690/job/127682283290",
-              "https://nix-purifiers.github.io/evidence/0bc57a0e1c9de2755f3921906d49b806e854b92f7ef63f18636aa6ef7376c10d.json"
-            ],
-            "name": "C app, external wraps, native FFI and resource-schema (fixtures)"
+            "name": "benhoyt/inih r63 (one new pinned unmodified full-suite upstream sample)"
           }
         ],
-        "tier": 3
+        "tier": 2
       },
       "repository": "nix-purifiers/meson-purifier",
       "reviewedRevision": "d9b1bc384669817635c649ec3aba52c8aae66d74",
