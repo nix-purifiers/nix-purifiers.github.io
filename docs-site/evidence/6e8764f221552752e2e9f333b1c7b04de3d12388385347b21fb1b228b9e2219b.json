@@ -1,0 +1,47 @@
+{
+  "kind": "normalized successful actual-main CI derivation binding; no new execution",
+  "status": "success",
+  "executedSystem": "x86_64-linux",
+  "sourceRevision": "382fb8ec30e8ea8fad98dbb58ac68e47107f0b2b",
+  "sourceNarHash": "sha256-Ub/bW+DjwezbAlPB42Oy5nwN0EXmBVMRGkwO9SkDJ18=",
+  "check": {
+    "kind": "expression",
+    "value": "\n      let\n        f = builtins.getFlake (\"path:\" + builtins.getEnv \"COMPAT_FLAKE\");\n        p = import f.inputs.nixpkgs {\n          system = builtins.currentSystem;\n          overlays = [ f.overlays.default ];\n        };\n      in (p.maven-purifier.buildMavenProject {\n        src = /. + builtins.getEnv \"COMPAT_PROJECT\";\n      }).tests\n    ",
+    "replay": {
+      "artifactUrl": "https://nix-purifiers.github.io/evidence/645f6171cf4f834b3adfa07d27aa77571576c5860de6c9382022ea32cafb5cbf.json",
+      "artifactSha256": "645f6171cf4f834b3adfa07d27aa77571576c5860de6c9382022ea32cafb5cbf",
+      "expressionSha256": "4a9df5dd67c3c7a22db87f0f9de1711b5258f81a9b7621dbf131e5c682d082a1",
+      "arguments": {
+        "COMPAT_FLAKE": "/nix/store/0f7g944majdjcskbilyrl2d876vhbfzq-source",
+        "COMPAT_PROJECT": "/home/runner/work/_temp/maven-compatibility-2wr0scmx/project"
+      }
+    }
+  },
+  "drvPath": "/nix/store/n17q1wb50hd267a5y1zg62c8f5m86z6p-maven-tests.drv",
+  "outputs": {
+    "out": "/nix/store/laynrzzn7205fps1qmqgmg68ii311f0n-maven-tests"
+  },
+  "outputNarHashes": {
+    "out": "sha256-eIvqYArwl/Dcb68pmOeuwnlvOeD49lGjz+lDIuZd2p0="
+  },
+  "sdkVersions": {
+    "Maven": "3.9.11",
+    "Java runtime": "openjdk-headless-17.0.20.1+1"
+  },
+  "sampleSources": [],
+  "originalArtifacts": {
+    "actual-build-receipt": {
+      "receipt": "https://nix-purifiers.github.io/evidence/70529990f4aaaa94a55a95ec3760b0ff54289eabc70d8af222a1cfd678aebf9d.json",
+      "artifactSha256": "70529990f4aaaa94a55a95ec3760b0ff54289eabc70d8af222a1cfd678aebf9d"
+    }
+  },
+  "actualMainRun": {
+    "receipt": "https://nix-purifiers.github.io/evidence/b8c907859dc7a0a3e586f9e823f1e8042ceeb293867f99cc5ed31e9546c21ce9.json",
+    "artifactSha256": "b8c907859dc7a0a3e586f9e823f1e8042ceeb293867f99cc5ed31e9546c21ce9"
+  },
+  "jobUrl": "https://github.com/nix-purifiers/maven-purifier/actions/runs/42336610884/job/128294841735",
+  "jobConclusion": "success",
+  "sandbox": true,
+  "nativeInputActivation": "source-owned ordinary/native plus builder lane executed in CI",
+  "limits": "Exact platform/tool/SDK/output tuple only; cache reuse is not excluded. Maven2 supplementary lane is builder-only; no continuous historical range is inferred."
+}
