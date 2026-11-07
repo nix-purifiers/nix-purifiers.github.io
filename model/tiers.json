@@ -11882,75 +11882,83 @@
       }
     },
     "cmake-purifier": {
-      "tier": 3,
-      "reviewedRevision": "195cc8d9b3fc7353ff9e5687513bb95210d8f419",
-      "reviewedAt": "2026-11-06",
-      "rationale": "Concrete Linux sample/check derivations execute successfully and establish at least one exact SDK point. Native Darwin execution and the specific maintained-version proof described below are not demonstrated.",
+      "tier": 2,
+      "reviewedRevision": "fa095b882aebd925c397521961ae316c76b469d7",
+      "reviewedAt": "2026-11-07",
+      "rationale": "Good executable tests, a confirmed unmodified independent spdlog sample, native Linux/Darwin runtime and an executed maintained current stable CMake4.4.5 point are demonstrated at the released main source. Many independent samples and substantially older workflow compatibility are not established.",
       "criteria": {
         "evaluation": {
           "state": "met",
-          "summary": "Every published x86_64-linux check at this immutable revision evaluates and successfully realizes through Nix. The packet records the actual attribute, drv, output path, NAR hash and SDK input closure for each check.",
+          "summary": "The exact released main source evaluates and completes all full flake checks natively on x86_64-linux, aarch64-linux and aarch64-darwin. Executed sample/SDK records below carry exact drv/output/NAR identities.",
           "evidence": [
-            "https://nix-purifiers.github.io/evidence/397ef69cfc55be19ae7d3d943cbf10f026d82b3846e8e72966cfa3173b4e9c3b.json"
+            "https://nix-purifiers.github.io/evidence/2b3bd64e787d5272ce638e305b641255f6cd293d1d265f219986d102483987b5.json",
+            "https://nix-purifiers.github.io/evidence/6a815e77715d933c377b11919d48b9a5f4a16eebc1589d8415be6b3256e6aa79.json"
           ]
         },
         "goodTests": {
           "state": "met",
-          "summary": "The executed suite builds and runs native targets, C ABI/foreign consumers and resource/schema projections; checks output names/releases, multiple source transports, stale/tampered/missing/malformed lock refusals and external lockfiles. The pinned cpr project is built and tested on Linux, with separate successful CI relock/update/offline/rebuild jobs. cpr is explicitly skipped by the baseline source on Darwin, and CVS is skipped on aarch64, so those are not runtime claims.",
+          "summary": "Native Linux/Darwin tests cover explicit selected SDK identity, stale/tampered/missing/malformed locks, installed targets/C ABI/resources, relock/update/rebuild and strict offline lifecycle. Unmodified pinned spdlog runs both compiled/header-only upstream suites and an ordinary installed consumer with a missing-producer negative. Native Darwin socket controls positively exercise TCP/UDP loopback and require external outbound EPERM. Existing cpr/CVS skips remain explicit.",
           "evidence": [
-            "https://nix-purifiers.github.io/evidence/397ef69cfc55be19ae7d3d943cbf10f026d82b3846e8e72966cfa3173b4e9c3b.json"
+            "https://nix-purifiers.github.io/evidence/2b3bd64e787d5272ce638e305b641255f6cd293d1d265f219986d102483987b5.json",
+            "https://nix-purifiers.github.io/evidence/6a815e77715d933c377b11919d48b9a5f4a16eebc1589d8415be6b3256e6aa79.json"
           ]
         },
         "linux": {
           "state": "met",
-          "summary": "The complete x86_64-linux check set realizes successfully locally. The independently downloaded successful native aarch64-linux CI job has the same source revision and exact derivation paths for its check set; cross-evaluation is only used to bind those CI paths.",
+          "summary": "Native full flake checks pass on x86_64-linux and aarch64-linux; x86_64-linux selected SDK and independent sample lifecycle receipts bind actual commands, source, drv, output and NAR.",
           "evidence": [
-            "https://nix-purifiers.github.io/evidence/397ef69cfc55be19ae7d3d943cbf10f026d82b3846e8e72966cfa3173b4e9c3b.json"
+            "https://nix-purifiers.github.io/evidence/2b3bd64e787d5272ce638e305b641255f6cd293d1d265f219986d102483987b5.json",
+            "https://nix-purifiers.github.io/evidence/6a815e77715d933c377b11919d48b9a5f4a16eebc1589d8415be6b3256e6aa79.json"
           ]
         },
         "darwin": {
-          "state": "not-met",
-          "summary": "The reviewed workflow runs Linux hosts only and the inspected receipts contain no successful native Darwin project/check execution. Baseline real-world-cpr explicitly returns a skipped marker on Darwin. Later macOS workflows and results are outside this reviewed source snapshot.",
+          "state": "met",
+          "summary": "Native aarch64-darwin full flake check and selected SDK/independent spdlog host+pure checks pass. Native compiler SDK selection is asserted; actual ordinary Seatbelt and pure Nix TCP/UDP controls demonstrate loopback and external policy denial. These are actual native executions, not cross-evaluation.",
           "evidence": [
-            "https://github.com/nix-purifiers/cmake-purifier/blob/195cc8d9b3fc7353ff9e5687513bb95210d8f419/.github/workflows/check.yml",
-            "https://nix-purifiers.github.io/evidence/397ef69cfc55be19ae7d3d943cbf10f026d82b3846e8e72966cfa3173b4e9c3b.json"
+            "https://nix-purifiers.github.io/evidence/2b3bd64e787d5272ce638e305b641255f6cd293d1d265f219986d102483987b5.json",
+            "https://nix-purifiers.github.io/evidence/6a815e77715d933c377b11919d48b9a5f4a16eebc1589d8415be6b3256e6aa79.json"
           ]
         },
         "oneVersion": {
           "state": "met",
-          "summary": "Successful native check derivations execute CMake 4.4.4. Exact SDK input derivations are traced per check; dependency versions are not substituted for SDK execution.",
+          "summary": "Exact source-built CMake4.4.5 executes native lock/configure/build/install, strict offline configure/build/CTest/run and pure SDK-basic check on Linux and Darwin. Independent spdlog uses ambient4.4.4 and is kept distinct.",
           "evidence": [
-            "https://nix-purifiers.github.io/evidence/397ef69cfc55be19ae7d3d943cbf10f026d82b3846e8e72966cfa3173b4e9c3b.json"
+            "https://nix-purifiers.github.io/evidence/2b3bd64e787d5272ce638e305b641255f6cd293d1d265f219986d102483987b5.json",
+            "https://nix-purifiers.github.io/evidence/6a815e77715d933c377b11919d48b9a5f4a16eebc1589d8415be6b3256e6aa79.json"
           ]
         },
         "nonEolVersions": {
-          "state": "not-met",
-          "summary": "The primary download page distinguishes latest stable 4.4.5, previous 4.3.6 and release candidate 4.5.0-rc3. Baseline execution selects 4.4.4 and contains no exact selected 4.3.6 or 4.4.5 sample derivations. The producer is adding those checks at another revision; baseline support is not inferred from them or from the RC.",
+          "state": "met",
+          "summary": "The maintained current stable CMake4.4.5 point is actually executed on native Linux and Darwin. Primary upstream policy maintains the current release/release candidate; the executed current stable point suffices without an exhaustive historical or all-patch matrix. RC4.5.0-rc3 is separate prerelease evidence.",
           "evidence": [
-            "https://cmake.org/download/",
-            "https://nix-purifiers.github.io/evidence/397ef69cfc55be19ae7d3d943cbf10f026d82b3846e8e72966cfa3173b4e9c3b.json"
+            "https://nix-purifiers.github.io/evidence/2b3bd64e787d5272ce638e305b641255f6cd293d1d265f219986d102483987b5.json",
+            "https://nix-purifiers.github.io/evidence/6a815e77715d933c377b11919d48b9a5f4a16eebc1589d8415be6b3256e6aa79.json",
+            "https://github.com/Kitware/CMake/blob/9589cb98e1fdf627a702a90ad52f496faab03290/Help/dev/maint.rst",
+            "https://cmake.org/download/"
           ]
         },
         "manySamples": {
           "state": "not-met",
-          "summary": "One independent cpr project is confirmed at the reviewed revision. Fixture targets, source-transport variants and resource/native consumers are useful tests but not many independent projects. Later spdlog sources and results are outside this reviewed baseline.",
+          "summary": "The confirmed scope comprises one unmodified independent spdlog project, synchronization-patched cpr and authored basic/extras/VCS/consumer fixtures. This is useful sample breadth but does not demonstrate many independent project builds.",
           "evidence": [
-            "https://nix-purifiers.github.io/evidence/397ef69cfc55be19ae7d3d943cbf10f026d82b3846e8e72966cfa3173b4e9c3b.json"
+            "https://nix-purifiers.github.io/evidence/2b3bd64e787d5272ce638e305b641255f6cd293d1d265f219986d102483987b5.json",
+            "https://nix-purifiers.github.io/evidence/6a815e77715d933c377b11919d48b9a5f4a16eebc1589d8415be6b3256e6aa79.json"
           ]
         },
         "longCompatibility": {
           "state": "not-met",
-          "summary": "The reviewed baseline checks execute CMake 4.4.4. Later SDK 3.31/4.3/4.4 and legacy-prototype sources and results are outside this reviewed source snapshot. No historical CMake compatibility is established by the baseline receipts.",
+          "summary": "Exact SDK3.31.12,4.3.6,4.4.5 and4.5.0-rc3 workflows execute on both OSes. These show modern3.x/4.x compatibility but do not establish substantially earlier CMake workflow epochs; no continuous range is inferred.",
           "evidence": [
-            "https://nix-purifiers.github.io/evidence/397ef69cfc55be19ae7d3d943cbf10f026d82b3846e8e72966cfa3173b4e9c3b.json"
+            "https://nix-purifiers.github.io/evidence/2b3bd64e787d5272ce638e305b641255f6cd293d1d265f219986d102483987b5.json",
+            "https://nix-purifiers.github.io/evidence/6a815e77715d933c377b11919d48b9a5f4a16eebc1589d8415be6b3256e6aa79.json"
           ]
         }
       },
       "sampleBuilds": [
         {
-          "name": "Pinned libcpr/cpr: filtered upstream CTest excluding connection_pool and SSE suites.",
+          "name": "Unmodified gabime/spdlog1.15.3 at6fa36017cfd5731d617e1a934f0e5ea9c4445b13; compiled/header-only suites, installed ordinary consumer and missing-producer negative on Linux/Darwin; selected ambient CMake4.4.4.",
           "evidence": [
-            "https://nix-purifiers.github.io/evidence/397ef69cfc55be19ae7d3d943cbf10f026d82b3846e8e72966cfa3173b4e9c3b.json"
+            "https://nix-purifiers.github.io/evidence/2b3bd64e787d5272ce638e305b641255f6cd293d1d265f219986d102483987b5.json"
           ]
         }
       ],
@@ -11958,1424 +11966,639 @@
         "criteria": {
           "evaluation": {
             "state": "met",
-            "summary": "Every published x86_64-linux check at this immutable revision evaluates and successfully realizes through Nix. The packet records the actual attribute, drv, output path, NAR hash and SDK input closure for each check.",
+            "summary": "The exact released main source evaluates and completes all full flake checks natively on x86_64-linux, aarch64-linux and aarch64-darwin. Executed sample/SDK records below carry exact drv/output/NAR identities.",
             "derivations": [
-              "cmake-purifier:x86_64-linux:real-world-cpr",
-              "cmake-purifier:x86_64-linux:basic",
-              "cmake-purifier:x86_64-linux:basic-fetches",
-              "cmake-purifier:x86_64-linux:basic-name",
-              "cmake-purifier:x86_64-linux:basic-outputs",
-              "cmake-purifier:x86_64-linux:basic-release",
-              "cmake-purifier:x86_64-linux:basic-runs",
-              "cmake-purifier:x86_64-linux:basic-tests",
-              "cmake-purifier:x86_64-linux:cmake-purifier",
-              "cmake-purifier:x86_64-linux:conformance-external",
-              "cmake-purifier:x86_64-linux:conformance-malformed",
-              "cmake-purifier:x86_64-linux:conformance-missing",
-              "cmake-purifier:x86_64-linux:conformance-stale",
-              "cmake-purifier:x86_64-linux:conformance-tampered",
-              "cmake-purifier:x86_64-linux:cvs",
-              "cmake-purifier:x86_64-linux:cvs-runs",
-              "cmake-purifier:x86_64-linux:definition-hash",
-              "cmake-purifier:x86_64-linux:extras",
-              "cmake-purifier:x86_64-linux:extras-outputs",
-              "cmake-purifier:x86_64-linux:extras-runs",
-              "cmake-purifier:x86_64-linux:lock-records",
-              "cmake-purifier:x86_64-linux:lock-urls",
-              "cmake-purifier:x86_64-linux:native-ffi",
-              "cmake-purifier:x86_64-linux:nix-library",
-              "cmake-purifier:x86_64-linux:read-lock",
-              "cmake-purifier:x86_64-linux:real-world-cpr-shell",
-              "cmake-purifier:x86_64-linux:real-world-cpr-src",
-              "cmake-purifier:x86_64-linux:resource-schema",
-              "cmake-purifier:x86_64-linux:treefmt",
-              "cmake-purifier:x86_64-linux:vcs",
-              "cmake-purifier:x86_64-linux:vcs-repos",
-              "cmake-purifier:x86_64-linux:vcs-runs"
+              "cmake-purifier@fa095b8:x86_64-linux:sdk-basic-3_31_12",
+              "cmake-purifier@fa095b8:x86_64-linux:sdk-basic-4_3_6",
+              "cmake-purifier@fa095b8:x86_64-linux:sdk-basic-4_4_5",
+              "cmake-purifier@fa095b8:x86_64-linux:sdk-basic-4_5_0-rc3",
+              "cmake-purifier@fa095b8:aarch64-darwin:sdk-basic-3_31_12",
+              "cmake-purifier@fa095b8:aarch64-darwin:sdk-basic-4_3_6",
+              "cmake-purifier@fa095b8:aarch64-darwin:sdk-basic-4_4_5",
+              "cmake-purifier@fa095b8:aarch64-darwin:sdk-basic-4_5_0-rc3",
+              "cmake-purifier@fa095b8:x86_64-linux:real-world-spdlog-consumer",
+              "cmake-purifier@fa095b8:aarch64-darwin:real-world-spdlog-consumer",
+              "cmake-purifier@fa095b8:aarch64-darwin:darwin-loopback-outbound"
             ],
+            "gap": null,
             "sources": [
-              "https://nix-purifiers.github.io/evidence/397ef69cfc55be19ae7d3d943cbf10f026d82b3846e8e72966cfa3173b4e9c3b.json"
-            ],
-            "gap": null
+              "https://nix-purifiers.github.io/evidence/2b3bd64e787d5272ce638e305b641255f6cd293d1d265f219986d102483987b5.json",
+              "https://nix-purifiers.github.io/evidence/6a815e77715d933c377b11919d48b9a5f4a16eebc1589d8415be6b3256e6aa79.json"
+            ]
           },
           "goodTests": {
             "state": "met",
-            "summary": "The executed suite builds and runs native targets, C ABI/foreign consumers and resource/schema projections; checks output names/releases, multiple source transports, stale/tampered/missing/malformed lock refusals and external lockfiles. The pinned cpr project is built and tested on Linux, with separate successful CI relock/update/offline/rebuild jobs. cpr is explicitly skipped by the baseline source on Darwin, and CVS is skipped on aarch64, so those are not runtime claims.",
+            "summary": "Native Linux/Darwin tests cover explicit selected SDK identity, stale/tampered/missing/malformed locks, installed targets/C ABI/resources, relock/update/rebuild and strict offline lifecycle. Unmodified pinned spdlog runs both compiled/header-only upstream suites and an ordinary installed consumer with a missing-producer negative. Native Darwin socket controls positively exercise TCP/UDP loopback and require external outbound EPERM. Existing cpr/CVS skips remain explicit.",
             "derivations": [
-              "cmake-purifier:x86_64-linux:real-world-cpr",
-              "cmake-purifier:x86_64-linux:basic",
-              "cmake-purifier:x86_64-linux:basic-fetches",
-              "cmake-purifier:x86_64-linux:basic-name",
-              "cmake-purifier:x86_64-linux:basic-outputs",
-              "cmake-purifier:x86_64-linux:basic-release",
-              "cmake-purifier:x86_64-linux:basic-runs",
-              "cmake-purifier:x86_64-linux:basic-tests",
-              "cmake-purifier:x86_64-linux:cmake-purifier",
-              "cmake-purifier:x86_64-linux:conformance-external",
-              "cmake-purifier:x86_64-linux:conformance-malformed",
-              "cmake-purifier:x86_64-linux:conformance-missing",
-              "cmake-purifier:x86_64-linux:conformance-stale",
-              "cmake-purifier:x86_64-linux:conformance-tampered",
-              "cmake-purifier:x86_64-linux:cvs",
-              "cmake-purifier:x86_64-linux:cvs-runs",
-              "cmake-purifier:x86_64-linux:definition-hash",
-              "cmake-purifier:x86_64-linux:extras",
-              "cmake-purifier:x86_64-linux:extras-outputs",
-              "cmake-purifier:x86_64-linux:extras-runs",
-              "cmake-purifier:x86_64-linux:lock-records",
-              "cmake-purifier:x86_64-linux:lock-urls",
-              "cmake-purifier:x86_64-linux:native-ffi",
-              "cmake-purifier:x86_64-linux:nix-library",
-              "cmake-purifier:x86_64-linux:read-lock",
-              "cmake-purifier:x86_64-linux:real-world-cpr-shell",
-              "cmake-purifier:x86_64-linux:real-world-cpr-src",
-              "cmake-purifier:x86_64-linux:resource-schema",
-              "cmake-purifier:x86_64-linux:treefmt",
-              "cmake-purifier:x86_64-linux:vcs",
-              "cmake-purifier:x86_64-linux:vcs-repos",
-              "cmake-purifier:x86_64-linux:vcs-runs"
+              "cmake-purifier@fa095b8:x86_64-linux:sdk-basic-3_31_12",
+              "cmake-purifier@fa095b8:x86_64-linux:sdk-basic-4_3_6",
+              "cmake-purifier@fa095b8:x86_64-linux:sdk-basic-4_4_5",
+              "cmake-purifier@fa095b8:x86_64-linux:sdk-basic-4_5_0-rc3",
+              "cmake-purifier@fa095b8:aarch64-darwin:sdk-basic-3_31_12",
+              "cmake-purifier@fa095b8:aarch64-darwin:sdk-basic-4_3_6",
+              "cmake-purifier@fa095b8:aarch64-darwin:sdk-basic-4_4_5",
+              "cmake-purifier@fa095b8:aarch64-darwin:sdk-basic-4_5_0-rc3",
+              "cmake-purifier@fa095b8:x86_64-linux:real-world-spdlog-consumer",
+              "cmake-purifier@fa095b8:aarch64-darwin:real-world-spdlog-consumer",
+              "cmake-purifier@fa095b8:aarch64-darwin:darwin-loopback-outbound"
             ],
+            "gap": null,
             "sources": [
-              "https://nix-purifiers.github.io/evidence/397ef69cfc55be19ae7d3d943cbf10f026d82b3846e8e72966cfa3173b4e9c3b.json"
-            ],
-            "gap": null
+              "https://nix-purifiers.github.io/evidence/2b3bd64e787d5272ce638e305b641255f6cd293d1d265f219986d102483987b5.json",
+              "https://nix-purifiers.github.io/evidence/6a815e77715d933c377b11919d48b9a5f4a16eebc1589d8415be6b3256e6aa79.json"
+            ]
           },
           "linux": {
             "state": "met",
-            "summary": "The complete x86_64-linux check set realizes successfully locally. The independently downloaded successful native aarch64-linux CI job has the same source revision and exact derivation paths for its check set; cross-evaluation is only used to bind those CI paths.",
+            "summary": "Native full flake checks pass on x86_64-linux and aarch64-linux; x86_64-linux selected SDK and independent sample lifecycle receipts bind actual commands, source, drv, output and NAR.",
             "derivations": [
-              "cmake-purifier:x86_64-linux:real-world-cpr",
-              "cmake-purifier:x86_64-linux:basic",
-              "cmake-purifier:x86_64-linux:basic-fetches",
-              "cmake-purifier:x86_64-linux:basic-name",
-              "cmake-purifier:x86_64-linux:basic-outputs",
-              "cmake-purifier:x86_64-linux:basic-release",
-              "cmake-purifier:x86_64-linux:basic-runs",
-              "cmake-purifier:x86_64-linux:basic-tests",
-              "cmake-purifier:x86_64-linux:cmake-purifier",
-              "cmake-purifier:x86_64-linux:conformance-external",
-              "cmake-purifier:x86_64-linux:conformance-malformed",
-              "cmake-purifier:x86_64-linux:conformance-missing",
-              "cmake-purifier:x86_64-linux:conformance-stale",
-              "cmake-purifier:x86_64-linux:conformance-tampered",
-              "cmake-purifier:x86_64-linux:cvs",
-              "cmake-purifier:x86_64-linux:cvs-runs",
-              "cmake-purifier:x86_64-linux:definition-hash",
-              "cmake-purifier:x86_64-linux:extras",
-              "cmake-purifier:x86_64-linux:extras-outputs",
-              "cmake-purifier:x86_64-linux:extras-runs",
-              "cmake-purifier:x86_64-linux:lock-records",
-              "cmake-purifier:x86_64-linux:lock-urls",
-              "cmake-purifier:x86_64-linux:native-ffi",
-              "cmake-purifier:x86_64-linux:nix-library",
-              "cmake-purifier:x86_64-linux:read-lock",
-              "cmake-purifier:x86_64-linux:real-world-cpr-shell",
-              "cmake-purifier:x86_64-linux:real-world-cpr-src",
-              "cmake-purifier:x86_64-linux:resource-schema",
-              "cmake-purifier:x86_64-linux:treefmt",
-              "cmake-purifier:x86_64-linux:vcs",
-              "cmake-purifier:x86_64-linux:vcs-repos",
-              "cmake-purifier:x86_64-linux:vcs-runs"
+              "cmake-purifier@fa095b8:x86_64-linux:sdk-basic-3_31_12",
+              "cmake-purifier@fa095b8:x86_64-linux:sdk-basic-4_3_6",
+              "cmake-purifier@fa095b8:x86_64-linux:sdk-basic-4_4_5",
+              "cmake-purifier@fa095b8:x86_64-linux:sdk-basic-4_5_0-rc3",
+              "cmake-purifier@fa095b8:x86_64-linux:real-world-spdlog-consumer"
             ],
+            "gap": null,
             "sources": [
-              "https://nix-purifiers.github.io/evidence/397ef69cfc55be19ae7d3d943cbf10f026d82b3846e8e72966cfa3173b4e9c3b.json"
-            ],
-            "gap": null
+              "https://nix-purifiers.github.io/evidence/2b3bd64e787d5272ce638e305b641255f6cd293d1d265f219986d102483987b5.json",
+              "https://nix-purifiers.github.io/evidence/6a815e77715d933c377b11919d48b9a5f4a16eebc1589d8415be6b3256e6aa79.json"
+            ]
           },
           "darwin": {
-            "state": "not-met",
-            "summary": "The reviewed workflow runs Linux hosts only and the inspected receipts contain no successful native Darwin project/check execution. Baseline real-world-cpr explicitly returns a skipped marker on Darwin. Later macOS workflows and results are outside this reviewed source snapshot.",
-            "derivations": [],
-            "sources": [
-              "https://github.com/nix-purifiers/cmake-purifier/blob/195cc8d9b3fc7353ff9e5687513bb95210d8f419/.github/workflows/check.yml",
-              "https://nix-purifiers.github.io/evidence/397ef69cfc55be19ae7d3d943cbf10f026d82b3846e8e72966cfa3173b4e9c3b.json"
+            "state": "met",
+            "summary": "Native aarch64-darwin full flake check and selected SDK/independent spdlog host+pure checks pass. Native compiler SDK selection is asserted; actual ordinary Seatbelt and pure Nix TCP/UDP controls demonstrate loopback and external policy denial. These are actual native executions, not cross-evaluation.",
+            "derivations": [
+              "cmake-purifier@fa095b8:aarch64-darwin:sdk-basic-3_31_12",
+              "cmake-purifier@fa095b8:aarch64-darwin:sdk-basic-4_3_6",
+              "cmake-purifier@fa095b8:aarch64-darwin:sdk-basic-4_4_5",
+              "cmake-purifier@fa095b8:aarch64-darwin:sdk-basic-4_5_0-rc3",
+              "cmake-purifier@fa095b8:aarch64-darwin:real-world-spdlog-consumer",
+              "cmake-purifier@fa095b8:aarch64-darwin:darwin-loopback-outbound"
             ],
-            "gap": "No native Darwin successful source/check/SDK/derivation/output receipt at the reviewed revision."
+            "gap": null,
+            "sources": [
+              "https://nix-purifiers.github.io/evidence/2b3bd64e787d5272ce638e305b641255f6cd293d1d265f219986d102483987b5.json",
+              "https://nix-purifiers.github.io/evidence/6a815e77715d933c377b11919d48b9a5f4a16eebc1589d8415be6b3256e6aa79.json"
+            ]
           },
           "oneVersion": {
             "state": "met",
-            "summary": "Successful native check derivations execute CMake 4.4.4. Exact SDK input derivations are traced per check; dependency versions are not substituted for SDK execution.",
+            "summary": "Exact source-built CMake4.4.5 executes native lock/configure/build/install, strict offline configure/build/CTest/run and pure SDK-basic check on Linux and Darwin. Independent spdlog uses ambient4.4.4 and is kept distinct.",
             "derivations": [
-              "cmake-purifier:x86_64-linux:real-world-cpr"
+              "cmake-purifier@fa095b8:x86_64-linux:sdk-basic-4_4_5",
+              "cmake-purifier@fa095b8:aarch64-darwin:sdk-basic-4_4_5",
+              "cmake-purifier@fa095b8:x86_64-linux:real-world-spdlog-consumer",
+              "cmake-purifier@fa095b8:aarch64-darwin:real-world-spdlog-consumer"
             ],
+            "gap": null,
             "sources": [
-              "https://nix-purifiers.github.io/evidence/397ef69cfc55be19ae7d3d943cbf10f026d82b3846e8e72966cfa3173b4e9c3b.json"
-            ],
-            "gap": null
+              "https://nix-purifiers.github.io/evidence/2b3bd64e787d5272ce638e305b641255f6cd293d1d265f219986d102483987b5.json",
+              "https://nix-purifiers.github.io/evidence/6a815e77715d933c377b11919d48b9a5f4a16eebc1589d8415be6b3256e6aa79.json"
+            ]
           },
           "nonEolVersions": {
-            "state": "not-met",
-            "summary": "The primary download page distinguishes latest stable 4.4.5, previous 4.3.6 and release candidate 4.5.0-rc3. Baseline execution selects 4.4.4 and contains no exact selected 4.3.6 or 4.4.5 sample derivations. The producer is adding those checks at another revision; baseline support is not inferred from them or from the RC.",
-            "derivations": [],
-            "sources": [
-              "https://cmake.org/download/",
-              "https://nix-purifiers.github.io/evidence/397ef69cfc55be19ae7d3d943cbf10f026d82b3846e8e72966cfa3173b4e9c3b.json"
+            "state": "met",
+            "summary": "The maintained current stable CMake4.4.5 point is actually executed on native Linux and Darwin. Primary upstream policy maintains the current release/release candidate; the executed current stable point suffices without an exhaustive historical or all-patch matrix. RC4.5.0-rc3 is separate prerelease evidence.",
+            "derivations": [
+              "cmake-purifier@fa095b8:x86_64-linux:sdk-basic-4_4_5",
+              "cmake-purifier@fa095b8:aarch64-darwin:sdk-basic-4_4_5"
             ],
-            "gap": "The primary download page distinguishes latest stable 4.4.5, previous 4.3.6 and release candidate 4.5.0-rc3. Baseline execution selects 4.4.4 and contains no exact selected 4.3.6 or 4.4.5 sample derivations. The producer is adding those checks at another revision; baseline support is not inferred from them or from the RC."
+            "gap": null,
+            "sources": [
+              "https://nix-purifiers.github.io/evidence/2b3bd64e787d5272ce638e305b641255f6cd293d1d265f219986d102483987b5.json",
+              "https://nix-purifiers.github.io/evidence/6a815e77715d933c377b11919d48b9a5f4a16eebc1589d8415be6b3256e6aa79.json",
+              "https://github.com/Kitware/CMake/blob/9589cb98e1fdf627a702a90ad52f496faab03290/Help/dev/maint.rst",
+              "https://cmake.org/download/"
+            ]
           },
           "manySamples": {
             "state": "not-met",
-            "summary": "One independent cpr project is confirmed at the reviewed revision. Fixture targets, source-transport variants and resource/native consumers are useful tests but not many independent projects. Later spdlog sources and results are outside this reviewed baseline.",
-            "derivations": [],
-            "sources": [
-              "https://nix-purifiers.github.io/evidence/397ef69cfc55be19ae7d3d943cbf10f026d82b3846e8e72966cfa3173b4e9c3b.json"
+            "summary": "The confirmed scope comprises one unmodified independent spdlog project, synchronization-patched cpr and authored basic/extras/VCS/consumer fixtures. This is useful sample breadth but does not demonstrate many independent project builds.",
+            "derivations": [
+              "cmake-purifier@fa095b8:x86_64-linux:real-world-spdlog-consumer",
+              "cmake-purifier@fa095b8:aarch64-darwin:real-world-spdlog-consumer"
             ],
-            "gap": "One independent cpr project is confirmed at the reviewed revision. Fixture targets, source-transport variants and resource/native consumers are useful tests but not many independent projects. Later spdlog sources and results are outside this reviewed baseline."
+            "gap": "No broad independent sample portfolio is demonstrated; SDK and consumer variants are not double-counted as projects.",
+            "sources": [
+              "https://nix-purifiers.github.io/evidence/2b3bd64e787d5272ce638e305b641255f6cd293d1d265f219986d102483987b5.json",
+              "https://nix-purifiers.github.io/evidence/6a815e77715d933c377b11919d48b9a5f4a16eebc1589d8415be6b3256e6aa79.json"
+            ]
           },
           "longCompatibility": {
             "state": "not-met",
-            "summary": "The reviewed baseline checks execute CMake 4.4.4. Later SDK 3.31/4.3/4.4 and legacy-prototype sources and results are outside this reviewed source snapshot. No historical CMake compatibility is established by the baseline receipts.",
-            "derivations": [],
-            "sources": [
-              "https://nix-purifiers.github.io/evidence/397ef69cfc55be19ae7d3d943cbf10f026d82b3846e8e72966cfa3173b4e9c3b.json"
+            "summary": "Exact SDK3.31.12,4.3.6,4.4.5 and4.5.0-rc3 workflows execute on both OSes. These show modern3.x/4.x compatibility but do not establish substantially earlier CMake workflow epochs; no continuous range is inferred.",
+            "derivations": [
+              "cmake-purifier@fa095b8:x86_64-linux:sdk-basic-3_31_12",
+              "cmake-purifier@fa095b8:x86_64-linux:sdk-basic-4_3_6",
+              "cmake-purifier@fa095b8:x86_64-linux:sdk-basic-4_4_5",
+              "cmake-purifier@fa095b8:x86_64-linux:sdk-basic-4_5_0-rc3",
+              "cmake-purifier@fa095b8:aarch64-darwin:sdk-basic-3_31_12",
+              "cmake-purifier@fa095b8:aarch64-darwin:sdk-basic-4_3_6",
+              "cmake-purifier@fa095b8:aarch64-darwin:sdk-basic-4_4_5",
+              "cmake-purifier@fa095b8:aarch64-darwin:sdk-basic-4_5_0-rc3"
             ],
-            "gap": "The reviewed baseline checks execute CMake 4.4.4. Later SDK 3.31/4.3/4.4 and legacy-prototype sources and results are outside this reviewed source snapshot. No historical CMake compatibility is established by the baseline receipts."
+            "gap": "No substantially earlier CMake SDK/workflow execution beyond the inspected3.31 point is demonstrated.",
+            "sources": [
+              "https://nix-purifiers.github.io/evidence/2b3bd64e787d5272ce638e305b641255f6cd293d1d265f219986d102483987b5.json",
+              "https://nix-purifiers.github.io/evidence/6a815e77715d933c377b11919d48b9a5f4a16eebc1589d8415be6b3256e6aa79.json"
+            ]
           }
         },
         "derivations": {
-          "cmake-purifier:x86_64-linux:basic": {
-            "revision": "195cc8d9b3fc7353ff9e5687513bb95210d8f419",
+          "cmake-purifier@fa095b8:x86_64-linux:sdk-basic-3_31_12": {
+            "revision": "fa095b882aebd925c397521961ae316c76b469d7",
             "system": "x86_64-linux",
-            "drvPath": "/nix/store/jqs5y7qwivn7rcrs0kfgd8w0vgdx7y7b-purifier-basic-1.2.3.drv",
-            "sourceNarHash": "sha256-0rbk0xCJpIIsOftlAgDTwbR4E4g685vcA+ujQc5LMmc=",
+            "sourceNarHash": "sha256-CYi2DNSKOcRKItIN6XfLomF3meX7uwtnqE82HGIrZ5c=",
+            "drvPath": "/nix/store/yn8fhsq4pd02aws5k61vvxsz20p69dfj-purifier-basic-tests-1.2.3.drv",
+            "outputs": {
+              "out": "/nix/store/cp81p9fn4dapla14hg7dqz952jwandlb-purifier-basic-tests-1.2.3"
+            },
+            "outputNarHashes": {
+              "out": "sha256-F53PnNIv7Q4jXDqJESf4oG2eHgtIKmXLj7naZg6ErdM="
+            },
             "repository": "nix-purifiers/cmake-purifier",
             "check": {
               "kind": "flake-attribute",
-              "value": "checks.x86_64-linux.basic",
+              "value": "checks.x86_64-linux.sdk-basic-3_31_12",
               "replay": null
             },
-            "outputs": {
-              "out": "/nix/store/gb90d5d9r82rmjaribmc9imdviqjwwga-purifier-basic-1.2.3"
+            "sdkVersions": {
+              "CMake": "3.31.12"
             },
-            "outputNarHashes": {
-              "out": "sha256-Pazyw4FcWcqGtcxaCUCYdu6Y2aYCIfJZzkoDNt/Veis="
-            },
-            "sdkVersions": {},
             "sampleSources": [],
             "evaluation": null,
             "build": {
               "status": "success",
               "executedSystem": "x86_64-linux",
-              "sourceRevision": "195cc8d9b3fc7353ff9e5687513bb95210d8f419",
-              "sourceNarHash": "sha256-0rbk0xCJpIIsOftlAgDTwbR4E4g685vcA+ujQc5LMmc=",
-              "drvPath": "/nix/store/jqs5y7qwivn7rcrs0kfgd8w0vgdx7y7b-purifier-basic-1.2.3.drv",
+              "sourceRevision": "fa095b882aebd925c397521961ae316c76b469d7",
+              "sourceNarHash": "sha256-CYi2DNSKOcRKItIN6XfLomF3meX7uwtnqE82HGIrZ5c=",
+              "drvPath": "/nix/store/yn8fhsq4pd02aws5k61vvxsz20p69dfj-purifier-basic-tests-1.2.3.drv",
               "outputs": {
-                "out": "/nix/store/gb90d5d9r82rmjaribmc9imdviqjwwga-purifier-basic-1.2.3"
+                "out": "/nix/store/cp81p9fn4dapla14hg7dqz952jwandlb-purifier-basic-tests-1.2.3"
               },
               "outputNarHashes": {
-                "out": "sha256-Pazyw4FcWcqGtcxaCUCYdu6Y2aYCIfJZzkoDNt/Veis="
+                "out": "sha256-F53PnNIv7Q4jXDqJESf4oG2eHgtIKmXLj7naZg6ErdM="
               },
-              "sdkVersions": {},
+              "sdkVersions": {
+                "CMake": "3.31.12"
+              },
               "sampleSources": [],
-              "receipt": "https://nix-purifiers.github.io/evidence/e3bdeb5bd839634288b697a256b28afca897326741ae895a76929965cb3d6bda.json",
-              "artifactSha256": "e3bdeb5bd839634288b697a256b28afca897326741ae895a76929965cb3d6bda"
+              "receipt": "https://nix-purifiers.github.io/evidence/e1d3dc8f7030b873e63211503b1902061bc98d0a3eaa71d5095324f301000224.json",
+              "artifactSha256": "e1d3dc8f7030b873e63211503b1902061bc98d0a3eaa71d5095324f301000224"
             }
           },
-          "cmake-purifier:x86_64-linux:basic-fetches": {
-            "revision": "195cc8d9b3fc7353ff9e5687513bb95210d8f419",
+          "cmake-purifier@fa095b8:x86_64-linux:sdk-basic-4_3_6": {
+            "revision": "fa095b882aebd925c397521961ae316c76b469d7",
             "system": "x86_64-linux",
-            "drvPath": "/nix/store/2bj3wvxxwvk8ip7dyxp1kw76z0aj2w8q-basic-fetches.drv",
-            "sourceNarHash": "sha256-0rbk0xCJpIIsOftlAgDTwbR4E4g685vcA+ujQc5LMmc=",
+            "sourceNarHash": "sha256-CYi2DNSKOcRKItIN6XfLomF3meX7uwtnqE82HGIrZ5c=",
+            "drvPath": "/nix/store/rfq7jhbqpkklhn54k61rc0jz0l56m4f7-purifier-basic-tests-1.2.3.drv",
+            "outputs": {
+              "out": "/nix/store/vmbwv4flqx25z5aj17a77cdyg7j28012-purifier-basic-tests-1.2.3"
+            },
+            "outputNarHashes": {
+              "out": "sha256-rFPq1BwauOCMd0wyKxgkVLVgTgnZXv1P0eeTFjYEHR8="
+            },
             "repository": "nix-purifiers/cmake-purifier",
             "check": {
               "kind": "flake-attribute",
-              "value": "checks.x86_64-linux.basic-fetches",
+              "value": "checks.x86_64-linux.sdk-basic-4_3_6",
               "replay": null
             },
-            "outputs": {
-              "out": "/nix/store/4vln19p2pnrsrx9azabc6cfm6l5nqmf8-basic-fetches"
+            "sdkVersions": {
+              "CMake": "4.3.6"
             },
-            "outputNarHashes": {
-              "out": "sha256-d6xi4mKdjkX2JFicDIv5niSzpyI0m/Hnm8GGAIU04kY="
-            },
-            "sdkVersions": {},
             "sampleSources": [],
             "evaluation": null,
             "build": {
               "status": "success",
               "executedSystem": "x86_64-linux",
-              "sourceRevision": "195cc8d9b3fc7353ff9e5687513bb95210d8f419",
-              "sourceNarHash": "sha256-0rbk0xCJpIIsOftlAgDTwbR4E4g685vcA+ujQc5LMmc=",
-              "drvPath": "/nix/store/2bj3wvxxwvk8ip7dyxp1kw76z0aj2w8q-basic-fetches.drv",
+              "sourceRevision": "fa095b882aebd925c397521961ae316c76b469d7",
+              "sourceNarHash": "sha256-CYi2DNSKOcRKItIN6XfLomF3meX7uwtnqE82HGIrZ5c=",
+              "drvPath": "/nix/store/rfq7jhbqpkklhn54k61rc0jz0l56m4f7-purifier-basic-tests-1.2.3.drv",
               "outputs": {
-                "out": "/nix/store/4vln19p2pnrsrx9azabc6cfm6l5nqmf8-basic-fetches"
+                "out": "/nix/store/vmbwv4flqx25z5aj17a77cdyg7j28012-purifier-basic-tests-1.2.3"
               },
               "outputNarHashes": {
-                "out": "sha256-d6xi4mKdjkX2JFicDIv5niSzpyI0m/Hnm8GGAIU04kY="
+                "out": "sha256-rFPq1BwauOCMd0wyKxgkVLVgTgnZXv1P0eeTFjYEHR8="
               },
-              "sdkVersions": {},
+              "sdkVersions": {
+                "CMake": "4.3.6"
+              },
               "sampleSources": [],
-              "receipt": "https://nix-purifiers.github.io/evidence/e3bdeb5bd839634288b697a256b28afca897326741ae895a76929965cb3d6bda.json",
-              "artifactSha256": "e3bdeb5bd839634288b697a256b28afca897326741ae895a76929965cb3d6bda"
+              "receipt": "https://nix-purifiers.github.io/evidence/55671ac2f3f412aec418419f5c47c4c1ea9e40010e885a0d69865f5609711f8f.json",
+              "artifactSha256": "55671ac2f3f412aec418419f5c47c4c1ea9e40010e885a0d69865f5609711f8f"
             }
           },
-          "cmake-purifier:x86_64-linux:basic-name": {
-            "revision": "195cc8d9b3fc7353ff9e5687513bb95210d8f419",
+          "cmake-purifier@fa095b8:x86_64-linux:sdk-basic-4_4_5": {
+            "revision": "fa095b882aebd925c397521961ae316c76b469d7",
             "system": "x86_64-linux",
-            "drvPath": "/nix/store/an2bl0jc5d7r4kk67wsx1xm5865b248a-basic-name.drv",
-            "sourceNarHash": "sha256-0rbk0xCJpIIsOftlAgDTwbR4E4g685vcA+ujQc5LMmc=",
+            "sourceNarHash": "sha256-CYi2DNSKOcRKItIN6XfLomF3meX7uwtnqE82HGIrZ5c=",
+            "drvPath": "/nix/store/03ma3gkm6b9w039k78nh5y2wvi284x1h-purifier-basic-tests-1.2.3.drv",
+            "outputs": {
+              "out": "/nix/store/1328d58r7cv2r33xv74ps7wi3pbp0whp-purifier-basic-tests-1.2.3"
+            },
+            "outputNarHashes": {
+              "out": "sha256-RYDkdMJ9k/RKlZRotAYdxEdsZzYWCA3ff5u+LrbC9IQ="
+            },
             "repository": "nix-purifiers/cmake-purifier",
             "check": {
               "kind": "flake-attribute",
-              "value": "checks.x86_64-linux.basic-name",
+              "value": "checks.x86_64-linux.sdk-basic-4_4_5",
               "replay": null
             },
-            "outputs": {
-              "out": "/nix/store/i1ba33i8ya87dllz0wgp7ppfwa42zrai-basic-name"
+            "sdkVersions": {
+              "CMake": "4.4.5"
             },
-            "outputNarHashes": {
-              "out": "sha256-d6xi4mKdjkX2JFicDIv5niSzpyI0m/Hnm8GGAIU04kY="
-            },
-            "sdkVersions": {},
             "sampleSources": [],
             "evaluation": null,
             "build": {
               "status": "success",
               "executedSystem": "x86_64-linux",
-              "sourceRevision": "195cc8d9b3fc7353ff9e5687513bb95210d8f419",
-              "sourceNarHash": "sha256-0rbk0xCJpIIsOftlAgDTwbR4E4g685vcA+ujQc5LMmc=",
-              "drvPath": "/nix/store/an2bl0jc5d7r4kk67wsx1xm5865b248a-basic-name.drv",
+              "sourceRevision": "fa095b882aebd925c397521961ae316c76b469d7",
+              "sourceNarHash": "sha256-CYi2DNSKOcRKItIN6XfLomF3meX7uwtnqE82HGIrZ5c=",
+              "drvPath": "/nix/store/03ma3gkm6b9w039k78nh5y2wvi284x1h-purifier-basic-tests-1.2.3.drv",
               "outputs": {
-                "out": "/nix/store/i1ba33i8ya87dllz0wgp7ppfwa42zrai-basic-name"
+                "out": "/nix/store/1328d58r7cv2r33xv74ps7wi3pbp0whp-purifier-basic-tests-1.2.3"
               },
               "outputNarHashes": {
-                "out": "sha256-d6xi4mKdjkX2JFicDIv5niSzpyI0m/Hnm8GGAIU04kY="
+                "out": "sha256-RYDkdMJ9k/RKlZRotAYdxEdsZzYWCA3ff5u+LrbC9IQ="
               },
-              "sdkVersions": {},
+              "sdkVersions": {
+                "CMake": "4.4.5"
+              },
               "sampleSources": [],
-              "receipt": "https://nix-purifiers.github.io/evidence/e3bdeb5bd839634288b697a256b28afca897326741ae895a76929965cb3d6bda.json",
-              "artifactSha256": "e3bdeb5bd839634288b697a256b28afca897326741ae895a76929965cb3d6bda"
+              "receipt": "https://nix-purifiers.github.io/evidence/e0857de188cc4307b686bf09b1d5e541c2f387de2aac8138b4d09b15fe8feebb.json",
+              "artifactSha256": "e0857de188cc4307b686bf09b1d5e541c2f387de2aac8138b4d09b15fe8feebb"
             }
           },
-          "cmake-purifier:x86_64-linux:basic-outputs": {
-            "revision": "195cc8d9b3fc7353ff9e5687513bb95210d8f419",
+          "cmake-purifier@fa095b8:x86_64-linux:sdk-basic-4_5_0-rc3": {
+            "revision": "fa095b882aebd925c397521961ae316c76b469d7",
             "system": "x86_64-linux",
-            "drvPath": "/nix/store/1mhx61x469kmybm9ls2gvfkhwkljjna1-basic-outputs.drv",
-            "sourceNarHash": "sha256-0rbk0xCJpIIsOftlAgDTwbR4E4g685vcA+ujQc5LMmc=",
+            "sourceNarHash": "sha256-CYi2DNSKOcRKItIN6XfLomF3meX7uwtnqE82HGIrZ5c=",
+            "drvPath": "/nix/store/r49aax30nzilk79v5cid1ma8a9pq0k8x-purifier-basic-tests-1.2.3.drv",
+            "outputs": {
+              "out": "/nix/store/7jxh0d5wq255rzn6719c22258amqfiam-purifier-basic-tests-1.2.3"
+            },
+            "outputNarHashes": {
+              "out": "sha256-/q3Tg0RWR/oZUi4y/lnxvVdOY2kdOQXntwtaEN/MspY="
+            },
             "repository": "nix-purifiers/cmake-purifier",
             "check": {
               "kind": "flake-attribute",
-              "value": "checks.x86_64-linux.basic-outputs",
+              "value": "checks.x86_64-linux.sdk-basic-4_5_0-rc3",
               "replay": null
             },
-            "outputs": {
-              "out": "/nix/store/vnq6y8whdy5m95c7jqsmrdz5zw8mxnsz-basic-outputs"
+            "sdkVersions": {
+              "CMake": "4.5.0-rc3"
             },
-            "outputNarHashes": {
-              "out": "sha256-d6xi4mKdjkX2JFicDIv5niSzpyI0m/Hnm8GGAIU04kY="
-            },
-            "sdkVersions": {},
             "sampleSources": [],
             "evaluation": null,
             "build": {
               "status": "success",
               "executedSystem": "x86_64-linux",
-              "sourceRevision": "195cc8d9b3fc7353ff9e5687513bb95210d8f419",
-              "sourceNarHash": "sha256-0rbk0xCJpIIsOftlAgDTwbR4E4g685vcA+ujQc5LMmc=",
-              "drvPath": "/nix/store/1mhx61x469kmybm9ls2gvfkhwkljjna1-basic-outputs.drv",
+              "sourceRevision": "fa095b882aebd925c397521961ae316c76b469d7",
+              "sourceNarHash": "sha256-CYi2DNSKOcRKItIN6XfLomF3meX7uwtnqE82HGIrZ5c=",
+              "drvPath": "/nix/store/r49aax30nzilk79v5cid1ma8a9pq0k8x-purifier-basic-tests-1.2.3.drv",
               "outputs": {
-                "out": "/nix/store/vnq6y8whdy5m95c7jqsmrdz5zw8mxnsz-basic-outputs"
+                "out": "/nix/store/7jxh0d5wq255rzn6719c22258amqfiam-purifier-basic-tests-1.2.3"
               },
               "outputNarHashes": {
-                "out": "sha256-d6xi4mKdjkX2JFicDIv5niSzpyI0m/Hnm8GGAIU04kY="
+                "out": "sha256-/q3Tg0RWR/oZUi4y/lnxvVdOY2kdOQXntwtaEN/MspY="
               },
-              "sdkVersions": {},
+              "sdkVersions": {
+                "CMake": "4.5.0-rc3"
+              },
               "sampleSources": [],
-              "receipt": "https://nix-purifiers.github.io/evidence/e3bdeb5bd839634288b697a256b28afca897326741ae895a76929965cb3d6bda.json",
-              "artifactSha256": "e3bdeb5bd839634288b697a256b28afca897326741ae895a76929965cb3d6bda"
+              "receipt": "https://nix-purifiers.github.io/evidence/7f072c306328a8dc95895e4cc96c19d1c0aad390ef613420f53017b223cc00d3.json",
+              "artifactSha256": "7f072c306328a8dc95895e4cc96c19d1c0aad390ef613420f53017b223cc00d3"
             }
           },
-          "cmake-purifier:x86_64-linux:basic-release": {
-            "revision": "195cc8d9b3fc7353ff9e5687513bb95210d8f419",
-            "system": "x86_64-linux",
-            "drvPath": "/nix/store/v6cgvalwgiljkg4b6n4jhhv437jqcdf4-basic-release.drv",
-            "sourceNarHash": "sha256-0rbk0xCJpIIsOftlAgDTwbR4E4g685vcA+ujQc5LMmc=",
+          "cmake-purifier@fa095b8:aarch64-darwin:sdk-basic-3_31_12": {
+            "revision": "fa095b882aebd925c397521961ae316c76b469d7",
+            "system": "aarch64-darwin",
+            "sourceNarHash": "sha256-CYi2DNSKOcRKItIN6XfLomF3meX7uwtnqE82HGIrZ5c=",
+            "drvPath": "/nix/store/nbkq0xjk67q7hznjc3mb1i1xjgz4r8yh-purifier-basic-tests-1.2.3.drv",
+            "outputs": {
+              "out": "/nix/store/gp1idziymd6xlwzppjs0sycwlbxpj4zz-purifier-basic-tests-1.2.3"
+            },
+            "outputNarHashes": {
+              "out": "sha256-lvlOLlRZd2684T1zx2WEPbsfAMAea5Jb/gf3cmtz+PY="
+            },
             "repository": "nix-purifiers/cmake-purifier",
             "check": {
               "kind": "flake-attribute",
-              "value": "checks.x86_64-linux.basic-release",
+              "value": "checks.aarch64-darwin.sdk-basic-3_31_12",
               "replay": null
             },
-            "outputs": {
-              "out": "/nix/store/9b93ry1jmr73nzi0g2cnw2irkknv7iag-basic-release"
+            "sdkVersions": {
+              "CMake": "3.31.12"
             },
-            "outputNarHashes": {
-              "out": "sha256-d6xi4mKdjkX2JFicDIv5niSzpyI0m/Hnm8GGAIU04kY="
-            },
-            "sdkVersions": {},
             "sampleSources": [],
             "evaluation": null,
             "build": {
               "status": "success",
-              "executedSystem": "x86_64-linux",
-              "sourceRevision": "195cc8d9b3fc7353ff9e5687513bb95210d8f419",
-              "sourceNarHash": "sha256-0rbk0xCJpIIsOftlAgDTwbR4E4g685vcA+ujQc5LMmc=",
-              "drvPath": "/nix/store/v6cgvalwgiljkg4b6n4jhhv437jqcdf4-basic-release.drv",
+              "executedSystem": "aarch64-darwin",
+              "sourceRevision": "fa095b882aebd925c397521961ae316c76b469d7",
+              "sourceNarHash": "sha256-CYi2DNSKOcRKItIN6XfLomF3meX7uwtnqE82HGIrZ5c=",
+              "drvPath": "/nix/store/nbkq0xjk67q7hznjc3mb1i1xjgz4r8yh-purifier-basic-tests-1.2.3.drv",
               "outputs": {
-                "out": "/nix/store/9b93ry1jmr73nzi0g2cnw2irkknv7iag-basic-release"
+                "out": "/nix/store/gp1idziymd6xlwzppjs0sycwlbxpj4zz-purifier-basic-tests-1.2.3"
               },
               "outputNarHashes": {
-                "out": "sha256-d6xi4mKdjkX2JFicDIv5niSzpyI0m/Hnm8GGAIU04kY="
+                "out": "sha256-lvlOLlRZd2684T1zx2WEPbsfAMAea5Jb/gf3cmtz+PY="
               },
-              "sdkVersions": {},
+              "sdkVersions": {
+                "CMake": "3.31.12"
+              },
               "sampleSources": [],
-              "receipt": "https://nix-purifiers.github.io/evidence/e3bdeb5bd839634288b697a256b28afca897326741ae895a76929965cb3d6bda.json",
-              "artifactSha256": "e3bdeb5bd839634288b697a256b28afca897326741ae895a76929965cb3d6bda"
+              "receipt": "https://nix-purifiers.github.io/evidence/fcbc1a21b1c7962e5e9578318f0959699da15d76f0511bed8a2b0755c765bcb7.json",
+              "artifactSha256": "fcbc1a21b1c7962e5e9578318f0959699da15d76f0511bed8a2b0755c765bcb7"
             }
           },
-          "cmake-purifier:x86_64-linux:basic-runs": {
-            "revision": "195cc8d9b3fc7353ff9e5687513bb95210d8f419",
-            "system": "x86_64-linux",
-            "drvPath": "/nix/store/6rvns824jm3vzkpzxvbrj4ajxwsxvw75-basic-runs.drv",
-            "sourceNarHash": "sha256-0rbk0xCJpIIsOftlAgDTwbR4E4g685vcA+ujQc5LMmc=",
+          "cmake-purifier@fa095b8:aarch64-darwin:sdk-basic-4_3_6": {
+            "revision": "fa095b882aebd925c397521961ae316c76b469d7",
+            "system": "aarch64-darwin",
+            "sourceNarHash": "sha256-CYi2DNSKOcRKItIN6XfLomF3meX7uwtnqE82HGIrZ5c=",
+            "drvPath": "/nix/store/7jbvsx14vlxsl2mai95zs10dbnl2wlj3-purifier-basic-tests-1.2.3.drv",
+            "outputs": {
+              "out": "/nix/store/h07rdz5kb9ki513z3897kcc3413w41jd-purifier-basic-tests-1.2.3"
+            },
+            "outputNarHashes": {
+              "out": "sha256-J7g3htaxpyP/Q3QqQqJVacvm09fsHdqjjdoo/B6S/kU="
+            },
             "repository": "nix-purifiers/cmake-purifier",
             "check": {
               "kind": "flake-attribute",
-              "value": "checks.x86_64-linux.basic-runs",
+              "value": "checks.aarch64-darwin.sdk-basic-4_3_6",
               "replay": null
             },
-            "outputs": {
-              "out": "/nix/store/dspbbyhz20g71iwqyxk6047rz6ndsn0a-basic-runs"
+            "sdkVersions": {
+              "CMake": "4.3.6"
             },
-            "outputNarHashes": {
-              "out": "sha256-d6xi4mKdjkX2JFicDIv5niSzpyI0m/Hnm8GGAIU04kY="
-            },
-            "sdkVersions": {},
             "sampleSources": [],
             "evaluation": null,
             "build": {
               "status": "success",
-              "executedSystem": "x86_64-linux",
-              "sourceRevision": "195cc8d9b3fc7353ff9e5687513bb95210d8f419",
-              "sourceNarHash": "sha256-0rbk0xCJpIIsOftlAgDTwbR4E4g685vcA+ujQc5LMmc=",
-              "drvPath": "/nix/store/6rvns824jm3vzkpzxvbrj4ajxwsxvw75-basic-runs.drv",
+              "executedSystem": "aarch64-darwin",
+              "sourceRevision": "fa095b882aebd925c397521961ae316c76b469d7",
+              "sourceNarHash": "sha256-CYi2DNSKOcRKItIN6XfLomF3meX7uwtnqE82HGIrZ5c=",
+              "drvPath": "/nix/store/7jbvsx14vlxsl2mai95zs10dbnl2wlj3-purifier-basic-tests-1.2.3.drv",
               "outputs": {
-                "out": "/nix/store/dspbbyhz20g71iwqyxk6047rz6ndsn0a-basic-runs"
+                "out": "/nix/store/h07rdz5kb9ki513z3897kcc3413w41jd-purifier-basic-tests-1.2.3"
               },
               "outputNarHashes": {
-                "out": "sha256-d6xi4mKdjkX2JFicDIv5niSzpyI0m/Hnm8GGAIU04kY="
+                "out": "sha256-J7g3htaxpyP/Q3QqQqJVacvm09fsHdqjjdoo/B6S/kU="
               },
-              "sdkVersions": {},
+              "sdkVersions": {
+                "CMake": "4.3.6"
+              },
               "sampleSources": [],
-              "receipt": "https://nix-purifiers.github.io/evidence/e3bdeb5bd839634288b697a256b28afca897326741ae895a76929965cb3d6bda.json",
-              "artifactSha256": "e3bdeb5bd839634288b697a256b28afca897326741ae895a76929965cb3d6bda"
+              "receipt": "https://nix-purifiers.github.io/evidence/0023fbd68a95139574add10e5591008172900ed6ee070ae6592012b3530fa00d.json",
+              "artifactSha256": "0023fbd68a95139574add10e5591008172900ed6ee070ae6592012b3530fa00d"
             }
           },
-          "cmake-purifier:x86_64-linux:basic-tests": {
-            "revision": "195cc8d9b3fc7353ff9e5687513bb95210d8f419",
-            "system": "x86_64-linux",
-            "drvPath": "/nix/store/b7xl8fwchzdh8xl84qajls59q5dbgzw3-purifier-basic-tests-1.2.3.drv",
-            "sourceNarHash": "sha256-0rbk0xCJpIIsOftlAgDTwbR4E4g685vcA+ujQc5LMmc=",
+          "cmake-purifier@fa095b8:aarch64-darwin:sdk-basic-4_4_5": {
+            "revision": "fa095b882aebd925c397521961ae316c76b469d7",
+            "system": "aarch64-darwin",
+            "sourceNarHash": "sha256-CYi2DNSKOcRKItIN6XfLomF3meX7uwtnqE82HGIrZ5c=",
+            "drvPath": "/nix/store/icx3r4765fyl5z60py68cgy48d97s36d-purifier-basic-tests-1.2.3.drv",
+            "outputs": {
+              "out": "/nix/store/gagmh6lk78lzgskrimal50xac9z2bxki-purifier-basic-tests-1.2.3"
+            },
+            "outputNarHashes": {
+              "out": "sha256-S5tOAbNqpbB3iN1RdvpyGbkwcmc65i+cSID66vaXYzk="
+            },
             "repository": "nix-purifiers/cmake-purifier",
             "check": {
               "kind": "flake-attribute",
-              "value": "checks.x86_64-linux.basic-tests",
+              "value": "checks.aarch64-darwin.sdk-basic-4_4_5",
               "replay": null
             },
-            "outputs": {
-              "out": "/nix/store/7f5p5346853p3vjz32cr0623lydwv886-purifier-basic-tests-1.2.3"
+            "sdkVersions": {
+              "CMake": "4.4.5"
             },
-            "outputNarHashes": {
-              "out": "sha256-GwgW8OFdda3K7/Vp1kan+hoKmRJ8bShlm26edJbbR7w="
-            },
-            "sdkVersions": {},
             "sampleSources": [],
             "evaluation": null,
             "build": {
               "status": "success",
-              "executedSystem": "x86_64-linux",
-              "sourceRevision": "195cc8d9b3fc7353ff9e5687513bb95210d8f419",
-              "sourceNarHash": "sha256-0rbk0xCJpIIsOftlAgDTwbR4E4g685vcA+ujQc5LMmc=",
-              "drvPath": "/nix/store/b7xl8fwchzdh8xl84qajls59q5dbgzw3-purifier-basic-tests-1.2.3.drv",
+              "executedSystem": "aarch64-darwin",
+              "sourceRevision": "fa095b882aebd925c397521961ae316c76b469d7",
+              "sourceNarHash": "sha256-CYi2DNSKOcRKItIN6XfLomF3meX7uwtnqE82HGIrZ5c=",
+              "drvPath": "/nix/store/icx3r4765fyl5z60py68cgy48d97s36d-purifier-basic-tests-1.2.3.drv",
               "outputs": {
-                "out": "/nix/store/7f5p5346853p3vjz32cr0623lydwv886-purifier-basic-tests-1.2.3"
+                "out": "/nix/store/gagmh6lk78lzgskrimal50xac9z2bxki-purifier-basic-tests-1.2.3"
               },
               "outputNarHashes": {
-                "out": "sha256-GwgW8OFdda3K7/Vp1kan+hoKmRJ8bShlm26edJbbR7w="
+                "out": "sha256-S5tOAbNqpbB3iN1RdvpyGbkwcmc65i+cSID66vaXYzk="
               },
-              "sdkVersions": {},
+              "sdkVersions": {
+                "CMake": "4.4.5"
+              },
               "sampleSources": [],
-              "receipt": "https://nix-purifiers.github.io/evidence/e3bdeb5bd839634288b697a256b28afca897326741ae895a76929965cb3d6bda.json",
-              "artifactSha256": "e3bdeb5bd839634288b697a256b28afca897326741ae895a76929965cb3d6bda"
+              "receipt": "https://nix-purifiers.github.io/evidence/3b4313e70f725e420074a180e5e5d483c8ca9cdc5cf14df0e941091a67052baa.json",
+              "artifactSha256": "3b4313e70f725e420074a180e5e5d483c8ca9cdc5cf14df0e941091a67052baa"
             }
           },
-          "cmake-purifier:x86_64-linux:cmake-purifier": {
-            "revision": "195cc8d9b3fc7353ff9e5687513bb95210d8f419",
-            "system": "x86_64-linux",
-            "drvPath": "/nix/store/x4d5cnpxpl9z6lqkplf2k6ki5k894w39-cmake-purifier.drv",
-            "sourceNarHash": "sha256-0rbk0xCJpIIsOftlAgDTwbR4E4g685vcA+ujQc5LMmc=",
+          "cmake-purifier@fa095b8:aarch64-darwin:sdk-basic-4_5_0-rc3": {
+            "revision": "fa095b882aebd925c397521961ae316c76b469d7",
+            "system": "aarch64-darwin",
+            "sourceNarHash": "sha256-CYi2DNSKOcRKItIN6XfLomF3meX7uwtnqE82HGIrZ5c=",
+            "drvPath": "/nix/store/2ps7icvhcwg811dz2hzzqkc43xcjnk5z-purifier-basic-tests-1.2.3.drv",
+            "outputs": {
+              "out": "/nix/store/ry63k9x7l61421lm9ldsbjllp32bpabs-purifier-basic-tests-1.2.3"
+            },
+            "outputNarHashes": {
+              "out": "sha256-pNDfsxfBx+N29WSjlPb+2xNVfXasHN/g6P8Dvk2rjdo="
+            },
             "repository": "nix-purifiers/cmake-purifier",
             "check": {
               "kind": "flake-attribute",
-              "value": "checks.x86_64-linux.cmake-purifier",
+              "value": "checks.aarch64-darwin.sdk-basic-4_5_0-rc3",
               "replay": null
             },
-            "outputs": {
-              "out": "/nix/store/60yqw6kpzh525svd43bsgmy8wpgygkzb-cmake-purifier"
+            "sdkVersions": {
+              "CMake": "4.5.0-rc3"
             },
-            "outputNarHashes": {
-              "out": "sha256-0XH9R+6l556GS8G5u5dntTtgqU9O0EQhpxGYDn6mNH4="
-            },
-            "sdkVersions": {},
             "sampleSources": [],
             "evaluation": null,
             "build": {
               "status": "success",
-              "executedSystem": "x86_64-linux",
-              "sourceRevision": "195cc8d9b3fc7353ff9e5687513bb95210d8f419",
-              "sourceNarHash": "sha256-0rbk0xCJpIIsOftlAgDTwbR4E4g685vcA+ujQc5LMmc=",
-              "drvPath": "/nix/store/x4d5cnpxpl9z6lqkplf2k6ki5k894w39-cmake-purifier.drv",
+              "executedSystem": "aarch64-darwin",
+              "sourceRevision": "fa095b882aebd925c397521961ae316c76b469d7",
+              "sourceNarHash": "sha256-CYi2DNSKOcRKItIN6XfLomF3meX7uwtnqE82HGIrZ5c=",
+              "drvPath": "/nix/store/2ps7icvhcwg811dz2hzzqkc43xcjnk5z-purifier-basic-tests-1.2.3.drv",
               "outputs": {
-                "out": "/nix/store/60yqw6kpzh525svd43bsgmy8wpgygkzb-cmake-purifier"
+                "out": "/nix/store/ry63k9x7l61421lm9ldsbjllp32bpabs-purifier-basic-tests-1.2.3"
               },
               "outputNarHashes": {
-                "out": "sha256-0XH9R+6l556GS8G5u5dntTtgqU9O0EQhpxGYDn6mNH4="
+                "out": "sha256-pNDfsxfBx+N29WSjlPb+2xNVfXasHN/g6P8Dvk2rjdo="
               },
-              "sdkVersions": {},
+              "sdkVersions": {
+                "CMake": "4.5.0-rc3"
+              },
               "sampleSources": [],
-              "receipt": "https://nix-purifiers.github.io/evidence/e3bdeb5bd839634288b697a256b28afca897326741ae895a76929965cb3d6bda.json",
-              "artifactSha256": "e3bdeb5bd839634288b697a256b28afca897326741ae895a76929965cb3d6bda"
+              "receipt": "https://nix-purifiers.github.io/evidence/b357b56269ba465918dda704d610907031096f21436b3cf61a63a0f6600633ed.json",
+              "artifactSha256": "b357b56269ba465918dda704d610907031096f21436b3cf61a63a0f6600633ed"
             }
           },
-          "cmake-purifier:x86_64-linux:conformance-external": {
-            "revision": "195cc8d9b3fc7353ff9e5687513bb95210d8f419",
+          "cmake-purifier@fa095b8:x86_64-linux:real-world-spdlog-consumer": {
+            "revision": "fa095b882aebd925c397521961ae316c76b469d7",
             "system": "x86_64-linux",
-            "drvPath": "/nix/store/57i4jssma9jcbni9kcf6bpsfxx8s0p1m-conformance-external.drv",
-            "sourceNarHash": "sha256-0rbk0xCJpIIsOftlAgDTwbR4E4g685vcA+ujQc5LMmc=",
+            "sourceNarHash": "sha256-CYi2DNSKOcRKItIN6XfLomF3meX7uwtnqE82HGIrZ5c=",
+            "drvPath": "/nix/store/1nhi1nyxbg1rf4waq3gj6qq5gpv7ijpp-spdlog-ordinary-installed-consumer.drv",
+            "outputs": {
+              "out": "/nix/store/pf3qqpqg4fj6kwy950l9rri1yyvyhglz-spdlog-ordinary-installed-consumer"
+            },
+            "outputNarHashes": {
+              "out": "sha256-XGXTzRIKl/TM8DhNOFD+xcpwV4GZNpDR4h098oAsDn8="
+            },
             "repository": "nix-purifiers/cmake-purifier",
             "check": {
               "kind": "flake-attribute",
-              "value": "checks.x86_64-linux.conformance-external",
+              "value": "checks.x86_64-linux.real-world-spdlog-consumer",
               "replay": null
-            },
-            "outputs": {
-              "out": "/nix/store/qnazlayvbyl7jj415psjilk9m39dz2g5-conformance-external"
-            },
-            "outputNarHashes": {
-              "out": "sha256-d6xi4mKdjkX2JFicDIv5niSzpyI0m/Hnm8GGAIU04kY="
-            },
-            "sdkVersions": {},
-            "sampleSources": [],
-            "evaluation": null,
-            "build": {
-              "status": "success",
-              "executedSystem": "x86_64-linux",
-              "sourceRevision": "195cc8d9b3fc7353ff9e5687513bb95210d8f419",
-              "sourceNarHash": "sha256-0rbk0xCJpIIsOftlAgDTwbR4E4g685vcA+ujQc5LMmc=",
-              "drvPath": "/nix/store/57i4jssma9jcbni9kcf6bpsfxx8s0p1m-conformance-external.drv",
-              "outputs": {
-                "out": "/nix/store/qnazlayvbyl7jj415psjilk9m39dz2g5-conformance-external"
-              },
-              "outputNarHashes": {
-                "out": "sha256-d6xi4mKdjkX2JFicDIv5niSzpyI0m/Hnm8GGAIU04kY="
-              },
-              "sdkVersions": {},
-              "sampleSources": [],
-              "receipt": "https://nix-purifiers.github.io/evidence/e3bdeb5bd839634288b697a256b28afca897326741ae895a76929965cb3d6bda.json",
-              "artifactSha256": "e3bdeb5bd839634288b697a256b28afca897326741ae895a76929965cb3d6bda"
-            }
-          },
-          "cmake-purifier:x86_64-linux:conformance-malformed": {
-            "revision": "195cc8d9b3fc7353ff9e5687513bb95210d8f419",
-            "system": "x86_64-linux",
-            "drvPath": "/nix/store/rm7h81aj4dlfpjs94fjyp45qyf4avf57-conformance-malformed.drv",
-            "sourceNarHash": "sha256-0rbk0xCJpIIsOftlAgDTwbR4E4g685vcA+ujQc5LMmc=",
-            "repository": "nix-purifiers/cmake-purifier",
-            "check": {
-              "kind": "flake-attribute",
-              "value": "checks.x86_64-linux.conformance-malformed",
-              "replay": null
-            },
-            "outputs": {
-              "out": "/nix/store/khybk1idgfzngxkm0b7vl6c4v7cqb8rn-conformance-malformed"
-            },
-            "outputNarHashes": {
-              "out": "sha256-d6xi4mKdjkX2JFicDIv5niSzpyI0m/Hnm8GGAIU04kY="
-            },
-            "sdkVersions": {},
-            "sampleSources": [],
-            "evaluation": null,
-            "build": {
-              "status": "success",
-              "executedSystem": "x86_64-linux",
-              "sourceRevision": "195cc8d9b3fc7353ff9e5687513bb95210d8f419",
-              "sourceNarHash": "sha256-0rbk0xCJpIIsOftlAgDTwbR4E4g685vcA+ujQc5LMmc=",
-              "drvPath": "/nix/store/rm7h81aj4dlfpjs94fjyp45qyf4avf57-conformance-malformed.drv",
-              "outputs": {
-                "out": "/nix/store/khybk1idgfzngxkm0b7vl6c4v7cqb8rn-conformance-malformed"
-              },
-              "outputNarHashes": {
-                "out": "sha256-d6xi4mKdjkX2JFicDIv5niSzpyI0m/Hnm8GGAIU04kY="
-              },
-              "sdkVersions": {},
-              "sampleSources": [],
-              "receipt": "https://nix-purifiers.github.io/evidence/e3bdeb5bd839634288b697a256b28afca897326741ae895a76929965cb3d6bda.json",
-              "artifactSha256": "e3bdeb5bd839634288b697a256b28afca897326741ae895a76929965cb3d6bda"
-            }
-          },
-          "cmake-purifier:x86_64-linux:conformance-missing": {
-            "revision": "195cc8d9b3fc7353ff9e5687513bb95210d8f419",
-            "system": "x86_64-linux",
-            "drvPath": "/nix/store/zxg57wsf0lw3fq4nd53wqd938idbj020-conformance-missing.drv",
-            "sourceNarHash": "sha256-0rbk0xCJpIIsOftlAgDTwbR4E4g685vcA+ujQc5LMmc=",
-            "repository": "nix-purifiers/cmake-purifier",
-            "check": {
-              "kind": "flake-attribute",
-              "value": "checks.x86_64-linux.conformance-missing",
-              "replay": null
-            },
-            "outputs": {
-              "out": "/nix/store/b9k94xm979763dwmxmcx508lk4srsbz1-conformance-missing"
-            },
-            "outputNarHashes": {
-              "out": "sha256-d6xi4mKdjkX2JFicDIv5niSzpyI0m/Hnm8GGAIU04kY="
-            },
-            "sdkVersions": {},
-            "sampleSources": [],
-            "evaluation": null,
-            "build": {
-              "status": "success",
-              "executedSystem": "x86_64-linux",
-              "sourceRevision": "195cc8d9b3fc7353ff9e5687513bb95210d8f419",
-              "sourceNarHash": "sha256-0rbk0xCJpIIsOftlAgDTwbR4E4g685vcA+ujQc5LMmc=",
-              "drvPath": "/nix/store/zxg57wsf0lw3fq4nd53wqd938idbj020-conformance-missing.drv",
-              "outputs": {
-                "out": "/nix/store/b9k94xm979763dwmxmcx508lk4srsbz1-conformance-missing"
-              },
-              "outputNarHashes": {
-                "out": "sha256-d6xi4mKdjkX2JFicDIv5niSzpyI0m/Hnm8GGAIU04kY="
-              },
-              "sdkVersions": {},
-              "sampleSources": [],
-              "receipt": "https://nix-purifiers.github.io/evidence/e3bdeb5bd839634288b697a256b28afca897326741ae895a76929965cb3d6bda.json",
-              "artifactSha256": "e3bdeb5bd839634288b697a256b28afca897326741ae895a76929965cb3d6bda"
-            }
-          },
-          "cmake-purifier:x86_64-linux:conformance-stale": {
-            "revision": "195cc8d9b3fc7353ff9e5687513bb95210d8f419",
-            "system": "x86_64-linux",
-            "drvPath": "/nix/store/ap8xgx5rn46s3qpi263242mnssrkp3xw-conformance-stale.drv",
-            "sourceNarHash": "sha256-0rbk0xCJpIIsOftlAgDTwbR4E4g685vcA+ujQc5LMmc=",
-            "repository": "nix-purifiers/cmake-purifier",
-            "check": {
-              "kind": "flake-attribute",
-              "value": "checks.x86_64-linux.conformance-stale",
-              "replay": null
-            },
-            "outputs": {
-              "out": "/nix/store/5sbmxp58416fivnjrjlikayih3xmwj10-conformance-stale"
-            },
-            "outputNarHashes": {
-              "out": "sha256-d6xi4mKdjkX2JFicDIv5niSzpyI0m/Hnm8GGAIU04kY="
-            },
-            "sdkVersions": {},
-            "sampleSources": [],
-            "evaluation": null,
-            "build": {
-              "status": "success",
-              "executedSystem": "x86_64-linux",
-              "sourceRevision": "195cc8d9b3fc7353ff9e5687513bb95210d8f419",
-              "sourceNarHash": "sha256-0rbk0xCJpIIsOftlAgDTwbR4E4g685vcA+ujQc5LMmc=",
-              "drvPath": "/nix/store/ap8xgx5rn46s3qpi263242mnssrkp3xw-conformance-stale.drv",
-              "outputs": {
-                "out": "/nix/store/5sbmxp58416fivnjrjlikayih3xmwj10-conformance-stale"
-              },
-              "outputNarHashes": {
-                "out": "sha256-d6xi4mKdjkX2JFicDIv5niSzpyI0m/Hnm8GGAIU04kY="
-              },
-              "sdkVersions": {},
-              "sampleSources": [],
-              "receipt": "https://nix-purifiers.github.io/evidence/e3bdeb5bd839634288b697a256b28afca897326741ae895a76929965cb3d6bda.json",
-              "artifactSha256": "e3bdeb5bd839634288b697a256b28afca897326741ae895a76929965cb3d6bda"
-            }
-          },
-          "cmake-purifier:x86_64-linux:conformance-tampered": {
-            "revision": "195cc8d9b3fc7353ff9e5687513bb95210d8f419",
-            "system": "x86_64-linux",
-            "drvPath": "/nix/store/3iyq2s2lriwn68py3m2k0l7x3zj8why1-conformance-tampered.drv",
-            "sourceNarHash": "sha256-0rbk0xCJpIIsOftlAgDTwbR4E4g685vcA+ujQc5LMmc=",
-            "repository": "nix-purifiers/cmake-purifier",
-            "check": {
-              "kind": "flake-attribute",
-              "value": "checks.x86_64-linux.conformance-tampered",
-              "replay": null
-            },
-            "outputs": {
-              "out": "/nix/store/z62rny0axi0ik89zbwi4g1plp98md2s6-conformance-tampered"
-            },
-            "outputNarHashes": {
-              "out": "sha256-d6xi4mKdjkX2JFicDIv5niSzpyI0m/Hnm8GGAIU04kY="
-            },
-            "sdkVersions": {},
-            "sampleSources": [],
-            "evaluation": null,
-            "build": {
-              "status": "success",
-              "executedSystem": "x86_64-linux",
-              "sourceRevision": "195cc8d9b3fc7353ff9e5687513bb95210d8f419",
-              "sourceNarHash": "sha256-0rbk0xCJpIIsOftlAgDTwbR4E4g685vcA+ujQc5LMmc=",
-              "drvPath": "/nix/store/3iyq2s2lriwn68py3m2k0l7x3zj8why1-conformance-tampered.drv",
-              "outputs": {
-                "out": "/nix/store/z62rny0axi0ik89zbwi4g1plp98md2s6-conformance-tampered"
-              },
-              "outputNarHashes": {
-                "out": "sha256-d6xi4mKdjkX2JFicDIv5niSzpyI0m/Hnm8GGAIU04kY="
-              },
-              "sdkVersions": {},
-              "sampleSources": [],
-              "receipt": "https://nix-purifiers.github.io/evidence/e3bdeb5bd839634288b697a256b28afca897326741ae895a76929965cb3d6bda.json",
-              "artifactSha256": "e3bdeb5bd839634288b697a256b28afca897326741ae895a76929965cb3d6bda"
-            }
-          },
-          "cmake-purifier:x86_64-linux:cvs": {
-            "revision": "195cc8d9b3fc7353ff9e5687513bb95210d8f419",
-            "system": "x86_64-linux",
-            "drvPath": "/nix/store/6slxh72xcqsigv8m72kiqpjgnzxkd0d1-purifier-cvs-0.1.0.drv",
-            "sourceNarHash": "sha256-0rbk0xCJpIIsOftlAgDTwbR4E4g685vcA+ujQc5LMmc=",
-            "repository": "nix-purifiers/cmake-purifier",
-            "check": {
-              "kind": "flake-attribute",
-              "value": "checks.x86_64-linux.cvs",
-              "replay": null
-            },
-            "outputs": {
-              "out": "/nix/store/5jmp5bh93rngnmqjg6j7j7kqlky5nhia-purifier-cvs-0.1.0"
-            },
-            "outputNarHashes": {
-              "out": "sha256-pQ2vseLQH/0WcIGonmuRb+ZUOfNN2s5mwDou6slF+2o="
-            },
-            "sdkVersions": {},
-            "sampleSources": [],
-            "evaluation": null,
-            "build": {
-              "status": "success",
-              "executedSystem": "x86_64-linux",
-              "sourceRevision": "195cc8d9b3fc7353ff9e5687513bb95210d8f419",
-              "sourceNarHash": "sha256-0rbk0xCJpIIsOftlAgDTwbR4E4g685vcA+ujQc5LMmc=",
-              "drvPath": "/nix/store/6slxh72xcqsigv8m72kiqpjgnzxkd0d1-purifier-cvs-0.1.0.drv",
-              "outputs": {
-                "out": "/nix/store/5jmp5bh93rngnmqjg6j7j7kqlky5nhia-purifier-cvs-0.1.0"
-              },
-              "outputNarHashes": {
-                "out": "sha256-pQ2vseLQH/0WcIGonmuRb+ZUOfNN2s5mwDou6slF+2o="
-              },
-              "sdkVersions": {},
-              "sampleSources": [],
-              "receipt": "https://nix-purifiers.github.io/evidence/e3bdeb5bd839634288b697a256b28afca897326741ae895a76929965cb3d6bda.json",
-              "artifactSha256": "e3bdeb5bd839634288b697a256b28afca897326741ae895a76929965cb3d6bda"
-            }
-          },
-          "cmake-purifier:x86_64-linux:cvs-runs": {
-            "revision": "195cc8d9b3fc7353ff9e5687513bb95210d8f419",
-            "system": "x86_64-linux",
-            "drvPath": "/nix/store/k8dlkh1aw1d2zxgvin2h7hfgvcyfhng3-cvs-runs.drv",
-            "sourceNarHash": "sha256-0rbk0xCJpIIsOftlAgDTwbR4E4g685vcA+ujQc5LMmc=",
-            "repository": "nix-purifiers/cmake-purifier",
-            "check": {
-              "kind": "flake-attribute",
-              "value": "checks.x86_64-linux.cvs-runs",
-              "replay": null
-            },
-            "outputs": {
-              "out": "/nix/store/48gi1l2990iiiv6kj2ixx6mp3ibkkc5r-cvs-runs"
-            },
-            "outputNarHashes": {
-              "out": "sha256-d6xi4mKdjkX2JFicDIv5niSzpyI0m/Hnm8GGAIU04kY="
-            },
-            "sdkVersions": {},
-            "sampleSources": [],
-            "evaluation": null,
-            "build": {
-              "status": "success",
-              "executedSystem": "x86_64-linux",
-              "sourceRevision": "195cc8d9b3fc7353ff9e5687513bb95210d8f419",
-              "sourceNarHash": "sha256-0rbk0xCJpIIsOftlAgDTwbR4E4g685vcA+ujQc5LMmc=",
-              "drvPath": "/nix/store/k8dlkh1aw1d2zxgvin2h7hfgvcyfhng3-cvs-runs.drv",
-              "outputs": {
-                "out": "/nix/store/48gi1l2990iiiv6kj2ixx6mp3ibkkc5r-cvs-runs"
-              },
-              "outputNarHashes": {
-                "out": "sha256-d6xi4mKdjkX2JFicDIv5niSzpyI0m/Hnm8GGAIU04kY="
-              },
-              "sdkVersions": {},
-              "sampleSources": [],
-              "receipt": "https://nix-purifiers.github.io/evidence/e3bdeb5bd839634288b697a256b28afca897326741ae895a76929965cb3d6bda.json",
-              "artifactSha256": "e3bdeb5bd839634288b697a256b28afca897326741ae895a76929965cb3d6bda"
-            }
-          },
-          "cmake-purifier:x86_64-linux:definition-hash": {
-            "revision": "195cc8d9b3fc7353ff9e5687513bb95210d8f419",
-            "system": "x86_64-linux",
-            "drvPath": "/nix/store/228riy1q1q0zkws7w4mz2i7ixi9hkvqs-definition-hash.drv",
-            "sourceNarHash": "sha256-0rbk0xCJpIIsOftlAgDTwbR4E4g685vcA+ujQc5LMmc=",
-            "repository": "nix-purifiers/cmake-purifier",
-            "check": {
-              "kind": "flake-attribute",
-              "value": "checks.x86_64-linux.definition-hash",
-              "replay": null
-            },
-            "outputs": {
-              "out": "/nix/store/7q50h1706jrgpnvcgipq3la42bc70vjc-definition-hash"
-            },
-            "outputNarHashes": {
-              "out": "sha256-d6xi4mKdjkX2JFicDIv5niSzpyI0m/Hnm8GGAIU04kY="
-            },
-            "sdkVersions": {},
-            "sampleSources": [],
-            "evaluation": null,
-            "build": {
-              "status": "success",
-              "executedSystem": "x86_64-linux",
-              "sourceRevision": "195cc8d9b3fc7353ff9e5687513bb95210d8f419",
-              "sourceNarHash": "sha256-0rbk0xCJpIIsOftlAgDTwbR4E4g685vcA+ujQc5LMmc=",
-              "drvPath": "/nix/store/228riy1q1q0zkws7w4mz2i7ixi9hkvqs-definition-hash.drv",
-              "outputs": {
-                "out": "/nix/store/7q50h1706jrgpnvcgipq3la42bc70vjc-definition-hash"
-              },
-              "outputNarHashes": {
-                "out": "sha256-d6xi4mKdjkX2JFicDIv5niSzpyI0m/Hnm8GGAIU04kY="
-              },
-              "sdkVersions": {},
-              "sampleSources": [],
-              "receipt": "https://nix-purifiers.github.io/evidence/e3bdeb5bd839634288b697a256b28afca897326741ae895a76929965cb3d6bda.json",
-              "artifactSha256": "e3bdeb5bd839634288b697a256b28afca897326741ae895a76929965cb3d6bda"
-            }
-          },
-          "cmake-purifier:x86_64-linux:extras": {
-            "revision": "195cc8d9b3fc7353ff9e5687513bb95210d8f419",
-            "system": "x86_64-linux",
-            "drvPath": "/nix/store/6wvn4h0fw18ayqky8dra5k8i811bz83m-purifier-extras-0.1.0.drv",
-            "sourceNarHash": "sha256-0rbk0xCJpIIsOftlAgDTwbR4E4g685vcA+ujQc5LMmc=",
-            "repository": "nix-purifiers/cmake-purifier",
-            "check": {
-              "kind": "flake-attribute",
-              "value": "checks.x86_64-linux.extras",
-              "replay": null
-            },
-            "outputs": {
-              "out": "/nix/store/br7n5aldffbzilnxcfjbnczrwyqbqgk7-purifier-extras-0.1.0"
-            },
-            "outputNarHashes": {
-              "out": "sha256-Ni/KXedwAiCLfbOfwi6TN1Wg4KMqx6CGya6LBlPU4AI="
-            },
-            "sdkVersions": {},
-            "sampleSources": [],
-            "evaluation": null,
-            "build": {
-              "status": "success",
-              "executedSystem": "x86_64-linux",
-              "sourceRevision": "195cc8d9b3fc7353ff9e5687513bb95210d8f419",
-              "sourceNarHash": "sha256-0rbk0xCJpIIsOftlAgDTwbR4E4g685vcA+ujQc5LMmc=",
-              "drvPath": "/nix/store/6wvn4h0fw18ayqky8dra5k8i811bz83m-purifier-extras-0.1.0.drv",
-              "outputs": {
-                "out": "/nix/store/br7n5aldffbzilnxcfjbnczrwyqbqgk7-purifier-extras-0.1.0"
-              },
-              "outputNarHashes": {
-                "out": "sha256-Ni/KXedwAiCLfbOfwi6TN1Wg4KMqx6CGya6LBlPU4AI="
-              },
-              "sdkVersions": {},
-              "sampleSources": [],
-              "receipt": "https://nix-purifiers.github.io/evidence/e3bdeb5bd839634288b697a256b28afca897326741ae895a76929965cb3d6bda.json",
-              "artifactSha256": "e3bdeb5bd839634288b697a256b28afca897326741ae895a76929965cb3d6bda"
-            }
-          },
-          "cmake-purifier:x86_64-linux:extras-outputs": {
-            "revision": "195cc8d9b3fc7353ff9e5687513bb95210d8f419",
-            "system": "x86_64-linux",
-            "drvPath": "/nix/store/bzqrjg96sp65x5i0yphwdrzm9z8i3qyn-extras-outputs.drv",
-            "sourceNarHash": "sha256-0rbk0xCJpIIsOftlAgDTwbR4E4g685vcA+ujQc5LMmc=",
-            "repository": "nix-purifiers/cmake-purifier",
-            "check": {
-              "kind": "flake-attribute",
-              "value": "checks.x86_64-linux.extras-outputs",
-              "replay": null
-            },
-            "outputs": {
-              "out": "/nix/store/z9ygvd8zd6354i4ckiqnya93y1p0l9cn-extras-outputs"
-            },
-            "outputNarHashes": {
-              "out": "sha256-d6xi4mKdjkX2JFicDIv5niSzpyI0m/Hnm8GGAIU04kY="
-            },
-            "sdkVersions": {},
-            "sampleSources": [],
-            "evaluation": null,
-            "build": {
-              "status": "success",
-              "executedSystem": "x86_64-linux",
-              "sourceRevision": "195cc8d9b3fc7353ff9e5687513bb95210d8f419",
-              "sourceNarHash": "sha256-0rbk0xCJpIIsOftlAgDTwbR4E4g685vcA+ujQc5LMmc=",
-              "drvPath": "/nix/store/bzqrjg96sp65x5i0yphwdrzm9z8i3qyn-extras-outputs.drv",
-              "outputs": {
-                "out": "/nix/store/z9ygvd8zd6354i4ckiqnya93y1p0l9cn-extras-outputs"
-              },
-              "outputNarHashes": {
-                "out": "sha256-d6xi4mKdjkX2JFicDIv5niSzpyI0m/Hnm8GGAIU04kY="
-              },
-              "sdkVersions": {},
-              "sampleSources": [],
-              "receipt": "https://nix-purifiers.github.io/evidence/e3bdeb5bd839634288b697a256b28afca897326741ae895a76929965cb3d6bda.json",
-              "artifactSha256": "e3bdeb5bd839634288b697a256b28afca897326741ae895a76929965cb3d6bda"
-            }
-          },
-          "cmake-purifier:x86_64-linux:extras-runs": {
-            "revision": "195cc8d9b3fc7353ff9e5687513bb95210d8f419",
-            "system": "x86_64-linux",
-            "drvPath": "/nix/store/41p5kkpa9acp9f9slgp271hjk6c9ppqp-extras-runs.drv",
-            "sourceNarHash": "sha256-0rbk0xCJpIIsOftlAgDTwbR4E4g685vcA+ujQc5LMmc=",
-            "repository": "nix-purifiers/cmake-purifier",
-            "check": {
-              "kind": "flake-attribute",
-              "value": "checks.x86_64-linux.extras-runs",
-              "replay": null
-            },
-            "outputs": {
-              "out": "/nix/store/axbm96q31wp289h3amni9ims6vxdsfy0-extras-runs"
-            },
-            "outputNarHashes": {
-              "out": "sha256-d6xi4mKdjkX2JFicDIv5niSzpyI0m/Hnm8GGAIU04kY="
-            },
-            "sdkVersions": {},
-            "sampleSources": [],
-            "evaluation": null,
-            "build": {
-              "status": "success",
-              "executedSystem": "x86_64-linux",
-              "sourceRevision": "195cc8d9b3fc7353ff9e5687513bb95210d8f419",
-              "sourceNarHash": "sha256-0rbk0xCJpIIsOftlAgDTwbR4E4g685vcA+ujQc5LMmc=",
-              "drvPath": "/nix/store/41p5kkpa9acp9f9slgp271hjk6c9ppqp-extras-runs.drv",
-              "outputs": {
-                "out": "/nix/store/axbm96q31wp289h3amni9ims6vxdsfy0-extras-runs"
-              },
-              "outputNarHashes": {
-                "out": "sha256-d6xi4mKdjkX2JFicDIv5niSzpyI0m/Hnm8GGAIU04kY="
-              },
-              "sdkVersions": {},
-              "sampleSources": [],
-              "receipt": "https://nix-purifiers.github.io/evidence/e3bdeb5bd839634288b697a256b28afca897326741ae895a76929965cb3d6bda.json",
-              "artifactSha256": "e3bdeb5bd839634288b697a256b28afca897326741ae895a76929965cb3d6bda"
-            }
-          },
-          "cmake-purifier:x86_64-linux:lock-records": {
-            "revision": "195cc8d9b3fc7353ff9e5687513bb95210d8f419",
-            "system": "x86_64-linux",
-            "drvPath": "/nix/store/qycm4bmyv46x313hkvhbyzslkzmq2ga1-lock-records.drv",
-            "sourceNarHash": "sha256-0rbk0xCJpIIsOftlAgDTwbR4E4g685vcA+ujQc5LMmc=",
-            "repository": "nix-purifiers/cmake-purifier",
-            "check": {
-              "kind": "flake-attribute",
-              "value": "checks.x86_64-linux.lock-records",
-              "replay": null
-            },
-            "outputs": {
-              "out": "/nix/store/4dvn4hzbv2anp1yj9l3rl6gndzx667fh-lock-records"
-            },
-            "outputNarHashes": {
-              "out": "sha256-d6xi4mKdjkX2JFicDIv5niSzpyI0m/Hnm8GGAIU04kY="
-            },
-            "sdkVersions": {},
-            "sampleSources": [],
-            "evaluation": null,
-            "build": {
-              "status": "success",
-              "executedSystem": "x86_64-linux",
-              "sourceRevision": "195cc8d9b3fc7353ff9e5687513bb95210d8f419",
-              "sourceNarHash": "sha256-0rbk0xCJpIIsOftlAgDTwbR4E4g685vcA+ujQc5LMmc=",
-              "drvPath": "/nix/store/qycm4bmyv46x313hkvhbyzslkzmq2ga1-lock-records.drv",
-              "outputs": {
-                "out": "/nix/store/4dvn4hzbv2anp1yj9l3rl6gndzx667fh-lock-records"
-              },
-              "outputNarHashes": {
-                "out": "sha256-d6xi4mKdjkX2JFicDIv5niSzpyI0m/Hnm8GGAIU04kY="
-              },
-              "sdkVersions": {},
-              "sampleSources": [],
-              "receipt": "https://nix-purifiers.github.io/evidence/e3bdeb5bd839634288b697a256b28afca897326741ae895a76929965cb3d6bda.json",
-              "artifactSha256": "e3bdeb5bd839634288b697a256b28afca897326741ae895a76929965cb3d6bda"
-            }
-          },
-          "cmake-purifier:x86_64-linux:lock-urls": {
-            "revision": "195cc8d9b3fc7353ff9e5687513bb95210d8f419",
-            "system": "x86_64-linux",
-            "drvPath": "/nix/store/l8a09x1l5gj3xnrchy0p68y9j992n9p9-lock-urls.drv",
-            "sourceNarHash": "sha256-0rbk0xCJpIIsOftlAgDTwbR4E4g685vcA+ujQc5LMmc=",
-            "repository": "nix-purifiers/cmake-purifier",
-            "check": {
-              "kind": "flake-attribute",
-              "value": "checks.x86_64-linux.lock-urls",
-              "replay": null
-            },
-            "outputs": {
-              "out": "/nix/store/mm0k08c892yh9ki39f5pzkp5ps1nd6a2-lock-urls"
-            },
-            "outputNarHashes": {
-              "out": "sha256-d6xi4mKdjkX2JFicDIv5niSzpyI0m/Hnm8GGAIU04kY="
-            },
-            "sdkVersions": {},
-            "sampleSources": [],
-            "evaluation": null,
-            "build": {
-              "status": "success",
-              "executedSystem": "x86_64-linux",
-              "sourceRevision": "195cc8d9b3fc7353ff9e5687513bb95210d8f419",
-              "sourceNarHash": "sha256-0rbk0xCJpIIsOftlAgDTwbR4E4g685vcA+ujQc5LMmc=",
-              "drvPath": "/nix/store/l8a09x1l5gj3xnrchy0p68y9j992n9p9-lock-urls.drv",
-              "outputs": {
-                "out": "/nix/store/mm0k08c892yh9ki39f5pzkp5ps1nd6a2-lock-urls"
-              },
-              "outputNarHashes": {
-                "out": "sha256-d6xi4mKdjkX2JFicDIv5niSzpyI0m/Hnm8GGAIU04kY="
-              },
-              "sdkVersions": {},
-              "sampleSources": [],
-              "receipt": "https://nix-purifiers.github.io/evidence/e3bdeb5bd839634288b697a256b28afca897326741ae895a76929965cb3d6bda.json",
-              "artifactSha256": "e3bdeb5bd839634288b697a256b28afca897326741ae895a76929965cb3d6bda"
-            }
-          },
-          "cmake-purifier:x86_64-linux:native-ffi": {
-            "revision": "195cc8d9b3fc7353ff9e5687513bb95210d8f419",
-            "system": "x86_64-linux",
-            "drvPath": "/nix/store/jjg0hda97d0grgpf35hxjx64gd05gmg7-cmake-native-foreign-consumers.drv",
-            "sourceNarHash": "sha256-0rbk0xCJpIIsOftlAgDTwbR4E4g685vcA+ujQc5LMmc=",
-            "repository": "nix-purifiers/cmake-purifier",
-            "check": {
-              "kind": "flake-attribute",
-              "value": "checks.x86_64-linux.native-ffi",
-              "replay": null
-            },
-            "outputs": {
-              "out": "/nix/store/9a86dsxc541ymzy3kjv5a90rh2ydzidw-cmake-native-foreign-consumers"
-            },
-            "outputNarHashes": {
-              "out": "sha256-d6xi4mKdjkX2JFicDIv5niSzpyI0m/Hnm8GGAIU04kY="
-            },
-            "sdkVersions": {},
-            "sampleSources": [],
-            "evaluation": null,
-            "build": {
-              "status": "success",
-              "executedSystem": "x86_64-linux",
-              "sourceRevision": "195cc8d9b3fc7353ff9e5687513bb95210d8f419",
-              "sourceNarHash": "sha256-0rbk0xCJpIIsOftlAgDTwbR4E4g685vcA+ujQc5LMmc=",
-              "drvPath": "/nix/store/jjg0hda97d0grgpf35hxjx64gd05gmg7-cmake-native-foreign-consumers.drv",
-              "outputs": {
-                "out": "/nix/store/9a86dsxc541ymzy3kjv5a90rh2ydzidw-cmake-native-foreign-consumers"
-              },
-              "outputNarHashes": {
-                "out": "sha256-d6xi4mKdjkX2JFicDIv5niSzpyI0m/Hnm8GGAIU04kY="
-              },
-              "sdkVersions": {},
-              "sampleSources": [],
-              "receipt": "https://nix-purifiers.github.io/evidence/e3bdeb5bd839634288b697a256b28afca897326741ae895a76929965cb3d6bda.json",
-              "artifactSha256": "e3bdeb5bd839634288b697a256b28afca897326741ae895a76929965cb3d6bda"
-            }
-          },
-          "cmake-purifier:x86_64-linux:nix-library": {
-            "revision": "195cc8d9b3fc7353ff9e5687513bb95210d8f419",
-            "system": "x86_64-linux",
-            "drvPath": "/nix/store/ivxkzj858rs1ikwfjrpqk4c5964419sx-nix-library.drv",
-            "sourceNarHash": "sha256-0rbk0xCJpIIsOftlAgDTwbR4E4g685vcA+ujQc5LMmc=",
-            "repository": "nix-purifiers/cmake-purifier",
-            "check": {
-              "kind": "flake-attribute",
-              "value": "checks.x86_64-linux.nix-library",
-              "replay": null
-            },
-            "outputs": {
-              "out": "/nix/store/wm13r7knnn303winf7cm9wn73jdcf2z9-nix-library"
-            },
-            "outputNarHashes": {
-              "out": "sha256-d6xi4mKdjkX2JFicDIv5niSzpyI0m/Hnm8GGAIU04kY="
-            },
-            "sdkVersions": {},
-            "sampleSources": [],
-            "evaluation": null,
-            "build": {
-              "status": "success",
-              "executedSystem": "x86_64-linux",
-              "sourceRevision": "195cc8d9b3fc7353ff9e5687513bb95210d8f419",
-              "sourceNarHash": "sha256-0rbk0xCJpIIsOftlAgDTwbR4E4g685vcA+ujQc5LMmc=",
-              "drvPath": "/nix/store/ivxkzj858rs1ikwfjrpqk4c5964419sx-nix-library.drv",
-              "outputs": {
-                "out": "/nix/store/wm13r7knnn303winf7cm9wn73jdcf2z9-nix-library"
-              },
-              "outputNarHashes": {
-                "out": "sha256-d6xi4mKdjkX2JFicDIv5niSzpyI0m/Hnm8GGAIU04kY="
-              },
-              "sdkVersions": {},
-              "sampleSources": [],
-              "receipt": "https://nix-purifiers.github.io/evidence/e3bdeb5bd839634288b697a256b28afca897326741ae895a76929965cb3d6bda.json",
-              "artifactSha256": "e3bdeb5bd839634288b697a256b28afca897326741ae895a76929965cb3d6bda"
-            }
-          },
-          "cmake-purifier:x86_64-linux:read-lock": {
-            "revision": "195cc8d9b3fc7353ff9e5687513bb95210d8f419",
-            "system": "x86_64-linux",
-            "drvPath": "/nix/store/rfx3vw3902vz55f023cw71j7fhgbyz75-read-lock.drv",
-            "sourceNarHash": "sha256-0rbk0xCJpIIsOftlAgDTwbR4E4g685vcA+ujQc5LMmc=",
-            "repository": "nix-purifiers/cmake-purifier",
-            "check": {
-              "kind": "flake-attribute",
-              "value": "checks.x86_64-linux.read-lock",
-              "replay": null
-            },
-            "outputs": {
-              "out": "/nix/store/76n3cqjdxq8mixz6qv2zy583snga7qnb-read-lock"
-            },
-            "outputNarHashes": {
-              "out": "sha256-d6xi4mKdjkX2JFicDIv5niSzpyI0m/Hnm8GGAIU04kY="
-            },
-            "sdkVersions": {},
-            "sampleSources": [],
-            "evaluation": null,
-            "build": {
-              "status": "success",
-              "executedSystem": "x86_64-linux",
-              "sourceRevision": "195cc8d9b3fc7353ff9e5687513bb95210d8f419",
-              "sourceNarHash": "sha256-0rbk0xCJpIIsOftlAgDTwbR4E4g685vcA+ujQc5LMmc=",
-              "drvPath": "/nix/store/rfx3vw3902vz55f023cw71j7fhgbyz75-read-lock.drv",
-              "outputs": {
-                "out": "/nix/store/76n3cqjdxq8mixz6qv2zy583snga7qnb-read-lock"
-              },
-              "outputNarHashes": {
-                "out": "sha256-d6xi4mKdjkX2JFicDIv5niSzpyI0m/Hnm8GGAIU04kY="
-              },
-              "sdkVersions": {},
-              "sampleSources": [],
-              "receipt": "https://nix-purifiers.github.io/evidence/e3bdeb5bd839634288b697a256b28afca897326741ae895a76929965cb3d6bda.json",
-              "artifactSha256": "e3bdeb5bd839634288b697a256b28afca897326741ae895a76929965cb3d6bda"
-            }
-          },
-          "cmake-purifier:x86_64-linux:real-world-cpr": {
-            "revision": "195cc8d9b3fc7353ff9e5687513bb95210d8f419",
-            "system": "x86_64-linux",
-            "drvPath": "/nix/store/2ifhxqpm2m118hny164rk9crjwrdsa50-cpr-tests-1.15.1.drv",
-            "sourceNarHash": "sha256-0rbk0xCJpIIsOftlAgDTwbR4E4g685vcA+ujQc5LMmc=",
-            "repository": "nix-purifiers/cmake-purifier",
-            "check": {
-              "kind": "flake-attribute",
-              "value": "checks.x86_64-linux.real-world-cpr",
-              "replay": null
-            },
-            "outputs": {
-              "out": "/nix/store/rcqg6pjg90xy3liky6b8gsv59svpz3k7-cpr-tests-1.15.1"
-            },
-            "outputNarHashes": {
-              "out": "sha256-c+2tPogjg92BWcyGE/69gv05ri9BzlpTsMm9pMmtC+4="
             },
             "sdkVersions": {
               "CMake": "4.4.4"
             },
             "sampleSources": [
               {
-                "repository": "https://github.com/libcpr/cpr",
-                "revision": "3139b2682f0b1d6af8c7ae48cf400f9d9988deec",
-                "sourceNarHash": "sha256-f4Byq02cqxXiQ0M1/8nfJ0vr4l5rmbyqbdoR7f6stDM="
+                "repository": "https://github.com/gabime/spdlog",
+                "revision": "6fa36017cfd5731d617e1a934f0e5ea9c4445b13",
+                "sourceNarHash": "sha256-0rOR9G2Y4Z4OBZtUHxID0s1aXN9ejodHrurlVCA0pIo="
               }
             ],
             "evaluation": null,
             "build": {
               "status": "success",
               "executedSystem": "x86_64-linux",
-              "sourceRevision": "195cc8d9b3fc7353ff9e5687513bb95210d8f419",
-              "sourceNarHash": "sha256-0rbk0xCJpIIsOftlAgDTwbR4E4g685vcA+ujQc5LMmc=",
-              "drvPath": "/nix/store/2ifhxqpm2m118hny164rk9crjwrdsa50-cpr-tests-1.15.1.drv",
+              "sourceRevision": "fa095b882aebd925c397521961ae316c76b469d7",
+              "sourceNarHash": "sha256-CYi2DNSKOcRKItIN6XfLomF3meX7uwtnqE82HGIrZ5c=",
+              "drvPath": "/nix/store/1nhi1nyxbg1rf4waq3gj6qq5gpv7ijpp-spdlog-ordinary-installed-consumer.drv",
               "outputs": {
-                "out": "/nix/store/rcqg6pjg90xy3liky6b8gsv59svpz3k7-cpr-tests-1.15.1"
+                "out": "/nix/store/pf3qqpqg4fj6kwy950l9rri1yyvyhglz-spdlog-ordinary-installed-consumer"
               },
               "outputNarHashes": {
-                "out": "sha256-c+2tPogjg92BWcyGE/69gv05ri9BzlpTsMm9pMmtC+4="
+                "out": "sha256-XGXTzRIKl/TM8DhNOFD+xcpwV4GZNpDR4h098oAsDn8="
               },
               "sdkVersions": {
                 "CMake": "4.4.4"
               },
               "sampleSources": [
                 {
-                  "repository": "https://github.com/libcpr/cpr",
-                  "revision": "3139b2682f0b1d6af8c7ae48cf400f9d9988deec",
-                  "sourceNarHash": "sha256-f4Byq02cqxXiQ0M1/8nfJ0vr4l5rmbyqbdoR7f6stDM="
+                  "repository": "https://github.com/gabime/spdlog",
+                  "revision": "6fa36017cfd5731d617e1a934f0e5ea9c4445b13",
+                  "sourceNarHash": "sha256-0rOR9G2Y4Z4OBZtUHxID0s1aXN9ejodHrurlVCA0pIo="
                 }
               ],
-              "receipt": "https://nix-purifiers.github.io/evidence/e3bdeb5bd839634288b697a256b28afca897326741ae895a76929965cb3d6bda.json",
-              "artifactSha256": "e3bdeb5bd839634288b697a256b28afca897326741ae895a76929965cb3d6bda"
+              "receipt": "https://nix-purifiers.github.io/evidence/22dce3e2fad9294cf8b5ba1160365f6c58d4a47880fdb8cd4695e4084c140db4.json",
+              "artifactSha256": "22dce3e2fad9294cf8b5ba1160365f6c58d4a47880fdb8cd4695e4084c140db4"
             }
           },
-          "cmake-purifier:x86_64-linux:real-world-cpr-shell": {
-            "revision": "195cc8d9b3fc7353ff9e5687513bb95210d8f419",
-            "system": "x86_64-linux",
-            "drvPath": "/nix/store/v6mf5ik7pcgvipwdb51d4l6xmqbby79w-nix-shell.drv",
-            "sourceNarHash": "sha256-0rbk0xCJpIIsOftlAgDTwbR4E4g685vcA+ujQc5LMmc=",
+          "cmake-purifier@fa095b8:aarch64-darwin:real-world-spdlog-consumer": {
+            "revision": "fa095b882aebd925c397521961ae316c76b469d7",
+            "system": "aarch64-darwin",
+            "sourceNarHash": "sha256-CYi2DNSKOcRKItIN6XfLomF3meX7uwtnqE82HGIrZ5c=",
+            "drvPath": "/nix/store/c6z4kcq3dm2iz77iy0h7hz4cn8cj4lqc-spdlog-ordinary-installed-consumer.drv",
+            "outputs": {
+              "out": "/nix/store/z8kh4r28pf421byai5d159b2h3rayjnh-spdlog-ordinary-installed-consumer"
+            },
+            "outputNarHashes": {
+              "out": "sha256-j402Qort1ZcEkxvSoNT3W7HW4WKhsvaY+orgka0rHCA="
+            },
             "repository": "nix-purifiers/cmake-purifier",
             "check": {
               "kind": "flake-attribute",
-              "value": "checks.x86_64-linux.real-world-cpr-shell",
+              "value": "checks.aarch64-darwin.real-world-spdlog-consumer",
               "replay": null
             },
-            "outputs": {
-              "out": "/nix/store/fjxsc4nj260frmh2b2mq5ri4jvjc69b9-nix-shell"
+            "sdkVersions": {
+              "CMake": "4.4.4"
             },
-            "outputNarHashes": {
-              "out": "sha256-aZVUNURf75V90HUMSWu4p5JqqsuB4cD91mUWYiJy1Po="
-            },
-            "sdkVersions": {},
-            "sampleSources": [],
+            "sampleSources": [
+              {
+                "repository": "https://github.com/gabime/spdlog",
+                "revision": "6fa36017cfd5731d617e1a934f0e5ea9c4445b13",
+                "sourceNarHash": "sha256-0rOR9G2Y4Z4OBZtUHxID0s1aXN9ejodHrurlVCA0pIo="
+              }
+            ],
             "evaluation": null,
             "build": {
               "status": "success",
-              "executedSystem": "x86_64-linux",
-              "sourceRevision": "195cc8d9b3fc7353ff9e5687513bb95210d8f419",
-              "sourceNarHash": "sha256-0rbk0xCJpIIsOftlAgDTwbR4E4g685vcA+ujQc5LMmc=",
-              "drvPath": "/nix/store/v6mf5ik7pcgvipwdb51d4l6xmqbby79w-nix-shell.drv",
+              "executedSystem": "aarch64-darwin",
+              "sourceRevision": "fa095b882aebd925c397521961ae316c76b469d7",
+              "sourceNarHash": "sha256-CYi2DNSKOcRKItIN6XfLomF3meX7uwtnqE82HGIrZ5c=",
+              "drvPath": "/nix/store/c6z4kcq3dm2iz77iy0h7hz4cn8cj4lqc-spdlog-ordinary-installed-consumer.drv",
               "outputs": {
-                "out": "/nix/store/fjxsc4nj260frmh2b2mq5ri4jvjc69b9-nix-shell"
+                "out": "/nix/store/z8kh4r28pf421byai5d159b2h3rayjnh-spdlog-ordinary-installed-consumer"
               },
               "outputNarHashes": {
-                "out": "sha256-aZVUNURf75V90HUMSWu4p5JqqsuB4cD91mUWYiJy1Po="
+                "out": "sha256-j402Qort1ZcEkxvSoNT3W7HW4WKhsvaY+orgka0rHCA="
               },
-              "sdkVersions": {},
-              "sampleSources": [],
-              "receipt": "https://nix-purifiers.github.io/evidence/e3bdeb5bd839634288b697a256b28afca897326741ae895a76929965cb3d6bda.json",
-              "artifactSha256": "e3bdeb5bd839634288b697a256b28afca897326741ae895a76929965cb3d6bda"
+              "sdkVersions": {
+                "CMake": "4.4.4"
+              },
+              "sampleSources": [
+                {
+                  "repository": "https://github.com/gabime/spdlog",
+                  "revision": "6fa36017cfd5731d617e1a934f0e5ea9c4445b13",
+                  "sourceNarHash": "sha256-0rOR9G2Y4Z4OBZtUHxID0s1aXN9ejodHrurlVCA0pIo="
+                }
+              ],
+              "receipt": "https://nix-purifiers.github.io/evidence/a39ebfb6b410a71c3cf11c7a080639d33041c1cc6b5770033e381e20e5b543ea.json",
+              "artifactSha256": "a39ebfb6b410a71c3cf11c7a080639d33041c1cc6b5770033e381e20e5b543ea"
             }
           },
-          "cmake-purifier:x86_64-linux:real-world-cpr-src": {
-            "revision": "195cc8d9b3fc7353ff9e5687513bb95210d8f419",
-            "system": "x86_64-linux",
-            "drvPath": "/nix/store/pa42n11a9grgf2qbf8ags978xlcvkyi2-source.drv",
-            "sourceNarHash": "sha256-0rbk0xCJpIIsOftlAgDTwbR4E4g685vcA+ujQc5LMmc=",
-            "repository": "nix-purifiers/cmake-purifier",
-            "check": {
-              "kind": "flake-attribute",
-              "value": "checks.x86_64-linux.real-world-cpr-src",
-              "replay": null
-            },
+          "cmake-purifier@fa095b8:aarch64-darwin:darwin-loopback-outbound": {
+            "revision": "fa095b882aebd925c397521961ae316c76b469d7",
+            "system": "aarch64-darwin",
+            "sourceNarHash": "sha256-CYi2DNSKOcRKItIN6XfLomF3meX7uwtnqE82HGIrZ5c=",
+            "drvPath": "/nix/store/ix88gyfhkgjlhvp2id28xbvv92x9sk2r-cmake-darwin-loopback-outbound.drv",
             "outputs": {
-              "out": "/nix/store/ybi2fgna7n963w78nbw3g2k5nc10z0sp-source"
-            },
-            "outputNarHashes": {
-              "out": "sha256-f4Byq02cqxXiQ0M1/8nfJ0vr4l5rmbyqbdoR7f6stDM="
-            },
-            "sdkVersions": {},
-            "sampleSources": [],
-            "evaluation": null,
-            "build": {
-              "status": "success",
-              "executedSystem": "x86_64-linux",
-              "sourceRevision": "195cc8d9b3fc7353ff9e5687513bb95210d8f419",
-              "sourceNarHash": "sha256-0rbk0xCJpIIsOftlAgDTwbR4E4g685vcA+ujQc5LMmc=",
-              "drvPath": "/nix/store/pa42n11a9grgf2qbf8ags978xlcvkyi2-source.drv",
-              "outputs": {
-                "out": "/nix/store/ybi2fgna7n963w78nbw3g2k5nc10z0sp-source"
-              },
-              "outputNarHashes": {
-                "out": "sha256-f4Byq02cqxXiQ0M1/8nfJ0vr4l5rmbyqbdoR7f6stDM="
-              },
-              "sdkVersions": {},
-              "sampleSources": [],
-              "receipt": "https://nix-purifiers.github.io/evidence/e3bdeb5bd839634288b697a256b28afca897326741ae895a76929965cb3d6bda.json",
-              "artifactSha256": "e3bdeb5bd839634288b697a256b28afca897326741ae895a76929965cb3d6bda"
-            }
-          },
-          "cmake-purifier:x86_64-linux:resource-schema": {
-            "revision": "195cc8d9b3fc7353ff9e5687513bb95210d8f419",
-            "system": "x86_64-linux",
-            "drvPath": "/nix/store/84xgll51i0amnnk75wyxj3v8yzkkcy0m-installed-schema-ordinary-consumers.drv",
-            "sourceNarHash": "sha256-0rbk0xCJpIIsOftlAgDTwbR4E4g685vcA+ujQc5LMmc=",
-            "repository": "nix-purifiers/cmake-purifier",
-            "check": {
-              "kind": "flake-attribute",
-              "value": "checks.x86_64-linux.resource-schema",
-              "replay": null
-            },
-            "outputs": {
-              "out": "/nix/store/a2g0csfg93krs8gq8sqjabbsxy8lhc57-installed-schema-ordinary-consumers"
+              "out": "/nix/store/bkw231dnc2bql9hwk4ksl4fccgar778d-cmake-darwin-loopback-outbound"
             },
             "outputNarHashes": {
               "out": "sha256-d6xi4mKdjkX2JFicDIv5niSzpyI0m/Hnm8GGAIU04kY="
             },
+            "repository": "nix-purifiers/cmake-purifier",
+            "check": {
+              "kind": "flake-attribute",
+              "value": "checks.aarch64-darwin.darwin-loopback-outbound",
+              "replay": null
+            },
             "sdkVersions": {},
             "sampleSources": [],
             "evaluation": null,
             "build": {
               "status": "success",
-              "executedSystem": "x86_64-linux",
-              "sourceRevision": "195cc8d9b3fc7353ff9e5687513bb95210d8f419",
-              "sourceNarHash": "sha256-0rbk0xCJpIIsOftlAgDTwbR4E4g685vcA+ujQc5LMmc=",
-              "drvPath": "/nix/store/84xgll51i0amnnk75wyxj3v8yzkkcy0m-installed-schema-ordinary-consumers.drv",
+              "executedSystem": "aarch64-darwin",
+              "sourceRevision": "fa095b882aebd925c397521961ae316c76b469d7",
+              "sourceNarHash": "sha256-CYi2DNSKOcRKItIN6XfLomF3meX7uwtnqE82HGIrZ5c=",
+              "drvPath": "/nix/store/ix88gyfhkgjlhvp2id28xbvv92x9sk2r-cmake-darwin-loopback-outbound.drv",
               "outputs": {
-                "out": "/nix/store/a2g0csfg93krs8gq8sqjabbsxy8lhc57-installed-schema-ordinary-consumers"
+                "out": "/nix/store/bkw231dnc2bql9hwk4ksl4fccgar778d-cmake-darwin-loopback-outbound"
               },
               "outputNarHashes": {
                 "out": "sha256-d6xi4mKdjkX2JFicDIv5niSzpyI0m/Hnm8GGAIU04kY="
               },
               "sdkVersions": {},
               "sampleSources": [],
-              "receipt": "https://nix-purifiers.github.io/evidence/e3bdeb5bd839634288b697a256b28afca897326741ae895a76929965cb3d6bda.json",
-              "artifactSha256": "e3bdeb5bd839634288b697a256b28afca897326741ae895a76929965cb3d6bda"
-            }
-          },
-          "cmake-purifier:x86_64-linux:treefmt": {
-            "revision": "195cc8d9b3fc7353ff9e5687513bb95210d8f419",
-            "system": "x86_64-linux",
-            "drvPath": "/nix/store/2zc86gwj8ymnndf2f02v7k78mgimgirj-treefmt-check.drv",
-            "sourceNarHash": "sha256-0rbk0xCJpIIsOftlAgDTwbR4E4g685vcA+ujQc5LMmc=",
-            "repository": "nix-purifiers/cmake-purifier",
-            "check": {
-              "kind": "flake-attribute",
-              "value": "checks.x86_64-linux.treefmt",
-              "replay": null
-            },
-            "outputs": {
-              "out": "/nix/store/k11ckshk29kl7bb1vpfisnc74sj4mm3q-treefmt-check"
-            },
-            "outputNarHashes": {
-              "out": "sha256-d6xi4mKdjkX2JFicDIv5niSzpyI0m/Hnm8GGAIU04kY="
-            },
-            "sdkVersions": {},
-            "sampleSources": [],
-            "evaluation": null,
-            "build": {
-              "status": "success",
-              "executedSystem": "x86_64-linux",
-              "sourceRevision": "195cc8d9b3fc7353ff9e5687513bb95210d8f419",
-              "sourceNarHash": "sha256-0rbk0xCJpIIsOftlAgDTwbR4E4g685vcA+ujQc5LMmc=",
-              "drvPath": "/nix/store/2zc86gwj8ymnndf2f02v7k78mgimgirj-treefmt-check.drv",
-              "outputs": {
-                "out": "/nix/store/k11ckshk29kl7bb1vpfisnc74sj4mm3q-treefmt-check"
-              },
-              "outputNarHashes": {
-                "out": "sha256-d6xi4mKdjkX2JFicDIv5niSzpyI0m/Hnm8GGAIU04kY="
-              },
-              "sdkVersions": {},
-              "sampleSources": [],
-              "receipt": "https://nix-purifiers.github.io/evidence/e3bdeb5bd839634288b697a256b28afca897326741ae895a76929965cb3d6bda.json",
-              "artifactSha256": "e3bdeb5bd839634288b697a256b28afca897326741ae895a76929965cb3d6bda"
-            }
-          },
-          "cmake-purifier:x86_64-linux:vcs": {
-            "revision": "195cc8d9b3fc7353ff9e5687513bb95210d8f419",
-            "system": "x86_64-linux",
-            "drvPath": "/nix/store/j5xlfm5qnlc483lvy65jzdv9ab69whl3-purifier-vcs-0.1.0.drv",
-            "sourceNarHash": "sha256-0rbk0xCJpIIsOftlAgDTwbR4E4g685vcA+ujQc5LMmc=",
-            "repository": "nix-purifiers/cmake-purifier",
-            "check": {
-              "kind": "flake-attribute",
-              "value": "checks.x86_64-linux.vcs",
-              "replay": null
-            },
-            "outputs": {
-              "out": "/nix/store/ggsk13qk4465asvkndpwqa4z8a9qdfvw-purifier-vcs-0.1.0"
-            },
-            "outputNarHashes": {
-              "out": "sha256-T2n5Fk70klPDFZQlxtXfzpUbNDwjirBwXkW0PqdbX44="
-            },
-            "sdkVersions": {},
-            "sampleSources": [],
-            "evaluation": null,
-            "build": {
-              "status": "success",
-              "executedSystem": "x86_64-linux",
-              "sourceRevision": "195cc8d9b3fc7353ff9e5687513bb95210d8f419",
-              "sourceNarHash": "sha256-0rbk0xCJpIIsOftlAgDTwbR4E4g685vcA+ujQc5LMmc=",
-              "drvPath": "/nix/store/j5xlfm5qnlc483lvy65jzdv9ab69whl3-purifier-vcs-0.1.0.drv",
-              "outputs": {
-                "out": "/nix/store/ggsk13qk4465asvkndpwqa4z8a9qdfvw-purifier-vcs-0.1.0"
-              },
-              "outputNarHashes": {
-                "out": "sha256-T2n5Fk70klPDFZQlxtXfzpUbNDwjirBwXkW0PqdbX44="
-              },
-              "sdkVersions": {},
-              "sampleSources": [],
-              "receipt": "https://nix-purifiers.github.io/evidence/e3bdeb5bd839634288b697a256b28afca897326741ae895a76929965cb3d6bda.json",
-              "artifactSha256": "e3bdeb5bd839634288b697a256b28afca897326741ae895a76929965cb3d6bda"
-            }
-          },
-          "cmake-purifier:x86_64-linux:vcs-repos": {
-            "revision": "195cc8d9b3fc7353ff9e5687513bb95210d8f419",
-            "system": "x86_64-linux",
-            "drvPath": "/nix/store/834nhybqj3zs3iypp8qas6g2y54l5gc2-cmake-purifier-vcs-repos.drv",
-            "sourceNarHash": "sha256-0rbk0xCJpIIsOftlAgDTwbR4E4g685vcA+ujQc5LMmc=",
-            "repository": "nix-purifiers/cmake-purifier",
-            "check": {
-              "kind": "flake-attribute",
-              "value": "checks.x86_64-linux.vcs-repos",
-              "replay": null
-            },
-            "outputs": {
-              "out": "/nix/store/x6bp2062jnrdd5ph4rcyvpdw6pk2ayk1-cmake-purifier-vcs-repos"
-            },
-            "outputNarHashes": {
-              "out": "sha256-yxPQwp/5hUpyBKN8Zo+Ei8iSSsm1R0EpfJKYIExgpUQ="
-            },
-            "sdkVersions": {},
-            "sampleSources": [],
-            "evaluation": null,
-            "build": {
-              "status": "success",
-              "executedSystem": "x86_64-linux",
-              "sourceRevision": "195cc8d9b3fc7353ff9e5687513bb95210d8f419",
-              "sourceNarHash": "sha256-0rbk0xCJpIIsOftlAgDTwbR4E4g685vcA+ujQc5LMmc=",
-              "drvPath": "/nix/store/834nhybqj3zs3iypp8qas6g2y54l5gc2-cmake-purifier-vcs-repos.drv",
-              "outputs": {
-                "out": "/nix/store/x6bp2062jnrdd5ph4rcyvpdw6pk2ayk1-cmake-purifier-vcs-repos"
-              },
-              "outputNarHashes": {
-                "out": "sha256-yxPQwp/5hUpyBKN8Zo+Ei8iSSsm1R0EpfJKYIExgpUQ="
-              },
-              "sdkVersions": {},
-              "sampleSources": [],
-              "receipt": "https://nix-purifiers.github.io/evidence/e3bdeb5bd839634288b697a256b28afca897326741ae895a76929965cb3d6bda.json",
-              "artifactSha256": "e3bdeb5bd839634288b697a256b28afca897326741ae895a76929965cb3d6bda"
-            }
-          },
-          "cmake-purifier:x86_64-linux:vcs-runs": {
-            "revision": "195cc8d9b3fc7353ff9e5687513bb95210d8f419",
-            "system": "x86_64-linux",
-            "drvPath": "/nix/store/s5yq1588lhl0mp4i9cchb1pwyyfpi5j6-vcs-runs.drv",
-            "sourceNarHash": "sha256-0rbk0xCJpIIsOftlAgDTwbR4E4g685vcA+ujQc5LMmc=",
-            "repository": "nix-purifiers/cmake-purifier",
-            "check": {
-              "kind": "flake-attribute",
-              "value": "checks.x86_64-linux.vcs-runs",
-              "replay": null
-            },
-            "outputs": {
-              "out": "/nix/store/pi45z80b8vnvdizl12k9s9jxfmx8ndvc-vcs-runs"
-            },
-            "outputNarHashes": {
-              "out": "sha256-d6xi4mKdjkX2JFicDIv5niSzpyI0m/Hnm8GGAIU04kY="
-            },
-            "sdkVersions": {},
-            "sampleSources": [],
-            "evaluation": null,
-            "build": {
-              "status": "success",
-              "executedSystem": "x86_64-linux",
-              "sourceRevision": "195cc8d9b3fc7353ff9e5687513bb95210d8f419",
-              "sourceNarHash": "sha256-0rbk0xCJpIIsOftlAgDTwbR4E4g685vcA+ujQc5LMmc=",
-              "drvPath": "/nix/store/s5yq1588lhl0mp4i9cchb1pwyyfpi5j6-vcs-runs.drv",
-              "outputs": {
-                "out": "/nix/store/pi45z80b8vnvdizl12k9s9jxfmx8ndvc-vcs-runs"
-              },
-              "outputNarHashes": {
-                "out": "sha256-d6xi4mKdjkX2JFicDIv5niSzpyI0m/Hnm8GGAIU04kY="
-              },
-              "sdkVersions": {},
-              "sampleSources": [],
-              "receipt": "https://nix-purifiers.github.io/evidence/e3bdeb5bd839634288b697a256b28afca897326741ae895a76929965cb3d6bda.json",
-              "artifactSha256": "e3bdeb5bd839634288b697a256b28afca897326741ae895a76929965cb3d6bda"
+              "receipt": "https://nix-purifiers.github.io/evidence/33bfcccf0f2eada7bec15ba24258d44190e6fe74f78a2f0e6f33812a0fd54b73.json",
+              "artifactSha256": "33bfcccf0f2eada7bec15ba24258d44190e6fe74f78a2f0e6f33812a0fd54b73"
             }
           }
         },
         "sampleBuilds": [
           {
-            "name": "Pinned libcpr/cpr: filtered upstream CTest excluding connection_pool and SSE suites.",
+            "name": "Unmodified gabime/spdlog1.15.3 at6fa36017cfd5731d617e1a934f0e5ea9c4445b13; compiled/header-only suites, installed ordinary consumer and missing-producer negative on Linux/Darwin; selected ambient CMake4.4.4.",
             "upstream": {
-              "repository": "https://github.com/libcpr/cpr",
-              "revision": "3139b2682f0b1d6af8c7ae48cf400f9d9988deec",
-              "sourceNarHash": "sha256-f4Byq02cqxXiQ0M1/8nfJ0vr4l5rmbyqbdoR7f6stDM="
+              "repository": "https://github.com/gabime/spdlog",
+              "revision": "6fa36017cfd5731d617e1a934f0e5ea9c4445b13",
+              "sourceNarHash": "sha256-0rOR9G2Y4Z4OBZtUHxID0s1aXN9ejodHrurlVCA0pIo="
             },
             "derivations": [
-              "cmake-purifier:x86_64-linux:real-world-cpr"
+              "cmake-purifier@fa095b8:x86_64-linux:real-world-spdlog-consumer",
+              "cmake-purifier@fa095b8:aarch64-darwin:real-world-spdlog-consumer"
             ]
           }
         ]

@@ -1,0 +1,33 @@
+import pathlib,json,subprocess,time,sys
+root=pathlib.Path(__file__).resolve().parent
+sys.path.insert(0,str(root))
+from importlib import import_module
+sdk=import_module('capture-sdk')
+head='fa095b882aebd925c397521961ae316c76b469d7';run=42347515152
+while True:
+ r=json.loads(subprocess.check_output(['gh','run','view',str(run),'--repo','nix-purifiers/cmake-purifier','--json','status,conclusion,headSha,jobs']))
+ assert r['headSha']==head
+ (root/'ci-observation.json').write_text(json.dumps(r,indent=2)+'\n')
+ for j in r['jobs']:
+  if j['status']!='completed':continue
+  name=j['name'];jid=j['databaseId'];platform='aarch64-darwin' if 'macos' in name else 'aarch64-linux' if 'ubuntu-24.04-arm' in name else 'x86_64-linux'
+  if j['conclusion'] not in ['success','skipped']:
+   label='failed-'+str(jid)
+   (root/(label+'-job.json')).write_text(json.dumps(j,indent=2)+'\n')
+   (root/(label+'.log')).write_bytes(subprocess.check_output(['gh','api','--allow-escape-sequences',f'repos/nix-purifiers/cmake-purifier/actions/jobs/{jid}/logs']))
+   print('FAILURE',name,jid,j['conclusion'],flush=True);sys.exit(1)
+  if name.startswith('CMake '):
+   version=name.split()[1];dest=root/f'sdk-{version}-{platform}-receipt.json'
+   if not dest.exists():
+    receipt=sdk.capture((jid,version,platform));print('CAPTURED',name,jid,receipt['narHash'],flush=True)
+  elif name.startswith('spdlog lifecycle'):
+   dest=root/f'spdlog-{platform}-receipt.json'
+   if not dest.exists():
+    subprocess.run([sys.executable,str(root/'capture-spdlog.py'),str(jid),platform],check=True,stdout=subprocess.DEVNULL);print('CAPTURED',name,jid,flush=True)
+  elif name.startswith('flake-check') or 'macos' in name:
+   label=name.split(' (')[0]+'-'+platform;dest=root/(label+'.log')
+   if not dest.exists():
+    meta=json.loads(subprocess.check_output(['gh','api',f'repos/nix-purifiers/cmake-purifier/actions/jobs/{jid}']));assert meta['head_sha']==head and meta['run_id']==run
+    (root/(label+'-job.json')).write_text(json.dumps(meta,indent=2)+'\n');dest.write_bytes(subprocess.check_output(['gh','api','--allow-escape-sequences',f'repos/nix-purifiers/cmake-purifier/actions/jobs/{jid}/logs']));print('CAPTURED',name,jid,flush=True)
+ if r['status']=='completed':print('COMPLETE',r['conclusion'],flush=True);break
+ time.sleep(60)

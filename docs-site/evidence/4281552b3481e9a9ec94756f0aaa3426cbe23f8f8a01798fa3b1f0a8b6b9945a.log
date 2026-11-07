@@ -1,0 +1,54 @@
+import json, pathlib, subprocess, re, hashlib, sys
+root = pathlib.Path(__file__).parent
+HEAD = "fa095b882aebd925c397521961ae316c76b469d7"
+def capture(item):
+    job_id, version, system = item
+    label = "sdk-" + version + "-" + system
+    job = json.loads(subprocess.check_output(["gh", "api", f"repos/nix-purifiers/cmake-purifier/actions/jobs/{job_id}"]))
+    assert job["conclusion"] == "success" and job["run_id"] == 42347515152
+    assert job["head_sha"] == HEAD
+    (root / (label + "-job.json")).write_text(json.dumps(job, indent=2) + "\n")
+    raw = subprocess.check_output(["gh", "api", "--allow-escape-sequences", f"repos/nix-purifiers/cmake-purifier/actions/jobs/{job_id}/logs"])
+    (root / (label + ".log")).write_bytes(raw)
+    text = "\n".join(re.sub(r"^\d{4}-\d\d-\d\dT\S+\s", "", line) for line in raw.decode().splitlines())
+    text = re.sub(r"\x1b\[[0-?]*[ -/]*[@-~]", "", text)
+    assert "Nix sandbox: true" in text
+    assert f"SDK cmake version {version}, executable " in text
+    assert f"toolchain {version}: lock/prefetch/offline/pure build passed" in text
+    assert "no network isolation available; this is not offline evidence" not in text
+    assert re.search(r"(?m)^purifier-basic-tests> CMAKE_COMMAND:INTERNAL=.*-cmake-" + re.escape(version) + r"/bin/cmake$", text)
+    if system == "aarch64-darwin":
+        sdkroot = "/nix/store/svkkgla6ini4hg035ka7wb8idm301r1i-apple-sdk-14.4/Platforms/MacOSX.platform/Developer/SDKs/MacOSX14.4.sdk"
+        assert "Darwin SDKROOT=" + sdkroot in text
+        assert "DEVELOPER_DIR=/nix/store/svkkgla6ini4hg035ka7wb8idm301r1i-apple-sdk-14.4" in text
+        assert '\"-isysroot\" \"' + sdkroot.replace('MacOSX14.4.sdk', 'MacOSX.sdk') + '\"' in text
+        assert "CMAKE_OSX_SYSROOT:PATH=" + sdkroot in text
+        assert "compile commands selected an undeclared host SDK" not in text
+    decoder = json.JSONDecoder()
+    objects = []
+    for match in re.finditer(r"(?m)^\{", text):
+        try:
+            value, _ = decoder.raw_decode(text, match.start())
+        except ValueError:
+            continue
+        if isinstance(value, dict):
+            objects.append(value)
+    derivation = next(v for v in objects if "derivations" in v)
+    infos = next(v for v in objects if any(k.startswith("/nix/store/") for k in v))
+    assert len(derivation["derivations"]) == 1
+    name, d = next(iter(derivation["derivations"].items()))
+    assert d["system"] == system and "purifier-basic-tests" in name
+    assert f"cmake version {version}" in d["env"]["postConfigure"]
+    assert "CMAKE_COMMAND:INTERNAL=" in d["env"]["postConfigure"]
+    sdk = ["/nix/store/" + k for k in d["inputs"]["drvs"] if k.endswith(f"-cmake-{version}.drv")]
+    assert len(sdk) == 1
+    output = "/nix/store/" + d["outputs"]["out"]["path"]
+    assert output in infos
+    receipt = {"sourceHead": HEAD, "actualCheckoutSource": "ci-source-binding.json", "jobId": job_id, "url": job["html_url"], "nativePlatform": system, "sdkVersion": version, "sdkDerivationPath": sdk[0], "effectiveSandbox": "true", "checkAttribute": f"checks.{system}.sdk-basic-{version.replace('.', '_')}", "derivationPath": "/nix/store/" + name, "outputPath": output, "narHash": infos[output]["narHash"], "actualHostStages": ["native lock/configure/build/install", "byte-exact lock comparison", "prefetch", "strict isolated ordinary configure/build/test/run", "pure Nix build"], "conclusion": "success", "logSha256": hashlib.sha256(raw).hexdigest()}
+    (root / (label + "-receipt.json")).write_text(json.dumps(receipt, indent=2) + "\n")
+    (root / (label + "-executable-derivation.json")).write_text(json.dumps(derivation, indent=2) + "\n")
+    (root / (label + "-output-info.json")).write_text(json.dumps(infos, indent=2) + "\n")
+    return receipt
+if __name__ == "__main__":
+    assert sys.argv[3] in ["x86_64-linux", "aarch64-darwin"]
+    print(json.dumps(capture((int(sys.argv[1]), sys.argv[2], sys.argv[3]))))
