@@ -1,0 +1,113 @@
+{
+  "derivations": {
+    "icx3r4765fyl5z60py68cgy48d97s36d-purifier-basic-tests-1.2.3.drv": {
+      "args": [
+        "-e",
+        "/nix/store/l622p70vy8k5sh7y5wizi5f2mic6ynpg-source-stdenv.sh",
+        "/nix/store/shkw4qm9qcw5sc5n1k5jznc83ny02r39-default-builder.sh"
+      ],
+      "builder": "/nix/store/i1pdjlwb27ki88zssg5q2h696v1r1m15-bash-5.3p20/bin/bash",
+      "env": {
+        "__darwinAllowLocalNetworking": "1",
+        "__impureHostDeps": "/bin/sh /usr/lib/libSystem.B.dylib /usr/lib/system/libunc.dylib /dev/zero /dev/random /dev/urandom /bin/sh",
+        "__propagatedImpureHostDeps": "",
+        "__propagatedSandboxProfile": "",
+        "__sandboxProfile": "",
+        "__structuredAttrs": "",
+        "buildInputs": "",
+        "builder": "/nix/store/i1pdjlwb27ki88zssg5q2h696v1r1m15-bash-5.3p20/bin/bash",
+        "cmakeFlags": "",
+        "configureFlags": "",
+        "depsBuildBuild": "",
+        "depsBuildBuildPropagated": "",
+        "depsBuildTarget": "",
+        "depsBuildTargetPropagated": "",
+        "depsHostHost": "",
+        "depsHostHostPropagated": "",
+        "depsTargetTarget": "",
+        "depsTargetTargetPropagated": "",
+        "doCheck": "1",
+        "doInstallCheck": "",
+        "lockedOutputs": "bin/greet\ninclude/fmt/args.h\ninclude/fmt/base.h\ninclude/fmt/chrono.h\ninclude/fmt/color.h\ninclude/fmt/compile.h\ninclude/fmt/core.h\ninclude/fmt/format-inl.h\ninclude/fmt/format.h\ninclude/fmt/os.h\ninclude/fmt/ostream.h\ninclude/fmt/printf.h\ninclude/fmt/ranges.h\ninclude/fmt/std.h\ninclude/fmt/xchar.h\nlib/cmake/fmt/fmt-config-version.cmake\nlib/cmake/fmt/fmt-config.cmake\nlib/cmake/fmt/fmt-targets-release.cmake\nlib/cmake/fmt/fmt-targets.cmake\nlib/libfmt.a\nlib/pkgconfig/fmt.pc\n",
+        "mesonFlags": "",
+        "mitmCache": "/nix/store/zvam6wbrdvxayvykw4fn7p0q34w7il4z-cmake-purifier-sources/http",
+        "name": "purifier-basic-tests-1.2.3",
+        "nativeBuildInputs": "/nix/store/jwl8x277205id5rxcbgiq6i1vgsm60ma-cmake-4.4.5 /nix/store/yrm12ss59zdfz4qnm37aiksk1pc131vb-mitm-cache-0.1.2",
+        "out": "/nix/store/gagmh6lk78lzgskrimal50xac9z2bxki-purifier-basic-tests-1.2.3",
+        "outputs": "out",
+        "passAsFile": "lockedOutputs",
+        "patches": "",
+        "pname": "purifier-basic-tests",
+        "postConfigure": "test \"$(cmake --version | head -1)\" = 'cmake version 4.4.5'\ngrep -Fx 'CMAKE_COMMAND:INTERNAL=/nix/store/jwl8x277205id5rxcbgiq6i1vgsm60ma-cmake-4.4.5/bin/cmake' CMakeCache.txt\n",
+        "postInstall": "missing=0\nwhile IFS= read -r file; do\n  if [ ! -e \"$out/$file\" ] && [ ! -L \"$out/$file\" ]; then\n    echo \"cmake-purifier: the lockfile names the output $file, which the install did not write. Run \\`cmake-purifier lock\\` again.\" >&2\n    missing=1\n  fi\ndone < \"$lockedOutputsPath\"\n[ \"$missing\" = 0 ]\n",
+        "preCheck": "unset http_proxy https_proxy HTTP_PROXY HTTPS_PROXY no_proxy NO_PROXY\n",
+        "preConfigure": "# mitm-cache is the proxy of the whole build, the tests included.\n# Requests to the machine itself, such as a test's own server, are\n# no downloads, and go around it.\nexport no_proxy=\"localhost,127.0.0.1,::1\" NO_PROXY=\"localhost,127.0.0.1,::1\"\nif [ \"$(bash /nix/store/ajq0xiyhr4bc55bck0mgcw1v553hhjrv-definition-hash.sh .)\" != a840dee298081d47140abc96a2539a0679d5afcc7bf78a96add402acfe45ea8a ]; then\n  echo \"cmake-purifier: /nix/store/b7nkmhhn4nsag6533sqps9sznwglj7cy-source/tests/fixtures/basic/cmake-purifier.lock.json is older than the project: a CMakeLists.txt or *.cmake file changed since it was written. Run \\`cmake-purifier lock\\` to lock the project again.\" >&2\n  exit 1\nfi\nbash /nix/store/a0nvj441cag4nhb3li3cx7cb57kfahwx-write-cache.sh /nix/store/zvam6wbrdvxayvykw4fn7p0q34w7il4z-cmake-purifier-sources \"$NIX_BUILD_TOP/cmake-purifier/sources\" \"$NIX_BUILD_TOP/cmake-purifier/cache.cmake\" \\\n  /nix/store/35jkzvy86rzvisy75d2kck6a8sxs010b-cmake/CMakePurifierLocked.cmake /nix/store/d6ckks01m3018rk05780bh7sbqv33g84-lib /nix/store/3yd3064192bxb2kbf87fr4lam7ncazcw-git-2.56.0/bin/git \\\n  \"\" \"\" \"\"\ncmakeFlagsArray+=(-C \"$NIX_BUILD_TOP/cmake-purifier/cache.cmake\")\nprintf '#!%s\\nexec %q -D \"$@\"\\n' \"$BASH\" \"$(command -v \"$RANLIB\")\" > \"$NIX_BUILD_TOP/cmake-purifier/ranlib\"\nchmod +x \"$NIX_BUILD_TOP/cmake-purifier/ranlib\"\nexport RANLIB=$NIX_BUILD_TOP/cmake-purifier/ranlib\n",
+        "propagatedBuildInputs": "",
+        "propagatedNativeBuildInputs": "",
+        "src": "/nix/store/gnajyp3c4zbfnxi6sz7qa1lzjfyri3z4-basic",
+        "stdenv": "/nix/store/4gqzn5ia76rp74p8fb6nvry3arbn3l7j-stdenv-darwin",
+        "strictDeps": "",
+        "system": "aarch64-darwin",
+        "version": "1.2.3"
+      },
+      "inputs": {
+        "drvs": {
+          "1d2nhvy9p8g8zx9k6k9sb0dwwrfjnyc6-cmake-purifier-sources.drv": {
+            "dynamicOutputs": {},
+            "outputs": [
+              "out"
+            ]
+          },
+          "67qqszzb9di8igr08n8jdyr3gppfdcqh-git-2.56.0.drv": {
+            "dynamicOutputs": {},
+            "outputs": [
+              "out"
+            ]
+          },
+          "7fdid1bpq0g36b074w6ndwag0vwqqyjx-stdenv-darwin.drv": {
+            "dynamicOutputs": {},
+            "outputs": [
+              "out"
+            ]
+          },
+          "q5xiz128k4zl43lp88156f79aw3hcvh3-cmake-4.4.5.drv": {
+            "dynamicOutputs": {},
+            "outputs": [
+              "out"
+            ]
+          },
+          "sfnk2mrj9z7amb2q5q7cixizrqxgx6dc-bash-5.3p20.drv": {
+            "dynamicOutputs": {},
+            "outputs": [
+              "out"
+            ]
+          },
+          "z1iazszgyx5nnswczk9k951v3nh1cr6i-mitm-cache-0.1.2.drv": {
+            "dynamicOutputs": {},
+            "outputs": [
+              "out"
+            ]
+          }
+        },
+        "srcs": [
+          "35jkzvy86rzvisy75d2kck6a8sxs010b-cmake",
+          "a0nvj441cag4nhb3li3cx7cb57kfahwx-write-cache.sh",
+          "ajq0xiyhr4bc55bck0mgcw1v553hhjrv-definition-hash.sh",
+          "d6ckks01m3018rk05780bh7sbqv33g84-lib",
+          "gnajyp3c4zbfnxi6sz7qa1lzjfyri3z4-basic",
+          "l622p70vy8k5sh7y5wizi5f2mic6ynpg-source-stdenv.sh",
+          "shkw4qm9qcw5sc5n1k5jznc83ny02r39-default-builder.sh"
+        ]
+      },
+      "name": "purifier-basic-tests-1.2.3",
+      "outputs": {
+        "out": {
+          "path": "gagmh6lk78lzgskrimal50xac9z2bxki-purifier-basic-tests-1.2.3"
+        }
+      },
+      "system": "aarch64-darwin",
+      "version": 4
+    }
+  },
+  "version": 4
+}

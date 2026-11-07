@@ -1,0 +1,58 @@
+import json, pathlib, subprocess, re, hashlib, sys
+root = pathlib.Path(__file__).parent
+HEAD = "fa095b882aebd925c397521961ae316c76b469d7"
+job_id = int(sys.argv[1])
+system = sys.argv[2]
+assert system in ["x86_64-linux", "aarch64-darwin"]
+label = "spdlog-" + system
+job = json.loads(subprocess.check_output(["gh", "api", f"repos/nix-purifiers/cmake-purifier/actions/jobs/{job_id}"]))
+assert job["conclusion"] == "success" and job["run_id"] == 42347515152 and job["head_sha"] == HEAD
+(root / (label + "-job.json")).write_text(json.dumps(job, indent=2) + "\n")
+raw = subprocess.check_output(["gh", "api", "--allow-escape-sequences", f"repos/nix-purifiers/cmake-purifier/actions/jobs/{job_id}/logs"])
+(root / (label + ".log")).write_bytes(raw)
+text = "\n".join(re.sub(r"^\d{4}-\d\d-\d\dT\S+\s", "", line) for line in raw.decode().splitlines())
+text = re.sub(r"\x1b\[[0-?]*[ -/]*[@-~]", "", text)
+assert "Nix sandbox: true" in text
+assert "spdlog: ordinary and Nix upstream tests and consumers passed" in text
+assert "spdlog-ordinary-installed-consumer>" in text
+assert "spdlog-tests>" in text
+objects = []
+decoder = json.JSONDecoder()
+for match in re.finditer(r"(?m)^\{", text):
+    try:
+        value, _ = decoder.raw_decode(text, match.start())
+    except ValueError:
+        continue
+    if isinstance(value, dict):
+        objects.append(value)
+derivations = [v for v in objects if "derivations" in v]
+infos = {}
+for value in objects:
+    if any(k.startswith("/nix/store/") for k in value):
+        infos.update(value)
+checks = {}
+for value in derivations:
+    assert len(value["derivations"]) == 1
+    name, d = next(iter(value["derivations"].items()))
+    assert d["system"] == system
+    if "spdlog-ordinary-installed-consumer" in name:
+        attribute = "real-world-spdlog-consumer"
+    elif "cmake-darwin-loopback-outbound" in name:
+        assert system == "aarch64-darwin"
+        attribute = "darwin-loopback-outbound"
+        assert "cmake-darwin-loopback-outbound> Darwin TCP/UDP loopback and external outbound denial controls passed" in text
+    else:
+        raise AssertionError(name)
+    output = "/nix/store/" + d["outputs"]["out"]["path"]
+    assert output in infos
+    checks[attribute] = {"checkAttribute": f"checks.{system}.{attribute}", "derivationPath": "/nix/store/" + name, "outputPath": output, "narHash": infos[output]["narHash"]}
+    (root / (label + "-" + attribute + "-executable-derivation.json")).write_text(json.dumps(value, indent=2) + "\n")
+assert "real-world-spdlog-consumer" in checks
+if system == "aarch64-darwin":
+    assert "darwin-loopback-outbound" in checks
+    expected = json.loads((root.parent / "v4/metadata-final.json").read_text())["child"][system]["probe"]["derivationPath"]
+    assert checks["darwin-loopback-outbound"]["derivationPath"] == expected
+receipt = {"sourceHead": HEAD, "actualCheckoutSource": "ci-source-binding.json", "jobId": job_id, "url": job["html_url"], "nativePlatform": system, "effectiveSandbox": "true", "checks": checks, "conclusion": "success", "hostOrdinaryIsolatedLoop": "actual passed under REQUIRE_OFFLINE1", "hostOrdinaryConsumerSwitch": "ordinary and Nix producer installs both execute expected answer; missing producer negative passes", "upstreamSuites": "compiled and header-only suites pass2/2 as dependencies of executable consumer derivation", "sdk": "pinned ambient CMake4.4.4; current4.4.5 is separate SDK-basic proof", "logSha256": hashlib.sha256(raw).hexdigest()}
+(root / (label + "-receipt.json")).write_text(json.dumps(receipt, indent=2) + "\n")
+(root / (label + "-output-info.json")).write_text(json.dumps(infos, indent=2) + "\n")
+print(json.dumps(receipt))

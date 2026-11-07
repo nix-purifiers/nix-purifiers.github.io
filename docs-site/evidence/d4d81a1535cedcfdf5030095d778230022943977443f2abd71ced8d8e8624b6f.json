@@ -1,0 +1,104 @@
+{
+  "derivations": {
+    "c6z4kcq3dm2iz77iy0h7hz4cn8cj4lqc-spdlog-ordinary-installed-consumer.drv": {
+      "args": [
+        "-e",
+        "/nix/store/l622p70vy8k5sh7y5wizi5f2mic6ynpg-source-stdenv.sh",
+        "/nix/store/shkw4qm9qcw5sc5n1k5jznc83ny02r39-default-builder.sh"
+      ],
+      "builder": "/nix/store/i1pdjlwb27ki88zssg5q2h696v1r1m15-bash-5.3p20/bin/bash",
+      "env": {
+        "__darwinAllowLocalNetworking": "",
+        "__impureHostDeps": "/bin/sh /usr/lib/libSystem.B.dylib /usr/lib/system/libunc.dylib /dev/zero /dev/random /dev/urandom /bin/sh",
+        "__propagatedImpureHostDeps": "",
+        "__propagatedSandboxProfile": "",
+        "__sandboxProfile": "",
+        "__structuredAttrs": "",
+        "buildCommand": "cmake -S /nix/store/qlm4s5w3hn0k1rl7pprlisazmnzcmgl5-consumer -B build -DCMAKE_PREFIX_PATH=/nix/store/2ighyzy1rk9d81daairsbkdcby8j73i3-spdlog-tests-1.15.3\ncmake --build build -j2\n./build/consumer\nif cmake -S /nix/store/qlm4s5w3hn0k1rl7pprlisazmnzcmgl5-consumer -B missing \\\n  -DCMAKE_FIND_ROOT_PATH=\"$TMPDIR/missing\" \\\n  -DCMAKE_FIND_ROOT_PATH_MODE_PACKAGE=ONLY > missing.log 2>&1; then\n  echo 'consumer configured without its producer' >&2\n  exit 1\nfi\ngrep -q spdlog missing.log\nmkdir $out\ncp missing.log $out/\ncp build/consumer $out/\n",
+        "buildInputs": "",
+        "builder": "/nix/store/i1pdjlwb27ki88zssg5q2h696v1r1m15-bash-5.3p20/bin/bash",
+        "cmakeFlags": "",
+        "configureFlags": "",
+        "depsBuildBuild": "",
+        "depsBuildBuildPropagated": "",
+        "depsBuildTarget": "",
+        "depsBuildTargetPropagated": "",
+        "depsHostHost": "",
+        "depsHostHostPropagated": "",
+        "depsTargetTarget": "",
+        "depsTargetTargetPropagated": "",
+        "doCheck": "",
+        "doInstallCheck": "",
+        "enableParallelBuilding": "1",
+        "enableParallelChecking": "1",
+        "enableParallelInstalling": "1",
+        "mesonFlags": "",
+        "name": "spdlog-ordinary-installed-consumer",
+        "nativeBuildInputs": "/nix/store/fsdy1l7x2ybpry7lrhw2m7r6w8jvp01i-cmake-4.4.4 /nix/store/8z7gv889g2cxbvmwcibdzvmikllc51qv-clang-wrapper-21.1.8 /nix/store/306s97mvw5slpgg7hnb26xy37dhy4xk0-gnumake-4.4.1",
+        "out": "/nix/store/z8kh4r28pf421byai5d159b2h3rayjnh-spdlog-ordinary-installed-consumer",
+        "outputs": "out",
+        "passAsFile": "buildCommand",
+        "patches": "",
+        "propagatedBuildInputs": "",
+        "propagatedNativeBuildInputs": "",
+        "stdenv": "/nix/store/9lhvi9bx4243wmpgdankw1q5rfv0ja8i-stdenv-darwin-no-cc",
+        "strictDeps": "",
+        "system": "aarch64-darwin"
+      },
+      "inputs": {
+        "drvs": {
+          "4sk5d6bf5zavylqxavnxl73srplq8wxf-clang-wrapper-21.1.8.drv": {
+            "dynamicOutputs": {},
+            "outputs": [
+              "out"
+            ]
+          },
+          "9x5dgdpig5irxzl46cq7b2ppkrcfpklg-spdlog-tests-1.15.3.drv": {
+            "dynamicOutputs": {},
+            "outputs": [
+              "out"
+            ]
+          },
+          "c58z7b7qarv1c01rnri0w4mj8hl3pgy8-stdenv-darwin-no-cc.drv": {
+            "dynamicOutputs": {},
+            "outputs": [
+              "out"
+            ]
+          },
+          "k8pyap7djnhn373l8ggpw2mybmjb1lxf-gnumake-4.4.1.drv": {
+            "dynamicOutputs": {},
+            "outputs": [
+              "out"
+            ]
+          },
+          "qdgfwr3iz0fbb0n7xmwzgd763sy6djrv-cmake-4.4.4.drv": {
+            "dynamicOutputs": {},
+            "outputs": [
+              "out"
+            ]
+          },
+          "sfnk2mrj9z7amb2q5q7cixizrqxgx6dc-bash-5.3p20.drv": {
+            "dynamicOutputs": {},
+            "outputs": [
+              "out"
+            ]
+          }
+        },
+        "srcs": [
+          "l622p70vy8k5sh7y5wizi5f2mic6ynpg-source-stdenv.sh",
+          "qlm4s5w3hn0k1rl7pprlisazmnzcmgl5-consumer",
+          "shkw4qm9qcw5sc5n1k5jznc83ny02r39-default-builder.sh"
+        ]
+      },
+      "name": "spdlog-ordinary-installed-consumer",
+      "outputs": {
+        "out": {
+          "path": "z8kh4r28pf421byai5d159b2h3rayjnh-spdlog-ordinary-installed-consumer"
+        }
+      },
+      "system": "aarch64-darwin",
+      "version": 4
+    }
+  },
+  "version": 4
+}
