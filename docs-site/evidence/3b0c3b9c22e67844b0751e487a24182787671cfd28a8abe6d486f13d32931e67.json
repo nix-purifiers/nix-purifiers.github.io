@@ -1,0 +1,145 @@
+{
+  "source": "6b994ceb112995d83b80d4fc57319b8abc504e8f",
+  "system": "aarch64-linux",
+  "sandbox": true,
+  "machine": "aarch64",
+  "defaultBun": "1.4.2",
+  "check": ".#checks.aarch64-linux.conformance-offline",
+  "command": [
+    "nix",
+    "build",
+    "--no-link",
+    "--rebuild",
+    "--option",
+    "sandbox",
+    "true",
+    "--option",
+    "max-jobs",
+    "2",
+    "--option",
+    "cores",
+    "2",
+    "-L",
+    "--json",
+    ".#checks.aarch64-linux.conformance-offline"
+  ],
+  "status": "passed",
+  "builds": [
+    {
+      "drvPath": "/nix/store/09p3hzy46mgs0xxycis5xkqdayq1sm89-test-conformance-offline.drv",
+      "outputs": {
+        "out": "/nix/store/gjndw25vdm2r472nwak1jasnmjlc7vh6-test-conformance-offline"
+      }
+    }
+  ],
+  "derivations": {
+    "derivations": {
+      "09p3hzy46mgs0xxycis5xkqdayq1sm89-test-conformance-offline.drv": {
+        "args": [
+          "-e",
+          "/nix/store/l622p70vy8k5sh7y5wizi5f2mic6ynpg-source-stdenv.sh",
+          "/nix/store/shkw4qm9qcw5sc5n1k5jznc83ny02r39-default-builder.sh"
+        ],
+        "builder": "/nix/store/czx7cscpnqqmc9nwmbpnv2zcvck64mmf-bash-5.3p20/bin/bash",
+        "env": {
+          "BUN_PURIFIER_CACHE": "/nix/store/3bp0bpk2xjcww6c307rhj0yqrzynlfi4-bun-install-cache",
+          "__structuredAttrs": "",
+          "buildCommand": "export HOME=$TMPDIR\ncp -r /nix/store/4jnshai4llmyvhdf31102a602kf08fzk-workspace project\nchmod -R u+w project\ncd project\n/nix/store/12cnsfqdr7j5gjhd5vbk7a7l27ljgf9p-bun-purifier-0.1.0/bin/bun-purifier prefetch\n# Reproduce Bun's Darwin install directory permissions on every SDK.\n# Keep cache directories and symlink targets untouched.\nfind node_modules -path node_modules/.cache -prune -o -type d -exec chmod a-w {} +\ncd ..\nmkdir -p tests/fixtures\ncp -r /nix/store/4jnshai4llmyvhdf31102a602kf08fzk-workspace tests/fixtures/workspace\nexport OFFLINE_DIR=\"$PWD/project\"\nexport BUN_PURIFIER_TEST_CLI=/nix/store/12cnsfqdr7j5gjhd5vbk7a7l27ljgf9p-bun-purifier-0.1.0/bin/bun-purifier\nexport BUN_PURIFIER_TEST_BUN=/nix/store/f8hiv5nmim0dpaxixmxiijdm8x0mffsy-bun-1.4.2/bin/bun\nbash /nix/store/2gc9g7l3ibl3vcpfbmx02p5rrdai0wph-cli.sh offline-loop\ntouch $out\n",
+          "buildInputs": "",
+          "builder": "/nix/store/czx7cscpnqqmc9nwmbpnv2zcvck64mmf-bash-5.3p20/bin/bash",
+          "cmakeFlags": "",
+          "configureFlags": "",
+          "depsBuildBuild": "",
+          "depsBuildBuildPropagated": "",
+          "depsBuildTarget": "",
+          "depsBuildTargetPropagated": "",
+          "depsHostHost": "",
+          "depsHostHostPropagated": "",
+          "depsTargetTarget": "",
+          "depsTargetTargetPropagated": "",
+          "doCheck": "",
+          "doInstallCheck": "",
+          "enableParallelBuilding": "1",
+          "enableParallelChecking": "1",
+          "enableParallelInstalling": "1",
+          "mesonFlags": "",
+          "name": "test-conformance-offline",
+          "nativeBuildInputs": "/nix/store/f8hiv5nmim0dpaxixmxiijdm8x0mffsy-bun-1.4.2",
+          "out": "/nix/store/gjndw25vdm2r472nwak1jasnmjlc7vh6-test-conformance-offline",
+          "outputs": "out",
+          "passAsFile": "buildCommand",
+          "patches": "",
+          "propagatedBuildInputs": "",
+          "propagatedNativeBuildInputs": "",
+          "stdenv": "/nix/store/4rgz2pgx20yk0pxnm03yvl6dq2cay5hi-stdenv-linux-no-cc",
+          "strictDeps": "",
+          "system": "aarch64-linux"
+        },
+        "inputs": {
+          "drvs": {
+            "3239bpm54higlwfdznq8cbsi4ln35fri-bun-1.4.2.drv": {
+              "dynamicOutputs": {},
+              "outputs": [
+                "out"
+              ]
+            },
+            "3ilgh22z0kad09ys6c6g7g8f2kq0bk17-bash-5.3p20.drv": {
+              "dynamicOutputs": {},
+              "outputs": [
+                "out"
+              ]
+            },
+            "9llk9ygin3vga62vsxclaajwq9jq6h16-bun-purifier-0.1.0.drv": {
+              "dynamicOutputs": {},
+              "outputs": [
+                "out"
+              ]
+            },
+            "a7r4jm9np2jswd02yz0344pmmy0jg44d-stdenv-linux-no-cc.drv": {
+              "dynamicOutputs": {},
+              "outputs": [
+                "out"
+              ]
+            },
+            "kbfgsyywvqdb72nyayjg0fyfbapc21rz-bun-install-cache.drv": {
+              "dynamicOutputs": {},
+              "outputs": [
+                "out"
+              ]
+            }
+          },
+          "srcs": [
+            "2gc9g7l3ibl3vcpfbmx02p5rrdai0wph-cli.sh",
+            "4jnshai4llmyvhdf31102a602kf08fzk-workspace",
+            "l622p70vy8k5sh7y5wizi5f2mic6ynpg-source-stdenv.sh",
+            "shkw4qm9qcw5sc5n1k5jznc83ny02r39-default-builder.sh"
+          ]
+        },
+        "name": "test-conformance-offline",
+        "outputs": {
+          "out": {
+            "path": "gjndw25vdm2r472nwak1jasnmjlc7vh6-test-conformance-offline"
+          }
+        },
+        "system": "aarch64-linux",
+        "version": 4
+      }
+    },
+    "version": 4
+  },
+  "outputs": {
+    "/nix/store/gjndw25vdm2r472nwak1jasnmjlc7vh6-test-conformance-offline": {
+      "ca": null,
+      "deriver": "/nix/store/09p3hzy46mgs0xxycis5xkqdayq1sm89-test-conformance-offline.drv",
+      "narHash": "sha256-d6xi4mKdjkX2JFicDIv5niSzpyI0m/Hnm8GGAIU04kY=",
+      "narSize": 112,
+      "references": [],
+      "registrationTime": 1794054055,
+      "signatures": [],
+      "storeDir": "/nix/store",
+      "ultimate": true,
+      "version": 1
+    }
+  },
+  "sample": null
+}

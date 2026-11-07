@@ -1,0 +1,29 @@
+{
+  "sourceRevision": "1a5653242018a7c5939e5fd10f6f2de52feadfad",
+  "sourceNarHash": "sha256-ueLaprdMJcfAyfKkCKCRmMCVqX570dLZyC3+5B/lPVY=",
+  "check": {
+    "kind": "expression",
+    "value": "let f = builtins.getFlake \"/nix/store/iq5k2i954jg5m9vagc8q2wy3kvn263dr-source\"; p = import f.inputs.nixpkgs { system = builtins.currentSystem; overlays = [ f.overlays.default ]; }; in (import (builtins.toPath \"/nix/store/iq5k2i954jg5m9vagc8q2wy3kvn263dr-source/tests/tier2-worker-options.nix\") { pkgs = p; distribution = builtins.storePath \"/nix/store/f2rlfhmy8g9j37idqlm29lijzimlrrld-gradle-9.9.0\"; jdk = builtins.storePath \"/nix/store/ry8szmmd7pymhc0cgdnwf7mb5083j5mc-openjdk-headless-17.0.20.1+1\"; javaHome = \"/nix/store/ry8szmmd7pymhc0cgdnwf7mb5083j5mc-openjdk-headless-17.0.20.1+1/lib/openjdk\"; derived = false; })",
+    "replay": {
+      "artifactUrl": "https://nix-purifiers.github.io/evidence/5295d1251a323b89b631f1b948b0f8481eebc587d6ca96e7605fb64fe7ed6d63.json",
+      "artifactSha256": "5295d1251a323b89b631f1b948b0f8481eebc587d6ca96e7605fb64fe7ed6d63",
+      "expressionSha256": "a04acf4188a79f17a63d65816bc5e0ff6ee632a90b204492e46a15e62feef665",
+      "arguments": {}
+    }
+  },
+  "drvPath": "/nix/store/ydik3i34cw2ipm0l4ilkvk2rxwqjkv3h-gradle-worker-transport-observation.drv",
+  "observedEvaluation": {
+    "profile": "gradle-tier2-x86_64-linux-9.9.0",
+    "system": "x86_64-linux",
+    "kind": "worker",
+    "expression": "(let f = builtins.getFlake \"/nix/store/iq5k2i954jg5m9vagc8q2wy3kvn263dr-source\"; p = import f.inputs.nixpkgs { system = builtins.currentSystem; overlays = [ f.overlays.default ]; }; in (import (builtins.toPath \"/nix/store/iq5k2i954jg5m9vagc8q2wy3kvn263dr-source/tests/tier2-worker-options.nix\") { pkgs = p; distribution = builtins.storePath \"/nix/store/f2rlfhmy8g9j37idqlm29lijzimlrrld-gradle-9.9.0\"; jdk = builtins.storePath \"/nix/store/ry8szmmd7pymhc0cgdnwf7mb5083j5mc-openjdk-headless-17.0.20.1+1\"; javaHome = \"/nix/store/ry8szmmd7pymhc0cgdnwf7mb5083j5mc-openjdk-headless-17.0.20.1+1/lib/openjdk\"; derived = false; })).drvPath",
+    "exitCode": 0,
+    "stdout": "/nix/store/ydik3i34cw2ipm0l4ilkvk2rxwqjkv3h-gradle-worker-transport-observation.drv",
+    "stderr": "",
+    "expected": "/nix/store/ydik3i34cw2ipm0l4ilkvk2rxwqjkv3h-gradle-worker-transport-observation.drv",
+    "matches": true,
+    "noBuild": true
+  },
+  "metadataOnly": true,
+  "limitation": "Independent metadata evaluation exactly matches actual CI drv. Captured store inputs are required; no portable complete wrapper/SDK-cache replay is claimed."
+}

@@ -1,0 +1,815 @@
+{
+  "status": "ALL REQUIRED PRODUCER MAIN/RELEASE GATES PASSED; awaiting root metadata review",
+  "main": "1a5653242018a7c5939e5fd10f6f2de52feadfad",
+  "tree": "bc85a3b86cb80f77d55af49c868185bdae31768c",
+  "release": "v0.1.21",
+  "releaseUrl": "https://github.com/nix-purifiers/gradle-purifier/releases/tag/v0.1.21",
+  "runs": {
+    "check": {
+      "id": 42370432124,
+      "conclusion": "success",
+      "jobs": 19,
+      "executedSuccessJobs": [
+        "legacy-maven",
+        "conformance-relock (ubuntu-24.04-arm)",
+        "conformance-update (ubuntu-24.04-arm)",
+        "conformance-offline (ubuntu-latest)",
+        "project-sdk-closure",
+        "conformance-rebuild (ubuntu-24.04-arm)",
+        "javadoc-link-metadata",
+        "legacy-basic-56",
+        "native-missing-hint",
+        "repository-replay",
+        "project-sdk-sources",
+        "check (ubuntu-latest)",
+        "check (ubuntu-24.04-arm)",
+        "conformance-offline (ubuntu-24.04-arm)",
+        "conformance-update (ubuntu-latest)",
+        "composition-native (ubuntu-latest)",
+        "conformance-relock (ubuntu-latest)",
+        "conformance-rebuild (ubuntu-latest)",
+        "composition-native (ubuntu-24.04-arm)"
+      ]
+    },
+    "runtime": {
+      "id": 42370432193,
+      "conclusion": "success",
+      "jobs": 4,
+      "executedSuccessJobs": [
+        "runtime (9.9.0, macos-15)",
+        "runtime (8.14.6, ubuntu-latest)",
+        "runtime (9.9.0, ubuntu-latest)",
+        "runtime (8.14.6, macos-15)"
+      ]
+    },
+    "pages": {
+      "id": 42370432159,
+      "conclusion": "success",
+      "jobs": 2,
+      "executedSuccessJobs": [
+        "build",
+        "deploy"
+      ]
+    },
+    "publisher": {
+      "id": 42372513943,
+      "conclusion": "success",
+      "jobs": 1,
+      "executedSuccessJobs": [
+        "release / publish"
+      ]
+    }
+  },
+  "nativeRuntimeRows": [
+    {
+      "artifact": "gradle-tier2-aarch64-darwin-8.14.6",
+      "system": "aarch64-darwin",
+      "javaMajor": 17,
+      "javaHome": "/nix/store/al24k44gwd1rk08p1x2p4r88ba9xw132-zulu-ca-jdk-17.0.19",
+      "sdk": {
+        "effective": "/nix/store/yvgf360hi0g0qf6ksiiqvzckwzvpqv1s-gradle-8.14.6-purifier-darwin-worker-ipv4",
+        "provenance": "/nix/store/yvgf360hi0g0qf6ksiiqvzckwzvpqv1s-gradle-8.14.6-purifier-darwin-worker-ipv4/nix-support/purifier-worker-transport/manifest.json",
+        "upstream": "/nix/store/f53chmcqvvdpnvq6w8z5imgwwh952c2j-gradle-8.14.6",
+        "variant": "purifier-darwin-worker-ipv4-source-component-v1"
+      },
+      "sample": {
+        "owner": "spring-projects",
+        "repo": "spring-petclinic",
+        "rev": "500158f732419217507c7656904b8e6aa1bcc0d6",
+        "hash": "sha256-j3Uiz+Wn9jWegwrJvCZZymLNrzo5zn5GyPBIn6+6V2w="
+      },
+      "samplePatch": "diff --git a/gradle/wrapper/gradle-wrapper.properties b/gradle/wrapper/gradle-wrapper.properties\nindex df6a6ad..4811fab 100644\n--- a/gradle/wrapper/gradle-wrapper.properties\n+++ b/gradle/wrapper/gradle-wrapper.properties\n@@ -1,9 +1,11 @@\n distributionBase=GRADLE_USER_HOME\n distributionPath=wrapper/dists\n-distributionUrl=https\\://services.gradle.org/distributions/gradle-9.5.1-bin.zip\n+distributionUrl=https\\://services.gradle.org/distributions/gradle-8.14.6-bin.zip\n networkTimeout=10000\n retries=0\n retryBackOffMs=500\n validateDistributionUrl=true\n zipStoreBase=GRADLE_USER_HOME\n zipStorePath=wrapper/dists\n+\n+distributionSha256Sum=7988ed071b2a07900e2ec715fca15c6ab72bce6db433af301fa7fa7e9407bd24",
+      "ordinaryTests": {
+        "tests": 81,
+        "failures": 0,
+        "skipped": 4
+      },
+      "pureTests": {
+        "tests": 81,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 4
+      },
+      "downloadCacheEmpty": true,
+      "ordinaryNixBuild": {
+        "derivation": "/nix/store/zk2fsw1wvffj9fphldb5z0kv7n7mwchz-petclinic-ordinary-offline.drv",
+        "output": "/nix/store/3574x7v4zy8i638g1k6l509pb2la94lh-petclinic-ordinary-offline",
+        "pathInfo": {
+          "/nix/store/3574x7v4zy8i638g1k6l509pb2la94lh-petclinic-ordinary-offline": {
+            "ca": null,
+            "deriver": "/nix/store/zk2fsw1wvffj9fphldb5z0kv7n7mwchz-petclinic-ordinary-offline.drv",
+            "narHash": "sha256-bYMegVI441XNw4sa7qDzEp2Lcfepti0AWTovHtViHP4=",
+            "narSize": 99928,
+            "references": [
+              "/nix/store/al24k44gwd1rk08p1x2p4r88ba9xw132-zulu-ca-jdk-17.0.19"
+            ],
+            "registrationTime": 1794053917,
+            "signatures": [],
+            "storeDir": "/nix/store",
+            "ultimate": true,
+            "version": 1
+          }
+        }
+      },
+      "workerBuild": {
+        "derivation": "/nix/store/lgrnnv64gf2wpq3vc95gyyb4gk55m058-gradle-worker-transport-observation.drv",
+        "output": "/nix/store/l1i5kj9mgqv8fa27c3myyjc4vvk421pq-gradle-worker-transport-observation",
+        "pathInfo": {
+          "/nix/store/l1i5kj9mgqv8fa27c3myyjc4vvk421pq-gradle-worker-transport-observation": {
+            "ca": null,
+            "deriver": "/nix/store/lgrnnv64gf2wpq3vc95gyyb4gk55m058-gradle-worker-transport-observation.drv",
+            "narHash": "sha256-tyQxk+PBt+bY8GvJyentqyZsWafYFJTeDCdbQOfbAxA=",
+            "narSize": 2336,
+            "references": [
+              "/nix/store/al24k44gwd1rk08p1x2p4r88ba9xw132-zulu-ca-jdk-17.0.19",
+              "/nix/store/yvgf360hi0g0qf6ksiiqvzckwzvpqv1s-gradle-8.14.6-purifier-darwin-worker-ipv4"
+            ],
+            "registrationTime": 1794054040,
+            "signatures": [],
+            "storeDir": "/nix/store",
+            "ultimate": true,
+            "version": 1
+          }
+        }
+      },
+      "purePackage": {
+        "derivation": "/nix/store/p95y1csp703chrgffnqsp07i93d499sz-spring-petclinic.drv",
+        "output": "/nix/store/30iigyc5fa738dbk9980mdi6kicdgkcg-spring-petclinic",
+        "pathInfo": {
+          "/nix/store/30iigyc5fa738dbk9980mdi6kicdgkcg-spring-petclinic": {
+            "ca": null,
+            "deriver": "/nix/store/p95y1csp703chrgffnqsp07i93d499sz-spring-petclinic.drv",
+            "narHash": "sha256-8uaBZwlETk1AMLEHQ0foHh1chNnb9asUVJa6YQvivdo=",
+            "narSize": 66983664,
+            "references": [],
+            "registrationTime": 1794054167,
+            "signatures": [],
+            "storeDir": "/nix/store",
+            "ultimate": true,
+            "version": 1
+          }
+        }
+      },
+      "receiptSha256": "0fc1902f6231a7c6530ef8d39e03cf022ea264ec6a558c0e9eec5f1f1a9d9d50",
+      "sdkProvenance": {
+        "variant": "purifier-darwin-worker-ipv4-source-component-v1",
+        "version": "8.14.6",
+        "upstreamDistribution": "/nix/store/f53chmcqvvdpnvq6w8z5imgwwh952c2j-gradle-8.14.6",
+        "upstreamDistributionUrl": "https://services.gradle.org/distributions/gradle-8.14.6-bin.zip",
+        "upstreamDistributionHash": "sha256-eYjtBxsqB5AOLscV/KFcarcrzm20M68wH6f6fpQHvSQ=",
+        "upstreamComponentSha256": "5449a3d047b51e050a8d8159c5176c58caa10acb3303642e028d8dde6886ba57",
+        "upstreamClassSha256": "34b5cb5359c958055b68d85b413e75db1794c4d89cb6b1a67dc6357ff53abf65",
+        "sourceCommit": "88c80c1459b75a6d077d24eebe7905ffa3e1293f",
+        "sourceUrl": "https://raw.githubusercontent.com/gradle/gradle/88c80c1459b75a6d077d24eebe7905ffa3e1293f/platforms/core-execution/workers/src/main/java/org/gradle/workers/internal/DefaultProcessWorkerSpec.java",
+        "sourceSha256": "55f53013956313bc9197caa42bf4f979a07821e5e4c7c51e2007d175166ae892",
+        "sourceSRI": "sha256-VfUwE5VjE7yRl8qkK/T5eaB4IeXkx8UeIAfRdRZq6JI=",
+        "sourcePath": "/nix/store/prznv4idnwpc6sb8cgb9jj3qph5ssq5h-DefaultProcessWorkerSpec.java",
+        "patchSha256": "a0f2b5abc6ee1f9ffcbaae3c39e31c8e49fe12204f9438bc4138f0bc002106fa",
+        "javac": "/nix/store/al24k44gwd1rk08p1x2p4r88ba9xw132-zulu-ca-jdk-17.0.19/bin/javac",
+        "javacVersion": "javac 17.0.19",
+        "compilerRoot": "/nix/store/al24k44gwd1rk08p1x2p4r88ba9xw132-zulu-ca-jdk-17.0.19",
+        "javacRelease": 8,
+        "compileArgv": [
+          "/nix/store/al24k44gwd1rk08p1x2p4r88ba9xw132-zulu-ca-jdk-17.0.19/bin/javac",
+          "--release",
+          "8",
+          "-proc:none",
+          "-implicit:none",
+          "-encoding",
+          "UTF-8",
+          "-g",
+          "-classpath",
+          "/nix/store/f53chmcqvvdpnvq6w8z5imgwwh952c2j-gradle-8.14.6/lib/*:/nix/store/f53chmcqvvdpnvq6w8z5imgwwh952c2j-gradle-8.14.6/lib/plugins/*",
+          "-d",
+          "classes",
+          "source/org/gradle/workers/internal/DefaultProcessWorkerSpec.java"
+        ],
+        "compiledClassMajor": 52,
+        "compiledClassSha256": "888cd9c1e11dc3435e121d6c3ffcbe7124f790e69d874bc2117f8b4c9dddd298",
+        "componentSha256": "caecdb5555a394358eb9ed46e8ebf45cfdd65400f0bd2fb98cf3489c34382ca2",
+        "entryDataDelta": [
+          "org/gradle/workers/internal/DefaultProcessWorkerSpec.class"
+        ],
+        "inventoryEqual": true,
+        "apiEqual": true,
+        "twoAssembliesIdentical": true,
+        "scope": "Derived Darwin Nix build SDK; not the unchanged official Gradle distribution"
+      },
+      "sdkInputPathInfo": {
+        "/nix/store/al24k44gwd1rk08p1x2p4r88ba9xw132-zulu-ca-jdk-17.0.19": {
+          "ca": null,
+          "deriver": "/nix/store/ilqd4qg9ig5ww1h532v6qg5p51izbyxi-zulu-ca-jdk-17.0.19.drv",
+          "narHash": "sha256-Xp5/zOCeVonFDqh26RWy+2E/XIDDsxUvLYEsHEJGfgs=",
+          "narSize": 329922456,
+          "references": [
+            "/nix/store/al24k44gwd1rk08p1x2p4r88ba9xw132-zulu-ca-jdk-17.0.19",
+            "/nix/store/zq9p83z8793icalkabg6nx4f3w0p5m3c-set-java-classpath-hook"
+          ],
+          "registrationTime": 1794053160,
+          "signatures": [
+            "cache.nixos.org-1:pA7kEu7yu5Pi5d7gaB5m3cGVX6zrRe9EriyUihA4We3cvxljxWhvpbjVv+ntm9YTH1u9AKP9U3WYjN+iFOTWBA=="
+          ],
+          "storeDir": "/nix/store",
+          "ultimate": false,
+          "version": 1
+        },
+        "/nix/store/f53chmcqvvdpnvq6w8z5imgwwh952c2j-gradle-8.14.6": {
+          "ca": null,
+          "deriver": "/nix/store/byk98rz03jnid84rwp42xgxrdlbbbiwd-gradle-8.14.6.drv",
+          "narHash": "sha256-kCP/DXmgBxOUQmDomzJSyd9+uoxe+b8hgPOA465hDXQ=",
+          "narSize": 154698712,
+          "references": [
+            "/nix/store/i1pdjlwb27ki88zssg5q2h696v1r1m15-bash-5.3p20"
+          ],
+          "registrationTime": 1794053782,
+          "signatures": [],
+          "storeDir": "/nix/store",
+          "ultimate": true,
+          "version": 1
+        },
+        "/nix/store/prznv4idnwpc6sb8cgb9jj3qph5ssq5h-DefaultProcessWorkerSpec.java": {
+          "ca": "fixed:sha256:14p8d8b7bl8740gcbiz4wlhpi83rz7s2p96ajy8vq4v3jl9k1xam",
+          "deriver": "/nix/store/j91xzgc2nb7kwjbvviar6qyhf732f61i-DefaultProcessWorkerSpec.java.drv",
+          "narHash": "sha256-Dw/VFfaw2+0sg/t88y9+oYCcMyVyGagsL1D1E/hczCI=",
+          "narSize": 2872,
+          "references": [],
+          "registrationTime": 1794054026,
+          "signatures": [],
+          "storeDir": "/nix/store",
+          "ultimate": true,
+          "version": 1
+        }
+      },
+      "effectiveSdkBuild": {
+        "derivation": "/nix/store/1pk313ahlhi6frv7ij46nxjfsi6qrv72-gradle-8.14.6-purifier-darwin-worker-ipv4.drv",
+        "output": "/nix/store/yvgf360hi0g0qf6ksiiqvzckwzvpqv1s-gradle-8.14.6-purifier-darwin-worker-ipv4",
+        "pathInfo": {
+          "/nix/store/yvgf360hi0g0qf6ksiiqvzckwzvpqv1s-gradle-8.14.6-purifier-darwin-worker-ipv4": {
+            "ca": null,
+            "deriver": "/nix/store/1pk313ahlhi6frv7ij46nxjfsi6qrv72-gradle-8.14.6-purifier-darwin-worker-ipv4.drv",
+            "narHash": "sha256-dd/TexQgeeZwhh2D+zB9Ev/bJeDe2W6IVQzI0RBLrd0=",
+            "narSize": 154706880,
+            "references": [
+              "/nix/store/al24k44gwd1rk08p1x2p4r88ba9xw132-zulu-ca-jdk-17.0.19",
+              "/nix/store/f53chmcqvvdpnvq6w8z5imgwwh952c2j-gradle-8.14.6",
+              "/nix/store/i1pdjlwb27ki88zssg5q2h696v1r1m15-bash-5.3p20",
+              "/nix/store/prznv4idnwpc6sb8cgb9jj3qph5ssq5h-DefaultProcessWorkerSpec.java"
+            ],
+            "registrationTime": 1794054029,
+            "signatures": [],
+            "storeDir": "/nix/store",
+            "ultimate": true,
+            "version": 1
+          }
+        }
+      },
+      "worker": {
+        "worker": {
+          "javaHome": "/nix/store/al24k44gwd1rk08p1x2p4r88ba9xw132-zulu-ca-jdk-17.0.19/Library/Java/JavaVirtualMachines/zulu-17.jdk/Contents/Home",
+          "javaVersion": "17.0.19",
+          "preferIPv4Stack": "true",
+          "javaToolOptions": null,
+          "unrelatedProperty": null,
+          "unrelatedEnvironment": null,
+          "locale": "C.UTF-8"
+        },
+        "componentOrigin": "PURIFIER_COMPONENT_ORIGIN file:/nix/store/yvgf360hi0g0qf6ksiiqvzckwzvpqv1s-gradle-8.14.6-purifier-darwin-worker-ipv4/lib/plugins/gradle-workers-8.14.6.jar",
+        "effectiveDistribution": "/nix/store/yvgf360hi0g0qf6ksiiqvzckwzvpqv1s-gradle-8.14.6-purifier-darwin-worker-ipv4",
+        "derived": true
+      },
+      "network": {
+        "baselineExternalPermissionDenials": 3,
+        "adaptedExternalPermissionDenials": 2,
+        "explicitIPv6": "unavailable under IPv4 preference; UNPROVEN/not denial credit"
+      }
+    },
+    {
+      "artifact": "gradle-tier2-aarch64-darwin-9.9.0",
+      "system": "aarch64-darwin",
+      "javaMajor": 17,
+      "javaHome": "/nix/store/al24k44gwd1rk08p1x2p4r88ba9xw132-zulu-ca-jdk-17.0.19",
+      "sdk": {
+        "effective": "/nix/store/a4s55zxxm719x1dk57r006hw8m922mhj-gradle-9.9.0-purifier-darwin-worker-ipv4",
+        "provenance": "/nix/store/a4s55zxxm719x1dk57r006hw8m922mhj-gradle-9.9.0-purifier-darwin-worker-ipv4/nix-support/purifier-worker-transport/manifest.json",
+        "upstream": "/nix/store/9di8yy8c1x4ivh00xg2xr8ac4igidk6y-gradle-9.9.0",
+        "variant": "purifier-darwin-worker-ipv4-source-component-v1"
+      },
+      "sample": {
+        "owner": "spring-projects",
+        "repo": "spring-petclinic",
+        "rev": "500158f732419217507c7656904b8e6aa1bcc0d6",
+        "hash": "sha256-j3Uiz+Wn9jWegwrJvCZZymLNrzo5zn5GyPBIn6+6V2w="
+      },
+      "samplePatch": "diff --git a/gradle/wrapper/gradle-wrapper.properties b/gradle/wrapper/gradle-wrapper.properties\nindex df6a6ad..500b388 100644\n--- a/gradle/wrapper/gradle-wrapper.properties\n+++ b/gradle/wrapper/gradle-wrapper.properties\n@@ -1,9 +1,11 @@\n distributionBase=GRADLE_USER_HOME\n distributionPath=wrapper/dists\n-distributionUrl=https\\://services.gradle.org/distributions/gradle-9.5.1-bin.zip\n+distributionUrl=https\\://services.gradle.org/distributions/gradle-9.9.0-bin.zip\n networkTimeout=10000\n retries=0\n retryBackOffMs=500\n validateDistributionUrl=true\n zipStoreBase=GRADLE_USER_HOME\n zipStorePath=wrapper/dists\n+\n+distributionSha256Sum=0b00b0ffe07c4d4789c12d4935a44a7057d55774b7540bd4a3f76f336deb177a",
+      "ordinaryTests": {
+        "tests": 81,
+        "failures": 0,
+        "skipped": 4
+      },
+      "pureTests": {
+        "tests": 81,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 4
+      },
+      "downloadCacheEmpty": true,
+      "ordinaryNixBuild": {
+        "derivation": "/nix/store/4nsd94ixmajzshdhykd0sxzj7favghzn-petclinic-ordinary-offline.drv",
+        "output": "/nix/store/b6kd4gcnmk1ncfwlix2bc66jz71g7b3d-petclinic-ordinary-offline",
+        "pathInfo": {
+          "/nix/store/b6kd4gcnmk1ncfwlix2bc66jz71g7b3d-petclinic-ordinary-offline": {
+            "ca": null,
+            "deriver": "/nix/store/4nsd94ixmajzshdhykd0sxzj7favghzn-petclinic-ordinary-offline.drv",
+            "narHash": "sha256-NHOHZpX/qhLi1cE3hxaAUEBEf1nMdd+gyKy71FrQ0VM=",
+            "narSize": 103360,
+            "references": [
+              "/nix/store/al24k44gwd1rk08p1x2p4r88ba9xw132-zulu-ca-jdk-17.0.19"
+            ],
+            "registrationTime": 1794053890,
+            "signatures": [],
+            "storeDir": "/nix/store",
+            "ultimate": true,
+            "version": 1
+          }
+        }
+      },
+      "workerBuild": {
+        "derivation": "/nix/store/qzqnwl8d0v6c43wvy8zmdx1ix7kh0kcx-gradle-worker-transport-observation.drv",
+        "output": "/nix/store/vf8qkdsawprlqil788ri26f70yqmas6j-gradle-worker-transport-observation",
+        "pathInfo": {
+          "/nix/store/vf8qkdsawprlqil788ri26f70yqmas6j-gradle-worker-transport-observation": {
+            "ca": null,
+            "deriver": "/nix/store/qzqnwl8d0v6c43wvy8zmdx1ix7kh0kcx-gradle-worker-transport-observation.drv",
+            "narHash": "sha256-eV84KKxjjSmnK12muPvW3jYJdrNFtvADaaZmrEcl51Q=",
+            "narSize": 2520,
+            "references": [
+              "/nix/store/a4s55zxxm719x1dk57r006hw8m922mhj-gradle-9.9.0-purifier-darwin-worker-ipv4",
+              "/nix/store/al24k44gwd1rk08p1x2p4r88ba9xw132-zulu-ca-jdk-17.0.19"
+            ],
+            "registrationTime": 1794053987,
+            "signatures": [],
+            "storeDir": "/nix/store",
+            "ultimate": true,
+            "version": 1
+          }
+        }
+      },
+      "purePackage": {
+        "derivation": "/nix/store/wg6dw8gmyip91wh0xb6s9q9bmycxdg7w-spring-petclinic.drv",
+        "output": "/nix/store/m03p96kazbimg1gnlzj2ccsj01wn40ax-spring-petclinic",
+        "pathInfo": {
+          "/nix/store/m03p96kazbimg1gnlzj2ccsj01wn40ax-spring-petclinic": {
+            "ca": null,
+            "deriver": "/nix/store/wg6dw8gmyip91wh0xb6s9q9bmycxdg7w-spring-petclinic.drv",
+            "narHash": "sha256-q0MxUrgRfuKxWZWEI+9pedYZgXvre965c0xNoHqt5PM=",
+            "narSize": 66990440,
+            "references": [],
+            "registrationTime": 1794054088,
+            "signatures": [],
+            "storeDir": "/nix/store",
+            "ultimate": true,
+            "version": 1
+          }
+        }
+      },
+      "receiptSha256": "cc339a785c7b8284d2a53f089eb8e40a3dda3a1d33d1e7649997f7adf9420598",
+      "sdkProvenance": {
+        "variant": "purifier-darwin-worker-ipv4-source-component-v1",
+        "version": "9.9.0",
+        "upstreamDistribution": "/nix/store/9di8yy8c1x4ivh00xg2xr8ac4igidk6y-gradle-9.9.0",
+        "upstreamDistributionUrl": "https://services.gradle.org/distributions/gradle-9.9.0-bin.zip",
+        "upstreamDistributionHash": "sha256-CwCw/+B8TUeJwS1JNaRKcFfVV3S3VAvUo/dvM23rF3o=",
+        "upstreamComponentSha256": "7c0f6cef1ee5710c85ddda50cfc4108332fe9346865b94c2dfd17f5f49b90699",
+        "upstreamClassSha256": "b7722bb3ee4c2e6c1051520da3092e26a3722f5ad461b3cbae819c7ed0f412d0",
+        "sourceCommit": "dabfe84a6c2590fa6ecaab03ff6fefe5b838d558",
+        "sourceUrl": "https://raw.githubusercontent.com/gradle/gradle/dabfe84a6c2590fa6ecaab03ff6fefe5b838d558/platforms/core-execution/workers/src/main/java/org/gradle/workers/internal/DefaultProcessWorkerSpec.java",
+        "sourceSha256": "55f53013956313bc9197caa42bf4f979a07821e5e4c7c51e2007d175166ae892",
+        "sourceSRI": "sha256-VfUwE5VjE7yRl8qkK/T5eaB4IeXkx8UeIAfRdRZq6JI=",
+        "sourcePath": "/nix/store/prznv4idnwpc6sb8cgb9jj3qph5ssq5h-DefaultProcessWorkerSpec.java",
+        "patchSha256": "a0f2b5abc6ee1f9ffcbaae3c39e31c8e49fe12204f9438bc4138f0bc002106fa",
+        "javac": "/nix/store/al24k44gwd1rk08p1x2p4r88ba9xw132-zulu-ca-jdk-17.0.19/bin/javac",
+        "javacVersion": "javac 17.0.19",
+        "compilerRoot": "/nix/store/al24k44gwd1rk08p1x2p4r88ba9xw132-zulu-ca-jdk-17.0.19",
+        "javacRelease": 17,
+        "compileArgv": [
+          "/nix/store/al24k44gwd1rk08p1x2p4r88ba9xw132-zulu-ca-jdk-17.0.19/bin/javac",
+          "--release",
+          "17",
+          "-proc:none",
+          "-implicit:none",
+          "-encoding",
+          "UTF-8",
+          "-g",
+          "-classpath",
+          "/nix/store/9di8yy8c1x4ivh00xg2xr8ac4igidk6y-gradle-9.9.0/lib/*:/nix/store/9di8yy8c1x4ivh00xg2xr8ac4igidk6y-gradle-9.9.0/lib/plugins/*",
+          "-d",
+          "classes",
+          "source/org/gradle/workers/internal/DefaultProcessWorkerSpec.java"
+        ],
+        "compiledClassMajor": 61,
+        "compiledClassSha256": "c53e6223f183fd3eaec30198773d4dd6712ba96960f031740e887d480231fba2",
+        "componentSha256": "f48622b1f744d07571f38319460b58977125c96f02875d013a5295bf96427d40",
+        "entryDataDelta": [
+          "org/gradle/workers/internal/DefaultProcessWorkerSpec.class"
+        ],
+        "inventoryEqual": true,
+        "apiEqual": true,
+        "twoAssembliesIdentical": true,
+        "scope": "Derived Darwin Nix build SDK; not the unchanged official Gradle distribution"
+      },
+      "sdkInputPathInfo": {
+        "/nix/store/9di8yy8c1x4ivh00xg2xr8ac4igidk6y-gradle-9.9.0": {
+          "ca": null,
+          "deriver": "/nix/store/b4bc6zidzn1nknbl4acr758dn3xpxjpl-gradle-9.9.0.drv",
+          "narHash": "sha256-BRD7oEjJVVDY8XCyq4t4/17OUo8asLQZcxes11RF/fo=",
+          "narSize": 152108200,
+          "references": [
+            "/nix/store/i1pdjlwb27ki88zssg5q2h696v1r1m15-bash-5.3p20"
+          ],
+          "registrationTime": 1794053793,
+          "signatures": [],
+          "storeDir": "/nix/store",
+          "ultimate": true,
+          "version": 1
+        },
+        "/nix/store/al24k44gwd1rk08p1x2p4r88ba9xw132-zulu-ca-jdk-17.0.19": {
+          "ca": null,
+          "deriver": "/nix/store/ilqd4qg9ig5ww1h532v6qg5p51izbyxi-zulu-ca-jdk-17.0.19.drv",
+          "narHash": "sha256-Xp5/zOCeVonFDqh26RWy+2E/XIDDsxUvLYEsHEJGfgs=",
+          "narSize": 329922456,
+          "references": [
+            "/nix/store/al24k44gwd1rk08p1x2p4r88ba9xw132-zulu-ca-jdk-17.0.19",
+            "/nix/store/zq9p83z8793icalkabg6nx4f3w0p5m3c-set-java-classpath-hook"
+          ],
+          "registrationTime": 1794053116,
+          "signatures": [
+            "cache.nixos.org-1:pA7kEu7yu5Pi5d7gaB5m3cGVX6zrRe9EriyUihA4We3cvxljxWhvpbjVv+ntm9YTH1u9AKP9U3WYjN+iFOTWBA=="
+          ],
+          "storeDir": "/nix/store",
+          "ultimate": false,
+          "version": 1
+        },
+        "/nix/store/prznv4idnwpc6sb8cgb9jj3qph5ssq5h-DefaultProcessWorkerSpec.java": {
+          "ca": "fixed:sha256:14p8d8b7bl8740gcbiz4wlhpi83rz7s2p96ajy8vq4v3jl9k1xam",
+          "deriver": "/nix/store/g9bcfgaz3p3xafvj18kjasm5bsa11zcf-DefaultProcessWorkerSpec.java.drv",
+          "narHash": "sha256-Dw/VFfaw2+0sg/t88y9+oYCcMyVyGagsL1D1E/hczCI=",
+          "narSize": 2872,
+          "references": [],
+          "registrationTime": 1794053976,
+          "signatures": [],
+          "storeDir": "/nix/store",
+          "ultimate": true,
+          "version": 1
+        }
+      },
+      "effectiveSdkBuild": {
+        "derivation": "/nix/store/p4nqak3zyyxpjb21jw98d4ir0db1ljq4-gradle-9.9.0-purifier-darwin-worker-ipv4.drv",
+        "output": "/nix/store/a4s55zxxm719x1dk57r006hw8m922mhj-gradle-9.9.0-purifier-darwin-worker-ipv4",
+        "pathInfo": {
+          "/nix/store/a4s55zxxm719x1dk57r006hw8m922mhj-gradle-9.9.0-purifier-darwin-worker-ipv4": {
+            "ca": null,
+            "deriver": "/nix/store/p4nqak3zyyxpjb21jw98d4ir0db1ljq4-gradle-9.9.0-purifier-darwin-worker-ipv4.drv",
+            "narHash": "sha256-8XAebzP66i8ylBT1uS4+MB/xw6gyJqS6KXBiSbyM8qM=",
+            "narSize": 152116376,
+            "references": [
+              "/nix/store/9di8yy8c1x4ivh00xg2xr8ac4igidk6y-gradle-9.9.0",
+              "/nix/store/al24k44gwd1rk08p1x2p4r88ba9xw132-zulu-ca-jdk-17.0.19",
+              "/nix/store/i1pdjlwb27ki88zssg5q2h696v1r1m15-bash-5.3p20",
+              "/nix/store/prznv4idnwpc6sb8cgb9jj3qph5ssq5h-DefaultProcessWorkerSpec.java"
+            ],
+            "registrationTime": 1794053979,
+            "signatures": [],
+            "storeDir": "/nix/store",
+            "ultimate": true,
+            "version": 1
+          }
+        }
+      },
+      "worker": {
+        "worker": {
+          "javaHome": "/nix/store/al24k44gwd1rk08p1x2p4r88ba9xw132-zulu-ca-jdk-17.0.19/Library/Java/JavaVirtualMachines/zulu-17.jdk/Contents/Home",
+          "javaVersion": "17.0.19",
+          "preferIPv4Stack": "true",
+          "javaToolOptions": null,
+          "unrelatedProperty": null,
+          "unrelatedEnvironment": null,
+          "locale": "C.UTF-8"
+        },
+        "componentOrigin": "PURIFIER_COMPONENT_ORIGIN file:/nix/store/a4s55zxxm719x1dk57r006hw8m922mhj-gradle-9.9.0-purifier-darwin-worker-ipv4/lib/plugins/gradle-workers-9.9.0.jar",
+        "effectiveDistribution": "/nix/store/a4s55zxxm719x1dk57r006hw8m922mhj-gradle-9.9.0-purifier-darwin-worker-ipv4",
+        "derived": true
+      },
+      "network": {
+        "baselineExternalPermissionDenials": 3,
+        "adaptedExternalPermissionDenials": 2,
+        "explicitIPv6": "unavailable under IPv4 preference; UNPROVEN/not denial credit"
+      }
+    },
+    {
+      "artifact": "gradle-tier2-x86_64-linux-8.14.6",
+      "system": "x86_64-linux",
+      "javaMajor": 17,
+      "javaHome": "/nix/store/ry8szmmd7pymhc0cgdnwf7mb5083j5mc-openjdk-headless-17.0.20.1+1/lib/openjdk",
+      "sdk": {
+        "effective": "/nix/store/2xg81wjll1lfzb599zny2s52bv2ji58n-gradle-8.14.6",
+        "provenance": null,
+        "upstream": "/nix/store/2xg81wjll1lfzb599zny2s52bv2ji58n-gradle-8.14.6",
+        "variant": null
+      },
+      "sample": {
+        "owner": "spring-projects",
+        "repo": "spring-petclinic",
+        "rev": "500158f732419217507c7656904b8e6aa1bcc0d6",
+        "hash": "sha256-j3Uiz+Wn9jWegwrJvCZZymLNrzo5zn5GyPBIn6+6V2w="
+      },
+      "samplePatch": "diff --git a/gradle/wrapper/gradle-wrapper.properties b/gradle/wrapper/gradle-wrapper.properties\nindex df6a6ad..4811fab 100644\n--- a/gradle/wrapper/gradle-wrapper.properties\n+++ b/gradle/wrapper/gradle-wrapper.properties\n@@ -1,9 +1,11 @@\n distributionBase=GRADLE_USER_HOME\n distributionPath=wrapper/dists\n-distributionUrl=https\\://services.gradle.org/distributions/gradle-9.5.1-bin.zip\n+distributionUrl=https\\://services.gradle.org/distributions/gradle-8.14.6-bin.zip\n networkTimeout=10000\n retries=0\n retryBackOffMs=500\n validateDistributionUrl=true\n zipStoreBase=GRADLE_USER_HOME\n zipStorePath=wrapper/dists\n+\n+distributionSha256Sum=7988ed071b2a07900e2ec715fca15c6ab72bce6db433af301fa7fa7e9407bd24",
+      "ordinaryTests": {
+        "tests": 81,
+        "failures": 0,
+        "skipped": 4
+      },
+      "pureTests": {
+        "tests": 81,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 4
+      },
+      "downloadCacheEmpty": true,
+      "ordinaryNixBuild": {
+        "derivation": "/nix/store/bqalily8w0hl4dv289cmf3sn5wyd4srx-petclinic-ordinary-offline.drv",
+        "output": "/nix/store/p8mw0y52n33lqk8cy7vzbbrkx17i8sx8-petclinic-ordinary-offline",
+        "pathInfo": {
+          "/nix/store/p8mw0y52n33lqk8cy7vzbbrkx17i8sx8-petclinic-ordinary-offline": {
+            "ca": null,
+            "deriver": "/nix/store/bqalily8w0hl4dv289cmf3sn5wyd4srx-petclinic-ordinary-offline.drv",
+            "narHash": "sha256-yWW0zhqikGFqOt/+HIMTe0QRNMLgU3J0VRblSUXgjcQ=",
+            "narSize": 88064,
+            "references": [],
+            "registrationTime": 1794053165,
+            "signatures": [],
+            "storeDir": "/nix/store",
+            "ultimate": true,
+            "version": 1
+          }
+        }
+      },
+      "workerBuild": {
+        "derivation": "/nix/store/6bjwls5a3pqps81481ni19ilb4y1x57s-gradle-worker-transport-observation.drv",
+        "output": "/nix/store/jfds21l4w68prpl4zqhk1783lfr0df83-gradle-worker-transport-observation",
+        "pathInfo": {
+          "/nix/store/jfds21l4w68prpl4zqhk1783lfr0df83-gradle-worker-transport-observation": {
+            "ca": null,
+            "deriver": "/nix/store/6bjwls5a3pqps81481ni19ilb4y1x57s-gradle-worker-transport-observation.drv",
+            "narHash": "sha256-druAD8++OJELyFnawt8KgHXN1XFc5XzNw7NEuvc1lT8=",
+            "narSize": 2176,
+            "references": [
+              "/nix/store/2xg81wjll1lfzb599zny2s52bv2ji58n-gradle-8.14.6",
+              "/nix/store/ry8szmmd7pymhc0cgdnwf7mb5083j5mc-openjdk-headless-17.0.20.1+1"
+            ],
+            "registrationTime": 1794053277,
+            "signatures": [],
+            "storeDir": "/nix/store",
+            "ultimate": true,
+            "version": 1
+          }
+        }
+      },
+      "purePackage": {
+        "derivation": "/nix/store/4cqv9vyykzabxn1kj04ffnm2gkglkpyl-spring-petclinic.drv",
+        "output": "/nix/store/lvnl5yalncx7yzryc5129v63zm2dr35h-spring-petclinic",
+        "pathInfo": {
+          "/nix/store/lvnl5yalncx7yzryc5129v63zm2dr35h-spring-petclinic": {
+            "ca": null,
+            "deriver": "/nix/store/4cqv9vyykzabxn1kj04ffnm2gkglkpyl-spring-petclinic.drv",
+            "narHash": "sha256-WHPFxHRSxe3Uz3T/PQIv2Vz1y69O/l6w7aG3XnLLQSE=",
+            "narSize": 66985160,
+            "references": [],
+            "registrationTime": 1794053363,
+            "signatures": [],
+            "storeDir": "/nix/store",
+            "ultimate": true,
+            "version": 1
+          }
+        }
+      },
+      "receiptSha256": "70ed4ce40ed2fe3bb6b98b3e56b1b3c2c0aec1de0e1d53be0e0ed49e07da36ec"
+    },
+    {
+      "artifact": "gradle-tier2-x86_64-linux-9.9.0",
+      "system": "x86_64-linux",
+      "javaMajor": 17,
+      "javaHome": "/nix/store/ry8szmmd7pymhc0cgdnwf7mb5083j5mc-openjdk-headless-17.0.20.1+1/lib/openjdk",
+      "sdk": {
+        "effective": "/nix/store/f2rlfhmy8g9j37idqlm29lijzimlrrld-gradle-9.9.0",
+        "provenance": null,
+        "upstream": "/nix/store/f2rlfhmy8g9j37idqlm29lijzimlrrld-gradle-9.9.0",
+        "variant": null
+      },
+      "sample": {
+        "owner": "spring-projects",
+        "repo": "spring-petclinic",
+        "rev": "500158f732419217507c7656904b8e6aa1bcc0d6",
+        "hash": "sha256-j3Uiz+Wn9jWegwrJvCZZymLNrzo5zn5GyPBIn6+6V2w="
+      },
+      "samplePatch": "diff --git a/gradle/wrapper/gradle-wrapper.properties b/gradle/wrapper/gradle-wrapper.properties\nindex df6a6ad..500b388 100644\n--- a/gradle/wrapper/gradle-wrapper.properties\n+++ b/gradle/wrapper/gradle-wrapper.properties\n@@ -1,9 +1,11 @@\n distributionBase=GRADLE_USER_HOME\n distributionPath=wrapper/dists\n-distributionUrl=https\\://services.gradle.org/distributions/gradle-9.5.1-bin.zip\n+distributionUrl=https\\://services.gradle.org/distributions/gradle-9.9.0-bin.zip\n networkTimeout=10000\n retries=0\n retryBackOffMs=500\n validateDistributionUrl=true\n zipStoreBase=GRADLE_USER_HOME\n zipStorePath=wrapper/dists\n+\n+distributionSha256Sum=0b00b0ffe07c4d4789c12d4935a44a7057d55774b7540bd4a3f76f336deb177a",
+      "ordinaryTests": {
+        "tests": 81,
+        "failures": 0,
+        "skipped": 4
+      },
+      "pureTests": {
+        "tests": 81,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 4
+      },
+      "downloadCacheEmpty": true,
+      "ordinaryNixBuild": {
+        "derivation": "/nix/store/0h3pn7ncci31q1zg5ssr6m6y3lhg3wnj-petclinic-ordinary-offline.drv",
+        "output": "/nix/store/wa8458zn145r5dmhlzvbzmi7chzrwzci-petclinic-ordinary-offline",
+        "pathInfo": {
+          "/nix/store/wa8458zn145r5dmhlzvbzmi7chzrwzci-petclinic-ordinary-offline": {
+            "ca": null,
+            "deriver": "/nix/store/0h3pn7ncci31q1zg5ssr6m6y3lhg3wnj-petclinic-ordinary-offline.drv",
+            "narHash": "sha256-8MH7nYtIB/ZpgYA62ovzZVUVPnWP0OUt+uG0EySjDB4=",
+            "narSize": 91464,
+            "references": [],
+            "registrationTime": 1794053104,
+            "signatures": [],
+            "storeDir": "/nix/store",
+            "ultimate": true,
+            "version": 1
+          }
+        }
+      },
+      "workerBuild": {
+        "derivation": "/nix/store/ydik3i34cw2ipm0l4ilkvk2rxwqjkv3h-gradle-worker-transport-observation.drv",
+        "output": "/nix/store/69r49dna5fkbzh3s04minipyrl5wfdsr-gradle-worker-transport-observation",
+        "pathInfo": {
+          "/nix/store/69r49dna5fkbzh3s04minipyrl5wfdsr-gradle-worker-transport-observation": {
+            "ca": null,
+            "deriver": "/nix/store/ydik3i34cw2ipm0l4ilkvk2rxwqjkv3h-gradle-worker-transport-observation.drv",
+            "narHash": "sha256-uvAhUHwzedebKpr6CF18UiwynaFfYFzDKrfSQ8inxq0=",
+            "narSize": 2368,
+            "references": [
+              "/nix/store/f2rlfhmy8g9j37idqlm29lijzimlrrld-gradle-9.9.0",
+              "/nix/store/ry8szmmd7pymhc0cgdnwf7mb5083j5mc-openjdk-headless-17.0.20.1+1"
+            ],
+            "registrationTime": 1794053197,
+            "signatures": [],
+            "storeDir": "/nix/store",
+            "ultimate": true,
+            "version": 1
+          }
+        }
+      },
+      "purePackage": {
+        "derivation": "/nix/store/96bvc1pvks8001s61pf6qx4lwjra0wf7-spring-petclinic.drv",
+        "output": "/nix/store/lb1sg92h24isc7rzw2xd22nahd3shak2-spring-petclinic",
+        "pathInfo": {
+          "/nix/store/lb1sg92h24isc7rzw2xd22nahd3shak2-spring-petclinic": {
+            "ca": null,
+            "deriver": "/nix/store/96bvc1pvks8001s61pf6qx4lwjra0wf7-spring-petclinic.drv",
+            "narHash": "sha256-XjT/Nrc5ux4flhKmYBfDrUf5DJoX8pejmrHibm5zzig=",
+            "narSize": 66985216,
+            "references": [],
+            "registrationTime": 1794053261,
+            "signatures": [],
+            "storeDir": "/nix/store",
+            "ultimate": true,
+            "version": 1
+          }
+        }
+      },
+      "receiptSha256": "e6f6202fcd95736ecffaa4893394d6de47df56a1414bd73824d1d17296ed7e94"
+    }
+  ],
+  "releaseAssets": {
+    "release-manifest.json": "03000e80fea9d0e59a4f2970866681eff0be4df2d7c396de52f3776a0ecbe8af",
+    "source.tar.gz": "ad49f70c00d4da2cd69c3489e1949ed721d78a19aa61caf0b9b173680d354744"
+  },
+  "releaseSourceNarHash": "sha256-ueLaprdMJcfAyfKkCKCRmMCVqX570dLZyC3+5B/lPVY=",
+  "releaseTrackedBytesAndModesVerified": 258,
+  "releasedNixClosure": {
+    "release": "v0.1.21",
+    "sourceCommit": "1a5653242018a7c5939e5fd10f6f2de52feadfad",
+    "lockedInputClosureMatchesMain": true,
+    "sourceArchive": {
+      "inputs": {
+        "caisson": {
+          "inputs": {
+            "caisson-core": {
+              "inputs": {},
+              "path": "/nix/store/0i6cx57gwfh5rqflcs972prg2ls2qrfl-source"
+            },
+            "flake-parts": {
+              "inputs": {},
+              "path": "/nix/store/9iv83r72z5xwgylkwms1qip1ijnr6jqs-source"
+            },
+            "nixpkgs-lib": {
+              "inputs": {},
+              "path": "/nix/store/maxk78bmn4pqy33sk9fd92iblnv2clsc-source"
+            }
+          },
+          "path": "/nix/store/r2x7hlb7nbjvr91di80lb2k2rf847bpw-source"
+        },
+        "flake-parts": {
+          "inputs": {
+            "nixpkgs-lib": {
+              "inputs": {},
+              "path": "/nix/store/z4gqifdz68qaafd0x4n8alhicz1sjcmx-source"
+            }
+          },
+          "path": "/nix/store/6xr58mfvs42ixw6428x3vm9l5h88l2z7-source"
+        },
+        "nixpkgs": {
+          "inputs": {},
+          "path": "/nix/store/cm5m4hjjh37s6z82rwa0vhkbcga3m8bq-source"
+        },
+        "nixpkgs-lib": {
+          "inputs": {},
+          "path": "/nix/store/ksw7r2jsbsjvhr8nxbpqb6sjkjcq0n0y-source"
+        },
+        "purifier": {
+          "inputs": {
+            "caisson": {
+              "inputs": {
+                "caisson-core": {
+                  "inputs": {},
+                  "path": "/nix/store/0i6cx57gwfh5rqflcs972prg2ls2qrfl-source"
+                },
+                "flake-parts": {
+                  "inputs": {},
+                  "path": "/nix/store/9iv83r72z5xwgylkwms1qip1ijnr6jqs-source"
+                },
+                "nixpkgs-lib": {
+                  "inputs": {},
+                  "path": "/nix/store/maxk78bmn4pqy33sk9fd92iblnv2clsc-source"
+                }
+              },
+              "path": "/nix/store/r2x7hlb7nbjvr91di80lb2k2rf847bpw-source"
+            },
+            "flake-parts": {
+              "inputs": {
+                "nixpkgs-lib": {
+                  "inputs": {},
+                  "path": "/nix/store/z4gqifdz68qaafd0x4n8alhicz1sjcmx-source"
+                }
+              },
+              "path": "/nix/store/6xr58mfvs42ixw6428x3vm9l5h88l2z7-source"
+            },
+            "nixpkgs": {
+              "inputs": {},
+              "path": "/nix/store/cm5m4hjjh37s6z82rwa0vhkbcga3m8bq-source"
+            },
+            "nixpkgs-lib": {
+              "inputs": {},
+              "path": "/nix/store/z4gqifdz68qaafd0x4n8alhicz1sjcmx-source"
+            }
+          },
+          "path": "/nix/store/75wc7321969zfq7ybs5mr61bxl6271j7-source"
+        }
+      },
+      "path": "/nix/store/iq5k2i954jg5m9vagc8q2wy3kvn263dr-source"
+    },
+    "defaultCliDerivationEvaluated": "/nix/store/ghwyhz6nzn73ymmh411wv71myil1da5c-gradle-purifier.drv",
+    "scope": "released source closure and package evaluation, not additional runtime execution"
+  },
+  "upstreamSupportRefresh": {
+    "observedAtUtc": "2026-11-07T12:19:11.031185+00:00",
+    "currentVersion": "9.9.0",
+    "latestPreviousMajorStable": {
+      "version": "8.14.6",
+      "buildTime": "20261008100136+0000",
+      "commitId": "88c80c1459b75a6d077d24eebe7905ffa3e1293f",
+      "current": false,
+      "snapshot": false,
+      "nightly": false,
+      "releaseNightly": false,
+      "activeRc": false,
+      "rcFor": "",
+      "milestoneFor": "",
+      "broken": false,
+      "downloadUrl": "https://services.gradle.org/distributions/gradle-8.14.6-bin.zip",
+      "checksumUrl": "https://services.gradle.org/distributions/gradle-8.14.6-bin.zip.sha256",
+      "checksum": "7988ed071b2a07900e2ec715fca15c6ab72bce6db433af301fa7fa7e9407bd24",
+      "wrapperChecksumUrl": "https://services.gradle.org/distributions/gradle-8.14.6-wrapper.jar.sha256",
+      "wrapperChecksum": "ad16bca46cb71bb5887c546860d93992aeee35c1fdaf4a242b0a612375d937e0",
+      "released": true,
+      "releasedOrActiveRc": true,
+      "publicationSlot": "8.14.6",
+      "final": true
+    },
+    "previousMajorChecksum": "7988ed071b2a07900e2ec715fca15c6ab72bce6db433af301fa7fa7e9407bd24",
+    "versionsAllSha256": "de6a7f3038e88c69b34e6d21f4d944f4d995a1e5e2d796e40c215f92a6c03d99",
+    "policyUrl": "https://docs.gradle.org/current/userguide/feature_lifecycle.html#eol_support",
+    "classification": "9.9 current minor; 8.14 final minor of previous major maintenance per policy; exact runtime evidence scoped separately"
+  },
+  "scopeLimitations": [
+    "Only executed exact Gradle8.14.6/9.9.0 points and defaultJDK17 mode on x86_64-linux/aarch64-darwin.",
+    "Darwin Nix build SDK is an explicitly identified source-component derivative; ordinary host SDK remains official.",
+    "Each sample reports81total77executed4unchangedupstreamDocker-availabilityskips0failures/errors.",
+    "No explicitIPv6 denial credit under unavailable IPv6 stack.",
+    "No Tier2 metadata/site publication performed by producer owner."
+  ]
+}

@@ -1,0 +1,575 @@
+{
+  "tier": 3,
+  "reviewedRevision": "09af9ee2cd606cd2a90ad932acec18908e5b272f",
+  "reviewedAt": "2026-11-06",
+  "rationale": "Reviewed native Linux derivations evaluate and execute a concrete sample with substantive tests. Tier3 remains appropriate because native Darwin execution is absent. Independent sample breadth and historical compatibility are not established; maintained-version judgment is limited to the explicitly inspected SDK points.",
+  "criteria": {
+    "evaluation": {
+      "state": "met",
+      "summary": "Current main  09af9ee2cd606cd2a90ad932acec18908e5b272f evaluates and natively builds checks.x86_64-linux.fixture-tests at /nix/store/jf0hqv0c91ry8k61lzk9b9g6f6c52l2y-workspace-root-tests.drv. The separate real-world giget check uses pnpm 11.27.0, while the workspace test uses pnpm 12.9.0.",
+      "evidence": [
+        "https://github.com/nix-purifiers/pnpm-purifier/actions/runs/42154533709",
+        "https://github.com/nix-purifiers/pnpm-purifier/blob/09af9ee2cd606cd2a90ad932acec18908e5b272f/tests/default.nix",
+        "https://nix-purifiers.github.io/evidence/0943b73f7a49f4badc51c3e24a1a8ec541a49c893894008de47096e960a3352e.json"
+      ]
+    },
+    "goodTests": {
+      "state": "met",
+      "summary": "Nix checks build/run workspace packages and tests, giget, source/prepare hooks, browser and npm projections, integrity, platform filters, malformed/stale/tampered locks and local publication. Native CI separately verifies relock/update/offline/rebuild. Available-pnpm is an evaluation assertion, not an alternate-version runtime test.",
+      "evidence": [
+        "https://github.com/nix-purifiers/pnpm-purifier/actions/runs/42154533709",
+        "https://github.com/nix-purifiers/pnpm-purifier/blob/09af9ee2cd606cd2a90ad932acec18908e5b272f/tests/default.nix",
+        "https://github.com/nix-purifiers/pnpm-purifier/blob/09af9ee2cd606cd2a90ad932acec18908e5b272f/.github/workflows/check.yml",
+        "https://nix-purifiers.github.io/evidence/0943b73f7a49f4badc51c3e24a1a8ec541a49c893894008de47096e960a3352e.json"
+      ]
+    },
+    "linux": {
+      "state": "met",
+      "summary": "Native x86_64-linux and aarch64-linux CI jobs completed successfully and built/run the sample checks. Exact per-system check derivations and successful building traces are retained; ten x86_64 outputs were also realized locally by exact CI drv identity.",
+      "evidence": [
+        "https://github.com/nix-purifiers/pnpm-purifier/actions/runs/42154533709",
+        "https://github.com/nix-purifiers/pnpm-purifier/blob/09af9ee2cd606cd2a90ad932acec18908e5b272f/tests/default.nix",
+        "https://nix-purifiers.github.io/evidence/0943b73f7a49f4badc51c3e24a1a8ec541a49c893894008de47096e960a3352e.json"
+      ]
+    },
+    "darwin": {
+      "state": "not-met",
+      "summary": "Inspected current-main workflow schedules only ubuntu-latest and ubuntu-24.04-arm runtime jobs. No successful native Darwin check/SDK/output receipt is present. Declared aarch64-darwin support or --all-systems --no-build evaluation does not satisfy runtime execution.",
+      "evidence": [
+        "https://github.com/nix-purifiers/pnpm-purifier/blob/09af9ee2cd606cd2a90ad932acec18908e5b272f/.github/workflows/check.yml",
+        "https://github.com/nix-purifiers/pnpm-purifier/actions/runs/42154533709",
+        "https://nix-purifiers.github.io/evidence/0943b73f7a49f4badc51c3e24a1a8ec541a49c893894008de47096e960a3352e.json"
+      ]
+    },
+    "oneVersion": {
+      "state": "met",
+      "summary": "Native workspace builds/tests execute pnpm 12.9.0 and Node24.21.0; the independent giget3.3.1 build/help check executes pnpm 11.27.0 with Node24.21.0. Those are separate exact SDK bindings, not a continuous version range.",
+      "evidence": [
+        "https://github.com/nix-purifiers/pnpm-purifier/actions/runs/42154533709",
+        "https://github.com/nix-purifiers/pnpm-purifier/blob/09af9ee2cd606cd2a90ad932acec18908e5b272f/tests/default.nix",
+        "https://nix-purifiers.github.io/evidence/0943b73f7a49f4badc51c3e24a1a8ec541a49c893894008de47096e960a3352e.json"
+      ]
+    },
+    "nonEolVersions": {
+      "state": "met",
+      "summary": "Official installation policy identifies12 as current release line; exact12.9.0 executes with Node24.21.0. GitHub latest12.18.0 is newer, but no primary policy makes every earlier12 patch EOL. This passes for the current supported line point, without claiming latest-patch execution or all12.x patches.",
+      "evidence": [
+        "https://pnpm.io/installation",
+        "https://github.com/nix-purifiers/pnpm-purifier/actions/runs/42154533709",
+        "https://nix-purifiers.github.io/evidence/0943b73f7a49f4badc51c3e24a1a8ec541a49c893894008de47096e960a3352e.json"
+      ]
+    },
+    "manySamples": {
+      "state": "not-met",
+      "summary": "Independent unjs/giget3.3.1 atf1dad453055b97a81d5227edce7262c8dcaf53d2, built in sandbox and invoked with --help; authored workspace/source/prepare fixtures are not independent samples. Inspection establishes useful concrete cases but not a broad independent upstream sample corpus covering different project structures; authored variants, dependency nodes and tests of one upstream project are not counted as separate projects.",
+      "evidence": [
+        "https://github.com/nix-purifiers/pnpm-purifier/actions/runs/42154533709",
+        "https://github.com/nix-purifiers/pnpm-purifier/blob/09af9ee2cd606cd2a90ad932acec18908e5b272f/tests/default.nix",
+        "https://nix-purifiers.github.io/evidence/0943b73f7a49f4badc51c3e24a1a8ec541a49c893894008de47096e960a3352e.json"
+      ]
+    },
+    "longCompatibility": {
+      "state": "not-met",
+      "summary": "Current-major12.9.0 execution and fixtures do not establish years of pnpm compatibility. Producer candidate adds exact10/11/12 runtime points but remains separate and does not imply continuous ranges.",
+      "evidence": [
+        "https://github.com/nix-purifiers/pnpm-purifier/actions/runs/42154533709",
+        "https://github.com/nix-purifiers/pnpm-purifier/blob/09af9ee2cd606cd2a90ad932acec18908e5b272f/tests/default.nix",
+        "https://nix-purifiers.github.io/evidence/0943b73f7a49f4badc51c3e24a1a8ec541a49c893894008de47096e960a3352e.json"
+      ]
+    }
+  },
+  "sampleBuilds": [
+    {
+      "name": "Authored fixture tests/fixtures/workspace (repository-fixture)",
+      "evidence": [
+        "https://github.com/nix-purifiers/pnpm-purifier/actions/runs/42154533709",
+        "https://github.com/nix-purifiers/pnpm-purifier/blob/09af9ee2cd606cd2a90ad932acec18908e5b272f/tests/default.nix",
+        "https://nix-purifiers.github.io/evidence/0943b73f7a49f4badc51c3e24a1a8ec541a49c893894008de47096e960a3352e.json"
+      ]
+    },
+    {
+      "name": "giget f1dad453055b97a81d5227edce7262c8dcaf53d2 (independent-upstream)",
+      "evidence": [
+        "https://github.com/nix-purifiers/pnpm-purifier/actions/runs/42154533709",
+        "https://github.com/nix-purifiers/pnpm-purifier/blob/09af9ee2cd606cd2a90ad932acec18908e5b272f/tests/default.nix",
+        "https://nix-purifiers.github.io/evidence/0943b73f7a49f4badc51c3e24a1a8ec541a49c893894008de47096e960a3352e.json"
+      ]
+    }
+  ],
+  "derivationReview": {
+    "criteria": {
+      "evaluation": {
+        "state": "met",
+        "summary": "Current main  09af9ee2cd606cd2a90ad932acec18908e5b272f evaluates and natively builds checks.x86_64-linux.fixture-tests at /nix/store/jf0hqv0c91ry8k61lzk9b9g6f6c52l2y-workspace-root-tests.drv. The separate real-world giget check uses pnpm 11.27.0, while the workspace test uses pnpm 12.9.0.",
+        "derivations": [
+          "pnpm-purifier:checks.x86_64-linux.fixture-tests"
+        ],
+        "gap": null,
+        "sources": [
+          "https://github.com/nix-purifiers/pnpm-purifier/actions/runs/42154533709",
+          "https://github.com/nix-purifiers/pnpm-purifier/blob/09af9ee2cd606cd2a90ad932acec18908e5b272f/tests/default.nix",
+          "https://nix-purifiers.github.io/evidence/0943b73f7a49f4badc51c3e24a1a8ec541a49c893894008de47096e960a3352e.json"
+        ]
+      },
+      "goodTests": {
+        "state": "met",
+        "summary": "Nix checks build/run workspace packages and tests, giget, source/prepare hooks, browser and npm projections, integrity, platform filters, malformed/stale/tampered locks and local publication. Native CI separately verifies relock/update/offline/rebuild. Available-pnpm is an evaluation assertion, not an alternate-version runtime test.",
+        "derivations": [
+          "pnpm-purifier:checks.x86_64-linux.fixture-tests",
+          "pnpm-purifier:checks.x86_64-linux.unit",
+          "pnpm-purifier:checks.x86_64-linux.sources",
+          "pnpm-purifier:checks.x86_64-linux.prepare",
+          "pnpm-purifier:checks.x86_64-linux.integrity",
+          "pnpm-purifier:checks.x86_64-linux.publish",
+          "pnpm-purifier:checks.x86_64-linux.platform-filters",
+          "pnpm-purifier:checks.x86_64-linux.real-world"
+        ],
+        "gap": null,
+        "sources": [
+          "https://github.com/nix-purifiers/pnpm-purifier/actions/runs/42154533709",
+          "https://github.com/nix-purifiers/pnpm-purifier/blob/09af9ee2cd606cd2a90ad932acec18908e5b272f/tests/default.nix",
+          "https://github.com/nix-purifiers/pnpm-purifier/blob/09af9ee2cd606cd2a90ad932acec18908e5b272f/.github/workflows/check.yml",
+          "https://nix-purifiers.github.io/evidence/0943b73f7a49f4badc51c3e24a1a8ec541a49c893894008de47096e960a3352e.json"
+        ]
+      },
+      "linux": {
+        "state": "met",
+        "summary": "Native x86_64-linux and aarch64-linux CI jobs completed successfully and built/run the sample checks. Exact per-system check derivations and successful building traces are retained; ten x86_64 outputs were also realized locally by exact CI drv identity.",
+        "derivations": [
+          "pnpm-purifier:checks.x86_64-linux.fixture-tests"
+        ],
+        "gap": null,
+        "sources": [
+          "https://github.com/nix-purifiers/pnpm-purifier/actions/runs/42154533709",
+          "https://github.com/nix-purifiers/pnpm-purifier/blob/09af9ee2cd606cd2a90ad932acec18908e5b272f/tests/default.nix",
+          "https://nix-purifiers.github.io/evidence/0943b73f7a49f4badc51c3e24a1a8ec541a49c893894008de47096e960a3352e.json"
+        ]
+      },
+      "darwin": {
+        "state": "not-met",
+        "summary": "Inspected current-main workflow schedules only ubuntu-latest and ubuntu-24.04-arm runtime jobs. No successful native Darwin check/SDK/output receipt is present. Declared aarch64-darwin support or --all-systems --no-build evaluation does not satisfy runtime execution.",
+        "derivations": [],
+        "gap": "Inspected current-main workflow schedules only ubuntu-latest and ubuntu-24.04-arm runtime jobs. No successful native Darwin check/SDK/output receipt is present. Declared aarch64-darwin support or --all-systems --no-build evaluation does not satisfy runtime execution.",
+        "sources": [
+          "https://github.com/nix-purifiers/pnpm-purifier/blob/09af9ee2cd606cd2a90ad932acec18908e5b272f/.github/workflows/check.yml",
+          "https://github.com/nix-purifiers/pnpm-purifier/actions/runs/42154533709",
+          "https://nix-purifiers.github.io/evidence/0943b73f7a49f4badc51c3e24a1a8ec541a49c893894008de47096e960a3352e.json"
+        ]
+      },
+      "oneVersion": {
+        "state": "met",
+        "summary": "Native workspace builds/tests execute pnpm 12.9.0 and Node24.21.0; the independent giget3.3.1 build/help check executes pnpm 11.27.0 with Node24.21.0. Those are separate exact SDK bindings, not a continuous version range.",
+        "derivations": [
+          "pnpm-purifier:checks.x86_64-linux.fixture-tests"
+        ],
+        "gap": null,
+        "sources": [
+          "https://github.com/nix-purifiers/pnpm-purifier/actions/runs/42154533709",
+          "https://github.com/nix-purifiers/pnpm-purifier/blob/09af9ee2cd606cd2a90ad932acec18908e5b272f/tests/default.nix",
+          "https://nix-purifiers.github.io/evidence/0943b73f7a49f4badc51c3e24a1a8ec541a49c893894008de47096e960a3352e.json"
+        ]
+      },
+      "nonEolVersions": {
+        "state": "met",
+        "summary": "Official installation policy identifies12 as current release line; exact12.9.0 executes with Node24.21.0. GitHub latest12.18.0 is newer, but no primary policy makes every earlier12 patch EOL. This passes for the current supported line point, without claiming latest-patch execution or all12.x patches.",
+        "derivations": [
+          "pnpm-purifier:checks.x86_64-linux.fixture-tests"
+        ],
+        "gap": null,
+        "sources": [
+          "https://pnpm.io/installation",
+          "https://github.com/nix-purifiers/pnpm-purifier/actions/runs/42154533709",
+          "https://nix-purifiers.github.io/evidence/0943b73f7a49f4badc51c3e24a1a8ec541a49c893894008de47096e960a3352e.json"
+        ]
+      },
+      "manySamples": {
+        "state": "not-met",
+        "summary": "Independent unjs/giget3.3.1 atf1dad453055b97a81d5227edce7262c8dcaf53d2, built in sandbox and invoked with --help; authored workspace/source/prepare fixtures are not independent samples. Inspection establishes useful concrete cases but not a broad independent upstream sample corpus covering different project structures; authored variants, dependency nodes and tests of one upstream project are not counted as separate projects.",
+        "derivations": [],
+        "gap": "Independent unjs/giget3.3.1 atf1dad453055b97a81d5227edce7262c8dcaf53d2, built in sandbox and invoked with --help; authored workspace/source/prepare fixtures are not independent samples. Inspection establishes useful concrete cases but not a broad independent upstream sample corpus covering different project structures; authored variants, dependency nodes and tests of one upstream project are not counted as separate projects.",
+        "sources": [
+          "https://github.com/nix-purifiers/pnpm-purifier/actions/runs/42154533709",
+          "https://github.com/nix-purifiers/pnpm-purifier/blob/09af9ee2cd606cd2a90ad932acec18908e5b272f/tests/default.nix",
+          "https://nix-purifiers.github.io/evidence/0943b73f7a49f4badc51c3e24a1a8ec541a49c893894008de47096e960a3352e.json"
+        ]
+      },
+      "longCompatibility": {
+        "state": "not-met",
+        "summary": "Current-major12.9.0 execution and fixtures do not establish years of pnpm compatibility. Producer candidate adds exact10/11/12 runtime points but remains separate and does not imply continuous ranges.",
+        "derivations": [],
+        "gap": "Current-major12.9.0 execution and fixtures do not establish years of pnpm compatibility. Producer candidate adds exact10/11/12 runtime points but remains separate and does not imply continuous ranges.",
+        "sources": [
+          "https://github.com/nix-purifiers/pnpm-purifier/actions/runs/42154533709",
+          "https://github.com/nix-purifiers/pnpm-purifier/blob/09af9ee2cd606cd2a90ad932acec18908e5b272f/tests/default.nix",
+          "https://nix-purifiers.github.io/evidence/0943b73f7a49f4badc51c3e24a1a8ec541a49c893894008de47096e960a3352e.json"
+        ]
+      }
+    },
+    "derivations": {
+      "pnpm-purifier:checks.x86_64-linux.fixture-tests": {
+        "revision": "09af9ee2cd606cd2a90ad932acec18908e5b272f",
+        "system": "x86_64-linux",
+        "drvPath": "/nix/store/jf0hqv0c91ry8k61lzk9b9g6f6c52l2y-workspace-root-tests.drv",
+        "sourceNarHash": "sha256-pQOKAjmYm+E9glmaA0//sgYrtopLt4/sc6SdmC2e5vY=",
+        "repository": "nix-purifiers/pnpm-purifier",
+        "check": {
+          "kind": "flake-attribute",
+          "value": "checks.x86_64-linux.fixture-tests",
+          "replay": null
+        },
+        "outputs": {
+          "out": "/nix/store/576xalpp4ni6rsnz9ry9jxs1341zplcz-workspace-root-tests"
+        },
+        "outputNarHashes": {
+          "out": "sha256-d6xi4mKdjkX2JFicDIv5niSzpyI0m/Hnm8GGAIU04kY="
+        },
+        "sdkVersions": {
+          "pnpm": "12.9.0",
+          "nodejs": "24.21.0"
+        },
+        "sampleSources": [
+          {
+            "repository": "https://github.com/nix-purifiers/pnpm-purifier",
+            "revision": "09af9ee2cd606cd2a90ad932acec18908e5b272f",
+            "sourceNarHash": "sha256-pQOKAjmYm+E9glmaA0//sgYrtopLt4/sc6SdmC2e5vY="
+          }
+        ],
+        "evaluation": null,
+        "build": {
+          "status": "success",
+          "executedSystem": "x86_64-linux",
+          "sourceRevision": "09af9ee2cd606cd2a90ad932acec18908e5b272f",
+          "sourceNarHash": "sha256-pQOKAjmYm+E9glmaA0//sgYrtopLt4/sc6SdmC2e5vY=",
+          "drvPath": "/nix/store/jf0hqv0c91ry8k61lzk9b9g6f6c52l2y-workspace-root-tests.drv",
+          "outputs": {
+            "out": "/nix/store/576xalpp4ni6rsnz9ry9jxs1341zplcz-workspace-root-tests"
+          },
+          "outputNarHashes": {
+            "out": "sha256-d6xi4mKdjkX2JFicDIv5niSzpyI0m/Hnm8GGAIU04kY="
+          },
+          "sdkVersions": {
+            "pnpm": "12.9.0",
+            "nodejs": "24.21.0"
+          },
+          "sampleSources": [
+            {
+              "repository": "https://github.com/nix-purifiers/pnpm-purifier",
+              "revision": "09af9ee2cd606cd2a90ad932acec18908e5b272f",
+              "sourceNarHash": "sha256-pQOKAjmYm+E9glmaA0//sgYrtopLt4/sc6SdmC2e5vY="
+            }
+          ],
+          "receipt": "https://nix-purifiers.github.io/evidence/e3bdeb5bd839634288b697a256b28afca897326741ae895a76929965cb3d6bda.json",
+          "artifactSha256": "e3bdeb5bd839634288b697a256b28afca897326741ae895a76929965cb3d6bda"
+        }
+      },
+      "pnpm-purifier:checks.x86_64-linux.integrity": {
+        "revision": "09af9ee2cd606cd2a90ad932acec18908e5b272f",
+        "system": "x86_64-linux",
+        "drvPath": "/nix/store/bdhl6fcklvzd95dlwfvbqssg8315xrrw-integrity.drv",
+        "sourceNarHash": "sha256-pQOKAjmYm+E9glmaA0//sgYrtopLt4/sc6SdmC2e5vY=",
+        "repository": "nix-purifiers/pnpm-purifier",
+        "check": {
+          "kind": "flake-attribute",
+          "value": "checks.x86_64-linux.integrity",
+          "replay": null
+        },
+        "outputs": {
+          "out": "/nix/store/xs59bdlxgvkxc6z1563qqvv850fw52qb-integrity"
+        },
+        "outputNarHashes": {
+          "out": "sha256-d6xi4mKdjkX2JFicDIv5niSzpyI0m/Hnm8GGAIU04kY="
+        },
+        "sdkVersions": {},
+        "sampleSources": [],
+        "evaluation": null,
+        "build": {
+          "status": "success",
+          "executedSystem": "x86_64-linux",
+          "sourceRevision": "09af9ee2cd606cd2a90ad932acec18908e5b272f",
+          "sourceNarHash": "sha256-pQOKAjmYm+E9glmaA0//sgYrtopLt4/sc6SdmC2e5vY=",
+          "drvPath": "/nix/store/bdhl6fcklvzd95dlwfvbqssg8315xrrw-integrity.drv",
+          "outputs": {
+            "out": "/nix/store/xs59bdlxgvkxc6z1563qqvv850fw52qb-integrity"
+          },
+          "outputNarHashes": {
+            "out": "sha256-d6xi4mKdjkX2JFicDIv5niSzpyI0m/Hnm8GGAIU04kY="
+          },
+          "sdkVersions": {},
+          "sampleSources": [],
+          "receipt": "https://nix-purifiers.github.io/evidence/e3bdeb5bd839634288b697a256b28afca897326741ae895a76929965cb3d6bda.json",
+          "artifactSha256": "e3bdeb5bd839634288b697a256b28afca897326741ae895a76929965cb3d6bda"
+        }
+      },
+      "pnpm-purifier:checks.x86_64-linux.platform-filters": {
+        "revision": "09af9ee2cd606cd2a90ad932acec18908e5b272f",
+        "system": "x86_64-linux",
+        "drvPath": "/nix/store/2zdc92iafd7k0syp26lmd4dzqpjn1v9x-platform-filters.drv",
+        "sourceNarHash": "sha256-pQOKAjmYm+E9glmaA0//sgYrtopLt4/sc6SdmC2e5vY=",
+        "repository": "nix-purifiers/pnpm-purifier",
+        "check": {
+          "kind": "flake-attribute",
+          "value": "checks.x86_64-linux.platform-filters",
+          "replay": null
+        },
+        "outputs": {
+          "out": "/nix/store/6zd3vcf36d8sf53yn9l0r7zs2ya1yvk6-platform-filters"
+        },
+        "outputNarHashes": {
+          "out": "sha256-d6xi4mKdjkX2JFicDIv5niSzpyI0m/Hnm8GGAIU04kY="
+        },
+        "sdkVersions": {},
+        "sampleSources": [],
+        "evaluation": null,
+        "build": {
+          "status": "success",
+          "executedSystem": "x86_64-linux",
+          "sourceRevision": "09af9ee2cd606cd2a90ad932acec18908e5b272f",
+          "sourceNarHash": "sha256-pQOKAjmYm+E9glmaA0//sgYrtopLt4/sc6SdmC2e5vY=",
+          "drvPath": "/nix/store/2zdc92iafd7k0syp26lmd4dzqpjn1v9x-platform-filters.drv",
+          "outputs": {
+            "out": "/nix/store/6zd3vcf36d8sf53yn9l0r7zs2ya1yvk6-platform-filters"
+          },
+          "outputNarHashes": {
+            "out": "sha256-d6xi4mKdjkX2JFicDIv5niSzpyI0m/Hnm8GGAIU04kY="
+          },
+          "sdkVersions": {},
+          "sampleSources": [],
+          "receipt": "https://nix-purifiers.github.io/evidence/e3bdeb5bd839634288b697a256b28afca897326741ae895a76929965cb3d6bda.json",
+          "artifactSha256": "e3bdeb5bd839634288b697a256b28afca897326741ae895a76929965cb3d6bda"
+        }
+      },
+      "pnpm-purifier:checks.x86_64-linux.prepare": {
+        "revision": "09af9ee2cd606cd2a90ad932acec18908e5b272f",
+        "system": "x86_64-linux",
+        "drvPath": "/nix/store/p2as1dhhwbd68bsqxxnan3jx6xpbv9h0-prepare.drv",
+        "sourceNarHash": "sha256-pQOKAjmYm+E9glmaA0//sgYrtopLt4/sc6SdmC2e5vY=",
+        "repository": "nix-purifiers/pnpm-purifier",
+        "check": {
+          "kind": "flake-attribute",
+          "value": "checks.x86_64-linux.prepare",
+          "replay": null
+        },
+        "outputs": {
+          "out": "/nix/store/bsza3bbkzqbaa7gk6pph0wqvd425j891-prepare"
+        },
+        "outputNarHashes": {
+          "out": "sha256-d6xi4mKdjkX2JFicDIv5niSzpyI0m/Hnm8GGAIU04kY="
+        },
+        "sdkVersions": {},
+        "sampleSources": [],
+        "evaluation": null,
+        "build": {
+          "status": "success",
+          "executedSystem": "x86_64-linux",
+          "sourceRevision": "09af9ee2cd606cd2a90ad932acec18908e5b272f",
+          "sourceNarHash": "sha256-pQOKAjmYm+E9glmaA0//sgYrtopLt4/sc6SdmC2e5vY=",
+          "drvPath": "/nix/store/p2as1dhhwbd68bsqxxnan3jx6xpbv9h0-prepare.drv",
+          "outputs": {
+            "out": "/nix/store/bsza3bbkzqbaa7gk6pph0wqvd425j891-prepare"
+          },
+          "outputNarHashes": {
+            "out": "sha256-d6xi4mKdjkX2JFicDIv5niSzpyI0m/Hnm8GGAIU04kY="
+          },
+          "sdkVersions": {},
+          "sampleSources": [],
+          "receipt": "https://nix-purifiers.github.io/evidence/e3bdeb5bd839634288b697a256b28afca897326741ae895a76929965cb3d6bda.json",
+          "artifactSha256": "e3bdeb5bd839634288b697a256b28afca897326741ae895a76929965cb3d6bda"
+        }
+      },
+      "pnpm-purifier:checks.x86_64-linux.publish": {
+        "revision": "09af9ee2cd606cd2a90ad932acec18908e5b272f",
+        "system": "x86_64-linux",
+        "drvPath": "/nix/store/fiyjsdqwlh7dng5m1gkrwy159padsfak-publish.drv",
+        "sourceNarHash": "sha256-pQOKAjmYm+E9glmaA0//sgYrtopLt4/sc6SdmC2e5vY=",
+        "repository": "nix-purifiers/pnpm-purifier",
+        "check": {
+          "kind": "flake-attribute",
+          "value": "checks.x86_64-linux.publish",
+          "replay": null
+        },
+        "outputs": {
+          "out": "/nix/store/1rqy58jirgykln8i55yv3p9mfhqp6r4p-publish"
+        },
+        "outputNarHashes": {
+          "out": "sha256-d6xi4mKdjkX2JFicDIv5niSzpyI0m/Hnm8GGAIU04kY="
+        },
+        "sdkVersions": {},
+        "sampleSources": [],
+        "evaluation": null,
+        "build": {
+          "status": "success",
+          "executedSystem": "x86_64-linux",
+          "sourceRevision": "09af9ee2cd606cd2a90ad932acec18908e5b272f",
+          "sourceNarHash": "sha256-pQOKAjmYm+E9glmaA0//sgYrtopLt4/sc6SdmC2e5vY=",
+          "drvPath": "/nix/store/fiyjsdqwlh7dng5m1gkrwy159padsfak-publish.drv",
+          "outputs": {
+            "out": "/nix/store/1rqy58jirgykln8i55yv3p9mfhqp6r4p-publish"
+          },
+          "outputNarHashes": {
+            "out": "sha256-d6xi4mKdjkX2JFicDIv5niSzpyI0m/Hnm8GGAIU04kY="
+          },
+          "sdkVersions": {},
+          "sampleSources": [],
+          "receipt": "https://nix-purifiers.github.io/evidence/e3bdeb5bd839634288b697a256b28afca897326741ae895a76929965cb3d6bda.json",
+          "artifactSha256": "e3bdeb5bd839634288b697a256b28afca897326741ae895a76929965cb3d6bda"
+        }
+      },
+      "pnpm-purifier:checks.x86_64-linux.real-world": {
+        "revision": "09af9ee2cd606cd2a90ad932acec18908e5b272f",
+        "system": "x86_64-linux",
+        "drvPath": "/nix/store/0q1h0kfkbxw5xbb0bkvsp3a0zj7s82y9-real-world.drv",
+        "sourceNarHash": "sha256-pQOKAjmYm+E9glmaA0//sgYrtopLt4/sc6SdmC2e5vY=",
+        "repository": "nix-purifiers/pnpm-purifier",
+        "check": {
+          "kind": "flake-attribute",
+          "value": "checks.x86_64-linux.real-world",
+          "replay": null
+        },
+        "outputs": {
+          "out": "/nix/store/qas3m0jmdwp9qr8vm0bgrwnn5nawbmya-real-world"
+        },
+        "outputNarHashes": {
+          "out": "sha256-d6xi4mKdjkX2JFicDIv5niSzpyI0m/Hnm8GGAIU04kY="
+        },
+        "sdkVersions": {
+          "pnpm": "11.27.0",
+          "nodejs": "24.21.0"
+        },
+        "sampleSources": [
+          {
+            "repository": "https://github.com/unjs/giget",
+            "revision": "f1dad453055b97a81d5227edce7262c8dcaf53d2",
+            "sourceNarHash": "sha256-hDKGYxozIV8UQTbPpJVs6jrDiPmcHK2EWRZ7WNfSYQ0="
+          }
+        ],
+        "evaluation": null,
+        "build": {
+          "status": "success",
+          "executedSystem": "x86_64-linux",
+          "sourceRevision": "09af9ee2cd606cd2a90ad932acec18908e5b272f",
+          "sourceNarHash": "sha256-pQOKAjmYm+E9glmaA0//sgYrtopLt4/sc6SdmC2e5vY=",
+          "drvPath": "/nix/store/0q1h0kfkbxw5xbb0bkvsp3a0zj7s82y9-real-world.drv",
+          "outputs": {
+            "out": "/nix/store/qas3m0jmdwp9qr8vm0bgrwnn5nawbmya-real-world"
+          },
+          "outputNarHashes": {
+            "out": "sha256-d6xi4mKdjkX2JFicDIv5niSzpyI0m/Hnm8GGAIU04kY="
+          },
+          "sdkVersions": {
+            "pnpm": "11.27.0",
+            "nodejs": "24.21.0"
+          },
+          "sampleSources": [
+            {
+              "repository": "https://github.com/unjs/giget",
+              "revision": "f1dad453055b97a81d5227edce7262c8dcaf53d2",
+              "sourceNarHash": "sha256-hDKGYxozIV8UQTbPpJVs6jrDiPmcHK2EWRZ7WNfSYQ0="
+            }
+          ],
+          "receipt": "https://nix-purifiers.github.io/evidence/e3bdeb5bd839634288b697a256b28afca897326741ae895a76929965cb3d6bda.json",
+          "artifactSha256": "e3bdeb5bd839634288b697a256b28afca897326741ae895a76929965cb3d6bda"
+        }
+      },
+      "pnpm-purifier:checks.x86_64-linux.sources": {
+        "revision": "09af9ee2cd606cd2a90ad932acec18908e5b272f",
+        "system": "x86_64-linux",
+        "drvPath": "/nix/store/ib1cx38lf14hdlhg9afaslixz5357q7d-sources.drv",
+        "sourceNarHash": "sha256-pQOKAjmYm+E9glmaA0//sgYrtopLt4/sc6SdmC2e5vY=",
+        "repository": "nix-purifiers/pnpm-purifier",
+        "check": {
+          "kind": "flake-attribute",
+          "value": "checks.x86_64-linux.sources",
+          "replay": null
+        },
+        "outputs": {
+          "out": "/nix/store/56b9g67hivw4jk5gm54cyhrcidvqkn5z-sources"
+        },
+        "outputNarHashes": {
+          "out": "sha256-d6xi4mKdjkX2JFicDIv5niSzpyI0m/Hnm8GGAIU04kY="
+        },
+        "sdkVersions": {},
+        "sampleSources": [],
+        "evaluation": null,
+        "build": {
+          "status": "success",
+          "executedSystem": "x86_64-linux",
+          "sourceRevision": "09af9ee2cd606cd2a90ad932acec18908e5b272f",
+          "sourceNarHash": "sha256-pQOKAjmYm+E9glmaA0//sgYrtopLt4/sc6SdmC2e5vY=",
+          "drvPath": "/nix/store/ib1cx38lf14hdlhg9afaslixz5357q7d-sources.drv",
+          "outputs": {
+            "out": "/nix/store/56b9g67hivw4jk5gm54cyhrcidvqkn5z-sources"
+          },
+          "outputNarHashes": {
+            "out": "sha256-d6xi4mKdjkX2JFicDIv5niSzpyI0m/Hnm8GGAIU04kY="
+          },
+          "sdkVersions": {},
+          "sampleSources": [],
+          "receipt": "https://nix-purifiers.github.io/evidence/e3bdeb5bd839634288b697a256b28afca897326741ae895a76929965cb3d6bda.json",
+          "artifactSha256": "e3bdeb5bd839634288b697a256b28afca897326741ae895a76929965cb3d6bda"
+        }
+      },
+      "pnpm-purifier:checks.x86_64-linux.unit": {
+        "revision": "09af9ee2cd606cd2a90ad932acec18908e5b272f",
+        "system": "x86_64-linux",
+        "drvPath": "/nix/store/mvb53ij6ynjsw62s1ykz0jb1q4q9bapl-unit.drv",
+        "sourceNarHash": "sha256-pQOKAjmYm+E9glmaA0//sgYrtopLt4/sc6SdmC2e5vY=",
+        "repository": "nix-purifiers/pnpm-purifier",
+        "check": {
+          "kind": "flake-attribute",
+          "value": "checks.x86_64-linux.unit",
+          "replay": null
+        },
+        "outputs": {
+          "out": "/nix/store/c53nx29ppwvy871abviqkhp1wgi9vxks-unit"
+        },
+        "outputNarHashes": {
+          "out": "sha256-d6xi4mKdjkX2JFicDIv5niSzpyI0m/Hnm8GGAIU04kY="
+        },
+        "sdkVersions": {},
+        "sampleSources": [],
+        "evaluation": null,
+        "build": {
+          "status": "success",
+          "executedSystem": "x86_64-linux",
+          "sourceRevision": "09af9ee2cd606cd2a90ad932acec18908e5b272f",
+          "sourceNarHash": "sha256-pQOKAjmYm+E9glmaA0//sgYrtopLt4/sc6SdmC2e5vY=",
+          "drvPath": "/nix/store/mvb53ij6ynjsw62s1ykz0jb1q4q9bapl-unit.drv",
+          "outputs": {
+            "out": "/nix/store/c53nx29ppwvy871abviqkhp1wgi9vxks-unit"
+          },
+          "outputNarHashes": {
+            "out": "sha256-d6xi4mKdjkX2JFicDIv5niSzpyI0m/Hnm8GGAIU04kY="
+          },
+          "sdkVersions": {},
+          "sampleSources": [],
+          "receipt": "https://nix-purifiers.github.io/evidence/e3bdeb5bd839634288b697a256b28afca897326741ae895a76929965cb3d6bda.json",
+          "artifactSha256": "e3bdeb5bd839634288b697a256b28afca897326741ae895a76929965cb3d6bda"
+        }
+      }
+    },
+    "sampleBuilds": [
+      {
+        "name": "Authored fixture tests/fixtures/workspace (repository-fixture)",
+        "upstream": {
+          "repository": "https://github.com/nix-purifiers/pnpm-purifier",
+          "revision": "09af9ee2cd606cd2a90ad932acec18908e5b272f",
+          "sourceNarHash": "sha256-pQOKAjmYm+E9glmaA0//sgYrtopLt4/sc6SdmC2e5vY="
+        },
+        "derivations": [
+          "pnpm-purifier:checks.x86_64-linux.fixture-tests"
+        ]
+      },
+      {
+        "name": "giget f1dad453055b97a81d5227edce7262c8dcaf53d2 (independent-upstream)",
+        "upstream": {
+          "repository": "https://github.com/unjs/giget",
+          "revision": "f1dad453055b97a81d5227edce7262c8dcaf53d2",
+          "sourceNarHash": "sha256-hDKGYxozIV8UQTbPpJVs6jrDiPmcHK2EWRZ7WNfSYQ0="
+        },
+        "derivations": [
+          "pnpm-purifier:checks.x86_64-linux.real-world"
+        ]
+      }
+    ]
+  }
+}

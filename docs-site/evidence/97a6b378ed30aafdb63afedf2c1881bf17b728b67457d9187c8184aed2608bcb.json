@@ -1,0 +1,207 @@
+{
+  "source": "6b994ceb112995d83b80d4fc57319b8abc504e8f",
+  "system": "aarch64-darwin",
+  "sandbox": true,
+  "machine": "arm64",
+  "defaultBun": "1.4.2",
+  "check": ".#checks.aarch64-darwin.elysia",
+  "command": [
+    "nix",
+    "build",
+    "--no-link",
+    "--rebuild",
+    "--option",
+    "sandbox",
+    "true",
+    "--option",
+    "max-jobs",
+    "2",
+    "--option",
+    "cores",
+    "2",
+    "-L",
+    "--json",
+    ".#checks.aarch64-darwin.elysia"
+  ],
+  "status": "passed",
+  "builds": [
+    {
+      "drvPath": "/nix/store/gzdblbyj1vnzaa804dybdr60hxlb2lr5-test-elysia.drv",
+      "outputs": {
+        "out": "/nix/store/1b8vmkdx8mxckvh84d3kz6xvbbw9j76k-test-elysia"
+      }
+    }
+  ],
+  "derivations": {
+    "derivations": {
+      "gzdblbyj1vnzaa804dybdr60hxlb2lr5-test-elysia.drv": {
+        "args": [
+          "-e",
+          "/nix/store/l622p70vy8k5sh7y5wizi5f2mic6ynpg-source-stdenv.sh",
+          "/nix/store/shkw4qm9qcw5sc5n1k5jznc83ny02r39-default-builder.sh"
+        ],
+        "builder": "/nix/store/i1pdjlwb27ki88zssg5q2h696v1r1m15-bash-5.3p20/bin/bash",
+        "env": {
+          "__darwinAllowLocalNetworking": "1",
+          "__impureHostDeps": "/bin/sh /usr/lib/libSystem.B.dylib /usr/lib/system/libunc.dylib /dev/zero /dev/random /dev/urandom /bin/sh",
+          "__propagatedImpureHostDeps": "",
+          "__propagatedSandboxProfile": "",
+          "__sandboxProfile": "",
+          "__structuredAttrs": "",
+          "buildCommand": "export HOME=$TMPDIR\ntar -tzf /nix/store/9pylnaqzsili3kxfjbvh1ni08h79ilp6-elysia-1.4.30.tgz/elysia-1.4.30.tgz | grep '^package/dist/index.mjs$' > /dev/null\ncp -r \"$src\" elysia\nchmod -R u+w elysia\ncd elysia\nbun test\ntouch $out\n",
+          "buildInputs": "",
+          "builder": "/nix/store/i1pdjlwb27ki88zssg5q2h696v1r1m15-bash-5.3p20/bin/bash",
+          "cmakeFlags": "",
+          "configureFlags": "",
+          "depsBuildBuild": "",
+          "depsBuildBuildPropagated": "",
+          "depsBuildTarget": "",
+          "depsBuildTargetPropagated": "",
+          "depsHostHost": "",
+          "depsHostHostPropagated": "",
+          "depsTargetTarget": "",
+          "depsTargetTargetPropagated": "",
+          "doCheck": "",
+          "doInstallCheck": "",
+          "enableParallelBuilding": "1",
+          "enableParallelChecking": "1",
+          "enableParallelInstalling": "1",
+          "mesonFlags": "",
+          "name": "test-elysia",
+          "nativeBuildInputs": "/nix/store/wjpdgxsjymr2nczy9y3d5h3h1xrbhhml-bun-1.4.2 /nix/store/k5zhhnxn3pa7d8fgs7glys6hwl96q5cm-gnutar-1.35 /nix/store/x4nl6d72j5jdncz8vip5h5g8dxgcdfhy-gzip-1.15",
+          "networkBoundary": "/nix/store/wl59wyxsf17rbpyip2i5vb3hacy500jj-sandbox-local-network-boundary",
+          "out": "/nix/store/1b8vmkdx8mxckvh84d3kz6xvbbw9j76k-test-elysia",
+          "outputs": "out",
+          "passAsFile": "buildCommand",
+          "patches": "",
+          "propagatedBuildInputs": "",
+          "propagatedNativeBuildInputs": "",
+          "src": "/nix/store/nq1yd22ndqzkirp39brgf0wxnp0f9264-elysia-stream-test-synchronized",
+          "stdenv": "/nix/store/9lhvi9bx4243wmpgdankw1q5rfv0ja8i-stdenv-darwin-no-cc",
+          "strictDeps": "",
+          "system": "aarch64-darwin",
+          "tests": "/nix/store/mykrkyx4fpwnj5rhr8shzk10wmp628y0-elysia-1.4.30-tests"
+        },
+        "inputs": {
+          "drvs": {
+            "5cf04qns0vrwp7jvamqd8vv0x4y62mwg-sandbox-local-network-boundary.drv": {
+              "dynamicOutputs": {},
+              "outputs": [
+                "out"
+              ]
+            },
+            "9d3ddbbcn9ms56zdz96yh17nx3gbx7sq-gnutar-1.35.drv": {
+              "dynamicOutputs": {},
+              "outputs": [
+                "out"
+              ]
+            },
+            "c58z7b7qarv1c01rnri0w4mj8hl3pgy8-stdenv-darwin-no-cc.drv": {
+              "dynamicOutputs": {},
+              "outputs": [
+                "out"
+              ]
+            },
+            "f23cfy3n50pzsx5apyxmwfmlkjnwkiqa-bun-1.4.2.drv": {
+              "dynamicOutputs": {},
+              "outputs": [
+                "out"
+              ]
+            },
+            "jksmkxl9vlm924jzqrx18h597brx7y8i-elysia-stream-test-synchronized.drv": {
+              "dynamicOutputs": {},
+              "outputs": [
+                "out"
+              ]
+            },
+            "m71wphkz6l2x1yaa2fm2if358d29w3ig-gzip-1.15.drv": {
+              "dynamicOutputs": {},
+              "outputs": [
+                "out"
+              ]
+            },
+            "rpgkhidx3f62iqz56ihc6zi2rwkq3044-elysia-1.4.30-tests.drv": {
+              "dynamicOutputs": {},
+              "outputs": [
+                "out"
+              ]
+            },
+            "sfnk2mrj9z7amb2q5q7cixizrqxgx6dc-bash-5.3p20.drv": {
+              "dynamicOutputs": {},
+              "outputs": [
+                "out"
+              ]
+            },
+            "zkid5jj34mad22pli120yyd9c999y4am-elysia-1.4.30.tgz.drv": {
+              "dynamicOutputs": {},
+              "outputs": [
+                "out"
+              ]
+            }
+          },
+          "srcs": [
+            "l622p70vy8k5sh7y5wizi5f2mic6ynpg-source-stdenv.sh",
+            "shkw4qm9qcw5sc5n1k5jznc83ny02r39-default-builder.sh"
+          ]
+        },
+        "name": "test-elysia",
+        "outputs": {
+          "out": {
+            "path": "1b8vmkdx8mxckvh84d3kz6xvbbw9j76k-test-elysia"
+          }
+        },
+        "system": "aarch64-darwin",
+        "version": 4
+      }
+    },
+    "version": 4
+  },
+  "outputs": {
+    "/nix/store/1b8vmkdx8mxckvh84d3kz6xvbbw9j76k-test-elysia": {
+      "ca": null,
+      "deriver": "/nix/store/gzdblbyj1vnzaa804dybdr60hxlb2lr5-test-elysia.drv",
+      "narHash": "sha256-d6xi4mKdjkX2JFicDIv5niSzpyI0m/Hnm8GGAIU04kY=",
+      "narSize": 112,
+      "references": [],
+      "registrationTime": 1794054965,
+      "signatures": [],
+      "storeDir": "/nix/store",
+      "ultimate": true,
+      "version": 1
+    }
+  },
+  "sample": {
+    "repository": "elysiajs/elysia",
+    "upstreamRevision": "e037eca710e7ad193be09cc6615ab0dbe54af914",
+    "modified": true,
+    "modification": "test-only harness patches listed in patches",
+    "patchSha256": "55c0c754a62001ce3dba5f7b03afee4ce1cd15b9b3c18fa96ae638f0dddb138f",
+    "patches": [
+      {
+        "path": "/nix/store/5rajb600arji9j13g1h1bhr75n2gq8na-source/tests/patches/elysia-stream-cancellation.patch",
+        "sha256": "55c0c754a62001ce3dba5f7b03afee4ce1cd15b9b3c18fa96ae638f0dddb138f"
+      },
+      {
+        "path": "/nix/store/5rajb600arji9j13g1h1bhr75n2gq8na-source/tests/patches/elysia-native-static-ports.patch",
+        "sha256": "5d7572e593f2a3c05f3872e9c3ffa0bf4344376048f0731b71ac8419a4a85904"
+      }
+    ],
+    "patchedSource": {
+      "/nix/store/nq1yd22ndqzkirp39brgf0wxnp0f9264-elysia-stream-test-synchronized": {
+        "ca": null,
+        "deriver": "/nix/store/jksmkxl9vlm924jzqrx18h597brx7y8i-elysia-stream-test-synchronized.drv",
+        "narHash": "sha256-7KkoH7LHhqOdaj38ZguHPdhBn7l8yJzNMqrVciJaymw=",
+        "narSize": 145942512,
+        "references": [
+          "/nix/store/qdw851656p69bxwkwrms8wcv4sg88x5v-bun-as-node",
+          "/nix/store/wjpdgxsjymr2nczy9y3d5h3h1xrbhhml-bun-1.4.2"
+        ],
+        "registrationTime": 1794054947,
+        "signatures": [],
+        "storeDir": "/nix/store",
+        "ultimate": true,
+        "version": 1
+      }
+    }
+  }
+}

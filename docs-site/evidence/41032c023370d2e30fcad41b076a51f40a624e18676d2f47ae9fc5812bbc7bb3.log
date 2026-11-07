@@ -1,0 +1,52 @@
+checking outputs of '/nix/store/1ckf8chzf3lf9izfl5xd4d756jn2fih7-test-unit.drv'...
+test-unit> bun test v1.4.2 (744846f84)
+test-unit> 
+test-unit> tests/unit/npm-inputs.test.ts:
+test-unit> ✓ ordinary parent archives resolve supplied transitive dependencies offline [47.84ms]
+test-unit> ✓ native manifest bindings restore exact bytes when Bun fails [1.62ms]
+test-unit> ✓ first lock binds workspace manifests and respects workspace exclusions [1.94ms]
+test-unit> 
+test-unit> tests/unit/lock.test.ts:
+test-unit> ✓ parseJsonc > drops trailing commas [0.26ms]
+test-unit> ✓ parseJsonc > keeps commas and brackets inside strings [0.12ms]
+test-unit> ✓ splitKey > splits a plain name [0.14ms]
+test-unit> ✓ splitKey > splits a scoped name [0.10ms]
+test-unit> ✓ splitKey > keeps the rest of a resolution [0.11ms]
+test-unit> ✓ localPath > reads file: directories [0.09ms]
+test-unit> ✓ localPath > reads plain tarball paths [0.10ms]
+test-unit> ✓ localPath > leaves versions alone [0.08ms]
+test-unit> ✓ localPath > leaves URLs alone [0.08ms]
+test-unit> ✓ outsidePaths > lists only paths outside the project [0.17ms]
+test-unit> ✓ gitFetchUrl > turns an SSH URL into HTTPS [0.26ms]
+test-unit> ✓ gitFetchUrl > turns an scp-style address into HTTPS [0.10ms]
+test-unit> ✓ gitFetchUrl > keeps an HTTPS URL [0.08ms]
+test-unit> ✓ gitFetchUrl > keeps a git: URL [0.08ms]
+test-unit> ✓ registries > bun leaves the npm registry out of cache names [0.14ms]
+test-unit> ✓ registries > the default is the npm registry [0.19ms]
+test-unit> ✓ registries > the user's .npmrc applies [0.47ms]
+test-unit> ✓ registries > the project's .npmrc wins over the user's [0.46ms]
+test-unit> ✓ registries > the project's bunfig.toml wins over its .npmrc [0.41ms]
+test-unit> ✓ registries > the environment wins over everything [0.25ms]
+test-unit> ✓ registries > an .npmrc expands environment variables [0.29ms]
+test-unit> ✓ facts > records only the cache paths that Nix cannot derive [2.59ms]
+test-unit> ✓ facts > records no facts for a project of plain registry packages [1.55ms]
+test-unit> ✓ facts > records a package the lock run did not install, unless its filters exclude it [1.57ms]
+test-unit> ✓ facts > records a default registry other than npm [2.19ms]
+test-unit> ✓ facts > rejects a cache entry that matches no package [1.91ms]
+test-unit> ✓ facts > rejects two entries for one cache path that disagree [1.78ms]
+test-unit> ✓ facts > rejects link: dependencies with the reason [1.80ms]
+test-unit> ✓ facts > rejects a package without an integrity hash [1.63ms]
+test-unit> ✓ digests > canonical JSON sorts keys and drops whitespace, as builtins.toJSON does [0.24ms]
+test-unit> ✓ digests > the bun.lock digest changes with bun.lock [0.49ms]
+test-unit> ✓ readLock > reads a lockfile [0.52ms]
+test-unit> ✓ readLock > returns nothing without a lockfile [0.13ms]
+test-unit> ✓ readLock > names a merge conflict [0.37ms]
+test-unit> ✓ readLock > names malformed JSON [0.37ms]
+test-unit> ✓ readLock > names another format version [0.41ms]
+test-unit> ✓ readLock > names a hand-edited entry [0.51ms]
+test-unit> ✓ readLock > reads a lockfile outside the project by its own name [0.71ms]
+test-unit> 
+test-unit>  41 pass
+test-unit>  0 fail
+test-unit>  52 expect() calls
+test-unit> Ran 41 tests across 2 files. [90.00ms]

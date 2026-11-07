@@ -11,7 +11,7 @@ from theme import install_theme
 class QualityTests(unittest.TestCase):
     def setUp(self):
         self.data = registry()
-        self.q = copy.deepcopy(self.data['projects']['gradle-purifier'])
+        self.q = copy.deepcopy(self.data['projects']['tectonic-purifier'])
 
     def test_every_modeled_project_has_an_assessment(self):
         root = Path(__file__).resolve().parents[1]
@@ -107,10 +107,10 @@ class QualityTests(unittest.TestCase):
             validate(self.q)
 
     def test_homepage_and_shared_theme_use_same_registry(self):
-        source = '<ul><li><a href="/gradle-purifier/">gradle-purifier</a>, for Gradle</li></ul>'
+        source = '<ul><li><a href="/tectonic-purifier/">tectonic-purifier</a>, for Tectonic</li></ul>'
         result = homepage(source, self.data)
         self.assertIn('<h2 id="tier-3">Tier 3</h2>', result)
-        self.assertIn('<a href="/gradle-purifier/">gradle-purifier</a>, for Gradle', result)
+        self.assertIn('<a href="/tectonic-purifier/">tectonic-purifier</a>, for Tectonic', result)
         self.assertNotIn('tier-badge', result)
         for empty in [1, 2, 4]:
             self.assertNotIn(f'<h2 id="tier-{empty}">', result)

@@ -1,0 +1,4 @@
+(let f = builtins.getFlake "/nix/store/iq5k2i954jg5m9vagc8q2wy3kvn263dr-source"; p = import f.inputs.nixpkgs { system = builtins.currentSystem; overlays = [ f.overlays.default ]; }; in (p.gradle-purifier.buildGradleProject { src = builtins.path { path = "/var/folders/2s/vty41l455yv698g4xkgfv7z00000gn/T/gradle-tier2-s0cxxy24/pure-source"; name = "petclinic-tier2-source"; }; doCheck = true; }).packages.spring-petclinic.overrideAttrs (old: { postInstall = (old.postInstall or "") + ''
+mkdir -p "$out/nix-support/test-results"
+find build/test-results/test -name "TEST-*.xml" -exec cp {} "$out/nix-support/test-results/" \;
+''; })).distribution

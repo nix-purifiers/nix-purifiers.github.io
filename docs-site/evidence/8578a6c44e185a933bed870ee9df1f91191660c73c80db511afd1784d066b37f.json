@@ -1,0 +1,50 @@
+{
+  "status": "success",
+  "executedSystem": "x86_64-linux",
+  "sourceRevision": "1a5653242018a7c5939e5fd10f6f2de52feadfad",
+  "sourceNarHash": "sha256-ueLaprdMJcfAyfKkCKCRmMCVqX570dLZyC3+5B/lPVY=",
+  "drvPath": "/nix/store/wk82aczlwb67j6jwjdqd7i4bj36v9a4x-gradle-9.9.0.drv",
+  "outputs": {
+    "out": "/nix/store/f2rlfhmy8g9j37idqlm29lijzimlrrld-gradle-9.9.0"
+  },
+  "outputNarHashes": {
+    "out": "sha256-mkVkSlLMfhAar9/4Pup6gS2liMumP97QXghkmPlqn1U="
+  },
+  "sdkVersions": {
+    "Gradle upstream point": "9.9.0",
+    "SDK role": "official upstream distribution",
+    "JDK": "/nix/store/ry8szmmd7pymhc0cgdnwf7mb5083j5mc-openjdk-headless-17.0.20.1+1/lib/openjdk",
+    "JDK version": "17.0.20.1+1"
+  },
+  "sampleSources": [],
+  "kind": "authenticated actual-main native CI receipt; no integration build",
+  "check": {
+    "kind": "expression",
+    "value": "(let f = builtins.getFlake \"/nix/store/iq5k2i954jg5m9vagc8q2wy3kvn263dr-source\"; p = import f.inputs.nixpkgs { system = builtins.currentSystem; overlays = [ f.overlays.default ]; }; in (p.gradle-purifier.buildGradleProject { src = builtins.path { path = builtins.getEnv \"GRADLE_SAMPLE_SOURCE\"; name = \"petclinic-tier2-source\"; }; doCheck = true; }).packages.spring-petclinic.overrideAttrs (old: { postInstall = (old.postInstall or \"\") + ''\nmkdir -p \"$out/nix-support/test-results\"\nfind build/test-results/test -name \"TEST-*.xml\" -exec cp {} \"$out/nix-support/test-results/\" \\;\n''; })).distribution",
+    "replay": {
+      "artifactUrl": "https://nix-purifiers.github.io/evidence/2b42f7fb76a8138e2741e612f23ea31c4110f219f6d544594acc3f8528f61bdc.json",
+      "artifactSha256": "2b42f7fb76a8138e2741e612f23ea31c4110f219f6d544594acc3f8528f61bdc",
+      "expressionSha256": "b6045f3dabefd09a16d77715a475979c1def4b4d6e03b39ec8841e2c00a9bdf8",
+      "arguments": {
+        "GRADLE_SAMPLE_SOURCE": "Restore projectReceipt.projectFiles to a local directory; exact builtins.path name petclinic-tier2-source is retained."
+      }
+    }
+  },
+  "actualJob": "https://github.com/nix-purifiers/gradle-purifier/actions/runs/42370432193/job/128397255632",
+  "rawReceipt": {
+    "receipt": "https://nix-purifiers.github.io/evidence/e6f6202fcd95736ecffaa4893394d6de47df56a1414bd73824d1d17296ed7e94.json",
+    "artifactSha256": "e6f6202fcd95736ecffaa4893394d6de47df56a1414bd73824d1d17296ed7e94"
+  },
+  "rawDerivation": {
+    "receipt": "https://nix-purifiers.github.io/evidence/bb505c3d0fce3ba2dd4e6a174c2a76f71cbab71ade0ca1f25da6d1c061e14cf2.json",
+    "artifactSha256": "bb505c3d0fce3ba2dd4e6a174c2a76f71cbab71ade0ca1f25da6d1c061e14cf2"
+  },
+  "rawPathInfo": {
+    "receipt": "https://nix-purifiers.github.io/evidence/a7b84873899613322fe54de61155e4c08d626fbeeea104acebf271be3e070530.json",
+    "artifactSha256": "a7b84873899613322fe54de61155e4c08d626fbeeea104acebf271be3e070530"
+  },
+  "independentMetadataMatch": true,
+  "limitation": "Independent metadata evaluation exactly matches actual CI drv. Reconstructed133-file source bytes/modes exactly match captured drv input.",
+  "scope": "Distinct pure-effective-sdk output identity; do not reuse its NAR for another role.",
+  "tests": null
+}

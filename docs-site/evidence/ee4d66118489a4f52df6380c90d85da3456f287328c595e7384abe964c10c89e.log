@@ -1,0 +1,52 @@
+checking outputs of '/nix/store/c9r15ilm5k3bqg966my9lkm5jw5chqgw-test-unit.drv'...
+test-unit> bun test v1.4.4 (38afee6c8)
+test-unit> 
+test-unit> tests/unit/lock.test.ts:
+test-unit> ✓ parseJsonc > drops trailing commas [0.59ms]
+test-unit> ✓ parseJsonc > keeps commas and brackets inside strings [0.18ms]
+test-unit> ✓ splitKey > splits a plain name [0.11ms]
+test-unit> ✓ splitKey > splits a scoped name [0.07ms]
+test-unit> ✓ splitKey > keeps the rest of a resolution [0.08ms]
+test-unit> ✓ localPath > reads file: directories [0.14ms]
+test-unit> ✓ localPath > reads plain tarball paths [0.12ms]
+test-unit> ✓ localPath > leaves versions alone [0.07ms]
+test-unit> ✓ localPath > leaves URLs alone [0.06ms]
+test-unit> ✓ outsidePaths > lists only paths outside the project [0.21ms]
+test-unit> ✓ gitFetchUrl > turns an SSH URL into HTTPS [0.17ms]
+test-unit> ✓ gitFetchUrl > turns an scp-style address into HTTPS [0.09ms]
+test-unit> ✓ gitFetchUrl > keeps an HTTPS URL [0.08ms]
+test-unit> ✓ gitFetchUrl > keeps a git: URL [0.06ms]
+test-unit> ✓ registries > bun leaves the npm registry out of cache names [0.11ms]
+test-unit> ✓ registries > the default is the npm registry [0.22ms]
+test-unit> ✓ registries > the user's .npmrc applies [0.37ms]
+test-unit> ✓ registries > the project's .npmrc wins over the user's [0.25ms]
+test-unit> ✓ registries > the project's bunfig.toml wins over its .npmrc [0.23ms]
+test-unit> ✓ registries > the environment wins over everything [0.13ms]
+test-unit> ✓ registries > an .npmrc expands environment variables [0.19ms]
+test-unit> ✓ facts > records only the cache paths that Nix cannot derive [2.26ms]
+test-unit> ✓ facts > records no facts for a project of plain registry packages [0.98ms]
+test-unit> ✓ facts > records a package the lock run did not install, unless its filters exclude it [1.00ms]
+test-unit> ✓ facts > records a default registry other than npm [1.40ms]
+test-unit> ✓ facts > rejects a cache entry that matches no package [1.25ms]
+test-unit> ✓ facts > rejects two entries for one cache path that disagree [0.96ms]
+test-unit> ✓ facts > rejects link: dependencies with the reason [0.90ms]
+test-unit> ✓ facts > rejects a package without an integrity hash [0.92ms]
+test-unit> ✓ digests > canonical JSON sorts keys and drops whitespace, as builtins.toJSON does [0.34ms]
+test-unit> ✓ digests > the bun.lock digest changes with bun.lock [0.38ms]
+test-unit> ✓ readLock > reads a lockfile [0.43ms]
+test-unit> ✓ readLock > returns nothing without a lockfile [0.11ms]
+test-unit> ✓ readLock > names a merge conflict [0.48ms]
+test-unit> ✓ readLock > names malformed JSON [0.22ms]
+test-unit> ✓ readLock > names another format version [0.36ms]
+test-unit> ✓ readLock > names a hand-edited entry [0.58ms]
+test-unit> ✓ readLock > reads a lockfile outside the project by its own name [0.38ms]
+test-unit> 
+test-unit> tests/unit/npm-inputs.test.ts:
+test-unit> ✓ ordinary parent archives resolve supplied transitive dependencies offline [17.36ms]
+test-unit> ✓ native manifest bindings restore exact bytes when Bun fails [0.58ms]
+test-unit> ✓ first lock binds workspace manifests and respects workspace exclusions [1.20ms]
+test-unit> 
+test-unit>  41 pass
+test-unit>  0 fail
+test-unit>  52 expect() calls
+test-unit> Ran 41 tests across 2 files. [50.00ms]

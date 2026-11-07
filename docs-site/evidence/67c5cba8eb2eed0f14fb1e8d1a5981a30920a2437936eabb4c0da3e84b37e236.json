@@ -1,0 +1,137 @@
+{
+  "source": "6b994ceb112995d83b80d4fc57319b8abc504e8f",
+  "system": "aarch64-darwin",
+  "sandbox": true,
+  "machine": "arm64",
+  "defaultBun": "1.4.2",
+  "check": ".#checks.aarch64-darwin.unit",
+  "command": [
+    "nix",
+    "build",
+    "--no-link",
+    "--rebuild",
+    "--option",
+    "sandbox",
+    "true",
+    "--option",
+    "max-jobs",
+    "2",
+    "--option",
+    "cores",
+    "2",
+    "-L",
+    "--json",
+    ".#checks.aarch64-darwin.unit"
+  ],
+  "status": "passed",
+  "builds": [
+    {
+      "drvPath": "/nix/store/1ckf8chzf3lf9izfl5xd4d756jn2fih7-test-unit.drv",
+      "outputs": {
+        "out": "/nix/store/zx97yp58xdqk2vwfg2dsrx4xii4wymg3-test-unit"
+      }
+    }
+  ],
+  "derivations": {
+    "derivations": {
+      "1ckf8chzf3lf9izfl5xd4d756jn2fih7-test-unit.drv": {
+        "args": [
+          "-e",
+          "/nix/store/l622p70vy8k5sh7y5wizi5f2mic6ynpg-source-stdenv.sh",
+          "/nix/store/shkw4qm9qcw5sc5n1k5jznc83ny02r39-default-builder.sh"
+        ],
+        "builder": "/nix/store/i1pdjlwb27ki88zssg5q2h696v1r1m15-bash-5.3p20/bin/bash",
+        "env": {
+          "__darwinAllowLocalNetworking": "",
+          "__impureHostDeps": "/bin/sh /usr/lib/libSystem.B.dylib /usr/lib/system/libunc.dylib /dev/zero /dev/random /dev/urandom /bin/sh",
+          "__propagatedImpureHostDeps": "",
+          "__propagatedSandboxProfile": "",
+          "__sandboxProfile": "",
+          "__structuredAttrs": "",
+          "buildCommand": "export HOME=$TMPDIR\ncp -r $src/. .\nbun test ./tests/unit\ntouch $out\n",
+          "buildInputs": "",
+          "builder": "/nix/store/i1pdjlwb27ki88zssg5q2h696v1r1m15-bash-5.3p20/bin/bash",
+          "cmakeFlags": "",
+          "configureFlags": "",
+          "depsBuildBuild": "",
+          "depsBuildBuildPropagated": "",
+          "depsBuildTarget": "",
+          "depsBuildTargetPropagated": "",
+          "depsHostHost": "",
+          "depsHostHostPropagated": "",
+          "depsTargetTarget": "",
+          "depsTargetTargetPropagated": "",
+          "doCheck": "",
+          "doInstallCheck": "",
+          "enableParallelBuilding": "1",
+          "enableParallelChecking": "1",
+          "enableParallelInstalling": "1",
+          "mesonFlags": "",
+          "name": "test-unit",
+          "nativeBuildInputs": "/nix/store/wjpdgxsjymr2nczy9y3d5h3h1xrbhhml-bun-1.4.2",
+          "out": "/nix/store/zx97yp58xdqk2vwfg2dsrx4xii4wymg3-test-unit",
+          "outputs": "out",
+          "passAsFile": "buildCommand",
+          "patches": "",
+          "propagatedBuildInputs": "",
+          "propagatedNativeBuildInputs": "",
+          "src": "/nix/store/8nvqjbh73nv1zksbipn3x1m50ch3yhl2-source",
+          "stdenv": "/nix/store/9lhvi9bx4243wmpgdankw1q5rfv0ja8i-stdenv-darwin-no-cc",
+          "strictDeps": "",
+          "system": "aarch64-darwin"
+        },
+        "inputs": {
+          "drvs": {
+            "c58z7b7qarv1c01rnri0w4mj8hl3pgy8-stdenv-darwin-no-cc.drv": {
+              "dynamicOutputs": {},
+              "outputs": [
+                "out"
+              ]
+            },
+            "f23cfy3n50pzsx5apyxmwfmlkjnwkiqa-bun-1.4.2.drv": {
+              "dynamicOutputs": {},
+              "outputs": [
+                "out"
+              ]
+            },
+            "sfnk2mrj9z7amb2q5q7cixizrqxgx6dc-bash-5.3p20.drv": {
+              "dynamicOutputs": {},
+              "outputs": [
+                "out"
+              ]
+            }
+          },
+          "srcs": [
+            "8nvqjbh73nv1zksbipn3x1m50ch3yhl2-source",
+            "l622p70vy8k5sh7y5wizi5f2mic6ynpg-source-stdenv.sh",
+            "shkw4qm9qcw5sc5n1k5jznc83ny02r39-default-builder.sh"
+          ]
+        },
+        "name": "test-unit",
+        "outputs": {
+          "out": {
+            "path": "zx97yp58xdqk2vwfg2dsrx4xii4wymg3-test-unit"
+          }
+        },
+        "system": "aarch64-darwin",
+        "version": 4
+      }
+    },
+    "version": 4
+  },
+  "outputs": {
+    "/nix/store/zx97yp58xdqk2vwfg2dsrx4xii4wymg3-test-unit": {
+      "ca": null,
+      "deriver": "/nix/store/1ckf8chzf3lf9izfl5xd4d756jn2fih7-test-unit.drv",
+      "narHash": "sha256-d6xi4mKdjkX2JFicDIv5niSzpyI0m/Hnm8GGAIU04kY=",
+      "narSize": 112,
+      "references": [],
+      "registrationTime": 1794054814,
+      "signatures": [],
+      "storeDir": "/nix/store",
+      "ultimate": true,
+      "version": 1
+    }
+  },
+  "sample": null
+}

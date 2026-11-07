@@ -1,0 +1,53 @@
+{
+  "evidenceType": "source graph and assertion identity only; not Darwin execution",
+  "changes": {
+    "aarch64-darwin": {
+      "current-stable-elysia": {
+        "before": "/nix/store/rql1pab7mpqmf3p7xv21g1si1za0l00r-test-elysia.drv",
+        "after": "/nix/store/nw6zkiaszfpsh8al9d5lfzp8gj03nlfx-test-elysia.drv"
+      },
+      "elysia": {
+        "before": "/nix/store/abzlz4civ4lslrd4x8cprq2m5nyqg70f-test-elysia.drv",
+        "after": "/nix/store/gzdblbyj1vnzaa804dybdr60hxlb2lr5-test-elysia.drv"
+      },
+      "treefmt": {
+        "before": "/nix/store/210vny8ss3v2j4sjx43b234bbjkc5bhg-treefmt-check.drv",
+        "after": "/nix/store/d6px8w3b6244hf6xf42v4wnxdlss5qqr-treefmt-check.drv"
+      }
+    },
+    "aarch64-linux": {
+      "treefmt": {
+        "before": "/nix/store/ws8kxrwsl3zhr2xfi2rd6bbyra8dkra0-treefmt-check.drv",
+        "after": "/nix/store/5az6j8xchwjwpz9ng2l0kniv3s4wqjjd-treefmt-check.drv"
+      }
+    },
+    "x86_64-linux": {
+      "treefmt": {
+        "before": "/nix/store/9cxpmd89ni21nx9ba58p9va4sb4i9xj8-treefmt-check.drv",
+        "after": "/nix/store/pyayxd00rm2dqpr24scngxs1scjfl4mf-treefmt-check.drv"
+      }
+    }
+  },
+  "allLinuxFunctionalDrvsUnchanged": true,
+  "darwinOnlyElysiaRuntimeChanged": true,
+  "noSerializationChange": true,
+  "assertionAndTeardownBodySha256": "208df07c145f0cb7ec05d38e42875ee36435bcee1f7f834c421599560061abed",
+  "patches": {
+    "linux": [
+      {
+        "path": "/nix/store/5rajb600arji9j13g1h1bhr75n2gq8na-source/tests/patches/elysia-stream-cancellation.patch",
+        "sha256": "55c0c754a62001ce3dba5f7b03afee4ce1cd15b9b3c18fa96ae638f0dddb138f"
+      }
+    ],
+    "darwin": [
+      {
+        "path": "/nix/store/5rajb600arji9j13g1h1bhr75n2gq8na-source/tests/patches/elysia-stream-cancellation.patch",
+        "sha256": "55c0c754a62001ce3dba5f7b03afee4ce1cd15b9b3c18fa96ae638f0dddb138f"
+      },
+      {
+        "path": "/nix/store/5rajb600arji9j13g1h1bhr75n2gq8na-source/tests/patches/elysia-native-static-ports.patch",
+        "sha256": "5d7572e593f2a3c05f3872e9c3ffa0bf4344376048f0731b71ac8419a4a85904"
+      }
+    ]
+  }
+}

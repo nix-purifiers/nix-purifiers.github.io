@@ -1,0 +1,61 @@
+{
+  "status": "success",
+  "executedSystem": "x86_64-linux",
+  "sourceRevision": "1a5653242018a7c5939e5fd10f6f2de52feadfad",
+  "sourceNarHash": "sha256-ueLaprdMJcfAyfKkCKCRmMCVqX570dLZyC3+5B/lPVY=",
+  "drvPath": "/nix/store/4cqv9vyykzabxn1kj04ffnm2gkglkpyl-spring-petclinic.drv",
+  "outputs": {
+    "out": "/nix/store/lvnl5yalncx7yzryc5129v63zm2dr35h-spring-petclinic"
+  },
+  "outputNarHashes": {
+    "out": "sha256-WHPFxHRSxe3Uz3T/PQIv2Vz1y69O/l6w7aG3XnLLQSE="
+  },
+  "sdkVersions": {
+    "Gradle upstream point": "8.14.6",
+    "SDK role": "official upstream distribution",
+    "JDK": "/nix/store/ry8szmmd7pymhc0cgdnwf7mb5083j5mc-openjdk-headless-17.0.20.1+1/lib/openjdk",
+    "JDK version": "17.0.20.1+1"
+  },
+  "sampleSources": [
+    {
+      "repository": "https://github.com/spring-projects/spring-petclinic",
+      "revision": "500158f732419217507c7656904b8e6aa1bcc0d6",
+      "sourceNarHash": "sha256-j3Uiz+Wn9jWegwrJvCZZymLNrzo5zn5GyPBIn6+6V2w="
+    }
+  ],
+  "kind": "authenticated actual-main native CI receipt; no integration build",
+  "check": {
+    "kind": "expression",
+    "value": "let f = builtins.getFlake \"/nix/store/iq5k2i954jg5m9vagc8q2wy3kvn263dr-source\"; p = import f.inputs.nixpkgs { system = builtins.currentSystem; overlays = [ f.overlays.default ]; }; in (p.gradle-purifier.buildGradleProject { src = builtins.path { path = builtins.getEnv \"GRADLE_SAMPLE_SOURCE\"; name = \"petclinic-tier2-source\"; }; doCheck = true; }).packages.spring-petclinic.overrideAttrs (old: { postInstall = (old.postInstall or \"\") + ''\nmkdir -p \"$out/nix-support/test-results\"\nfind build/test-results/test -name \"TEST-*.xml\" -exec cp {} \"$out/nix-support/test-results/\" \\;\n''; })",
+    "replay": {
+      "artifactUrl": "https://nix-purifiers.github.io/evidence/c44fcd7201aa8323fe255ef64d75f53709046b4c32151770af52ad6d7c622062.json",
+      "artifactSha256": "c44fcd7201aa8323fe255ef64d75f53709046b4c32151770af52ad6d7c622062",
+      "expressionSha256": "c76cfcf52c1de232b36a7471d9501b43ef898ca3619618dba96497c449cfac08",
+      "arguments": {
+        "GRADLE_SAMPLE_SOURCE": "Restore projectReceipt.projectFiles to a local directory; exact builtins.path name petclinic-tier2-source is retained."
+      }
+    }
+  },
+  "actualJob": "https://github.com/nix-purifiers/gradle-purifier/actions/runs/42370432193/job/128397255574",
+  "rawReceipt": {
+    "receipt": "https://nix-purifiers.github.io/evidence/70ed4ce40ed2fe3bb6b98b3e56b1b3c2c0aec1de0e1d53be0e0ed49e07da36ec.json",
+    "artifactSha256": "70ed4ce40ed2fe3bb6b98b3e56b1b3c2c0aec1de0e1d53be0e0ed49e07da36ec"
+  },
+  "rawDerivation": {
+    "receipt": "https://nix-purifiers.github.io/evidence/e96d8096b06dde30f99d93fbbb96fe71716be0378997f6a58708091a7f04ee7f.json",
+    "artifactSha256": "e96d8096b06dde30f99d93fbbb96fe71716be0378997f6a58708091a7f04ee7f"
+  },
+  "rawPathInfo": {
+    "receipt": "https://nix-purifiers.github.io/evidence/d9c46e796b27dd3569677f37bf06630ff78235c88d4e28bdf2878c7f0b684c56.json",
+    "artifactSha256": "d9c46e796b27dd3569677f37bf06630ff78235c88d4e28bdf2878c7f0b684c56"
+  },
+  "independentMetadataMatch": true,
+  "limitation": "Independent metadata evaluation exactly matches actual CI drv. Reconstructed133-file source bytes/modes exactly match captured drv input.",
+  "scope": "Distinct pure-build output identity; do not reuse its NAR for another role.",
+  "tests": {
+    "tests": 81,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 4
+  }
+}

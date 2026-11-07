@@ -1,0 +1,48 @@
+{
+  "status": "success",
+  "executedSystem": "x86_64-linux",
+  "sourceRevision": "1a5653242018a7c5939e5fd10f6f2de52feadfad",
+  "sourceNarHash": "sha256-ueLaprdMJcfAyfKkCKCRmMCVqX570dLZyC3+5B/lPVY=",
+  "drvPath": "/nix/store/6bjwls5a3pqps81481ni19ilb4y1x57s-gradle-worker-transport-observation.drv",
+  "outputs": {
+    "out": "/nix/store/jfds21l4w68prpl4zqhk1783lfr0df83-gradle-worker-transport-observation"
+  },
+  "outputNarHashes": {
+    "out": "sha256-druAD8++OJELyFnawt8KgHXN1XFc5XzNw7NEuvc1lT8="
+  },
+  "sdkVersions": {
+    "Gradle upstream point": "8.14.6",
+    "SDK role": "official upstream distribution",
+    "JDK": "/nix/store/ry8szmmd7pymhc0cgdnwf7mb5083j5mc-openjdk-headless-17.0.20.1+1/lib/openjdk",
+    "JDK version": "17.0.20.1+1"
+  },
+  "sampleSources": [],
+  "kind": "authenticated actual-main native CI receipt; no integration build",
+  "check": {
+    "kind": "expression",
+    "value": "let f = builtins.getFlake \"/nix/store/iq5k2i954jg5m9vagc8q2wy3kvn263dr-source\"; p = import f.inputs.nixpkgs { system = builtins.currentSystem; overlays = [ f.overlays.default ]; }; in (import (builtins.toPath \"/nix/store/iq5k2i954jg5m9vagc8q2wy3kvn263dr-source/tests/tier2-worker-options.nix\") { pkgs = p; distribution = builtins.storePath \"/nix/store/2xg81wjll1lfzb599zny2s52bv2ji58n-gradle-8.14.6\"; jdk = builtins.storePath \"/nix/store/ry8szmmd7pymhc0cgdnwf7mb5083j5mc-openjdk-headless-17.0.20.1+1\"; javaHome = \"/nix/store/ry8szmmd7pymhc0cgdnwf7mb5083j5mc-openjdk-headless-17.0.20.1+1/lib/openjdk\"; derived = false; })",
+    "replay": {
+      "artifactUrl": "https://nix-purifiers.github.io/evidence/9b7fa66e38731a36d2e9176af58780e34b3843a8a357a3df112850ab2ee4bea4.json",
+      "artifactSha256": "9b7fa66e38731a36d2e9176af58780e34b3843a8a357a3df112850ab2ee4bea4",
+      "expressionSha256": "108adbd1b94f40205cf6429d6d5ec5648260309c6cfac1e23887ed0a56709c92",
+      "arguments": {}
+    }
+  },
+  "actualJob": "https://github.com/nix-purifiers/gradle-purifier/actions/runs/42370432193/job/128397255574",
+  "rawReceipt": {
+    "receipt": "https://nix-purifiers.github.io/evidence/70ed4ce40ed2fe3bb6b98b3e56b1b3c2c0aec1de0e1d53be0e0ed49e07da36ec.json",
+    "artifactSha256": "70ed4ce40ed2fe3bb6b98b3e56b1b3c2c0aec1de0e1d53be0e0ed49e07da36ec"
+  },
+  "rawDerivation": {
+    "receipt": "https://nix-purifiers.github.io/evidence/26b94e7f815478b0784171502ba176cabdd8d2d36c9e323904f8f28f174f6777.json",
+    "artifactSha256": "26b94e7f815478b0784171502ba176cabdd8d2d36c9e323904f8f28f174f6777"
+  },
+  "rawPathInfo": {
+    "receipt": "https://nix-purifiers.github.io/evidence/87cc80f4fcd470f768bb2970eee1cc374c583a7a23b64ec35d6fec8a56aeb62b.json",
+    "artifactSha256": "87cc80f4fcd470f768bb2970eee1cc374c583a7a23b64ec35d6fec8a56aeb62b"
+  },
+  "independentMetadataMatch": true,
+  "limitation": "Independent metadata evaluation exactly matches actual CI drv. Captured store inputs are required; no portable complete wrapper/SDK-cache replay is claimed.",
+  "scope": "Distinct pure-worker-transport output identity; do not reuse its NAR for another role.",
+  "tests": null
+}
