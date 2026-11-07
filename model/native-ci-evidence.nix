@@ -69,6 +69,10 @@ let
     runnerImage = opt text;
   }; };
   esc = builtins.fromJSON ''"\u001b"'';
+  # Search literal bytes without the unbounded .* regex used by lib.hasInfix.
+  # Large retained logs can exhaust the regex stack in newer Nix versions.
+  hasLiteral = needle: value:
+    needle == "" || builtins.length (builtins.split (lib.escapeRegex needle) value) > 1;
   clean = value: lib.concatStrings (builtins.filter builtins.isString (builtins.split "(${esc}|\\^\\[)\\[[0-9;]*m" value));
 in {
   inherit shape;
@@ -129,7 +133,7 @@ in {
       archiveValid = !archived || (e.check.reportArtifact != null && e.check.artifactMetadata != null && e.check.artifactName != null
         && builtins.isString transcript && builtins.isAttrs report && (report.selectedCasesPassed or false) == true
         && builtins.length artifactMatches == 1 && archive.workflow_run.id == job.run_id && archive.workflow_run.head_sha == e.revision
-        && lib.hasInfix archive.name log && builtins.substring 0 19 archive.created_at >= builtins.substring 0 19 step.completed_at);
+        && hasLiteral archive.name log && builtins.substring 0 19 archive.created_at >= builtins.substring 0 19 step.completed_at);
       indexed = lib.imap0 (index: line: { inherit index line; }) proofLines;
       builtMarkers = builtins.filter (x: x.line == "building '${e.drvPath}'...") indexed;
       structured = scripted && e.check.transcriptLayout == "argv-stdout-stderr";
@@ -160,13 +164,13 @@ in {
         && !(builtins.elem ".." (lib.splitString "/" c.scriptPath))
         && e.sourceNarHash != null && e.sdkVersions != {}
         && builtins.match "(nix shell [^;&|]+ -c )?(python3( -B)?|bash|sh)" c.invoker != null
-        && e.command == expectedCommand && lib.all (token: !lib.hasInfix token expectedCommand) [ ";" "&&" "||" "\n" ]
+        && e.command == expectedCommand && lib.all (token: !hasLiteral token expectedCommand) [ ";" "&&" "||" "\n" ]
         && (c.inputSourceHashes.${c.scriptPath} or null) == c.scriptArtifact.artifactSha256
         && (c.inputSourceHashes."flake.lock" or null) == c.lockArtifact.artifactSha256
         && builtins.isString generator && generator != "" && builtins.isAttrs lock && (lock.version or null) == 7 && builtins.isAttrs (lock.nodes or null)
-        && lib.hasInfix c.assertionSnippet generator
+        && hasLiteral c.assertionSnippet generator
         && ((c.buildArgv == null && c.transcriptLayout == null) || (structured && archived && c.buildArgv != null
-          && lib.take 2 c.buildArgv == [ "nix" "build" ] && lib.hasInfix "result.stdout + result.stderr" generator))
+          && lib.take 2 c.buildArgv == [ "nix" "build" ] && hasLiteral "result.stdout + result.stderr" generator))
         && validObservedBinding
         && builtMarkers != [] && lib.all (assertion: lib.any (x: x.index > (builtins.head builtMarkers).index && x.line == assertion) indexed) e.runtimeAssertions;
       valid = archiveValid && lib.all (name: builtins.match ".*[^ \n\t].*" name != null) (builtins.attrNames e.sdkVersions)
@@ -188,8 +192,8 @@ in {
         && (e.jobConclusion == null || e.jobConclusion == job.conclusion)
         && builtins.length matches == 1 && step.status == "completed" && step.conclusion == "success"
         && step.name == (if e.stepName == null then "Run ${e.command}" else e.stepName) && builtins.elem e.command logical.completed
-        && lib.hasInfix e.revision log
-        && (lib.hasInfix "repository: ${e.repository}" log || lib.hasInfix "Syncing repository: ${e.repository}" log)
-        && lib.hasInfix "Image: ${e.runnerImage}\n" log && (scripted || pairing.matched);
+        && hasLiteral e.revision log
+        && (hasLiteral "repository: ${e.repository}" log || hasLiteral "Syncing repository: ${e.repository}" log)
+        && hasLiteral "Image: ${e.runnerImage}\n" log && (scripted || pairing.matched);
     in builtins.deepSeq e (if valid then e else throw "Native CI execution binding mismatch");
 }
