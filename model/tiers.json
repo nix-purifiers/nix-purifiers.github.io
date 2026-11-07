@@ -73189,96 +73189,85 @@
       }
     },
     "uv-purifier": {
-      "tier": 3,
-      "reviewedRevision": "ea43ef3106cef19ba7f9c0e75140822cd98ebc4f",
+      "tier": 2,
+      "reviewedRevision": "0d2f6e7e42462491560afcf8f03a1db4432d6c34",
       "reviewedAt": "2026-11-06",
-      "rationale": "Successful native Linux checks and sample derivations are bound to this immutable revision. Test quality has been reviewed; native Darwin execution is absent, so Tier 2 is not established.",
+      "rationale": "Actual-main native Linux and aarch64-darwin consumer derivations demonstrate meaningful upstream tests, ordinary runtime and maintained tool/runtime points. Current and shipped SDK profiles preserve selected/helper roles. Bounded actual-main historical Linux execution remains separately sourced, with unknown output NARs explicit. One independent Flask sample is established; broad sample coverage remains unproven.",
       "criteria": {
         "evaluation": {
           "state": "met",
-          "summary": "All 28 x86_64-linux check attributes evaluate locally; exact drv/output bindings match the successful native CI derivations.",
+          "summary": "Actual-main generated consumer packaging flakes evaluate to eighteen successful source/SDK/derivation/output/NAR bindings across six native profiles. Their retained expressions, locks, capture receipts and selected source inputs are explicit replay evidence; their attributes are not relabelled as uv-purifier root flake checks.",
           "evidence": [
-            "https://github.com/nix-purifiers/uv-purifier/actions/runs/42155508325/job/127688579087",
-            "https://github.com/nix-purifiers/uv-purifier/blob/ea43ef3106cef19ba7f9c0e75140822cd98ebc4f/tests/default.nix",
-            "https://nix-purifiers.github.io/evidence/ad7f3db195e86597a5e67ce521125fceefeb2542de9c3cb8a827cecfbb2c0ae3.json"
+            "https://github.com/nix-purifiers/uv-purifier/blob/0d2f6e7e42462491560afcf8f03a1db4432d6c34/tests/real-world-flask.py",
+            "https://nix-purifiers.github.io/evidence/2605969ccfb7dc90dd46aaece2cdc853f3895e5dae978a1b7ce8b5666ba670bf.json"
           ]
         },
         "goodTests": {
           "state": "met",
-          "summary": "The Flask check builds upstream Flask, wheel/sdist release artifacts and the project test derivation, then prepares an offline native uv development environment and runs Flask pytest again (494 passed in CI). Unit/library checks, malformed/stale/missing/tampered inputs, package/workspace and local/VCS/sdist sources, offline reconstruction and runtime projections test independent failure and consumer paths. Historical SDK artifacts additionally exercise compiled MarkupSafe and runtime admission.",
+          "summary": "Actual-main Linux and Apple Silicon Darwin profiles run upstream Flask tests, editable prefetch tests, projection and ordinary offline-consumer checks, with missing-Werkzeug closure controls. Python315/uv0.13.7 profiles additionally execute a locked librt C function with import-origin checks and reject missing compilers, preserve a wrong existing Python environment, and replace foreign-host toolchain overrides. These C controls are scoped to those profiles. Online host capture/relock corroborates inputs; sandboxed derivations provide runtime evidence.",
           "evidence": [
-            "https://github.com/nix-purifiers/uv-purifier/actions/runs/42155508325/job/127688579087",
-            "https://github.com/nix-purifiers/uv-purifier/blob/ea43ef3106cef19ba7f9c0e75140822cd98ebc4f/tests/default.nix",
-            "https://nix-purifiers.github.io/evidence/ad7f3db195e86597a5e67ce521125fceefeb2542de9c3cb8a827cecfbb2c0ae3.json"
+            "https://github.com/nix-purifiers/uv-purifier/blob/0d2f6e7e42462491560afcf8f03a1db4432d6c34/tests/real-world-flask.py",
+            "https://nix-purifiers.github.io/evidence/2605969ccfb7dc90dd46aaece2cdc853f3895e5dae978a1b7ce8b5666ba670bf.json"
           ]
         },
         "linux": {
           "state": "met",
-          "summary": "The inspected Ubuntu x86_64 job checks out this exact revision and successfully builds every local-evaluated check derivation; the packet records each build/rebuild event, exact output identity and available local NAR hash.",
+          "summary": "Actual-main x86_64-linux and aarch64-linux consumer derivations execute the pinned Flask tests, projection and native/ordinary runtime checks with sandbox=true. Separate profiles demonstrate selected uv0.13.7/Python3.15.0 and shipped uv0.13.5/Python3.14.8, with helper roles retained separately. No untested architecture or version range is inferred.",
           "evidence": [
-            "https://github.com/nix-purifiers/uv-purifier/actions/runs/42155508325/job/127688579087",
-            "https://github.com/nix-purifiers/uv-purifier/blob/ea43ef3106cef19ba7f9c0e75140822cd98ebc4f/tests/default.nix",
-            "https://nix-purifiers.github.io/evidence/ad7f3db195e86597a5e67ce521125fceefeb2542de9c3cb8a827cecfbb2c0ae3.json"
+            "https://github.com/nix-purifiers/uv-purifier/blob/0d2f6e7e42462491560afcf8f03a1db4432d6c34/tests/real-world-flask.py",
+            "https://nix-purifiers.github.io/evidence/2605969ccfb7dc90dd46aaece2cdc853f3895e5dae978a1b7ce8b5666ba670bf.json"
           ]
         },
         "darwin": {
-          "state": "not-met",
-          "summary": "Neither the baseline nor current-main workflow includes a Darwin runner. The flake declares aarch64-darwin, but evaluation/declaration is not native execution.",
+          "state": "met",
+          "summary": "Actual-main aarch64-darwin derivations execute the pinned Flask upstream tests, projection and native/ordinary runtime under sandbox=true, for both uv0.13.7/Python3.15.0 and the shipped uv0.13.5/Python3.14.8 profile. Compiled librt C-function/import-origin and compiler/venv negative controls apply only to the Python315 profile. No Intel Darwin, general C++/Rust/external-header or compiled workspace-member support is inferred.",
           "evidence": [
-            "https://github.com/nix-purifiers/uv-purifier/actions/runs/42155508325/job/127688579087",
-            "https://github.com/nix-purifiers/uv-purifier/blob/ea43ef3106cef19ba7f9c0e75140822cd98ebc4f/tests/default.nix",
-            "https://github.com/nix-purifiers/uv-purifier/blob/ea43ef3106cef19ba7f9c0e75140822cd98ebc4f/.github/workflows/check.yml",
-            "https://nix-purifiers.github.io/evidence/ad7f3db195e86597a5e67ce521125fceefeb2542de9c3cb8a827cecfbb2c0ae3.json"
+            "https://github.com/nix-purifiers/uv-purifier/blob/0d2f6e7e42462491560afcf8f03a1db4432d6c34/tests/real-world-flask.py",
+            "https://nix-purifiers.github.io/evidence/2605969ccfb7dc90dd46aaece2cdc853f3895e5dae978a1b7ce8b5666ba670bf.json"
           ]
         },
         "oneVersion": {
           "state": "met",
-          "summary": "Native sample execution establishes exact toolchain points python3 3.14.8, uv 0.13.5. No untested version interval is inferred.",
+          "summary": "Six actual native profiles bind selected uv0.13.7/Python3.15.0 and shipped uv0.13.5/Python3.14.8 on x86_64-linux, aarch64-linux and aarch64-darwin. The Python3.14.8/uv0.13.5 helpers remain separately labelled rather than substituted for the selected target runtime. Exact drv/output/NAR identities are retained for each profile.",
           "evidence": [
-            "https://github.com/nix-purifiers/uv-purifier/actions/runs/42155508325/job/127688579087",
-            "https://github.com/nix-purifiers/uv-purifier/blob/ea43ef3106cef19ba7f9c0e75140822cd98ebc4f/tests/default.nix",
-            "https://nix-purifiers.github.io/evidence/ad7f3db195e86597a5e67ce521125fceefeb2542de9c3cb8a827cecfbb2c0ae3.json"
+            "https://github.com/nix-purifiers/uv-purifier/blob/0d2f6e7e42462491560afcf8f03a1db4432d6c34/tests/real-world-flask.py",
+            "https://nix-purifiers.github.io/evidence/2605969ccfb7dc90dd46aaece2cdc853f3895e5dae978a1b7ce8b5666ba670bf.json"
           ]
         },
         "nonEolVersions": {
           "state": "met",
-          "summary": "The actual public-baseline Flask derivation runs uv 0.13.5 with CPython 3.14.8. Upstream currently releases the 0.13 line (latest observed 0.13.7), defines patch changes as non-breaking and minor changes as breaking, and lists Python 3.14 as continuously tested Tier 1. This demonstrates a maintained tool/runtime point under the bounded criterion. No inspected primary policy says a newer patch makes 0.13.5 EOL. This claim covers the executed 0.13.5/3.14.8 tuple only; it does not claim every patch, the full Python-version matrix, or execution of 0.13.7/Python 3.15 from source revisions outside this reviewed baseline.",
+          "summary": "The executed current target profiles use uv0.13.7 with Python3.15.0 on native Linux and aarch64-darwin. Primary uv versioning and Python policies establish the maintained tool/runtime scope; execution is demonstrated by the source-bound derivations. The separately executed shipped uv0.13.5/Python3.14.8 profile is a bounded compatibility observation. No all-patch range or maintenance interval is inferred from helper versions.",
           "evidence": [
-            "https://github.com/nix-purifiers/uv-purifier/actions/runs/42155508325/job/127688579087",
-            "https://github.com/nix-purifiers/uv-purifier/blob/ea43ef3106cef19ba7f9c0e75140822cd98ebc4f/tests/default.nix",
+            "https://github.com/nix-purifiers/uv-purifier/blob/0d2f6e7e42462491560afcf8f03a1db4432d6c34/tests/real-world-flask.py",
+            "https://nix-purifiers.github.io/evidence/2605969ccfb7dc90dd46aaece2cdc853f3895e5dae978a1b7ce8b5666ba670bf.json",
             "https://docs.astral.sh/uv/reference/policies/versioning/",
             "https://docs.astral.sh/uv/reference/policies/python/",
-            "https://github.com/astral-sh/uv/releases/tag/0.13.7",
-            "https://nix-purifiers.github.io/evidence/ad7f3db195e86597a5e67ce521125fceefeb2542de9c3cb8a827cecfbb2c0ae3.json",
-            "https://nix-purifiers.github.io/evidence/d1360d0230ca6825df6b89fcfa859e2130e120d6f8e98f842974708d6d51ea5c.json"
+            "https://github.com/astral-sh/uv/releases/tag/0.13.7"
           ]
         },
         "manySamples": {
           "state": "not-met",
-          "summary": "Flask is one independent upstream project. Simple/workspace/sources/outside and generated epoch-provider/consumer graphs are authored fixtures, not additional independent projects.",
+          "summary": "One independent pinned Flask upstream project is demonstrated. Its six SDK/platform profiles, projection, test and ordinary-consumer variants, and synthetic historical graphs are not additional independently authored upstream projects. Broad sample coverage remains unproven.",
           "evidence": [
-            "https://github.com/nix-purifiers/uv-purifier/actions/runs/42155508325/job/127688579087",
-            "https://github.com/nix-purifiers/uv-purifier/blob/ea43ef3106cef19ba7f9c0e75140822cd98ebc4f/tests/default.nix",
-            "https://nix-purifiers.github.io/evidence/ad7f3db195e86597a5e67ce521125fceefeb2542de9c3cb8a827cecfbb2c0ae3.json"
+            "https://github.com/nix-purifiers/uv-purifier/blob/0d2f6e7e42462491560afcf8f03a1db4432d6c34/tests/real-world-flask.py",
+            "https://nix-purifiers.github.io/evidence/2605969ccfb7dc90dd46aaece2cdc853f3895e5dae978a1b7ce8b5666ba670bf.json"
           ]
         },
         "longCompatibility": {
           "state": "met",
-          "summary": "Native CI artifacts prove uv 0.3.0 with Python 3.8.19 and current uv 0.13.5 with Python 3.8.19/3.9.20, alongside 3.12 and 3.14 checks. The old/new target-helper separation, compiled MarkupSafe, pure producer/incoming builds, ordinary consumers and sandwich/multiple-input assertions demonstrate substantial historical compatibility at those exact tuples. No continuous interval is claimed.",
+          "summary": "Actual-main historical Linux execution preserves the bounded uv0.3.0/Python3.8.19 resolver point with separate uv0.13.5/Python3.14.8 helpers, alongside the current native Flask profiles. Retained source-bound reports and build transcripts demonstrate producer/incoming builds, ordinary consumers, sandwich and multiple-input cases. Historical output paths are observed but their NAR hashes remain unknown. No continuous version interval or historical Darwin execution is claimed.",
           "evidence": [
-            "https://github.com/nix-purifiers/uv-purifier/actions/runs/42155508325/job/127688579087",
-            "https://github.com/nix-purifiers/uv-purifier/blob/ea43ef3106cef19ba7f9c0e75140822cd98ebc4f/tests/default.nix",
-            "https://nix-purifiers.github.io/evidence/ad7f3db195e86597a5e67ce521125fceefeb2542de9c3cb8a827cecfbb2c0ae3.json"
+            "https://github.com/nix-purifiers/uv-purifier/blob/0d2f6e7e42462491560afcf8f03a1db4432d6c34/tests/real-world-flask.py",
+            "https://nix-purifiers.github.io/evidence/2605969ccfb7dc90dd46aaece2cdc853f3895e5dae978a1b7ce8b5666ba670bf.json"
           ]
         }
       },
       "sampleBuilds": [
         {
-          "name": "Flask upstream 49943b5a94413a530761350f04e896f76e8d620e",
+          "name": "pallets/flask (one pinned upstream project)",
           "evidence": [
-            "https://github.com/nix-purifiers/uv-purifier/actions/runs/42155508325/job/127688579087",
-            "https://github.com/nix-purifiers/uv-purifier/blob/ea43ef3106cef19ba7f9c0e75140822cd98ebc4f/tests/default.nix",
-            "https://nix-purifiers.github.io/evidence/ad7f3db195e86597a5e67ce521125fceefeb2542de9c3cb8a827cecfbb2c0ae3.json"
+            "https://github.com/nix-purifiers/uv-purifier/blob/0d2f6e7e42462491560afcf8f03a1db4432d6c34/tests/real-world-flask.py",
+            "https://nix-purifiers.github.io/evidence/2605969ccfb7dc90dd46aaece2cdc853f3895e5dae978a1b7ce8b5666ba670bf.json"
           ]
         }
       ],
@@ -73286,546 +73275,637 @@
         "criteria": {
           "evaluation": {
             "state": "met",
-            "summary": "All 28 x86_64-linux check attributes evaluate locally; exact drv/output bindings match the successful native CI derivations.",
+            "summary": "Actual-main generated consumer packaging flakes evaluate to eighteen successful source/SDK/derivation/output/NAR bindings across six native profiles. Their retained expressions, locks, capture receipts and selected source inputs are explicit replay evidence; their attributes are not relabelled as uv-purifier root flake checks.",
             "derivations": [
-              "flask",
-              "cli",
-              "composition-producer",
-              "composition-producer-python312",
-              "conformance-external",
-              "conformance-malformed",
-              "conformance-missing",
-              "conformance-offline",
-              "conformance-stale",
-              "conformance-tampered",
-              "fetches",
-              "native-check-inputs",
-              "nix-library",
-              "offline-workspace",
-              "outputs",
-              "outside",
-              "overlay",
-              "pythonpath",
-              "rebuild-package",
-              "rebuild-release",
-              "release",
-              "runtime-projections",
-              "simple",
-              "sources",
-              "tests",
-              "treefmt",
-              "unit",
-              "workspace"
+              "uv-purifier:main:aarch64-darwin:uv-0.13.7:python315:pure-upstream-tests",
+              "uv-purifier:main:aarch64-darwin:uv-0.13.7:python315:projection",
+              "uv-purifier:main:aarch64-darwin:uv-0.13.7:python315:native-and-ordinary-runtime",
+              "uv-purifier:main:aarch64-linux:uv-0.13.7:python315:pure-upstream-tests",
+              "uv-purifier:main:aarch64-linux:uv-0.13.7:python315:projection",
+              "uv-purifier:main:aarch64-linux:uv-0.13.7:python315:native-and-ordinary-runtime",
+              "uv-purifier:main:x86_64-linux:uv-0.13.7:python315:pure-upstream-tests",
+              "uv-purifier:main:x86_64-linux:uv-0.13.7:python315:projection",
+              "uv-purifier:main:x86_64-linux:uv-0.13.7:python315:native-and-ordinary-runtime",
+              "uv-purifier:main:aarch64-darwin:shipped-default:python3:pure-upstream-tests",
+              "uv-purifier:main:aarch64-darwin:shipped-default:python3:projection",
+              "uv-purifier:main:aarch64-darwin:shipped-default:python3:native-and-ordinary-runtime",
+              "uv-purifier:main:x86_64-linux:shipped-default:python3:pure-upstream-tests",
+              "uv-purifier:main:x86_64-linux:shipped-default:python3:projection",
+              "uv-purifier:main:x86_64-linux:shipped-default:python3:native-and-ordinary-runtime",
+              "uv-purifier:main:aarch64-linux:shipped-default:python3:pure-upstream-tests",
+              "uv-purifier:main:aarch64-linux:shipped-default:python3:projection",
+              "uv-purifier:main:aarch64-linux:shipped-default:python3:native-and-ordinary-runtime"
             ],
             "sources": [
-              "https://github.com/nix-purifiers/uv-purifier/blob/ea43ef3106cef19ba7f9c0e75140822cd98ebc4f/tests/default.nix",
-              "https://nix-purifiers.github.io/evidence/ad7f3db195e86597a5e67ce521125fceefeb2542de9c3cb8a827cecfbb2c0ae3.json"
+              "https://github.com/nix-purifiers/uv-purifier/blob/0d2f6e7e42462491560afcf8f03a1db4432d6c34/tests/real-world-flask.py",
+              "https://nix-purifiers.github.io/evidence/2605969ccfb7dc90dd46aaece2cdc853f3895e5dae978a1b7ce8b5666ba670bf.json"
             ],
             "gap": null
           },
           "goodTests": {
             "state": "met",
-            "summary": "The Flask check builds upstream Flask, wheel/sdist release artifacts and the project test derivation, then prepares an offline native uv development environment and runs Flask pytest again (494 passed in CI). Unit/library checks, malformed/stale/missing/tampered inputs, package/workspace and local/VCS/sdist sources, offline reconstruction and runtime projections test independent failure and consumer paths. Historical SDK artifacts additionally exercise compiled MarkupSafe and runtime admission.",
+            "summary": "Actual-main Linux and Apple Silicon Darwin profiles run upstream Flask tests, editable prefetch tests, projection and ordinary offline-consumer checks, with missing-Werkzeug closure controls. Python315/uv0.13.7 profiles additionally execute a locked librt C function with import-origin checks and reject missing compilers, preserve a wrong existing Python environment, and replace foreign-host toolchain overrides. These C controls are scoped to those profiles. Online host capture/relock corroborates inputs; sandboxed derivations provide runtime evidence.",
             "derivations": [
-              "flask",
-              "unit",
-              "tests",
-              "nix-library",
-              "conformance-tampered",
-              "conformance-offline",
-              "offline-workspace",
-              "runtime-projections",
-              "composition-producer-python312"
+              "uv-purifier:main:aarch64-darwin:uv-0.13.7:python315:pure-upstream-tests",
+              "uv-purifier:main:aarch64-darwin:uv-0.13.7:python315:projection",
+              "uv-purifier:main:aarch64-darwin:uv-0.13.7:python315:native-and-ordinary-runtime",
+              "uv-purifier:main:aarch64-linux:uv-0.13.7:python315:pure-upstream-tests",
+              "uv-purifier:main:aarch64-linux:uv-0.13.7:python315:projection",
+              "uv-purifier:main:aarch64-linux:uv-0.13.7:python315:native-and-ordinary-runtime",
+              "uv-purifier:main:x86_64-linux:uv-0.13.7:python315:pure-upstream-tests",
+              "uv-purifier:main:x86_64-linux:uv-0.13.7:python315:projection",
+              "uv-purifier:main:x86_64-linux:uv-0.13.7:python315:native-and-ordinary-runtime",
+              "uv-purifier:main:aarch64-darwin:shipped-default:python3:pure-upstream-tests",
+              "uv-purifier:main:aarch64-darwin:shipped-default:python3:projection",
+              "uv-purifier:main:aarch64-darwin:shipped-default:python3:native-and-ordinary-runtime",
+              "uv-purifier:main:x86_64-linux:shipped-default:python3:pure-upstream-tests",
+              "uv-purifier:main:x86_64-linux:shipped-default:python3:projection",
+              "uv-purifier:main:x86_64-linux:shipped-default:python3:native-and-ordinary-runtime",
+              "uv-purifier:main:aarch64-linux:shipped-default:python3:pure-upstream-tests",
+              "uv-purifier:main:aarch64-linux:shipped-default:python3:projection",
+              "uv-purifier:main:aarch64-linux:shipped-default:python3:native-and-ordinary-runtime"
             ],
             "sources": [
-              "https://github.com/nix-purifiers/uv-purifier/blob/ea43ef3106cef19ba7f9c0e75140822cd98ebc4f/tests/default.nix",
-              "https://nix-purifiers.github.io/evidence/ad7f3db195e86597a5e67ce521125fceefeb2542de9c3cb8a827cecfbb2c0ae3.json"
+              "https://github.com/nix-purifiers/uv-purifier/blob/0d2f6e7e42462491560afcf8f03a1db4432d6c34/tests/real-world-flask.py",
+              "https://nix-purifiers.github.io/evidence/2605969ccfb7dc90dd46aaece2cdc853f3895e5dae978a1b7ce8b5666ba670bf.json"
             ],
             "gap": null
           },
           "linux": {
             "state": "met",
-            "summary": "The inspected Ubuntu x86_64 job checks out this exact revision and successfully builds every local-evaluated check derivation; the packet records each build/rebuild event, exact output identity and available local NAR hash.",
+            "summary": "Actual-main x86_64-linux and aarch64-linux consumer derivations execute the pinned Flask tests, projection and native/ordinary runtime checks with sandbox=true. Separate profiles demonstrate selected uv0.13.7/Python3.15.0 and shipped uv0.13.5/Python3.14.8, with helper roles retained separately. No untested architecture or version range is inferred.",
             "derivations": [
-              "flask",
-              "unit",
-              "tests",
-              "nix-library",
-              "conformance-tampered",
-              "conformance-offline",
-              "offline-workspace",
-              "runtime-projections",
-              "composition-producer-python312"
+              "uv-purifier:main:aarch64-linux:uv-0.13.7:python315:pure-upstream-tests",
+              "uv-purifier:main:aarch64-linux:uv-0.13.7:python315:projection",
+              "uv-purifier:main:aarch64-linux:uv-0.13.7:python315:native-and-ordinary-runtime",
+              "uv-purifier:main:x86_64-linux:uv-0.13.7:python315:pure-upstream-tests",
+              "uv-purifier:main:x86_64-linux:uv-0.13.7:python315:projection",
+              "uv-purifier:main:x86_64-linux:uv-0.13.7:python315:native-and-ordinary-runtime",
+              "uv-purifier:main:x86_64-linux:shipped-default:python3:pure-upstream-tests",
+              "uv-purifier:main:x86_64-linux:shipped-default:python3:projection",
+              "uv-purifier:main:x86_64-linux:shipped-default:python3:native-and-ordinary-runtime",
+              "uv-purifier:main:aarch64-linux:shipped-default:python3:pure-upstream-tests",
+              "uv-purifier:main:aarch64-linux:shipped-default:python3:projection",
+              "uv-purifier:main:aarch64-linux:shipped-default:python3:native-and-ordinary-runtime"
             ],
             "sources": [
-              "https://github.com/nix-purifiers/uv-purifier/blob/ea43ef3106cef19ba7f9c0e75140822cd98ebc4f/tests/default.nix",
-              "https://nix-purifiers.github.io/evidence/ad7f3db195e86597a5e67ce521125fceefeb2542de9c3cb8a827cecfbb2c0ae3.json"
+              "https://github.com/nix-purifiers/uv-purifier/blob/0d2f6e7e42462491560afcf8f03a1db4432d6c34/tests/real-world-flask.py",
+              "https://nix-purifiers.github.io/evidence/2605969ccfb7dc90dd46aaece2cdc853f3895e5dae978a1b7ce8b5666ba670bf.json"
             ],
             "gap": null
           },
           "darwin": {
-            "state": "not-met",
-            "summary": "Neither the baseline nor current-main workflow includes a Darwin runner. The flake declares aarch64-darwin, but evaluation/declaration is not native execution.",
-            "derivations": [],
-            "sources": [
-              "https://github.com/nix-purifiers/uv-purifier/blob/ea43ef3106cef19ba7f9c0e75140822cd98ebc4f/.github/workflows/check.yml",
-              "https://nix-purifiers.github.io/evidence/ad7f3db195e86597a5e67ce521125fceefeb2542de9c3cb8a827cecfbb2c0ae3.json"
+            "state": "met",
+            "summary": "Actual-main aarch64-darwin derivations execute the pinned Flask upstream tests, projection and native/ordinary runtime under sandbox=true, for both uv0.13.7/Python3.15.0 and the shipped uv0.13.5/Python3.14.8 profile. Compiled librt C-function/import-origin and compiler/venv negative controls apply only to the Python315 profile. No Intel Darwin, general C++/Rust/external-header or compiled workspace-member support is inferred.",
+            "derivations": [
+              "uv-purifier:main:aarch64-darwin:uv-0.13.7:python315:pure-upstream-tests",
+              "uv-purifier:main:aarch64-darwin:uv-0.13.7:python315:projection",
+              "uv-purifier:main:aarch64-darwin:uv-0.13.7:python315:native-and-ordinary-runtime",
+              "uv-purifier:main:aarch64-darwin:shipped-default:python3:pure-upstream-tests",
+              "uv-purifier:main:aarch64-darwin:shipped-default:python3:projection",
+              "uv-purifier:main:aarch64-darwin:shipped-default:python3:native-and-ordinary-runtime"
             ],
-            "gap": "No successful native Darwin CI/check derivation and realized-output binding at this revision."
+            "sources": [
+              "https://github.com/nix-purifiers/uv-purifier/blob/0d2f6e7e42462491560afcf8f03a1db4432d6c34/tests/real-world-flask.py",
+              "https://nix-purifiers.github.io/evidence/2605969ccfb7dc90dd46aaece2cdc853f3895e5dae978a1b7ce8b5666ba670bf.json"
+            ],
+            "gap": null
           },
           "oneVersion": {
             "state": "met",
-            "summary": "Native sample execution establishes exact toolchain points python3 3.14.8, uv 0.13.5. No untested version interval is inferred.",
+            "summary": "Six actual native profiles bind selected uv0.13.7/Python3.15.0 and shipped uv0.13.5/Python3.14.8 on x86_64-linux, aarch64-linux and aarch64-darwin. The Python3.14.8/uv0.13.5 helpers remain separately labelled rather than substituted for the selected target runtime. Exact drv/output/NAR identities are retained for each profile.",
             "derivations": [
-              "flask"
+              "uv-purifier:main:aarch64-darwin:uv-0.13.7:python315:pure-upstream-tests",
+              "uv-purifier:main:aarch64-darwin:uv-0.13.7:python315:projection",
+              "uv-purifier:main:aarch64-darwin:uv-0.13.7:python315:native-and-ordinary-runtime",
+              "uv-purifier:main:aarch64-linux:uv-0.13.7:python315:pure-upstream-tests",
+              "uv-purifier:main:aarch64-linux:uv-0.13.7:python315:projection",
+              "uv-purifier:main:aarch64-linux:uv-0.13.7:python315:native-and-ordinary-runtime",
+              "uv-purifier:main:x86_64-linux:uv-0.13.7:python315:pure-upstream-tests",
+              "uv-purifier:main:x86_64-linux:uv-0.13.7:python315:projection",
+              "uv-purifier:main:x86_64-linux:uv-0.13.7:python315:native-and-ordinary-runtime",
+              "uv-purifier:main:aarch64-darwin:shipped-default:python3:pure-upstream-tests",
+              "uv-purifier:main:aarch64-darwin:shipped-default:python3:projection",
+              "uv-purifier:main:aarch64-darwin:shipped-default:python3:native-and-ordinary-runtime",
+              "uv-purifier:main:x86_64-linux:shipped-default:python3:pure-upstream-tests",
+              "uv-purifier:main:x86_64-linux:shipped-default:python3:projection",
+              "uv-purifier:main:x86_64-linux:shipped-default:python3:native-and-ordinary-runtime",
+              "uv-purifier:main:aarch64-linux:shipped-default:python3:pure-upstream-tests",
+              "uv-purifier:main:aarch64-linux:shipped-default:python3:projection",
+              "uv-purifier:main:aarch64-linux:shipped-default:python3:native-and-ordinary-runtime"
             ],
             "sources": [
-              "https://github.com/nix-purifiers/uv-purifier/blob/ea43ef3106cef19ba7f9c0e75140822cd98ebc4f/tests/default.nix",
-              "https://nix-purifiers.github.io/evidence/ad7f3db195e86597a5e67ce521125fceefeb2542de9c3cb8a827cecfbb2c0ae3.json"
+              "https://github.com/nix-purifiers/uv-purifier/blob/0d2f6e7e42462491560afcf8f03a1db4432d6c34/tests/real-world-flask.py",
+              "https://nix-purifiers.github.io/evidence/2605969ccfb7dc90dd46aaece2cdc853f3895e5dae978a1b7ce8b5666ba670bf.json"
             ],
             "gap": null
           },
           "nonEolVersions": {
             "state": "met",
-            "summary": "The actual public-baseline Flask derivation runs uv 0.13.5 with CPython 3.14.8. Upstream currently releases the 0.13 line (latest observed 0.13.7), defines patch changes as non-breaking and minor changes as breaking, and lists Python 3.14 as continuously tested Tier 1. This demonstrates a maintained tool/runtime point under the bounded criterion. No inspected primary policy says a newer patch makes 0.13.5 EOL. This claim covers the executed 0.13.5/3.14.8 tuple only; it does not claim every patch, the full Python-version matrix, or execution of 0.13.7/Python 3.15 from source revisions outside this reviewed baseline.",
+            "summary": "The executed current target profiles use uv0.13.7 with Python3.15.0 on native Linux and aarch64-darwin. Primary uv versioning and Python policies establish the maintained tool/runtime scope; execution is demonstrated by the source-bound derivations. The separately executed shipped uv0.13.5/Python3.14.8 profile is a bounded compatibility observation. No all-patch range or maintenance interval is inferred from helper versions.",
             "derivations": [
-              "flask"
+              "uv-purifier:main:aarch64-darwin:uv-0.13.7:python315:pure-upstream-tests",
+              "uv-purifier:main:aarch64-darwin:uv-0.13.7:python315:projection",
+              "uv-purifier:main:aarch64-darwin:uv-0.13.7:python315:native-and-ordinary-runtime",
+              "uv-purifier:main:aarch64-linux:uv-0.13.7:python315:pure-upstream-tests",
+              "uv-purifier:main:aarch64-linux:uv-0.13.7:python315:projection",
+              "uv-purifier:main:aarch64-linux:uv-0.13.7:python315:native-and-ordinary-runtime",
+              "uv-purifier:main:x86_64-linux:uv-0.13.7:python315:pure-upstream-tests",
+              "uv-purifier:main:x86_64-linux:uv-0.13.7:python315:projection",
+              "uv-purifier:main:x86_64-linux:uv-0.13.7:python315:native-and-ordinary-runtime"
             ],
             "sources": [
+              "https://github.com/nix-purifiers/uv-purifier/blob/0d2f6e7e42462491560afcf8f03a1db4432d6c34/tests/real-world-flask.py",
+              "https://nix-purifiers.github.io/evidence/2605969ccfb7dc90dd46aaece2cdc853f3895e5dae978a1b7ce8b5666ba670bf.json",
               "https://docs.astral.sh/uv/reference/policies/versioning/",
               "https://docs.astral.sh/uv/reference/policies/python/",
-              "https://github.com/astral-sh/uv/releases/tag/0.13.7",
-              "https://nix-purifiers.github.io/evidence/d1360d0230ca6825df6b89fcfa859e2130e120d6f8e98f842974708d6d51ea5c.json"
+              "https://github.com/astral-sh/uv/releases/tag/0.13.7"
             ],
             "gap": null
           },
           "manySamples": {
             "state": "not-met",
-            "summary": "Flask is one independent upstream project. Simple/workspace/sources/outside and generated epoch-provider/consumer graphs are authored fixtures, not additional independent projects.",
-            "derivations": [],
-            "sources": [
-              "https://github.com/nix-purifiers/uv-purifier/blob/ea43ef3106cef19ba7f9c0e75140822cd98ebc4f/tests/default.nix",
-              "https://nix-purifiers.github.io/evidence/ad7f3db195e86597a5e67ce521125fceefeb2542de9c3cb8a827cecfbb2c0ae3.json"
+            "summary": "One independent pinned Flask upstream project is demonstrated. Its six SDK/platform profiles, projection, test and ordinary-consumer variants, and synthetic historical graphs are not additional independently authored upstream projects. Broad sample coverage remains unproven.",
+            "derivations": [
+              "uv-purifier:main:aarch64-darwin:uv-0.13.7:python315:pure-upstream-tests",
+              "uv-purifier:main:aarch64-darwin:uv-0.13.7:python315:projection",
+              "uv-purifier:main:aarch64-darwin:uv-0.13.7:python315:native-and-ordinary-runtime",
+              "uv-purifier:main:aarch64-linux:uv-0.13.7:python315:pure-upstream-tests",
+              "uv-purifier:main:aarch64-linux:uv-0.13.7:python315:projection",
+              "uv-purifier:main:aarch64-linux:uv-0.13.7:python315:native-and-ordinary-runtime",
+              "uv-purifier:main:x86_64-linux:uv-0.13.7:python315:pure-upstream-tests",
+              "uv-purifier:main:x86_64-linux:uv-0.13.7:python315:projection",
+              "uv-purifier:main:x86_64-linux:uv-0.13.7:python315:native-and-ordinary-runtime",
+              "uv-purifier:main:aarch64-darwin:shipped-default:python3:pure-upstream-tests",
+              "uv-purifier:main:aarch64-darwin:shipped-default:python3:projection",
+              "uv-purifier:main:aarch64-darwin:shipped-default:python3:native-and-ordinary-runtime",
+              "uv-purifier:main:x86_64-linux:shipped-default:python3:pure-upstream-tests",
+              "uv-purifier:main:x86_64-linux:shipped-default:python3:projection",
+              "uv-purifier:main:x86_64-linux:shipped-default:python3:native-and-ordinary-runtime",
+              "uv-purifier:main:aarch64-linux:shipped-default:python3:pure-upstream-tests",
+              "uv-purifier:main:aarch64-linux:shipped-default:python3:projection",
+              "uv-purifier:main:aarch64-linux:shipped-default:python3:native-and-ordinary-runtime"
             ],
-            "gap": "Flask is one independent upstream project. Simple/workspace/sources/outside and generated epoch-provider/consumer graphs are authored fixtures, not additional independent projects."
+            "sources": [
+              "https://github.com/nix-purifiers/uv-purifier/blob/0d2f6e7e42462491560afcf8f03a1db4432d6c34/tests/real-world-flask.py",
+              "https://nix-purifiers.github.io/evidence/2605969ccfb7dc90dd46aaece2cdc853f3895e5dae978a1b7ce8b5666ba670bf.json"
+            ],
+            "gap": "One independent pinned Flask upstream project is demonstrated. Its six SDK/platform profiles, projection, test and ordinary-consumer variants, and synthetic historical graphs are not additional independently authored upstream projects. Broad sample coverage remains unproven."
           },
           "longCompatibility": {
             "state": "met",
-            "summary": "Native CI artifacts prove uv 0.3.0 with Python 3.8.19 and current uv 0.13.5 with Python 3.8.19/3.9.20, alongside 3.12 and 3.14 checks. The old/new target-helper separation, compiled MarkupSafe, pure producer/incoming builds, ordinary consumers and sandwich/multiple-input assertions demonstrate substantial historical compatibility at those exact tuples. No continuous interval is claimed.",
+            "summary": "Actual-main historical Linux execution preserves the bounded uv0.3.0/Python3.8.19 resolver point with separate uv0.13.5/Python3.14.8 helpers, alongside the current native Flask profiles. Retained source-bound reports and build transcripts demonstrate producer/incoming builds, ordinary consumers, sandwich and multiple-input cases. Historical output paths are observed but their NAR hashes remain unknown. No continuous version interval or historical Darwin execution is claimed.",
             "derivations": [
-              "flask",
-              "historical-0.13.5-python-3.8.19",
-              "historical-0.3.0-python-3.8.19",
-              "historical-0.13.5-python-3.9.20"
+              "uv-purifier:main:x86_64-linux:historical-uv0.3-python38",
+              "uv-purifier:main:aarch64-darwin:uv-0.13.7:python315:pure-upstream-tests",
+              "uv-purifier:main:aarch64-darwin:uv-0.13.7:python315:projection",
+              "uv-purifier:main:aarch64-darwin:uv-0.13.7:python315:native-and-ordinary-runtime",
+              "uv-purifier:main:aarch64-linux:uv-0.13.7:python315:pure-upstream-tests",
+              "uv-purifier:main:aarch64-linux:uv-0.13.7:python315:projection",
+              "uv-purifier:main:aarch64-linux:uv-0.13.7:python315:native-and-ordinary-runtime",
+              "uv-purifier:main:x86_64-linux:uv-0.13.7:python315:pure-upstream-tests",
+              "uv-purifier:main:x86_64-linux:uv-0.13.7:python315:projection",
+              "uv-purifier:main:x86_64-linux:uv-0.13.7:python315:native-and-ordinary-runtime"
             ],
             "sources": [
-              "https://github.com/nix-purifiers/uv-purifier/blob/ea43ef3106cef19ba7f9c0e75140822cd98ebc4f/tests/default.nix",
-              "https://nix-purifiers.github.io/evidence/ad7f3db195e86597a5e67ce521125fceefeb2542de9c3cb8a827cecfbb2c0ae3.json"
+              "https://github.com/nix-purifiers/uv-purifier/blob/0d2f6e7e42462491560afcf8f03a1db4432d6c34/tests/real-world-flask.py",
+              "https://nix-purifiers.github.io/evidence/2605969ccfb7dc90dd46aaece2cdc853f3895e5dae978a1b7ce8b5666ba670bf.json"
             ],
             "gap": null
           }
         },
         "derivations": {
-          "cli": {
-            "revision": "ea43ef3106cef19ba7f9c0e75140822cd98ebc4f",
-            "system": "x86_64-linux",
-            "drvPath": "/nix/store/apnk0cs8i9b25ajwfy2dl4yrqqdrzsq4-uv-purifier-test-cli.drv",
-            "sourceNarHash": "sha256-MAx8dSy7Jy1EZVJ5RmCztO3HAKer+NOpY14IucmjO9Q=",
+          "uv-purifier:main:aarch64-darwin:uv-0.13.7:python315:pure-upstream-tests": {
             "repository": "nix-purifiers/uv-purifier",
+            "revision": "0d2f6e7e42462491560afcf8f03a1db4432d6c34",
+            "system": "aarch64-darwin",
             "check": {
-              "kind": "flake-attribute",
-              "value": "checks.x86_64-linux.cli",
-              "replay": null
+              "kind": "expression",
+              "value": "let f = builtins.getFlake (\"path:\" + builtins.getEnv \"UV_PROFILE_ROOT\"); in f.packages.aarch64-darwin.tests",
+              "replay": {
+                "artifactUrl": "https://nix-purifiers.github.io/evidence/0fd51a9df2673b692c5fc4faa3349f374a7fc5a81dc631b9e560732e41b4bd6a.json",
+                "artifactSha256": "0fd51a9df2673b692c5fc4faa3349f374a7fc5a81dc631b9e560732e41b4bd6a",
+                "expressionSha256": "eeadb993c0a336a9426b576ee8c26481f24b72e04526a639d2613847b9d937c5",
+                "arguments": {
+                  "UV_PROFILE_ROOT": "/home/chris/Projects/ch-nix-workspace/.worktrees/uv-tier2-ci-evidence/42336626990/flask-runtime-aarch64-darwin-python315-uv-0.13.7/packaging"
+                }
+              }
             },
+            "drvPath": "/nix/store/bypbadr5v696si2dgbzn0bsdcfsyjwc3-flask-tests.drv",
             "outputs": {
-              "out": "/nix/store/fs35nhx222si5n0hd9hi52kgfgzdrxg1-uv-purifier-test-cli"
+              "out": "/nix/store/8dpww2yrh7bkqcp6kwlkqmwg990mxcxi-flask-tests"
             },
             "outputNarHashes": {
               "out": "sha256-d6xi4mKdjkX2JFicDIv5niSzpyI0m/Hnm8GGAIU04kY="
             },
-            "sdkVersions": {},
-            "sampleSources": [],
-            "evaluation": null,
-            "build": {
-              "status": "success",
-              "executedSystem": "x86_64-linux",
-              "sourceRevision": "ea43ef3106cef19ba7f9c0e75140822cd98ebc4f",
-              "sourceNarHash": "sha256-MAx8dSy7Jy1EZVJ5RmCztO3HAKer+NOpY14IucmjO9Q=",
-              "drvPath": "/nix/store/apnk0cs8i9b25ajwfy2dl4yrqqdrzsq4-uv-purifier-test-cli.drv",
-              "outputs": {
-                "out": "/nix/store/fs35nhx222si5n0hd9hi52kgfgzdrxg1-uv-purifier-test-cli"
-              },
-              "outputNarHashes": {
-                "out": "sha256-d6xi4mKdjkX2JFicDIv5niSzpyI0m/Hnm8GGAIU04kY="
-              },
-              "sdkVersions": {},
-              "sampleSources": [],
-              "receipt": "https://nix-purifiers.github.io/evidence/e3bdeb5bd839634288b697a256b28afca897326741ae895a76929965cb3d6bda.json",
-              "artifactSha256": "e3bdeb5bd839634288b697a256b28afca897326741ae895a76929965cb3d6bda"
-            }
-          },
-          "composition-producer": {
-            "revision": "ea43ef3106cef19ba7f9c0e75140822cd98ebc4f",
-            "system": "x86_64-linux",
-            "drvPath": "/nix/store/j76kygsd34bjpj1znzivgf4v4r643wam-simple-0.1.0.drv",
-            "sourceNarHash": "sha256-MAx8dSy7Jy1EZVJ5RmCztO3HAKer+NOpY14IucmjO9Q=",
-            "repository": "nix-purifiers/uv-purifier",
-            "check": {
-              "kind": "flake-attribute",
-              "value": "checks.x86_64-linux.composition-producer",
-              "replay": null
-            },
-            "outputs": {
-              "out": "/nix/store/pvxkbrdfpzlcwiv8q9ywb9jpvbgyrx46-simple-0.1.0"
-            },
-            "outputNarHashes": {
-              "out": "sha256-+P2+c+ezWDLjsX1QCxt8LErZPuIJQSgfIM2rp0oDrxA="
-            },
-            "sdkVersions": {},
-            "sampleSources": [],
-            "evaluation": null,
-            "build": {
-              "status": "success",
-              "executedSystem": "x86_64-linux",
-              "sourceRevision": "ea43ef3106cef19ba7f9c0e75140822cd98ebc4f",
-              "sourceNarHash": "sha256-MAx8dSy7Jy1EZVJ5RmCztO3HAKer+NOpY14IucmjO9Q=",
-              "drvPath": "/nix/store/j76kygsd34bjpj1znzivgf4v4r643wam-simple-0.1.0.drv",
-              "outputs": {
-                "out": "/nix/store/pvxkbrdfpzlcwiv8q9ywb9jpvbgyrx46-simple-0.1.0"
-              },
-              "outputNarHashes": {
-                "out": "sha256-+P2+c+ezWDLjsX1QCxt8LErZPuIJQSgfIM2rp0oDrxA="
-              },
-              "sdkVersions": {},
-              "sampleSources": [],
-              "receipt": "https://nix-purifiers.github.io/evidence/e3bdeb5bd839634288b697a256b28afca897326741ae895a76929965cb3d6bda.json",
-              "artifactSha256": "e3bdeb5bd839634288b697a256b28afca897326741ae895a76929965cb3d6bda"
-            }
-          },
-          "composition-producer-python312": {
-            "revision": "ea43ef3106cef19ba7f9c0e75140822cd98ebc4f",
-            "system": "x86_64-linux",
-            "drvPath": "/nix/store/m1pgljqxfink8z9kdrsh58p9pc6j0ypn-simple-0.1.0.drv",
-            "sourceNarHash": "sha256-MAx8dSy7Jy1EZVJ5RmCztO3HAKer+NOpY14IucmjO9Q=",
-            "repository": "nix-purifiers/uv-purifier",
-            "check": {
-              "kind": "flake-attribute",
-              "value": "checks.x86_64-linux.composition-producer-python312",
-              "replay": null
-            },
-            "outputs": {
-              "out": "/nix/store/2zvwk8m3a6kasikl2hns2sllkzfv5aff-simple-0.1.0"
-            },
-            "outputNarHashes": {
-              "out": "sha256-UjTPzHaVN/BPoldVNPNcU3ooov+3inEwFmuS6zr7PcM="
-            },
-            "sdkVersions": {},
-            "sampleSources": [],
-            "evaluation": null,
-            "build": {
-              "status": "success",
-              "executedSystem": "x86_64-linux",
-              "sourceRevision": "ea43ef3106cef19ba7f9c0e75140822cd98ebc4f",
-              "sourceNarHash": "sha256-MAx8dSy7Jy1EZVJ5RmCztO3HAKer+NOpY14IucmjO9Q=",
-              "drvPath": "/nix/store/m1pgljqxfink8z9kdrsh58p9pc6j0ypn-simple-0.1.0.drv",
-              "outputs": {
-                "out": "/nix/store/2zvwk8m3a6kasikl2hns2sllkzfv5aff-simple-0.1.0"
-              },
-              "outputNarHashes": {
-                "out": "sha256-UjTPzHaVN/BPoldVNPNcU3ooov+3inEwFmuS6zr7PcM="
-              },
-              "sdkVersions": {},
-              "sampleSources": [],
-              "receipt": "https://nix-purifiers.github.io/evidence/e3bdeb5bd839634288b697a256b28afca897326741ae895a76929965cb3d6bda.json",
-              "artifactSha256": "e3bdeb5bd839634288b697a256b28afca897326741ae895a76929965cb3d6bda"
-            }
-          },
-          "conformance-external": {
-            "revision": "ea43ef3106cef19ba7f9c0e75140822cd98ebc4f",
-            "system": "x86_64-linux",
-            "drvPath": "/nix/store/8hdpkkh0j99vm0kwi21ym2b4gchbql4g-uv-purifier-test-conformance-external.drv",
-            "sourceNarHash": "sha256-MAx8dSy7Jy1EZVJ5RmCztO3HAKer+NOpY14IucmjO9Q=",
-            "repository": "nix-purifiers/uv-purifier",
-            "check": {
-              "kind": "flake-attribute",
-              "value": "checks.x86_64-linux.conformance-external",
-              "replay": null
-            },
-            "outputs": {
-              "out": "/nix/store/v3fgdy3kr5v5q090yr1wl5362qr5qwvg-uv-purifier-test-conformance-external"
-            },
-            "outputNarHashes": {
-              "out": "sha256-d6xi4mKdjkX2JFicDIv5niSzpyI0m/Hnm8GGAIU04kY="
-            },
-            "sdkVersions": {},
-            "sampleSources": [],
-            "evaluation": null,
-            "build": {
-              "status": "success",
-              "executedSystem": "x86_64-linux",
-              "sourceRevision": "ea43ef3106cef19ba7f9c0e75140822cd98ebc4f",
-              "sourceNarHash": "sha256-MAx8dSy7Jy1EZVJ5RmCztO3HAKer+NOpY14IucmjO9Q=",
-              "drvPath": "/nix/store/8hdpkkh0j99vm0kwi21ym2b4gchbql4g-uv-purifier-test-conformance-external.drv",
-              "outputs": {
-                "out": "/nix/store/v3fgdy3kr5v5q090yr1wl5362qr5qwvg-uv-purifier-test-conformance-external"
-              },
-              "outputNarHashes": {
-                "out": "sha256-d6xi4mKdjkX2JFicDIv5niSzpyI0m/Hnm8GGAIU04kY="
-              },
-              "sdkVersions": {},
-              "sampleSources": [],
-              "receipt": "https://nix-purifiers.github.io/evidence/e3bdeb5bd839634288b697a256b28afca897326741ae895a76929965cb3d6bda.json",
-              "artifactSha256": "e3bdeb5bd839634288b697a256b28afca897326741ae895a76929965cb3d6bda"
-            }
-          },
-          "conformance-malformed": {
-            "revision": "ea43ef3106cef19ba7f9c0e75140822cd98ebc4f",
-            "system": "x86_64-linux",
-            "drvPath": "/nix/store/5rbcp1nfs3pl7gr97ql7m2nicp0nmk0l-uv-purifier-test-conformance-malformed.drv",
-            "sourceNarHash": "sha256-MAx8dSy7Jy1EZVJ5RmCztO3HAKer+NOpY14IucmjO9Q=",
-            "repository": "nix-purifiers/uv-purifier",
-            "check": {
-              "kind": "flake-attribute",
-              "value": "checks.x86_64-linux.conformance-malformed",
-              "replay": null
-            },
-            "outputs": {
-              "out": "/nix/store/x3lw1i5w7jp9gjzm8xy6y85hj6bg63ld-uv-purifier-test-conformance-malformed"
-            },
-            "outputNarHashes": {
-              "out": "sha256-d6xi4mKdjkX2JFicDIv5niSzpyI0m/Hnm8GGAIU04kY="
-            },
-            "sdkVersions": {},
-            "sampleSources": [],
-            "evaluation": null,
-            "build": {
-              "status": "success",
-              "executedSystem": "x86_64-linux",
-              "sourceRevision": "ea43ef3106cef19ba7f9c0e75140822cd98ebc4f",
-              "sourceNarHash": "sha256-MAx8dSy7Jy1EZVJ5RmCztO3HAKer+NOpY14IucmjO9Q=",
-              "drvPath": "/nix/store/5rbcp1nfs3pl7gr97ql7m2nicp0nmk0l-uv-purifier-test-conformance-malformed.drv",
-              "outputs": {
-                "out": "/nix/store/x3lw1i5w7jp9gjzm8xy6y85hj6bg63ld-uv-purifier-test-conformance-malformed"
-              },
-              "outputNarHashes": {
-                "out": "sha256-d6xi4mKdjkX2JFicDIv5niSzpyI0m/Hnm8GGAIU04kY="
-              },
-              "sdkVersions": {},
-              "sampleSources": [],
-              "receipt": "https://nix-purifiers.github.io/evidence/e3bdeb5bd839634288b697a256b28afca897326741ae895a76929965cb3d6bda.json",
-              "artifactSha256": "e3bdeb5bd839634288b697a256b28afca897326741ae895a76929965cb3d6bda"
-            }
-          },
-          "conformance-missing": {
-            "revision": "ea43ef3106cef19ba7f9c0e75140822cd98ebc4f",
-            "system": "x86_64-linux",
-            "drvPath": "/nix/store/w033d7n1b07lg33zigb5w3080f0yd3ib-uv-purifier-test-conformance-missing.drv",
-            "sourceNarHash": "sha256-MAx8dSy7Jy1EZVJ5RmCztO3HAKer+NOpY14IucmjO9Q=",
-            "repository": "nix-purifiers/uv-purifier",
-            "check": {
-              "kind": "flake-attribute",
-              "value": "checks.x86_64-linux.conformance-missing",
-              "replay": null
-            },
-            "outputs": {
-              "out": "/nix/store/jqp7lwskwnp5kj7c26l4ln6jggdvm9xw-uv-purifier-test-conformance-missing"
-            },
-            "outputNarHashes": {
-              "out": "sha256-d6xi4mKdjkX2JFicDIv5niSzpyI0m/Hnm8GGAIU04kY="
-            },
-            "sdkVersions": {},
-            "sampleSources": [],
-            "evaluation": null,
-            "build": {
-              "status": "success",
-              "executedSystem": "x86_64-linux",
-              "sourceRevision": "ea43ef3106cef19ba7f9c0e75140822cd98ebc4f",
-              "sourceNarHash": "sha256-MAx8dSy7Jy1EZVJ5RmCztO3HAKer+NOpY14IucmjO9Q=",
-              "drvPath": "/nix/store/w033d7n1b07lg33zigb5w3080f0yd3ib-uv-purifier-test-conformance-missing.drv",
-              "outputs": {
-                "out": "/nix/store/jqp7lwskwnp5kj7c26l4ln6jggdvm9xw-uv-purifier-test-conformance-missing"
-              },
-              "outputNarHashes": {
-                "out": "sha256-d6xi4mKdjkX2JFicDIv5niSzpyI0m/Hnm8GGAIU04kY="
-              },
-              "sdkVersions": {},
-              "sampleSources": [],
-              "receipt": "https://nix-purifiers.github.io/evidence/e3bdeb5bd839634288b697a256b28afca897326741ae895a76929965cb3d6bda.json",
-              "artifactSha256": "e3bdeb5bd839634288b697a256b28afca897326741ae895a76929965cb3d6bda"
-            }
-          },
-          "conformance-offline": {
-            "revision": "ea43ef3106cef19ba7f9c0e75140822cd98ebc4f",
-            "system": "x86_64-linux",
-            "drvPath": "/nix/store/35jdjgj9kysl69b3hlcxwblhdkih9r2b-uv-purifier-test-offline-sources.drv",
-            "sourceNarHash": "sha256-MAx8dSy7Jy1EZVJ5RmCztO3HAKer+NOpY14IucmjO9Q=",
-            "repository": "nix-purifiers/uv-purifier",
-            "check": {
-              "kind": "flake-attribute",
-              "value": "checks.x86_64-linux.conformance-offline",
-              "replay": null
-            },
-            "outputs": {
-              "out": "/nix/store/vv0jz724jxnwk2ampa2w25qd6r4rvyxs-uv-purifier-test-offline-sources"
-            },
-            "outputNarHashes": {
-              "out": "sha256-d6xi4mKdjkX2JFicDIv5niSzpyI0m/Hnm8GGAIU04kY="
-            },
-            "sdkVersions": {},
-            "sampleSources": [],
-            "evaluation": null,
-            "build": {
-              "status": "success",
-              "executedSystem": "x86_64-linux",
-              "sourceRevision": "ea43ef3106cef19ba7f9c0e75140822cd98ebc4f",
-              "sourceNarHash": "sha256-MAx8dSy7Jy1EZVJ5RmCztO3HAKer+NOpY14IucmjO9Q=",
-              "drvPath": "/nix/store/35jdjgj9kysl69b3hlcxwblhdkih9r2b-uv-purifier-test-offline-sources.drv",
-              "outputs": {
-                "out": "/nix/store/vv0jz724jxnwk2ampa2w25qd6r4rvyxs-uv-purifier-test-offline-sources"
-              },
-              "outputNarHashes": {
-                "out": "sha256-d6xi4mKdjkX2JFicDIv5niSzpyI0m/Hnm8GGAIU04kY="
-              },
-              "sdkVersions": {},
-              "sampleSources": [],
-              "receipt": "https://nix-purifiers.github.io/evidence/e3bdeb5bd839634288b697a256b28afca897326741ae895a76929965cb3d6bda.json",
-              "artifactSha256": "e3bdeb5bd839634288b697a256b28afca897326741ae895a76929965cb3d6bda"
-            }
-          },
-          "conformance-stale": {
-            "revision": "ea43ef3106cef19ba7f9c0e75140822cd98ebc4f",
-            "system": "x86_64-linux",
-            "drvPath": "/nix/store/lhb357i4cqsqf8b78b5iw20sl49rqblc-uv-purifier-test-conformance-stale.drv",
-            "sourceNarHash": "sha256-MAx8dSy7Jy1EZVJ5RmCztO3HAKer+NOpY14IucmjO9Q=",
-            "repository": "nix-purifiers/uv-purifier",
-            "check": {
-              "kind": "flake-attribute",
-              "value": "checks.x86_64-linux.conformance-stale",
-              "replay": null
-            },
-            "outputs": {
-              "out": "/nix/store/yrhw7m812bgqch1s0fdawpjnka9jql45-uv-purifier-test-conformance-stale"
-            },
-            "outputNarHashes": {
-              "out": "sha256-d6xi4mKdjkX2JFicDIv5niSzpyI0m/Hnm8GGAIU04kY="
-            },
-            "sdkVersions": {},
-            "sampleSources": [],
-            "evaluation": null,
-            "build": {
-              "status": "success",
-              "executedSystem": "x86_64-linux",
-              "sourceRevision": "ea43ef3106cef19ba7f9c0e75140822cd98ebc4f",
-              "sourceNarHash": "sha256-MAx8dSy7Jy1EZVJ5RmCztO3HAKer+NOpY14IucmjO9Q=",
-              "drvPath": "/nix/store/lhb357i4cqsqf8b78b5iw20sl49rqblc-uv-purifier-test-conformance-stale.drv",
-              "outputs": {
-                "out": "/nix/store/yrhw7m812bgqch1s0fdawpjnka9jql45-uv-purifier-test-conformance-stale"
-              },
-              "outputNarHashes": {
-                "out": "sha256-d6xi4mKdjkX2JFicDIv5niSzpyI0m/Hnm8GGAIU04kY="
-              },
-              "sdkVersions": {},
-              "sampleSources": [],
-              "receipt": "https://nix-purifiers.github.io/evidence/e3bdeb5bd839634288b697a256b28afca897326741ae895a76929965cb3d6bda.json",
-              "artifactSha256": "e3bdeb5bd839634288b697a256b28afca897326741ae895a76929965cb3d6bda"
-            }
-          },
-          "conformance-tampered": {
-            "revision": "ea43ef3106cef19ba7f9c0e75140822cd98ebc4f",
-            "system": "x86_64-linux",
-            "drvPath": "/nix/store/f2zqwsh9sdcm6302mkg240f54i8r2j1p-uv-purifier-test-conformance-tampered.drv",
-            "sourceNarHash": "sha256-MAx8dSy7Jy1EZVJ5RmCztO3HAKer+NOpY14IucmjO9Q=",
-            "repository": "nix-purifiers/uv-purifier",
-            "check": {
-              "kind": "flake-attribute",
-              "value": "checks.x86_64-linux.conformance-tampered",
-              "replay": null
-            },
-            "outputs": {
-              "out": "/nix/store/5whha8vy2d0piw2mwhi1yafn0p5b1zss-uv-purifier-test-conformance-tampered"
-            },
-            "outputNarHashes": {
-              "out": "sha256-d6xi4mKdjkX2JFicDIv5niSzpyI0m/Hnm8GGAIU04kY="
-            },
-            "sdkVersions": {},
-            "sampleSources": [],
-            "evaluation": null,
-            "build": {
-              "status": "success",
-              "executedSystem": "x86_64-linux",
-              "sourceRevision": "ea43ef3106cef19ba7f9c0e75140822cd98ebc4f",
-              "sourceNarHash": "sha256-MAx8dSy7Jy1EZVJ5RmCztO3HAKer+NOpY14IucmjO9Q=",
-              "drvPath": "/nix/store/f2zqwsh9sdcm6302mkg240f54i8r2j1p-uv-purifier-test-conformance-tampered.drv",
-              "outputs": {
-                "out": "/nix/store/5whha8vy2d0piw2mwhi1yafn0p5b1zss-uv-purifier-test-conformance-tampered"
-              },
-              "outputNarHashes": {
-                "out": "sha256-d6xi4mKdjkX2JFicDIv5niSzpyI0m/Hnm8GGAIU04kY="
-              },
-              "sdkVersions": {},
-              "sampleSources": [],
-              "receipt": "https://nix-purifiers.github.io/evidence/e3bdeb5bd839634288b697a256b28afca897326741ae895a76929965cb3d6bda.json",
-              "artifactSha256": "e3bdeb5bd839634288b697a256b28afca897326741ae895a76929965cb3d6bda"
-            }
-          },
-          "fetches": {
-            "revision": "ea43ef3106cef19ba7f9c0e75140822cd98ebc4f",
-            "system": "x86_64-linux",
-            "drvPath": "/nix/store/vh4gkzn2jzd16vv88zw29xykj2y4vhp9-uv-purifier-test-fetches.drv",
-            "sourceNarHash": "sha256-MAx8dSy7Jy1EZVJ5RmCztO3HAKer+NOpY14IucmjO9Q=",
-            "repository": "nix-purifiers/uv-purifier",
-            "check": {
-              "kind": "flake-attribute",
-              "value": "checks.x86_64-linux.fetches",
-              "replay": null
-            },
-            "outputs": {
-              "out": "/nix/store/6d8qhffjvj2pib06gg8vnkn62xik3a91-uv-purifier-test-fetches"
-            },
-            "outputNarHashes": {
-              "out": "sha256-d6xi4mKdjkX2JFicDIv5niSzpyI0m/Hnm8GGAIU04kY="
-            },
-            "sdkVersions": {},
-            "sampleSources": [],
-            "evaluation": null,
-            "build": {
-              "status": "success",
-              "executedSystem": "x86_64-linux",
-              "sourceRevision": "ea43ef3106cef19ba7f9c0e75140822cd98ebc4f",
-              "sourceNarHash": "sha256-MAx8dSy7Jy1EZVJ5RmCztO3HAKer+NOpY14IucmjO9Q=",
-              "drvPath": "/nix/store/vh4gkzn2jzd16vv88zw29xykj2y4vhp9-uv-purifier-test-fetches.drv",
-              "outputs": {
-                "out": "/nix/store/6d8qhffjvj2pib06gg8vnkn62xik3a91-uv-purifier-test-fetches"
-              },
-              "outputNarHashes": {
-                "out": "sha256-d6xi4mKdjkX2JFicDIv5niSzpyI0m/Hnm8GGAIU04kY="
-              },
-              "sdkVersions": {},
-              "sampleSources": [],
-              "receipt": "https://nix-purifiers.github.io/evidence/e3bdeb5bd839634288b697a256b28afca897326741ae895a76929965cb3d6bda.json",
-              "artifactSha256": "e3bdeb5bd839634288b697a256b28afca897326741ae895a76929965cb3d6bda"
-            }
-          },
-          "flask": {
-            "revision": "ea43ef3106cef19ba7f9c0e75140822cd98ebc4f",
-            "system": "x86_64-linux",
-            "drvPath": "/nix/store/59gicqnlmkqka1w8p79bjmpaw4s2apr3-uv-purifier-test-flask.drv",
-            "sourceNarHash": "sha256-MAx8dSy7Jy1EZVJ5RmCztO3HAKer+NOpY14IucmjO9Q=",
-            "repository": "nix-purifiers/uv-purifier",
-            "check": {
-              "kind": "flake-attribute",
-              "value": "checks.x86_64-linux.flask",
-              "replay": null
-            },
-            "outputs": {
-              "out": "/nix/store/6wrc2maxhma5pav0gxq47vny6rjy4q1a-uv-purifier-test-flask"
-            },
-            "outputNarHashes": {
-              "out": "sha256-d6xi4mKdjkX2JFicDIv5niSzpyI0m/Hnm8GGAIU04kY="
-            },
+            "sourceNarHash": "sha256-7yuc4bdJTXZcz9a86sJeZ9H9gFhYeF33Csyy1X5naNU=",
             "sdkVersions": {
-              "python3": "3.14.8",
-              "uv": "0.13.5"
+              "Selected uv": "uv 0.13.7 (316c827e0 2026-11-03 aarch64-apple-darwin)",
+              "Selected Python": "Python 3.15.0",
+              "Helper uv": "uv 0.13.5 (aarch64-apple-darwin)",
+              "Helper Python": "Python 3.14.8"
+            },
+            "sampleSources": [
+              {
+                "repository": "https://github.com/pallets/flask",
+                "revision": "49943b5a94413a530761350f04e896f76e8d620e",
+                "sourceNarHash": "sha256-B+57AoHgGsoxtXTInivSKa7X0G4HaO6VPv20kT0WXR0="
+              }
+            ],
+            "evaluation": null,
+            "build": {
+              "status": "success",
+              "executedSystem": "aarch64-darwin",
+              "sourceRevision": "0d2f6e7e42462491560afcf8f03a1db4432d6c34",
+              "sourceNarHash": "sha256-7yuc4bdJTXZcz9a86sJeZ9H9gFhYeF33Csyy1X5naNU=",
+              "drvPath": "/nix/store/bypbadr5v696si2dgbzn0bsdcfsyjwc3-flask-tests.drv",
+              "outputs": {
+                "out": "/nix/store/8dpww2yrh7bkqcp6kwlkqmwg990mxcxi-flask-tests"
+              },
+              "outputNarHashes": {
+                "out": "sha256-d6xi4mKdjkX2JFicDIv5niSzpyI0m/Hnm8GGAIU04kY="
+              },
+              "sdkVersions": {
+                "Selected uv": "uv 0.13.7 (316c827e0 2026-11-03 aarch64-apple-darwin)",
+                "Selected Python": "Python 3.15.0",
+                "Helper uv": "uv 0.13.5 (aarch64-apple-darwin)",
+                "Helper Python": "Python 3.14.8"
+              },
+              "sampleSources": [
+                {
+                  "repository": "https://github.com/pallets/flask",
+                  "revision": "49943b5a94413a530761350f04e896f76e8d620e",
+                  "sourceNarHash": "sha256-B+57AoHgGsoxtXTInivSKa7X0G4HaO6VPv20kT0WXR0="
+                }
+              ],
+              "receipt": "https://nix-purifiers.github.io/evidence/ed7e3483d149aa4217611ab1425bd877089c3f1c0c6cea89f59245b79bbd514b.json",
+              "artifactSha256": "ed7e3483d149aa4217611ab1425bd877089c3f1c0c6cea89f59245b79bbd514b"
+            }
+          },
+          "uv-purifier:main:aarch64-darwin:uv-0.13.7:python315:projection": {
+            "repository": "nix-purifiers/uv-purifier",
+            "revision": "0d2f6e7e42462491560afcf8f03a1db4432d6c34",
+            "system": "aarch64-darwin",
+            "check": {
+              "kind": "expression",
+              "value": "let f = builtins.getFlake (\"path:\" + builtins.getEnv \"UV_PROFILE_ROOT\"); in f.packages.aarch64-darwin.projection",
+              "replay": {
+                "artifactUrl": "https://nix-purifiers.github.io/evidence/0fd51a9df2673b692c5fc4faa3349f374a7fc5a81dc631b9e560732e41b4bd6a.json",
+                "artifactSha256": "0fd51a9df2673b692c5fc4faa3349f374a7fc5a81dc631b9e560732e41b4bd6a",
+                "expressionSha256": "ccc81b6923b42418f46c5cc3e630f0f7d04deef4ef3970f3dc302a33b40d885e",
+                "arguments": {
+                  "UV_PROFILE_ROOT": "/home/chris/Projects/ch-nix-workspace/.worktrees/uv-tier2-ci-evidence/42336626990/flask-runtime-aarch64-darwin-python315-uv-0.13.7/packaging"
+                }
+              }
+            },
+            "drvPath": "/nix/store/1lvxn4yiyxx0ns9v8nkwy6ryvxbkxwcz-python-projection.drv",
+            "outputs": {
+              "out": "/nix/store/fsg34jvb10r6npfck995zay7z2yy4475-python-projection"
+            },
+            "outputNarHashes": {
+              "out": "sha256-j20aTVpbqvXtmV22Yw7ckZJTldjTKCRFvLAXqYF5k0Q="
+            },
+            "sourceNarHash": "sha256-7yuc4bdJTXZcz9a86sJeZ9H9gFhYeF33Csyy1X5naNU=",
+            "sdkVersions": {
+              "Selected uv": "uv 0.13.7 (316c827e0 2026-11-03 aarch64-apple-darwin)",
+              "Selected Python": "Python 3.15.0",
+              "Helper uv": "uv 0.13.5 (aarch64-apple-darwin)",
+              "Helper Python": "Python 3.14.8"
+            },
+            "sampleSources": [
+              {
+                "repository": "https://github.com/pallets/flask",
+                "revision": "49943b5a94413a530761350f04e896f76e8d620e",
+                "sourceNarHash": "sha256-B+57AoHgGsoxtXTInivSKa7X0G4HaO6VPv20kT0WXR0="
+              }
+            ],
+            "evaluation": null,
+            "build": {
+              "status": "success",
+              "executedSystem": "aarch64-darwin",
+              "sourceRevision": "0d2f6e7e42462491560afcf8f03a1db4432d6c34",
+              "sourceNarHash": "sha256-7yuc4bdJTXZcz9a86sJeZ9H9gFhYeF33Csyy1X5naNU=",
+              "drvPath": "/nix/store/1lvxn4yiyxx0ns9v8nkwy6ryvxbkxwcz-python-projection.drv",
+              "outputs": {
+                "out": "/nix/store/fsg34jvb10r6npfck995zay7z2yy4475-python-projection"
+              },
+              "outputNarHashes": {
+                "out": "sha256-j20aTVpbqvXtmV22Yw7ckZJTldjTKCRFvLAXqYF5k0Q="
+              },
+              "sdkVersions": {
+                "Selected uv": "uv 0.13.7 (316c827e0 2026-11-03 aarch64-apple-darwin)",
+                "Selected Python": "Python 3.15.0",
+                "Helper uv": "uv 0.13.5 (aarch64-apple-darwin)",
+                "Helper Python": "Python 3.14.8"
+              },
+              "sampleSources": [
+                {
+                  "repository": "https://github.com/pallets/flask",
+                  "revision": "49943b5a94413a530761350f04e896f76e8d620e",
+                  "sourceNarHash": "sha256-B+57AoHgGsoxtXTInivSKa7X0G4HaO6VPv20kT0WXR0="
+                }
+              ],
+              "receipt": "https://nix-purifiers.github.io/evidence/07b133294433e5041e79d4077fdb933b03c35e1bde65c62328d395d20c3aace7.json",
+              "artifactSha256": "07b133294433e5041e79d4077fdb933b03c35e1bde65c62328d395d20c3aace7"
+            }
+          },
+          "uv-purifier:main:aarch64-darwin:uv-0.13.7:python315:native-and-ordinary-runtime": {
+            "repository": "nix-purifiers/uv-purifier",
+            "revision": "0d2f6e7e42462491560afcf8f03a1db4432d6c34",
+            "system": "aarch64-darwin",
+            "check": {
+              "kind": "expression",
+              "value": "let f = builtins.getFlake (\"path:\" + builtins.getEnv \"UV_PROFILE_ROOT\"); in f.checks.aarch64-darwin.runtime",
+              "replay": {
+                "artifactUrl": "https://nix-purifiers.github.io/evidence/0fd51a9df2673b692c5fc4faa3349f374a7fc5a81dc631b9e560732e41b4bd6a.json",
+                "artifactSha256": "0fd51a9df2673b692c5fc4faa3349f374a7fc5a81dc631b9e560732e41b4bd6a",
+                "expressionSha256": "8d9181a07113269ac118f2b1ae6d1bbc5301fc06335f99640354a31ba477f3c8",
+                "arguments": {
+                  "UV_PROFILE_ROOT": "/home/chris/Projects/ch-nix-workspace/.worktrees/uv-tier2-ci-evidence/42336626990/flask-runtime-aarch64-darwin-python315-uv-0.13.7/packaging"
+                }
+              }
+            },
+            "drvPath": "/nix/store/f5asjqp22ldpbjl8y5dm3gcsc0azgnfn-uv-flask-native-and-ordinary-runtime.drv",
+            "outputs": {
+              "out": "/nix/store/n6lnf0ys11rdldh325zsfwn5ij12871n-uv-flask-native-and-ordinary-runtime"
+            },
+            "outputNarHashes": {
+              "out": "sha256-CjEg1Kopqa6T/OFPJ3K0TK6RMBtCppHiA09PaZHxagQ="
+            },
+            "sourceNarHash": "sha256-7yuc4bdJTXZcz9a86sJeZ9H9gFhYeF33Csyy1X5naNU=",
+            "sdkVersions": {
+              "Selected uv": "uv 0.13.7 (316c827e0 2026-11-03 aarch64-apple-darwin)",
+              "Selected Python": "Python 3.15.0",
+              "Helper uv": "uv 0.13.5 (aarch64-apple-darwin)",
+              "Helper Python": "Python 3.14.8"
+            },
+            "sampleSources": [
+              {
+                "repository": "https://github.com/pallets/flask",
+                "revision": "49943b5a94413a530761350f04e896f76e8d620e",
+                "sourceNarHash": "sha256-B+57AoHgGsoxtXTInivSKa7X0G4HaO6VPv20kT0WXR0="
+              }
+            ],
+            "evaluation": null,
+            "build": {
+              "status": "success",
+              "executedSystem": "aarch64-darwin",
+              "sourceRevision": "0d2f6e7e42462491560afcf8f03a1db4432d6c34",
+              "sourceNarHash": "sha256-7yuc4bdJTXZcz9a86sJeZ9H9gFhYeF33Csyy1X5naNU=",
+              "drvPath": "/nix/store/f5asjqp22ldpbjl8y5dm3gcsc0azgnfn-uv-flask-native-and-ordinary-runtime.drv",
+              "outputs": {
+                "out": "/nix/store/n6lnf0ys11rdldh325zsfwn5ij12871n-uv-flask-native-and-ordinary-runtime"
+              },
+              "outputNarHashes": {
+                "out": "sha256-CjEg1Kopqa6T/OFPJ3K0TK6RMBtCppHiA09PaZHxagQ="
+              },
+              "sdkVersions": {
+                "Selected uv": "uv 0.13.7 (316c827e0 2026-11-03 aarch64-apple-darwin)",
+                "Selected Python": "Python 3.15.0",
+                "Helper uv": "uv 0.13.5 (aarch64-apple-darwin)",
+                "Helper Python": "Python 3.14.8"
+              },
+              "sampleSources": [
+                {
+                  "repository": "https://github.com/pallets/flask",
+                  "revision": "49943b5a94413a530761350f04e896f76e8d620e",
+                  "sourceNarHash": "sha256-B+57AoHgGsoxtXTInivSKa7X0G4HaO6VPv20kT0WXR0="
+                }
+              ],
+              "receipt": "https://nix-purifiers.github.io/evidence/e5765b0a7547d04fda6f7afddc28d9329c97c7369b898af51ed89e3e911f2fe7.json",
+              "artifactSha256": "e5765b0a7547d04fda6f7afddc28d9329c97c7369b898af51ed89e3e911f2fe7"
+            }
+          },
+          "uv-purifier:main:aarch64-linux:uv-0.13.7:python315:pure-upstream-tests": {
+            "repository": "nix-purifiers/uv-purifier",
+            "revision": "0d2f6e7e42462491560afcf8f03a1db4432d6c34",
+            "system": "aarch64-linux",
+            "check": {
+              "kind": "expression",
+              "value": "let f = builtins.getFlake (\"path:\" + builtins.getEnv \"UV_PROFILE_ROOT\"); in f.packages.aarch64-linux.tests",
+              "replay": {
+                "artifactUrl": "https://nix-purifiers.github.io/evidence/f431873b29883abcbc136981d42bfc08a8779af666c00b825093e47fa2e3f1f8.json",
+                "artifactSha256": "f431873b29883abcbc136981d42bfc08a8779af666c00b825093e47fa2e3f1f8",
+                "expressionSha256": "715630635503ca2d8caf50c67f0e089033a261d42761d90482b5b9623b37389f",
+                "arguments": {
+                  "UV_PROFILE_ROOT": "/home/chris/Projects/ch-nix-workspace/.worktrees/uv-tier2-ci-evidence/42336626990/flask-runtime-aarch64-linux-python315-uv-0.13.7/packaging"
+                }
+              }
+            },
+            "drvPath": "/nix/store/qp1g244a261c671mfkyq22l6k7jcfs9k-flask-tests.drv",
+            "outputs": {
+              "out": "/nix/store/40dhlwppylwrlpacmslim7b29b76aga6-flask-tests"
+            },
+            "outputNarHashes": {
+              "out": "sha256-d6xi4mKdjkX2JFicDIv5niSzpyI0m/Hnm8GGAIU04kY="
+            },
+            "sourceNarHash": "sha256-7yuc4bdJTXZcz9a86sJeZ9H9gFhYeF33Csyy1X5naNU=",
+            "sdkVersions": {
+              "Selected uv": "uv 0.13.7 (aarch64-unknown-linux-gnu)",
+              "Selected Python": "Python 3.15.0",
+              "Helper uv": "uv 0.13.5 (aarch64-unknown-linux-gnu)",
+              "Helper Python": "Python 3.14.8"
+            },
+            "sampleSources": [
+              {
+                "repository": "https://github.com/pallets/flask",
+                "revision": "49943b5a94413a530761350f04e896f76e8d620e",
+                "sourceNarHash": "sha256-B+57AoHgGsoxtXTInivSKa7X0G4HaO6VPv20kT0WXR0="
+              }
+            ],
+            "evaluation": null,
+            "build": {
+              "status": "success",
+              "executedSystem": "aarch64-linux",
+              "sourceRevision": "0d2f6e7e42462491560afcf8f03a1db4432d6c34",
+              "sourceNarHash": "sha256-7yuc4bdJTXZcz9a86sJeZ9H9gFhYeF33Csyy1X5naNU=",
+              "drvPath": "/nix/store/qp1g244a261c671mfkyq22l6k7jcfs9k-flask-tests.drv",
+              "outputs": {
+                "out": "/nix/store/40dhlwppylwrlpacmslim7b29b76aga6-flask-tests"
+              },
+              "outputNarHashes": {
+                "out": "sha256-d6xi4mKdjkX2JFicDIv5niSzpyI0m/Hnm8GGAIU04kY="
+              },
+              "sdkVersions": {
+                "Selected uv": "uv 0.13.7 (aarch64-unknown-linux-gnu)",
+                "Selected Python": "Python 3.15.0",
+                "Helper uv": "uv 0.13.5 (aarch64-unknown-linux-gnu)",
+                "Helper Python": "Python 3.14.8"
+              },
+              "sampleSources": [
+                {
+                  "repository": "https://github.com/pallets/flask",
+                  "revision": "49943b5a94413a530761350f04e896f76e8d620e",
+                  "sourceNarHash": "sha256-B+57AoHgGsoxtXTInivSKa7X0G4HaO6VPv20kT0WXR0="
+                }
+              ],
+              "receipt": "https://nix-purifiers.github.io/evidence/de8703f4de49a0193fa619d28f02e8d2f52e9bfbbf8ce8360bb15d24ba508406.json",
+              "artifactSha256": "de8703f4de49a0193fa619d28f02e8d2f52e9bfbbf8ce8360bb15d24ba508406"
+            }
+          },
+          "uv-purifier:main:aarch64-linux:uv-0.13.7:python315:projection": {
+            "repository": "nix-purifiers/uv-purifier",
+            "revision": "0d2f6e7e42462491560afcf8f03a1db4432d6c34",
+            "system": "aarch64-linux",
+            "check": {
+              "kind": "expression",
+              "value": "let f = builtins.getFlake (\"path:\" + builtins.getEnv \"UV_PROFILE_ROOT\"); in f.packages.aarch64-linux.projection",
+              "replay": {
+                "artifactUrl": "https://nix-purifiers.github.io/evidence/f431873b29883abcbc136981d42bfc08a8779af666c00b825093e47fa2e3f1f8.json",
+                "artifactSha256": "f431873b29883abcbc136981d42bfc08a8779af666c00b825093e47fa2e3f1f8",
+                "expressionSha256": "6173cdddd952750e3a70676a4f0140e4302d8429939d0b946314564604163442",
+                "arguments": {
+                  "UV_PROFILE_ROOT": "/home/chris/Projects/ch-nix-workspace/.worktrees/uv-tier2-ci-evidence/42336626990/flask-runtime-aarch64-linux-python315-uv-0.13.7/packaging"
+                }
+              }
+            },
+            "drvPath": "/nix/store/s222n7qzz00rgplg824r4j5d0j2cfma2-python-projection.drv",
+            "outputs": {
+              "out": "/nix/store/i2wnbd6cm6s5xr85v6k5zxa7x0fzfmsz-python-projection"
+            },
+            "outputNarHashes": {
+              "out": "sha256-DrEwK0qL7QlQJTt9ZoLnJfkVe7peKokmDF4Y5cCu8Yc="
+            },
+            "sourceNarHash": "sha256-7yuc4bdJTXZcz9a86sJeZ9H9gFhYeF33Csyy1X5naNU=",
+            "sdkVersions": {
+              "Selected uv": "uv 0.13.7 (aarch64-unknown-linux-gnu)",
+              "Selected Python": "Python 3.15.0",
+              "Helper uv": "uv 0.13.5 (aarch64-unknown-linux-gnu)",
+              "Helper Python": "Python 3.14.8"
+            },
+            "sampleSources": [
+              {
+                "repository": "https://github.com/pallets/flask",
+                "revision": "49943b5a94413a530761350f04e896f76e8d620e",
+                "sourceNarHash": "sha256-B+57AoHgGsoxtXTInivSKa7X0G4HaO6VPv20kT0WXR0="
+              }
+            ],
+            "evaluation": null,
+            "build": {
+              "status": "success",
+              "executedSystem": "aarch64-linux",
+              "sourceRevision": "0d2f6e7e42462491560afcf8f03a1db4432d6c34",
+              "sourceNarHash": "sha256-7yuc4bdJTXZcz9a86sJeZ9H9gFhYeF33Csyy1X5naNU=",
+              "drvPath": "/nix/store/s222n7qzz00rgplg824r4j5d0j2cfma2-python-projection.drv",
+              "outputs": {
+                "out": "/nix/store/i2wnbd6cm6s5xr85v6k5zxa7x0fzfmsz-python-projection"
+              },
+              "outputNarHashes": {
+                "out": "sha256-DrEwK0qL7QlQJTt9ZoLnJfkVe7peKokmDF4Y5cCu8Yc="
+              },
+              "sdkVersions": {
+                "Selected uv": "uv 0.13.7 (aarch64-unknown-linux-gnu)",
+                "Selected Python": "Python 3.15.0",
+                "Helper uv": "uv 0.13.5 (aarch64-unknown-linux-gnu)",
+                "Helper Python": "Python 3.14.8"
+              },
+              "sampleSources": [
+                {
+                  "repository": "https://github.com/pallets/flask",
+                  "revision": "49943b5a94413a530761350f04e896f76e8d620e",
+                  "sourceNarHash": "sha256-B+57AoHgGsoxtXTInivSKa7X0G4HaO6VPv20kT0WXR0="
+                }
+              ],
+              "receipt": "https://nix-purifiers.github.io/evidence/37e0c15aea658e29fdcf4d8476fd1fadf477504c5cf37d9353ab764d4a89e328.json",
+              "artifactSha256": "37e0c15aea658e29fdcf4d8476fd1fadf477504c5cf37d9353ab764d4a89e328"
+            }
+          },
+          "uv-purifier:main:aarch64-linux:uv-0.13.7:python315:native-and-ordinary-runtime": {
+            "repository": "nix-purifiers/uv-purifier",
+            "revision": "0d2f6e7e42462491560afcf8f03a1db4432d6c34",
+            "system": "aarch64-linux",
+            "check": {
+              "kind": "expression",
+              "value": "let f = builtins.getFlake (\"path:\" + builtins.getEnv \"UV_PROFILE_ROOT\"); in f.checks.aarch64-linux.runtime",
+              "replay": {
+                "artifactUrl": "https://nix-purifiers.github.io/evidence/f431873b29883abcbc136981d42bfc08a8779af666c00b825093e47fa2e3f1f8.json",
+                "artifactSha256": "f431873b29883abcbc136981d42bfc08a8779af666c00b825093e47fa2e3f1f8",
+                "expressionSha256": "750f20d926c33c34dee3cf08b90b8326dc2febdcd04d981092baa25f752ce036",
+                "arguments": {
+                  "UV_PROFILE_ROOT": "/home/chris/Projects/ch-nix-workspace/.worktrees/uv-tier2-ci-evidence/42336626990/flask-runtime-aarch64-linux-python315-uv-0.13.7/packaging"
+                }
+              }
+            },
+            "drvPath": "/nix/store/sacc9pg122wh0rhzavlk8qdlrycj0wv7-uv-flask-native-and-ordinary-runtime.drv",
+            "outputs": {
+              "out": "/nix/store/qsnbzncjnzpbkn45kazm7cvrpk8q33rn-uv-flask-native-and-ordinary-runtime"
+            },
+            "outputNarHashes": {
+              "out": "sha256-yVJAxdvf7QW0Irx/wNM1B7bhyKBw0G/rTMPspFlY8ws="
+            },
+            "sourceNarHash": "sha256-7yuc4bdJTXZcz9a86sJeZ9H9gFhYeF33Csyy1X5naNU=",
+            "sdkVersions": {
+              "Selected uv": "uv 0.13.7 (aarch64-unknown-linux-gnu)",
+              "Selected Python": "Python 3.15.0",
+              "Helper uv": "uv 0.13.5 (aarch64-unknown-linux-gnu)",
+              "Helper Python": "Python 3.14.8"
+            },
+            "sampleSources": [
+              {
+                "repository": "https://github.com/pallets/flask",
+                "revision": "49943b5a94413a530761350f04e896f76e8d620e",
+                "sourceNarHash": "sha256-B+57AoHgGsoxtXTInivSKa7X0G4HaO6VPv20kT0WXR0="
+              }
+            ],
+            "evaluation": null,
+            "build": {
+              "status": "success",
+              "executedSystem": "aarch64-linux",
+              "sourceRevision": "0d2f6e7e42462491560afcf8f03a1db4432d6c34",
+              "sourceNarHash": "sha256-7yuc4bdJTXZcz9a86sJeZ9H9gFhYeF33Csyy1X5naNU=",
+              "drvPath": "/nix/store/sacc9pg122wh0rhzavlk8qdlrycj0wv7-uv-flask-native-and-ordinary-runtime.drv",
+              "outputs": {
+                "out": "/nix/store/qsnbzncjnzpbkn45kazm7cvrpk8q33rn-uv-flask-native-and-ordinary-runtime"
+              },
+              "outputNarHashes": {
+                "out": "sha256-yVJAxdvf7QW0Irx/wNM1B7bhyKBw0G/rTMPspFlY8ws="
+              },
+              "sdkVersions": {
+                "Selected uv": "uv 0.13.7 (aarch64-unknown-linux-gnu)",
+                "Selected Python": "Python 3.15.0",
+                "Helper uv": "uv 0.13.5 (aarch64-unknown-linux-gnu)",
+                "Helper Python": "Python 3.14.8"
+              },
+              "sampleSources": [
+                {
+                  "repository": "https://github.com/pallets/flask",
+                  "revision": "49943b5a94413a530761350f04e896f76e8d620e",
+                  "sourceNarHash": "sha256-B+57AoHgGsoxtXTInivSKa7X0G4HaO6VPv20kT0WXR0="
+                }
+              ],
+              "receipt": "https://nix-purifiers.github.io/evidence/7af996cedbbaadaad723a9fa31ef33f161ecafb0bf5946c1f11bbb004586b91c.json",
+              "artifactSha256": "7af996cedbbaadaad723a9fa31ef33f161ecafb0bf5946c1f11bbb004586b91c"
+            }
+          },
+          "uv-purifier:main:x86_64-linux:uv-0.13.7:python315:pure-upstream-tests": {
+            "repository": "nix-purifiers/uv-purifier",
+            "revision": "0d2f6e7e42462491560afcf8f03a1db4432d6c34",
+            "system": "x86_64-linux",
+            "check": {
+              "kind": "expression",
+              "value": "let f = builtins.getFlake (\"path:\" + builtins.getEnv \"UV_PROFILE_ROOT\"); in f.packages.x86_64-linux.tests",
+              "replay": {
+                "artifactUrl": "https://nix-purifiers.github.io/evidence/d46d344d7fba27548bf63358c8263d8eacd822cfa983730a19f5fffa8a41ac8c.json",
+                "artifactSha256": "d46d344d7fba27548bf63358c8263d8eacd822cfa983730a19f5fffa8a41ac8c",
+                "expressionSha256": "2bb5073f76166c6cc0ab63f85e38f7dc3d031ecf5bbc1e1004e397c93a518a71",
+                "arguments": {
+                  "UV_PROFILE_ROOT": "/home/chris/Projects/ch-nix-workspace/.worktrees/uv-tier2-ci-evidence/42336626990/flask-runtime-x86_64-linux-python315-uv-0.13.7/packaging"
+                }
+              }
+            },
+            "drvPath": "/nix/store/m44bwk57i219nffpkdalqvq9yjps4d27-flask-tests.drv",
+            "outputs": {
+              "out": "/nix/store/ic47k3rcw9z1nwkawqdmz1ssiimy4076-flask-tests"
+            },
+            "outputNarHashes": {
+              "out": "sha256-d6xi4mKdjkX2JFicDIv5niSzpyI0m/Hnm8GGAIU04kY="
+            },
+            "sourceNarHash": "sha256-7yuc4bdJTXZcz9a86sJeZ9H9gFhYeF33Csyy1X5naNU=",
+            "sdkVersions": {
+              "Selected uv": "uv 0.13.7 (x86_64-unknown-linux-gnu)",
+              "Selected Python": "Python 3.15.0",
+              "Helper uv": "uv 0.13.5 (x86_64-unknown-linux-gnu)",
+              "Helper Python": "Python 3.14.8"
             },
             "sampleSources": [
               {
@@ -73838,18 +73918,20 @@
             "build": {
               "status": "success",
               "executedSystem": "x86_64-linux",
-              "sourceRevision": "ea43ef3106cef19ba7f9c0e75140822cd98ebc4f",
-              "sourceNarHash": "sha256-MAx8dSy7Jy1EZVJ5RmCztO3HAKer+NOpY14IucmjO9Q=",
-              "drvPath": "/nix/store/59gicqnlmkqka1w8p79bjmpaw4s2apr3-uv-purifier-test-flask.drv",
+              "sourceRevision": "0d2f6e7e42462491560afcf8f03a1db4432d6c34",
+              "sourceNarHash": "sha256-7yuc4bdJTXZcz9a86sJeZ9H9gFhYeF33Csyy1X5naNU=",
+              "drvPath": "/nix/store/m44bwk57i219nffpkdalqvq9yjps4d27-flask-tests.drv",
               "outputs": {
-                "out": "/nix/store/6wrc2maxhma5pav0gxq47vny6rjy4q1a-uv-purifier-test-flask"
+                "out": "/nix/store/ic47k3rcw9z1nwkawqdmz1ssiimy4076-flask-tests"
               },
               "outputNarHashes": {
                 "out": "sha256-d6xi4mKdjkX2JFicDIv5niSzpyI0m/Hnm8GGAIU04kY="
               },
               "sdkVersions": {
-                "python3": "3.14.8",
-                "uv": "0.13.5"
+                "Selected uv": "uv 0.13.7 (x86_64-unknown-linux-gnu)",
+                "Selected Python": "Python 3.15.0",
+                "Helper uv": "uv 0.13.5 (x86_64-unknown-linux-gnu)",
+                "Helper Python": "Python 3.14.8"
               },
               "sampleSources": [
                 {
@@ -73858,232 +73940,759 @@
                   "sourceNarHash": "sha256-B+57AoHgGsoxtXTInivSKa7X0G4HaO6VPv20kT0WXR0="
                 }
               ],
-              "receipt": "https://nix-purifiers.github.io/evidence/e3bdeb5bd839634288b697a256b28afca897326741ae895a76929965cb3d6bda.json",
-              "artifactSha256": "e3bdeb5bd839634288b697a256b28afca897326741ae895a76929965cb3d6bda"
+              "receipt": "https://nix-purifiers.github.io/evidence/0c0e36ae88cabe9c5aabae6f13e6d099133b7439e83da88c2d3d58d3da0ba1d5.json",
+              "artifactSha256": "0c0e36ae88cabe9c5aabae6f13e6d099133b7439e83da88c2d3d58d3da0ba1d5"
             }
           },
-          "historical-0.13.5-python-3.8.19": {
-            "kind": "native-ci-execution",
+          "uv-purifier:main:x86_64-linux:uv-0.13.7:python315:projection": {
             "repository": "nix-purifiers/uv-purifier",
-            "revision": "ea43ef3106cef19ba7f9c0e75140822cd98ebc4f",
-            "sourceNarHash": "sha256-MAx8dSy7Jy1EZVJ5RmCztO3HAKer+NOpY14IucmjO9Q=",
+            "revision": "0d2f6e7e42462491560afcf8f03a1db4432d6c34",
             "system": "x86_64-linux",
-            "drvPath": "/nix/store/y3rx7yr0zs738rl9nlbmpb61clncmhcb-epoch-provider-1.0.drv",
-            "predictedOutputs": {},
-            "observedOutputs": {
-              "out": "/nix/store/g67mlgk3qmaafc8cm8k67ssz7zxv2zls-epoch-provider-1.0"
-            },
-            "outputNarHashes": null,
-            "sdkVersions": {
-              "uv": "0.13.5",
-              "python": "3.8.19",
-              "helperPython": "3.14.8",
-              "helperUv": "0.13.5"
-            },
-            "sampleSources": [],
-            "runtimeAssertions": [],
-            "jobUrl": "https://github.com/nix-purifiers/uv-purifier/actions/runs/42155508325/job/127688579054",
-            "jobConclusion": "success",
-            "jobArtifact": {
-              "receipt": "https://nix-purifiers.github.io/evidence/a5c70db0cf909a10f056e9cec129ccbbc061f1797d3ad6dd2fdfd9f19a58f33e.json",
-              "artifactSha256": "a5c70db0cf909a10f056e9cec129ccbbc061f1797d3ad6dd2fdfd9f19a58f33e",
-              "format": "jobs-json"
-            },
-            "logArtifact": {
-              "receipt": "https://nix-purifiers.github.io/evidence/2413b46b207457ca2f444cc9df2925ca9812e1902393607eb9e4954a56216b30.log",
-              "artifactSha256": "2413b46b207457ca2f444cc9df2925ca9812e1902393607eb9e4954a56216b30",
-              "format": "text"
-            },
-            "stepNumber": 4,
-            "stepName": "Exercise the exact historical target with the default shared input",
-            "command": "python3 -B tests/composition-epochs.py --target-nixpkgs \"$(jq -r .path epoch-target.json)\" --python-attribute 'python38' --state-root .python-epochs",
-            "runnerImage": "ubuntu-24.04",
-            "logJobName": null,
             "check": {
-              "kind": "script-generated-derivation",
-              "scriptPath": "tests/composition-epochs.py",
-              "sourceUrl": "https://github.com/nix-purifiers/uv-purifier/blob/ea43ef3106cef19ba7f9c0e75140822cd98ebc4f/tests/composition-epochs.py",
-              "scriptArtifact": {
-                "receipt": "https://nix-purifiers.github.io/evidence/2b1e7086271619daf2dac504c8d806b7d639670dc8052c22983884ebb01bcc28.log",
-                "artifactSha256": "2b1e7086271619daf2dac504c8d806b7d639670dc8052c22983884ebb01bcc28",
-                "format": "text"
+              "kind": "expression",
+              "value": "let f = builtins.getFlake (\"path:\" + builtins.getEnv \"UV_PROFILE_ROOT\"); in f.packages.x86_64-linux.projection",
+              "replay": {
+                "artifactUrl": "https://nix-purifiers.github.io/evidence/d46d344d7fba27548bf63358c8263d8eacd822cfa983730a19f5fffa8a41ac8c.json",
+                "artifactSha256": "d46d344d7fba27548bf63358c8263d8eacd822cfa983730a19f5fffa8a41ac8c",
+                "expressionSha256": "d350f762065d9ee3cc4311519360637f47e7e9fca2f4be750cf9be62443a0502",
+                "arguments": {
+                  "UV_PROFILE_ROOT": "/home/chris/Projects/ch-nix-workspace/.worktrees/uv-tier2-ci-evidence/42336626990/flask-runtime-x86_64-linux-python315-uv-0.13.7/packaging"
+                }
+              }
+            },
+            "drvPath": "/nix/store/svpwqc7x3l6yj76rz9k3qmahadsdp6m3-python-projection.drv",
+            "outputs": {
+              "out": "/nix/store/av20ci1pxrikh904azmlzkhk31w7hdlj-python-projection"
+            },
+            "outputNarHashes": {
+              "out": "sha256-xBdZxa+hsBfbRawmtV+fQVsrQb313JAgChi/m0G2JwY="
+            },
+            "sourceNarHash": "sha256-7yuc4bdJTXZcz9a86sJeZ9H9gFhYeF33Csyy1X5naNU=",
+            "sdkVersions": {
+              "Selected uv": "uv 0.13.7 (x86_64-unknown-linux-gnu)",
+              "Selected Python": "Python 3.15.0",
+              "Helper uv": "uv 0.13.5 (x86_64-unknown-linux-gnu)",
+              "Helper Python": "Python 3.14.8"
+            },
+            "sampleSources": [
+              {
+                "repository": "https://github.com/pallets/flask",
+                "revision": "49943b5a94413a530761350f04e896f76e8d620e",
+                "sourceNarHash": "sha256-B+57AoHgGsoxtXTInivSKa7X0G4HaO6VPv20kT0WXR0="
+              }
+            ],
+            "evaluation": null,
+            "build": {
+              "status": "success",
+              "executedSystem": "x86_64-linux",
+              "sourceRevision": "0d2f6e7e42462491560afcf8f03a1db4432d6c34",
+              "sourceNarHash": "sha256-7yuc4bdJTXZcz9a86sJeZ9H9gFhYeF33Csyy1X5naNU=",
+              "drvPath": "/nix/store/svpwqc7x3l6yj76rz9k3qmahadsdp6m3-python-projection.drv",
+              "outputs": {
+                "out": "/nix/store/av20ci1pxrikh904azmlzkhk31w7hdlj-python-projection"
               },
-              "lockArtifact": {
-                "receipt": "https://nix-purifiers.github.io/evidence/d7aedf432b8a1c6badd96b74edcda2195faee88d65aaad25f3feaa98dbf5d1ad.json",
-                "artifactSha256": "d7aedf432b8a1c6badd96b74edcda2195faee88d65aaad25f3feaa98dbf5d1ad",
-                "format": "json"
+              "outputNarHashes": {
+                "out": "sha256-xBdZxa+hsBfbRawmtV+fQVsrQb313JAgChi/m0G2JwY="
               },
-              "invoker": "python3 -B",
-              "arguments": "--target-nixpkgs \"$(jq -r .path epoch-target.json)\" --python-attribute 'python38' --state-root .python-epochs",
-              "inputSourceHashes": {
-                "tests/composition-epochs.py": "2b1e7086271619daf2dac504c8d806b7d639670dc8052c22983884ebb01bcc28",
-                "flake.lock": "d7aedf432b8a1c6badd96b74edcda2195faee88d65aaad25f3feaa98dbf5d1ad",
-                "tests/target_platform.py": "e1e9b27351057175fbb0a6ce481001239e2ae150cd537eb731390879a1948fd5",
-                "tests/sdk/uv-0.3.0.nix": "5546f5905cc3a0af8a5eee8674ac5432d3b5c39ea8173604bc8bd64f432b4168",
-                ".github/workflows/check.yml": "f553532b483d6a04f2e8fbcbd88c5c1c04431d15e7597504693889aef7ed1a64"
+              "sdkVersions": {
+                "Selected uv": "uv 0.13.7 (x86_64-unknown-linux-gnu)",
+                "Selected Python": "Python 3.15.0",
+                "Helper uv": "uv 0.13.5 (x86_64-unknown-linux-gnu)",
+                "Helper Python": "Python 3.14.8"
               },
-              "assertionSnippet": "        assert native_bytes == (producer / 'uv.lock').read_bytes(), 'helper changed the selected native lock'\n        report['nativeLockHeader'] = (producer / 'uv.lock').read_text().split('[[package]]', 1)[0]\n        passed(active)\n        active = 'producer-pure-build'\n        package = Path(run('nix', 'build', 'path:' + str(producer) + '#default',\n                           '--out-link', state / 'producer', '--print-out-paths'))\n        assert run(package / 'bin/epoch_provider') == 'target=' + minor\n        native_environment(package)\n        passed(active)\n",
-              "replayNotes": "{\"actualGeneratedBuildArgv\": [\"nix\", \"build\", \"path:/home/runner/work/uv-purifier/uv-purifier/.python-epochs/epoch_provider#default\", \"--out-link\", \"/home/runner/work/uv-purifier/uv-purifier/.python-epochs/producer\", \"--print-out-paths\"], \"gaps\": [{\"detail\": \"Actual CI upload contains report.json, commands.log and epoch-target.json only; no generated epoch_provider/flake.lock bytes. Exact SHA256 digests survive in report. Historical drv is not present in local store. No lockfile was regenerated or inferred from the digests.\", \"field\": \"generatedFixtureFlakeLock.bytes\", \"sha256ByGeneratedPath\": {\"epoch_consumer/flake.lock\": \"f024149d776a5d5d90f9ea8510122babb85d6ba670811274df6a8558fb1caddd\", \"epoch_provider/flake.lock\": \"f024149d776a5d5d90f9ea8510122babb85d6ba670811274df6a8558fb1caddd\"}}, {\"detail\": \"Generated fixture source tree is ephemeral and not included in the archived upload. Immutable driver/source NAR, generated lock digests, actual source/runtime reports and successful command transcript are retained; this is not a standalone byte-complete fixture archive.\", \"field\": \"generatedFixtureSourceTree.bytes\"}], \"generatedFixtureLock\": {\"availability\": \"not-archived\", \"bytesBase64\": null, \"sha256ByPath\": {\"epoch_consumer/flake.lock\": \"f024149d776a5d5d90f9ea8510122babb85d6ba670811274df6a8558fb1caddd\", \"epoch_provider/flake.lock\": \"f024149d776a5d5d90f9ea8510122babb85d6ba670811274df6a8558fb1caddd\"}}, \"inputNarBindings\": {\"sdkRootLockedInputs\": {\"caisson\": \"sha256-FAixpwyAWmhrzmh0fMGt7y0KIcNLqBIGICfMvbExRLo=\", \"caisson-core\": \"sha256-OzlG2Nhl/kU2UUPq+ARH/GKUHmOqAxQu5Ug/+aT1ECc=\", \"caisson-core_2\": \"sha256-OzlG2Nhl/kU2UUPq+ARH/GKUHmOqAxQu5Ug/+aT1ECc=\", \"caisson_2\": \"sha256-FAixpwyAWmhrzmh0fMGt7y0KIcNLqBIGICfMvbExRLo=\", \"flake-parts\": \"sha256-glZLQlzIn1fXH6PazR2iUmTo7kzzyYSshrWhLS9TqCU=\", \"flake-parts_2\": \"sha256-zTwuwezD0w3hpga6a6P8emidzAZFyWqlNeRBlpWOOl8=\", \"flake-parts_3\": \"sha256-glZLQlzIn1fXH6PazR2iUmTo7kzzyYSshrWhLS9TqCU=\", \"flake-parts_4\": \"sha256-zTwuwezD0w3hpga6a6P8emidzAZFyWqlNeRBlpWOOl8=\", \"nixpkgs\": \"sha256-Y1CiZ4SoBUjLQyQM/pY+rS2dXD3CHLPstF0lmOc73D4=\", \"nixpkgs-lib\": \"sha256-XtTdVeJX6X/gU+vGIUEJHirotv/lYP5+Q9irMH6HWPY=\", \"nixpkgs-lib_2\": \"sha256-ThkfL3D/FhCiZFc9+3BtxwuMmpuK+/bGtXCSo1+yVew=\", \"nixpkgs-lib_3\": \"sha256-ThkfL3D/FhCiZFc9+3BtxwuMmpuK+/bGtXCSo1+yVew=\", \"nixpkgs-lib_4\": \"sha256-XtTdVeJX6X/gU+vGIUEJHirotv/lYP5+Q9irMH6HWPY=\", \"nixpkgs-lib_5\": \"sha256-ThkfL3D/FhCiZFc9+3BtxwuMmpuK+/bGtXCSo1+yVew=\", \"nixpkgs-lib_6\": \"sha256-ThkfL3D/FhCiZFc9+3BtxwuMmpuK+/bGtXCSo1+yVew=\", \"nixpkgs_2\": \"sha256-Y1CiZ4SoBUjLQyQM/pY+rS2dXD3CHLPstF0lmOc73D4=\", \"purifier\": \"sha256-oBZLoSRURmWi7+kdh0mIGPJ0IbPginDDBvHIh2TW5U0=\"}, \"sdkSource\": \"sha256-MAx8dSy7Jy1EZVJ5RmCztO3HAKer+NOpY14IucmjO9Q=\", \"sharedPurifier\": \"sha256-oBZLoSRURmWi7+kdh0mIGPJ0IbPginDDBvHIh2TW5U0=\", \"targetNixpkgs\": \"sha256-zwVvxrdIzralnSbcpghA92tWu2DV2lwv89xZc8MTrbg=\"}, \"loggedInvocation\": [{\"line\": 542, \"text\": \"2026-11-06T03:18:57.7529807Z ##[group]Run nix flake archive --json 'github:NixOS/nixpkgs/205fd4226592cc83fd4c0885a3e4c9c400efabb5' > epoch-target.json\"}, {\"line\": 543, \"text\": \"2026-11-06T03:18:57.7530322Z \\u001b[36;1mnix flake archive --json 'github:NixOS/nixpkgs/205fd4226592cc83fd4c0885a3e4c9c400efabb5' > epoch-target.json\\u001b[0m\"}, {\"line\": 544, \"text\": \"2026-11-06T03:18:57.7530775Z \\u001b[36;1mpython3 -B tests/composition-epochs.py \\\\\\u001b[0m\"}, {\"line\": 545, \"text\": \"2026-11-06T03:18:57.7531004Z \\u001b[36;1m  --target-nixpkgs \\\"$(jq -r .path epoch-target.json)\\\" \\\\\\u001b[0m\"}, {\"line\": 546, \"text\": \"2026-11-06T03:18:57.7531212Z \\u001b[36;1m  --python-attribute 'python38' \\\\\\u001b[0m\"}, {\"line\": 547, \"text\": \"2026-11-06T03:18:57.7531382Z \\u001b[36;1m  --state-root .python-epochs\\u001b[0m\"}], \"replayByteCompleteness\": \"incomplete-generated-fixture-lock/source\", \"reportedSdkRoles\": {\"helperManagerPackage\": \"/nix/store/9cg9w4h3i9afkh37cb08qwxz6xi1kq8a-uv-0.13.5\", \"helperPackage\": \"/nix/store/m2srgjpxa1b46qxlyp7w7lma8pi6445v-uv-purifier-0.1.0\", \"helperPython\": {\"package\": \"/nix/store/xahxrjs30p3mw0a42bqg9ikgkikskw8m-python3-3.14.8\", \"version\": \"3.14.8\"}, \"nativeManagerPackage\": \"/nix/store/9cg9w4h3i9afkh37cb08qwxz6xi1kq8a-uv-0.13.5\", \"targetPython\": {\"freeThreaded\": false, \"package\": \"/nix/store/wzx247ppcdc61jzw71j8rjz5kr7nn8ha-python3-3.8.19\", \"version\": \"3.8.19\"}}, \"sourceNonzeroRejection\": {\"driverSha256\": \"2b1e7086271619daf2dac504c8d806b7d639670dc8052c22983884ebb01bcc28\", \"endLine\": 84, \"path\": \"tests/composition-epochs.py\", \"startLine\": 76, \"text\": \"                                text=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE)\\n        with (state / 'commands.log').open('a') as log:\\n            log.write(json.dumps([str(item) for item in command]) + '\\\\n' + result.stdout + result.stderr + '\\\\n')\\n        if result.returncode:\\n            raise RuntimeError(result.stderr[-6000:])\\n        return result.stdout.strip()\\n\\n    ordinary_caches = {}\\n\\n\"}, \"sourceRootLockScope\": {\"bytesReference\": \"sdkRootFlakeLock.bytesBase64\", \"path\": \"evidence/uv-purifier/main-source/flake.lock\", \"scope\": \"Actual SDK repository root flake.lock at immutable reviewed revision/NAR. This is NOT the missing generated fixture flake.lock.\", \"sha256\": \"d7aedf432b8a1c6badd96b74edcda2195faee88d65aaad25f3feaa98dbf5d1ad\"}}",
-              "executionArtifact": {
-                "receipt": "https://nix-purifiers.github.io/evidence/992c038900745ab212772f101313a9eadec36fc0aa07c0aeb199a5fc97724cbf.log",
-                "artifactSha256": "992c038900745ab212772f101313a9eadec36fc0aa07c0aeb199a5fc97724cbf",
-                "format": "text"
-              },
-              "reportArtifact": {
-                "receipt": "https://nix-purifiers.github.io/evidence/94bca048bb5c816a1c03f6556aa4a8a69328d6b5c245d8a3a0f4b6cd732cbabc.json",
-                "artifactSha256": "94bca048bb5c816a1c03f6556aa4a8a69328d6b5c245d8a3a0f4b6cd732cbabc",
-                "format": "json"
-              },
-              "artifactMetadata": {
-                "receipt": "https://nix-purifiers.github.io/evidence/e0363dcfc7552ca98a92d7fbfebb9ca3388226dc04db169a0f5ce7781d4f3fd4.json",
-                "artifactSha256": "e0363dcfc7552ca98a92d7fbfebb9ca3388226dc04db169a0f5ce7781d4f3fd4",
-                "format": "json"
-              },
-              "artifactName": "python-epochs-ubuntu-latest-python38",
-              "buildArgv": [
-                "nix",
-                "build",
-                "path:/home/runner/work/uv-purifier/uv-purifier/.python-epochs/epoch_provider#default",
-                "--out-link",
-                "/home/runner/work/uv-purifier/uv-purifier/.python-epochs/producer",
-                "--print-out-paths"
+              "sampleSources": [
+                {
+                  "repository": "https://github.com/pallets/flask",
+                  "revision": "49943b5a94413a530761350f04e896f76e8d620e",
+                  "sourceNarHash": "sha256-B+57AoHgGsoxtXTInivSKa7X0G4HaO6VPv20kT0WXR0="
+                }
               ],
-              "transcriptLayout": "argv-stdout-stderr"
+              "receipt": "https://nix-purifiers.github.io/evidence/c3929c10a9d93ceed2e4eb3d8a4363e152c354477eee5ad328c9631a424c04a3.json",
+              "artifactSha256": "c3929c10a9d93ceed2e4eb3d8a4363e152c354477eee5ad328c9631a424c04a3"
             }
           },
-          "historical-0.13.5-python-3.9.20": {
-            "kind": "native-ci-execution",
+          "uv-purifier:main:x86_64-linux:uv-0.13.7:python315:native-and-ordinary-runtime": {
             "repository": "nix-purifiers/uv-purifier",
-            "revision": "ea43ef3106cef19ba7f9c0e75140822cd98ebc4f",
-            "sourceNarHash": "sha256-MAx8dSy7Jy1EZVJ5RmCztO3HAKer+NOpY14IucmjO9Q=",
+            "revision": "0d2f6e7e42462491560afcf8f03a1db4432d6c34",
             "system": "x86_64-linux",
-            "drvPath": "/nix/store/s4l5mdghl68wi3hqajj86hi7xg2k2a6q-epoch-provider-1.0.drv",
-            "predictedOutputs": {},
-            "observedOutputs": {
-              "out": "/nix/store/79lhqnvgzhfq5apbw8anm39l4vn5v9k1-epoch-provider-1.0"
-            },
-            "outputNarHashes": null,
-            "sdkVersions": {
-              "uv": "0.13.5",
-              "python": "3.9.20",
-              "helperPython": "3.14.8",
-              "helperUv": "0.13.5"
-            },
-            "sampleSources": [],
-            "runtimeAssertions": [],
-            "jobUrl": "https://github.com/nix-purifiers/uv-purifier/actions/runs/42155508325/job/127688579058",
-            "jobConclusion": "success",
-            "jobArtifact": {
-              "receipt": "https://nix-purifiers.github.io/evidence/a5c70db0cf909a10f056e9cec129ccbbc061f1797d3ad6dd2fdfd9f19a58f33e.json",
-              "artifactSha256": "a5c70db0cf909a10f056e9cec129ccbbc061f1797d3ad6dd2fdfd9f19a58f33e",
-              "format": "jobs-json"
-            },
-            "logArtifact": {
-              "receipt": "https://nix-purifiers.github.io/evidence/75fd9c681c7a269cf7ff1b170da5e5391f81ac26b88dd211db86c5a3bb68741d.log",
-              "artifactSha256": "75fd9c681c7a269cf7ff1b170da5e5391f81ac26b88dd211db86c5a3bb68741d",
-              "format": "text"
-            },
-            "stepNumber": 4,
-            "stepName": "Exercise the exact historical target with the default shared input",
-            "command": "python3 -B tests/composition-epochs.py --target-nixpkgs \"$(jq -r .path epoch-target.json)\" --python-attribute 'python39' --state-root .python-epochs",
-            "runnerImage": "ubuntu-24.04",
-            "logJobName": null,
             "check": {
-              "kind": "script-generated-derivation",
-              "scriptPath": "tests/composition-epochs.py",
-              "sourceUrl": "https://github.com/nix-purifiers/uv-purifier/blob/ea43ef3106cef19ba7f9c0e75140822cd98ebc4f/tests/composition-epochs.py",
-              "scriptArtifact": {
-                "receipt": "https://nix-purifiers.github.io/evidence/2b1e7086271619daf2dac504c8d806b7d639670dc8052c22983884ebb01bcc28.log",
-                "artifactSha256": "2b1e7086271619daf2dac504c8d806b7d639670dc8052c22983884ebb01bcc28",
-                "format": "text"
+              "kind": "expression",
+              "value": "let f = builtins.getFlake (\"path:\" + builtins.getEnv \"UV_PROFILE_ROOT\"); in f.checks.x86_64-linux.runtime",
+              "replay": {
+                "artifactUrl": "https://nix-purifiers.github.io/evidence/d46d344d7fba27548bf63358c8263d8eacd822cfa983730a19f5fffa8a41ac8c.json",
+                "artifactSha256": "d46d344d7fba27548bf63358c8263d8eacd822cfa983730a19f5fffa8a41ac8c",
+                "expressionSha256": "2971fc9df5da3690e8ff3fd7fc595fc6d757f453eab560900b1ffeb6c854a456",
+                "arguments": {
+                  "UV_PROFILE_ROOT": "/home/chris/Projects/ch-nix-workspace/.worktrees/uv-tier2-ci-evidence/42336626990/flask-runtime-x86_64-linux-python315-uv-0.13.7/packaging"
+                }
+              }
+            },
+            "drvPath": "/nix/store/d6971rd79vi4dydwlgqn91fpr6h25xcp-uv-flask-native-and-ordinary-runtime.drv",
+            "outputs": {
+              "out": "/nix/store/1n7kry1n1x0nm04yvjcc0qjh8xbbzl68-uv-flask-native-and-ordinary-runtime"
+            },
+            "outputNarHashes": {
+              "out": "sha256-t+gvCnpJNYO/DQor39UpS5Yn2Q5bQauQY4AMhf389wc="
+            },
+            "sourceNarHash": "sha256-7yuc4bdJTXZcz9a86sJeZ9H9gFhYeF33Csyy1X5naNU=",
+            "sdkVersions": {
+              "Selected uv": "uv 0.13.7 (x86_64-unknown-linux-gnu)",
+              "Selected Python": "Python 3.15.0",
+              "Helper uv": "uv 0.13.5 (x86_64-unknown-linux-gnu)",
+              "Helper Python": "Python 3.14.8"
+            },
+            "sampleSources": [
+              {
+                "repository": "https://github.com/pallets/flask",
+                "revision": "49943b5a94413a530761350f04e896f76e8d620e",
+                "sourceNarHash": "sha256-B+57AoHgGsoxtXTInivSKa7X0G4HaO6VPv20kT0WXR0="
+              }
+            ],
+            "evaluation": null,
+            "build": {
+              "status": "success",
+              "executedSystem": "x86_64-linux",
+              "sourceRevision": "0d2f6e7e42462491560afcf8f03a1db4432d6c34",
+              "sourceNarHash": "sha256-7yuc4bdJTXZcz9a86sJeZ9H9gFhYeF33Csyy1X5naNU=",
+              "drvPath": "/nix/store/d6971rd79vi4dydwlgqn91fpr6h25xcp-uv-flask-native-and-ordinary-runtime.drv",
+              "outputs": {
+                "out": "/nix/store/1n7kry1n1x0nm04yvjcc0qjh8xbbzl68-uv-flask-native-and-ordinary-runtime"
               },
-              "lockArtifact": {
-                "receipt": "https://nix-purifiers.github.io/evidence/d7aedf432b8a1c6badd96b74edcda2195faee88d65aaad25f3feaa98dbf5d1ad.json",
-                "artifactSha256": "d7aedf432b8a1c6badd96b74edcda2195faee88d65aaad25f3feaa98dbf5d1ad",
-                "format": "json"
+              "outputNarHashes": {
+                "out": "sha256-t+gvCnpJNYO/DQor39UpS5Yn2Q5bQauQY4AMhf389wc="
               },
-              "invoker": "python3 -B",
-              "arguments": "--target-nixpkgs \"$(jq -r .path epoch-target.json)\" --python-attribute 'python39' --state-root .python-epochs",
-              "inputSourceHashes": {
-                "tests/composition-epochs.py": "2b1e7086271619daf2dac504c8d806b7d639670dc8052c22983884ebb01bcc28",
-                "flake.lock": "d7aedf432b8a1c6badd96b74edcda2195faee88d65aaad25f3feaa98dbf5d1ad",
-                "tests/target_platform.py": "e1e9b27351057175fbb0a6ce481001239e2ae150cd537eb731390879a1948fd5",
-                "tests/sdk/uv-0.3.0.nix": "5546f5905cc3a0af8a5eee8674ac5432d3b5c39ea8173604bc8bd64f432b4168",
-                ".github/workflows/check.yml": "f553532b483d6a04f2e8fbcbd88c5c1c04431d15e7597504693889aef7ed1a64"
+              "sdkVersions": {
+                "Selected uv": "uv 0.13.7 (x86_64-unknown-linux-gnu)",
+                "Selected Python": "Python 3.15.0",
+                "Helper uv": "uv 0.13.5 (x86_64-unknown-linux-gnu)",
+                "Helper Python": "Python 3.14.8"
               },
-              "assertionSnippet": "        assert native_bytes == (producer / 'uv.lock').read_bytes(), 'helper changed the selected native lock'\n        report['nativeLockHeader'] = (producer / 'uv.lock').read_text().split('[[package]]', 1)[0]\n        passed(active)\n        active = 'producer-pure-build'\n        package = Path(run('nix', 'build', 'path:' + str(producer) + '#default',\n                           '--out-link', state / 'producer', '--print-out-paths'))\n        assert run(package / 'bin/epoch_provider') == 'target=' + minor\n        native_environment(package)\n        passed(active)\n",
-              "replayNotes": "{\"actualGeneratedBuildArgv\": [\"nix\", \"build\", \"path:/home/runner/work/uv-purifier/uv-purifier/.python-epochs/epoch_provider#default\", \"--out-link\", \"/home/runner/work/uv-purifier/uv-purifier/.python-epochs/producer\", \"--print-out-paths\"], \"gaps\": [{\"detail\": \"Actual CI upload contains report.json, commands.log and epoch-target.json only; no generated epoch_provider/flake.lock bytes. Exact SHA256 digests survive in report. Historical drv is not present in local store. No lockfile was regenerated or inferred from the digests.\", \"field\": \"generatedFixtureFlakeLock.bytes\", \"sha256ByGeneratedPath\": {\"epoch_consumer/flake.lock\": \"44c813a1f4461028d56312aa07a2a94a25f9f6966d44aed16782ffb7561c1da7\", \"epoch_provider/flake.lock\": \"44c813a1f4461028d56312aa07a2a94a25f9f6966d44aed16782ffb7561c1da7\"}}, {\"detail\": \"Generated fixture source tree is ephemeral and not included in the archived upload. Immutable driver/source NAR, generated lock digests, actual source/runtime reports and successful command transcript are retained; this is not a standalone byte-complete fixture archive.\", \"field\": \"generatedFixtureSourceTree.bytes\"}], \"generatedFixtureLock\": {\"availability\": \"not-archived\", \"bytesBase64\": null, \"sha256ByPath\": {\"epoch_consumer/flake.lock\": \"44c813a1f4461028d56312aa07a2a94a25f9f6966d44aed16782ffb7561c1da7\", \"epoch_provider/flake.lock\": \"44c813a1f4461028d56312aa07a2a94a25f9f6966d44aed16782ffb7561c1da7\"}}, \"inputNarBindings\": {\"sdkRootLockedInputs\": {\"caisson\": \"sha256-FAixpwyAWmhrzmh0fMGt7y0KIcNLqBIGICfMvbExRLo=\", \"caisson-core\": \"sha256-OzlG2Nhl/kU2UUPq+ARH/GKUHmOqAxQu5Ug/+aT1ECc=\", \"caisson-core_2\": \"sha256-OzlG2Nhl/kU2UUPq+ARH/GKUHmOqAxQu5Ug/+aT1ECc=\", \"caisson_2\": \"sha256-FAixpwyAWmhrzmh0fMGt7y0KIcNLqBIGICfMvbExRLo=\", \"flake-parts\": \"sha256-glZLQlzIn1fXH6PazR2iUmTo7kzzyYSshrWhLS9TqCU=\", \"flake-parts_2\": \"sha256-zTwuwezD0w3hpga6a6P8emidzAZFyWqlNeRBlpWOOl8=\", \"flake-parts_3\": \"sha256-glZLQlzIn1fXH6PazR2iUmTo7kzzyYSshrWhLS9TqCU=\", \"flake-parts_4\": \"sha256-zTwuwezD0w3hpga6a6P8emidzAZFyWqlNeRBlpWOOl8=\", \"nixpkgs\": \"sha256-Y1CiZ4SoBUjLQyQM/pY+rS2dXD3CHLPstF0lmOc73D4=\", \"nixpkgs-lib\": \"sha256-XtTdVeJX6X/gU+vGIUEJHirotv/lYP5+Q9irMH6HWPY=\", \"nixpkgs-lib_2\": \"sha256-ThkfL3D/FhCiZFc9+3BtxwuMmpuK+/bGtXCSo1+yVew=\", \"nixpkgs-lib_3\": \"sha256-ThkfL3D/FhCiZFc9+3BtxwuMmpuK+/bGtXCSo1+yVew=\", \"nixpkgs-lib_4\": \"sha256-XtTdVeJX6X/gU+vGIUEJHirotv/lYP5+Q9irMH6HWPY=\", \"nixpkgs-lib_5\": \"sha256-ThkfL3D/FhCiZFc9+3BtxwuMmpuK+/bGtXCSo1+yVew=\", \"nixpkgs-lib_6\": \"sha256-ThkfL3D/FhCiZFc9+3BtxwuMmpuK+/bGtXCSo1+yVew=\", \"nixpkgs_2\": \"sha256-Y1CiZ4SoBUjLQyQM/pY+rS2dXD3CHLPstF0lmOc73D4=\", \"purifier\": \"sha256-oBZLoSRURmWi7+kdh0mIGPJ0IbPginDDBvHIh2TW5U0=\"}, \"sdkSource\": \"sha256-MAx8dSy7Jy1EZVJ5RmCztO3HAKer+NOpY14IucmjO9Q=\", \"sharedPurifier\": \"sha256-oBZLoSRURmWi7+kdh0mIGPJ0IbPginDDBvHIh2TW5U0=\", \"targetNixpkgs\": \"sha256-OnSAY7XDSx7CtDoqNh8jwVwh4xNL/2HaJxGjryLWzX8=\"}, \"loggedInvocation\": [{\"line\": 542, \"text\": \"2026-11-06T03:19:05.0029448Z ##[group]Run nix flake archive --json 'github:NixOS/nixpkgs/b134951a4c9f3c995fd7be05f3243f8ecd65d798' > epoch-target.json\"}, {\"line\": 543, \"text\": \"2026-11-06T03:19:05.0029905Z \\u001b[36;1mnix flake archive --json 'github:NixOS/nixpkgs/b134951a4c9f3c995fd7be05f3243f8ecd65d798' > epoch-target.json\\u001b[0m\"}, {\"line\": 544, \"text\": \"2026-11-06T03:19:05.0030328Z \\u001b[36;1mpython3 -B tests/composition-epochs.py \\\\\\u001b[0m\"}, {\"line\": 545, \"text\": \"2026-11-06T03:19:05.0030542Z \\u001b[36;1m  --target-nixpkgs \\\"$(jq -r .path epoch-target.json)\\\" \\\\\\u001b[0m\"}, {\"line\": 546, \"text\": \"2026-11-06T03:19:05.0030748Z \\u001b[36;1m  --python-attribute 'python39' \\\\\\u001b[0m\"}, {\"line\": 547, \"text\": \"2026-11-06T03:19:05.0030911Z \\u001b[36;1m  --state-root .python-epochs\\u001b[0m\"}], \"replayByteCompleteness\": \"incomplete-generated-fixture-lock/source\", \"reportedSdkRoles\": {\"helperManagerPackage\": \"/nix/store/9cg9w4h3i9afkh37cb08qwxz6xi1kq8a-uv-0.13.5\", \"helperPackage\": \"/nix/store/m2srgjpxa1b46qxlyp7w7lma8pi6445v-uv-purifier-0.1.0\", \"helperPython\": {\"package\": \"/nix/store/xahxrjs30p3mw0a42bqg9ikgkikskw8m-python3-3.14.8\", \"version\": \"3.14.8\"}, \"nativeManagerPackage\": \"/nix/store/9cg9w4h3i9afkh37cb08qwxz6xi1kq8a-uv-0.13.5\", \"targetPython\": {\"freeThreaded\": false, \"package\": \"/nix/store/wwgv1fg2d3x0gdxwfg74pa1p5kpnngac-python3-3.9.20\", \"version\": \"3.9.20\"}}, \"sourceNonzeroRejection\": {\"driverSha256\": \"2b1e7086271619daf2dac504c8d806b7d639670dc8052c22983884ebb01bcc28\", \"endLine\": 84, \"path\": \"tests/composition-epochs.py\", \"startLine\": 76, \"text\": \"                                text=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE)\\n        with (state / 'commands.log').open('a') as log:\\n            log.write(json.dumps([str(item) for item in command]) + '\\\\n' + result.stdout + result.stderr + '\\\\n')\\n        if result.returncode:\\n            raise RuntimeError(result.stderr[-6000:])\\n        return result.stdout.strip()\\n\\n    ordinary_caches = {}\\n\\n\"}, \"sourceRootLockScope\": {\"bytesReference\": \"sdkRootFlakeLock.bytesBase64\", \"path\": \"evidence/uv-purifier/main-source/flake.lock\", \"scope\": \"Actual SDK repository root flake.lock at immutable reviewed revision/NAR. This is NOT the missing generated fixture flake.lock.\", \"sha256\": \"d7aedf432b8a1c6badd96b74edcda2195faee88d65aaad25f3feaa98dbf5d1ad\"}}",
-              "executionArtifact": {
-                "receipt": "https://nix-purifiers.github.io/evidence/6754f609844376b3a530f856689c249a238cefa59537c5aeee5fb6548c0bcb61.log",
-                "artifactSha256": "6754f609844376b3a530f856689c249a238cefa59537c5aeee5fb6548c0bcb61",
-                "format": "text"
-              },
-              "reportArtifact": {
-                "receipt": "https://nix-purifiers.github.io/evidence/7ed3a01e5848c9e9dedc54ae3cffdac41d291ecefca89cab0a470bcd6f56ee07.json",
-                "artifactSha256": "7ed3a01e5848c9e9dedc54ae3cffdac41d291ecefca89cab0a470bcd6f56ee07",
-                "format": "json"
-              },
-              "artifactMetadata": {
-                "receipt": "https://nix-purifiers.github.io/evidence/e0363dcfc7552ca98a92d7fbfebb9ca3388226dc04db169a0f5ce7781d4f3fd4.json",
-                "artifactSha256": "e0363dcfc7552ca98a92d7fbfebb9ca3388226dc04db169a0f5ce7781d4f3fd4",
-                "format": "json"
-              },
-              "artifactName": "python-epochs-ubuntu-latest-python39",
-              "buildArgv": [
-                "nix",
-                "build",
-                "path:/home/runner/work/uv-purifier/uv-purifier/.python-epochs/epoch_provider#default",
-                "--out-link",
-                "/home/runner/work/uv-purifier/uv-purifier/.python-epochs/producer",
-                "--print-out-paths"
+              "sampleSources": [
+                {
+                  "repository": "https://github.com/pallets/flask",
+                  "revision": "49943b5a94413a530761350f04e896f76e8d620e",
+                  "sourceNarHash": "sha256-B+57AoHgGsoxtXTInivSKa7X0G4HaO6VPv20kT0WXR0="
+                }
               ],
-              "transcriptLayout": "argv-stdout-stderr"
+              "receipt": "https://nix-purifiers.github.io/evidence/6ba0f1407b3e0915013824c1392f80c07982fcce353e656a08bd4417b211e861.json",
+              "artifactSha256": "6ba0f1407b3e0915013824c1392f80c07982fcce353e656a08bd4417b211e861"
             }
           },
-          "historical-0.3.0-python-3.8.19": {
+          "uv-purifier:main:aarch64-darwin:shipped-default:python3:pure-upstream-tests": {
+            "repository": "nix-purifiers/uv-purifier",
+            "revision": "0d2f6e7e42462491560afcf8f03a1db4432d6c34",
+            "system": "aarch64-darwin",
+            "check": {
+              "kind": "expression",
+              "value": "let f = builtins.getFlake (\"path:\" + builtins.getEnv \"UV_PROFILE_ROOT\"); in f.packages.aarch64-darwin.tests",
+              "replay": {
+                "artifactUrl": "https://nix-purifiers.github.io/evidence/4d6e63fcb770feb036b13a8e8f88e8d674de84235b5b48fe061b63ceea2eac86.json",
+                "artifactSha256": "4d6e63fcb770feb036b13a8e8f88e8d674de84235b5b48fe061b63ceea2eac86",
+                "expressionSha256": "eeadb993c0a336a9426b576ee8c26481f24b72e04526a639d2613847b9d937c5",
+                "arguments": {
+                  "UV_PROFILE_ROOT": "/home/chris/Projects/ch-nix-workspace/.worktrees/uv-tier2-ci-evidence/42336626990/flask-runtime-aarch64-darwin-python3-shipped/packaging"
+                }
+              }
+            },
+            "drvPath": "/nix/store/wvyqmq43ycw8iqr6nfdziqlcsjv3241g-flask-tests.drv",
+            "outputs": {
+              "out": "/nix/store/izk2sf9p3y0yjb3iwjldph45dfhikfaq-flask-tests"
+            },
+            "outputNarHashes": {
+              "out": "sha256-d6xi4mKdjkX2JFicDIv5niSzpyI0m/Hnm8GGAIU04kY="
+            },
+            "sourceNarHash": "sha256-7yuc4bdJTXZcz9a86sJeZ9H9gFhYeF33Csyy1X5naNU=",
+            "sdkVersions": {
+              "Selected uv": "uv 0.13.5 (aarch64-apple-darwin)",
+              "Selected Python": "Python 3.14.8",
+              "Helper uv": "uv 0.13.5 (aarch64-apple-darwin)",
+              "Helper Python": "Python 3.14.8"
+            },
+            "sampleSources": [
+              {
+                "repository": "https://github.com/pallets/flask",
+                "revision": "49943b5a94413a530761350f04e896f76e8d620e",
+                "sourceNarHash": "sha256-B+57AoHgGsoxtXTInivSKa7X0G4HaO6VPv20kT0WXR0="
+              }
+            ],
+            "evaluation": null,
+            "build": {
+              "status": "success",
+              "executedSystem": "aarch64-darwin",
+              "sourceRevision": "0d2f6e7e42462491560afcf8f03a1db4432d6c34",
+              "sourceNarHash": "sha256-7yuc4bdJTXZcz9a86sJeZ9H9gFhYeF33Csyy1X5naNU=",
+              "drvPath": "/nix/store/wvyqmq43ycw8iqr6nfdziqlcsjv3241g-flask-tests.drv",
+              "outputs": {
+                "out": "/nix/store/izk2sf9p3y0yjb3iwjldph45dfhikfaq-flask-tests"
+              },
+              "outputNarHashes": {
+                "out": "sha256-d6xi4mKdjkX2JFicDIv5niSzpyI0m/Hnm8GGAIU04kY="
+              },
+              "sdkVersions": {
+                "Selected uv": "uv 0.13.5 (aarch64-apple-darwin)",
+                "Selected Python": "Python 3.14.8",
+                "Helper uv": "uv 0.13.5 (aarch64-apple-darwin)",
+                "Helper Python": "Python 3.14.8"
+              },
+              "sampleSources": [
+                {
+                  "repository": "https://github.com/pallets/flask",
+                  "revision": "49943b5a94413a530761350f04e896f76e8d620e",
+                  "sourceNarHash": "sha256-B+57AoHgGsoxtXTInivSKa7X0G4HaO6VPv20kT0WXR0="
+                }
+              ],
+              "receipt": "https://nix-purifiers.github.io/evidence/fda10f2a55cee44bb9c05c70f92e26e26ef4d68317837fa3790acbba9453a108.json",
+              "artifactSha256": "fda10f2a55cee44bb9c05c70f92e26e26ef4d68317837fa3790acbba9453a108"
+            }
+          },
+          "uv-purifier:main:aarch64-darwin:shipped-default:python3:projection": {
+            "repository": "nix-purifiers/uv-purifier",
+            "revision": "0d2f6e7e42462491560afcf8f03a1db4432d6c34",
+            "system": "aarch64-darwin",
+            "check": {
+              "kind": "expression",
+              "value": "let f = builtins.getFlake (\"path:\" + builtins.getEnv \"UV_PROFILE_ROOT\"); in f.packages.aarch64-darwin.projection",
+              "replay": {
+                "artifactUrl": "https://nix-purifiers.github.io/evidence/4d6e63fcb770feb036b13a8e8f88e8d674de84235b5b48fe061b63ceea2eac86.json",
+                "artifactSha256": "4d6e63fcb770feb036b13a8e8f88e8d674de84235b5b48fe061b63ceea2eac86",
+                "expressionSha256": "ccc81b6923b42418f46c5cc3e630f0f7d04deef4ef3970f3dc302a33b40d885e",
+                "arguments": {
+                  "UV_PROFILE_ROOT": "/home/chris/Projects/ch-nix-workspace/.worktrees/uv-tier2-ci-evidence/42336626990/flask-runtime-aarch64-darwin-python3-shipped/packaging"
+                }
+              }
+            },
+            "drvPath": "/nix/store/y39f389l11q77wxik8rnn1lmaq7r4m8i-python-projection.drv",
+            "outputs": {
+              "out": "/nix/store/b4giilykb6vf104kj171k0iba09vrs9r-python-projection"
+            },
+            "outputNarHashes": {
+              "out": "sha256-M2nVAgXXEenX2tNluUY7nqTwVBJrSp2P0fG0PHb604M="
+            },
+            "sourceNarHash": "sha256-7yuc4bdJTXZcz9a86sJeZ9H9gFhYeF33Csyy1X5naNU=",
+            "sdkVersions": {
+              "Selected uv": "uv 0.13.5 (aarch64-apple-darwin)",
+              "Selected Python": "Python 3.14.8",
+              "Helper uv": "uv 0.13.5 (aarch64-apple-darwin)",
+              "Helper Python": "Python 3.14.8"
+            },
+            "sampleSources": [
+              {
+                "repository": "https://github.com/pallets/flask",
+                "revision": "49943b5a94413a530761350f04e896f76e8d620e",
+                "sourceNarHash": "sha256-B+57AoHgGsoxtXTInivSKa7X0G4HaO6VPv20kT0WXR0="
+              }
+            ],
+            "evaluation": null,
+            "build": {
+              "status": "success",
+              "executedSystem": "aarch64-darwin",
+              "sourceRevision": "0d2f6e7e42462491560afcf8f03a1db4432d6c34",
+              "sourceNarHash": "sha256-7yuc4bdJTXZcz9a86sJeZ9H9gFhYeF33Csyy1X5naNU=",
+              "drvPath": "/nix/store/y39f389l11q77wxik8rnn1lmaq7r4m8i-python-projection.drv",
+              "outputs": {
+                "out": "/nix/store/b4giilykb6vf104kj171k0iba09vrs9r-python-projection"
+              },
+              "outputNarHashes": {
+                "out": "sha256-M2nVAgXXEenX2tNluUY7nqTwVBJrSp2P0fG0PHb604M="
+              },
+              "sdkVersions": {
+                "Selected uv": "uv 0.13.5 (aarch64-apple-darwin)",
+                "Selected Python": "Python 3.14.8",
+                "Helper uv": "uv 0.13.5 (aarch64-apple-darwin)",
+                "Helper Python": "Python 3.14.8"
+              },
+              "sampleSources": [
+                {
+                  "repository": "https://github.com/pallets/flask",
+                  "revision": "49943b5a94413a530761350f04e896f76e8d620e",
+                  "sourceNarHash": "sha256-B+57AoHgGsoxtXTInivSKa7X0G4HaO6VPv20kT0WXR0="
+                }
+              ],
+              "receipt": "https://nix-purifiers.github.io/evidence/abad42e2396c86abbf9f854a4ee0cdef05fe7b5d389199238473dae459a4198c.json",
+              "artifactSha256": "abad42e2396c86abbf9f854a4ee0cdef05fe7b5d389199238473dae459a4198c"
+            }
+          },
+          "uv-purifier:main:aarch64-darwin:shipped-default:python3:native-and-ordinary-runtime": {
+            "repository": "nix-purifiers/uv-purifier",
+            "revision": "0d2f6e7e42462491560afcf8f03a1db4432d6c34",
+            "system": "aarch64-darwin",
+            "check": {
+              "kind": "expression",
+              "value": "let f = builtins.getFlake (\"path:\" + builtins.getEnv \"UV_PROFILE_ROOT\"); in f.checks.aarch64-darwin.runtime",
+              "replay": {
+                "artifactUrl": "https://nix-purifiers.github.io/evidence/4d6e63fcb770feb036b13a8e8f88e8d674de84235b5b48fe061b63ceea2eac86.json",
+                "artifactSha256": "4d6e63fcb770feb036b13a8e8f88e8d674de84235b5b48fe061b63ceea2eac86",
+                "expressionSha256": "8d9181a07113269ac118f2b1ae6d1bbc5301fc06335f99640354a31ba477f3c8",
+                "arguments": {
+                  "UV_PROFILE_ROOT": "/home/chris/Projects/ch-nix-workspace/.worktrees/uv-tier2-ci-evidence/42336626990/flask-runtime-aarch64-darwin-python3-shipped/packaging"
+                }
+              }
+            },
+            "drvPath": "/nix/store/21wpr2g4s3cxs1bm51cwdffw32r5ls8j-uv-flask-native-and-ordinary-runtime.drv",
+            "outputs": {
+              "out": "/nix/store/wp49vklbl8hsmyinb1ykfrrp9mfcjiwn-uv-flask-native-and-ordinary-runtime"
+            },
+            "outputNarHashes": {
+              "out": "sha256-BJwQjWi6Xkk6zBRcImvbjSPVK9+GPKXeKUBE+M3IfEw="
+            },
+            "sourceNarHash": "sha256-7yuc4bdJTXZcz9a86sJeZ9H9gFhYeF33Csyy1X5naNU=",
+            "sdkVersions": {
+              "Selected uv": "uv 0.13.5 (aarch64-apple-darwin)",
+              "Selected Python": "Python 3.14.8",
+              "Helper uv": "uv 0.13.5 (aarch64-apple-darwin)",
+              "Helper Python": "Python 3.14.8"
+            },
+            "sampleSources": [
+              {
+                "repository": "https://github.com/pallets/flask",
+                "revision": "49943b5a94413a530761350f04e896f76e8d620e",
+                "sourceNarHash": "sha256-B+57AoHgGsoxtXTInivSKa7X0G4HaO6VPv20kT0WXR0="
+              }
+            ],
+            "evaluation": null,
+            "build": {
+              "status": "success",
+              "executedSystem": "aarch64-darwin",
+              "sourceRevision": "0d2f6e7e42462491560afcf8f03a1db4432d6c34",
+              "sourceNarHash": "sha256-7yuc4bdJTXZcz9a86sJeZ9H9gFhYeF33Csyy1X5naNU=",
+              "drvPath": "/nix/store/21wpr2g4s3cxs1bm51cwdffw32r5ls8j-uv-flask-native-and-ordinary-runtime.drv",
+              "outputs": {
+                "out": "/nix/store/wp49vklbl8hsmyinb1ykfrrp9mfcjiwn-uv-flask-native-and-ordinary-runtime"
+              },
+              "outputNarHashes": {
+                "out": "sha256-BJwQjWi6Xkk6zBRcImvbjSPVK9+GPKXeKUBE+M3IfEw="
+              },
+              "sdkVersions": {
+                "Selected uv": "uv 0.13.5 (aarch64-apple-darwin)",
+                "Selected Python": "Python 3.14.8",
+                "Helper uv": "uv 0.13.5 (aarch64-apple-darwin)",
+                "Helper Python": "Python 3.14.8"
+              },
+              "sampleSources": [
+                {
+                  "repository": "https://github.com/pallets/flask",
+                  "revision": "49943b5a94413a530761350f04e896f76e8d620e",
+                  "sourceNarHash": "sha256-B+57AoHgGsoxtXTInivSKa7X0G4HaO6VPv20kT0WXR0="
+                }
+              ],
+              "receipt": "https://nix-purifiers.github.io/evidence/c36c1af88b00d50634d30f0475aab1ac2059f8c0a0b397b7fe436c7114aa4203.json",
+              "artifactSha256": "c36c1af88b00d50634d30f0475aab1ac2059f8c0a0b397b7fe436c7114aa4203"
+            }
+          },
+          "uv-purifier:main:x86_64-linux:shipped-default:python3:pure-upstream-tests": {
+            "repository": "nix-purifiers/uv-purifier",
+            "revision": "0d2f6e7e42462491560afcf8f03a1db4432d6c34",
+            "system": "x86_64-linux",
+            "check": {
+              "kind": "expression",
+              "value": "let f = builtins.getFlake (\"path:\" + builtins.getEnv \"UV_PROFILE_ROOT\"); in f.packages.x86_64-linux.tests",
+              "replay": {
+                "artifactUrl": "https://nix-purifiers.github.io/evidence/ce771c432ca1f5d0ed40852e2a0773ac1fbfeda38df355e569c0470c3f6b2cae.json",
+                "artifactSha256": "ce771c432ca1f5d0ed40852e2a0773ac1fbfeda38df355e569c0470c3f6b2cae",
+                "expressionSha256": "2bb5073f76166c6cc0ab63f85e38f7dc3d031ecf5bbc1e1004e397c93a518a71",
+                "arguments": {
+                  "UV_PROFILE_ROOT": "/home/chris/Projects/ch-nix-workspace/.worktrees/uv-tier2-ci-evidence/42336626990/flask-runtime-x86_64-linux-python3-shipped/packaging"
+                }
+              }
+            },
+            "drvPath": "/nix/store/ryxgjgvkf7v58ls9yn1r9qvxa735qvss-flask-tests.drv",
+            "outputs": {
+              "out": "/nix/store/izdg81h6hibnvnf47bca6sraxab4yy5b-flask-tests"
+            },
+            "outputNarHashes": {
+              "out": "sha256-d6xi4mKdjkX2JFicDIv5niSzpyI0m/Hnm8GGAIU04kY="
+            },
+            "sourceNarHash": "sha256-7yuc4bdJTXZcz9a86sJeZ9H9gFhYeF33Csyy1X5naNU=",
+            "sdkVersions": {
+              "Selected uv": "uv 0.13.5 (x86_64-unknown-linux-gnu)",
+              "Selected Python": "Python 3.14.8",
+              "Helper uv": "uv 0.13.5 (x86_64-unknown-linux-gnu)",
+              "Helper Python": "Python 3.14.8"
+            },
+            "sampleSources": [
+              {
+                "repository": "https://github.com/pallets/flask",
+                "revision": "49943b5a94413a530761350f04e896f76e8d620e",
+                "sourceNarHash": "sha256-B+57AoHgGsoxtXTInivSKa7X0G4HaO6VPv20kT0WXR0="
+              }
+            ],
+            "evaluation": null,
+            "build": {
+              "status": "success",
+              "executedSystem": "x86_64-linux",
+              "sourceRevision": "0d2f6e7e42462491560afcf8f03a1db4432d6c34",
+              "sourceNarHash": "sha256-7yuc4bdJTXZcz9a86sJeZ9H9gFhYeF33Csyy1X5naNU=",
+              "drvPath": "/nix/store/ryxgjgvkf7v58ls9yn1r9qvxa735qvss-flask-tests.drv",
+              "outputs": {
+                "out": "/nix/store/izdg81h6hibnvnf47bca6sraxab4yy5b-flask-tests"
+              },
+              "outputNarHashes": {
+                "out": "sha256-d6xi4mKdjkX2JFicDIv5niSzpyI0m/Hnm8GGAIU04kY="
+              },
+              "sdkVersions": {
+                "Selected uv": "uv 0.13.5 (x86_64-unknown-linux-gnu)",
+                "Selected Python": "Python 3.14.8",
+                "Helper uv": "uv 0.13.5 (x86_64-unknown-linux-gnu)",
+                "Helper Python": "Python 3.14.8"
+              },
+              "sampleSources": [
+                {
+                  "repository": "https://github.com/pallets/flask",
+                  "revision": "49943b5a94413a530761350f04e896f76e8d620e",
+                  "sourceNarHash": "sha256-B+57AoHgGsoxtXTInivSKa7X0G4HaO6VPv20kT0WXR0="
+                }
+              ],
+              "receipt": "https://nix-purifiers.github.io/evidence/1879b3637690e30407e02e14cab4ff1607c8a6ec90fc421d81841f06def84e8a.json",
+              "artifactSha256": "1879b3637690e30407e02e14cab4ff1607c8a6ec90fc421d81841f06def84e8a"
+            }
+          },
+          "uv-purifier:main:x86_64-linux:shipped-default:python3:projection": {
+            "repository": "nix-purifiers/uv-purifier",
+            "revision": "0d2f6e7e42462491560afcf8f03a1db4432d6c34",
+            "system": "x86_64-linux",
+            "check": {
+              "kind": "expression",
+              "value": "let f = builtins.getFlake (\"path:\" + builtins.getEnv \"UV_PROFILE_ROOT\"); in f.packages.x86_64-linux.projection",
+              "replay": {
+                "artifactUrl": "https://nix-purifiers.github.io/evidence/ce771c432ca1f5d0ed40852e2a0773ac1fbfeda38df355e569c0470c3f6b2cae.json",
+                "artifactSha256": "ce771c432ca1f5d0ed40852e2a0773ac1fbfeda38df355e569c0470c3f6b2cae",
+                "expressionSha256": "d350f762065d9ee3cc4311519360637f47e7e9fca2f4be750cf9be62443a0502",
+                "arguments": {
+                  "UV_PROFILE_ROOT": "/home/chris/Projects/ch-nix-workspace/.worktrees/uv-tier2-ci-evidence/42336626990/flask-runtime-x86_64-linux-python3-shipped/packaging"
+                }
+              }
+            },
+            "drvPath": "/nix/store/rskd81xnixv8ww20v2mg67lpssi20m61-python-projection.drv",
+            "outputs": {
+              "out": "/nix/store/3qk5s4b2m6kn3awii1n9nd38pr7k97bz-python-projection"
+            },
+            "outputNarHashes": {
+              "out": "sha256-1QGIh5Jv0mzqHzuc3eYY09g+/L0Eq4ffYmzLBowl/xc="
+            },
+            "sourceNarHash": "sha256-7yuc4bdJTXZcz9a86sJeZ9H9gFhYeF33Csyy1X5naNU=",
+            "sdkVersions": {
+              "Selected uv": "uv 0.13.5 (x86_64-unknown-linux-gnu)",
+              "Selected Python": "Python 3.14.8",
+              "Helper uv": "uv 0.13.5 (x86_64-unknown-linux-gnu)",
+              "Helper Python": "Python 3.14.8"
+            },
+            "sampleSources": [
+              {
+                "repository": "https://github.com/pallets/flask",
+                "revision": "49943b5a94413a530761350f04e896f76e8d620e",
+                "sourceNarHash": "sha256-B+57AoHgGsoxtXTInivSKa7X0G4HaO6VPv20kT0WXR0="
+              }
+            ],
+            "evaluation": null,
+            "build": {
+              "status": "success",
+              "executedSystem": "x86_64-linux",
+              "sourceRevision": "0d2f6e7e42462491560afcf8f03a1db4432d6c34",
+              "sourceNarHash": "sha256-7yuc4bdJTXZcz9a86sJeZ9H9gFhYeF33Csyy1X5naNU=",
+              "drvPath": "/nix/store/rskd81xnixv8ww20v2mg67lpssi20m61-python-projection.drv",
+              "outputs": {
+                "out": "/nix/store/3qk5s4b2m6kn3awii1n9nd38pr7k97bz-python-projection"
+              },
+              "outputNarHashes": {
+                "out": "sha256-1QGIh5Jv0mzqHzuc3eYY09g+/L0Eq4ffYmzLBowl/xc="
+              },
+              "sdkVersions": {
+                "Selected uv": "uv 0.13.5 (x86_64-unknown-linux-gnu)",
+                "Selected Python": "Python 3.14.8",
+                "Helper uv": "uv 0.13.5 (x86_64-unknown-linux-gnu)",
+                "Helper Python": "Python 3.14.8"
+              },
+              "sampleSources": [
+                {
+                  "repository": "https://github.com/pallets/flask",
+                  "revision": "49943b5a94413a530761350f04e896f76e8d620e",
+                  "sourceNarHash": "sha256-B+57AoHgGsoxtXTInivSKa7X0G4HaO6VPv20kT0WXR0="
+                }
+              ],
+              "receipt": "https://nix-purifiers.github.io/evidence/36a8b7a5d7520bdd43408cae0ec5ee09dde952624337ca61577b2bd273ae15ad.json",
+              "artifactSha256": "36a8b7a5d7520bdd43408cae0ec5ee09dde952624337ca61577b2bd273ae15ad"
+            }
+          },
+          "uv-purifier:main:x86_64-linux:shipped-default:python3:native-and-ordinary-runtime": {
+            "repository": "nix-purifiers/uv-purifier",
+            "revision": "0d2f6e7e42462491560afcf8f03a1db4432d6c34",
+            "system": "x86_64-linux",
+            "check": {
+              "kind": "expression",
+              "value": "let f = builtins.getFlake (\"path:\" + builtins.getEnv \"UV_PROFILE_ROOT\"); in f.checks.x86_64-linux.runtime",
+              "replay": {
+                "artifactUrl": "https://nix-purifiers.github.io/evidence/ce771c432ca1f5d0ed40852e2a0773ac1fbfeda38df355e569c0470c3f6b2cae.json",
+                "artifactSha256": "ce771c432ca1f5d0ed40852e2a0773ac1fbfeda38df355e569c0470c3f6b2cae",
+                "expressionSha256": "2971fc9df5da3690e8ff3fd7fc595fc6d757f453eab560900b1ffeb6c854a456",
+                "arguments": {
+                  "UV_PROFILE_ROOT": "/home/chris/Projects/ch-nix-workspace/.worktrees/uv-tier2-ci-evidence/42336626990/flask-runtime-x86_64-linux-python3-shipped/packaging"
+                }
+              }
+            },
+            "drvPath": "/nix/store/d5m6xdf6sfavbz52di6is9zsabvrchbd-uv-flask-native-and-ordinary-runtime.drv",
+            "outputs": {
+              "out": "/nix/store/npcn1is206g7vpgjjdl6pqpvsra78ih7-uv-flask-native-and-ordinary-runtime"
+            },
+            "outputNarHashes": {
+              "out": "sha256-uwUltt2yFeXTU2DSKunvpjLGBA1XGTIA9dMvQK7Ohws="
+            },
+            "sourceNarHash": "sha256-7yuc4bdJTXZcz9a86sJeZ9H9gFhYeF33Csyy1X5naNU=",
+            "sdkVersions": {
+              "Selected uv": "uv 0.13.5 (x86_64-unknown-linux-gnu)",
+              "Selected Python": "Python 3.14.8",
+              "Helper uv": "uv 0.13.5 (x86_64-unknown-linux-gnu)",
+              "Helper Python": "Python 3.14.8"
+            },
+            "sampleSources": [
+              {
+                "repository": "https://github.com/pallets/flask",
+                "revision": "49943b5a94413a530761350f04e896f76e8d620e",
+                "sourceNarHash": "sha256-B+57AoHgGsoxtXTInivSKa7X0G4HaO6VPv20kT0WXR0="
+              }
+            ],
+            "evaluation": null,
+            "build": {
+              "status": "success",
+              "executedSystem": "x86_64-linux",
+              "sourceRevision": "0d2f6e7e42462491560afcf8f03a1db4432d6c34",
+              "sourceNarHash": "sha256-7yuc4bdJTXZcz9a86sJeZ9H9gFhYeF33Csyy1X5naNU=",
+              "drvPath": "/nix/store/d5m6xdf6sfavbz52di6is9zsabvrchbd-uv-flask-native-and-ordinary-runtime.drv",
+              "outputs": {
+                "out": "/nix/store/npcn1is206g7vpgjjdl6pqpvsra78ih7-uv-flask-native-and-ordinary-runtime"
+              },
+              "outputNarHashes": {
+                "out": "sha256-uwUltt2yFeXTU2DSKunvpjLGBA1XGTIA9dMvQK7Ohws="
+              },
+              "sdkVersions": {
+                "Selected uv": "uv 0.13.5 (x86_64-unknown-linux-gnu)",
+                "Selected Python": "Python 3.14.8",
+                "Helper uv": "uv 0.13.5 (x86_64-unknown-linux-gnu)",
+                "Helper Python": "Python 3.14.8"
+              },
+              "sampleSources": [
+                {
+                  "repository": "https://github.com/pallets/flask",
+                  "revision": "49943b5a94413a530761350f04e896f76e8d620e",
+                  "sourceNarHash": "sha256-B+57AoHgGsoxtXTInivSKa7X0G4HaO6VPv20kT0WXR0="
+                }
+              ],
+              "receipt": "https://nix-purifiers.github.io/evidence/4fcbcea882fd1b8d18fd42adf83d8b79aade02d5f6c068507999c6a7345a7a0a.json",
+              "artifactSha256": "4fcbcea882fd1b8d18fd42adf83d8b79aade02d5f6c068507999c6a7345a7a0a"
+            }
+          },
+          "uv-purifier:main:aarch64-linux:shipped-default:python3:pure-upstream-tests": {
+            "repository": "nix-purifiers/uv-purifier",
+            "revision": "0d2f6e7e42462491560afcf8f03a1db4432d6c34",
+            "system": "aarch64-linux",
+            "check": {
+              "kind": "expression",
+              "value": "let f = builtins.getFlake (\"path:\" + builtins.getEnv \"UV_PROFILE_ROOT\"); in f.packages.aarch64-linux.tests",
+              "replay": {
+                "artifactUrl": "https://nix-purifiers.github.io/evidence/6a15c145b2520fbe8521e3b522bdeba812f5b9c3fd6fa7b2d0dc40c22c14cdab.json",
+                "artifactSha256": "6a15c145b2520fbe8521e3b522bdeba812f5b9c3fd6fa7b2d0dc40c22c14cdab",
+                "expressionSha256": "715630635503ca2d8caf50c67f0e089033a261d42761d90482b5b9623b37389f",
+                "arguments": {
+                  "UV_PROFILE_ROOT": "/home/chris/Projects/ch-nix-workspace/.worktrees/uv-tier2-ci-evidence/42336626990/flask-runtime-aarch64-linux-python3-shipped/packaging"
+                }
+              }
+            },
+            "drvPath": "/nix/store/4dz5lm45rf0hsq5qvka9f3p0h26y5djx-flask-tests.drv",
+            "outputs": {
+              "out": "/nix/store/0ckcxc26dan7qy0ky83rbx1lbhi1cmdq-flask-tests"
+            },
+            "outputNarHashes": {
+              "out": "sha256-d6xi4mKdjkX2JFicDIv5niSzpyI0m/Hnm8GGAIU04kY="
+            },
+            "sourceNarHash": "sha256-7yuc4bdJTXZcz9a86sJeZ9H9gFhYeF33Csyy1X5naNU=",
+            "sdkVersions": {
+              "Selected uv": "uv 0.13.5 (aarch64-unknown-linux-gnu)",
+              "Selected Python": "Python 3.14.8",
+              "Helper uv": "uv 0.13.5 (aarch64-unknown-linux-gnu)",
+              "Helper Python": "Python 3.14.8"
+            },
+            "sampleSources": [
+              {
+                "repository": "https://github.com/pallets/flask",
+                "revision": "49943b5a94413a530761350f04e896f76e8d620e",
+                "sourceNarHash": "sha256-B+57AoHgGsoxtXTInivSKa7X0G4HaO6VPv20kT0WXR0="
+              }
+            ],
+            "evaluation": null,
+            "build": {
+              "status": "success",
+              "executedSystem": "aarch64-linux",
+              "sourceRevision": "0d2f6e7e42462491560afcf8f03a1db4432d6c34",
+              "sourceNarHash": "sha256-7yuc4bdJTXZcz9a86sJeZ9H9gFhYeF33Csyy1X5naNU=",
+              "drvPath": "/nix/store/4dz5lm45rf0hsq5qvka9f3p0h26y5djx-flask-tests.drv",
+              "outputs": {
+                "out": "/nix/store/0ckcxc26dan7qy0ky83rbx1lbhi1cmdq-flask-tests"
+              },
+              "outputNarHashes": {
+                "out": "sha256-d6xi4mKdjkX2JFicDIv5niSzpyI0m/Hnm8GGAIU04kY="
+              },
+              "sdkVersions": {
+                "Selected uv": "uv 0.13.5 (aarch64-unknown-linux-gnu)",
+                "Selected Python": "Python 3.14.8",
+                "Helper uv": "uv 0.13.5 (aarch64-unknown-linux-gnu)",
+                "Helper Python": "Python 3.14.8"
+              },
+              "sampleSources": [
+                {
+                  "repository": "https://github.com/pallets/flask",
+                  "revision": "49943b5a94413a530761350f04e896f76e8d620e",
+                  "sourceNarHash": "sha256-B+57AoHgGsoxtXTInivSKa7X0G4HaO6VPv20kT0WXR0="
+                }
+              ],
+              "receipt": "https://nix-purifiers.github.io/evidence/aeb8978b474ae07e07224d2458ea7378b4de67be41c715f7cba21c32c4d4edd7.json",
+              "artifactSha256": "aeb8978b474ae07e07224d2458ea7378b4de67be41c715f7cba21c32c4d4edd7"
+            }
+          },
+          "uv-purifier:main:aarch64-linux:shipped-default:python3:projection": {
+            "repository": "nix-purifiers/uv-purifier",
+            "revision": "0d2f6e7e42462491560afcf8f03a1db4432d6c34",
+            "system": "aarch64-linux",
+            "check": {
+              "kind": "expression",
+              "value": "let f = builtins.getFlake (\"path:\" + builtins.getEnv \"UV_PROFILE_ROOT\"); in f.packages.aarch64-linux.projection",
+              "replay": {
+                "artifactUrl": "https://nix-purifiers.github.io/evidence/6a15c145b2520fbe8521e3b522bdeba812f5b9c3fd6fa7b2d0dc40c22c14cdab.json",
+                "artifactSha256": "6a15c145b2520fbe8521e3b522bdeba812f5b9c3fd6fa7b2d0dc40c22c14cdab",
+                "expressionSha256": "6173cdddd952750e3a70676a4f0140e4302d8429939d0b946314564604163442",
+                "arguments": {
+                  "UV_PROFILE_ROOT": "/home/chris/Projects/ch-nix-workspace/.worktrees/uv-tier2-ci-evidence/42336626990/flask-runtime-aarch64-linux-python3-shipped/packaging"
+                }
+              }
+            },
+            "drvPath": "/nix/store/hmjnfbd1hld8m1j96hpl08vnb2b575if-python-projection.drv",
+            "outputs": {
+              "out": "/nix/store/drgknz35i763ywzj1nv35fmipwrvahz5-python-projection"
+            },
+            "outputNarHashes": {
+              "out": "sha256-yc8fcOC1vHqAAPuumobMiahdPOQiO8F4QhWmNkP32q4="
+            },
+            "sourceNarHash": "sha256-7yuc4bdJTXZcz9a86sJeZ9H9gFhYeF33Csyy1X5naNU=",
+            "sdkVersions": {
+              "Selected uv": "uv 0.13.5 (aarch64-unknown-linux-gnu)",
+              "Selected Python": "Python 3.14.8",
+              "Helper uv": "uv 0.13.5 (aarch64-unknown-linux-gnu)",
+              "Helper Python": "Python 3.14.8"
+            },
+            "sampleSources": [
+              {
+                "repository": "https://github.com/pallets/flask",
+                "revision": "49943b5a94413a530761350f04e896f76e8d620e",
+                "sourceNarHash": "sha256-B+57AoHgGsoxtXTInivSKa7X0G4HaO6VPv20kT0WXR0="
+              }
+            ],
+            "evaluation": null,
+            "build": {
+              "status": "success",
+              "executedSystem": "aarch64-linux",
+              "sourceRevision": "0d2f6e7e42462491560afcf8f03a1db4432d6c34",
+              "sourceNarHash": "sha256-7yuc4bdJTXZcz9a86sJeZ9H9gFhYeF33Csyy1X5naNU=",
+              "drvPath": "/nix/store/hmjnfbd1hld8m1j96hpl08vnb2b575if-python-projection.drv",
+              "outputs": {
+                "out": "/nix/store/drgknz35i763ywzj1nv35fmipwrvahz5-python-projection"
+              },
+              "outputNarHashes": {
+                "out": "sha256-yc8fcOC1vHqAAPuumobMiahdPOQiO8F4QhWmNkP32q4="
+              },
+              "sdkVersions": {
+                "Selected uv": "uv 0.13.5 (aarch64-unknown-linux-gnu)",
+                "Selected Python": "Python 3.14.8",
+                "Helper uv": "uv 0.13.5 (aarch64-unknown-linux-gnu)",
+                "Helper Python": "Python 3.14.8"
+              },
+              "sampleSources": [
+                {
+                  "repository": "https://github.com/pallets/flask",
+                  "revision": "49943b5a94413a530761350f04e896f76e8d620e",
+                  "sourceNarHash": "sha256-B+57AoHgGsoxtXTInivSKa7X0G4HaO6VPv20kT0WXR0="
+                }
+              ],
+              "receipt": "https://nix-purifiers.github.io/evidence/2359abf51c066a8ef3830a0e20c0acd3c8b1bb895d9b7c8299fdadedc9b7b1c6.json",
+              "artifactSha256": "2359abf51c066a8ef3830a0e20c0acd3c8b1bb895d9b7c8299fdadedc9b7b1c6"
+            }
+          },
+          "uv-purifier:main:aarch64-linux:shipped-default:python3:native-and-ordinary-runtime": {
+            "repository": "nix-purifiers/uv-purifier",
+            "revision": "0d2f6e7e42462491560afcf8f03a1db4432d6c34",
+            "system": "aarch64-linux",
+            "check": {
+              "kind": "expression",
+              "value": "let f = builtins.getFlake (\"path:\" + builtins.getEnv \"UV_PROFILE_ROOT\"); in f.checks.aarch64-linux.runtime",
+              "replay": {
+                "artifactUrl": "https://nix-purifiers.github.io/evidence/6a15c145b2520fbe8521e3b522bdeba812f5b9c3fd6fa7b2d0dc40c22c14cdab.json",
+                "artifactSha256": "6a15c145b2520fbe8521e3b522bdeba812f5b9c3fd6fa7b2d0dc40c22c14cdab",
+                "expressionSha256": "750f20d926c33c34dee3cf08b90b8326dc2febdcd04d981092baa25f752ce036",
+                "arguments": {
+                  "UV_PROFILE_ROOT": "/home/chris/Projects/ch-nix-workspace/.worktrees/uv-tier2-ci-evidence/42336626990/flask-runtime-aarch64-linux-python3-shipped/packaging"
+                }
+              }
+            },
+            "drvPath": "/nix/store/f4h162sabwqy115cmyl57aqicxw0s21p-uv-flask-native-and-ordinary-runtime.drv",
+            "outputs": {
+              "out": "/nix/store/2yplnywnz3qyj8j1hh41fil9d2q0xl6m-uv-flask-native-and-ordinary-runtime"
+            },
+            "outputNarHashes": {
+              "out": "sha256-IfhbJrs0PZd1oPs27npHw0vtSmmbaD9COFTCZ0CtDhY="
+            },
+            "sourceNarHash": "sha256-7yuc4bdJTXZcz9a86sJeZ9H9gFhYeF33Csyy1X5naNU=",
+            "sdkVersions": {
+              "Selected uv": "uv 0.13.5 (aarch64-unknown-linux-gnu)",
+              "Selected Python": "Python 3.14.8",
+              "Helper uv": "uv 0.13.5 (aarch64-unknown-linux-gnu)",
+              "Helper Python": "Python 3.14.8"
+            },
+            "sampleSources": [
+              {
+                "repository": "https://github.com/pallets/flask",
+                "revision": "49943b5a94413a530761350f04e896f76e8d620e",
+                "sourceNarHash": "sha256-B+57AoHgGsoxtXTInivSKa7X0G4HaO6VPv20kT0WXR0="
+              }
+            ],
+            "evaluation": null,
+            "build": {
+              "status": "success",
+              "executedSystem": "aarch64-linux",
+              "sourceRevision": "0d2f6e7e42462491560afcf8f03a1db4432d6c34",
+              "sourceNarHash": "sha256-7yuc4bdJTXZcz9a86sJeZ9H9gFhYeF33Csyy1X5naNU=",
+              "drvPath": "/nix/store/f4h162sabwqy115cmyl57aqicxw0s21p-uv-flask-native-and-ordinary-runtime.drv",
+              "outputs": {
+                "out": "/nix/store/2yplnywnz3qyj8j1hh41fil9d2q0xl6m-uv-flask-native-and-ordinary-runtime"
+              },
+              "outputNarHashes": {
+                "out": "sha256-IfhbJrs0PZd1oPs27npHw0vtSmmbaD9COFTCZ0CtDhY="
+              },
+              "sdkVersions": {
+                "Selected uv": "uv 0.13.5 (aarch64-unknown-linux-gnu)",
+                "Selected Python": "Python 3.14.8",
+                "Helper uv": "uv 0.13.5 (aarch64-unknown-linux-gnu)",
+                "Helper Python": "Python 3.14.8"
+              },
+              "sampleSources": [
+                {
+                  "repository": "https://github.com/pallets/flask",
+                  "revision": "49943b5a94413a530761350f04e896f76e8d620e",
+                  "sourceNarHash": "sha256-B+57AoHgGsoxtXTInivSKa7X0G4HaO6VPv20kT0WXR0="
+                }
+              ],
+              "receipt": "https://nix-purifiers.github.io/evidence/7d40478a4d35c571dd7666acf738607f262511821d0b2bf55a73f34d2dffad81.json",
+              "artifactSha256": "7d40478a4d35c571dd7666acf738607f262511821d0b2bf55a73f34d2dffad81"
+            }
+          },
+          "uv-purifier:main:x86_64-linux:historical-uv0.3-python38": {
             "kind": "native-ci-execution",
             "repository": "nix-purifiers/uv-purifier",
-            "revision": "ea43ef3106cef19ba7f9c0e75140822cd98ebc4f",
-            "sourceNarHash": "sha256-MAx8dSy7Jy1EZVJ5RmCztO3HAKer+NOpY14IucmjO9Q=",
+            "revision": "0d2f6e7e42462491560afcf8f03a1db4432d6c34",
             "system": "x86_64-linux",
-            "drvPath": "/nix/store/8fz40fflw6qz4sf34x7m14alz4n414gh-epoch-provider-1.0.drv",
-            "predictedOutputs": {},
-            "observedOutputs": {
-              "out": "/nix/store/k52fns0hiz0ahpwsqhl8i34g532p0wxm-epoch-provider-1.0"
-            },
-            "outputNarHashes": null,
-            "sdkVersions": {
-              "uv": "0.3.0",
-              "python": "3.8.19",
-              "helperPython": "3.14.8",
-              "helperUv": "0.13.5"
-            },
-            "sampleSources": [],
-            "runtimeAssertions": [],
-            "jobUrl": "https://github.com/nix-purifiers/uv-purifier/actions/runs/42155508325/job/127688578894",
-            "jobConclusion": "success",
-            "jobArtifact": {
-              "receipt": "https://nix-purifiers.github.io/evidence/a5c70db0cf909a10f056e9cec129ccbbc061f1797d3ad6dd2fdfd9f19a58f33e.json",
-              "artifactSha256": "a5c70db0cf909a10f056e9cec129ccbbc061f1797d3ad6dd2fdfd9f19a58f33e",
-              "format": "jobs-json"
-            },
-            "logArtifact": {
-              "receipt": "https://nix-purifiers.github.io/evidence/d040f86ef00a5e70f5dd78413da1497037412f3205ae24afdaeab11b6fe6f857.log",
-              "artifactSha256": "d040f86ef00a5e70f5dd78413da1497037412f3205ae24afdaeab11b6fe6f857",
-              "format": "text"
-            },
-            "stepNumber": 4,
-            "stepName": "Preserve the uv 0.3 resolver with independent helper and target Python",
-            "command": "python3 -B tests/composition-epochs.py --target-nixpkgs \"$(jq -r .path epoch-target.json)\" --python-attribute python38 --native-uv-epoch uv-0.3.0 --sandwiches --multiple-inputs --state-root .native-uv-epoch",
-            "runnerImage": "ubuntu-24.04",
-            "logJobName": null,
             "check": {
               "kind": "script-generated-derivation",
               "scriptPath": "tests/composition-epochs.py",
-              "sourceUrl": "https://github.com/nix-purifiers/uv-purifier/blob/ea43ef3106cef19ba7f9c0e75140822cd98ebc4f/tests/composition-epochs.py",
+              "sourceUrl": "https://github.com/nix-purifiers/uv-purifier/blob/0d2f6e7e42462491560afcf8f03a1db4432d6c34/tests/composition-epochs.py",
               "scriptArtifact": {
-                "receipt": "https://nix-purifiers.github.io/evidence/2b1e7086271619daf2dac504c8d806b7d639670dc8052c22983884ebb01bcc28.log",
-                "artifactSha256": "2b1e7086271619daf2dac504c8d806b7d639670dc8052c22983884ebb01bcc28",
+                "receipt": "https://nix-purifiers.github.io/evidence/15136b5f015f6c27f685a711886bd813de188e888aef14e52c45ee4045bdad56.log",
+                "artifactSha256": "15136b5f015f6c27f685a711886bd813de188e888aef14e52c45ee4045bdad56",
                 "format": "text"
               },
               "lockArtifact": {
@@ -74094,30 +74703,28 @@
               "invoker": "python3 -B",
               "arguments": "--target-nixpkgs \"$(jq -r .path epoch-target.json)\" --python-attribute python38 --native-uv-epoch uv-0.3.0 --sandwiches --multiple-inputs --state-root .native-uv-epoch",
               "inputSourceHashes": {
-                "tests/composition-epochs.py": "2b1e7086271619daf2dac504c8d806b7d639670dc8052c22983884ebb01bcc28",
-                "flake.lock": "d7aedf432b8a1c6badd96b74edcda2195faee88d65aaad25f3feaa98dbf5d1ad",
-                "tests/target_platform.py": "e1e9b27351057175fbb0a6ce481001239e2ae150cd537eb731390879a1948fd5",
-                "tests/sdk/uv-0.3.0.nix": "5546f5905cc3a0af8a5eee8674ac5432d3b5c39ea8173604bc8bd64f432b4168",
-                ".github/workflows/check.yml": "f553532b483d6a04f2e8fbcbd88c5c1c04431d15e7597504693889aef7ed1a64"
+                "tests/composition-epochs.py": "15136b5f015f6c27f685a711886bd813de188e888aef14e52c45ee4045bdad56",
+                "flake.lock": "d7aedf432b8a1c6badd96b74edcda2195faee88d65aaad25f3feaa98dbf5d1ad"
               },
-              "assertionSnippet": "        assert native_bytes == (producer / 'uv.lock').read_bytes(), 'helper changed the selected native lock'\n        report['nativeLockHeader'] = (producer / 'uv.lock').read_text().split('[[package]]', 1)[0]\n        passed(active)\n        active = 'producer-pure-build'\n        package = Path(run('nix', 'build', 'path:' + str(producer) + '#default',\n                           '--out-link', state / 'producer', '--print-out-paths'))\n        assert run(package / 'bin/epoch_provider') == 'target=' + minor\n        native_environment(package)\n        passed(active)\n",
-              "replayNotes": "{\"actualGeneratedBuildArgv\": [\"nix\", \"build\", \"path:/home/runner/work/uv-purifier/uv-purifier/.native-uv-epoch/epoch_provider#default\", \"--out-link\", \"/home/runner/work/uv-purifier/uv-purifier/.native-uv-epoch/producer\", \"--print-out-paths\"], \"gaps\": [{\"detail\": \"Actual CI upload contains report.json, commands.log and epoch-target.json only; no generated epoch_provider/flake.lock bytes. Exact SHA256 digests survive in report. Historical drv is not present in local store. No lockfile was regenerated or inferred from the digests.\", \"field\": \"generatedFixtureFlakeLock.bytes\", \"sha256ByGeneratedPath\": {\"competing-other/flake.lock\": \"f024149d776a5d5d90f9ea8510122babb85d6ba670811274df6a8558fb1caddd\", \"epoch_consumer/flake.lock\": \"f024149d776a5d5d90f9ea8510122babb85d6ba670811274df6a8558fb1caddd\", \"epoch_final/flake.lock\": \"f024149d776a5d5d90f9ea8510122babb85d6ba670811274df6a8558fb1caddd\", \"epoch_multi/flake.lock\": \"f024149d776a5d5d90f9ea8510122babb85d6ba670811274df6a8558fb1caddd\", \"epoch_multi_reverse/flake.lock\": \"f024149d776a5d5d90f9ea8510122babb85d6ba670811274df6a8558fb1caddd\", \"epoch_other/flake.lock\": \"f024149d776a5d5d90f9ea8510122babb85d6ba670811274df6a8558fb1caddd\", \"epoch_provider/flake.lock\": \"f024149d776a5d5d90f9ea8510122babb85d6ba670811274df6a8558fb1caddd\"}}, {\"detail\": \"Generated fixture source tree is ephemeral and not included in the archived upload. Immutable driver/source NAR, generated lock digests, actual source/runtime reports and successful command transcript are retained; this is not a standalone byte-complete fixture archive.\", \"field\": \"generatedFixtureSourceTree.bytes\"}], \"generatedFixtureLock\": {\"availability\": \"not-archived\", \"bytesBase64\": null, \"sha256ByPath\": {\"competing-other/flake.lock\": \"f024149d776a5d5d90f9ea8510122babb85d6ba670811274df6a8558fb1caddd\", \"epoch_consumer/flake.lock\": \"f024149d776a5d5d90f9ea8510122babb85d6ba670811274df6a8558fb1caddd\", \"epoch_final/flake.lock\": \"f024149d776a5d5d90f9ea8510122babb85d6ba670811274df6a8558fb1caddd\", \"epoch_multi/flake.lock\": \"f024149d776a5d5d90f9ea8510122babb85d6ba670811274df6a8558fb1caddd\", \"epoch_multi_reverse/flake.lock\": \"f024149d776a5d5d90f9ea8510122babb85d6ba670811274df6a8558fb1caddd\", \"epoch_other/flake.lock\": \"f024149d776a5d5d90f9ea8510122babb85d6ba670811274df6a8558fb1caddd\", \"epoch_provider/flake.lock\": \"f024149d776a5d5d90f9ea8510122babb85d6ba670811274df6a8558fb1caddd\"}}, \"inputNarBindings\": {\"sdkRootLockedInputs\": {\"caisson\": \"sha256-FAixpwyAWmhrzmh0fMGt7y0KIcNLqBIGICfMvbExRLo=\", \"caisson-core\": \"sha256-OzlG2Nhl/kU2UUPq+ARH/GKUHmOqAxQu5Ug/+aT1ECc=\", \"caisson-core_2\": \"sha256-OzlG2Nhl/kU2UUPq+ARH/GKUHmOqAxQu5Ug/+aT1ECc=\", \"caisson_2\": \"sha256-FAixpwyAWmhrzmh0fMGt7y0KIcNLqBIGICfMvbExRLo=\", \"flake-parts\": \"sha256-glZLQlzIn1fXH6PazR2iUmTo7kzzyYSshrWhLS9TqCU=\", \"flake-parts_2\": \"sha256-zTwuwezD0w3hpga6a6P8emidzAZFyWqlNeRBlpWOOl8=\", \"flake-parts_3\": \"sha256-glZLQlzIn1fXH6PazR2iUmTo7kzzyYSshrWhLS9TqCU=\", \"flake-parts_4\": \"sha256-zTwuwezD0w3hpga6a6P8emidzAZFyWqlNeRBlpWOOl8=\", \"nixpkgs\": \"sha256-Y1CiZ4SoBUjLQyQM/pY+rS2dXD3CHLPstF0lmOc73D4=\", \"nixpkgs-lib\": \"sha256-XtTdVeJX6X/gU+vGIUEJHirotv/lYP5+Q9irMH6HWPY=\", \"nixpkgs-lib_2\": \"sha256-ThkfL3D/FhCiZFc9+3BtxwuMmpuK+/bGtXCSo1+yVew=\", \"nixpkgs-lib_3\": \"sha256-ThkfL3D/FhCiZFc9+3BtxwuMmpuK+/bGtXCSo1+yVew=\", \"nixpkgs-lib_4\": \"sha256-XtTdVeJX6X/gU+vGIUEJHirotv/lYP5+Q9irMH6HWPY=\", \"nixpkgs-lib_5\": \"sha256-ThkfL3D/FhCiZFc9+3BtxwuMmpuK+/bGtXCSo1+yVew=\", \"nixpkgs-lib_6\": \"sha256-ThkfL3D/FhCiZFc9+3BtxwuMmpuK+/bGtXCSo1+yVew=\", \"nixpkgs_2\": \"sha256-Y1CiZ4SoBUjLQyQM/pY+rS2dXD3CHLPstF0lmOc73D4=\", \"purifier\": \"sha256-oBZLoSRURmWi7+kdh0mIGPJ0IbPginDDBvHIh2TW5U0=\"}, \"sdkSource\": \"sha256-MAx8dSy7Jy1EZVJ5RmCztO3HAKer+NOpY14IucmjO9Q=\", \"sharedPurifier\": \"sha256-oBZLoSRURmWi7+kdh0mIGPJ0IbPginDDBvHIh2TW5U0=\", \"targetNixpkgs\": \"sha256-zwVvxrdIzralnSbcpghA92tWu2DV2lwv89xZc8MTrbg=\"}, \"loggedInvocation\": [{\"line\": 543, \"text\": \"2026-11-06T03:17:45.4570308Z ##[group]Run nix flake archive --json github:NixOS/nixpkgs/205fd4226592cc83fd4c0885a3e4c9c400efabb5 > epoch-target.json\"}, {\"line\": 544, \"text\": \"2026-11-06T03:17:45.4570783Z \\u001b[36;1mnix flake archive --json github:NixOS/nixpkgs/205fd4226592cc83fd4c0885a3e4c9c400efabb5 > epoch-target.json\\u001b[0m\"}, {\"line\": 545, \"text\": \"2026-11-06T03:17:45.4571224Z \\u001b[36;1mpython3 -B tests/composition-epochs.py \\\\\\u001b[0m\"}, {\"line\": 546, \"text\": \"2026-11-06T03:17:45.4571450Z \\u001b[36;1m  --target-nixpkgs \\\"$(jq -r .path epoch-target.json)\\\" \\\\\\u001b[0m\"}, {\"line\": 547, \"text\": \"2026-11-06T03:17:45.4571699Z \\u001b[36;1m  --python-attribute python38 --native-uv-epoch uv-0.3.0 \\\\\\u001b[0m\"}, {\"line\": 548, \"text\": \"2026-11-06T03:17:45.4571913Z \\u001b[36;1m  --sandwiches --multiple-inputs \\\\\\u001b[0m\"}, {\"line\": 549, \"text\": \"2026-11-06T03:17:45.4572088Z \\u001b[36;1m  --state-root .native-uv-epoch\\u001b[0m\"}], \"replayByteCompleteness\": \"incomplete-generated-fixture-lock/source\", \"reportedSdkRoles\": {\"helperManagerPackage\": \"/nix/store/9cg9w4h3i9afkh37cb08qwxz6xi1kq8a-uv-0.13.5\", \"helperPackage\": \"/nix/store/y553ddy7hdsxaljnxa3xv28h8d1d5k63-uv-purifier-0.1.0\", \"helperPython\": {\"package\": \"/nix/store/xahxrjs30p3mw0a42bqg9ikgkikskw8m-python3-3.14.8\", \"version\": \"3.14.8\"}, \"nativeManagerPackage\": \"/nix/store/5k1kqpk27wx7xh2g3vy0rd5xkmm5z19m-uv-0.3.0\", \"targetPython\": {\"freeThreaded\": false, \"package\": \"/nix/store/wzx247ppcdc61jzw71j8rjz5kr7nn8ha-python3-3.8.19\", \"version\": \"3.8.19\"}}, \"sourceNonzeroRejection\": {\"driverSha256\": \"2b1e7086271619daf2dac504c8d806b7d639670dc8052c22983884ebb01bcc28\", \"endLine\": 84, \"path\": \"tests/composition-epochs.py\", \"startLine\": 76, \"text\": \"                                text=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE)\\n        with (state / 'commands.log').open('a') as log:\\n            log.write(json.dumps([str(item) for item in command]) + '\\\\n' + result.stdout + result.stderr + '\\\\n')\\n        if result.returncode:\\n            raise RuntimeError(result.stderr[-6000:])\\n        return result.stdout.strip()\\n\\n    ordinary_caches = {}\\n\\n\"}, \"sourceRootLockScope\": {\"bytesReference\": \"sdkRootFlakeLock.bytesBase64\", \"path\": \"evidence/uv-purifier/main-source/flake.lock\", \"scope\": \"Actual SDK repository root flake.lock at immutable reviewed revision/NAR. This is NOT the missing generated fixture flake.lock.\", \"sha256\": \"d7aedf432b8a1c6badd96b74edcda2195faee88d65aaad25f3feaa98dbf5d1ad\"}}",
+              "replayNotes": "Actual-main historical Linux generator with uv0.3.0/Python3.8.19 and separate helperuv0.13.5/Python3.14.8; selected source-bound producer/incoming/ordinary/sandwich/multiple-input cases pass. Observed output paths have no recorded NAR hashes; no historical Darwin or continuous version interval is claimed.",
+              "assertionSnippet": "report['selectedCasesPassed'] = all",
               "executionArtifact": {
-                "receipt": "https://nix-purifiers.github.io/evidence/7023fb3e5800c844e5855b05df9525ebe03f84ae278f2bc87f89a56631e9ef8e.log",
-                "artifactSha256": "7023fb3e5800c844e5855b05df9525ebe03f84ae278f2bc87f89a56631e9ef8e",
+                "receipt": "https://nix-purifiers.github.io/evidence/724edcaecf919ca25c746ee585c6c757536977684b2c2f12b0ed11db3f802c4e.log",
+                "artifactSha256": "724edcaecf919ca25c746ee585c6c757536977684b2c2f12b0ed11db3f802c4e",
                 "format": "text"
               },
               "reportArtifact": {
-                "receipt": "https://nix-purifiers.github.io/evidence/fcde682872fbf76e7cb8ea09ff02c2234fa3d3ecf3fc9c93f9d325f62f495c87.json",
-                "artifactSha256": "fcde682872fbf76e7cb8ea09ff02c2234fa3d3ecf3fc9c93f9d325f62f495c87",
+                "receipt": "https://nix-purifiers.github.io/evidence/03a89126fe441d0caacee7daa2adf0a1f70d271332ec17ecfc4599c4c47a30ef.json",
+                "artifactSha256": "03a89126fe441d0caacee7daa2adf0a1f70d271332ec17ecfc4599c4c47a30ef",
                 "format": "json"
               },
               "artifactMetadata": {
-                "receipt": "https://nix-purifiers.github.io/evidence/e0363dcfc7552ca98a92d7fbfebb9ca3388226dc04db169a0f5ce7781d4f3fd4.json",
-                "artifactSha256": "e0363dcfc7552ca98a92d7fbfebb9ca3388226dc04db169a0f5ce7781d4f3fd4",
+                "receipt": "https://nix-purifiers.github.io/evidence/eec89b7d3ee3b8f3983a2c7fceb8e77e331ce087fdebc22d565a4e88e86b7b4e.json",
+                "artifactSha256": "eec89b7d3ee3b8f3983a2c7fceb8e77e331ce087fdebc22d565a4e88e86b7b4e",
                 "format": "json"
               },
               "artifactName": "native-uv-epoch-ubuntu-latest",
+              "transcriptLayout": "argv-stdout-stderr",
               "buildArgv": [
                 "nix",
                 "build",
@@ -74125,667 +74732,66 @@
                 "--out-link",
                 "/home/runner/work/uv-purifier/uv-purifier/.native-uv-epoch/producer",
                 "--print-out-paths"
-              ],
-              "transcriptLayout": "argv-stdout-stderr"
-            }
-          },
-          "native-check-inputs": {
-            "revision": "ea43ef3106cef19ba7f9c0e75140822cd98ebc4f",
-            "system": "x86_64-linux",
-            "drvPath": "/nix/store/7mmxldh9kc98xzinxh1cq9h8d8dghdvi-simple-tests.drv",
-            "sourceNarHash": "sha256-MAx8dSy7Jy1EZVJ5RmCztO3HAKer+NOpY14IucmjO9Q=",
-            "repository": "nix-purifiers/uv-purifier",
-            "check": {
-              "kind": "flake-attribute",
-              "value": "checks.x86_64-linux.native-check-inputs",
-              "replay": null
+              ]
             },
-            "outputs": {
-              "out": "/nix/store/wh5y2l2g62ymj86l2kigjf6vgbkcbzvz-simple-tests"
+            "drvPath": "/nix/store/i5v8cljw7gsy6f436wv30sqdd7njyfsy-epoch-provider-1.0.drv",
+            "predictedOutputs": {},
+            "observedOutputs": {
+              "out": "/nix/store/3wqi2i57xfy55z3w9s3hz985fy0v795m-epoch-provider-1.0"
             },
-            "outputNarHashes": {
-              "out": "sha256-d6xi4mKdjkX2JFicDIv5niSzpyI0m/Hnm8GGAIU04kY="
+            "outputNarHashes": null,
+            "jobUrl": "https://github.com/nix-purifiers/uv-purifier/actions/runs/42336626990/job/128294893759",
+            "jobArtifact": {
+              "receipt": "https://nix-purifiers.github.io/evidence/415ef0c531a45980069ab92517358b200fbc8744c9fbd59d843df6f7c78f678d.json",
+              "artifactSha256": "415ef0c531a45980069ab92517358b200fbc8744c9fbd59d843df6f7c78f678d",
+              "format": "job-json"
             },
-            "sdkVersions": {},
+            "logArtifact": {
+              "receipt": "https://nix-purifiers.github.io/evidence/a5492c1bcef98ab3036ec45a01c87462d6f0b228e20a2759ab413b87a316a690.log",
+              "artifactSha256": "a5492c1bcef98ab3036ec45a01c87462d6f0b228e20a2759ab413b87a316a690",
+              "format": "text"
+            },
+            "stepNumber": 5,
+            "stepName": "Preserve the uv 0.3 resolver with independent helper and target Python",
+            "command": "python3 -B tests/composition-epochs.py --target-nixpkgs \"$(jq -r .path epoch-target.json)\" --python-attribute python38 --native-uv-epoch uv-0.3.0 --sandwiches --multiple-inputs --state-root .native-uv-epoch",
+            "runnerImage": "ubuntu-24.04",
+            "sdkVersions": {
+              "Selected historical uv": "uv 0.3.0",
+              "Target Python": "3.8.19",
+              "Helper uv": "uv 0.13.5 (x86_64-unknown-linux-gnu)",
+              "Helper Python": "3.14.8"
+            },
             "sampleSources": [],
-            "evaluation": null,
-            "build": {
-              "status": "success",
-              "executedSystem": "x86_64-linux",
-              "sourceRevision": "ea43ef3106cef19ba7f9c0e75140822cd98ebc4f",
-              "sourceNarHash": "sha256-MAx8dSy7Jy1EZVJ5RmCztO3HAKer+NOpY14IucmjO9Q=",
-              "drvPath": "/nix/store/7mmxldh9kc98xzinxh1cq9h8d8dghdvi-simple-tests.drv",
-              "outputs": {
-                "out": "/nix/store/wh5y2l2g62ymj86l2kigjf6vgbkcbzvz-simple-tests"
-              },
-              "outputNarHashes": {
-                "out": "sha256-d6xi4mKdjkX2JFicDIv5niSzpyI0m/Hnm8GGAIU04kY="
-              },
-              "sdkVersions": {},
-              "sampleSources": [],
-              "receipt": "https://nix-purifiers.github.io/evidence/e3bdeb5bd839634288b697a256b28afca897326741ae895a76929965cb3d6bda.json",
-              "artifactSha256": "e3bdeb5bd839634288b697a256b28afca897326741ae895a76929965cb3d6bda"
-            }
-          },
-          "nix-library": {
-            "revision": "ea43ef3106cef19ba7f9c0e75140822cd98ebc4f",
-            "system": "x86_64-linux",
-            "drvPath": "/nix/store/lm5lmvij5bxs7ngvhsyamidjlzpyf0as-uv-purifier-test-nix-library.drv",
-            "sourceNarHash": "sha256-MAx8dSy7Jy1EZVJ5RmCztO3HAKer+NOpY14IucmjO9Q=",
-            "repository": "nix-purifiers/uv-purifier",
-            "check": {
-              "kind": "flake-attribute",
-              "value": "checks.x86_64-linux.nix-library",
-              "replay": null
-            },
-            "outputs": {
-              "out": "/nix/store/pjhkbsjcrhv59631ckvkz4dm9v4p1b0h-uv-purifier-test-nix-library"
-            },
-            "outputNarHashes": {
-              "out": "sha256-d6xi4mKdjkX2JFicDIv5niSzpyI0m/Hnm8GGAIU04kY="
-            },
-            "sdkVersions": {},
-            "sampleSources": [],
-            "evaluation": null,
-            "build": {
-              "status": "success",
-              "executedSystem": "x86_64-linux",
-              "sourceRevision": "ea43ef3106cef19ba7f9c0e75140822cd98ebc4f",
-              "sourceNarHash": "sha256-MAx8dSy7Jy1EZVJ5RmCztO3HAKer+NOpY14IucmjO9Q=",
-              "drvPath": "/nix/store/lm5lmvij5bxs7ngvhsyamidjlzpyf0as-uv-purifier-test-nix-library.drv",
-              "outputs": {
-                "out": "/nix/store/pjhkbsjcrhv59631ckvkz4dm9v4p1b0h-uv-purifier-test-nix-library"
-              },
-              "outputNarHashes": {
-                "out": "sha256-d6xi4mKdjkX2JFicDIv5niSzpyI0m/Hnm8GGAIU04kY="
-              },
-              "sdkVersions": {},
-              "sampleSources": [],
-              "receipt": "https://nix-purifiers.github.io/evidence/e3bdeb5bd839634288b697a256b28afca897326741ae895a76929965cb3d6bda.json",
-              "artifactSha256": "e3bdeb5bd839634288b697a256b28afca897326741ae895a76929965cb3d6bda"
-            }
-          },
-          "offline-workspace": {
-            "revision": "ea43ef3106cef19ba7f9c0e75140822cd98ebc4f",
-            "system": "x86_64-linux",
-            "drvPath": "/nix/store/02agiwpn3qcwd3173lhbi2lfcqkyr5ax-uv-purifier-test-offline-workspace.drv",
-            "sourceNarHash": "sha256-MAx8dSy7Jy1EZVJ5RmCztO3HAKer+NOpY14IucmjO9Q=",
-            "repository": "nix-purifiers/uv-purifier",
-            "check": {
-              "kind": "flake-attribute",
-              "value": "checks.x86_64-linux.offline-workspace",
-              "replay": null
-            },
-            "outputs": {
-              "out": "/nix/store/01a029dkqqn5ziyvq810yqrc3wli08wd-uv-purifier-test-offline-workspace"
-            },
-            "outputNarHashes": {
-              "out": "sha256-d6xi4mKdjkX2JFicDIv5niSzpyI0m/Hnm8GGAIU04kY="
-            },
-            "sdkVersions": {},
-            "sampleSources": [],
-            "evaluation": null,
-            "build": {
-              "status": "success",
-              "executedSystem": "x86_64-linux",
-              "sourceRevision": "ea43ef3106cef19ba7f9c0e75140822cd98ebc4f",
-              "sourceNarHash": "sha256-MAx8dSy7Jy1EZVJ5RmCztO3HAKer+NOpY14IucmjO9Q=",
-              "drvPath": "/nix/store/02agiwpn3qcwd3173lhbi2lfcqkyr5ax-uv-purifier-test-offline-workspace.drv",
-              "outputs": {
-                "out": "/nix/store/01a029dkqqn5ziyvq810yqrc3wli08wd-uv-purifier-test-offline-workspace"
-              },
-              "outputNarHashes": {
-                "out": "sha256-d6xi4mKdjkX2JFicDIv5niSzpyI0m/Hnm8GGAIU04kY="
-              },
-              "sdkVersions": {},
-              "sampleSources": [],
-              "receipt": "https://nix-purifiers.github.io/evidence/e3bdeb5bd839634288b697a256b28afca897326741ae895a76929965cb3d6bda.json",
-              "artifactSha256": "e3bdeb5bd839634288b697a256b28afca897326741ae895a76929965cb3d6bda"
-            }
-          },
-          "outputs": {
-            "revision": "ea43ef3106cef19ba7f9c0e75140822cd98ebc4f",
-            "system": "x86_64-linux",
-            "drvPath": "/nix/store/0gr4wp29w7g59rdvbwnym77x784j9dpq-uv-purifier-test-outputs.drv",
-            "sourceNarHash": "sha256-MAx8dSy7Jy1EZVJ5RmCztO3HAKer+NOpY14IucmjO9Q=",
-            "repository": "nix-purifiers/uv-purifier",
-            "check": {
-              "kind": "flake-attribute",
-              "value": "checks.x86_64-linux.outputs",
-              "replay": null
-            },
-            "outputs": {
-              "out": "/nix/store/rcv8q48lwzdd8sn79c675zpqafwmzhds-uv-purifier-test-outputs"
-            },
-            "outputNarHashes": {
-              "out": "sha256-d6xi4mKdjkX2JFicDIv5niSzpyI0m/Hnm8GGAIU04kY="
-            },
-            "sdkVersions": {},
-            "sampleSources": [],
-            "evaluation": null,
-            "build": {
-              "status": "success",
-              "executedSystem": "x86_64-linux",
-              "sourceRevision": "ea43ef3106cef19ba7f9c0e75140822cd98ebc4f",
-              "sourceNarHash": "sha256-MAx8dSy7Jy1EZVJ5RmCztO3HAKer+NOpY14IucmjO9Q=",
-              "drvPath": "/nix/store/0gr4wp29w7g59rdvbwnym77x784j9dpq-uv-purifier-test-outputs.drv",
-              "outputs": {
-                "out": "/nix/store/rcv8q48lwzdd8sn79c675zpqafwmzhds-uv-purifier-test-outputs"
-              },
-              "outputNarHashes": {
-                "out": "sha256-d6xi4mKdjkX2JFicDIv5niSzpyI0m/Hnm8GGAIU04kY="
-              },
-              "sdkVersions": {},
-              "sampleSources": [],
-              "receipt": "https://nix-purifiers.github.io/evidence/e3bdeb5bd839634288b697a256b28afca897326741ae895a76929965cb3d6bda.json",
-              "artifactSha256": "e3bdeb5bd839634288b697a256b28afca897326741ae895a76929965cb3d6bda"
-            }
-          },
-          "outside": {
-            "revision": "ea43ef3106cef19ba7f9c0e75140822cd98ebc4f",
-            "system": "x86_64-linux",
-            "drvPath": "/nix/store/1m1ax7f3bl30nq37hl2298dpzwipi4hn-uv-purifier-test-outside.drv",
-            "sourceNarHash": "sha256-MAx8dSy7Jy1EZVJ5RmCztO3HAKer+NOpY14IucmjO9Q=",
-            "repository": "nix-purifiers/uv-purifier",
-            "check": {
-              "kind": "flake-attribute",
-              "value": "checks.x86_64-linux.outside",
-              "replay": null
-            },
-            "outputs": {
-              "out": "/nix/store/ryc12n1hx9adk73l2vl4zmrlwkal324y-uv-purifier-test-outside"
-            },
-            "outputNarHashes": {
-              "out": "sha256-d6xi4mKdjkX2JFicDIv5niSzpyI0m/Hnm8GGAIU04kY="
-            },
-            "sdkVersions": {},
-            "sampleSources": [],
-            "evaluation": null,
-            "build": {
-              "status": "success",
-              "executedSystem": "x86_64-linux",
-              "sourceRevision": "ea43ef3106cef19ba7f9c0e75140822cd98ebc4f",
-              "sourceNarHash": "sha256-MAx8dSy7Jy1EZVJ5RmCztO3HAKer+NOpY14IucmjO9Q=",
-              "drvPath": "/nix/store/1m1ax7f3bl30nq37hl2298dpzwipi4hn-uv-purifier-test-outside.drv",
-              "outputs": {
-                "out": "/nix/store/ryc12n1hx9adk73l2vl4zmrlwkal324y-uv-purifier-test-outside"
-              },
-              "outputNarHashes": {
-                "out": "sha256-d6xi4mKdjkX2JFicDIv5niSzpyI0m/Hnm8GGAIU04kY="
-              },
-              "sdkVersions": {},
-              "sampleSources": [],
-              "receipt": "https://nix-purifiers.github.io/evidence/e3bdeb5bd839634288b697a256b28afca897326741ae895a76929965cb3d6bda.json",
-              "artifactSha256": "e3bdeb5bd839634288b697a256b28afca897326741ae895a76929965cb3d6bda"
-            }
-          },
-          "overlay": {
-            "revision": "ea43ef3106cef19ba7f9c0e75140822cd98ebc4f",
-            "system": "x86_64-linux",
-            "drvPath": "/nix/store/s7mpi43q9fw67ck8q6b21lc551dgm70q-uv-purifier-test-overlay.drv",
-            "sourceNarHash": "sha256-MAx8dSy7Jy1EZVJ5RmCztO3HAKer+NOpY14IucmjO9Q=",
-            "repository": "nix-purifiers/uv-purifier",
-            "check": {
-              "kind": "flake-attribute",
-              "value": "checks.x86_64-linux.overlay",
-              "replay": null
-            },
-            "outputs": {
-              "out": "/nix/store/9il5p4q16xb7s2im9hdh510h2a60iipm-uv-purifier-test-overlay"
-            },
-            "outputNarHashes": {
-              "out": "sha256-d6xi4mKdjkX2JFicDIv5niSzpyI0m/Hnm8GGAIU04kY="
-            },
-            "sdkVersions": {},
-            "sampleSources": [],
-            "evaluation": null,
-            "build": {
-              "status": "success",
-              "executedSystem": "x86_64-linux",
-              "sourceRevision": "ea43ef3106cef19ba7f9c0e75140822cd98ebc4f",
-              "sourceNarHash": "sha256-MAx8dSy7Jy1EZVJ5RmCztO3HAKer+NOpY14IucmjO9Q=",
-              "drvPath": "/nix/store/s7mpi43q9fw67ck8q6b21lc551dgm70q-uv-purifier-test-overlay.drv",
-              "outputs": {
-                "out": "/nix/store/9il5p4q16xb7s2im9hdh510h2a60iipm-uv-purifier-test-overlay"
-              },
-              "outputNarHashes": {
-                "out": "sha256-d6xi4mKdjkX2JFicDIv5niSzpyI0m/Hnm8GGAIU04kY="
-              },
-              "sdkVersions": {},
-              "sampleSources": [],
-              "receipt": "https://nix-purifiers.github.io/evidence/e3bdeb5bd839634288b697a256b28afca897326741ae895a76929965cb3d6bda.json",
-              "artifactSha256": "e3bdeb5bd839634288b697a256b28afca897326741ae895a76929965cb3d6bda"
-            }
-          },
-          "pythonpath": {
-            "revision": "ea43ef3106cef19ba7f9c0e75140822cd98ebc4f",
-            "system": "x86_64-linux",
-            "drvPath": "/nix/store/45i71ziyyw23sh6lxnqrcay6w369psnz-uv-purifier-test-pythonpath.drv",
-            "sourceNarHash": "sha256-MAx8dSy7Jy1EZVJ5RmCztO3HAKer+NOpY14IucmjO9Q=",
-            "repository": "nix-purifiers/uv-purifier",
-            "check": {
-              "kind": "flake-attribute",
-              "value": "checks.x86_64-linux.pythonpath",
-              "replay": null
-            },
-            "outputs": {
-              "out": "/nix/store/xs7afflibcpxw6c0p6xahr59430qlk0i-uv-purifier-test-pythonpath"
-            },
-            "outputNarHashes": {
-              "out": "sha256-d6xi4mKdjkX2JFicDIv5niSzpyI0m/Hnm8GGAIU04kY="
-            },
-            "sdkVersions": {},
-            "sampleSources": [],
-            "evaluation": null,
-            "build": {
-              "status": "success",
-              "executedSystem": "x86_64-linux",
-              "sourceRevision": "ea43ef3106cef19ba7f9c0e75140822cd98ebc4f",
-              "sourceNarHash": "sha256-MAx8dSy7Jy1EZVJ5RmCztO3HAKer+NOpY14IucmjO9Q=",
-              "drvPath": "/nix/store/45i71ziyyw23sh6lxnqrcay6w369psnz-uv-purifier-test-pythonpath.drv",
-              "outputs": {
-                "out": "/nix/store/xs7afflibcpxw6c0p6xahr59430qlk0i-uv-purifier-test-pythonpath"
-              },
-              "outputNarHashes": {
-                "out": "sha256-d6xi4mKdjkX2JFicDIv5niSzpyI0m/Hnm8GGAIU04kY="
-              },
-              "sdkVersions": {},
-              "sampleSources": [],
-              "receipt": "https://nix-purifiers.github.io/evidence/e3bdeb5bd839634288b697a256b28afca897326741ae895a76929965cb3d6bda.json",
-              "artifactSha256": "e3bdeb5bd839634288b697a256b28afca897326741ae895a76929965cb3d6bda"
-            }
-          },
-          "rebuild-package": {
-            "revision": "ea43ef3106cef19ba7f9c0e75140822cd98ebc4f",
-            "system": "x86_64-linux",
-            "drvPath": "/nix/store/j76kygsd34bjpj1znzivgf4v4r643wam-simple-0.1.0.drv",
-            "sourceNarHash": "sha256-MAx8dSy7Jy1EZVJ5RmCztO3HAKer+NOpY14IucmjO9Q=",
-            "repository": "nix-purifiers/uv-purifier",
-            "check": {
-              "kind": "flake-attribute",
-              "value": "checks.x86_64-linux.rebuild-package",
-              "replay": null
-            },
-            "outputs": {
-              "out": "/nix/store/pvxkbrdfpzlcwiv8q9ywb9jpvbgyrx46-simple-0.1.0"
-            },
-            "outputNarHashes": {
-              "out": "sha256-+P2+c+ezWDLjsX1QCxt8LErZPuIJQSgfIM2rp0oDrxA="
-            },
-            "sdkVersions": {},
-            "sampleSources": [],
-            "evaluation": null,
-            "build": {
-              "status": "success",
-              "executedSystem": "x86_64-linux",
-              "sourceRevision": "ea43ef3106cef19ba7f9c0e75140822cd98ebc4f",
-              "sourceNarHash": "sha256-MAx8dSy7Jy1EZVJ5RmCztO3HAKer+NOpY14IucmjO9Q=",
-              "drvPath": "/nix/store/j76kygsd34bjpj1znzivgf4v4r643wam-simple-0.1.0.drv",
-              "outputs": {
-                "out": "/nix/store/pvxkbrdfpzlcwiv8q9ywb9jpvbgyrx46-simple-0.1.0"
-              },
-              "outputNarHashes": {
-                "out": "sha256-+P2+c+ezWDLjsX1QCxt8LErZPuIJQSgfIM2rp0oDrxA="
-              },
-              "sdkVersions": {},
-              "sampleSources": [],
-              "receipt": "https://nix-purifiers.github.io/evidence/e3bdeb5bd839634288b697a256b28afca897326741ae895a76929965cb3d6bda.json",
-              "artifactSha256": "e3bdeb5bd839634288b697a256b28afca897326741ae895a76929965cb3d6bda"
-            }
-          },
-          "rebuild-release": {
-            "revision": "ea43ef3106cef19ba7f9c0e75140822cd98ebc4f",
-            "system": "x86_64-linux",
-            "drvPath": "/nix/store/y2lbpblby0w1cgshvsdhba1y14wsf2ik-simple-distributions-0.1.0.drv",
-            "sourceNarHash": "sha256-MAx8dSy7Jy1EZVJ5RmCztO3HAKer+NOpY14IucmjO9Q=",
-            "repository": "nix-purifiers/uv-purifier",
-            "check": {
-              "kind": "flake-attribute",
-              "value": "checks.x86_64-linux.rebuild-release",
-              "replay": null
-            },
-            "outputs": {
-              "out": "/nix/store/gzhabqkbcfv3swh30wivyqp7nd2h497h-simple-distributions-0.1.0"
-            },
-            "outputNarHashes": {
-              "out": "sha256-2dds47stqwjkYWd56/lRZpO2HD+N0q2A78BfLpp9ekk="
-            },
-            "sdkVersions": {},
-            "sampleSources": [],
-            "evaluation": null,
-            "build": {
-              "status": "success",
-              "executedSystem": "x86_64-linux",
-              "sourceRevision": "ea43ef3106cef19ba7f9c0e75140822cd98ebc4f",
-              "sourceNarHash": "sha256-MAx8dSy7Jy1EZVJ5RmCztO3HAKer+NOpY14IucmjO9Q=",
-              "drvPath": "/nix/store/y2lbpblby0w1cgshvsdhba1y14wsf2ik-simple-distributions-0.1.0.drv",
-              "outputs": {
-                "out": "/nix/store/gzhabqkbcfv3swh30wivyqp7nd2h497h-simple-distributions-0.1.0"
-              },
-              "outputNarHashes": {
-                "out": "sha256-2dds47stqwjkYWd56/lRZpO2HD+N0q2A78BfLpp9ekk="
-              },
-              "sdkVersions": {},
-              "sampleSources": [],
-              "receipt": "https://nix-purifiers.github.io/evidence/e3bdeb5bd839634288b697a256b28afca897326741ae895a76929965cb3d6bda.json",
-              "artifactSha256": "e3bdeb5bd839634288b697a256b28afca897326741ae895a76929965cb3d6bda"
-            }
-          },
-          "release": {
-            "revision": "ea43ef3106cef19ba7f9c0e75140822cd98ebc4f",
-            "system": "x86_64-linux",
-            "drvPath": "/nix/store/x5gj4dbw32fxwjwf8hmryf2arg3swx9l-uv-purifier-test-release.drv",
-            "sourceNarHash": "sha256-MAx8dSy7Jy1EZVJ5RmCztO3HAKer+NOpY14IucmjO9Q=",
-            "repository": "nix-purifiers/uv-purifier",
-            "check": {
-              "kind": "flake-attribute",
-              "value": "checks.x86_64-linux.release",
-              "replay": null
-            },
-            "outputs": {
-              "out": "/nix/store/mk4iadi30qb7fvj09pi90wn1jgwlvz8d-uv-purifier-test-release"
-            },
-            "outputNarHashes": {
-              "out": "sha256-d6xi4mKdjkX2JFicDIv5niSzpyI0m/Hnm8GGAIU04kY="
-            },
-            "sdkVersions": {},
-            "sampleSources": [],
-            "evaluation": null,
-            "build": {
-              "status": "success",
-              "executedSystem": "x86_64-linux",
-              "sourceRevision": "ea43ef3106cef19ba7f9c0e75140822cd98ebc4f",
-              "sourceNarHash": "sha256-MAx8dSy7Jy1EZVJ5RmCztO3HAKer+NOpY14IucmjO9Q=",
-              "drvPath": "/nix/store/x5gj4dbw32fxwjwf8hmryf2arg3swx9l-uv-purifier-test-release.drv",
-              "outputs": {
-                "out": "/nix/store/mk4iadi30qb7fvj09pi90wn1jgwlvz8d-uv-purifier-test-release"
-              },
-              "outputNarHashes": {
-                "out": "sha256-d6xi4mKdjkX2JFicDIv5niSzpyI0m/Hnm8GGAIU04kY="
-              },
-              "sdkVersions": {},
-              "sampleSources": [],
-              "receipt": "https://nix-purifiers.github.io/evidence/e3bdeb5bd839634288b697a256b28afca897326741ae895a76929965cb3d6bda.json",
-              "artifactSha256": "e3bdeb5bd839634288b697a256b28afca897326741ae895a76929965cb3d6bda"
-            }
-          },
-          "runtime-projections": {
-            "revision": "ea43ef3106cef19ba7f9c0e75140822cd98ebc4f",
-            "system": "x86_64-linux",
-            "drvPath": "/nix/store/b2ab8bh5vbgsfc1pmw8pdx8d2bjwxr7h-uv-runtime-projection-downstreams.drv",
-            "sourceNarHash": "sha256-MAx8dSy7Jy1EZVJ5RmCztO3HAKer+NOpY14IucmjO9Q=",
-            "repository": "nix-purifiers/uv-purifier",
-            "check": {
-              "kind": "flake-attribute",
-              "value": "checks.x86_64-linux.runtime-projections",
-              "replay": null
-            },
-            "outputs": {
-              "out": "/nix/store/jrvjmgfhm7wmjwc4mwn7dr5hisa2nwg3-uv-runtime-projection-downstreams"
-            },
-            "outputNarHashes": {
-              "out": "sha256-d6xi4mKdjkX2JFicDIv5niSzpyI0m/Hnm8GGAIU04kY="
-            },
-            "sdkVersions": {},
-            "sampleSources": [],
-            "evaluation": null,
-            "build": {
-              "status": "success",
-              "executedSystem": "x86_64-linux",
-              "sourceRevision": "ea43ef3106cef19ba7f9c0e75140822cd98ebc4f",
-              "sourceNarHash": "sha256-MAx8dSy7Jy1EZVJ5RmCztO3HAKer+NOpY14IucmjO9Q=",
-              "drvPath": "/nix/store/b2ab8bh5vbgsfc1pmw8pdx8d2bjwxr7h-uv-runtime-projection-downstreams.drv",
-              "outputs": {
-                "out": "/nix/store/jrvjmgfhm7wmjwc4mwn7dr5hisa2nwg3-uv-runtime-projection-downstreams"
-              },
-              "outputNarHashes": {
-                "out": "sha256-d6xi4mKdjkX2JFicDIv5niSzpyI0m/Hnm8GGAIU04kY="
-              },
-              "sdkVersions": {},
-              "sampleSources": [],
-              "receipt": "https://nix-purifiers.github.io/evidence/e3bdeb5bd839634288b697a256b28afca897326741ae895a76929965cb3d6bda.json",
-              "artifactSha256": "e3bdeb5bd839634288b697a256b28afca897326741ae895a76929965cb3d6bda"
-            }
-          },
-          "simple": {
-            "revision": "ea43ef3106cef19ba7f9c0e75140822cd98ebc4f",
-            "system": "x86_64-linux",
-            "drvPath": "/nix/store/wfgnnd1mpfz2yl2jv3nk74hxp52ln4fj-uv-purifier-test-simple.drv",
-            "sourceNarHash": "sha256-MAx8dSy7Jy1EZVJ5RmCztO3HAKer+NOpY14IucmjO9Q=",
-            "repository": "nix-purifiers/uv-purifier",
-            "check": {
-              "kind": "flake-attribute",
-              "value": "checks.x86_64-linux.simple",
-              "replay": null
-            },
-            "outputs": {
-              "out": "/nix/store/qm6wvhzpjfx0qvr1afkc18j9clvjkdz9-uv-purifier-test-simple"
-            },
-            "outputNarHashes": {
-              "out": "sha256-d6xi4mKdjkX2JFicDIv5niSzpyI0m/Hnm8GGAIU04kY="
-            },
-            "sdkVersions": {},
-            "sampleSources": [],
-            "evaluation": null,
-            "build": {
-              "status": "success",
-              "executedSystem": "x86_64-linux",
-              "sourceRevision": "ea43ef3106cef19ba7f9c0e75140822cd98ebc4f",
-              "sourceNarHash": "sha256-MAx8dSy7Jy1EZVJ5RmCztO3HAKer+NOpY14IucmjO9Q=",
-              "drvPath": "/nix/store/wfgnnd1mpfz2yl2jv3nk74hxp52ln4fj-uv-purifier-test-simple.drv",
-              "outputs": {
-                "out": "/nix/store/qm6wvhzpjfx0qvr1afkc18j9clvjkdz9-uv-purifier-test-simple"
-              },
-              "outputNarHashes": {
-                "out": "sha256-d6xi4mKdjkX2JFicDIv5niSzpyI0m/Hnm8GGAIU04kY="
-              },
-              "sdkVersions": {},
-              "sampleSources": [],
-              "receipt": "https://nix-purifiers.github.io/evidence/e3bdeb5bd839634288b697a256b28afca897326741ae895a76929965cb3d6bda.json",
-              "artifactSha256": "e3bdeb5bd839634288b697a256b28afca897326741ae895a76929965cb3d6bda"
-            }
-          },
-          "sources": {
-            "revision": "ea43ef3106cef19ba7f9c0e75140822cd98ebc4f",
-            "system": "x86_64-linux",
-            "drvPath": "/nix/store/ps9pkx2276jx62p5avja4pghf0vj3iz6-uv-purifier-test-sources.drv",
-            "sourceNarHash": "sha256-MAx8dSy7Jy1EZVJ5RmCztO3HAKer+NOpY14IucmjO9Q=",
-            "repository": "nix-purifiers/uv-purifier",
-            "check": {
-              "kind": "flake-attribute",
-              "value": "checks.x86_64-linux.sources",
-              "replay": null
-            },
-            "outputs": {
-              "out": "/nix/store/wr9ripxlwbl191mzx9p8clidxyx511fl-uv-purifier-test-sources"
-            },
-            "outputNarHashes": {
-              "out": "sha256-d6xi4mKdjkX2JFicDIv5niSzpyI0m/Hnm8GGAIU04kY="
-            },
-            "sdkVersions": {},
-            "sampleSources": [],
-            "evaluation": null,
-            "build": {
-              "status": "success",
-              "executedSystem": "x86_64-linux",
-              "sourceRevision": "ea43ef3106cef19ba7f9c0e75140822cd98ebc4f",
-              "sourceNarHash": "sha256-MAx8dSy7Jy1EZVJ5RmCztO3HAKer+NOpY14IucmjO9Q=",
-              "drvPath": "/nix/store/ps9pkx2276jx62p5avja4pghf0vj3iz6-uv-purifier-test-sources.drv",
-              "outputs": {
-                "out": "/nix/store/wr9ripxlwbl191mzx9p8clidxyx511fl-uv-purifier-test-sources"
-              },
-              "outputNarHashes": {
-                "out": "sha256-d6xi4mKdjkX2JFicDIv5niSzpyI0m/Hnm8GGAIU04kY="
-              },
-              "sdkVersions": {},
-              "sampleSources": [],
-              "receipt": "https://nix-purifiers.github.io/evidence/e3bdeb5bd839634288b697a256b28afca897326741ae895a76929965cb3d6bda.json",
-              "artifactSha256": "e3bdeb5bd839634288b697a256b28afca897326741ae895a76929965cb3d6bda"
-            }
-          },
-          "tests": {
-            "revision": "ea43ef3106cef19ba7f9c0e75140822cd98ebc4f",
-            "system": "x86_64-linux",
-            "drvPath": "/nix/store/g67y7by3gqq2acp9rdqrdkj3vd77jc8r-workspace-tests.drv",
-            "sourceNarHash": "sha256-MAx8dSy7Jy1EZVJ5RmCztO3HAKer+NOpY14IucmjO9Q=",
-            "repository": "nix-purifiers/uv-purifier",
-            "check": {
-              "kind": "flake-attribute",
-              "value": "checks.x86_64-linux.tests",
-              "replay": null
-            },
-            "outputs": {
-              "out": "/nix/store/7cq5yzg3g24b9nkg9zxn51c9yiwz75gq-workspace-tests"
-            },
-            "outputNarHashes": {
-              "out": "sha256-d6xi4mKdjkX2JFicDIv5niSzpyI0m/Hnm8GGAIU04kY="
-            },
-            "sdkVersions": {},
-            "sampleSources": [],
-            "evaluation": null,
-            "build": {
-              "status": "success",
-              "executedSystem": "x86_64-linux",
-              "sourceRevision": "ea43ef3106cef19ba7f9c0e75140822cd98ebc4f",
-              "sourceNarHash": "sha256-MAx8dSy7Jy1EZVJ5RmCztO3HAKer+NOpY14IucmjO9Q=",
-              "drvPath": "/nix/store/g67y7by3gqq2acp9rdqrdkj3vd77jc8r-workspace-tests.drv",
-              "outputs": {
-                "out": "/nix/store/7cq5yzg3g24b9nkg9zxn51c9yiwz75gq-workspace-tests"
-              },
-              "outputNarHashes": {
-                "out": "sha256-d6xi4mKdjkX2JFicDIv5niSzpyI0m/Hnm8GGAIU04kY="
-              },
-              "sdkVersions": {},
-              "sampleSources": [],
-              "receipt": "https://nix-purifiers.github.io/evidence/e3bdeb5bd839634288b697a256b28afca897326741ae895a76929965cb3d6bda.json",
-              "artifactSha256": "e3bdeb5bd839634288b697a256b28afca897326741ae895a76929965cb3d6bda"
-            }
-          },
-          "treefmt": {
-            "revision": "ea43ef3106cef19ba7f9c0e75140822cd98ebc4f",
-            "system": "x86_64-linux",
-            "drvPath": "/nix/store/ahhhv23zg4l8md4mih7vba62lq3szrsq-treefmt-check.drv",
-            "sourceNarHash": "sha256-MAx8dSy7Jy1EZVJ5RmCztO3HAKer+NOpY14IucmjO9Q=",
-            "repository": "nix-purifiers/uv-purifier",
-            "check": {
-              "kind": "flake-attribute",
-              "value": "checks.x86_64-linux.treefmt",
-              "replay": null
-            },
-            "outputs": {
-              "out": "/nix/store/vz8a65j8wjhh2iv01h51mrcw11q6icdx-treefmt-check"
-            },
-            "outputNarHashes": {
-              "out": "sha256-d6xi4mKdjkX2JFicDIv5niSzpyI0m/Hnm8GGAIU04kY="
-            },
-            "sdkVersions": {},
-            "sampleSources": [],
-            "evaluation": null,
-            "build": {
-              "status": "success",
-              "executedSystem": "x86_64-linux",
-              "sourceRevision": "ea43ef3106cef19ba7f9c0e75140822cd98ebc4f",
-              "sourceNarHash": "sha256-MAx8dSy7Jy1EZVJ5RmCztO3HAKer+NOpY14IucmjO9Q=",
-              "drvPath": "/nix/store/ahhhv23zg4l8md4mih7vba62lq3szrsq-treefmt-check.drv",
-              "outputs": {
-                "out": "/nix/store/vz8a65j8wjhh2iv01h51mrcw11q6icdx-treefmt-check"
-              },
-              "outputNarHashes": {
-                "out": "sha256-d6xi4mKdjkX2JFicDIv5niSzpyI0m/Hnm8GGAIU04kY="
-              },
-              "sdkVersions": {},
-              "sampleSources": [],
-              "receipt": "https://nix-purifiers.github.io/evidence/e3bdeb5bd839634288b697a256b28afca897326741ae895a76929965cb3d6bda.json",
-              "artifactSha256": "e3bdeb5bd839634288b697a256b28afca897326741ae895a76929965cb3d6bda"
-            }
-          },
-          "unit": {
-            "revision": "ea43ef3106cef19ba7f9c0e75140822cd98ebc4f",
-            "system": "x86_64-linux",
-            "drvPath": "/nix/store/hhplj1ix3ryrd7kwa7lq5yv0idgzmq94-uv-purifier-test-unit.drv",
-            "sourceNarHash": "sha256-MAx8dSy7Jy1EZVJ5RmCztO3HAKer+NOpY14IucmjO9Q=",
-            "repository": "nix-purifiers/uv-purifier",
-            "check": {
-              "kind": "flake-attribute",
-              "value": "checks.x86_64-linux.unit",
-              "replay": null
-            },
-            "outputs": {
-              "out": "/nix/store/8b1pkgbjwn2wc228j8spf1k7nkyi6f95-uv-purifier-test-unit"
-            },
-            "outputNarHashes": {
-              "out": "sha256-d6xi4mKdjkX2JFicDIv5niSzpyI0m/Hnm8GGAIU04kY="
-            },
-            "sdkVersions": {},
-            "sampleSources": [],
-            "evaluation": null,
-            "build": {
-              "status": "success",
-              "executedSystem": "x86_64-linux",
-              "sourceRevision": "ea43ef3106cef19ba7f9c0e75140822cd98ebc4f",
-              "sourceNarHash": "sha256-MAx8dSy7Jy1EZVJ5RmCztO3HAKer+NOpY14IucmjO9Q=",
-              "drvPath": "/nix/store/hhplj1ix3ryrd7kwa7lq5yv0idgzmq94-uv-purifier-test-unit.drv",
-              "outputs": {
-                "out": "/nix/store/8b1pkgbjwn2wc228j8spf1k7nkyi6f95-uv-purifier-test-unit"
-              },
-              "outputNarHashes": {
-                "out": "sha256-d6xi4mKdjkX2JFicDIv5niSzpyI0m/Hnm8GGAIU04kY="
-              },
-              "sdkVersions": {},
-              "sampleSources": [],
-              "receipt": "https://nix-purifiers.github.io/evidence/e3bdeb5bd839634288b697a256b28afca897326741ae895a76929965cb3d6bda.json",
-              "artifactSha256": "e3bdeb5bd839634288b697a256b28afca897326741ae895a76929965cb3d6bda"
-            }
-          },
-          "workspace": {
-            "revision": "ea43ef3106cef19ba7f9c0e75140822cd98ebc4f",
-            "system": "x86_64-linux",
-            "drvPath": "/nix/store/prqmpjqmnc6m7d7mhcp4gpg7879cmhfc-uv-purifier-test-workspace.drv",
-            "sourceNarHash": "sha256-MAx8dSy7Jy1EZVJ5RmCztO3HAKer+NOpY14IucmjO9Q=",
-            "repository": "nix-purifiers/uv-purifier",
-            "check": {
-              "kind": "flake-attribute",
-              "value": "checks.x86_64-linux.workspace",
-              "replay": null
-            },
-            "outputs": {
-              "out": "/nix/store/cgypy1bgf551g36l78zfw0d4ki712djg-uv-purifier-test-workspace"
-            },
-            "outputNarHashes": {
-              "out": "sha256-d6xi4mKdjkX2JFicDIv5niSzpyI0m/Hnm8GGAIU04kY="
-            },
-            "sdkVersions": {},
-            "sampleSources": [],
-            "evaluation": null,
-            "build": {
-              "status": "success",
-              "executedSystem": "x86_64-linux",
-              "sourceRevision": "ea43ef3106cef19ba7f9c0e75140822cd98ebc4f",
-              "sourceNarHash": "sha256-MAx8dSy7Jy1EZVJ5RmCztO3HAKer+NOpY14IucmjO9Q=",
-              "drvPath": "/nix/store/prqmpjqmnc6m7d7mhcp4gpg7879cmhfc-uv-purifier-test-workspace.drv",
-              "outputs": {
-                "out": "/nix/store/cgypy1bgf551g36l78zfw0d4ki712djg-uv-purifier-test-workspace"
-              },
-              "outputNarHashes": {
-                "out": "sha256-d6xi4mKdjkX2JFicDIv5niSzpyI0m/Hnm8GGAIU04kY="
-              },
-              "sdkVersions": {},
-              "sampleSources": [],
-              "receipt": "https://nix-purifiers.github.io/evidence/e3bdeb5bd839634288b697a256b28afca897326741ae895a76929965cb3d6bda.json",
-              "artifactSha256": "e3bdeb5bd839634288b697a256b28afca897326741ae895a76929965cb3d6bda"
-            }
+            "sourceNarHash": "sha256-7yuc4bdJTXZcz9a86sJeZ9H9gFhYeF33Csyy1X5naNU="
           }
         },
         "sampleBuilds": [
           {
-            "name": "Flask upstream 49943b5a94413a530761350f04e896f76e8d620e",
+            "name": "pallets/flask (one pinned upstream project)",
             "upstream": {
               "repository": "https://github.com/pallets/flask",
               "revision": "49943b5a94413a530761350f04e896f76e8d620e",
               "sourceNarHash": "sha256-B+57AoHgGsoxtXTInivSKa7X0G4HaO6VPv20kT0WXR0="
             },
             "derivations": [
-              "flask"
+              "uv-purifier:main:aarch64-darwin:uv-0.13.7:python315:pure-upstream-tests",
+              "uv-purifier:main:aarch64-darwin:uv-0.13.7:python315:projection",
+              "uv-purifier:main:aarch64-darwin:uv-0.13.7:python315:native-and-ordinary-runtime",
+              "uv-purifier:main:aarch64-linux:uv-0.13.7:python315:pure-upstream-tests",
+              "uv-purifier:main:aarch64-linux:uv-0.13.7:python315:projection",
+              "uv-purifier:main:aarch64-linux:uv-0.13.7:python315:native-and-ordinary-runtime",
+              "uv-purifier:main:x86_64-linux:uv-0.13.7:python315:pure-upstream-tests",
+              "uv-purifier:main:x86_64-linux:uv-0.13.7:python315:projection",
+              "uv-purifier:main:x86_64-linux:uv-0.13.7:python315:native-and-ordinary-runtime",
+              "uv-purifier:main:aarch64-darwin:shipped-default:python3:pure-upstream-tests",
+              "uv-purifier:main:aarch64-darwin:shipped-default:python3:projection",
+              "uv-purifier:main:aarch64-darwin:shipped-default:python3:native-and-ordinary-runtime",
+              "uv-purifier:main:x86_64-linux:shipped-default:python3:pure-upstream-tests",
+              "uv-purifier:main:x86_64-linux:shipped-default:python3:projection",
+              "uv-purifier:main:x86_64-linux:shipped-default:python3:native-and-ordinary-runtime",
+              "uv-purifier:main:aarch64-linux:shipped-default:python3:pure-upstream-tests",
+              "uv-purifier:main:aarch64-linux:shipped-default:python3:projection",
+              "uv-purifier:main:aarch64-linux:shipped-default:python3:native-and-ordinary-runtime"
             ]
           }
         ]

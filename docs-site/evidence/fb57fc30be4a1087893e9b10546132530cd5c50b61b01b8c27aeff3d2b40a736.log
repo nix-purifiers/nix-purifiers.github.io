@@ -1,0 +1,34 @@
+{
+  inputs.sdk.url = "path:/nix/store/zc356534p13h2h33dn7sbvz3mn6dfhhh-source";
+  inputs.nixpkgs.follows = "sdk/nixpkgs";
+  outputs = {sdk, nixpkgs, ...}: let
+    system = "aarch64-linux";
+    p = import nixpkgs { inherit system; overlays = [ sdk.overlays.default ]; };
+    nativeUv = (p.callPackage (sdk.outPath + "/tests/sdk/uv-0.13.7.nix") {});
+    cli = p.uv-purifier.cli.override { inherit nativeUv; };
+    project = p.uv-purifier.buildUvProject {
+      src = ./pure-source;
+      python = p.python315;
+      inherit nativeUv;
+      testCommand = [ (p.writeShellScript "flask-upstream-and-extension" ''
+        set -eu
+        pytest -q -p no:cacheprovider
+        python -I ${sdk.outPath}/tests/native-extension.py
+      '') ];
+    };
+  in {
+    checks.${system}.runtime = import (sdk.outPath + "/tests/flask-runtime.nix") {
+      pkgs = p;
+      inherit project cli;
+      src = ./pure-source;
+      uv = nativeUv;
+      python = p.python315;
+      requireCSource = true;
+      receipt = builtins.fromJSON (builtins.readFile ./capture-receipt.json);
+    };
+    packages.${system} = {
+      tests = project.tests;
+      projection = project.packages.flask.projections.python;
+    };
+  };
+}
