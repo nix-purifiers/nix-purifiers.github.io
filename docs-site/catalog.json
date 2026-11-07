@@ -29195,391 +29195,522 @@
         "criteria": {
           "darwin": {
             "evidence": [
-              "https://github.com/nix-purifiers/docker-purifier/blob/58d2913eabcb0c31409a49f0ed8d91008fd32bdf/flake.nix",
-              "https://github.com/nix-purifiers/docker-purifier/blob/58d2913eabcb0c31409a49f0ed8d91008fd32bdf/.github/workflows/check.yml",
-              "https://nix-purifiers.github.io/evidence/8c4a333a81114dd8a45636fbdb0ee982c608d861a2ffb55cf9981c4c1729390a.json"
+              "https://github.com/nix-purifiers/docker-purifier/blob/d13d9ff97251845226ea0c4a5ecd97ca17040476/tests/runtime-check.nix",
+              "https://github.com/nix-purifiers/docker-purifier/blob/d13d9ff97251845226ea0c4a5ecd97ca17040476/tests/tier2-runtime.py",
+              "https://nix-purifiers.github.io/evidence/10106227049c9de8a273823573c8c6f5e8f91f232c7f01b47a9f971b8f652d7a.json",
+              "https://nix-purifiers.github.io/evidence/7c0348c6d215465ed156cbde1a86e43a1972a062507ecdbe5942fb65857f5eb4.json",
+              "https://nix-purifiers.github.io/evidence/b9f66c8855af2ddab8fe8c1a854b98d0d5fb0be10f36ec30159fc34da522ff1f.json",
+              "https://nix-purifiers.github.io/evidence/7ca43205116e1664f989394529af3068a5d96f3a7d2db1d7ce77af7e61653911.json"
             ],
-            "state": "not-met",
-            "summary": "The reviewed current-main CI matrix executes only Linux. The public flake check outputs are Linux-only; no native Darwin sample build/runtime receipt was found."
+            "state": "met",
+            "summary": "The actual-main successful impure x86_64-darwin host derivation runs the native Docker 29.9.2 client and buildx 0.31.1 on macOS 15.7.9 Intel, with an external Colima Linux Docker engine 29.5.2. It executes lock/prefetch/build/run and stale/tampered/origin checks for the upstream sample. This establishes Intel Mac client support with an external Linux engine, not a pure Darwin image builder or Apple Silicon execution."
           },
           "evaluation": {
             "evidence": [
-              "https://github.com/nix-purifiers/docker-purifier/blob/58d2913eabcb0c31409a49f0ed8d91008fd32bdf/flake.nix",
-              "https://nix-purifiers.github.io/evidence/8c4a333a81114dd8a45636fbdb0ee982c608d861a2ffb55cf9981c4c1729390a.json"
+              "https://github.com/nix-purifiers/docker-purifier/blob/d13d9ff97251845226ea0c4a5ecd97ca17040476/tests/runtime-check.nix",
+              "https://github.com/nix-purifiers/docker-purifier/blob/d13d9ff97251845226ea0c4a5ecd97ca17040476/tests/tier2-runtime.py",
+              "https://nix-purifiers.github.io/evidence/10106227049c9de8a273823573c8c6f5e8f91f232c7f01b47a9f971b8f652d7a.json",
+              "https://nix-purifiers.github.io/evidence/7c0348c6d215465ed156cbde1a86e43a1972a062507ecdbe5942fb65857f5eb4.json",
+              "https://nix-purifiers.github.io/evidence/b9f66c8855af2ddab8fe8c1a854b98d0d5fb0be10f36ec30159fc34da522ff1f.json",
+              "https://nix-purifiers.github.io/evidence/7ca43205116e1664f989394529af3068a5d96f3a7d2db1d7ce77af7e61653911.json"
             ],
             "state": "met",
-            "summary": "Current reviewed source evaluates to executable Nix checks, with actual successful sample derivation realization."
+            "summary": "The actual main source evaluates three explicit tests/runtime-check.nix expressions to the exact successfully executed host derivations and output paths. Their replay arguments, immutable source, locked inputs and derivation bodies are retained. These CI-only expressions are not flake check attributes."
           },
           "goodTests": {
             "evidence": [
-              "https://github.com/nix-purifiers/docker-purifier/blob/58d2913eabcb0c31409a49f0ed8d91008fd32bdf/tests/default.nix",
-              "https://github.com/nix-purifiers/docker-purifier/blob/58d2913eabcb0c31409a49f0ed8d91008fd32bdf/.github/workflows/check.yml",
-              "https://github.com/nix-purifiers/docker-purifier/actions/runs/42152606313",
-              "https://nix-purifiers.github.io/evidence/8c4a333a81114dd8a45636fbdb0ee982c608d861a2ffb55cf9981c4c1729390a.json"
+              "https://github.com/nix-purifiers/docker-purifier/blob/d13d9ff97251845226ea0c4a5ecd97ca17040476/tests/runtime-check.nix",
+              "https://github.com/nix-purifiers/docker-purifier/blob/d13d9ff97251845226ea0c4a5ecd97ca17040476/tests/tier2-runtime.py",
+              "https://nix-purifiers.github.io/evidence/10106227049c9de8a273823573c8c6f5e8f91f232c7f01b47a9f971b8f652d7a.json",
+              "https://nix-purifiers.github.io/evidence/7c0348c6d215465ed156cbde1a86e43a1972a062507ecdbe5942fb65857f5eb4.json",
+              "https://nix-purifiers.github.io/evidence/b9f66c8855af2ddab8fe8c1a854b98d0d5fb0be10f36ec30159fc34da522ff1f.json",
+              "https://nix-purifiers.github.io/evidence/7ca43205116e1664f989394529af3068a5d96f3a7d2db1d7ce77af7e61653911.json",
+              "https://nix-purifiers.github.io/evidence/92026ec50b625b1efe83b3dd907ffb0da5e33c8e7dd058925e0d490d5237b00e.json",
+              "https://nix-purifiers.github.io/evidence/bf8c8e337d462dcb3033aff5e54cd3a987c6c8dfe7a04622b19125a86e4490c6.log",
+              "https://nix-purifiers.github.io/evidence/a7852f721ab9385a6988205ee8d01b1905ccf21079dc9ba5e55a732962be2080.log",
+              "https://nix-purifiers.github.io/evidence/d87fd896049ef9a79b86c92c1abc953f45452ccbc1f74807ed69c637510a5902.json",
+              "https://nix-purifiers.github.io/evidence/88875fe6f42315fa161453acf93b5e4b3a56eff79ce00ff6413141b7d5ac3784.log",
+              "https://nix-purifiers.github.io/evidence/b5dc3c6632c0f6f8a9c015bae3e698b50658e77ed93bb6f9fff00eb693510af4.log"
             ],
             "state": "met",
-            "summary": "checks.image executes the locked examples/hello Dockerfile, including RUN instructions, using Buildah1.46.0 inside a native Linux VM and exports an OCI image. checks.offline validates OCI layout and blob digests without starting a daemon or executing the resulting container. The locked nixpkgs Docker29.9.2 value is evaluation evidence only; no DockerEngine29.9.2 runtime claim follows from these local checks."
+            "summary": "Actual main native host checks execute lock, prefetch, native build and container run for the upstream hello-world sample and authored fixtures. They reject stale/tampered inputs, verify base-image origin after removing the registry, and retain exact source/SDK/derivation/output/NAR bindings. The parent host checks are impure external-service integrations. Separate sandboxed Linux VM checks and image/release rebuild logs corroborate the pure Linux builder; nested output records are not independently reconstructed, and container RUN network isolation does not establish full host network denial."
           },
           "linux": {
             "evidence": [
-              "https://github.com/nix-purifiers/docker-purifier/actions/runs/42152606313",
-              "https://nix-purifiers.github.io/evidence/8c4a333a81114dd8a45636fbdb0ee982c608d861a2ffb55cf9981c4c1729390a.json"
+              "https://github.com/nix-purifiers/docker-purifier/blob/d13d9ff97251845226ea0c4a5ecd97ca17040476/tests/runtime-check.nix",
+              "https://github.com/nix-purifiers/docker-purifier/blob/d13d9ff97251845226ea0c4a5ecd97ca17040476/tests/tier2-runtime.py",
+              "https://nix-purifiers.github.io/evidence/10106227049c9de8a273823573c8c6f5e8f91f232c7f01b47a9f971b8f652d7a.json",
+              "https://nix-purifiers.github.io/evidence/7c0348c6d215465ed156cbde1a86e43a1972a062507ecdbe5942fb65857f5eb4.json",
+              "https://nix-purifiers.github.io/evidence/b9f66c8855af2ddab8fe8c1a854b98d0d5fb0be10f36ec30159fc34da522ff1f.json",
+              "https://nix-purifiers.github.io/evidence/7ca43205116e1664f989394529af3068a5d96f3a7d2db1d7ce77af7e61653911.json",
+              "https://nix-purifiers.github.io/evidence/92026ec50b625b1efe83b3dd907ffb0da5e33c8e7dd058925e0d490d5237b00e.json",
+              "https://nix-purifiers.github.io/evidence/bf8c8e337d462dcb3033aff5e54cd3a987c6c8dfe7a04622b19125a86e4490c6.log",
+              "https://nix-purifiers.github.io/evidence/a7852f721ab9385a6988205ee8d01b1905ccf21079dc9ba5e55a732962be2080.log",
+              "https://nix-purifiers.github.io/evidence/d87fd896049ef9a79b86c92c1abc953f45452ccbc1f74807ed69c637510a5902.json",
+              "https://nix-purifiers.github.io/evidence/88875fe6f42315fa161453acf93b5e4b3a56eff79ce00ff6413141b7d5ac3784.log",
+              "https://nix-purifiers.github.io/evidence/b5dc3c6632c0f6f8a9c015bae3e698b50658e77ed93bb6f9fff00eb693510af4.log"
             ],
             "state": "met",
-            "summary": "Successful native x86_64-linux sample realization at this exact source; exact-SHA successful Linux CI retained."
+            "summary": "Native x86_64-linux host checks execute Docker client 29.9.2 with external Linux engines 29.9.3 and 25.0.18, using buildx 0.38.1. These parent integrations are explicitly impure. Separate actual-main x86_64-linux and aarch64-linux CI logs record sandbox=true pure VM checks and independent image/release rebuilds; that pure Linux scope is distinct from the host service integrations."
           },
           "longCompatibility": {
             "evidence": [
-              "https://github.com/nix-purifiers/docker-purifier/blob/58d2913eabcb0c31409a49f0ed8d91008fd32bdf/tests/default.nix",
-              "https://nix-purifiers.github.io/evidence/8c4a333a81114dd8a45636fbdb0ee982c608d861a2ffb55cf9981c4c1729390a.json"
+              "https://github.com/nix-purifiers/docker-purifier/blob/d13d9ff97251845226ea0c4a5ecd97ca17040476/tests/runtime-check.nix",
+              "https://github.com/nix-purifiers/docker-purifier/blob/d13d9ff97251845226ea0c4a5ecd97ca17040476/tests/tier2-runtime.py",
+              "https://nix-purifiers.github.io/evidence/10106227049c9de8a273823573c8c6f5e8f91f232c7f01b47a9f971b8f652d7a.json",
+              "https://nix-purifiers.github.io/evidence/7c0348c6d215465ed156cbde1a86e43a1972a062507ecdbe5942fb65857f5eb4.json",
+              "https://nix-purifiers.github.io/evidence/b9f66c8855af2ddab8fe8c1a854b98d0d5fb0be10f36ec30159fc34da522ff1f.json",
+              "https://nix-purifiers.github.io/evidence/7ca43205116e1664f989394529af3068a5d96f3a7d2db1d7ce77af7e61653911.json"
             ],
             "state": "not-met",
-            "summary": "The reviewed image derivation executes Buildah 1.46.0 inside a native Linux VM to build the Dockerfile and export OCI. Docker Engine 29.9.2 is a package-set evaluation result, not an executed client or daemon. No historical Buildah-line runtime matrix is established by these successful receipts; fixture and target variants do not demonstrate historical toolchain compatibility."
+            "summary": "The executed Linux host points cover engines 25.0.18 and 29.9.3 with Docker client 29.9.2; Darwin separately covers client 29.9.2 with an external Linux engine 29.5.2. These bounded tuples do not establish broad historical client/backend compatibility. No continuous version range or old pure-builder matrix is inferred."
           },
           "manySamples": {
             "evidence": [
-              "https://github.com/nix-purifiers/docker-purifier/blob/58d2913eabcb0c31409a49f0ed8d91008fd32bdf/tests/default.nix",
-              "https://nix-purifiers.github.io/evidence/8c4a333a81114dd8a45636fbdb0ee982c608d861a2ffb55cf9981c4c1729390a.json"
+              "https://github.com/nix-purifiers/docker-purifier/blob/d13d9ff97251845226ea0c4a5ecd97ca17040476/tests/runtime-check.nix",
+              "https://github.com/nix-purifiers/docker-purifier/blob/d13d9ff97251845226ea0c4a5ecd97ca17040476/tests/tier2-runtime.py",
+              "https://nix-purifiers.github.io/evidence/10106227049c9de8a273823573c8c6f5e8f91f232c7f01b47a9f971b8f652d7a.json",
+              "https://nix-purifiers.github.io/evidence/7c0348c6d215465ed156cbde1a86e43a1972a062507ecdbe5942fb65857f5eb4.json",
+              "https://nix-purifiers.github.io/evidence/b9f66c8855af2ddab8fe8c1a854b98d0d5fb0be10f36ec30159fc34da522ff1f.json",
+              "https://nix-purifiers.github.io/evidence/7ca43205116e1664f989394529af3068a5d96f3a7d2db1d7ce77af7e61653911.json",
+              "https://nix-purifiers.github.io/evidence/290ea867ea60efb3dcef55d502e1fcee20035dae970362e637d830f807ca9715.json"
             ],
             "state": "not-met",
-            "summary": "examples/hello Dockerfile image and its offline execution; this is a repository fixture, not an independent upstream Dockerfile project. BusyBox base image is a dependency, not a second consumer sample. This reviewed sample set does not establish broad independently authored consumer coverage for the Tier1 judgment."
+            "summary": "One independent upstream project is demonstrated: docker-library/hello-world at 522bcd2faf422c60b9d20e64d7cd6d56600aec97. The host checks select its amd64 Dockerfile and executable; the separate pure ARM Linux check selects arm64v8. Authored BusyBox/registry fixtures and architecture variants are useful tests, not additional independent upstream projects. Broad sample coverage remains unproven."
           },
           "nonEolVersions": {
             "evidence": [
+              "https://github.com/nix-purifiers/docker-purifier/blob/d13d9ff97251845226ea0c4a5ecd97ca17040476/tests/runtime-check.nix",
+              "https://github.com/nix-purifiers/docker-purifier/blob/d13d9ff97251845226ea0c4a5ecd97ca17040476/tests/tier2-runtime.py",
+              "https://nix-purifiers.github.io/evidence/10106227049c9de8a273823573c8c6f5e8f91f232c7f01b47a9f971b8f652d7a.json",
+              "https://nix-purifiers.github.io/evidence/7c0348c6d215465ed156cbde1a86e43a1972a062507ecdbe5942fb65857f5eb4.json",
+              "https://nix-purifiers.github.io/evidence/b9f66c8855af2ddab8fe8c1a854b98d0d5fb0be10f36ec30159fc34da522ff1f.json",
+              "https://nix-purifiers.github.io/evidence/7ca43205116e1664f989394529af3068a5d96f3a7d2db1d7ce77af7e61653911.json",
+              "https://github.com/moby/moby/blob/402d0a16f131d93ee89f1b06cb5fc8c98e766dfc/project/BRANCHES-AND-TAGS.md",
               "https://docs.docker.com/engine/release-notes/29/",
-              "https://nix-purifiers.github.io/evidence/8c4a333a81114dd8a45636fbdb0ee982c608d861a2ffb55cf9981c4c1729390a.json",
-              "https://github.com/podman-container-tools/buildah/releases/tag/v1.46.0",
-              "https://nix-purifiers.github.io/evidence/f7b695c0c28beba34685c2605aad79c71bb9e2168d75c960f7d9287b3d2c9b3c.json"
+              "https://nix-purifiers.github.io/evidence/39a600813d0a9c636636fc38c94f03288b994c0ec2c7f0f13c669e10469b1a93.json"
             ],
             "state": "met",
-            "summary": "Met only for the actually executed Dockerfile-build backend Buildah1.46.0 inside the native x86_64-linux VM. The successful image derivation executes the locked Dockerfile including RUN instructions and exports OCI; upstream marks Buildah1.46.0 (released2026-10-21) as latest. This is a maintained backend/host point. It does not establish DockerEngine29.9.2 or any daemon runtime: that value was package evaluation only, and the offline check only validates OCI layout/blob digests."
+            "summary": "The actual-main x86_64-linux host integration executes Docker client 29.9.2 with the maintained current Linux Docker engine 29.9.3 and buildx 0.38.1. Upstream maintenance policy covers the 29.x engine line, and 29.9.3 is the inspected security update. This bounded maintained backend/host point satisfies the criterion. The distinct Darwin external engine 29.5.2 is not substituted for 29.9.3; no untested client, engine or patch range is claimed."
           },
           "oneVersion": {
             "evidence": [
-              "https://github.com/nix-purifiers/docker-purifier/blob/58d2913eabcb0c31409a49f0ed8d91008fd32bdf/flake.lock",
-              "https://nix-purifiers.github.io/evidence/8c4a333a81114dd8a45636fbdb0ee982c608d861a2ffb55cf9981c4c1729390a.json"
+              "https://github.com/nix-purifiers/docker-purifier/blob/d13d9ff97251845226ea0c4a5ecd97ca17040476/tests/runtime-check.nix",
+              "https://github.com/nix-purifiers/docker-purifier/blob/d13d9ff97251845226ea0c4a5ecd97ca17040476/tests/tier2-runtime.py",
+              "https://nix-purifiers.github.io/evidence/10106227049c9de8a273823573c8c6f5e8f91f232c7f01b47a9f971b8f652d7a.json",
+              "https://nix-purifiers.github.io/evidence/7c0348c6d215465ed156cbde1a86e43a1972a062507ecdbe5942fb65857f5eb4.json",
+              "https://nix-purifiers.github.io/evidence/b9f66c8855af2ddab8fe8c1a854b98d0d5fb0be10f36ec30159fc34da522ff1f.json",
+              "https://nix-purifiers.github.io/evidence/7ca43205116e1664f989394529af3068a5d96f3a7d2db1d7ce77af7e61653911.json"
             ],
             "state": "met",
-            "summary": "checks.image executes the locked examples/hello Dockerfile, including RUN instructions, using Buildah1.46.0 inside a native Linux VM and exports an OCI image. checks.offline validates OCI layout and blob digests without starting a daemon or executing the resulting container. The locked nixpkgs Docker29.9.2 value is evaluation evidence only; no DockerEngine29.9.2 runtime claim follows from these local checks."
+            "summary": "Executed host tuples are Docker client 29.9.2 / Linux engine 29.9.3 / buildx 0.38.1 and client 29.9.2 / engine 25.0.18 / buildx 0.38.1 on x86_64-linux; the Intel Darwin client 29.9.2 / external Colima Linux engine 29.5.2 / buildx 0.31.1 is recorded separately. No untested patch interval or cross-platform build support is inferred."
           }
         },
         "derivationReview": {
           "criteria": {
             "darwin": {
-              "derivations": [],
-              "gap": "Missing native Darwin source/SDK/check derivation and successful runtime/output receipt at reviewed revision.",
-              "sources": [
-                "https://github.com/nix-purifiers/docker-purifier/blob/58d2913eabcb0c31409a49f0ed8d91008fd32bdf/flake.nix",
-                "https://github.com/nix-purifiers/docker-purifier/blob/58d2913eabcb0c31409a49f0ed8d91008fd32bdf/.github/workflows/check.yml",
-                "https://nix-purifiers.github.io/evidence/8c4a333a81114dd8a45636fbdb0ee982c608d861a2ffb55cf9981c4c1729390a.json"
+              "derivations": [
+                "docker-purifier:main:main-darwin:IMPURE-external-service-host"
               ],
-              "state": "not-met",
-              "summary": "The reviewed current-main CI matrix executes only Linux. The public flake check outputs are Linux-only; no native Darwin sample build/runtime receipt was found."
+              "gap": null,
+              "sources": [
+                "https://github.com/nix-purifiers/docker-purifier/blob/d13d9ff97251845226ea0c4a5ecd97ca17040476/tests/runtime-check.nix",
+                "https://github.com/nix-purifiers/docker-purifier/blob/d13d9ff97251845226ea0c4a5ecd97ca17040476/tests/tier2-runtime.py",
+                "https://nix-purifiers.github.io/evidence/10106227049c9de8a273823573c8c6f5e8f91f232c7f01b47a9f971b8f652d7a.json",
+                "https://nix-purifiers.github.io/evidence/7c0348c6d215465ed156cbde1a86e43a1972a062507ecdbe5942fb65857f5eb4.json",
+                "https://nix-purifiers.github.io/evidence/b9f66c8855af2ddab8fe8c1a854b98d0d5fb0be10f36ec30159fc34da522ff1f.json",
+                "https://nix-purifiers.github.io/evidence/7ca43205116e1664f989394529af3068a5d96f3a7d2db1d7ce77af7e61653911.json"
+              ],
+              "state": "met",
+              "summary": "The actual-main successful impure x86_64-darwin host derivation runs the native Docker 29.9.2 client and buildx 0.31.1 on macOS 15.7.9 Intel, with an external Colima Linux Docker engine 29.5.2. It executes lock/prefetch/build/run and stale/tampered/origin checks for the upstream sample. This establishes Intel Mac client support with an external Linux engine, not a pure Darwin image builder or Apple Silicon execution."
             },
             "evaluation": {
               "derivations": [
-                "docker-purifier:x86_64-linux:image",
-                "docker-purifier:x86_64-linux:offline"
+                "docker-purifier:main:main-linux29:IMPURE-external-service-host",
+                "docker-purifier:main:main-linux25:IMPURE-external-service-host",
+                "docker-purifier:main:main-darwin:IMPURE-external-service-host"
               ],
               "gap": null,
               "sources": [
-                "https://github.com/nix-purifiers/docker-purifier/blob/58d2913eabcb0c31409a49f0ed8d91008fd32bdf/flake.nix",
-                "https://nix-purifiers.github.io/evidence/8c4a333a81114dd8a45636fbdb0ee982c608d861a2ffb55cf9981c4c1729390a.json"
+                "https://github.com/nix-purifiers/docker-purifier/blob/d13d9ff97251845226ea0c4a5ecd97ca17040476/tests/runtime-check.nix",
+                "https://github.com/nix-purifiers/docker-purifier/blob/d13d9ff97251845226ea0c4a5ecd97ca17040476/tests/tier2-runtime.py",
+                "https://nix-purifiers.github.io/evidence/10106227049c9de8a273823573c8c6f5e8f91f232c7f01b47a9f971b8f652d7a.json",
+                "https://nix-purifiers.github.io/evidence/7c0348c6d215465ed156cbde1a86e43a1972a062507ecdbe5942fb65857f5eb4.json",
+                "https://nix-purifiers.github.io/evidence/b9f66c8855af2ddab8fe8c1a854b98d0d5fb0be10f36ec30159fc34da522ff1f.json",
+                "https://nix-purifiers.github.io/evidence/7ca43205116e1664f989394529af3068a5d96f3a7d2db1d7ce77af7e61653911.json"
               ],
               "state": "met",
-              "summary": "Current reviewed source evaluates to executable Nix checks, with actual successful sample derivation realization."
+              "summary": "The actual main source evaluates three explicit tests/runtime-check.nix expressions to the exact successfully executed host derivations and output paths. Their replay arguments, immutable source, locked inputs and derivation bodies are retained. These CI-only expressions are not flake check attributes."
             },
             "goodTests": {
               "derivations": [
-                "docker-purifier:x86_64-linux:conformance-stale",
-                "docker-purifier:x86_64-linux:image",
-                "docker-purifier:x86_64-linux:offline",
-                "docker-purifier:x86_64-linux:unit"
+                "docker-purifier:main:main-linux29:IMPURE-external-service-host",
+                "docker-purifier:main:main-linux25:IMPURE-external-service-host",
+                "docker-purifier:main:main-darwin:IMPURE-external-service-host"
               ],
               "gap": null,
               "sources": [
-                "https://github.com/nix-purifiers/docker-purifier/blob/58d2913eabcb0c31409a49f0ed8d91008fd32bdf/tests/default.nix",
-                "https://github.com/nix-purifiers/docker-purifier/blob/58d2913eabcb0c31409a49f0ed8d91008fd32bdf/.github/workflows/check.yml",
-                "https://github.com/nix-purifiers/docker-purifier/actions/runs/42152606313",
-                "https://nix-purifiers.github.io/evidence/8c4a333a81114dd8a45636fbdb0ee982c608d861a2ffb55cf9981c4c1729390a.json"
+                "https://github.com/nix-purifiers/docker-purifier/blob/d13d9ff97251845226ea0c4a5ecd97ca17040476/tests/runtime-check.nix",
+                "https://github.com/nix-purifiers/docker-purifier/blob/d13d9ff97251845226ea0c4a5ecd97ca17040476/tests/tier2-runtime.py",
+                "https://nix-purifiers.github.io/evidence/10106227049c9de8a273823573c8c6f5e8f91f232c7f01b47a9f971b8f652d7a.json",
+                "https://nix-purifiers.github.io/evidence/7c0348c6d215465ed156cbde1a86e43a1972a062507ecdbe5942fb65857f5eb4.json",
+                "https://nix-purifiers.github.io/evidence/b9f66c8855af2ddab8fe8c1a854b98d0d5fb0be10f36ec30159fc34da522ff1f.json",
+                "https://nix-purifiers.github.io/evidence/7ca43205116e1664f989394529af3068a5d96f3a7d2db1d7ce77af7e61653911.json",
+                "https://nix-purifiers.github.io/evidence/92026ec50b625b1efe83b3dd907ffb0da5e33c8e7dd058925e0d490d5237b00e.json",
+                "https://nix-purifiers.github.io/evidence/bf8c8e337d462dcb3033aff5e54cd3a987c6c8dfe7a04622b19125a86e4490c6.log",
+                "https://nix-purifiers.github.io/evidence/a7852f721ab9385a6988205ee8d01b1905ccf21079dc9ba5e55a732962be2080.log",
+                "https://nix-purifiers.github.io/evidence/d87fd896049ef9a79b86c92c1abc953f45452ccbc1f74807ed69c637510a5902.json",
+                "https://nix-purifiers.github.io/evidence/88875fe6f42315fa161453acf93b5e4b3a56eff79ce00ff6413141b7d5ac3784.log",
+                "https://nix-purifiers.github.io/evidence/b5dc3c6632c0f6f8a9c015bae3e698b50658e77ed93bb6f9fff00eb693510af4.log"
               ],
               "state": "met",
-              "summary": "checks.image executes the locked examples/hello Dockerfile, including RUN instructions, using Buildah1.46.0 inside a native Linux VM and exports an OCI image. checks.offline validates OCI layout and blob digests without starting a daemon or executing the resulting container. The locked nixpkgs Docker29.9.2 value is evaluation evidence only; no DockerEngine29.9.2 runtime claim follows from these local checks."
+              "summary": "Actual main native host checks execute lock, prefetch, native build and container run for the upstream hello-world sample and authored fixtures. They reject stale/tampered inputs, verify base-image origin after removing the registry, and retain exact source/SDK/derivation/output/NAR bindings. The parent host checks are impure external-service integrations. Separate sandboxed Linux VM checks and image/release rebuild logs corroborate the pure Linux builder; nested output records are not independently reconstructed, and container RUN network isolation does not establish full host network denial."
             },
             "linux": {
               "derivations": [
-                "docker-purifier:x86_64-linux:image",
-                "docker-purifier:x86_64-linux:offline"
+                "docker-purifier:main:main-linux29:IMPURE-external-service-host",
+                "docker-purifier:main:main-linux25:IMPURE-external-service-host"
               ],
               "gap": null,
               "sources": [
-                "https://github.com/nix-purifiers/docker-purifier/actions/runs/42152606313",
-                "https://nix-purifiers.github.io/evidence/8c4a333a81114dd8a45636fbdb0ee982c608d861a2ffb55cf9981c4c1729390a.json"
+                "https://github.com/nix-purifiers/docker-purifier/blob/d13d9ff97251845226ea0c4a5ecd97ca17040476/tests/runtime-check.nix",
+                "https://github.com/nix-purifiers/docker-purifier/blob/d13d9ff97251845226ea0c4a5ecd97ca17040476/tests/tier2-runtime.py",
+                "https://nix-purifiers.github.io/evidence/10106227049c9de8a273823573c8c6f5e8f91f232c7f01b47a9f971b8f652d7a.json",
+                "https://nix-purifiers.github.io/evidence/7c0348c6d215465ed156cbde1a86e43a1972a062507ecdbe5942fb65857f5eb4.json",
+                "https://nix-purifiers.github.io/evidence/b9f66c8855af2ddab8fe8c1a854b98d0d5fb0be10f36ec30159fc34da522ff1f.json",
+                "https://nix-purifiers.github.io/evidence/7ca43205116e1664f989394529af3068a5d96f3a7d2db1d7ce77af7e61653911.json",
+                "https://nix-purifiers.github.io/evidence/92026ec50b625b1efe83b3dd907ffb0da5e33c8e7dd058925e0d490d5237b00e.json",
+                "https://nix-purifiers.github.io/evidence/bf8c8e337d462dcb3033aff5e54cd3a987c6c8dfe7a04622b19125a86e4490c6.log",
+                "https://nix-purifiers.github.io/evidence/a7852f721ab9385a6988205ee8d01b1905ccf21079dc9ba5e55a732962be2080.log",
+                "https://nix-purifiers.github.io/evidence/d87fd896049ef9a79b86c92c1abc953f45452ccbc1f74807ed69c637510a5902.json",
+                "https://nix-purifiers.github.io/evidence/88875fe6f42315fa161453acf93b5e4b3a56eff79ce00ff6413141b7d5ac3784.log",
+                "https://nix-purifiers.github.io/evidence/b5dc3c6632c0f6f8a9c015bae3e698b50658e77ed93bb6f9fff00eb693510af4.log"
               ],
               "state": "met",
-              "summary": "Successful native x86_64-linux sample realization at this exact source; exact-SHA successful Linux CI retained."
+              "summary": "Native x86_64-linux host checks execute Docker client 29.9.2 with external Linux engines 29.9.3 and 25.0.18, using buildx 0.38.1. These parent integrations are explicitly impure. Separate actual-main x86_64-linux and aarch64-linux CI logs record sandbox=true pure VM checks and independent image/release rebuilds; that pure Linux scope is distinct from the host service integrations."
             },
             "longCompatibility": {
               "derivations": [
-                "docker-purifier:x86_64-linux:image",
-                "docker-purifier:x86_64-linux:offline"
+                "docker-purifier:main:main-linux29:IMPURE-external-service-host",
+                "docker-purifier:main:main-linux25:IMPURE-external-service-host",
+                "docker-purifier:main:main-darwin:IMPURE-external-service-host"
               ],
-              "gap": "Missing executed historical toolchain-line matrix with successful source/SDK/check/output bindings; no all-patch range is inferred.",
+              "gap": "The executed Linux host points cover engines 25.0.18 and 29.9.3 with Docker client 29.9.2; Darwin separately covers client 29.9.2 with an external Linux engine 29.5.2. These bounded tuples do not establish broad historical client/backend compatibility. No continuous version range or old pure-builder matrix is inferred.",
               "sources": [
-                "https://github.com/nix-purifiers/docker-purifier/blob/58d2913eabcb0c31409a49f0ed8d91008fd32bdf/tests/default.nix",
-                "https://nix-purifiers.github.io/evidence/8c4a333a81114dd8a45636fbdb0ee982c608d861a2ffb55cf9981c4c1729390a.json"
+                "https://github.com/nix-purifiers/docker-purifier/blob/d13d9ff97251845226ea0c4a5ecd97ca17040476/tests/runtime-check.nix",
+                "https://github.com/nix-purifiers/docker-purifier/blob/d13d9ff97251845226ea0c4a5ecd97ca17040476/tests/tier2-runtime.py",
+                "https://nix-purifiers.github.io/evidence/10106227049c9de8a273823573c8c6f5e8f91f232c7f01b47a9f971b8f652d7a.json",
+                "https://nix-purifiers.github.io/evidence/7c0348c6d215465ed156cbde1a86e43a1972a062507ecdbe5942fb65857f5eb4.json",
+                "https://nix-purifiers.github.io/evidence/b9f66c8855af2ddab8fe8c1a854b98d0d5fb0be10f36ec30159fc34da522ff1f.json",
+                "https://nix-purifiers.github.io/evidence/7ca43205116e1664f989394529af3068a5d96f3a7d2db1d7ce77af7e61653911.json"
               ],
               "state": "not-met",
-              "summary": "The reviewed image derivation executes Buildah 1.46.0 inside a native Linux VM to build the Dockerfile and export OCI. Docker Engine 29.9.2 is a package-set evaluation result, not an executed client or daemon. No historical Buildah-line runtime matrix is established by these successful receipts; fixture and target variants do not demonstrate historical toolchain compatibility."
+              "summary": "The executed Linux host points cover engines 25.0.18 and 29.9.3 with Docker client 29.9.2; Darwin separately covers client 29.9.2 with an external Linux engine 29.5.2. These bounded tuples do not establish broad historical client/backend compatibility. No continuous version range or old pure-builder matrix is inferred."
             },
             "manySamples": {
               "derivations": [
-                "docker-purifier:x86_64-linux:image",
-                "docker-purifier:x86_64-linux:offline"
+                "docker-purifier:main:main-linux29:IMPURE-external-service-host",
+                "docker-purifier:main:main-linux25:IMPURE-external-service-host",
+                "docker-purifier:main:main-darwin:IMPURE-external-service-host"
               ],
-              "gap": "Additional distinct upstream consumer builds, beyond these fixtures/dependencies/selected projects, have not been demonstrated.",
+              "gap": "One independent upstream project is demonstrated: docker-library/hello-world at 522bcd2faf422c60b9d20e64d7cd6d56600aec97. The host checks select its amd64 Dockerfile and executable; the separate pure ARM Linux check selects arm64v8. Authored BusyBox/registry fixtures and architecture variants are useful tests, not additional independent upstream projects. Broad sample coverage remains unproven.",
               "sources": [
-                "https://github.com/nix-purifiers/docker-purifier/blob/58d2913eabcb0c31409a49f0ed8d91008fd32bdf/tests/default.nix",
-                "https://nix-purifiers.github.io/evidence/8c4a333a81114dd8a45636fbdb0ee982c608d861a2ffb55cf9981c4c1729390a.json"
+                "https://github.com/nix-purifiers/docker-purifier/blob/d13d9ff97251845226ea0c4a5ecd97ca17040476/tests/runtime-check.nix",
+                "https://github.com/nix-purifiers/docker-purifier/blob/d13d9ff97251845226ea0c4a5ecd97ca17040476/tests/tier2-runtime.py",
+                "https://nix-purifiers.github.io/evidence/10106227049c9de8a273823573c8c6f5e8f91f232c7f01b47a9f971b8f652d7a.json",
+                "https://nix-purifiers.github.io/evidence/7c0348c6d215465ed156cbde1a86e43a1972a062507ecdbe5942fb65857f5eb4.json",
+                "https://nix-purifiers.github.io/evidence/b9f66c8855af2ddab8fe8c1a854b98d0d5fb0be10f36ec30159fc34da522ff1f.json",
+                "https://nix-purifiers.github.io/evidence/7ca43205116e1664f989394529af3068a5d96f3a7d2db1d7ce77af7e61653911.json",
+                "https://nix-purifiers.github.io/evidence/290ea867ea60efb3dcef55d502e1fcee20035dae970362e637d830f807ca9715.json"
               ],
               "state": "not-met",
-              "summary": "examples/hello Dockerfile image and its offline execution; this is a repository fixture, not an independent upstream Dockerfile project. BusyBox base image is a dependency, not a second consumer sample. This reviewed sample set does not establish broad independently authored consumer coverage for the Tier1 judgment."
+              "summary": "One independent upstream project is demonstrated: docker-library/hello-world at 522bcd2faf422c60b9d20e64d7cd6d56600aec97. The host checks select its amd64 Dockerfile and executable; the separate pure ARM Linux check selects arm64v8. Authored BusyBox/registry fixtures and architecture variants are useful tests, not additional independent upstream projects. Broad sample coverage remains unproven."
             },
             "nonEolVersions": {
               "derivations": [
-                "docker-purifier:x86_64-linux:image"
+                "docker-purifier:main:main-linux29:IMPURE-external-service-host"
               ],
               "gap": null,
               "sources": [
-                "https://github.com/podman-container-tools/buildah/releases/tag/v1.46.0",
-                "https://nix-purifiers.github.io/evidence/f7b695c0c28beba34685c2605aad79c71bb9e2168d75c960f7d9287b3d2c9b3c.json"
+                "https://github.com/nix-purifiers/docker-purifier/blob/d13d9ff97251845226ea0c4a5ecd97ca17040476/tests/runtime-check.nix",
+                "https://github.com/nix-purifiers/docker-purifier/blob/d13d9ff97251845226ea0c4a5ecd97ca17040476/tests/tier2-runtime.py",
+                "https://nix-purifiers.github.io/evidence/10106227049c9de8a273823573c8c6f5e8f91f232c7f01b47a9f971b8f652d7a.json",
+                "https://nix-purifiers.github.io/evidence/7c0348c6d215465ed156cbde1a86e43a1972a062507ecdbe5942fb65857f5eb4.json",
+                "https://nix-purifiers.github.io/evidence/b9f66c8855af2ddab8fe8c1a854b98d0d5fb0be10f36ec30159fc34da522ff1f.json",
+                "https://nix-purifiers.github.io/evidence/7ca43205116e1664f989394529af3068a5d96f3a7d2db1d7ce77af7e61653911.json",
+                "https://github.com/moby/moby/blob/402d0a16f131d93ee89f1b06cb5fc8c98e766dfc/project/BRANCHES-AND-TAGS.md",
+                "https://docs.docker.com/engine/release-notes/29/",
+                "https://nix-purifiers.github.io/evidence/39a600813d0a9c636636fc38c94f03288b994c0ec2c7f0f13c669e10469b1a93.json"
               ],
               "state": "met",
-              "summary": "Met only for the actually executed Dockerfile-build backend Buildah1.46.0 inside the native x86_64-linux VM. The successful image derivation executes the locked Dockerfile including RUN instructions and exports OCI; upstream marks Buildah1.46.0 (released2026-10-21) as latest. This is a maintained backend/host point. It does not establish DockerEngine29.9.2 or any daemon runtime: that value was package evaluation only, and the offline check only validates OCI layout/blob digests."
+              "summary": "The actual-main x86_64-linux host integration executes Docker client 29.9.2 with the maintained current Linux Docker engine 29.9.3 and buildx 0.38.1. Upstream maintenance policy covers the 29.x engine line, and 29.9.3 is the inspected security update. This bounded maintained backend/host point satisfies the criterion. The distinct Darwin external engine 29.5.2 is not substituted for 29.9.3; no untested client, engine or patch range is claimed."
             },
             "oneVersion": {
               "derivations": [
-                "docker-purifier:x86_64-linux:image"
+                "docker-purifier:main:main-linux29:IMPURE-external-service-host",
+                "docker-purifier:main:main-linux25:IMPURE-external-service-host",
+                "docker-purifier:main:main-darwin:IMPURE-external-service-host"
               ],
               "gap": null,
               "sources": [
-                "https://github.com/nix-purifiers/docker-purifier/blob/58d2913eabcb0c31409a49f0ed8d91008fd32bdf/flake.lock",
-                "https://nix-purifiers.github.io/evidence/8c4a333a81114dd8a45636fbdb0ee982c608d861a2ffb55cf9981c4c1729390a.json"
+                "https://github.com/nix-purifiers/docker-purifier/blob/d13d9ff97251845226ea0c4a5ecd97ca17040476/tests/runtime-check.nix",
+                "https://github.com/nix-purifiers/docker-purifier/blob/d13d9ff97251845226ea0c4a5ecd97ca17040476/tests/tier2-runtime.py",
+                "https://nix-purifiers.github.io/evidence/10106227049c9de8a273823573c8c6f5e8f91f232c7f01b47a9f971b8f652d7a.json",
+                "https://nix-purifiers.github.io/evidence/7c0348c6d215465ed156cbde1a86e43a1972a062507ecdbe5942fb65857f5eb4.json",
+                "https://nix-purifiers.github.io/evidence/b9f66c8855af2ddab8fe8c1a854b98d0d5fb0be10f36ec30159fc34da522ff1f.json",
+                "https://nix-purifiers.github.io/evidence/7ca43205116e1664f989394529af3068a5d96f3a7d2db1d7ce77af7e61653911.json"
               ],
               "state": "met",
-              "summary": "checks.image executes the locked examples/hello Dockerfile, including RUN instructions, using Buildah1.46.0 inside a native Linux VM and exports an OCI image. checks.offline validates OCI layout and blob digests without starting a daemon or executing the resulting container. The locked nixpkgs Docker29.9.2 value is evaluation evidence only; no DockerEngine29.9.2 runtime claim follows from these local checks."
+              "summary": "Executed host tuples are Docker client 29.9.2 / Linux engine 29.9.3 / buildx 0.38.1 and client 29.9.2 / engine 25.0.18 / buildx 0.38.1 on x86_64-linux; the Intel Darwin client 29.9.2 / external Colima Linux engine 29.5.2 / buildx 0.31.1 is recorded separately. No untested patch interval or cross-platform build support is inferred."
             }
           },
           "derivations": {
-            "docker-purifier:x86_64-linux:conformance-stale": {
+            "docker-purifier:main:main-darwin:IMPURE-external-service-host": {
               "build": {
-                "artifactSha256": "7322c7f5047ef0a22aeed1f8cc32f5e13cbf41cd8900e77c2b591942441b1847",
-                "drvPath": "/nix/store/3z8qd8v5gsznwvglmk1pzd3rv6ax900k-docker-stale.drv",
-                "executedSystem": "x86_64-linux",
+                "artifactSha256": "7ca43205116e1664f989394529af3068a5d96f3a7d2db1d7ce77af7e61653911",
+                "drvPath": "/nix/store/sny3nxzdn350ysh3w0byy5wgdkdb7pbi-docker-host-runtime-42335887750-1.drv",
+                "executedSystem": "x86_64-darwin",
                 "outputNarHashes": {
-                  "out": "sha256-d6xi4mKdjkX2JFicDIv5niSzpyI0m/Hnm8GGAIU04kY="
+                  "out": "sha256-VaEO1EL3rNtDOK9OAVsIY4jcYhEIFCW9uewD/uxeOJE="
                 },
                 "outputs": {
-                  "out": "/nix/store/nd9gra27n8a3hm1fcvvc9fx8nyc2vxrz-docker-stale"
+                  "out": "/nix/store/3bz4fpdra7bvwfi8iwv7azfjinams7ni-docker-host-runtime-42335887750-1"
                 },
-                "receipt": "https://nix-purifiers.github.io/evidence/7322c7f5047ef0a22aeed1f8cc32f5e13cbf41cd8900e77c2b591942441b1847.json",
-                "sampleSources": [],
-                "sdkVersions": {},
-                "sourceNarHash": "sha256-6J83aQQ+xQ9/oCG37ycOU43QksWiUHWnBj13AGNHFCQ=",
-                "sourceRevision": "58d2913eabcb0c31409a49f0ed8d91008fd32bdf",
-                "status": "success"
-              },
-              "check": {
-                "kind": "flake-attribute",
-                "replay": null,
-                "value": "checks.x86_64-linux.conformance-stale"
-              },
-              "drvPath": "/nix/store/3z8qd8v5gsznwvglmk1pzd3rv6ax900k-docker-stale.drv",
-              "evaluation": null,
-              "outputNarHashes": {
-                "out": "sha256-d6xi4mKdjkX2JFicDIv5niSzpyI0m/Hnm8GGAIU04kY="
-              },
-              "outputs": {
-                "out": "/nix/store/nd9gra27n8a3hm1fcvvc9fx8nyc2vxrz-docker-stale"
-              },
-              "repository": "nix-purifiers/docker-purifier",
-              "revision": "58d2913eabcb0c31409a49f0ed8d91008fd32bdf",
-              "sampleSources": [],
-              "sdkVersions": {},
-              "sourceNarHash": "sha256-6J83aQQ+xQ9/oCG37ycOU43QksWiUHWnBj13AGNHFCQ=",
-              "system": "x86_64-linux"
-            },
-            "docker-purifier:x86_64-linux:image": {
-              "build": {
-                "artifactSha256": "9396f0048df99761bc10e13cf9fd91058e69fbe89db726d39764ac3c6333add6",
-                "drvPath": "/nix/store/zf740l9x1ifnf3kpwxkryng6x4vfdq9b-docker-image.drv",
-                "executedSystem": "x86_64-linux",
-                "outputNarHashes": {
-                  "out": "sha256-nY/3prU3rO2YYNKHXEj8aTpdW2wipJfFJBy0K8P4Xa4="
-                },
-                "outputs": {
-                  "out": "/nix/store/sp1zc6hj18gsdb1bf428vdyk1vkwvr2y-docker-image"
-                },
-                "receipt": "https://nix-purifiers.github.io/evidence/9396f0048df99761bc10e13cf9fd91058e69fbe89db726d39764ac3c6333add6.json",
+                "receipt": "https://nix-purifiers.github.io/evidence/7ca43205116e1664f989394529af3068a5d96f3a7d2db1d7ce77af7e61653911.json",
                 "sampleSources": [
                   {
-                    "repository": "https://github.com/nix-purifiers/docker-purifier",
-                    "revision": "58d2913eabcb0c31409a49f0ed8d91008fd32bdf",
-                    "sourceNarHash": "sha256-6J83aQQ+xQ9/oCG37ycOU43QksWiUHWnBj13AGNHFCQ="
+                    "repository": "https://github.com/docker-library/hello-world",
+                    "revision": "522bcd2faf422c60b9d20e64d7cd6d56600aec97",
+                    "sourceNarHash": "sha256-eI/B7JSWfYTW8ZuaJBHDCeHy3FbLkKYHgSi0UCH4Ddw="
                   }
                 ],
                 "sdkVersions": {
-                  "buildah": "1.46.0"
+                  "Docker buildx": "0.31.1",
+                  "Docker client": "29.9.2",
+                  "External Linux engine provider": "Colima",
+                  "Linux Docker engine": "29.5.2",
+                  "macOS host": "15.7.9 Intel (x86_64)"
                 },
-                "sourceNarHash": "sha256-6J83aQQ+xQ9/oCG37ycOU43QksWiUHWnBj13AGNHFCQ=",
-                "sourceRevision": "58d2913eabcb0c31409a49f0ed8d91008fd32bdf",
+                "sourceNarHash": "sha256-DKBEzHbBb3pf+PoSIDFKRXmp0nLpqFMDAvUkmwXvloc=",
+                "sourceRevision": "d13d9ff97251845226ea0c4a5ecd97ca17040476",
                 "status": "success"
               },
               "check": {
-                "kind": "flake-attribute",
-                "replay": null,
-                "value": "checks.x86_64-linux.image"
+                "kind": "expression",
+                "replay": {
+                  "arguments": {
+                    "dockerHost": "\"unix:///Users/runner/.colima/default/docker.sock\"",
+                    "expectedEngine": "\"\"",
+                    "expectedSystem": "\"x86_64-darwin\"",
+                    "runtimeId": "\"42335887750-1\"",
+                    "source": "\"github:nix-purifiers/docker-purifier/d13d9ff97251845226ea0c4a5ecd97ca17040476\""
+                  },
+                  "artifactSha256": "451ed47db87f6f91d69a55fcc67397929174fb674846e8e87c6855df20287052",
+                  "artifactUrl": "https://nix-purifiers.github.io/evidence/451ed47db87f6f91d69a55fcc67397929174fb674846e8e87c6855df20287052.json",
+                  "expressionSha256": "64a87ed83b91e29732193746845d967057a34c4364815ebbb62878e26e4eef41"
+                },
+                "value": "let source = builtins.getFlake \"github:nix-purifiers/docker-purifier/d13d9ff97251845226ea0c4a5ecd97ca17040476\"; in import (source.outPath + \"/tests/runtime-check.nix\") { source = \"github:nix-purifiers/docker-purifier/d13d9ff97251845226ea0c4a5ecd97ca17040476\"; dockerHost = \"unix:///Users/runner/.colima/default/docker.sock\"; expectedSystem = \"x86_64-darwin\"; expectedEngine = \"\"; runtimeId = \"42335887750-1\"; }"
               },
-              "drvPath": "/nix/store/zf740l9x1ifnf3kpwxkryng6x4vfdq9b-docker-image.drv",
+              "drvPath": "/nix/store/sny3nxzdn350ysh3w0byy5wgdkdb7pbi-docker-host-runtime-42335887750-1.drv",
               "evaluation": null,
               "outputNarHashes": {
-                "out": "sha256-nY/3prU3rO2YYNKHXEj8aTpdW2wipJfFJBy0K8P4Xa4="
+                "out": "sha256-VaEO1EL3rNtDOK9OAVsIY4jcYhEIFCW9uewD/uxeOJE="
               },
               "outputs": {
-                "out": "/nix/store/sp1zc6hj18gsdb1bf428vdyk1vkwvr2y-docker-image"
+                "out": "/nix/store/3bz4fpdra7bvwfi8iwv7azfjinams7ni-docker-host-runtime-42335887750-1"
               },
               "repository": "nix-purifiers/docker-purifier",
-              "revision": "58d2913eabcb0c31409a49f0ed8d91008fd32bdf",
+              "revision": "d13d9ff97251845226ea0c4a5ecd97ca17040476",
               "sampleSources": [
                 {
-                  "repository": "https://github.com/nix-purifiers/docker-purifier",
-                  "revision": "58d2913eabcb0c31409a49f0ed8d91008fd32bdf",
-                  "sourceNarHash": "sha256-6J83aQQ+xQ9/oCG37ycOU43QksWiUHWnBj13AGNHFCQ="
+                  "repository": "https://github.com/docker-library/hello-world",
+                  "revision": "522bcd2faf422c60b9d20e64d7cd6d56600aec97",
+                  "sourceNarHash": "sha256-eI/B7JSWfYTW8ZuaJBHDCeHy3FbLkKYHgSi0UCH4Ddw="
                 }
               ],
               "sdkVersions": {
-                "buildah": "1.46.0"
+                "Docker buildx": "0.31.1",
+                "Docker client": "29.9.2",
+                "External Linux engine provider": "Colima",
+                "Linux Docker engine": "29.5.2",
+                "macOS host": "15.7.9 Intel (x86_64)"
               },
-              "sourceNarHash": "sha256-6J83aQQ+xQ9/oCG37ycOU43QksWiUHWnBj13AGNHFCQ=",
-              "system": "x86_64-linux"
+              "sourceNarHash": "sha256-DKBEzHbBb3pf+PoSIDFKRXmp0nLpqFMDAvUkmwXvloc=",
+              "system": "x86_64-darwin"
             },
-            "docker-purifier:x86_64-linux:offline": {
+            "docker-purifier:main:main-linux25:IMPURE-external-service-host": {
               "build": {
-                "artifactSha256": "776134b4ca2a62b3599984b094e3ef3649ed5266464894c98be7b20c2039b47f",
-                "drvPath": "/nix/store/4n37nfs2py0869j3awvyaishwp8b6vc8-docker-project-tests.drv",
+                "artifactSha256": "b9f66c8855af2ddab8fe8c1a854b98d0d5fb0be10f36ec30159fc34da522ff1f",
+                "drvPath": "/nix/store/5rka18pzryri1jkgby7inzi1g2igcqch-docker-host-runtime-42335887750-1.drv",
                 "executedSystem": "x86_64-linux",
                 "outputNarHashes": {
-                  "out": "sha256-d6xi4mKdjkX2JFicDIv5niSzpyI0m/Hnm8GGAIU04kY="
+                  "out": "sha256-b4LSY14Ic27o0mP/5bx/dLFdwVoK0224yp/dyz1cki8="
                 },
                 "outputs": {
-                  "out": "/nix/store/0pw0h35srlibcfnr1i1kzhblpr95bqrv-docker-project-tests"
+                  "out": "/nix/store/ypr9yk9ybkb8l5n036ymvbbi96ldjn1m-docker-host-runtime-42335887750-1"
                 },
-                "receipt": "https://nix-purifiers.github.io/evidence/776134b4ca2a62b3599984b094e3ef3649ed5266464894c98be7b20c2039b47f.json",
+                "receipt": "https://nix-purifiers.github.io/evidence/b9f66c8855af2ddab8fe8c1a854b98d0d5fb0be10f36ec30159fc34da522ff1f.json",
                 "sampleSources": [
                   {
-                    "repository": "https://github.com/nix-purifiers/docker-purifier",
-                    "revision": "58d2913eabcb0c31409a49f0ed8d91008fd32bdf",
-                    "sourceNarHash": "sha256-6J83aQQ+xQ9/oCG37ycOU43QksWiUHWnBj13AGNHFCQ="
+                    "repository": "https://github.com/docker-library/hello-world",
+                    "revision": "522bcd2faf422c60b9d20e64d7cd6d56600aec97",
+                    "sourceNarHash": "sha256-eI/B7JSWfYTW8ZuaJBHDCeHy3FbLkKYHgSi0UCH4Ddw="
                   }
                 ],
-                "sdkVersions": {},
-                "sourceNarHash": "sha256-6J83aQQ+xQ9/oCG37ycOU43QksWiUHWnBj13AGNHFCQ=",
-                "sourceRevision": "58d2913eabcb0c31409a49f0ed8d91008fd32bdf",
+                "sdkVersions": {
+                  "Docker buildx": "0.38.1",
+                  "Docker client": "29.9.2",
+                  "Linux Docker engine": "25.0.18"
+                },
+                "sourceNarHash": "sha256-DKBEzHbBb3pf+PoSIDFKRXmp0nLpqFMDAvUkmwXvloc=",
+                "sourceRevision": "d13d9ff97251845226ea0c4a5ecd97ca17040476",
                 "status": "success"
               },
               "check": {
-                "kind": "flake-attribute",
-                "replay": null,
-                "value": "checks.x86_64-linux.offline"
+                "kind": "expression",
+                "replay": {
+                  "arguments": {
+                    "dockerHost": "\"unix:///home/runner/work/_temp/docker25.sock\"",
+                    "expectedEngine": "\"25.0.18\"",
+                    "expectedSystem": "\"x86_64-linux\"",
+                    "runtimeId": "\"42335887750-1\"",
+                    "source": "\"github:nix-purifiers/docker-purifier/d13d9ff97251845226ea0c4a5ecd97ca17040476\""
+                  },
+                  "artifactSha256": "2d672e60d159c310be7e709d9877d4e5f209356787207ff234b2e885a2e0b5d3",
+                  "artifactUrl": "https://nix-purifiers.github.io/evidence/2d672e60d159c310be7e709d9877d4e5f209356787207ff234b2e885a2e0b5d3.json",
+                  "expressionSha256": "b80db696f7ba3083cb27c2db3f62c72da74cfa60500dbb93e8c228ef00d73624"
+                },
+                "value": "let source = builtins.getFlake \"github:nix-purifiers/docker-purifier/d13d9ff97251845226ea0c4a5ecd97ca17040476\"; in import (source.outPath + \"/tests/runtime-check.nix\") { source = \"github:nix-purifiers/docker-purifier/d13d9ff97251845226ea0c4a5ecd97ca17040476\"; dockerHost = \"unix:///home/runner/work/_temp/docker25.sock\"; expectedSystem = \"x86_64-linux\"; expectedEngine = \"25.0.18\"; runtimeId = \"42335887750-1\"; }"
               },
-              "drvPath": "/nix/store/4n37nfs2py0869j3awvyaishwp8b6vc8-docker-project-tests.drv",
+              "drvPath": "/nix/store/5rka18pzryri1jkgby7inzi1g2igcqch-docker-host-runtime-42335887750-1.drv",
               "evaluation": null,
               "outputNarHashes": {
-                "out": "sha256-d6xi4mKdjkX2JFicDIv5niSzpyI0m/Hnm8GGAIU04kY="
+                "out": "sha256-b4LSY14Ic27o0mP/5bx/dLFdwVoK0224yp/dyz1cki8="
               },
               "outputs": {
-                "out": "/nix/store/0pw0h35srlibcfnr1i1kzhblpr95bqrv-docker-project-tests"
+                "out": "/nix/store/ypr9yk9ybkb8l5n036ymvbbi96ldjn1m-docker-host-runtime-42335887750-1"
               },
               "repository": "nix-purifiers/docker-purifier",
-              "revision": "58d2913eabcb0c31409a49f0ed8d91008fd32bdf",
+              "revision": "d13d9ff97251845226ea0c4a5ecd97ca17040476",
               "sampleSources": [
                 {
-                  "repository": "https://github.com/nix-purifiers/docker-purifier",
-                  "revision": "58d2913eabcb0c31409a49f0ed8d91008fd32bdf",
-                  "sourceNarHash": "sha256-6J83aQQ+xQ9/oCG37ycOU43QksWiUHWnBj13AGNHFCQ="
+                  "repository": "https://github.com/docker-library/hello-world",
+                  "revision": "522bcd2faf422c60b9d20e64d7cd6d56600aec97",
+                  "sourceNarHash": "sha256-eI/B7JSWfYTW8ZuaJBHDCeHy3FbLkKYHgSi0UCH4Ddw="
                 }
               ],
-              "sdkVersions": {},
-              "sourceNarHash": "sha256-6J83aQQ+xQ9/oCG37ycOU43QksWiUHWnBj13AGNHFCQ=",
+              "sdkVersions": {
+                "Docker buildx": "0.38.1",
+                "Docker client": "29.9.2",
+                "Linux Docker engine": "25.0.18"
+              },
+              "sourceNarHash": "sha256-DKBEzHbBb3pf+PoSIDFKRXmp0nLpqFMDAvUkmwXvloc=",
               "system": "x86_64-linux"
             },
-            "docker-purifier:x86_64-linux:unit": {
+            "docker-purifier:main:main-linux29:IMPURE-external-service-host": {
               "build": {
-                "artifactSha256": "6cdfe8abfce3739dfc694e6967d6cec87bdc7f5b728e618bc24ac6d3d0b4c986",
-                "drvPath": "/nix/store/0dlmsr2lp2dc32c0mvx4vriy4z9f193v-docker-unit.drv",
+                "artifactSha256": "7c0348c6d215465ed156cbde1a86e43a1972a062507ecdbe5942fb65857f5eb4",
+                "drvPath": "/nix/store/br6g3y74jl4v5w46dvxymkx4wx37jji3-docker-host-runtime-42335887750-1.drv",
                 "executedSystem": "x86_64-linux",
                 "outputNarHashes": {
-                  "out": "sha256-d6xi4mKdjkX2JFicDIv5niSzpyI0m/Hnm8GGAIU04kY="
+                  "out": "sha256-xwNtEhbShkjJTOPNVJ1PTZBWC9WluqW8VIHoE5xYgVE="
                 },
                 "outputs": {
-                  "out": "/nix/store/16948mb1w1l2jmsybqh8lczrbvzc0vz3-docker-unit"
+                  "out": "/nix/store/qpdcrw70j7bfx5nzkshvgk3lvyl1jvll-docker-host-runtime-42335887750-1"
                 },
-                "receipt": "https://nix-purifiers.github.io/evidence/6cdfe8abfce3739dfc694e6967d6cec87bdc7f5b728e618bc24ac6d3d0b4c986.json",
-                "sampleSources": [],
-                "sdkVersions": {},
-                "sourceNarHash": "sha256-6J83aQQ+xQ9/oCG37ycOU43QksWiUHWnBj13AGNHFCQ=",
-                "sourceRevision": "58d2913eabcb0c31409a49f0ed8d91008fd32bdf",
+                "receipt": "https://nix-purifiers.github.io/evidence/7c0348c6d215465ed156cbde1a86e43a1972a062507ecdbe5942fb65857f5eb4.json",
+                "sampleSources": [
+                  {
+                    "repository": "https://github.com/docker-library/hello-world",
+                    "revision": "522bcd2faf422c60b9d20e64d7cd6d56600aec97",
+                    "sourceNarHash": "sha256-eI/B7JSWfYTW8ZuaJBHDCeHy3FbLkKYHgSi0UCH4Ddw="
+                  }
+                ],
+                "sdkVersions": {
+                  "Docker buildx": "0.38.1",
+                  "Docker client": "29.9.2",
+                  "Linux Docker engine": "29.9.3"
+                },
+                "sourceNarHash": "sha256-DKBEzHbBb3pf+PoSIDFKRXmp0nLpqFMDAvUkmwXvloc=",
+                "sourceRevision": "d13d9ff97251845226ea0c4a5ecd97ca17040476",
                 "status": "success"
               },
               "check": {
-                "kind": "flake-attribute",
-                "replay": null,
-                "value": "checks.x86_64-linux.unit"
+                "kind": "expression",
+                "replay": {
+                  "arguments": {
+                    "dockerHost": "\"unix:///home/runner/setup-docker-action/run-7e1fd1f6/docker.sock\"",
+                    "expectedEngine": "\"29.9.3\"",
+                    "expectedSystem": "\"x86_64-linux\"",
+                    "runtimeId": "\"42335887750-1\"",
+                    "source": "\"github:nix-purifiers/docker-purifier/d13d9ff97251845226ea0c4a5ecd97ca17040476\""
+                  },
+                  "artifactSha256": "8820262363ce72178c4bcc897c8c291f9b806a99c55add771fa5a4a524cb20fe",
+                  "artifactUrl": "https://nix-purifiers.github.io/evidence/8820262363ce72178c4bcc897c8c291f9b806a99c55add771fa5a4a524cb20fe.json",
+                  "expressionSha256": "33967b6d61ed8abbc227b0890314db32b8b78b01276dc5da0f5496e0792ad35b"
+                },
+                "value": "let source = builtins.getFlake \"github:nix-purifiers/docker-purifier/d13d9ff97251845226ea0c4a5ecd97ca17040476\"; in import (source.outPath + \"/tests/runtime-check.nix\") { source = \"github:nix-purifiers/docker-purifier/d13d9ff97251845226ea0c4a5ecd97ca17040476\"; dockerHost = \"unix:///home/runner/setup-docker-action/run-7e1fd1f6/docker.sock\"; expectedSystem = \"x86_64-linux\"; expectedEngine = \"29.9.3\"; runtimeId = \"42335887750-1\"; }"
               },
-              "drvPath": "/nix/store/0dlmsr2lp2dc32c0mvx4vriy4z9f193v-docker-unit.drv",
+              "drvPath": "/nix/store/br6g3y74jl4v5w46dvxymkx4wx37jji3-docker-host-runtime-42335887750-1.drv",
               "evaluation": null,
               "outputNarHashes": {
-                "out": "sha256-d6xi4mKdjkX2JFicDIv5niSzpyI0m/Hnm8GGAIU04kY="
+                "out": "sha256-xwNtEhbShkjJTOPNVJ1PTZBWC9WluqW8VIHoE5xYgVE="
               },
               "outputs": {
-                "out": "/nix/store/16948mb1w1l2jmsybqh8lczrbvzc0vz3-docker-unit"
+                "out": "/nix/store/qpdcrw70j7bfx5nzkshvgk3lvyl1jvll-docker-host-runtime-42335887750-1"
               },
               "repository": "nix-purifiers/docker-purifier",
-              "revision": "58d2913eabcb0c31409a49f0ed8d91008fd32bdf",
-              "sampleSources": [],
-              "sdkVersions": {},
-              "sourceNarHash": "sha256-6J83aQQ+xQ9/oCG37ycOU43QksWiUHWnBj13AGNHFCQ=",
+              "revision": "d13d9ff97251845226ea0c4a5ecd97ca17040476",
+              "sampleSources": [
+                {
+                  "repository": "https://github.com/docker-library/hello-world",
+                  "revision": "522bcd2faf422c60b9d20e64d7cd6d56600aec97",
+                  "sourceNarHash": "sha256-eI/B7JSWfYTW8ZuaJBHDCeHy3FbLkKYHgSi0UCH4Ddw="
+                }
+              ],
+              "sdkVersions": {
+                "Docker buildx": "0.38.1",
+                "Docker client": "29.9.2",
+                "Linux Docker engine": "29.9.3"
+              },
+              "sourceNarHash": "sha256-DKBEzHbBb3pf+PoSIDFKRXmp0nLpqFMDAvUkmwXvloc=",
               "system": "x86_64-linux"
             }
           },
           "sampleBuilds": [
             {
               "derivations": [
-                "docker-purifier:x86_64-linux:image",
-                "docker-purifier:x86_64-linux:offline"
+                "docker-purifier:main:main-linux29:IMPURE-external-service-host",
+                "docker-purifier:main:main-linux25:IMPURE-external-service-host",
+                "docker-purifier:main:main-darwin:IMPURE-external-service-host"
               ],
-              "name": "docker-purifier:hello (repository-fixture)",
+              "name": "docker-library/hello-world (selected architecture files; one upstream project)",
               "upstream": {
-                "repository": "https://github.com/nix-purifiers/docker-purifier",
-                "revision": "58d2913eabcb0c31409a49f0ed8d91008fd32bdf",
-                "sourceNarHash": "sha256-6J83aQQ+xQ9/oCG37ycOU43QksWiUHWnBj13AGNHFCQ="
+                "repository": "https://github.com/docker-library/hello-world",
+                "revision": "522bcd2faf422c60b9d20e64d7cd6d56600aec97",
+                "sourceNarHash": "sha256-eI/B7JSWfYTW8ZuaJBHDCeHy3FbLkKYHgSi0UCH4Ddw="
               }
             }
           ]
         },
-        "rationale": "Tier3 confirmed by actual native Linux sample derivations. Good tests and the explicitly scoped maintained tool/runtime point are demonstrated; native Darwin execution is missing. Broad independent sample corpus and long historical compatibility remain unproven.",
+        "rationale": "Actual-main source-bound derivations demonstrate meaningful tests, Linux execution, and native Intel Darwin client execution with an external Linux engine at maintained tool/runtime points. The three host service integrations are explicitly impure; the pure VM builder remains a separate Linux-only scope. One independent upstream sample is established. Broad sample coverage and historical compatibility remain unproven.",
         "reviewedAt": "2026-11-06",
-        "reviewedRevision": "58d2913eabcb0c31409a49f0ed8d91008fd32bdf",
+        "reviewedRevision": "d13d9ff97251845226ea0c4a5ecd97ca17040476",
         "sampleBuilds": [
           {
             "evidence": [
-              "https://github.com/nix-purifiers/docker-purifier/blob/58d2913eabcb0c31409a49f0ed8d91008fd32bdf/tests/default.nix",
-              "https://nix-purifiers.github.io/evidence/8c4a333a81114dd8a45636fbdb0ee982c608d861a2ffb55cf9981c4c1729390a.json"
+              "https://github.com/nix-purifiers/docker-purifier/blob/d13d9ff97251845226ea0c4a5ecd97ca17040476/tests/runtime-check.nix",
+              "https://github.com/nix-purifiers/docker-purifier/blob/d13d9ff97251845226ea0c4a5ecd97ca17040476/tests/tier2-runtime.py",
+              "https://nix-purifiers.github.io/evidence/10106227049c9de8a273823573c8c6f5e8f91f232c7f01b47a9f971b8f652d7a.json",
+              "https://nix-purifiers.github.io/evidence/290ea867ea60efb3dcef55d502e1fcee20035dae970362e637d830f807ca9715.json",
+              "https://nix-purifiers.github.io/evidence/7c0348c6d215465ed156cbde1a86e43a1972a062507ecdbe5942fb65857f5eb4.json",
+              "https://nix-purifiers.github.io/evidence/b9f66c8855af2ddab8fe8c1a854b98d0d5fb0be10f36ec30159fc34da522ff1f.json",
+              "https://nix-purifiers.github.io/evidence/7ca43205116e1664f989394529af3068a5d96f3a7d2db1d7ce77af7e61653911.json"
             ],
-            "name": "docker-purifier:hello (repository-fixture)"
+            "name": "docker-library/hello-world (selected architecture files; one upstream project)"
           }
         ],
-        "tier": 3
+        "tier": 2
       },
       "repository": "nix-purifiers/docker-purifier",
       "reviewedRevision": "186edeb4dd1bb0c9806485368b64cd5c1433fac3",
