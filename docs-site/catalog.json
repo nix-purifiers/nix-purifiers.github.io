@@ -95345,13 +95345,22 @@
           "state": "unknown"
         },
         "platform_notes": {
-          "sources": [],
           "state": "known",
           "value": [
-            "Apple Silicon macOS support is contributor-reported from unsandboxed builds; no macOS CI is configured",
-            "Sandboxed Darwin --check rebuilds have not been verified",
+            "At producer 169b2e6e6a5d87f6c7f43e45b72f57e59f09c35c, native aarch64-darwin CI passed the exact sbt 1.11.7, 1.13.1 and 2.0.12 runtime samples on Zulu OpenJDK 21.0.11+10-LTS; these are observed points, not a general platform or JDK range.",
+            "The independent sbt 1.11.7 and 1.13.1 checked packages passed actual sandboxed --rebuild runs. The authored sbt 2.0.12 fixture has an ordinary successful sandboxed build and observed output identity; no fresh checked-package rebuild is claimed for it.",
+            "Darwin 1.x controls passed three cross-process IPv4 socket pairs and default/INET external permission denials. Unsupported IPv6 remains unproven; no Darwin sbt 0.13 execution is claimed.",
             "The Darwin lock-generation fix requires a plugin built from the merged change or a release containing it",
             "Test scripts require Bash 4 or later; macOS /bin/bash 3.2 is insufficient"
+          ],
+          "sources": [
+            "https://github.com/nix-purifiers/sbt-purifier/blob/169b2e6e6a5d87f6c7f43e45b72f57e59f09c35c/.github/workflows/check.yml",
+            "https://github.com/nix-purifiers/sbt-purifier/blob/169b2e6e6a5d87f6c7f43e45b72f57e59f09c35c/tests/runtime-sample.py",
+            "https://github.com/nix-purifiers/sbt-purifier/actions/runs/42428047985/job/128570510776",
+            "https://github.com/nix-purifiers/sbt-purifier/actions/runs/42428047985/job/128570510746",
+            "https://github.com/nix-purifiers/sbt-purifier/actions/runs/42428047985/job/128570510847",
+            "https://nix-purifiers.github.io/evidence/364d34782b8d7a342cb5e5eb96ba8321c75efb12a87f1fc232a3c6514adca803.json",
+            "https://nix-purifiers.github.io/evidence/a9d19d21196e32bdfae72a78fda84856c61534cfff1202f26657679510f53e07.json"
           ]
         },
         "platforms": {
