@@ -1,5 +1,24 @@
 # Project documentation sites
 
+## Tier evidence
+
+Quality registry version 3 keeps technical derivation receipts separate from
+reviewed human-use evidence. Tier 3 and above require a clear attributed
+firsthand human report; sample-project use by a maintainer or contributor can
+qualify. Tier 1 additionally needs qualitative confidence in ongoing real use.
+Credible human reports and attributable maintained-consumer history can support
+that review. No fixed number of users, reports or months establishes it.
+
+`humanUseReview` records dates, subject, stated scope, reporter relationship,
+primary-source or direct-attestation provenance, and explicit evidence gaps.
+Direct attestations may be private. The public projection excludes private
+originals and locations; reviewers inspect the actual report before acceptance.
+Report excerpts and statements about local checks retain their version,
+platform and sandbox limits and do not change technical compatibility evidence.
+The human-use section stays within the existing collapsed criteria details.
+Version 2 remains available only to explicit fixture/history helpers; production readers require version 3. Publication pairs new definitions
+with reviewed version 3 assignments. See [the model](../model/README.md).
+
 ## Structured behavior model
 
 The behavior catalog lives in `model/projects/*.nix`. It uses typed Nix

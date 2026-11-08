@@ -7,8 +7,9 @@ from html import escape
 import re
 import hashlib
 
-CRITERIA = ('evaluation', 'goodTests', 'linux', 'darwin', 'oneVersion',
-            'nonEolVersions', 'manySamples', 'longCompatibility')
+from quality_policy import TECHNICAL_CRITERIA
+
+CRITERIA = TECHNICAL_CRITERIA
 
 
 def require(condition, message):

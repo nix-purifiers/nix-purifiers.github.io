@@ -1,5 +1,6 @@
 let
-  registry = builtins.fromJSON (builtins.readFile ./tiers.json);
+  registry = let value = builtins.fromJSON (builtins.readFile ./tiers.json);
+    in if builtins.isInt value.version && value.version == 3 then value else throw "Production quality requires registry version 3";
   artifacts = builtins.fromJSON (builtins.readFile ./review-artifacts.json);
   retained = r:
     let hash = r.artifactSha256; suffix = if (r.format or "") == "text" then ".log" else ".json"; path = ../docs-site/evidence + "/${hash}${suffix}";
@@ -12,6 +13,8 @@ let
   inherit (lib) mkOption types;
   name = builtins.baseNameOf config.repository;
   proof = import ./derivation-review.nix { inherit lib; };
+  policy = import ./quality-policy.nix { inherit lib; };
+  human = import ./human-use-review.nix { inherit lib; };
   text = types.addCheck types.str (s: builtins.match ".*[^ \n\t].*" s != null);
   sources = types.listOf (types.strMatching "https://[^ ]+");
   criterion = types.submodule {
@@ -21,7 +24,7 @@ let
       evidence = mkOption { type = sources; default = []; };
     };
   };
-  keys = [ "evaluation" "goodTests" "linux" "darwin" "oneVersion" "nonEolVersions" "manySamples" "longCompatibility" ];
+  keys = policy.criterionKeys 3;
   assessment = types.submodule {
     options = {
       derivationReview = mkOption { type = types.attrs; };
@@ -37,16 +40,18 @@ let
           evidence = mkOption { type = types.addCheck sources (xs: xs != []); };
         }; });
       };
+      humanUseReview = mkOption { type = types.attrs; };
     };
   };
   valid = q:
     let
       met = key: q.criteria.${key}.state == "met";
       base = met "evaluation";
-      third = base && q.sampleBuilds != [] && met "linux" && met "oneVersion";
-      second = third && met "goodTests" && met "darwin" && met "nonEolVersions";
-      first = third && met "goodTests" && met "darwin" && met "manySamples" && met "longCompatibility";
-      best = if first then 1 else if second then 2 else if third then 3 else 4;
+      best = policy.bestTier 3 q.criteria (q.sampleBuilds != []);
+      humanReview = human.validate config.repository q.humanUseReview;
+      sameHuman = lib.all (key:
+        q.criteria.${key}.state == humanReview.criteria.${key}.state
+        && q.criteria.${key}.summary == humanReview.criteria.${key}.summary) policy.humanCriteria;
       review = proof.validate config.repository q.reviewedRevision q.derivationReview;
       receipts = lib.all (e:
         if (e.kind or null) == "native-ci-execution" then true else
@@ -58,9 +63,9 @@ let
         })
       ) (builtins.attrValues review.derivations);
       same = lib.all (key: q.criteria.${key}.state == review.criteria.${key}.state
-        && q.criteria.${key}.summary == review.criteria.${key}.summary) keys
+        && q.criteria.${key}.summary == review.criteria.${key}.summary) policy.technicalCriteria
         && map (s: s.name) q.sampleBuilds == map (s: s.name) review.sampleBuilds;
-    in builtins.deepSeq review (registry.version == 2 && originals && receipts && same && base && q.tier == best);
+    in builtins.deepSeq [ review humanReview ] (registry.version == 3 && originals && receipts && same && sameHuman && base && q.tier == best);
 in {
   options.quality = mkOption {
     type = types.nullOr assessment;
