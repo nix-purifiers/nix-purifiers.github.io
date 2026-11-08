@@ -3,7 +3,7 @@ import json
 from pathlib import Path
 import unittest
 
-from human_use_evidence import public_report, render_reports, validate_review
+from human_use_evidence import canonical_repository, public_report, render_reports, validate_review
 from quality_policy import TECHNICAL_CRITERIA, best_tier
 
 REPOSITORY = 'nix-purifiers/sbt-purifier'
@@ -11,6 +11,33 @@ REPOSITORY = 'nix-purifiers/sbt-purifier'
 
 def fixture():
     return json.loads((Path(__file__).parent / 'fixtures/human-use/sbt-firsthand.json').read_text())
+
+
+def ongoing_user(status='maintainer'):
+    return {'publicLabel': None, 'maintainerStatus': status,
+            'statusBasis': ({'summary': 'Synthetic reviewed role basis for the actual ongoing-use subject.',
+                             'source': {'kind': 'public-primary-url', 'url': 'https://example.test/maintainer-role', 'reference': None}}
+                            if status != 'unknown' else None),
+            'useScope': 'Synthetic fixture: this subject continues using the purifier in actual project work.'}
+
+
+def consumer_project(slug='project-one', url=None, project_path=None):
+    url = url or 'https://code.example/consumers/' + slug
+    base = canonical_repository(url)
+    identity = base + ('#' + project_path.lower() if project_path else '')
+    def proof(path, **extra):
+        return {'projectIdentity': identity, 'sourceUrl': base + path,
+                'summary': 'Synthetic reviewed primary evidence scoped to this consumer project.', **extra}
+    return {'repository': REPOSITORY, 'canonicalIdentity': identity, 'publicRepository': url,
+            'projectPath': project_path, 'identityBasis': 'Synthetic distinct real consumer-project identity review, not a fixture, alias or copy.',
+            'kind': 'external-open-source-consumer', 'reviewedAt': '2026-11-08',
+            'vitalityConfidence': 'Synthetic reviewed confidence from actual consumer maintenance and integration context, without a cadence cutoff.',
+            'externalAdoption': {'projectIdentity': identity, 'status': 'reviewed-beyond-maintainer',
+                'source': {'kind': 'public-primary-url', 'url': base + '/README', 'reference': None},
+                'summary': 'Synthetic reviewed adoption beyond the purifier maintainer.'},
+            'openSourceBasis': proof('/LICENSE'),
+            'integration': proof('/src/' + (project_path + '/' if project_path else '') + 'flake.nix', kind='actual-purifier-integration'),
+            'activityMonitoring': [proof('/commits/' + (project_path or 'main'), kind='maintenance-history')]}
 
 
 def cases():
@@ -49,25 +76,67 @@ def cases():
         yield 'direct provenance '+value, candidate, '/' not in value
     ongoing = copy.deepcopy(original)
     ongoing['reports']['sbt-pr-13']['claims'].append('ongoing-use')
-    ongoing['reports']['sbt-pr-13']['scope'] = 'Synthetic fixture: the person explicitly reports continuing real use.'
-    ongoing['criteria']['ongoingUse'].update(state='met', reports=['sbt-pr-13'], gap=None, confidenceReason='Synthetic explicit continuing-use context; no user-count or duration cutoff.')
-    yield 'qualitative ongoing-use fixture', ongoing, True
-    consumer = copy.deepcopy(original)
-    consumer['criteria']['ongoingUse'].update(state='met', reports=[], gap=None,
-        confidenceReason='Synthetic attributable consumer history supports continuing actual usage.',
-        usageContexts=[{'repository': REPOSITORY, 'kind': 'maintained-consumer-history', 'source': {'kind': 'public-primary-url', 'url': 'https://example.test/consumer/history', 'reference': None},
-                        'scope': 'Synthetic fixture: maintained consumer uses this purifier in continuing project work.',
-                        'attribution': 'Synthetic attributable consumer maintenance history.', 'reviewedAt': '2026-11-07'}])
-    yield 'ongoing use from attributable maintained consumer history', consumer, True
-    private_context = copy.deepcopy(consumer)
-    private_context['criteria']['ongoingUse']['usageContexts'][0]['source'] = {'kind': 'private-context', 'url': None, 'reference': 'private-consumer-context-1'}
-    yield 'private consumer context has no public URL', private_context, True
-    bad_context = copy.deepcopy(consumer); bad_context['criteria']['ongoingUse']['usageContexts'][0]['kind'] = 'ci-success'
-    yield 'CI status is not consumer use context', bad_context, False
-    borrowed = copy.deepcopy(consumer); borrowed['criteria']['ongoingUse']['usageContexts'][0]['repository'] = 'nix-purifiers/cargo-purifier'
-    yield 'consumer context belongs to another purifier', borrowed, False
-    no_reason = copy.deepcopy(ongoing); no_reason['criteria']['ongoingUse']['confidenceReason'] = None
-    yield 'ongoing review needs a reason', no_reason, False
+    ongoing['reports']['sbt-pr-13']['ongoingUsers'] = [ongoing_user()]
+    ongoing['reports']['sbt-pr-13']['scope'] = 'Synthetic fixture: the maintainer reports continuing real use.'
+    ongoing['reports']['sbt-pr-13']['source']['url'] = 'https://example.test/maintainer-use'
+    ongoing['criteria']['ongoingUse'].update(state='met', reports=['sbt-pr-13'], gap=None,
+        confidenceReason='Synthetic reviewed maintainer use and two real external OSS consumers with actual integration and signs of life.',
+        consumerProjects=[consumer_project(), consumer_project('project-two')])
+    yield 'maintainer use plus two qualified live OSS projects', ongoing, True
+    for label, edit in [
+        ('maintainer ongoing use alone is insufficient', lambda r: r['criteria']['ongoingUse'].update(consumerProjects=[])),
+        ('one consumer project is insufficient', lambda r: r['criteria']['ongoingUse'].update(consumerProjects=[consumer_project()])),
+        ('two consumer projects without ongoing maintainer use', lambda r: r['reports']['sbt-pr-13'].update(ongoingUsers=[ongoing_user('non-maintainer')])),
+        ('contributor or MEMBER does not prove ongoing maintainer status', lambda r: r['reports']['sbt-pr-13'].update(ongoingUsers=[ongoing_user('unknown')])),
+        ('maintainer role needs a reviewed basis', lambda r: r['reports']['sbt-pr-13']['ongoingUsers'][0].update(statusBasis=None)),
+        ('fixture is not a real consumer', lambda r: r['criteria']['ongoingUse']['consumerProjects'][0].update(kind='fixture')),
+        ('demo is not a real consumer', lambda r: r['criteria']['ongoingUse']['consumerProjects'][0].update(kind='demo')),
+        ('copy is not a real consumer', lambda r: r['criteria']['ongoingUse']['consumerProjects'][0].update(kind='copy')),
+        ('name catalogue is not purifier integration', lambda r: r['criteria']['ongoingUse']['consumerProjects'][0]['integration'].update(kind='name-only')),
+        ('CI alone does not establish signs of life', lambda r: r['criteria']['ongoingUse']['consumerProjects'][0]['activityMonitoring'][0].update(kind='ci-only')),
+        ('stars alone do not establish signs of life', lambda r: r['criteria']['ongoingUse']['consumerProjects'][0]['activityMonitoring'][0].update(kind='stars-only')),
+        ('downloads alone do not establish signs of life', lambda r: r['criteria']['ongoingUse']['consumerProjects'][0]['activityMonitoring'][0].update(kind='downloads-only')),
+        ('consumer license needs primary basis', lambda r: r['criteria']['ongoingUse']['consumerProjects'][0]['openSourceBasis'].update(sourceUrl='')),
+        ('consumer integration cannot borrow another project', lambda r: r['criteria']['ongoingUse']['consumerProjects'][0]['integration'].update(sourceUrl='https://code.example/other/project/flake.nix')),
+        ('activity monitoring cannot borrow another project', lambda r: r['criteria']['ongoingUse']['consumerProjects'][0]['activityMonitoring'][0].update(projectIdentity='https://code.example/other/project')),
+        ('vitality confidence needs a reviewed reason', lambda r: r['criteria']['ongoingUse']['consumerProjects'][0].update(vitalityConfidence='')),
+        ('ongoing review needs a confidence reason', lambda r: r['criteria']['ongoingUse'].update(confidenceReason=None)),
+    ]:
+        bad = copy.deepcopy(ongoing); edit(bad); yield label, bad, False
+    duplicate = copy.deepcopy(ongoing)
+    duplicate['criteria']['ongoingUse']['consumerProjects'] = [consumer_project(url='https://github.com/Example/Consumer'), consumer_project(url='https://www.github.com/example/consumer.git/')]
+    yield 'case clone-suffix and host aliases cannot count twice', duplicate, False
+    repeated = copy.deepcopy(ongoing); repeated['criteria']['ongoingUse']['consumerProjects'] = [consumer_project(), consumer_project()]
+    yield 'repeated identical project cannot count twice', repeated, False
+    private_use = copy.deepcopy(ongoing)
+    private_use['reports']['sbt-pr-13']['source'] = {'kind': 'direct-attestation', 'url': None, 'reference': 'supplied-ongoing-maintainer-use'}
+    private_use['reports']['sbt-pr-13']['ongoingUsers'][0]['statusBasis']['source'] = {'kind': 'private-context', 'url': None, 'reference': 'supplied-role-context'}
+    yield 'private maintainer use plus two public OSS consumers can qualify', private_use, True
+    context = copy.deepcopy(original)
+    context['criteria']['ongoingUse'].update(state='met', reports=[], gap=None,
+        confidenceReason='Synthetic credible maintainer ongoing context with two monitored OSS consumers.',
+        consumerProjects=[consumer_project(), consumer_project('project-two')],
+        usageContexts=[{'repository': REPOSITORY, 'kind': 'supplied-usage-context',
+            'source': {'kind': 'private-context', 'url': None, 'reference': 'maintainer-use-context'},
+            'scope': 'Synthetic context establishes continuing actual maintainer use.',
+            'attribution': 'Synthetic reviewed context, not author membership inferred as use.',
+            'reviewedAt': '2026-11-08', 'ongoingUsers': [ongoing_user()]}])
+    yield 'maintainer ongoing context and two consumers needs no extra report quote', context, True
+    oneoff = copy.deepcopy(original)
+    oneoff['reports']['sbt-pr-13']['reporter']['relationship'] = 'other-user'
+    oneoff['reports']['sbt-pr-13']['scope'] = 'Synthetic one-off non-maintainer use.'
+    oneoff['reports']['sbt-pr-15']['claims'].append('ongoing-use')
+    oneoff['reports']['sbt-pr-15']['ongoingUsers'] = [ongoing_user()]
+    oneoff['criteria']['ongoingUse'].update(state='met', reports=['sbt-pr-13', 'sbt-pr-15'], gap=None,
+        confidenceReason='Synthetic one-off external report plus maintainer ongoing use, but no two consumers.')
+    yield 'one-off outside report does not replace two consumer projects', oneoff, False
+    borrowed_context = copy.deepcopy(context); borrowed_context['criteria']['ongoingUse']['usageContexts'][0]['repository'] = 'nix-purifiers/cargo-purifier'
+    yield 'ongoing context belongs to another purifier', borrowed_context, False
+    invalid_ci = copy.deepcopy(context); invalid_ci['criteria']['ongoingUse']['usageContexts'][0]['kind'] = 'ci-success'
+    yield 'CI status is not a maintainer-use context', invalid_ci, False
+    monorepo = copy.deepcopy(ongoing)
+    monorepo['criteria']['ongoingUse']['consumerProjects'] = [consumer_project(url='https://code.example/consumers/monorepo', project_path='projects/one'), consumer_project(url='https://code.example/consumers/monorepo', project_path='projects/two')]
+    yield 'reviewed distinct monorepo projects can have distinct scoped identities', monorepo, True
 
 
 class HumanUseTests(unittest.TestCase):
@@ -97,10 +166,22 @@ class HumanUseTests(unittest.TestCase):
     def test_review_justification_and_evidence_gaps_are_rendered(self):
         value = fixture()
         self.assertIn(value['criteria']['ongoingUse']['gap'], render_reports(REPOSITORY, value))
-        context = [value for name, value, ok in cases() if name == 'ongoing use from attributable maintained consumer history'][0]
+        context = [value for name, value, ok in cases() if name == 'maintainer ongoing context and two consumers needs no extra report quote'][0]
         rendered = render_reports(REPOSITORY, context)
         self.assertIn(context['criteria']['ongoingUse']['confidenceReason'], rendered)
-        self.assertIn('Primary use context', rendered)
+        self.assertIn('Reviewed private use context', rendered)
+
+    def test_tier_one_requires_maintainer_use_and_two_distinct_real_oss_projects(self):
+        values = {name: (value, expected) for name, value, expected in cases()}
+        positive = values['maintainer use plus two qualified live OSS projects'][0]
+        validate_review(REPOSITORY, positive)
+        technical = {key: {'state': 'met'} for key in TECHNICAL_CRITERIA}
+        self.assertEqual(best_tier(3, dict(technical, **positive['criteria']), True), 1)
+        negative = values['one consumer project is insufficient'][0]
+        with self.assertRaisesRegex(ValueError, 'two distinct'): validate_review(REPOSITORY, negative)
+        duplicate = values['case clone-suffix and host aliases cannot count twice'][0]
+        with self.assertRaisesRegex(ValueError, 'duplicate canonical'): validate_review(REPOSITORY, duplicate)
+        self.assertEqual(set(positive['criteria']), {'firsthandUse', 'ongoingUse'})
 
     def test_tier_three_requires_human_use_and_tier_one_needs_ongoing_use(self):
         technical = {key: {'state': 'met'} for key in TECHNICAL_CRITERIA}

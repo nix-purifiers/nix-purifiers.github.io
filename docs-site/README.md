@@ -2,22 +2,24 @@
 
 ## Tier evidence
 
-Quality registry version 3 keeps technical derivation receipts separate from
-reviewed human-use evidence. Tier 3 and above require a clear attributed
-firsthand human report; sample-project use by a maintainer or contributor can
-qualify. Tier 1 additionally needs qualitative confidence in ongoing real use.
-Credible human reports and attributable maintained-consumer history can support
-that review. No fixed number of users, reports or months establishes it.
+Quality registry version 3 separates technical derivation receipts from human
+use. Tier 3 and above require a clear attributed firsthand human report;
+maintainer or contributor sample-project use can qualify. Tier 1 additionally
+requires ongoing maintainer use plus at least two distinct real open-source
+consumer projects with monitorable signs of life. Consumer records bind repo
+identity, licensing, actual purifier integration, external adoption and activity
+references to a reviewed vitality judgment. Fixtures, copies, name listings and
+popularity or empty CI alone do not establish real consumer use.
 
-`humanUseReview` records dates, subject, stated scope, reporter relationship,
-primary-source or direct-attestation provenance, and explicit evidence gaps.
-Direct attestations may be private. The public projection excludes private
-originals and locations; reviewers inspect the actual report before acceptance.
-Report excerpts and statements about local checks retain their version,
-platform and sandbox limits and do not change technical compatibility evidence.
-The human-use section stays within the existing collapsed criteria details.
-Version 2 remains available only to explicit fixture/history helpers; production readers require version 3. Publication pairs new definitions
-with reviewed version 3 assignments. See [the model](../model/README.md).
+`humanUseReview` records report dates, scope, source/provenance and actual
+ongoing-use subjects with reviewed maintainer status. Contributor or organization
+membership does not determine that status. Direct reports and role evidence can
+be private: only the explicit public projection is exported. No fixed number of
+people, commits or months establishes continuing use; the required two distinct
+consumer projects are checked explicitly. Details remain in the existing
+collapsed criteria section. Version 3 definitions and assignments publish as
+one reviewed transaction; production readers reject version 2. See
+[the model](../model/README.md).
 
 ## Structured behavior model
 
