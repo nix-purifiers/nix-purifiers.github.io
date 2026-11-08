@@ -5,7 +5,7 @@ from pathlib import Path
 import shutil
 import subprocess
 
-from content import audit, feature_matrix, render, source_links
+from content import audit, feature_matrix, render_overview, source_links
 from theme import install_theme
 from reference import guide_plan, reference_text
 from testing import build_testing
@@ -21,9 +21,9 @@ def build(documentation, destination):
     for name, page in catalog.items():
         if name != page['repository'].split('/')[1]:
             raise ValueError(f'{name}: catalog key must match repository name')
-        rendered[name] = render(page, contract)
         text = (Path(__file__).parent / 'references' / (name + '.md')).read_text()
         guides[name] = (guide_plan(page['repository'], text), reference_text(page['repository'], text, page))
+        rendered[name] = render_overview(page, contract, guides[name][0])
     theme = Path(__file__).parent
     install_theme(destination)
     quality = registry()

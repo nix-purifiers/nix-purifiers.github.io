@@ -76,7 +76,7 @@ class CompatibilityTests(unittest.TestCase):
                 self.assertIn(body, overview)
                 self.assertIn(body, guide)
                 self.assertEqual(overview.count('## Version compatibility\n'), 1)
-                self.assertIn('[Version compatibility](./#version-compatibility)', feature_matrix(page, self.contract))
+                self.assertIn('[Version compatibility](reference.html#version-compatibility)', feature_matrix(page, self.contract))
 
     def test_unknown_versions_are_explicit_without_inventing_a_floor(self):
         page = dict(self.page, compatibility=copy.deepcopy(EMPTY))
