@@ -26,32 +26,40 @@
       "state": "unknown"
     },
     "credentials": {
-      "reason": "This capability is not established by the reviewed integration record.",
-      "state": "unknown"
+      "state": "unknown",
+      "reason": "Capture passes Maven settings server/proxy credentials to the lock run, but this bounded record does not establish authenticated Nix prefetch/replay for those repositories; builder fetcher overrides are separate."
     },
     "dependency_sources": {
-      "reason": "This capability is not established by the reviewed integration record.",
-      "state": "unknown"
+      "state": "known",
+      "value": [
+        "Maven repositories selected by POMs and settings.xml mirrors/profiles",
+        "Plugin downloads explicitly declared in .mvn/maven-purifier.json"
+      ],
+      "sources": [
+        "https://github.com/nix-purifiers/maven-purifier/blob/20e822558ce637a5c5672d68af667a98e243b300/cli/maven_purifier.py#L535",
+        "https://github.com/nix-purifiers/maven-purifier/blob/20e822558ce637a5c5672d68af667a98e243b300/README.md#L312",
+        "https://github.com/nix-purifiers/maven-purifier/blob/20e822558ce637a5c5672d68af667a98e243b300/README.md#L333"
+      ]
     },
     "editor_completion": {
-      "reason": "This capability is not established by the reviewed integration record.",
-      "state": "unknown"
+      "state": "unknown",
+      "reason": "The existing editor/toolchain setup does not by itself establish LSP completion. No protocol-level result for this capability is asserted in this bounded backfill."
     },
     "editor_dependency_sources": {
-      "reason": "This capability is not established by the reviewed integration record.",
-      "state": "unknown"
+      "state": "unknown",
+      "reason": "The existing editor/toolchain setup does not by itself establish LSP dependency-source retrieval. No protocol-level result for this capability is asserted in this bounded backfill."
     },
     "editor_diagnostics": {
-      "reason": "This capability is not established by the reviewed integration record.",
-      "state": "unknown"
+      "state": "unknown",
+      "reason": "The existing editor/toolchain setup does not by itself establish LSP diagnostics. No protocol-level result for this capability is asserted in this bounded backfill."
     },
     "editor_metadata_format": {
       "reason": "This capability is not established by the reviewed integration record.",
       "state": "unknown"
     },
     "editor_navigation": {
-      "reason": "This capability is not established by the reviewed integration record.",
-      "state": "unknown"
+      "state": "unknown",
+      "reason": "The existing editor/toolchain setup does not by itself establish LSP definition lookup. No protocol-level result for this capability is asserted in this bounded backfill."
     },
     "editor_offline": {
       "sources": [],
@@ -73,8 +81,13 @@
       "state": "unknown"
     },
     "inputs": {
-      "reason": "This capability is not established by the reviewed integration record.",
-      "state": "unknown"
+      "state": "known",
+      "value": [
+        "pom.xml"
+      ],
+      "sources": [
+        "https://github.com/nix-purifiers/maven-purifier/blob/20e822558ce637a5c5672d68af667a98e243b300/cli/maven_purifier.py#L231"
+      ]
     },
     "integration": {
       "sources": [],
@@ -123,16 +136,37 @@
       "value": "pkgs.maven-purifier.buildMavenProject"
     },
     "offline_limits": {
-      "reason": "This capability is not established by the reviewed integration record.",
-      "state": "unknown"
+      "state": "known",
+      "value": [
+        "Only dependencies/plugins and active profiles covered by the recorded goals and settings are locked.",
+        "Plugin downloads outside Maven Resolver require explicit .mvn/maven-purifier.json entries.",
+        "An editor using different Maven default-plugin versions may need explicit pluginManagement versions."
+      ],
+      "sources": [
+        "https://github.com/nix-purifiers/maven-purifier/blob/20e822558ce637a5c5672d68af667a98e243b300/README.md#L69",
+        "https://github.com/nix-purifiers/maven-purifier/blob/20e822558ce637a5c5672d68af667a98e243b300/README.md#L333",
+        "https://github.com/nix-purifiers/maven-purifier/blob/20e822558ce637a5c5672d68af667a98e243b300/README.md#L278"
+      ]
     },
     "offline_scope": {
-      "reason": "This capability is not established by the reviewed integration record.",
-      "state": "unknown"
+      "state": "known",
+      "value": "locked-dependencies",
+      "sources": [
+        "https://github.com/nix-purifiers/maven-purifier/blob/20e822558ce637a5c5672d68af667a98e243b300/cli/maven_purifier.py#L1202",
+        "https://github.com/nix-purifiers/maven-purifier/blob/20e822558ce637a5c5672d68af667a98e243b300/nix/lib/build-maven-project.nix#L236"
+      ]
     },
     "platform_notes": {
-      "reason": "This capability is not established by the reviewed integration record.",
-      "state": "unknown"
+      "state": "known",
+      "value": [
+        "The retained technical review covers native x86_64-linux, aarch64-linux and aarch64-darwin.",
+        "No Intel Darwin, cross-compilation or unlisted SDK/system combination is established by that review."
+      ],
+      "sources": [
+        "https://github.com/nix-purifiers/maven-purifier/blob/382fb8ec30e8ea8fad98dbb58ac68e47107f0b2b/tests/default.nix",
+        "https://nix-purifiers.github.io/evidence/7cea543ca47c5fea1d96cefa73b1ad3666677e49c8f6bff7151e433f96fcf578.json",
+        "https://nix-purifiers.github.io/evidence/2be0ce9c6fcc6fb2d665b2b2ffc6f7b30f11f3c118b20ac704486c35ad7173e1.json"
+      ]
     },
     "platforms": {
       "state": "known",
@@ -203,16 +237,20 @@
       ]
     },
     "relock": {
-      "reason": "This capability is not established by the reviewed integration record.",
-      "state": "unknown"
+      "state": "known",
+      "value": "preserves-pins",
+      "sources": [
+        "https://github.com/nix-purifiers/maven-purifier/blob/20e822558ce637a5c5672d68af667a98e243b300/cli/maven_purifier.py#L773",
+        "https://github.com/nix-purifiers/maven-purifier/blob/20e822558ce637a5c5672d68af667a98e243b300/README.md#L46"
+      ]
     },
     "runtime_requirements": {
       "reason": "This capability is not established by the reviewed integration record.",
       "state": "unknown"
     },
     "stale_lock": {
-      "reason": "This capability is not established by the reviewed integration record.",
-      "state": "unknown"
+      "state": "unknown",
+      "reason": "Prefetch, publish and the Nix builder reject changed POM/.mvn/goals with a repair command. This record does not establish equivalent stale-lock rejection for every direct invocation of already-prefetched native Maven."
     },
     "supported_native_commands": {
       "reason": "This capability is not established by the reviewed integration record.",

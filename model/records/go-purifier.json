@@ -26,32 +26,44 @@
       "state": "unknown"
     },
     "credentials": {
-      "reason": "This capability is not established by the reviewed integration record.",
-      "state": "unknown"
+      "state": "unknown",
+      "reason": "This bounded record does not establish credential propagation through both native capture and Nix prefetch for private dependency sources; builder fetcher overrides are not evidence of default transport authentication."
     },
     "dependency_sources": {
-      "reason": "This capability is not established by the reviewed integration record.",
-      "state": "unknown"
+      "state": "known",
+      "value": [
+        "HTTP(S) Go module proxies",
+        "Git",
+        "Mercurial",
+        "Subversion",
+        "Bazaar",
+        "Fossil"
+      ],
+      "sources": [
+        "https://github.com/nix-purifiers/go-purifier/blob/173abcff84f4c216b67e8660a7f72e36dbdcb207/cmd/go-purifier/lock.go#L446",
+        "https://github.com/nix-purifiers/go-purifier/blob/173abcff84f4c216b67e8660a7f72e36dbdcb207/cmd/go-purifier/vcs.go",
+        "https://github.com/nix-purifiers/go-purifier/blob/173abcff84f4c216b67e8660a7f72e36dbdcb207/README.md#L252"
+      ]
     },
     "editor_completion": {
-      "reason": "This capability is not established by the reviewed integration record.",
-      "state": "unknown"
+      "state": "unknown",
+      "reason": "The existing editor/toolchain setup does not by itself establish LSP completion. No protocol-level result for this capability is asserted in this bounded backfill."
     },
     "editor_dependency_sources": {
-      "reason": "This capability is not established by the reviewed integration record.",
-      "state": "unknown"
+      "state": "unknown",
+      "reason": "The existing editor/toolchain setup does not by itself establish LSP dependency-source retrieval. No protocol-level result for this capability is asserted in this bounded backfill."
     },
     "editor_diagnostics": {
-      "reason": "This capability is not established by the reviewed integration record.",
-      "state": "unknown"
+      "state": "unknown",
+      "reason": "The existing editor/toolchain setup does not by itself establish LSP diagnostics. No protocol-level result for this capability is asserted in this bounded backfill."
     },
     "editor_metadata_format": {
       "reason": "This capability is not established by the reviewed integration record.",
       "state": "unknown"
     },
     "editor_navigation": {
-      "reason": "This capability is not established by the reviewed integration record.",
-      "state": "unknown"
+      "state": "unknown",
+      "reason": "The existing editor/toolchain setup does not by itself establish LSP definition lookup. No protocol-level result for this capability is asserted in this bounded backfill."
     },
     "editor_offline": {
       "sources": [],
@@ -73,8 +85,14 @@
       "state": "unknown"
     },
     "inputs": {
-      "reason": "This capability is not established by the reviewed integration record.",
-      "state": "unknown"
+      "state": "known",
+      "value": [
+        "go.mod"
+      ],
+      "sources": [
+        "https://github.com/nix-purifiers/go-purifier/blob/173abcff84f4c216b67e8660a7f72e36dbdcb207/cmd/go-purifier/root.go#L36",
+        "https://github.com/nix-purifiers/go-purifier/blob/173abcff84f4c216b67e8660a7f72e36dbdcb207/README.md#L51"
+      ]
     },
     "integration": {
       "sources": [],
@@ -94,28 +112,31 @@
       ]
     },
     "missing_lock": {
-      "reason": "This capability is not established by the reviewed integration record.",
-      "state": "unknown"
+      "state": "known",
+      "value": "warn-and-native",
+      "sources": [
+        "https://github.com/nix-purifiers/go-purifier/blob/173abcff84f4c216b67e8660a7f72e36dbdcb207/cmd/go-purifier/wrapper.go#L257"
+      ]
     },
     "named_update_example": {
       "reason": "This capability is not established by the reviewed integration record.",
       "state": "unknown"
     },
     "native_plugin_bootstrap": {
-      "reason": "This capability is not established by the reviewed integration record.",
-      "state": "unknown"
+      "state": "not-applicable",
+      "reason": "This integration uses a native-tool wrapper, not a published JVM/native build-tool plugin; plugin coordinates, bootstrap repository and Java target do not apply."
     },
     "native_plugin_coordinate": {
-      "reason": "This capability is not established by the reviewed integration record.",
-      "state": "unknown"
+      "state": "not-applicable",
+      "reason": "This integration uses a native-tool wrapper, not a published JVM/native build-tool plugin; plugin coordinates, bootstrap repository and Java target do not apply."
     },
     "native_plugin_java_target": {
-      "reason": "This capability is not established by the reviewed integration record.",
-      "state": "unknown"
+      "state": "not-applicable",
+      "reason": "This integration uses a native-tool wrapper, not a published JVM/native build-tool plugin; plugin coordinates, bootstrap repository and Java target do not apply."
     },
     "native_plugin_repository": {
-      "reason": "This capability is not established by the reviewed integration record.",
-      "state": "unknown"
+      "state": "not-applicable",
+      "reason": "This integration uses a native-tool wrapper, not a published JVM/native build-tool plugin; plugin coordinates, bootstrap repository and Java target do not apply."
     },
     "nix_builder": {
       "sources": [],
@@ -123,12 +144,25 @@
       "value": "pkgs.go-purifier.buildGoProject"
     },
     "offline_limits": {
-      "reason": "This capability is not established by the reviewed integration record.",
-      "state": "unknown"
+      "state": "known",
+      "value": [
+        "Dependency-changing commands may resolve through the user GOPROXY; lock again before ordinary builds.",
+        "GO_PURIFIER=0 bypasses locked resolution.",
+        "Downloads by project scripts and native cgo libraries are outside the module lock; supply native libraries through buildInputs."
+      ],
+      "sources": [
+        "https://github.com/nix-purifiers/go-purifier/blob/173abcff84f4c216b67e8660a7f72e36dbdcb207/cmd/go-purifier/wrapper.go#L270",
+        "https://github.com/nix-purifiers/go-purifier/blob/173abcff84f4c216b67e8660a7f72e36dbdcb207/README.md#L282",
+        "https://github.com/nix-purifiers/go-purifier/blob/173abcff84f4c216b67e8660a7f72e36dbdcb207/README.md#L69"
+      ]
     },
     "offline_scope": {
-      "reason": "This capability is not established by the reviewed integration record.",
-      "state": "unknown"
+      "state": "known",
+      "value": "locked-dependencies",
+      "sources": [
+        "https://github.com/nix-purifiers/go-purifier/blob/173abcff84f4c216b67e8660a7f72e36dbdcb207/cmd/go-purifier/wrapper.go#L314",
+        "https://github.com/nix-purifiers/go-purifier/blob/173abcff84f4c216b67e8660a7f72e36dbdcb207/README.md#L282"
+      ]
     },
     "platform_notes": {
       "sources": [],
@@ -212,16 +246,20 @@
       ]
     },
     "relock": {
-      "reason": "This capability is not established by the reviewed integration record.",
-      "state": "unknown"
+      "state": "known",
+      "value": "preserves-pins",
+      "sources": [
+        "https://github.com/nix-purifiers/go-purifier/blob/173abcff84f4c216b67e8660a7f72e36dbdcb207/cmd/go-purifier/lock.go#L166",
+        "https://github.com/nix-purifiers/go-purifier/blob/173abcff84f4c216b67e8660a7f72e36dbdcb207/README.md#L232"
+      ]
     },
     "runtime_requirements": {
       "reason": "This capability is not established by the reviewed integration record.",
       "state": "unknown"
     },
     "stale_lock": {
-      "reason": "This capability is not established by the reviewed integration record.",
-      "state": "unknown"
+      "state": "unknown",
+      "reason": "Build/test/run commands reject stale module definitions with a repair command; dependency-changing commands may instead use native resolution. This mixed wrapper behavior is not represented by one general stale-lock enum value."
     },
     "supported_native_commands": {
       "reason": "This capability is not established by the reviewed integration record.",

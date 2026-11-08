@@ -152,6 +152,113 @@
     "editor_offline": {
       "state": "known",
       "value": true
+    },
+    "inputs": {
+      "state": "known",
+      "value": [
+        "meson.build"
+      ],
+      "sources": [
+        "https://github.com/nix-purifiers/meson-purifier/blob/d9b1bc384669817635c649ec3aba52c8aae66d74/pkgs/cli/meson_purifier.py#L84"
+      ]
+    },
+    "dependency_sources": {
+      "state": "known",
+      "value": [
+        "WrapDB and HTTP(S) wrap archives",
+        "Git",
+        "Mercurial",
+        "Subversion"
+      ],
+      "sources": [
+        "https://github.com/nix-purifiers/meson-purifier/blob/d9b1bc384669817635c649ec3aba52c8aae66d74/pkgs/cli/meson_purifier.py#L261",
+        "https://github.com/nix-purifiers/meson-purifier/blob/d9b1bc384669817635c649ec3aba52c8aae66d74/pkgs/cli/meson_purifier.py#L281",
+        "https://github.com/nix-purifiers/meson-purifier/blob/d9b1bc384669817635c649ec3aba52c8aae66d74/README.md#L218"
+      ]
+    },
+    "missing_lock": {
+      "state": "known",
+      "value": "warn-and-native",
+      "sources": [
+        "https://github.com/nix-purifiers/meson-purifier/blob/d9b1bc384669817635c649ec3aba52c8aae66d74/pkgs/cli/meson_purifier.py#L978"
+      ]
+    },
+    "stale_lock": {
+      "state": "unknown",
+      "reason": "Wrap changes and invalid locks fail with a repair command, but edits only to meson.build leave interactive dependency downloads usable and the builder warns about recorded outputs. The general stale-lock enum cannot express both paths."
+    },
+    "offline_scope": {
+      "state": "known",
+      "value": "locked-dependencies",
+      "sources": [
+        "https://github.com/nix-purifiers/meson-purifier/blob/d9b1bc384669817635c649ec3aba52c8aae66d74/pkgs/cli/meson_purifier.py#L910",
+        "https://github.com/nix-purifiers/meson-purifier/blob/d9b1bc384669817635c649ec3aba52c8aae66d74/pkgs/cli/meson_purifier.py#L920"
+      ]
+    },
+    "offline_limits": {
+      "state": "known",
+      "value": [
+        "Dependency-changing meson wrap/subprojects commands use native resolution and require locking again.",
+        "An explicit --wrap-mode argument is retained instead of forcing nodownload.",
+        "Arbitrary downloads performed by project configuration/build steps are outside the wrapped dependency cache."
+      ],
+      "sources": [
+        "https://github.com/nix-purifiers/meson-purifier/blob/d9b1bc384669817635c649ec3aba52c8aae66d74/pkgs/cli/meson_purifier.py#L981",
+        "https://github.com/nix-purifiers/meson-purifier/blob/d9b1bc384669817635c649ec3aba52c8aae66d74/pkgs/cli/meson_purifier.py#L918",
+        "https://github.com/nix-purifiers/meson-purifier/blob/d9b1bc384669817635c649ec3aba52c8aae66d74/README.md#L56"
+      ]
+    },
+    "relock": {
+      "state": "unknown",
+      "reason": "Archive hashes and fixed VCS revisions are retained, but floating VCS branches are resolved again. The current preserves-pins/re-resolves enum cannot express that mixed behavior without losing scope."
+    },
+    "platform_notes": {
+      "state": "known",
+      "value": [
+        "The retained technical review covers native x86_64-linux, aarch64-linux and aarch64-darwin.",
+        "No Intel Darwin, cross-compilation or unlisted SDK/system combination is established by that review."
+      ],
+      "sources": [
+        "https://nix-purifiers.github.io/evidence/cb4c495ac6de21575770182a7b7a5cf846a36a7b726e2a68e30cb69711a79887.json",
+        "https://nix-purifiers.github.io/evidence/9be9a95a65a1208c0b0981e94d9bb0a7fa5e2061731173a24c89098239f3de6b.json",
+        "https://nix-purifiers.github.io/evidence/0f3d00fed8d2d4535b26adfcadd58243bf932a0aeb2a19cd3b56448ac125ac38.json"
+      ]
+    },
+    "editor_completion": {
+      "state": "unknown",
+      "reason": "The existing editor/toolchain setup does not by itself establish LSP completion. No protocol-level result for this capability is asserted in this bounded backfill."
+    },
+    "editor_diagnostics": {
+      "state": "unknown",
+      "reason": "The existing editor/toolchain setup does not by itself establish LSP diagnostics. No protocol-level result for this capability is asserted in this bounded backfill."
+    },
+    "editor_navigation": {
+      "state": "unknown",
+      "reason": "The existing editor/toolchain setup does not by itself establish LSP definition lookup. No protocol-level result for this capability is asserted in this bounded backfill."
+    },
+    "editor_dependency_sources": {
+      "state": "unknown",
+      "reason": "The existing editor/toolchain setup does not by itself establish LSP dependency-source retrieval. No protocol-level result for this capability is asserted in this bounded backfill."
+    },
+    "credentials": {
+      "state": "unknown",
+      "reason": "This bounded record does not establish credential propagation through both native capture and Nix prefetch for private dependency sources; builder fetcher overrides are not evidence of default transport authentication."
+    },
+    "native_plugin_coordinate": {
+      "state": "not-applicable",
+      "reason": "This integration uses a native-tool wrapper, not a published JVM/native build-tool plugin; plugin coordinates, bootstrap repository and Java target do not apply."
+    },
+    "native_plugin_repository": {
+      "state": "not-applicable",
+      "reason": "This integration uses a native-tool wrapper, not a published JVM/native build-tool plugin; plugin coordinates, bootstrap repository and Java target do not apply."
+    },
+    "native_plugin_bootstrap": {
+      "state": "not-applicable",
+      "reason": "This integration uses a native-tool wrapper, not a published JVM/native build-tool plugin; plugin coordinates, bootstrap repository and Java target do not apply."
+    },
+    "native_plugin_java_target": {
+      "state": "not-applicable",
+      "reason": "This integration uses a native-tool wrapper, not a published JVM/native build-tool plugin; plugin coordinates, bootstrap repository and Java target do not apply."
     }
   },
   "operations": {
