@@ -269,9 +269,10 @@ def render_overview(page, contract, plan=None):
         if key == 'versions':
             if 'versionCompatibility' not in contract:
                 continue
+            label = contract['versionCompatibility']['title']
         elif key not in plan['sections'] or 'omit' in plan['sections'][key]:
             continue
         title = titles.get(key, label)
-        links.append(f'[{label}](reference.html#{slug(title)})')
+        links.append(f'[{title}](reference.html#{slug(title)})')
     output.append('## More information\n\n' + ' · '.join(links) + '.')
     return '\n\n'.join(output) + '\n', differences
