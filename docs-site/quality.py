@@ -148,7 +148,7 @@ def render_tiers(data):
               ('Technical assessments are revision-bound; human reports retain their own dates and stated use scope. ' if data['version'] == 3 else 'Assessments are revision-bound. ') + 'Non-EOL coverage needs an upstream support-policy review; historical version points alone do not establish it. Local drafts and native experiments are not published purifiers.',
               'The registry covers published purifiers, including projects not yet in the structured behavior catalog. [Machine-readable assessments](quality.json).']
     if data['version'] == 3:
-        lines += ['A clear human firsthand report can include maintainer or contributor sample-project use. Ongoing real usage is a separate reviewed judgment; neither criterion is inferred from CI or authorship. Direct attestations may be private, with only reviewed scope disclosed.']
+        lines += ['A clear human firsthand report can include maintainer or contributor sample-project use. Tier 1 additionally requires reviewed ongoing maintainer use plus at least two distinct real open-source consumer projects with monitorable signs of life. Contributor or organization affiliation alone does not establish use or maintainer status; neither human criterion is inferred from CI or authorship. Direct attestations may be private, with only reviewed scope disclosed.']
     for tier in definitions:
         group = [(name, q) for name, q in sorted(data['projects'].items()) if q['tier'] == tier]
         if not group:

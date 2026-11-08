@@ -6,59 +6,53 @@ requiring a page. Documentation lives separately in `docs-site/projects/`.
 
 ## Quality tiers
 
-`tiers.json` records a reviewed tier for every published purifier, independently
-of the exact version compatibility points. `nix eval --json .#qualityTiers`
-exports the complete registry, including purifiers outside the structured
-behavior catalog. Modeled projects also expose their assessment as `quality`.
+`tiers.json` records a reviewed tier for every published purifier, separately
+from exact version compatibility points. `nix eval --json .#qualityTiers`
+exports the complete registry; modeled projects expose it as `quality`.
+Version 3 has eight technical criteria and two human-use criteria, each with
+an explicit `met` or `not-met` judgment and scoped evidence.
 
-The four definitions are stored in the registry. Every assignment records its
-reviewed revision and date, confirmed sample builds, and a completed `met` or
-`not-met` judgment for eight technical criteria and two human-use criteria. `not-met` means the inspected evidence
-does not demonstrate the criterion; it does not establish a tool failure.
+Technical criteria retain `derivationReview`: executable Nix derivations,
+immutable source revisions, actual native execution and SDK roles, and retained
+receipts. Definition and support-policy links explain judgments; they do not
+prove execution. Original bytes stay content-addressed in `docs-site/evidence/`
+and indexed by `review-artifacts.json`.
 
-The eight technical criteria bind capability claims through `derivationReview` to executable
-Nix derivations, immutable source revisions, native systems, actual SDK roles,
-and retained execution receipts. Evaluation-only receipts establish evaluation.
-Local realization may reuse outputs; native CI execution and observed output
-identities are recorded separately. Unobserved NAR hashes and missing historical
-replay files remain explicit. Original receipt bytes are content-addressed under
-`docs-site/evidence/` and indexed by `review-artifacts.json`. Definition and
-maintenance-policy references explain the review; they do not prove execution.
+Tier 3 requires a clear attributed human firsthand-use report. Maintainer or
+contributor sample-project use can qualify; Tier 2 inherits this requirement.
+A report can use a primary public source or a supplied direct attestation.
+It needs no formal wording, production project, public identity or independent
+company. AI assistance does not disqualify a clear attributed report. CI,
+authorship and our generated prose do not establish human use.
 
-Version 3 adds `humanUseReview` separately from the derivation receipts.
-Tier 3 requires a clear attributed human firsthand report, including a maintainer
-or contributor using sample projects. Tiers 2 and 1 inherit that requirement.
-Tier 1 also needs reviewed confidence in ongoing real use, supported by human
-reports and/or attributable maintained-consumer usage history. Dates, scope,
-reporter relationship and provenance remain explicit. CI, authorship and our
-prose do not establish human use; repeated development checks do not by
-themselves establish continuing usage. AI assistance does not disqualify an
-otherwise clear attributed firsthand report.
+Tier 1 additionally requires ongoing **maintainer** use and at least **two
+distinct real open-source consumer projects** with monitorable signs of life.
+`ongoingUse` records the actual ongoing-use subjects and reviewed role basis,
+not a role inferred from the report author's organization membership.
+Consumer records bind canonical project identity and scope to a public repo,
+open-source basis, actual purifier integration, activity-monitoring references,
+beyond-maintainer adoption and a reviewed vitality judgment. URL aliases do
+not count as separate projects; monorepo scopes need reviewed distinct project
+identities. Fixtures, demos, copies and name catalogues do not qualify. CI,
+stars or downloads alone do not establish vitality. There is no additional
+people-count, commit-count or month threshold: the two-project requirement is
+explicit, and the continuing-use judgment remains qualitative.
 
-A report can point to a primary public source or record a supplied direct
-attestation. No public URL, production project, formal attestation wording,
-identity check or independent-user status is required. Private originals stay
-outside the public repository: `public_report`/`publicReport` select an explicit
-reviewed public projection, with an opaque provenance reference and scoped
-summary. Review the original before accepting a report; structural validation
-does not authenticate what a person said. Ongoing-use contexts have their own
-typed subject, source, attribution and scope rather than pretending to be human
-reports. Neither criterion uses a fixed user-count or duration threshold.
+Private originals stay outside the public repository. `public_report` and
+`publicReport` select an explicit privacy-safe public projection with opaque
+provenance references. Maintainer-use reports and role evidence can be private;
+consumer repositories, integration and activity references remain monitorable.
+Review original evidence before accepting a record: typed validators enforce
+bindings and eligibility, not the authenticity of a human statement or source.
+Missing reports have bounded-review gaps rather than claims that nobody uses
+a tool. Human reports keep their own dates and stated version/platform limits;
+they do not change the technical derivation judgments.
 
-`tier-policy.json` is the shared Nix/Python criterion and gate vocabulary.
-Version 2 is available only to explicit fixture/history helpers; production readers require version 3. New definitions and ranks are published
-only together in a completed, reviewed version 3 registry. A missing human
-report has an honest bounded-review gap, preserving the technical evidence.
-
-“Good tests,” “many samples” and long compatibility are reviewed judgments rather
-than numerical thresholds. Declaring Darwin or evaluating its derivations does
-not establish that Darwin works; old version points do not establish coverage
-of upstream non-EOL versions.
-
-Promotion requires all the tier's criteria and supporting evidence. Even Tier 4
-requires evaluation evidence. Local drafts and proof-only experiments are not
-included in the published inventory. Assessments must be reviewed again when
-their scope changes or upstream support windows move.
+`tier-policy.json` is shared by Nix and Python. Production readers require
+version 3 and reject downgrade or missing human-use fields. Version 2 helpers
+are only for explicit fixture/history use. Definitions and reviewed ranks are
+published together. Even Tier 4 requires evaluation evidence. “Good tests,”
+“many samples” and long compatibility remain reviewed technical judgments.
 
 ## Ownership boundary
 

@@ -8,7 +8,7 @@ let
     let rule = policy.tiers.${tier};
     in (rule.sampleBuild or false) || (rule ? base && sample rule.base);
 in {
-  inherit (policy) technicalCriteria humanCriteria labels;
+  inherit (policy) technicalCriteria humanCriteria labels ongoingUse;
   requireCurrentRegistry = version: if builtins.isInt version && version == 3 then true else throw "Production quality requires registry version 3";
   criterionKeys = version:
     if !(builtins.isInt version) then throw "Unsupported quality registry version"
