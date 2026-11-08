@@ -247,7 +247,7 @@ def render_overview(page, contract, plan=None):
         plan = json.loads((Path(__file__).parent / 'guides' / (name + '.json')).read_text())
     # Explicit wrapper/offline/builder contracts carry operational caveats;
     # retain them alongside the initial commands rather than generic copy.
-    retained = {'quickstart', 'workflow', 'scope'}
+    retained = {'quickstart', 'workflow', 'offline', 'scope'}
     for key in ('integration', 'offline', 'nix_builds'):
         if page['sections'][key].get('use') not in {'native', 'preparation', None}:
             retained.add(key)
