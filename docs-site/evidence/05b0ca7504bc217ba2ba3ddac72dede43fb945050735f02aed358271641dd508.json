@@ -1,0 +1,8 @@
+{
+  "kind": "source-file",
+  "sourceRevision": "6224f397952839f1e86935c62a097a7ce755df73",
+  "sourceNarHash": "sha256-hhFi/r+aoNpPP5OMkpLXn2D/RifLNktalRN7gbUp1/s=",
+  "path": "tests/legacy-node.nix",
+  "sha256": "879ac07ddc1a9d6619ad8be9e5cbb01cc0d8384170f58b11769d7af29b086c03",
+  "content": "# SPDX-License-Identifier: MIT\n{\n  pkgs,\n  buildNpmProject,\n  version ? \"12.22.12\",\n  abi ? \"72\",\n  src ? ./fixtures/legacy-node,\n}:\nlet\n  node = import ./node-fixture.nix {\n    inherit pkgs;\n    inherit version;\n  };\n  project = buildNpmProject {\n    inherit src;\n    inherit node;\n    doCheck = true;\n    nativeBuildInputs = [ ];\n  };\nin\npkgs.runCommand \"npm-legacy-node\"\n  {\n    passthru = {\n      inherit (project) release;\n      repository = project.packages.legacy-npm-app.projections.npm;\n    };\n    nativeBuildInputs = [\n      project.packages.legacy-npm-app\n      pkgs.python3\n    ];\n  }\n  ''\n    test \"$(legacy-npm-app)\" = \"42 on v${version}\"\n    test ! -e ${project.packages.legacy-npm-app}/lib/node_modules/is-odd\n    test \"$(tar -xOf ${project.release}/legacy-npm-app.tgz package/built.txt)\" = v${version}\n    python - ${project.release.graph}/graph.json <<'PY'\n    import json, sys\n    graph = json.load(open(sys.argv[1]))\n    assert graph['nodeVersion'] == '${version}'\n    assert graph['nodeAbi'] == '${abi}'\n    assert graph['targetRuntime']['version'] != graph['helperRuntime']['version']\n    PY\n    test -e ${project.packages.legacy-npm-app.projections.npm.catalog}\n    touch \"$out\"\n  ''\n"
+}
