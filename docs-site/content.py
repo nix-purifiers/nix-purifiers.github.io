@@ -259,7 +259,7 @@ def render_overview(page, contract, plan=None):
             # A missing lock can change whether dependency resolution is pure.
             # Keep that decision visible even when the detailed mechanism moves.
             if page['facts']['missing_lock'].get('value') == 'warn-and-native':
-                output.append('Without an applicable lock, the integration warns and runs the ordinary native tool.')
+                output.append('## ' + spec['title'] + '\n\nWithout an applicable lock, the integration warns and runs the ordinary native tool.')
     links = []
     titles = {s['id']: s['title'] for s in contract['sections']}
     for key, label in [('setup', 'Setup and activation'), ('versions', 'Version compatibility'),
