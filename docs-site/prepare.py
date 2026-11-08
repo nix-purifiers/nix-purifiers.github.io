@@ -3,7 +3,7 @@ import argparse
 import json
 from pathlib import Path
 import re
-from content import audit, feature_matrix, render, source_links
+from content import audit, feature_matrix, render, render_overview, source_links
 from theme import install_theme
 from review import canonical_review, resolve_review, SourceDrift
 from reference import guide_plan, reference_text
@@ -109,7 +109,9 @@ if differences is not None:
     revision = review.revision if review is not None and review.page is not None else 'main'
     plan = review.guide_plan if review is not None else None
     if guide is not None:
-        (source / 'guide-structure.json').write_text(json.dumps(guide_plan(args.repository, guide, plan), indent=2) + '\n')
+        resolved_plan = guide_plan(args.repository, guide, plan)
+        text, _ = render_overview(page, contract, resolved_plan)
+        (source / 'guide-structure.json').write_text(json.dumps(resolved_plan, indent=2) + '\n')
         (source / 'reference.md').write_text('---\nlayout: default\n---\n\n' + source_links(reference_text(args.repository, guide, page, plan), args.repository, revision))
 else:
     for filename in ('content-variations.json', 'system.json', 'features.md', 'reference.md', 'guide-structure.json'):

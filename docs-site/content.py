@@ -45,7 +45,7 @@ def feature_matrix(page, contract):
         description = definition.get('description', '')
         lines.append(f'| <span title="{escape(description, quote=True)}">{cell(label)}</span> | '
                      f'{cell(behavior)} |')
-    return '\n\n'.join(lines[:2]) + '\n\n' + '\n'.join(lines[2:]) + ('\n\nFor tested versions and requirements, see [Version compatibility](./#version-compatibility).\n' if 'versionCompatibility' in contract else '\n')
+    return '\n\n'.join(lines[:2]) + '\n\n' + '\n'.join(lines[2:]) + ('\n\nFor tested versions and requirements, see [Version compatibility](reference.html#version-compatibility).\n' if 'versionCompatibility' in contract else '\n')
 
 
 def nonempty(value, label):
@@ -230,4 +230,48 @@ def render(page, contract):
         section = render_compatibility(page, contract)
         position = next((i + 1 for i, block in enumerate(output) if block.startswith('## Quickstart\n')), 2)
         output.insert(position, section)
+    return '\n\n'.join(output) + '\n', differences
+
+
+def render_overview(page, contract, plan=None):
+    """Keep initial use and material limits visible; link to canonical detail."""
+    import json
+    from pathlib import Path
+    from reference import source_sections, slug
+
+    complete, differences = render(page, contract)
+    introduction, sections = source_sections(complete)
+    bodies = dict(sections)
+    name = page['repository'].split('/')[1]
+    if plan is None:
+        plan = json.loads((Path(__file__).parent / 'guides' / (name + '.json')).read_text())
+    # Explicit wrapper/offline/builder contracts carry operational caveats;
+    # retain them alongside the initial commands rather than generic copy.
+    retained = {'quickstart', 'workflow', 'scope'}
+    for key in ('integration', 'offline', 'nix_builds'):
+        if page['sections'][key].get('use') not in {'native', 'preparation', None}:
+            retained.add(key)
+    output = ['# ' + name, introduction]
+    for spec in contract['sections']:
+        if spec['id'] in retained and spec['title'] in bodies:
+            output.append('## ' + spec['title'] + '\n\n' + bodies[spec['title']])
+        elif spec['id'] == 'integration':
+            # A missing lock can change whether dependency resolution is pure.
+            # Keep that decision visible even when the detailed mechanism moves.
+            if page['facts']['missing_lock'].get('value') == 'warn-and-native':
+                output.append('Without an applicable lock, the integration warns and runs the ordinary native tool.')
+    links = []
+    titles = {s['id']: s['title'] for s in contract['sections']}
+    for key, label in [('setup', 'Setup and activation'), ('versions', 'Version compatibility'),
+                       ('integration', 'Native integration'), ('offline', 'Working offline'),
+                       ('editor', 'Language tooling integration'), ('nix_builds', 'Nix builds'),
+                       ('projections', 'Project projections'), ('troubleshooting', 'Troubleshooting')]:
+        if key == 'versions':
+            if 'versionCompatibility' not in contract:
+                continue
+        elif key not in plan['sections'] or 'omit' in plan['sections'][key]:
+            continue
+        title = titles.get(key, label)
+        links.append(f'[{label}](reference.html#{slug(title)})')
+    output.append('## More information\n\n' + ' · '.join(links) + '.')
     return '\n\n'.join(output) + '\n', differences
