@@ -96,6 +96,7 @@ def cases():
         ('CI alone does not establish signs of life', lambda r: r['criteria']['ongoingUse']['consumerProjects'][0]['activityMonitoring'][0].update(kind='ci-only')),
         ('stars alone do not establish signs of life', lambda r: r['criteria']['ongoingUse']['consumerProjects'][0]['activityMonitoring'][0].update(kind='stars-only')),
         ('downloads alone do not establish signs of life', lambda r: r['criteria']['ongoingUse']['consumerProjects'][0]['activityMonitoring'][0].update(kind='downloads-only')),
+        ('consumer repository URL cannot hide whitespace in query', lambda r: r['criteria']['ongoingUse']['consumerProjects'][0].update(publicRepository='https://code.example/consumers/project-one?ignored=\u00a0')),
         ('consumer license needs primary basis', lambda r: r['criteria']['ongoingUse']['consumerProjects'][0]['openSourceBasis'].update(sourceUrl='')),
         ('consumer integration cannot borrow another project', lambda r: r['criteria']['ongoingUse']['consumerProjects'][0]['integration'].update(sourceUrl='https://code.example/other/project/flake.nix')),
         ('activity monitoring cannot borrow another project', lambda r: r['criteria']['ongoingUse']['consumerProjects'][0]['activityMonitoring'][0].update(projectIdentity='https://code.example/other/project')),
