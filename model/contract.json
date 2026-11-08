@@ -220,11 +220,11 @@
         "unsupported"
       ],
       "label": "Incoming projections",
-      "description": "Consumes other Nix-built projects through native repository projections."
+      "description": "Consumes other Nix-built projects through typed repository or resource projections."
     },
     "projection_incoming_formats": {
       "type": "strings",
-      "description": "Supported native projection formats.",
+      "description": "Supported typed artifact projection formats.",
       "matrix": true,
       "label": "Incoming projection formats",
       "itemsEnum": [
@@ -235,7 +235,8 @@
         "go",
         "npm",
         "cargo",
-        "composer"
+        "composer",
+        "resources"
       ],
       "itemLabels": {
         "maven": "Maven",
@@ -245,7 +246,8 @@
         "go": "Go module proxy",
         "npm": "npm",
         "cargo": "Cargo",
-        "composer": "Composer"
+        "composer": "Composer",
+        "resources": "Resource bundles"
       }
     },
     "projection_incoming_interfaces": {
@@ -266,11 +268,11 @@
         "unsupported"
       ],
       "label": "Outgoing projections",
-      "description": "Exports Nix-built project publications as native repository projections."
+      "description": "Exports Nix-built project artifacts through typed repository, shared-library or resource projections."
     },
     "projection_outgoing_formats": {
       "type": "strings",
-      "description": "Supported native projection formats.",
+      "description": "Supported typed artifact projection formats.",
       "matrix": true,
       "label": "Outgoing projection formats",
       "itemsEnum": [
@@ -281,7 +283,9 @@
         "go",
         "npm",
         "cargo",
-        "composer"
+        "composer",
+        "native",
+        "resources"
       ],
       "itemLabels": {
         "maven": "Maven",
@@ -291,7 +295,9 @@
         "go": "Go module proxy",
         "npm": "npm",
         "cargo": "Cargo",
-        "composer": "Composer"
+        "composer": "Composer",
+        "native": "Native shared libraries",
+        "resources": "Resource bundles"
       }
     },
     "projection_outgoing_interfaces": {

@@ -134,6 +134,13 @@ let
     unknownProjectionFormatFails = !force (withOverride ({ lib, ... }: {
       facts.projection_incoming_formats.value = lib.mkForce [ "unreviewed-format" ];
     }));
+    nativeAndResourceProjectionFormatsWork = force (withOverride ({ lib, ... }: {
+      facts.projection_incoming_formats.value = lib.mkForce [ "resources" ];
+      facts.projection_outgoing_formats.value = lib.mkForce [ "native" "resources" ];
+    }));
+    consumerViewIsNotAProjectionFormat = !force (withOverride ({ lib, ... }: {
+      facts.projection_outgoing_formats.value = lib.mkForce [ "python-ffi" ];
+    }));
     inactiveBlockProseFails = !force (withOverride ({ lib, ... }: {
       facts.editor_metadata_format.value = lib.mkForce "none";
     }));

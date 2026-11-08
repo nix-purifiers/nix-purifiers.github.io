@@ -6,7 +6,11 @@ in {
   reviewedRevision = "186edeb4dd1bb0c9806485368b64cd5c1433fac3";
   repository = "nix-purifiers/docker-purifier";
   facts = {
-    platform_notes = { state = "not-applicable"; reason = "This integration declares Linux targets only."; };
+    platform_notes = {
+      state = "known";
+      value = [ "Linux uses the pure Buildah VM builder. Intel Darwin supports the native client workflow with an external Linux Docker daemon; this is not a Darwin pure VM builder." ];
+      sources = [ "https://github.com/nix-purifiers/docker-purifier/blob/d13d9ff97251845226ea0c4a5ecd97ca17040476/flake.nix" "https://github.com/nix-purifiers/docker-purifier/blob/d13d9ff97251845226ea0c4a5ecd97ca17040476/nix/build-project.nix" "https://github.com/nix-purifiers/docker-purifier/blob/d13d9ff97251845226ea0c4a5ecd97ca17040476/nix/cli.nix" ];
+    };
     editor_protocol = known "lsp";
     editor_supported = known true;
     projection_incoming = known "unsupported";
@@ -46,7 +50,11 @@ in {
     relock = known "preserves-pins";
     missing_lock = known "warn-and-native";
     stale_lock = known "fail-with-repair";
-    platforms = known [ "x86_64-linux" "aarch64-linux" ];
+    platforms = {
+      state = "known";
+      value = [ "x86_64-linux" "aarch64-linux" "x86_64-darwin" ];
+      sources = [ "https://github.com/nix-purifiers/docker-purifier/blob/d13d9ff97251845226ea0c4a5ecd97ca17040476/flake.nix" ];
+    };
     dependency_sources = known [ "Public OCI/Docker v2 registries" ];
     credentials = known "anonymous-only";
     offline_scope = known "locked-dependencies";

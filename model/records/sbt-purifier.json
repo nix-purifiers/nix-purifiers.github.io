@@ -158,10 +158,13 @@
       "value": "conditional"
     },
     "projection_incoming_formats": {
-      "sources": [],
       "state": "known",
       "value": [
-        "maven"
+        "maven",
+        "ivy"
+      ],
+      "sources": [
+        "https://github.com/nix-purifiers/sbt-purifier/blob/f085b7823b71c4c910e271e71aa61663fdf9f0ca/nix/lib/project-repository.nix"
       ]
     },
     "projection_incoming_interfaces": {
@@ -173,10 +176,13 @@
       ]
     },
     "projection_incoming_limits": {
-      "sources": [],
       "state": "known",
       "value": [
-        "Producer must export the compatible native projection and its inferred catalog; native version requirements still apply"
+        "Typed input selection prefers Maven when both projections exist, then Ivy; existing explicit/raw and sbtRepositories inputs remain separate legacy interfaces.",
+        "Input declarations do not imply every Ivy publication/version/platform combination has been executed."
+      ],
+      "sources": [
+        "https://github.com/nix-purifiers/sbt-purifier/blob/f085b7823b71c4c910e271e71aa61663fdf9f0ca/nix/lib/project-repository.nix"
       ]
     },
     "projection_outgoing": {

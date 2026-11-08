@@ -81,6 +81,22 @@ class CatalogTests(unittest.TestCase):
             self.assertFalse((output / 'index.md').exists())
             self.assertEqual((output / 'index.html').read_bytes(), (self.root / 'index.html').read_bytes())
 
+    def test_native_and_resource_projection_scopes_render_with_shared_labels(self):
+        for name in ('meson-purifier', 'cmake-purifier'):
+            with self.subTest(name=name):
+                page = self.documentation['catalog'][name]
+                text, _ = render(page, self.documentation['contract'])
+                self.assertIn('Incoming formats: Resource bundles.', text)
+                self.assertIn('Outgoing formats: Native shared libraries, Resource bundles.', text)
+                self.assertIn('resourceDependencies', text)
+                self.assertIn('projections.python-ffi', text)
+                self.assertIn('No generic typed incoming C/C++ library projection adapter', text)
+                if name == 'cmake-purifier':
+                    self.assertIn('legacy-external-v1 is acquisition-only', text)
+        sbt, _ = render(self.documentation['catalog']['sbt-purifier'],
+                        self.documentation['contract'])
+        self.assertIn('Incoming formats: Maven, Ivy.', sbt)
+
     def test_contradictory_copy_rejected_before_output(self):
         documentation = copy.deepcopy(self.documentation)
         documentation['catalog']['ant-purifier']['facts']['relock']['value'] = 're-resolves'

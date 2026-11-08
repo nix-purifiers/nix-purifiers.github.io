@@ -19391,11 +19391,14 @@
           "state": "unknown"
         },
         "platforms": {
-          "sources": [],
+          "sources": [
+            "https://github.com/nix-purifiers/cmake-purifier/blob/31384b9817a67045040ddced0b30fd08a5b23e87/flake.nix"
+          ],
           "state": "known",
           "value": [
             "x86_64-linux",
-            "aarch64-linux"
+            "aarch64-linux",
+            "aarch64-darwin"
           ]
         },
         "prefetch_components": {
@@ -19403,43 +19406,100 @@
           "state": "unknown"
         },
         "projection_incoming": {
-          "sources": [],
+          "sources": [
+            "https://github.com/nix-purifiers/cmake-purifier/blob/31384b9817a67045040ddced0b30fd08a5b23e87/nix/lib/build-cmake-project.nix",
+            "https://github.com/nix-purifiers/purifier/blob/f1157805a46e26a249aac647604688d28c77b0b7/nix/lib/resource-projections.nix",
+            "https://github.com/nix-purifiers/purifier/blob/f1157805a46e26a249aac647604688d28c77b0b7/tools/resource_projection.py"
+          ],
           "state": "known",
-          "value": "unsupported"
+          "value": "conditional"
         },
         "projection_incoming_formats": {
-          "reason": "No incoming typed projection adapter is exported by this implementation.",
-          "state": "not-applicable"
-        },
-        "projection_incoming_interfaces": {
-          "reason": "No incoming typed projection interface is implemented.",
-          "state": "not-applicable"
-        },
-        "projection_incoming_limits": {
-          "sources": [],
+          "sources": [
+            "https://github.com/nix-purifiers/cmake-purifier/blob/31384b9817a67045040ddced0b30fd08a5b23e87/nix/lib/build-cmake-project.nix",
+            "https://github.com/nix-purifiers/purifier/blob/f1157805a46e26a249aac647604688d28c77b0b7/nix/lib/resource-projections.nix",
+            "https://github.com/nix-purifiers/purifier/blob/f1157805a46e26a249aac647604688d28c77b0b7/tools/resource_projection.py"
+          ],
           "state": "known",
           "value": [
-            "Native artifacts or caches alone do not provide a typed incoming project projection interface"
+            "resources"
+          ]
+        },
+        "projection_incoming_interfaces": {
+          "sources": [
+            "https://github.com/nix-purifiers/cmake-purifier/blob/31384b9817a67045040ddced0b30fd08a5b23e87/nix/lib/build-cmake-project.nix",
+            "https://github.com/nix-purifiers/purifier/blob/f1157805a46e26a249aac647604688d28c77b0b7/nix/lib/resource-projections.nix"
+          ],
+          "state": "known",
+          "value": [
+            "resourceDependencies"
+          ]
+        },
+        "projection_incoming_limits": {
+          "sources": [
+            "https://github.com/nix-purifiers/cmake-purifier/blob/31384b9817a67045040ddced0b30fd08a5b23e87/nix/lib/build-cmake-project.nix",
+            "https://github.com/nix-purifiers/purifier/blob/f1157805a46e26a249aac647604688d28c77b0b7/nix/lib/resource-projections.nix",
+            "https://github.com/nix-purifiers/purifier/blob/f1157805a46e26a249aac647604688d28c77b0b7/tools/resource_projection.py"
+          ],
+          "state": "known",
+          "value": [
+            "Resource bundle composition only, enabled through explicit resourceRoots and resourceDependencies; requires digest-checked purifier-resources-v1 catalogs.",
+            "No generic typed incoming C/C++ library projection adapter is established by this interface.",
+            "Unavailable in legacy-external-v1."
           ]
         },
         "projection_outgoing": {
-          "sources": [],
+          "sources": [
+            "https://github.com/nix-purifiers/cmake-purifier/blob/31384b9817a67045040ddced0b30fd08a5b23e87/nix/lib/build-cmake-project.nix",
+            "https://github.com/nix-purifiers/purifier/blob/f1157805a46e26a249aac647604688d28c77b0b7/nix/lib/native-target-projections.nix",
+            "https://github.com/nix-purifiers/purifier/blob/f1157805a46e26a249aac647604688d28c77b0b7/nix/lib/resource-projections.nix"
+          ],
           "state": "known",
-          "value": "unsupported"
+          "value": "conditional"
         },
         "projection_outgoing_formats": {
-          "reason": "No outgoing typed projection adapter is exported by this implementation.",
-          "state": "not-applicable"
-        },
-        "projection_outgoing_interfaces": {
-          "reason": "No outgoing typed projection interface is implemented.",
-          "state": "not-applicable"
-        },
-        "projection_outgoing_limits": {
-          "sources": [],
+          "sources": [
+            "https://github.com/nix-purifiers/cmake-purifier/blob/31384b9817a67045040ddced0b30fd08a5b23e87/nix/lib/build-cmake-project.nix",
+            "https://github.com/nix-purifiers/purifier/blob/f1157805a46e26a249aac647604688d28c77b0b7/nix/lib/native-projections.nix",
+            "https://github.com/nix-purifiers/purifier/blob/f1157805a46e26a249aac647604688d28c77b0b7/nix/lib/resource-projections.nix"
+          ],
           "state": "known",
           "value": [
-            "Native artifacts or caches alone do not provide a typed outgoing project projection interface"
+            "native",
+            "resources"
+          ]
+        },
+        "projection_outgoing_interfaces": {
+          "sources": [
+            "https://github.com/nix-purifiers/cmake-purifier/blob/31384b9817a67045040ddced0b30fd08a5b23e87/nix/lib/build-cmake-project.nix",
+            "https://github.com/nix-purifiers/purifier/blob/f1157805a46e26a249aac647604688d28c77b0b7/nix/lib/native-projections.nix",
+            "https://github.com/nix-purifiers/purifier/blob/f1157805a46e26a249aac647604688d28c77b0b7/nix/lib/resource-projections.nix"
+          ],
+          "state": "known",
+          "value": [
+            "projections.native",
+            "projections.python-ffi",
+            "projections.java-ffi",
+            "projections.resources",
+            "projections.web",
+            "projections.java-resources"
+          ]
+        },
+        "projection_outgoing_limits": {
+          "sources": [
+            "https://github.com/nix-purifiers/cmake-purifier/blob/31384b9817a67045040ddced0b30fd08a5b23e87/nix/lib/build-cmake-project.nix",
+            "https://github.com/nix-purifiers/purifier/blob/f1157805a46e26a249aac647604688d28c77b0b7/nix/lib/native-target-projections.nix",
+            "https://github.com/nix-purifiers/purifier/blob/f1157805a46e26a249aac647604688d28c77b0b7/nix/lib/native-projections.nix",
+            "https://github.com/nix-purifiers/purifier/blob/f1157805a46e26a249aac647604688d28c77b0b7/nix/lib/resource-projections.nix",
+            "https://github.com/nix-purifiers/purifier/blob/f1157805a46e26a249aac647604688d28c77b0b7/tools/resource_projection.py",
+            "https://github.com/nix-purifiers/cmake-purifier/blob/31384b9817a67045040ddced0b30fd08a5b23e87/nix/lib/legacy-build-cmake-project.nix"
+          ],
+          "state": "known",
+          "value": [
+            "Native exports require installed unambiguous shared-library targets; static libraries and runtime plugins are not inferred.",
+            "Resource exports require explicit resourceRoots; resourceDependencies require the typed purifier-resources-v1 catalog with digest-checked files.",
+            "Resource schema metadata is explicitly supplied; it does not imply arbitrary schema compilation or native dependency injection.",
+            "Only modern-v1 exports these projections. legacy-external-v1 is acquisition-only and explicitly rejects native metadata/projections/resource options."
           ]
         },
         "relock": {
@@ -19524,6 +19584,29 @@
           ],
           "state": "available"
         },
+        "named-update": {
+          "arguments": [
+            "update",
+            {
+              "splice": "arguments"
+            }
+          ],
+          "capability": "cmake-purifier",
+          "directory": {
+            "binding": "project_root"
+          },
+          "environment": {
+            "CMAKE_PURIFIER_LOCKFILE": {
+              "binding": "lockfile"
+            }
+          },
+          "minimumArguments": 1,
+          "reason": null,
+          "sources": [
+            "https://github.com/nix-purifiers/cmake-purifier/blob/31384b9817a67045040ddced0b30fd08a5b23e87/pkgs/cmake-purifier/default.nix"
+          ],
+          "state": "available"
+        },
         "prefetch": {
           "arguments": [
             "prefetch"
@@ -19566,16 +19649,24 @@
           "state": "available"
         },
         "update": {
-          "arguments": [],
-          "capability": null,
+          "arguments": [
+            "update"
+          ],
+          "capability": "cmake-purifier",
           "directory": {
             "binding": "project_root"
           },
-          "environment": {},
+          "environment": {
+            "CMAKE_PURIFIER_LOCKFILE": {
+              "binding": "lockfile"
+            }
+          },
           "minimumArguments": 0,
-          "reason": "The native update selector and invocation have not been normalized; use the reference workflow.",
-          "sources": [],
-          "state": "unknown"
+          "reason": null,
+          "sources": [
+            "https://github.com/nix-purifiers/cmake-purifier/blob/31384b9817a67045040ddced0b30fd08a5b23e87/pkgs/cmake-purifier/default.nix"
+          ],
+          "state": "available"
         }
       },
       "quality": {
@@ -29288,15 +29379,25 @@
           "value": "locked-dependencies"
         },
         "platform_notes": {
-          "reason": "This integration declares Linux targets only.",
-          "state": "not-applicable"
+          "sources": [
+            "https://github.com/nix-purifiers/docker-purifier/blob/d13d9ff97251845226ea0c4a5ecd97ca17040476/flake.nix",
+            "https://github.com/nix-purifiers/docker-purifier/blob/d13d9ff97251845226ea0c4a5ecd97ca17040476/nix/build-project.nix",
+            "https://github.com/nix-purifiers/docker-purifier/blob/d13d9ff97251845226ea0c4a5ecd97ca17040476/nix/cli.nix"
+          ],
+          "state": "known",
+          "value": [
+            "Linux uses the pure Buildah VM builder. Intel Darwin supports the native client workflow with an external Linux Docker daemon; this is not a Darwin pure VM builder."
+          ]
         },
         "platforms": {
-          "sources": [],
+          "sources": [
+            "https://github.com/nix-purifiers/docker-purifier/blob/d13d9ff97251845226ea0c4a5ecd97ca17040476/flake.nix"
+          ],
           "state": "known",
           "value": [
             "x86_64-linux",
-            "aarch64-linux"
+            "aarch64-linux",
+            "x86_64-darwin"
           ]
         },
         "prefetch_components": {
@@ -57977,11 +58078,14 @@
           "state": "unknown"
         },
         "platforms": {
-          "sources": [],
+          "sources": [
+            "https://github.com/nix-purifiers/maven-purifier/blob/382fb8ec30e8ea8fad98dbb58ac68e47107f0b2b/flake.nix"
+          ],
           "state": "known",
           "value": [
             "x86_64-linux",
-            "aarch64-linux"
+            "aarch64-linux",
+            "aarch64-darwin"
           ]
         },
         "prefetch_components": {
@@ -60238,11 +60342,14 @@
           "state": "unknown"
         },
         "platforms": {
-          "sources": [],
+          "sources": [
+            "https://github.com/nix-purifiers/meson-purifier/blob/20827109606eaafeaf14f2494062af8899d6967f/flake.nix"
+          ],
           "state": "known",
           "value": [
             "x86_64-linux",
-            "aarch64-linux"
+            "aarch64-linux",
+            "aarch64-darwin"
           ]
         },
         "prefetch_components": {
@@ -60250,43 +60357,100 @@
           "state": "unknown"
         },
         "projection_incoming": {
-          "sources": [],
+          "sources": [
+            "https://github.com/nix-purifiers/meson-purifier/blob/20827109606eaafeaf14f2494062af8899d6967f/nix/lib/build-meson-project.nix",
+            "https://github.com/nix-purifiers/purifier/blob/f1157805a46e26a249aac647604688d28c77b0b7/nix/lib/resource-projections.nix",
+            "https://github.com/nix-purifiers/purifier/blob/f1157805a46e26a249aac647604688d28c77b0b7/tools/resource_projection.py"
+          ],
           "state": "known",
-          "value": "unsupported"
+          "value": "conditional"
         },
         "projection_incoming_formats": {
-          "reason": "No incoming typed projection adapter is exported by this implementation.",
-          "state": "not-applicable"
-        },
-        "projection_incoming_interfaces": {
-          "reason": "No incoming typed projection interface is implemented.",
-          "state": "not-applicable"
-        },
-        "projection_incoming_limits": {
-          "sources": [],
+          "sources": [
+            "https://github.com/nix-purifiers/meson-purifier/blob/20827109606eaafeaf14f2494062af8899d6967f/nix/lib/build-meson-project.nix",
+            "https://github.com/nix-purifiers/purifier/blob/f1157805a46e26a249aac647604688d28c77b0b7/nix/lib/resource-projections.nix",
+            "https://github.com/nix-purifiers/purifier/blob/f1157805a46e26a249aac647604688d28c77b0b7/tools/resource_projection.py"
+          ],
           "state": "known",
           "value": [
-            "Native artifacts or caches alone do not provide a typed incoming project projection interface"
+            "resources"
+          ]
+        },
+        "projection_incoming_interfaces": {
+          "sources": [
+            "https://github.com/nix-purifiers/meson-purifier/blob/20827109606eaafeaf14f2494062af8899d6967f/nix/lib/build-meson-project.nix",
+            "https://github.com/nix-purifiers/purifier/blob/f1157805a46e26a249aac647604688d28c77b0b7/nix/lib/resource-projections.nix"
+          ],
+          "state": "known",
+          "value": [
+            "resourceDependencies"
+          ]
+        },
+        "projection_incoming_limits": {
+          "sources": [
+            "https://github.com/nix-purifiers/meson-purifier/blob/20827109606eaafeaf14f2494062af8899d6967f/nix/lib/build-meson-project.nix",
+            "https://github.com/nix-purifiers/purifier/blob/f1157805a46e26a249aac647604688d28c77b0b7/nix/lib/resource-projections.nix",
+            "https://github.com/nix-purifiers/purifier/blob/f1157805a46e26a249aac647604688d28c77b0b7/tools/resource_projection.py"
+          ],
+          "state": "known",
+          "value": [
+            "Resource bundle composition only, enabled through explicit resourceRoots and resourceDependencies; requires digest-checked purifier-resources-v1 catalogs.",
+            "No generic typed incoming C/C++ library projection adapter is established by this interface."
           ]
         },
         "projection_outgoing": {
-          "sources": [],
+          "sources": [
+            "https://github.com/nix-purifiers/meson-purifier/blob/20827109606eaafeaf14f2494062af8899d6967f/nix/lib/build-meson-project.nix",
+            "https://github.com/nix-purifiers/purifier/blob/f1157805a46e26a249aac647604688d28c77b0b7/nix/lib/native-target-projections.nix",
+            "https://github.com/nix-purifiers/purifier/blob/f1157805a46e26a249aac647604688d28c77b0b7/nix/lib/resource-projections.nix"
+          ],
           "state": "known",
-          "value": "unsupported"
+          "value": "conditional"
         },
         "projection_outgoing_formats": {
-          "reason": "No outgoing typed projection adapter is exported by this implementation.",
-          "state": "not-applicable"
-        },
-        "projection_outgoing_interfaces": {
-          "reason": "No outgoing typed projection interface is implemented.",
-          "state": "not-applicable"
-        },
-        "projection_outgoing_limits": {
-          "sources": [],
+          "sources": [
+            "https://github.com/nix-purifiers/meson-purifier/blob/20827109606eaafeaf14f2494062af8899d6967f/nix/lib/build-meson-project.nix",
+            "https://github.com/nix-purifiers/purifier/blob/f1157805a46e26a249aac647604688d28c77b0b7/nix/lib/native-projections.nix",
+            "https://github.com/nix-purifiers/purifier/blob/f1157805a46e26a249aac647604688d28c77b0b7/nix/lib/resource-projections.nix"
+          ],
           "state": "known",
           "value": [
-            "Native artifacts or caches alone do not provide a typed outgoing project projection interface"
+            "native",
+            "resources"
+          ]
+        },
+        "projection_outgoing_interfaces": {
+          "sources": [
+            "https://github.com/nix-purifiers/meson-purifier/blob/20827109606eaafeaf14f2494062af8899d6967f/nix/lib/build-meson-project.nix",
+            "https://github.com/nix-purifiers/purifier/blob/f1157805a46e26a249aac647604688d28c77b0b7/nix/lib/native-projections.nix",
+            "https://github.com/nix-purifiers/purifier/blob/f1157805a46e26a249aac647604688d28c77b0b7/nix/lib/resource-projections.nix"
+          ],
+          "state": "known",
+          "value": [
+            "projections.native",
+            "projections.python-ffi",
+            "projections.java-ffi",
+            "projections.resources",
+            "projections.web",
+            "projections.java-resources",
+            "packages.<target>.projections.native",
+            "packages.<target>.projections.python-ffi",
+            "packages.<target>.projections.java-ffi"
+          ]
+        },
+        "projection_outgoing_limits": {
+          "sources": [
+            "https://github.com/nix-purifiers/meson-purifier/blob/20827109606eaafeaf14f2494062af8899d6967f/nix/lib/build-meson-project.nix",
+            "https://github.com/nix-purifiers/purifier/blob/f1157805a46e26a249aac647604688d28c77b0b7/nix/lib/native-target-projections.nix",
+            "https://github.com/nix-purifiers/purifier/blob/f1157805a46e26a249aac647604688d28c77b0b7/nix/lib/native-projections.nix",
+            "https://github.com/nix-purifiers/purifier/blob/f1157805a46e26a249aac647604688d28c77b0b7/nix/lib/resource-projections.nix",
+            "https://github.com/nix-purifiers/purifier/blob/f1157805a46e26a249aac647604688d28c77b0b7/tools/resource_projection.py"
+          ],
+          "state": "known",
+          "value": [
+            "Native exports require installed unambiguous shared-library targets; static libraries and runtime plugins are not inferred.",
+            "Resource exports require explicit resourceRoots; resourceDependencies require the typed purifier-resources-v1 catalog with digest-checked files.",
+            "Resource schema metadata is explicitly supplied; it does not imply arbitrary schema compilation or native dependency injection."
           ]
         },
         "relock": {
@@ -60370,6 +60534,29 @@
           ],
           "state": "available"
         },
+        "named-update": {
+          "arguments": [
+            "update",
+            {
+              "splice": "arguments"
+            }
+          ],
+          "capability": "meson-purifier",
+          "directory": {
+            "binding": "project_root"
+          },
+          "environment": {
+            "MESON_PURIFIER_LOCKFILE": {
+              "binding": "lockfile"
+            }
+          },
+          "minimumArguments": 1,
+          "reason": null,
+          "sources": [
+            "https://github.com/nix-purifiers/meson-purifier/blob/20827109606eaafeaf14f2494062af8899d6967f/pkgs/cli/meson_purifier.py"
+          ],
+          "state": "available"
+        },
         "prefetch": {
           "arguments": [
             "prefetch"
@@ -60413,16 +60600,24 @@
           "state": "available"
         },
         "update": {
-          "arguments": [],
-          "capability": null,
+          "arguments": [
+            "update"
+          ],
+          "capability": "meson-purifier",
           "directory": {
             "binding": "project_root"
           },
-          "environment": {},
+          "environment": {
+            "MESON_PURIFIER_LOCKFILE": {
+              "binding": "lockfile"
+            }
+          },
           "minimumArguments": 0,
-          "reason": "The native update selector and invocation have not been normalized; use the reference workflow.",
-          "sources": [],
-          "state": "unknown"
+          "reason": null,
+          "sources": [
+            "https://github.com/nix-purifiers/meson-purifier/blob/20827109606eaafeaf14f2494062af8899d6967f/pkgs/cli/meson_purifier.py"
+          ],
+          "state": "available"
         }
       },
       "quality": {
@@ -77084,11 +77279,14 @@
           "state": "unknown"
         },
         "platforms": {
-          "sources": [],
+          "sources": [
+            "https://github.com/nix-purifiers/pip-purifier/blob/3620c35e776dbb8772f068bf9c7c0c2338fbc38f/flake.nix"
+          ],
           "state": "known",
           "value": [
             "x86_64-linux",
-            "aarch64-linux"
+            "aarch64-linux",
+            "aarch64-darwin"
           ]
         },
         "prefetch_components": {
@@ -77207,6 +77405,29 @@
           ],
           "state": "available"
         },
+        "named-update": {
+          "arguments": [
+            "update",
+            {
+              "splice": "arguments"
+            }
+          ],
+          "capability": "pip-purifier",
+          "directory": {
+            "binding": "project_root"
+          },
+          "environment": {
+            "PIP_PURIFIER_LOCKFILE": {
+              "binding": "lockfile"
+            }
+          },
+          "minimumArguments": 1,
+          "reason": null,
+          "sources": [
+            "https://github.com/nix-purifiers/pip-purifier/blob/3620c35e776dbb8772f068bf9c7c0c2338fbc38f/src/pip_purifier.py"
+          ],
+          "state": "available"
+        },
         "prefetch": {
           "arguments": [
             "prefetch"
@@ -77249,16 +77470,24 @@
           "state": "available"
         },
         "update": {
-          "arguments": [],
-          "capability": null,
+          "arguments": [
+            "update"
+          ],
+          "capability": "pip-purifier",
           "directory": {
             "binding": "project_root"
           },
-          "environment": {},
+          "environment": {
+            "PIP_PURIFIER_LOCKFILE": {
+              "binding": "lockfile"
+            }
+          },
           "minimumArguments": 0,
-          "reason": "The native update selector and invocation have not been normalized; use the reference workflow.",
-          "sources": [],
-          "state": "unknown"
+          "reason": null,
+          "sources": [
+            "https://github.com/nix-purifiers/pip-purifier/blob/3620c35e776dbb8772f068bf9c7c0c2338fbc38f/src/pip_purifier.py"
+          ],
+          "state": "available"
         }
       },
       "quality": {
@@ -91893,10 +92122,13 @@
           "value": "conditional"
         },
         "projection_incoming_formats": {
-          "sources": [],
+          "sources": [
+            "https://github.com/nix-purifiers/sbt-purifier/blob/f085b7823b71c4c910e271e71aa61663fdf9f0ca/nix/lib/project-repository.nix"
+          ],
           "state": "known",
           "value": [
-            "maven"
+            "maven",
+            "ivy"
           ]
         },
         "projection_incoming_interfaces": {
@@ -91908,10 +92140,13 @@
           ]
         },
         "projection_incoming_limits": {
-          "sources": [],
+          "sources": [
+            "https://github.com/nix-purifiers/sbt-purifier/blob/f085b7823b71c4c910e271e71aa61663fdf9f0ca/nix/lib/project-repository.nix"
+          ],
           "state": "known",
           "value": [
-            "Producer must export the compatible native projection and its inferred catalog; native version requirements still apply"
+            "Typed input selection prefers Maven when both projections exist, then Ivy; existing explicit/raw and sbtRepositories inputs remain separate legacy interfaces.",
+            "Input declarations do not imply every Ivy publication/version/platform combination has been executed."
           ]
         },
         "projection_outgoing": {
@@ -103098,11 +103333,14 @@
           "state": "unknown"
         },
         "platforms": {
-          "sources": [],
+          "sources": [
+            "https://github.com/nix-purifiers/uv-purifier/blob/0d2f6e7e42462491560afcf8f03a1db4432d6c34/flake.nix"
+          ],
           "state": "known",
           "value": [
             "x86_64-linux",
-            "aarch64-linux"
+            "aarch64-linux",
+            "aarch64-darwin"
           ]
         },
         "prefetch_components": {
@@ -114801,7 +115039,7 @@
         "type": "strings"
       },
       "projection_incoming": {
-        "description": "Consumes other Nix-built projects through native repository projections.",
+        "description": "Consumes other Nix-built projects through typed repository or resource projections.",
         "enum": [
           "supported",
           "conditional",
@@ -114811,7 +115049,7 @@
         "type": "string"
       },
       "projection_incoming_formats": {
-        "description": "Supported native projection formats.",
+        "description": "Supported typed artifact projection formats.",
         "itemLabels": {
           "cargo": "Cargo",
           "composer": "Composer",
@@ -114820,6 +115058,7 @@
           "maven": "Maven",
           "npm": "npm",
           "python": "Python",
+          "resources": "Resource bundles",
           "rubygems": "RubyGems"
         },
         "itemsEnum": [
@@ -114830,7 +115069,8 @@
           "go",
           "npm",
           "cargo",
-          "composer"
+          "composer",
+          "resources"
         ],
         "label": "Incoming projection formats",
         "matrix": true,
@@ -114847,7 +115087,7 @@
         "type": "strings"
       },
       "projection_outgoing": {
-        "description": "Exports Nix-built project publications as native repository projections.",
+        "description": "Exports Nix-built project artifacts through typed repository, shared-library or resource projections.",
         "enum": [
           "supported",
           "conditional",
@@ -114857,15 +115097,17 @@
         "type": "string"
       },
       "projection_outgoing_formats": {
-        "description": "Supported native projection formats.",
+        "description": "Supported typed artifact projection formats.",
         "itemLabels": {
           "cargo": "Cargo",
           "composer": "Composer",
           "go": "Go module proxy",
           "ivy": "Ivy",
           "maven": "Maven",
+          "native": "Native shared libraries",
           "npm": "npm",
           "python": "Python",
+          "resources": "Resource bundles",
           "rubygems": "RubyGems"
         },
         "itemsEnum": [
@@ -114876,7 +115118,9 @@
           "go",
           "npm",
           "cargo",
-          "composer"
+          "composer",
+          "native",
+          "resources"
         ],
         "label": "Outgoing projection formats",
         "matrix": true,
