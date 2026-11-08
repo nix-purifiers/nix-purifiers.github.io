@@ -13,10 +13,10 @@ behavior catalog. Modeled projects also expose their assessment as `quality`.
 
 The four definitions are stored in the registry. Every assignment records its
 reviewed revision and date, confirmed sample builds, and a completed `met` or
-`not-met` judgment for all eight criteria. `not-met` means the inspected evidence
+`not-met` judgment for eight technical criteria and two human-use criteria. `not-met` means the inspected evidence
 does not demonstrate the criterion; it does not establish a tool failure.
 
-Version 2 binds each capability claim through `derivationReview` to executable
+The eight technical criteria bind capability claims through `derivationReview` to executable
 Nix derivations, immutable source revisions, native systems, actual SDK roles,
 and retained execution receipts. Evaluation-only receipts establish evaluation.
 Local realization may reuse outputs; native CI execution and observed output
@@ -24,6 +24,31 @@ identities are recorded separately. Unobserved NAR hashes and missing historical
 replay files remain explicit. Original receipt bytes are content-addressed under
 `docs-site/evidence/` and indexed by `review-artifacts.json`. Definition and
 maintenance-policy references explain the review; they do not prove execution.
+
+Version 3 adds `humanUseReview` separately from the derivation receipts.
+Tier 3 requires a clear attributed human firsthand report, including a maintainer
+or contributor using sample projects. Tiers 2 and 1 inherit that requirement.
+Tier 1 also needs reviewed confidence in ongoing real use, supported by human
+reports and/or attributable maintained-consumer usage history. Dates, scope,
+reporter relationship and provenance remain explicit. CI, authorship and our
+prose do not establish human use; repeated development checks do not by
+themselves establish continuing usage. AI assistance does not disqualify an
+otherwise clear attributed firsthand report.
+
+A report can point to a primary public source or record a supplied direct
+attestation. No public URL, production project, formal attestation wording,
+identity check or independent-user status is required. Private originals stay
+outside the public repository: `public_report`/`publicReport` select an explicit
+reviewed public projection, with an opaque provenance reference and scoped
+summary. Review the original before accepting a report; structural validation
+does not authenticate what a person said. Ongoing-use contexts have their own
+typed subject, source, attribution and scope rather than pretending to be human
+reports. Neither criterion uses a fixed user-count or duration threshold.
+
+`tier-policy.json` is the shared Nix/Python criterion and gate vocabulary.
+Version 2 is available only to explicit fixture/history helpers; production readers require version 3. New definitions and ranks are published
+only together in a completed, reviewed version 3 registry. A missing human
+report has an honest bounded-review gap, preserving the technical evidence.
 
 “Good tests,” “many samples” and long compatibility are reviewed judgments rather
 than numerical thresholds. Declaring Darwin or evaluating its derivations does

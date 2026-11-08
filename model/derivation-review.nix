@@ -3,7 +3,7 @@
 let
   inherit (lib) mkOption types;
   shape = import ./derivation-evidence.nix { inherit lib; };
-  keys = [ "evaluation" "goodTests" "linux" "darwin" "oneVersion" "nonEolVersions" "manySamples" "longCompatibility" ];
+  keys = (import ./quality-policy.nix { inherit lib; }).technicalCriteria;
   text = types.addCheck types.str (s: builtins.match ".*[^ \n\t].*" s != null);
   url = types.strMatching ''https://[^[:space:]<>"|]+'';
   opt = type: mkOption { inherit type; };

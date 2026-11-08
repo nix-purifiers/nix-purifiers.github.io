@@ -11,7 +11,40 @@ from theme import install_theme
 class QualityTests(unittest.TestCase):
     def setUp(self):
         self.data = registry()
-        self.q = copy.deepcopy(self.data['projects']['tectonic-purifier'])
+        self.q = copy.deepcopy(self.data['projects']['composer-purifier'])
+
+    def test_v3_requires_human_use_without_changing_technical_evidence(self):
+        self.assertEqual(self.data['version'], 3)
+        docker = copy.deepcopy(self.data['projects']['docker-purifier'])
+        self.assertEqual(docker['tier'], 4)
+        self.assertEqual(docker['criteria']['firsthandUse']['state'], 'not-met')
+        for key in ('evaluation', 'goodTests', 'linux', 'darwin', 'oneVersion', 'nonEolVersions'):
+            self.assertEqual(docker['criteria'][key]['state'], 'met')
+        docker['tier'] = 2
+        with self.assertRaisesRegex(ValueError, 'evidenced criteria'):
+            validate(docker)
+
+    def test_production_registry_cannot_downgrade_or_omit_human_review(self):
+        from unittest.mock import patch
+        downgraded = copy.deepcopy(self.data); downgraded['version'] = 2
+        with patch('quality.json.loads', return_value=downgraded), self.assertRaisesRegex(ValueError, 'version 3'):
+            registry()
+        legacy = copy.deepcopy(self.q)
+        legacy.pop('humanUseReview')
+        for key in ('firsthandUse', 'ongoingUse'): legacy['criteria'].pop(key)
+        with self.assertRaisesRegex(ValueError, 'missing or unknown fields'): validate(legacy)
+
+    def test_ci_cannot_be_relabelled_as_a_human_report(self):
+        docker = copy.deepcopy(self.data['projects']['docker-purifier'])
+        docker['criteria']['firsthandUse'].update(state='met', evidence=['https://github.com/example/tool/actions/runs/1'])
+        docker['humanUseReview']['criteria']['firsthandUse'].update(state='met', gap=None)
+        with self.assertRaisesRegex(ValueError, 'reviewed reports'):
+            validate(docker)
+
+    def test_audit_does_not_infer_ongoing_use_from_local_reports(self):
+        self.assertEqual(sum(q['criteria']['firsthandUse']['state'] == 'met' for q in self.data['projects'].values()), 36)
+        self.assertTrue(all(q['criteria']['ongoingUse']['state'] == 'not-met' for q in self.data['projects'].values()))
+        self.assertNotIn(1, [q['tier'] for q in self.data['projects'].values()])
 
     def test_every_modeled_project_has_an_assessment(self):
         root = Path(__file__).resolve().parents[1]
@@ -77,7 +110,8 @@ class QualityTests(unittest.TestCase):
     def test_every_review_is_complete_and_revision_bound(self):
         self.assertEqual(len(self.data['projects']), 96)
         for name, q in self.data['projects'].items():
-            self.assertEqual(len(q['criteria']), 8)
+            self.assertEqual(len(q['criteria']), 10)
+            self.assertEqual(len(q['derivationReview']['criteria']), 8)
             self.assertNotIn('unreviewed', [c['state'] for c in q['criteria'].values()])
             changed = copy.deepcopy(q)
             changed['reviewedRevision'] = '0' * 40
@@ -109,10 +143,10 @@ class QualityTests(unittest.TestCase):
     def test_homepage_and_shared_theme_use_same_registry(self):
         source = '<ul><li><a href="/tectonic-purifier/">tectonic-purifier</a>, for Tectonic</li></ul>'
         result = homepage(source, self.data)
-        self.assertIn('<h2 id="tier-3">Tier 3</h2>', result)
+        self.assertIn('<h2 id="tier-4">Tier 4</h2>', result)
         self.assertIn('<a href="/tectonic-purifier/">tectonic-purifier</a>, for Tectonic', result)
         self.assertNotIn('tier-badge', result)
-        for empty in [1, 2, 4]:
+        for empty in [1, 2, 3]:
             self.assertNotIn(f'<h2 id="tier-{empty}">', result)
         self.assertEqual(result, homepage(result, self.data))
         with tempfile.TemporaryDirectory() as directory:

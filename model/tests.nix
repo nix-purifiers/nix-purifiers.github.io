@@ -2,6 +2,11 @@
 let
   force = value: (builtins.tryEval (builtins.deepSeq value true)).success;
   sample = ../docs-site/projects/ant-purifier.nix;
+  qualityPolicy = import ./quality-policy.nix { inherit lib; };
+  humanProof = import ./human-use-review.nix { inherit lib; };
+  humanFixture = builtins.fromJSON (builtins.readFile ../docs-site/fixtures/human-use/sbt-firsthand.json);
+  technicalMet = lib.genAttrs qualityPolicy.technicalCriteria (_: { state = "met"; });
+  humanMissing = { firsthandUse.state = "not-met"; ongoingUse.state = "not-met"; };
   withOverride = module: model.evaluateDocumentation [ sample module ];
   compatibilityPoint = {
     id = "node12";
@@ -19,6 +24,21 @@ let
     evidence = compatibilityPoint.evidence;
   };
   checks = {
+    humanContributorSampleReportWorks = force (humanProof.validate "nix-purifiers/sbt-purifier" humanFixture);
+    tierThreeRequiresFirsthandHuman = qualityPolicy.bestTier 3 (technicalMet // humanMissing) true == 4;
+    firsthandDoesNotProveOngoing = qualityPolicy.bestTier 3
+      (technicalMet // humanMissing // { firsthandUse.state = "met"; }) true == 2;
+    ongoingUseGatesTierOne = qualityPolicy.bestTier 3
+      (technicalMet // { firsthandUse.state = "met"; ongoingUse.state = "met"; }) true == 1;
+    botReportCannotProveHumanUse = !force (humanProof.validate "nix-purifiers/sbt-purifier"
+      (humanFixture // { reports = humanFixture.reports // {
+        sbt-pr-13 = humanFixture.reports.sbt-pr-13 // {
+          reporter = humanFixture.reports.sbt-pr-13.reporter // { kind = "bot"; };
+        };
+      }; }));
+    privateOriginalExcludedFromPublicReport =
+      let report = humanProof.publicReport { public = humanFixture.reports.sbt-pr-13; private = { statement = "PRIVATE_ORIGINAL"; }; };
+      in !(report ? private) && report == humanFixture.reports.sbt-pr-13;
     antCompatibilityDefaultsToCanonicalRegistry =
       (withOverride {}).compatibility.testedPoints ==
         (builtins.fromJSON (builtins.readFile ./compatibility-tests.json)).projects.ant-purifier.testedPoints;

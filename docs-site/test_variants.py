@@ -60,7 +60,7 @@ class ReviewedVariantTests(unittest.TestCase):
         shutil.copyfile(original.parent / 'index.html', self.site / 'index.html')
         shutil.copyfile(original.parent / 'robots.txt', self.site / 'robots.txt')
         (self.site / 'model').mkdir()
-        for name in ('tiers.json', 'review-artifacts.json'):
+        for name in ('tiers.json', 'review-artifacts.json', 'tier-policy.json'):
             shutil.copyfile(original.parent / 'model' / name, self.site / 'model' / name)
         self.checkout = root / 'checkout'
         self.checkout.mkdir()
