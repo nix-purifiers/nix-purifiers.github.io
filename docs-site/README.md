@@ -2,6 +2,12 @@
 
 ## Tier evidence
 
+The family homepage and canonical tier reference publish the current tier
+assignments together. Independently deployed project pages link to that
+reference; their layout never reads a bundled tier number or rationale.
+Per-site machine-readable assessments remain revision-bound snapshots, not
+another authority for the current tier.
+
 Quality registry version 3 separates technical derivation receipts from human
 use. Tier 3 and above require a clear attributed firsthand human report;
 maintainer or contributor sample-project use can qualify. Tier 1 additionally

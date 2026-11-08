@@ -28,9 +28,8 @@
   {% endif %}
   {% assign purifier_name = repository | split: '/' | last %}
   {% assign canonical_repository = 'nix-purifiers/' | append: purifier_name %}
-  {% if repository == canonical_repository %}
-  {% assign quality = site.data.purifier_quality[purifier_name] %}
-  {% if quality %}<p class="quality-tier"><a href="https://nix-purifiers.github.io/tiers.html#{{ purifier_name | escape }}">Tier {{ quality.tier }} assessment</a></p>{% endif %}
+  {% if repository == canonical_repository and feature_matrix %}
+  <p class="quality-tier"><a href="https://nix-purifiers.github.io/tiers.html#{{ purifier_name | escape }}">Tier assessment</a></p>
   {% endif %}
   <article>{{ content }}</article>
   <footer>

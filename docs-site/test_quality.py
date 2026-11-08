@@ -153,7 +153,10 @@ class QualityTests(unittest.TestCase):
             target = Path(directory)
             install_theme(target)
             self.assertEqual(json.loads((target / '_data/purifier_quality.json').read_text()), self.data['projects'])
-            self.assertIn('quality.tier', (target / '_layouts/default.html').read_text())
+            layout = (target / '_layouts/default.html').read_text()
+            self.assertNotIn('quality.tier', layout)
+            self.assertNotIn('site.data.purifier_quality', layout)
+            self.assertIn('>Tier assessment</a>', layout)
 
     def test_homepage_groups_only_present_tiers_and_reclassifies_without_stale_headings(self):
         data = {'projects': {'go-purifier': {'tier': 1}, 'gradle-purifier': {'tier': 3}}}
