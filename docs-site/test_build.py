@@ -70,7 +70,7 @@ class CatalogTests(unittest.TestCase):
                 from reference import source_sections
                 original_sections = dict(source_sections(original)[1])
                 actual_sections = dict(source_sections(overview)[1])
-                for title in ('Quickstart', 'Development loop', 'Supported scope'):
+                for title in ('Quickstart', 'Development loop', 'Working offline', 'Supported scope'):
                     if title in original_sections:
                         self.assertEqual(actual_sections[title], original_sections[title])
             audit = json.loads((output / 'content-variations.json').read_text())
