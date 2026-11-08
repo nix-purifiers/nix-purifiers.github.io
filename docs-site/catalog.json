@@ -37544,23 +37544,35 @@
           "state": "unknown"
         },
         "credentials": {
-          "reason": "This capability is not established by the reviewed integration record.",
+          "reason": "This bounded record does not establish credential propagation through both native capture and Nix prefetch for private dependency sources; builder fetcher overrides are not evidence of default transport authentication.",
           "state": "unknown"
         },
         "dependency_sources": {
-          "reason": "This capability is not established by the reviewed integration record.",
-          "state": "unknown"
+          "sources": [
+            "https://github.com/nix-purifiers/go-purifier/blob/173abcff84f4c216b67e8660a7f72e36dbdcb207/cmd/go-purifier/lock.go#L446",
+            "https://github.com/nix-purifiers/go-purifier/blob/173abcff84f4c216b67e8660a7f72e36dbdcb207/cmd/go-purifier/vcs.go",
+            "https://github.com/nix-purifiers/go-purifier/blob/173abcff84f4c216b67e8660a7f72e36dbdcb207/README.md#L252"
+          ],
+          "state": "known",
+          "value": [
+            "HTTP(S) Go module proxies",
+            "Git",
+            "Mercurial",
+            "Subversion",
+            "Bazaar",
+            "Fossil"
+          ]
         },
         "editor_completion": {
-          "reason": "This capability is not established by the reviewed integration record.",
+          "reason": "The existing editor/toolchain setup does not by itself establish LSP completion. No protocol-level result for this capability is asserted in this bounded backfill.",
           "state": "unknown"
         },
         "editor_dependency_sources": {
-          "reason": "This capability is not established by the reviewed integration record.",
+          "reason": "The existing editor/toolchain setup does not by itself establish LSP dependency-source retrieval. No protocol-level result for this capability is asserted in this bounded backfill.",
           "state": "unknown"
         },
         "editor_diagnostics": {
-          "reason": "This capability is not established by the reviewed integration record.",
+          "reason": "The existing editor/toolchain setup does not by itself establish LSP diagnostics. No protocol-level result for this capability is asserted in this bounded backfill.",
           "state": "unknown"
         },
         "editor_metadata_format": {
@@ -37568,7 +37580,7 @@
           "state": "unknown"
         },
         "editor_navigation": {
-          "reason": "This capability is not established by the reviewed integration record.",
+          "reason": "The existing editor/toolchain setup does not by itself establish LSP definition lookup. No protocol-level result for this capability is asserted in this bounded backfill.",
           "state": "unknown"
         },
         "editor_offline": {
@@ -37591,8 +37603,14 @@
           "state": "unknown"
         },
         "inputs": {
-          "reason": "This capability is not established by the reviewed integration record.",
-          "state": "unknown"
+          "sources": [
+            "https://github.com/nix-purifiers/go-purifier/blob/173abcff84f4c216b67e8660a7f72e36dbdcb207/cmd/go-purifier/root.go#L36",
+            "https://github.com/nix-purifiers/go-purifier/blob/173abcff84f4c216b67e8660a7f72e36dbdcb207/README.md#L51"
+          ],
+          "state": "known",
+          "value": [
+            "go.mod"
+          ]
         },
         "integration": {
           "sources": [],
@@ -37612,28 +37630,31 @@
           ]
         },
         "missing_lock": {
-          "reason": "This capability is not established by the reviewed integration record.",
-          "state": "unknown"
+          "sources": [
+            "https://github.com/nix-purifiers/go-purifier/blob/173abcff84f4c216b67e8660a7f72e36dbdcb207/cmd/go-purifier/wrapper.go#L257"
+          ],
+          "state": "known",
+          "value": "warn-and-native"
         },
         "named_update_example": {
           "reason": "This capability is not established by the reviewed integration record.",
           "state": "unknown"
         },
         "native_plugin_bootstrap": {
-          "reason": "This capability is not established by the reviewed integration record.",
-          "state": "unknown"
+          "reason": "This integration uses a native-tool wrapper, not a published JVM/native build-tool plugin; plugin coordinates, bootstrap repository and Java target do not apply.",
+          "state": "not-applicable"
         },
         "native_plugin_coordinate": {
-          "reason": "This capability is not established by the reviewed integration record.",
-          "state": "unknown"
+          "reason": "This integration uses a native-tool wrapper, not a published JVM/native build-tool plugin; plugin coordinates, bootstrap repository and Java target do not apply.",
+          "state": "not-applicable"
         },
         "native_plugin_java_target": {
-          "reason": "This capability is not established by the reviewed integration record.",
-          "state": "unknown"
+          "reason": "This integration uses a native-tool wrapper, not a published JVM/native build-tool plugin; plugin coordinates, bootstrap repository and Java target do not apply.",
+          "state": "not-applicable"
         },
         "native_plugin_repository": {
-          "reason": "This capability is not established by the reviewed integration record.",
-          "state": "unknown"
+          "reason": "This integration uses a native-tool wrapper, not a published JVM/native build-tool plugin; plugin coordinates, bootstrap repository and Java target do not apply.",
+          "state": "not-applicable"
         },
         "nix_builder": {
           "sources": [],
@@ -37641,12 +37662,25 @@
           "value": "pkgs.go-purifier.buildGoProject"
         },
         "offline_limits": {
-          "reason": "This capability is not established by the reviewed integration record.",
-          "state": "unknown"
+          "sources": [
+            "https://github.com/nix-purifiers/go-purifier/blob/173abcff84f4c216b67e8660a7f72e36dbdcb207/cmd/go-purifier/wrapper.go#L270",
+            "https://github.com/nix-purifiers/go-purifier/blob/173abcff84f4c216b67e8660a7f72e36dbdcb207/README.md#L282",
+            "https://github.com/nix-purifiers/go-purifier/blob/173abcff84f4c216b67e8660a7f72e36dbdcb207/README.md#L69"
+          ],
+          "state": "known",
+          "value": [
+            "Dependency-changing commands may resolve through the user GOPROXY; lock again before ordinary builds.",
+            "GO_PURIFIER=0 bypasses locked resolution.",
+            "Downloads by project scripts and native cgo libraries are outside the module lock; supply native libraries through buildInputs."
+          ]
         },
         "offline_scope": {
-          "reason": "This capability is not established by the reviewed integration record.",
-          "state": "unknown"
+          "sources": [
+            "https://github.com/nix-purifiers/go-purifier/blob/173abcff84f4c216b67e8660a7f72e36dbdcb207/cmd/go-purifier/wrapper.go#L314",
+            "https://github.com/nix-purifiers/go-purifier/blob/173abcff84f4c216b67e8660a7f72e36dbdcb207/README.md#L282"
+          ],
+          "state": "known",
+          "value": "locked-dependencies"
         },
         "platform_notes": {
           "sources": [],
@@ -37730,15 +37764,19 @@
           ]
         },
         "relock": {
-          "reason": "This capability is not established by the reviewed integration record.",
-          "state": "unknown"
+          "sources": [
+            "https://github.com/nix-purifiers/go-purifier/blob/173abcff84f4c216b67e8660a7f72e36dbdcb207/cmd/go-purifier/lock.go#L166",
+            "https://github.com/nix-purifiers/go-purifier/blob/173abcff84f4c216b67e8660a7f72e36dbdcb207/README.md#L232"
+          ],
+          "state": "known",
+          "value": "preserves-pins"
         },
         "runtime_requirements": {
           "reason": "This capability is not established by the reviewed integration record.",
           "state": "unknown"
         },
         "stale_lock": {
-          "reason": "This capability is not established by the reviewed integration record.",
+          "reason": "Build/test/run commands reject stale module definitions with a repair command; dependency-changing commands may instead use native resolution. This mixed wrapper behavior is not represented by one general stale-lock enum value.",
           "state": "unknown"
         },
         "supported_native_commands": {
@@ -59795,23 +59833,31 @@
           "state": "unknown"
         },
         "credentials": {
-          "reason": "This capability is not established by the reviewed integration record.",
+          "reason": "Capture passes Maven settings server/proxy credentials to the lock run, but this bounded record does not establish authenticated Nix prefetch/replay for those repositories; builder fetcher overrides are separate.",
           "state": "unknown"
         },
         "dependency_sources": {
-          "reason": "This capability is not established by the reviewed integration record.",
-          "state": "unknown"
+          "sources": [
+            "https://github.com/nix-purifiers/maven-purifier/blob/20e822558ce637a5c5672d68af667a98e243b300/cli/maven_purifier.py#L535",
+            "https://github.com/nix-purifiers/maven-purifier/blob/20e822558ce637a5c5672d68af667a98e243b300/README.md#L312",
+            "https://github.com/nix-purifiers/maven-purifier/blob/20e822558ce637a5c5672d68af667a98e243b300/README.md#L333"
+          ],
+          "state": "known",
+          "value": [
+            "Maven repositories selected by POMs and settings.xml mirrors/profiles",
+            "Plugin downloads explicitly declared in .mvn/maven-purifier.json"
+          ]
         },
         "editor_completion": {
-          "reason": "This capability is not established by the reviewed integration record.",
+          "reason": "The existing editor/toolchain setup does not by itself establish LSP completion. No protocol-level result for this capability is asserted in this bounded backfill.",
           "state": "unknown"
         },
         "editor_dependency_sources": {
-          "reason": "This capability is not established by the reviewed integration record.",
+          "reason": "The existing editor/toolchain setup does not by itself establish LSP dependency-source retrieval. No protocol-level result for this capability is asserted in this bounded backfill.",
           "state": "unknown"
         },
         "editor_diagnostics": {
-          "reason": "This capability is not established by the reviewed integration record.",
+          "reason": "The existing editor/toolchain setup does not by itself establish LSP diagnostics. No protocol-level result for this capability is asserted in this bounded backfill.",
           "state": "unknown"
         },
         "editor_metadata_format": {
@@ -59819,7 +59865,7 @@
           "state": "unknown"
         },
         "editor_navigation": {
-          "reason": "This capability is not established by the reviewed integration record.",
+          "reason": "The existing editor/toolchain setup does not by itself establish LSP definition lookup. No protocol-level result for this capability is asserted in this bounded backfill.",
           "state": "unknown"
         },
         "editor_offline": {
@@ -59842,8 +59888,13 @@
           "state": "unknown"
         },
         "inputs": {
-          "reason": "This capability is not established by the reviewed integration record.",
-          "state": "unknown"
+          "sources": [
+            "https://github.com/nix-purifiers/maven-purifier/blob/20e822558ce637a5c5672d68af667a98e243b300/cli/maven_purifier.py#L231"
+          ],
+          "state": "known",
+          "value": [
+            "pom.xml"
+          ]
         },
         "integration": {
           "sources": [],
@@ -59892,16 +59943,37 @@
           "value": "pkgs.maven-purifier.buildMavenProject"
         },
         "offline_limits": {
-          "reason": "This capability is not established by the reviewed integration record.",
-          "state": "unknown"
+          "sources": [
+            "https://github.com/nix-purifiers/maven-purifier/blob/20e822558ce637a5c5672d68af667a98e243b300/README.md#L69",
+            "https://github.com/nix-purifiers/maven-purifier/blob/20e822558ce637a5c5672d68af667a98e243b300/README.md#L333",
+            "https://github.com/nix-purifiers/maven-purifier/blob/20e822558ce637a5c5672d68af667a98e243b300/README.md#L278"
+          ],
+          "state": "known",
+          "value": [
+            "Only dependencies/plugins and active profiles covered by the recorded goals and settings are locked.",
+            "Plugin downloads outside Maven Resolver require explicit .mvn/maven-purifier.json entries.",
+            "An editor using different Maven default-plugin versions may need explicit pluginManagement versions."
+          ]
         },
         "offline_scope": {
-          "reason": "This capability is not established by the reviewed integration record.",
-          "state": "unknown"
+          "sources": [
+            "https://github.com/nix-purifiers/maven-purifier/blob/20e822558ce637a5c5672d68af667a98e243b300/cli/maven_purifier.py#L1202",
+            "https://github.com/nix-purifiers/maven-purifier/blob/20e822558ce637a5c5672d68af667a98e243b300/nix/lib/build-maven-project.nix#L236"
+          ],
+          "state": "known",
+          "value": "locked-dependencies"
         },
         "platform_notes": {
-          "reason": "This capability is not established by the reviewed integration record.",
-          "state": "unknown"
+          "sources": [
+            "https://github.com/nix-purifiers/maven-purifier/blob/382fb8ec30e8ea8fad98dbb58ac68e47107f0b2b/tests/default.nix",
+            "https://nix-purifiers.github.io/evidence/7cea543ca47c5fea1d96cefa73b1ad3666677e49c8f6bff7151e433f96fcf578.json",
+            "https://nix-purifiers.github.io/evidence/2be0ce9c6fcc6fb2d665b2b2ffc6f7b30f11f3c118b20ac704486c35ad7173e1.json"
+          ],
+          "state": "known",
+          "value": [
+            "The retained technical review covers native x86_64-linux, aarch64-linux and aarch64-darwin.",
+            "No Intel Darwin, cross-compilation or unlisted SDK/system combination is established by that review."
+          ]
         },
         "platforms": {
           "sources": [
@@ -59972,15 +60044,19 @@
           ]
         },
         "relock": {
-          "reason": "This capability is not established by the reviewed integration record.",
-          "state": "unknown"
+          "sources": [
+            "https://github.com/nix-purifiers/maven-purifier/blob/20e822558ce637a5c5672d68af667a98e243b300/cli/maven_purifier.py#L773",
+            "https://github.com/nix-purifiers/maven-purifier/blob/20e822558ce637a5c5672d68af667a98e243b300/README.md#L46"
+          ],
+          "state": "known",
+          "value": "preserves-pins"
         },
         "runtime_requirements": {
           "reason": "This capability is not established by the reviewed integration record.",
           "state": "unknown"
         },
         "stale_lock": {
-          "reason": "This capability is not established by the reviewed integration record.",
+          "reason": "Prefetch, publish and the Nix builder reject changed POM/.mvn/goals with a repair command. This record does not establish equivalent stale-lock rejection for every direct invocation of already-prefetched native Maven.",
           "state": "unknown"
         },
         "supported_native_commands": {
@@ -62121,23 +62197,33 @@
           "state": "unknown"
         },
         "credentials": {
-          "reason": "This capability is not established by the reviewed integration record.",
+          "reason": "This bounded record does not establish credential propagation through both native capture and Nix prefetch for private dependency sources; builder fetcher overrides are not evidence of default transport authentication.",
           "state": "unknown"
         },
         "dependency_sources": {
-          "reason": "This capability is not established by the reviewed integration record.",
-          "state": "unknown"
+          "sources": [
+            "https://github.com/nix-purifiers/meson-purifier/blob/d9b1bc384669817635c649ec3aba52c8aae66d74/pkgs/cli/meson_purifier.py#L261",
+            "https://github.com/nix-purifiers/meson-purifier/blob/d9b1bc384669817635c649ec3aba52c8aae66d74/pkgs/cli/meson_purifier.py#L281",
+            "https://github.com/nix-purifiers/meson-purifier/blob/d9b1bc384669817635c649ec3aba52c8aae66d74/README.md#L218"
+          ],
+          "state": "known",
+          "value": [
+            "WrapDB and HTTP(S) wrap archives",
+            "Git",
+            "Mercurial",
+            "Subversion"
+          ]
         },
         "editor_completion": {
-          "reason": "This capability is not established by the reviewed integration record.",
+          "reason": "The existing editor/toolchain setup does not by itself establish LSP completion. No protocol-level result for this capability is asserted in this bounded backfill.",
           "state": "unknown"
         },
         "editor_dependency_sources": {
-          "reason": "This capability is not established by the reviewed integration record.",
+          "reason": "The existing editor/toolchain setup does not by itself establish LSP dependency-source retrieval. No protocol-level result for this capability is asserted in this bounded backfill.",
           "state": "unknown"
         },
         "editor_diagnostics": {
-          "reason": "This capability is not established by the reviewed integration record.",
+          "reason": "The existing editor/toolchain setup does not by itself establish LSP diagnostics. No protocol-level result for this capability is asserted in this bounded backfill.",
           "state": "unknown"
         },
         "editor_metadata_format": {
@@ -62145,7 +62231,7 @@
           "state": "unknown"
         },
         "editor_navigation": {
-          "reason": "This capability is not established by the reviewed integration record.",
+          "reason": "The existing editor/toolchain setup does not by itself establish LSP definition lookup. No protocol-level result for this capability is asserted in this bounded backfill.",
           "state": "unknown"
         },
         "editor_offline": {
@@ -62168,8 +62254,13 @@
           "state": "unknown"
         },
         "inputs": {
-          "reason": "This capability is not established by the reviewed integration record.",
-          "state": "unknown"
+          "sources": [
+            "https://github.com/nix-purifiers/meson-purifier/blob/d9b1bc384669817635c649ec3aba52c8aae66d74/pkgs/cli/meson_purifier.py#L84"
+          ],
+          "state": "known",
+          "value": [
+            "meson.build"
+          ]
         },
         "integration": {
           "sources": [],
@@ -62188,28 +62279,31 @@
           ]
         },
         "missing_lock": {
-          "reason": "This capability is not established by the reviewed integration record.",
-          "state": "unknown"
+          "sources": [
+            "https://github.com/nix-purifiers/meson-purifier/blob/d9b1bc384669817635c649ec3aba52c8aae66d74/pkgs/cli/meson_purifier.py#L978"
+          ],
+          "state": "known",
+          "value": "warn-and-native"
         },
         "named_update_example": {
           "reason": "This capability is not established by the reviewed integration record.",
           "state": "unknown"
         },
         "native_plugin_bootstrap": {
-          "reason": "This capability is not established by the reviewed integration record.",
-          "state": "unknown"
+          "reason": "This integration uses a native-tool wrapper, not a published JVM/native build-tool plugin; plugin coordinates, bootstrap repository and Java target do not apply.",
+          "state": "not-applicable"
         },
         "native_plugin_coordinate": {
-          "reason": "This capability is not established by the reviewed integration record.",
-          "state": "unknown"
+          "reason": "This integration uses a native-tool wrapper, not a published JVM/native build-tool plugin; plugin coordinates, bootstrap repository and Java target do not apply.",
+          "state": "not-applicable"
         },
         "native_plugin_java_target": {
-          "reason": "This capability is not established by the reviewed integration record.",
-          "state": "unknown"
+          "reason": "This integration uses a native-tool wrapper, not a published JVM/native build-tool plugin; plugin coordinates, bootstrap repository and Java target do not apply.",
+          "state": "not-applicable"
         },
         "native_plugin_repository": {
-          "reason": "This capability is not established by the reviewed integration record.",
-          "state": "unknown"
+          "reason": "This integration uses a native-tool wrapper, not a published JVM/native build-tool plugin; plugin coordinates, bootstrap repository and Java target do not apply.",
+          "state": "not-applicable"
         },
         "nix_builder": {
           "sources": [],
@@ -62217,16 +62311,37 @@
           "value": "pkgs.meson-purifier.buildMesonProject"
         },
         "offline_limits": {
-          "reason": "This capability is not established by the reviewed integration record.",
-          "state": "unknown"
+          "sources": [
+            "https://github.com/nix-purifiers/meson-purifier/blob/d9b1bc384669817635c649ec3aba52c8aae66d74/pkgs/cli/meson_purifier.py#L981",
+            "https://github.com/nix-purifiers/meson-purifier/blob/d9b1bc384669817635c649ec3aba52c8aae66d74/pkgs/cli/meson_purifier.py#L918",
+            "https://github.com/nix-purifiers/meson-purifier/blob/d9b1bc384669817635c649ec3aba52c8aae66d74/README.md#L56"
+          ],
+          "state": "known",
+          "value": [
+            "Dependency-changing meson wrap/subprojects commands use native resolution and require locking again.",
+            "An explicit --wrap-mode argument is retained instead of forcing nodownload.",
+            "Arbitrary downloads performed by project configuration/build steps are outside the wrapped dependency cache."
+          ]
         },
         "offline_scope": {
-          "reason": "This capability is not established by the reviewed integration record.",
-          "state": "unknown"
+          "sources": [
+            "https://github.com/nix-purifiers/meson-purifier/blob/d9b1bc384669817635c649ec3aba52c8aae66d74/pkgs/cli/meson_purifier.py#L910",
+            "https://github.com/nix-purifiers/meson-purifier/blob/d9b1bc384669817635c649ec3aba52c8aae66d74/pkgs/cli/meson_purifier.py#L920"
+          ],
+          "state": "known",
+          "value": "locked-dependencies"
         },
         "platform_notes": {
-          "reason": "This capability is not established by the reviewed integration record.",
-          "state": "unknown"
+          "sources": [
+            "https://nix-purifiers.github.io/evidence/cb4c495ac6de21575770182a7b7a5cf846a36a7b726e2a68e30cb69711a79887.json",
+            "https://nix-purifiers.github.io/evidence/9be9a95a65a1208c0b0981e94d9bb0a7fa5e2061731173a24c89098239f3de6b.json",
+            "https://nix-purifiers.github.io/evidence/0f3d00fed8d2d4535b26adfcadd58243bf932a0aeb2a19cd3b56448ac125ac38.json"
+          ],
+          "state": "known",
+          "value": [
+            "The retained technical review covers native x86_64-linux, aarch64-linux and aarch64-darwin.",
+            "No Intel Darwin, cross-compilation or unlisted SDK/system combination is established by that review."
+          ]
         },
         "platforms": {
           "sources": [
@@ -62341,7 +62456,7 @@
           ]
         },
         "relock": {
-          "reason": "This capability is not established by the reviewed integration record.",
+          "reason": "Archive hashes and fixed VCS revisions are retained, but floating VCS branches are resolved again. The current preserves-pins/re-resolves enum cannot express that mixed behavior without losing scope.",
           "state": "unknown"
         },
         "runtime_requirements": {
@@ -62349,7 +62464,7 @@
           "state": "unknown"
         },
         "stale_lock": {
-          "reason": "This capability is not established by the reviewed integration record.",
+          "reason": "Wrap changes and invalid locks fail with a repair command, but edits only to meson.build leave interactive dependency downloads usable and the builder warns about recorded outputs. The general stale-lock enum cannot express both paths.",
           "state": "unknown"
         },
         "supported_native_commands": {
@@ -94801,41 +94916,21 @@
         "supportedRanges": [],
         "testedPoints": [
           {
-            "id": "native-composition-sbt-0.13.18-x86_64-linux",
             "components": [
               {
-                "role": "native-tool",
                 "name": "sbt",
+                "role": "native-tool",
                 "version": "0.13.18"
               }
             ],
-            "system": "x86_64-linux",
-            "operations": [
-              "native-lock",
-              "project-build-scripts",
-              "native-input-composition",
-              "native-publish",
-              "ordinary-maven-consumer"
-            ],
-            "sourceRevision": "5ea8fab7c9eb4a068d3d3b820a177fedc2e599bc",
             "evidence": [
               "https://github.com/nix-purifiers/sbt-purifier/blob/5ea8fab7c9eb4a068d3d3b820a177fedc2e599bc/tests/composition-native.py",
               "https://github.com/nix-purifiers/sbt-purifier/actions/runs/41964683706/job/127038838105"
             ],
+            "id": "native-composition-sbt-0.13.18-x86_64-linux",
             "notes": [
               "Java fixture with project-selected sbt, projected Nix input resolution, sandbox-built publication, and an ordinary Maven consumer executing the artifact. This is native composition evidence, not a historical JDK compatibility matrix."
-            ]
-          },
-          {
-            "id": "native-composition-sbt-1.11.7-x86_64-linux",
-            "components": [
-              {
-                "role": "native-tool",
-                "name": "sbt",
-                "version": "1.11.7"
-              }
             ],
-            "system": "x86_64-linux",
             "operations": [
               "native-lock",
               "project-build-scripts",
@@ -94844,24 +94939,24 @@
               "ordinary-maven-consumer"
             ],
             "sourceRevision": "5ea8fab7c9eb4a068d3d3b820a177fedc2e599bc",
+            "system": "x86_64-linux"
+          },
+          {
+            "components": [
+              {
+                "name": "sbt",
+                "role": "native-tool",
+                "version": "1.11.7"
+              }
+            ],
             "evidence": [
               "https://github.com/nix-purifiers/sbt-purifier/blob/5ea8fab7c9eb4a068d3d3b820a177fedc2e599bc/tests/composition-native.py",
               "https://github.com/nix-purifiers/sbt-purifier/actions/runs/41964683706/job/127038838013"
             ],
+            "id": "native-composition-sbt-1.11.7-x86_64-linux",
             "notes": [
               "Java fixture with project-selected sbt, projected Nix input resolution, sandbox-built publication, and an ordinary Maven consumer executing the artifact. This is native composition evidence, not a historical JDK compatibility matrix."
-            ]
-          },
-          {
-            "id": "native-composition-sbt-2.0.12-x86_64-linux",
-            "components": [
-              {
-                "role": "native-tool",
-                "name": "sbt",
-                "version": "2.0.12"
-              }
             ],
-            "system": "x86_64-linux",
             "operations": [
               "native-lock",
               "project-build-scripts",
@@ -94870,24 +94965,24 @@
               "ordinary-maven-consumer"
             ],
             "sourceRevision": "5ea8fab7c9eb4a068d3d3b820a177fedc2e599bc",
+            "system": "x86_64-linux"
+          },
+          {
+            "components": [
+              {
+                "name": "sbt",
+                "role": "native-tool",
+                "version": "2.0.12"
+              }
+            ],
             "evidence": [
               "https://github.com/nix-purifiers/sbt-purifier/blob/5ea8fab7c9eb4a068d3d3b820a177fedc2e599bc/tests/composition-native.py",
               "https://github.com/nix-purifiers/sbt-purifier/actions/runs/41964683706/job/127038837903"
             ],
+            "id": "native-composition-sbt-2.0.12-x86_64-linux",
             "notes": [
               "Java fixture with project-selected sbt, projected Nix input resolution, sandbox-built publication, and an ordinary Maven consumer executing the artifact. This is native composition evidence, not a historical JDK compatibility matrix."
-            ]
-          },
-          {
-            "id": "native-composition-sbt-0.13.18-aarch64-linux",
-            "components": [
-              {
-                "role": "native-tool",
-                "name": "sbt",
-                "version": "0.13.18"
-              }
             ],
-            "system": "aarch64-linux",
             "operations": [
               "native-lock",
               "project-build-scripts",
@@ -94896,24 +94991,24 @@
               "ordinary-maven-consumer"
             ],
             "sourceRevision": "5ea8fab7c9eb4a068d3d3b820a177fedc2e599bc",
+            "system": "x86_64-linux"
+          },
+          {
+            "components": [
+              {
+                "name": "sbt",
+                "role": "native-tool",
+                "version": "0.13.18"
+              }
+            ],
             "evidence": [
               "https://github.com/nix-purifiers/sbt-purifier/blob/5ea8fab7c9eb4a068d3d3b820a177fedc2e599bc/tests/composition-native.py",
               "https://github.com/nix-purifiers/sbt-purifier/actions/runs/41964683706/job/127038837928"
             ],
+            "id": "native-composition-sbt-0.13.18-aarch64-linux",
             "notes": [
               "Java fixture with project-selected sbt, projected Nix input resolution, sandbox-built publication, and an ordinary Maven consumer executing the artifact. This is native composition evidence, not a historical JDK compatibility matrix."
-            ]
-          },
-          {
-            "id": "native-composition-sbt-1.11.7-aarch64-linux",
-            "components": [
-              {
-                "role": "native-tool",
-                "name": "sbt",
-                "version": "1.11.7"
-              }
             ],
-            "system": "aarch64-linux",
             "operations": [
               "native-lock",
               "project-build-scripts",
@@ -94922,24 +95017,24 @@
               "ordinary-maven-consumer"
             ],
             "sourceRevision": "5ea8fab7c9eb4a068d3d3b820a177fedc2e599bc",
+            "system": "aarch64-linux"
+          },
+          {
+            "components": [
+              {
+                "name": "sbt",
+                "role": "native-tool",
+                "version": "1.11.7"
+              }
+            ],
             "evidence": [
               "https://github.com/nix-purifiers/sbt-purifier/blob/5ea8fab7c9eb4a068d3d3b820a177fedc2e599bc/tests/composition-native.py",
               "https://github.com/nix-purifiers/sbt-purifier/actions/runs/41964683706/job/127038838107"
             ],
+            "id": "native-composition-sbt-1.11.7-aarch64-linux",
             "notes": [
               "Java fixture with project-selected sbt, projected Nix input resolution, sandbox-built publication, and an ordinary Maven consumer executing the artifact. This is native composition evidence, not a historical JDK compatibility matrix."
-            ]
-          },
-          {
-            "id": "native-composition-sbt-2.0.12-aarch64-linux",
-            "components": [
-              {
-                "role": "native-tool",
-                "name": "sbt",
-                "version": "2.0.12"
-              }
             ],
-            "system": "aarch64-linux",
             "operations": [
               "native-lock",
               "project-build-scripts",
@@ -94948,39 +95043,47 @@
               "ordinary-maven-consumer"
             ],
             "sourceRevision": "5ea8fab7c9eb4a068d3d3b820a177fedc2e599bc",
+            "system": "aarch64-linux"
+          },
+          {
+            "components": [
+              {
+                "name": "sbt",
+                "role": "native-tool",
+                "version": "2.0.12"
+              }
+            ],
             "evidence": [
               "https://github.com/nix-purifiers/sbt-purifier/blob/5ea8fab7c9eb4a068d3d3b820a177fedc2e599bc/tests/composition-native.py",
               "https://github.com/nix-purifiers/sbt-purifier/actions/runs/41964683706/job/127038838207"
             ],
+            "id": "native-composition-sbt-2.0.12-aarch64-linux",
             "notes": [
               "Java fixture with project-selected sbt, projected Nix input resolution, sandbox-built publication, and an ordinary Maven consumer executing the artifact. This is native composition evidence, not a historical JDK compatibility matrix."
-            ]
+            ],
+            "operations": [
+              "native-lock",
+              "project-build-scripts",
+              "native-input-composition",
+              "native-publish",
+              "ordinary-maven-consumer"
+            ],
+            "sourceRevision": "5ea8fab7c9eb4a068d3d3b820a177fedc2e599bc",
+            "system": "aarch64-linux"
           },
           {
-            "id": "native-runtime-sbt-1.11.7-aarch64-darwin-169b2e6",
             "components": [
               {
-                "role": "native-tool",
                 "name": "sbt",
+                "role": "native-tool",
                 "version": "1.11.7"
               },
               {
-                "role": "native-tool-runtime",
                 "name": "Zulu OpenJDK",
+                "role": "native-tool-runtime",
                 "version": "21.0.11+10-LTS"
               }
             ],
-            "system": "aarch64-darwin",
-            "operations": [
-              "native-lock",
-              "lock-reproducibility",
-              "native-prefetch",
-              "native-offline-build",
-              "project-build-scripts",
-              "project-test-scripts",
-              "pure-build"
-            ],
-            "sourceRevision": "169b2e6e6a5d87f6c7f43e45b72f57e59f09c35c",
             "evidence": [
               "https://github.com/nix-purifiers/sbt-purifier/actions/runs/42428047985/job/128570510776",
               "https://github.com/nix-purifiers/sbt-purifier/blob/169b2e6e6a5d87f6c7f43e45b72f57e59f09c35c/tests/runtime-sample.py",
@@ -94988,6 +95091,7 @@
               "https://nix-purifiers.github.io/evidence/6b5e79ecf8d0e0f09c669f9567de9227c1916b95579e7466ae2f6188bcbf9b88.json",
               "https://nix-purifiers.github.io/evidence/f7f17e4c5e473220ade7366d6841f48b236499527dca44a4a4506241f949e21c.json"
             ],
+            "id": "native-runtime-sbt-1.11.7-aarch64-darwin-169b2e6",
             "notes": [
               "Exact selected sbt and JDK/platform point; no version ranges, other JDKs or architecture generalization.",
               "Actual native test, native lock/no-op/relock, prefetch, empty-cache offline negative control, locked host offline tests, and Nix package output identities verified from authenticated receipt/logs.",
@@ -94997,23 +95101,7 @@
               "Producer source NAR: sha256-//k+UAuoBXz3DnURdALOYXd134nGWnG5YGgwHvS8Tfs=",
               "Observed derivation: /nix/store/dh7h1r5hlvq6g9rc55kgik4ivp9lsi00-sbt-tests.drv",
               "Observed outputs/NARs: {\"/nix/store/yh55yw7s6qxh1s4lw9dxjyd27xi269dm-sbt-tests\": \"sha256-Zn0m7g7TqRAUr0L8/CkxL5I0+WmWnzB1hHxf6mV/q8Y=\"}"
-            ]
-          },
-          {
-            "id": "native-runtime-sbt-1.11.7-x86_64-linux-169b2e6",
-            "components": [
-              {
-                "role": "native-tool",
-                "name": "sbt",
-                "version": "1.11.7"
-              },
-              {
-                "role": "native-tool-runtime",
-                "name": "OpenJDK",
-                "version": "21.0.12.1+1"
-              }
             ],
-            "system": "x86_64-linux",
             "operations": [
               "native-lock",
               "lock-reproducibility",
@@ -95024,6 +95112,21 @@
               "pure-build"
             ],
             "sourceRevision": "169b2e6e6a5d87f6c7f43e45b72f57e59f09c35c",
+            "system": "aarch64-darwin"
+          },
+          {
+            "components": [
+              {
+                "name": "sbt",
+                "role": "native-tool",
+                "version": "1.11.7"
+              },
+              {
+                "name": "OpenJDK",
+                "role": "native-tool-runtime",
+                "version": "21.0.12.1+1"
+              }
+            ],
             "evidence": [
               "https://github.com/nix-purifiers/sbt-purifier/actions/runs/42428047985/job/128570510799",
               "https://github.com/nix-purifiers/sbt-purifier/blob/169b2e6e6a5d87f6c7f43e45b72f57e59f09c35c/tests/runtime-sample.py",
@@ -95031,6 +95134,7 @@
               "https://nix-purifiers.github.io/evidence/ae9da1c049178981d67118caae8c25dee7ba58c0aeabc515272fae34cde190a3.json",
               "https://nix-purifiers.github.io/evidence/d3fd86c45469fa1f86ebe0e979a6de77284fbce599cbbcc5eb957365e3e1ca89.json"
             ],
+            "id": "native-runtime-sbt-1.11.7-x86_64-linux-169b2e6",
             "notes": [
               "Exact selected sbt and JDK/platform point; no version ranges, other JDKs or architecture generalization.",
               "Actual native test, native lock/no-op/relock, prefetch, empty-cache offline negative control, locked host offline tests, and Nix package output identities verified from authenticated receipt/logs.",
@@ -95040,23 +95144,7 @@
               "Producer source NAR: sha256-//k+UAuoBXz3DnURdALOYXd134nGWnG5YGgwHvS8Tfs=",
               "Observed derivation: /nix/store/wq1brjmghzv0vnv946k23870b427g8ns-sbt-tests.drv",
               "Observed outputs/NARs: {\"/nix/store/fvjbb0m8j3ljc9g0kysdfh2312iy04sy-sbt-tests\": \"sha256-uUZ6tuzN18WGrDBTr7KrkK1/snscSBw8r+ZYbiGIzZY=\"}"
-            ]
-          },
-          {
-            "id": "native-runtime-sbt-1.13.1-aarch64-darwin-169b2e6",
-            "components": [
-              {
-                "role": "native-tool",
-                "name": "sbt",
-                "version": "1.13.1"
-              },
-              {
-                "role": "native-tool-runtime",
-                "name": "Zulu OpenJDK",
-                "version": "21.0.11+10-LTS"
-              }
             ],
-            "system": "aarch64-darwin",
             "operations": [
               "native-lock",
               "lock-reproducibility",
@@ -95067,6 +95155,21 @@
               "pure-build"
             ],
             "sourceRevision": "169b2e6e6a5d87f6c7f43e45b72f57e59f09c35c",
+            "system": "x86_64-linux"
+          },
+          {
+            "components": [
+              {
+                "name": "sbt",
+                "role": "native-tool",
+                "version": "1.13.1"
+              },
+              {
+                "name": "Zulu OpenJDK",
+                "role": "native-tool-runtime",
+                "version": "21.0.11+10-LTS"
+              }
+            ],
             "evidence": [
               "https://github.com/nix-purifiers/sbt-purifier/actions/runs/42428047985/job/128570510746",
               "https://github.com/nix-purifiers/sbt-purifier/blob/169b2e6e6a5d87f6c7f43e45b72f57e59f09c35c/tests/runtime-sample.py",
@@ -95074,6 +95177,7 @@
               "https://nix-purifiers.github.io/evidence/9e669fb9362bf5760c0509a7b7c1c2492e5170067522deb3d4d22e4ffc13c077.json",
               "https://nix-purifiers.github.io/evidence/56fe2eeb575f3f0787473798d4d48bcb6b280bd5359eb7cd00a8f2ae8bb629c0.json"
             ],
+            "id": "native-runtime-sbt-1.13.1-aarch64-darwin-169b2e6",
             "notes": [
               "Exact selected sbt and JDK/platform point; no version ranges, other JDKs or architecture generalization.",
               "Actual native test, native lock/no-op/relock, prefetch, empty-cache offline negative control, locked host offline tests, and Nix package output identities verified from authenticated receipt/logs.",
@@ -95083,23 +95187,7 @@
               "Producer source NAR: sha256-//k+UAuoBXz3DnURdALOYXd134nGWnG5YGgwHvS8Tfs=",
               "Observed derivation: /nix/store/92yb5nz3qpn3kh8i99qzc3fci4rc846n-sbt-tests.drv",
               "Observed outputs/NARs: {\"/nix/store/wg4f2rkr3dqs4d5nfrwyhivn7j365rqi-sbt-tests\": \"sha256-O4mKOXuEA9cgq40Qh3yKHwClonYb/If/d6CX/4Zc7p8=\"}"
-            ]
-          },
-          {
-            "id": "native-runtime-sbt-1.13.1-x86_64-linux-169b2e6",
-            "components": [
-              {
-                "role": "native-tool",
-                "name": "sbt",
-                "version": "1.13.1"
-              },
-              {
-                "role": "native-tool-runtime",
-                "name": "OpenJDK",
-                "version": "21.0.12.1+1"
-              }
             ],
-            "system": "x86_64-linux",
             "operations": [
               "native-lock",
               "lock-reproducibility",
@@ -95110,6 +95198,21 @@
               "pure-build"
             ],
             "sourceRevision": "169b2e6e6a5d87f6c7f43e45b72f57e59f09c35c",
+            "system": "aarch64-darwin"
+          },
+          {
+            "components": [
+              {
+                "name": "sbt",
+                "role": "native-tool",
+                "version": "1.13.1"
+              },
+              {
+                "name": "OpenJDK",
+                "role": "native-tool-runtime",
+                "version": "21.0.12.1+1"
+              }
+            ],
             "evidence": [
               "https://github.com/nix-purifiers/sbt-purifier/actions/runs/42428047985/job/128570510884",
               "https://github.com/nix-purifiers/sbt-purifier/blob/169b2e6e6a5d87f6c7f43e45b72f57e59f09c35c/tests/runtime-sample.py",
@@ -95117,6 +95220,7 @@
               "https://nix-purifiers.github.io/evidence/01024669d6097829c2c6696a4e6b00911341b284c55ca99190ea73510a22b347.json",
               "https://nix-purifiers.github.io/evidence/f9a5de0cf02f74fc79a5815379cdbc269ea8d2f81a9cd32c8fd5930aa98733c4.json"
             ],
+            "id": "native-runtime-sbt-1.13.1-x86_64-linux-169b2e6",
             "notes": [
               "Exact selected sbt and JDK/platform point; no version ranges, other JDKs or architecture generalization.",
               "Actual native test, native lock/no-op/relock, prefetch, empty-cache offline negative control, locked host offline tests, and Nix package output identities verified from authenticated receipt/logs.",
@@ -95126,23 +95230,7 @@
               "Producer source NAR: sha256-//k+UAuoBXz3DnURdALOYXd134nGWnG5YGgwHvS8Tfs=",
               "Observed derivation: /nix/store/id78cf16dygag2fv1wrrl0lh2n8wdc6c-sbt-tests.drv",
               "Observed outputs/NARs: {\"/nix/store/v4zg8khq325hi30c768lqjw3z8wnsqpx-sbt-tests\": \"sha256-QKpOUFL+oS+G0pOvRSRrfIVWwkInDKNN1sX1HaFHaPw=\"}"
-            ]
-          },
-          {
-            "id": "native-runtime-sbt-2.0.12-aarch64-darwin-169b2e6",
-            "components": [
-              {
-                "role": "native-tool",
-                "name": "sbt",
-                "version": "2.0.12"
-              },
-              {
-                "role": "native-tool-runtime",
-                "name": "Zulu OpenJDK",
-                "version": "21.0.11+10-LTS"
-              }
             ],
-            "system": "aarch64-darwin",
             "operations": [
               "native-lock",
               "lock-reproducibility",
@@ -95153,6 +95241,21 @@
               "pure-build"
             ],
             "sourceRevision": "169b2e6e6a5d87f6c7f43e45b72f57e59f09c35c",
+            "system": "x86_64-linux"
+          },
+          {
+            "components": [
+              {
+                "name": "sbt",
+                "role": "native-tool",
+                "version": "2.0.12"
+              },
+              {
+                "name": "Zulu OpenJDK",
+                "role": "native-tool-runtime",
+                "version": "21.0.11+10-LTS"
+              }
+            ],
             "evidence": [
               "https://github.com/nix-purifiers/sbt-purifier/actions/runs/42428047985/job/128570510847",
               "https://github.com/nix-purifiers/sbt-purifier/blob/169b2e6e6a5d87f6c7f43e45b72f57e59f09c35c/tests/runtime-sample.py",
@@ -95160,6 +95263,7 @@
               "https://nix-purifiers.github.io/evidence/9d98f9477498bde06a613bb781620e364bab6b26746348ddd3241504c45b89a9.json",
               "https://nix-purifiers.github.io/evidence/927bcafe82607d750637452a49ea29c8f25b4d77f20ff2404630744186a42e77.json"
             ],
+            "id": "native-runtime-sbt-2.0.12-aarch64-darwin-169b2e6",
             "notes": [
               "Exact selected sbt and JDK/platform point; no version ranges, other JDKs or architecture generalization.",
               "Actual native test, native lock/no-op/relock, prefetch, empty-cache offline negative control, locked host offline tests, and Nix package output identities verified from authenticated receipt/logs.",
@@ -95169,23 +95273,7 @@
               "Producer source NAR: sha256-//k+UAuoBXz3DnURdALOYXd134nGWnG5YGgwHvS8Tfs=",
               "Observed derivation: /nix/store/m8ww4wdkwpjrrr7wp5k61plrh49ff2y4-sbt-tests.drv",
               "Observed outputs/NARs: {\"/nix/store/6sslfkwmbz3fllhd9kq5wwb7xyf0szc0-sbt-tests\": \"sha256-vWQFiLhsCMQvM1Tszvw8NApxMBfHgwmqPKGNeF7L6g0=\"}"
-            ]
-          },
-          {
-            "id": "native-runtime-sbt-2.0.12-x86_64-linux-169b2e6",
-            "components": [
-              {
-                "role": "native-tool",
-                "name": "sbt",
-                "version": "2.0.12"
-              },
-              {
-                "role": "native-tool-runtime",
-                "name": "OpenJDK",
-                "version": "21.0.12.1+1"
-              }
             ],
-            "system": "x86_64-linux",
             "operations": [
               "native-lock",
               "lock-reproducibility",
@@ -95196,6 +95284,21 @@
               "pure-build"
             ],
             "sourceRevision": "169b2e6e6a5d87f6c7f43e45b72f57e59f09c35c",
+            "system": "aarch64-darwin"
+          },
+          {
+            "components": [
+              {
+                "name": "sbt",
+                "role": "native-tool",
+                "version": "2.0.12"
+              },
+              {
+                "name": "OpenJDK",
+                "role": "native-tool-runtime",
+                "version": "21.0.12.1+1"
+              }
+            ],
             "evidence": [
               "https://github.com/nix-purifiers/sbt-purifier/actions/runs/42428047985/job/128570510895",
               "https://github.com/nix-purifiers/sbt-purifier/blob/169b2e6e6a5d87f6c7f43e45b72f57e59f09c35c/tests/runtime-sample.py",
@@ -95203,6 +95306,7 @@
               "https://nix-purifiers.github.io/evidence/b449d606171cc8b0dff3e440a7d2a3725d9169d77d0cc03b10204e7c4bedc970.json",
               "https://nix-purifiers.github.io/evidence/b18ff510d6256ece1c87e957ce61783c800840a45f61568411a165843a974247.json"
             ],
+            "id": "native-runtime-sbt-2.0.12-x86_64-linux-169b2e6",
             "notes": [
               "Exact selected sbt and JDK/platform point; no version ranges, other JDKs or architecture generalization.",
               "Actual native test, native lock/no-op/relock, prefetch, empty-cache offline negative control, locked host offline tests, and Nix package output identities verified from authenticated receipt/logs.",
@@ -95212,7 +95316,18 @@
               "Producer source NAR: sha256-//k+UAuoBXz3DnURdALOYXd134nGWnG5YGgwHvS8Tfs=",
               "Observed derivation: /nix/store/s0qaaavpgaccq0xbxyvhx10r9xz5cdzx-sbt-tests.drv",
               "Observed outputs/NARs: {\"/nix/store/p8nv0vw6fw31mfaix2ihl89c6gqhm4s1-sbt-tests\": \"sha256-C9Ka5zXn1u1NXFkQ7eyveriupsnEZWPnzVJK607jJyw=\"}"
-            ]
+            ],
+            "operations": [
+              "native-lock",
+              "lock-reproducibility",
+              "native-prefetch",
+              "native-offline-build",
+              "project-build-scripts",
+              "project-test-scripts",
+              "pure-build"
+            ],
+            "sourceRevision": "169b2e6e6a5d87f6c7f43e45b72f57e59f09c35c",
+            "system": "x86_64-linux"
           }
         ]
       },
@@ -95345,14 +95460,6 @@
           "state": "unknown"
         },
         "platform_notes": {
-          "state": "known",
-          "value": [
-            "At producer 169b2e6e6a5d87f6c7f43e45b72f57e59f09c35c, native aarch64-darwin CI passed the exact sbt 1.11.7, 1.13.1 and 2.0.12 runtime samples on Zulu OpenJDK 21.0.11+10-LTS; these are observed points, not a general platform or JDK range.",
-            "The independent sbt 1.11.7 and 1.13.1 checked packages passed actual sandboxed --rebuild runs. The authored sbt 2.0.12 fixture has an ordinary successful sandboxed build and observed output identity; no fresh checked-package rebuild is claimed for it.",
-            "Darwin 1.x controls passed three cross-process IPv4 socket pairs and default/INET external permission denials. Unsupported IPv6 remains unproven; no Darwin sbt 0.13 execution is claimed.",
-            "The Darwin lock-generation fix requires a plugin built from the merged change or a release containing it",
-            "Test scripts require Bash 4 or later; macOS /bin/bash 3.2 is insufficient"
-          ],
           "sources": [
             "https://github.com/nix-purifiers/sbt-purifier/blob/169b2e6e6a5d87f6c7f43e45b72f57e59f09c35c/.github/workflows/check.yml",
             "https://github.com/nix-purifiers/sbt-purifier/blob/169b2e6e6a5d87f6c7f43e45b72f57e59f09c35c/tests/runtime-sample.py",
@@ -95361,6 +95468,14 @@
             "https://github.com/nix-purifiers/sbt-purifier/actions/runs/42428047985/job/128570510847",
             "https://nix-purifiers.github.io/evidence/364d34782b8d7a342cb5e5eb96ba8321c75efb12a87f1fc232a3c6514adca803.json",
             "https://nix-purifiers.github.io/evidence/a9d19d21196e32bdfae72a78fda84856c61534cfff1202f26657679510f53e07.json"
+          ],
+          "state": "known",
+          "value": [
+            "At producer 169b2e6e6a5d87f6c7f43e45b72f57e59f09c35c, native aarch64-darwin CI passed the exact sbt 1.11.7, 1.13.1 and 2.0.12 runtime samples on Zulu OpenJDK 21.0.11+10-LTS; these are observed points, not a general platform or JDK range.",
+            "The independent sbt 1.11.7 and 1.13.1 checked packages passed actual sandboxed --rebuild runs. The authored sbt 2.0.12 fixture has an ordinary successful sandboxed build and observed output identity; no fresh checked-package rebuild is claimed for it.",
+            "Darwin 1.x controls passed three cross-process IPv4 socket pairs and default/INET external permission denials. Unsupported IPv6 remains unproven; no Darwin sbt 0.13 execution is claimed.",
+            "The Darwin lock-generation fix requires a plugin built from the merged change or a release containing it",
+            "Test scripts require Bash 4 or later; macOS /bin/bash 3.2 is insufficient"
           ]
         },
         "platforms": {
@@ -95599,62 +95714,8 @@
         }
       },
       "quality": {
-        "tier": 2,
-        "reviewedRevision": "169b2e6e6a5d87f6c7f43e45b72f57e59f09c35c",
-        "reviewedAt": "2026-11-08",
-        "rationale": "Verified actual-main native Linux and Darwin derivations cover both maintained sbt lines, a pinned independent sample and scoped authored fixtures. Accepted contributor firsthand local-use reports satisfy the inherited human-use requirement. Many-sample breadth, broad historical compatibility and ongoing maintainer use with two qualifying open-source consumers remain not established.",
         "criteria": {
-          "evaluation": {
-            "state": "met",
-            "summary": "The exact committed producer source and source NAR evaluate to the retained generated sample derivations and the independent offline-task checks; successful native builds bind derivations and output NARs.",
-            "evidence": [
-              "https://github.com/nix-purifiers/sbt-purifier/blob/169b2e6e6a5d87f6c7f43e45b72f57e59f09c35c/tests/runtime-sample.py",
-              "https://github.com/nix-purifiers/sbt-purifier/blob/169b2e6e6a5d87f6c7f43e45b72f57e59f09c35c/tests/independent/offline-tasks.nix",
-              "https://github.com/nix-purifiers/sbt-purifier/blob/169b2e6e6a5d87f6c7f43e45b72f57e59f09c35c/tests/fixtures/sbt2/build.sbt",
-              "https://nix-purifiers.github.io/evidence/364d34782b8d7a342cb5e5eb96ba8321c75efb12a87f1fc232a3c6514adca803.json",
-              "https://nix-purifiers.github.io/evidence/a9d19d21196e32bdfae72a78fda84856c61534cfff1202f26657679510f53e07.json",
-              "https://github.com/nix-purifiers/sbt-purifier/actions/runs/42428047985/job/128570510746",
-              "https://github.com/nix-purifiers/sbt-purifier/actions/runs/42428047985/job/128570510799",
-              "https://github.com/nix-purifiers/sbt-purifier/actions/runs/42428047985/job/128570510847",
-              "https://github.com/nix-purifiers/sbt-purifier/actions/runs/42428047985/job/128570510776",
-              "https://github.com/nix-purifiers/sbt-purifier/actions/runs/42428047985/job/128570510895",
-              "https://github.com/nix-purifiers/sbt-purifier/actions/runs/42428047985/job/128570510884"
-            ]
-          },
-          "goodTests": {
-            "state": "met",
-            "summary": "The pinned independent project executes 38 real tests through native, locked host-offline and sandboxed Nix builds. Lock/no-op/relock byte equality, empty-cache network-negative controls and missing runtime JAR failure followed by restored tests exercise failure paths. The authored sbt 2 multi-module fixture executes one test. Darwin 1.x checked-package rebuilds additionally verify cross-process IPv4 loopback and external permission denials; unsupported IPv6 receives no denial credit.",
-            "evidence": [
-              "https://github.com/nix-purifiers/sbt-purifier/blob/169b2e6e6a5d87f6c7f43e45b72f57e59f09c35c/tests/runtime-sample.py",
-              "https://github.com/nix-purifiers/sbt-purifier/blob/169b2e6e6a5d87f6c7f43e45b72f57e59f09c35c/tests/independent/offline-tasks.nix",
-              "https://github.com/nix-purifiers/sbt-purifier/blob/169b2e6e6a5d87f6c7f43e45b72f57e59f09c35c/tests/fixtures/sbt2/build.sbt",
-              "https://nix-purifiers.github.io/evidence/364d34782b8d7a342cb5e5eb96ba8321c75efb12a87f1fc232a3c6514adca803.json",
-              "https://nix-purifiers.github.io/evidence/a9d19d21196e32bdfae72a78fda84856c61534cfff1202f26657679510f53e07.json",
-              "https://github.com/nix-purifiers/sbt-purifier/actions/runs/42428047985/job/128570510746",
-              "https://github.com/nix-purifiers/sbt-purifier/actions/runs/42428047985/job/128570510799",
-              "https://github.com/nix-purifiers/sbt-purifier/actions/runs/42428047985/job/128570510847",
-              "https://github.com/nix-purifiers/sbt-purifier/actions/runs/42428047985/job/128570510776",
-              "https://github.com/nix-purifiers/sbt-purifier/actions/runs/42428047985/job/128570510895",
-              "https://github.com/nix-purifiers/sbt-purifier/actions/runs/42428047985/job/128570510884"
-            ]
-          },
-          "linux": {
-            "state": "met",
-            "summary": "Native x86_64-linux CI executes the exact sbt 1.11.7, 1.13.1 and 2.0.12 sample derivations with observed output NAR identities; no fresh checked-rebuild claim is made for these Linux cases.",
-            "evidence": [
-              "https://github.com/nix-purifiers/sbt-purifier/blob/169b2e6e6a5d87f6c7f43e45b72f57e59f09c35c/tests/runtime-sample.py",
-              "https://github.com/nix-purifiers/sbt-purifier/blob/169b2e6e6a5d87f6c7f43e45b72f57e59f09c35c/tests/independent/offline-tasks.nix",
-              "https://github.com/nix-purifiers/sbt-purifier/blob/169b2e6e6a5d87f6c7f43e45b72f57e59f09c35c/tests/fixtures/sbt2/build.sbt",
-              "https://nix-purifiers.github.io/evidence/364d34782b8d7a342cb5e5eb96ba8321c75efb12a87f1fc232a3c6514adca803.json",
-              "https://nix-purifiers.github.io/evidence/a9d19d21196e32bdfae72a78fda84856c61534cfff1202f26657679510f53e07.json",
-              "https://github.com/nix-purifiers/sbt-purifier/actions/runs/42428047985/job/128570510799",
-              "https://github.com/nix-purifiers/sbt-purifier/actions/runs/42428047985/job/128570510895",
-              "https://github.com/nix-purifiers/sbt-purifier/actions/runs/42428047985/job/128570510884"
-            ]
-          },
           "darwin": {
-            "state": "met",
-            "summary": "Native aarch64-darwin CI executes the exact sbt 1.11.7, 1.13.1 and 2.0.12 sample derivations. Both 1.x independent checked packages also pass --rebuild; sbt 2 has ordinary successful build/output identity evidence.",
             "evidence": [
               "https://github.com/nix-purifiers/sbt-purifier/blob/169b2e6e6a5d87f6c7f43e45b72f57e59f09c35c/tests/runtime-sample.py",
               "https://github.com/nix-purifiers/sbt-purifier/blob/169b2e6e6a5d87f6c7f43e45b72f57e59f09c35c/tests/independent/offline-tasks.nix",
@@ -95664,11 +95725,11 @@
               "https://github.com/nix-purifiers/sbt-purifier/actions/runs/42428047985/job/128570510746",
               "https://github.com/nix-purifiers/sbt-purifier/actions/runs/42428047985/job/128570510847",
               "https://github.com/nix-purifiers/sbt-purifier/actions/runs/42428047985/job/128570510776"
-            ]
-          },
-          "oneVersion": {
+            ],
             "state": "met",
-            "summary": "Exact sbt 1.11.7, 1.13.1 and 2.0.12 points are tested on x86_64-linux and aarch64-darwin with separately recorded JDK 21 builds. No continuous version or JDK range is inferred.",
+            "summary": "Native aarch64-darwin CI executes the exact sbt 1.11.7, 1.13.1 and 2.0.12 sample derivations. Both 1.x independent checked packages also pass --rebuild; sbt 2 has ordinary successful build/output identity evidence."
+          },
+          "evaluation": {
             "evidence": [
               "https://github.com/nix-purifiers/sbt-purifier/blob/169b2e6e6a5d87f6c7f43e45b72f57e59f09c35c/tests/runtime-sample.py",
               "https://github.com/nix-purifiers/sbt-purifier/blob/169b2e6e6a5d87f6c7f43e45b72f57e59f09c35c/tests/independent/offline-tasks.nix",
@@ -95681,11 +95742,84 @@
               "https://github.com/nix-purifiers/sbt-purifier/actions/runs/42428047985/job/128570510776",
               "https://github.com/nix-purifiers/sbt-purifier/actions/runs/42428047985/job/128570510895",
               "https://github.com/nix-purifiers/sbt-purifier/actions/runs/42428047985/job/128570510884"
-            ]
+            ],
+            "state": "met",
+            "summary": "The exact committed producer source and source NAR evaluate to the retained generated sample derivations and the independent offline-task checks; successful native builds bind derivations and output NARs."
+          },
+          "firsthandUse": {
+            "evidence": [
+              "https://github.com/nix-purifiers/sbt-purifier/pull/13",
+              "https://github.com/nix-purifiers/sbt-purifier/pull/15"
+            ],
+            "state": "met",
+            "summary": "A human contributor reports scoped firsthand local purifier use."
+          },
+          "goodTests": {
+            "evidence": [
+              "https://github.com/nix-purifiers/sbt-purifier/blob/169b2e6e6a5d87f6c7f43e45b72f57e59f09c35c/tests/runtime-sample.py",
+              "https://github.com/nix-purifiers/sbt-purifier/blob/169b2e6e6a5d87f6c7f43e45b72f57e59f09c35c/tests/independent/offline-tasks.nix",
+              "https://github.com/nix-purifiers/sbt-purifier/blob/169b2e6e6a5d87f6c7f43e45b72f57e59f09c35c/tests/fixtures/sbt2/build.sbt",
+              "https://nix-purifiers.github.io/evidence/364d34782b8d7a342cb5e5eb96ba8321c75efb12a87f1fc232a3c6514adca803.json",
+              "https://nix-purifiers.github.io/evidence/a9d19d21196e32bdfae72a78fda84856c61534cfff1202f26657679510f53e07.json",
+              "https://github.com/nix-purifiers/sbt-purifier/actions/runs/42428047985/job/128570510746",
+              "https://github.com/nix-purifiers/sbt-purifier/actions/runs/42428047985/job/128570510799",
+              "https://github.com/nix-purifiers/sbt-purifier/actions/runs/42428047985/job/128570510847",
+              "https://github.com/nix-purifiers/sbt-purifier/actions/runs/42428047985/job/128570510776",
+              "https://github.com/nix-purifiers/sbt-purifier/actions/runs/42428047985/job/128570510895",
+              "https://github.com/nix-purifiers/sbt-purifier/actions/runs/42428047985/job/128570510884"
+            ],
+            "state": "met",
+            "summary": "The pinned independent project executes 38 real tests through native, locked host-offline and sandboxed Nix builds. Lock/no-op/relock byte equality, empty-cache network-negative controls and missing runtime JAR failure followed by restored tests exercise failure paths. The authored sbt 2 multi-module fixture executes one test. Darwin 1.x checked-package rebuilds additionally verify cross-process IPv4 loopback and external permission denials; unsupported IPv6 receives no denial credit."
+          },
+          "linux": {
+            "evidence": [
+              "https://github.com/nix-purifiers/sbt-purifier/blob/169b2e6e6a5d87f6c7f43e45b72f57e59f09c35c/tests/runtime-sample.py",
+              "https://github.com/nix-purifiers/sbt-purifier/blob/169b2e6e6a5d87f6c7f43e45b72f57e59f09c35c/tests/independent/offline-tasks.nix",
+              "https://github.com/nix-purifiers/sbt-purifier/blob/169b2e6e6a5d87f6c7f43e45b72f57e59f09c35c/tests/fixtures/sbt2/build.sbt",
+              "https://nix-purifiers.github.io/evidence/364d34782b8d7a342cb5e5eb96ba8321c75efb12a87f1fc232a3c6514adca803.json",
+              "https://nix-purifiers.github.io/evidence/a9d19d21196e32bdfae72a78fda84856c61534cfff1202f26657679510f53e07.json",
+              "https://github.com/nix-purifiers/sbt-purifier/actions/runs/42428047985/job/128570510799",
+              "https://github.com/nix-purifiers/sbt-purifier/actions/runs/42428047985/job/128570510895",
+              "https://github.com/nix-purifiers/sbt-purifier/actions/runs/42428047985/job/128570510884"
+            ],
+            "state": "met",
+            "summary": "Native x86_64-linux CI executes the exact sbt 1.11.7, 1.13.1 and 2.0.12 sample derivations with observed output NAR identities; no fresh checked-rebuild claim is made for these Linux cases."
+          },
+          "longCompatibility": {
+            "evidence": [
+              "https://github.com/nix-purifiers/sbt-purifier/blob/169b2e6e6a5d87f6c7f43e45b72f57e59f09c35c/tests/runtime-sample.py",
+              "https://github.com/nix-purifiers/sbt-purifier/blob/169b2e6e6a5d87f6c7f43e45b72f57e59f09c35c/tests/independent/offline-tasks.nix",
+              "https://github.com/nix-purifiers/sbt-purifier/blob/169b2e6e6a5d87f6c7f43e45b72f57e59f09c35c/tests/fixtures/sbt2/build.sbt",
+              "https://nix-purifiers.github.io/evidence/364d34782b8d7a342cb5e5eb96ba8321c75efb12a87f1fc232a3c6514adca803.json",
+              "https://nix-purifiers.github.io/evidence/a9d19d21196e32bdfae72a78fda84856c61534cfff1202f26657679510f53e07.json",
+              "https://github.com/nix-purifiers/sbt-purifier/actions/runs/42428047985/job/128570510746",
+              "https://github.com/nix-purifiers/sbt-purifier/actions/runs/42428047985/job/128570510799",
+              "https://github.com/nix-purifiers/sbt-purifier/actions/runs/42428047985/job/128570510847",
+              "https://github.com/nix-purifiers/sbt-purifier/actions/runs/42428047985/job/128570510776",
+              "https://github.com/nix-purifiers/sbt-purifier/actions/runs/42428047985/job/128570510895",
+              "https://github.com/nix-purifiers/sbt-purifier/actions/runs/42428047985/job/128570510884"
+            ],
+            "state": "not-met",
+            "summary": "Exact 1.11.7, 1.13.1 and 2.0.12 runtime points plus separately retained historical 0.13.18 Linux composition do not demonstrate broad historical behavior across intervening sbt versions and dependency engines. No range or Darwin 0.13 support is inferred."
+          },
+          "manySamples": {
+            "evidence": [
+              "https://github.com/nix-purifiers/sbt-purifier/blob/169b2e6e6a5d87f6c7f43e45b72f57e59f09c35c/tests/runtime-sample.py",
+              "https://github.com/nix-purifiers/sbt-purifier/blob/169b2e6e6a5d87f6c7f43e45b72f57e59f09c35c/tests/independent/offline-tasks.nix",
+              "https://github.com/nix-purifiers/sbt-purifier/blob/169b2e6e6a5d87f6c7f43e45b72f57e59f09c35c/tests/fixtures/sbt2/build.sbt",
+              "https://nix-purifiers.github.io/evidence/364d34782b8d7a342cb5e5eb96ba8321c75efb12a87f1fc232a3c6514adca803.json",
+              "https://nix-purifiers.github.io/evidence/a9d19d21196e32bdfae72a78fda84856c61534cfff1202f26657679510f53e07.json",
+              "https://github.com/nix-purifiers/sbt-purifier/actions/runs/42428047985/job/128570510746",
+              "https://github.com/nix-purifiers/sbt-purifier/actions/runs/42428047985/job/128570510799",
+              "https://github.com/nix-purifiers/sbt-purifier/actions/runs/42428047985/job/128570510847",
+              "https://github.com/nix-purifiers/sbt-purifier/actions/runs/42428047985/job/128570510776",
+              "https://github.com/nix-purifiers/sbt-purifier/actions/runs/42428047985/job/128570510895",
+              "https://github.com/nix-purifiers/sbt-purifier/actions/runs/42428047985/job/128570510884"
+            ],
+            "state": "not-met",
+            "summary": "The reviewed current corpus contains one independent upstream project, sbt/test-interface, tested at two sbt versions on two systems, plus an authored sbt 2 multi-module fixture. These successful cases demonstrate useful behaviors, but the reviewed sample breadth does not establish the many-samples criterion; version/platform repetitions are not additional independent projects."
           },
           "nonEolVersions": {
-            "state": "met",
-            "summary": "Official sbt policy identifies 2.x as current and 1.x as active; 0.13 reached EOL on 2018-11-30. Primary maintained-line evidence is 1.13.1 and 2.0.12 on Linux and Darwin. Older 1.11.7 is a separate compatibility point, and legacy 0.13 Linux composition is not primary support evidence. Exact patches represent these lines; coverage of every patch is not claimed.",
             "evidence": [
               "https://github.com/nix-purifiers/sbt-purifier/blob/169b2e6e6a5d87f6c7f43e45b72f57e59f09c35c/tests/runtime-sample.py",
               "https://github.com/nix-purifiers/sbt-purifier/blob/169b2e6e6a5d87f6c7f43e45b72f57e59f09c35c/tests/independent/offline-tasks.nix",
@@ -95699,691 +95833,43 @@
               "https://github.com/nix-purifiers/sbt-purifier/actions/runs/42428047985/job/128570510847",
               "https://github.com/nix-purifiers/sbt-purifier/actions/runs/42428047985/job/128570510895",
               "https://github.com/nix-purifiers/sbt-purifier/actions/runs/42428047985/job/128570510884"
-            ]
-          },
-          "manySamples": {
-            "state": "not-met",
-            "summary": "The reviewed current corpus contains one independent upstream project, sbt/test-interface, tested at two sbt versions on two systems, plus an authored sbt 2 multi-module fixture. These successful cases demonstrate useful behaviors, but the reviewed sample breadth does not establish the many-samples criterion; version/platform repetitions are not additional independent projects.",
-            "evidence": [
-              "https://github.com/nix-purifiers/sbt-purifier/blob/169b2e6e6a5d87f6c7f43e45b72f57e59f09c35c/tests/runtime-sample.py",
-              "https://github.com/nix-purifiers/sbt-purifier/blob/169b2e6e6a5d87f6c7f43e45b72f57e59f09c35c/tests/independent/offline-tasks.nix",
-              "https://github.com/nix-purifiers/sbt-purifier/blob/169b2e6e6a5d87f6c7f43e45b72f57e59f09c35c/tests/fixtures/sbt2/build.sbt",
-              "https://nix-purifiers.github.io/evidence/364d34782b8d7a342cb5e5eb96ba8321c75efb12a87f1fc232a3c6514adca803.json",
-              "https://nix-purifiers.github.io/evidence/a9d19d21196e32bdfae72a78fda84856c61534cfff1202f26657679510f53e07.json",
-              "https://github.com/nix-purifiers/sbt-purifier/actions/runs/42428047985/job/128570510746",
-              "https://github.com/nix-purifiers/sbt-purifier/actions/runs/42428047985/job/128570510799",
-              "https://github.com/nix-purifiers/sbt-purifier/actions/runs/42428047985/job/128570510847",
-              "https://github.com/nix-purifiers/sbt-purifier/actions/runs/42428047985/job/128570510776",
-              "https://github.com/nix-purifiers/sbt-purifier/actions/runs/42428047985/job/128570510895",
-              "https://github.com/nix-purifiers/sbt-purifier/actions/runs/42428047985/job/128570510884"
-            ]
-          },
-          "longCompatibility": {
-            "state": "not-met",
-            "summary": "Exact 1.11.7, 1.13.1 and 2.0.12 runtime points plus separately retained historical 0.13.18 Linux composition do not demonstrate broad historical behavior across intervening sbt versions and dependency engines. No range or Darwin 0.13 support is inferred.",
-            "evidence": [
-              "https://github.com/nix-purifiers/sbt-purifier/blob/169b2e6e6a5d87f6c7f43e45b72f57e59f09c35c/tests/runtime-sample.py",
-              "https://github.com/nix-purifiers/sbt-purifier/blob/169b2e6e6a5d87f6c7f43e45b72f57e59f09c35c/tests/independent/offline-tasks.nix",
-              "https://github.com/nix-purifiers/sbt-purifier/blob/169b2e6e6a5d87f6c7f43e45b72f57e59f09c35c/tests/fixtures/sbt2/build.sbt",
-              "https://nix-purifiers.github.io/evidence/364d34782b8d7a342cb5e5eb96ba8321c75efb12a87f1fc232a3c6514adca803.json",
-              "https://nix-purifiers.github.io/evidence/a9d19d21196e32bdfae72a78fda84856c61534cfff1202f26657679510f53e07.json",
-              "https://github.com/nix-purifiers/sbt-purifier/actions/runs/42428047985/job/128570510746",
-              "https://github.com/nix-purifiers/sbt-purifier/actions/runs/42428047985/job/128570510799",
-              "https://github.com/nix-purifiers/sbt-purifier/actions/runs/42428047985/job/128570510847",
-              "https://github.com/nix-purifiers/sbt-purifier/actions/runs/42428047985/job/128570510776",
-              "https://github.com/nix-purifiers/sbt-purifier/actions/runs/42428047985/job/128570510895",
-              "https://github.com/nix-purifiers/sbt-purifier/actions/runs/42428047985/job/128570510884"
-            ]
-          },
-          "firsthandUse": {
+            ],
             "state": "met",
-            "summary": "A human contributor reports scoped firsthand local purifier use.",
+            "summary": "Official sbt policy identifies 2.x as current and 1.x as active; 0.13 reached EOL on 2018-11-30. Primary maintained-line evidence is 1.13.1 and 2.0.12 on Linux and Darwin. Older 1.11.7 is a separate compatibility point, and legacy 0.13 Linux composition is not primary support evidence. Exact patches represent these lines; coverage of every patch is not claimed."
+          },
+          "oneVersion": {
             "evidence": [
-              "https://github.com/nix-purifiers/sbt-purifier/pull/13",
-              "https://github.com/nix-purifiers/sbt-purifier/pull/15"
-            ]
+              "https://github.com/nix-purifiers/sbt-purifier/blob/169b2e6e6a5d87f6c7f43e45b72f57e59f09c35c/tests/runtime-sample.py",
+              "https://github.com/nix-purifiers/sbt-purifier/blob/169b2e6e6a5d87f6c7f43e45b72f57e59f09c35c/tests/independent/offline-tasks.nix",
+              "https://github.com/nix-purifiers/sbt-purifier/blob/169b2e6e6a5d87f6c7f43e45b72f57e59f09c35c/tests/fixtures/sbt2/build.sbt",
+              "https://nix-purifiers.github.io/evidence/364d34782b8d7a342cb5e5eb96ba8321c75efb12a87f1fc232a3c6514adca803.json",
+              "https://nix-purifiers.github.io/evidence/a9d19d21196e32bdfae72a78fda84856c61534cfff1202f26657679510f53e07.json",
+              "https://github.com/nix-purifiers/sbt-purifier/actions/runs/42428047985/job/128570510746",
+              "https://github.com/nix-purifiers/sbt-purifier/actions/runs/42428047985/job/128570510799",
+              "https://github.com/nix-purifiers/sbt-purifier/actions/runs/42428047985/job/128570510847",
+              "https://github.com/nix-purifiers/sbt-purifier/actions/runs/42428047985/job/128570510776",
+              "https://github.com/nix-purifiers/sbt-purifier/actions/runs/42428047985/job/128570510895",
+              "https://github.com/nix-purifiers/sbt-purifier/actions/runs/42428047985/job/128570510884"
+            ],
+            "state": "met",
+            "summary": "Exact sbt 1.11.7, 1.13.1 and 2.0.12 points are tested on x86_64-linux and aarch64-darwin with separately recorded JDK 21 builds. No continuous version or JDK range is inferred."
           },
           "ongoingUse": {
+            "evidence": [],
             "state": "not-met",
-            "summary": "Ongoing maintainer use with two qualifying open-source consumer projects is not established.",
-            "evidence": []
+            "summary": "Ongoing maintainer use with two qualifying open-source consumer projects is not established."
           }
         },
-        "sampleBuilds": [
-          {
-            "name": "Independent sbt/test-interface (38 tests; sbt 1.11.7 and adapted 1.13.1)",
-            "evidence": [
-              "https://nix-purifiers.github.io/evidence/6b5e79ecf8d0e0f09c669f9567de9227c1916b95579e7466ae2f6188bcbf9b88.json",
-              "https://nix-purifiers.github.io/evidence/9e669fb9362bf5760c0509a7b7c1c2492e5170067522deb3d4d22e4ffc13c077.json",
-              "https://nix-purifiers.github.io/evidence/01024669d6097829c2c6696a4e6b00911341b284c55ca99190ea73510a22b347.json",
-              "https://nix-purifiers.github.io/evidence/ae9da1c049178981d67118caae8c25dee7ba58c0aeabc515272fae34cde190a3.json"
-            ]
-          },
-          {
-            "name": "Authored repository sbt 2 multi-module fixture (one test; sbt 2.0.12)",
-            "evidence": [
-              "https://nix-purifiers.github.io/evidence/9d98f9477498bde06a613bb781620e364bab6b26746348ddd3241504c45b89a9.json",
-              "https://nix-purifiers.github.io/evidence/b449d606171cc8b0dff3e440a7d2a3725d9169d77d0cc03b10204e7c4bedc970.json"
-            ]
-          }
-        ],
         "derivationReview": {
-          "derivations": {
-            "native-runtime-sbt-1.13.1-aarch64-darwin-169b2e6": {
-              "repository": "nix-purifiers/sbt-purifier",
-              "revision": "169b2e6e6a5d87f6c7f43e45b72f57e59f09c35c",
-              "system": "aarch64-darwin",
-              "check": {
-                "kind": "expression",
-                "value": "{\n      inputs.purifier.url = \"path:/nix/store/qqajwpcvj6a9l1875m1512mkw17vggaf-source\";\n      inputs.nixpkgs.follows = \"purifier/nixpkgs\";\n      outputs = { self, purifier, nixpkgs }: let\n        system = \"aarch64-darwin\";\n        p = import nixpkgs { inherit system; overlays = [ purifier.overlays.default ]; };\n        b = p.sbt-purifier.buildSbtProject { src = ./project; doCheck = true; };\n        \n        socketChecked = p.lib.mapAttrs (_: package: package.overrideAttrs (old: {\n          preBuild = (old.preBuild or \"\") + ''\n            cp ${./GradleSocketProbe.java} \"$TMPDIR/GradleSocketProbe.java\"\n            socket_probe_status=0\n            echo SBT_JDK21_SOCKET_PROBE_BEGIN >&2\n            ${b.jdk}/bin/java ${p.lib.escapeShellArgs b.lock.javaOptions}               \"$TMPDIR/GradleSocketProbe.java\" \"$TMPDIR/GradleSocketProbe.java\"               > \"$TMPDIR/sbt-java-socket-probe.log\" 2>&1 || socket_probe_status=$?\n            cat \"$TMPDIR/sbt-java-socket-probe.log\" >&2\n            echo SBT_JDK21_SOCKET_PROBE_END >&2\n            test \"$socket_probe_status\" -eq 0 || test \"$socket_probe_status\" -eq 2\n            grep -q '^java.net.preferIPv4Stack: true$' \"$TMPDIR/sbt-java-socket-probe.log\"\n            for pair in default-to-default-v4 default-to-INET-v4 INET-to-INET-v4; do\n              grep -q \"^$pair pair PASS crossProcess=true$\" \"$TMPDIR/sbt-java-socket-probe.log\"\n            done\n            test \"$(grep -E -c '^external (default|INET) DENIED kind=permission ' \"$TMPDIR/sbt-java-socket-probe.log\")\" -eq 2\n            if [ \"$socket_probe_status\" -eq 2 ]; then\n              grep -q '^external INET6 UNPROVEN class=java.lang.UnsupportedOperationException ' \"$TMPDIR/sbt-java-socket-probe.log\"\n            fi\n            ! grep -q 'UNEXPECTED_SUCCESS' \"$TMPDIR/sbt-java-socket-probe.log\"\n          '';\n        })) b.packages;\n        \n      in { packages.${system} = socketChecked // { default = p.runCommand \"sbt-tests\" {} ''\n          mkdir $out\n          ${p.lib.concatStrings (p.lib.mapAttrsToList (id: package: \"ln -s ${package} $out/${id}\n\") socketChecked)}\n        ''; }; };\n    }",
-                "replay": {
-                  "artifactUrl": "https://nix-purifiers.github.io/evidence/56fe2eeb575f3f0787473798d4d48bcb6b280bd5359eb7cd00a8f2ae8bb629c0.json",
-                  "artifactSha256": "56fe2eeb575f3f0787473798d4d48bcb6b280bd5359eb7cd00a8f2ae8bb629c0",
-                  "expressionSha256": "99479662e3e23434071c53aab0ed92f66b58825b0572550f08a82703360db51d",
-                  "arguments": {
-                    "producerRevision": "169b2e6e6a5d87f6c7f43e45b72f57e59f09c35c",
-                    "producerSourceNarHash": "sha256-//k+UAuoBXz3DnURdALOYXd134nGWnG5YGgwHvS8Tfs=",
-                    "sample": "{\"revision\": \"22b24334e8ea0274fc9a8fa7df8dd5ecd4f45cd5\", \"url\": \"https://github.com/sbt/test-interface.git\"}",
-                    "adaptation": "Only project/build.properties: sbt.version=1.13.1",
-                    "system": "aarch64-darwin",
-                    "entryPoint": "packages.aarch64-darwin.default",
-                    "reconstruction": "tests/runtime-sample.py generates the retained sample-build.nix from the pinned sample and retained lock; historical ephemeral paths need reconstruction; no replay performed"
-                  }
-                }
-              },
-              "drvPath": "/nix/store/92yb5nz3qpn3kh8i99qzc3fci4rc846n-sbt-tests.drv",
-              "outputs": {
-                "out": "/nix/store/wg4f2rkr3dqs4d5nfrwyhivn7j365rqi-sbt-tests"
-              },
-              "outputNarHashes": {
-                "out": "sha256-O4mKOXuEA9cgq40Qh3yKHwClonYb/If/d6CX/4Zc7p8="
-              },
-              "sourceNarHash": "sha256-//k+UAuoBXz3DnURdALOYXd134nGWnG5YGgwHvS8Tfs=",
-              "sdkVersions": {
-                "nativeTool.sbt": "1.13.1",
-                "nativeToolRuntime.java": "21.0.11+10-LTS",
-                "projectRuntime.javaMajor": "21"
-              },
-              "sampleSources": [
-                {
-                  "repository": "https://github.com/sbt/test-interface",
-                  "revision": "22b24334e8ea0274fc9a8fa7df8dd5ecd4f45cd5",
-                  "sourceNarHash": "sha256-cSk+xOeYYzTsTDkSYcYJbjTWyUue1oJsrBqwxyHHCag="
-                }
-              ],
-              "evaluation": null,
-              "build": {
-                "status": "success",
-                "executedSystem": "aarch64-darwin",
-                "sourceRevision": "169b2e6e6a5d87f6c7f43e45b72f57e59f09c35c",
-                "sourceNarHash": "sha256-//k+UAuoBXz3DnURdALOYXd134nGWnG5YGgwHvS8Tfs=",
-                "drvPath": "/nix/store/92yb5nz3qpn3kh8i99qzc3fci4rc846n-sbt-tests.drv",
-                "outputs": {
-                  "out": "/nix/store/wg4f2rkr3dqs4d5nfrwyhivn7j365rqi-sbt-tests"
-                },
-                "outputNarHashes": {
-                  "out": "sha256-O4mKOXuEA9cgq40Qh3yKHwClonYb/If/d6CX/4Zc7p8="
-                },
-                "sdkVersions": {
-                  "nativeTool.sbt": "1.13.1",
-                  "nativeToolRuntime.java": "21.0.11+10-LTS",
-                  "projectRuntime.javaMajor": "21"
-                },
-                "sampleSources": [
-                  {
-                    "repository": "https://github.com/sbt/test-interface",
-                    "revision": "22b24334e8ea0274fc9a8fa7df8dd5ecd4f45cd5",
-                    "sourceNarHash": "sha256-cSk+xOeYYzTsTDkSYcYJbjTWyUue1oJsrBqwxyHHCag="
-                  }
-                ],
-                "receipt": "https://nix-purifiers.github.io/evidence/9e669fb9362bf5760c0509a7b7c1c2492e5170067522deb3d4d22e4ffc13c077.json",
-                "artifactSha256": "9e669fb9362bf5760c0509a7b7c1c2492e5170067522deb3d4d22e4ffc13c077"
-              }
-            },
-            "native-runtime-sbt-1.13.1-aarch64-darwin-offline-tasks-169b2e6": {
-              "repository": "nix-purifiers/sbt-purifier",
-              "revision": "169b2e6e6a5d87f6c7f43e45b72f57e59f09c35c",
-              "system": "aarch64-darwin",
-              "check": {
-                "kind": "flake-attribute",
-                "value": "checks.aarch64-darwin.independent-sample-offline-tasks",
-                "replay": null
-              },
-              "drvPath": "/nix/store/8wr7chp2461fqqk9kswwiafp45ybbwzk-test-interface-sbt-1.13.1-offline-tasks.drv",
-              "outputs": {
-                "out": "/nix/store/0l1xlcq561i8kn6d8dwfi3kaz99z558w-test-interface-sbt-1.13.1-offline-tasks"
-              },
-              "outputNarHashes": {
-                "out": "sha256-J8MCxta1R7e+7xgosQrVtCBRDyrl2955Fdc17r/PfXg="
-              },
-              "sourceNarHash": "sha256-//k+UAuoBXz3DnURdALOYXd134nGWnG5YGgwHvS8Tfs=",
-              "sdkVersions": {
-                "nativeTool.sbt": "1.13.1",
-                "nativeToolRuntime.java": "21.0.11+10-LTS",
-                "projectRuntime.javaMajor": "21"
-              },
-              "sampleSources": [
-                {
-                  "repository": "https://github.com/sbt/test-interface",
-                  "revision": "22b24334e8ea0274fc9a8fa7df8dd5ecd4f45cd5",
-                  "sourceNarHash": "sha256-cSk+xOeYYzTsTDkSYcYJbjTWyUue1oJsrBqwxyHHCag="
-                }
-              ],
-              "evaluation": null,
-              "build": {
-                "status": "success",
-                "executedSystem": "aarch64-darwin",
-                "sourceRevision": "169b2e6e6a5d87f6c7f43e45b72f57e59f09c35c",
-                "sourceNarHash": "sha256-//k+UAuoBXz3DnURdALOYXd134nGWnG5YGgwHvS8Tfs=",
-                "drvPath": "/nix/store/8wr7chp2461fqqk9kswwiafp45ybbwzk-test-interface-sbt-1.13.1-offline-tasks.drv",
-                "outputs": {
-                  "out": "/nix/store/0l1xlcq561i8kn6d8dwfi3kaz99z558w-test-interface-sbt-1.13.1-offline-tasks"
-                },
-                "outputNarHashes": {
-                  "out": "sha256-J8MCxta1R7e+7xgosQrVtCBRDyrl2955Fdc17r/PfXg="
-                },
-                "sdkVersions": {
-                  "nativeTool.sbt": "1.13.1",
-                  "nativeToolRuntime.java": "21.0.11+10-LTS",
-                  "projectRuntime.javaMajor": "21"
-                },
-                "sampleSources": [
-                  {
-                    "repository": "https://github.com/sbt/test-interface",
-                    "revision": "22b24334e8ea0274fc9a8fa7df8dd5ecd4f45cd5",
-                    "sourceNarHash": "sha256-cSk+xOeYYzTsTDkSYcYJbjTWyUue1oJsrBqwxyHHCag="
-                  }
-                ],
-                "receipt": "https://nix-purifiers.github.io/evidence/9e669fb9362bf5760c0509a7b7c1c2492e5170067522deb3d4d22e4ffc13c077.json",
-                "artifactSha256": "9e669fb9362bf5760c0509a7b7c1c2492e5170067522deb3d4d22e4ffc13c077"
-              }
-            },
-            "native-runtime-sbt-1.11.7-x86_64-linux-169b2e6": {
-              "repository": "nix-purifiers/sbt-purifier",
-              "revision": "169b2e6e6a5d87f6c7f43e45b72f57e59f09c35c",
-              "system": "x86_64-linux",
-              "check": {
-                "kind": "expression",
-                "value": "{\n      inputs.purifier.url = \"path:/nix/store/qqajwpcvj6a9l1875m1512mkw17vggaf-source\";\n      inputs.nixpkgs.follows = \"purifier/nixpkgs\";\n      outputs = { self, purifier, nixpkgs }: let\n        system = \"x86_64-linux\";\n        p = import nixpkgs { inherit system; overlays = [ purifier.overlays.default ]; };\n        b = p.sbt-purifier.buildSbtProject { src = ./project; doCheck = true; };\n        \n      in { packages.${system} = {} // { default = b.tests; }; };\n    }",
-                "replay": {
-                  "artifactUrl": "https://nix-purifiers.github.io/evidence/d3fd86c45469fa1f86ebe0e979a6de77284fbce599cbbcc5eb957365e3e1ca89.json",
-                  "artifactSha256": "d3fd86c45469fa1f86ebe0e979a6de77284fbce599cbbcc5eb957365e3e1ca89",
-                  "expressionSha256": "40fb887f2843b85f5a00e68eab98750cfea692d8c4b9950c982c657e6ceb03d9",
-                  "arguments": {
-                    "producerRevision": "169b2e6e6a5d87f6c7f43e45b72f57e59f09c35c",
-                    "producerSourceNarHash": "sha256-//k+UAuoBXz3DnURdALOYXd134nGWnG5YGgwHvS8Tfs=",
-                    "sample": "{\"revision\": \"22b24334e8ea0274fc9a8fa7df8dd5ecd4f45cd5\", \"url\": \"https://github.com/sbt/test-interface.git\"}",
-                    "adaptation": "none",
-                    "system": "x86_64-linux",
-                    "entryPoint": "packages.x86_64-linux.default",
-                    "reconstruction": "tests/runtime-sample.py generates the retained sample-build.nix from the pinned sample and retained lock; historical ephemeral paths need reconstruction; no replay performed"
-                  }
-                }
-              },
-              "drvPath": "/nix/store/wq1brjmghzv0vnv946k23870b427g8ns-sbt-tests.drv",
-              "outputs": {
-                "out": "/nix/store/fvjbb0m8j3ljc9g0kysdfh2312iy04sy-sbt-tests"
-              },
-              "outputNarHashes": {
-                "out": "sha256-uUZ6tuzN18WGrDBTr7KrkK1/snscSBw8r+ZYbiGIzZY="
-              },
-              "sourceNarHash": "sha256-//k+UAuoBXz3DnURdALOYXd134nGWnG5YGgwHvS8Tfs=",
-              "sdkVersions": {
-                "nativeTool.sbt": "1.11.7",
-                "nativeToolRuntime.java": "21.0.12.1+1",
-                "projectRuntime.javaMajor": "21"
-              },
-              "sampleSources": [
-                {
-                  "repository": "https://github.com/sbt/test-interface",
-                  "revision": "22b24334e8ea0274fc9a8fa7df8dd5ecd4f45cd5",
-                  "sourceNarHash": "sha256-cSk+xOeYYzTsTDkSYcYJbjTWyUue1oJsrBqwxyHHCag="
-                }
-              ],
-              "evaluation": null,
-              "build": {
-                "status": "success",
-                "executedSystem": "x86_64-linux",
-                "sourceRevision": "169b2e6e6a5d87f6c7f43e45b72f57e59f09c35c",
-                "sourceNarHash": "sha256-//k+UAuoBXz3DnURdALOYXd134nGWnG5YGgwHvS8Tfs=",
-                "drvPath": "/nix/store/wq1brjmghzv0vnv946k23870b427g8ns-sbt-tests.drv",
-                "outputs": {
-                  "out": "/nix/store/fvjbb0m8j3ljc9g0kysdfh2312iy04sy-sbt-tests"
-                },
-                "outputNarHashes": {
-                  "out": "sha256-uUZ6tuzN18WGrDBTr7KrkK1/snscSBw8r+ZYbiGIzZY="
-                },
-                "sdkVersions": {
-                  "nativeTool.sbt": "1.11.7",
-                  "nativeToolRuntime.java": "21.0.12.1+1",
-                  "projectRuntime.javaMajor": "21"
-                },
-                "sampleSources": [
-                  {
-                    "repository": "https://github.com/sbt/test-interface",
-                    "revision": "22b24334e8ea0274fc9a8fa7df8dd5ecd4f45cd5",
-                    "sourceNarHash": "sha256-cSk+xOeYYzTsTDkSYcYJbjTWyUue1oJsrBqwxyHHCag="
-                  }
-                ],
-                "receipt": "https://nix-purifiers.github.io/evidence/ae9da1c049178981d67118caae8c25dee7ba58c0aeabc515272fae34cde190a3.json",
-                "artifactSha256": "ae9da1c049178981d67118caae8c25dee7ba58c0aeabc515272fae34cde190a3"
-              }
-            },
-            "native-runtime-sbt-2.0.12-aarch64-darwin-169b2e6": {
-              "repository": "nix-purifiers/sbt-purifier",
-              "revision": "169b2e6e6a5d87f6c7f43e45b72f57e59f09c35c",
-              "system": "aarch64-darwin",
-              "check": {
-                "kind": "expression",
-                "value": "{\n      inputs.purifier.url = \"path:/nix/store/qqajwpcvj6a9l1875m1512mkw17vggaf-source\";\n      inputs.nixpkgs.follows = \"purifier/nixpkgs\";\n      outputs = { self, purifier, nixpkgs }: let\n        system = \"aarch64-darwin\";\n        p = import nixpkgs { inherit system; overlays = [ purifier.overlays.default ]; };\n        b = p.sbt-purifier.buildSbtProject { src = ./project; doCheck = true; };\n        \n      in { packages.${system} = {} // { default = b.tests; }; };\n    }",
-                "replay": {
-                  "artifactUrl": "https://nix-purifiers.github.io/evidence/927bcafe82607d750637452a49ea29c8f25b4d77f20ff2404630744186a42e77.json",
-                  "artifactSha256": "927bcafe82607d750637452a49ea29c8f25b4d77f20ff2404630744186a42e77",
-                  "expressionSha256": "a8e26ed78b1c491fb0a69d78401921f30ac8084e23329da5fb53c76d93865f3d",
-                  "arguments": {
-                    "producerRevision": "169b2e6e6a5d87f6c7f43e45b72f57e59f09c35c",
-                    "producerSourceNarHash": "sha256-//k+UAuoBXz3DnURdALOYXd134nGWnG5YGgwHvS8Tfs=",
-                    "sample": "{\"fixture\": \"tests/fixtures/sbt2\", \"sourceSnapshot\": \"/nix/store/qqajwpcvj6a9l1875m1512mkw17vggaf-source\"}",
-                    "adaptation": "none",
-                    "system": "aarch64-darwin",
-                    "entryPoint": "packages.aarch64-darwin.default",
-                    "reconstruction": "tests/runtime-sample.py generates the retained sample-build.nix from the pinned sample and retained lock; historical ephemeral paths need reconstruction; no replay performed"
-                  }
-                }
-              },
-              "drvPath": "/nix/store/m8ww4wdkwpjrrr7wp5k61plrh49ff2y4-sbt-tests.drv",
-              "outputs": {
-                "out": "/nix/store/6sslfkwmbz3fllhd9kq5wwb7xyf0szc0-sbt-tests"
-              },
-              "outputNarHashes": {
-                "out": "sha256-vWQFiLhsCMQvM1Tszvw8NApxMBfHgwmqPKGNeF7L6g0="
-              },
-              "sourceNarHash": "sha256-//k+UAuoBXz3DnURdALOYXd134nGWnG5YGgwHvS8Tfs=",
-              "sdkVersions": {
-                "nativeTool.sbt": "2.0.12",
-                "nativeToolRuntime.java": "21.0.11+10-LTS",
-                "projectRuntime.javaMajor": "21"
-              },
-              "sampleSources": [
-                {
-                  "repository": "https://github.com/nix-purifiers/sbt-purifier",
-                  "revision": "169b2e6e6a5d87f6c7f43e45b72f57e59f09c35c",
-                  "sourceNarHash": "sha256-//k+UAuoBXz3DnURdALOYXd134nGWnG5YGgwHvS8Tfs="
-                }
-              ],
-              "evaluation": null,
-              "build": {
-                "status": "success",
-                "executedSystem": "aarch64-darwin",
-                "sourceRevision": "169b2e6e6a5d87f6c7f43e45b72f57e59f09c35c",
-                "sourceNarHash": "sha256-//k+UAuoBXz3DnURdALOYXd134nGWnG5YGgwHvS8Tfs=",
-                "drvPath": "/nix/store/m8ww4wdkwpjrrr7wp5k61plrh49ff2y4-sbt-tests.drv",
-                "outputs": {
-                  "out": "/nix/store/6sslfkwmbz3fllhd9kq5wwb7xyf0szc0-sbt-tests"
-                },
-                "outputNarHashes": {
-                  "out": "sha256-vWQFiLhsCMQvM1Tszvw8NApxMBfHgwmqPKGNeF7L6g0="
-                },
-                "sdkVersions": {
-                  "nativeTool.sbt": "2.0.12",
-                  "nativeToolRuntime.java": "21.0.11+10-LTS",
-                  "projectRuntime.javaMajor": "21"
-                },
-                "sampleSources": [
-                  {
-                    "repository": "https://github.com/nix-purifiers/sbt-purifier",
-                    "revision": "169b2e6e6a5d87f6c7f43e45b72f57e59f09c35c",
-                    "sourceNarHash": "sha256-//k+UAuoBXz3DnURdALOYXd134nGWnG5YGgwHvS8Tfs="
-                  }
-                ],
-                "receipt": "https://nix-purifiers.github.io/evidence/9d98f9477498bde06a613bb781620e364bab6b26746348ddd3241504c45b89a9.json",
-                "artifactSha256": "9d98f9477498bde06a613bb781620e364bab6b26746348ddd3241504c45b89a9"
-              }
-            },
-            "native-runtime-sbt-1.11.7-aarch64-darwin-169b2e6": {
-              "repository": "nix-purifiers/sbt-purifier",
-              "revision": "169b2e6e6a5d87f6c7f43e45b72f57e59f09c35c",
-              "system": "aarch64-darwin",
-              "check": {
-                "kind": "expression",
-                "value": "{\n      inputs.purifier.url = \"path:/nix/store/qqajwpcvj6a9l1875m1512mkw17vggaf-source\";\n      inputs.nixpkgs.follows = \"purifier/nixpkgs\";\n      outputs = { self, purifier, nixpkgs }: let\n        system = \"aarch64-darwin\";\n        p = import nixpkgs { inherit system; overlays = [ purifier.overlays.default ]; };\n        b = p.sbt-purifier.buildSbtProject { src = ./project; doCheck = true; };\n        \n        socketChecked = p.lib.mapAttrs (_: package: package.overrideAttrs (old: {\n          preBuild = (old.preBuild or \"\") + ''\n            cp ${./GradleSocketProbe.java} \"$TMPDIR/GradleSocketProbe.java\"\n            socket_probe_status=0\n            echo SBT_JDK21_SOCKET_PROBE_BEGIN >&2\n            ${b.jdk}/bin/java ${p.lib.escapeShellArgs b.lock.javaOptions}               \"$TMPDIR/GradleSocketProbe.java\" \"$TMPDIR/GradleSocketProbe.java\"               > \"$TMPDIR/sbt-java-socket-probe.log\" 2>&1 || socket_probe_status=$?\n            cat \"$TMPDIR/sbt-java-socket-probe.log\" >&2\n            echo SBT_JDK21_SOCKET_PROBE_END >&2\n            test \"$socket_probe_status\" -eq 0 || test \"$socket_probe_status\" -eq 2\n            grep -q '^java.net.preferIPv4Stack: true$' \"$TMPDIR/sbt-java-socket-probe.log\"\n            for pair in default-to-default-v4 default-to-INET-v4 INET-to-INET-v4; do\n              grep -q \"^$pair pair PASS crossProcess=true$\" \"$TMPDIR/sbt-java-socket-probe.log\"\n            done\n            test \"$(grep -E -c '^external (default|INET) DENIED kind=permission ' \"$TMPDIR/sbt-java-socket-probe.log\")\" -eq 2\n            if [ \"$socket_probe_status\" -eq 2 ]; then\n              grep -q '^external INET6 UNPROVEN class=java.lang.UnsupportedOperationException ' \"$TMPDIR/sbt-java-socket-probe.log\"\n            fi\n            ! grep -q 'UNEXPECTED_SUCCESS' \"$TMPDIR/sbt-java-socket-probe.log\"\n          '';\n        })) b.packages;\n        \n      in { packages.${system} = socketChecked // { default = p.runCommand \"sbt-tests\" {} ''\n          mkdir $out\n          ${p.lib.concatStrings (p.lib.mapAttrsToList (id: package: \"ln -s ${package} $out/${id}\n\") socketChecked)}\n        ''; }; };\n    }",
-                "replay": {
-                  "artifactUrl": "https://nix-purifiers.github.io/evidence/f7f17e4c5e473220ade7366d6841f48b236499527dca44a4a4506241f949e21c.json",
-                  "artifactSha256": "f7f17e4c5e473220ade7366d6841f48b236499527dca44a4a4506241f949e21c",
-                  "expressionSha256": "99479662e3e23434071c53aab0ed92f66b58825b0572550f08a82703360db51d",
-                  "arguments": {
-                    "producerRevision": "169b2e6e6a5d87f6c7f43e45b72f57e59f09c35c",
-                    "producerSourceNarHash": "sha256-//k+UAuoBXz3DnURdALOYXd134nGWnG5YGgwHvS8Tfs=",
-                    "sample": "{\"revision\": \"22b24334e8ea0274fc9a8fa7df8dd5ecd4f45cd5\", \"url\": \"https://github.com/sbt/test-interface.git\"}",
-                    "adaptation": "none",
-                    "system": "aarch64-darwin",
-                    "entryPoint": "packages.aarch64-darwin.default",
-                    "reconstruction": "tests/runtime-sample.py generates the retained sample-build.nix from the pinned sample and retained lock; historical ephemeral paths need reconstruction; no replay performed"
-                  }
-                }
-              },
-              "drvPath": "/nix/store/dh7h1r5hlvq6g9rc55kgik4ivp9lsi00-sbt-tests.drv",
-              "outputs": {
-                "out": "/nix/store/yh55yw7s6qxh1s4lw9dxjyd27xi269dm-sbt-tests"
-              },
-              "outputNarHashes": {
-                "out": "sha256-Zn0m7g7TqRAUr0L8/CkxL5I0+WmWnzB1hHxf6mV/q8Y="
-              },
-              "sourceNarHash": "sha256-//k+UAuoBXz3DnURdALOYXd134nGWnG5YGgwHvS8Tfs=",
-              "sdkVersions": {
-                "nativeTool.sbt": "1.11.7",
-                "nativeToolRuntime.java": "21.0.11+10-LTS",
-                "projectRuntime.javaMajor": "21"
-              },
-              "sampleSources": [
-                {
-                  "repository": "https://github.com/sbt/test-interface",
-                  "revision": "22b24334e8ea0274fc9a8fa7df8dd5ecd4f45cd5",
-                  "sourceNarHash": "sha256-cSk+xOeYYzTsTDkSYcYJbjTWyUue1oJsrBqwxyHHCag="
-                }
-              ],
-              "evaluation": null,
-              "build": {
-                "status": "success",
-                "executedSystem": "aarch64-darwin",
-                "sourceRevision": "169b2e6e6a5d87f6c7f43e45b72f57e59f09c35c",
-                "sourceNarHash": "sha256-//k+UAuoBXz3DnURdALOYXd134nGWnG5YGgwHvS8Tfs=",
-                "drvPath": "/nix/store/dh7h1r5hlvq6g9rc55kgik4ivp9lsi00-sbt-tests.drv",
-                "outputs": {
-                  "out": "/nix/store/yh55yw7s6qxh1s4lw9dxjyd27xi269dm-sbt-tests"
-                },
-                "outputNarHashes": {
-                  "out": "sha256-Zn0m7g7TqRAUr0L8/CkxL5I0+WmWnzB1hHxf6mV/q8Y="
-                },
-                "sdkVersions": {
-                  "nativeTool.sbt": "1.11.7",
-                  "nativeToolRuntime.java": "21.0.11+10-LTS",
-                  "projectRuntime.javaMajor": "21"
-                },
-                "sampleSources": [
-                  {
-                    "repository": "https://github.com/sbt/test-interface",
-                    "revision": "22b24334e8ea0274fc9a8fa7df8dd5ecd4f45cd5",
-                    "sourceNarHash": "sha256-cSk+xOeYYzTsTDkSYcYJbjTWyUue1oJsrBqwxyHHCag="
-                  }
-                ],
-                "receipt": "https://nix-purifiers.github.io/evidence/6b5e79ecf8d0e0f09c669f9567de9227c1916b95579e7466ae2f6188bcbf9b88.json",
-                "artifactSha256": "6b5e79ecf8d0e0f09c669f9567de9227c1916b95579e7466ae2f6188bcbf9b88"
-              }
-            },
-            "native-runtime-sbt-2.0.12-x86_64-linux-169b2e6": {
-              "repository": "nix-purifiers/sbt-purifier",
-              "revision": "169b2e6e6a5d87f6c7f43e45b72f57e59f09c35c",
-              "system": "x86_64-linux",
-              "check": {
-                "kind": "expression",
-                "value": "{\n      inputs.purifier.url = \"path:/nix/store/qqajwpcvj6a9l1875m1512mkw17vggaf-source\";\n      inputs.nixpkgs.follows = \"purifier/nixpkgs\";\n      outputs = { self, purifier, nixpkgs }: let\n        system = \"x86_64-linux\";\n        p = import nixpkgs { inherit system; overlays = [ purifier.overlays.default ]; };\n        b = p.sbt-purifier.buildSbtProject { src = ./project; doCheck = true; };\n        \n      in { packages.${system} = {} // { default = b.tests; }; };\n    }",
-                "replay": {
-                  "artifactUrl": "https://nix-purifiers.github.io/evidence/b18ff510d6256ece1c87e957ce61783c800840a45f61568411a165843a974247.json",
-                  "artifactSha256": "b18ff510d6256ece1c87e957ce61783c800840a45f61568411a165843a974247",
-                  "expressionSha256": "40fb887f2843b85f5a00e68eab98750cfea692d8c4b9950c982c657e6ceb03d9",
-                  "arguments": {
-                    "producerRevision": "169b2e6e6a5d87f6c7f43e45b72f57e59f09c35c",
-                    "producerSourceNarHash": "sha256-//k+UAuoBXz3DnURdALOYXd134nGWnG5YGgwHvS8Tfs=",
-                    "sample": "{\"fixture\": \"tests/fixtures/sbt2\", \"sourceSnapshot\": \"/nix/store/qqajwpcvj6a9l1875m1512mkw17vggaf-source\"}",
-                    "adaptation": "none",
-                    "system": "x86_64-linux",
-                    "entryPoint": "packages.x86_64-linux.default",
-                    "reconstruction": "tests/runtime-sample.py generates the retained sample-build.nix from the pinned sample and retained lock; historical ephemeral paths need reconstruction; no replay performed"
-                  }
-                }
-              },
-              "drvPath": "/nix/store/s0qaaavpgaccq0xbxyvhx10r9xz5cdzx-sbt-tests.drv",
-              "outputs": {
-                "out": "/nix/store/p8nv0vw6fw31mfaix2ihl89c6gqhm4s1-sbt-tests"
-              },
-              "outputNarHashes": {
-                "out": "sha256-C9Ka5zXn1u1NXFkQ7eyveriupsnEZWPnzVJK607jJyw="
-              },
-              "sourceNarHash": "sha256-//k+UAuoBXz3DnURdALOYXd134nGWnG5YGgwHvS8Tfs=",
-              "sdkVersions": {
-                "nativeTool.sbt": "2.0.12",
-                "nativeToolRuntime.java": "21.0.12.1+1",
-                "projectRuntime.javaMajor": "21"
-              },
-              "sampleSources": [
-                {
-                  "repository": "https://github.com/nix-purifiers/sbt-purifier",
-                  "revision": "169b2e6e6a5d87f6c7f43e45b72f57e59f09c35c",
-                  "sourceNarHash": "sha256-//k+UAuoBXz3DnURdALOYXd134nGWnG5YGgwHvS8Tfs="
-                }
-              ],
-              "evaluation": null,
-              "build": {
-                "status": "success",
-                "executedSystem": "x86_64-linux",
-                "sourceRevision": "169b2e6e6a5d87f6c7f43e45b72f57e59f09c35c",
-                "sourceNarHash": "sha256-//k+UAuoBXz3DnURdALOYXd134nGWnG5YGgwHvS8Tfs=",
-                "drvPath": "/nix/store/s0qaaavpgaccq0xbxyvhx10r9xz5cdzx-sbt-tests.drv",
-                "outputs": {
-                  "out": "/nix/store/p8nv0vw6fw31mfaix2ihl89c6gqhm4s1-sbt-tests"
-                },
-                "outputNarHashes": {
-                  "out": "sha256-C9Ka5zXn1u1NXFkQ7eyveriupsnEZWPnzVJK607jJyw="
-                },
-                "sdkVersions": {
-                  "nativeTool.sbt": "2.0.12",
-                  "nativeToolRuntime.java": "21.0.12.1+1",
-                  "projectRuntime.javaMajor": "21"
-                },
-                "sampleSources": [
-                  {
-                    "repository": "https://github.com/nix-purifiers/sbt-purifier",
-                    "revision": "169b2e6e6a5d87f6c7f43e45b72f57e59f09c35c",
-                    "sourceNarHash": "sha256-//k+UAuoBXz3DnURdALOYXd134nGWnG5YGgwHvS8Tfs="
-                  }
-                ],
-                "receipt": "https://nix-purifiers.github.io/evidence/b449d606171cc8b0dff3e440a7d2a3725d9169d77d0cc03b10204e7c4bedc970.json",
-                "artifactSha256": "b449d606171cc8b0dff3e440a7d2a3725d9169d77d0cc03b10204e7c4bedc970"
-              }
-            },
-            "native-runtime-sbt-1.13.1-x86_64-linux-169b2e6": {
-              "repository": "nix-purifiers/sbt-purifier",
-              "revision": "169b2e6e6a5d87f6c7f43e45b72f57e59f09c35c",
-              "system": "x86_64-linux",
-              "check": {
-                "kind": "expression",
-                "value": "{\n      inputs.purifier.url = \"path:/nix/store/qqajwpcvj6a9l1875m1512mkw17vggaf-source\";\n      inputs.nixpkgs.follows = \"purifier/nixpkgs\";\n      outputs = { self, purifier, nixpkgs }: let\n        system = \"x86_64-linux\";\n        p = import nixpkgs { inherit system; overlays = [ purifier.overlays.default ]; };\n        b = p.sbt-purifier.buildSbtProject { src = ./project; doCheck = true; };\n        \n      in { packages.${system} = {} // { default = b.tests; }; };\n    }",
-                "replay": {
-                  "artifactUrl": "https://nix-purifiers.github.io/evidence/f9a5de0cf02f74fc79a5815379cdbc269ea8d2f81a9cd32c8fd5930aa98733c4.json",
-                  "artifactSha256": "f9a5de0cf02f74fc79a5815379cdbc269ea8d2f81a9cd32c8fd5930aa98733c4",
-                  "expressionSha256": "40fb887f2843b85f5a00e68eab98750cfea692d8c4b9950c982c657e6ceb03d9",
-                  "arguments": {
-                    "producerRevision": "169b2e6e6a5d87f6c7f43e45b72f57e59f09c35c",
-                    "producerSourceNarHash": "sha256-//k+UAuoBXz3DnURdALOYXd134nGWnG5YGgwHvS8Tfs=",
-                    "sample": "{\"revision\": \"22b24334e8ea0274fc9a8fa7df8dd5ecd4f45cd5\", \"url\": \"https://github.com/sbt/test-interface.git\"}",
-                    "adaptation": "Only project/build.properties: sbt.version=1.13.1",
-                    "system": "x86_64-linux",
-                    "entryPoint": "packages.x86_64-linux.default",
-                    "reconstruction": "tests/runtime-sample.py generates the retained sample-build.nix from the pinned sample and retained lock; historical ephemeral paths need reconstruction; no replay performed"
-                  }
-                }
-              },
-              "drvPath": "/nix/store/id78cf16dygag2fv1wrrl0lh2n8wdc6c-sbt-tests.drv",
-              "outputs": {
-                "out": "/nix/store/v4zg8khq325hi30c768lqjw3z8wnsqpx-sbt-tests"
-              },
-              "outputNarHashes": {
-                "out": "sha256-QKpOUFL+oS+G0pOvRSRrfIVWwkInDKNN1sX1HaFHaPw="
-              },
-              "sourceNarHash": "sha256-//k+UAuoBXz3DnURdALOYXd134nGWnG5YGgwHvS8Tfs=",
-              "sdkVersions": {
-                "nativeTool.sbt": "1.13.1",
-                "nativeToolRuntime.java": "21.0.12.1+1",
-                "projectRuntime.javaMajor": "21"
-              },
-              "sampleSources": [
-                {
-                  "repository": "https://github.com/sbt/test-interface",
-                  "revision": "22b24334e8ea0274fc9a8fa7df8dd5ecd4f45cd5",
-                  "sourceNarHash": "sha256-cSk+xOeYYzTsTDkSYcYJbjTWyUue1oJsrBqwxyHHCag="
-                }
-              ],
-              "evaluation": null,
-              "build": {
-                "status": "success",
-                "executedSystem": "x86_64-linux",
-                "sourceRevision": "169b2e6e6a5d87f6c7f43e45b72f57e59f09c35c",
-                "sourceNarHash": "sha256-//k+UAuoBXz3DnURdALOYXd134nGWnG5YGgwHvS8Tfs=",
-                "drvPath": "/nix/store/id78cf16dygag2fv1wrrl0lh2n8wdc6c-sbt-tests.drv",
-                "outputs": {
-                  "out": "/nix/store/v4zg8khq325hi30c768lqjw3z8wnsqpx-sbt-tests"
-                },
-                "outputNarHashes": {
-                  "out": "sha256-QKpOUFL+oS+G0pOvRSRrfIVWwkInDKNN1sX1HaFHaPw="
-                },
-                "sdkVersions": {
-                  "nativeTool.sbt": "1.13.1",
-                  "nativeToolRuntime.java": "21.0.12.1+1",
-                  "projectRuntime.javaMajor": "21"
-                },
-                "sampleSources": [
-                  {
-                    "repository": "https://github.com/sbt/test-interface",
-                    "revision": "22b24334e8ea0274fc9a8fa7df8dd5ecd4f45cd5",
-                    "sourceNarHash": "sha256-cSk+xOeYYzTsTDkSYcYJbjTWyUue1oJsrBqwxyHHCag="
-                  }
-                ],
-                "receipt": "https://nix-purifiers.github.io/evidence/01024669d6097829c2c6696a4e6b00911341b284c55ca99190ea73510a22b347.json",
-                "artifactSha256": "01024669d6097829c2c6696a4e6b00911341b284c55ca99190ea73510a22b347"
-              }
-            },
-            "native-runtime-sbt-1.13.1-x86_64-linux-offline-tasks-169b2e6": {
-              "repository": "nix-purifiers/sbt-purifier",
-              "revision": "169b2e6e6a5d87f6c7f43e45b72f57e59f09c35c",
-              "system": "x86_64-linux",
-              "check": {
-                "kind": "flake-attribute",
-                "value": "checks.x86_64-linux.independent-sample-offline-tasks",
-                "replay": null
-              },
-              "drvPath": "/nix/store/bqdgdikzsqxdcxx93rj848y9r2bj0dsm-test-interface-sbt-1.13.1-offline-tasks.drv",
-              "outputs": {
-                "out": "/nix/store/x85s7zb0250yw8a72izmdzyrpbchbab1-test-interface-sbt-1.13.1-offline-tasks"
-              },
-              "outputNarHashes": {
-                "out": "sha256-otx/mnk77I5JCr3CMw2DFm9RtXxBaVd3/QdcmxzuEpA="
-              },
-              "sourceNarHash": "sha256-//k+UAuoBXz3DnURdALOYXd134nGWnG5YGgwHvS8Tfs=",
-              "sdkVersions": {
-                "nativeTool.sbt": "1.13.1",
-                "nativeToolRuntime.java": "21.0.12.1+1",
-                "projectRuntime.javaMajor": "21"
-              },
-              "sampleSources": [
-                {
-                  "repository": "https://github.com/sbt/test-interface",
-                  "revision": "22b24334e8ea0274fc9a8fa7df8dd5ecd4f45cd5",
-                  "sourceNarHash": "sha256-cSk+xOeYYzTsTDkSYcYJbjTWyUue1oJsrBqwxyHHCag="
-                }
-              ],
-              "evaluation": null,
-              "build": {
-                "status": "success",
-                "executedSystem": "x86_64-linux",
-                "sourceRevision": "169b2e6e6a5d87f6c7f43e45b72f57e59f09c35c",
-                "sourceNarHash": "sha256-//k+UAuoBXz3DnURdALOYXd134nGWnG5YGgwHvS8Tfs=",
-                "drvPath": "/nix/store/bqdgdikzsqxdcxx93rj848y9r2bj0dsm-test-interface-sbt-1.13.1-offline-tasks.drv",
-                "outputs": {
-                  "out": "/nix/store/x85s7zb0250yw8a72izmdzyrpbchbab1-test-interface-sbt-1.13.1-offline-tasks"
-                },
-                "outputNarHashes": {
-                  "out": "sha256-otx/mnk77I5JCr3CMw2DFm9RtXxBaVd3/QdcmxzuEpA="
-                },
-                "sdkVersions": {
-                  "nativeTool.sbt": "1.13.1",
-                  "nativeToolRuntime.java": "21.0.12.1+1",
-                  "projectRuntime.javaMajor": "21"
-                },
-                "sampleSources": [
-                  {
-                    "repository": "https://github.com/sbt/test-interface",
-                    "revision": "22b24334e8ea0274fc9a8fa7df8dd5ecd4f45cd5",
-                    "sourceNarHash": "sha256-cSk+xOeYYzTsTDkSYcYJbjTWyUue1oJsrBqwxyHHCag="
-                  }
-                ],
-                "receipt": "https://nix-purifiers.github.io/evidence/01024669d6097829c2c6696a4e6b00911341b284c55ca99190ea73510a22b347.json",
-                "artifactSha256": "01024669d6097829c2c6696a4e6b00911341b284c55ca99190ea73510a22b347"
-              }
-            }
-          },
           "criteria": {
-            "evaluation": {
-              "state": "met",
-              "summary": "The exact committed producer source and source NAR evaluate to the retained generated sample derivations and the independent offline-task checks; successful native builds bind derivations and output NARs.",
-              "derivations": [
-                "native-runtime-sbt-1.11.7-aarch64-darwin-169b2e6",
-                "native-runtime-sbt-2.0.12-aarch64-darwin-169b2e6",
-                "native-runtime-sbt-1.13.1-aarch64-darwin-169b2e6",
-                "native-runtime-sbt-1.13.1-aarch64-darwin-offline-tasks-169b2e6",
-                "native-runtime-sbt-1.13.1-x86_64-linux-169b2e6",
-                "native-runtime-sbt-1.13.1-x86_64-linux-offline-tasks-169b2e6",
-                "native-runtime-sbt-1.11.7-x86_64-linux-169b2e6",
-                "native-runtime-sbt-2.0.12-x86_64-linux-169b2e6"
-              ],
-              "sources": [
-                "https://github.com/nix-purifiers/sbt-purifier/blob/169b2e6e6a5d87f6c7f43e45b72f57e59f09c35c/tests/runtime-sample.py",
-                "https://github.com/nix-purifiers/sbt-purifier/blob/169b2e6e6a5d87f6c7f43e45b72f57e59f09c35c/tests/independent/offline-tasks.nix",
-                "https://github.com/nix-purifiers/sbt-purifier/blob/169b2e6e6a5d87f6c7f43e45b72f57e59f09c35c/tests/fixtures/sbt2/build.sbt",
-                "https://nix-purifiers.github.io/evidence/364d34782b8d7a342cb5e5eb96ba8321c75efb12a87f1fc232a3c6514adca803.json",
-                "https://nix-purifiers.github.io/evidence/a9d19d21196e32bdfae72a78fda84856c61534cfff1202f26657679510f53e07.json"
-              ],
-              "gap": null
-            },
-            "goodTests": {
-              "state": "met",
-              "summary": "The pinned independent project executes 38 real tests through native, locked host-offline and sandboxed Nix builds. Lock/no-op/relock byte equality, empty-cache network-negative controls and missing runtime JAR failure followed by restored tests exercise failure paths. The authored sbt 2 multi-module fixture executes one test. Darwin 1.x checked-package rebuilds additionally verify cross-process IPv4 loopback and external permission denials; unsupported IPv6 receives no denial credit.",
-              "derivations": [
-                "native-runtime-sbt-1.11.7-aarch64-darwin-169b2e6",
-                "native-runtime-sbt-2.0.12-aarch64-darwin-169b2e6",
-                "native-runtime-sbt-1.13.1-aarch64-darwin-169b2e6",
-                "native-runtime-sbt-1.13.1-aarch64-darwin-offline-tasks-169b2e6",
-                "native-runtime-sbt-1.13.1-x86_64-linux-169b2e6",
-                "native-runtime-sbt-1.13.1-x86_64-linux-offline-tasks-169b2e6",
-                "native-runtime-sbt-1.11.7-x86_64-linux-169b2e6",
-                "native-runtime-sbt-2.0.12-x86_64-linux-169b2e6"
-              ],
-              "sources": [
-                "https://github.com/nix-purifiers/sbt-purifier/blob/169b2e6e6a5d87f6c7f43e45b72f57e59f09c35c/tests/runtime-sample.py",
-                "https://github.com/nix-purifiers/sbt-purifier/blob/169b2e6e6a5d87f6c7f43e45b72f57e59f09c35c/tests/independent/offline-tasks.nix",
-                "https://github.com/nix-purifiers/sbt-purifier/blob/169b2e6e6a5d87f6c7f43e45b72f57e59f09c35c/tests/fixtures/sbt2/build.sbt",
-                "https://nix-purifiers.github.io/evidence/364d34782b8d7a342cb5e5eb96ba8321c75efb12a87f1fc232a3c6514adca803.json",
-                "https://nix-purifiers.github.io/evidence/a9d19d21196e32bdfae72a78fda84856c61534cfff1202f26657679510f53e07.json"
-              ],
-              "gap": null
-            },
-            "linux": {
-              "state": "met",
-              "summary": "Native x86_64-linux CI executes the exact sbt 1.11.7, 1.13.1 and 2.0.12 sample derivations with observed output NAR identities; no fresh checked-rebuild claim is made for these Linux cases.",
-              "derivations": [
-                "native-runtime-sbt-1.13.1-x86_64-linux-169b2e6",
-                "native-runtime-sbt-1.13.1-x86_64-linux-offline-tasks-169b2e6",
-                "native-runtime-sbt-1.11.7-x86_64-linux-169b2e6",
-                "native-runtime-sbt-2.0.12-x86_64-linux-169b2e6"
-              ],
-              "sources": [
-                "https://github.com/nix-purifiers/sbt-purifier/blob/169b2e6e6a5d87f6c7f43e45b72f57e59f09c35c/tests/runtime-sample.py",
-                "https://github.com/nix-purifiers/sbt-purifier/blob/169b2e6e6a5d87f6c7f43e45b72f57e59f09c35c/tests/independent/offline-tasks.nix",
-                "https://github.com/nix-purifiers/sbt-purifier/blob/169b2e6e6a5d87f6c7f43e45b72f57e59f09c35c/tests/fixtures/sbt2/build.sbt",
-                "https://nix-purifiers.github.io/evidence/364d34782b8d7a342cb5e5eb96ba8321c75efb12a87f1fc232a3c6514adca803.json",
-                "https://nix-purifiers.github.io/evidence/a9d19d21196e32bdfae72a78fda84856c61534cfff1202f26657679510f53e07.json"
-              ],
-              "gap": null
-            },
             "darwin": {
-              "state": "met",
-              "summary": "Native aarch64-darwin CI executes the exact sbt 1.11.7, 1.13.1 and 2.0.12 sample derivations. Both 1.x independent checked packages also pass --rebuild; sbt 2 has ordinary successful build/output identity evidence.",
               "derivations": [
                 "native-runtime-sbt-1.11.7-aarch64-darwin-169b2e6",
                 "native-runtime-sbt-2.0.12-aarch64-darwin-169b2e6",
                 "native-runtime-sbt-1.13.1-aarch64-darwin-169b2e6",
                 "native-runtime-sbt-1.13.1-aarch64-darwin-offline-tasks-169b2e6"
               ],
+              "gap": null,
               "sources": [
                 "https://github.com/nix-purifiers/sbt-purifier/blob/169b2e6e6a5d87f6c7f43e45b72f57e59f09c35c/tests/runtime-sample.py",
                 "https://github.com/nix-purifiers/sbt-purifier/blob/169b2e6e6a5d87f6c7f43e45b72f57e59f09c35c/tests/independent/offline-tasks.nix",
@@ -96391,11 +95877,10 @@
                 "https://nix-purifiers.github.io/evidence/364d34782b8d7a342cb5e5eb96ba8321c75efb12a87f1fc232a3c6514adca803.json",
                 "https://nix-purifiers.github.io/evidence/a9d19d21196e32bdfae72a78fda84856c61534cfff1202f26657679510f53e07.json"
               ],
-              "gap": null
-            },
-            "oneVersion": {
               "state": "met",
-              "summary": "Exact sbt 1.11.7, 1.13.1 and 2.0.12 points are tested on x86_64-linux and aarch64-darwin with separately recorded JDK 21 builds. No continuous version or JDK range is inferred.",
+              "summary": "Native aarch64-darwin CI executes the exact sbt 1.11.7, 1.13.1 and 2.0.12 sample derivations. Both 1.x independent checked packages also pass --rebuild; sbt 2 has ordinary successful build/output identity evidence."
+            },
+            "evaluation": {
               "derivations": [
                 "native-runtime-sbt-1.11.7-aarch64-darwin-169b2e6",
                 "native-runtime-sbt-2.0.12-aarch64-darwin-169b2e6",
@@ -96406,6 +95891,7 @@
                 "native-runtime-sbt-1.11.7-x86_64-linux-169b2e6",
                 "native-runtime-sbt-2.0.12-x86_64-linux-169b2e6"
               ],
+              "gap": null,
               "sources": [
                 "https://github.com/nix-purifiers/sbt-purifier/blob/169b2e6e6a5d87f6c7f43e45b72f57e59f09c35c/tests/runtime-sample.py",
                 "https://github.com/nix-purifiers/sbt-purifier/blob/169b2e6e6a5d87f6c7f43e45b72f57e59f09c35c/tests/independent/offline-tasks.nix",
@@ -96413,11 +95899,94 @@
                 "https://nix-purifiers.github.io/evidence/364d34782b8d7a342cb5e5eb96ba8321c75efb12a87f1fc232a3c6514adca803.json",
                 "https://nix-purifiers.github.io/evidence/a9d19d21196e32bdfae72a78fda84856c61534cfff1202f26657679510f53e07.json"
               ],
-              "gap": null
+              "state": "met",
+              "summary": "The exact committed producer source and source NAR evaluate to the retained generated sample derivations and the independent offline-task checks; successful native builds bind derivations and output NARs."
+            },
+            "goodTests": {
+              "derivations": [
+                "native-runtime-sbt-1.11.7-aarch64-darwin-169b2e6",
+                "native-runtime-sbt-2.0.12-aarch64-darwin-169b2e6",
+                "native-runtime-sbt-1.13.1-aarch64-darwin-169b2e6",
+                "native-runtime-sbt-1.13.1-aarch64-darwin-offline-tasks-169b2e6",
+                "native-runtime-sbt-1.13.1-x86_64-linux-169b2e6",
+                "native-runtime-sbt-1.13.1-x86_64-linux-offline-tasks-169b2e6",
+                "native-runtime-sbt-1.11.7-x86_64-linux-169b2e6",
+                "native-runtime-sbt-2.0.12-x86_64-linux-169b2e6"
+              ],
+              "gap": null,
+              "sources": [
+                "https://github.com/nix-purifiers/sbt-purifier/blob/169b2e6e6a5d87f6c7f43e45b72f57e59f09c35c/tests/runtime-sample.py",
+                "https://github.com/nix-purifiers/sbt-purifier/blob/169b2e6e6a5d87f6c7f43e45b72f57e59f09c35c/tests/independent/offline-tasks.nix",
+                "https://github.com/nix-purifiers/sbt-purifier/blob/169b2e6e6a5d87f6c7f43e45b72f57e59f09c35c/tests/fixtures/sbt2/build.sbt",
+                "https://nix-purifiers.github.io/evidence/364d34782b8d7a342cb5e5eb96ba8321c75efb12a87f1fc232a3c6514adca803.json",
+                "https://nix-purifiers.github.io/evidence/a9d19d21196e32bdfae72a78fda84856c61534cfff1202f26657679510f53e07.json"
+              ],
+              "state": "met",
+              "summary": "The pinned independent project executes 38 real tests through native, locked host-offline and sandboxed Nix builds. Lock/no-op/relock byte equality, empty-cache network-negative controls and missing runtime JAR failure followed by restored tests exercise failure paths. The authored sbt 2 multi-module fixture executes one test. Darwin 1.x checked-package rebuilds additionally verify cross-process IPv4 loopback and external permission denials; unsupported IPv6 receives no denial credit."
+            },
+            "linux": {
+              "derivations": [
+                "native-runtime-sbt-1.13.1-x86_64-linux-169b2e6",
+                "native-runtime-sbt-1.13.1-x86_64-linux-offline-tasks-169b2e6",
+                "native-runtime-sbt-1.11.7-x86_64-linux-169b2e6",
+                "native-runtime-sbt-2.0.12-x86_64-linux-169b2e6"
+              ],
+              "gap": null,
+              "sources": [
+                "https://github.com/nix-purifiers/sbt-purifier/blob/169b2e6e6a5d87f6c7f43e45b72f57e59f09c35c/tests/runtime-sample.py",
+                "https://github.com/nix-purifiers/sbt-purifier/blob/169b2e6e6a5d87f6c7f43e45b72f57e59f09c35c/tests/independent/offline-tasks.nix",
+                "https://github.com/nix-purifiers/sbt-purifier/blob/169b2e6e6a5d87f6c7f43e45b72f57e59f09c35c/tests/fixtures/sbt2/build.sbt",
+                "https://nix-purifiers.github.io/evidence/364d34782b8d7a342cb5e5eb96ba8321c75efb12a87f1fc232a3c6514adca803.json",
+                "https://nix-purifiers.github.io/evidence/a9d19d21196e32bdfae72a78fda84856c61534cfff1202f26657679510f53e07.json"
+              ],
+              "state": "met",
+              "summary": "Native x86_64-linux CI executes the exact sbt 1.11.7, 1.13.1 and 2.0.12 sample derivations with observed output NAR identities; no fresh checked-rebuild claim is made for these Linux cases."
+            },
+            "longCompatibility": {
+              "derivations": [
+                "native-runtime-sbt-1.11.7-aarch64-darwin-169b2e6",
+                "native-runtime-sbt-2.0.12-aarch64-darwin-169b2e6",
+                "native-runtime-sbt-1.13.1-aarch64-darwin-169b2e6",
+                "native-runtime-sbt-1.13.1-aarch64-darwin-offline-tasks-169b2e6",
+                "native-runtime-sbt-1.13.1-x86_64-linux-169b2e6",
+                "native-runtime-sbt-1.13.1-x86_64-linux-offline-tasks-169b2e6",
+                "native-runtime-sbt-1.11.7-x86_64-linux-169b2e6",
+                "native-runtime-sbt-2.0.12-x86_64-linux-169b2e6"
+              ],
+              "gap": "Exact 1.11.7, 1.13.1 and 2.0.12 runtime points plus separately retained historical 0.13.18 Linux composition do not demonstrate broad historical behavior across intervening sbt versions and dependency engines. No range or Darwin 0.13 support is inferred.",
+              "sources": [
+                "https://github.com/nix-purifiers/sbt-purifier/blob/169b2e6e6a5d87f6c7f43e45b72f57e59f09c35c/tests/runtime-sample.py",
+                "https://github.com/nix-purifiers/sbt-purifier/blob/169b2e6e6a5d87f6c7f43e45b72f57e59f09c35c/tests/independent/offline-tasks.nix",
+                "https://github.com/nix-purifiers/sbt-purifier/blob/169b2e6e6a5d87f6c7f43e45b72f57e59f09c35c/tests/fixtures/sbt2/build.sbt",
+                "https://nix-purifiers.github.io/evidence/364d34782b8d7a342cb5e5eb96ba8321c75efb12a87f1fc232a3c6514adca803.json",
+                "https://nix-purifiers.github.io/evidence/a9d19d21196e32bdfae72a78fda84856c61534cfff1202f26657679510f53e07.json"
+              ],
+              "state": "not-met",
+              "summary": "Exact 1.11.7, 1.13.1 and 2.0.12 runtime points plus separately retained historical 0.13.18 Linux composition do not demonstrate broad historical behavior across intervening sbt versions and dependency engines. No range or Darwin 0.13 support is inferred."
+            },
+            "manySamples": {
+              "derivations": [
+                "native-runtime-sbt-1.11.7-aarch64-darwin-169b2e6",
+                "native-runtime-sbt-2.0.12-aarch64-darwin-169b2e6",
+                "native-runtime-sbt-1.13.1-aarch64-darwin-169b2e6",
+                "native-runtime-sbt-1.13.1-aarch64-darwin-offline-tasks-169b2e6",
+                "native-runtime-sbt-1.13.1-x86_64-linux-169b2e6",
+                "native-runtime-sbt-1.13.1-x86_64-linux-offline-tasks-169b2e6",
+                "native-runtime-sbt-1.11.7-x86_64-linux-169b2e6",
+                "native-runtime-sbt-2.0.12-x86_64-linux-169b2e6"
+              ],
+              "gap": "The reviewed current corpus contains one independent upstream project, sbt/test-interface, tested at two sbt versions on two systems, plus an authored sbt 2 multi-module fixture. These successful cases demonstrate useful behaviors, but the reviewed sample breadth does not establish the many-samples criterion; version/platform repetitions are not additional independent projects.",
+              "sources": [
+                "https://github.com/nix-purifiers/sbt-purifier/blob/169b2e6e6a5d87f6c7f43e45b72f57e59f09c35c/tests/runtime-sample.py",
+                "https://github.com/nix-purifiers/sbt-purifier/blob/169b2e6e6a5d87f6c7f43e45b72f57e59f09c35c/tests/independent/offline-tasks.nix",
+                "https://github.com/nix-purifiers/sbt-purifier/blob/169b2e6e6a5d87f6c7f43e45b72f57e59f09c35c/tests/fixtures/sbt2/build.sbt",
+                "https://nix-purifiers.github.io/evidence/364d34782b8d7a342cb5e5eb96ba8321c75efb12a87f1fc232a3c6514adca803.json",
+                "https://nix-purifiers.github.io/evidence/a9d19d21196e32bdfae72a78fda84856c61534cfff1202f26657679510f53e07.json"
+              ],
+              "state": "not-met",
+              "summary": "The reviewed current corpus contains one independent upstream project, sbt/test-interface, tested at two sbt versions on two systems, plus an authored sbt 2 multi-module fixture. These successful cases demonstrate useful behaviors, but the reviewed sample breadth does not establish the many-samples criterion; version/platform repetitions are not additional independent projects."
             },
             "nonEolVersions": {
-              "state": "met",
-              "summary": "Official sbt policy identifies 2.x as current and 1.x as active; 0.13 reached EOL on 2018-11-30. Primary maintained-line evidence is 1.13.1 and 2.0.12 on Linux and Darwin. Older 1.11.7 is a separate compatibility point, and legacy 0.13 Linux composition is not primary support evidence. Exact patches represent these lines; coverage of every patch is not claimed.",
               "derivations": [
                 "native-runtime-sbt-2.0.12-aarch64-darwin-169b2e6",
                 "native-runtime-sbt-1.13.1-aarch64-darwin-169b2e6",
@@ -96426,6 +95995,7 @@
                 "native-runtime-sbt-1.13.1-x86_64-linux-offline-tasks-169b2e6",
                 "native-runtime-sbt-2.0.12-x86_64-linux-169b2e6"
               ],
+              "gap": null,
               "sources": [
                 "https://github.com/nix-purifiers/sbt-purifier/blob/169b2e6e6a5d87f6c7f43e45b72f57e59f09c35c/tests/runtime-sample.py",
                 "https://github.com/nix-purifiers/sbt-purifier/blob/169b2e6e6a5d87f6c7f43e45b72f57e59f09c35c/tests/independent/offline-tasks.nix",
@@ -96436,11 +96006,10 @@
                 "https://nix-purifiers.github.io/evidence/364d34782b8d7a342cb5e5eb96ba8321c75efb12a87f1fc232a3c6514adca803.json",
                 "https://nix-purifiers.github.io/evidence/a9d19d21196e32bdfae72a78fda84856c61534cfff1202f26657679510f53e07.json"
               ],
-              "gap": null
+              "state": "met",
+              "summary": "Official sbt policy identifies 2.x as current and 1.x as active; 0.13 reached EOL on 2018-11-30. Primary maintained-line evidence is 1.13.1 and 2.0.12 on Linux and Darwin. Older 1.11.7 is a separate compatibility point, and legacy 0.13 Linux composition is not primary support evidence. Exact patches represent these lines; coverage of every patch is not claimed."
             },
-            "manySamples": {
-              "state": "not-met",
-              "summary": "The reviewed current corpus contains one independent upstream project, sbt/test-interface, tested at two sbt versions on two systems, plus an authored sbt 2 multi-module fixture. These successful cases demonstrate useful behaviors, but the reviewed sample breadth does not establish the many-samples criterion; version/platform repetitions are not additional independent projects.",
+            "oneVersion": {
               "derivations": [
                 "native-runtime-sbt-1.11.7-aarch64-darwin-169b2e6",
                 "native-runtime-sbt-2.0.12-aarch64-darwin-169b2e6",
@@ -96451,6 +96020,7 @@
                 "native-runtime-sbt-1.11.7-x86_64-linux-169b2e6",
                 "native-runtime-sbt-2.0.12-x86_64-linux-169b2e6"
               ],
+              "gap": null,
               "sources": [
                 "https://github.com/nix-purifiers/sbt-purifier/blob/169b2e6e6a5d87f6c7f43e45b72f57e59f09c35c/tests/runtime-sample.py",
                 "https://github.com/nix-purifiers/sbt-purifier/blob/169b2e6e6a5d87f6c7f43e45b72f57e59f09c35c/tests/independent/offline-tasks.nix",
@@ -96458,39 +96028,556 @@
                 "https://nix-purifiers.github.io/evidence/364d34782b8d7a342cb5e5eb96ba8321c75efb12a87f1fc232a3c6514adca803.json",
                 "https://nix-purifiers.github.io/evidence/a9d19d21196e32bdfae72a78fda84856c61534cfff1202f26657679510f53e07.json"
               ],
-              "gap": "The reviewed current corpus contains one independent upstream project, sbt/test-interface, tested at two sbt versions on two systems, plus an authored sbt 2 multi-module fixture. These successful cases demonstrate useful behaviors, but the reviewed sample breadth does not establish the many-samples criterion; version/platform repetitions are not additional independent projects."
+              "state": "met",
+              "summary": "Exact sbt 1.11.7, 1.13.1 and 2.0.12 points are tested on x86_64-linux and aarch64-darwin with separately recorded JDK 21 builds. No continuous version or JDK range is inferred."
+            }
+          },
+          "derivations": {
+            "native-runtime-sbt-1.11.7-aarch64-darwin-169b2e6": {
+              "build": {
+                "artifactSha256": "6b5e79ecf8d0e0f09c669f9567de9227c1916b95579e7466ae2f6188bcbf9b88",
+                "drvPath": "/nix/store/dh7h1r5hlvq6g9rc55kgik4ivp9lsi00-sbt-tests.drv",
+                "executedSystem": "aarch64-darwin",
+                "outputNarHashes": {
+                  "out": "sha256-Zn0m7g7TqRAUr0L8/CkxL5I0+WmWnzB1hHxf6mV/q8Y="
+                },
+                "outputs": {
+                  "out": "/nix/store/yh55yw7s6qxh1s4lw9dxjyd27xi269dm-sbt-tests"
+                },
+                "receipt": "https://nix-purifiers.github.io/evidence/6b5e79ecf8d0e0f09c669f9567de9227c1916b95579e7466ae2f6188bcbf9b88.json",
+                "sampleSources": [
+                  {
+                    "repository": "https://github.com/sbt/test-interface",
+                    "revision": "22b24334e8ea0274fc9a8fa7df8dd5ecd4f45cd5",
+                    "sourceNarHash": "sha256-cSk+xOeYYzTsTDkSYcYJbjTWyUue1oJsrBqwxyHHCag="
+                  }
+                ],
+                "sdkVersions": {
+                  "nativeTool.sbt": "1.11.7",
+                  "nativeToolRuntime.java": "21.0.11+10-LTS",
+                  "projectRuntime.javaMajor": "21"
+                },
+                "sourceNarHash": "sha256-//k+UAuoBXz3DnURdALOYXd134nGWnG5YGgwHvS8Tfs=",
+                "sourceRevision": "169b2e6e6a5d87f6c7f43e45b72f57e59f09c35c",
+                "status": "success"
+              },
+              "check": {
+                "kind": "expression",
+                "replay": {
+                  "arguments": {
+                    "adaptation": "none",
+                    "entryPoint": "packages.aarch64-darwin.default",
+                    "producerRevision": "169b2e6e6a5d87f6c7f43e45b72f57e59f09c35c",
+                    "producerSourceNarHash": "sha256-//k+UAuoBXz3DnURdALOYXd134nGWnG5YGgwHvS8Tfs=",
+                    "reconstruction": "tests/runtime-sample.py generates the retained sample-build.nix from the pinned sample and retained lock; historical ephemeral paths need reconstruction; no replay performed",
+                    "sample": "{\"revision\": \"22b24334e8ea0274fc9a8fa7df8dd5ecd4f45cd5\", \"url\": \"https://github.com/sbt/test-interface.git\"}",
+                    "system": "aarch64-darwin"
+                  },
+                  "artifactSha256": "f7f17e4c5e473220ade7366d6841f48b236499527dca44a4a4506241f949e21c",
+                  "artifactUrl": "https://nix-purifiers.github.io/evidence/f7f17e4c5e473220ade7366d6841f48b236499527dca44a4a4506241f949e21c.json",
+                  "expressionSha256": "99479662e3e23434071c53aab0ed92f66b58825b0572550f08a82703360db51d"
+                },
+                "value": "{\n      inputs.purifier.url = \"path:/nix/store/qqajwpcvj6a9l1875m1512mkw17vggaf-source\";\n      inputs.nixpkgs.follows = \"purifier/nixpkgs\";\n      outputs = { self, purifier, nixpkgs }: let\n        system = \"aarch64-darwin\";\n        p = import nixpkgs { inherit system; overlays = [ purifier.overlays.default ]; };\n        b = p.sbt-purifier.buildSbtProject { src = ./project; doCheck = true; };\n        \n        socketChecked = p.lib.mapAttrs (_: package: package.overrideAttrs (old: {\n          preBuild = (old.preBuild or \"\") + ''\n            cp ${./GradleSocketProbe.java} \"$TMPDIR/GradleSocketProbe.java\"\n            socket_probe_status=0\n            echo SBT_JDK21_SOCKET_PROBE_BEGIN >&2\n            ${b.jdk}/bin/java ${p.lib.escapeShellArgs b.lock.javaOptions}               \"$TMPDIR/GradleSocketProbe.java\" \"$TMPDIR/GradleSocketProbe.java\"               > \"$TMPDIR/sbt-java-socket-probe.log\" 2>&1 || socket_probe_status=$?\n            cat \"$TMPDIR/sbt-java-socket-probe.log\" >&2\n            echo SBT_JDK21_SOCKET_PROBE_END >&2\n            test \"$socket_probe_status\" -eq 0 || test \"$socket_probe_status\" -eq 2\n            grep -q '^java.net.preferIPv4Stack: true$' \"$TMPDIR/sbt-java-socket-probe.log\"\n            for pair in default-to-default-v4 default-to-INET-v4 INET-to-INET-v4; do\n              grep -q \"^$pair pair PASS crossProcess=true$\" \"$TMPDIR/sbt-java-socket-probe.log\"\n            done\n            test \"$(grep -E -c '^external (default|INET) DENIED kind=permission ' \"$TMPDIR/sbt-java-socket-probe.log\")\" -eq 2\n            if [ \"$socket_probe_status\" -eq 2 ]; then\n              grep -q '^external INET6 UNPROVEN class=java.lang.UnsupportedOperationException ' \"$TMPDIR/sbt-java-socket-probe.log\"\n            fi\n            ! grep -q 'UNEXPECTED_SUCCESS' \"$TMPDIR/sbt-java-socket-probe.log\"\n          '';\n        })) b.packages;\n        \n      in { packages.${system} = socketChecked // { default = p.runCommand \"sbt-tests\" {} ''\n          mkdir $out\n          ${p.lib.concatStrings (p.lib.mapAttrsToList (id: package: \"ln -s ${package} $out/${id}\n\") socketChecked)}\n        ''; }; };\n    }"
+              },
+              "drvPath": "/nix/store/dh7h1r5hlvq6g9rc55kgik4ivp9lsi00-sbt-tests.drv",
+              "evaluation": null,
+              "outputNarHashes": {
+                "out": "sha256-Zn0m7g7TqRAUr0L8/CkxL5I0+WmWnzB1hHxf6mV/q8Y="
+              },
+              "outputs": {
+                "out": "/nix/store/yh55yw7s6qxh1s4lw9dxjyd27xi269dm-sbt-tests"
+              },
+              "repository": "nix-purifiers/sbt-purifier",
+              "revision": "169b2e6e6a5d87f6c7f43e45b72f57e59f09c35c",
+              "sampleSources": [
+                {
+                  "repository": "https://github.com/sbt/test-interface",
+                  "revision": "22b24334e8ea0274fc9a8fa7df8dd5ecd4f45cd5",
+                  "sourceNarHash": "sha256-cSk+xOeYYzTsTDkSYcYJbjTWyUue1oJsrBqwxyHHCag="
+                }
+              ],
+              "sdkVersions": {
+                "nativeTool.sbt": "1.11.7",
+                "nativeToolRuntime.java": "21.0.11+10-LTS",
+                "projectRuntime.javaMajor": "21"
+              },
+              "sourceNarHash": "sha256-//k+UAuoBXz3DnURdALOYXd134nGWnG5YGgwHvS8Tfs=",
+              "system": "aarch64-darwin"
             },
-            "longCompatibility": {
-              "state": "not-met",
-              "summary": "Exact 1.11.7, 1.13.1 and 2.0.12 runtime points plus separately retained historical 0.13.18 Linux composition do not demonstrate broad historical behavior across intervening sbt versions and dependency engines. No range or Darwin 0.13 support is inferred.",
-              "derivations": [
-                "native-runtime-sbt-1.11.7-aarch64-darwin-169b2e6",
-                "native-runtime-sbt-2.0.12-aarch64-darwin-169b2e6",
-                "native-runtime-sbt-1.13.1-aarch64-darwin-169b2e6",
-                "native-runtime-sbt-1.13.1-aarch64-darwin-offline-tasks-169b2e6",
-                "native-runtime-sbt-1.13.1-x86_64-linux-169b2e6",
-                "native-runtime-sbt-1.13.1-x86_64-linux-offline-tasks-169b2e6",
-                "native-runtime-sbt-1.11.7-x86_64-linux-169b2e6",
-                "native-runtime-sbt-2.0.12-x86_64-linux-169b2e6"
+            "native-runtime-sbt-1.11.7-x86_64-linux-169b2e6": {
+              "build": {
+                "artifactSha256": "ae9da1c049178981d67118caae8c25dee7ba58c0aeabc515272fae34cde190a3",
+                "drvPath": "/nix/store/wq1brjmghzv0vnv946k23870b427g8ns-sbt-tests.drv",
+                "executedSystem": "x86_64-linux",
+                "outputNarHashes": {
+                  "out": "sha256-uUZ6tuzN18WGrDBTr7KrkK1/snscSBw8r+ZYbiGIzZY="
+                },
+                "outputs": {
+                  "out": "/nix/store/fvjbb0m8j3ljc9g0kysdfh2312iy04sy-sbt-tests"
+                },
+                "receipt": "https://nix-purifiers.github.io/evidence/ae9da1c049178981d67118caae8c25dee7ba58c0aeabc515272fae34cde190a3.json",
+                "sampleSources": [
+                  {
+                    "repository": "https://github.com/sbt/test-interface",
+                    "revision": "22b24334e8ea0274fc9a8fa7df8dd5ecd4f45cd5",
+                    "sourceNarHash": "sha256-cSk+xOeYYzTsTDkSYcYJbjTWyUue1oJsrBqwxyHHCag="
+                  }
+                ],
+                "sdkVersions": {
+                  "nativeTool.sbt": "1.11.7",
+                  "nativeToolRuntime.java": "21.0.12.1+1",
+                  "projectRuntime.javaMajor": "21"
+                },
+                "sourceNarHash": "sha256-//k+UAuoBXz3DnURdALOYXd134nGWnG5YGgwHvS8Tfs=",
+                "sourceRevision": "169b2e6e6a5d87f6c7f43e45b72f57e59f09c35c",
+                "status": "success"
+              },
+              "check": {
+                "kind": "expression",
+                "replay": {
+                  "arguments": {
+                    "adaptation": "none",
+                    "entryPoint": "packages.x86_64-linux.default",
+                    "producerRevision": "169b2e6e6a5d87f6c7f43e45b72f57e59f09c35c",
+                    "producerSourceNarHash": "sha256-//k+UAuoBXz3DnURdALOYXd134nGWnG5YGgwHvS8Tfs=",
+                    "reconstruction": "tests/runtime-sample.py generates the retained sample-build.nix from the pinned sample and retained lock; historical ephemeral paths need reconstruction; no replay performed",
+                    "sample": "{\"revision\": \"22b24334e8ea0274fc9a8fa7df8dd5ecd4f45cd5\", \"url\": \"https://github.com/sbt/test-interface.git\"}",
+                    "system": "x86_64-linux"
+                  },
+                  "artifactSha256": "d3fd86c45469fa1f86ebe0e979a6de77284fbce599cbbcc5eb957365e3e1ca89",
+                  "artifactUrl": "https://nix-purifiers.github.io/evidence/d3fd86c45469fa1f86ebe0e979a6de77284fbce599cbbcc5eb957365e3e1ca89.json",
+                  "expressionSha256": "40fb887f2843b85f5a00e68eab98750cfea692d8c4b9950c982c657e6ceb03d9"
+                },
+                "value": "{\n      inputs.purifier.url = \"path:/nix/store/qqajwpcvj6a9l1875m1512mkw17vggaf-source\";\n      inputs.nixpkgs.follows = \"purifier/nixpkgs\";\n      outputs = { self, purifier, nixpkgs }: let\n        system = \"x86_64-linux\";\n        p = import nixpkgs { inherit system; overlays = [ purifier.overlays.default ]; };\n        b = p.sbt-purifier.buildSbtProject { src = ./project; doCheck = true; };\n        \n      in { packages.${system} = {} // { default = b.tests; }; };\n    }"
+              },
+              "drvPath": "/nix/store/wq1brjmghzv0vnv946k23870b427g8ns-sbt-tests.drv",
+              "evaluation": null,
+              "outputNarHashes": {
+                "out": "sha256-uUZ6tuzN18WGrDBTr7KrkK1/snscSBw8r+ZYbiGIzZY="
+              },
+              "outputs": {
+                "out": "/nix/store/fvjbb0m8j3ljc9g0kysdfh2312iy04sy-sbt-tests"
+              },
+              "repository": "nix-purifiers/sbt-purifier",
+              "revision": "169b2e6e6a5d87f6c7f43e45b72f57e59f09c35c",
+              "sampleSources": [
+                {
+                  "repository": "https://github.com/sbt/test-interface",
+                  "revision": "22b24334e8ea0274fc9a8fa7df8dd5ecd4f45cd5",
+                  "sourceNarHash": "sha256-cSk+xOeYYzTsTDkSYcYJbjTWyUue1oJsrBqwxyHHCag="
+                }
               ],
-              "sources": [
-                "https://github.com/nix-purifiers/sbt-purifier/blob/169b2e6e6a5d87f6c7f43e45b72f57e59f09c35c/tests/runtime-sample.py",
-                "https://github.com/nix-purifiers/sbt-purifier/blob/169b2e6e6a5d87f6c7f43e45b72f57e59f09c35c/tests/independent/offline-tasks.nix",
-                "https://github.com/nix-purifiers/sbt-purifier/blob/169b2e6e6a5d87f6c7f43e45b72f57e59f09c35c/tests/fixtures/sbt2/build.sbt",
-                "https://nix-purifiers.github.io/evidence/364d34782b8d7a342cb5e5eb96ba8321c75efb12a87f1fc232a3c6514adca803.json",
-                "https://nix-purifiers.github.io/evidence/a9d19d21196e32bdfae72a78fda84856c61534cfff1202f26657679510f53e07.json"
+              "sdkVersions": {
+                "nativeTool.sbt": "1.11.7",
+                "nativeToolRuntime.java": "21.0.12.1+1",
+                "projectRuntime.javaMajor": "21"
+              },
+              "sourceNarHash": "sha256-//k+UAuoBXz3DnURdALOYXd134nGWnG5YGgwHvS8Tfs=",
+              "system": "x86_64-linux"
+            },
+            "native-runtime-sbt-1.13.1-aarch64-darwin-169b2e6": {
+              "build": {
+                "artifactSha256": "9e669fb9362bf5760c0509a7b7c1c2492e5170067522deb3d4d22e4ffc13c077",
+                "drvPath": "/nix/store/92yb5nz3qpn3kh8i99qzc3fci4rc846n-sbt-tests.drv",
+                "executedSystem": "aarch64-darwin",
+                "outputNarHashes": {
+                  "out": "sha256-O4mKOXuEA9cgq40Qh3yKHwClonYb/If/d6CX/4Zc7p8="
+                },
+                "outputs": {
+                  "out": "/nix/store/wg4f2rkr3dqs4d5nfrwyhivn7j365rqi-sbt-tests"
+                },
+                "receipt": "https://nix-purifiers.github.io/evidence/9e669fb9362bf5760c0509a7b7c1c2492e5170067522deb3d4d22e4ffc13c077.json",
+                "sampleSources": [
+                  {
+                    "repository": "https://github.com/sbt/test-interface",
+                    "revision": "22b24334e8ea0274fc9a8fa7df8dd5ecd4f45cd5",
+                    "sourceNarHash": "sha256-cSk+xOeYYzTsTDkSYcYJbjTWyUue1oJsrBqwxyHHCag="
+                  }
+                ],
+                "sdkVersions": {
+                  "nativeTool.sbt": "1.13.1",
+                  "nativeToolRuntime.java": "21.0.11+10-LTS",
+                  "projectRuntime.javaMajor": "21"
+                },
+                "sourceNarHash": "sha256-//k+UAuoBXz3DnURdALOYXd134nGWnG5YGgwHvS8Tfs=",
+                "sourceRevision": "169b2e6e6a5d87f6c7f43e45b72f57e59f09c35c",
+                "status": "success"
+              },
+              "check": {
+                "kind": "expression",
+                "replay": {
+                  "arguments": {
+                    "adaptation": "Only project/build.properties: sbt.version=1.13.1",
+                    "entryPoint": "packages.aarch64-darwin.default",
+                    "producerRevision": "169b2e6e6a5d87f6c7f43e45b72f57e59f09c35c",
+                    "producerSourceNarHash": "sha256-//k+UAuoBXz3DnURdALOYXd134nGWnG5YGgwHvS8Tfs=",
+                    "reconstruction": "tests/runtime-sample.py generates the retained sample-build.nix from the pinned sample and retained lock; historical ephemeral paths need reconstruction; no replay performed",
+                    "sample": "{\"revision\": \"22b24334e8ea0274fc9a8fa7df8dd5ecd4f45cd5\", \"url\": \"https://github.com/sbt/test-interface.git\"}",
+                    "system": "aarch64-darwin"
+                  },
+                  "artifactSha256": "56fe2eeb575f3f0787473798d4d48bcb6b280bd5359eb7cd00a8f2ae8bb629c0",
+                  "artifactUrl": "https://nix-purifiers.github.io/evidence/56fe2eeb575f3f0787473798d4d48bcb6b280bd5359eb7cd00a8f2ae8bb629c0.json",
+                  "expressionSha256": "99479662e3e23434071c53aab0ed92f66b58825b0572550f08a82703360db51d"
+                },
+                "value": "{\n      inputs.purifier.url = \"path:/nix/store/qqajwpcvj6a9l1875m1512mkw17vggaf-source\";\n      inputs.nixpkgs.follows = \"purifier/nixpkgs\";\n      outputs = { self, purifier, nixpkgs }: let\n        system = \"aarch64-darwin\";\n        p = import nixpkgs { inherit system; overlays = [ purifier.overlays.default ]; };\n        b = p.sbt-purifier.buildSbtProject { src = ./project; doCheck = true; };\n        \n        socketChecked = p.lib.mapAttrs (_: package: package.overrideAttrs (old: {\n          preBuild = (old.preBuild or \"\") + ''\n            cp ${./GradleSocketProbe.java} \"$TMPDIR/GradleSocketProbe.java\"\n            socket_probe_status=0\n            echo SBT_JDK21_SOCKET_PROBE_BEGIN >&2\n            ${b.jdk}/bin/java ${p.lib.escapeShellArgs b.lock.javaOptions}               \"$TMPDIR/GradleSocketProbe.java\" \"$TMPDIR/GradleSocketProbe.java\"               > \"$TMPDIR/sbt-java-socket-probe.log\" 2>&1 || socket_probe_status=$?\n            cat \"$TMPDIR/sbt-java-socket-probe.log\" >&2\n            echo SBT_JDK21_SOCKET_PROBE_END >&2\n            test \"$socket_probe_status\" -eq 0 || test \"$socket_probe_status\" -eq 2\n            grep -q '^java.net.preferIPv4Stack: true$' \"$TMPDIR/sbt-java-socket-probe.log\"\n            for pair in default-to-default-v4 default-to-INET-v4 INET-to-INET-v4; do\n              grep -q \"^$pair pair PASS crossProcess=true$\" \"$TMPDIR/sbt-java-socket-probe.log\"\n            done\n            test \"$(grep -E -c '^external (default|INET) DENIED kind=permission ' \"$TMPDIR/sbt-java-socket-probe.log\")\" -eq 2\n            if [ \"$socket_probe_status\" -eq 2 ]; then\n              grep -q '^external INET6 UNPROVEN class=java.lang.UnsupportedOperationException ' \"$TMPDIR/sbt-java-socket-probe.log\"\n            fi\n            ! grep -q 'UNEXPECTED_SUCCESS' \"$TMPDIR/sbt-java-socket-probe.log\"\n          '';\n        })) b.packages;\n        \n      in { packages.${system} = socketChecked // { default = p.runCommand \"sbt-tests\" {} ''\n          mkdir $out\n          ${p.lib.concatStrings (p.lib.mapAttrsToList (id: package: \"ln -s ${package} $out/${id}\n\") socketChecked)}\n        ''; }; };\n    }"
+              },
+              "drvPath": "/nix/store/92yb5nz3qpn3kh8i99qzc3fci4rc846n-sbt-tests.drv",
+              "evaluation": null,
+              "outputNarHashes": {
+                "out": "sha256-O4mKOXuEA9cgq40Qh3yKHwClonYb/If/d6CX/4Zc7p8="
+              },
+              "outputs": {
+                "out": "/nix/store/wg4f2rkr3dqs4d5nfrwyhivn7j365rqi-sbt-tests"
+              },
+              "repository": "nix-purifiers/sbt-purifier",
+              "revision": "169b2e6e6a5d87f6c7f43e45b72f57e59f09c35c",
+              "sampleSources": [
+                {
+                  "repository": "https://github.com/sbt/test-interface",
+                  "revision": "22b24334e8ea0274fc9a8fa7df8dd5ecd4f45cd5",
+                  "sourceNarHash": "sha256-cSk+xOeYYzTsTDkSYcYJbjTWyUue1oJsrBqwxyHHCag="
+                }
               ],
-              "gap": "Exact 1.11.7, 1.13.1 and 2.0.12 runtime points plus separately retained historical 0.13.18 Linux composition do not demonstrate broad historical behavior across intervening sbt versions and dependency engines. No range or Darwin 0.13 support is inferred."
+              "sdkVersions": {
+                "nativeTool.sbt": "1.13.1",
+                "nativeToolRuntime.java": "21.0.11+10-LTS",
+                "projectRuntime.javaMajor": "21"
+              },
+              "sourceNarHash": "sha256-//k+UAuoBXz3DnURdALOYXd134nGWnG5YGgwHvS8Tfs=",
+              "system": "aarch64-darwin"
+            },
+            "native-runtime-sbt-1.13.1-aarch64-darwin-offline-tasks-169b2e6": {
+              "build": {
+                "artifactSha256": "9e669fb9362bf5760c0509a7b7c1c2492e5170067522deb3d4d22e4ffc13c077",
+                "drvPath": "/nix/store/8wr7chp2461fqqk9kswwiafp45ybbwzk-test-interface-sbt-1.13.1-offline-tasks.drv",
+                "executedSystem": "aarch64-darwin",
+                "outputNarHashes": {
+                  "out": "sha256-J8MCxta1R7e+7xgosQrVtCBRDyrl2955Fdc17r/PfXg="
+                },
+                "outputs": {
+                  "out": "/nix/store/0l1xlcq561i8kn6d8dwfi3kaz99z558w-test-interface-sbt-1.13.1-offline-tasks"
+                },
+                "receipt": "https://nix-purifiers.github.io/evidence/9e669fb9362bf5760c0509a7b7c1c2492e5170067522deb3d4d22e4ffc13c077.json",
+                "sampleSources": [
+                  {
+                    "repository": "https://github.com/sbt/test-interface",
+                    "revision": "22b24334e8ea0274fc9a8fa7df8dd5ecd4f45cd5",
+                    "sourceNarHash": "sha256-cSk+xOeYYzTsTDkSYcYJbjTWyUue1oJsrBqwxyHHCag="
+                  }
+                ],
+                "sdkVersions": {
+                  "nativeTool.sbt": "1.13.1",
+                  "nativeToolRuntime.java": "21.0.11+10-LTS",
+                  "projectRuntime.javaMajor": "21"
+                },
+                "sourceNarHash": "sha256-//k+UAuoBXz3DnURdALOYXd134nGWnG5YGgwHvS8Tfs=",
+                "sourceRevision": "169b2e6e6a5d87f6c7f43e45b72f57e59f09c35c",
+                "status": "success"
+              },
+              "check": {
+                "kind": "flake-attribute",
+                "replay": null,
+                "value": "checks.aarch64-darwin.independent-sample-offline-tasks"
+              },
+              "drvPath": "/nix/store/8wr7chp2461fqqk9kswwiafp45ybbwzk-test-interface-sbt-1.13.1-offline-tasks.drv",
+              "evaluation": null,
+              "outputNarHashes": {
+                "out": "sha256-J8MCxta1R7e+7xgosQrVtCBRDyrl2955Fdc17r/PfXg="
+              },
+              "outputs": {
+                "out": "/nix/store/0l1xlcq561i8kn6d8dwfi3kaz99z558w-test-interface-sbt-1.13.1-offline-tasks"
+              },
+              "repository": "nix-purifiers/sbt-purifier",
+              "revision": "169b2e6e6a5d87f6c7f43e45b72f57e59f09c35c",
+              "sampleSources": [
+                {
+                  "repository": "https://github.com/sbt/test-interface",
+                  "revision": "22b24334e8ea0274fc9a8fa7df8dd5ecd4f45cd5",
+                  "sourceNarHash": "sha256-cSk+xOeYYzTsTDkSYcYJbjTWyUue1oJsrBqwxyHHCag="
+                }
+              ],
+              "sdkVersions": {
+                "nativeTool.sbt": "1.13.1",
+                "nativeToolRuntime.java": "21.0.11+10-LTS",
+                "projectRuntime.javaMajor": "21"
+              },
+              "sourceNarHash": "sha256-//k+UAuoBXz3DnURdALOYXd134nGWnG5YGgwHvS8Tfs=",
+              "system": "aarch64-darwin"
+            },
+            "native-runtime-sbt-1.13.1-x86_64-linux-169b2e6": {
+              "build": {
+                "artifactSha256": "01024669d6097829c2c6696a4e6b00911341b284c55ca99190ea73510a22b347",
+                "drvPath": "/nix/store/id78cf16dygag2fv1wrrl0lh2n8wdc6c-sbt-tests.drv",
+                "executedSystem": "x86_64-linux",
+                "outputNarHashes": {
+                  "out": "sha256-QKpOUFL+oS+G0pOvRSRrfIVWwkInDKNN1sX1HaFHaPw="
+                },
+                "outputs": {
+                  "out": "/nix/store/v4zg8khq325hi30c768lqjw3z8wnsqpx-sbt-tests"
+                },
+                "receipt": "https://nix-purifiers.github.io/evidence/01024669d6097829c2c6696a4e6b00911341b284c55ca99190ea73510a22b347.json",
+                "sampleSources": [
+                  {
+                    "repository": "https://github.com/sbt/test-interface",
+                    "revision": "22b24334e8ea0274fc9a8fa7df8dd5ecd4f45cd5",
+                    "sourceNarHash": "sha256-cSk+xOeYYzTsTDkSYcYJbjTWyUue1oJsrBqwxyHHCag="
+                  }
+                ],
+                "sdkVersions": {
+                  "nativeTool.sbt": "1.13.1",
+                  "nativeToolRuntime.java": "21.0.12.1+1",
+                  "projectRuntime.javaMajor": "21"
+                },
+                "sourceNarHash": "sha256-//k+UAuoBXz3DnURdALOYXd134nGWnG5YGgwHvS8Tfs=",
+                "sourceRevision": "169b2e6e6a5d87f6c7f43e45b72f57e59f09c35c",
+                "status": "success"
+              },
+              "check": {
+                "kind": "expression",
+                "replay": {
+                  "arguments": {
+                    "adaptation": "Only project/build.properties: sbt.version=1.13.1",
+                    "entryPoint": "packages.x86_64-linux.default",
+                    "producerRevision": "169b2e6e6a5d87f6c7f43e45b72f57e59f09c35c",
+                    "producerSourceNarHash": "sha256-//k+UAuoBXz3DnURdALOYXd134nGWnG5YGgwHvS8Tfs=",
+                    "reconstruction": "tests/runtime-sample.py generates the retained sample-build.nix from the pinned sample and retained lock; historical ephemeral paths need reconstruction; no replay performed",
+                    "sample": "{\"revision\": \"22b24334e8ea0274fc9a8fa7df8dd5ecd4f45cd5\", \"url\": \"https://github.com/sbt/test-interface.git\"}",
+                    "system": "x86_64-linux"
+                  },
+                  "artifactSha256": "f9a5de0cf02f74fc79a5815379cdbc269ea8d2f81a9cd32c8fd5930aa98733c4",
+                  "artifactUrl": "https://nix-purifiers.github.io/evidence/f9a5de0cf02f74fc79a5815379cdbc269ea8d2f81a9cd32c8fd5930aa98733c4.json",
+                  "expressionSha256": "40fb887f2843b85f5a00e68eab98750cfea692d8c4b9950c982c657e6ceb03d9"
+                },
+                "value": "{\n      inputs.purifier.url = \"path:/nix/store/qqajwpcvj6a9l1875m1512mkw17vggaf-source\";\n      inputs.nixpkgs.follows = \"purifier/nixpkgs\";\n      outputs = { self, purifier, nixpkgs }: let\n        system = \"x86_64-linux\";\n        p = import nixpkgs { inherit system; overlays = [ purifier.overlays.default ]; };\n        b = p.sbt-purifier.buildSbtProject { src = ./project; doCheck = true; };\n        \n      in { packages.${system} = {} // { default = b.tests; }; };\n    }"
+              },
+              "drvPath": "/nix/store/id78cf16dygag2fv1wrrl0lh2n8wdc6c-sbt-tests.drv",
+              "evaluation": null,
+              "outputNarHashes": {
+                "out": "sha256-QKpOUFL+oS+G0pOvRSRrfIVWwkInDKNN1sX1HaFHaPw="
+              },
+              "outputs": {
+                "out": "/nix/store/v4zg8khq325hi30c768lqjw3z8wnsqpx-sbt-tests"
+              },
+              "repository": "nix-purifiers/sbt-purifier",
+              "revision": "169b2e6e6a5d87f6c7f43e45b72f57e59f09c35c",
+              "sampleSources": [
+                {
+                  "repository": "https://github.com/sbt/test-interface",
+                  "revision": "22b24334e8ea0274fc9a8fa7df8dd5ecd4f45cd5",
+                  "sourceNarHash": "sha256-cSk+xOeYYzTsTDkSYcYJbjTWyUue1oJsrBqwxyHHCag="
+                }
+              ],
+              "sdkVersions": {
+                "nativeTool.sbt": "1.13.1",
+                "nativeToolRuntime.java": "21.0.12.1+1",
+                "projectRuntime.javaMajor": "21"
+              },
+              "sourceNarHash": "sha256-//k+UAuoBXz3DnURdALOYXd134nGWnG5YGgwHvS8Tfs=",
+              "system": "x86_64-linux"
+            },
+            "native-runtime-sbt-1.13.1-x86_64-linux-offline-tasks-169b2e6": {
+              "build": {
+                "artifactSha256": "01024669d6097829c2c6696a4e6b00911341b284c55ca99190ea73510a22b347",
+                "drvPath": "/nix/store/bqdgdikzsqxdcxx93rj848y9r2bj0dsm-test-interface-sbt-1.13.1-offline-tasks.drv",
+                "executedSystem": "x86_64-linux",
+                "outputNarHashes": {
+                  "out": "sha256-otx/mnk77I5JCr3CMw2DFm9RtXxBaVd3/QdcmxzuEpA="
+                },
+                "outputs": {
+                  "out": "/nix/store/x85s7zb0250yw8a72izmdzyrpbchbab1-test-interface-sbt-1.13.1-offline-tasks"
+                },
+                "receipt": "https://nix-purifiers.github.io/evidence/01024669d6097829c2c6696a4e6b00911341b284c55ca99190ea73510a22b347.json",
+                "sampleSources": [
+                  {
+                    "repository": "https://github.com/sbt/test-interface",
+                    "revision": "22b24334e8ea0274fc9a8fa7df8dd5ecd4f45cd5",
+                    "sourceNarHash": "sha256-cSk+xOeYYzTsTDkSYcYJbjTWyUue1oJsrBqwxyHHCag="
+                  }
+                ],
+                "sdkVersions": {
+                  "nativeTool.sbt": "1.13.1",
+                  "nativeToolRuntime.java": "21.0.12.1+1",
+                  "projectRuntime.javaMajor": "21"
+                },
+                "sourceNarHash": "sha256-//k+UAuoBXz3DnURdALOYXd134nGWnG5YGgwHvS8Tfs=",
+                "sourceRevision": "169b2e6e6a5d87f6c7f43e45b72f57e59f09c35c",
+                "status": "success"
+              },
+              "check": {
+                "kind": "flake-attribute",
+                "replay": null,
+                "value": "checks.x86_64-linux.independent-sample-offline-tasks"
+              },
+              "drvPath": "/nix/store/bqdgdikzsqxdcxx93rj848y9r2bj0dsm-test-interface-sbt-1.13.1-offline-tasks.drv",
+              "evaluation": null,
+              "outputNarHashes": {
+                "out": "sha256-otx/mnk77I5JCr3CMw2DFm9RtXxBaVd3/QdcmxzuEpA="
+              },
+              "outputs": {
+                "out": "/nix/store/x85s7zb0250yw8a72izmdzyrpbchbab1-test-interface-sbt-1.13.1-offline-tasks"
+              },
+              "repository": "nix-purifiers/sbt-purifier",
+              "revision": "169b2e6e6a5d87f6c7f43e45b72f57e59f09c35c",
+              "sampleSources": [
+                {
+                  "repository": "https://github.com/sbt/test-interface",
+                  "revision": "22b24334e8ea0274fc9a8fa7df8dd5ecd4f45cd5",
+                  "sourceNarHash": "sha256-cSk+xOeYYzTsTDkSYcYJbjTWyUue1oJsrBqwxyHHCag="
+                }
+              ],
+              "sdkVersions": {
+                "nativeTool.sbt": "1.13.1",
+                "nativeToolRuntime.java": "21.0.12.1+1",
+                "projectRuntime.javaMajor": "21"
+              },
+              "sourceNarHash": "sha256-//k+UAuoBXz3DnURdALOYXd134nGWnG5YGgwHvS8Tfs=",
+              "system": "x86_64-linux"
+            },
+            "native-runtime-sbt-2.0.12-aarch64-darwin-169b2e6": {
+              "build": {
+                "artifactSha256": "9d98f9477498bde06a613bb781620e364bab6b26746348ddd3241504c45b89a9",
+                "drvPath": "/nix/store/m8ww4wdkwpjrrr7wp5k61plrh49ff2y4-sbt-tests.drv",
+                "executedSystem": "aarch64-darwin",
+                "outputNarHashes": {
+                  "out": "sha256-vWQFiLhsCMQvM1Tszvw8NApxMBfHgwmqPKGNeF7L6g0="
+                },
+                "outputs": {
+                  "out": "/nix/store/6sslfkwmbz3fllhd9kq5wwb7xyf0szc0-sbt-tests"
+                },
+                "receipt": "https://nix-purifiers.github.io/evidence/9d98f9477498bde06a613bb781620e364bab6b26746348ddd3241504c45b89a9.json",
+                "sampleSources": [
+                  {
+                    "repository": "https://github.com/nix-purifiers/sbt-purifier",
+                    "revision": "169b2e6e6a5d87f6c7f43e45b72f57e59f09c35c",
+                    "sourceNarHash": "sha256-//k+UAuoBXz3DnURdALOYXd134nGWnG5YGgwHvS8Tfs="
+                  }
+                ],
+                "sdkVersions": {
+                  "nativeTool.sbt": "2.0.12",
+                  "nativeToolRuntime.java": "21.0.11+10-LTS",
+                  "projectRuntime.javaMajor": "21"
+                },
+                "sourceNarHash": "sha256-//k+UAuoBXz3DnURdALOYXd134nGWnG5YGgwHvS8Tfs=",
+                "sourceRevision": "169b2e6e6a5d87f6c7f43e45b72f57e59f09c35c",
+                "status": "success"
+              },
+              "check": {
+                "kind": "expression",
+                "replay": {
+                  "arguments": {
+                    "adaptation": "none",
+                    "entryPoint": "packages.aarch64-darwin.default",
+                    "producerRevision": "169b2e6e6a5d87f6c7f43e45b72f57e59f09c35c",
+                    "producerSourceNarHash": "sha256-//k+UAuoBXz3DnURdALOYXd134nGWnG5YGgwHvS8Tfs=",
+                    "reconstruction": "tests/runtime-sample.py generates the retained sample-build.nix from the pinned sample and retained lock; historical ephemeral paths need reconstruction; no replay performed",
+                    "sample": "{\"fixture\": \"tests/fixtures/sbt2\", \"sourceSnapshot\": \"/nix/store/qqajwpcvj6a9l1875m1512mkw17vggaf-source\"}",
+                    "system": "aarch64-darwin"
+                  },
+                  "artifactSha256": "927bcafe82607d750637452a49ea29c8f25b4d77f20ff2404630744186a42e77",
+                  "artifactUrl": "https://nix-purifiers.github.io/evidence/927bcafe82607d750637452a49ea29c8f25b4d77f20ff2404630744186a42e77.json",
+                  "expressionSha256": "a8e26ed78b1c491fb0a69d78401921f30ac8084e23329da5fb53c76d93865f3d"
+                },
+                "value": "{\n      inputs.purifier.url = \"path:/nix/store/qqajwpcvj6a9l1875m1512mkw17vggaf-source\";\n      inputs.nixpkgs.follows = \"purifier/nixpkgs\";\n      outputs = { self, purifier, nixpkgs }: let\n        system = \"aarch64-darwin\";\n        p = import nixpkgs { inherit system; overlays = [ purifier.overlays.default ]; };\n        b = p.sbt-purifier.buildSbtProject { src = ./project; doCheck = true; };\n        \n      in { packages.${system} = {} // { default = b.tests; }; };\n    }"
+              },
+              "drvPath": "/nix/store/m8ww4wdkwpjrrr7wp5k61plrh49ff2y4-sbt-tests.drv",
+              "evaluation": null,
+              "outputNarHashes": {
+                "out": "sha256-vWQFiLhsCMQvM1Tszvw8NApxMBfHgwmqPKGNeF7L6g0="
+              },
+              "outputs": {
+                "out": "/nix/store/6sslfkwmbz3fllhd9kq5wwb7xyf0szc0-sbt-tests"
+              },
+              "repository": "nix-purifiers/sbt-purifier",
+              "revision": "169b2e6e6a5d87f6c7f43e45b72f57e59f09c35c",
+              "sampleSources": [
+                {
+                  "repository": "https://github.com/nix-purifiers/sbt-purifier",
+                  "revision": "169b2e6e6a5d87f6c7f43e45b72f57e59f09c35c",
+                  "sourceNarHash": "sha256-//k+UAuoBXz3DnURdALOYXd134nGWnG5YGgwHvS8Tfs="
+                }
+              ],
+              "sdkVersions": {
+                "nativeTool.sbt": "2.0.12",
+                "nativeToolRuntime.java": "21.0.11+10-LTS",
+                "projectRuntime.javaMajor": "21"
+              },
+              "sourceNarHash": "sha256-//k+UAuoBXz3DnURdALOYXd134nGWnG5YGgwHvS8Tfs=",
+              "system": "aarch64-darwin"
+            },
+            "native-runtime-sbt-2.0.12-x86_64-linux-169b2e6": {
+              "build": {
+                "artifactSha256": "b449d606171cc8b0dff3e440a7d2a3725d9169d77d0cc03b10204e7c4bedc970",
+                "drvPath": "/nix/store/s0qaaavpgaccq0xbxyvhx10r9xz5cdzx-sbt-tests.drv",
+                "executedSystem": "x86_64-linux",
+                "outputNarHashes": {
+                  "out": "sha256-C9Ka5zXn1u1NXFkQ7eyveriupsnEZWPnzVJK607jJyw="
+                },
+                "outputs": {
+                  "out": "/nix/store/p8nv0vw6fw31mfaix2ihl89c6gqhm4s1-sbt-tests"
+                },
+                "receipt": "https://nix-purifiers.github.io/evidence/b449d606171cc8b0dff3e440a7d2a3725d9169d77d0cc03b10204e7c4bedc970.json",
+                "sampleSources": [
+                  {
+                    "repository": "https://github.com/nix-purifiers/sbt-purifier",
+                    "revision": "169b2e6e6a5d87f6c7f43e45b72f57e59f09c35c",
+                    "sourceNarHash": "sha256-//k+UAuoBXz3DnURdALOYXd134nGWnG5YGgwHvS8Tfs="
+                  }
+                ],
+                "sdkVersions": {
+                  "nativeTool.sbt": "2.0.12",
+                  "nativeToolRuntime.java": "21.0.12.1+1",
+                  "projectRuntime.javaMajor": "21"
+                },
+                "sourceNarHash": "sha256-//k+UAuoBXz3DnURdALOYXd134nGWnG5YGgwHvS8Tfs=",
+                "sourceRevision": "169b2e6e6a5d87f6c7f43e45b72f57e59f09c35c",
+                "status": "success"
+              },
+              "check": {
+                "kind": "expression",
+                "replay": {
+                  "arguments": {
+                    "adaptation": "none",
+                    "entryPoint": "packages.x86_64-linux.default",
+                    "producerRevision": "169b2e6e6a5d87f6c7f43e45b72f57e59f09c35c",
+                    "producerSourceNarHash": "sha256-//k+UAuoBXz3DnURdALOYXd134nGWnG5YGgwHvS8Tfs=",
+                    "reconstruction": "tests/runtime-sample.py generates the retained sample-build.nix from the pinned sample and retained lock; historical ephemeral paths need reconstruction; no replay performed",
+                    "sample": "{\"fixture\": \"tests/fixtures/sbt2\", \"sourceSnapshot\": \"/nix/store/qqajwpcvj6a9l1875m1512mkw17vggaf-source\"}",
+                    "system": "x86_64-linux"
+                  },
+                  "artifactSha256": "b18ff510d6256ece1c87e957ce61783c800840a45f61568411a165843a974247",
+                  "artifactUrl": "https://nix-purifiers.github.io/evidence/b18ff510d6256ece1c87e957ce61783c800840a45f61568411a165843a974247.json",
+                  "expressionSha256": "40fb887f2843b85f5a00e68eab98750cfea692d8c4b9950c982c657e6ceb03d9"
+                },
+                "value": "{\n      inputs.purifier.url = \"path:/nix/store/qqajwpcvj6a9l1875m1512mkw17vggaf-source\";\n      inputs.nixpkgs.follows = \"purifier/nixpkgs\";\n      outputs = { self, purifier, nixpkgs }: let\n        system = \"x86_64-linux\";\n        p = import nixpkgs { inherit system; overlays = [ purifier.overlays.default ]; };\n        b = p.sbt-purifier.buildSbtProject { src = ./project; doCheck = true; };\n        \n      in { packages.${system} = {} // { default = b.tests; }; };\n    }"
+              },
+              "drvPath": "/nix/store/s0qaaavpgaccq0xbxyvhx10r9xz5cdzx-sbt-tests.drv",
+              "evaluation": null,
+              "outputNarHashes": {
+                "out": "sha256-C9Ka5zXn1u1NXFkQ7eyveriupsnEZWPnzVJK607jJyw="
+              },
+              "outputs": {
+                "out": "/nix/store/p8nv0vw6fw31mfaix2ihl89c6gqhm4s1-sbt-tests"
+              },
+              "repository": "nix-purifiers/sbt-purifier",
+              "revision": "169b2e6e6a5d87f6c7f43e45b72f57e59f09c35c",
+              "sampleSources": [
+                {
+                  "repository": "https://github.com/nix-purifiers/sbt-purifier",
+                  "revision": "169b2e6e6a5d87f6c7f43e45b72f57e59f09c35c",
+                  "sourceNarHash": "sha256-//k+UAuoBXz3DnURdALOYXd134nGWnG5YGgwHvS8Tfs="
+                }
+              ],
+              "sdkVersions": {
+                "nativeTool.sbt": "2.0.12",
+                "nativeToolRuntime.java": "21.0.12.1+1",
+                "projectRuntime.javaMajor": "21"
+              },
+              "sourceNarHash": "sha256-//k+UAuoBXz3DnURdALOYXd134nGWnG5YGgwHvS8Tfs=",
+              "system": "x86_64-linux"
             }
           },
           "sampleBuilds": [
             {
-              "name": "Independent sbt/test-interface (38 tests; sbt 1.11.7 and adapted 1.13.1)",
-              "upstream": {
-                "repository": "https://github.com/sbt/test-interface",
-                "revision": "22b24334e8ea0274fc9a8fa7df8dd5ecd4f45cd5",
-                "sourceNarHash": "sha256-cSk+xOeYYzTsTDkSYcYJbjTWyUue1oJsrBqwxyHHCag="
-              },
               "derivations": [
                 "native-runtime-sbt-1.11.7-aarch64-darwin-169b2e6",
                 "native-runtime-sbt-1.13.1-aarch64-darwin-169b2e6",
@@ -96498,94 +96585,122 @@
                 "native-runtime-sbt-1.13.1-x86_64-linux-169b2e6",
                 "native-runtime-sbt-1.13.1-x86_64-linux-offline-tasks-169b2e6",
                 "native-runtime-sbt-1.11.7-x86_64-linux-169b2e6"
-              ]
+              ],
+              "name": "Independent sbt/test-interface (38 tests; sbt 1.11.7 and adapted 1.13.1)",
+              "upstream": {
+                "repository": "https://github.com/sbt/test-interface",
+                "revision": "22b24334e8ea0274fc9a8fa7df8dd5ecd4f45cd5",
+                "sourceNarHash": "sha256-cSk+xOeYYzTsTDkSYcYJbjTWyUue1oJsrBqwxyHHCag="
+              }
             },
             {
+              "derivations": [
+                "native-runtime-sbt-2.0.12-aarch64-darwin-169b2e6",
+                "native-runtime-sbt-2.0.12-x86_64-linux-169b2e6"
+              ],
               "name": "Authored repository sbt 2 multi-module fixture (one test; sbt 2.0.12)",
               "upstream": {
                 "repository": "https://github.com/nix-purifiers/sbt-purifier",
                 "revision": "169b2e6e6a5d87f6c7f43e45b72f57e59f09c35c",
                 "sourceNarHash": "sha256-//k+UAuoBXz3DnURdALOYXd134nGWnG5YGgwHvS8Tfs="
-              },
-              "derivations": [
-                "native-runtime-sbt-2.0.12-aarch64-darwin-169b2e6",
-                "native-runtime-sbt-2.0.12-x86_64-linux-169b2e6"
-              ]
+              }
             }
           ]
         },
         "humanUseReview": {
-          "reviewedAt": "2026-11-08",
-          "reports": {
-            "lizwinn-macos-20261103-pr13": {
-              "repository": "nix-purifiers/sbt-purifier",
-              "reportedAt": "2026-11-03",
-              "reviewedAt": "2026-11-08",
-              "reporter": {
-                "kind": "human",
-                "relationship": "contributor",
-                "publicLabel": "lizwinn"
-              },
-              "basis": "firsthand",
-              "scope": "Reports local flake checks, eight unchanged relocked fixtures, interactive/update workflows and native composition at three named SBT versions.",
-              "summary": "Fresh-clone M-series Mac/macOS 27.0.1/Nix 2.34.9 report. Builds were unsandboxed; strict sandboxed rebuild remained pending. No ongoing-use or current-head claim.",
-              "claims": [
-                "firsthand-use"
-              ],
-              "source": {
-                "kind": "public-primary-url",
-                "url": "https://github.com/nix-purifiers/sbt-purifier/pull/13",
-                "reference": null
-              },
-              "ongoingUsers": []
-            },
-            "lizwinn-macos-20261104-pr15": {
-              "repository": "nix-purifiers/sbt-purifier",
-              "reportedAt": "2026-11-04",
-              "reviewedAt": "2026-11-08",
-              "reporter": {
-                "kind": "human",
-                "relationship": "contributor",
-                "publicLabel": "lizwinn"
-              },
-              "basis": "firsthand",
-              "scope": "Reports local interactive and flake checks plus scoped regression and cleanup controls.",
-              "summary": "Fresh-branch Mac report with 83 interactive checks. Nix builds were unsandboxed; some controls used Bash 5.3 and a shorter runtime directory. No ongoing-use or current-head claim.",
-              "claims": [
-                "firsthand-use"
-              ],
-              "source": {
-                "kind": "public-primary-url",
-                "url": "https://github.com/nix-purifiers/sbt-purifier/pull/15",
-                "reference": null
-              },
-              "ongoingUsers": []
-            }
-          },
           "criteria": {
             "firsthandUse": {
-              "state": "met",
-              "summary": "A human contributor reports scoped firsthand local purifier use.",
+              "confidenceReason": null,
+              "consumerProjects": [],
+              "gap": null,
               "reports": [
                 "lizwinn-macos-20261103-pr13",
                 "lizwinn-macos-20261104-pr15"
               ],
-              "gap": null,
-              "confidenceReason": null,
-              "usageContexts": [],
-              "consumerProjects": []
+              "state": "met",
+              "summary": "A human contributor reports scoped firsthand local purifier use.",
+              "usageContexts": []
             },
             "ongoingUse": {
+              "confidenceReason": null,
+              "consumerProjects": [],
+              "gap": "The bounded review does not establish ongoing maintainer use plus two distinct external open-source consumer projects with actual purifier integration and reviewed signs of life.",
+              "reports": [],
               "state": "not-met",
               "summary": "Ongoing maintainer use with two qualifying open-source consumer projects is not established.",
-              "reports": [],
-              "gap": "The bounded review does not establish ongoing maintainer use plus two distinct external open-source consumer projects with actual purifier integration and reviewed signs of life.",
-              "confidenceReason": null,
-              "usageContexts": [],
-              "consumerProjects": []
+              "usageContexts": []
             }
+          },
+          "reports": {
+            "lizwinn-macos-20261103-pr13": {
+              "basis": "firsthand",
+              "claims": [
+                "firsthand-use"
+              ],
+              "ongoingUsers": [],
+              "reportedAt": "2026-11-03",
+              "reporter": {
+                "kind": "human",
+                "publicLabel": "lizwinn",
+                "relationship": "contributor"
+              },
+              "repository": "nix-purifiers/sbt-purifier",
+              "reviewedAt": "2026-11-08",
+              "scope": "Reports local flake checks, eight unchanged relocked fixtures, interactive/update workflows and native composition at three named SBT versions.",
+              "source": {
+                "kind": "public-primary-url",
+                "reference": null,
+                "url": "https://github.com/nix-purifiers/sbt-purifier/pull/13"
+              },
+              "summary": "Fresh-clone M-series Mac/macOS 27.0.1/Nix 2.34.9 report. Builds were unsandboxed; strict sandboxed rebuild remained pending. No ongoing-use or current-head claim."
+            },
+            "lizwinn-macos-20261104-pr15": {
+              "basis": "firsthand",
+              "claims": [
+                "firsthand-use"
+              ],
+              "ongoingUsers": [],
+              "reportedAt": "2026-11-04",
+              "reporter": {
+                "kind": "human",
+                "publicLabel": "lizwinn",
+                "relationship": "contributor"
+              },
+              "repository": "nix-purifiers/sbt-purifier",
+              "reviewedAt": "2026-11-08",
+              "scope": "Reports local interactive and flake checks plus scoped regression and cleanup controls.",
+              "source": {
+                "kind": "public-primary-url",
+                "reference": null,
+                "url": "https://github.com/nix-purifiers/sbt-purifier/pull/15"
+              },
+              "summary": "Fresh-branch Mac report with 83 interactive checks. Nix builds were unsandboxed; some controls used Bash 5.3 and a shorter runtime directory. No ongoing-use or current-head claim."
+            }
+          },
+          "reviewedAt": "2026-11-08"
+        },
+        "rationale": "Verified actual-main native Linux and Darwin derivations cover both maintained sbt lines, a pinned independent sample and scoped authored fixtures. Accepted contributor firsthand local-use reports satisfy the inherited human-use requirement. Many-sample breadth, broad historical compatibility and ongoing maintainer use with two qualifying open-source consumers remain not established.",
+        "reviewedAt": "2026-11-08",
+        "reviewedRevision": "169b2e6e6a5d87f6c7f43e45b72f57e59f09c35c",
+        "sampleBuilds": [
+          {
+            "evidence": [
+              "https://nix-purifiers.github.io/evidence/6b5e79ecf8d0e0f09c669f9567de9227c1916b95579e7466ae2f6188bcbf9b88.json",
+              "https://nix-purifiers.github.io/evidence/9e669fb9362bf5760c0509a7b7c1c2492e5170067522deb3d4d22e4ffc13c077.json",
+              "https://nix-purifiers.github.io/evidence/01024669d6097829c2c6696a4e6b00911341b284c55ca99190ea73510a22b347.json",
+              "https://nix-purifiers.github.io/evidence/ae9da1c049178981d67118caae8c25dee7ba58c0aeabc515272fae34cde190a3.json"
+            ],
+            "name": "Independent sbt/test-interface (38 tests; sbt 1.11.7 and adapted 1.13.1)"
+          },
+          {
+            "evidence": [
+              "https://nix-purifiers.github.io/evidence/9d98f9477498bde06a613bb781620e364bab6b26746348ddd3241504c45b89a9.json",
+              "https://nix-purifiers.github.io/evidence/b449d606171cc8b0dff3e440a7d2a3725d9169d77d0cc03b10204e7c4bedc970.json"
+            ],
+            "name": "Authored repository sbt 2 multi-module fixture (one test; sbt 2.0.12)"
           }
-        }
+        ],
+        "tier": 2
       },
       "repository": "nix-purifiers/sbt-purifier",
       "reviewedRevision": "fe7062b23a888e23d07aed9f3cd5a269976150a2",
