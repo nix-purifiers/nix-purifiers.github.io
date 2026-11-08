@@ -26,32 +26,42 @@
       "state": "unknown"
     },
     "credentials": {
-      "reason": "This capability is not established by the reviewed integration record.",
-      "state": "unknown"
+      "state": "unknown",
+      "reason": "This bounded record does not establish credential propagation through both native capture and Nix prefetch for private sources; user configuration and builder fetcher overrides are separate from verified default transport authentication."
     },
     "dependency_sources": {
-      "reason": "This capability is not established by the reviewed integration record.",
-      "state": "unknown"
+      "state": "known",
+      "value": [
+        "Python package indexes",
+        "Git",
+        "Direct wheel/source-archive URLs",
+        "Local directories, wheels and source archives"
+      ],
+      "sources": [
+        "https://github.com/nix-purifiers/uv-purifier/blob/6df81ab679ca382d8ea69b59b8e34c3dcfb7fd8e/src/uv_purifier.py#L121",
+        "https://github.com/nix-purifiers/uv-purifier/blob/6df81ab679ca382d8ea69b59b8e34c3dcfb7fd8e/nix/lib/build-uv-project.nix#L323",
+        "https://github.com/nix-purifiers/uv-purifier/blob/6df81ab679ca382d8ea69b59b8e34c3dcfb7fd8e/README.md#L312"
+      ]
     },
     "editor_completion": {
-      "reason": "This capability is not established by the reviewed integration record.",
-      "state": "unknown"
+      "state": "unknown",
+      "reason": "The existing editor/toolchain setup does not by itself establish protocol-level completion. No new language-server result is asserted by this bounded source-only backfill."
     },
     "editor_dependency_sources": {
-      "reason": "This capability is not established by the reviewed integration record.",
-      "state": "unknown"
+      "state": "unknown",
+      "reason": "The existing editor/toolchain setup does not by itself establish protocol-level dependency-source retrieval. No new language-server result is asserted by this bounded source-only backfill."
     },
     "editor_diagnostics": {
-      "reason": "This capability is not established by the reviewed integration record.",
-      "state": "unknown"
+      "state": "unknown",
+      "reason": "The existing editor/toolchain setup does not by itself establish protocol-level diagnostics. No new language-server result is asserted by this bounded source-only backfill."
     },
     "editor_metadata_format": {
       "reason": "This capability is not established by the reviewed integration record.",
       "state": "unknown"
     },
     "editor_navigation": {
-      "reason": "This capability is not established by the reviewed integration record.",
-      "state": "unknown"
+      "state": "unknown",
+      "reason": "The existing editor/toolchain setup does not by itself establish protocol-level definition lookup. No new language-server result is asserted by this bounded source-only backfill."
     },
     "editor_offline": {
       "sources": [],
@@ -73,8 +83,13 @@
       "state": "unknown"
     },
     "inputs": {
-      "reason": "This capability is not established by the reviewed integration record.",
-      "state": "unknown"
+      "state": "known",
+      "value": [
+        "pyproject.toml"
+      ],
+      "sources": [
+        "https://github.com/nix-purifiers/uv-purifier/blob/6df81ab679ca382d8ea69b59b8e34c3dcfb7fd8e/src/uv_purifier.py#L682"
+      ]
     },
     "integration": {
       "sources": [],
@@ -94,28 +109,28 @@
       ]
     },
     "missing_lock": {
-      "reason": "This capability is not established by the reviewed integration record.",
-      "state": "unknown"
+      "state": "unknown",
+      "reason": "Purifier prefetch/publish and the Nix builder require a valid purifier lock; ordinary unwrapped uv retains native behavior. A single wrapper fallback value does not describe both interfaces."
     },
     "named_update_example": {
       "reason": "This capability is not established by the reviewed integration record.",
       "state": "unknown"
     },
     "native_plugin_bootstrap": {
-      "reason": "This capability is not established by the reviewed integration record.",
-      "state": "unknown"
+      "state": "not-applicable",
+      "reason": "This integration supplies native-tool preparation, wrappers or CMake helper modules, not a published JVM build-tool plugin; plugin coordinates, repository bootstrap and a Java target do not apply."
     },
     "native_plugin_coordinate": {
-      "reason": "This capability is not established by the reviewed integration record.",
-      "state": "unknown"
+      "state": "not-applicable",
+      "reason": "This integration supplies native-tool preparation, wrappers or CMake helper modules, not a published JVM build-tool plugin; plugin coordinates, repository bootstrap and a Java target do not apply."
     },
     "native_plugin_java_target": {
-      "reason": "This capability is not established by the reviewed integration record.",
-      "state": "unknown"
+      "state": "not-applicable",
+      "reason": "This integration supplies native-tool preparation, wrappers or CMake helper modules, not a published JVM build-tool plugin; plugin coordinates, repository bootstrap and a Java target do not apply."
     },
     "native_plugin_repository": {
-      "reason": "This capability is not established by the reviewed integration record.",
-      "state": "unknown"
+      "state": "not-applicable",
+      "reason": "This integration supplies native-tool preparation, wrappers or CMake helper modules, not a published JVM build-tool plugin; plugin coordinates, repository bootstrap and a Java target do not apply."
     },
     "nix_builder": {
       "sources": [],
@@ -123,16 +138,36 @@
       "value": "pkgs.uv-purifier.buildUvProject"
     },
     "offline_limits": {
-      "reason": "This capability is not established by the reviewed integration record.",
-      "state": "unknown"
+      "state": "known",
+      "value": [
+        "Use the prefetched .venv or uv run --no-sync; ordinary uv syncing may consult uv.lock or its own cache.",
+        "uv add and other operations requiring packages outside the locked environment retain native network behavior; lock and prefetch again.",
+        "Build backends with different platform-specific requirements need those requirements captured for the consuming platform."
+      ],
+      "sources": [
+        "https://github.com/nix-purifiers/uv-purifier/blob/6df81ab679ca382d8ea69b59b8e34c3dcfb7fd8e/README.md#L59",
+        "https://github.com/nix-purifiers/uv-purifier/blob/6df81ab679ca382d8ea69b59b8e34c3dcfb7fd8e/README.md#L63",
+        "https://github.com/nix-purifiers/uv-purifier/blob/6df81ab679ca382d8ea69b59b8e34c3dcfb7fd8e/README.md#L329"
+      ]
     },
     "offline_scope": {
-      "reason": "This capability is not established by the reviewed integration record.",
-      "state": "unknown"
+      "state": "known",
+      "value": "locked-dependencies",
+      "sources": [
+        "https://github.com/nix-purifiers/uv-purifier/blob/6df81ab679ca382d8ea69b59b8e34c3dcfb7fd8e/src/uv_purifier.py#L1006",
+        "https://github.com/nix-purifiers/uv-purifier/blob/6df81ab679ca382d8ea69b59b8e34c3dcfb7fd8e/src/uv_purifier.py#L1029"
+      ]
     },
     "platform_notes": {
-      "reason": "This capability is not established by the reviewed integration record.",
-      "state": "unknown"
+      "state": "known",
+      "value": [
+        "The retained technical review covers native x86_64-linux, aarch64-linux and aarch64-darwin within its stated SDK/sample scopes.",
+        "No Intel Darwin, cross-compilation or unlisted SDK/system combination is established by that review."
+      ],
+      "sources": [
+        "https://github.com/nix-purifiers/uv-purifier/blob/0d2f6e7e42462491560afcf8f03a1db4432d6c34/tests/real-world-flask.py",
+        "https://nix-purifiers.github.io/evidence/2605969ccfb7dc90dd46aaece2cdc853f3895e5dae978a1b7ce8b5666ba670bf.json"
+      ]
     },
     "platforms": {
       "state": "known",
@@ -204,16 +239,20 @@
       ]
     },
     "relock": {
-      "reason": "This capability is not established by the reviewed integration record.",
-      "state": "unknown"
+      "state": "known",
+      "value": "preserves-pins",
+      "sources": [
+        "https://github.com/nix-purifiers/uv-purifier/blob/6df81ab679ca382d8ea69b59b8e34c3dcfb7fd8e/src/uv_purifier.py#L674",
+        "https://github.com/nix-purifiers/uv-purifier/blob/6df81ab679ca382d8ea69b59b8e34c3dcfb7fd8e/README.md#L94"
+      ]
     },
     "runtime_requirements": {
       "reason": "This capability is not established by the reviewed integration record.",
       "state": "unknown"
     },
     "stale_lock": {
-      "reason": "This capability is not established by the reviewed integration record.",
-      "state": "unknown"
+      "state": "unknown",
+      "reason": "Purifier prefetch/publish reject mismatched uv.lock or pyproject inputs, while native uv remains unwrapped and can update its own lock. The general stale-wrapper enum would hide that interface boundary."
     },
     "supported_native_commands": {
       "reason": "This capability is not established by the reviewed integration record.",

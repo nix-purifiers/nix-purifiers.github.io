@@ -105,6 +105,120 @@
     "editor_offline": {
       "state": "known",
       "value": true
+    },
+    "inputs": {
+      "state": "known",
+      "value": [
+        "pylock.toml or requirements.txt; otherwise pyproject.toml or setup.py (or explicit pip install arguments)"
+      ],
+      "sources": [
+        "https://github.com/nix-purifiers/pip-purifier/blob/f80c9c051293253aeb748972af022c53529c5b78/src/pip_purifier.py#L475",
+        "https://github.com/nix-purifiers/pip-purifier/blob/f80c9c051293253aeb748972af022c53529c5b78/src/pip_purifier.py#L483"
+      ]
+    },
+    "dependency_sources": {
+      "state": "known",
+      "value": [
+        "Python package indexes and find-links sources",
+        "Direct wheel/source-archive URLs",
+        "Git",
+        "Mercurial",
+        "Subversion",
+        "Bazaar",
+        "Local project paths"
+      ],
+      "sources": [
+        "https://github.com/nix-purifiers/pip-purifier/blob/f80c9c051293253aeb748972af022c53529c5b78/src/pip_purifier.py#L553",
+        "https://github.com/nix-purifiers/pip-purifier/blob/f80c9c051293253aeb748972af022c53529c5b78/src/pip_purifier.py#L373",
+        "https://github.com/nix-purifiers/pip-purifier/blob/f80c9c051293253aeb748972af022c53529c5b78/nix/lib/offline.py#L8"
+      ]
+    },
+    "relock": {
+      "state": "known",
+      "value": "preserves-pins",
+      "sources": [
+        "https://github.com/nix-purifiers/pip-purifier/blob/f80c9c051293253aeb748972af022c53529c5b78/src/pip_purifier.py#L682",
+        "https://github.com/nix-purifiers/pip-purifier/blob/f80c9c051293253aeb748972af022c53529c5b78/README.md#L64"
+      ]
+    },
+    "stale_lock": {
+      "state": "known",
+      "value": "fail-with-repair",
+      "sources": [
+        "https://github.com/nix-purifiers/pip-purifier/blob/f80c9c051293253aeb748972af022c53529c5b78/src/pip_purifier.py#L530",
+        "https://github.com/nix-purifiers/pip-purifier/blob/f80c9c051293253aeb748972af022c53529c5b78/src/pip_purifier.py#L989",
+        "https://github.com/nix-purifiers/pip-purifier/blob/f80c9c051293253aeb748972af022c53529c5b78/src/pip_purifier.py#L1022"
+      ]
+    },
+    "offline_scope": {
+      "state": "known",
+      "value": "locked-dependencies",
+      "sources": [
+        "https://github.com/nix-purifiers/pip-purifier/blob/f80c9c051293253aeb748972af022c53529c5b78/nix/lib/offline.py#L62",
+        "https://github.com/nix-purifiers/pip-purifier/blob/f80c9c051293253aeb748972af022c53529c5b78/src/pip_purifier.py#L1031"
+      ]
+    },
+    "offline_limits": {
+      "state": "known",
+      "value": [
+        "Keep the purifier command and its own Python/toolchain closure installed as well as the locked project inputs.",
+        "Native libraries and system executables needed by build backends must be supplied separately.",
+        "Arbitrary application/test networking and new package requests outside captured inputs are not made available by prefetch."
+      ],
+      "sources": [
+        "https://github.com/nix-purifiers/pip-purifier/blob/f80c9c051293253aeb748972af022c53529c5b78/README.md#L209",
+        "https://github.com/nix-purifiers/pip-purifier/blob/f80c9c051293253aeb748972af022c53529c5b78/nix/lib/build-pip-project.nix",
+        "https://github.com/nix-purifiers/pip-purifier/blob/f80c9c051293253aeb748972af022c53529c5b78/nix/lib/offline.py#L24"
+      ]
+    },
+    "platform_notes": {
+      "state": "known",
+      "value": [
+        "The retained technical review covers native x86_64-linux, aarch64-linux and aarch64-darwin within its stated SDK/sample scopes.",
+        "No Intel Darwin, cross-compilation or unlisted SDK/system combination is established by that review."
+      ],
+      "sources": [
+        "https://nix-purifiers.github.io/evidence/1e55d4bf5c6594ab6c8360644bb6647abf81fedb846b825051aa7f82541c8dd4.json",
+        "https://nix-purifiers.github.io/evidence/054214022c37a12aedd06095dcdd6805159f3a948dbd928722efa13904b26632.log",
+        "https://nix-purifiers.github.io/evidence/3ba8d279d37b54b9101a020881f9b6c67fa633c47cbc29b964f304f68ecd10ce.json",
+        "https://nix-purifiers.github.io/evidence/e09824559e9d85ab6c1cc8f6fdb79e0a50a6f9244868354a655f6bd7fefd1980.log"
+      ]
+    },
+    "editor_completion": {
+      "state": "unknown",
+      "reason": "The existing editor/toolchain setup does not by itself establish protocol-level completion. No new language-server result is asserted by this bounded source-only backfill."
+    },
+    "editor_diagnostics": {
+      "state": "unknown",
+      "reason": "The existing editor/toolchain setup does not by itself establish protocol-level diagnostics. No new language-server result is asserted by this bounded source-only backfill."
+    },
+    "editor_navigation": {
+      "state": "unknown",
+      "reason": "The existing editor/toolchain setup does not by itself establish protocol-level definition lookup. No new language-server result is asserted by this bounded source-only backfill."
+    },
+    "editor_dependency_sources": {
+      "state": "unknown",
+      "reason": "The existing editor/toolchain setup does not by itself establish protocol-level dependency-source retrieval. No new language-server result is asserted by this bounded source-only backfill."
+    },
+    "credentials": {
+      "state": "unknown",
+      "reason": "This bounded record does not establish credential propagation through both native capture and Nix prefetch for private sources; user configuration and builder fetcher overrides are separate from verified default transport authentication."
+    },
+    "native_plugin_coordinate": {
+      "state": "not-applicable",
+      "reason": "This integration supplies native-tool preparation, wrappers or CMake helper modules, not a published JVM build-tool plugin; plugin coordinates, repository bootstrap and a Java target do not apply."
+    },
+    "native_plugin_repository": {
+      "state": "not-applicable",
+      "reason": "This integration supplies native-tool preparation, wrappers or CMake helper modules, not a published JVM build-tool plugin; plugin coordinates, repository bootstrap and a Java target do not apply."
+    },
+    "native_plugin_bootstrap": {
+      "state": "not-applicable",
+      "reason": "This integration supplies native-tool preparation, wrappers or CMake helper modules, not a published JVM build-tool plugin; plugin coordinates, repository bootstrap and a Java target do not apply."
+    },
+    "native_plugin_java_target": {
+      "state": "not-applicable",
+      "reason": "This integration supplies native-tool preparation, wrappers or CMake helper modules, not a published JVM build-tool plugin; plugin coordinates, repository bootstrap and a Java target do not apply."
     }
   },
   "operations": {
