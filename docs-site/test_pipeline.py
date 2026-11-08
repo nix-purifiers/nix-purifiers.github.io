@@ -99,8 +99,10 @@ class PipelineTests(unittest.TestCase):
         result = self.run_prepare(repository)
         self.assertEqual(result.returncode, 0, result.stderr)
         text = (self.root / 'output/index.md').read_text()
-        self.assertIn('### Default and selectable versions', text)
-        self.assertNotIn('have not yet been recorded for this purifier', text)
+        self.assertIn('reference.html#version-compatibility', text)
+        guide = (self.root / 'output/reference.md').read_text()
+        self.assertIn('### Default and selectable versions', guide)
+        self.assertNotIn('have not yet been recorded for this purifier', guide)
         page['facts']['tool']['value'] = True
         (variant / 'page.json').write_text(json.dumps(page))
         self.assertNotEqual(self.run_prepare(repository).returncode, 0)
