@@ -86,7 +86,8 @@ let
   documentationCatalog = lib.mapAttrs (name: _: evaluateDocumentation [
     (../docs-site/projects + "/${name}.nix")
   ]) (lib.filterAttrs (name: _: builtins.pathExists (../docs-site/projects + "/${name}.nix")) catalog);
-  tierRegistry = builtins.fromJSON (builtins.readFile ./tiers.json);
+  tierRegistry = let value = builtins.fromJSON (builtins.readFile ./tiers.json);
+    in builtins.seq ((import ./quality-policy.nix { inherit lib; }).requireCurrentRegistry value.version) value;
   qualityTiers = {
     inherit (tierRegistry) version definitions;
     projects = lib.mapAttrs (name: _: (lib.evalModules { modules = [

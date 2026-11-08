@@ -117,6 +117,7 @@ def validate_consumer_project(repository, project):
               'externalAdoption', 'openSourceBasis', 'integration', 'activityMonitoring', 'reviewedAt', 'vitalityConfidence'}
     require(isinstance(project, dict) and set(project) == fields, 'invalid consumer-project record')
     require(project['repository'] == repository, 'consumer project is bound to another purifier')
+    require(primary_url(project['publicRepository']), 'consumer project needs a valid public repository URL')
     identity = project_identity(project)
     require(identity is not None and project['canonicalIdentity'] == identity, 'consumer project needs a canonical identity')
     require(canonical_repository(project['publicRepository']) != 'https://github.com/' + repository.lower(), 'purifier itself is not an external consumer')

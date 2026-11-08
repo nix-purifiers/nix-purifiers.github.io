@@ -41,24 +41,29 @@ class HumanUseParity(unittest.TestCase):
     def test_actual_production_module_rejects_downgrade_and_missing_human_fields(self):
         root = Path(__file__).resolve().parents[1]
         baseline = json.loads((root / 'model/tiers.json').read_text())
-        for mode in ('downgrade', 'missing-human'):
+        for mode in ('downgrade', 'empty-downgrade', 'missing-human'):
             with self.subTest(mode=mode), tempfile.TemporaryDirectory() as directory:
                 temp = Path(directory); model = temp / 'model'; model.mkdir()
                 for source in (root / 'model').iterdir():
-                    if source.name not in ('tiers.nix', 'tiers.json'):
+                    if source.name not in ('tiers.nix', 'tiers.json', 'default.nix'):
                         (model / source.name).symlink_to(source, target_is_directory=source.is_dir())
                 (model / 'tiers.nix').write_bytes((root / 'model/tiers.nix').read_bytes())
+                (model / 'default.nix').write_bytes((root / 'model/default.nix').read_bytes())
                 (temp / 'docs-site').symlink_to(root / 'docs-site', target_is_directory=True)
                 q = json.loads(json.dumps(baseline['projects']['sbt-purifier']))
                 q.pop('humanUseReview')
                 for key in ('firsthandUse', 'ongoingUse'): q['criteria'].pop(key)
-                (model / 'tiers.json').write_text(json.dumps({'version': 2 if mode == 'downgrade' else 3,
-                    'projects': {'sbt-purifier': q}}))
+                (model / 'tiers.json').write_text(json.dumps({'version': 2 if mode in ('downgrade', 'empty-downgrade') else 3,
+                    'projects': {} if mode == 'empty-downgrade' else {'sbt-purifier': q}}))
                 expr = ('let lib = import (builtins.toPath '+json.dumps(os.environ['NIXPKGS_LIB'])+'); '
                         'q = (lib.evalModules { modules = [ '+str(model/'tiers.nix')+
                         ' { options.repository = lib.mkOption { type = lib.types.str; }; '
                         'config.repository = "nix-purifiers/sbt-purifier"; } ]; }).config.quality; '
                         'in (builtins.tryEval (builtins.deepSeq q true)).success')
+                if mode == 'empty-downgrade':
+                    expr = ('let lib = import (builtins.toPath '+json.dumps(os.environ['NIXPKGS_LIB'])+'); '
+                            'q = (import '+str(model)+' { inherit lib; }).qualityTiers; '
+                            'in (builtins.tryEval (builtins.deepSeq q true)).success')
                 result = subprocess.run(['nix', 'eval', '--impure', '--json', '--expr', expr], check=True, capture_output=True, text=True)
                 self.assertFalse(json.loads(result.stdout))
 
