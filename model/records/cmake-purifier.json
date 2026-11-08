@@ -156,6 +156,110 @@
     "editor_offline": {
       "state": "known",
       "value": true
+    },
+    "inputs": {
+      "state": "known",
+      "value": [
+        "CMakeLists.txt"
+      ],
+      "sources": [
+        "https://github.com/nix-purifiers/cmake-purifier/blob/b7e2ec857d6114933ab44116b2624ea194ea8801/pkgs/cmake-purifier/default.nix#L183"
+      ]
+    },
+    "dependency_sources": {
+      "state": "known",
+      "value": [
+        "HTTP(S) download URLs",
+        "Git",
+        "Mercurial",
+        "Subversion",
+        "CVS"
+      ],
+      "sources": [
+        "https://github.com/nix-purifiers/cmake-purifier/blob/b7e2ec857d6114933ab44116b2624ea194ea8801/nix/lib/sources.nix#L31",
+        "https://github.com/nix-purifiers/cmake-purifier/blob/b7e2ec857d6114933ab44116b2624ea194ea8801/nix/lib/sources.nix#L35",
+        "https://github.com/nix-purifiers/cmake-purifier/blob/b7e2ec857d6114933ab44116b2624ea194ea8801/pkgs/cmake-purifier/default.nix#L43"
+      ]
+    },
+    "relock": {
+      "state": "known",
+      "value": "preserves-pins",
+      "sources": [
+        "https://github.com/nix-purifiers/cmake-purifier/blob/b7e2ec857d6114933ab44116b2624ea194ea8801/lock/pin.py#L3",
+        "https://github.com/nix-purifiers/cmake-purifier/blob/b7e2ec857d6114933ab44116b2624ea194ea8801/README.md#L74"
+      ]
+    },
+    "offline_scope": {
+      "state": "known",
+      "value": "locked-dependencies",
+      "sources": [
+        "https://github.com/nix-purifiers/cmake-purifier/blob/b7e2ec857d6114933ab44116b2624ea194ea8801/pkgs/cmake-purifier/default.nix#L38",
+        "https://github.com/nix-purifiers/cmake-purifier/blob/b7e2ec857d6114933ab44116b2624ea194ea8801/nix/lib/sources.nix#L3"
+      ]
+    },
+    "offline_limits": {
+      "state": "known",
+      "value": [
+        "The lock lists project downloads; compilers, CMake and clangd must be supplied by the selected toolchain.",
+        "file(DOWNLOAD) and URL ExternalProject downloads require the cmake-purifier replay proxy, not only the initial cache.",
+        "The lock run does not execute project tests, so downloads first performed by tests are not captured."
+      ],
+      "sources": [
+        "https://github.com/nix-purifiers/cmake-purifier/blob/b7e2ec857d6114933ab44116b2624ea194ea8801/README.md#L190",
+        "https://github.com/nix-purifiers/cmake-purifier/blob/b7e2ec857d6114933ab44116b2624ea194ea8801/pkgs/cmake-purifier/default.nix#L48",
+        "https://github.com/nix-purifiers/cmake-purifier/blob/b7e2ec857d6114933ab44116b2624ea194ea8801/README.md#L129"
+      ]
+    },
+    "stale_lock": {
+      "state": "unknown",
+      "reason": "Purifier prefetch, Nix evaluation and the sandbox builder reject changed CMake definition hashes. Ordinary CMake outside the generated cache/provider/replay setup is not covered by that freshness check."
+    },
+    "platform_notes": {
+      "state": "known",
+      "value": [
+        "The retained technical review covers native x86_64-linux, aarch64-linux and aarch64-darwin within its stated SDK/sample scopes.",
+        "No Intel Darwin, cross-compilation or unlisted SDK/system combination is established by that review."
+      ],
+      "sources": [
+        "https://nix-purifiers.github.io/evidence/2b3bd64e787d5272ce638e305b641255f6cd293d1d265f219986d102483987b5.json",
+        "https://nix-purifiers.github.io/evidence/6a815e77715d933c377b11919d48b9a5f4a16eebc1589d8415be6b3256e6aa79.json"
+      ]
+    },
+    "editor_completion": {
+      "state": "unknown",
+      "reason": "The existing editor/toolchain setup does not by itself establish protocol-level completion. No new language-server result is asserted by this bounded source-only backfill."
+    },
+    "editor_diagnostics": {
+      "state": "unknown",
+      "reason": "The existing editor/toolchain setup does not by itself establish protocol-level diagnostics. No new language-server result is asserted by this bounded source-only backfill."
+    },
+    "editor_navigation": {
+      "state": "unknown",
+      "reason": "The existing editor/toolchain setup does not by itself establish protocol-level definition lookup. No new language-server result is asserted by this bounded source-only backfill."
+    },
+    "editor_dependency_sources": {
+      "state": "unknown",
+      "reason": "The existing editor/toolchain setup does not by itself establish protocol-level dependency-source retrieval. No new language-server result is asserted by this bounded source-only backfill."
+    },
+    "credentials": {
+      "state": "unknown",
+      "reason": "This bounded record does not establish credential propagation through both native capture and Nix prefetch for private sources; user configuration and builder fetcher overrides are separate from verified default transport authentication."
+    },
+    "native_plugin_coordinate": {
+      "state": "not-applicable",
+      "reason": "This integration supplies native-tool preparation, wrappers or CMake helper modules, not a published JVM build-tool plugin; plugin coordinates, repository bootstrap and a Java target do not apply."
+    },
+    "native_plugin_repository": {
+      "state": "not-applicable",
+      "reason": "This integration supplies native-tool preparation, wrappers or CMake helper modules, not a published JVM build-tool plugin; plugin coordinates, repository bootstrap and a Java target do not apply."
+    },
+    "native_plugin_bootstrap": {
+      "state": "not-applicable",
+      "reason": "This integration supplies native-tool preparation, wrappers or CMake helper modules, not a published JVM build-tool plugin; plugin coordinates, repository bootstrap and a Java target do not apply."
+    },
+    "native_plugin_java_target": {
+      "state": "not-applicable",
+      "reason": "This integration supplies native-tool preparation, wrappers or CMake helper modules, not a published JVM build-tool plugin; plugin coordinates, repository bootstrap and a Java target do not apply."
     }
   },
   "operations": {
