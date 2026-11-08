@@ -1,0 +1,431 @@
+{
+  "sample": {
+    "fixture": "tests/fixtures/sbt2",
+    "sourceSnapshot": "/nix/store/xn6ph0zmnmlyasmdicpg0hi3a7f356d8-source"
+  },
+  "sbtVersion": "2.0.12",
+  "fixture": "sbt2",
+  "platform": "macOS-26.7.2-arm64-arm-64bit-Mach-O",
+  "machine": "arm64",
+  "harnessSha256": "b37421d4bf786b607e7ef51e0b40c813acf35ebc216936b88dfd0ee42f8d7018",
+  "runtimeRoot": "/private/tmp/sbt-run-uq4zb1y0",
+  "runtimeDirectoryMaximumBytes": 48,
+  "commands": [
+    {
+      "label": "source-revision",
+      "argv": [
+        "git",
+        "rev-parse",
+        "HEAD"
+      ],
+      "cwd": "/Users/runner/work/sbt-purifier/sbt-purifier",
+      "log": "source-revision.log",
+      "stderr": "source-revision.stderr.log",
+      "returncode": 0
+    },
+    {
+      "label": "source-diff",
+      "argv": [
+        "git",
+        "diff",
+        "--binary",
+        "HEAD"
+      ],
+      "cwd": "/Users/runner/work/sbt-purifier/sbt-purifier",
+      "log": "source-diff.log",
+      "stderr": "source-diff.stderr.log",
+      "returncode": 0
+    },
+    {
+      "label": "source-archive",
+      "argv": [
+        "nix",
+        "flake",
+        "archive",
+        "--json",
+        "--no-update-lock-file",
+        "git+file:///Users/runner/work/sbt-purifier/sbt-purifier?rev=2d1e99258261dc15d11ff9b8698ee58a78655e4c"
+      ],
+      "cwd": "/Users/runner/work/sbt-purifier/sbt-purifier",
+      "log": "source-archive.log",
+      "stderr": "source-archive.stderr.log",
+      "returncode": 0
+    },
+    {
+      "label": "source-nar-hash",
+      "argv": [
+        "nix",
+        "hash",
+        "path",
+        "/nix/store/xn6ph0zmnmlyasmdicpg0hi3a7f356d8-source"
+      ],
+      "cwd": "/Users/runner/work/sbt-purifier/sbt-purifier",
+      "log": "source-nar-hash.log",
+      "stderr": "source-nar-hash.stderr.log",
+      "returncode": 0
+    },
+    {
+      "label": "system",
+      "argv": [
+        "nix",
+        "eval",
+        "--impure",
+        "--raw",
+        "--expr",
+        "builtins.currentSystem"
+      ],
+      "cwd": "/Users/runner/work/sbt-purifier/sbt-purifier",
+      "log": "system.log",
+      "stderr": "system.stderr.log",
+      "returncode": 0
+    },
+    {
+      "label": "sandbox-setting",
+      "argv": [
+        "nix",
+        "config",
+        "show",
+        "sandbox"
+      ],
+      "cwd": "/Users/runner/work/sbt-purifier/sbt-purifier",
+      "log": "sandbox-setting.log",
+      "stderr": "sandbox-setting.stderr.log",
+      "returncode": 0
+    },
+    {
+      "label": "native-tools",
+      "argv": [
+        "nix",
+        "build",
+        "--impure",
+        "--expr",
+        "let\n      f = builtins.getFlake \"path:/nix/store/xn6ph0zmnmlyasmdicpg0hi3a7f356d8-source\";\n      p = f.inputs.nixpkgs.legacyPackages.aarch64-darwin;\n    in p.runCommand \"sbt-native-control-tools\" {} ''\n      mkdir -p $out/bin\n      ln -s ${p.sbt}/bin/sbt $out/bin/sbt\n      ln -s ${p.jdk.home} $out/jdk\n    '' ",
+        "--out-link",
+        "/Users/runner/work/_temp/sbt-runtime-evidence/work/native-tools",
+        "--print-out-paths",
+        "--option",
+        "max-jobs",
+        "2",
+        "--option",
+        "cores",
+        "2"
+      ],
+      "cwd": "/Users/runner/work/sbt-purifier/sbt-purifier",
+      "log": "native-tools.log",
+      "stderr": "native-tools.stderr.log",
+      "returncode": 0
+    },
+    {
+      "label": "java-version",
+      "argv": [
+        "/nix/store/zd9xmpbxpiyw01fn7ky65fz70yfz78x1-sbt-native-control-tools/jdk/bin/java",
+        "-version"
+      ],
+      "cwd": "/Users/runner/work/sbt-purifier/sbt-purifier",
+      "log": "java-version.log",
+      "stderr": "java-version.stderr.log",
+      "returncode": 0
+    },
+    {
+      "label": "wrapper",
+      "argv": [
+        "nix",
+        "build",
+        "path:/nix/store/xn6ph0zmnmlyasmdicpg0hi3a7f356d8-source#sbt",
+        "--out-link",
+        "/Users/runner/work/_temp/sbt-runtime-evidence/work/wrapper",
+        "--print-out-paths",
+        "--option",
+        "max-jobs",
+        "2",
+        "--option",
+        "cores",
+        "2"
+      ],
+      "cwd": "/Users/runner/work/sbt-purifier/sbt-purifier",
+      "log": "wrapper.log",
+      "stderr": "wrapper.stderr.log",
+      "returncode": 0
+    },
+    {
+      "label": "purifier",
+      "argv": [
+        "nix",
+        "build",
+        "path:/nix/store/xn6ph0zmnmlyasmdicpg0hi3a7f356d8-source#sbt-purifier",
+        "--out-link",
+        "/Users/runner/work/_temp/sbt-runtime-evidence/work/purifier",
+        "--print-out-paths",
+        "--option",
+        "max-jobs",
+        "2",
+        "--option",
+        "cores",
+        "2"
+      ],
+      "cwd": "/Users/runner/work/sbt-purifier/sbt-purifier",
+      "log": "purifier.log",
+      "stderr": "purifier.stderr.log",
+      "returncode": 0
+    },
+    {
+      "label": "native-test",
+      "argv": [
+        "/nix/store/zd9xmpbxpiyw01fn7ky65fz70yfz78x1-sbt-native-control-tools/bin/sbt",
+        "--server",
+        "-batch",
+        "clean",
+        "test"
+      ],
+      "cwd": "/Users/runner/work/_temp/sbt-runtime-evidence/work/project",
+      "log": "native-test.log",
+      "stderr": "native-test.stderr.log",
+      "environment": {
+        "HOME": "/Users/runner/work/_temp/sbt-runtime-evidence/work/native/home",
+        "XDG_CACHE_HOME": "/Users/runner/work/_temp/sbt-runtime-evidence/work/native/cache",
+        "COURSIER_CACHE": "/Users/runner/work/_temp/sbt-runtime-evidence/work/native/coursier",
+        "XDG_RUNTIME_DIR": "/private/tmp/sbt-run-uq4zb1y0/native",
+        "JAVA_HOME": "/nix/store/zd9xmpbxpiyw01fn7ky65fz70yfz78x1-sbt-native-control-tools/jdk",
+        "SBT_OPTS": "-Xmx2g -Xss4m -XX:ActiveProcessorCount=2 -XX:ErrorFile=/Users/runner/work/_temp/sbt-runtime-evidence/jvm-crash-inputs/hs_err_pid%p.log -Duser.home=/Users/runner/work/_temp/sbt-runtime-evidence/work/native/home -Djava.io.tmpdir=/Users/runner/work/_temp/sbt-runtime-evidence/work/native/tmp -Dsbt.server.autostart=false -Dsbt.server.forcestart=true -Dsbt.supershell=false -Dsbt.log.noformat=true -Dsbt.global.base=/Users/runner/work/_temp/sbt-runtime-evidence/work/native/global -Dsbt.ivy.home=/Users/runner/work/_temp/sbt-runtime-evidence/work/native/ivy -Dsbt.boot.directory=/Users/runner/work/_temp/sbt-runtime-evidence/work/native/boot",
+        "SBT_NIX_BACKEND_MAVEN_CENTRAL_MIRROR": "https://repo.maven.apache.org/maven2/"
+      },
+      "returncode": 0
+    },
+    {
+      "label": "lock",
+      "argv": [
+        "/nix/store/vsa62s9zc5pzwxb8sf0csvj4jgzdi8yi-sbt-purifier/bin/sbt-purifier",
+        "lock",
+        "--server"
+      ],
+      "cwd": "/Users/runner/work/_temp/sbt-runtime-evidence/work/project",
+      "log": "lock.log",
+      "stderr": "lock.stderr.log",
+      "environment": {
+        "HOME": "/Users/runner/work/_temp/sbt-runtime-evidence/work/locking/home",
+        "XDG_CACHE_HOME": "/Users/runner/work/_temp/sbt-runtime-evidence/work/locking/cache",
+        "COURSIER_CACHE": "/Users/runner/work/_temp/sbt-runtime-evidence/work/locking/coursier",
+        "XDG_RUNTIME_DIR": "/private/tmp/sbt-run-uq4zb1y0/locking",
+        "JAVA_HOME": "/nix/store/zd9xmpbxpiyw01fn7ky65fz70yfz78x1-sbt-native-control-tools/jdk",
+        "SBT_OPTS": "-Xmx2g -Xss4m -XX:ActiveProcessorCount=2 -XX:ErrorFile=/Users/runner/work/_temp/sbt-runtime-evidence/jvm-crash-inputs/hs_err_pid%p.log -Duser.home=/Users/runner/work/_temp/sbt-runtime-evidence/work/locking/home -Djava.io.tmpdir=/Users/runner/work/_temp/sbt-runtime-evidence/work/locking/tmp -Dsbt.server.autostart=false -Dsbt.server.forcestart=true -Dsbt.supershell=false -Dsbt.log.noformat=true -Dsbt.global.base=/Users/runner/work/_temp/sbt-runtime-evidence/work/locking/global -Dsbt.ivy.home=/Users/runner/work/_temp/sbt-runtime-evidence/work/locking/ivy -Dsbt.boot.directory=/Users/runner/work/_temp/sbt-runtime-evidence/work/locking/boot",
+        "SBT_NIX_BACKEND_MAVEN_CENTRAL_MIRROR": "https://repo.maven.apache.org/maven2/"
+      },
+      "returncode": 0
+    },
+    {
+      "label": "lock-noop",
+      "argv": [
+        "/nix/store/vsa62s9zc5pzwxb8sf0csvj4jgzdi8yi-sbt-purifier/bin/sbt-purifier",
+        "lock",
+        "--server"
+      ],
+      "cwd": "/Users/runner/work/_temp/sbt-runtime-evidence/work/project",
+      "log": "lock-noop.log",
+      "stderr": "lock-noop.stderr.log",
+      "environment": {
+        "HOME": "/Users/runner/work/_temp/sbt-runtime-evidence/work/locking/home",
+        "XDG_CACHE_HOME": "/Users/runner/work/_temp/sbt-runtime-evidence/work/locking/cache",
+        "COURSIER_CACHE": "/Users/runner/work/_temp/sbt-runtime-evidence/work/locking/coursier",
+        "XDG_RUNTIME_DIR": "/private/tmp/sbt-run-uq4zb1y0/locking",
+        "JAVA_HOME": "/nix/store/zd9xmpbxpiyw01fn7ky65fz70yfz78x1-sbt-native-control-tools/jdk",
+        "SBT_OPTS": "-Xmx2g -Xss4m -XX:ActiveProcessorCount=2 -XX:ErrorFile=/Users/runner/work/_temp/sbt-runtime-evidence/jvm-crash-inputs/hs_err_pid%p.log -Duser.home=/Users/runner/work/_temp/sbt-runtime-evidence/work/locking/home -Djava.io.tmpdir=/Users/runner/work/_temp/sbt-runtime-evidence/work/locking/tmp -Dsbt.server.autostart=false -Dsbt.server.forcestart=true -Dsbt.supershell=false -Dsbt.log.noformat=true -Dsbt.global.base=/Users/runner/work/_temp/sbt-runtime-evidence/work/locking/global -Dsbt.ivy.home=/Users/runner/work/_temp/sbt-runtime-evidence/work/locking/ivy -Dsbt.boot.directory=/Users/runner/work/_temp/sbt-runtime-evidence/work/locking/boot",
+        "SBT_NIX_BACKEND_MAVEN_CENTRAL_MIRROR": "https://repo.maven.apache.org/maven2/"
+      },
+      "returncode": 0
+    },
+    {
+      "label": "relock",
+      "argv": [
+        "/nix/store/1fpg3wak5a31bc68fxnknyxgqzv7k89k-sbt-with-nix-backend-0.1.0/bin/sbt",
+        "--server",
+        "-batch",
+        "nixRelock"
+      ],
+      "cwd": "/Users/runner/work/_temp/sbt-runtime-evidence/work/project",
+      "log": "relock.log",
+      "stderr": "relock.stderr.log",
+      "environment": {
+        "HOME": "/Users/runner/work/_temp/sbt-runtime-evidence/work/locking/home",
+        "XDG_CACHE_HOME": "/Users/runner/work/_temp/sbt-runtime-evidence/work/locking/cache",
+        "COURSIER_CACHE": "/Users/runner/work/_temp/sbt-runtime-evidence/work/locking/coursier",
+        "XDG_RUNTIME_DIR": "/private/tmp/sbt-run-uq4zb1y0/locking",
+        "JAVA_HOME": "/nix/store/zd9xmpbxpiyw01fn7ky65fz70yfz78x1-sbt-native-control-tools/jdk",
+        "SBT_OPTS": "-Xmx2g -Xss4m -XX:ActiveProcessorCount=2 -XX:ErrorFile=/Users/runner/work/_temp/sbt-runtime-evidence/jvm-crash-inputs/hs_err_pid%p.log -Duser.home=/Users/runner/work/_temp/sbt-runtime-evidence/work/locking/home -Djava.io.tmpdir=/Users/runner/work/_temp/sbt-runtime-evidence/work/locking/tmp -Dsbt.server.autostart=false -Dsbt.server.forcestart=true -Dsbt.supershell=false -Dsbt.log.noformat=true -Dsbt.global.base=/Users/runner/work/_temp/sbt-runtime-evidence/work/locking/global -Dsbt.ivy.home=/Users/runner/work/_temp/sbt-runtime-evidence/work/locking/ivy -Dsbt.boot.directory=/Users/runner/work/_temp/sbt-runtime-evidence/work/locking/boot",
+        "SBT_NIX_BACKEND_MAVEN_CENTRAL_MIRROR": "https://repo.maven.apache.org/maven2/"
+      },
+      "returncode": 0
+    },
+    {
+      "label": "prefetch",
+      "argv": [
+        "/nix/store/vsa62s9zc5pzwxb8sf0csvj4jgzdi8yi-sbt-purifier/bin/sbt-purifier",
+        "prefetch"
+      ],
+      "cwd": "/Users/runner/work/_temp/sbt-runtime-evidence/work/project",
+      "log": "prefetch.log",
+      "stderr": "prefetch.stderr.log",
+      "environment": {
+        "HOME": "/Users/runner/work/_temp/sbt-runtime-evidence/work/locking/home",
+        "XDG_CACHE_HOME": "/Users/runner/work/_temp/sbt-runtime-evidence/work/locking/cache",
+        "COURSIER_CACHE": "/Users/runner/work/_temp/sbt-runtime-evidence/work/locking/coursier",
+        "XDG_RUNTIME_DIR": "/private/tmp/sbt-run-uq4zb1y0/locking",
+        "JAVA_HOME": "/nix/store/zd9xmpbxpiyw01fn7ky65fz70yfz78x1-sbt-native-control-tools/jdk",
+        "SBT_OPTS": "-Xmx2g -Xss4m -XX:ActiveProcessorCount=2 -XX:ErrorFile=/Users/runner/work/_temp/sbt-runtime-evidence/jvm-crash-inputs/hs_err_pid%p.log -Duser.home=/Users/runner/work/_temp/sbt-runtime-evidence/work/locking/home -Djava.io.tmpdir=/Users/runner/work/_temp/sbt-runtime-evidence/work/locking/tmp -Dsbt.server.autostart=false -Dsbt.server.forcestart=true -Dsbt.supershell=false -Dsbt.log.noformat=true -Dsbt.global.base=/Users/runner/work/_temp/sbt-runtime-evidence/work/locking/global -Dsbt.ivy.home=/Users/runner/work/_temp/sbt-runtime-evidence/work/locking/ivy -Dsbt.boot.directory=/Users/runner/work/_temp/sbt-runtime-evidence/work/locking/boot",
+        "SBT_NIX_BACKEND_MAVEN_CENTRAL_MIRROR": "https://repo.maven.apache.org/maven2/"
+      },
+      "returncode": 0
+    },
+    {
+      "label": "offline-negative-control",
+      "argv": [
+        "/nix/store/zd9xmpbxpiyw01fn7ky65fz70yfz78x1-sbt-native-control-tools/bin/sbt",
+        "--server",
+        "-batch",
+        "test"
+      ],
+      "cwd": "/Users/runner/work/_temp/sbt-runtime-evidence/work/project",
+      "log": "offline-negative-control.log",
+      "stderr": "offline-negative-control.stderr.log",
+      "environment": {
+        "HOME": "/Users/runner/work/_temp/sbt-runtime-evidence/work/offline/home",
+        "XDG_CACHE_HOME": "/Users/runner/work/_temp/sbt-runtime-evidence/work/offline/cache",
+        "COURSIER_CACHE": "/Users/runner/work/_temp/sbt-runtime-evidence/work/offline/coursier",
+        "XDG_RUNTIME_DIR": "/private/tmp/sbt-run-uq4zb1y0/offline",
+        "JAVA_HOME": "/nix/store/zd9xmpbxpiyw01fn7ky65fz70yfz78x1-sbt-native-control-tools/jdk",
+        "SBT_OPTS": "-Xmx2g -Xss4m -XX:ActiveProcessorCount=2 -XX:ErrorFile=/Users/runner/work/_temp/sbt-runtime-evidence/jvm-crash-inputs/hs_err_pid%p.log -Duser.home=/Users/runner/work/_temp/sbt-runtime-evidence/work/offline/home -Djava.io.tmpdir=/Users/runner/work/_temp/sbt-runtime-evidence/work/offline/tmp -Dsbt.server.autostart=false -Dsbt.server.forcestart=true -Dsbt.supershell=false -Dsbt.log.noformat=true -Dsbt.global.base=/Users/runner/work/_temp/sbt-runtime-evidence/work/offline/global -Dsbt.ivy.home=/Users/runner/work/_temp/sbt-runtime-evidence/work/offline/ivy -Dsbt.boot.directory=/Users/runner/work/_temp/sbt-runtime-evidence/work/offline/boot",
+        "JAVA_TOOL_OPTIONS": "-Dhttp.proxyHost=127.0.0.1 -Dhttp.proxyPort=9 -Dhttps.proxyHost=127.0.0.1 -Dhttps.proxyPort=9 -Dhttp.nonProxyHosts= -Dhttps.nonProxyHosts=",
+        "SBT_NIX_BACKEND_MAVEN_CENTRAL_MIRROR": "https://repo.maven.apache.org/maven2/"
+      },
+      "returncode": 1
+    },
+    {
+      "label": "offline-test",
+      "argv": [
+        "/nix/store/1fpg3wak5a31bc68fxnknyxgqzv7k89k-sbt-with-nix-backend-0.1.0/bin/sbt",
+        "--server",
+        "-batch",
+        "clean",
+        "test"
+      ],
+      "cwd": "/Users/runner/work/_temp/sbt-runtime-evidence/work/project",
+      "log": "offline-test.log",
+      "stderr": "offline-test.stderr.log",
+      "environment": {
+        "HOME": "/Users/runner/work/_temp/sbt-runtime-evidence/work/offline/home",
+        "XDG_CACHE_HOME": "/Users/runner/work/_temp/sbt-runtime-evidence/work/offline/cache",
+        "COURSIER_CACHE": "/Users/runner/work/_temp/sbt-runtime-evidence/work/offline/coursier",
+        "XDG_RUNTIME_DIR": "/private/tmp/sbt-run-uq4zb1y0/offline",
+        "JAVA_HOME": "/nix/store/zd9xmpbxpiyw01fn7ky65fz70yfz78x1-sbt-native-control-tools/jdk",
+        "SBT_OPTS": "-Xmx2g -Xss4m -XX:ActiveProcessorCount=2 -XX:ErrorFile=/Users/runner/work/_temp/sbt-runtime-evidence/jvm-crash-inputs/hs_err_pid%p.log -Duser.home=/Users/runner/work/_temp/sbt-runtime-evidence/work/offline/home -Djava.io.tmpdir=/Users/runner/work/_temp/sbt-runtime-evidence/work/offline/tmp -Dsbt.server.autostart=false -Dsbt.server.forcestart=true -Dsbt.supershell=false -Dsbt.log.noformat=true -Dsbt.global.base=/Users/runner/work/_temp/sbt-runtime-evidence/work/offline/global -Dsbt.ivy.home=/Users/runner/work/_temp/sbt-runtime-evidence/work/offline/ivy -Dsbt.boot.directory=/Users/runner/work/_temp/sbt-runtime-evidence/work/offline/boot",
+        "JAVA_TOOL_OPTIONS": "-Dhttp.proxyHost=127.0.0.1 -Dhttp.proxyPort=9 -Dhttps.proxyHost=127.0.0.1 -Dhttps.proxyPort=9 -Dhttp.nonProxyHosts= -Dhttps.nonProxyHosts=",
+        "SBT_NIX_BACKEND_MAVEN_CENTRAL_MIRROR": "https://repo.maven.apache.org/maven2/"
+      },
+      "returncode": 0
+    },
+    {
+      "label": "pure-lock",
+      "argv": [
+        "nix",
+        "flake",
+        "lock",
+        "path:/Users/runner/work/_temp/sbt-runtime-evidence/work/build"
+      ],
+      "cwd": "/Users/runner/work/sbt-purifier/sbt-purifier",
+      "log": "pure-lock.log",
+      "stderr": "pure-lock.stderr.log",
+      "returncode": 0
+    },
+    {
+      "label": "pure-derivation",
+      "argv": [
+        "nix",
+        "eval",
+        "--raw",
+        "path:/Users/runner/work/_temp/sbt-runtime-evidence/work/build#packages.aarch64-darwin.default.drvPath"
+      ],
+      "cwd": "/Users/runner/work/sbt-purifier/sbt-purifier",
+      "log": "pure-derivation.log",
+      "stderr": "pure-derivation.stderr.log",
+      "returncode": 0
+    },
+    {
+      "label": "pure-build",
+      "argv": [
+        "nix",
+        "build",
+        "path:/Users/runner/work/_temp/sbt-runtime-evidence/work/build",
+        "--no-allow-import-from-derivation",
+        "--out-link",
+        "/Users/runner/work/_temp/sbt-runtime-evidence/work/pure-result",
+        "--print-build-logs",
+        "--option",
+        "max-jobs",
+        "2",
+        "--option",
+        "cores",
+        "2"
+      ],
+      "cwd": "/Users/runner/work/sbt-purifier/sbt-purifier",
+      "log": "pure-build.log",
+      "stderr": "pure-build.stderr.log",
+      "returncode": 0
+    },
+    {
+      "label": "pure-output-identities",
+      "argv": [
+        "nix",
+        "path-info",
+        "--json",
+        "/Users/runner/work/_temp/sbt-runtime-evidence/work/pure-result"
+      ],
+      "cwd": "/Users/runner/work/sbt-purifier/sbt-purifier",
+      "log": "pure-output-identities.log",
+      "stderr": "pure-output-identities.stderr.log",
+      "returncode": 0
+    },
+    {
+      "label": "pure-derivation-json",
+      "argv": [
+        "nix",
+        "derivation",
+        "show",
+        "/nix/store/m8ww4wdkwpjrrr7wp5k61plrh49ff2y4-sbt-tests.drv"
+      ],
+      "cwd": "/Users/runner/work/sbt-purifier/sbt-purifier",
+      "log": "pure-derivation-json.log",
+      "stderr": "pure-derivation-json.stderr.log",
+      "returncode": 0
+    }
+  ],
+  "complete": true,
+  "sourceRevision": "2d1e99258261dc15d11ff9b8698ee58a78655e4c",
+  "sourceDiff": "",
+  "sourceReference": "git+file:///Users/runner/work/sbt-purifier/sbt-purifier?rev=2d1e99258261dc15d11ff9b8698ee58a78655e4c",
+  "sourceSnapshot": "/nix/store/xn6ph0zmnmlyasmdicpg0hi3a7f356d8-source",
+  "sourceNarHash": "sha256-RkG+BW43s9n6jaHv7AW5ArH3OPpiB/biHSsainTljWE=",
+  "system": "aarch64-darwin",
+  "sandbox": "true",
+  "originalBuildProperties": "sbt.version=2.0.12\n",
+  "adaptation": "none",
+  "javaMajor": "21",
+  "lockSha256": "666166360b27c825a83e34516c1e003da11e900f09e32b5a455d5d4505c745a9",
+  "derivation": "/nix/store/m8ww4wdkwpjrrr7wp5k61plrh49ff2y4-sbt-tests.drv",
+  "outputs": {
+    "/nix/store/6sslfkwmbz3fllhd9kq5wwb7xyf0szc0-sbt-tests": {
+      "ca": null,
+      "deriver": "/nix/store/m8ww4wdkwpjrrr7wp5k61plrh49ff2y4-sbt-tests.drv",
+      "narHash": "sha256-vWQFiLhsCMQvM1Tszvw8NApxMBfHgwmqPKGNeF7L6g0=",
+      "narSize": 832,
+      "references": [
+        "/nix/store/0i30x4zwvazdad9r0pq6vw0fl7b1x1vg-ivyplugin2_sbt2_3",
+        "/nix/store/fc198f7xx3llpx0frizcsqmxczbbzyqz-app_3",
+        "/nix/store/fflgpkccj1q3iismzvx9qddhmwr7ld1b-lib_3"
+      ],
+      "registrationTime": 1794064221,
+      "signatures": [],
+      "storeDir": "/nix/store",
+      "ultimate": true,
+      "version": 1
+    }
+  }
+}

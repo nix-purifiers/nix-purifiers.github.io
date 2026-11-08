@@ -4955,6 +4955,264 @@
           "notes": [
             "Java fixture with project-selected sbt, projected Nix input resolution, sandbox-built publication, and an ordinary Maven consumer executing the artifact. This is native composition evidence, not a historical JDK compatibility matrix."
           ]
+        },
+        {
+          "id": "native-runtime-sbt-1.11.7-aarch64-darwin-169b2e6",
+          "components": [
+            {
+              "role": "native-tool",
+              "name": "sbt",
+              "version": "1.11.7"
+            },
+            {
+              "role": "native-tool-runtime",
+              "name": "Zulu OpenJDK",
+              "version": "21.0.11+10-LTS"
+            }
+          ],
+          "system": "aarch64-darwin",
+          "operations": [
+            "native-lock",
+            "lock-reproducibility",
+            "native-prefetch",
+            "native-offline-build",
+            "project-build-scripts",
+            "project-test-scripts",
+            "pure-build"
+          ],
+          "sourceRevision": "169b2e6e6a5d87f6c7f43e45b72f57e59f09c35c",
+          "evidence": [
+            "https://github.com/nix-purifiers/sbt-purifier/actions/runs/42428047985/job/128570510776",
+            "https://github.com/nix-purifiers/sbt-purifier/blob/169b2e6e6a5d87f6c7f43e45b72f57e59f09c35c/tests/runtime-sample.py",
+            "https://github.com/nix-purifiers/sbt-purifier/actions/runs/42428047985/artifacts/13596143650",
+            "https://nix-purifiers.github.io/evidence/6b5e79ecf8d0e0f09c669f9567de9227c1916b95579e7466ae2f6188bcbf9b88.json",
+            "https://nix-purifiers.github.io/evidence/f7f17e4c5e473220ade7366d6841f48b236499527dca44a4a4506241f949e21c.json"
+          ],
+          "notes": [
+            "Exact selected sbt and JDK/platform point; no version ranges, other JDKs or architecture generalization.",
+            "Actual native test, native lock/no-op/relock, prefetch, empty-cache offline negative control, locked host offline tests, and Nix package output identities verified from authenticated receipt/logs.",
+            "Independent sbt/test-interface at 22b24334e8ea0274fc9a8fa7df8dd5ecd4f45cd5; adaptation: none.",
+            "Actual checked package --rebuild succeeded; three cross-process IPv4 socket pairs and default/INET external permission denials recorded. Unsupported IPv6 is not denial evidence.",
+            "No claim that earlier transient HTTP failures or metameta failure cause was reproduced or fixed by the diagnostics child.",
+            "Producer source NAR: sha256-//k+UAuoBXz3DnURdALOYXd134nGWnG5YGgwHvS8Tfs=",
+            "Observed derivation: /nix/store/dh7h1r5hlvq6g9rc55kgik4ivp9lsi00-sbt-tests.drv",
+            "Observed outputs/NARs: {\"/nix/store/yh55yw7s6qxh1s4lw9dxjyd27xi269dm-sbt-tests\": \"sha256-Zn0m7g7TqRAUr0L8/CkxL5I0+WmWnzB1hHxf6mV/q8Y=\"}"
+          ]
+        },
+        {
+          "id": "native-runtime-sbt-1.11.7-x86_64-linux-169b2e6",
+          "components": [
+            {
+              "role": "native-tool",
+              "name": "sbt",
+              "version": "1.11.7"
+            },
+            {
+              "role": "native-tool-runtime",
+              "name": "OpenJDK",
+              "version": "21.0.12.1+1"
+            }
+          ],
+          "system": "x86_64-linux",
+          "operations": [
+            "native-lock",
+            "lock-reproducibility",
+            "native-prefetch",
+            "native-offline-build",
+            "project-build-scripts",
+            "project-test-scripts",
+            "pure-build"
+          ],
+          "sourceRevision": "169b2e6e6a5d87f6c7f43e45b72f57e59f09c35c",
+          "evidence": [
+            "https://github.com/nix-purifiers/sbt-purifier/actions/runs/42428047985/job/128570510799",
+            "https://github.com/nix-purifiers/sbt-purifier/blob/169b2e6e6a5d87f6c7f43e45b72f57e59f09c35c/tests/runtime-sample.py",
+            "https://github.com/nix-purifiers/sbt-purifier/actions/runs/42428047985/artifacts/13596875019",
+            "https://nix-purifiers.github.io/evidence/ae9da1c049178981d67118caae8c25dee7ba58c0aeabc515272fae34cde190a3.json",
+            "https://nix-purifiers.github.io/evidence/d3fd86c45469fa1f86ebe0e979a6de77284fbce599cbbcc5eb957365e3e1ca89.json"
+          ],
+          "notes": [
+            "Exact selected sbt and JDK/platform point; no version ranges, other JDKs or architecture generalization.",
+            "Actual native test, native lock/no-op/relock, prefetch, empty-cache offline negative control, locked host offline tests, and Nix package output identities verified from authenticated receipt/logs.",
+            "Independent sbt/test-interface at 22b24334e8ea0274fc9a8fa7df8dd5ecd4f45cd5; adaptation: none.",
+            "Successful Nix package build/output identity; no fresh checked-rebuild claim for this case.",
+            "No claim that earlier transient HTTP failures or metameta failure cause was reproduced or fixed by the diagnostics child.",
+            "Producer source NAR: sha256-//k+UAuoBXz3DnURdALOYXd134nGWnG5YGgwHvS8Tfs=",
+            "Observed derivation: /nix/store/wq1brjmghzv0vnv946k23870b427g8ns-sbt-tests.drv",
+            "Observed outputs/NARs: {\"/nix/store/fvjbb0m8j3ljc9g0kysdfh2312iy04sy-sbt-tests\": \"sha256-uUZ6tuzN18WGrDBTr7KrkK1/snscSBw8r+ZYbiGIzZY=\"}"
+          ]
+        },
+        {
+          "id": "native-runtime-sbt-1.13.1-aarch64-darwin-169b2e6",
+          "components": [
+            {
+              "role": "native-tool",
+              "name": "sbt",
+              "version": "1.13.1"
+            },
+            {
+              "role": "native-tool-runtime",
+              "name": "Zulu OpenJDK",
+              "version": "21.0.11+10-LTS"
+            }
+          ],
+          "system": "aarch64-darwin",
+          "operations": [
+            "native-lock",
+            "lock-reproducibility",
+            "native-prefetch",
+            "native-offline-build",
+            "project-build-scripts",
+            "project-test-scripts",
+            "pure-build"
+          ],
+          "sourceRevision": "169b2e6e6a5d87f6c7f43e45b72f57e59f09c35c",
+          "evidence": [
+            "https://github.com/nix-purifiers/sbt-purifier/actions/runs/42428047985/job/128570510746",
+            "https://github.com/nix-purifiers/sbt-purifier/blob/169b2e6e6a5d87f6c7f43e45b72f57e59f09c35c/tests/runtime-sample.py",
+            "https://github.com/nix-purifiers/sbt-purifier/actions/runs/42428047985/artifacts/13597215322",
+            "https://nix-purifiers.github.io/evidence/9e669fb9362bf5760c0509a7b7c1c2492e5170067522deb3d4d22e4ffc13c077.json",
+            "https://nix-purifiers.github.io/evidence/56fe2eeb575f3f0787473798d4d48bcb6b280bd5359eb7cd00a8f2ae8bb629c0.json"
+          ],
+          "notes": [
+            "Exact selected sbt and JDK/platform point; no version ranges, other JDKs or architecture generalization.",
+            "Actual native test, native lock/no-op/relock, prefetch, empty-cache offline negative control, locked host offline tests, and Nix package output identities verified from authenticated receipt/logs.",
+            "Independent sbt/test-interface at 22b24334e8ea0274fc9a8fa7df8dd5ecd4f45cd5; adaptation: Only project/build.properties: sbt.version=1.13.1.",
+            "Actual checked package --rebuild succeeded; three cross-process IPv4 socket pairs and default/INET external permission denials recorded. Unsupported IPv6 is not denial evidence.",
+            "No claim that earlier transient HTTP failures or metameta failure cause was reproduced or fixed by the diagnostics child.",
+            "Producer source NAR: sha256-//k+UAuoBXz3DnURdALOYXd134nGWnG5YGgwHvS8Tfs=",
+            "Observed derivation: /nix/store/92yb5nz3qpn3kh8i99qzc3fci4rc846n-sbt-tests.drv",
+            "Observed outputs/NARs: {\"/nix/store/wg4f2rkr3dqs4d5nfrwyhivn7j365rqi-sbt-tests\": \"sha256-O4mKOXuEA9cgq40Qh3yKHwClonYb/If/d6CX/4Zc7p8=\"}"
+          ]
+        },
+        {
+          "id": "native-runtime-sbt-1.13.1-x86_64-linux-169b2e6",
+          "components": [
+            {
+              "role": "native-tool",
+              "name": "sbt",
+              "version": "1.13.1"
+            },
+            {
+              "role": "native-tool-runtime",
+              "name": "OpenJDK",
+              "version": "21.0.12.1+1"
+            }
+          ],
+          "system": "x86_64-linux",
+          "operations": [
+            "native-lock",
+            "lock-reproducibility",
+            "native-prefetch",
+            "native-offline-build",
+            "project-build-scripts",
+            "project-test-scripts",
+            "pure-build"
+          ],
+          "sourceRevision": "169b2e6e6a5d87f6c7f43e45b72f57e59f09c35c",
+          "evidence": [
+            "https://github.com/nix-purifiers/sbt-purifier/actions/runs/42428047985/job/128570510884",
+            "https://github.com/nix-purifiers/sbt-purifier/blob/169b2e6e6a5d87f6c7f43e45b72f57e59f09c35c/tests/runtime-sample.py",
+            "https://github.com/nix-purifiers/sbt-purifier/actions/runs/42428047985/artifacts/13595949739",
+            "https://nix-purifiers.github.io/evidence/01024669d6097829c2c6696a4e6b00911341b284c55ca99190ea73510a22b347.json",
+            "https://nix-purifiers.github.io/evidence/f9a5de0cf02f74fc79a5815379cdbc269ea8d2f81a9cd32c8fd5930aa98733c4.json"
+          ],
+          "notes": [
+            "Exact selected sbt and JDK/platform point; no version ranges, other JDKs or architecture generalization.",
+            "Actual native test, native lock/no-op/relock, prefetch, empty-cache offline negative control, locked host offline tests, and Nix package output identities verified from authenticated receipt/logs.",
+            "Independent sbt/test-interface at 22b24334e8ea0274fc9a8fa7df8dd5ecd4f45cd5; adaptation: Only project/build.properties: sbt.version=1.13.1.",
+            "Successful Nix package build/output identity; no fresh checked-rebuild claim for this case.",
+            "No claim that earlier transient HTTP failures or metameta failure cause was reproduced or fixed by the diagnostics child.",
+            "Producer source NAR: sha256-//k+UAuoBXz3DnURdALOYXd134nGWnG5YGgwHvS8Tfs=",
+            "Observed derivation: /nix/store/id78cf16dygag2fv1wrrl0lh2n8wdc6c-sbt-tests.drv",
+            "Observed outputs/NARs: {\"/nix/store/v4zg8khq325hi30c768lqjw3z8wnsqpx-sbt-tests\": \"sha256-QKpOUFL+oS+G0pOvRSRrfIVWwkInDKNN1sX1HaFHaPw=\"}"
+          ]
+        },
+        {
+          "id": "native-runtime-sbt-2.0.12-aarch64-darwin-169b2e6",
+          "components": [
+            {
+              "role": "native-tool",
+              "name": "sbt",
+              "version": "2.0.12"
+            },
+            {
+              "role": "native-tool-runtime",
+              "name": "Zulu OpenJDK",
+              "version": "21.0.11+10-LTS"
+            }
+          ],
+          "system": "aarch64-darwin",
+          "operations": [
+            "native-lock",
+            "lock-reproducibility",
+            "native-prefetch",
+            "native-offline-build",
+            "project-build-scripts",
+            "project-test-scripts",
+            "pure-build"
+          ],
+          "sourceRevision": "169b2e6e6a5d87f6c7f43e45b72f57e59f09c35c",
+          "evidence": [
+            "https://github.com/nix-purifiers/sbt-purifier/actions/runs/42428047985/job/128570510847",
+            "https://github.com/nix-purifiers/sbt-purifier/blob/169b2e6e6a5d87f6c7f43e45b72f57e59f09c35c/tests/runtime-sample.py",
+            "https://github.com/nix-purifiers/sbt-purifier/actions/runs/42428047985/artifacts/13596801238",
+            "https://nix-purifiers.github.io/evidence/9d98f9477498bde06a613bb781620e364bab6b26746348ddd3241504c45b89a9.json",
+            "https://nix-purifiers.github.io/evidence/927bcafe82607d750637452a49ea29c8f25b4d77f20ff2404630744186a42e77.json"
+          ],
+          "notes": [
+            "Exact selected sbt and JDK/platform point; no version ranges, other JDKs or architecture generalization.",
+            "Actual native test, native lock/no-op/relock, prefetch, empty-cache offline negative control, locked host offline tests, and Nix package output identities verified from authenticated receipt/logs.",
+            "Repository sbt2 fixture, not an independent upstream project sample.",
+            "Successful Nix package build/output identity; no fresh checked-rebuild claim for this case.",
+            "No claim that earlier transient HTTP failures or metameta failure cause was reproduced or fixed by the diagnostics child.",
+            "Producer source NAR: sha256-//k+UAuoBXz3DnURdALOYXd134nGWnG5YGgwHvS8Tfs=",
+            "Observed derivation: /nix/store/m8ww4wdkwpjrrr7wp5k61plrh49ff2y4-sbt-tests.drv",
+            "Observed outputs/NARs: {\"/nix/store/6sslfkwmbz3fllhd9kq5wwb7xyf0szc0-sbt-tests\": \"sha256-vWQFiLhsCMQvM1Tszvw8NApxMBfHgwmqPKGNeF7L6g0=\"}"
+          ]
+        },
+        {
+          "id": "native-runtime-sbt-2.0.12-x86_64-linux-169b2e6",
+          "components": [
+            {
+              "role": "native-tool",
+              "name": "sbt",
+              "version": "2.0.12"
+            },
+            {
+              "role": "native-tool-runtime",
+              "name": "OpenJDK",
+              "version": "21.0.12.1+1"
+            }
+          ],
+          "system": "x86_64-linux",
+          "operations": [
+            "native-lock",
+            "lock-reproducibility",
+            "native-prefetch",
+            "native-offline-build",
+            "project-build-scripts",
+            "project-test-scripts",
+            "pure-build"
+          ],
+          "sourceRevision": "169b2e6e6a5d87f6c7f43e45b72f57e59f09c35c",
+          "evidence": [
+            "https://github.com/nix-purifiers/sbt-purifier/actions/runs/42428047985/job/128570510895",
+            "https://github.com/nix-purifiers/sbt-purifier/blob/169b2e6e6a5d87f6c7f43e45b72f57e59f09c35c/tests/runtime-sample.py",
+            "https://github.com/nix-purifiers/sbt-purifier/actions/runs/42428047985/artifacts/13596119494",
+            "https://nix-purifiers.github.io/evidence/b449d606171cc8b0dff3e440a7d2a3725d9169d77d0cc03b10204e7c4bedc970.json",
+            "https://nix-purifiers.github.io/evidence/b18ff510d6256ece1c87e957ce61783c800840a45f61568411a165843a974247.json"
+          ],
+          "notes": [
+            "Exact selected sbt and JDK/platform point; no version ranges, other JDKs or architecture generalization.",
+            "Actual native test, native lock/no-op/relock, prefetch, empty-cache offline negative control, locked host offline tests, and Nix package output identities verified from authenticated receipt/logs.",
+            "Repository sbt2 fixture, not an independent upstream project sample.",
+            "Successful Nix package build/output identity; no fresh checked-rebuild claim for this case.",
+            "No claim that earlier transient HTTP failures or metameta failure cause was reproduced or fixed by the diagnostics child.",
+            "Producer source NAR: sha256-//k+UAuoBXz3DnURdALOYXd134nGWnG5YGgwHvS8Tfs=",
+            "Observed derivation: /nix/store/s0qaaavpgaccq0xbxyvhx10r9xz5cdzx-sbt-tests.drv",
+            "Observed outputs/NARs: {\"/nix/store/p8nv0vw6fw31mfaix2ihl89c6gqhm4s1-sbt-tests\": \"sha256-C9Ka5zXn1u1NXFkQ7eyveriupsnEZWPnzVJK607jJyw=\"}"
+          ]
         }
       ],
       "reviews": [
@@ -5174,6 +5432,240 @@
                   "id": 127038838207,
                   "name": "composition-native (ubuntu-24.04-arm, 2.0.12)",
                   "system": "aarch64-linux",
+                  "conclusion": "success"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "sourceRevision": "169b2e6e6a5d87f6c7f43e45b72f57e59f09c35c",
+          "files": {
+            ".github/release/build.sh": "c4537e18e7b53cf5d2bb378da6983b71f4a411468af15246f2b883d9123b3956",
+            ".github/release/pages.sh": "688077308947d2b9cb43c859c551d22370ec6b7c61697817f9bdbc89478c27a3",
+            ".github/release/series": "69ecbeb5c433527932c017596e115df41c04fa7e548b53065d317b21476e6e21",
+            ".github/update/sbt.sh": "055ad87e197d11c55dbc71b46903078d56556759c8546514fa5e1d8ff5ff8b24",
+            ".github/workflows/check.yml": "5a259fbcf17089df3737317f7cbd1653471f1ad2121fefa310d6ef11c63a1791",
+            ".github/workflows/notify-workspace.yml": "109bb42a76846f2adc276080d5d3d31ba39035aeb9a4e04eae6d379af29039cd",
+            ".github/workflows/release.yml": "bb5865f7888f44cc6704d6f2ed52e1f4fafc16d668baa62f4f8f7ebdc2fbfce1",
+            ".github/workflows/update.yml": "ccb575db4546423d3d55366c31d2507542c1f2fb621d86ce3d7220798fae1ce4",
+            ".gitignore": "5d684c9322bc084d92d1e5e6db32d554d544e148ff46d73691aa1a36809a2c87",
+            "LICENSE": "6bdc2caf8d11ccdbfc05b35d852953ba41150d93ba256ae9615a07d246734a56",
+            "README.md": "55e74ab613d1fc4441b2f550317237952dacbc9151d3bad19b445745906ee027",
+            "build.sbt": "8dba2cdeb89dfe04066cdeff2fb43d8f9f2792fcc8dbf5518c8fa1a43160ba22",
+            "configs/flake/sbt-purifier/default.nix": "034e3dc3a1d45011a3531244f96a17db438237f5b79d59f69643f15c620a6b33",
+            "configs/nixpkgsConfig/default/default.nix": "14023568c5b797942a69c81cbc275d71c9aa663c8c87f0c4e41c4b2da9a375d9",
+            "docs/development/commands.md": "28679ae1b5d78ea2eca59f79e4bdf79542f035206bfa00f9ccb1d93d530643bb",
+            "docs/development/product.md": "96c3c78b5fd93fb1629c7f373092fb0b5d31f322e76d16356c94da43257befa3",
+            "docs/development/tech-stack.md": "164d1ef6981cd50d33a51c1b6cc8ccb1736b4523cd6bddecd488c77ce18963bc",
+            "docs/development/testing.md": "e2d767b1585fb9d59db06f4a3c09026644be067abb2c24efa21c43e0c1d0cdbf",
+            "flake.lock": "d27b9b602f627d387f03ecf8d9a4b5b35199c2fc76faad42e2903cdc4757742d",
+            "flake.nix": "9d06e976dfdf470ed71ea114d3bd31d79021a3d8a6d4dab520c2ec931173243c",
+            "lib-overlays/default/default.nix": "39eaf9932b5591fed3993103f5d0ba33f83258c9034d68e1b05fea2b76871145",
+            "nix/lib/build-sbt-project.nix": "630231ac9a5286ab767c33e6b34e70bbb1e8dfc0a137cbf592fc3c100d999aba",
+            "nix/lib/definition-hash.nix": "e5fc2f8c8aab46b48625787c8287bf2ce400441f92061bfa63a22bb34e507b97",
+            "nix/lib/dependencies.nix": "061f6c5fe8ebd5bbe2e32873df958dcd47f8508afc847af93b5c71a280b3f490",
+            "nix/lib/fetch.nix": "e63e65782bdeb6eef9df93296f3726e539870d596a159d04a1936fee093ac8b3",
+            "nix/lib/legacy-boot-repositories.nix": "141f69c1ff1d3dffd4f2566c4094fd6b1ecca4459e7275b1a6c60f0e735cd6ec",
+            "nix/lib/legacy-global-settings.sbt": "6387a70eddda80e60e1fe10f1d56aa9afb556581d85f6e332e3d348885840fbf",
+            "nix/lib/library.nix": "465dde1b299fb9cff24e0a076da2ef43e2bff02cf6d5d6708106089180166a86",
+            "nix/lib/lock-version.nix": "b9bd8cfb2ca9eaf800aece9e2104b4171dcb31183811eeafd284676948ba75a7",
+            "nix/lib/package.nix": "1343b62c0634cc7dd9d0fe2d09bf1d1484162286583376773a7419e52d233ccc",
+            "nix/lib/plugin.nix": "0bcaa4fcf1173e57d817e6bb291165f79ab71539536998c7f9203a59dfcb4a15",
+            "nix/lib/project-repository.nix": "171627883feac2b9fa3c7e1f93cceb033404e598d73148b764e5196a5e91b7ca",
+            "nix/lib/purifier-source.nix": "99a23aa4b4a7520ed79ff6cf239921a2690e2ae54f2efee72c90e336b01548fe",
+            "nix/lib/read-lock.nix": "f8c468b2325e063f7de8cfb0977443c30369ed0a2703faf18256f8fa7ae756fe",
+            "nix/lib/realize.nix": "eb0f0e716c006e425476e8af049de19d7ca8758010a267b7a1a209c2eeab44ca",
+            "nix/lib/source-readable.nix": "3a3cb1093bba6625a1d7ea93bd15357dec9e16982f109837378e7de01ffdc53e",
+            "pkg-overlays/default/default.nix": "f5a4e03c30a08d8494045a78471b84ffbbf83f9febcfdf8d96d869d4294ad900",
+            "pkgs/default.nix": "faff0fa8e7eff715aaf289772830ea679ecec2bb3ff54121f6e1be9079c34216",
+            "pkgs/sbt-purifier/default.nix": "1694828efe4ba55b4118627e799bfa8d6ebf7c20007dd6160e700d4a177bdab9",
+            "pkgs/sbt/default.nix": "1ae07428a6bbce0ab84271df241be9ab6c4af63b2b7f331236b5e79eaa545562",
+            "project/NixLibraryResources.scala": "fabdfd316b88e0688c2edf4b5c24eb7f6b7ac433199058bad4a9d09c8ae9c76e",
+            "project/build.properties": "1c0b4a295be032b6e7b4761bb8ea29b7093b46d20140586de79a7c0e02285672",
+            "project/build.sbt": "7de92435b0a15ef4b4fe826ecbccf2acccec9f1506060e10a1e06b734276a7e2",
+            "sbt-purifier.lock.json": "5c7d90c5a3b13b1ea2c640f06bf8714cff009db42e15c6b475fcfe378251457c",
+            "src/main/scala-2.10/sbt/aliases.scala": "4c383a4455fbfd7b06bb94d95c3f5a7ead574b9fb7e919fb862608c558038561",
+            "src/main/scala-2.10/sbtnixbackend/Compat.scala": "b3d9f260c01500a902dff52f202a7ee495a051037007bb39da86e62f1ccbc6d6",
+            "src/main/scala-2.10/sbtnixbackend/ResolutionSupport.scala": "2f22d0bfe5ab5826a8df1f6e38c05dff3dea0a8b5543a289c9ade391262815b0",
+            "src/main/scala-2.10/sbtnixbackend/RuntimeResolution.scala": "0d5a81e62c97a87adc49b8ac0de1e46dd7bc1a4812989515610b7d17f448cef1",
+            "src/main/scala-2.10/sbtnixbackend/package.scala": "ad3b8bd3bbe149b2ba9ff1283f1f7a33ac788ffed0259599fb5c58a9352e4d6f",
+            "src/main/scala-2.12/sbtnixbackend/ClassifierDownloads.scala": "24816f0b70f46dc4f188784a2118f6f89cb438a060ead84fe8f2d1659122ef52",
+            "src/main/scala-2.12/sbtnixbackend/Compat.scala": "f2bb820b19b851e19dbe69ec9dc12a4af05bfa61bd7fa5da305f444d305086ab",
+            "src/main/scala-3/sbtnixbackend/Compat.scala": "4f8a9f5878784f1bc10e07e5302a610f4bcbf4d9c967a33e3265b4555d1d1a16",
+            "src/main/scala-ivy/sbtnixbackend/IvySettingsFile.scala": "d2ee0887ba5366f6b629d9f16300b28051ed7aabd349bb4962b8c8104f79ba3f",
+            "src/main/scala-modern/sbtnixbackend/ResolutionSupport.scala": "2ebb422ca944f3b6f23ab86a22173a4aed3d2f17417bc3d29dcc53ee4ab920dd",
+            "src/main/scala-modern/sbtnixbackend/RuntimeResolution.scala": "5822a59b0006e5dd9034888ed60b1d086c4a9d3dd12b9ea5d4fbe40944b1c0ee",
+            "src/main/scala/sbtnixbackend/BootRepositories.scala": "2939c6770dcfc8c68d309eb0fb81eb157ee6d279e6fa4b049e6662f46cce4a29",
+            "src/main/scala/sbtnixbackend/CachePaths.scala": "2b0544d237d137507ca9082159fdec5932bc5f43225062e0fcabefc8f73d7652",
+            "src/main/scala/sbtnixbackend/CentralMirror.scala": "bdb8bee022111ffecdac92a1177f4e93034a89bac84442582e4cfd65694d8559",
+            "src/main/scala/sbtnixbackend/IvyLayout.scala": "94feb1ae71caa4d2e2ffb2cc3e437be1926d36b7e6d7ec35098371f0dfcfcd4b",
+            "src/main/scala/sbtnixbackend/IvyMirror.scala": "67d15e0097f64f764bbe365f87cb75e03b7ea4370f17bb75d3ff3c4c43ab9fc9",
+            "src/main/scala/sbtnixbackend/Json.scala": "721e4458b826f175addb02525859b0d40f80f8cf5431e48bfda065c240b5564b",
+            "src/main/scala/sbtnixbackend/Lock.scala": "cc225858be07d0dd28e122fb875db2901f52021ab50c43f9f3dd9fff8cebcc1f",
+            "src/main/scala/sbtnixbackend/LockGeneration.scala": "e14f3c85251514e9b3fe3a2b0bf6e448d37818810a57a0db2bcac9923d9860a8",
+            "src/main/scala/sbtnixbackend/Nix.scala": "f27d362a04c4aef3ef21c9f09ede25b3473033d44df33f9aabeaf4870a628a31",
+            "src/main/scala/sbtnixbackend/NixArtifacts.scala": "27d15de797cd32c04e2a234b2adcabf475637d605c79f338605318a30d233479",
+            "src/main/scala/sbtnixbackend/NixBackendPlugin.scala": "cca033ce7158ea978abc86841b12c495321c0f66a006984b89398962d15c015a",
+            "src/main/scala/sbtnixbackend/NixLibrary.scala": "42375899cf277494b67d23a1af4b22bade9e18ac703ab65bffee3ebe2c59c5e4",
+            "src/main/scala/sbtnixbackend/Proc.scala": "456f9cf4238c60e138e2700c4111586bd168cbc4ea1214cfff1d088405d5bd06",
+            "src/main/scala/sbtnixbackend/ProjectedDependencies.scala": "96440d0f009bfea4c980419e8942ba2c9c57e9e5eb315e7c779b9412ffa1f867",
+            "src/main/scala/sbtnixbackend/ProjectedPublication.scala": "8705f0bd289c577e1f35c29054c623b6ce3d3e5f40fdfac73fa69ac98ef13d8e",
+            "src/main/scala/sbtnixbackend/RuntimeCompletion.scala": "ebe7409611df691748b1dcd6487005014dd1e10989e55e50b94e3e7a0056baf6",
+            "src/main/scala/sbtnixbackend/RuntimeRepository.scala": "02e9e4ae95ef47284534915a3991bb25897d58cff19718cf19c811a6bbdd803c",
+            "src/test/scala-2.10/sbtnixbackend/CompatibilityTest.scala": "35ec539d08fb8e855e65f2e8ac9f66aceea5aabab6477bccaaa7f02366bb864b",
+            "src/test/scala-2.12/sbtnixbackend/ClassifierDownloadsSuite.scala": "a13e1764b18170d9d3a71646fb6d23f243b1bdb1864c95ebe4672326ea00b7c6",
+            "src/test/scala-2.12/sbtnixbackend/IvySettingsFileSuite.scala": "98ef3157488e4be73462e53469ff9dcc5c0b8321471e8bc38eebf4e09caca333",
+            "src/test/scala/sbtnixbackend/CachePathsSuite.scala": "64cb72a036ff53a1759254b56e30027d48cfc22dab0691b3db494ee9daecf59d",
+            "src/test/scala/sbtnixbackend/CentralMirrorSuite.scala": "2d36fbe7ab5b533de2096082bf64436696376f68f9a310a81ed40063aaa550db",
+            "src/test/scala/sbtnixbackend/FilesSuite.scala": "91fe3e28cdebe93ed5acf546e502c3a569af39532b5505524296ddc522b173ee",
+            "src/test/scala/sbtnixbackend/IvyLayoutSuite.scala": "2b4bf200a2591e0f9aa642d800f1a24baab23122ab337ae108f8fc94e644b835",
+            "src/test/scala/sbtnixbackend/IvyMirrorSuite.scala": "574371bd0658be0ce80b4746b20c4912729c401c0bfa9c25c5bc4982d628fc37",
+            "src/test/scala/sbtnixbackend/JsonSuite.scala": "761be7eab319bf73c32ebeb79fcb321b938a3f44af8d70b7aaab04b3b44d3062",
+            "src/test/scala/sbtnixbackend/LockSuite.scala": "1782a604a5cef0d5eaf4e29150536be3d2adf618a76d10cdab260909c2131434",
+            "src/test/scala/sbtnixbackend/NixArtifactsSuite.scala": "ff035f6edd58603b9d2dbb8224782ade06eb88481bbfb5733517490cdd348b36",
+            "src/test/scala/sbtnixbackend/ProjectedDependenciesSuite.scala": "eb11276ca32496dd0fa1f1b76a7bf671bcba10eef0ef67c16b47ea73e910e796",
+            "tests/GradleSocketProbe.java": "9eae909ba6cb3ed11f9eac7414b79bf71bd820c22fb8a363be5673b7de679792",
+            "tests/classifier-download-retry.py": "736a4cbc3b7777227cc400ec22df5ec105ceef914f3e560737af8f267f4eb241",
+            "tests/collect-runtime-crashes.py": "01c6ac44bd40ca736a059c5cb3619d69c33d04f3bb79f133aad56000b238ab0f",
+            "tests/composition-native.py": "ae2d8d2cf542726c9b7ca50c9744347dc6393ce72f8a7e4c0bd76fa9c3ca8a12",
+            "tests/composition-producer.nix": "093bdab8353df58bff88990e5973ed19e5739e75f9f4a8db01a17eb92ecc21e1",
+            "tests/composition_evidence.py": "30ba7b76f3c4b7b2c750a063a94d5cd417defd399d21890e46db87c2935f0dd6",
+            "tests/default.nix": "07c8bd122c7525c3b3b30122de824a29c4c4e9e0f51f22aff6d4f04c0f53b60d",
+            "tests/dependencies/flake.lock": "fc99ba12ea00273ef645192ee5e189e11b37c8fc781c204c088b21b47b53d9c4",
+            "tests/dependencies/flake.nix": "4f06ccbc1a03e55a45b364e03d75fe4796ed54c5f7b69330c584738b586c68f1",
+            "tests/fixtures/consumer/build.sbt": "9391a71317ff03f7e2f7ec159d2073d35da7b9e8cc147e0af64b459dc6daecd4",
+            "tests/fixtures/consumer/project/build.properties": "98e55208ef24a5f44807705ca1ebca98e0708897ef2065ddc79ae398f857dd55",
+            "tests/fixtures/consumer/sbt-purifier.lock.json": "eae2c19d388dd7a2b3f07de1e146a4b99c1b18b9c1594a14e11d95c1f2b582fb",
+            "tests/fixtures/consumer/src/main/scala/consumer/Main.scala": "64ca6e9b0c546e7c613fc8c2135f497a3984777d8d42b1399b61c22112dc702c",
+            "tests/fixtures/ivy/app/src/main/scala/ivyexample/Main.scala": "73c16bc9da543a8189f426f2f400d34c5334f4887851ecdc0ccc4d38c737e490",
+            "tests/fixtures/ivy/app/src/test/scala/ivyexample/MainSuite.scala": "6f72f5f0790686a84960e45711656cea1e817a7d6ccd1dfd93fc11052f999418",
+            "tests/fixtures/ivy/build.sbt": "41ca7872ef2c8df5d4d59bf80cd4506b877c5648f566c11d291df6906ac23c7d",
+            "tests/fixtures/ivy/crosslib/src/main/scala/ivyexample/CrossLib.scala": "c181713b6cc1148c3bc7ea61951297926a09c66a987e7527e0341b7dc34b995f",
+            "tests/fixtures/ivy/ivyjava/src/main/java/ivyexample/IvyJava.java": "2ed71775ac2891c1e772d4e63090e0d470199016b383efceb4b65c7462c50e2e",
+            "tests/fixtures/ivy/ivyplugin/src/main/scala/ivyexample/IvyPlugin.scala": "63b190451b103735ef065f0b257beb527b1ad4268376dcc2c7f4d8140769341f",
+            "tests/fixtures/ivy/legacy/src/main/scala/ivyexample/Legacy.scala": "16020c4dcd5e61520e44d2e5e38555d7aab43789b6b92a48a9a02990fd943867",
+            "tests/fixtures/ivy/lib/src/main/scala/ivyexample/Message.scala": "c9fb7e93502ea460b4d5d17f83b1946bac532b48d27eebfd1f69a21171a79424",
+            "tests/fixtures/ivy/project/build.properties": "1c0b4a295be032b6e7b4761bb8ea29b7093b46d20140586de79a7c0e02285672",
+            "tests/fixtures/ivy/project/build.sbt": "2dff6fbcab0a467c28733c2f3faa77fc2a4823bffa0d9272bbc5043ce9050044",
+            "tests/fixtures/ivy/project/plugins.sbt": "1d12cfcffdb33c6ab871e3363b1bbdcdce1a04c81b5593a894e18663bd9ae307",
+            "tests/fixtures/ivy/sbt-purifier.lock.json": "b394d1b74f93b13f555d1c7d078a5727e54beae09ad6e2bdaa8ff2ef08c02925",
+            "tests/fixtures/ivy/settingsfile/ivysettings.xml": "478fe5c93fcad052abc68cdebf83e63275f22d0ed3b6ad484fc137bb3cbf92d2",
+            "tests/fixtures/ivy/settingsfile/repositories.properties": "1fdd5fe079f89bf9eff112df132cf6eca61b03c83488ef217cfec25c3cb5439c",
+            "tests/fixtures/ivy/settingsfile/resolvers.xml": "2ebb9e36faf6a846f3f2e0b72926a576ce8c9b4d9b7708171bd62962d3794a92",
+            "tests/fixtures/ivy/settingsfile/src/main/scala/ivyexample/Settings.scala": "20c45f311c92b979bfeeaa7126183e57b8cef336ca7c7cb4ce4d3241b96f6ba6",
+            "tests/fixtures/matrix/app/src/main/scala/matrixexample/Main.scala": "85b662d0629c4bc7e9f8bf93f7e167f4343a81f9bedef45780fc0d697082ab5c",
+            "tests/fixtures/matrix/build.sbt": "e1d51edc98cf70f851fbdd8ccdee2675afca2e9237b66537b978cfe5f67588f4",
+            "tests/fixtures/matrix/core/src/main/scala-2.13/matrixexample/Built.scala": "3f519a272c05bfc0704b6610404e9e160cb24a48a181d57aa733077ec47a006b",
+            "tests/fixtures/matrix/core/src/main/scala-3/matrixexample/Built.scala": "b4174e4c0942e2edaf8452f6a4b805fe510b9ad0b2d6300ab5a4a8d0a65839ce",
+            "tests/fixtures/matrix/project/build.properties": "1c0b4a295be032b6e7b4761bb8ea29b7093b46d20140586de79a7c0e02285672",
+            "tests/fixtures/matrix/project/plugins.sbt": "5cb40bbf614678a0829fa162aa51bf650870e24b9d41fd90a6678e7efde7dc4c",
+            "tests/fixtures/matrix/sbt-purifier.lock.json": "2fcaf0dc0277114103110913661086d53e0d30d9420bfdac628fcab1c090b7b7",
+            "tests/fixtures/matrix2/app/src/main/scala/matrixexample/Main.scala": "85b662d0629c4bc7e9f8bf93f7e167f4343a81f9bedef45780fc0d697082ab5c",
+            "tests/fixtures/matrix2/build.sbt": "a1335ca4ca238c74639098bb0b730492d0c0c5b86ce0325d67937738e2035002",
+            "tests/fixtures/matrix2/core/src/main/scala-2.13/matrixexample/Built.scala": "3f519a272c05bfc0704b6610404e9e160cb24a48a181d57aa733077ec47a006b",
+            "tests/fixtures/matrix2/core/src/main/scala-3/matrixexample/Built.scala": "b4174e4c0942e2edaf8452f6a4b805fe510b9ad0b2d6300ab5a4a8d0a65839ce",
+            "tests/fixtures/matrix2/project/build.properties": "f63b6f323cb77001840e7273644c568f2f38b269a4775b4240448abf2d7d2be7",
+            "tests/fixtures/matrix2/sbt-purifier.lock.json": "12fb570bd56bdc394808cbb29746ba922eb6cdd4a3dc745d3592bcc8162705ac",
+            "tests/fixtures/metameta/app/src/main/scala/metameta/Main.scala": "983aafce5104bbc0a1a58c8ad206667f9df6b858d277c4c86b5aa4e27da5a2a9",
+            "tests/fixtures/metameta/app/src/test/scala/metameta/MainSuite.scala": "851522b866fd32b95748f5e7526f244161b3aaea58de21e408e7c8898073abcd",
+            "tests/fixtures/metameta/build.sbt": "14a704abc3f5127fe3eca0488402898bfe0626c7422c33f4d42e86910bc43807",
+            "tests/fixtures/metameta/project/build.properties": "1c0b4a295be032b6e7b4761bb8ea29b7093b46d20140586de79a7c0e02285672",
+            "tests/fixtures/metameta/project/build.sbt": "bace97fe4f51091d4ea18b779a65964e6016a867f361431fc9bf2daea91f4455",
+            "tests/fixtures/metameta/project/plugins.sbt": "1d12cfcffdb33c6ab871e3363b1bbdcdce1a04c81b5593a894e18663bd9ae307",
+            "tests/fixtures/metameta/project/project/plugins.sbt": "ef7a57e65034027f131fc1137e718cca183f78e82131b7e0bf707ee54ee1b145",
+            "tests/fixtures/metameta/sbt-purifier.lock.json": "4e0596eefbeb17cfcde4af254cfee1f7649a1943b619b0caae7ec652601f4fb4",
+            "tests/fixtures/multi/app/src/main/scala/example/Main.scala": "588f44b90f31a5e353f159df05b6f0cfd6c0a1d1763ea11b48ef3dac83c4c583",
+            "tests/fixtures/multi/app/src/test/scala/example/MainSuite.scala": "636a8e8a6339832359489a288a9c22cdf875a87085cb0956463e7d03e234252a",
+            "tests/fixtures/multi/build.sbt": "7d54a3e95ab8be9f286b532eaa396cd648e005b08b84f6e05da8a390979ce4fa",
+            "tests/fixtures/multi/core/src/main/scala/example/Greeting.scala": "bfc97b866882239621c982d1ce44f489024ca0773fe130cf0cc84361e633e396",
+            "tests/fixtures/multi/javalib/src/main/java/example/javalib/Shout.java": "4f3746cd13942c3356698163a1260f891079ab81cfb0254818dd1794ed7b5a0b",
+            "tests/fixtures/multi/project/LicensePlugin.scala": "018ca4c7d62208a7e18bcd580dee6dcdf8db2ec6602f9dbaf7c02aa8ea3cbfc1",
+            "tests/fixtures/multi/project/build.properties": "1c0b4a295be032b6e7b4761bb8ea29b7093b46d20140586de79a7c0e02285672",
+            "tests/fixtures/multi/project/plugins.sbt": "1d12cfcffdb33c6ab871e3363b1bbdcdce1a04c81b5593a894e18663bd9ae307",
+            "tests/fixtures/multi/sbt-purifier.lock.json": "af68c0cd119d2596ba26c8a026c9852af46f24a0ee8daaab32b2be65db8c3759",
+            "tests/fixtures/sbt013/build.sbt": "10df712147ff014320f5c0eb1008f97efa241d62c670fe5749391676b1dde954",
+            "tests/fixtures/sbt013/ivy/ivysettings.xml": "5c026494db7446a6d6571b262441da6ffd99be493a4cd775a14ff0e4fa1b0b0e",
+            "tests/fixtures/sbt013/ivy/src/main/scala/example/IvyMain.scala": "70fa97657c315c05dffffb9cc6a7151cf3a8a41377a15ddcfdb9a7a5250baef0",
+            "tests/fixtures/sbt013/project/build.properties": "44a510ff4b27c7555151c333e2605be2120e71e3ca3cb67fbb9ee24c6c3084f8",
+            "tests/fixtures/sbt013/sbt-purifier.lock.json": "af0d706deec02e14fca8c51516271368a5ed431f43218f8407527f7194940ddf",
+            "tests/fixtures/sbt013/src/main/scala/example/Main.scala": "019e79aef1ed94f104f62bb4ec09f54066cefa4a350f1c8b4332ec7eae870f04",
+            "tests/fixtures/sbt013/src/test/scala/example/MainTest.scala": "a48b963ce1aee72c931ac242d1cff5466ed794c5334db4de5ec094f3df9bc16a",
+            "tests/fixtures/sbt2/app/src/main/scala/example2/Main.scala": "e454285236778e677e808e819a24cc12f21fa85d7a352b79934080d5ecbb8f20",
+            "tests/fixtures/sbt2/app/src/test/scala/example2/MainSuite.scala": "aa9f5148aa503a08c20683bad37dfbd43650f58a48b7430c5ba94c985cb6730c",
+            "tests/fixtures/sbt2/build.sbt": "7bae38e2b08d47adf81f567dcabf3ea3a06aeb14b4612a1d5e963848ab5c3ae7",
+            "tests/fixtures/sbt2/ivyplugin2/src/main/scala/example2/IvyPlugin2.scala": "acc4ef4b1899d4127e0fa3f2b1ed0fdcb78cb67a3aa5b998ca3583020f8a52c7",
+            "tests/fixtures/sbt2/lib/src/main/scala/example2/Message.scala": "a161c16eb35ecee9ba42cd58ba1e2fdaacc5df06ef5a863550f7f7a74958da0e",
+            "tests/fixtures/sbt2/project/build.properties": "f63b6f323cb77001840e7273644c568f2f38b269a4775b4240448abf2d7d2be7",
+            "tests/fixtures/sbt2/project/plugins.sbt": "819dd8e4793ba9efefb68d50834e458905735508226f4c6515d7ab0df909ea5a",
+            "tests/fixtures/sbt2/sbt-purifier.lock.json": "ff5f87fc45c6556fb47b133765e95f31b895dcce63a00caf299469939b6d5d03",
+            "tests/fixtures/update/build.sbt": "6e8fa1abef2f5bd3d4598edf369b4d6bfcc429458d0b764f9e9ade3fa3217534",
+            "tests/fixtures/update/project/build.properties": "98e55208ef24a5f44807705ca1ebca98e0708897ef2065ddc79ae398f857dd55",
+            "tests/independent/default.nix": "3978d16cc606aca1cc1a0a5427f576e5866155ea80de5cb7e219b5ab6f982e63",
+            "tests/independent/offline-tasks.nix": "fdd2149b3e650b6b54242cb9ad4f91b418bce7922e2d4f731bbae395336e8207",
+            "tests/independent/test-interface-sbt1.lock.json": "01beb53ce23b724ad358859ec8427db8ff188c1c5de6444143cb751855ae96e6",
+            "tests/interactive.sh": "32516baf971d8b811049d5b894e33e6ce9fa91c5951c124b226559d81a96c39c",
+            "tests/nix-library-build/build.sbt": "a95771146c09571263abd4852bf2665aad466a541a24988f37aaf18244b9fe31",
+            "tests/nix-library-build/project/build.properties": "98e55208ef24a5f44807705ca1ebca98e0708897ef2065ddc79ae398f857dd55",
+            "tests/nix-library.nix": "d6994059cd651ffe77d4832ec095d1211250c691d403555cf061d95c365da6c8",
+            "tests/producers/flake.nix": "a9b9fb0b52288e2642fe3e4601939e7e3e954efab05f874496444215b35c72a2",
+            "tests/relock-fixtures.sh": "b68eb04383f332d605ef995abe2b6e66e93f3a9c67bd1b35211b1d965a3ad1b5",
+            "tests/runtime-sample.py": "4d15b76190e3c030d7365fa8f0e7cf47bc8e22ff1e8e3806eb70f901a1c48fff",
+            "tests/test_composition_evidence.py": "abf5b1f8942d18dcd5b0fc1c20d5d963a40c5d9c70f11521664a48d8dfc764fc",
+            "tests/update.sh": "d423630865b5ee0196a25171c11e8828d09e70ab623f80a2bfe359d5515af02c",
+            "tools/local-networking.py": "49a971f717269572d7998817341d476db2651785347698e147c840b17ce3dce6",
+            "version.txt": "f3e857b91d18d4bc9aef10d31a248fbcc57d9cf7c77c50b0311ef2ab79d741d1"
+          },
+          "inputDigest": "a1181bfcd5d852332779a9d3a40c074b7ff14a45bb395bb7442f5e00d54fd822",
+          "pointIds": [
+            "native-runtime-sbt-1.13.1-aarch64-darwin-169b2e6",
+            "native-runtime-sbt-1.11.7-x86_64-linux-169b2e6",
+            "native-runtime-sbt-2.0.12-aarch64-darwin-169b2e6",
+            "native-runtime-sbt-1.11.7-aarch64-darwin-169b2e6",
+            "native-runtime-sbt-2.0.12-x86_64-linux-169b2e6",
+            "native-runtime-sbt-1.13.1-x86_64-linux-169b2e6"
+          ],
+          "ci": [
+            {
+              "runId": 42428047985,
+              "attempt": 1,
+              "headRevision": "169b2e6e6a5d87f6c7f43e45b72f57e59f09c35c",
+              "inputDigest": "a1181bfcd5d852332779a9d3a40c074b7ff14a45bb395bb7442f5e00d54fd822",
+              "jobs": [
+                {
+                  "id": 128570510746,
+                  "name": "runtime-sample (macos-latest, independent, 1.13.1)",
+                  "system": "aarch64-darwin",
+                  "conclusion": "success"
+                },
+                {
+                  "id": 128570510799,
+                  "name": "runtime-sample (ubuntu-24.04, independent, 1.11.7)",
+                  "system": "x86_64-linux",
+                  "conclusion": "success"
+                },
+                {
+                  "id": 128570510847,
+                  "name": "runtime-sample (macos-latest, sbt2, 2.0.12)",
+                  "system": "aarch64-darwin",
+                  "conclusion": "success"
+                },
+                {
+                  "id": 128570510776,
+                  "name": "runtime-sample (macos-latest, independent, 1.11.7)",
+                  "system": "aarch64-darwin",
+                  "conclusion": "success"
+                },
+                {
+                  "id": 128570510895,
+                  "name": "runtime-sample (ubuntu-24.04, sbt2, 2.0.12)",
+                  "system": "x86_64-linux",
+                  "conclusion": "success"
+                },
+                {
+                  "id": 128570510884,
+                  "name": "runtime-sample (ubuntu-24.04, independent, 1.13.1)",
+                  "system": "x86_64-linux",
                   "conclusion": "success"
                 }
               ]
