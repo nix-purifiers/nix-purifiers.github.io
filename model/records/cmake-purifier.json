@@ -20,7 +20,11 @@
       "state": "known",
       "value": [
         "x86_64-linux",
-        "aarch64-linux"
+        "aarch64-linux",
+        "aarch64-darwin"
+      ],
+      "sources": [
+        "https://github.com/nix-purifiers/cmake-purifier/blob/31384b9817a67045040ddced0b30fd08a5b23e87/flake.nix"
       ]
     },
     "nix_builder": {
@@ -46,38 +50,99 @@
     },
     "projection_incoming": {
       "state": "known",
-      "value": "unsupported"
+      "value": "conditional",
+      "sources": [
+        "https://github.com/nix-purifiers/cmake-purifier/blob/31384b9817a67045040ddced0b30fd08a5b23e87/nix/lib/build-cmake-project.nix",
+        "https://github.com/nix-purifiers/purifier/blob/f1157805a46e26a249aac647604688d28c77b0b7/nix/lib/resource-projections.nix",
+        "https://github.com/nix-purifiers/purifier/blob/f1157805a46e26a249aac647604688d28c77b0b7/tools/resource_projection.py"
+      ]
     },
     "projection_incoming_formats": {
-      "state": "not-applicable",
-      "reason": "No incoming typed projection adapter is exported by this implementation."
+      "state": "known",
+      "value": [
+        "resources"
+      ],
+      "sources": [
+        "https://github.com/nix-purifiers/cmake-purifier/blob/31384b9817a67045040ddced0b30fd08a5b23e87/nix/lib/build-cmake-project.nix",
+        "https://github.com/nix-purifiers/purifier/blob/f1157805a46e26a249aac647604688d28c77b0b7/nix/lib/resource-projections.nix",
+        "https://github.com/nix-purifiers/purifier/blob/f1157805a46e26a249aac647604688d28c77b0b7/tools/resource_projection.py"
+      ]
     },
     "projection_incoming_interfaces": {
-      "state": "not-applicable",
-      "reason": "No incoming typed projection interface is implemented."
+      "state": "known",
+      "value": [
+        "resourceDependencies"
+      ],
+      "sources": [
+        "https://github.com/nix-purifiers/cmake-purifier/blob/31384b9817a67045040ddced0b30fd08a5b23e87/nix/lib/build-cmake-project.nix",
+        "https://github.com/nix-purifiers/purifier/blob/f1157805a46e26a249aac647604688d28c77b0b7/nix/lib/resource-projections.nix"
+      ]
     },
     "projection_incoming_limits": {
       "state": "known",
       "value": [
-        "Native artifacts or caches alone do not provide a typed incoming project projection interface"
+        "Resource bundle composition only, enabled through explicit resourceRoots and resourceDependencies; requires digest-checked purifier-resources-v1 catalogs.",
+        "No generic typed incoming C/C++ library projection adapter is established by this interface.",
+        "Unavailable in legacy-external-v1."
+      ],
+      "sources": [
+        "https://github.com/nix-purifiers/cmake-purifier/blob/31384b9817a67045040ddced0b30fd08a5b23e87/nix/lib/build-cmake-project.nix",
+        "https://github.com/nix-purifiers/purifier/blob/f1157805a46e26a249aac647604688d28c77b0b7/nix/lib/resource-projections.nix",
+        "https://github.com/nix-purifiers/purifier/blob/f1157805a46e26a249aac647604688d28c77b0b7/tools/resource_projection.py"
       ]
     },
     "projection_outgoing": {
       "state": "known",
-      "value": "unsupported"
+      "value": "conditional",
+      "sources": [
+        "https://github.com/nix-purifiers/cmake-purifier/blob/31384b9817a67045040ddced0b30fd08a5b23e87/nix/lib/build-cmake-project.nix",
+        "https://github.com/nix-purifiers/purifier/blob/f1157805a46e26a249aac647604688d28c77b0b7/nix/lib/native-target-projections.nix",
+        "https://github.com/nix-purifiers/purifier/blob/f1157805a46e26a249aac647604688d28c77b0b7/nix/lib/resource-projections.nix"
+      ]
     },
     "projection_outgoing_formats": {
-      "state": "not-applicable",
-      "reason": "No outgoing typed projection adapter is exported by this implementation."
+      "state": "known",
+      "value": [
+        "native",
+        "resources"
+      ],
+      "sources": [
+        "https://github.com/nix-purifiers/cmake-purifier/blob/31384b9817a67045040ddced0b30fd08a5b23e87/nix/lib/build-cmake-project.nix",
+        "https://github.com/nix-purifiers/purifier/blob/f1157805a46e26a249aac647604688d28c77b0b7/nix/lib/native-projections.nix",
+        "https://github.com/nix-purifiers/purifier/blob/f1157805a46e26a249aac647604688d28c77b0b7/nix/lib/resource-projections.nix"
+      ]
     },
     "projection_outgoing_interfaces": {
-      "state": "not-applicable",
-      "reason": "No outgoing typed projection interface is implemented."
+      "state": "known",
+      "value": [
+        "projections.native",
+        "projections.python-ffi",
+        "projections.java-ffi",
+        "projections.resources",
+        "projections.web",
+        "projections.java-resources"
+      ],
+      "sources": [
+        "https://github.com/nix-purifiers/cmake-purifier/blob/31384b9817a67045040ddced0b30fd08a5b23e87/nix/lib/build-cmake-project.nix",
+        "https://github.com/nix-purifiers/purifier/blob/f1157805a46e26a249aac647604688d28c77b0b7/nix/lib/native-projections.nix",
+        "https://github.com/nix-purifiers/purifier/blob/f1157805a46e26a249aac647604688d28c77b0b7/nix/lib/resource-projections.nix"
+      ]
     },
     "projection_outgoing_limits": {
       "state": "known",
       "value": [
-        "Native artifacts or caches alone do not provide a typed outgoing project projection interface"
+        "Native exports require installed unambiguous shared-library targets; static libraries and runtime plugins are not inferred.",
+        "Resource exports require explicit resourceRoots; resourceDependencies require the typed purifier-resources-v1 catalog with digest-checked files.",
+        "Resource schema metadata is explicitly supplied; it does not imply arbitrary schema compilation or native dependency injection.",
+        "Only modern-v1 exports these projections. legacy-external-v1 is acquisition-only and explicitly rejects native metadata/projections/resource options."
+      ],
+      "sources": [
+        "https://github.com/nix-purifiers/cmake-purifier/blob/31384b9817a67045040ddced0b30fd08a5b23e87/nix/lib/build-cmake-project.nix",
+        "https://github.com/nix-purifiers/purifier/blob/f1157805a46e26a249aac647604688d28c77b0b7/nix/lib/native-target-projections.nix",
+        "https://github.com/nix-purifiers/purifier/blob/f1157805a46e26a249aac647604688d28c77b0b7/nix/lib/native-projections.nix",
+        "https://github.com/nix-purifiers/purifier/blob/f1157805a46e26a249aac647604688d28c77b0b7/nix/lib/resource-projections.nix",
+        "https://github.com/nix-purifiers/purifier/blob/f1157805a46e26a249aac647604688d28c77b0b7/tools/resource_projection.py",
+        "https://github.com/nix-purifiers/cmake-purifier/blob/31384b9817a67045040ddced0b30fd08a5b23e87/nix/lib/legacy-build-cmake-project.nix"
       ]
     },
     "editor_protocol": {
@@ -125,8 +190,20 @@
       }
     },
     "update": {
-      "state": "unknown",
-      "reason": "The native update selector and invocation have not been normalized; use the reference workflow."
+      "state": "available",
+      "capability": "cmake-purifier",
+      "arguments": [
+        "update"
+      ],
+      "minimumArguments": 0,
+      "environment": {
+        "CMAKE_PURIFIER_LOCKFILE": {
+          "binding": "lockfile"
+        }
+      },
+      "sources": [
+        "https://github.com/nix-purifiers/cmake-purifier/blob/31384b9817a67045040ddced0b30fd08a5b23e87/pkgs/cmake-purifier/default.nix"
+      ]
     },
     "build": {
       "capability": "cmake",
@@ -159,6 +236,25 @@
           "binding": "lockfile"
         }
       }
+    },
+    "named-update": {
+      "state": "available",
+      "capability": "cmake-purifier",
+      "arguments": [
+        "update",
+        {
+          "splice": "arguments"
+        }
+      ],
+      "minimumArguments": 1,
+      "environment": {
+        "CMAKE_PURIFIER_LOCKFILE": {
+          "binding": "lockfile"
+        }
+      },
+      "sources": [
+        "https://github.com/nix-purifiers/cmake-purifier/blob/31384b9817a67045040ddced0b30fd08a5b23e87/pkgs/cmake-purifier/default.nix"
+      ]
     }
   }
 }

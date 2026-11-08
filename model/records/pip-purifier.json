@@ -21,7 +21,11 @@
       "state": "known",
       "value": [
         "x86_64-linux",
-        "aarch64-linux"
+        "aarch64-linux",
+        "aarch64-darwin"
+      ],
+      "sources": [
+        "https://github.com/nix-purifiers/pip-purifier/blob/3620c35e776dbb8772f068bf9c7c0c2338fbc38f/flake.nix"
       ]
     },
     "nix_builder": {
@@ -135,8 +139,20 @@
       }
     },
     "update": {
-      "state": "unknown",
-      "reason": "The native update selector and invocation have not been normalized; use the reference workflow."
+      "state": "available",
+      "capability": "pip-purifier",
+      "arguments": [
+        "update"
+      ],
+      "minimumArguments": 0,
+      "environment": {
+        "PIP_PURIFIER_LOCKFILE": {
+          "binding": "lockfile"
+        }
+      },
+      "sources": [
+        "https://github.com/nix-purifiers/pip-purifier/blob/3620c35e776dbb8772f068bf9c7c0c2338fbc38f/src/pip_purifier.py"
+      ]
     },
     "test": {
       "capability": "python",
@@ -152,6 +168,25 @@
           "binding": "lockfile"
         }
       }
+    },
+    "named-update": {
+      "state": "available",
+      "capability": "pip-purifier",
+      "arguments": [
+        "update",
+        {
+          "splice": "arguments"
+        }
+      ],
+      "minimumArguments": 1,
+      "environment": {
+        "PIP_PURIFIER_LOCKFILE": {
+          "binding": "lockfile"
+        }
+      },
+      "sources": [
+        "https://github.com/nix-purifiers/pip-purifier/blob/3620c35e776dbb8772f068bf9c7c0c2338fbc38f/src/pip_purifier.py"
+      ]
     }
   }
 }
