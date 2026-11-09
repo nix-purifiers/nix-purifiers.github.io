@@ -97,6 +97,114 @@
     "editor_offline": {
       "state": "known",
       "value": true
+    },
+    "inputs": {
+      "state": "known",
+      "value": [
+        "package.json"
+      ],
+      "sources": [
+        "https://github.com/nix-purifiers/pnpm-purifier/blob/9ccb30c888f69631b03000ed6ef4e6b6261a471c/README.md#L19"
+      ]
+    },
+    "dependency_sources": {
+      "state": "known",
+      "value": [
+        "Registry packages",
+        "Tarball URLs",
+        "Git repositories",
+        "Local directories and tarballs",
+        "Workspaces"
+      ],
+      "sources": [
+        "https://github.com/nix-purifiers/pnpm-purifier/blob/9ccb30c888f69631b03000ed6ef4e6b6261a471c/README.md#L246"
+      ]
+    },
+    "relock": {
+      "state": "known",
+      "value": "preserves-pins",
+      "sources": [
+        "https://github.com/nix-purifiers/pnpm-purifier/blob/9ccb30c888f69631b03000ed6ef4e6b6261a471c/README.md#L65"
+      ]
+    },
+    "offline_scope": {
+      "state": "known",
+      "value": "locked-dependencies",
+      "sources": [
+        "https://github.com/nix-purifiers/pnpm-purifier/blob/9ccb30c888f69631b03000ed6ef4e6b6261a471c/README.md#L199"
+      ]
+    },
+    "missing_lock": {
+      "state": "known",
+      "value": "warn-and-native",
+      "sources": [
+        "https://github.com/nix-purifiers/pnpm-purifier/blob/9ccb30c888f69631b03000ed6ef4e6b6261a471c/src/pnpm-purifier.mjs#L765"
+      ]
+    },
+    "offline_limits": {
+      "state": "known",
+      "value": [
+        "Commands that resolve versions use online registry metadata and lock the result; --online is an explicit opt-out.",
+        "Offline pnpm 12 trusts the content-bound lock instead of replaying mutable supply-chain policies and attestations.",
+        "Git dependencies omit submodules, matching native pnpm; Nix fetches do not read .npmrc and private registries need credentialed fetcher overrides."
+      ],
+      "sources": [
+        "https://github.com/nix-purifiers/pnpm-purifier/blob/9ccb30c888f69631b03000ed6ef4e6b6261a471c/README.md#L285",
+        "https://github.com/nix-purifiers/pnpm-purifier/blob/9ccb30c888f69631b03000ed6ef4e6b6261a471c/src/pnpm-purifier.mjs#L768"
+      ]
+    },
+    "stale_lock": {
+      "state": "unknown",
+      "reason": "Registry-using offline commands reject changed native/purifier locks and name the repair command; resolving commands run online and relock, while commands that do not need the registry bypass that check. A single enum would obscure these dispatch paths."
+    },
+    "editor_completion": {
+      "state": "unknown",
+      "reason": "The documented node_modules and TypeScript setup supplies editor inputs, but does not establish protocol-level completion. No new language-server execution result is asserted."
+    },
+    "editor_diagnostics": {
+      "state": "unknown",
+      "reason": "The documented node_modules and TypeScript setup supplies editor inputs, but does not establish protocol-level diagnostics. No new language-server execution result is asserted."
+    },
+    "editor_navigation": {
+      "state": "unknown",
+      "reason": "The documented node_modules and TypeScript setup supplies editor inputs, but does not establish protocol-level definition lookup. No new language-server execution result is asserted."
+    },
+    "editor_dependency_sources": {
+      "state": "unknown",
+      "reason": "The documented node_modules and TypeScript setup supplies editor inputs, but does not establish protocol-level dependency-source retrieval. No new language-server execution result is asserted."
+    },
+    "credentials": {
+      "state": "unknown",
+      "reason": "The documented private-source paths require supplied checkouts or credentialed Nix fetcher overrides. This record does not establish default credential propagation across both native capture and Nix replay."
+    },
+    "platform_notes": {
+      "state": "known",
+      "value": [
+        "The retained native technical review covers x86_64-linux, aarch64-linux and aarch64-darwin within its stated SDK, sample and disclosed adaptation scopes.",
+        "No Intel Darwin, arbitrary cross-compilation, unchanged upstream test suite or unlisted SDK/system coverage is inferred."
+      ],
+      "sources": [
+        "https://nix-purifiers.github.io/evidence/36bb858f575dbaa8f835d6d6a8f4e26e13dc6dca8a594d00b5c9b6f94e2815ca.json",
+        "https://nix-purifiers.github.io/evidence/c86cc26b93d92d2e54fbdadfe4c5c554298f2afeb5da8d7bac72df740dbc12a1.log",
+        "https://nix-purifiers.github.io/evidence/487935ead3eb28085f56b11cdcab4e2e188186fcd3c026a9ea1e3b868e5985a4.log",
+        "https://nix-purifiers.github.io/evidence/923efa64a937555021f309ce576176faa9f4d791011b197c94e6328f4ae2854f.json"
+      ]
+    },
+    "native_plugin_coordinate": {
+      "state": "not-applicable",
+      "reason": "This integration supplies native JavaScript package-manager preparation and wrappers, not a published JVM build-tool plugin; plugin coordinates, repository bootstrap and a Java target do not apply."
+    },
+    "native_plugin_repository": {
+      "state": "not-applicable",
+      "reason": "This integration supplies native JavaScript package-manager preparation and wrappers, not a published JVM build-tool plugin; plugin coordinates, repository bootstrap and a Java target do not apply."
+    },
+    "native_plugin_bootstrap": {
+      "state": "not-applicable",
+      "reason": "This integration supplies native JavaScript package-manager preparation and wrappers, not a published JVM build-tool plugin; plugin coordinates, repository bootstrap and a Java target do not apply."
+    },
+    "native_plugin_java_target": {
+      "state": "not-applicable",
+      "reason": "This integration supplies native JavaScript package-manager preparation and wrappers, not a published JVM build-tool plugin; plugin coordinates, repository bootstrap and a Java target do not apply."
     }
   },
   "operations": {
