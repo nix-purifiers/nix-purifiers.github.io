@@ -19893,23 +19893,34 @@
           "state": "unknown"
         },
         "credentials": {
-          "reason": "This capability is not established by the reviewed integration record.",
+          "reason": "This bounded record does not establish credential propagation through both native capture and Nix prefetch for private sources; user configuration and builder fetcher overrides are separate from verified default transport authentication.",
           "state": "unknown"
         },
         "dependency_sources": {
-          "reason": "This capability is not established by the reviewed integration record.",
-          "state": "unknown"
+          "sources": [
+            "https://github.com/nix-purifiers/cmake-purifier/blob/b7e2ec857d6114933ab44116b2624ea194ea8801/nix/lib/sources.nix#L31",
+            "https://github.com/nix-purifiers/cmake-purifier/blob/b7e2ec857d6114933ab44116b2624ea194ea8801/nix/lib/sources.nix#L35",
+            "https://github.com/nix-purifiers/cmake-purifier/blob/b7e2ec857d6114933ab44116b2624ea194ea8801/pkgs/cmake-purifier/default.nix#L43"
+          ],
+          "state": "known",
+          "value": [
+            "HTTP(S) download URLs",
+            "Git",
+            "Mercurial",
+            "Subversion",
+            "CVS"
+          ]
         },
         "editor_completion": {
-          "reason": "This capability is not established by the reviewed integration record.",
+          "reason": "The existing editor/toolchain setup does not by itself establish protocol-level completion. No new language-server result is asserted by this bounded source-only backfill.",
           "state": "unknown"
         },
         "editor_dependency_sources": {
-          "reason": "This capability is not established by the reviewed integration record.",
+          "reason": "The existing editor/toolchain setup does not by itself establish protocol-level dependency-source retrieval. No new language-server result is asserted by this bounded source-only backfill.",
           "state": "unknown"
         },
         "editor_diagnostics": {
-          "reason": "This capability is not established by the reviewed integration record.",
+          "reason": "The existing editor/toolchain setup does not by itself establish protocol-level diagnostics. No new language-server result is asserted by this bounded source-only backfill.",
           "state": "unknown"
         },
         "editor_metadata_format": {
@@ -19917,7 +19928,7 @@
           "state": "unknown"
         },
         "editor_navigation": {
-          "reason": "This capability is not established by the reviewed integration record.",
+          "reason": "The existing editor/toolchain setup does not by itself establish protocol-level definition lookup. No new language-server result is asserted by this bounded source-only backfill.",
           "state": "unknown"
         },
         "editor_offline": {
@@ -19940,8 +19951,13 @@
           "state": "unknown"
         },
         "inputs": {
-          "reason": "This capability is not established by the reviewed integration record.",
-          "state": "unknown"
+          "sources": [
+            "https://github.com/nix-purifiers/cmake-purifier/blob/b7e2ec857d6114933ab44116b2624ea194ea8801/pkgs/cmake-purifier/default.nix#L183"
+          ],
+          "state": "known",
+          "value": [
+            "CMakeLists.txt"
+          ]
         },
         "integration": {
           "sources": [],
@@ -19969,20 +19985,20 @@
           "state": "unknown"
         },
         "native_plugin_bootstrap": {
-          "reason": "This capability is not established by the reviewed integration record.",
-          "state": "unknown"
+          "reason": "This integration supplies native-tool preparation, wrappers or CMake helper modules, not a published JVM build-tool plugin; plugin coordinates, repository bootstrap and a Java target do not apply.",
+          "state": "not-applicable"
         },
         "native_plugin_coordinate": {
-          "reason": "This capability is not established by the reviewed integration record.",
-          "state": "unknown"
+          "reason": "This integration supplies native-tool preparation, wrappers or CMake helper modules, not a published JVM build-tool plugin; plugin coordinates, repository bootstrap and a Java target do not apply.",
+          "state": "not-applicable"
         },
         "native_plugin_java_target": {
-          "reason": "This capability is not established by the reviewed integration record.",
-          "state": "unknown"
+          "reason": "This integration supplies native-tool preparation, wrappers or CMake helper modules, not a published JVM build-tool plugin; plugin coordinates, repository bootstrap and a Java target do not apply.",
+          "state": "not-applicable"
         },
         "native_plugin_repository": {
-          "reason": "This capability is not established by the reviewed integration record.",
-          "state": "unknown"
+          "reason": "This integration supplies native-tool preparation, wrappers or CMake helper modules, not a published JVM build-tool plugin; plugin coordinates, repository bootstrap and a Java target do not apply.",
+          "state": "not-applicable"
         },
         "nix_builder": {
           "sources": [],
@@ -19990,16 +20006,36 @@
           "value": "pkgs.cmake-purifier.buildCMakeProject"
         },
         "offline_limits": {
-          "reason": "This capability is not established by the reviewed integration record.",
-          "state": "unknown"
+          "sources": [
+            "https://github.com/nix-purifiers/cmake-purifier/blob/b7e2ec857d6114933ab44116b2624ea194ea8801/README.md#L190",
+            "https://github.com/nix-purifiers/cmake-purifier/blob/b7e2ec857d6114933ab44116b2624ea194ea8801/pkgs/cmake-purifier/default.nix#L48",
+            "https://github.com/nix-purifiers/cmake-purifier/blob/b7e2ec857d6114933ab44116b2624ea194ea8801/README.md#L129"
+          ],
+          "state": "known",
+          "value": [
+            "The lock lists project downloads; compilers, CMake and clangd must be supplied by the selected toolchain.",
+            "file(DOWNLOAD) and URL ExternalProject downloads require the cmake-purifier replay proxy, not only the initial cache.",
+            "The lock run does not execute project tests, so downloads first performed by tests are not captured."
+          ]
         },
         "offline_scope": {
-          "reason": "This capability is not established by the reviewed integration record.",
-          "state": "unknown"
+          "sources": [
+            "https://github.com/nix-purifiers/cmake-purifier/blob/b7e2ec857d6114933ab44116b2624ea194ea8801/pkgs/cmake-purifier/default.nix#L38",
+            "https://github.com/nix-purifiers/cmake-purifier/blob/b7e2ec857d6114933ab44116b2624ea194ea8801/nix/lib/sources.nix#L3"
+          ],
+          "state": "known",
+          "value": "locked-dependencies"
         },
         "platform_notes": {
-          "reason": "This capability is not established by the reviewed integration record.",
-          "state": "unknown"
+          "sources": [
+            "https://nix-purifiers.github.io/evidence/2b3bd64e787d5272ce638e305b641255f6cd293d1d265f219986d102483987b5.json",
+            "https://nix-purifiers.github.io/evidence/6a815e77715d933c377b11919d48b9a5f4a16eebc1589d8415be6b3256e6aa79.json"
+          ],
+          "state": "known",
+          "value": [
+            "The retained technical review covers native x86_64-linux, aarch64-linux and aarch64-darwin within its stated SDK/sample scopes.",
+            "No Intel Darwin, cross-compilation or unlisted SDK/system combination is established by that review."
+          ]
         },
         "platforms": {
           "sources": [
@@ -20114,15 +20150,19 @@
           ]
         },
         "relock": {
-          "reason": "This capability is not established by the reviewed integration record.",
-          "state": "unknown"
+          "sources": [
+            "https://github.com/nix-purifiers/cmake-purifier/blob/b7e2ec857d6114933ab44116b2624ea194ea8801/lock/pin.py#L3",
+            "https://github.com/nix-purifiers/cmake-purifier/blob/b7e2ec857d6114933ab44116b2624ea194ea8801/README.md#L74"
+          ],
+          "state": "known",
+          "value": "preserves-pins"
         },
         "runtime_requirements": {
           "reason": "This capability is not established by the reviewed integration record.",
           "state": "unknown"
         },
         "stale_lock": {
-          "reason": "This capability is not established by the reviewed integration record.",
+          "reason": "Purifier prefetch, Nix evaluation and the sandbox builder reject changed CMake definition hashes. Ordinary CMake outside the generated cache/provider/replay setup is not covered by that freshness check.",
           "state": "unknown"
         },
         "supported_native_commands": {
@@ -79673,23 +79713,36 @@
           "state": "unknown"
         },
         "credentials": {
-          "reason": "This capability is not established by the reviewed integration record.",
+          "reason": "This bounded record does not establish credential propagation through both native capture and Nix prefetch for private sources; user configuration and builder fetcher overrides are separate from verified default transport authentication.",
           "state": "unknown"
         },
         "dependency_sources": {
-          "reason": "This capability is not established by the reviewed integration record.",
-          "state": "unknown"
+          "sources": [
+            "https://github.com/nix-purifiers/pip-purifier/blob/f80c9c051293253aeb748972af022c53529c5b78/src/pip_purifier.py#L553",
+            "https://github.com/nix-purifiers/pip-purifier/blob/f80c9c051293253aeb748972af022c53529c5b78/src/pip_purifier.py#L373",
+            "https://github.com/nix-purifiers/pip-purifier/blob/f80c9c051293253aeb748972af022c53529c5b78/nix/lib/offline.py#L8"
+          ],
+          "state": "known",
+          "value": [
+            "Python package indexes and find-links sources",
+            "Direct wheel/source-archive URLs",
+            "Git",
+            "Mercurial",
+            "Subversion",
+            "Bazaar",
+            "Local project paths"
+          ]
         },
         "editor_completion": {
-          "reason": "This capability is not established by the reviewed integration record.",
+          "reason": "The existing editor/toolchain setup does not by itself establish protocol-level completion. No new language-server result is asserted by this bounded source-only backfill.",
           "state": "unknown"
         },
         "editor_dependency_sources": {
-          "reason": "This capability is not established by the reviewed integration record.",
+          "reason": "The existing editor/toolchain setup does not by itself establish protocol-level dependency-source retrieval. No new language-server result is asserted by this bounded source-only backfill.",
           "state": "unknown"
         },
         "editor_diagnostics": {
-          "reason": "This capability is not established by the reviewed integration record.",
+          "reason": "The existing editor/toolchain setup does not by itself establish protocol-level diagnostics. No new language-server result is asserted by this bounded source-only backfill.",
           "state": "unknown"
         },
         "editor_metadata_format": {
@@ -79697,7 +79750,7 @@
           "state": "unknown"
         },
         "editor_navigation": {
-          "reason": "This capability is not established by the reviewed integration record.",
+          "reason": "The existing editor/toolchain setup does not by itself establish protocol-level definition lookup. No new language-server result is asserted by this bounded source-only backfill.",
           "state": "unknown"
         },
         "editor_offline": {
@@ -79720,8 +79773,14 @@
           "state": "unknown"
         },
         "inputs": {
-          "reason": "This capability is not established by the reviewed integration record.",
-          "state": "unknown"
+          "sources": [
+            "https://github.com/nix-purifiers/pip-purifier/blob/f80c9c051293253aeb748972af022c53529c5b78/src/pip_purifier.py#L475",
+            "https://github.com/nix-purifiers/pip-purifier/blob/f80c9c051293253aeb748972af022c53529c5b78/src/pip_purifier.py#L483"
+          ],
+          "state": "known",
+          "value": [
+            "pylock.toml or requirements.txt; otherwise pyproject.toml or setup.py (or explicit pip install arguments)"
+          ]
         },
         "integration": {
           "sources": [],
@@ -79750,20 +79809,20 @@
           "state": "unknown"
         },
         "native_plugin_bootstrap": {
-          "reason": "This capability is not established by the reviewed integration record.",
-          "state": "unknown"
+          "reason": "This integration supplies native-tool preparation, wrappers or CMake helper modules, not a published JVM build-tool plugin; plugin coordinates, repository bootstrap and a Java target do not apply.",
+          "state": "not-applicable"
         },
         "native_plugin_coordinate": {
-          "reason": "This capability is not established by the reviewed integration record.",
-          "state": "unknown"
+          "reason": "This integration supplies native-tool preparation, wrappers or CMake helper modules, not a published JVM build-tool plugin; plugin coordinates, repository bootstrap and a Java target do not apply.",
+          "state": "not-applicable"
         },
         "native_plugin_java_target": {
-          "reason": "This capability is not established by the reviewed integration record.",
-          "state": "unknown"
+          "reason": "This integration supplies native-tool preparation, wrappers or CMake helper modules, not a published JVM build-tool plugin; plugin coordinates, repository bootstrap and a Java target do not apply.",
+          "state": "not-applicable"
         },
         "native_plugin_repository": {
-          "reason": "This capability is not established by the reviewed integration record.",
-          "state": "unknown"
+          "reason": "This integration supplies native-tool preparation, wrappers or CMake helper modules, not a published JVM build-tool plugin; plugin coordinates, repository bootstrap and a Java target do not apply.",
+          "state": "not-applicable"
         },
         "nix_builder": {
           "sources": [],
@@ -79771,16 +79830,38 @@
           "value": "pkgs.pip-purifier.buildPipProject"
         },
         "offline_limits": {
-          "reason": "This capability is not established by the reviewed integration record.",
-          "state": "unknown"
+          "sources": [
+            "https://github.com/nix-purifiers/pip-purifier/blob/f80c9c051293253aeb748972af022c53529c5b78/README.md#L209",
+            "https://github.com/nix-purifiers/pip-purifier/blob/f80c9c051293253aeb748972af022c53529c5b78/nix/lib/build-pip-project.nix",
+            "https://github.com/nix-purifiers/pip-purifier/blob/f80c9c051293253aeb748972af022c53529c5b78/nix/lib/offline.py#L24"
+          ],
+          "state": "known",
+          "value": [
+            "Keep the purifier command and its own Python/toolchain closure installed as well as the locked project inputs.",
+            "Native libraries and system executables needed by build backends must be supplied separately.",
+            "Arbitrary application/test networking and new package requests outside captured inputs are not made available by prefetch."
+          ]
         },
         "offline_scope": {
-          "reason": "This capability is not established by the reviewed integration record.",
-          "state": "unknown"
+          "sources": [
+            "https://github.com/nix-purifiers/pip-purifier/blob/f80c9c051293253aeb748972af022c53529c5b78/nix/lib/offline.py#L62",
+            "https://github.com/nix-purifiers/pip-purifier/blob/f80c9c051293253aeb748972af022c53529c5b78/src/pip_purifier.py#L1031"
+          ],
+          "state": "known",
+          "value": "locked-dependencies"
         },
         "platform_notes": {
-          "reason": "This capability is not established by the reviewed integration record.",
-          "state": "unknown"
+          "sources": [
+            "https://nix-purifiers.github.io/evidence/1e55d4bf5c6594ab6c8360644bb6647abf81fedb846b825051aa7f82541c8dd4.json",
+            "https://nix-purifiers.github.io/evidence/054214022c37a12aedd06095dcdd6805159f3a948dbd928722efa13904b26632.log",
+            "https://nix-purifiers.github.io/evidence/3ba8d279d37b54b9101a020881f9b6c67fa633c47cbc29b964f304f68ecd10ce.json",
+            "https://nix-purifiers.github.io/evidence/e09824559e9d85ab6c1cc8f6fdb79e0a50a6f9244868354a655f6bd7fefd1980.log"
+          ],
+          "state": "known",
+          "value": [
+            "The retained technical review covers native x86_64-linux, aarch64-linux and aarch64-darwin within its stated SDK/sample scopes.",
+            "No Intel Darwin, cross-compilation or unlisted SDK/system combination is established by that review."
+          ]
         },
         "platforms": {
           "sources": [
@@ -79851,16 +79932,25 @@
           ]
         },
         "relock": {
-          "reason": "This capability is not established by the reviewed integration record.",
-          "state": "unknown"
+          "sources": [
+            "https://github.com/nix-purifiers/pip-purifier/blob/f80c9c051293253aeb748972af022c53529c5b78/src/pip_purifier.py#L682",
+            "https://github.com/nix-purifiers/pip-purifier/blob/f80c9c051293253aeb748972af022c53529c5b78/README.md#L64"
+          ],
+          "state": "known",
+          "value": "preserves-pins"
         },
         "runtime_requirements": {
           "reason": "This capability is not established by the reviewed integration record.",
           "state": "unknown"
         },
         "stale_lock": {
-          "reason": "This capability is not established by the reviewed integration record.",
-          "state": "unknown"
+          "sources": [
+            "https://github.com/nix-purifiers/pip-purifier/blob/f80c9c051293253aeb748972af022c53529c5b78/src/pip_purifier.py#L530",
+            "https://github.com/nix-purifiers/pip-purifier/blob/f80c9c051293253aeb748972af022c53529c5b78/src/pip_purifier.py#L989",
+            "https://github.com/nix-purifiers/pip-purifier/blob/f80c9c051293253aeb748972af022c53529c5b78/src/pip_purifier.py#L1022"
+          ],
+          "state": "known",
+          "value": "fail-with-repair"
         },
         "supported_native_commands": {
           "reason": "This capability is not established by the reviewed integration record.",
@@ -107389,23 +107479,33 @@
           "state": "unknown"
         },
         "credentials": {
-          "reason": "This capability is not established by the reviewed integration record.",
+          "reason": "This bounded record does not establish credential propagation through both native capture and Nix prefetch for private sources; user configuration and builder fetcher overrides are separate from verified default transport authentication.",
           "state": "unknown"
         },
         "dependency_sources": {
-          "reason": "This capability is not established by the reviewed integration record.",
-          "state": "unknown"
+          "sources": [
+            "https://github.com/nix-purifiers/uv-purifier/blob/6df81ab679ca382d8ea69b59b8e34c3dcfb7fd8e/src/uv_purifier.py#L121",
+            "https://github.com/nix-purifiers/uv-purifier/blob/6df81ab679ca382d8ea69b59b8e34c3dcfb7fd8e/nix/lib/build-uv-project.nix#L323",
+            "https://github.com/nix-purifiers/uv-purifier/blob/6df81ab679ca382d8ea69b59b8e34c3dcfb7fd8e/README.md#L312"
+          ],
+          "state": "known",
+          "value": [
+            "Python package indexes",
+            "Git",
+            "Direct wheel/source-archive URLs",
+            "Local directories, wheels and source archives"
+          ]
         },
         "editor_completion": {
-          "reason": "This capability is not established by the reviewed integration record.",
+          "reason": "The existing editor/toolchain setup does not by itself establish protocol-level completion. No new language-server result is asserted by this bounded source-only backfill.",
           "state": "unknown"
         },
         "editor_dependency_sources": {
-          "reason": "This capability is not established by the reviewed integration record.",
+          "reason": "The existing editor/toolchain setup does not by itself establish protocol-level dependency-source retrieval. No new language-server result is asserted by this bounded source-only backfill.",
           "state": "unknown"
         },
         "editor_diagnostics": {
-          "reason": "This capability is not established by the reviewed integration record.",
+          "reason": "The existing editor/toolchain setup does not by itself establish protocol-level diagnostics. No new language-server result is asserted by this bounded source-only backfill.",
           "state": "unknown"
         },
         "editor_metadata_format": {
@@ -107413,7 +107513,7 @@
           "state": "unknown"
         },
         "editor_navigation": {
-          "reason": "This capability is not established by the reviewed integration record.",
+          "reason": "The existing editor/toolchain setup does not by itself establish protocol-level definition lookup. No new language-server result is asserted by this bounded source-only backfill.",
           "state": "unknown"
         },
         "editor_offline": {
@@ -107436,8 +107536,13 @@
           "state": "unknown"
         },
         "inputs": {
-          "reason": "This capability is not established by the reviewed integration record.",
-          "state": "unknown"
+          "sources": [
+            "https://github.com/nix-purifiers/uv-purifier/blob/6df81ab679ca382d8ea69b59b8e34c3dcfb7fd8e/src/uv_purifier.py#L682"
+          ],
+          "state": "known",
+          "value": [
+            "pyproject.toml"
+          ]
         },
         "integration": {
           "sources": [],
@@ -107457,7 +107562,7 @@
           ]
         },
         "missing_lock": {
-          "reason": "This capability is not established by the reviewed integration record.",
+          "reason": "Purifier prefetch/publish and the Nix builder require a valid purifier lock; ordinary unwrapped uv retains native behavior. A single wrapper fallback value does not describe both interfaces.",
           "state": "unknown"
         },
         "named_update_example": {
@@ -107465,20 +107570,20 @@
           "state": "unknown"
         },
         "native_plugin_bootstrap": {
-          "reason": "This capability is not established by the reviewed integration record.",
-          "state": "unknown"
+          "reason": "This integration supplies native-tool preparation, wrappers or CMake helper modules, not a published JVM build-tool plugin; plugin coordinates, repository bootstrap and a Java target do not apply.",
+          "state": "not-applicable"
         },
         "native_plugin_coordinate": {
-          "reason": "This capability is not established by the reviewed integration record.",
-          "state": "unknown"
+          "reason": "This integration supplies native-tool preparation, wrappers or CMake helper modules, not a published JVM build-tool plugin; plugin coordinates, repository bootstrap and a Java target do not apply.",
+          "state": "not-applicable"
         },
         "native_plugin_java_target": {
-          "reason": "This capability is not established by the reviewed integration record.",
-          "state": "unknown"
+          "reason": "This integration supplies native-tool preparation, wrappers or CMake helper modules, not a published JVM build-tool plugin; plugin coordinates, repository bootstrap and a Java target do not apply.",
+          "state": "not-applicable"
         },
         "native_plugin_repository": {
-          "reason": "This capability is not established by the reviewed integration record.",
-          "state": "unknown"
+          "reason": "This integration supplies native-tool preparation, wrappers or CMake helper modules, not a published JVM build-tool plugin; plugin coordinates, repository bootstrap and a Java target do not apply.",
+          "state": "not-applicable"
         },
         "nix_builder": {
           "sources": [],
@@ -107486,16 +107591,36 @@
           "value": "pkgs.uv-purifier.buildUvProject"
         },
         "offline_limits": {
-          "reason": "This capability is not established by the reviewed integration record.",
-          "state": "unknown"
+          "sources": [
+            "https://github.com/nix-purifiers/uv-purifier/blob/6df81ab679ca382d8ea69b59b8e34c3dcfb7fd8e/README.md#L59",
+            "https://github.com/nix-purifiers/uv-purifier/blob/6df81ab679ca382d8ea69b59b8e34c3dcfb7fd8e/README.md#L63",
+            "https://github.com/nix-purifiers/uv-purifier/blob/6df81ab679ca382d8ea69b59b8e34c3dcfb7fd8e/README.md#L329"
+          ],
+          "state": "known",
+          "value": [
+            "Use the prefetched .venv or uv run --no-sync; ordinary uv syncing may consult uv.lock or its own cache.",
+            "uv add and other operations requiring packages outside the locked environment retain native network behavior; lock and prefetch again.",
+            "Build backends with different platform-specific requirements need those requirements captured for the consuming platform."
+          ]
         },
         "offline_scope": {
-          "reason": "This capability is not established by the reviewed integration record.",
-          "state": "unknown"
+          "sources": [
+            "https://github.com/nix-purifiers/uv-purifier/blob/6df81ab679ca382d8ea69b59b8e34c3dcfb7fd8e/src/uv_purifier.py#L1006",
+            "https://github.com/nix-purifiers/uv-purifier/blob/6df81ab679ca382d8ea69b59b8e34c3dcfb7fd8e/src/uv_purifier.py#L1029"
+          ],
+          "state": "known",
+          "value": "locked-dependencies"
         },
         "platform_notes": {
-          "reason": "This capability is not established by the reviewed integration record.",
-          "state": "unknown"
+          "sources": [
+            "https://github.com/nix-purifiers/uv-purifier/blob/0d2f6e7e42462491560afcf8f03a1db4432d6c34/tests/real-world-flask.py",
+            "https://nix-purifiers.github.io/evidence/2605969ccfb7dc90dd46aaece2cdc853f3895e5dae978a1b7ce8b5666ba670bf.json"
+          ],
+          "state": "known",
+          "value": [
+            "The retained technical review covers native x86_64-linux, aarch64-linux and aarch64-darwin within its stated SDK/sample scopes.",
+            "No Intel Darwin, cross-compilation or unlisted SDK/system combination is established by that review."
+          ]
         },
         "platforms": {
           "sources": [
@@ -107567,15 +107692,19 @@
           ]
         },
         "relock": {
-          "reason": "This capability is not established by the reviewed integration record.",
-          "state": "unknown"
+          "sources": [
+            "https://github.com/nix-purifiers/uv-purifier/blob/6df81ab679ca382d8ea69b59b8e34c3dcfb7fd8e/src/uv_purifier.py#L674",
+            "https://github.com/nix-purifiers/uv-purifier/blob/6df81ab679ca382d8ea69b59b8e34c3dcfb7fd8e/README.md#L94"
+          ],
+          "state": "known",
+          "value": "preserves-pins"
         },
         "runtime_requirements": {
           "reason": "This capability is not established by the reviewed integration record.",
           "state": "unknown"
         },
         "stale_lock": {
-          "reason": "This capability is not established by the reviewed integration record.",
+          "reason": "Purifier prefetch/publish reject mismatched uv.lock or pyproject inputs, while native uv remains unwrapped and can update its own lock. The general stale-wrapper enum would hide that interface boundary.",
           "state": "unknown"
         },
         "supported_native_commands": {
