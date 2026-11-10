@@ -61,7 +61,13 @@ def check(source, destination):
     failures = []
     navigation = 0
     for markdown in source.rglob('*.md'):
-        canonical = re.search(r'^canonical_url: (".*")$', markdown.read_text(), re.M)
+        text = markdown.read_text()
+        if not text.startswith('---\n'):
+            continue
+        header, separator, _ = text[4:].partition('\n---\n')
+        if not separator:
+            continue
+        canonical = re.search(r'^canonical_url: (".*")$', header, re.M)
         if not canonical:
             continue
         url = json.loads(canonical[1])
