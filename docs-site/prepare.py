@@ -9,6 +9,7 @@ from review import canonical_review, resolve_review, SourceDrift
 from reference import guide_plan, reference_text
 from export import validate_version_coverage
 from quality import for_repository
+from authority import project_root, entry
 
 parser = argparse.ArgumentParser(description=__doc__)
 parser.add_argument('--repository', required=True)
@@ -140,3 +141,19 @@ else:
     'markdown': 'kramdown',
     'kramdown': {'input': 'GFM'},
 }))
+
+# Compatibility entry points only: producer snapshots are never current docs.
+# Keep validation and machine snapshots above, and preserve native payloads.
+for filename in ('index.html', 'reference.html', 'features.html'):
+    if filename != 'index.html' and differences is None:
+        continue
+    snapshot = 'system.json' if differences is not None else 'library.json' if review is not None and review.library is not None else None
+    guide_text = guide if differences is not None and filename == 'reference.html' else None
+    (source / filename.replace('.html', '.md')).write_text(entry(args.repository, filename, snapshot, guide_text))
+config = json.loads((source / '_config.yml').read_text())
+if differences is not None:
+    root = 'https://nix-purifiers.github.io' + project_root(args.repository)
+    config['feature_matrices'] = {args.repository: root + 'features.html'}
+    config['documentation_roots'] = {args.repository: root}
+config['central_documentation'] = False
+(source / '_config.yml').write_text(json.dumps(config))

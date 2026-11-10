@@ -41,6 +41,32 @@ class RenderedLinkTests(unittest.TestCase):
                 with self.subTest(broken=broken), self.assertRaises(ValueError):
                     check(source, site)
 
+    def test_canonical_namespace_survives_poisoned_project_pages(self):
+        with tempfile.TemporaryDirectory() as temporary:
+            root = Path(temporary)
+            source, site = root / 'source', root / 'site'
+            source.mkdir()
+            project = site / 'projects/bun-purifier'
+            project.mkdir(parents=True)
+            canonical = 'https://nix-purifiers.github.io/projects/bun-purifier/'
+            (source / '_config.yml').write_text(json.dumps({
+                'baseurl': '',
+                'feature_matrices': {'nix-purifiers/bun-purifier': '/projects/bun-purifier/features.html'},
+                'documentation_roots': {'nix-purifiers/bun-purifier': '/projects/bun-purifier/'},
+            }))
+            navigation = ('<a href="/projects/bun-purifier/features.html">Feature matrix</a>'
+                          '<a href="/projects/bun-purifier/reference.html">Full guide</a>')
+            for name in ('index.html', 'reference.html', 'features.html'):
+                (project / name).write_text(navigation)
+            legacy = site / 'bun-purifier'
+            legacy.mkdir()
+            (legacy / 'index.html').write_text('<h1>POISONED stale claims</h1>')
+            (site / 'index.html').write_text(f'<a href="{canonical}">Documentation</a>')
+            self.assertEqual(check(source, site), {'pages': 5, 'matrixLinks': 3})
+            (site / 'index.html').write_text(f'<a href="{canonical}missing.html">Missing</a>')
+            with self.assertRaisesRegex(ValueError, 'missing canonical documentation destination'):
+                check(source, site)
+
 
 if __name__ == '__main__':
     unittest.main()
