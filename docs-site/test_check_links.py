@@ -8,6 +8,38 @@ from content import source_links
 
 
 class RenderedLinkTests(unittest.TestCase):
+    def test_canonical_url_example_in_article_is_not_routing_metadata(self):
+        with tempfile.TemporaryDirectory() as temporary:
+            root = Path(temporary)
+            source, site = root / 'source', root / 'site'
+            source.mkdir()
+            site.mkdir()
+            (source / '_config.yml').write_text(json.dumps({'baseurl': '/example'}))
+            (source / 'index.md').write_text('---\nlayout: default\n---\n\n```yaml\ncanonical_url: "https://example.org/"\n```\n')
+            (site / 'index.html').write_text('<p>Example configuration</p>')
+            self.assertEqual(check(source, site), {'pages': 1, 'matrixLinks': 0})
+
+    def test_legacy_entry_requires_automatic_routing_and_fragment_preservation(self):
+        with tempfile.TemporaryDirectory() as temporary:
+            root = Path(temporary)
+            source, site = root / 'source', root / 'site'
+            source.mkdir()
+            site.mkdir()
+            (source / '_config.yml').write_text(json.dumps({'baseurl': '/old-site'}))
+            target = 'https://nix-purifiers.github.io/projects/bun-purifier/reference.html'
+            (source / 'reference.md').write_text('---\ncanonical_url: ' + json.dumps(target) + '\n---\n')
+            valid = ('<link rel="canonical" href="' + target + '">'
+                     '<meta http-equiv="refresh" content="0;url=' + target + '">'
+                     '<script>location.replace(' + json.dumps(target) + '+location.search+location.hash);</script>')
+            for broken in [valid.replace('+location.hash', ''),
+                           valid.replace('<meta http-equiv="refresh"', '<meta data-disabled="refresh"'),
+                           '<a href="' + target + '">Continue</a>']:
+                (site / 'reference.html').write_text(broken)
+                with self.subTest(broken=broken), self.assertRaisesRegex(ValueError, 'automatically route'):
+                    check(source, site)
+            (site / 'reference.html').write_text(valid)
+            self.assertEqual(check(source, site), {'pages': 1, 'matrixLinks': 0})
+
     def test_generated_destinations_stay_on_the_documentation_site(self):
         markdown = '[Native reference](reference.html#editor) and [Feature matrix](features.html)'
         self.assertEqual(source_links(markdown, 'nix-purifiers/bun-purifier'), markdown)
