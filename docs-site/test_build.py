@@ -9,6 +9,8 @@ import unittest
 
 from build import build
 from content import render
+from authority import canonicalize
+from quality import homepage, registry
 
 
 @unittest.skipUnless(shutil.which('nix'), 'Nix is needed for model integration tests')
@@ -24,19 +26,19 @@ class CatalogTests(unittest.TestCase):
         with tempfile.TemporaryDirectory() as directory:
             output = Path(directory)
             build(self.documentation, output)
-            ant = (output / 'ant-purifier/index.md').read_text()
-            docker = (output / 'docker-purifier/index.md').read_text()
+            ant = (output / 'projects/ant-purifier/index.md').read_text()
+            docker = (output / 'projects/docker-purifier/index.md').read_text()
             self.assertIn('ivy.lock.xml, ant-purifier.lock.json', ant)
             self.assertIn('docker build .', docker)
             self.assertIn('networkless software VM', docker)
             self.assertIn('## Development loop', ant)
-            self.assertEqual((output / 'index.html').read_bytes(), (self.root / 'index.html').read_bytes())
+            self.assertEqual((output / 'index.html').read_text(), canonicalize(homepage((self.root / 'index.html').read_text(), registry()), [*self.documentation['catalog'], 'purifier']))
             self.assertFalse((output / 'index.md').exists())
             self.assertEqual((output / 'robots.txt').read_text(), 'User-agent: *\nAllow: /\n')
             config = json.loads((output / '_config.yml').read_text())
             self.assertEqual(config['feature_matrices']['nix-purifiers/ant-purifier'],
-                             '/ant-purifier/features.html')
-            matrix = (output / 'ant-purifier/features.md').read_text()
+                             '/projects/ant-purifier/features.html')
+            matrix = (output / 'projects/ant-purifier/features.md').read_text()
             self.assertIn('ivy.lock.xml, ant-purifier.lock.json', matrix)
             self.assertIn('Unknown:', matrix)
             self.assertNotIn('| Sources |', matrix)
@@ -46,22 +48,22 @@ class CatalogTests(unittest.TestCase):
             self.assertNotIn('jdtls', matrix)
             self.assertIn('reference.html#language-tooling-integration', ant)
             for name in self.documentation['catalog']:
-                page = (output / name / 'index.md').read_text()
+                page = (output / 'projects' / name / 'index.md').read_text()
                 self.assertNotIn('Keep your existing editor', page)
                 self.assertNotIn('## Editor', page)
                 if '## Language' in page:
                     self.assertIn('## Language tooling integration', page)
-            helm_guide = (output / 'helm-purifier/reference.md').read_text()
+            helm_guide = (output / 'projects/helm-purifier/reference.md').read_text()
             self.assertIn('## Language tooling integration', helm_guide)
             self.assertIn('<a id="editor"></a>', helm_guide)
             self.assertNotIn('## Editor', helm_guide)
-            bun = (output / 'bun-purifier/index.md').read_text()
+            bun = (output / 'projects/bun-purifier/index.md').read_text()
             self.assertIn('reference.html#language-tooling-integration', bun)
             self.assertIn('reference.html#project-projections', ant)
             self.assertIn('Incoming projections', matrix)
             self.assertIn('Outgoing projections', matrix)
             for name in self.documentation['catalog']:
-                overview = (output / name / 'index.md').read_text()
+                overview = (output / 'projects' / name / 'index.md').read_text()
                 self.assertNotIn('## Version compatibility', overview)
                 self.assertIn('reference.html#version-compatibility', overview)
                 self.assertNotIn('## Language tooling integration', overview)
@@ -83,7 +85,7 @@ class CatalogTests(unittest.TestCase):
             (output / 'index.md').write_text('# Purifier reference\n\nCoverage and unresolved facts.\n')
             build(self.documentation, output)
             self.assertFalse((output / 'index.md').exists())
-            self.assertEqual((output / 'index.html').read_bytes(), (self.root / 'index.html').read_bytes())
+            self.assertEqual((output / 'index.html').read_text(), canonicalize(homepage((self.root / 'index.html').read_text(), registry()), [*self.documentation['catalog'], 'purifier']))
 
     def test_native_and_resource_projection_scopes_render_with_shared_labels(self):
         for name in ('meson-purifier', 'cmake-purifier'):
@@ -137,12 +139,13 @@ class CatalogTests(unittest.TestCase):
             command = [sys.executable, str(self.root / 'docs-site/prepare.py'),
                        '--repository', 'nix-purifiers/ant-purifier', '--output', str(output)]
             subprocess.run(command + ['--catalog', str(export)], check=True, capture_output=True)
-            self.assertIn('## Development loop', (output / 'index.md').read_text())
+            self.assertIn('https://nix-purifiers.github.io/projects/ant-purifier/', (output / 'index.md').read_text())
+            self.assertNotIn('## Development loop', (output / 'index.md').read_text())
             self.assertEqual(package.read_bytes(), b'published-package')
             self.assertTrue((output / 'system.json').exists())
             self.assertTrue((output / 'features.md').exists())
             self.assertEqual(json.loads((output / '_config.yml').read_text())['feature_matrices'],
-                             {'nix-purifiers/ant-purifier': '/features.html'})
+                             {'nix-purifiers/ant-purifier': 'https://nix-purifiers.github.io/projects/ant-purifier/features.html'})
             readme = base / 'README.md'
             readme.write_text('# Legacy\n\n[Example](examples/hello)\n')
             subprocess.run(command + ['--readme', str(readme)], check=True, capture_output=True)
@@ -150,8 +153,7 @@ class CatalogTests(unittest.TestCase):
             self.assertFalse((output / 'content-variations.json').exists())
             self.assertFalse((output / 'features.md').exists())
             self.assertNotIn('feature_matrix:', (output / 'index.md').read_text())
-            self.assertIn('https://github.com/nix-purifiers/ant-purifier/blob/main/examples/hello',
-                          (output / 'index.md').read_text())
+            self.assertIn('https://nix-purifiers.github.io/projects/ant-purifier/', (output / 'index.md').read_text())
             self.assertEqual(package.read_bytes(), b'published-package')
 
 

@@ -6,7 +6,7 @@ import json
 from quality import registry
 
 
-def install_theme(destination):
+def install_theme(destination, quality=None):
     theme = Path(__file__).parent
     homepage = (theme.parent / 'index.html').read_text()
     styles = re.findall(r'<style[^>]*>(.*?)</style>', homepage, re.DOTALL)
@@ -16,7 +16,7 @@ def install_theme(destination):
     (destination / '_includes').mkdir(exist_ok=True)
     (destination / 'assets').mkdir(exist_ok=True)
     (destination / '_data').mkdir(exist_ok=True)
-    quality = registry()
+    quality = registry() if quality is None else quality
     (destination / '_data/purifier_quality.json').write_text(json.dumps(quality['projects'], indent=2) + '\n')
     (destination / 'quality.json').write_text(json.dumps(quality, indent=2) + '\n')
     shutil.copyfile(theme / 'layout.html', destination / '_layouts/default.html')

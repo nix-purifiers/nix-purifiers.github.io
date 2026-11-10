@@ -46,8 +46,9 @@ def check(source, destination):
     failures = []
     navigation = 0
     for repository, matrix in config.get('feature_matrices', {}).items():
-        folder = root if prefix else root / repository.split('/')[1]
-        expected = prefix + matrix
+        doc_root = config.get('documentation_roots', {}).get(repository)
+        folder = root if prefix else root / (doc_root.strip('/') if doc_root else repository.split('/')[1])
+        expected = matrix if urlsplit(matrix).scheme else prefix + matrix
         for name in ('index.html', 'reference.html', 'features.html'):
             path = folder / name
             if path not in pages:
@@ -70,6 +71,12 @@ def check(source, destination):
                 failures.append(f'{path.relative_to(root)}: generated page points into source repository: {link}')
                 continue
             if url.scheme or url.netloc:
+                if not prefix and link.startswith('https://nix-purifiers.github.io/projects/'):
+                    resolved = root / url.path.lstrip('/')
+                    if resolved.is_dir():
+                        resolved /= 'index.html'
+                    if not resolved.exists() or (url.fragment and resolved.resolve() in pages and unquote(url.fragment) not in pages[resolved.resolve()].ids):
+                        failures.append(f'{path.relative_to(root)}: missing canonical documentation destination: {link}')
                 continue
             target = unquote(url.path)
             if target.startswith('/'):

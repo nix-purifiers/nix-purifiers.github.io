@@ -155,7 +155,9 @@ class QualityTests(unittest.TestCase):
             self.assertEqual(json.loads((target / '_data/purifier_quality.json').read_text()), self.data['projects'])
             layout = (target / '_layouts/default.html').read_text()
             self.assertNotIn('quality.tier', layout)
-            self.assertNotIn('site.data.purifier_quality', layout)
+            self.assertIn('if site.central_documentation', layout)
+            self.assertIn('site.data.purifier_quality', layout)
+            self.assertIn('Tier {{ assessment.tier }}', layout)
             self.assertIn('>Tier assessment</a>', layout)
 
     def test_homepage_groups_only_present_tiers_and_reclassifies_without_stale_headings(self):

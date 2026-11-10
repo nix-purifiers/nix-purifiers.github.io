@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
   <title>{{ page.title | default: site.title | escape }} · nix-purifiers</title>
   <meta name="description" content="{{ site.description | escape }}">
+  {% if page.canonical_url %}<link rel="canonical" href="{{ page.canonical_url | escape }}">{% endif %}
   <style>{% include base.css %}
 {% include docs.css %}</style>
 </head>
@@ -18,23 +19,26 @@
   </nav>
   {% assign feature_matrix = site.feature_matrices[repository] %}
   {% if feature_matrix %}
-  {% assign guide = feature_matrix | replace: 'features.html', 'reference.html' %}
-  {% assign overview = feature_matrix | replace: 'features.html', '' %}
+  {% assign overview = site.documentation_roots[repository] %}
+  {% assign guide = overview | append: 'reference.html' %}
+  {% assign overview_href = overview | relative_url %}
+  {% assign guide_href = guide | relative_url %}
+  {% if overview contains '://' %}{% assign overview_href = overview %}{% assign guide_href = guide %}{% endif %}
   <nav class="documentation-navigation" aria-label="Project documentation">
     {% assign overview_index = overview | append: "index.html" %}
-    {% if page.url == overview or page.url == overview_index %}<span aria-current="page">Overview</span>{% else %}<a href="{{ overview | relative_url }}">Overview</a>{% endif %}
-    {% if page.url == guide %}<span aria-current="page">Full guide</span>{% else %}<a href="{{ guide | relative_url }}">Full guide</a>{% endif %}
+    {% if page.url == overview or page.url == overview_index %}<span aria-current="page">Overview</span>{% else %}<a href="{{ overview_href }}">Overview</a>{% endif %}
+    {% if page.url == guide %}<span aria-current="page">Full guide</span>{% else %}<a href="{{ guide_href }}">Full guide</a>{% endif %}
   </nav>
   {% endif %}
   {% assign purifier_name = repository | split: '/' | last %}
   {% assign canonical_repository = 'nix-purifiers/' | append: purifier_name %}
   {% if repository == canonical_repository and feature_matrix %}
-  <p class="quality-tier"><a href="https://nix-purifiers.github.io/tiers.html#{{ purifier_name | escape }}">Tier assessment</a></p>
+  {% if site.central_documentation %}{% assign assessment = site.data.purifier_quality[purifier_name] %}<p class="quality-tier">Tier {{ assessment.tier }} · <a href="https://nix-purifiers.github.io/tiers.html#{{ purifier_name | escape }}">Tier assessment</a></p>{% endif %}
   {% endif %}
   <article>{{ content }}</article>
   <footer>
     <a href="https://nix-purifiers.github.io/">Explore the purifier family</a>
-    {% if feature_matrix %}<a class="secondary-link" href="{{ feature_matrix | relative_url }}">Feature matrix</a>{% endif %}
+    {% if feature_matrix %}<a class="secondary-link" href="{{ feature_matrix }}">Feature matrix</a>{% endif %}
   </footer>
   </main>
   <script>{% include docs.js %}</script>

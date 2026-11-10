@@ -99,9 +99,9 @@ class PipelineTests(unittest.TestCase):
         result = self.run_prepare(repository)
         self.assertEqual(result.returncode, 0, result.stderr)
         text = (self.root / 'output/index.md').read_text()
-        self.assertIn('reference.html#version-compatibility', text)
+        self.assertIn('/projects/pnpm-purifier/', text)
         guide = (self.root / 'output/reference.md').read_text()
-        self.assertIn('### Default and selectable versions', guide)
+        self.assertIn('/projects/pnpm-purifier/reference.html#', guide)
         self.assertNotIn('have not yet been recorded for this purifier', guide)
         page['facts']['tool']['value'] = True
         (variant / 'page.json').write_text(json.dumps(page))
