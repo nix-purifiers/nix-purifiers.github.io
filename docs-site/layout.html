@@ -5,7 +5,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
   <title>{{ page.title | default: site.title | escape }} · nix-purifiers</title>
   <meta name="description" content="{{ site.description | escape }}">
-  {% if page.canonical_url %}<link rel="canonical" href="{{ page.canonical_url | escape }}">{% endif %}
+  {% if page.canonical_url %}<link rel="canonical" href="{{ page.canonical_url | escape }}">
+  <meta http-equiv="refresh" content="0;url={{ page.canonical_url | escape }}">
+  <script>location.replace({{ page.canonical_url | jsonify | replace: '<', '\u003c' }}+location.search+location.hash);</script>{% endif %}
   <style>{% include base.css %}
 {% include docs.css %}</style>
 </head>

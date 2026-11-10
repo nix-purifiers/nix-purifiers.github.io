@@ -14,10 +14,21 @@ class Page(HTMLParser):
         self.anchors = []
         self.anchor = None
         self.ids = set()
+        self.canonical = []
+        self.refreshes = []
+        self.scripts = []
+        self.in_script = False
         self.feed(text)
 
     def handle_starttag(self, tag, attrs):
         attrs = dict(attrs)
+        if tag == 'link' and attrs.get('rel') == 'canonical':
+            self.canonical.append(attrs.get('href'))
+        if tag == 'meta' and attrs.get('http-equiv', '').lower() == 'refresh':
+            self.refreshes.append(attrs.get('content'))
+        if tag == 'script':
+            self.in_script = True
+            self.scripts.append('')
         if 'id' in attrs:
             self.ids.add(attrs['id'])
         if tag == 'a' and 'name' in attrs:
@@ -30,10 +41,14 @@ class Page(HTMLParser):
                 self.links.append(attrs[key])
 
     def handle_data(self, text):
+        if self.in_script:
+            self.scripts[-1] += text
         if self.anchor is not None:
             self.anchor[1] += text
 
     def handle_endtag(self, tag):
+        if tag == 'script':
+            self.in_script = False
         if tag == 'a':
             self.anchor = None
 
@@ -45,6 +60,17 @@ def check(source, destination):
     pages = {p.resolve(): Page(p.read_text()) for p in root.rglob('*.html')}
     failures = []
     navigation = 0
+    for markdown in source.rglob('*.md'):
+        canonical = re.search(r'^canonical_url: (".*")$', markdown.read_text(), re.M)
+        if not canonical:
+            continue
+        url = json.loads(canonical[1])
+        path = root / markdown.relative_to(source).with_suffix('.html')
+        page = pages.get(path)
+        script = 'location.replace(' + json.dumps(url).replace('<', '\\u003c') + '+location.search+location.hash);'
+        if (page is None or page.canonical != [url] or page.refreshes != ['0;url=' + url]
+                or script not in page.scripts):
+            failures.append(f'{markdown.relative_to(source)}: legacy entry must automatically route to its canonical documentation, preserving query and fragment')
     for repository, matrix in config.get('feature_matrices', {}).items():
         doc_root = config.get('documentation_roots', {}).get(repository)
         folder = root if prefix else root / (doc_root.strip('/') if doc_root else repository.split('/')[1])
