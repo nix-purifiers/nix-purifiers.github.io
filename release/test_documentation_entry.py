@@ -6,6 +6,46 @@ from documentation_entry import write_entries
 
 
 class NativeDocumentationRouting(unittest.TestCase):
+    def test_late_protected_collision_prevents_all_alias_writes(self):
+        with tempfile.TemporaryDirectory() as directory:
+            site = Path(directory)
+            protected = site / 'features.html'
+            protected.write_bytes(b'protected native publisher output')
+            with self.assertRaises(ValueError):
+                write_entries('nix-purifiers/maven-purifier', site)
+            self.assertEqual(list(site.iterdir()), [protected])
+            self.assertEqual(protected.read_bytes(), b'protected native publisher output')
+
+    def test_symlink_and_nonregular_collision_prevent_all_writes(self):
+        with tempfile.TemporaryDirectory() as directory:
+            parent = Path(directory)
+            native = parent / 'native.jar'
+            native.write_bytes(b'protected package')
+            for kind in ['symlink', 'dangling-symlink', 'directory']:
+                site = parent / kind
+                site.mkdir()
+                target = site / 'reference.html'
+                if kind == 'directory':
+                    target.mkdir()
+                else:
+                    target.symlink_to(native if kind == 'symlink' else parent / 'missing')
+                with self.subTest(kind=kind), self.assertRaises(ValueError):
+                    write_entries('nix-purifiers/maven-purifier', site)
+                self.assertFalse((site / 'index.html').exists())
+                self.assertFalse((site / 'features.html').exists())
+                self.assertEqual(native.read_bytes(), b'protected package')
+
+    def test_symlink_publication_directory_is_rejected(self):
+        with tempfile.TemporaryDirectory() as directory:
+            parent = Path(directory)
+            actual = parent / 'actual'
+            actual.mkdir()
+            link = parent / 'site'
+            link.symlink_to(actual, target_is_directory=True)
+            with self.assertRaises(ValueError):
+                write_entries('nix-purifiers/maven-purifier', link)
+            self.assertEqual(list(actual.iterdir()), [])
+
     def test_native_payload_and_sidecars_survive_idempotent_aliases(self):
         with tempfile.TemporaryDirectory() as directory:
             site = Path(directory)
