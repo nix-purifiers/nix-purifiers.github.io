@@ -17,6 +17,27 @@ class CompatibilityTests(unittest.TestCase):
         self.page = self.documentation['catalog']['npm-purifier']
         self.contract = self.documentation['contract']
 
+    def test_sbt_implementation_selection_extends_existing_version_selections(self):
+        root = Path(__file__).resolve().parents[1]
+        requirements = json.loads((root / 'model/version-requirements.json').read_text())
+        selections = requirements['projects']['sbt-purifier']['projectSelections']
+        existing = [item for item in self.documentation['catalog']['sbt-purifier']['compatibility']['projectSelections']
+                    if item['role'] != 'purifier-implementation']
+        self.assertEqual(selections[:-1], existing)
+        self.assertEqual(selections[-1]['role'], 'purifier-implementation')
+        self.assertEqual(selections[-1]['inputs'], ['sbt-purifier.lock.json', 'implementation.source'])
+        page = copy.deepcopy(self.documentation['catalog']['sbt-purifier'])
+        page['compatibility']['projectSelections'] = selections
+        validate(page['compatibility'])
+        body = render_compatibility(page, self.contract)
+        self.assertIn('Purifier implementation: sbt-purifier', body)
+        self.assertIn('project/build.properties', body)
+        self.assertIn('self-update', body)
+        bad = copy.deepcopy(page['compatibility'])
+        bad['projectSelections'][-1]['role'] = 'arbitrary-implementation'
+        with self.assertRaises(ValueError):
+            validate(bad)
+
     def test_nix_scope_selection_renders_actual_attributes_without_file_links(self):
         page = copy.deepcopy(self.documentation['catalog']['ant-purifier'])
         selections = page['compatibility']['projectSelections']
