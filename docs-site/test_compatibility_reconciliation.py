@@ -17,9 +17,15 @@ ROOT = Path(__file__).resolve().parents[1]
 class ReconciliationTests(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
-        cls.registry = (ROOT/'model/compatibility-tests.json').read_bytes()
+        cls.current_registry = (ROOT/'model/compatibility-tests.json').read_bytes()
         cls.sidecar = json.loads((ROOT/'model/compatibility-reconciliation.json').read_text())
-        cls.real = Reconciliation(cls.sidecar, cls.registry, ROOT)
+        cls.registry = (ROOT/'docs-site/evidence'/
+                        (cls.sidecar['registrySha256'] + '.json')).read_bytes()
+        cls.current_catalog = json.loads((ROOT/'docs-site/catalog.json').read_text())['catalog']
+        cls.fixture_catalog = copy.deepcopy(cls.current_catalog)
+        for name, entry in json.loads(cls.registry)['projects'].items():
+            cls.fixture_catalog[name]['compatibility']['testedPoints'] = copy.deepcopy(entry['testedPoints'])
+        cls.real = Reconciliation(cls.sidecar, cls.current_registry, ROOT, catalog=cls.current_catalog)
 
     def setUp(self):
         self.temporary = tempfile.TemporaryDirectory()
@@ -71,11 +77,26 @@ class ReconciliationTests(unittest.TestCase):
         review['pointIds'] = [added['id']]
         entry['testedPoints'].append(added)
         entry['reviews'].append(review)
-        self.catalog = json.loads((ROOT/'docs-site/catalog.json').read_text())['catalog']
+        self.catalog = copy.deepcopy(self.fixture_catalog)
         self.catalog[project]['compatibility']['testedPoints'] = copy.deepcopy(entry['testedPoints'])
         self.pending['docs-site/evidence/' + self.sidecar['registrySha256'] + '.json'] = type(self).registry
         self.registry = (json.dumps(registry, indent=2)+'\n').encode()
         return registry, added, review
+
+    def test_real_current_registry_preserves_frozen_history(self):
+        frozen = json.loads(self.registry)['projects']
+        frozen_points = {(name, point['id']): point
+                         for name, entry in frozen.items() for point in entry['testedPoints']}
+        self.assertEqual(self.real.points, frozen_points)
+        current = json.loads(self.current_registry)['projects']
+        for name, entry in current.items():
+            for point in entry['testedPoints']:
+                if (name, point['id']) in frozen_points:
+                    continue
+                review = self.real.reviews[name, point['id']]
+                result = self.real.classify(name, point['id'], point['sourceRevision'], review['files'])
+                self.assertEqual(result['status'], MATCH)
+                self.assertNotIn((name, point['id']), self.real.annotations)
 
     def test_generic_reviewed_append_preserves_frozen_partition_and_annotations(self):
         for project in ['maven-purifier', 'sbt-purifier', 'cmake-purifier']:
@@ -454,7 +475,11 @@ class ReconciliationTests(unittest.TestCase):
         import contextlib
         import io
         output = io.StringIO()
-        with patch.object(sys, 'argv', ['audit', '--checkouts', '/unused', '--verify-ci']), patch.object(module, 'inputs', side_effect=lambda checkout, revision: observed(checkout.name)[1]), patch.object(module, 'audit_source', side_effect=audit), patch.object(module, 'verify_ci'), patch.object(Reconciliation, 'verify_current_ci'), contextlib.redirect_stdout(output):
+        frozen_registry = self.root/'historical-registry.json'
+        frozen_registry.write_bytes(self.registry)
+        frozen_catalog = self.root/'historical-catalog.json'
+        frozen_catalog.write_text(json.dumps({'catalog': self.fixture_catalog}))
+        with patch.object(sys, 'argv', ['audit', '--checkouts', '/unused', '--verify-ci', '--registry', str(frozen_registry), '--catalog', str(frozen_catalog)]), patch.object(module, 'inputs', side_effect=lambda checkout, revision: observed(checkout.name)[1]), patch.object(module, 'audit_source', side_effect=audit), patch.object(module, 'verify_ci'), patch.object(Reconciliation, 'verify_current_ci'), contextlib.redirect_stdout(output):
             code = module.main()
         report = json.loads(output.getvalue())
         self.assertEqual(code, 1)
