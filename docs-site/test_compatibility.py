@@ -4,7 +4,7 @@ import re
 from pathlib import Path
 import unittest
 
-from compatibility import validate, render_compatibility, EMPTY
+from compatibility import validate, render_compatibility, packaged_components, packaged_match, EMPTY
 from content import render, feature_matrix
 from reference import reference_text
 from export import validate_version_coverage
@@ -155,7 +155,11 @@ class CompatibilityTests(unittest.TestCase):
         body = render_compatibility(page, self.contract)
         self.assertIn('Build tool / package manager: npm 6.14.16', body)
         self.assertIn('Project runtime: Node.js 12.22.12', body)
-        self.assertIn('Capture / build helper: Node.js 24.21.0', body)
+        packaged = packaged_components(page['compatibility']['defaults'])
+        helper = packaged_match(('host-helper', 'Node.js', '24.21.0'), {'x86_64-linux'}, packaged)
+        self.assertIsNotNone(helper)
+        self.assertIn('Capture / build helper: <a href="#' + helper['id'] + '">Node.js (packaged version)</a>', body)
+        self.assertIn('id="' + helper['id'] + '"><span class="version-labels"><strong>Node.js 24.21.0</strong>', body)
         self.assertIn('x86_64-linux', body)
         self.assertNotIn('aarch64-linux', body.split('### Tested combinations', 1)[1])
         self.assertFalse(page['compatibility']['supportedRanges'])
@@ -166,7 +170,7 @@ class CompatibilityTests(unittest.TestCase):
         original = copy.deepcopy(page)
         body = render_compatibility(page, self.contract)
         table = body.split('### Tested combinations', 1)[1].split('### Requirements', 1)[0]
-        summaries = re.findall(r'<summary><span class="tested-combination-labels">(.*?)</span></summary>', table)
+        summaries = re.findall(r'<summary><span class="tested-combination-labels(?: [^"]+)?">(.*?)</span></summary>', table)
         self.assertTrue(summaries)
         self.assertNotIn('Checked operations', ' '.join(summaries))
         self.assertNotIn('Exact Maven distribution selected by wrapper', ' '.join(summaries))
@@ -179,6 +183,71 @@ class CompatibilityTests(unittest.TestCase):
                 self.assertIn(component['version'], table)
         self.assertEqual(table.count('[Checks]('), len(page['compatibility']['testedPoints']))
         self.assertEqual(page, original)
+
+    def packaged_go_case(self):
+        page = copy.deepcopy(self.documentation['catalog']['go-purifier'])
+        data = page['compatibility']
+        data['defaults'] = [item for item in data['defaults'] if item['name'] == 'Go']
+        version = data['defaults'][0]['version']
+        data['testedPoints'] = [next(point for point in data['testedPoints']
+                                   if any(c['role'] == 'native-tool' and c['version'] == version
+                                          for c in point['components']))]
+        return page
+
+    def test_packaged_cards_combine_exact_shared_values_without_losing_roles(self):
+        page = self.packaged_go_case()
+        original = copy.deepcopy(page)
+        body = render_compatibility(page, self.contract)
+        packaged, tested = body.split('### Tested combinations', 1)
+        version = page['compatibility']['defaults'][0]['version']
+        self.assertEqual(packaged.count('<li class="packaged-version"'), 1)
+        self.assertEqual(packaged.count('Go ' + version), 1)
+        self.assertIn('Build tool / package manager; Project compiler', packaged)
+        self.assertNotIn('| Selection | Component | Version | Platforms |', packaged)
+        summary = re.search(r'<summary><span class="tested-combination-labels[^\"]*">(.*?)</summary>', tested).group(1)
+        self.assertIn('Go (packaged version)', summary)
+        self.assertIn('Also project compiler', summary)
+        self.assertNotIn(version, summary)
+        self.assertIn('[Checks](', tested)
+        self.assertEqual(page, original)
+
+    def test_packaged_references_require_exact_role_name_version_and_platform(self):
+        for field in ['role', 'name', 'version', 'systems']:
+            page = self.packaged_go_case()
+            for item in page['compatibility']['defaults']:
+                item[field] = {'role': 'host-helper', 'name': 'Another Go',
+                               'version': '999.0.0', 'systems': ['aarch64-darwin']}[field]
+            body = render_compatibility(page, self.contract).split('### Tested combinations', 1)[1]
+            with self.subTest(field=field):
+                self.assertNotIn('href="#packaged-version-', body)
+                for component in page['compatibility']['testedPoints'][0]['components']:
+                    self.assertIn(component['name'] + ' ' + component['version'], body)
+
+    def test_shared_test_summary_does_not_extend_a_platform_limited_default(self):
+        page = self.packaged_go_case()
+        for item in page['compatibility']['defaults']:
+            item['systems'] = ['x86_64-linux']
+        point = copy.deepcopy(page['compatibility']['testedPoints'][0])
+        point['id'] += '-arm-control'
+        point['system'] = 'aarch64-linux'
+        page['compatibility']['testedPoints'].append(point)
+        body = render_compatibility(page, self.contract).split('### Tested combinations', 1)[1]
+        self.assertNotIn('href="#packaged-version-', body)
+        self.assertEqual(body.count('[Checks]('), 2)
+
+    def test_packaged_choices_keep_platform_and_conditional_selection_differences(self):
+        page = self.packaged_go_case()
+        defaults = page['compatibility']['defaults']
+        defaults[0]['systems'] = ['x86_64-linux']
+        self.assertEqual(len(packaged_components(defaults)), 2)
+        defaults[0]['systems'] = defaults[1]['systems'][:]
+        alternatives = [dict(item, selection=selection) for selection in ['Profile A', 'Profile B']
+                        for item in defaults]
+        choices = packaged_components(alternatives)
+        self.assertEqual(len(choices), 2)
+        component = page['compatibility']['testedPoints'][0]['components'][0]
+        self.assertIsNone(packaged_match((component['role'], component['name'], component['version']),
+                                        {'x86_64-linux'}, choices))
 
     def test_grouping_preserves_helper_variation_and_platform_scope(self):
         page = copy.deepcopy(self.page)
