@@ -70367,7 +70367,35 @@
           }
         ],
         "limitations": [],
-        "projectSelections": [],
+        "projectSelections": [
+          {
+            "description": "The project lock selects the purifier source revision and NAR hash, plus any recorded Node.js toolchain choice. Use self-update to change the implementation selection explicitly. The selected wrapper and matching builder validate that identity.",
+            "evidence": [
+              "https://github.com/nix-purifiers/npm-purifier/blob/14dd3fd39f4d8c7743881667e3637a4e5bbc4ba5/flake.nix",
+              "https://github.com/nix-purifiers/npm-purifier/blob/14dd3fd39f4d8c7743881667e3637a4e5bbc4ba5/pkgs/default.nix",
+              "https://github.com/nix-purifiers/npm-purifier/blob/14dd3fd39f4d8c7743881667e3637a4e5bbc4ba5/nix/lib/sdk-from-configuration.nix",
+              "https://github.com/nix-purifiers/npm-purifier/blob/14dd3fd39f4d8c7743881667e3637a4e5bbc4ba5/nix/lib/build-npm-project.nix",
+              "https://github.com/nix-purifiers/npm-purifier/blob/14dd3fd39f4d8c7743881667e3637a4e5bbc4ba5/tests/default.nix",
+              "https://github.com/nix-purifiers/npm-purifier/blob/14dd3fd39f4d8c7743881667e3637a4e5bbc4ba5/tests/implementation-lifecycle.py",
+              "https://github.com/nix-purifiers/npm-purifier/blob/14dd3fd39f4d8c7743881667e3637a4e5bbc4ba5/tests/implementation-sdk-lifecycle.py",
+              "https://github.com/nix-purifiers/npm-purifier/actions/runs/43043342640/job/130600658483",
+              "https://github.com/nix-purifiers/npm-purifier/actions/runs/43043342640/job/130600658391",
+              "https://github.com/nix-purifiers/npm-purifier/actions/runs/43043342640/job/130600658339",
+              "https://github.com/nix-purifiers/npm-purifier/actions/runs/43043342640/job/130600658411",
+              "https://github.com/nix-purifiers/npm-purifier/actions/runs/43043342640/job/130600658358",
+              "https://github.com/nix-purifiers/npm-purifier/actions/runs/43043342640/job/130600658645"
+            ],
+            "inputs": [
+              "npm-purifier.lock.json",
+              "implementation.source",
+              "implementation.configuration"
+            ],
+            "kind": "lockfile",
+            "name": "npm-purifier",
+            "role": "purifier-implementation",
+            "sourceRevision": "14dd3fd39f4d8c7743881667e3637a4e5bbc4ba5"
+          }
+        ],
         "supportedRanges": [],
         "testedPoints": [
           {
