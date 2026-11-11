@@ -12,6 +12,9 @@ ROLES = {
     'project-runtime': 'Project runtime',
     'compiler': 'Project compiler',
     'host-helper': 'Capture / build helper',
+    'publisher-tool': 'Publication tool',
+    'publisher-runtime': 'Runtime running publication',
+    'publisher-helper': 'Publication helper',
     'addon-target': 'Native addon target',
     'build-target': 'Build target',
     'native-format': 'Native lock / package format',
@@ -262,7 +265,8 @@ def tested_combinations(points, packaged=()):
             tools += '<small>' + formats + '</small>'
         runtimes = {}
         for role, name, version in components:
-            if role not in ('native-tool', 'host-helper', 'native-format'):
+            if role not in ('native-tool', 'host-helper', 'native-format',
+                            'publisher-tool', 'publisher-runtime', 'publisher-helper'):
                 runtimes.setdefault((name, version), []).append((role, name, version))
         runtime_labels = []
         for (name, version), group in runtimes.items():
@@ -278,6 +282,8 @@ def tested_combinations(points, packaged=()):
                     label += ' (' + cell(', '.join(roles)) + ')'
             runtime_labels.append(label)
         runtime = ' · '.join(runtime_labels)
+        if any(c[0].startswith('publisher-') for c in components):
+            runtime += '<small>Separate publisher SDK; see full toolchain roles</small>'
         platforms = platform_labels(point['system'] for point in checks)
         output += ['<details class="tested-combination" markdown="1">',
                    '<summary><span class="tested-combination-labels version-labels"><strong>' + tools

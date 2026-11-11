@@ -17,6 +17,39 @@ class CompatibilityTests(unittest.TestCase):
                 + tested_combinations(page["compatibility"]["testedPoints"],
                                       packaged_components(page["compatibility"]["defaults"])))
 
+    def test_publisher_roles_keep_distinct_sdk_out_of_project_runtime_summary(self):
+        page = copy.deepcopy(self.documentation['catalog']['bundler-purifier'])
+        point = copy.deepcopy(page['compatibility']['testedPoints'][0])
+        point['components'] = [
+            {'role': 'native-tool', 'name': 'RubyGems', 'version': '1.0.1'},
+            {'role': 'project-runtime', 'name': 'Ruby', 'version': '1.8.3'},
+            {'role': 'publisher-tool', 'name': 'RubyGems', 'version': '1.3.5'},
+            {'role': 'publisher-tool', 'name': 'Gemcutter artifact', 'version': '0.3.0'},
+            {'role': 'publisher-tool', 'name': 'Gemcutter User-Agent report', 'version': '0.2.0'},
+            {'role': 'publisher-runtime', 'name': 'Ruby', 'version': '1.8.4'},
+            {'role': 'publisher-helper', 'name': 'json_pure', 'version': '1.8.6'},
+        ]
+        page['compatibility']['testedPoints'] = [point]
+        validate(page['compatibility'])
+        self.assertNotIn('tested-combination', render_compatibility(page, self.contract))
+        body = feature_matrix(page, self.contract).split('## Tested combinations', 1)[1]
+        summary = re.search(r'<summary>(.*?)</summary>', body).group(1)
+        self.assertIn('Ruby 1.8.3', summary)
+        self.assertIn('Separate publisher SDK', summary)
+        self.assertNotIn('1.8.4', summary)
+        self.assertNotIn('1.3.5', summary)
+        self.assertIn('Publication tool: RubyGems 1.3.5', body)
+        self.assertIn('Runtime running publication: Ruby 1.8.4', body)
+        self.assertIn('Publication helper: json_pure 1.8.6', body)
+        self.assertIn('Gemcutter artifact 0.3.0', body)
+        self.assertIn('Gemcutter User-Agent report 0.2.0', body)
+        control = copy.deepcopy(point)
+        control['id'] += '-publisher-control'
+        control['components'][2]['version'] = '9.9.9'
+        page['compatibility']['testedPoints'].append(control)
+        validate(page['compatibility'])
+        self.assertEqual(feature_matrix(page, self.contract).count('<details class="tested-combination"'), 2)
+
     def setUp(self):
         root = Path(__file__).resolve().parent
         self.documentation = json.loads((root / 'catalog.json').read_text())

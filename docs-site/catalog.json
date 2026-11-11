@@ -9330,6 +9330,92 @@
             ],
             "sourceRevision": "8a49d752987c9f90faef0fc2ac1b5676749c7af6",
             "system": "x86_64-linux"
+          },
+          {
+            "components": [
+              {
+                "name": "Bundler",
+                "role": "native-tool",
+                "version": "0.3.1"
+              },
+              {
+                "name": "Bundler::VERSION report",
+                "role": "native-tool",
+                "version": "0.5.0"
+              },
+              {
+                "name": "RubyGems",
+                "role": "native-tool",
+                "version": "1.0.1"
+              },
+              {
+                "name": "Ruby",
+                "role": "native-tool-runtime",
+                "version": "1.8.3"
+              },
+              {
+                "name": "Ruby",
+                "role": "project-runtime",
+                "version": "1.8.3"
+              },
+              {
+                "name": "JSON C extension",
+                "role": "addon-target",
+                "version": "1.1.3"
+              },
+              {
+                "name": "RubyGems",
+                "role": "publisher-tool",
+                "version": "1.3.5"
+              },
+              {
+                "name": "Gemcutter artifact",
+                "role": "publisher-tool",
+                "version": "0.3.0"
+              },
+              {
+                "name": "Gemcutter User-Agent report",
+                "role": "publisher-tool",
+                "version": "0.2.0"
+              },
+              {
+                "name": "Ruby",
+                "role": "publisher-runtime",
+                "version": "1.8.4"
+              },
+              {
+                "name": "json_pure",
+                "role": "publisher-helper",
+                "version": "1.8.6"
+              }
+            ],
+            "evidence": [
+              "https://github.com/nix-purifiers/bundler-purifier/blob/1b52e0c2dc202d4fabe10b70f43a2c6a34cb3f78/tests/prelock-v03-native.py",
+              "https://github.com/nix-purifiers/bundler-purifier/blob/1b52e0c2dc202d4fabe10b70f43a2c6a34cb3f78/tests/prelock-input.py",
+              "https://github.com/nix-purifiers/bundler-purifier/blob/1b52e0c2dc202d4fabe10b70f43a2c6a34cb3f78/tests/default.nix",
+              "https://github.com/nix-purifiers/bundler-purifier/actions/runs/43086536008/job/130788169827",
+              "https://nix-purifiers.github.io/evidence/d929c4a1040f1b3e35179b45545afda6f0fca15fe79e63d556b68e731e832331.json"
+            ],
+            "id": "ruby-1.8.3-bundler-artifact-0.3.1-native-1b52e0c",
+            "notes": [
+              "Ruby 1.8.3 has no RUBY_PATCHLEVEL constant; this is not p0. Bundler denotes the attested 0.3.1 archive, whose Bundler::VERSION reports 0.5.0. RubyGems reports Gem::RubyGemsVersion 1.0.1.",
+              "The environment-v03 frontend validates and replays a cached, precompiled SDK input. No native Gemfile.lock is created. Its versioned validator is not a claim of equivalence to original gem-exec behavior.",
+              "Publication uses an independently attested Ruby 1.8.4 / RubyGems 1.3.5 / Gemcutter 0.3.0 SDK, with publisher-only json_pure 1.8.6; it does not use the Ruby 1.8.3 consumer as publisher. Gemcutter user-agent reports 0.2.0.",
+              "An ordinary RubyGems 1.0.1 consumer installs from the fixture registry and executes the projected JSON 1.1.3 native payload. The driver asserts uploaded/payload byte joins; remote binaries and archives were not independently downloaded here.",
+              "Declared Nix inputs and relocation replay execute with the original project root unavailable. This does not establish cold source-extension compilation, general ABI compatibility, sandboxed pure builds, or a supported version range.",
+              "The successful evidence comes from attempt 2 after an external artifact-upload failure in attempt 1; attempt 1 native execution itself succeeded."
+            ],
+            "operations": [
+              "incoming-lock",
+              "native-prefetch",
+              "native-publish",
+              "uploaded-projection-byte-equality",
+              "ordinary-registry-consumer",
+              "native-addon-load",
+              "native-input-composition"
+            ],
+            "sourceRevision": "1b52e0c2dc202d4fabe10b70f43a2c6a34cb3f78",
+            "system": "x86_64-linux"
           }
         ]
       },
