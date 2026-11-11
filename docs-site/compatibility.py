@@ -4,6 +4,7 @@ from urllib.parse import urlsplit
 import re
 
 ROLES = {
+    'purifier-implementation': 'Purifier implementation',
     'native-tool': 'Build tool / package manager',
     'native-tool-runtime': 'Runtime running the tool',
     'project-runtime': 'Project runtime',
