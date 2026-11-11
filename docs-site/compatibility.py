@@ -137,8 +137,10 @@ def cell(value):
 
 
 def evidence(item):
-    return ' · '.join('[CI run](' + url + ')' if '/actions/runs/' in url else
-                      '[Test definition](' + url + ')' for url in item['evidence'])
+    links = item['evidence']
+    url = next((link for link in links if '/actions/runs/' in link),
+               next((link for link in links if '/evidence/' in link), links[0]))
+    return '[Checks](' + url + ')'
 
 
 def render_compatibility(page, contract, heading=True):
@@ -148,9 +150,8 @@ def render_compatibility(page, contract, heading=True):
     if not any(data.values()):
         lines.append(spec['unknown'])
         return '\n\n'.join(lines)
-    lines += [spec['introduction']]
     if data['defaults']:
-        lines += ['### Default and selectable versions', spec['defaultsScope'], '| Selection | Component | Version | Platforms |', '|---|---|---|---|']
+        lines += ['### Packaged versions', '| Selection | Component | Version | Platforms |', '|---|---|---|---|']
         lines += [f'| {cell(x["selection"])} | {ROLES[x["role"]]}: {cell(x["name"])} | {cell(x["version"])} | {cell(", ".join(x["systems"]))} |' for x in data['defaults']]
     definition_items = data['defaults'] + data['projectSelections'] + data['limitations'] + data['supportedRanges']
     if definition_items:
@@ -168,29 +169,71 @@ def render_compatibility(page, contract, heading=True):
         lines += ['### Supported ranges']
         for item in data['supportedRanges']:
             lines.append(f'{ROLES[item["role"]]} **{cell(item["name"])}**: {cell(item["range"])} '
-                         f'({cell(", ".join(item["systems"]))}; {cell(", ".join(item["operations"]))}). '
+                         f'({cell(", ".join(item["systems"]))}). '
                          + cell(item['basis']))
-    else:
-        lines.append(spec['noRanges'])
     if data['testedPoints']:
-        lines += ['### Tested combinations', spec['pointScope'],
-                  '| Versions and roles | Platform | Checked operations | Evidence |', '|---|---|---|---|']
-        for point in data['testedPoints']:
-            components = '<br>'.join(f'{ROLES[c["role"]]}: {cell(c["name"])} {cell(c["version"])}' for c in point['components'])
-            operations = ', '.join(cell(OPERATIONS.get(op, op.replace('-', ' '))) for op in point['operations'])
-            if point['notes']:
-                operations += '<br>' + ' '.join(cell(note) for note in point['notes'])
-            lines.append(f'| {components} | {cell(point["system"])} | {operations} | {evidence(point)} |')
-    elif page.get('facts', {}).get('tested_toolchain', {}).get('state') == 'known':
-        lines += ['### Recorded toolchain checks', cell(', '.join(page['facts']['tested_toolchain']['value'])),
-                  'This earlier check summary does not distinguish a complete platform and operation matrix.']
-    else:
-        lines.append(spec['noTests'])
+        lines += ['### Tested combinations',
+                  'Open the combination matching your toolchain for its checks, limits, and evidence.',
+                  tested_combinations(data['testedPoints'])]
     if data['limitations']:
-        lines += ['### Version requirements and limits']
+        lines += ['### Requirements']
         lines += ['- ' + cell(item['text']) for item in data['limitations']]
     return '\n\n'.join(_tables(lines))
 
+
+
+PLATFORMS = {
+    'x86_64-linux': 'Linux x86-64',
+    'aarch64-linux': 'Linux ARM64',
+    'x86_64-darwin': 'macOS Intel',
+    'aarch64-darwin': 'macOS ARM64',
+}
+
+
+def tested_combinations(points):
+    """Group only identical complete toolchains; keep each test's scope intact."""
+    combinations = {}
+    for point in points:
+        key = tuple(sorted((c['role'], c['name'], c['version']) for c in point['components']))
+        combinations.setdefault(key, []).append(point)
+    output = []
+    for components, checks in combinations.items():
+        tools = ' · '.join(cell(name + ' ' + version)
+                           for role, name, version in components if role == 'native-tool')
+        formats = ' · '.join(cell(name + ' ' + version)
+                             for role, name, version in components if role == 'native-format')
+        if formats:
+            tools += '<small>' + formats + '</small>'
+        runtimes = {}
+        for role, name, version in components:
+            if role not in ('native-tool', 'host-helper', 'native-format'):
+                runtimes.setdefault((name, version), []).append(ROLES[role])
+        runtime = ' · '.join(cell(name + ' ' + version)
+                             + (' (' + cell(', '.join(roles)) + ')' if len(runtimes) > 1 else '')
+                             for (name, version), roles in runtimes.items())
+        platforms = ' · '.join(PLATFORMS.get(system, system)
+                               for system in dict.fromkeys(point['system'] for point in checks))
+        output += ['<details class="tested-combination" markdown="1">',
+                   '<summary><span class="tested-combination-labels"><strong>' + tools
+                   + '</strong><span>' + runtime + '</span><span>' + cell(platforms)
+                   + '</span></span></summary>',
+                   '<details markdown="1">\n<summary>Full toolchain roles</summary>\n',
+                   '\n'.join('- ' + cell(ROLES[role] + ': ' + name + ' ' + version)
+                             for role, name, version in components), '</details>']
+        for point in checks:
+            output += ['**' + cell(PLATFORMS.get(point['system'], point['system']))
+                       + ' (`' + cell(point['system']) + '`)** — ' + evidence(point),
+                       '**Checked operations**',
+                       '<ul class="tested-operations">'
+                       + ''.join('<li>' + cell(OPERATIONS.get(op, op.replace('-', ' '))) + '</li>'
+                                 for op in point['operations']) + '</ul>',
+                       '<details markdown="1">\n<summary>Limits and source evidence</summary>\n']
+            output += ['- ' + cell(note) for note in point['notes']]
+            output += ['Source revision `' + point['sourceRevision'] + '`.',
+                       ' · '.join('[' + ('CI run' if '/actions/runs/' in url else 'Source')
+                                  + '](' + url + ')' for url in point['evidence']), '</details>']
+        output.append('</details>')
+    return '\n\n'.join(output)
 
 def _tables(lines):
     """Keep Markdown table rows contiguous and paragraphs separated."""

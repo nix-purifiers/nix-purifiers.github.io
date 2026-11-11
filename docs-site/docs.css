@@ -56,3 +56,30 @@ hr { border: 0; border-top: 1px solid var(--border); margin-block: 2rem; }
 
 .documentation-navigation { display: flex; gap: 1.25rem; margin: 1.25rem 0; font-size: .9rem; }
 .documentation-navigation [aria-current="page"] { color: var(--muted); }
+
+
+.tested-combination { border-block-end: 1px solid var(--border); }
+.tested-combination > summary { padding-block: .85rem; cursor: pointer; }
+.tested-combination-labels {
+  display: inline-grid;
+  grid-template-columns: 1fr 1.3fr 1fr;
+  gap: .75rem;
+  width: calc(100% - 1.5rem);
+  vertical-align: top;
+}
+.tested-combination-labels small { display: block; font-weight: normal; }
+.tested-combination-labels > :last-child { color: var(--muted); }
+.tested-combination[open] { padding-bottom: 1rem; }
+.tested-combination details { margin-block: 1rem; }
+.tested-combination details > summary { color: var(--accent); cursor: pointer; }
+.tested-combination > summary:focus-visible,
+.tested-combination details > summary:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+}
+.tested-operations { columns: 2; padding-inline-start: 1.25rem; }
+.tested-operations li { break-inside: avoid; }
+@media (max-width: 640px) {
+  .tested-combination-labels { grid-template-columns: 1fr; gap: .25rem; }
+  .tested-operations { columns: 1; }
+}
