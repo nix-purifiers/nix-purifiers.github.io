@@ -29,7 +29,7 @@ def main():
     registry = json.loads(args.registry.read_text())
     catalog = json.loads(args.catalog.read_text())['catalog']
     validate_registry(registry, catalog)
-    reconciliation = Reconciliation(json.loads(args.reconciliation.read_text()), args.registry.read_bytes(), ROOT)
+    reconciliation = Reconciliation(json.loads(args.reconciliation.read_text()), args.registry.read_bytes(), ROOT, catalog=catalog)
     report = dict(version=2, status='catalog-consistent', nativeTestsExecuted=False, projects={}, currentApplicability='not-evaluated', pointCounts={})
     failed = False
     with tempfile.TemporaryDirectory(prefix='purifier-compatibility-audit-') as temporary:
