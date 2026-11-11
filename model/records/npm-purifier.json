@@ -26,36 +26,49 @@
       "state": "unknown"
     },
     "credentials": {
-      "reason": "This capability is not established by the reviewed integration record.",
-      "state": "unknown"
+      "state": "unknown",
+      "reason": "The documented private-source paths require supplied checkouts or credentialed Nix fetcher overrides. This record does not establish default credential propagation across both native capture and Nix replay."
     },
     "dependency_sources": {
-      "reason": "This capability is not established by the reviewed integration record.",
-      "state": "unknown"
+      "state": "known",
+      "value": [
+        "Registry packages",
+        "Tarball URLs",
+        "Git repositories",
+        "Local directories and tarballs",
+        "Workspaces"
+      ],
+      "sources": [
+        "https://github.com/nix-purifiers/npm-purifier/blob/a2edbacf0d1d0bfcfbd967b4560f705f1a03e3f6/README.md#L266"
+      ]
     },
     "editor_completion": {
-      "reason": "This capability is not established by the reviewed integration record.",
-      "state": "unknown"
+      "state": "unknown",
+      "reason": "The documented node_modules and TypeScript setup supplies editor inputs, but does not establish protocol-level completion. No new language-server execution result is asserted."
     },
     "editor_dependency_sources": {
-      "reason": "This capability is not established by the reviewed integration record.",
-      "state": "unknown"
+      "state": "unknown",
+      "reason": "The documented node_modules and TypeScript setup supplies editor inputs, but does not establish protocol-level dependency-source retrieval. No new language-server execution result is asserted."
     },
     "editor_diagnostics": {
-      "reason": "This capability is not established by the reviewed integration record.",
-      "state": "unknown"
+      "state": "unknown",
+      "reason": "The documented node_modules and TypeScript setup supplies editor inputs, but does not establish protocol-level diagnostics. No new language-server execution result is asserted."
     },
     "editor_metadata_format": {
       "reason": "This capability is not established by the reviewed integration record.",
       "state": "unknown"
     },
     "editor_navigation": {
-      "reason": "This capability is not established by the reviewed integration record.",
-      "state": "unknown"
+      "state": "unknown",
+      "reason": "The documented node_modules and TypeScript setup supplies editor inputs, but does not establish protocol-level definition lookup. No new language-server execution result is asserted."
     },
     "editor_offline": {
-      "reason": "This capability is not established by the reviewed integration record.",
-      "state": "unknown"
+      "state": "known",
+      "value": true,
+      "sources": [
+        "https://github.com/nix-purifiers/npm-purifier/blob/a2edbacf0d1d0bfcfbd967b4560f705f1a03e3f6/README.md#L240",
+        "https://github.com/nix-purifiers/npm-purifier/blob/a2edbacf0d1d0bfcfbd967b4560f705f1a03e3f6/README.md#L209"
+      ]
     },
     "editor_protocol": {
       "sources": [],
@@ -72,8 +85,13 @@
       "state": "unknown"
     },
     "inputs": {
-      "reason": "This capability is not established by the reviewed integration record.",
-      "state": "unknown"
+      "state": "known",
+      "value": [
+        "package.json"
+      ],
+      "sources": [
+        "https://github.com/nix-purifiers/npm-purifier/blob/a2edbacf0d1d0bfcfbd967b4560f705f1a03e3f6/README.md#L8"
+      ]
     },
     "integration": {
       "sources": [],
@@ -102,20 +120,20 @@
       "state": "unknown"
     },
     "native_plugin_bootstrap": {
-      "reason": "This capability is not established by the reviewed integration record.",
-      "state": "unknown"
+      "state": "not-applicable",
+      "reason": "This integration supplies native JavaScript package-manager preparation and wrappers, not a published JVM build-tool plugin; plugin coordinates, repository bootstrap and a Java target do not apply."
     },
     "native_plugin_coordinate": {
-      "reason": "This capability is not established by the reviewed integration record.",
-      "state": "unknown"
+      "state": "not-applicable",
+      "reason": "This integration supplies native JavaScript package-manager preparation and wrappers, not a published JVM build-tool plugin; plugin coordinates, repository bootstrap and a Java target do not apply."
     },
     "native_plugin_java_target": {
-      "reason": "This capability is not established by the reviewed integration record.",
-      "state": "unknown"
+      "state": "not-applicable",
+      "reason": "This integration supplies native JavaScript package-manager preparation and wrappers, not a published JVM build-tool plugin; plugin coordinates, repository bootstrap and a Java target do not apply."
     },
     "native_plugin_repository": {
-      "reason": "This capability is not established by the reviewed integration record.",
-      "state": "unknown"
+      "state": "not-applicable",
+      "reason": "This integration supplies native JavaScript package-manager preparation and wrappers, not a published JVM build-tool plugin; plugin coordinates, repository bootstrap and a Java target do not apply."
     },
     "nix_builder": {
       "sources": [],
@@ -123,16 +141,37 @@
       "value": "pkgs.npm-purifier.buildNpmProject"
     },
     "offline_limits": {
-      "reason": "This capability is not established by the reviewed integration record.",
-      "state": "unknown"
+      "state": "known",
+      "value": [
+        "Operations that add, update or remove dependencies run native npm online and then lock again.",
+        "A download absent from the lock fails with ENOTCACHED; arbitrary install-script downloads are not captured automatically.",
+        "External lock completions serve the Nix build; interactive npm still reads the project package-lock.json and may require matching in-tree locks."
+      ],
+      "sources": [
+        "https://github.com/nix-purifiers/npm-purifier/blob/a2edbacf0d1d0bfcfbd967b4560f705f1a03e3f6/pkgs/npm/default.nix#L77",
+        "https://github.com/nix-purifiers/npm-purifier/blob/a2edbacf0d1d0bfcfbd967b4560f705f1a03e3f6/README.md#L289",
+        "https://github.com/nix-purifiers/npm-purifier/blob/a2edbacf0d1d0bfcfbd967b4560f705f1a03e3f6/README.md#L233"
+      ]
     },
     "offline_scope": {
-      "reason": "This capability is not established by the reviewed integration record.",
-      "state": "unknown"
+      "state": "known",
+      "value": "locked-dependencies",
+      "sources": [
+        "https://github.com/nix-purifiers/npm-purifier/blob/a2edbacf0d1d0bfcfbd967b4560f705f1a03e3f6/README.md#L209"
+      ]
     },
     "platform_notes": {
-      "reason": "This capability is not established by the reviewed integration record.",
-      "state": "unknown"
+      "state": "known",
+      "value": [
+        "The retained native technical review covers x86_64-linux, aarch64-linux and aarch64-darwin within its stated SDK, sample and disclosed adaptation scopes.",
+        "No Intel Darwin, arbitrary cross-compilation, unchanged upstream test suite or unlisted SDK/system coverage is inferred."
+      ],
+      "sources": [
+        "https://nix-purifiers.github.io/evidence/47bada182a591f0edd928f1137ca06af98494f92fb2f067610a4dd2cf18e5779.json",
+        "https://nix-purifiers.github.io/evidence/0b8310dcc2785cdb6ebe8e3e0edda4c1dd334f5f751f91db26c07f03f9121e4c.log",
+        "https://nix-purifiers.github.io/evidence/99f7cd17d887430894b2aabdb3588c1e5ecd8d72a60bfda72d116679bedf1f72.log",
+        "https://nix-purifiers.github.io/evidence/4593b9fa628788f5715d3431a71e98fdf33f37b70514928ff32583e6aab79005.json"
+      ]
     },
     "platforms": {
       "sources": [],
@@ -200,16 +239,19 @@
       ]
     },
     "relock": {
-      "reason": "This capability is not established by the reviewed integration record.",
-      "state": "unknown"
+      "state": "known",
+      "value": "preserves-pins",
+      "sources": [
+        "https://github.com/nix-purifiers/npm-purifier/blob/a2edbacf0d1d0bfcfbd967b4560f705f1a03e3f6/README.md#L63"
+      ]
     },
     "runtime_requirements": {
       "reason": "This capability is not established by the reviewed integration record.",
       "state": "unknown"
     },
     "stale_lock": {
-      "reason": "This capability is not established by the reviewed integration record.",
-      "state": "unknown"
+      "state": "unknown",
+      "reason": "Ordinary wrapped commands prefetch when lock bytes change and fail with repair guidance for invalid Nix inputs or missing cache entries. npm install/update/remove instead run online and lock again; one stale-lock enum would hide this command boundary."
     },
     "supported_native_commands": {
       "reason": "This capability is not established by the reviewed integration record.",

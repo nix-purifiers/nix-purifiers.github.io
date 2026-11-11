@@ -26,36 +26,49 @@
       "state": "unknown"
     },
     "credentials": {
-      "reason": "This capability is not established by the reviewed integration record.",
-      "state": "unknown"
+      "state": "unknown",
+      "reason": "The documented private-source paths require supplied checkouts or credentialed Nix fetcher overrides. This record does not establish default credential propagation across both native capture and Nix replay."
     },
     "dependency_sources": {
-      "reason": "This capability is not established by the reviewed integration record.",
-      "state": "unknown"
+      "state": "known",
+      "value": [
+        "Registry packages",
+        "Tarball URLs",
+        "Git repositories",
+        "Local directories and tarballs",
+        "Workspaces"
+      ],
+      "sources": [
+        "https://github.com/nix-purifiers/bun-purifier/blob/d2717ea2ec35a78c2852b39324c71ca2bb0c0b99/README.md#L316"
+      ]
     },
     "editor_completion": {
-      "reason": "This capability is not established by the reviewed integration record.",
-      "state": "unknown"
+      "state": "unknown",
+      "reason": "The documented node_modules and TypeScript setup supplies editor inputs, but does not establish protocol-level completion. No new language-server execution result is asserted."
     },
     "editor_dependency_sources": {
-      "reason": "This capability is not established by the reviewed integration record.",
-      "state": "unknown"
+      "state": "unknown",
+      "reason": "The documented node_modules and TypeScript setup supplies editor inputs, but does not establish protocol-level dependency-source retrieval. No new language-server execution result is asserted."
     },
     "editor_diagnostics": {
-      "reason": "This capability is not established by the reviewed integration record.",
-      "state": "unknown"
+      "state": "unknown",
+      "reason": "The documented node_modules and TypeScript setup supplies editor inputs, but does not establish protocol-level diagnostics. No new language-server execution result is asserted."
     },
     "editor_metadata_format": {
       "reason": "This capability is not established by the reviewed integration record.",
       "state": "unknown"
     },
     "editor_navigation": {
-      "reason": "This capability is not established by the reviewed integration record.",
-      "state": "unknown"
+      "state": "unknown",
+      "reason": "The documented node_modules and TypeScript setup supplies editor inputs, but does not establish protocol-level definition lookup. No new language-server execution result is asserted."
     },
     "editor_offline": {
-      "reason": "This capability is not established by the reviewed integration record.",
-      "state": "unknown"
+      "state": "known",
+      "value": true,
+      "sources": [
+        "https://github.com/nix-purifiers/bun-purifier/blob/d2717ea2ec35a78c2852b39324c71ca2bb0c0b99/README.md#L289",
+        "https://github.com/nix-purifiers/bun-purifier/blob/d2717ea2ec35a78c2852b39324c71ca2bb0c0b99/README.md#L269"
+      ]
     },
     "editor_protocol": {
       "sources": [],
@@ -72,8 +85,13 @@
       "state": "unknown"
     },
     "inputs": {
-      "reason": "This capability is not established by the reviewed integration record.",
-      "state": "unknown"
+      "state": "known",
+      "value": [
+        "package.json"
+      ],
+      "sources": [
+        "https://github.com/nix-purifiers/bun-purifier/blob/d2717ea2ec35a78c2852b39324c71ca2bb0c0b99/README.md#L16"
+      ]
     },
     "integration": {
       "sources": [],
@@ -102,20 +120,20 @@
       "state": "unknown"
     },
     "native_plugin_bootstrap": {
-      "reason": "This capability is not established by the reviewed integration record.",
-      "state": "unknown"
+      "state": "not-applicable",
+      "reason": "This integration supplies native JavaScript package-manager preparation and wrappers, not a published JVM build-tool plugin; plugin coordinates, repository bootstrap and a Java target do not apply."
     },
     "native_plugin_coordinate": {
-      "reason": "This capability is not established by the reviewed integration record.",
-      "state": "unknown"
+      "state": "not-applicable",
+      "reason": "This integration supplies native JavaScript package-manager preparation and wrappers, not a published JVM build-tool plugin; plugin coordinates, repository bootstrap and a Java target do not apply."
     },
     "native_plugin_java_target": {
-      "reason": "This capability is not established by the reviewed integration record.",
-      "state": "unknown"
+      "state": "not-applicable",
+      "reason": "This integration supplies native JavaScript package-manager preparation and wrappers, not a published JVM build-tool plugin; plugin coordinates, repository bootstrap and a Java target do not apply."
     },
     "native_plugin_repository": {
-      "reason": "This capability is not established by the reviewed integration record.",
-      "state": "unknown"
+      "state": "not-applicable",
+      "reason": "This integration supplies native JavaScript package-manager preparation and wrappers, not a published JVM build-tool plugin; plugin coordinates, repository bootstrap and a Java target do not apply."
     },
     "nix_builder": {
       "sources": [],
@@ -123,16 +141,38 @@
       "value": "pkgs.bun-purifier.buildBunProject"
     },
     "offline_limits": {
-      "reason": "This capability is not established by the reviewed integration record.",
-      "state": "unknown"
+      "state": "known",
+      "value": [
+        "Adding an unlocked package needs the network; add/remove/update use native mutation followed by relocking.",
+        "Removing node_modules also removes the package GC root under node_modules/.cache/bun-purifier.",
+        "Global link: dependencies are refused; private registry/Git sources require credentialed Nix fetcher overrides."
+      ],
+      "sources": [
+        "https://github.com/nix-purifiers/bun-purifier/blob/d2717ea2ec35a78c2852b39324c71ca2bb0c0b99/README.md#L281",
+        "https://github.com/nix-purifiers/bun-purifier/blob/d2717ea2ec35a78c2852b39324c71ca2bb0c0b99/src/main.ts#L347",
+        "https://github.com/nix-purifiers/bun-purifier/blob/d2717ea2ec35a78c2852b39324c71ca2bb0c0b99/README.md#L286",
+        "https://github.com/nix-purifiers/bun-purifier/blob/d2717ea2ec35a78c2852b39324c71ca2bb0c0b99/README.md#L343"
+      ]
     },
     "offline_scope": {
-      "reason": "This capability is not established by the reviewed integration record.",
-      "state": "unknown"
+      "state": "known",
+      "value": "locked-dependencies",
+      "sources": [
+        "https://github.com/nix-purifiers/bun-purifier/blob/d2717ea2ec35a78c2852b39324c71ca2bb0c0b99/README.md#L269"
+      ]
     },
     "platform_notes": {
-      "reason": "This capability is not established by the reviewed integration record.",
-      "state": "unknown"
+      "state": "known",
+      "value": [
+        "The retained native technical review covers x86_64-linux, aarch64-linux and aarch64-darwin within its stated SDK, sample and disclosed adaptation scopes.",
+        "No Intel Darwin, arbitrary cross-compilation, unchanged upstream test suite or unlisted SDK/system coverage is inferred."
+      ],
+      "sources": [
+        "https://nix-purifiers.github.io/evidence/0b131c19815e82fa8ae3e684bee06b396032704f4b635791cb2b722e6a4a92bf.json",
+        "https://nix-purifiers.github.io/evidence/15a5da8be12e60c0971bdb371ee9cbc46495326cda89cc1e9a45652ab8fd1a21.json",
+        "https://nix-purifiers.github.io/evidence/4cb8799d2c0b5f844f991091fe444c237968cce42afd8bce132a1d1b142f14e0.log",
+        "https://nix-purifiers.github.io/evidence/04a556c71f54cc214cbe5354d063a0c7a2f609bd2b5a2c04f289d6c9b361f221.json"
+      ]
     },
     "platforms": {
       "sources": [],
@@ -205,16 +245,19 @@
       ]
     },
     "relock": {
-      "reason": "This capability is not established by the reviewed integration record.",
-      "state": "unknown"
+      "state": "known",
+      "value": "preserves-pins",
+      "sources": [
+        "https://github.com/nix-purifiers/bun-purifier/blob/d2717ea2ec35a78c2852b39324c71ca2bb0c0b99/README.md#L59"
+      ]
     },
     "runtime_requirements": {
       "reason": "This capability is not established by the reviewed integration record.",
       "state": "unknown"
     },
     "stale_lock": {
-      "reason": "This capability is not established by the reviewed integration record.",
-      "state": "unknown"
+      "state": "unknown",
+      "reason": "Prefetch/install and wrapped run/test/build/x reject stale purifier metadata with repair guidance; add/remove/update perform native mutations and relock, and some unlisted Bun commands run directly. No single stale-lock enum covers all dispatch paths."
     },
     "supported_native_commands": {
       "reason": "This capability is not established by the reviewed integration record.",
