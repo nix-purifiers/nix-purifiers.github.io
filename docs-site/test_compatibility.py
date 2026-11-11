@@ -1,5 +1,6 @@
 import copy
 import json
+import re
 from pathlib import Path
 import unittest
 
@@ -81,7 +82,7 @@ class CompatibilityTests(unittest.TestCase):
     def test_unknown_versions_are_explicit_without_inventing_a_floor(self):
         page = dict(self.page, compatibility=copy.deepcopy(EMPTY))
         body = render_compatibility(page, self.contract)
-        self.assertIn('have not yet been recorded', body)
+        self.assertIn('Version information has not been recorded.', body)
         self.assertNotIn('>=', body)
 
     def test_free_threaded_variant_and_independent_republisher_have_visible_identities(self):
@@ -119,9 +120,9 @@ class CompatibilityTests(unittest.TestCase):
         self.assertIn('Runtime running the tool: OpenJDK 17.0.20.1+1', body)
         self.assertIn('Project compiler: OpenJDK 8u504-b01', body)
         self.assertIn('Project runtime: OpenJDK 8u504-b01', body)
-        self.assertIn('default :test task selects Java 17 but is skipped', body)
-        self.assertIn('Whole native and published JAR bytes differ', body)
-        self.assertIn('Published class bytes match native compilation', body)
+        self.assertIn('default :test task selects Java 17 but is skipped', ' '.join(point['notes']))
+        self.assertIn('Whole native and published JAR bytes differ', ' '.join(point['notes']))
+        self.assertIn('native-published-class-byte-equality', point['operations'])
         self.assertNotIn('Matching native/Nix publication bytes', body)
         self.assertFalse(page['compatibility']['supportedRanges'])
 
@@ -136,8 +137,44 @@ class CompatibilityTests(unittest.TestCase):
         self.assertIn('Capture / build helper: Node.js 24.21.0', body)
         self.assertIn('x86_64-linux', body)
         self.assertNotIn('aarch64-linux', body.split('### Tested combinations', 1)[1])
-        self.assertIn('packaged defaults do not establish a minimum version', body)
-        self.assertIn('do not establish a minimum version', body)
+        self.assertFalse(page['compatibility']['supportedRanges'])
+        self.assertNotIn('### Supported ranges', body)
+
+    def test_combinations_show_compact_choices_with_scoped_details(self):
+        page = copy.deepcopy(self.documentation['catalog']['maven-purifier'])
+        original = copy.deepcopy(page)
+        body = render_compatibility(page, self.contract)
+        table = body.split('### Tested combinations', 1)[1].split('### Requirements', 1)[0]
+        summaries = re.findall(r'<summary><span class="tested-combination-labels">(.*?)</span></summary>', table)
+        self.assertTrue(summaries)
+        self.assertNotIn('Checked operations', ' '.join(summaries))
+        self.assertNotIn('Exact Maven distribution selected by wrapper', ' '.join(summaries))
+        self.assertIn('Native lock capture', table)
+        self.assertIn('<summary>Limits and source evidence</summary>', table)
+        self.assertNotIn('<details open', table)
+        for point in page['compatibility']['testedPoints']:
+            self.assertIn(point['system'], table)
+            for component in point['components']:
+                self.assertIn(component['version'], table)
+        self.assertEqual(table.count('[Checks]('), len(page['compatibility']['testedPoints']))
+        self.assertEqual(page, original)
+
+    def test_grouping_preserves_helper_variation_and_platform_scope(self):
+        page = copy.deepcopy(self.page)
+        first = copy.deepcopy(page['compatibility']['testedPoints'][0])
+        second = copy.deepcopy(first)
+        second['id'] = 'same-toolchain-arm'
+        second['system'] = 'aarch64-linux'
+        third = copy.deepcopy(first)
+        third['id'] = 'different-helper'
+        next(c for c in third['components'] if c['role'] == 'host-helper')['version'] = '99.0.0'
+        page['compatibility']['testedPoints'] = [first, second, third]
+        body = render_compatibility(page, self.contract)
+        self.assertEqual(body.count('<details class="tested-combination"'), 2)
+        self.assertEqual(body.count('[Checks]('), 3)
+        self.assertIn('Linux x86-64 · Linux ARM64', body)
+        self.assertIn('Capture / build helper: Node.js 99.0.0', body)
+        self.assertEqual(len(page['compatibility']['testedPoints']), 3)
 
     def test_every_published_page_has_real_versions_or_a_project_selection(self):
         validate_version_coverage(self.documentation['catalog'])

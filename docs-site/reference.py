@@ -99,7 +99,7 @@ def detailed_guide(repository, text, page, plan=None):
     for specification in contract['sections']:
         identifier = specification['id']
         decision = plan['sections'][identifier]
-        if 'omit' in decision:
+        if identifier == 'credits' or 'omit' in decision:
             continue
         title = titles[specification['titleFrom']] if 'titleFrom' in specification else specification['title']
         blocks = []
@@ -150,6 +150,8 @@ def detailed_guide(repository, text, page, plan=None):
 
 
 def reference_text(repository, text, page=None, plan=None, library=None):
+    text = text.replace('Sandboxed builds of the whole project', 'Sandboxed builds')
+    text = text.replace('For persistent use, add ', 'Install ')
     if page:
         return detailed_guide(repository, text, page, plan)
     # Retained guides use the same visible section title as modeled pages.
@@ -161,6 +163,11 @@ def reference_text(repository, text, page=None, plan=None, library=None):
         return f'<a id="{old}"></a>\n\n## {title}'
     text = re.sub(r'^## (Editors?(?: and (?:compiler|shells))?)[ \t]*$', heading, text, flags=re.MULTILINE)
     if repository == 'nix-purifiers/purifier':
+        introduction, sections = source_sections(text)
+        title = re.match(r'^#\s+[^\n]+', text)
+        blocks = ([title[0]] if title else []) + [introduction]
+        blocks += ['## ' + name + '\n\n' + body for name, body in sections if name != 'Credits']
+        text = '\n\n'.join(blocks) + '\n'
         data = library if library is not None else json.loads((Path(__file__).parent.parent / 'model/library.json').read_text())
         paragraphs = ['Target systems: ' + ', '.join(data['platforms']) + '.']
         paragraphs += data['limitations'] + data['validation']

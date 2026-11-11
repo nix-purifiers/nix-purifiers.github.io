@@ -29,6 +29,18 @@ class FullGuideTests(unittest.TestCase):
                 self.assertNotIn('Quickstart', headings)
                 self.assertNotIn('## Editor\n', guide)
                 self.assertNotIn('The reviewed guide has no separate', guide)
+                self.assertNotIn('## Credits', guide)
+                self.assertNotIn('Sandboxed builds of the whole project', guide)
+                self.assertNotIn('For persistent use,', guide)
+
+    def test_library_credits_live_only_on_the_family_homepage(self):
+        source = '# Library\n\nIntroduction.\n\n## API\n\n```markdown\n## Credits\nExample heading.\n```\n\n## Credits\n\nRepeated credits.\n\n## License\n\nMIT.\n'
+        guide = reference_text('nix-purifiers/purifier', source, library={
+            'platforms': ['x86_64-linux'], 'limitations': [], 'validation': []})
+        self.assertIn('```markdown\n## Credits\nExample heading.\n```', guide)
+        self.assertNotIn('Repeated credits.', guide)
+        self.assertIn('## License\n\nMIT.', guide)
+        self.assertIn("The purifier idea was inspired by nixcloud", (self.root.parent / 'index.html').read_text())
 
     def test_new_or_duplicated_source_sections_require_an_explicit_plan(self):
         text = (self.root / 'references/bun-purifier.md').read_text()

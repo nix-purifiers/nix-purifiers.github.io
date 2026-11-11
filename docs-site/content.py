@@ -224,7 +224,7 @@ def render(page, contract):
         body = re.sub(r'\{values\.([a-z_]+)\}', inject_value, body)
         if re.search(r'^#{1,2}\s', body, re.MULTILINE):
             raise ValueError(f'{key}: use level-three headings inside sections')
-        if body.strip():
+        if key != 'credits' and body.strip():
             output.append(f'## {spec["title"]}\n\n{body}')
     if 'versionCompatibility' in contract:
         section = render_compatibility(page, contract)
