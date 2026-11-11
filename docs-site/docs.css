@@ -58,17 +58,22 @@ hr { border: 0; border-top: 1px solid var(--border); margin-block: 2rem; }
 .documentation-navigation [aria-current="page"] { color: var(--muted); }
 
 
-.tested-combination { border-block-end: 1px solid var(--border); }
+.tested-combination, .packaged-version { border-block-end: 1px solid var(--border); }
+.packaged-versions { list-style: none; padding: 0; margin: 0; }
+.packaged-version { margin: 0; padding-block: .85rem; padding-inline-start: 1.5rem; }
+.packaged-version:target { outline: 2px solid var(--accent); outline-offset: 3px; }
 .tested-combination > summary { padding-block: .85rem; cursor: pointer; }
-.tested-combination-labels {
+.version-labels {
   display: inline-grid;
-  grid-template-columns: 1fr 1.3fr 1fr;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1.3fr) minmax(0, 1fr);
   gap: .75rem;
   width: calc(100% - 1.5rem);
   vertical-align: top;
 }
-.tested-combination-labels small { display: block; font-weight: normal; }
-.tested-combination-labels > :last-child { color: var(--muted); }
+.packaged-version .version-labels { width: 100%; }
+.version-labels > * { overflow-wrap: anywhere; }
+.version-labels small { display: block; font-weight: normal; }
+.version-labels > :last-child { color: var(--muted); }
 .tested-combination[open] { padding-bottom: 1rem; }
 .tested-combination details { margin-block: 1rem; }
 .tested-combination details > summary { color: var(--accent); cursor: pointer; }
@@ -80,6 +85,6 @@ hr { border: 0; border-top: 1px solid var(--border); margin-block: 2rem; }
 .tested-operations { columns: 2; padding-inline-start: 1.25rem; }
 .tested-operations li { break-inside: avoid; }
 @media (max-width: 640px) {
-  .tested-combination-labels { grid-template-columns: 1fr; gap: .25rem; }
+  .version-labels { grid-template-columns: 1fr; gap: .25rem; }
   .tested-operations { columns: 1; }
 }

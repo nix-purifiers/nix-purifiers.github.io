@@ -1,6 +1,8 @@
 """Validate version evidence and render the same section on every purifier page."""
 from html import escape
 from urllib.parse import urlsplit
+import hashlib
+import json
 import re
 
 ROLES = {
@@ -152,9 +154,9 @@ def render_compatibility(page, contract, heading=True):
     if not any(data.values()):
         lines.append(spec['unknown'])
         return '\n\n'.join(lines)
+    packaged = packaged_components(data['defaults'])
     if data['defaults']:
-        lines += ['### Packaged versions', '| Selection | Component | Version | Platforms |', '|---|---|---|---|']
-        lines += [f'| {cell(x["selection"])} | {ROLES[x["role"]]}: {cell(x["name"])} | {cell(x["version"])} | {cell(", ".join(x["systems"]))} |' for x in data['defaults']]
+        lines += ['### Packaged versions', render_packaged_components(packaged)]
     definition_items = data['defaults'] + data['projectSelections'] + data['limitations'] + data['supportedRanges']
     if definition_items:
         definitions = list(dict.fromkeys(url for item in definition_items for url in item['evidence']))
@@ -175,8 +177,8 @@ def render_compatibility(page, contract, heading=True):
                          + cell(item['basis']))
     if data['testedPoints']:
         lines += ['### Tested combinations',
-                  'Open the combination matching your toolchain for its checks, limits, and evidence.',
-                  tested_combinations(data['testedPoints'])]
+                  'Matching versions link to the packaged components above. Expand a test for its checks, limits, and evidence.',
+                  tested_combinations(data['testedPoints'], packaged)]
     if data['limitations']:
         lines += ['### Requirements']
         lines += ['- ' + cell(item['text']) for item in data['limitations']]
@@ -192,7 +194,61 @@ PLATFORMS = {
 }
 
 
-def tested_combinations(points):
+def platform_labels(systems):
+    order = {system: index for index, system in enumerate(PLATFORMS)}
+    return ' · '.join(PLATFORMS.get(system, system) for system in
+                      sorted(set(systems), key=lambda system: (order.get(system, len(order)), system)))
+
+
+def packaged_components(defaults):
+    """Show one value for roles sharing the exact selection and platforms."""
+    components = {}
+    for item in defaults:
+        key = (item['selection'], item['name'], item['version'], tuple(sorted(item['systems'])))
+        if key not in components:
+            components[key] = dict(selection=item['selection'], name=item['name'],
+                                   version=item['version'], systems=key[-1], roles=[],
+                                   id='packaged-version-' + hashlib.sha256(
+                                       json.dumps(key).encode()).hexdigest()[:12])
+        if item['role'] not in components[key]['roles']:
+            components[key]['roles'].append(item['role'])
+    return list(components.values())
+
+
+def render_packaged_components(components):
+    output = []
+    for item in components:
+        roles = '; '.join(cell(ROLES[role]) for role in item['roles'])
+        if item['selection'] != 'default':
+            roles += '<small>' + cell(item['selection']) + '</small>'
+        platforms = platform_labels(item['systems'])
+        output.append('<li class="packaged-version" id="' + item['id'] + '">'
+                      '<span class="version-labels"><strong>'
+                      + cell(item['name'] + ' ' + item['version']) + '</strong> <span>'
+                      + roles + '</span> <span>' + cell(platforms) + '</span></span></li>')
+    return '<ul class="packaged-versions">\n' + '\n'.join(output) + '\n</ul>'
+
+
+def packaged_match(component, systems, packaged):
+    """Link a matching version; keep each test's source and coverage separate."""
+    role, name, version = component
+    matches = [item for item in packaged if role in item['roles']
+               and item['name'] == name and item['version'] == version
+               and set(systems) <= set(item['systems'])]
+    defaults = [item for item in matches if item['selection'] == 'default']
+    if len(defaults) == 1:
+        return defaults[0]
+    return matches[0] if len(matches) == 1 else None
+
+
+def component_label(component, match=None):
+    _, name, version = component
+    if match:
+        return '<a href="#' + match['id'] + '">' + cell(name) + ' (packaged version)</a>'
+    return cell(name + ' ' + version)
+
+
+def tested_combinations(points, packaged=()):
     """Group only identical complete toolchains; keep each test's scope intact."""
     combinations = {}
     for point in points:
@@ -200,28 +256,40 @@ def tested_combinations(points):
         combinations.setdefault(key, []).append(point)
     output = []
     for components, checks in combinations.items():
-        tools = ' · '.join(cell(name + ' ' + version)
-                           for role, name, version in components if role == 'native-tool')
-        formats = ' · '.join(cell(name + ' ' + version)
-                             for role, name, version in components if role == 'native-format')
+        systems = {point['system'] for point in checks}
+        matches = {component: packaged_match(component, systems, packaged) for component in components}
+        tools = ' · '.join(component_label(component, matches[component])
+                           for component in components if component[0] == 'native-tool')
+        formats = ' · '.join(component_label(component, matches[component])
+                             for component in components if component[0] == 'native-format')
         if formats:
             tools += '<small>' + formats + '</small>'
         runtimes = {}
         for role, name, version in components:
             if role not in ('native-tool', 'host-helper', 'native-format'):
-                runtimes.setdefault((name, version), []).append(ROLES[role])
-        runtime = ' · '.join(cell(name + ' ' + version)
-                             + (' (' + cell(', '.join(roles)) + ')' if len(runtimes) > 1 else '')
-                             for (name, version), roles in runtimes.items())
-        platforms = ' · '.join(PLATFORMS.get(system, system)
-                               for system in dict.fromkeys(point['system'] for point in checks))
+                runtimes.setdefault((name, version), []).append((role, name, version))
+        runtime_labels = []
+        for (name, version), group in runtimes.items():
+            refs = [matches[c] for c in group]
+            match = refs[0] if all(ref is not None and ref['id'] == refs[0]['id'] for ref in refs) else None
+            native_match = matches.get(('native-tool', name, version))
+            roles = [ROLES[c[0]] for c in group]
+            if match and native_match and match['id'] == native_match['id']:
+                label = cell('Also ' + ', '.join(roles).lower())
+            else:
+                label = component_label(group[0], match)
+                if len(runtimes) > 1:
+                    label += ' (' + cell(', '.join(roles)) + ')'
+            runtime_labels.append(label)
+        runtime = ' · '.join(runtime_labels)
+        platforms = platform_labels(point['system'] for point in checks)
         output += ['<details class="tested-combination" markdown="1">',
-                   '<summary><span class="tested-combination-labels"><strong>' + tools
-                   + '</strong><span>' + runtime + '</span><span>' + cell(platforms)
+                   '<summary><span class="tested-combination-labels version-labels"><strong>' + tools
+                   + '</strong> <span>' + runtime + '</span> <span>' + cell(platforms)
                    + '</span></span></summary>',
                    '<details markdown="1">\n<summary>Full toolchain roles</summary>\n',
-                   '\n'.join('- ' + cell(ROLES[role] + ': ' + name + ' ' + version)
-                             for role, name, version in components), '</details>']
+                   '\n'.join('- ' + cell(ROLES[c[0]] + ': ') + component_label(c, matches[c])
+                             for c in components), '</details>']
         for point in checks:
             output += ['**' + cell(PLATFORMS.get(point['system'], point['system']))
                        + ' (`' + cell(point['system']) + '`)** — ' + evidence(point),
