@@ -1,0 +1,751 @@
+{
+  "complete": true,
+  "commands": [
+    {
+      "label": "native-versions",
+      "argv": [
+        "/nix/store/hikyxykmwdgb2l7v2g3h75g974hd08h4-ruby184-gems135-bundler099-gemcutter030-sdk/bin/ruby",
+        "-e",
+        "require \"rubygems\"; gem \"bundler\", ENV.fetch(\"BUNDLER_PURIFIER_BUNDLER_VERSION\", \">= 0\"); require \"bundler\"; puts [RUBY_VERSION,(defined?(RUBY_PATCHLEVEL) ? RUBY_PATCHLEVEL : \"absent\"),Gem::VERSION,Bundler::VERSION,Gem.ruby,(defined?(RbConfig) ? RbConfig::CONFIG : Config::CONFIG).fetch(\"prefix\")].join(\"|\")"
+      ],
+      "cwd": "/home/runner/work/bundler-purifier/bundler-purifier",
+      "expectedSuccess": true,
+      "exit": 0,
+      "seconds": 0.03186769000001277,
+      "stdoutSha256": "d58544994c86bcc5a98d62722d8f65404fc1e297443bdee1d708daff0e9c657c",
+      "stderrSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "label": "native-fixture-proxy-config",
+      "argv": [
+        "/nix/store/hikyxykmwdgb2l7v2g3h75g974hd08h4-ruby184-gems135-bundler099-gemcutter030-sdk/bin/ruby",
+        "-rrubygems",
+        "-e",
+        "abort unless Gem.configuration[:http_proxy] == :no_proxy"
+      ],
+      "cwd": "/home/runner/work/bundler-purifier/bundler-purifier",
+      "expectedSuccess": true,
+      "exit": 0,
+      "seconds": 0.03205412699992394,
+      "stdoutSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderrSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "label": "native-publisher-profile",
+      "argv": [
+        "/nix/store/hikyxykmwdgb2l7v2g3h75g974hd08h4-ruby184-gems135-bundler099-gemcutter030-sdk/bin/gem",
+        "list",
+        "--local"
+      ],
+      "cwd": "/home/runner/work/bundler-purifier/bundler-purifier",
+      "expectedSuccess": true,
+      "exit": 0,
+      "seconds": 0.0641278919999877,
+      "stdoutSha256": "63664301d2c0a932f026e9636168d0fbfdbb19c85bab90809a70ac877647f1d8",
+      "stderrSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "label": "source-archive",
+      "argv": [
+        "nix",
+        "flake",
+        "archive",
+        "--json",
+        "--no-update-lock-file",
+        "git+file:///home/runner/work/bundler-purifier/bundler-purifier?rev=a409b5c68e74b4b4c36c86c1e20d3d3411069a41"
+      ],
+      "cwd": "/home/runner/work/bundler-purifier/bundler-purifier",
+      "expectedSuccess": true,
+      "exit": 0,
+      "seconds": 0.06430219100002432,
+      "stdoutSha256": "47ea9b4df87aee198b1ef5825e95aac30e49ba9f353520dfbca4ba97fd6484a5",
+      "stderrSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "label": "source-nar",
+      "argv": [
+        "nix",
+        "hash",
+        "path",
+        "/nix/store/02xkmnsa9wkd6xqfjqg43svp9n25gj5h-source"
+      ],
+      "cwd": "/home/runner/work/bundler-purifier/bundler-purifier",
+      "expectedSuccess": true,
+      "exit": 0,
+      "seconds": 0.0321614160000081,
+      "stdoutSha256": "fab0183d40b199a807953a21032f25144b200d32cd11a234516c487353e7da91",
+      "stderrSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "label": "capture-input",
+      "argv": [
+        "/nix/store/mg36x19llpihqnnz60x6fjs664adiap4-bundler-purifier-0.1.0/bin/bundler-purifier",
+        "lock",
+        "--input",
+        "path:/nix/store/02xkmnsa9wkd6xqfjqg43svp9n25gj5h-source#checks.x86_64-linux.ruby184-app"
+      ],
+      "cwd": "/home/runner/work/_temp/ruby184-incoming-evidence/consumer",
+      "expectedSuccess": true,
+      "exit": 0,
+      "seconds": 7.737914168999964,
+      "stdoutSha256": "8b6547a30f211cf2e6817fb1697697afdc75aebc9623933687d1c0b4c21dc5ed",
+      "stderrSha256": "58dc57b525dbd14bbbc84f942e0ba57ed7f0913abc9378c4dc98129c1c37d404"
+    },
+    {
+      "label": "no-op-capture",
+      "argv": [
+        "/nix/store/mg36x19llpihqnnz60x6fjs664adiap4-bundler-purifier-0.1.0/bin/bundler-purifier",
+        "lock"
+      ],
+      "cwd": "/home/runner/work/_temp/ruby184-incoming-evidence/consumer",
+      "expectedSuccess": true,
+      "exit": 0,
+      "seconds": 1.066437657999927,
+      "stdoutSha256": "eb4ac265248e1142e02b800437052caea552fb6b13b96b11b901d446cd22aed9",
+      "stderrSha256": "c1e0de87431ab70170ebb104ed853ec89c5996a8da083dbc6b53d188fde40cb8"
+    },
+    {
+      "label": "relock",
+      "argv": [
+        "/nix/store/mg36x19llpihqnnz60x6fjs664adiap4-bundler-purifier-0.1.0/bin/bundler-purifier",
+        "lock",
+        "--force"
+      ],
+      "cwd": "/home/runner/work/_temp/ruby184-incoming-evidence/consumer",
+      "expectedSuccess": true,
+      "exit": 0,
+      "seconds": 2.068790378000017,
+      "stdoutSha256": "06cd7aa5377a7c942d0ee6723338490e9f61fcbb35e2660bb522289cb148af12",
+      "stderrSha256": "c1c0a574376b9540beb19a790a23a9e7111f2f975df89b07551adc8f4c369693"
+    },
+    {
+      "label": "prefetch",
+      "argv": [
+        "/nix/store/mg36x19llpihqnnz60x6fjs664adiap4-bundler-purifier-0.1.0/bin/bundler-purifier",
+        "prefetch"
+      ],
+      "cwd": "/home/runner/work/_temp/ruby184-incoming-evidence/consumer",
+      "expectedSuccess": true,
+      "exit": 0,
+      "seconds": 16.82713047499999,
+      "stdoutSha256": "276ce367442e8bfb75bb12a1d9dbe6ea918401540ef8e6ad5b633c56f9be33fe",
+      "stderrSha256": "ab1cccf3dfa31065814d3e2345c6a2beec22e9237986fc88656e9ef3a7d0d5ff"
+    },
+    {
+      "label": "wrapper-runtime",
+      "argv": [
+        "/nix/store/mg36x19llpihqnnz60x6fjs664adiap4-bundler-purifier-0.1.0/bin/bundle",
+        "exec",
+        "ruby",
+        "-Ilib",
+        "-e",
+        "require \"incoming_consumer\"; require \"bundler/version\" unless defined?(Bundler::VERSION); abort unless IncomingConsumer.answer==42; puts \"INCOMING|#{RUBY_VERSION}|#{Gem::VERSION}|#{Bundler::VERSION}|42\""
+      ],
+      "cwd": "/home/runner/work/_temp/ruby184-incoming-evidence/consumer",
+      "expectedSuccess": true,
+      "exit": 0,
+      "seconds": 4.878442910999979,
+      "stdoutSha256": "f813902bdbab7550a8cbb44cf24a31425344ca7fca484a9c0862a32d598957d4",
+      "stderrSha256": "a9b7c9e8655f2ff8f76543fd0a746d490aae8cd989c22af714bfe2f24df877d7"
+    },
+    {
+      "label": "pure-tests",
+      "argv": [
+        "nix-build",
+        "/home/runner/work/_temp/ruby184-incoming-evidence/consumer.nix",
+        "-A",
+        "tests",
+        "--no-out-link",
+        "--option",
+        "sandbox",
+        "true"
+      ],
+      "cwd": "/home/runner/work/bundler-purifier/bundler-purifier",
+      "expectedSuccess": true,
+      "exit": 0,
+      "seconds": 2.3689129800000046,
+      "stdoutSha256": "a4e35507a87ba3beb253b22f9b5d7cb00fb306f522a4dbd3f239d4eb7871000e",
+      "stderrSha256": "0486f6a1595eba4c7bdb03bb09bb0693a337c9c7fe0b00477686d11a80feff33"
+    },
+    {
+      "label": "pure-projection",
+      "argv": [
+        "nix-build",
+        "/home/runner/work/_temp/ruby184-incoming-evidence/consumer.nix",
+        "-A",
+        "release.projections.rubygems",
+        "--no-out-link"
+      ],
+      "cwd": "/home/runner/work/bundler-purifier/bundler-purifier",
+      "expectedSuccess": true,
+      "exit": 0,
+      "seconds": 2.9707610549999117,
+      "stdoutSha256": "cd44d4cac9ceec49c82a29240e12c915b3696ccced3a178854a2fe90ab860cf1",
+      "stderrSha256": "de9f8478a27933dfc03e439d178e759e456632b9a4d4475198911d33fb1fce3e"
+    },
+    {
+      "label": "output-info",
+      "argv": [
+        "nix",
+        "path-info",
+        "--json",
+        "/nix/store/8851jn014c60nz37rg6vp6kmhnaw7rc2-bundler-app-tests",
+        "/nix/store/j0iadc9cs468v92qh3babl8frxhz1hvw-bundler-app-rubygems-repository",
+        "/nix/store/mg36x19llpihqnnz60x6fjs664adiap4-bundler-purifier-0.1.0",
+        "/nix/store/hikyxykmwdgb2l7v2g3h75g974hd08h4-ruby184-gems135-bundler099-gemcutter030-sdk",
+        "/nix/store/pj9dcrnmff4f0fq6sw35yldvdryhw8b7-ruby-1.8.4"
+      ],
+      "cwd": "/home/runner/work/bundler-purifier/bundler-purifier",
+      "expectedSuccess": true,
+      "exit": 0,
+      "seconds": 0.032198414000049524,
+      "stdoutSha256": "215d035ad8f07fdaa9e4cb53146cd0151186b521f002fa5a9ce7472434bc5476",
+      "stderrSha256": "8c3df0940dc02f6a3d0dd88e5456309caed56b9648b9bf9e84085a7b1ee2956d"
+    },
+    {
+      "label": "native-valid-derivers",
+      "argv": [
+        "nix-store",
+        "--query",
+        "--valid-derivers",
+        "/nix/store/pj9dcrnmff4f0fq6sw35yldvdryhw8b7-ruby-1.8.4"
+      ],
+      "cwd": "/home/runner/work/bundler-purifier/bundler-purifier",
+      "expectedSuccess": true,
+      "exit": 0,
+      "seconds": 0.03232571299997744,
+      "stdoutSha256": "a44d52b8690e2b7355364a21469ed5bcfb384ff06951b81c0a1f1648ba830448",
+      "stderrSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "label": "derivations",
+      "argv": [
+        "nix",
+        "derivation",
+        "show",
+        "/nix/store/1nmbxkyjrajagpmyvi4ffy5vrfm9w73c-ruby184-gems135-bundler099-gemcutter030-sdk.drv",
+        "/nix/store/79y7bg5f6vf118i9v109s0sb3zd12lrd-bundler-app-tests.drv",
+        "/nix/store/7sppjf4n2jywgfcvh4f45l5rcql95ln7-ruby-1.8.4.drv",
+        "/nix/store/azbw0fw6kb9sv71vwg2i9f3ja34ihc2z-bundler-app-rubygems-repository.drv",
+        "/nix/store/vrbmv200h1hcqx5hbr4yhgz7zwxavwjr-bundler-purifier-0.1.0.drv"
+      ],
+      "cwd": "/home/runner/work/bundler-purifier/bundler-purifier",
+      "expectedSuccess": true,
+      "exit": 0,
+      "seconds": 0.032368291000011595,
+      "stdoutSha256": "2a71a473b2680932bd79407855871786bd7bc47604a8d3f9efd12ba6d7fb02ef",
+      "stderrSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "label": "reject-missing-snapshot",
+      "argv": [
+        "/nix/store/mg36x19llpihqnnz60x6fjs664adiap4-bundler-purifier-0.1.0/bin/bundler-purifier",
+        "prefetch"
+      ],
+      "cwd": "/home/runner/work/_temp/ruby184-incoming-evidence/consumer",
+      "expectedSuccess": false,
+      "exit": 1,
+      "seconds": 0.16438208500005658,
+      "stdoutSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderrSha256": "177ace054de4cd4cbd8291e85ceba85acdef65111b999c26bbb999772d971149"
+    },
+    {
+      "label": "pure-reject-missing-snapshot",
+      "argv": [
+        "nix-build",
+        "/home/runner/work/_temp/ruby184-incoming-evidence/consumer.nix",
+        "-A",
+        "tests",
+        "--no-out-link"
+      ],
+      "cwd": "/home/runner/work/bundler-purifier/bundler-purifier",
+      "expectedSuccess": false,
+      "exit": 1,
+      "seconds": 0.21477687199990214,
+      "stdoutSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderrSha256": "f62a6bfbe44c41d0c38e43df204ef3c863ed3ab5100988328ca36b5f3e1e531d"
+    },
+    {
+      "label": "reject-wrong-hash",
+      "argv": [
+        "/nix/store/mg36x19llpihqnnz60x6fjs664adiap4-bundler-purifier-0.1.0/bin/bundler-purifier",
+        "prefetch"
+      ],
+      "cwd": "/home/runner/work/_temp/ruby184-incoming-evidence/consumer",
+      "expectedSuccess": false,
+      "exit": 1,
+      "seconds": 0.1644267750000381,
+      "stdoutSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderrSha256": "218dc53caed76777360081a1aa186f71f9d8ee3d7b2310d4c5f7fe7d0686c063"
+    },
+    {
+      "label": "pure-reject-wrong-hash",
+      "argv": [
+        "nix-build",
+        "/home/runner/work/_temp/ruby184-incoming-evidence/consumer.nix",
+        "-A",
+        "tests",
+        "--no-out-link"
+      ],
+      "cwd": "/home/runner/work/bundler-purifier/bundler-purifier",
+      "expectedSuccess": false,
+      "exit": 1,
+      "seconds": 0.21467439700006707,
+      "stdoutSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderrSha256": "f62a6bfbe44c41d0c38e43df204ef3c863ed3ab5100988328ca36b5f3e1e531d"
+    },
+    {
+      "label": "reject-wrong-sdk",
+      "argv": [
+        "/nix/store/mg36x19llpihqnnz60x6fjs664adiap4-bundler-purifier-0.1.0/bin/bundler-purifier",
+        "prefetch"
+      ],
+      "cwd": "/home/runner/work/_temp/ruby184-incoming-evidence/consumer",
+      "expectedSuccess": false,
+      "exit": 1,
+      "seconds": 0.16433408800003235,
+      "stdoutSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderrSha256": "f6af13aa6e43ee03d562d23db9b2166e19b075fc86429081fdcb70307b7a66bf"
+    },
+    {
+      "label": "pure-reject-wrong-sdk",
+      "argv": [
+        "nix-build",
+        "/home/runner/work/_temp/ruby184-incoming-evidence/consumer.nix",
+        "-A",
+        "tests",
+        "--no-out-link"
+      ],
+      "cwd": "/home/runner/work/bundler-purifier/bundler-purifier",
+      "expectedSuccess": false,
+      "exit": 1,
+      "seconds": 0.21537605799994708,
+      "stdoutSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderrSha256": "f62a6bfbe44c41d0c38e43df204ef3c863ed3ab5100988328ca36b5f3e1e531d"
+    },
+    {
+      "label": "reject-stale-native-bytes",
+      "argv": [
+        "/nix/store/mg36x19llpihqnnz60x6fjs664adiap4-bundler-purifier-0.1.0/bin/bundler-purifier",
+        "prefetch"
+      ],
+      "cwd": "/home/runner/work/_temp/ruby184-incoming-evidence/consumer",
+      "expectedSuccess": false,
+      "exit": 1,
+      "seconds": 0.16435747299999548,
+      "stdoutSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderrSha256": "218dc53caed76777360081a1aa186f71f9d8ee3d7b2310d4c5f7fe7d0686c063"
+    },
+    {
+      "label": "pure-reject-stale-native-bytes",
+      "argv": [
+        "nix-build",
+        "/home/runner/work/_temp/ruby184-incoming-evidence/consumer.nix",
+        "-A",
+        "tests",
+        "--no-out-link"
+      ],
+      "cwd": "/home/runner/work/bundler-purifier/bundler-purifier",
+      "expectedSuccess": false,
+      "exit": 1,
+      "seconds": 0.2146456489999764,
+      "stdoutSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderrSha256": "24443deb4eeb76f51eb5c7e753c85481788a512fd7d62106a787fe1cbd2accd8"
+    },
+    {
+      "label": "reject-fabricated-patchlevel",
+      "argv": [
+        "/nix/store/mg36x19llpihqnnz60x6fjs664adiap4-bundler-purifier-0.1.0/bin/bundler-purifier",
+        "prefetch"
+      ],
+      "cwd": "/home/runner/work/_temp/ruby184-incoming-evidence/consumer",
+      "expectedSuccess": false,
+      "exit": 1,
+      "seconds": 0.1644135850000339,
+      "stdoutSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderrSha256": "4fde58a72ffa95996434e8a757253751b43c68538e02923d0086e19d5461e744"
+    },
+    {
+      "label": "pure-reject-fabricated-patchlevel",
+      "argv": [
+        "nix-build",
+        "/home/runner/work/_temp/ruby184-incoming-evidence/consumer.nix",
+        "-A",
+        "tests",
+        "--no-out-link"
+      ],
+      "cwd": "/home/runner/work/bundler-purifier/bundler-purifier",
+      "expectedSuccess": false,
+      "exit": 1,
+      "seconds": 0.21465674600005968,
+      "stdoutSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderrSha256": "f62a6bfbe44c41d0c38e43df204ef3c863ed3ab5100988328ca36b5f3e1e531d"
+    },
+    {
+      "label": "native-publication-index",
+      "argv": [
+        "/nix/store/hikyxykmwdgb2l7v2g3h75g974hd08h4-ruby184-gems135-bundler099-gemcutter030-sdk/bin/ruby",
+        "/home/runner/work/bundler-purifier/bundler-purifier/tests/rubygems-registry-index.rb",
+        "/home/runner/work/_temp/ruby184-incoming-evidence/publication-index",
+        "/nix/store/skh74zd1vbhj87njp1z5hsir14y8dbd8-rubygems-update-1.3.5.gem",
+        "/nix/store/j0iadc9cs468v92qh3babl8frxhz1hvw-bundler-app-rubygems-repository"
+      ],
+      "cwd": "/home/runner/work/bundler-purifier/bundler-purifier",
+      "expectedSuccess": true,
+      "exit": 0,
+      "seconds": 0.064845263000052,
+      "stdoutSha256": "3454287d79e9d9afecba39c034429d9cc306cd654a3da7f5782e64031a852d72",
+      "stderrSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "label": "publish-projected",
+      "argv": [
+        "/nix/store/mg36x19llpihqnnz60x6fjs664adiap4-bundler-purifier-0.1.0/bin/bundler-purifier",
+        "publish",
+        "--host",
+        "http://127.0.0.1:40309",
+        "--no-http-proxy"
+      ],
+      "cwd": "/home/runner/work/_temp/ruby184-incoming-evidence/consumer",
+      "expectedSuccess": true,
+      "exit": 0,
+      "seconds": 3.871739885000011,
+      "stdoutSha256": "977dd8a79858e3421995292a7ce3a23205795ff31b4da2a7216bab1b85a2d236",
+      "stderrSha256": "1bc5975903df5f4843ef407af21c2171f8d1de9c844ef0d400474a10a802dcdb"
+    },
+    {
+      "label": "publish-dedup",
+      "argv": [
+        "/nix/store/mg36x19llpihqnnz60x6fjs664adiap4-bundler-purifier-0.1.0/bin/bundler-purifier",
+        "publish",
+        "--host",
+        "http://127.0.0.1:40309",
+        "--no-http-proxy"
+      ],
+      "cwd": "/home/runner/work/_temp/ruby184-incoming-evidence/consumer",
+      "expectedSuccess": true,
+      "exit": 0,
+      "seconds": 2.168386263000002,
+      "stdoutSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderrSha256": "c1e0de87431ab70170ebb104ed853ec89c5996a8da083dbc6b53d188fde40cb8"
+    },
+    {
+      "label": "native-gem-install-help",
+      "argv": [
+        "/nix/store/hikyxykmwdgb2l7v2g3h75g974hd08h4-ruby184-gems135-bundler099-gemcutter030-sdk/bin/gem",
+        "help",
+        "install"
+      ],
+      "cwd": "/home/runner/work/_temp/ruby184-incoming-evidence/ordinary",
+      "expectedSuccess": true,
+      "exit": 0,
+      "seconds": 0.06429635599999983,
+      "stdoutSha256": "a79072cde1e6f841b0fbc09788fbc9f7a44be4a5d6dba4ea4be620a6c70fba24",
+      "stderrSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "label": "native-ordinary-sources",
+      "argv": [
+        "/nix/store/hikyxykmwdgb2l7v2g3h75g974hd08h4-ruby184-gems135-bundler099-gemcutter030-sdk/bin/ruby",
+        "-rrubygems",
+        "-e",
+        "Gem.configuration; abort unless Gem.sources == [ARGV.fetch(0)]",
+        "http://127.0.0.1:40309"
+      ],
+      "cwd": "/home/runner/work/_temp/ruby184-incoming-evidence/ordinary",
+      "expectedSuccess": true,
+      "exit": 0,
+      "seconds": 0.032311745000015435,
+      "stdoutSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderrSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "label": "ordinary-install",
+      "argv": [
+        "/nix/store/hikyxykmwdgb2l7v2g3h75g974hd08h4-ruby184-gems135-bundler099-gemcutter030-sdk/bin/gem",
+        "install",
+        "--no-rdoc",
+        "--no-ri",
+        "--no-http-proxy",
+        "--prerelease",
+        "--source",
+        "http://127.0.0.1:40309",
+        "incoming_consumer",
+        "--version",
+        "1.0.0.1.nix.h0cdad79f6ce4519c23e6a97db52f32bd00bffdffb52e26ef4b8f117f8eab84e6"
+      ],
+      "cwd": "/home/runner/work/_temp/ruby184-incoming-evidence/ordinary",
+      "expectedSuccess": true,
+      "exit": 0,
+      "seconds": 0.11448135299997375,
+      "stdoutSha256": "fbf11788f33501c4c1869d79a0e4a9a72905b50e2f9114d024d9bab136040a18",
+      "stderrSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "label": "ordinary-runtime",
+      "argv": [
+        "/nix/store/hikyxykmwdgb2l7v2g3h75g974hd08h4-ruby184-gems135-bundler099-gemcutter030-sdk/bin/ruby",
+        "-e",
+        "require \"incoming_consumer\"\nrequire \"digest/sha2\"\nabort \"purifier leaked into ordinary consumer\" if defined?(PurifierGemInputs)\nabort unless IncomingConsumer.answer == 42 && JSON.parser == JSON::Ext::Parser\nputs \"ORDINARY|#{RUBY_VERSION}|#{defined?(RUBY_PATCHLEVEL) ? RUBY_PATCHLEVEL : \"absent\"}|#{Gem::VERSION}|42\"\npaths = File.readlines(\"/proc/self/maps\").map { |line| line.split.last }.uniq.select { |path| path =~ /json\\/ext\\/parser\\.so$/ }\nabort \"ambiguous parser\" unless paths.size == 1\nnative = paths.first\nabort \"not installed ordinary gem\" unless native.index(ENV.fetch(\"GEM_HOME\") + \"/\") == 0\nputs \"NATIVE|#{native}|#{File.open(native, \"rb\") { |file| Digest::SHA256.hexdigest(file.read) }}\"\n"
+      ],
+      "cwd": "/home/runner/work/_temp/ruby184-incoming-evidence/ordinary",
+      "expectedSuccess": true,
+      "exit": 0,
+      "seconds": 0.032443477000015264,
+      "stdoutSha256": "e1fe53a5cf577613d5bd8a723f93eb5922c3d0e5f3cfba571371632ca3be607d",
+      "stderrSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "label": "reject-wrong-existing-bytes",
+      "argv": [
+        "/nix/store/mg36x19llpihqnnz60x6fjs664adiap4-bundler-purifier-0.1.0/bin/bundler-purifier",
+        "publish",
+        "--host",
+        "http://127.0.0.1:40309",
+        "--no-http-proxy"
+      ],
+      "cwd": "/home/runner/work/_temp/ruby184-incoming-evidence/consumer",
+      "expectedSuccess": false,
+      "exit": 1,
+      "seconds": 2.1685304220000035,
+      "stdoutSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderrSha256": "498d324b9220d6075e3b54f6bd7d711ae76fd0817b637e4244a3a747f2be6be7"
+    }
+  ],
+  "driverSha256": "2d1defaf1d4e1fa849ce0d5d59ec7887bf2413203a67a12fa09c8c1ecc5ec4db",
+  "scope": "host CLI capture/publication plus separately sandboxed consumer build",
+  "fixtureGemConfigSha256": "f8157a5cb3cfb7c3f0b591fa3748e5b1432222754dd02904617523a2c6af2236",
+  "publisherPlugin": {
+    "name": "gemcutter",
+    "version": "0.3.0",
+    "dependencies": [
+      {
+        "name": "json_pure",
+        "version": "1.8.6"
+      }
+    ]
+  },
+  "actualRubyExecutableSha256": "1239c69504db9b7913e8cb954133bf948c7d4b217333866a457ec7aad2f12e45",
+  "sourceRevision": "a409b5c68e74b4b4c36c86c1e20d3d3411069a41",
+  "sourceArchive": {
+    "inputs": {
+      "caisson": {
+        "inputs": {
+          "caisson-core": {
+            "inputs": {},
+            "path": "/nix/store/0i6cx57gwfh5rqflcs972prg2ls2qrfl-source"
+          },
+          "flake-parts": {
+            "inputs": {},
+            "path": "/nix/store/9iv83r72z5xwgylkwms1qip1ijnr6jqs-source"
+          },
+          "nixpkgs-lib": {
+            "inputs": {},
+            "path": "/nix/store/maxk78bmn4pqy33sk9fd92iblnv2clsc-source"
+          }
+        },
+        "path": "/nix/store/r2x7hlb7nbjvr91di80lb2k2rf847bpw-source"
+      },
+      "flake-parts": {
+        "inputs": {
+          "nixpkgs-lib": {
+            "inputs": {},
+            "path": "/nix/store/z4gqifdz68qaafd0x4n8alhicz1sjcmx-source"
+          }
+        },
+        "path": "/nix/store/6xr58mfvs42ixw6428x3vm9l5h88l2z7-source"
+      },
+      "nixpkgs": {
+        "inputs": {},
+        "path": "/nix/store/cm5m4hjjh37s6z82rwa0vhkbcga3m8bq-source"
+      },
+      "nixpkgs-lib": {
+        "inputs": {},
+        "path": "/nix/store/z4gqifdz68qaafd0x4n8alhicz1sjcmx-source"
+      },
+      "purifier": {
+        "inputs": {
+          "caisson": {
+            "inputs": {
+              "caisson-core": {
+                "inputs": {},
+                "path": "/nix/store/0i6cx57gwfh5rqflcs972prg2ls2qrfl-source"
+              },
+              "flake-parts": {
+                "inputs": {},
+                "path": "/nix/store/9iv83r72z5xwgylkwms1qip1ijnr6jqs-source"
+              },
+              "nixpkgs-lib": {
+                "inputs": {},
+                "path": "/nix/store/maxk78bmn4pqy33sk9fd92iblnv2clsc-source"
+              }
+            },
+            "path": "/nix/store/r2x7hlb7nbjvr91di80lb2k2rf847bpw-source"
+          },
+          "flake-parts": {
+            "inputs": {
+              "nixpkgs-lib": {
+                "inputs": {},
+                "path": "/nix/store/z4gqifdz68qaafd0x4n8alhicz1sjcmx-source"
+              }
+            },
+            "path": "/nix/store/6xr58mfvs42ixw6428x3vm9l5h88l2z7-source"
+          },
+          "nixpkgs": {
+            "inputs": {},
+            "path": "/nix/store/cm5m4hjjh37s6z82rwa0vhkbcga3m8bq-source"
+          },
+          "nixpkgs-lib": {
+            "inputs": {},
+            "path": "/nix/store/z4gqifdz68qaafd0x4n8alhicz1sjcmx-source"
+          }
+        },
+        "path": "/nix/store/dr35xls2v0nnw43nl96h6lk3f74flamq-source"
+      }
+    },
+    "path": "/nix/store/02xkmnsa9wkd6xqfjqg43svp9n25gj5h-source"
+  },
+  "nativeVersions": "1.8.4|absent|1.3.5|0.9.9|/nix/store/pj9dcrnmff4f0fq6sw35yldvdryhw8b7-ruby-1.8.4/bin/ruby|/nix/store/pj9dcrnmff4f0fq6sw35yldvdryhw8b7-ruby-1.8.4",
+  "sourceNar": "sha256-4lb5h5nZkq88QRkKTXNdh7wWo6lfxg5b6muaErgL+Ow=",
+  "nativeRelockContract": "unchanged selected graph and SDK; exact fresh native YAML hash, no upstream byte-order claim",
+  "captureRegistryRequests": [],
+  "captureRegistryStoppedBeforeOfflineExecution": true,
+  "outputInfo": {
+    "/nix/store/8851jn014c60nz37rg6vp6kmhnaw7rc2-bundler-app-tests": {
+      "ca": null,
+      "deriver": "/nix/store/79y7bg5f6vf118i9v109s0sb3zd12lrd-bundler-app-tests.drv",
+      "narHash": "sha256-cjpu75uTxLWSDmgNZM/LW3utsvUnLCRT0e5PxGeukVA=",
+      "narSize": 5276912,
+      "references": [
+        "/nix/store/2lwn0y45j5b6y04kqpalbch3adrbyngl-bundler-app-rubygems-repository",
+        "/nix/store/3p8rv4v4v758257s84n248gjvvdz9l67-ruby184-bundler-0.9.9-json186",
+        "/nix/store/8851jn014c60nz37rg6vp6kmhnaw7rc2-bundler-app-tests",
+        "/nix/store/apx1bc715mzj89nwrci85h570rydqmjj-glibc-2.20",
+        "/nix/store/d9dq4r8ag644gpsrv2zjvnjx3z8s1gqi-tools",
+        "/nix/store/ngxwnkmsxjyyk9r2f0z9cblg6rfs7wzj-gcc-4.8.3",
+        "/nix/store/nnm9gdr70ihc6zc9298mzz8jpcgaciql-bash-5.3p20",
+        "/nix/store/pj9dcrnmff4f0fq6sw35yldvdryhw8b7-ruby-1.8.4"
+      ],
+      "registrationTime": 1794405629,
+      "signatures": [],
+      "storeDir": "/nix/store",
+      "ultimate": true,
+      "version": 1
+    },
+    "/nix/store/hikyxykmwdgb2l7v2g3h75g974hd08h4-ruby184-gems135-bundler099-gemcutter030-sdk": {
+      "ca": null,
+      "deriver": "/nix/store/1nmbxkyjrajagpmyvi4ffy5vrfm9w73c-ruby184-gems135-bundler099-gemcutter030-sdk.drv",
+      "narHash": "sha256-OikXV0I+dzrUAjxGHm9ARlYpD2UhRQ1xVN8qFZnTQyA=",
+      "narSize": 1496,
+      "references": [
+        "/nix/store/90xzmm3v2xbjfl28hi10rrcs6d99a27f-ruby184-native-gemcutter030",
+        "/nix/store/dhkmd00pwj14y4f654a0i980wbap0g4x-ruby184-rubygems135-sdk",
+        "/nix/store/nnm9gdr70ihc6zc9298mzz8jpcgaciql-bash-5.3p20"
+      ],
+      "registrationTime": 1794405593,
+      "signatures": [],
+      "storeDir": "/nix/store",
+      "ultimate": true,
+      "version": 1
+    },
+    "/nix/store/j0iadc9cs468v92qh3babl8frxhz1hvw-bundler-app-rubygems-repository": {
+      "ca": null,
+      "deriver": "/nix/store/azbw0fw6kb9sv71vwg2i9f3ja34ihc2z-bundler-app-rubygems-repository.drv",
+      "narHash": "sha256-6ObxqqfFHrBjdacbBRyJ7dfhRyW1ucg1qAmqAJBTTJw=",
+      "narSize": 224824,
+      "references": [
+        "/nix/store/2lwn0y45j5b6y04kqpalbch3adrbyngl-bundler-app-rubygems-repository",
+        "/nix/store/6ka12m3sv8aq62lrxlm1270i8g80ww0x-bundler-app",
+        "/nix/store/pcpi3aba5cr99ga8sg9dbx18l6i2lyp2-bundler-app"
+      ],
+      "registrationTime": 1794405632,
+      "signatures": [],
+      "storeDir": "/nix/store",
+      "ultimate": true,
+      "version": 1
+    },
+    "/nix/store/mg36x19llpihqnnz60x6fjs664adiap4-bundler-purifier-0.1.0": {
+      "ca": null,
+      "deriver": "/nix/store/vrbmv200h1hcqx5hbr4yhgz7zwxavwjr-bundler-purifier-0.1.0.drv",
+      "narHash": "sha256-HliArnEHrmJb46RYETOSCgtW+ltxH/8md92KJ1QToRc=",
+      "narSize": 52392,
+      "references": [
+        "/nix/store/1nmbxkyjrajagpmyvi4ffy5vrfm9w73c-ruby184-gems135-bundler099-gemcutter030-sdk.drv",
+        "/nix/store/2wlays4ahsvdx02v84s3x91ri2623qbl-git-minimal-2.56.0",
+        "/nix/store/bzsk518c656qpj8axc4lmkvn6xc4gkpx-lib",
+        "/nix/store/cacw0dhmiwq41hgq3vqmrvajhp6kq4b1-tools",
+        "/nix/store/cm5m4hjjh37s6z82rwa0vhkbcga3m8bq-source",
+        "/nix/store/d9dq4r8ag644gpsrv2zjvnjx3z8s1gqi-tools",
+        "/nix/store/hikyxykmwdgb2l7v2g3h75g974hd08h4-ruby184-gems135-bundler099-gemcutter030-sdk",
+        "/nix/store/jnjll1yxfq02bdcw5pjf9gl86wh8gfhq-ruby-3.4.11",
+        "/nix/store/mg36x19llpihqnnz60x6fjs664adiap4-bundler-purifier-0.1.0",
+        "/nix/store/nnm9gdr70ihc6zc9298mzz8jpcgaciql-bash-5.3p20",
+        "/nix/store/w9grjw32g6zikxip4gmca0sry7f1p91w-nix-prefetch-git-26.11",
+        "/nix/store/xahxrjs30p3mw0a42bqg9ikgkikskw8m-python3-3.14.8",
+        "/nix/store/ya0x9ps3jijfdqd98y6lmd2vs704c073-gcc-wrapper-4.8.3.drv"
+      ],
+      "registrationTime": 1794405593,
+      "signatures": [],
+      "storeDir": "/nix/store",
+      "ultimate": true,
+      "version": 1
+    },
+    "/nix/store/pj9dcrnmff4f0fq6sw35yldvdryhw8b7-ruby-1.8.4": {
+      "ca": null,
+      "deriver": "/nix/store/7sppjf4n2jywgfcvh4f45l5rcql95ln7-ruby-1.8.4.drv",
+      "narHash": "sha256-eoBo1KSKV5FO7Y9lX8vw99OPYOoWpSnJomD9ebSlx8U=",
+      "narSize": 7662792,
+      "references": [
+        "/nix/store/01sh2l23n9ff9h9j5k80mxw98c4516l9-openssl-0.9.7m",
+        "/nix/store/2mr2zkaw1nvqmgkr9zk22y6mbq1v7m4i-zlib-1.2.8",
+        "/nix/store/5l6mna1x70alq4581q5a2sl6jmr51g88-coreutils-8.23",
+        "/nix/store/apx1bc715mzj89nwrci85h570rydqmjj-glibc-2.20",
+        "/nix/store/d1dsk8h8hr1x0vxwdvivp7x94hl2jkl0-ncurses-5.9",
+        "/nix/store/pj9dcrnmff4f0fq6sw35yldvdryhw8b7-ruby-1.8.4",
+        "/nix/store/pxfx4r4dj0w9d17dlrybi0kb2k965awk-bash-4.3-p30",
+        "/nix/store/rnfnmqwkzgjws19m8zp54x1wv5pgyjnp-readline-6.3p08"
+      ],
+      "registrationTime": 1794405592,
+      "signatures": [],
+      "storeDir": "/nix/store",
+      "ultimate": true,
+      "version": 1
+    }
+  },
+  "nativeInterpreterDerivers": [
+    "/nix/store/7sppjf4n2jywgfcvh4f45l5rcql95ln7-ruby-1.8.4.drv"
+  ],
+  "nativeYamlNegatives": [
+    "missing-snapshot",
+    "wrong-hash",
+    "wrong-sdk",
+    "stale-native-bytes",
+    "fabricated-patchlevel"
+  ],
+  "publicationSdkArchiveSha256": "120fb14456a33991aea765b095010f566f650cf914d9dad0ef8d1241edcabfc5",
+  "fixtureDnsRequests": [],
+  "fixtureDnsHelperSha256": "5a7946032f574ee6a2543a8ccc0d1fcaa74c47c1d478a4353a7e115fa0574c70",
+  "publicationNativeUserAgents": [
+    "Gemcutter/0.2.0",
+    "Gemcutter/0.2.0",
+    "Gemcutter/0.2.0"
+  ],
+  "ordinaryLoadedNativeSha256": "c5cf3bfa4e4b80a0553cd6262182ed3e3bd9d524069cd4a6e267354e67d9783a",
+  "providerReference": "path:/nix/store/02xkmnsa9wkd6xqfjqg43svp9n25gj5h-source#checks.x86_64-linux.ruby184-app",
+  "projectInputs": [
+    {
+      "reference": "path:/nix/store/02xkmnsa9wkd6xqfjqg43svp9n25gj5h-source#checks.x86_64-linux.ruby184-app",
+      "url": "path:/nix/store/02xkmnsa9wkd6xqfjqg43svp9n25gj5h-source?lastModified=0&narHash=sha256-4lb5h5nZkq88QRkKTXNdh7wWo6lfxg5b6muaErgL%2BOw%3D",
+      "narHash": "sha256-4lb5h5nZkq88QRkKTXNdh7wWo6lfxg5b6muaErgL+Ow=",
+      "attribute": "checks.x86_64-linux.ruby184-app"
+    }
+  ],
+  "nativeLockSha256": "2cb7f2a9b6f7be5ee9b55e814adb776cc23695b239781f59ae129b439d77dd8b",
+  "lockSha256": "20be34000504db065ca1a94f5bd31fb51f7e06a277ec3c874e716bbf80358179",
+  "pureRepository": "/nix/store/j0iadc9cs468v92qh3babl8frxhz1hvw-bundler-app-rubygems-repository",
+  "publishedArchives": {
+    "historical_greeting-1.0.0.1.nix.ha6a101cc64c5ee1d509cb36affc8cace652d2f54f744ddb26eddddc047aab3b2.gem": "9d841473fe8d43d6b1549ae81547c1dc94e7fe6605dcb3eaf474ba163a94ff4a",
+    "incoming_consumer-1.0.0.1.nix.h0cdad79f6ce4519c23e6a97db52f32bd00bffdffb52e26ef4b8f117f8eab84e6.gem": "b7133e6990e21ce15fd70cda079061476b0de9b8de331cd39c957b7a7731c550",
+    "json-1.8.6.1.nix.hb068fa2f4d43ac33b1cc86d2ccef199dfa627f494f1107dce0e39677ac54cbde-x86_64-linux.gem": "1b00961be867e5122b198257428826468ad7bdb044f5cf82891ccae6fe0ebd3a"
+  }
+}
