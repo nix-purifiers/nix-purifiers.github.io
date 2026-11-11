@@ -57,7 +57,107 @@ class ReconciliationTests(unittest.TestCase):
                 return original(self.real, ref)
             return original(obj, ref)
         with patch.object(Reconciliation, 'asset', asset):
-            return Reconciliation(self.data, self.registry, self.root)
+            return Reconciliation(self.data, self.registry, self.root, catalog=getattr(self, 'catalog', None))
+
+    def append_fixture(self, project='maven-purifier'):
+        # A synthetic additive unit fixture reuses existing scoped evidence;
+        # it is never written to the public registry or presented as a retest.
+        registry = json.loads(type(self).registry)
+        entry = registry['projects'][project]
+        added = copy.deepcopy(entry['testedPoints'][0])
+        original_id = added['id']
+        added['id'] = 'unit-additive-' + original_id
+        review = copy.deepcopy(next(r for r in entry['reviews'] if original_id in r['pointIds']))
+        review['pointIds'] = [added['id']]
+        entry['testedPoints'].append(added)
+        entry['reviews'].append(review)
+        self.catalog = json.loads((ROOT/'docs-site/catalog.json').read_text())['catalog']
+        self.catalog[project]['compatibility']['testedPoints'] = copy.deepcopy(entry['testedPoints'])
+        self.pending['docs-site/evidence/' + self.sidecar['registrySha256'] + '.json'] = type(self).registry
+        self.registry = (json.dumps(registry, indent=2)+'\n').encode()
+        return registry, added, review
+
+    def test_generic_reviewed_append_preserves_frozen_partition_and_annotations(self):
+        for project in ['maven-purifier', 'sbt-purifier', 'cmake-purifier']:
+            with self.subTest(project=project):
+                registry, added, review = self.append_fixture(project)
+                actual = self.validate()
+                self.assertEqual(actual.points, self.real.points)
+                self.assertEqual(actual.annotations, self.real.annotations)
+                self.assertEqual(len(actual.points), 131)
+                self.assertNotIn((project, added['id']), actual.points)
+                self.assertEqual(actual.classify(project, added['id'], review['sourceRevision'], review['files'])['status'], MATCH)
+                changed = dict(review['files'], **{'unreviewed-input': '0'*64})
+                self.assertEqual(actual.classify(project, added['id'], review['sourceRevision'], changed)['status'], DRIFT)
+
+    def test_append_cannot_mutate_remove_reorder_or_retype_old_history(self):
+        for target in ['point', 'review', 'order', 'removed-project', 'json-type', 'sbt-runtime']:
+            with self.subTest(target=target):
+                registry, _, _ = self.append_fixture()
+                item = registry['projects']['maven-purifier']
+                if target == 'point':
+                    item['testedPoints'][0]['notes'] += ' rewritten'
+                elif target == 'review':
+                    item['reviews'][0]['files']['invented-input'] = '0'*64
+                elif target == 'order':
+                    item['testedPoints'][0], item['testedPoints'][1] = item['testedPoints'][1], item['testedPoints'][0]
+                elif target == 'removed-project':
+                    del registry['projects']['sbt-purifier']
+                elif target == 'json-type':
+                    item['reviews'][0]['ci'][0]['attempt'] = True
+                else:
+                    registry['projects']['sbt-purifier']['testedPoints'][-1]['notes'] += ' rewritten'
+                self.registry = (json.dumps(registry, indent=2)+'\n').encode()
+                with self.assertRaisesRegex(ValueError, 'historical registry'):
+                    self.validate()
+
+    def test_append_still_requires_normal_catalog_source_and_ci_bindings(self):
+        for target in ['source-digest', 'source-revision', 'ci-platform', 'unreviewed-point', 'catalog']:
+            with self.subTest(target=target):
+                registry, added, review = self.append_fixture()
+                item = registry['projects']['maven-purifier']
+                if target == 'source-digest':
+                    review['inputDigest'] = '0'*64
+                elif target == 'source-revision':
+                    added['sourceRevision'] = '0'*40
+                elif target == 'ci-platform':
+                    for ci in review['ci']:
+                        for job in ci['jobs']:
+                            job['system'] = 'unrecorded-system'
+                elif target == 'unreviewed-point':
+                    item['reviews'].pop()
+                else:
+                    self.catalog['maven-purifier']['compatibility']['testedPoints'].pop()
+                self.registry = (json.dumps(registry, indent=2)+'\n').encode()
+                if target != 'catalog':
+                    self.catalog['maven-purifier']['compatibility']['testedPoints'] = copy.deepcopy(item['testedPoints'])
+                with self.assertRaises(ValueError):
+                    self.validate()
+
+    def test_new_point_cannot_be_restamped_as_a_historical_observation(self):
+        _, added, _ = self.append_fixture()
+        observation = copy.deepcopy(next(x for x in self.data['unresolved'] if x['status'] == DRIFT))
+        observation.update(project='maven-purifier', historicalPointId=added['id'])
+        self.data['unresolved'].append(observation)
+        with self.assertRaisesRegex(ValueError, 'unknown or duplicate historical point'):
+            self.validate(republish=True)
+
+    def test_append_cannot_rebind_frozen_snapshot_or_restate_projection_counts(self):
+        self.append_fixture()
+        path = 'docs-site/evidence/' + self.sidecar['registrySha256'] + '.json'
+        self.pending[path] += b' '
+        with self.assertRaisesRegex(ValueError, 'mutated reconciliation evidence'):
+            self.validate()
+        self.pending[path] = type(self).registry
+        projection = self.load(self.data['reviewBindings'][0])
+        projection['counts'][MATCH] += 1
+        self.data['reviewBindings'] = [self.write_asset(projection)]
+        with self.assertRaisesRegex(ValueError, 'reviewed point partition mismatch'):
+            self.validate()
+        self.data = copy.deepcopy(self.sidecar)
+        self.data['registrySha256'] = hashlib.sha256(self.registry).hexdigest()
+        with self.assertRaisesRegex(ValueError, 'frozen registry anchor'):
+            self.validate()
 
     def test_partition_preserves_all_131_recorded_observations(self):
         counts = {}
@@ -123,7 +223,7 @@ class ReconciliationTests(unittest.TestCase):
             projection['historicalRegistrySha256'] = changed_hash
             self.data['reviewBindings'] = [self.write_asset(projection)]
             self.mutate_extension(lambda e: e.update(extendedRegistrySha256=changed_hash))
-            with self.subTest(target=target), self.assertRaisesRegex(ValueError, 'historical SBT identities|operation scope expanded'):
+            with self.subTest(target=target), self.assertRaisesRegex(ValueError, 'frozen registry anchor|historical SBT identities|operation scope expanded'):
                 self.validate(True)
 
     def test_registry_extension_cannot_substitute_its_historical_anchor(self):

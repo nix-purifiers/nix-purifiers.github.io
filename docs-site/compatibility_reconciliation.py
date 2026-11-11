@@ -6,7 +6,7 @@ from pathlib import Path
 import re
 import subprocess
 
-from compatibility_evidence import input_digest, runner_system
+from compatibility_evidence import input_digest, runner_system, validate_registry
 
 PAGES = 'pages-only-equivalence-reviewed-not-retested'
 CURRENT = 'current-observation-verified'
@@ -16,6 +16,7 @@ MATCH = 'source-inputs-match'
 SHA = re.compile(r'[0-9a-f]{64}')
 REV = re.compile(r'[0-9a-f]{40}')
 NAR = re.compile(r'sha256-[A-Za-z0-9+/]{43}=')
+RECONCILED_REGISTRY_SHA = 'cf9f0c050bfb8c20c743ebe6833c499047beeb3e4b3fcf4de57655aafe9a802c'
 HISTORICAL_REGISTRY_SHA = 'f2ea7676cda5942a7c5895b4d077afbeae5b0be2d07aae30263b2b5abdf7f64c'
 
 
@@ -33,14 +34,29 @@ def digest(data):
 
 
 class Reconciliation:
-    def __init__(self, sidecar, registry_bytes, root):
+    def __init__(self, sidecar, registry_bytes, root, catalog=None):
         self.root = Path(root)
         self.data = sidecar
         fields(sidecar, 'version registrySha256 reviewBindings pagesEquivalences currentObservations unresolved')
         require(sidecar['version'] == 1, 'unsupported reconciliation version')
-        require(sidecar['registrySha256'] == digest(registry_bytes), 'historical registry changed')
+        require(sidecar['registrySha256'] == RECONCILED_REGISTRY_SHA, 'frozen registry anchor changed')
         registry = json.loads(registry_bytes)
-        self.points = {(name, p['id']): p for name, item in registry['projects'].items() for p in item['testedPoints']}
+        historical = registry
+        historical_bytes = registry_bytes
+        if digest(registry_bytes) != sidecar['registrySha256']:
+            reference = {'artifactSha256': RECONCILED_REGISTRY_SHA,
+                         'path': f'docs-site/evidence/{RECONCILED_REGISTRY_SHA}.json'}
+            historical = self.asset(reference)
+            historical_bytes = (self.root / reference['path']).read_bytes()
+            self.validate_append_only(historical, registry)
+            if catalog is None:
+                catalog = json.loads((self.root / 'docs-site/catalog.json').read_text())['catalog']
+            # Additions use the ordinary typed, source-inventory and scoped CI
+            # bindings. The audit's --verify-ci still rechecks every review.
+            validate_registry(registry, catalog)
+        # The reviewed partition belongs to its frozen snapshot, not the size
+        # of today's registry. New points receive no historical annotations.
+        self.points = {(name, p['id']): p for name, item in historical['projects'].items() for p in item['testedPoints']}
         self.reviews = {(name, p): r for name, item in registry['projects'].items() for r in item['reviews'] for p in r['pointIds']}
         require(len(sidecar['reviewBindings']) == 1, 'one immutable reviewed projection required')
         projection = self.asset(sidecar['reviewBindings'][0])
@@ -50,7 +66,7 @@ class Reconciliation:
         require(projection['historicalRegistrySha256'] == sidecar['registrySha256'], 'projection registry mismatch')
         for key in ['pagesEquivalences', 'currentObservations', 'unresolved']:
             require(projection[key] == sidecar[key], 'sidecar differs from immutable reviewed projection')
-        self.validate_registry_extension(self.asset(projection['registryExtensionReview']), registry, registry_bytes)
+        self.validate_registry_extension(self.asset(projection['registryExtensionReview']), historical, historical_bytes)
         self.annotations = {}
         self.ids = set()
         for equivalence in sidecar['pagesEquivalences']:
@@ -75,6 +91,31 @@ class Reconciliation:
                   DRIFT: sum(x['status'] == DRIFT for x in sidecar['unresolved']),
                   MATCH: len(self.points) - len(self.annotations)}
         require(counts == projection['counts'], 'reviewed point partition mismatch')
+
+    @staticmethod
+    def validate_append_only(historical, current):
+        """Existing point/review encodings are immutable ordered prefixes."""
+        fields(current, 'version projects')
+        require(type(current['version']) is int and current['version'] == historical['version'] and isinstance(current['projects'], dict), 'historical registry changed')
+        require(set(historical['projects']) <= set(current['projects']), 'historical registry project removed')
+        added = 0
+        for name, old in historical['projects'].items():
+            new = current['projects'][name]
+            fields(new, 'testedPoints reviews')
+            for key in ['testedPoints', 'reviews']:
+                require(isinstance(new[key], list), 'historical registry changed')
+                prefix = new[key][:len(old[key])]
+                # Preserve JSON types and key order as well as values; bools
+                # and numbers must not compare equal by Python coercion.
+                require(json.dumps(prefix, separators=(',', ':')) == json.dumps(old[key], separators=(',', ':')),
+                        'historical registry point or review changed')
+            added += len(new['testedPoints']) - len(old['testedPoints'])
+        for name, entry in current['projects'].items():
+            if name not in historical['projects']:
+                fields(entry, 'testedPoints reviews')
+                require(isinstance(entry['testedPoints'], list) and isinstance(entry['reviews'], list), 'invalid appended project')
+                added += len(entry['testedPoints'])
+        require(added > 0, 'historical registry changed without appended points')
 
     def validate_registry_extension(self, extension, registry, registry_bytes):
         """Retain the public125 identities; six reviewed runtime points are separate."""
