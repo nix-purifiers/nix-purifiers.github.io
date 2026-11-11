@@ -175,10 +175,6 @@ def render_compatibility(page, contract, heading=True):
             lines.append(f'{ROLES[item["role"]]} **{cell(item["name"])}**: {cell(item["range"])} '
                          f'({cell(", ".join(item["systems"]))}). '
                          + cell(item['basis']))
-    if data['testedPoints']:
-        lines += ['### Tested combinations',
-                  'Matching versions link to the packaged components above. Expand a test for its checks, limits, and evidence.',
-                  tested_combinations(data['testedPoints'], packaged)]
     if data['limitations']:
         lines += ['### Requirements']
         lines += ['- ' + cell(item['text']) for item in data['limitations']]

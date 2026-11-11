@@ -2,7 +2,7 @@
 import re
 import shlex
 from html import escape
-from compatibility import render_compatibility
+from compatibility import render_compatibility, tested_combinations
 from quality import validate as validate_quality
 
 
@@ -45,7 +45,13 @@ def feature_matrix(page, contract):
         description = definition.get('description', '')
         lines.append(f'| <span title="{escape(description, quote=True)}">{cell(label)}</span> | '
                      f'{cell(behavior)} |')
-    return '\n\n'.join(lines[:2]) + '\n\n' + '\n'.join(lines[2:]) + ('\n\nFor tested versions and requirements, see [Version compatibility](reference.html#version-compatibility).\n' if 'versionCompatibility' in contract else '\n')
+    body = '\n\n'.join(lines[:2]) + '\n\n' + '\n'.join(lines[2:])
+    if 'versionCompatibility' in contract:
+        body += '\n\nFor packaged versions and project requirements, see [Version compatibility](reference.html#version-compatibility).\n'
+        points = page.get('compatibility', {}).get('testedPoints', [])
+        if points:
+            body += '\n## Tested combinations\n\n' + tested_combinations(points) + '\n'
+    return body
 
 
 def nonempty(value, label):

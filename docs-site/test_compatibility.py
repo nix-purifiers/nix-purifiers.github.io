@@ -4,13 +4,19 @@ import re
 from pathlib import Path
 import unittest
 
-from compatibility import validate, render_compatibility, packaged_components, packaged_match, EMPTY
+from compatibility import validate, render_compatibility, packaged_components, packaged_match, tested_combinations, EMPTY
 from content import render, feature_matrix
 from reference import reference_text
 from export import validate_version_coverage
 
 
 class CompatibilityTests(unittest.TestCase):
+    def with_test_evidence(self, page):
+        return (render_compatibility(page, self.contract)
+                + "\n\n### Tested combinations\n\n"
+                + tested_combinations(page["compatibility"]["testedPoints"],
+                                      packaged_components(page["compatibility"]["defaults"])))
+
     def setUp(self):
         root = Path(__file__).resolve().parent
         self.documentation = json.loads((root / 'catalog.json').read_text())
@@ -97,6 +103,12 @@ class CompatibilityTests(unittest.TestCase):
                 body = render_compatibility(page, self.contract)
                 self.assertIn(body, overview)
                 self.assertIn(body, guide)
+                self.assertNotIn("tested-combination", guide)
+                self.assertNotIn("Checked operations", guide)
+                self.assertNotIn("tested-combination", overview)
+                matrix = feature_matrix(page, self.contract)
+                self.assertEqual(matrix.count("<ul class=\"tested-operations\">"), len(page["compatibility"]["testedPoints"]))
+                self.assertNotIn("href=\"#packaged-version-", matrix)
                 self.assertEqual(overview.count('## Version compatibility\n'), 1)
                 self.assertIn('[Version compatibility](reference.html#version-compatibility)', feature_matrix(page, self.contract))
 
@@ -119,7 +131,7 @@ class CompatibilityTests(unittest.TestCase):
                 tools = {c['name']: c['version'] for c in point['components'] if c['role'] == 'native-tool'}
                 self.assertIn('uv', tools)
                 self.assertIn('uv (ordinary republisher)', tools)
-        body = render_compatibility(page, self.contract)
+        body = self.with_test_evidence(page)
         self.assertIn('Project runtime: Python (free-threaded)', body)
         self.assertIn('Build tool / package manager: uv (ordinary republisher)', body)
 
@@ -137,7 +149,7 @@ class CompatibilityTests(unittest.TestCase):
         self.assertNotIn('ordinary-maven-consumer', point['operations'])
         self.assertNotIn('ordinary-gradle-consumer', point['operations'])
         page['compatibility']['testedPoints'] = [point]
-        body = render_compatibility(page, self.contract)
+        body = self.with_test_evidence(page)
         self.assertIn('Runtime running the tool: OpenJDK 17.0.20.1+1', body)
         self.assertIn('Project compiler: OpenJDK 8u504-b01', body)
         self.assertIn('Project runtime: OpenJDK 8u504-b01', body)
@@ -152,7 +164,7 @@ class CompatibilityTests(unittest.TestCase):
         # This original fixture is x86-only even after other points gain ARM evidence.
         page['compatibility']['testedPoints'] = [point for point in page['compatibility']['testedPoints']
                                                  if point['id'] == 'npm6-node12-pure']
-        body = render_compatibility(page, self.contract)
+        body = self.with_test_evidence(page)
         self.assertIn('Build tool / package manager: npm 6.14.16', body)
         self.assertIn('Project runtime: Node.js 12.22.12', body)
         packaged = packaged_components(page['compatibility']['defaults'])
@@ -168,7 +180,7 @@ class CompatibilityTests(unittest.TestCase):
     def test_combinations_show_compact_choices_with_scoped_details(self):
         page = copy.deepcopy(self.documentation['catalog']['maven-purifier'])
         original = copy.deepcopy(page)
-        body = render_compatibility(page, self.contract)
+        body = self.with_test_evidence(page)
         table = body.split('### Tested combinations', 1)[1].split('### Requirements', 1)[0]
         summaries = re.findall(r'<summary><span class="tested-combination-labels(?: [^"]+)?">(.*?)</span></summary>', table)
         self.assertTrue(summaries)
@@ -197,7 +209,7 @@ class CompatibilityTests(unittest.TestCase):
     def test_packaged_cards_combine_exact_shared_values_without_losing_roles(self):
         page = self.packaged_go_case()
         original = copy.deepcopy(page)
-        body = render_compatibility(page, self.contract)
+        body = self.with_test_evidence(page)
         packaged, tested = body.split('### Tested combinations', 1)
         version = page['compatibility']['defaults'][0]['version']
         self.assertEqual(packaged.count('<li class="packaged-version"'), 1)
@@ -217,7 +229,7 @@ class CompatibilityTests(unittest.TestCase):
             for item in page['compatibility']['defaults']:
                 item[field] = {'role': 'host-helper', 'name': 'Another Go',
                                'version': '999.0.0', 'systems': ['aarch64-darwin']}[field]
-            body = render_compatibility(page, self.contract).split('### Tested combinations', 1)[1]
+            body = self.with_test_evidence(page).split('### Tested combinations', 1)[1]
             with self.subTest(field=field):
                 self.assertNotIn('href="#packaged-version-', body)
                 for component in page['compatibility']['testedPoints'][0]['components']:
@@ -231,7 +243,7 @@ class CompatibilityTests(unittest.TestCase):
         point['id'] += '-arm-control'
         point['system'] = 'aarch64-linux'
         page['compatibility']['testedPoints'].append(point)
-        body = render_compatibility(page, self.contract).split('### Tested combinations', 1)[1]
+        body = self.with_test_evidence(page).split('### Tested combinations', 1)[1]
         self.assertNotIn('href="#packaged-version-', body)
         self.assertEqual(body.count('[Checks]('), 2)
 
@@ -259,7 +271,7 @@ class CompatibilityTests(unittest.TestCase):
         third['id'] = 'different-helper'
         next(c for c in third['components'] if c['role'] == 'host-helper')['version'] = '99.0.0'
         page['compatibility']['testedPoints'] = [first, second, third]
-        body = render_compatibility(page, self.contract)
+        body = self.with_test_evidence(page)
         self.assertEqual(body.count('<details class="tested-combination"'), 2)
         self.assertEqual(body.count('[Checks]('), 3)
         self.assertIn('Linux x86-64 · Linux ARM64', body)
