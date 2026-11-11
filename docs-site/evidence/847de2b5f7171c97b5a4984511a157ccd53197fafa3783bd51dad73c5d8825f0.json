@@ -1,0 +1,54 @@
+{
+  "complete": true,
+  "commands": [
+    {
+      "label": "reject-old-root-receipt",
+      "argv": [
+        "shell",
+        "ruby",
+        "-e",
+        "raise \"stale receipt activated\""
+      ],
+      "exit": 1,
+      "expectedSuccess": false,
+      "stdoutSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderrSha256": "d203cc534cf6db07bdfe9b129eb4444b25f5a3d1daf5eacd3b1212db4cc8e115"
+    },
+    {
+      "label": "lock-no-op-relocated",
+      "argv": [
+        "lock"
+      ],
+      "exit": 0,
+      "expectedSuccess": true,
+      "stdoutSha256": "b535038d020742ceba695a88ef0cf3fbbe9af51d38683e0377d74c16dd3ece49",
+      "stderrSha256": "c1e0de87431ab70170ebb104ed853ec89c5996a8da083dbc6b53d188fde40cb8"
+    },
+    {
+      "label": "prefetch-relocated",
+      "argv": [
+        "prefetch"
+      ],
+      "exit": 0,
+      "expectedSuccess": true,
+      "stdoutSha256": "af75aaebefc294bcfa1d692512945f3cccb6958b72f1d2272c3d4d302d7bcca9",
+      "stderrSha256": "c1e0de87431ab70170ebb104ed853ec89c5996a8da083dbc6b53d188fde40cb8"
+    },
+    {
+      "label": "native-relocated",
+      "argv": [
+        "shell",
+        "ruby",
+        "-Ilib",
+        "-e",
+        "require \"historical_greeting\";raise unless HistoricalGreeting.answer==42;puts \"RELOCATED|42|#{RUBY_VERSION}\""
+      ],
+      "exit": 0,
+      "expectedSuccess": true,
+      "stdoutSha256": "7488894316c165474dd5b1b1c25a73d561d81137548881d3859f2b659f3837af",
+      "stderrSha256": "c507964ea12fafa6e0abfb725aa1fb37fd54ca2f15bf879a1a0f31a1a2430be4"
+    }
+  ],
+  "originalRootUnavailableDuringCommands": true,
+  "lockBytesUnchanged": true
+}
