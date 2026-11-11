@@ -1,0 +1,462 @@
+{
+  "complete": true,
+  "commands": [
+    {
+      "label": "reject-linked-lock-parent",
+      "argv": [
+        "/nix/store/wyjirakqb34v7pcprgwam9hl2wnbdwgf-bundler-purifier-0.1.0/bin/bundler-purifier",
+        "--lockfile",
+        "linked-lock-parent/lock.json",
+        "lock",
+        "--input",
+        "path:/missing-native-input-control#default"
+      ],
+      "exit": 1,
+      "expectedSuccess": false,
+      "stdoutSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderrSha256": "ebced355867f3b1d58eaae7dd2a72cdb1ccd9b1f8fdb6feab334d3d5069b4faa"
+    },
+    {
+      "label": "capture-explicit-external",
+      "argv": [
+        "/nix/store/wyjirakqb34v7pcprgwam9hl2wnbdwgf-bundler-purifier-0.1.0/bin/bundler-purifier",
+        "--lockfile",
+        "/home/runner/work/_temp/bundler08-native-evidence/explicit-external/lock.json",
+        "lock"
+      ],
+      "exit": 0,
+      "expectedSuccess": true,
+      "stdoutSha256": "a2522a424dafc00674b8b2a4383c8a809622b6c63a6783dd85a3271d5aaa56a2",
+      "stderrSha256": "c1e0de87431ab70170ebb104ed853ec89c5996a8da083dbc6b53d188fde40cb8"
+    },
+    {
+      "label": "prefetch-explicit-external",
+      "argv": [
+        "/nix/store/wyjirakqb34v7pcprgwam9hl2wnbdwgf-bundler-purifier-0.1.0/bin/bundler-purifier",
+        "--lockfile",
+        "/home/runner/work/_temp/bundler08-native-evidence/explicit-external/lock.json",
+        "prefetch"
+      ],
+      "exit": 0,
+      "expectedSuccess": true,
+      "stdoutSha256": "af75aaebefc294bcfa1d692512945f3cccb6958b72f1d2272c3d4d302d7bcca9",
+      "stderrSha256": "292883335e3a410c04f91871fda94661a67c0acaf6bb9f70ae22b6d15547e295"
+    },
+    {
+      "label": "runtime-explicit-external",
+      "argv": [
+        "/nix/store/wyjirakqb34v7pcprgwam9hl2wnbdwgf-bundler-purifier-0.1.0/bin/bundler-purifier",
+        "--lockfile",
+        "/home/runner/work/_temp/bundler08-native-evidence/explicit-external/lock.json",
+        "shell",
+        "ruby",
+        "-e",
+        "puts \"EXTERNAL|#{RUBY_VERSION}\""
+      ],
+      "exit": 0,
+      "expectedSuccess": true,
+      "stdoutSha256": "d5a755a8281cdaf16728ba66ec693f8e2c9f3ed8da484c7d135d6fa9c2023e0d",
+      "stderrSha256": "3555aab7d4a9a36015354b26237179d29513be0337036e323b9b7da2e79e6d98"
+    },
+    {
+      "label": "capture",
+      "argv": [
+        "/nix/store/wyjirakqb34v7pcprgwam9hl2wnbdwgf-bundler-purifier-0.1.0/bin/bundler-purifier",
+        "lock"
+      ],
+      "exit": 0,
+      "expectedSuccess": true,
+      "stdoutSha256": "ab9748ed353a09cb264f05c3cc65170b1e22686c9848adb86d9d93e37d63f29a",
+      "stderrSha256": "c1e0de87431ab70170ebb104ed853ec89c5996a8da083dbc6b53d188fde40cb8"
+    },
+    {
+      "label": "lock-no-op-without-state",
+      "argv": [
+        "/nix/store/wyjirakqb34v7pcprgwam9hl2wnbdwgf-bundler-purifier-0.1.0/bin/bundler-purifier",
+        "lock"
+      ],
+      "exit": 0,
+      "expectedSuccess": true,
+      "stdoutSha256": "b535038d020742ceba695a88ef0cf3fbbe9af51d38683e0377d74c16dd3ece49",
+      "stderrSha256": "c1e0de87431ab70170ebb104ed853ec89c5996a8da083dbc6b53d188fde40cb8"
+    },
+    {
+      "label": "reject-missing-working-state",
+      "argv": [
+        "/nix/store/wyjirakqb34v7pcprgwam9hl2wnbdwgf-bundler-purifier-0.1.0/bin/bundler-purifier",
+        "shell",
+        "ruby",
+        "-e",
+        "raise \"activated missing state\""
+      ],
+      "exit": 1,
+      "expectedSuccess": false,
+      "stdoutSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderrSha256": "b472f36f78ce10287132eaf4739f2e9c4383adf6f815a3133aa96186335afe90"
+    },
+    {
+      "label": "prefetch",
+      "argv": [
+        "/nix/store/wyjirakqb34v7pcprgwam9hl2wnbdwgf-bundler-purifier-0.1.0/bin/bundler-purifier",
+        "prefetch"
+      ],
+      "exit": 0,
+      "expectedSuccess": true,
+      "stdoutSha256": "af75aaebefc294bcfa1d692512945f3cccb6958b72f1d2272c3d4d302d7bcca9",
+      "stderrSha256": "25f39c104660b6a43ba435d2e9bb43e99a94ada4b77a87d44766a9cc553c58ad"
+    },
+    {
+      "label": "wrapper-runtime",
+      "argv": [
+        "/nix/store/wyjirakqb34v7pcprgwam9hl2wnbdwgf-bundler-purifier-0.1.0/bin/bundler-purifier",
+        "shell",
+        "ruby",
+        "-Ilib",
+        "exe/historical-greeting"
+      ],
+      "exit": 0,
+      "expectedSuccess": true,
+      "stdoutSha256": "4bb3c378a65e6f3a744304a82d245530d381411b22c380b53fe92da54fb37353",
+      "stderrSha256": "c507964ea12fafa6e0abfb725aa1fb37fd54ca2f15bf879a1a0f31a1a2430be4"
+    },
+    {
+      "label": "wrapper-argv",
+      "argv": [
+        "/nix/store/wyjirakqb34v7pcprgwam9hl2wnbdwgf-bundler-purifier-0.1.0/bin/bundler-purifier",
+        "shell",
+        "ruby",
+        "-e",
+        "raise unless ARGV==[\"space value\",\"$literal\",\"--dash\"];puts \"ARGV|exact\"",
+        "space value",
+        "$literal",
+        "--dash"
+      ],
+      "exit": 0,
+      "expectedSuccess": true,
+      "stdoutSha256": "2f6d6ab3b24fc00071205eb64ba91890204e1be8f94e51eec554d6f9b7f32f2b",
+      "stderrSha256": "c507964ea12fafa6e0abfb725aa1fb37fd54ca2f15bf879a1a0f31a1a2430be4"
+    },
+    {
+      "label": "reject-removed-receipt",
+      "argv": [
+        "/nix/store/wyjirakqb34v7pcprgwam9hl2wnbdwgf-bundler-purifier-0.1.0/bin/bundler-purifier",
+        "shell",
+        "ruby",
+        "-e",
+        "raise \"activated missing receipt\""
+      ],
+      "exit": 1,
+      "expectedSuccess": false,
+      "stdoutSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderrSha256": "b472f36f78ce10287132eaf4739f2e9c4383adf6f815a3133aa96186335afe90"
+    },
+    {
+      "label": "reject-stale-manifest",
+      "argv": [
+        "/nix/store/wyjirakqb34v7pcprgwam9hl2wnbdwgf-bundler-purifier-0.1.0/bin/bundler-purifier",
+        "prefetch"
+      ],
+      "exit": 1,
+      "expectedSuccess": false,
+      "stdoutSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderrSha256": "24691ea34675f6f0413ce7cc9951d50be0fdeb44c0251a9406230eaa98a2dbb1"
+    },
+    {
+      "label": "reject-ambiguous-native-lock",
+      "argv": [
+        "/nix/store/wyjirakqb34v7pcprgwam9hl2wnbdwgf-bundler-purifier-0.1.0/bin/bundler-purifier",
+        "prefetch"
+      ],
+      "exit": 1,
+      "expectedSuccess": false,
+      "stdoutSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderrSha256": "ce338b4b309a3ffd128e7de41b374325a732033c484449259877841f0c8747ed"
+    },
+    {
+      "label": "publish-projected",
+      "argv": [
+        "/nix/store/wyjirakqb34v7pcprgwam9hl2wnbdwgf-bundler-purifier-0.1.0/bin/bundler-purifier",
+        "publish",
+        "--host",
+        "http://127.0.0.1:34331",
+        "--no-http-proxy"
+      ],
+      "exit": 0,
+      "expectedSuccess": true,
+      "stdoutSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderrSha256": "a73deedf314f11a20009961f14586e1a5e4557189c83eaa108197703fa608f6a"
+    },
+    {
+      "label": "published-name-0",
+      "argv": [
+        "/nix/store/h3l7r4lq79hdi91h40ky37l940qris22-ruby184-bundler08-attested-sdk/bin/ruby",
+        "-rrubygems/format",
+        "-e",
+        "puts Gem::Format.from_file_by_path(ARGV[0]).spec.full_name+\".gem\"",
+        "/home/runner/work/_temp/bundler08-native-evidence/published/0.gem"
+      ],
+      "exit": 0,
+      "expectedSuccess": true,
+      "stdoutSha256": "0ef06fc8b71aeb8322805693787dcd5c1baf802c570f26492bf128ff6fe70efb",
+      "stderrSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "label": "published-name-1",
+      "argv": [
+        "/nix/store/h3l7r4lq79hdi91h40ky37l940qris22-ruby184-bundler08-attested-sdk/bin/ruby",
+        "-rrubygems/format",
+        "-e",
+        "puts Gem::Format.from_file_by_path(ARGV[0]).spec.full_name+\".gem\"",
+        "/home/runner/work/_temp/bundler08-native-evidence/published/1.gem"
+      ],
+      "exit": 0,
+      "expectedSuccess": true,
+      "stdoutSha256": "3ba155050588049de9f84db2a4383d10300d8854629870f8be1ffd12950a0548",
+      "stderrSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "label": "publish-dedup",
+      "argv": [
+        "/nix/store/wyjirakqb34v7pcprgwam9hl2wnbdwgf-bundler-purifier-0.1.0/bin/bundler-purifier",
+        "publish",
+        "--host",
+        "http://127.0.0.1:34331",
+        "--no-http-proxy"
+      ],
+      "exit": 0,
+      "expectedSuccess": true,
+      "stdoutSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderrSha256": "c1e0de87431ab70170ebb104ed853ec89c5996a8da083dbc6b53d188fde40cb8"
+    },
+    {
+      "label": "ordinary-install",
+      "argv": [
+        "/nix/store/h3l7r4lq79hdi91h40ky37l940qris22-ruby184-bundler08-attested-sdk/bin/gem",
+        "install",
+        "--local",
+        "--no-rdoc",
+        "--no-ri",
+        "/home/runner/work/_temp/bundler08-native-evidence/published/json-1.8.6.1.nix.hd65b7c0c4dfcf07ab02952edf5fa519ae7bf75273125679507fe6be013a86578-x86_64-linux.gem",
+        "/home/runner/work/_temp/bundler08-native-evidence/published/historical_greeting-1.0.0.1.nix.h419e6c3442cb2392365ae329aa5e7c966a079f31d4557d7adbf13e535a0bde94.gem"
+      ],
+      "exit": 0,
+      "expectedSuccess": true,
+      "stdoutSha256": "a98fac6f1319df6029fdfd6e201ae0b8d3a646b3350e7ab97e7bc0172950731c",
+      "stderrSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "label": "ordinary-runtime",
+      "argv": [
+        "/nix/store/h3l7r4lq79hdi91h40ky37l940qris22-ruby184-bundler08-attested-sdk/bin/ruby",
+        "-e",
+        "require \"historical_greeting\";require \"digest/sha2\";raise unless HistoricalGreeting.answer==42 && JSON.parser==JSON::Ext::Parser;puts \"ORDINARY|#{RUBY_VERSION}|#{Gem::VERSION}|42\";File.readlines(\"/proc/self/maps\").map{|line|line.split.last}.uniq.each{|path|puts \"NATIVE|#{path}|#{File.open(path,\"rb\"){|file|Digest::SHA256.hexdigest(file.read)}}\" if path =~ /json\\/ext\\/parser.so$/}"
+      ],
+      "exit": 0,
+      "expectedSuccess": true,
+      "stdoutSha256": "b4c034ce3140cb3266790b46c330a066f8ca3395c512d52394159655c2fd6c64",
+      "stderrSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  ],
+  "scope": "Genuine Ruby184/Gem135/Bundler08 native frontend",
+  "nativeSDK": {
+    "abi": "1.8",
+    "clientArtifact": {
+      "archiveHash": "sha256-jc2uxfV24e5YxeWypz3nv81SGDVnp/oW9jgWRlrJAe4=",
+      "libraryHash": "sha256-ephSmqRc2/zbJFANacMWmBS7A2v6gczUWABoaX/IcwI=",
+      "name": "bundler",
+      "version": "0.8.1"
+    },
+    "clientReport": {
+      "name": "Bundler::VERSION",
+      "value": "0.8.1"
+    },
+    "closure": [
+      {
+        "narHash": "sha256-AhKbCYdHqUpcwW9Bi6Ba0HHw6kIBI9PssbPafvFQx18=",
+        "path": "/nix/store/00fs4zz9c0jjcvs62wg39b91dydz7zqb-libidn2-2.3.8"
+      },
+      {
+        "narHash": "sha256-b6euaES70m8WbHmzKKVEPC7z1VBgIjgvgl7YGC4PQbc=",
+        "path": "/nix/store/01sh2l23n9ff9h9j5k80mxw98c4516l9-openssl-0.9.7m"
+      },
+      {
+        "narHash": "sha256-3LucslVePPyU05vRRwT3c8EyFIbqeImy+bFUrZckdb0=",
+        "path": "/nix/store/0hj07kf6s9wynda6l8pdzbsh1kzvzzhd-ruby184-bundler08-publisher-gems"
+      },
+      {
+        "narHash": "sha256-w0RFyQAbUBWRi10W9G/y2uYa2ZYTyG/XiD26TgQPkpg=",
+        "path": "/nix/store/2mr2zkaw1nvqmgkr9zk22y6mbq1v7m4i-zlib-1.2.8"
+      },
+      {
+        "narHash": "sha256-zmWy4Z2L10rVeQn0RFmGi02sOkyVZLK84yRhsIVK2F4=",
+        "path": "/nix/store/5l6mna1x70alq4581q5a2sl6jmr51g88-coreutils-8.23"
+      },
+      {
+        "narHash": "sha256-msWQ3E1EsfHl/Ok9Gd1wkuN1LFtbm+l2X3S+PQ6LUpY=",
+        "path": "/nix/store/6vr55hnnrbfqcfs4labbvlssj5vlkdwx-bundler-0.8.1.gem"
+      },
+      {
+        "narHash": "sha256-UNxfiSUL/G5PivfL+tJdU57YvEpLh4Xge8IEOeBVwb8=",
+        "path": "/nix/store/8b1jjbgnwwd5h7r9xn4xanw1i23ysqrz-acl-2.2.52"
+      },
+      {
+        "narHash": "sha256-GOwJZzFXdHAGlkGckxDrk+fh7uZ+9yCZ6C1G/7qrv2E=",
+        "path": "/nix/store/9ymb4v873wd7ydm9933m4pzaczy57941-json_pure-1.8.6.gem"
+      },
+      {
+        "narHash": "sha256-BtJZygG4BwZl9FxoIod13w860LuSk3qoqbxn144iMZA=",
+        "path": "/nix/store/apx1bc715mzj89nwrci85h570rydqmjj-glibc-2.20"
+      },
+      {
+        "narHash": "sha256-kOm4q3neqz32vH6bqyspML/6jKhJL6IBcuksThx0U24=",
+        "path": "/nix/store/bw64lwar561lh3b5svk741yvbdbzdr1g-ruby-1.8.4.tar.gz"
+      },
+      {
+        "narHash": "sha256-hTXroDuc+1L8tRw5lvnmzEnp0PIENcKwQp5IRJtT70A=",
+        "path": "/nix/store/bx7jdvkba26sy20ryr4l617qqmzj9hff-libunistring-1.4.2"
+      },
+      {
+        "narHash": "sha256-BmngqJCZH6tA123BDkBu6st6OiHPnQJy8sNqz79U8Tg=",
+        "path": "/nix/store/d1dsk8h8hr1x0vxwdvivp7x94hl2jkl0-ncurses-5.9"
+      },
+      {
+        "narHash": "sha256-CbMLv8gAtc0z2u+Ivv7bPmv5cLyNxV2wyMnIqhhwvPQ=",
+        "path": "/nix/store/fgfjni0w5pj2zlzbln90vgqwd06bl66j-ruby184-bundler08-rubygems135-sdk"
+      },
+      {
+        "narHash": "sha256-XpcmJJzYPlBc1E1zW9WG0GqWzXj9Gl4j/fyi5z2QTzU=",
+        "path": "/nix/store/fprs4zi8r6227x12qbsd1grvfrpz6201-nss-cacert-3.131.1"
+      },
+      {
+        "narHash": "sha256-Cn4lz0oGoreFtcuIIBFoQbgRkaS6QUF2z4JOgPNsC5E=",
+        "path": "/nix/store/h3l7r4lq79hdi91h40ky37l940qris22-ruby184-bundler08-attested-sdk"
+      },
+      {
+        "narHash": "sha256-Yd0P34FY3CdT2ZUvu/vDNWXlB0swOaj+KGqe35ieGvI=",
+        "path": "/nix/store/lprpy6sld9247kaqmlcnv9l568jdsqyy-ruby184-bundler08-rubygems135"
+      },
+      {
+        "narHash": "sha256-fS9mQLhUaDDTEY2IMtblwSvkwSGFLzd6Va4710JVT8E=",
+        "path": "/nix/store/mrh862kggyai8a5mbgd7ws752qv580s6-json-1.8.6.gem"
+      },
+      {
+        "narHash": "sha256-mhs3NiE5NeYi2r9FKdcNxcr0k7/1VYxnNR9KCHowN3E=",
+        "path": "/nix/store/n5zfcvgajj54m6vjxl7247ydqzv87r3h-ruby184-bundler08-bundler-0.8.1-json186"
+      },
+      {
+        "narHash": "sha256-DFyMnQyPP2aTdFIYK/NR7dLnaHLZu3TaUAX9op2vPtQ=",
+        "path": "/nix/store/ngxwnkmsxjyyk9r2f0z9cblg6rfs7wzj-gcc-4.8.3"
+      },
+      {
+        "narHash": "sha256-lXOsHNb1os/UAz+P8x+eR02qgE+qSRGTPwAHF9hClN0=",
+        "path": "/nix/store/nnm9gdr70ihc6zc9298mzz8jpcgaciql-bash-5.3p20"
+      },
+      {
+        "narHash": "sha256-eoBo1KSKV5FO7Y9lX8vw99OPYOoWpSnJomD9ebSlx8U=",
+        "path": "/nix/store/pj9dcrnmff4f0fq6sw35yldvdryhw8b7-ruby-1.8.4"
+      },
+      {
+        "narHash": "sha256-L5spLmHxo4zwWB8LQ5ZMgJqzfnjpt/GDVZ0nnobVmQk=",
+        "path": "/nix/store/pkkjnyk4z46n18fkyqwlg24p272apb69-xgcc-16.2.0-libgcc"
+      },
+      {
+        "narHash": "sha256-vbneyMia3r6fPMNYX5wvLVdZ47Ws2tur3csaoOj2wPw=",
+        "path": "/nix/store/pqyiidz5mi73wv5f91d48s9plcqyj5bz-glibc-2.44-57"
+      },
+      {
+        "narHash": "sha256-X6PUCanIuzvgTzLt1iqxLyhdg1arHAxuQKbkob9zVD4=",
+        "path": "/nix/store/pxfx4r4dj0w9d17dlrybi0kb2k965awk-bash-4.3-p30"
+      },
+      {
+        "narHash": "sha256-Agj6JXE+Ab+Xjb+UyHvTw3GudBfHAK+MIsT64s49EE4=",
+        "path": "/nix/store/qmgr4kf36ygbb5j6h3cr8vmndilfld02-perl-5.20.1"
+      },
+      {
+        "narHash": "sha256-WHyK4tT53fZ75jtKnfBQrCAQrPRgF4iPsLcxr7zjDMY=",
+        "path": "/nix/store/rnfnmqwkzgjws19m8zp54x1wv5pgyjnp-readline-6.3p08"
+      },
+      {
+        "narHash": "sha256-DJ4TJx8qjnI7FFtQgY6kpVwQCdWkxCjbHGQFrNVMTrM=",
+        "path": "/nix/store/skh74zd1vbhj87njp1z5hsir14y8dbd8-rubygems-update-1.3.5.gem"
+      },
+      {
+        "narHash": "sha256-5gfo/PS0SdXCm8CSdIBfdGJ8vZzIRRoL0pZkf7MnTYU=",
+        "path": "/nix/store/snfw28k35qqcw2aswnjyysifbvcs1shv-gemcutter-0.3.0.gem"
+      },
+      {
+        "narHash": "sha256-/n9NSxzJ5ywaPKhXDvQptWhwqdFfxBGIhhLaE8/Fe8A=",
+        "path": "/nix/store/swjf4r8vphcmqr5921961cdjcfjskki1-ruby184-bundler08-components.json"
+      },
+      {
+        "narHash": "sha256-BFDzXuz+GvUwVBg87dqBg7lZFYVyL3tMVxJ8EZfelTw=",
+        "path": "/nix/store/x07ckac7pn0pj1xzy84b4k3i3q7ap116-linux-headers-3.12.32"
+      },
+      {
+        "narHash": "sha256-xbG6SksNAD+Cmi7cJEZh/G0bZiiUmz29yhJCZtH9/wM=",
+        "path": "/nix/store/xir5prcz6kxnsygmxvy8w30qq9v9iqpz-ruby184-bundler08-rubygems135-base"
+      },
+      {
+        "narHash": "sha256-nRJyhNtJLIQOUFxufrnspqTUxhqQhabO3Ca1xM7WAVI=",
+        "path": "/nix/store/yh8kyahfc2wc7rr0dblgwwz8yhz8m6ik-attr-2.4.47"
+      }
+    ],
+    "components": [
+      {
+        "archiveHash": "sha256-jc2uxfV24e5YxeWypz3nv81SGDVnp/oW9jgWRlrJAe4=",
+        "libraryHash": "sha256-ephSmqRc2/zbJFANacMWmBS7A2v6gczUWABoaX/IcwI=",
+        "name": "bundler",
+        "version": "0.8.1"
+      },
+      {
+        "archiveHash": "sha256-M9KoAyPtFctNODq70vy8Ib8k588H8eDeSGDlIikBNR8=",
+        "libraryHash": "sha256-Sh8XeDQydVxQMlyDNAyPh8tuZsJjXOwi4lk6SOzb28A=",
+        "name": "gemcutter",
+        "version": "0.3.0"
+      },
+      {
+        "archiveHash": "sha256-Za8nyphfcOsNCDqrD3VxLHcYcSIq8CHOUzutd707smI=",
+        "libraryHash": "sha256-p9nwrN1jByXl8ub33Zn75CrytlE7FC6FLZVZ/3idio8=",
+        "name": "json",
+        "version": "1.8.6"
+      },
+      {
+        "archiveHash": "sha256-VdV1xK7JgklHOBGiVrPzp8EqlK0AgJMDL15fKOrNlO4=",
+        "libraryHash": "sha256-J3H69m1BpiR7apwThAq7hnDJ1WBUD1FBHxVzF5M3MiI=",
+        "name": "json_pure",
+        "version": "1.8.6"
+      },
+      {
+        "archiveHash": "sha256-cUMoQbOWW3qy2D8Nx8MEkZXqTpJnqNwtglqKBGaYKTA=",
+        "libraryHash": "sha256-eoBo1KSKV5FO7Y9lX8vw99OPYOoWpSnJomD9ebSlx8U=",
+        "name": "ruby",
+        "version": "1.8.4"
+      },
+      {
+        "archiveHash": "sha256-Eg+xRFajOZGup2WwlQEPVm9lDPkU2drQ740SQe3Kv8U=",
+        "libraryHash": "sha256-Yd0P34FY3CdT2ZUvu/vDNWXlB0swOaj+KGqe35ieGvI=",
+        "name": "rubygems",
+        "version": "1.3.5"
+      }
+    ],
+    "interpreter": "sha256-EjnGlQTbm3kT6MuVQTO/lIx9SyFzM4ZqRX7HqtLxLkU=",
+    "patchlevel": null,
+    "platform": "x86_64-linux",
+    "ruby": "1.8.4",
+    "rubygemsReport": {
+      "name": "Gem::VERSION",
+      "value": "1.3.5"
+    }
+  },
+  "lockSha256": "0d8aab848bd973e007db7b3646a9ca772605c4e9dfbfa2a578b41624dffcecbd",
+  "publishedArchives": {
+    "historical_greeting-1.0.0.1.nix.h419e6c3442cb2392365ae329aa5e7c966a079f31d4557d7adbf13e535a0bde94.gem": "4c9afe4f5ce32af83784642fc117efa4d24171a8ee70863873acca98d81ae3c3",
+    "json-1.8.6.1.nix.hd65b7c0c4dfcf07ab02952edf5fa519ae7bf75273125679507fe6be013a86578-x86_64-linux.gem": "cb66dcc133f279152eb3e57b691326fe29bd9fd9a4f9d95b33f14a459c09b261"
+  },
+  "publicationNativeUserAgents": [
+    "Gemcutter/0.2.0",
+    "Gemcutter/0.2.0"
+  ],
+  "ordinaryLoadedParser": "/home/runner/work/_temp/bundler08-native-evidence/ordinary/gems/gems/json-1.8.6.1.nix.hd65b7c0c4dfcf07ab02952edf5fa519ae7bf75273125679507fe6be013a86578-x86_64-linux/lib/json/ext/parser.so",
+  "ordinaryLoadedParserSha256": "5d0904336a0984d96dfe026696130b6ff7fdb7cc49233df9851165db564a8f1f",
+  "ordinaryParserMatchesPublishedPayload": true
+}

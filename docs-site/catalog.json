@@ -9271,6 +9271,65 @@
             ],
             "sourceRevision": "a409b5c68e74b4b4c36c86c1e20d3d3411069a41",
             "system": "x86_64-linux"
+          },
+          {
+            "components": [
+              {
+                "name": "Bundler",
+                "role": "native-tool",
+                "version": "0.8.1"
+              },
+              {
+                "name": "RubyGems",
+                "role": "native-tool",
+                "version": "1.3.5"
+              },
+              {
+                "name": "Gemcutter",
+                "role": "native-tool",
+                "version": "0.3.0"
+              },
+              {
+                "name": "Ruby",
+                "role": "native-tool-runtime",
+                "version": "1.8.4"
+              },
+              {
+                "name": "Ruby",
+                "role": "project-runtime",
+                "version": "1.8.4"
+              },
+              {
+                "name": "JSON C extension",
+                "role": "addon-target",
+                "version": "1.8.6"
+              }
+            ],
+            "evidence": [
+              "https://github.com/nix-purifiers/bundler-purifier/blob/8a49d752987c9f90faef0fc2ac1b5676749c7af6/tests/prelock-native.py",
+              "https://github.com/nix-purifiers/bundler-purifier/blob/8a49d752987c9f90faef0fc2ac1b5676749c7af6/tests/prelock-input.py",
+              "https://github.com/nix-purifiers/bundler-purifier/blob/8a49d752987c9f90faef0fc2ac1b5676749c7af6/tests/prelock-relocation.py",
+              "https://github.com/nix-purifiers/bundler-purifier/blob/8a49d752987c9f90faef0fc2ac1b5676749c7af6/tests/default.nix",
+              "https://github.com/nix-purifiers/bundler-purifier/actions/runs/43055998005/job/130645485696",
+              "https://nix-purifiers.github.io/evidence/b17a59f273464d5ba78c5fdb77a362c0d3d7f8cbb19983beb280e05afd0aab01.json"
+            ],
+            "id": "ruby-1.8.4-bundler-0.8.1-native-8a49d75",
+            "notes": [
+              "Ruby 1.8.4 has no RUBY_PATCHLEVEL constant; this is not p0. This pre-lockfile frontend captures genuine Bundler 0.8.1 working state and SDK attestation without a native Gemfile.lock.",
+              "Declared Nix inputs, external lock paths, exact shell arguments and relocation with the original root unavailable execute on the attested SDK. Relocation preserves lock bytes; the ordinary consumer installs the published gem archives locally.",
+              "Gemcutter 0.3.0 (user-agent 0.2.0) and publisher-only json_pure 1.8.6 use the same Ruby SDK. JSON 1.8.6 denotes its upstream artifact; installed projections carry .nix versions. Exact x86_64-linux observations only."
+            ],
+            "operations": [
+              "incoming-lock",
+              "native-prefetch",
+              "native-publish",
+              "uploaded-projection-byte-equality",
+              "ordinary-package-consumer",
+              "native-addon-load",
+              "native-input-composition"
+            ],
+            "sourceRevision": "8a49d752987c9f90faef0fc2ac1b5676749c7af6",
+            "system": "x86_64-linux"
           }
         ]
       },

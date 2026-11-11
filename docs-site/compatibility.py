@@ -23,6 +23,7 @@ OPERATIONS = {
     'pure-native-byte-equality': 'Matching native/Nix publication bytes',
     'source-preservation': 'Unchanged project sources',
     'ordinary-registry-consumer': 'Ordinary registry consumer',
+    'ordinary-package-consumer': 'Ordinary package consumer',
     'ordinary-source-consumer': 'Ordinary source consumer',
     'ordinary-maven-consumer': 'Ordinary Maven consumer',
     'ordinary-gradle-consumer': 'Ordinary Gradle consumer',
