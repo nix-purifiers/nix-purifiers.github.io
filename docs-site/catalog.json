@@ -9151,6 +9151,126 @@
             ],
             "sourceRevision": "2cf9a2522d470519c671eb9488e2808292a55069",
             "system": "x86_64-linux"
+          },
+          {
+            "components": [
+              {
+                "name": "Bundler",
+                "role": "native-tool",
+                "version": "0.9.9"
+              },
+              {
+                "name": "RubyGems",
+                "role": "native-tool",
+                "version": "1.3.5"
+              },
+              {
+                "name": "Ruby",
+                "role": "native-tool-runtime",
+                "version": "1.8.4"
+              },
+              {
+                "name": "Ruby",
+                "role": "project-runtime",
+                "version": "1.8.4"
+              },
+              {
+                "name": "JSON C extension",
+                "role": "addon-target",
+                "version": "1.8.6"
+              },
+              {
+                "name": "Gemcutter",
+                "role": "native-tool",
+                "version": "0.3.0"
+              }
+            ],
+            "evidence": [
+              "https://github.com/nix-purifiers/bundler-purifier/blob/a409b5c68e74b4b4c36c86c1e20d3d3411069a41/tests/ruby18-incoming-native.py",
+              "https://github.com/nix-purifiers/bundler-purifier/blob/a409b5c68e74b4b4c36c86c1e20d3d3411069a41/tests/default.nix",
+              "https://github.com/nix-purifiers/bundler-purifier/actions/runs/43032524362/job/130562938120",
+              "https://nix-purifiers.github.io/evidence/d45b0e062be54fb354efca27dc82ac446a08717050201d6734902b03e2451005.json"
+            ],
+            "id": "ruby-1.8.4-native-incoming-a409b5c",
+            "notes": [
+              "Ruby 1.8.4 reports no RUBY_PATCHLEVEL constant; this is not p0. Host CLI capture and publication are followed by separately sandboxed consumer checks and an ordinary RubyGems consumer that loads its own compiled JSON extension. Prefetch performs a native Bundler install from the local Nix-store repository after the capture registry stops.",
+              "Fresh native YAML is bound to the selected SDK and unchanged dependency graph; upstream byte-order reproducibility is not claimed. Gemcutter 0.3.0 and json_pure 1.8.6 run in that Ruby SDK; the plugin user-agent reports 0.2.0. JSON 1.8.6 denotes the upstream artifact; installed projections carry .nix versions. This x86_64-linux tuple only."
+            ],
+            "operations": [
+              "incoming-lock",
+              "native-lock",
+              "native-prefetch",
+              "incoming-pure-build",
+              "native-install-offline",
+              "native-publish",
+              "uploaded-projection-byte-equality",
+              "ordinary-registry-consumer",
+              "native-addon-build",
+              "native-addon-load",
+              "native-input-composition"
+            ],
+            "sourceRevision": "a409b5c68e74b4b4c36c86c1e20d3d3411069a41",
+            "system": "x86_64-linux"
+          },
+          {
+            "components": [
+              {
+                "name": "Bundler",
+                "role": "native-tool",
+                "version": "0.9.9"
+              },
+              {
+                "name": "RubyGems",
+                "role": "native-tool",
+                "version": "1.3.5"
+              },
+              {
+                "name": "Ruby",
+                "role": "native-tool-runtime",
+                "version": "1.8.5-p231"
+              },
+              {
+                "name": "Ruby",
+                "role": "project-runtime",
+                "version": "1.8.5-p231"
+              },
+              {
+                "name": "JSON C extension",
+                "role": "addon-target",
+                "version": "1.8.6"
+              },
+              {
+                "name": "Gemcutter",
+                "role": "native-tool",
+                "version": "0.3.0"
+              }
+            ],
+            "evidence": [
+              "https://github.com/nix-purifiers/bundler-purifier/blob/a409b5c68e74b4b4c36c86c1e20d3d3411069a41/tests/ruby18-incoming-native.py",
+              "https://github.com/nix-purifiers/bundler-purifier/blob/a409b5c68e74b4b4c36c86c1e20d3d3411069a41/tests/default.nix",
+              "https://github.com/nix-purifiers/bundler-purifier/actions/runs/43032524362/job/130562938120",
+              "https://nix-purifiers.github.io/evidence/5cb7200d46bbf2d18ba5e99dfc0ee220ddc683db56216af1935ef31d9e3f3550.json"
+            ],
+            "id": "ruby-1.8.5-p231-native-incoming-a409b5c",
+            "notes": [
+              "Ruby 1.8.5 reports RUBY_PATCHLEVEL 231. Host CLI capture and publication are followed by separately sandboxed consumer checks and an ordinary RubyGems consumer that loads its own compiled JSON extension. Prefetch performs a native Bundler install from the local Nix-store repository after the capture registry stops.",
+              "Fresh native YAML is bound to the selected SDK and unchanged dependency graph; upstream byte-order reproducibility is not claimed. Gemcutter 0.3.0 and json_pure 1.8.6 run in that Ruby SDK; the plugin user-agent reports 0.2.0. JSON 1.8.6 denotes the upstream artifact; installed projections carry .nix versions. This x86_64-linux tuple only."
+            ],
+            "operations": [
+              "incoming-lock",
+              "native-lock",
+              "native-prefetch",
+              "incoming-pure-build",
+              "native-install-offline",
+              "native-publish",
+              "uploaded-projection-byte-equality",
+              "ordinary-registry-consumer",
+              "native-addon-build",
+              "native-addon-load",
+              "native-input-composition"
+            ],
+            "sourceRevision": "a409b5c68e74b4b4c36c86c1e20d3d3411069a41",
+            "system": "x86_64-linux"
           }
         ]
       },

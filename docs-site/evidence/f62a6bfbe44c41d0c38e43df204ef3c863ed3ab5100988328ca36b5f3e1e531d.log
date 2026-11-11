@@ -1,0 +1,30 @@
+error:
+       … while calling the 'seq' builtin
+         at /nix/store/02xkmnsa9wkd6xqfjqg43svp9n25gj5h-source/nix/lib/build-bundler-project.nix:476:9:
+          475|
+          476|   app = builtins.seq checkedLock (
+             |         ^
+          477|     stdenv.mkDerivation {
+
+       … from call site
+         at /nix/store/02xkmnsa9wkd6xqfjqg43svp9n25gj5h-source/nix/lib/build-bundler-project.nix:171:17:
+          170|   };
+          171|   checkedLock = purifier.checkLock readResult;
+             |                 ^
+          172|   # What the builder reads besides the entries. Its names are known without
+
+       … while calling 'checkLock'
+         at /nix/store/dr35xls2v0nnw43nl96h6lk3f74flamq-source/nix/lib/lock.nix:71:5:
+           70|   checkLock =
+           71|     lock:
+             |     ^
+           72|     let
+
+       … while calling the 'throw' builtin
+         at /nix/store/dr35xls2v0nnw43nl96h6lk3f74flamq-source/nix/lib/lock.nix:79:7:
+           78|     else if lock.problems != [ ] then
+           79|       throw (concatStringsSep "\n" lock.problems)
+             |       ^
+           80|     else if problem != null then
+
+       error: bundler-purifier: native YAML snapshot is missing, malformed, stale or conflicts with the recorded SDK. Recapture with the intended native SDK using bundler-purifier lock --force.
