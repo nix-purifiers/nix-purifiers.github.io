@@ -1,6 +1,8 @@
 """Validate version evidence and render the same section on every purifier page."""
 from html import escape
 from urllib.parse import urlsplit
+from pathlib import Path
+from derivation_evidence import validate_receipt, native_success
 import hashlib
 import json
 import re
@@ -150,7 +152,7 @@ def evidence(item):
     return '[Checks](' + url + ')'
 
 
-def render_compatibility(page, contract, heading=True):
+def render_exact_versions(page, contract, heading=True):
     spec = contract['versionCompatibility']
     data = validate(page.get('compatibility', EMPTY))
     lines = ['## ' + spec['title']] if heading else []
@@ -181,6 +183,141 @@ def render_compatibility(page, contract, heading=True):
     if data['limitations']:
         lines += ['### Requirements']
         lines += ['- ' + cell(item['text']) for item in data['limitations']]
+    return '\n\n'.join(_tables(lines))
+
+
+USER_ROLES = {'native-tool', 'native-tool-runtime', 'project-runtime', 'compiler'}
+JAVA_NAMES = {'JDK', 'OpenJDK', 'Azul Zulu JDK', 'Zulu OpenJDK'}
+USER_NAMES = {'Apache Maven': 'Maven', 'Apache Ant': 'Ant', 'Legacy sbt launcher': 'sbt'}
+ACCOUNTING_IDENTITIES = {'Bundler::VERSION report', 'Gemcutter',
+                         'uv (ordinary republisher)', 'uv (publisher and ordinary consumer)'}
+
+
+def user_name(name):
+    return 'Java' if name in JAVA_NAMES else USER_NAMES.get(name, name)
+
+
+def user_component(item):
+    """Java's release number is useful here; distribution build IDs stay in the matrix."""
+    if item['name'] in JAVA_NAMES:
+        version = re.match(r'(?:1\.)?(\d+)', item['version'])
+        return 'Java', version[1] if version else item['version']
+    return user_name(item['name']), item['version']
+
+
+def version_choices(items):
+    def key(version):
+        return tuple((0, int(part)) if part.isdigit() else (1, part)
+                     for part in re.split(r'(\d+)', version))
+    return ', '.join(sorted(set(items), key=key)) or '—'
+
+
+def verified_platforms(page, data):
+    systems = {p['system'] for p in data['testedPoints']}
+    # An OS assessment alone does not establish each architecture. Use only
+    # bound successful receipts; their IDs have no platform semantics.
+    quality = page.get('quality', {})
+    review = quality.get('derivationReview', {})
+    criteria = review.get('criteria', {})
+    directory = Path(__file__).with_name('evidence')
+    base = 'https://nix-purifiers.github.io/evidence/'
+    for os in ('linux', 'darwin'):
+        criterion = criteria.get(os, {})
+        if criterion.get('state') != 'met':
+            continue
+        for identifier in criterion.get('derivations', []):
+            receipt = review.get('derivations', {}).get(identifier)
+            if (receipt is None or receipt.get('repository') != page['repository']
+                    or receipt.get('revision') != quality.get('reviewedRevision')):
+                continue
+            if receipt.get('kind') != 'native-ci-execution':
+                validate_receipt(receipt, directory, base)
+            if receipt['system'].endswith('-' + os) and native_success(receipt, directory, base):
+                systems.add(receipt['system'])
+    return systems
+
+
+def render_compatibility(page, contract, heading=True):
+    """Answer user toolchain choices, keeping the exact inventory in the matrix."""
+    data = validate(page.get('compatibility', EMPTY))
+    lines = ['## ' + contract['versionCompatibility']['title']] if heading else []
+    if not any(data.values()):
+        return '\n\n'.join(lines + [contract['versionCompatibility']['unknown']])
+    # Keep running the tool separate from compiling/running the project when
+    # their choices differ. Equal roles collapse, including tool/compiler Go.
+    groups = []
+    visible_defaults = [c for c in data['defaults'] if c['role'] in USER_ROLES
+                        and c['name'] not in ACCOUNTING_IDENTITIES]
+    visible_points = [dict(p, components=[c for c in p['components'] if c['name'] not in ACCOUNTING_IDENTITIES])
+                      for p in data['testedPoints']]
+    for role in ('native-tool', 'native-tool-runtime', 'compiler', 'project-runtime'):
+        names = dict.fromkeys(user_component(c)[0]
+                             for c in visible_defaults + [c for p in visible_points for c in p['components']]
+                             if c['role'] == role)
+        for name in names:
+            defaults = [(user_component(c)[1], c['selection'], tuple(c['systems']))
+                        for c in visible_defaults if c['role'] == role and user_component(c)[0] == name]
+            checked = [tuple(dict.fromkeys(user_component(c)[1] for c in p['components']
+                        if c['role'] == role and user_component(c)[0] == name)) for p in visible_points]
+            choices = {(v, s) for v, s, _ in defaults}
+            group = next((g for g in groups if g['name'] == name and g['checked'] == checked
+                          and (not choices or not g['defaults']
+                               or choices == {(v, s) for v, s, _ in g['defaults']})), None)
+            if group is None:
+                group = dict(name=name, roles=[], defaults=[], checked=checked)
+                groups.append(group)
+            group['roles'].append(role)
+            group['defaults'].extend(x for x in defaults if x not in group['defaults'])
+    if groups:
+        lines += ['| Tool or language | Included version | Other verified versions |', '|---|---|---|']
+        all_systems = {s for c in visible_defaults for s in c['systems']}
+        for group in groups:
+            name = group['name']
+            if sum(g['name'] == name for g in groups) > 1:
+                labels = {'native-tool': 'tool', 'native-tool-runtime': 'runs the tool',
+                          'compiler': 'compiles the project', 'project-runtime': 'runs the project'}
+                name += ' (' + ', '.join(labels[r] for r in group['roles']) + ')'
+            choices = list(dict.fromkeys((v, s) for v, s, _ in group['defaults']))
+            included_choices = []
+            for version, selection in choices:
+                scope = {s for v, selected, systems in group['defaults']
+                         if (v, selected) == (version, selection) for s in systems}
+                qualifiers = [selection] if selection != 'default' else []
+                if scope != all_systems:
+                    qualifiers.append(platform_labels(scope))
+                included_choices.append(version + (' (' + '; '.join(qualifiers) + ')' if qualifiers else ''))
+            selected = any(user_name(c['name']) == group['name'] and c['role'] in group['roles']
+                           for c in data['projectSelections'])
+            included = '; '.join(included_choices) or ('Project-selected' if selected else '—')
+            default_versions = {v for v, _ in choices}
+            other = version_choices(v for versions in group['checked'] for v in versions if v not in default_versions)
+            lines.append('| ' + cell(name) + ' | ' + cell(included) + ' | ' + cell(other) + ' |')
+    checked = verified_platforms(page, data)
+    systems = sorted({s for c in visible_defaults for s in c['systems']} | checked)
+    if systems:
+        lines += ['### Operating systems and architectures', '| OS | CPU architecture | Availability |', '|---|---|---|']
+        packaged = {s for c in visible_defaults for s in c['systems']}
+        for system in systems:
+            arch, _, os = system.partition('-')
+            status = 'Packaged; verified workflow' if system in packaged and system in checked else ('Packaged; workflow not verified' if system in packaged else 'Verified workflow')
+            lines.append('| ' + cell({'linux': 'Linux', 'darwin': 'macOS'}.get(os, os))
+                         + ' | ' + cell({'x86_64': 'x86-64', 'aarch64': 'ARM64'}.get(arch, arch)) + ' | ' + status + ' |')
+    lines.append('Verified versions apply to specific workflows and platforms; they do not imply every combination or an entire version range. See the [feature matrix](features.html) for exact configurations and limitations.')
+    selections = [c for c in data['projectSelections'] if c['role'] in USER_ROLES or c['role'] == 'purifier-implementation']
+    if selections:
+        lines += ['### Choosing versions', '| Component | Selected by |', '|---|---|']
+        for item in selections:
+            inputs = ', '.join('`' + cell(n) + '`' for n in item['inputs'])
+            if item['kind'] == 'nix-scope':
+                inputs = 'Nix scope configuration: ' + inputs
+            lines.append('| ' + cell(ROLES[item['role']] + ': ' + item['name']) + ' | '
+                         + cell(item['description']) + '<br>' + inputs + ' |')
+    if data['supportedRanges']:
+        lines += ['### Supported ranges']
+        lines += ['- ' + cell(c['name'] + ' ' + c['range'] + ': ' + c['basis'])
+                  for c in data['supportedRanges'] if c['role'] in USER_ROLES]
+    if data['limitations']:
+        lines += ['### Requirements'] + ['- ' + cell(c['text']) for c in data['limitations']]
     return '\n\n'.join(_tables(lines))
 
 

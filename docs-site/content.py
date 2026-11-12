@@ -2,7 +2,7 @@
 import re
 import shlex
 from html import escape
-from compatibility import render_compatibility, tested_combinations
+from compatibility import render_compatibility, render_exact_versions, tested_combinations
 from quality import validate as validate_quality
 from scope_content import fact_list, scope_block
 
@@ -48,7 +48,8 @@ def feature_matrix(page, contract):
                      f'{cell(behavior)} |')
     body = '\n\n'.join(lines[:2]) + '\n\n' + '\n'.join(lines[2:])
     if 'versionCompatibility' in contract:
-        body += '\n\nFor packaged versions and project requirements, see [Version compatibility](reference.html#version-compatibility).\n'
+        body += '\n\nFor tool, language and platform choices, see [Version compatibility](reference.html#version-compatibility).\n'
+        body += '\n' + render_exact_versions(page, contract) + '\n'
         points = page.get('compatibility', {}).get('testedPoints', [])
         if points:
             body += '\n## Tested combinations\n\n' + tested_combinations(points) + '\n'

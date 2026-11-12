@@ -4,15 +4,110 @@ import re
 from pathlib import Path
 import unittest
 
-from compatibility import validate, render_compatibility, packaged_components, packaged_match, tested_combinations, EMPTY
+from compatibility import validate, render_compatibility, render_exact_versions, packaged_components, packaged_match, tested_combinations, verified_platforms, EMPTY
 from content import render, feature_matrix
 from reference import reference_text
 from export import validate_version_coverage
 
 
 class CompatibilityTests(unittest.TestCase):
+    def test_maven_choices_hide_internal_helpers_and_collapse_java_build_ids(self):
+        page = self.documentation['catalog']['maven-purifier']
+        original = copy.deepcopy(page)
+        body = render_compatibility(page, self.contract)
+        self.assertIn('| Maven | 3.10.0 (without a Maven wrapper) |', body)
+        self.assertIn('2.2.1, 3.0.5', body)
+        self.assertIn('| Java | 21; 8 (Maven 2 / 3.0 fallback) | 17 |', body)
+        self.assertIn('| Linux | ARM64 | Packaged; verified workflow |', body)
+        self.assertIn('| macOS | ARM64 | Packaged; verified workflow |', body)
+        self.assertNotIn('Python', body)
+        self.assertNotIn('21.0.12.1+1', body)
+        self.assertNotIn('8u504-b01', body)
+        self.assertNotIn('Packaged versions', body)
+        self.assertNotIn('Version definitions', body)
+        self.assertNotIn('### Tested combinations', body)
+        self.assertIn('do not imply every combination or an entire version range', body)
+        self.assertIn('Maven 2.2.1 can consume Nix inputs through the sandbox builder', body)
+        matrix = feature_matrix(page, self.contract)
+        self.assertIn('Python 3.14.8', matrix)
+        self.assertIn('21.0.12.1+1', matrix)
+        self.assertEqual(page, original)
+
+    def test_helper_changes_do_not_change_user_version_choices(self):
+        for name in ['maven-purifier', 'npm-purifier', 'bundler-purifier']:
+            page = copy.deepcopy(self.documentation['catalog'][name])
+            before = render_compatibility(page, self.contract)
+            for component in page['compatibility']['defaults']:
+                if component['role'] == 'host-helper':
+                    component['version'] = '99.99.99'
+                    component['systems'] = ['invented-internal-platform']
+            for point in page['compatibility']['testedPoints']:
+                for component in point['components']:
+                    if component['role'] in ('host-helper', 'publisher-helper'):
+                        component['version'] = '99.99.99'
+            self.assertEqual(render_compatibility(page, self.contract), before)
+
+    def test_distinct_gradle_manager_compiler_and_runtime_choices_stay_distinct(self):
+        page = self.documentation['catalog']['gradle-purifier']
+        body = render_compatibility(page, self.contract)
+        self.assertIn('Java (runs the tool)', body)
+        self.assertIn('Java (compiles the project)', body)
+        self.assertIn('Java (runs the project)', body)
+        self.assertIn('| Gradle | Project-selected |', body)
+        self.assertIn('| Java (compiles the project) | Project-selected |', body)
+        self.assertIn('| Java (runs the project) | Project-selected |', body)
+        self.assertNotIn('21.0.12.1+1', body)
+
+    def test_different_packaged_java_roles_do_not_merge_without_test_points(self):
+        page = copy.deepcopy(self.documentation['catalog']['maven-purifier'])
+        data = page['compatibility']
+        data['testedPoints'] = []
+        runtime = next(c for c in data['defaults'] if c['role'] == 'native-tool-runtime')
+        data['defaults'] = [dict(runtime, version='17.0.19'),
+                            dict(runtime, role='compiler', version='8u504-b01')]
+        body = render_compatibility(page, self.contract)
+        self.assertIn('Java (runs the tool)', body)
+        self.assertIn('Java (compiles the project)', body)
+
+    def test_native_platform_review_requires_the_exact_architecture(self):
+        page = copy.deepcopy(self.documentation['catalog']['maven-purifier'])
+        review = page['quality']['derivationReview']['criteria']['linux']
+        receipts = page['quality']['derivationReview']['derivations']
+        review['derivations'] = [d for d in review['derivations'] if receipts[d]['system'] != 'aarch64-linux']
+        body = render_compatibility(page, self.contract)
+        self.assertIn('| Linux | ARM64 | Packaged; workflow not verified |', body)
+        self.assertIn('| Linux | x86-64 | Packaged; verified workflow |', body)
+        review['derivations'].append('other-project:aarch64-linux:unrelated')
+        self.assertEqual(render_compatibility(page, self.contract), body)
+
+    def test_platform_receipt_fields_override_opaque_ids_and_reject_foreign_sources(self):
+        page = copy.deepcopy(self.documentation['catalog']['maven-purifier'])
+        data = page['compatibility']
+        data['testedPoints'] = []
+        review = page['quality']['derivationReview']
+        criterion = review['criteria']['linux']
+        identifier = next(i for i in criterion['derivations'] if review['derivations'][i]['system'] == 'aarch64-linux')
+        receipt = review['derivations'][identifier]
+        opaque = 'unrelated-name:x86_64-darwin:misleading'
+        review['derivations'] = {opaque: receipt}
+        criterion['derivations'] = [opaque]
+        review['criteria']['darwin']['derivations'] = []
+        self.assertEqual(verified_platforms(page, data), {'aarch64-linux'})
+        receipt['build']['executedSystem'] = 'x86_64-linux'
+        self.assertEqual(verified_platforms(page, data), set())
+        receipt['build']['executedSystem'] = 'aarch64-linux'
+        receipt['repository'] = 'another-owner/maven-purifier'
+        self.assertEqual(verified_platforms(page, data), set())
+        receipt['repository'] = page['repository']
+        receipt['revision'] = '0' * 40
+        self.assertEqual(verified_platforms(page, data), set())
+
+    def test_gradle_review_platforms_are_independent_of_revision_style_ids(self):
+        page = self.documentation['catalog']['gradle-purifier']
+        self.assertIn('aarch64-darwin', verified_platforms(page, page['compatibility']))
+
     def with_test_evidence(self, page):
-        return (render_compatibility(page, self.contract)
+        return (render_exact_versions(page, self.contract)
                 + "\n\n### Tested combinations\n\n"
                 + tested_combinations(page["compatibility"]["testedPoints"],
                                       packaged_components(page["compatibility"]["defaults"])))
