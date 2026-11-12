@@ -13,6 +13,10 @@ pull-request result never authorizes publication. This does not retry release
 creation or artifact uploads.
 
 Versions increment within a `MAJOR.MINOR` series, starting at `0.1.1`.
+Native package builds receive that version as an explicit Nix package override
+from a content-locked source snapshot. Publishing does not rewrite a source
+version file or commit a version bump. Source builds use a development version
+that identifies their source contents.
 The release manifest fingerprints tracked implementation files and locked
 dependencies. Documentation, tests and workflow-only changes do not create
 another release. Changing the series starts a new series at revision 1.

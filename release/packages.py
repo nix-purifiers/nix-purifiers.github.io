@@ -6,12 +6,32 @@ from pathlib import Path
 import shutil
 import subprocess
 import zipfile
+from urllib.parse import quote
 
 
-def nix_build(attribute):
-    return Path(subprocess.check_output([
-        "nix", "build", "--no-link", "--print-out-paths", "--no-update-lock-file", attribute
-    ], text=True).strip())
+def nix_build(attribute, *, version=None):
+    arguments = ["nix", "build", "--no-link", "--print-out-paths", "--no-update-lock-file"]
+    if version is None:
+        arguments.append(attribute)
+    else:
+        # Snapshot the checkout without changing its files. Lock the resulting
+        # store path by its NAR hash so evaluating the override remains pure.
+        metadata = json.loads(subprocess.check_output([
+            "nix", "flake", "metadata", "--json", "--no-update-lock-file", "."
+        ], text=True))
+        system = json.loads(subprocess.check_output(["nix", "config", "show", "--json"], text=True))["system"]["value"]
+        source = "path:" + metadata["path"] + "?narHash=" + quote(metadata["locked"]["narHash"], safe="")
+        name, _, output = attribute.removeprefix(".#").partition("^")
+        if name not in ("plugin", "extension") or output not in ("", "dist"):
+            raise ValueError("Unsupported versioned release package")
+        expression = (
+            "let source = builtins.getFlake " + json.dumps(source) + "; "
+            "package = source.packages." + json.dumps(system) + "." + name
+            + ".override { version = " + json.dumps(version) + "; }; in package"
+            + ("." + output if output else "")
+        )
+        arguments.extend(["--expr", expression])
+    return Path(subprocess.check_output(arguments, text=True).strip())
 
 
 def ant_plugin(source, repository, sha):
@@ -73,12 +93,11 @@ def build(root, repository, sha, version, kind, destination):
     native.mkdir()
     name = repository.split("/")[1]
     if kind == "python":
-        (root / "version.txt").write_text(version + "\n")
         if name == "poetry-purifier":
             generated = root / "src/poetry_purifier/_release.py"
             generated.write_text(poetry_bootstrap(repository, sha))
             subprocess.run(["git", "add", "--intent-to-add", str(generated)], check=True)
-        dist = nix_build(".#plugin^dist")
+        dist = nix_build(".#plugin^dist", version=version)
         project = native / "simple" / name
         project.mkdir(parents=True)
         wheels = list(dist.glob("*.whl"))
@@ -90,8 +109,7 @@ def build(root, repository, sha, version, kind, destination):
             shutil.copyfile(wheel, destination / wheel.name)
     elif kind in ("maven", "ant"):
         if kind == "maven":
-            (root / "version.txt").write_text(version + "\n")
-            extension = nix_build(".#extension")
+            extension = nix_build(".#extension", version=version)
             artifact = "maven-purifier-extension"
             title = "Maven purifier recording extension"
         else:
