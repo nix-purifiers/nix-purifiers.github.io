@@ -152,14 +152,19 @@ class ReleaseTests(unittest.TestCase):
     def test_release_version_is_a_pure_override_of_a_locked_source(self):
         metadata = {"path": "/nix/store/fixture-source", "locked": {"narHash": "sha256-test+/="}}
         with patch.object(packages.subprocess, "check_output", side_effect=[
-            json.dumps(metadata), json.dumps({"system": {"value": "x86_64-linux"}}), "/nix/store/released-extension\n"
-        ]) as command:
+            json.dumps(metadata), json.dumps({"path": "/nix/store/materialized-source"}),
+            "sha256-test+/=\n", "/owned/source\n",
+            json.dumps({"system": {"value": "release-system"}}), "/nix/store/released-extension\n"
+        ]) as command, patch.object(packages.atexit, "register") as cleanup:
             result = packages.nix_build(".#extension", version="0.1.123")
+        self.addCleanup(cleanup.call_args.args[0])
         self.assertEqual(result, Path("/nix/store/released-extension"))
-        arguments = command.call_args_list[2].args[0]
+        arguments = command.call_args_list[-1].args[0]
         self.assertNotIn("--impure", arguments)
         expression = arguments[arguments.index("--expr") + 1]
+        self.assertIn("path:/nix/store/materialized-source?", expression)
         self.assertIn("narHash=sha256-test%2B%2F%3D", expression)
+        self.assertIn('packages."release-system".extension', expression)
         self.assertIn('override { version = "0.1.123"; }', expression)
         self.assertNotIn("version.txt", expression)
 

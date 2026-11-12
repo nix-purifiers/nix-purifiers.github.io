@@ -1,37 +1,66 @@
 """Build the native integrations using the repository's locked Nix toolchain."""
+import atexit
 import hashlib
 import io
 import json
 from pathlib import Path
 import shutil
 import subprocess
+import tempfile
 import zipfile
 from urllib.parse import quote
 
 
+def _locked_source(reference, roots):
+    metadata = json.loads(subprocess.check_output([
+        "nix", "flake", "metadata", "--json", "--no-update-lock-file", reference
+    ], text=True))
+    nar_hash = metadata["locked"]["narHash"]
+    # Metadata may describe a lazy tree whose store path does not exist yet.
+    archive = json.loads(subprocess.check_output([
+        "nix", "flake", "archive", "--json", "--no-update-lock-file", reference
+    ], text=True))
+    source = Path(archive["path"])
+    actual_hash = subprocess.check_output([
+        "nix", "hash", "path", "--type", "sha256", "--sri", str(source)
+    ], text=True).strip()
+    if actual_hash != nar_hash:
+        raise RuntimeError("Flake source changed while materializing the release snapshot")
+    subprocess.check_output([
+        "nix-store", "--add-root", str(roots / "source"), "--indirect", "--realise", str(source)
+    ], text=True)
+    return "path:" + str(source) + "?narHash=" + quote(nar_hash, safe="")
+
+
 def nix_build(attribute, *, version=None):
-    arguments = ["nix", "build", "--no-link", "--print-out-paths", "--no-update-lock-file"]
-    if version is None:
-        arguments.append(attribute)
-    else:
-        # Snapshot the checkout without changing its files. Lock the resulting
-        # store path by its NAR hash so evaluating the override remains pure.
-        metadata = json.loads(subprocess.check_output([
-            "nix", "flake", "metadata", "--json", "--no-update-lock-file", "."
-        ], text=True))
-        system = json.loads(subprocess.check_output(["nix", "config", "show", "--json"], text=True))["system"]["value"]
-        source = "path:" + metadata["path"] + "?narHash=" + quote(metadata["locked"]["narHash"], safe="")
-        name, _, output = attribute.removeprefix(".#").partition("^")
-        if name not in ("plugin", "extension") or output not in ("", "dist"):
-            raise ValueError("Unsupported versioned release package")
-        expression = (
-            "let source = builtins.getFlake " + json.dumps(source) + "; "
-            "package = source.packages." + json.dumps(system) + "." + name
-            + ".override { version = " + json.dumps(version) + "; }; in package"
-            + ("." + output if output else "")
-        )
-        arguments.extend(["--expr", expression])
-    return Path(subprocess.check_output(arguments, text=True).strip())
+    temporary = tempfile.TemporaryDirectory(prefix="purifier-release-build-")
+    roots = Path(temporary.name).resolve()
+    try:
+        arguments = ["nix", "build", "--out-link", str(roots / "result"),
+                     "--print-out-paths", "--no-update-lock-file"]
+        if version is None:
+            arguments.append(attribute)
+        else:
+            source = _locked_source(".", roots)
+            system = json.loads(subprocess.check_output(["nix", "config", "show", "--json"], text=True))["system"]["value"]
+            name, _, output = attribute.removeprefix(".#").partition("^")
+            if name not in ("plugin", "extension") or output not in ("", "dist"):
+                raise ValueError("Unsupported versioned release package")
+            expression = (
+                "let source = builtins.getFlake " + json.dumps(source) + "; "
+                "package = source.packages." + json.dumps(system) + "." + name
+                + ".override { version = " + json.dumps(version) + "; }; in package"
+                + ("." + output if output else "")
+            )
+            arguments.extend(["--expr", expression])
+        result = Path(subprocess.check_output(arguments, text=True).strip())
+    except BaseException:
+        temporary.cleanup()
+        raise
+    # Keep both the snapshot and build outputs alive while callers copy assets.
+    # Only links in this owned temporary directory are removed on process exit.
+    atexit.register(temporary.cleanup)
+    return result
 
 
 def ant_plugin(source, repository, sha):
@@ -71,21 +100,33 @@ def configure():
 
 
 def yarn_plugin(root, repository, sha):
-    source = (root / "plugin/purifier.cjs").read_text()
-    foreign = (root / "plugin/foreign.cjs").read_text()
-    source = source.replace('const foreign = require("./foreign.cjs");',
-        'const foreign = (() => { const module = {exports: {}};\n' + foreign + '\nreturn module.exports; })();')
+    # Both released layouts publish the complete plugin as #plugin. Validate
+    # the producer's source entry before emitting a bootstrap; a missing or
+    # ambiguous layout must not silently select another runtime.
+    owners = []
+    for owner in ("pkgs/plugin", "nix/lib"):
+        entries = [root / owner / name for name in ("interactive.nix", "publish.nix", "release.nix")]
+        if any(path.exists() for path in entries):
+            if not all(path.is_file() for path in entries):
+                raise ValueError(f"Incomplete Yarn runtime source: {owner}")
+            owners.append(owner)
+    if len(owners) != 1:
+        raise ValueError("Expected exactly one Yarn runtime source owner")
     reference = f"github:{repository}/{sha}"
-    bootstrap = f'''console.error("yarn-berry-purifier: warning: the plugin was resolved impurely; use the Nix wrapper for pure plugin resolution.");
+    return f'''// Generated native entry point; the producer owns its runtime and sibling resources.
+const childProcess = require("child_process");
+const fs = require("fs");
+const path = require("path");
+const {{createRequire}} = require("module");
+console.error("yarn-berry-purifier: warning: the plugin was resolved impurely; use the Nix wrapper for pure plugin resolution.");
 const releaseRef = {json.dumps(reference)};
-const releaseSource = JSON.parse(childProcess.execFileSync("nix", ["flake", "metadata", "--json", releaseRef], {{encoding: "utf8"}})).path;
-const releaseNixpkgs = childProcess.execFileSync("nix", ["eval", "--raw", "--impure", "--expr", `(builtins.getFlake "${{releaseRef}}").inputs.nixpkgs.outPath`], {{encoding: "utf8"}}).trim();
+const releaseSource = JSON.parse(childProcess.execFileSync("nix", ["flake", "metadata", "--json", "--no-update-lock-file", releaseRef], {{encoding: "utf8"}})).path;
+const runtimeEntry = path.join(releaseSource, {json.dumps(owners[0])}, "interactive.nix");
+if (!fs.existsSync(runtimeEntry) || !fs.statSync(runtimeEntry).isFile()) throw new Error("The released Yarn runtime entry is missing");
+const producer = childProcess.execFileSync("nix", ["build", "--no-link", "--print-out-paths", "--no-update-lock-file", `${{releaseRef}}#plugin`], {{encoding: "utf8"}}).trim();
+const producerEntry = path.join(producer, "purifier.cjs");
+module.exports = createRequire(producerEntry)(producerEntry);
 '''
-    source = source.replace('const NIX_LIB = "@nixLib@";', bootstrap + 'const NIX_LIB = path.join(releaseSource, "nix/lib");')
-    source = source.replace('const NIXPKGS = "@nixpkgs@";', 'const NIXPKGS = releaseNixpkgs;')
-    source = source.replace('const FLAKE = "@flake@";', 'const FLAKE = releaseSource;')
-    assert all(token not in source for token in ('@nixLib@', '@nixpkgs@', '@flake@'))
-    return source
 
 
 def build(root, repository, sha, version, kind, destination):
