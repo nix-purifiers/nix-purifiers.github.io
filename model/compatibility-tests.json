@@ -10795,6 +10795,311 @@
           ]
         }
       ]
+    },
+    "deno-purifier": {
+      "testedPoints": [
+        {
+          "id": "deno-1.0.0-url-linux-de26312",
+          "components": [
+            {
+              "role": "native-tool",
+              "name": "Deno",
+              "version": "1.0.0"
+            },
+            {
+              "role": "project-runtime",
+              "name": "Deno",
+              "version": "1.0.0"
+            },
+            {
+              "role": "host-helper",
+              "name": "Deno",
+              "version": "2.9.8"
+            },
+            {
+              "role": "native-format",
+              "name": "deno.lock",
+              "version": "flat"
+            }
+          ],
+          "system": "x86_64-linux",
+          "operations": [
+            "native-lock",
+            "native-prefetch",
+            "target-runtime",
+            "project-test-scripts",
+            "relocated-runtime"
+          ],
+          "sourceRevision": "de263129a908695015a2b2dd98dd6b0698bb599f",
+          "evidence": [
+            "https://github.com/nix-purifiers/deno-purifier/blob/de263129a908695015a2b2dd98dd6b0698bb599f/tests/native-epoch-lifecycle.py",
+            "https://github.com/nix-purifiers/deno-purifier/blob/de263129a908695015a2b2dd98dd6b0698bb599f/tests/native-epochs.sh",
+            "https://github.com/nix-purifiers/deno-purifier/blob/de263129a908695015a2b2dd98dd6b0698bb599f/tests/native-epochs.nix",
+            "https://github.com/nix-purifiers/deno-purifier/blob/de263129a908695015a2b2dd98dd6b0698bb599f/pkgs/deno-purifier/default.nix",
+            "https://github.com/nix-purifiers/deno-purifier/actions/runs/43143636819/job/130936264848",
+            "https://nix-purifiers.github.io/evidence/9d9bd5b21cc65ed8f2fb1e3f8ec2b5224c8f817d5830ea7842fab28c4dc6f84e.json"
+          ],
+          "notes": [
+            "This exact x86_64-linux selected-SDK workflow handles URL modules only. Deno 1.0.0 executes the project; a separately bound Deno 2.9.8 helper runs capture and SDK verification.",
+            "The fixture follows one HTTP redirect to an empty JavaScript module. The project itself asserts 42 and executes a native Deno.test; this does not test dependency-provided application logic or general TypeScript/package compatibility.",
+            "Actual CI source seeding is disabled. Cold Nix prefetch records exactly one leaf-body GET. The source server is then stopped before the original and relocated native runtime/tests.",
+            "Relocated prefetch, runtime and native tests run after the original project directory is removed. This is an observed relocation case, not a reproducibility or cold-relock claim.",
+            "No npm, JSR, workspace, native install/compile/publish/task/update, ARM, Darwin, intervening-version interval or maturity-tier coverage is inferred.",
+            "Remote SDK trees were not separately retained. Exact executed source, successful physical verifier, recorded CI SDK identity and matching independently reviewed local executable/NAR identity establish provenance. The measurement packet predates final review/release; the separate retained release closure establishes v0.1.3 publication.",
+            "The original released native archive is repackaged for Nix with ELF loader/RPATH changes only; source facts bind archive, installed executable and unchanged .text/.rodata sections."
+          ]
+        },
+        {
+          "id": "deno-1.46.3-url-linux-de26312",
+          "components": [
+            {
+              "role": "native-tool",
+              "name": "Deno",
+              "version": "1.46.3"
+            },
+            {
+              "role": "project-runtime",
+              "name": "Deno",
+              "version": "1.46.3"
+            },
+            {
+              "role": "host-helper",
+              "name": "Deno",
+              "version": "2.9.8"
+            },
+            {
+              "role": "native-format",
+              "name": "deno.lock",
+              "version": "3"
+            }
+          ],
+          "system": "x86_64-linux",
+          "operations": [
+            "native-lock",
+            "native-prefetch",
+            "target-runtime",
+            "project-test-scripts",
+            "relocated-runtime"
+          ],
+          "sourceRevision": "de263129a908695015a2b2dd98dd6b0698bb599f",
+          "evidence": [
+            "https://github.com/nix-purifiers/deno-purifier/blob/de263129a908695015a2b2dd98dd6b0698bb599f/tests/native-epoch-lifecycle.py",
+            "https://github.com/nix-purifiers/deno-purifier/blob/de263129a908695015a2b2dd98dd6b0698bb599f/tests/native-epochs.sh",
+            "https://github.com/nix-purifiers/deno-purifier/blob/de263129a908695015a2b2dd98dd6b0698bb599f/tests/native-epochs.nix",
+            "https://github.com/nix-purifiers/deno-purifier/blob/de263129a908695015a2b2dd98dd6b0698bb599f/pkgs/deno-purifier/default.nix",
+            "https://github.com/nix-purifiers/deno-purifier/actions/runs/43143636819/job/130936264848",
+            "https://nix-purifiers.github.io/evidence/9d9bd5b21cc65ed8f2fb1e3f8ec2b5224c8f817d5830ea7842fab28c4dc6f84e.json"
+          ],
+          "notes": [
+            "This exact x86_64-linux selected-SDK workflow handles URL modules only. Deno 1.46.3 executes the project; a separately bound Deno 2.9.8 helper runs capture and SDK verification.",
+            "The fixture follows one HTTP redirect to an empty JavaScript module. The project itself asserts 42 and executes a native Deno.test; this does not test dependency-provided application logic or general TypeScript/package compatibility.",
+            "Actual CI source seeding is disabled. Cold Nix prefetch records exactly one leaf-body GET. The source server is then stopped before the original and relocated native runtime/tests.",
+            "Relocated prefetch, runtime and native tests run after the original project directory is removed. This is an observed relocation case, not a reproducibility or cold-relock claim.",
+            "No npm, JSR, workspace, native install/compile/publish/task/update, ARM, Darwin, intervening-version interval or maturity-tier coverage is inferred.",
+            "Remote SDK trees were not separately retained. Exact executed source, successful physical verifier, recorded CI SDK identity and matching independently reviewed local executable/NAR identity establish provenance. The measurement packet predates final review/release; the separate retained release closure establishes v0.1.3 publication.",
+            "The original released native archive is repackaged for Nix with ELF loader/RPATH changes only; source facts bind archive, installed executable and unchanged .text/.rodata sections."
+          ]
+        },
+        {
+          "id": "deno-2.0.6-url-linux-de26312",
+          "components": [
+            {
+              "role": "native-tool",
+              "name": "Deno",
+              "version": "2.0.6"
+            },
+            {
+              "role": "project-runtime",
+              "name": "Deno",
+              "version": "2.0.6"
+            },
+            {
+              "role": "host-helper",
+              "name": "Deno",
+              "version": "2.9.8"
+            },
+            {
+              "role": "native-format",
+              "name": "deno.lock",
+              "version": "4"
+            }
+          ],
+          "system": "x86_64-linux",
+          "operations": [
+            "native-lock",
+            "native-prefetch",
+            "target-runtime",
+            "project-test-scripts",
+            "relocated-runtime"
+          ],
+          "sourceRevision": "de263129a908695015a2b2dd98dd6b0698bb599f",
+          "evidence": [
+            "https://github.com/nix-purifiers/deno-purifier/blob/de263129a908695015a2b2dd98dd6b0698bb599f/tests/native-epoch-lifecycle.py",
+            "https://github.com/nix-purifiers/deno-purifier/blob/de263129a908695015a2b2dd98dd6b0698bb599f/tests/native-epochs.sh",
+            "https://github.com/nix-purifiers/deno-purifier/blob/de263129a908695015a2b2dd98dd6b0698bb599f/tests/native-epochs.nix",
+            "https://github.com/nix-purifiers/deno-purifier/blob/de263129a908695015a2b2dd98dd6b0698bb599f/pkgs/deno-purifier/default.nix",
+            "https://github.com/nix-purifiers/deno-purifier/actions/runs/43143636819/job/130936264848",
+            "https://nix-purifiers.github.io/evidence/9d9bd5b21cc65ed8f2fb1e3f8ec2b5224c8f817d5830ea7842fab28c4dc6f84e.json"
+          ],
+          "notes": [
+            "This exact x86_64-linux selected-SDK workflow handles URL modules only. Deno 2.0.6 executes the project; a separately bound Deno 2.9.8 helper runs capture and SDK verification.",
+            "The fixture follows one HTTP redirect to an empty JavaScript module. The project itself asserts 42 and executes a native Deno.test; this does not test dependency-provided application logic or general TypeScript/package compatibility.",
+            "Actual CI source seeding is disabled. Cold Nix prefetch records exactly one leaf-body GET. The source server is then stopped before the original and relocated native runtime/tests.",
+            "Relocated prefetch, runtime and native tests run after the original project directory is removed. This is an observed relocation case, not a reproducibility or cold-relock claim.",
+            "No npm, JSR, workspace, native install/compile/publish/task/update, ARM, Darwin, intervening-version interval or maturity-tier coverage is inferred.",
+            "Remote SDK trees were not separately retained. Exact executed source, successful physical verifier, recorded CI SDK identity and matching independently reviewed local executable/NAR identity establish provenance. The measurement packet predates final review/release; the separate retained release closure establishes v0.1.3 publication.",
+            "This source-owned fixture SDK explicitly grants native local-HTTP import permission; it does not emulate a missing native command.",
+            "The original released native archive is repackaged for Nix with ELF loader/RPATH changes only; source facts bind archive, installed executable and unchanged .text/.rodata sections."
+          ]
+        },
+        {
+          "id": "deno-2.9.8-url-linux-de26312",
+          "components": [
+            {
+              "role": "native-tool",
+              "name": "Deno",
+              "version": "2.9.8"
+            },
+            {
+              "role": "project-runtime",
+              "name": "Deno",
+              "version": "2.9.8"
+            },
+            {
+              "role": "host-helper",
+              "name": "Deno",
+              "version": "2.9.8"
+            },
+            {
+              "role": "native-format",
+              "name": "deno.lock",
+              "version": "5"
+            }
+          ],
+          "system": "x86_64-linux",
+          "operations": [
+            "native-lock",
+            "native-prefetch",
+            "target-runtime",
+            "project-test-scripts",
+            "relocated-runtime"
+          ],
+          "sourceRevision": "de263129a908695015a2b2dd98dd6b0698bb599f",
+          "evidence": [
+            "https://github.com/nix-purifiers/deno-purifier/blob/de263129a908695015a2b2dd98dd6b0698bb599f/tests/native-epoch-lifecycle.py",
+            "https://github.com/nix-purifiers/deno-purifier/blob/de263129a908695015a2b2dd98dd6b0698bb599f/tests/native-epochs.sh",
+            "https://github.com/nix-purifiers/deno-purifier/blob/de263129a908695015a2b2dd98dd6b0698bb599f/tests/native-epochs.nix",
+            "https://github.com/nix-purifiers/deno-purifier/blob/de263129a908695015a2b2dd98dd6b0698bb599f/pkgs/deno-purifier/default.nix",
+            "https://github.com/nix-purifiers/deno-purifier/actions/runs/43143636819/job/130936264848",
+            "https://nix-purifiers.github.io/evidence/9d9bd5b21cc65ed8f2fb1e3f8ec2b5224c8f817d5830ea7842fab28c4dc6f84e.json"
+          ],
+          "notes": [
+            "This exact x86_64-linux selected-SDK workflow handles URL modules only. Deno 2.9.8 executes the project; a separately bound Deno 2.9.8 helper runs capture and SDK verification.",
+            "The fixture follows one HTTP redirect to an empty JavaScript module. The project itself asserts 42 and executes a native Deno.test; this does not test dependency-provided application logic or general TypeScript/package compatibility.",
+            "Actual CI source seeding is disabled. Cold Nix prefetch records exactly one leaf-body GET. The source server is then stopped before the original and relocated native runtime/tests.",
+            "Relocated prefetch, runtime and native tests run after the original project directory is removed. This is an observed relocation case, not a reproducibility or cold-relock claim.",
+            "No npm, JSR, workspace, native install/compile/publish/task/update, ARM, Darwin, intervening-version interval or maturity-tier coverage is inferred.",
+            "Remote SDK trees were not separately retained. Exact executed source, successful physical verifier, recorded CI SDK identity and matching independently reviewed local executable/NAR identity establish provenance. The measurement packet predates final review/release; the separate retained release closure establishes v0.1.3 publication.",
+            "This source-owned fixture SDK explicitly grants native local-HTTP import permission; it does not emulate a missing native command."
+          ]
+        }
+      ],
+      "reviews": [
+        {
+          "sourceRevision": "de263129a908695015a2b2dd98dd6b0698bb599f",
+          "files": {
+            ".github/workflows/check.yml": "1fb0be9a15085c166a2a7d58ea348d7b2fa42e5f9939b4faa39e874ddeac4def",
+            ".github/workflows/pages.yml": "79c96c1714bcb08de4384823186256b709ebc9cb628b93735aaddaeb0cd56ad1",
+            ".github/workflows/release.yml": "18d300a0074e58084d49de27a38cc2b264f7e2474dc31fde3f4ac855d9a7ae90",
+            ".gitignore": "72cc3c15deb05e11deebfbd5e78354d076ed645dc0c4ba52a5027967618017f9",
+            "LICENSE": "6bdc2caf8d11ccdbfc05b35d852953ba41150d93ba256ae9615a07d246734a56",
+            "README.md": "8bd2d7718ec22a18dcde905f3108b228a99c3dcbab08bedf475afb145d0646a7",
+            "configs/flake/deno-purifier/default.nix": "6141663b8c350fb83b962f167a26c25ccf72e0e1798ee8df4dbb655c24653442",
+            "configs/nixpkgsConfig/default/default.nix": "14023568c5b797942a69c81cbc275d71c9aa663c8c87f0c4e41c4b2da9a375d9",
+            "flake.lock": "4cf087cad5bddb557258e153e3cf613f2e29db7894a2db7e23ef6ce497e7c4e1",
+            "flake.nix": "d47e63801ffcd4589971b6b4993ef821940e869c7ef10e4bcf4b26753e87233f",
+            "lib-overlays/default/default.nix": "a920f8e7aeb15cf327ff4a11dbab2769d273308122ee13639dd2a090595dc9b2",
+            "nix/lib/build-deno-project.nix": "22743972b5a0c3f05273859714410a35a509373dd0bf7300ca482a9fcabf5641",
+            "nix/lib/cache.nix": "e0a388da49ddc71d5901ee42709ef40e36da6950aacdc8aad70f50384116776b",
+            "nix/lib/commands.nix": "4b93b472528ce30e8eec31b20b7bd9a943672e2ca2b84175fd965abc345e2dcd",
+            "nix/lib/environment.nix": "6c68fb6058fcb8803c68c979fbf49c262956ebf13716658c74cee35896ae9ee5",
+            "nix/lib/lock.nix": "40daccfa90f078c61c16717a4a88205cd8f1e157e1acbba26578c4d7b147202c",
+            "nix/lib/native-context.nix": "cbfae4d3adab9f90b9b8a5414492ab1265214c7dccef3cb489897b10ad25f938",
+            "nix/lib/native-offline.nix": "174841ad9dcb5f7463ea3943eea50fbb0f20fa2ce54a0ddff6ef5bb3c9badb1c",
+            "nix/lib/native-sdk-check.nix": "da796ec2c86da70065b8fa6d8f226ff325a92a9d7d29b2de249ef869bea8f56d",
+            "pkg-overlays/default/default.nix": "6c6f9530b8405d16ddc4cf907403d323133cf4a0641e0c1e4239f2be22abeb87",
+            "pkgs/default.nix": "8d98755d72aa28f8f19c5daf8cc52a24d0121071aa869e61f6d667ba2a109cfe",
+            "pkgs/deno-purifier/default.nix": "492fd0e201f568d2b70736ed206bb79f34b43bdb42ed8133f4ff1b5dc2b9361f",
+            "src/check-selected.ts": "c74ba072c7d265c52efad1a04d210b7266d234242b6703e7dbc4eb11b7eff298",
+            "src/deno-purifier.ts": "e6939a66334ab18cca97e9e8e7c30b33c3d212bf2a5ffe26221028084690d408",
+            "src/lib.ts": "f05dfdda3ab14500851fc33f1ac363adb09a8e6af718ad498c70c5a0bb2e4fa5",
+            "src/lib_test.ts": "6e1c5aa8f4d769894e335cc3fe15c1a8cbb424110a2abd56c2c1f284054339dd",
+            "src/native.ts": "fc170f7de532341403bb58880004fe3d6fb498d51414e9cb6b94d8be5922d0df",
+            "src/native_test.ts": "1c98bdc224a3215a8978d3f2147e5d3867a3f9eaea4d8225abe63817e085a25c",
+            "src/verify-native.ts": "2d7217eed4fef425412d26eb4ec1b05e182a185e0021aaada08c9740e06cd742",
+            "tests/bounded_command.py": "af598d675283a329c29d1811588aeda719e453778182879db846e6258a838649",
+            "tests/default.nix": "58520a18d132fba0e0f6f3afdffce1a3fa67e219b38d8d7bdfc1e005f8232e5b",
+            "tests/dependencies/flake.lock": "0b67d44b239b317d5327753026601e29489d57acbfbd787394c9f294d7f149fd",
+            "tests/dependencies/flake.nix": "9213972f009d57d0959bb9b58e6d72d1ef06ed00b8445bda14b9d14ae47bad1e",
+            "tests/external/update/deno-purifier.lock.json": "9570bff36b7a25101e0daa21365f226464d7edc88f89470fd02b6b6d8996a6d0",
+            "tests/external/update/deno.lock": "bf43805c67f640ab6b46c2599e0893f7eb873dd17bca1d9d02ea8ef79404c638",
+            "tests/fixtures/app/cli/deno.json": "9cc1e66e9b89ba35381c93a594788316f5822f405f9f2bf95707c7adedba845a",
+            "tests/fixtures/app/cli/main.ts": "f2b614cca1fcd6fbc3d520574c2b605ace20295bb9573d8d474d3eb82a9465d2",
+            "tests/fixtures/app/deno-purifier.lock.json": "dea666d16569a3b548b9a0ad869dfe62b25080f21f69a01bb1bd13b371305ce6",
+            "tests/fixtures/app/deno.json": "fffce505e62e521c112cdf847feb9b47a4899fc99d0ca0ec5ce1041924dfcbd4",
+            "tests/fixtures/app/deno.lock": "b532da056ca4ae88f4ee5413a8b07ad42ca2a789d2974e4117bef0a9a68a7f15",
+            "tests/fixtures/app/greeting/deno.json": "dd84cce68697d3980906549e7f18b1fafbb5cc7b5228d967c19c65ce1b60db9f",
+            "tests/fixtures/app/greeting/mod.ts": "ef929da849c7c0cccb0717da867058a9a8a382c25ddfe89112685c6da62118c4",
+            "tests/fixtures/app/greeting/mod_test.ts": "e81405f59c94d67370c334edcf445dac496c32f7b0921f15de96314aa240c28c",
+            "tests/fixtures/app/scripts/build.ts": "b48b80a1869e43bdf28701b437f5b976f9db3f0074665df22a7d48f18a12853c",
+            "tests/fixtures/node-modules/deno-purifier.lock.json": "e96c72576f0b8fb9915041c722eb0a9645b5c08aeb8ea24e687998d74172ffa4",
+            "tests/fixtures/node-modules/deno.json": "773b91c069010be7d3915e993b6e749276c1a5232d867e3e35dc22fe991a1919",
+            "tests/fixtures/node-modules/deno.lock": "456b06a7c8a604c1fe33e636887764ab87eaac452bfb38e95e343fddac01c349",
+            "tests/fixtures/node-modules/main.ts": "ea9f426eb8aa1ec949758a071303107c496dacb73577d82f178b8f6e285cc893",
+            "tests/fixtures/node-modules/package.json": "16e2db6de3dd8db324ae1c332997345758e66ca007469826b3907cb9013e957d",
+            "tests/fixtures/update/deno-purifier.lock.json": "b9674f08d1570c76471c2445ac67d7a417717204d9bad9832acc8854ca3932dc",
+            "tests/fixtures/update/deno.json": "4f8092284c6da8417a03d88dffee91d8f85926df2692bfc1b1911c226d3abad0",
+            "tests/fixtures/update/deno.lock": "fdc2184872f98f1e00187a69cbd94e4ac5cce0ae5861aec6ae27f03b2da133ca",
+            "tests/fixtures/update/main.ts": "b70226ad446d2b70713279a3516d7a32576d34c3e21af31b94ac711a44561367",
+            "tests/lsp-check.ts": "d88ea1be6d7848eaab733a75551d1b542b2bb264cb09375a44c9d76a4c14c84c",
+            "tests/native-epoch-lifecycle.py": "ce5414ceea83c4596d49df097d3306231035a17c57f51d16d1eda26d2835d384",
+            "tests/native-epochs.nix": "2e299572f1114c66f62033b1b14e8a0695b4d2103ec30e9e4203076e2f2c45b4",
+            "tests/native-epochs.sh": "a4cb9b1a0954ce8b434f7fbca7477fd120caadca7dfb0c032b435344bfad9a7d",
+            "tests/native-schema.nix": "60e57559eaca4ec120b825b273876c53fb7c9717a06ceb235c051ed21c84cca1",
+            "tests/real/deployctl/deno-purifier.lock.json": "744be1300b56e5145a63d31b3dcd85bf525d7141dd9f4e27b1673a1d0e57bb72",
+            "tests/real/deployctl/deno.lock": "28f6f71922e335cf1c27a821c6096543e28e972ec49ddd8d62e5b5b908702487",
+            "tests/relock.sh": "fce015643f7d31f3b8b61a216f9ed7a767147c34988a2f6263f33e6afcfe0b9a",
+            "tests/test_bounded_command.py": "36c28bf945d3a130b851527fe9ee7ea2cfe88e5da69f1232303ea5cddcaeadd0",
+            "tests/toolchains/deno-local-import-sdk.nix": "228d166cbf8c93b952b902e619c0726217bbf5143eea46d35e5c3a7701ef86f1",
+            "tests/toolchains/deno-native-sdk.nix": "c6e61fb5e44906eef799c5c8aa001c28c3646303d1c5b037d02e20b5d9900ee5",
+            "tests/toolchains/elf-payload.py": "74ff7b95e58ba0c21f521d28c75fd5c5e92e3c44641d36472dc67574fbf4a44d",
+            "tests/update.sh": "a8dbaaa626b6dad36de2ce671f7ea11da7e20a6b2bb046e83ffc775857910622"
+          },
+          "inputDigest": "08d55fd13273a14ea9fe9d168d06e2f39287222f9a220d85ac2fe39ebd3cdb8d",
+          "pointIds": [
+            "deno-1.0.0-url-linux-de26312",
+            "deno-1.46.3-url-linux-de26312",
+            "deno-2.0.6-url-linux-de26312",
+            "deno-2.9.8-url-linux-de26312"
+          ],
+          "ci": [
+            {
+              "runId": 43143636819,
+              "attempt": 1,
+              "headRevision": "de263129a908695015a2b2dd98dd6b0698bb599f",
+              "inputDigest": "08d55fd13273a14ea9fe9d168d06e2f39287222f9a220d85ac2fe39ebd3cdb8d",
+              "jobs": [
+                {
+                  "id": 130936264848,
+                  "name": "native-epochs",
+                  "system": "x86_64-linux",
+                  "conclusion": "success"
+                }
+              ]
+            }
+          ]
+        }
+      ]
     }
   }
 }

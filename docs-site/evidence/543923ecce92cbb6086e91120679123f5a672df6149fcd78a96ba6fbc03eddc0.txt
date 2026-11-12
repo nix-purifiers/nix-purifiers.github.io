@@ -1,0 +1,243 @@
+#!/nix/store/nnm9gdr70ihc6zc9298mzz8jpcgaciql-bash-5.3p20/bin/bash
+set -o errexit
+set -o nounset
+set -o pipefail
+
+export PATH="/nix/store/cb987zkxvsv0490753ilrvn5yk7ylgxi-coreutils-9.12/bin:/nix/store/c3f45pxlb81gzz4w1nym7lpznfypva7s-gnugrep-3.12/bin:$PATH"
+
+deno=/nix/store/m71mjcwicjv6h5467nmq4ishmc3lkrmy-deno-2.9.8-explicit-local-import-fixture-sdk/bin/deno
+LOCK_FILE="deno-purifier.lock.json"
+
+fail() {
+  echo "deno-purifier: $*" >&2
+  exit 1
+}
+
+sha256() {
+  sha256sum | cut -d' ' -f1
+}
+
+# The hash of deno.lock that the lockfile $1 records.
+lockedDenoLock() {
+  grep -o '"denoLock": "[0-9a-f]*"' "$1" | grep -o '[0-9a-f]\{64\}' || true
+}
+
+# Whether the deno.lock $1 is the one the lockfile $2 records.
+denoLockMatches() {
+  [ "$(sha256 < "$1")" = "$(lockedDenoLock "$2")" ]
+}
+
+# What the environment and the DENO_DIR of root $1 with lockfile $2 and
+# deno.lock $3 were made from.
+stampOf() {
+  cat "$3" "$2" | sha256
+}
+
+# The DENO_DIR of root $1.
+denoDirOf() {
+  echo "${XDG_CACHE_HOME:-$HOME/.cache}/deno-purifier/$(printf '%s' "$1" | sha256 | cut -c1-32)"
+}
+
+# Builds .deno-purifier/environment of root $1 with lockfile $2 and
+# deno.lock $3 through Nix, the garbage-collector root of everything the
+# development loop and the editor read.
+buildEnvironment() {
+  local root="$1" lockfile="$2" denolock="$3" state="$1/.deno-purifier"
+  echo "deno-purifier: building the environment of $root" >&2
+  mkdir -p "$state"
+  # The directory holds links into the store and nothing to commit.
+  printf '*\n' > "$state/.gitignore"
+  DENO_PURIFIER_EVAL_ROOT="$root" DENO_PURIFIER_EVAL_LOCKFILE="$lockfile" \
+    DENO_PURIFIER_EVAL_DENO_LOCK="$denolock" \
+    nix build --impure --out-link "$state/environment" --expr '
+      (import /nix/store/gi953acc5c47z59v74vnqwnr2rxlxcyj-lib/commands.nix {
+  nixpkgs = /nix/store/10zfgh0n1xj6r62r4xbsjf9z71mcwril-cm5m4hjjh37s6z82rwa0vhkbcga3m8bq-source;
+  system = "x86_64-linux";
+  purifierSource = (builtins.fetchTree (builtins.fromJSON (builtins.readFile /nix/store/wz586r2j95gp6wlhwk6p7h8s4n0nkr4g-purifier-locked.json))).outPath;
+  root = builtins.getEnv "DENO_PURIFIER_EVAL_ROOT";
+  lockFile = builtins.getEnv "DENO_PURIFIER_EVAL_LOCKFILE";
+  denoLockFile = builtins.getEnv "DENO_PURIFIER_EVAL_DENO_LOCK";
+  deno = "/nix/store/m71mjcwicjv6h5467nmq4ishmc3lkrmy-deno-2.9.8-explicit-local-import-fixture-sdk";
+  denort = "";
+  nativeTools = "/nix/store/mqy0d014s28q7l7qmxb4jjzxlaliwkrz-src";
+}).environment
+
+    ' || fail "building the environment failed; the message above says why."
+  # The wrapper follows these links to lockfiles outside the project.
+  rm -f "$state/lockfile" "$state/tool-lockfile"
+  if [ "$lockfile" != "$root/$LOCK_FILE" ]; then
+    ln -sfn "$lockfile" "$state/lockfile"
+  fi
+  if [ "$denolock" != "$root/deno.lock" ]; then
+    ln -sfn "$denolock" "$state/tool-lockfile"
+  fi
+  stampOf "$root" "$lockfile" "$denolock" > "$state/stamp"
+}
+
+# Makes the DENO_DIR of root $1 from its environment. Deno writes
+# transpiled modules and analysis databases into DENO_DIR, so DENO_DIR
+# is writable. Its remote modules are links into the store, since Deno
+# looks them up by URL. Its npm packages are copies: Deno tells which
+# package a file belongs to by the real path of the file, which must
+# lie inside DENO_DIR.
+makeDenoDir() {
+  local root="$1" stamp="$2" dir
+  dir="$(denoDirOf "$root")"
+  chmod -R u+w "$dir" 2> /dev/null || true
+  rm -rf "$dir"
+  mkdir -p "$dir/deno-dir"
+  if [ -d "$root/.deno-purifier/environment/cache/remote" ]; then
+    cp -rs --no-preserve=mode "$root/.deno-purifier/environment/cache/remote" "$dir/deno-dir/remote"
+  fi
+  if [ -d "$root/.deno-purifier/environment/cache/deps" ]; then
+    cp -rs --no-preserve=mode "$root/.deno-purifier/environment/cache/deps" "$dir/deno-dir/deps"
+  fi
+  if [ -d "$root/.deno-purifier/environment/cache/npm" ]; then
+    cp -rL "$root/.deno-purifier/environment/cache/npm" "$dir/deno-dir/npm"
+    chmod -R u+w "$dir/deno-dir/npm"
+  fi
+  printf '%s\n' "$stamp" > "$dir/stamp"
+}
+
+# Makes sure root $1 with lockfile $2 and deno.lock $3 has an
+# environment and a DENO_DIR made from its current lockfiles. With the
+# environment in place, this needs neither Nix nor the network.
+prepare() {
+  local root="$1" lockfile="$2" denolock="$3" command="${4:-}" stamp
+  /nix/store/sj0r2gq6x4n41mk78bkhkp7c2yxaqrcy-deno-2.9.8/bin/deno run --allow-read --allow-env --allow-run=/nix/store/m71mjcwicjv6h5467nmq4ishmc3lkrmy-deno-2.9.8-explicit-local-import-fixture-sdk/bin/deno --no-config --no-lock /nix/store/mqy0d014s28q7l7qmxb4jjzxlaliwkrz-src/check-selected.ts "$lockfile" /nix/store/m71mjcwicjv6h5467nmq4ishmc3lkrmy-deno-2.9.8-explicit-local-import-fixture-sdk /nix/store/sj0r2gq6x4n41mk78bkhkp7c2yxaqrcy-deno-2.9.8 "$command" \
+    || fail "selected Deno SDK differs from the lock; select the captured SDK or run deno-purifier lock with the intended SDK"
+  stamp="$(stampOf "$root" "$lockfile" "$denolock")"
+  if [ ! -e "$root/.deno-purifier/environment/cache" ] \
+    || [ "$(cat "$root/.deno-purifier/stamp" 2> /dev/null || true)" != "$stamp" ]; then
+    buildEnvironment "$root" "$lockfile" "$denolock"
+  fi
+  if [ "$(cat "$(denoDirOf "$root")/stamp" 2> /dev/null || true)" != "$stamp" ]; then
+    makeDenoDir "$root" "$stamp"
+  fi
+}
+
+# The nearest directory upwards from $1 with a deno.lock or a Deno
+# configuration file.
+findRoot() {
+  local dir="$1"
+  while [ ! -f "$dir/deno.lock" ] && [ ! -f "$dir/deno.json" ] && [ ! -f "$dir/deno.jsonc" ]; do
+    [ "$dir" = / ] && fail "no deno.lock or deno.json in $1 or above it."
+    dir="$(dirname "$dir")"
+  done
+  echo "$dir"
+}
+
+
+usage() {
+  cat >&2 << 'EOF'
+usage: deno-purifier lock [--root DIR] [--lockfile PATH] [--tool-lockfile PATH] [-- DENO-ARGS...]
+       deno-purifier update [--root DIR] [--lockfile PATH] [--tool-lockfile PATH] [--latest] [PACKAGE...]
+       deno-purifier prefetch [--root DIR] [--lockfile PATH] [--tool-lockfile PATH]
+       deno-purifier publish [--root DIR] [--lockfile PATH] [--tool-lockfile PATH] [DENO-PUBLISH-ARGS...]
+
+  lock      record the project's downloads in deno-purifier.lock.json,
+            with the resolution deno.lock holds
+  update    update the dependencies with `deno update`, all of them or
+            each PACKAGE, then record the downloads
+  prefetch  realize the locked downloads, Deno and its runtime in the
+            Nix store, with a garbage-collector root in the project,
+            so that the development loop and the editor work offline
+  publish   build the release with Nix and run `deno publish` on it
+
+DIR is the project root, by default the nearest directory upwards with
+a deno.lock or a deno.json. The first PATH is the lockfile, by default
+deno-purifier.lock.json at DIR, and DENO_PURIFIER_LOCKFILE sets it too.
+The second PATH is deno.lock, by default deno.lock at DIR, and
+DENO_PURIFIER_TOOL_LOCKFILE sets it too.
+EOF
+  exit 2
+}
+
+verb="${1:-}"
+[ $# -gt 0 ] && shift
+case "$verb" in
+  lock | update)
+    export DENO_NO_UPDATE_CHECK=1
+    export DENO_PURIFIER_PROJECT_DENO="$deno"
+    export DENO_PURIFIER_PROJECT_SDK=/nix/store/m71mjcwicjv6h5467nmq4ishmc3lkrmy-deno-2.9.8-explicit-local-import-fixture-sdk
+    export DENO_PURIFIER_HELPER_SDK=/nix/store/sj0r2gq6x4n41mk78bkhkp7c2yxaqrcy-deno-2.9.8
+    export DENO_PURIFIER_NIX=/nix/store/3x16p9yylwijl4k8ba7bnidhkgbqasdx-nix-2.34.9/bin/nix
+    export DENO_PURIFIER_NIXPKGS=/nix/store/10zfgh0n1xj6r62r4xbsjf9z71mcwril-cm5m4hjjh37s6z82rwa0vhkbcga3m8bq-source
+    export DENO_PURIFIER_SYSTEM=x86_64-linux
+    export DENO_PURIFIER_OFFLINE_VERIFY=/nix/store/i8ndd9i5n80fxdhwrv81bjh3k9mzfhnp-native-offline.nix
+    exec /nix/store/sj0r2gq6x4n41mk78bkhkp7c2yxaqrcy-deno-2.9.8/bin/deno run --allow-all --no-config --no-lock \
+      /nix/store/mqy0d014s28q7l7qmxb4jjzxlaliwkrz-src/deno-purifier.ts "$verb" "$@"
+    ;;
+  prefetch | publish) ;;
+  *) usage ;;
+esac
+
+root=
+lockfile="${DENO_PURIFIER_LOCKFILE:-}"
+denolock="${DENO_PURIFIER_TOOL_LOCKFILE:-}"
+while [ $# -gt 0 ]; do
+  case "$1" in
+    --root)
+      [ $# -ge 2 ] || usage
+      root="$(realpath "$2")"
+      shift 2
+      ;;
+    --lockfile)
+      [ $# -ge 2 ] || usage
+      lockfile="$2"
+      shift 2
+      ;;
+    --tool-lockfile)
+      [ $# -ge 2 ] || usage
+      denolock="$2"
+      shift 2
+      ;;
+    *) break ;;
+  esac
+done
+[ -n "$root" ] || root="$(findRoot "$PWD")"
+if [ -n "$lockfile" ]; then lockfile="$(realpath "$lockfile")"; else lockfile="$root/$LOCK_FILE"; fi
+if [ -n "$denolock" ]; then denolock="$(realpath "$denolock")"; else denolock="$root/deno.lock"; fi
+[ -f "$lockfile" ] || fail "$lockfile does not exist; run \`deno-purifier lock\` to write it."
+[ -f "$denolock" ] || fail "$denolock does not exist; run \`deno-purifier lock\` to write it."
+
+case "$verb" in
+  prefetch)
+    [ $# -eq 0 ] || usage
+    buildEnvironment "$root" "$lockfile" "$denolock"
+    makeDenoDir "$root" "$(stampOf "$root" "$lockfile" "$denolock")"
+    echo "deno-purifier: $root/.deno-purifier/environment holds the locked downloads, Deno and its runtime; the deno wrapper and its language server now work offline." >&2
+    ;;
+  publish)
+    prepare "$root" "$lockfile" "$denolock"
+    echo "deno-purifier: building the release of $root" >&2
+    release="$(
+      DENO_PURIFIER_EVAL_ROOT="$root" DENO_PURIFIER_EVAL_LOCKFILE="$lockfile" \
+        DENO_PURIFIER_EVAL_DENO_LOCK="$denolock" \
+        nix build --impure --no-link --print-out-paths --expr '
+          (import /nix/store/gi953acc5c47z59v74vnqwnr2rxlxcyj-lib/commands.nix {
+  nixpkgs = /nix/store/10zfgh0n1xj6r62r4xbsjf9z71mcwril-cm5m4hjjh37s6z82rwa0vhkbcga3m8bq-source;
+  system = "x86_64-linux";
+  purifierSource = (builtins.fetchTree (builtins.fromJSON (builtins.readFile /nix/store/wz586r2j95gp6wlhwk6p7h8s4n0nkr4g-purifier-locked.json))).outPath;
+  root = builtins.getEnv "DENO_PURIFIER_EVAL_ROOT";
+  lockFile = builtins.getEnv "DENO_PURIFIER_EVAL_LOCKFILE";
+  denoLockFile = builtins.getEnv "DENO_PURIFIER_EVAL_DENO_LOCK";
+  deno = "/nix/store/m71mjcwicjv6h5467nmq4ishmc3lkrmy-deno-2.9.8-explicit-local-import-fixture-sdk";
+  denort = "";
+  nativeTools = "/nix/store/mqy0d014s28q7l7qmxb4jjzxlaliwkrz-src";
+}).release
+
+        '
+    )" || fail "building the release failed; the message above says why."
+    # deno publish reads its configuration from the working directory,
+    # which must be writable.
+    work="$(mktemp -d)"
+    trap 'chmod -R u+w "$work"; rm -rf "$work"' EXIT
+    cp -r "$release/." "$work"
+    chmod -R u+w "$work"
+    cd "$work"
+    DENO_DIR="$(denoDirOf "$root")/deno-dir" DENO_NO_UPDATE_CHECK=1 \
+      "$deno" publish "$@"
+    ;;
+esac
+

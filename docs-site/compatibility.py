@@ -36,6 +36,7 @@ OPERATIONS = {
     'ordinary-gradle-consumer': 'Ordinary Gradle consumer',
     'dependency-conflict-rejection': 'Conflicting dependency rejection',
     'target-runtime': 'Target interpreter execution',
+    'relocated-runtime': 'Runtime after project relocation',
     'target-platform-admission': 'Wheel platform and ABI tag admission',
     'producer-pure-build': 'Nix producer build',
     'incoming-lock': 'Incoming dependency capture',

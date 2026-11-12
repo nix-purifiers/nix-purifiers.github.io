@@ -1,0 +1,274 @@
+{
+  "complete": true,
+  "scope": "Actual native Deno client URL-module lifecycle; exact tested point only",
+  "version": "1.46.3",
+  "sourceBodySha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+  "cli": "/nix/store/g680ja1gpli0ni7jsc0r9n5836c76zvr-deno-purifier-1.46.3/bin/deno-purifier",
+  "cliSha256": "38879128ca8d6dd89b02f11f7e478860427817c5b012d51a1328730723a20fa2",
+  "requests": [
+    "/entry.js",
+    "/sdk-1.46.3/leaf.js",
+    "/sdk-1.46.3/leaf.js",
+    "/sdk-1.46.3/leaf.js",
+    "/sdk-1.46.3/leaf.js",
+    "/sdk-1.46.3/leaf.js",
+    "/sdk-1.46.3/leaf.js",
+    "/sdk-1.46.3/leaf.js",
+    "/sdk-1.46.3/leaf.js",
+    "/sdk-1.46.3/leaf.js",
+    "/sdk-1.46.3/leaf.js",
+    "/sdk-1.46.3/leaf.js",
+    "/sdk-1.46.3/leaf.js",
+    "/sdk-1.46.3/leaf.js"
+  ],
+  "commands": [
+    {
+      "label": "capture",
+      "expectedSuccess": true,
+      "argv": [
+        "/nix/store/g680ja1gpli0ni7jsc0r9n5836c76zvr-deno-purifier-1.46.3/bin/deno-purifier",
+        "lock",
+        "--root",
+        "/home/runner/work/_temp/deno-native-receipts/deno1463/project"
+      ],
+      "exit": 0,
+      "stdoutSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderrSha256": "764b1a522a857f3957f107c33d5f7ebbdd3f215118e4a650f420d46e4f265820"
+    },
+    {
+      "label": "capture-noop",
+      "expectedSuccess": true,
+      "argv": [
+        "/nix/store/g680ja1gpli0ni7jsc0r9n5836c76zvr-deno-purifier-1.46.3/bin/deno-purifier",
+        "lock",
+        "--root",
+        "/home/runner/work/_temp/deno-native-receipts/deno1463/project"
+      ],
+      "exit": 0,
+      "stdoutSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderrSha256": "9a554f937b7c59db69374065aa20b944fc905ee7d3d7e8d44c8bd3ffadfe506e"
+    },
+    {
+      "label": "reject-source-hash",
+      "expectedSuccess": false,
+      "argv": [
+        "/nix/store/g680ja1gpli0ni7jsc0r9n5836c76zvr-deno-purifier-1.46.3/bin/deno-purifier",
+        "lock",
+        "--root",
+        "/home/runner/work/_temp/deno-native-receipts/deno1463/project",
+        "--",
+        "eval",
+        "const p=Deno.env.get(\"DENO_DIR\")+\"/\"+\"deps/http/127.0.0.1_PORT35395/07ab9725a99842cc571dcfa9d2f7344cc21f005a420072352148fdad5e58d2ae\";Deno.writeTextFileSync(p,\"corrupted source\");"
+      ],
+      "exit": 1,
+      "stdoutSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderrSha256": "dfbd60ad1049f7c22a2293c170e0ef1484ef082f62bcad9a4c16947ab9ec214b"
+    },
+    {
+      "label": "reject-cache-symlink",
+      "expectedSuccess": false,
+      "argv": [
+        "/nix/store/g680ja1gpli0ni7jsc0r9n5836c76zvr-deno-purifier-1.46.3/bin/deno-purifier",
+        "lock",
+        "--root",
+        "/home/runner/work/_temp/deno-native-receipts/deno1463/project",
+        "--",
+        "eval",
+        "const p=Deno.env.get(\"DENO_DIR\")+\"/\"+\"deps/http/127.0.0.1_PORT35395/07ab9725a99842cc571dcfa9d2f7344cc21f005a420072352148fdad5e58d2ae\";Deno.removeSync(p);Deno.symlinkSync(\"/etc/passwd\",p);"
+      ],
+      "exit": 1,
+      "stdoutSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderrSha256": "3fabc8f7d1d7f74e00c4912da2c26f7131430348e217d22454050ddd8b8e1347"
+    },
+    {
+      "label": "reject-header-types",
+      "expectedSuccess": false,
+      "argv": [
+        "/nix/store/g680ja1gpli0ni7jsc0r9n5836c76zvr-deno-purifier-1.46.3/bin/deno-purifier",
+        "lock",
+        "--root",
+        "/home/runner/work/_temp/deno-native-receipts/deno1463/project",
+        "--",
+        "eval",
+        "const p=Deno.env.get(\"DENO_DIR\")+\"/\"+\"deps/http/127.0.0.1_PORT35395/07ab9725a99842cc571dcfa9d2f7344cc21f005a420072352148fdad5e58d2ae\";const m=JSON.parse(Deno.readTextFileSync(p+\".metadata.json\"));m.headers={location:42};Deno.writeTextFileSync(p+\".metadata.json\",JSON.stringify(m));"
+      ],
+      "exit": 1,
+      "stdoutSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderrSha256": "3ec013d50d898cfdf64bb3bf4665e026ba97a900f0180d36f63a7a200b631133"
+    },
+    {
+      "label": "reject-scope-npm",
+      "expectedSuccess": false,
+      "argv": [
+        "/nix/store/g680ja1gpli0ni7jsc0r9n5836c76zvr-deno-purifier-1.46.3/bin/deno-purifier",
+        "lock",
+        "--root",
+        "/home/runner/work/_temp/deno-native-receipts/deno1463/project"
+      ],
+      "exit": 1,
+      "stdoutSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderrSha256": "978a7f27fd2dce32568cf1d8ad1bb079ee4114f75f813ee66e6d5fab592994eb"
+    },
+    {
+      "label": "reject-scope-jsr",
+      "expectedSuccess": false,
+      "argv": [
+        "/nix/store/g680ja1gpli0ni7jsc0r9n5836c76zvr-deno-purifier-1.46.3/bin/deno-purifier",
+        "lock",
+        "--root",
+        "/home/runner/work/_temp/deno-native-receipts/deno1463/project"
+      ],
+      "exit": 1,
+      "stdoutSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderrSha256": "713821bf42fb314436e91c981a79c1f080fffdc76e537bc9ec067bbc45e94d98"
+    },
+    {
+      "label": "reject-missing-update",
+      "expectedSuccess": false,
+      "argv": [
+        "/nix/store/g680ja1gpli0ni7jsc0r9n5836c76zvr-deno-purifier-1.46.3/bin/deno-purifier",
+        "update",
+        "--root",
+        "/home/runner/work/_temp/deno-native-receipts/deno1463/project"
+      ],
+      "exit": 1,
+      "stdoutSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderrSha256": "d5e04735c10ad291f1a928afef702bca05d0ff155bf3a18e54382ecee118ed3c"
+    },
+    {
+      "label": "prefetch",
+      "expectedSuccess": true,
+      "argv": [
+        "/nix/store/g680ja1gpli0ni7jsc0r9n5836c76zvr-deno-purifier-1.46.3/bin/deno-purifier",
+        "prefetch",
+        "--root",
+        "/home/runner/work/_temp/deno-native-receipts/deno1463/project"
+      ],
+      "exit": 0,
+      "stdoutSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderrSha256": "023cb35687de10a0281cca421629bd67ba0aea4d93f7cc44a2ca1908c18146ca"
+    },
+    {
+      "label": "original-runtime",
+      "expectedSuccess": true,
+      "argv": [
+        "/nix/store/g680ja1gpli0ni7jsc0r9n5836c76zvr-deno-purifier-1.46.3/bin/deno",
+        "run",
+        "main.js"
+      ],
+      "exit": 0,
+      "stdoutSha256": "7019aac32ceddaa7e90ecc623518fdb395f68978d14706cbbe6c6d2799942ddf",
+      "stderrSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "label": "original-native-tests",
+      "expectedSuccess": true,
+      "argv": [
+        "/nix/store/g680ja1gpli0ni7jsc0r9n5836c76zvr-deno-purifier-1.46.3/bin/deno",
+        "test"
+      ],
+      "exit": 0,
+      "stdoutSha256": "057f79351ffb6794b318b801b25107e8d8e1503f2f7db507a7a03fcc1a2d4905",
+      "stderrSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "label": "relocated-prefetch",
+      "expectedSuccess": true,
+      "argv": [
+        "/nix/store/g680ja1gpli0ni7jsc0r9n5836c76zvr-deno-purifier-1.46.3/bin/deno-purifier",
+        "prefetch",
+        "--root",
+        "/home/runner/work/_temp/deno-native-receipts/deno1463/relocated"
+      ],
+      "exit": 0,
+      "stdoutSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderrSha256": "b767572659b829303d16fcba6a0b18dae5accb53a999895fc0e4d2a8b8aa1464"
+    },
+    {
+      "label": "relocated-runtime",
+      "expectedSuccess": true,
+      "argv": [
+        "/nix/store/g680ja1gpli0ni7jsc0r9n5836c76zvr-deno-purifier-1.46.3/bin/deno",
+        "run",
+        "main.js"
+      ],
+      "exit": 0,
+      "stdoutSha256": "7019aac32ceddaa7e90ecc623518fdb395f68978d14706cbbe6c6d2799942ddf",
+      "stderrSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "label": "relocated-native-tests",
+      "expectedSuccess": true,
+      "argv": [
+        "/nix/store/g680ja1gpli0ni7jsc0r9n5836c76zvr-deno-purifier-1.46.3/bin/deno",
+        "test"
+      ],
+      "exit": 0,
+      "stdoutSha256": "2f6f09efc4b6ce74f09c715834677d582b35780e9b0b0d467c82c6aa55b6ac34",
+      "stderrSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  ],
+  "nixSourceSeeded": false,
+  "explicitImportPermission": false,
+  "redirect": true,
+  "emptyModule": true,
+  "sourceGetsDuringPrefetch": 1,
+  "serverClosedBeforeRuntime": true,
+  "originalProjectRemoved": true,
+  "nativeContext": {
+    "schemaVersion": 1,
+    "sdk": "/nix/store/wr0w0zzxd8apm2lxgxl4lzaiikm9gz6n-deno-original-native-sdk-1.46.3",
+    "executable": "/nix/store/wr0w0zzxd8apm2lxgxl4lzaiikm9gz6n-deno-original-native-sdk-1.46.3/bin/deno",
+    "executableHash": "sha256-gUQBNA7IH6Q2hdIVcxhJDK4qnW6Vclz84OM78jZ1dYY=",
+    "version": "1.46.3",
+    "closure": [
+      {
+        "path": "/nix/store/00fs4zz9c0jjcvs62wg39b91dydz7zqb-libidn2-2.3.8",
+        "narHash": "sha256-AhKbCYdHqUpcwW9Bi6Ba0HHw6kIBI9PssbPafvFQx18="
+      },
+      {
+        "path": "/nix/store/3sj8msrsym648f35mk3gb3pp385hhk8r-gcc-16.2.0-libgcc",
+        "narHash": "sha256-xB1g+UeyanBZ3S05VeEvG92IAdkdo3pqjTY7aZsS5uI="
+      },
+      {
+        "path": "/nix/store/49zbf10bda6q4vmffi421p31kzpf4y9l-deno-1.46.3-original.zip",
+        "narHash": "sha256-4IlGSoMbuxKKS/HW7vG5UxmUC+ZvlLDZS4ah8008ZA8="
+      },
+      {
+        "path": "/nix/store/bx7jdvkba26sy20ryr4l617qqmzj9hff-libunistring-1.4.2",
+        "narHash": "sha256-hTXroDuc+1L8tRw5lvnmzEnp0PIENcKwQp5IRJtT70A="
+      },
+      {
+        "path": "/nix/store/pkkjnyk4z46n18fkyqwlg24p272apb69-xgcc-16.2.0-libgcc",
+        "narHash": "sha256-L5spLmHxo4zwWB8LQ5ZMgJqzfnjpt/GDVZ0nnobVmQk="
+      },
+      {
+        "path": "/nix/store/pqyiidz5mi73wv5f91d48s9plcqyj5bz-glibc-2.44-57",
+        "narHash": "sha256-vbneyMia3r6fPMNYX5wvLVdZ47Ws2tur3csaoOj2wPw="
+      },
+      {
+        "path": "/nix/store/wr0w0zzxd8apm2lxgxl4lzaiikm9gz6n-deno-original-native-sdk-1.46.3",
+        "narHash": "sha256-Mqd1JxSR9yEb6iGEvMkBUc56U6PY/gAKqL2eRo295j4="
+      }
+    ],
+    "capabilities": {
+      "install": false,
+      "frozen": true,
+      "check": true,
+      "compile": true,
+      "publish": true,
+      "task": true,
+      "update": false
+    },
+    "cachePaths": {
+      "http://127.0.0.1:35395/sdk-1.46.3/leaf.js": "deps/http/127.0.0.1_PORT35395/07ab9725a99842cc571dcfa9d2f7344cc21f005a420072352148fdad5e58d2ae"
+    },
+    "redirects": {},
+    "lockVersion": "3",
+    "modules": [
+      "main.js",
+      "main_test.js"
+    ]
+  },
+  "sourceLockSha256": "609fd7fd91777b2f86b690e9004579cdfab706880b649645b51f539fb76fb554"
+}
