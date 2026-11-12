@@ -103692,7 +103692,7 @@
             ],
             "name": "SwiftPM",
             "role": "native-tool",
-            "selection": "default",
+            "selection": "SDK toolchain",
             "sourceRevision": "cd52ed8444afc1561ec1289a7ead04d6a2556ea0",
             "systems": [
               "aarch64-darwin",
@@ -103707,7 +103707,7 @@
             ],
             "name": "Swift",
             "role": "compiler",
-            "selection": "default",
+            "selection": "SDK toolchain",
             "sourceRevision": "cd52ed8444afc1561ec1289a7ead04d6a2556ea0",
             "systems": [
               "aarch64-darwin",
@@ -103753,7 +103753,7 @@
               "https://github.com/nix-purifiers/swiftpm-purifier/blob/cd52ed8444afc1561ec1289a7ead04d6a2556ea0/pkgs/toolchain/default.nix"
             ],
             "sourceRevision": "cd52ed8444afc1561ec1289a7ead04d6a2556ea0",
-            "text": "This pinned Swift 6.3 toolchain is exposed for x86_64-linux and aarch64-darwin, not aarch64-linux. The package set marks its ARM64 Linux compiler broken because of its linker."
+            "text": "The recorded pinned Swift 6.3 SDK profile is packaged for x86_64-linux and aarch64-darwin. Its ARM64 Linux compiler is marked broken because of its linker."
           },
           {
             "evidence": [
@@ -103761,12 +103761,400 @@
               "https://github.com/nix-purifiers/swiftpm-purifier/blob/cd52ed8444afc1561ec1289a7ead04d6a2556ea0/pkgs/toolchain/default.nix"
             ],
             "sourceRevision": "cd52ed8444afc1561ec1289a7ead04d6a2556ea0",
-            "text": "macOS uses the pinned Swift and Apple SDK packages rather than Xcode. The pinned macOS Swift package has no XCTest runner, so the project tests output is not run there."
+            "text": "The recorded macOS SDK profile uses pinned Swift and Apple SDK packages rather than Xcode. That profile has no XCTest runner, so its project tests output is not run."
           }
         ],
-        "projectSelections": [],
+        "projectSelections": [
+          {
+            "description": "Default local commands use the existing Swift/SwiftPM toolset; SWIFT_EXEC can select its compiler. Capture and replay retain the observed runtime identity without adding a Swift SDK to the CLI closure.",
+            "evidence": [
+              "https://github.com/nix-purifiers/swiftpm-purifier/blob/065ce2aaf13f32eccaf572d3918715125bd240bd/pkgs/cli/default.nix",
+              "https://github.com/nix-purifiers/swiftpm-purifier/blob/065ce2aaf13f32eccaf572d3918715125bd240bd/pkgs/cli/host_runtime.py",
+              "https://github.com/nix-purifiers/swiftpm-purifier/blob/065ce2aaf13f32eccaf572d3918715125bd240bd/tests/host-runtime-lifecycle.py"
+            ],
+            "inputs": [
+              "PATH",
+              "SWIFT_EXEC"
+            ],
+            "kind": "environment",
+            "name": "SwiftPM",
+            "role": "native-tool",
+            "sourceRevision": "065ce2aaf13f32eccaf572d3918715125bd240bd"
+          },
+          {
+            "description": "The explicit SDK toolchain uses SDK-backed CLI mode. Nix builders select swiftPackages separately from the default local workflow.",
+            "evidence": [
+              "https://github.com/nix-purifiers/swiftpm-purifier/blob/065ce2aaf13f32eccaf572d3918715125bd240bd/pkgs/toolchain/default.nix",
+              "https://github.com/nix-purifiers/swiftpm-purifier/blob/065ce2aaf13f32eccaf572d3918715125bd240bd/nix/lib/build-swiftpm-project.nix"
+            ],
+            "inputs": [
+              "pkgs.swiftpm-purifier.toolchain",
+              "swiftPackages",
+              "runtimeMode"
+            ],
+            "kind": "nix-scope",
+            "name": "Swift",
+            "role": "compiler",
+            "sourceRevision": "065ce2aaf13f32eccaf572d3918715125bd240bd"
+          }
+        ],
         "supportedRanges": [],
-        "testedPoints": []
+        "testedPoints": [
+          {
+            "components": [
+              {
+                "name": "SwiftPM",
+                "role": "native-tool",
+                "version": "3.1.0"
+              },
+              {
+                "name": "Swift",
+                "role": "compiler",
+                "version": "3.1.1"
+              },
+              {
+                "name": "swiftpm-purifier.lock.json",
+                "role": "native-format",
+                "version": "6"
+              },
+              {
+                "name": "SwiftPM workspace state",
+                "role": "native-format",
+                "version": "1"
+              }
+            ],
+            "evidence": [
+              "https://github.com/nix-purifiers/swiftpm-purifier/blob/065ce2aaf13f32eccaf572d3918715125bd240bd/tests/original-state-lifecycle.py",
+              "https://github.com/nix-purifiers/swiftpm-purifier/actions/runs/43223226744/job/131199783486",
+              "https://nix-purifiers.github.io/evidence/b908af00727cd34d6493bd3c7490f0de8883999b54990b8e2c55977562fa3b52.json",
+              "https://nix-purifiers.github.io/evidence/293fed8acb40c8533b20cfa7c4032a88f8f213f62678a565ceac5b71e57d5718.json",
+              "https://nix-purifiers.github.io/evidence/9472e0033d370ab561f0a0d9673d6339d411627eb9e200f308d0c143ab84c1e0.json",
+              "https://nix-purifiers.github.io/evidence/265142d6cfc6d3f3660bfd6822a76f8b444edfed7431d9eb2c2c7482751633b5.json"
+            ],
+            "id": "swift-3.1.1-swiftpm-3.1.0-local-fixture-linux-065ce2a",
+            "notes": [
+              "Default local mode with a supplied original SDK fixture; this is not evidence of an independently installed host runtime.",
+              "Exact x86-64 Linux fixture with purifier lock format 6 and native workspace state 1. No version interval, other platform or arbitrary-project coverage is asserted.",
+              "Cold replay retains six complete HTTP 200 Git-object bodies joined to their Git identities; the fixture origin is stopped before replay.",
+              "The Nix test-build command succeeded; an independent pure daemon test log is not retained in the CI artifact.",
+              "Package.pins binding is partial/manual in this fixture. Portable format 6 is a local capture/replay protocol; SDK-mode CLI format-6 consumption is rejected, while the Nix builder selects its SDK separately. The generated @testable imports were tested in debug.",
+              "The recorded SDK identities and executed commands do not independently attest an entire original SDK body or NAR."
+            ],
+            "operations": [
+              "native-lock",
+              "native-prefetch",
+              "project-build-scripts",
+              "project-test-scripts",
+              "target-runtime",
+              "relocated-runtime",
+              "pure-build",
+              "source-preservation"
+            ],
+            "sourceRevision": "065ce2aaf13f32eccaf572d3918715125bd240bd",
+            "system": "x86_64-linux"
+          },
+          {
+            "components": [
+              {
+                "name": "SwiftPM",
+                "role": "native-tool",
+                "version": "4.2.0"
+              },
+              {
+                "name": "Swift",
+                "role": "compiler",
+                "version": "4.2.4"
+              },
+              {
+                "name": "swiftpm-purifier.lock.json",
+                "role": "native-format",
+                "version": "4"
+              },
+              {
+                "name": "SwiftPM workspace state",
+                "role": "native-format",
+                "version": "2"
+              }
+            ],
+            "evidence": [
+              "https://github.com/nix-purifiers/swiftpm-purifier/blob/065ce2aaf13f32eccaf572d3918715125bd240bd/tests/legacy-state-lifecycle.py",
+              "https://github.com/nix-purifiers/swiftpm-purifier/actions/runs/43223226744/job/131199783065",
+              "https://nix-purifiers.github.io/evidence/0d2527fded57f3d0fe4650bbafbd300ea4328176d2d640a01a37c3d21ac4faf6.json",
+              "https://nix-purifiers.github.io/evidence/b9c2cb1238dabde2c686ea1f7bfb96f4914a42819f9c81b873afb65c05472cb6.json",
+              "https://nix-purifiers.github.io/evidence/9472e0033d370ab561f0a0d9673d6339d411627eb9e200f308d0c143ab84c1e0.json",
+              "https://nix-purifiers.github.io/evidence/265142d6cfc6d3f3660bfd6822a76f8b444edfed7431d9eb2c2c7482751633b5.json"
+            ],
+            "id": "swift-4.2.4-swiftpm-4.2.0-local-fixture-linux-065ce2a",
+            "notes": [
+              "Default local mode with a supplied original SDK fixture; this is not evidence of an independently installed host runtime.",
+              "Exact x86-64 Linux fixture with purifier lock format 4 and native workspace state 2. No version interval, other platform or arbitrary-project coverage is asserted.",
+              "Cold replay retains six complete HTTP 200 Git-object bodies joined to their Git identities; the fixture origin is stopped before replay.",
+              "The Nix test-build command succeeded; an independent pure daemon test log is not retained in the CI artifact.",
+              "The native fixture includes a regular in-tree local dependency.",
+              "The recorded SDK identities and executed commands do not independently attest an entire original SDK body or NAR."
+            ],
+            "operations": [
+              "native-lock",
+              "native-prefetch",
+              "project-build-scripts",
+              "project-test-scripts",
+              "target-runtime",
+              "relocated-runtime",
+              "pure-build",
+              "source-preservation"
+            ],
+            "sourceRevision": "065ce2aaf13f32eccaf572d3918715125bd240bd",
+            "system": "x86_64-linux"
+          },
+          {
+            "components": [
+              {
+                "name": "SwiftPM",
+                "role": "native-tool",
+                "version": "5.5.3"
+              },
+              {
+                "name": "Swift",
+                "role": "compiler",
+                "version": "5.5.3"
+              },
+              {
+                "name": "swiftpm-purifier.lock.json",
+                "role": "native-format",
+                "version": "5"
+              },
+              {
+                "name": "SwiftPM workspace state",
+                "role": "native-format",
+                "version": "4"
+              }
+            ],
+            "evidence": [
+              "https://github.com/nix-purifiers/swiftpm-purifier/blob/065ce2aaf13f32eccaf572d3918715125bd240bd/tests/native-sdk-lifecycle.py",
+              "https://github.com/nix-purifiers/swiftpm-purifier/actions/runs/43223226744/job/131199783513",
+              "https://nix-purifiers.github.io/evidence/05bc70a778c7a5fdc49f312f81b90380862cdaa4ad7d654820d9a3efa2daf961.json",
+              "https://nix-purifiers.github.io/evidence/363c1ddb5fc7aac71fe2a31ed048056e876ff4e9df8975f70b7fe91a66f9c586.json",
+              "https://nix-purifiers.github.io/evidence/9472e0033d370ab561f0a0d9673d6339d411627eb9e200f308d0c143ab84c1e0.json",
+              "https://nix-purifiers.github.io/evidence/265142d6cfc6d3f3660bfd6822a76f8b444edfed7431d9eb2c2c7482751633b5.json"
+            ],
+            "id": "swift-5.5.3-swiftpm-5.5.3-sdk-linux-065ce2a",
+            "notes": [
+              "Explicit immutable SDK-backed CLI mode with SDK-bound lock format 5; this is separate from default local adoption.",
+              "Exact x86-64 Linux fixture with purifier lock format 5 and native workspace state 4. No version interval, other platform or arbitrary-project coverage is asserted.",
+              "Modern lifecycle HTTP receipts retain requested paths only; they do not attest response bodies.",
+              "The recorded SDK identities and executed commands do not independently attest an entire original SDK body or NAR."
+            ],
+            "operations": [
+              "native-lock",
+              "native-prefetch",
+              "project-build-scripts",
+              "project-test-scripts",
+              "target-runtime",
+              "relocated-runtime",
+              "pure-build"
+            ],
+            "sourceRevision": "065ce2aaf13f32eccaf572d3918715125bd240bd",
+            "system": "x86_64-linux"
+          },
+          {
+            "components": [
+              {
+                "name": "SwiftPM",
+                "role": "native-tool",
+                "version": "6.3.3"
+              },
+              {
+                "name": "Swift",
+                "role": "compiler",
+                "version": "6.3.3"
+              },
+              {
+                "name": "swiftpm-purifier.lock.json",
+                "role": "native-format",
+                "version": "5"
+              },
+              {
+                "name": "SwiftPM workspace state",
+                "role": "native-format",
+                "version": "7"
+              }
+            ],
+            "evidence": [
+              "https://github.com/nix-purifiers/swiftpm-purifier/blob/065ce2aaf13f32eccaf572d3918715125bd240bd/tests/native-sdk-lifecycle.py",
+              "https://github.com/nix-purifiers/swiftpm-purifier/actions/runs/43223226744/job/131199783572",
+              "https://nix-purifiers.github.io/evidence/bd52388b13523c45b34d596795254260bcf93874cdc7274e95f6166e5816fd9c.json",
+              "https://nix-purifiers.github.io/evidence/b82921dbe36e04de429d1af25fba9da62e014349fe07db5dac8da877c32825eb.json",
+              "https://nix-purifiers.github.io/evidence/9472e0033d370ab561f0a0d9673d6339d411627eb9e200f308d0c143ab84c1e0.json",
+              "https://nix-purifiers.github.io/evidence/265142d6cfc6d3f3660bfd6822a76f8b444edfed7431d9eb2c2c7482751633b5.json"
+            ],
+            "id": "swift-6.3.3-swiftpm-6.3.3-sdk-linux-065ce2a",
+            "notes": [
+              "Explicit immutable SDK-backed CLI mode with SDK-bound lock format 5; this is separate from default local adoption.",
+              "Exact x86-64 Linux fixture with purifier lock format 5 and native workspace state 7. No version interval, other platform or arbitrary-project coverage is asserted.",
+              "Modern lifecycle HTTP receipts retain requested paths only; they do not attest response bodies.",
+              "The recorded SDK identities and executed commands do not independently attest an entire original SDK body or NAR."
+            ],
+            "operations": [
+              "native-lock",
+              "native-prefetch",
+              "project-build-scripts",
+              "project-test-scripts",
+              "target-runtime",
+              "relocated-runtime",
+              "pure-build"
+            ],
+            "sourceRevision": "065ce2aaf13f32eccaf572d3918715125bd240bd",
+            "system": "x86_64-linux"
+          },
+          {
+            "components": [
+              {
+                "name": "SwiftPM",
+                "role": "native-tool",
+                "version": "6.4.2"
+              },
+              {
+                "name": "Swift",
+                "role": "compiler",
+                "version": "6.4.2"
+              },
+              {
+                "name": "swiftpm-purifier.lock.json",
+                "role": "native-format",
+                "version": "4"
+              },
+              {
+                "name": "SwiftPM workspace state",
+                "role": "native-format",
+                "version": "7"
+              }
+            ],
+            "evidence": [
+              "https://github.com/nix-purifiers/swiftpm-purifier/blob/065ce2aaf13f32eccaf572d3918715125bd240bd/tests/host-runtime-lifecycle.py",
+              "https://github.com/nix-purifiers/swiftpm-purifier/actions/runs/43223226744/job/131199783671",
+              "https://nix-purifiers.github.io/evidence/d60e4ec04a3e04969860e556fb86546c002788076e126fa3760fb6df68207c1b.json",
+              "https://nix-purifiers.github.io/evidence/ead9f19f0505840409702fee01cb66669ff6d4c6d1a0e84bb6249b9026ed5976.json",
+              "https://nix-purifiers.github.io/evidence/9472e0033d370ab561f0a0d9673d6339d411627eb9e200f308d0c143ab84c1e0.json",
+              "https://nix-purifiers.github.io/evidence/265142d6cfc6d3f3660bfd6822a76f8b444edfed7431d9eb2c2c7482751633b5.json"
+            ],
+            "id": "swift-6.4.2-swiftpm-6.4.2-host-linux-065ce2a",
+            "notes": [
+              "Default local mode with the runner\u2019s existing non-store Swift toolset; the CLI closure contains no Swift SDK and replay preserves the selected runtime.",
+              "Exact x86-64 Linux fixture with purifier lock format 4 and native workspace state 7. No version interval, other platform or arbitrary-project coverage is asserted.",
+              "Modern lifecycle HTTP receipts retain requested paths only; they do not attest response bodies.",
+              "The recorded SDK identities and executed commands do not independently attest an entire original SDK body or NAR."
+            ],
+            "operations": [
+              "native-lock",
+              "native-prefetch",
+              "project-build-scripts",
+              "project-test-scripts",
+              "target-runtime",
+              "relocated-runtime",
+              "source-preservation"
+            ],
+            "sourceRevision": "065ce2aaf13f32eccaf572d3918715125bd240bd",
+            "system": "x86_64-linux"
+          },
+          {
+            "components": [
+              {
+                "name": "SwiftPM",
+                "role": "native-tool",
+                "version": "3.0.2"
+              },
+              {
+                "name": "Swift",
+                "role": "compiler",
+                "version": "3.0.2"
+              },
+              {
+                "name": "swiftpm-purifier.lock.json",
+                "role": "native-format",
+                "version": "7"
+              },
+              {
+                "name": "SwiftPM state protocol",
+                "role": "native-format",
+                "version": "pre-workspace-git"
+              }
+            ],
+            "evidence": [
+              "https://github.com/nix-purifiers/swiftpm-purifier/blob/22180fcd4f3074f04bad5f035103de611da5ed59/tests/pre-workspace-native-lifecycle.py",
+              "https://github.com/nix-purifiers/swiftpm-purifier/actions/runs/43272959819/job/131373887583",
+              "https://nix-purifiers.github.io/evidence/4c8c60f106a5f6d03694d5392663a944ac070082a107c489b4837c0aef4ae612.json",
+              "https://nix-purifiers.github.io/evidence/8c9e843075e0e70db9f4e0c1741e8922b1a40c94a8962db30f8fdd6e49aadeb3.json",
+              "https://nix-purifiers.github.io/evidence/3b23e0d93395bb0a9ceda069d4899afa9cab54eed59f569072b04780571688bd.json"
+            ],
+            "id": "swift-3.0.2-swiftpm-3.0.2-linux-22180fc",
+            "notes": [
+              "Swift compiler 3.0.2 / SwiftPM 3.0.2 in local mode with an original upstream SDK fixture; explicit-SDK pure build and XCTest also passed.",
+              "Pre-workspace Git protocol, portable lock format 7. The fixture replays cold Git data after its origin stops and builds, tests and runs after relocation.",
+              "Exact x86-64 Linux fixtures; whole original SDK body/NAR is not independently attested."
+            ],
+            "operations": [
+              "native-lock",
+              "native-prefetch",
+              "project-build-scripts",
+              "project-test-scripts",
+              "target-runtime",
+              "relocated-runtime",
+              "pure-build",
+              "source-preservation"
+            ],
+            "sourceRevision": "22180fcd4f3074f04bad5f035103de611da5ed59",
+            "system": "x86_64-linux"
+          },
+          {
+            "components": [
+              {
+                "name": "SwiftPM",
+                "role": "native-tool",
+                "version": "4.0.0-dev"
+              },
+              {
+                "name": "Swift",
+                "role": "compiler",
+                "version": "4.0.3"
+              },
+              {
+                "name": "swiftpm-purifier.lock.json",
+                "role": "native-format",
+                "version": "8"
+              },
+              {
+                "name": "SwiftPM state protocol",
+                "role": "native-format",
+                "version": "dependencies-state-v1"
+              }
+            ],
+            "evidence": [
+              "https://github.com/nix-purifiers/swiftpm-purifier/blob/d760de40ae2935ed88ee376881d0c72ee7562590/tests/dependencies-v1-pure-native.py",
+              "https://github.com/nix-purifiers/swiftpm-purifier/actions/runs/43326651878/job/131560680899",
+              "https://nix-purifiers.github.io/evidence/330d06efe85299930224982916f0581fe42a78c1840fd1c8c6c47614c47e275b.json",
+              "https://nix-purifiers.github.io/evidence/0120aedcfd23c0308df0eefa8356239bbb92c33e3a608138b9d48d9753d8992b.json",
+              "https://nix-purifiers.github.io/evidence/9548de7e46ce2f3ab98ae6e7081287c1df79be4b178fe63d0dce0ec58d9e2266.json"
+            ],
+            "id": "swift-4.0.3-swiftpm-4.0.0-dev-linux-d760de4",
+            "notes": [
+              "Swift compiler 4.0.3 / SwiftPM 4.0.0-dev; dependencies-state-v1 with portable lock format 8.",
+              "Remote Git semantic-version direct and nested Swift fixtures: native build and XCTest; explicit original-SDK pure builds with default, null and external selectors.",
+              "Installed host CLI fixtures exercised default and external relock, prefetch, build, test, owned update and uninstall; native bytes and prior state absence were restored.",
+              "Exact x86-64 Linux fixtures; whole original SDK body/NAR is not independently attested."
+            ],
+            "operations": [
+              "native-lock",
+              "native-prefetch",
+              "project-build-scripts",
+              "project-test-scripts",
+              "target-runtime",
+              "pure-build",
+              "source-preservation"
+            ],
+            "sourceRevision": "d760de40ae2935ed88ee376881d0c72ee7562590",
+            "system": "x86_64-linux"
+          }
+        ]
       },
       "facts": {
         "build_engine": {

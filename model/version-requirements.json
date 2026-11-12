@@ -353,7 +353,7 @@
     "swiftpm-purifier": {
       "limitations": [
         {
-          "text": "This pinned Swift 6.3 toolchain is exposed for x86_64-linux and aarch64-darwin, not aarch64-linux. The package set marks its ARM64 Linux compiler broken because of its linker.",
+          "text": "The recorded pinned Swift 6.3 SDK profile is packaged for x86_64-linux and aarch64-darwin. Its ARM64 Linux compiler is marked broken because of its linker.",
           "sourceRevision": "cd52ed8444afc1561ec1289a7ead04d6a2556ea0",
           "evidence": [
             "https://github.com/nix-purifiers/swiftpm-purifier/blob/cd52ed8444afc1561ec1289a7ead04d6a2556ea0/flake.nix",
@@ -361,7 +361,7 @@
           ]
         },
         {
-          "text": "macOS uses the pinned Swift and Apple SDK packages rather than Xcode. The pinned macOS Swift package has no XCTest runner, so the project tests output is not run there.",
+          "text": "The recorded macOS SDK profile uses pinned Swift and Apple SDK packages rather than Xcode. That profile has no XCTest runner, so its project tests output is not run.",
           "sourceRevision": "cd52ed8444afc1561ec1289a7ead04d6a2556ea0",
           "evidence": [
             "https://github.com/nix-purifiers/swiftpm-purifier/blob/cd52ed8444afc1561ec1289a7ead04d6a2556ea0/flake.nix",
@@ -369,7 +369,40 @@
           ]
         }
       ],
-      "projectSelections": []
+      "projectSelections": [
+        {
+          "role": "native-tool",
+          "name": "SwiftPM",
+          "kind": "environment",
+          "inputs": [
+            "PATH",
+            "SWIFT_EXEC"
+          ],
+          "description": "Default local commands use the existing Swift/SwiftPM toolset; SWIFT_EXEC can select its compiler. Capture and replay retain the observed runtime identity without adding a Swift SDK to the CLI closure.",
+          "sourceRevision": "065ce2aaf13f32eccaf572d3918715125bd240bd",
+          "evidence": [
+            "https://github.com/nix-purifiers/swiftpm-purifier/blob/065ce2aaf13f32eccaf572d3918715125bd240bd/pkgs/cli/default.nix",
+            "https://github.com/nix-purifiers/swiftpm-purifier/blob/065ce2aaf13f32eccaf572d3918715125bd240bd/pkgs/cli/host_runtime.py",
+            "https://github.com/nix-purifiers/swiftpm-purifier/blob/065ce2aaf13f32eccaf572d3918715125bd240bd/tests/host-runtime-lifecycle.py"
+          ]
+        },
+        {
+          "role": "compiler",
+          "name": "Swift",
+          "kind": "nix-scope",
+          "inputs": [
+            "pkgs.swiftpm-purifier.toolchain",
+            "swiftPackages",
+            "runtimeMode"
+          ],
+          "description": "The explicit SDK toolchain uses SDK-backed CLI mode. Nix builders select swiftPackages separately from the default local workflow.",
+          "sourceRevision": "065ce2aaf13f32eccaf572d3918715125bd240bd",
+          "evidence": [
+            "https://github.com/nix-purifiers/swiftpm-purifier/blob/065ce2aaf13f32eccaf572d3918715125bd240bd/pkgs/toolchain/default.nix",
+            "https://github.com/nix-purifiers/swiftpm-purifier/blob/065ce2aaf13f32eccaf572d3918715125bd240bd/nix/lib/build-swiftpm-project.nix"
+          ]
+        }
+      ]
     },
     "dotnet-purifier": {
       "limitations": [
