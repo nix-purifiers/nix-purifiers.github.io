@@ -100,21 +100,33 @@ def configure():
 
 
 def yarn_plugin(root, repository, sha):
-    source = (root / "plugin/purifier.cjs").read_text()
-    foreign = (root / "plugin/foreign.cjs").read_text()
-    source = source.replace('const foreign = require("./foreign.cjs");',
-        'const foreign = (() => { const module = {exports: {}};\n' + foreign + '\nreturn module.exports; })();')
+    # Both released layouts publish the complete plugin as #plugin. Validate
+    # the producer's source entry before emitting a bootstrap; a missing or
+    # ambiguous layout must not silently select another runtime.
+    owners = []
+    for owner in ("pkgs/plugin", "nix/lib"):
+        entries = [root / owner / name for name in ("interactive.nix", "publish.nix", "release.nix")]
+        if any(path.exists() for path in entries):
+            if not all(path.is_file() for path in entries):
+                raise ValueError(f"Incomplete Yarn runtime source: {owner}")
+            owners.append(owner)
+    if len(owners) != 1:
+        raise ValueError("Expected exactly one Yarn runtime source owner")
     reference = f"github:{repository}/{sha}"
-    bootstrap = f'''console.error("yarn-berry-purifier: warning: the plugin was resolved impurely; use the Nix wrapper for pure plugin resolution.");
+    return f'''// Generated native entry point; the producer owns its runtime and sibling resources.
+const childProcess = require("child_process");
+const fs = require("fs");
+const path = require("path");
+const {{createRequire}} = require("module");
+console.error("yarn-berry-purifier: warning: the plugin was resolved impurely; use the Nix wrapper for pure plugin resolution.");
 const releaseRef = {json.dumps(reference)};
-const releaseSource = JSON.parse(childProcess.execFileSync("nix", ["flake", "metadata", "--json", releaseRef], {{encoding: "utf8"}})).path;
-const releaseNixpkgs = childProcess.execFileSync("nix", ["eval", "--raw", "--impure", "--expr", `(builtins.getFlake "${{releaseRef}}").inputs.nixpkgs.outPath`], {{encoding: "utf8"}}).trim();
+const releaseSource = JSON.parse(childProcess.execFileSync("nix", ["flake", "metadata", "--json", "--no-update-lock-file", releaseRef], {{encoding: "utf8"}})).path;
+const runtimeEntry = path.join(releaseSource, {json.dumps(owners[0])}, "interactive.nix");
+if (!fs.existsSync(runtimeEntry) || !fs.statSync(runtimeEntry).isFile()) throw new Error("The released Yarn runtime entry is missing");
+const producer = childProcess.execFileSync("nix", ["build", "--no-link", "--print-out-paths", "--no-update-lock-file", `${{releaseRef}}#plugin`], {{encoding: "utf8"}}).trim();
+const producerEntry = path.join(producer, "purifier.cjs");
+module.exports = createRequire(producerEntry)(producerEntry);
 '''
-    source = source.replace('const NIX_LIB = "@nixLib@";', bootstrap + 'const NIX_LIB = path.join(releaseSource, "nix/lib");')
-    source = source.replace('const NIXPKGS = "@nixpkgs@";', 'const NIXPKGS = releaseNixpkgs;')
-    source = source.replace('const FLAKE = "@flake@";', 'const FLAKE = releaseSource;')
-    assert all(token not in source for token in ('@nixLib@', '@nixpkgs@', '@flake@'))
-    return source
 
 
 def build(root, repository, sha, version, kind, destination):
