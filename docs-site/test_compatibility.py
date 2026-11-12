@@ -11,6 +11,34 @@ from export import validate_version_coverage
 
 
 class CompatibilityTests(unittest.TestCase):
+
+    def test_deno_url_points_keep_helper_separate_and_do_not_expand_workflow_scope(self):
+        root = Path(__file__).resolve().parents[1]
+        points = json.loads((root / 'model/compatibility-tests.json').read_text())['projects']['deno-purifier']['testedPoints']
+        page = copy.deepcopy(self.documentation['catalog']['deno-purifier'])
+        page['compatibility']['testedPoints'] = points
+        validate(page['compatibility'])
+        expected = {'1.0.0': 'flat', '1.46.3': '3', '2.0.6': '4', '2.9.8': '5'}
+        self.assertEqual(len(points), 4)
+        unproved = {'project-build-scripts', 'native-install-offline', 'native-publish', 'release-pack',
+                    'lock-reproducibility', 'relocated-cold-relock', 'network-isolated-native-build', 'native-offline-build'}
+        for point in points:
+            components = {(c['role'], c['name']): c['version'] for c in point['components']}
+            version = components['project-runtime', 'Deno']
+            self.assertEqual(components['native-tool', 'Deno'], version)
+            self.assertEqual(components['host-helper', 'Deno'], '2.9.8')
+            self.assertEqual(components['native-format', 'deno.lock'], expected[version])
+            self.assertEqual(point['system'], 'x86_64-linux')
+            self.assertFalse(unproved & set(point['operations']))
+            self.assertIn('relocated-runtime', point['operations'])
+        matrix = feature_matrix(page, self.contract)
+        self.assertEqual(matrix.count('<details class="tested-combination"'), 4)
+        self.assertIn('Capture / build helper: Deno 2.9.8', matrix)
+        self.assertIn('Project runtime: Deno 1.0.0', matrix)
+        self.assertIn('Runtime after project relocation', matrix)
+        self.assertNotIn('tested-combination', render_compatibility(page, self.contract))
+        self.assertFalse(page['compatibility']['supportedRanges'])
+
     def test_maven_choices_hide_internal_helpers_and_collapse_java_build_ids(self):
         page = self.documentation['catalog']['maven-purifier']
         original = copy.deepcopy(page)

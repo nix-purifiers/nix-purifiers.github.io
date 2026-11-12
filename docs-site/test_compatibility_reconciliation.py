@@ -23,8 +23,12 @@ class ReconciliationTests(unittest.TestCase):
                         (cls.sidecar['registrySha256'] + '.json')).read_bytes()
         cls.current_catalog = json.loads((ROOT/'docs-site/catalog.json').read_text())['catalog']
         cls.fixture_catalog = copy.deepcopy(cls.current_catalog)
-        for name, entry in json.loads(cls.registry)['projects'].items():
-            cls.fixture_catalog[name]['compatibility']['testedPoints'] = copy.deepcopy(entry['testedPoints'])
+        frozen_projects = json.loads(cls.registry)['projects']
+        for name, page in cls.fixture_catalog.items():
+            # The synthetic append uses the frozen registry, including the
+            # absence of projects first added after that snapshot.
+            page['compatibility']['testedPoints'] = copy.deepcopy(
+                frozen_projects.get(name, {}).get('testedPoints', []))
         cls.real = Reconciliation(cls.sidecar, cls.current_registry, ROOT, catalog=cls.current_catalog)
 
     def setUp(self):
