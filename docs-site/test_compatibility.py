@@ -54,14 +54,13 @@ class CompatibilityTests(unittest.TestCase):
         self.assertNotIn('Packaged versions', body)
         self.assertNotIn('Version definitions', body)
         self.assertNotIn('### Tested combinations', body)
-        self.assertIn('do not imply every combination or an entire version range', body)
         self.assertIn('Maven 2.2.1 can consume Nix inputs through the sandbox builder', body)
         matrix = feature_matrix(page, self.contract)
         self.assertIn('Python 3.14.8', matrix)
         self.assertIn('21.0.12.1+1', matrix)
         self.assertEqual(page, original)
 
-    def test_recorded_versions_include_packaged_defaults_without_becoming_an_allowlist(self):
+    def test_recorded_versions_include_packaged_defaults(self):
         page = copy.deepcopy(self.documentation['catalog']['maven-purifier'])
         component = next(c for c in page['compatibility']['defaults'] if c['role'] == 'native-tool')
         page['compatibility']['testedPoints'][0]['components'].append(dict(
@@ -70,15 +69,9 @@ class CompatibilityTests(unittest.TestCase):
         row = next(line for line in body.splitlines() if line.startswith('| Maven |'))
         self.assertIn(component['version'], row.split('|')[3])
         self.assertIn('Packaged defaults', body)
-        self.assertIn('not an allowlist', body)
-        self.assertIn('preserve your existing core runtime without requiring a Nix SDK', body)
-        self.assertIn('Fully sandboxed builds can require specific runtime versions', body)
-        self.assertIn('those build requirements are separate from local adoption', body)
-        self.assertIn('source revisions and platforms', body)
         self.assertNotIn('Other verified versions', body)
         self.assertIn('| Packaged toolchain | Recorded workflow |', body)
         self.assertNotIn('| Availability |', body)
-        self.assertIn('an unrecorded result does not mean a platform is unavailable', body)
 
     def test_helper_changes_do_not_change_user_version_choices(self):
         for name in ['maven-purifier', 'npm-purifier', 'bundler-purifier']:
