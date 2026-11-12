@@ -8,7 +8,7 @@ let
   text = types.addCheck types.str (s: builtins.match ".*[^ \n\t].*" s != null);
   nonempty = type: types.addCheck (types.listOf type) (xs: xs != []);
   revision = types.strMatching "[0-9a-f]{40}";
-  roles = [ "purifier-implementation" "native-tool" "native-tool-runtime" "project-runtime" "compiler" "host-helper" "addon-target" "build-target" "native-format" ];
+  roles = [ "purifier-implementation" "native-tool" "native-tool-runtime" "project-runtime" "compiler" "host-helper" "publisher-tool" "publisher-runtime" "publisher-helper" "addon-target" "build-target" "native-format" ];
   component = {
     role = mkOption { type = types.enum roles; };
     name = mkOption { type = text; };
