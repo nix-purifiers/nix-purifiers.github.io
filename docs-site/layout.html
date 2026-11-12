@@ -32,14 +32,9 @@
     {% if page.url == guide %}<span aria-current="page">Full guide</span>{% else %}<a href="{{ guide_href }}">Full guide</a>{% endif %}
   </nav>
   {% endif %}
-  {% assign purifier_name = repository | split: '/' | last %}
-  {% assign canonical_repository = 'nix-purifiers/' | append: purifier_name %}
-  {% if repository == canonical_repository and feature_matrix %}
-  {% if site.central_documentation %}{% assign assessment = site.data.purifier_quality[purifier_name] %}<p class="quality-tier">Tier {{ assessment.tier }} · <a href="https://nix-purifiers.github.io/tiers.html#{{ purifier_name | escape }}">Tier assessment</a></p>{% endif %}
-  {% endif %}
   <article>{{ content }}</article>
   <footer>
-    <a href="https://nix-purifiers.github.io/">Explore the purifier family</a>
+    {% if page.url == '/tiers.html' %}<a href="#content">Back to top</a>{% else %}<a href="https://nix-purifiers.github.io/">Explore the purifier family</a>{% endif %}
     {% if feature_matrix %}<a class="secondary-link" href="{{ feature_matrix }}">Feature matrix</a>{% endif %}
   </footer>
   </main>

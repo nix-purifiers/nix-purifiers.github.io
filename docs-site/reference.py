@@ -4,6 +4,7 @@ import re
 from pathlib import Path
 from guide_blocks import validate_assignments, select_block
 from compatibility import render_compatibility
+from scope_content import fact_list, scope_block
 
 
 def source_sections(text):
@@ -122,7 +123,7 @@ def detailed_guide(repository, text, page, plan=None):
             if fact['state'] != 'known':
                 raise ValueError(f'{name}: guide cannot render unknown fact {fact_name}')
             value = fact['value']
-            body = ('Target systems: ' + ', '.join(value) + '.') if fact_name == 'platforms' else '\n\n'.join(value)
+            body = fact_list(value)
             blocks.append((contract['factHeadings'][fact_name], body, False, None))
         if not blocks:
             raise ValueError(f'{name}.{identifier}: empty detailed-guide section')
@@ -130,6 +131,9 @@ def detailed_guide(repository, text, page, plan=None):
         if identifier == 'projections' and all(page['facts']['projection_' + direction].get('value') == 'unsupported' for direction in ('incoming', 'outgoing')):
             chunks.append(contract['nativePublicationNote'])
         canonical = slug(title)
+        if identifier == 'integration' and canonical != 'native-integration':
+            chunks.append('<a id="native-integration"></a>')
+            aliases.add('native-integration')
         for original, body, is_source, alias in blocks:
             legacy = slug(alias) if alias else None
             if len(blocks) > 1 and original != title:
@@ -139,10 +143,14 @@ def detailed_guide(repository, text, page, plan=None):
                     chunks.append(f'<a id="{legacy}"></a>')
                     aliases.add(legacy)
                 chunks.append(body)
-        sections.append((title, '\n\n'.join(chunks)))
+        body = '\n\n'.join(chunks)
+        sections.append((title, scope_block(body) if identifier == 'scope' else body))
     if 'versionCompatibility' in overview:
         sections.insert(1, (overview['versionCompatibility']['title'], render_compatibility(page, overview, heading=False)))
-    lines = ['# ' + name + ' full guide', contract['introduction'],
+    introduction = contract['introduction']
+    if page.get('quality'):
+        introduction += ' ' + contract['maturitySentence'].format(project=name, tier=page['quality']['tier'])
+    lines = ['# ' + name + ' full guide', introduction,
              '## ' + contract['contentsTitle'],
              '\n'.join(f'- [{title}](#{slug(title)})' for title, _ in sections)]
     lines.extend('## ' + title + '\n\n' + body for title, body in sections)

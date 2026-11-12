@@ -155,10 +155,19 @@ class QualityTests(unittest.TestCase):
             self.assertEqual(json.loads((target / '_data/purifier_quality.json').read_text()), self.data['projects'])
             layout = (target / '_layouts/default.html').read_text()
             self.assertNotIn('quality.tier', layout)
-            self.assertIn('if site.central_documentation', layout)
-            self.assertIn('site.data.purifier_quality', layout)
-            self.assertIn('Tier {{ assessment.tier }}', layout)
-            self.assertIn('>Tier assessment</a>', layout)
+            self.assertNotIn('class="quality-tier"', layout)
+            self.assertNotIn('>Tier assessment</a>', layout)
+
+    def test_maturity_is_in_the_guide_introduction_from_the_same_registry(self):
+        from reference import reference_text
+        root = Path(__file__).parent
+        documentation = json.loads((root / 'catalog.json').read_text())
+        for name, page in documentation['catalog'].items():
+            guide = reference_text(page['repository'], (root / 'references' / (name + '.md')).read_text(), page)
+            introduction = guide.split('\n\n', 2)[1]
+            self.assertIn(f'{name} is classified at maturity tier {self.data["projects"][name]["tier"]}', introduction)
+            self.assertIn(f'[tier assessment](https://nix-purifiers.github.io/tiers.html#{name})', introduction)
+            self.assertEqual(guide.count('[tier assessment]('), 1)
 
     def test_homepage_groups_only_present_tiers_and_reclassifies_without_stale_headings(self):
         data = {'projects': {'go-purifier': {'tier': 1}, 'gradle-purifier': {'tier': 3}}}

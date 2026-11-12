@@ -120565,12 +120565,26 @@
           "native": [
             {
               "id": "main",
-              "text": "The development environment supplies the native tools and their purifier integration. Use that environment for builds, tests, and editor processes so they share the selected dependencies."
+              "text": "Use the development environment for builds, tests, and language tooling so they share the selected dependencies."
+            },
+            {
+              "id": "wrapper-activation",
+              "text": "The environment supplies a tool wrapper that activates the locked dependencies.",
+              "when": {
+                "integration": [
+                  "wrapper",
+                  "wrapper-and-plugin"
+                ]
+              }
             },
             {
               "id": "fallback",
-              "text": "Without an applicable lock, the integration warns and runs the ordinary native tool.",
+              "text": "Without an applicable purifier lock, the supplied wrapper warns and runs the tool with its usual dependency resolution.",
               "when": {
+                "integration": [
+                  "wrapper",
+                  "wrapper-and-plugin"
+                ],
                 "missing_lock": "warn-and-native"
               }
             },
@@ -120585,7 +120599,7 @@
           "wrapper": [
             {
               "id": "main",
-              "text": "The shell supplies a wrapper for the native build tool. Without an applicable lock, it warns and runs the ordinary native tool. A stale or invalid lock fails with a repair command."
+              "text": "The development environment supplies a wrapper that runs the build tool with the locked dependencies. Without an applicable purifier lock, it warns and lets the tool use its usual dependency resolution. A stale or invalid lock fails with a repair command."
             },
             {
               "id": "required-wrapper",
@@ -120596,7 +120610,7 @@
             },
             {
               "id": "native-commands",
-              "text": "The integration handles {facts.supported_native_commands}; other native commands run normally.",
+              "text": "The wrapper handles {facts.supported_native_commands}; other commands run normally.",
               "whenKnown": [
                 "supported_native_commands"
               ]
@@ -120621,7 +120635,7 @@
             }
           ]
         },
-        "title": "Native integration"
+        "title": "Using locked dependencies"
       },
       {
         "id": "offline",
@@ -120885,28 +120899,28 @@
           "native": [
             {
               "id": "platforms",
-              "text": "Target systems: {facts.platforms}.",
+              "text": "### Target systems\n\n{facts.platforms}",
               "whenKnown": [
                 "platforms"
               ]
             },
             {
               "id": "main",
-              "text": "Dependency sources: {facts.dependency_sources}.",
+              "text": "### Dependency sources\n\n{facts.dependency_sources}",
               "whenKnown": [
                 "dependency_sources"
               ]
             },
             {
               "id": "platform-notes",
-              "text": "Platform scope: {facts.platform_notes}.",
+              "text": "### Platform limits\n\n{facts.platform_notes}",
               "whenKnown": [
                 "platform_notes"
               ]
             },
             {
               "id": "unsupported",
-              "text": "Not supported: {facts.unsupported_features}.",
+              "text": "### Not supported\n\n{facts.unsupported_features}",
               "whenKnown": [
                 "unsupported_features"
               ]
@@ -120915,11 +120929,11 @@
           "platforms": [
             {
               "id": "main",
-              "text": "Supported platforms: {facts.platforms}.\n\nDependency sources: {facts.dependency_sources}."
+              "text": "### Target systems\n\n{facts.platforms}\n\n### Dependency sources\n\n{facts.dependency_sources}"
             },
             {
               "id": "toolchain",
-              "text": "Checked toolchain: {facts.tested_toolchain}.",
+              "text": "### Checked toolchain\n\n{facts.tested_toolchain}",
               "whenKnown": [
                 "tested_toolchain"
               ]
@@ -120940,14 +120954,14 @@
             },
             {
               "id": "unsupported",
-              "text": "Not supported: {facts.unsupported_features}.",
+              "text": "### Not supported\n\n{facts.unsupported_features}",
               "whenKnown": [
                 "unsupported_features"
               ]
             },
             {
               "id": "platform-notes",
-              "text": "Platform scope: {facts.platform_notes}.",
+              "text": "### Platform limits\n\n{facts.platform_notes}",
               "whenKnown": [
                 "platform_notes"
               ]
