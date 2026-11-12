@@ -269,7 +269,8 @@ def render_compatibility(page, contract, heading=True):
             group['roles'].append(role)
             group['defaults'].extend(x for x in defaults if x not in group['defaults'])
     if groups:
-        lines += ['| Tool or language | Included version | Other verified versions |', '|---|---|---|']
+        lines.append('Packaged defaults are conveniences, not an allowlist for adopting a purifier locally. Local capture, prefetch and development must preserve your existing core runtime without requiring a Nix SDK. Fully sandboxed builds can require specific runtime versions or an SDK built from source; those build requirements are separate from local adoption. Recorded tests do not establish that arbitrary versions work.')
+        lines += ['| Tool or language | Packaged defaults | Versions exercised in recorded workflows |', '|---|---|---|']
         all_systems = {s for c in visible_defaults for s in c['systems']}
         for group in groups:
             name = group['name']
@@ -289,20 +290,20 @@ def render_compatibility(page, contract, heading=True):
             selected = any(user_name(c['name']) == group['name'] and c['role'] in group['roles']
                            for c in data['projectSelections'])
             included = '; '.join(included_choices) or ('Project-selected' if selected else '—')
-            default_versions = {v for v, _ in choices}
-            other = version_choices(v for versions in group['checked'] for v in versions if v not in default_versions)
-            lines.append('| ' + cell(name) + ' | ' + cell(included) + ' | ' + cell(other) + ' |')
+            tested = version_choices(v for versions in group['checked'] for v in versions)
+            lines.append('| ' + cell(name) + ' | ' + cell(included) + ' | ' + cell(tested) + ' |')
     checked = verified_platforms(page, data)
     systems = sorted({s for c in visible_defaults for s in c['systems']} | checked)
     if systems:
-        lines += ['### Operating systems and architectures', '| OS | CPU architecture | Availability |', '|---|---|---|']
+        lines += ['### Operating systems and architectures', 'These records distinguish packaged toolchains from executed workflows. They are not platform restrictions on local adoption; an unrecorded result does not mean a platform is unavailable.', '| OS | CPU architecture | Packaged toolchain | Recorded workflow |', '|---|---|---|---|']
         packaged = {s for c in visible_defaults for s in c['systems']}
         for system in systems:
             arch, _, os = system.partition('-')
-            status = 'Packaged; verified workflow' if system in packaged and system in checked else ('Packaged; workflow not verified' if system in packaged else 'Verified workflow')
+            packaged_status = 'Yes' if system in packaged else 'Not recorded'
+            workflow_status = 'Tested' if system in checked else 'Not recorded'
             lines.append('| ' + cell({'linux': 'Linux', 'darwin': 'macOS'}.get(os, os))
-                         + ' | ' + cell({'x86_64': 'x86-64', 'aarch64': 'ARM64'}.get(arch, arch)) + ' | ' + status + ' |')
-    lines.append('Verified versions apply to specific workflows and platforms; they do not imply every combination or an entire version range. See the [feature matrix](features.html) for exact configurations and limitations.')
+                         + ' | ' + cell({'x86_64': 'x86-64', 'aarch64': 'ARM64'}.get(arch, arch)) + ' | ' + packaged_status + ' | ' + workflow_status + ' |')
+    lines.append('Recorded workflows are evidence for specific versions, source revisions and platforms, not a list of the only versions you can use. They do not imply every combination or an entire version range. See the [feature matrix](features.html) for exact configurations and limitations.')
     selections = [c for c in data['projectSelections'] if c['role'] in USER_ROLES or c['role'] == 'purifier-implementation']
     if selections:
         lines += ['### Choosing versions', '| Component | Selected by |', '|---|---|']
