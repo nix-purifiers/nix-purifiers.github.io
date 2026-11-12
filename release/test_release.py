@@ -149,6 +149,40 @@ class ReleaseTests(unittest.TestCase):
             query.assert_called_once()
             sleep.assert_not_called()
 
+    def test_release_version_is_a_pure_override_of_a_locked_source(self):
+        metadata = {"path": "/nix/store/fixture-source", "locked": {"narHash": "sha256-test+/="}}
+        with patch.object(packages.subprocess, "check_output", side_effect=[
+            json.dumps(metadata), json.dumps({"system": {"value": "x86_64-linux"}}), "/nix/store/released-extension\n"
+        ]) as command:
+            result = packages.nix_build(".#extension", version="0.1.123")
+        self.assertEqual(result, Path("/nix/store/released-extension"))
+        arguments = command.call_args_list[2].args[0]
+        self.assertNotIn("--impure", arguments)
+        expression = arguments[arguments.index("--expr") + 1]
+        self.assertIn("narHash=sha256-test%2B%2F%3D", expression)
+        self.assertIn('override { version = "0.1.123"; }', expression)
+        self.assertNotIn("version.txt", expression)
+
+    def test_maven_publication_does_not_modify_source_version(self):
+        with tempfile.TemporaryDirectory() as temporary:
+            root = Path(temporary) / "source"
+            root.mkdir()
+            version_file = root / "version.txt"
+            version_file.write_text("old-source-sentinel\n")
+            extension = Path(temporary) / "extension/share/java"
+            extension.mkdir(parents=True)
+            (extension / "maven-purifier-extension.jar").write_bytes(b"native extension")
+            destination = Path(temporary) / "release"
+            destination.mkdir()
+            with patch.object(packages, "nix_build", return_value=extension.parent.parent) as build:
+                packages.build(root, "nix-purifiers/maven-purifier", "a" * 40,
+                               "0.1.123", "maven", destination)
+            build.assert_called_once_with(".#extension", version="0.1.123")
+            self.assertEqual(version_file.read_text(), "old-source-sentinel\n")
+            with zipfile.ZipFile(destination / "native-repository.zip") as archive:
+                pom = next(name for name in archive.namelist() if name.endswith(".pom"))
+                self.assertEqual(ET.fromstring(archive.read(pom)).find("{*}version").text, "0.1.123")
+
     def test_python_index_retains_versions_with_exact_hashes(self):
         with tempfile.TemporaryDirectory() as temporary:
             site = Path(temporary)
