@@ -1,37 +1,66 @@
 """Build the native integrations using the repository's locked Nix toolchain."""
+import atexit
 import hashlib
 import io
 import json
 from pathlib import Path
 import shutil
 import subprocess
+import tempfile
 import zipfile
 from urllib.parse import quote
 
 
+def _locked_source(reference, roots):
+    metadata = json.loads(subprocess.check_output([
+        "nix", "flake", "metadata", "--json", "--no-update-lock-file", reference
+    ], text=True))
+    nar_hash = metadata["locked"]["narHash"]
+    # Metadata may describe a lazy tree whose store path does not exist yet.
+    archive = json.loads(subprocess.check_output([
+        "nix", "flake", "archive", "--json", "--no-update-lock-file", reference
+    ], text=True))
+    source = Path(archive["path"])
+    actual_hash = subprocess.check_output([
+        "nix", "hash", "path", "--type", "sha256", "--sri", str(source)
+    ], text=True).strip()
+    if actual_hash != nar_hash:
+        raise RuntimeError("Flake source changed while materializing the release snapshot")
+    subprocess.check_output([
+        "nix-store", "--add-root", str(roots / "source"), "--indirect", "--realise", str(source)
+    ], text=True)
+    return "path:" + str(source) + "?narHash=" + quote(nar_hash, safe="")
+
+
 def nix_build(attribute, *, version=None):
-    arguments = ["nix", "build", "--no-link", "--print-out-paths", "--no-update-lock-file"]
-    if version is None:
-        arguments.append(attribute)
-    else:
-        # Snapshot the checkout without changing its files. Lock the resulting
-        # store path by its NAR hash so evaluating the override remains pure.
-        metadata = json.loads(subprocess.check_output([
-            "nix", "flake", "metadata", "--json", "--no-update-lock-file", "."
-        ], text=True))
-        system = json.loads(subprocess.check_output(["nix", "config", "show", "--json"], text=True))["system"]["value"]
-        source = "path:" + metadata["path"] + "?narHash=" + quote(metadata["locked"]["narHash"], safe="")
-        name, _, output = attribute.removeprefix(".#").partition("^")
-        if name not in ("plugin", "extension") or output not in ("", "dist"):
-            raise ValueError("Unsupported versioned release package")
-        expression = (
-            "let source = builtins.getFlake " + json.dumps(source) + "; "
-            "package = source.packages." + json.dumps(system) + "." + name
-            + ".override { version = " + json.dumps(version) + "; }; in package"
-            + ("." + output if output else "")
-        )
-        arguments.extend(["--expr", expression])
-    return Path(subprocess.check_output(arguments, text=True).strip())
+    temporary = tempfile.TemporaryDirectory(prefix="purifier-release-build-")
+    roots = Path(temporary.name).resolve()
+    try:
+        arguments = ["nix", "build", "--out-link", str(roots / "result"),
+                     "--print-out-paths", "--no-update-lock-file"]
+        if version is None:
+            arguments.append(attribute)
+        else:
+            source = _locked_source(".", roots)
+            system = json.loads(subprocess.check_output(["nix", "config", "show", "--json"], text=True))["system"]["value"]
+            name, _, output = attribute.removeprefix(".#").partition("^")
+            if name not in ("plugin", "extension") or output not in ("", "dist"):
+                raise ValueError("Unsupported versioned release package")
+            expression = (
+                "let source = builtins.getFlake " + json.dumps(source) + "; "
+                "package = source.packages." + json.dumps(system) + "." + name
+                + ".override { version = " + json.dumps(version) + "; }; in package"
+                + ("." + output if output else "")
+            )
+            arguments.extend(["--expr", expression])
+        result = Path(subprocess.check_output(arguments, text=True).strip())
+    except BaseException:
+        temporary.cleanup()
+        raise
+    # Keep both the snapshot and build outputs alive while callers copy assets.
+    # Only links in this owned temporary directory are removed on process exit.
+    atexit.register(temporary.cleanup)
+    return result
 
 
 def ant_plugin(source, repository, sha):
