@@ -23,7 +23,7 @@ RUNNERS = {'ubuntu-24.04-arm': 'aarch64-linux', 'ubuntu-24.04': 'x86_64-linux',
 
 
 FORMATS = ('command-json', 'job-json', 'jobs-json', 'json', 'text')
-COMMANDS = ('nix flake check --max-jobs 2 --print-build-logs', 'nix flake check -L', 'nix flake check --print-build-logs', 'nix flake check')
+COMMANDS = ('nix flake check --print-build-logs --keep-going --option sandbox true', 'nix flake check --max-jobs 2 --print-build-logs', 'nix flake check -L', 'nix flake check --print-build-logs', 'nix flake check')
 
 
 def retain_native_artifact(source, directory, public_base, format):

@@ -63,6 +63,26 @@ class NativeCITests(unittest.TestCase):
         self.check(self.record())
         self.check(self.record(log=self.log.replace('2026-11-06T00:00:02Z derivation evaluated', '2026-11-06T00:00:02Z unpacking pinned source...\n2026-11-06T00:00:02Z derivation evaluated')))
 
+    def test_explicit_sandbox_check_requires_exact_successful_step(self):
+        command = 'nix flake check --print-build-logs --keep-going --option sandbox true'
+        job = copy.deepcopy(self.job)
+        job['steps'][0]['name'] = 'Check the flake'
+        log = self.log.replace('nix flake check -L', command)
+        record = self.record(job=job, log=log)
+        record.update(command=command, stepName='Check the flake')
+        self.check(record)
+        for bad_log in (log.replace('sandbox true', 'sandbox false'),
+                        log.replace(command, command + ' --no-build')):
+            with self.subTest(log=bad_log), self.assertRaises(ValueError):
+                changed = self.record(job=job, log=bad_log)
+                changed.update(command=command, stepName='Check the flake')
+                self.check(changed)
+        job['steps'][0]['conclusion'] = 'failure'
+        changed = self.record(job=job, log=log)
+        changed.update(command=command, stepName='Check the flake')
+        with self.assertRaises(ValueError):
+            self.check(changed)
+
     def test_exact_bounded_parallel_check_preserves_execution_bindings(self):
         command = 'nix flake check --max-jobs 2 --print-build-logs'
         job = copy.deepcopy(self.job)

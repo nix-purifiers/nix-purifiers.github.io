@@ -183,7 +183,7 @@ in {
         && lib.all (path: !lib.hasSuffix ".drv" path) (builtins.attrValues e.observedOutputs)
         && lib.all (name: builtins.match ".*[^ \n\t].*" name != null) (builtins.attrNames e.predictedOutputs)
         && lib.all (p: !lib.hasSuffix ".drv" p) (builtins.attrValues e.predictedOutputs)
-        && (if scripted then validScript else lib.hasPrefix "checks.${e.system}." e.check && builtins.elem e.command [ "nix flake check -L" "nix flake check --print-build-logs" "nix flake check" "nix flake check --max-jobs 2 --print-build-logs" ]) && runnerSystem e.runnerImage == e.system
+        && (if scripted then validScript else lib.hasPrefix "checks.${e.system}." e.check && builtins.elem e.command [ "nix flake check --print-build-logs --keep-going --option sandbox true" "nix flake check -L" "nix flake check --print-build-logs" "nix flake check" "nix flake check --max-jobs 2 --print-build-logs" ]) && runnerSystem e.runnerImage == e.system
         && builtins.elem e.jobArtifact.format [ "command-json" "job-json" "jobs-json" ] && builtins.elem e.logArtifact.format [ "text" "command-json" ]
         && (if e.jobArtifact.format == "command-json" then jc.exitCode == 0 && jc.command == [ "gh" "api" api ]
           else (e.jobArtifact.format != "jobs-json" || builtins.length jobMatches == 1) && job.url == "https://api.github.com/${api}")
