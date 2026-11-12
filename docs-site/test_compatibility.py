@@ -17,9 +17,9 @@ class CompatibilityTests(unittest.TestCase):
         body = render_compatibility(page, self.contract)
         self.assertIn('| Maven | 3.10.0 (without a Maven wrapper) |', body)
         self.assertIn('2.2.1, 3.0.5', body)
-        self.assertIn('| Java | 21; 8 (Maven 2 / 3.0 fallback) | 17 |', body)
-        self.assertIn('| Linux | ARM64 | Packaged; verified workflow |', body)
-        self.assertIn('| macOS | ARM64 | Packaged; verified workflow |', body)
+        self.assertIn('| Java | 21; 8 (Maven 2 / 3.0 fallback) | 8, 17, 21 |', body)
+        self.assertIn('| Linux | ARM64 | Yes | Tested |', body)
+        self.assertIn('| macOS | ARM64 | Yes | Tested |', body)
         self.assertNotIn('Python', body)
         self.assertNotIn('21.0.12.1+1', body)
         self.assertNotIn('8u504-b01', body)
@@ -32,6 +32,25 @@ class CompatibilityTests(unittest.TestCase):
         self.assertIn('Python 3.14.8', matrix)
         self.assertIn('21.0.12.1+1', matrix)
         self.assertEqual(page, original)
+
+    def test_recorded_versions_include_packaged_defaults_without_becoming_an_allowlist(self):
+        page = copy.deepcopy(self.documentation['catalog']['maven-purifier'])
+        component = next(c for c in page['compatibility']['defaults'] if c['role'] == 'native-tool')
+        page['compatibility']['testedPoints'][0]['components'].append(dict(
+            role=component['role'], name=component['name'], version=component['version']))
+        body = render_compatibility(page, self.contract)
+        row = next(line for line in body.splitlines() if line.startswith('| Maven |'))
+        self.assertIn(component['version'], row.split('|')[3])
+        self.assertIn('Packaged defaults', body)
+        self.assertIn('not an allowlist', body)
+        self.assertIn('preserve your existing core runtime without requiring a Nix SDK', body)
+        self.assertIn('Fully sandboxed builds can require specific runtime versions', body)
+        self.assertIn('those build requirements are separate from local adoption', body)
+        self.assertIn('source revisions and platforms', body)
+        self.assertNotIn('Other verified versions', body)
+        self.assertIn('| Packaged toolchain | Recorded workflow |', body)
+        self.assertNotIn('| Availability |', body)
+        self.assertIn('an unrecorded result does not mean a platform is unavailable', body)
 
     def test_helper_changes_do_not_change_user_version_choices(self):
         for name in ['maven-purifier', 'npm-purifier', 'bundler-purifier']:
@@ -75,8 +94,8 @@ class CompatibilityTests(unittest.TestCase):
         receipts = page['quality']['derivationReview']['derivations']
         review['derivations'] = [d for d in review['derivations'] if receipts[d]['system'] != 'aarch64-linux']
         body = render_compatibility(page, self.contract)
-        self.assertIn('| Linux | ARM64 | Packaged; workflow not verified |', body)
-        self.assertIn('| Linux | x86-64 | Packaged; verified workflow |', body)
+        self.assertIn('| Linux | ARM64 | Yes | Not recorded |', body)
+        self.assertIn('| Linux | x86-64 | Yes | Tested |', body)
         review['derivations'].append('other-project:aarch64-linux:unrelated')
         self.assertEqual(render_compatibility(page, self.contract), body)
 
