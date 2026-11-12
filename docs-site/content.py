@@ -4,6 +4,7 @@ import shlex
 from html import escape
 from compatibility import render_compatibility, tested_combinations
 from quality import validate as validate_quality
+from scope_content import fact_list, scope_block
 
 
 def source_links(text, repository, revision='main'):
@@ -117,7 +118,7 @@ def render(page, contract):
         else:
             raise ValueError(f'{key}: expected known, unknown or not-applicable')
 
-    def substitute(match):
+    def substitute(match, lists=False):
         key = match[1]
         if key not in facts or facts[key]['state'] != 'known':
             raise ValueError(f'cannot render unknown or missing fact {key}')
@@ -126,6 +127,8 @@ def render(page, contract):
             value = [definitions[key].get('itemLabels', {}).get(item, item) for item in value]
         if isinstance(value, bool):
             return 'supported' if value else 'not supported'
+        if isinstance(value, list) and lists:
+            return fact_list(value)
         return ', '.join(value) if isinstance(value, list) else definitions[key].get('valueLabels', {}).get(value, value)
 
     def command(match):
@@ -220,7 +223,7 @@ def render(page, contract):
                 differences.append({'section': key, 'kind': 'extended', 'details': details})
         # Substitute explicit tokens after composing shared and local prose.
         body = body.replace('{project}', project).replace('{repository}', repository)
-        body = re.sub(r'\{facts\.([a-z_]+)\}', substitute, body)
+        body = re.sub(r'\{facts\.([a-z_]+)\}', lambda m: substitute(m, lists=key == 'scope'), body)
         body = re.sub(r'\{commands\.([a-z_-]+)\}', command, body)
         def inject_value(match):
             name = match[1]
@@ -230,6 +233,10 @@ def render(page, contract):
         body = re.sub(r'\{values\.([a-z_]+)\}', inject_value, body)
         if re.search(r'^#{1,2}\s', body, re.MULTILINE):
             raise ValueError(f'{key}: use level-three headings inside sections')
+        if key == 'scope':
+            body = scope_block(body)
+        if key == 'integration' and spec['title'] != 'Native integration':
+            body = '<a id="native-integration"></a>\n\n' + body
         if key != 'credits' and body.strip():
             output.append(f'## {spec["title"]}\n\n{body}')
     if 'versionCompatibility' in contract:
@@ -264,12 +271,14 @@ def render_overview(page, contract, plan=None):
         elif spec['id'] == 'integration':
             # A missing lock can change whether dependency resolution is pure.
             # Keep that decision visible even when the detailed mechanism moves.
-            if page['facts']['missing_lock'].get('value') == 'warn-and-native':
-                output.append('## ' + spec['title'] + '\n\nWithout an applicable lock, the integration warns and runs the ordinary native tool.')
+            if (page['facts']['missing_lock'].get('value') == 'warn-and-native'
+                    and page['facts']['integration'].get('value') in {'wrapper', 'wrapper-and-plugin'}):
+                output.append('## ' + spec['title'] + '\n\n<a id="native-integration"></a>\n\n'
+                              'Without an applicable purifier lock, the supplied wrapper warns and runs the tool with its usual dependency resolution.')
     links = []
     titles = {s['id']: s['title'] for s in contract['sections']}
     for key, label in [('setup', 'Setup and activation'), ('versions', 'Version compatibility'),
-                       ('integration', 'Native integration'), ('offline', 'Working offline'),
+                       ('integration', 'Using locked dependencies'), ('offline', 'Working offline'),
                        ('editor', 'Language tooling integration'), ('nix_builds', 'Nix builds'),
                        ('projections', 'Project projections'), ('troubleshooting', 'Troubleshooting')]:
         if key == 'versions':
