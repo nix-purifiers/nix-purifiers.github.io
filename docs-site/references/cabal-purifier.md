@@ -29,7 +29,7 @@ Sandboxed builds of the whole project are an optional
 The shell provides both `cabal-purifier` and the native `cabal` wrapper. With a
 purifier lock, the wrapper uses Nix-resolved dependencies. Without one, it
 warns on standard error and runs ordinary, impure Cabal, including outside a
-project. `prefetch` also supplies a project-local wrapper and toolchain.
+project. `prefetch` also supplies a project-local wrapper and preserves your existing runtime.
 
 For persistent use, add these packages through your usual Nix configuration.
 
@@ -83,14 +83,22 @@ package index is the one thing it keeps between runs, in
 updates an index it already has in place: the first lock downloads the
 whole Hackage index, and later ones take seconds. The command plans once for
 each system. Cabal takes the platform it plans for from the output of
-`ghc --info`, so the command plans for the other system through a GHC
-wrapper that reports that system and never compiles anything. One machine
-therefore locks both systems.
+`ghc --info`, so the command plans for the other systems through a GHC
+wrapper that reports the system it plans for and never compiles anything.
+One machine therefore locks every system.
 
-The lock run plans with the `ghc` on your `PATH`, or the compiler that
-`with-compiler` names, and with a GHC that the command brings along
-otherwise. Nix
-builds with the nixpkgs GHC of the exact version the lock names.
+The lock run follows `with-compiler` in your native Cabal configuration
+(including `CABAL_CONFIG`), overridden by project files, then defaults to
+`ghc` on your `PATH`. The development shim also honors Cabal’s explicit
+`-w PATH`, `-wPATH` and `--with-compiler=PATH` selections. It reads the
+compiler choice before applying its isolated locked-repository configuration. Install GHC and Cabal before local adoption; no
+maintainer version table limits the host compiler. Local prefetch and
+development keep those tools. The optional `cliWithToolchain` package
+adds a bundled GHC fallback after your existing `PATH`.
+
+Full sandboxed builds use an immutable SDK: by default the nixpkgs GHC of
+the exact version the lock names, or the builder's explicit `ghc` override.
+Availability of a packaged SDK constrains those builds separately from local adoption.
 
 From each plan (`plan.json`), the command records:
 
@@ -207,6 +215,60 @@ and `fetchers`. A company mirror or credentials go into
 repository), which the purifier library's `fetchEntry` calls with the
 arguments of the nixpkgs fetcher of that name.
 
+### C ABI foreign-library projections
+
+On native Linux, explicitly select one locked `foreign-library` component to
+expose its installed shared library to C, Python FFI and Java FFM:
+
+```nix
+let
+  built = pkgs.cabal-purifier.buildCabalProject {
+    src = ./.;
+    nativeProducts.answer = {
+      selector = "my-package:flib:answer";
+      abi = "c";
+      exports = [ "my_answer" "my_init" "my_term" ];
+      runtime = {
+        kind = "ghc";
+        lifecycle = "process-once";
+        threading = "single-foreign-thread";
+        init = "my_init";
+        term = "my_term";
+      };
+    };
+  };
+in built.projections
+```
+
+The `native`, `python-ffi` and `java-ffi` projections contain a `catalog.json`
+with the exact library and include paths, a lazy Python `purifier_native.load`
+helper, and Java `java.args`. Set compatible signatures before calling native
+functions. The actual GHC-generated export headers and compiler `HsFFI.h`
+headers are included; `native-products.json` in the catalog's producer prefix
+records native and selected artifact hashes, loader edits, compiler identity
+and exact runtime dependency origins.
+
+The selected package and reachable local library packages must explicitly use
+`build-type: Simple`. The native builder uses Cabal's resolved component plan
+and Setup installation. It retains the immutable local build tree, compiled
+Cabal store and GHC runtime. Installed local library bytes are verified before
+selected copies receive absolute dependency references, including transitive
+local packages supplied through `externalPaths`.
+
+The package supplies its own C ABI initialization and shutdown functions.
+Initialize the GHC runtime once before foreign calls, use one foreign thread,
+then shut it down once at the end of the process. Reinitialization, concurrent
+foreign threads and general safe unloading are outside this contract. The
+builder validates the declared exports; it does not infer their signatures or
+generate runtime lifecycle functions.
+
+`nativeProducts` defaults to an empty set. Existing outputs and the
+`packages.<name>.foreignLibraries` component-name lists keep their behavior.
+Native builds use the locked local repository in the Nix build sandbox and
+verify a warm `--offline` replay. A cold Cabal `--offline` build rejects the
+`file+noindex` source transport on the tested SDK; it is a separate boundary.
+Darwin and cross compilation are unsupported for these projections.
+
 ### A lockfile outside the project
 
 The recommended setup is the one above: both lockfiles lie in the
@@ -267,18 +329,24 @@ nix shell 'github:nix-purifiers/cabal-purifier'
 eval "$(cabal-purifier prefetch)"
 ```
 
-`prefetch` realizes in the Nix store everything the lockfile lists for
-the current system that day-to-day development needs:
+`prefetch` realizes the locked dependency sources for the current system.
+It keeps your existing GHC and Cabal; it does not install GHC or a language
+server. The selected compiler must match the lock's compiler version and
+native target, and its `ghc-pkg` must belong to the same GHC version. If you
+change compilers, run `cabal-purifier lock` with the new compiler first.
+These checks do not claim ABI identity from the version alone; Cabal still
+checks actual package and compiler capabilities while resolving and building.
 
-- the locked sources, which fill the no-index repository that the shim
-  builds from;
-- the toolchain, which is the GHC of the plan in the lock, cabal-install, and the
-  haskell-language-server for that GHC.
+For an explicit packaged development toolchain, use
+`eval "$(cabal-purifier prefetch --with-toolchain)"`. This convenience
+requires a packaged GHC matching the lock and includes HLS when available.
+A missing packaged compiler does not prevent default local adoption.
 
 It keeps them alive with a garbage-collector root,
 `cabal-purifier.lock.prefetch`, beside the lockfile, writes the shim to
 `dist-newstyle/cabal-purifier/bin/cabal`, and prints a `PATH` export that
-puts the shim and the toolchain first. After a prefetch, `cabal build`,
+puts only the shim first by default, followed by your existing `PATH`. With
+`--with-toolchain`, the requested toolchain follows the shim. After a prefetch, `cabal build`,
 `cabal run`, `cabal test` and the editor work with the network cut off.
 
 The shim runs cabal with a Cabal directory whose only repository is the
@@ -295,7 +363,7 @@ of a package description as `<name>-<version>.cabal` beside its tarball,
 and each package from a source repository as a tarball packed from its
 locked checkout. The build runs cabal with that repository as its only
 repository, and with an offline copy of the configuration of the project
-(`nix/lib/offline_project.py`). The copy leaves out the
+(`pkgs/build-cabal-project/offline_project.py`). The copy leaves out the
 `source-repository-package` and `repository` sections and the
 `index-state`, replaces each package URL with its unpacked directory, and
 adds the constraints of the lock, so Cabal resolves to the locked plan.
@@ -305,8 +373,9 @@ any difference.
 
 ## Editor
 
-`prefetch` puts the `haskell-language-server` of the toolchain and the `cabal`
-shim first on `PATH`. An editor started from that shell, or with that
+`prefetch` puts the `cabal` shim first on `PATH` and preserves your existing
+language server. `--with-toolchain` can supply packaged HLS when available.
+An editor started from that shell, or with that
 `PATH`, loads the project through the shim, so the build tool calls of the
 language server go to the locked sources and nothing is downloaded.
 A `.envrc` with the `eval` line from [Working offline](#working-offline) does

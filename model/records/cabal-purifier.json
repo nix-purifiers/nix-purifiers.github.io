@@ -1,6 +1,6 @@
 {
   "repository": "nix-purifiers/cabal-purifier",
-  "reviewedRevision": "675a00c75e750e69f7d7c1a6a2ab6dccb3f3a88c",
+  "reviewedRevision": "7b3361a93fc229547d5ab66afe9994448b63455b",
   "facts": {
     "tool": {
       "state": "known",
@@ -21,7 +21,8 @@
       "state": "known",
       "value": [
         "x86_64-linux",
-        "aarch64-linux"
+        "aarch64-linux",
+        "aarch64-darwin"
       ]
     },
     "nix_builder": {
@@ -47,7 +48,11 @@
     },
     "projection_incoming": {
       "state": "known",
-      "value": "unsupported"
+      "value": "unsupported",
+      "sources": [
+        "https://github.com/nix-purifiers/cabal-purifier/blob/7b3361a93fc229547d5ab66afe9994448b63455b/pkgs/build-cabal-project/default.nix",
+        "https://github.com/nix-purifiers/cabal-purifier/blob/7b3361a93fc229547d5ab66afe9994448b63455b/pkgs/build-cabal-project/build-native-products.nix"
+      ]
     },
     "projection_incoming_formats": {
       "state": "not-applicable",
@@ -61,24 +66,64 @@
       "state": "known",
       "value": [
         "Native artifacts or caches alone do not provide a typed incoming project projection interface"
+      ],
+      "sources": [
+        "https://github.com/nix-purifiers/cabal-purifier/blob/7b3361a93fc229547d5ab66afe9994448b63455b/pkgs/build-cabal-project/default.nix",
+        "https://github.com/nix-purifiers/cabal-purifier/blob/7b3361a93fc229547d5ab66afe9994448b63455b/pkgs/build-cabal-project/build-native-products.nix"
       ]
     },
     "projection_outgoing": {
       "state": "known",
-      "value": "unsupported"
+      "value": "conditional",
+      "sources": [
+        "https://github.com/nix-purifiers/cabal-purifier/blob/7b3361a93fc229547d5ab66afe9994448b63455b/README.md",
+        "https://github.com/nix-purifiers/cabal-purifier/blob/7b3361a93fc229547d5ab66afe9994448b63455b/pkgs/build-cabal-project/default.nix",
+        "https://github.com/nix-purifiers/cabal-purifier/blob/7b3361a93fc229547d5ab66afe9994448b63455b/pkgs/build-cabal-project/build-native-products.nix",
+        "https://github.com/nix-purifiers/cabal-purifier/blob/7b3361a93fc229547d5ab66afe9994448b63455b/tests/native-products.nix"
+      ]
     },
     "projection_outgoing_formats": {
-      "state": "not-applicable",
-      "reason": "No outgoing typed projection adapter is exported by this implementation."
+      "state": "known",
+      "value": [
+        "native"
+      ],
+      "sources": [
+        "https://github.com/nix-purifiers/cabal-purifier/blob/7b3361a93fc229547d5ab66afe9994448b63455b/README.md",
+        "https://github.com/nix-purifiers/cabal-purifier/blob/7b3361a93fc229547d5ab66afe9994448b63455b/pkgs/build-cabal-project/default.nix",
+        "https://github.com/nix-purifiers/cabal-purifier/blob/7b3361a93fc229547d5ab66afe9994448b63455b/pkgs/build-cabal-project/build-native-products.nix",
+        "https://github.com/nix-purifiers/cabal-purifier/blob/7b3361a93fc229547d5ab66afe9994448b63455b/tests/native-products.nix"
+      ]
     },
     "projection_outgoing_interfaces": {
-      "state": "not-applicable",
-      "reason": "No outgoing typed projection interface is implemented."
+      "state": "known",
+      "value": [
+        "buildCabalProject.nativeProducts",
+        "buildCabalProject.projections.native",
+        "buildCabalProject.projections.python-ffi",
+        "buildCabalProject.projections.java-ffi"
+      ],
+      "sources": [
+        "https://github.com/nix-purifiers/cabal-purifier/blob/7b3361a93fc229547d5ab66afe9994448b63455b/README.md",
+        "https://github.com/nix-purifiers/cabal-purifier/blob/7b3361a93fc229547d5ab66afe9994448b63455b/pkgs/build-cabal-project/default.nix",
+        "https://github.com/nix-purifiers/cabal-purifier/blob/7b3361a93fc229547d5ab66afe9994448b63455b/pkgs/build-cabal-project/build-native-products.nix",
+        "https://github.com/nix-purifiers/cabal-purifier/blob/7b3361a93fc229547d5ab66afe9994448b63455b/tests/native-products.nix"
+      ]
     },
     "projection_outgoing_limits": {
       "state": "known",
       "value": [
-        "Native artifacts or caches alone do not provide a typed outgoing project projection interface"
+        "Exactly one explicitly selected locked package:flib component; selected and reachable local packages require build-type Simple.",
+        "Native Linux only; Darwin and cross compilation unsupported for these projections.",
+        "Explicit C exports include distinct package-supplied init and term functions; process-once GHC runtime lifecycle and one foreign thread.",
+        "No inferred C signatures, generated runtime lifecycle functions, reinitialization, concurrent foreign threads or general safe unloading.",
+        "Catalogs include exact library/include paths and native model provenance; Python and Java are FFI consumers rather than package-repository export formats.",
+        "Nix-sandbox native build and warm offline replay are verified; cold Cabal file+noindex offline transport rejects on the tested SDK."
+      ],
+      "sources": [
+        "https://github.com/nix-purifiers/cabal-purifier/blob/7b3361a93fc229547d5ab66afe9994448b63455b/README.md",
+        "https://github.com/nix-purifiers/cabal-purifier/blob/7b3361a93fc229547d5ab66afe9994448b63455b/pkgs/build-cabal-project/default.nix",
+        "https://github.com/nix-purifiers/cabal-purifier/blob/7b3361a93fc229547d5ab66afe9994448b63455b/pkgs/build-cabal-project/build-native-products.nix",
+        "https://github.com/nix-purifiers/cabal-purifier/blob/7b3361a93fc229547d5ab66afe9994448b63455b/tests/native-products.nix"
       ]
     },
     "editor_protocol": {
@@ -92,6 +137,16 @@
     "editor_offline": {
       "state": "known",
       "value": true
+    },
+    "runtime_requirements": {
+      "state": "known",
+      "value": [
+        "GHC on PATH or an existing compiler selected with with-compiler; cliWithToolchain supplies packaged GHC"
+      ],
+      "sources": [
+        "https://github.com/nix-purifiers/cabal-purifier/blob/7b3361a93fc229547d5ab66afe9994448b63455b/bin/cabal-purifier",
+        "https://github.com/nix-purifiers/cabal-purifier/blob/7b3361a93fc229547d5ab66afe9994448b63455b/pkgs/cli/default.nix"
+      ]
     }
   },
   "operations": {
@@ -101,7 +156,8 @@
         "lock"
       ],
       "sources": [
-        "https://github.com/nix-purifiers/cabal-purifier/blob/675a00c75e750e69f7d7c1a6a2ab6dccb3f3a88c/nix/lib/build-cabal-project.nix"
+        "https://github.com/nix-purifiers/cabal-purifier/blob/7b3361a93fc229547d5ab66afe9994448b63455b/bin/cabal-purifier",
+        "https://github.com/nix-purifiers/cabal-purifier/blob/7b3361a93fc229547d5ab66afe9994448b63455b/pkgs/cli/runtime/prefetch.nix"
       ],
       "minimumArguments": 0
     },
@@ -111,7 +167,8 @@
         "prefetch"
       ],
       "sources": [
-        "https://github.com/nix-purifiers/cabal-purifier/blob/675a00c75e750e69f7d7c1a6a2ab6dccb3f3a88c/nix/lib/build-cabal-project.nix"
+        "https://github.com/nix-purifiers/cabal-purifier/blob/7b3361a93fc229547d5ab66afe9994448b63455b/bin/cabal-purifier",
+        "https://github.com/nix-purifiers/cabal-purifier/blob/7b3361a93fc229547d5ab66afe9994448b63455b/pkgs/cli/runtime/prefetch.nix"
       ],
       "minimumArguments": 0
     },
@@ -125,7 +182,7 @@
         "build"
       ],
       "sources": [
-        "https://github.com/nix-purifiers/cabal-purifier/blob/675a00c75e750e69f7d7c1a6a2ab6dccb3f3a88c/nix/lib/build-cabal-project.nix"
+        "https://github.com/nix-purifiers/cabal-purifier/blob/7b3361a93fc229547d5ab66afe9994448b63455b/pkgs/build-cabal-project/default.nix"
       ]
     },
     "test": {
@@ -134,7 +191,7 @@
         "test"
       ],
       "sources": [
-        "https://github.com/nix-purifiers/cabal-purifier/blob/675a00c75e750e69f7d7c1a6a2ab6dccb3f3a88c/nix/lib/build-cabal-project.nix"
+        "https://github.com/nix-purifiers/cabal-purifier/blob/7b3361a93fc229547d5ab66afe9994448b63455b/pkgs/build-cabal-project/default.nix"
       ]
     }
   }

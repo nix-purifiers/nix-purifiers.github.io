@@ -1,0 +1,60 @@
+{
+  "sourceRevision": "7b3361a93fc229547d5ab66afe9994448b63455b",
+  "superseded": "Frozen e655 behavior-record projection_outgoing=unsupported and its outgoing formats/interfaces/limits. Do not publish unchanged.",
+  "reviewerThread": "01a1b3ae-eb55-71f1-9ca2-9c0ba22d7c72",
+  "reviewerDecision": "Earlier FINALPRIVATE behavior-fact CLEAR too broad; WITHDRAW/SUPERSEDE outgoing unsupported assertions. Main health/release/matrix/Tier2 criterion evidence separately remains CLEAR. Fresh corrected candidate review required.",
+  "proposedFacts": {
+    "projection_outgoing": {
+      "state": "known",
+      "value": "conditional"
+    },
+    "projection_outgoing_formats": {
+      "state": "known",
+      "value": [
+        "native"
+      ]
+    },
+    "projection_outgoing_interfaces": {
+      "state": "known",
+      "value": [
+        "buildCabalProject.nativeProducts",
+        "buildCabalProject.projections.native",
+        "buildCabalProject.projections.python-ffi",
+        "buildCabalProject.projections.java-ffi"
+      ]
+    },
+    "projection_outgoing_limits": {
+      "state": "known",
+      "value": [
+        "Exactly one explicitly selected locked package:flib component; selected and reachable local packages require build-type Simple.",
+        "Native Linux only; Darwin and cross compilation unsupported for these projections.",
+        "Explicit C exports include distinct package-supplied init and term functions; process-once GHC runtime lifecycle and one foreign thread.",
+        "No inferred C signatures, generated runtime lifecycle functions, reinitialization, concurrent foreign threads or general safe unloading.",
+        "Catalogs include exact library/include paths and native model provenance; Python and Java are FFI consumers rather than package-repository export formats.",
+        "Nix-sandbox native build and warm offline replay are verified; cold Cabal file+noindex offline transport rejects on the tested SDK."
+      ]
+    }
+  },
+  "sourceFiles": [
+    {
+      "path": "/home/chris/.codex/worktrees/cabal-final-main-7b3361a/README.md",
+      "sha256": "484855227aa5dea0d56bc9ebfc66905c8a3e80f7cbe87226fd7351834daf12bb",
+      "url": "https://github.com/nix-purifiers/cabal-purifier/blob/7b3361a93fc229547d5ab66afe9994448b63455b/README.md"
+    },
+    {
+      "path": "/home/chris/.codex/worktrees/cabal-final-main-7b3361a/pkgs/build-cabal-project/default.nix",
+      "sha256": "2d6ae20b6eec37f791025dc0a403f2b752516c0455623aafdf4d4460d1d1f7d2",
+      "url": "https://github.com/nix-purifiers/cabal-purifier/blob/7b3361a93fc229547d5ab66afe9994448b63455b/pkgs/build-cabal-project/default.nix"
+    },
+    {
+      "path": "/home/chris/.codex/worktrees/cabal-final-main-7b3361a/pkgs/build-cabal-project/build-native-products.nix",
+      "sha256": "b6545bd8ef6d7bad982bf824e60382ea99c8a44f4b2f9c0f6c73d43b8559024a",
+      "url": "https://github.com/nix-purifiers/cabal-purifier/blob/7b3361a93fc229547d5ab66afe9994448b63455b/pkgs/build-cabal-project/build-native-products.nix"
+    },
+    {
+      "path": "/home/chris/.codex/worktrees/cabal-final-main-7b3361a/tests/native-products.nix",
+      "sha256": "612738c43d59d75f47ea8336c79ccc0bdd929a5d2de1412138e1eb1b21a13e0b",
+      "url": "https://github.com/nix-purifiers/cabal-purifier/blob/7b3361a93fc229547d5ab66afe9994448b63455b/tests/native-products.nix"
+    }
+  ]
+}

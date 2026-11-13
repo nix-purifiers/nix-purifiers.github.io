@@ -704,6 +704,39 @@
           ]
         }
       ]
+    },
+    "cabal-purifier": {
+      "projectSelections": [
+        {
+          "role": "native-tool",
+          "name": "cabal-install",
+          "kind": "environment",
+          "inputs": [
+            "PATH"
+          ],
+          "description": "The CLI keeps host Cabal first and uses packaged Cabal as a fallback. Dependency-only prefetch preserves host GHC, Cabal and HLS; prefetch --with-toolchain explicitly selects the packaged SDK.",
+          "sourceRevision": "7b3361a93fc229547d5ab66afe9994448b63455b",
+          "evidence": [
+            "https://github.com/nix-purifiers/cabal-purifier/blob/7b3361a93fc229547d5ab66afe9994448b63455b/pkgs/cli/default.nix",
+            "https://github.com/nix-purifiers/cabal-purifier/blob/7b3361a93fc229547d5ab66afe9994448b63455b/pkgs/cli/runtime/prefetch.nix"
+          ]
+        },
+        {
+          "role": "compiler",
+          "name": "GHC",
+          "kind": "project-file",
+          "inputs": [
+            "cabal.project"
+          ],
+          "description": "Locking follows with-compiler or GHC on PATH. The optional cliWithToolchain output adds a packaged GHC fallback; prefetch --with-toolchain explicitly selects the packaged development SDK. Nix project builds default to the lock-recorded compiler and accept an explicit ghc builder override. The default CLI does not bundle GHC or HLS.",
+          "sourceRevision": "7b3361a93fc229547d5ab66afe9994448b63455b",
+          "evidence": [
+            "https://github.com/nix-purifiers/cabal-purifier/blob/7b3361a93fc229547d5ab66afe9994448b63455b/bin/cabal-purifier",
+            "https://github.com/nix-purifiers/cabal-purifier/blob/7b3361a93fc229547d5ab66afe9994448b63455b/pkgs/build-cabal-project/default.nix"
+          ]
+        }
+      ],
+      "limitations": []
     }
   }
 }
