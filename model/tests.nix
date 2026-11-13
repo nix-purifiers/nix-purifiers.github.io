@@ -44,6 +44,32 @@ let
         (builtins.fromJSON (builtins.readFile ./compatibility-tests.json)).projects.ant-purifier.testedPoints;
     antCompatibilityAllowsExplicitOverride =
       (withOverride { compatibility.testedPoints = [ compatibilityPoint ]; }).compatibility.testedPoints == [ compatibilityPoint ];
+    runtimePublicationRoundTrips =
+      let publication = {
+        sourceRevision = "2222222222222222222222222222222222222222";
+        version = "0.1.10"; proof = "https://example.test/proof.json";
+      };
+      in (withOverride { compatibility.testedPoints = [ (compatibilityPoint // {
+        runtimePublication = publication;
+      }) ]; }).compatibility.testedPoints == [ (compatibilityPoint // { runtimePublication = publication; }) ];
+    runtimePublicationRejectsUnknownFields = !force (withOverride {
+      compatibility.testedPoints = [ (compatibilityPoint // { runtimePublication = {
+        sourceRevision = compatibilityPoint.sourceRevision; version = "0.1.10";
+        proof = "https://example.test/proof.json"; ignorePaths = [ "runtime.py" ];
+      }; }) ];
+    });
+    runtimePublicationRejectsHashAsVersion = !force (withOverride {
+      compatibility.testedPoints = [ (compatibilityPoint // { runtimePublication = {
+        sourceRevision = compatibilityPoint.sourceRevision; version = compatibilityPoint.sourceRevision;
+        proof = "https://example.test/proof.json";
+      }; }) ];
+    });
+    runtimePublicationRejectsNonHTTPSProof = !force (withOverride {
+      compatibility.testedPoints = [ (compatibilityPoint // { runtimePublication = {
+        sourceRevision = compatibilityPoint.sourceRevision; version = "0.1.10";
+        proof = "http://example.test/proof.json";
+      }; }) ];
+    });
     nixScopeVersionSelectionRoundTrips =
       let
         selection = {

@@ -4,6 +4,7 @@ import json
 from pathlib import Path
 import re
 import subprocess
+from datetime import datetime, timedelta
 
 from compatibility import EMPTY, validate
 
@@ -68,6 +69,132 @@ def input_digest(files):
     return hashlib.sha256(json.dumps(files, sort_keys=True, separators=(',', ':')).encode()).hexdigest()
 
 
+PINNED_PUBLICATION_POLICY = '1f49d62ee4b263cf8a9d09a1921faebd1d536fc3'
+PINNED_PUBLICATION_SCRIPT_SHA256 = 'f87788f6ab5cb60a95dca46abad1b11a00f11827fb14ec48240a7a5d6d97fb42'
+PINNED_NOOP_MESSAGE = 'The latest release already contains these sources and locked dependencies.'
+
+
+def publication_inputs_1f49(files):
+    """Historical policy: deliberately independent of later publisher exceptions."""
+    return {p: h for p, h in files.items()
+            if not p.startswith(('tests/', 'docs/', '.github/'))
+            and p not in ('README.md', '.gitignore')}
+
+
+def retained_publication_asset(url, directory, extension='json'):
+    prefix = 'https://nix-purifiers.github.io/evidence/'
+    match = re.fullmatch(re.escape(prefix) + r'([0-9a-f]{64})\.' + extension, url) if isinstance(url, str) else None
+    if not match:
+        raise ValueError('runtime publication requires retained content-addressed evidence')
+    try:
+        raw = (Path(directory) / url[len(prefix):]).read_bytes()
+    except OSError as error:
+        raise ValueError('runtime publication evidence is missing') from error
+    if hashlib.sha256(raw).hexdigest() != match[1]:
+        raise ValueError('runtime publication evidence hash differs')
+    return raw
+
+
+def validate_runtime_publication(point, entry, repository, directory):
+    """Bind a fixture-only check to an unchanged, already published runtime."""
+    publication = point['runtimePublication']
+    def require(value, message):
+        if not value:
+            raise ValueError('runtime publication: ' + message)
+    def asset(url, extension='json'):
+        return retained_publication_asset(url, directory, extension)
+    def record(url):
+        raw = asset(url)
+        try:
+            return json.loads(raw)
+        except (ValueError, UnicodeError) as error:
+            raise ValueError('runtime publication: invalid retained JSON') from error
+    proof = record(publication['proof'])
+    fields = {'version', 'repository', 'testedSourceRevision', 'runtimeSourceRevision',
+              'releasedVersion', 'publication', 'newSourceArchivePublished',
+              'policyRevision', 'policySource', 'testedInputDigest', 'runtimeInputDigest',
+              'equivalentInputs', 'runtimeFingerprint', 'releaseManifest', 'publicationRun', 'publicationJobs',
+              'publicationLog'}
+    require(isinstance(proof, dict) and set(proof) == fields, 'invalid proof fields')
+    require(type(proof['version']) is int and proof['version'] == 1
+            and proof['repository'] == repository, 'wrong proof identity')
+    require(proof['testedSourceRevision'] == point['sourceRevision']
+            and proof['runtimeSourceRevision'] == publication['sourceRevision']
+            and proof['releasedVersion'] == publication['version'], 'wrong source or release binding')
+    require(proof['testedSourceRevision'] != proof['runtimeSourceRevision'], 'sources must be distinct')
+    require(proof['publication'] == 'noop' and proof['newSourceArchivePublished'] is False,
+            'requires an unchanged runtime and no new tested-source archive')
+    require(proof['policyRevision'] == PINNED_PUBLICATION_POLICY, 'unknown publisher policy')
+    require(hashlib.sha256(asset(proof['policySource'], 'txt')).hexdigest()
+            == PINNED_PUBLICATION_SCRIPT_SHA256, 'wrong pinned publisher script')
+    def inventory(revision):
+        matches = [r for r in entry['reviews'] if r['sourceRevision'] == revision]
+        require(bool(matches), 'source inventory is not reviewed')
+        require(all(r['files'] == matches[0]['files'] for r in matches), 'ambiguous source inventory')
+        require(isinstance(matches[0]['files'], dict), 'invalid source inventory')
+        return matches[0]['files']
+    tested = inventory(point['sourceRevision'])
+    runtime = inventory(publication['sourceRevision'])
+    require(proof['testedInputDigest'] == input_digest(tested)
+            and proof['runtimeInputDigest'] == input_digest(runtime), 'wrong full source inventory digest')
+    selected_tested = publication_inputs_1f49(tested)
+    selected_runtime = publication_inputs_1f49(runtime)
+    require(bool(selected_tested) and selected_tested == selected_runtime
+            and proof['equivalentInputs'] == selected_runtime,
+            'complete publisher input sets and mode-aware hashes must match')
+    manifest = record(proof['releaseManifest'])
+    require(isinstance(manifest, dict) and manifest.get('kind') == 'source'
+            and manifest.get('commit') == publication['sourceRevision']
+            and manifest.get('version') == publication['version']
+            and isinstance(proof['runtimeFingerprint'], str)
+            and re.fullmatch('[0-9a-f]{64}', proof['runtimeFingerprint'])
+            and manifest.get('fingerprint') == proof['runtimeFingerprint'], 'wrong released manifest')
+    run = record(proof['publicationRun'])
+    require(isinstance(run, dict) and run.get('head_sha') == point['sourceRevision']
+            and type(run.get('id')) is int and run['id'] > 0
+            and run.get('head_branch') == 'main' and run.get('status') == 'completed'
+            and run.get('conclusion') == 'success'
+            and isinstance(run.get('repository'), dict)
+            and run['repository'].get('full_name') == repository, 'wrong publisher run')
+    workflow = ('nix-purifiers/nix-purifiers.github.io/.github/workflows/purifier-release.yml@'
+                + PINNED_PUBLICATION_POLICY)
+    require(isinstance(run.get('referenced_workflows'), list)
+            and any(isinstance(w, dict) and w.get('path') == workflow
+                and w.get('sha') == PINNED_PUBLICATION_POLICY
+                for w in run.get('referenced_workflows', [])), 'publisher workflow is not the pinned policy')
+    jobs = record(proof['publicationJobs'])
+    require(isinstance(jobs, dict) and jobs.get('total_count') == 1
+            and isinstance(jobs.get('jobs'), list)
+            and len(jobs.get('jobs', [])) == 1, 'requires the exact publisher job')
+    job = jobs['jobs'][0]
+    require(isinstance(job, dict) and job.get('run_id') == run.get('id')
+            and job.get('head_sha') == point['sourceRevision']
+            and job.get('status') == 'completed' and job.get('conclusion') == 'success',
+            'wrong publisher job source or result')
+    require(isinstance(job.get('steps'), list) and all(isinstance(s, dict) for s in job['steps']),
+            'invalid publisher steps')
+    steps = [s for s in job.get('steps', []) if s.get('number') == 5]
+    require(len(steps) == 1 and steps[0].get('status') == 'completed'
+            and steps[0].get('conclusion') == 'success'
+            and steps[0].get('name') == 'Release checked sources and native integrations',
+            'publisher step did not execute successfully')
+    try:
+        start = datetime.fromisoformat(steps[0]['started_at'])
+        end = datetime.fromisoformat(steps[0]['completed_at']) + timedelta(seconds=1)
+        lines = asset(proof['publicationLog'], 'log').decode('utf-8').splitlines()
+        observed = [datetime.fromisoformat(line.split(' ', 1)[0]) for line in lines
+                    if line.endswith(PINNED_NOOP_MESSAGE)]
+    except (KeyError, TypeError, ValueError, UnicodeError) as error:
+        raise ValueError('runtime publication: invalid publisher execution log') from error
+    require(start.tzinfo is not None and end.tzinfo is not None
+            and all(time.tzinfo is not None for time in observed), 'publisher timestamps need time zones')
+    require(any('[command]/usr/bin/git checkout --progress --force ' + PINNED_PUBLICATION_POLICY
+                in line for line in lines)
+            and any('##[group]Run python3 .release-infrastructure/release/publish.py' in line
+                    for line in lines), 'pinned publisher checkout and invocation are missing')
+    require(any(start <= time < end for time in observed), 'no executed NOOP in publisher step')
+
+
 def validate_registry(registry, catalog):
     if set(registry) != {'version', 'projects'} or registry['version'] != 1:
         raise ValueError('unsupported compatibility evidence registry')
@@ -124,6 +251,10 @@ def validate_registry(registry, catalog):
                     raise ValueError(f'{name}/{point_id}: no matching successful platform/CI evidence')
                 covered.add(point_id)
         if covered != set(points): raise ValueError(f'{name}: tested points lack reviewed inputs')
+        for point in points.values():
+            if 'runtimePublication' in point:
+                validate_runtime_publication(point, entry, repository,
+                                             Path(__file__).with_name('evidence'))
     for name, page in catalog.items():
         if page['compatibility']['testedPoints'] and name not in registry['projects']:
             raise ValueError(f'{name}: tested points exist outside the evidence registry')
