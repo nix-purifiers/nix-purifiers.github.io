@@ -1,5 +1,6 @@
 """Coverage obligations must expose missing contexts without claiming support."""
 import json
+import hashlib
 from pathlib import Path
 import shutil
 import subprocess
@@ -14,8 +15,20 @@ class CoveragePlanTests(unittest.TestCase):
         def evaluate(attribute):
             return json.loads(subprocess.check_output(
                 ['nix', 'eval', '--json', '.#' + attribute], cwd=cls.root, text=True))
-        cls.plan = evaluate('coveragePlan')
-        cls.catalog = evaluate('catalog')
+        cls.documentation = evaluate('documentation')
+        cls.plan = cls.documentation['coveragePlan']
+        cls.catalog = cls.documentation['catalog']
+
+    def test_plan_is_exported_with_and_bound_to_its_behavior(self):
+        inputs = {name: {key: page[key] for key in ('repository', 'facts', 'operations')}
+                  | {'reviewedRevision': page.get('reviewedRevision')}
+                  for name, page in self.catalog.items()}
+        encoded = json.dumps(inputs, sort_keys=True, separators=(',', ':'),
+                             ensure_ascii=False, allow_nan=False).encode()
+        self.assertEqual(self.plan['catalogDigest'], hashlib.sha256(encoded).hexdigest())
+        alias = json.loads(subprocess.check_output(
+            ['nix', 'eval', '--json', '.#coveragePlan'], cwd=self.root, text=True))
+        self.assertEqual(alias, self.plan)
 
     def test_every_modeled_project_has_explicit_unexecuted_obligations(self):
         self.assertEqual(set(self.catalog), set(self.plan['projects']))

@@ -224,7 +224,12 @@ python3 docs-site/prepare.py --repository nix-purifiers/ant-purifier \
 This selects the project record and renders it with the same contract used
 for the combined reference. Consumers should pin this repository's commit,
 including the model and its lockfile. A pre-evaluated export also works without
-Nix on the rendering host. `build.py --export FILE` uses that export directly.
+Nix on the rendering host. `build.py --export FILE` uses that export directly,
+including its coverage plan from the same Nix evaluation. The plan carries a
+digest of the exported behavior facts, operations and source identities;
+changes to those inputs require a regenerated export. A separately supplied
+`--coverage-plan` is accepted only when it exactly matches the embedded plan.
+The builder validates the plan and any `--coverage-audit` before writing pages.
 
 Projects can alternatively provide `docs-site/page.json` beside their README
 or use `--content FILE` for a record conforming to the shared contract.

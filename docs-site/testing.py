@@ -15,6 +15,50 @@ def downloads(links):
             '\n\n</details>\n')
 
 
+def catalog_digest(catalog):
+    """Match Nix's canonical JSON for the behavior used to generate the plan."""
+    inputs = {name: {key: page[key] for key in ('repository', 'facts', 'operations')}
+              | {'reviewedRevision': page.get('reviewedRevision')}
+              for name, page in catalog.items()}
+    encoded = json.dumps(inputs, sort_keys=True, separators=(',', ':'),
+                         ensure_ascii=False, allow_nan=False).encode()
+    return hashlib.sha256(encoded).hexdigest()
+
+
+def canonical_coverage_plan(documentation, supplied=None):
+    """An external plan can confirm the export; it cannot replace its plan."""
+    if not isinstance(documentation.get('catalog'), dict):
+        raise ValueError('Documentation export needs a catalog')
+    plan = documentation.get('coveragePlan')
+    if (not isinstance(plan, dict) or not isinstance(plan.get('projects'), dict)
+            or plan.get('version') != 1 or plan.get('scope') != 'coverage-obligations'):
+        raise ValueError('Documentation export needs its canonical coverage plan; regenerate .#documentation')
+    catalog = documentation['catalog']
+    if plan.get('catalogDigest') != catalog_digest(catalog):
+        raise ValueError('Coverage plan does not match the exported catalog facts; regenerate .#documentation')
+    if set(plan['projects']) != set(catalog):
+        raise ValueError('Coverage plan must address every exported project exactly once')
+    for name, page in catalog.items():
+        project = plan['projects'][name]
+        platforms = page['facts'].get('platforms', {})
+        systems = platforms.get('value', []) if platforms.get('state') == 'known' else []
+        if (project.get('repository') != page['repository']
+                or project.get('reviewedRevision') != page.get('reviewedRevision')
+                or project.get('systems') != systems):
+            raise ValueError(f'{name}: coverage plan identity or platforms differ from the catalog')
+    if supplied is not None and supplied != plan:
+        raise ValueError('Supplied coverage plan differs from the canonical export')
+    return plan
+
+
+def validate_coverage_audit(plan, evidence):
+    encoded = json.dumps(plan, sort_keys=True, separators=(',', ':'), allow_nan=False).encode()
+    if evidence is not None and evidence.get('planDigest') != hashlib.sha256(encoded).hexdigest():
+        raise ValueError('Coverage evidence is stale for this plan')
+    if evidence is not None and set(evidence['projects']) != set(plan['projects']):
+        raise ValueError('Coverage evidence must address every planned project')
+
+
 def project_notes(name, project, contexts):
     text = ('---\nlayout: default\ntitle: ' + json.dumps(name + ' testing notes') + '\n---\n\n'
             f'# {name} testing notes\n\n'
@@ -48,12 +92,9 @@ def project_notes(name, project, contexts):
     return text + downloads([('project data', name + '.json')])
 
 
-def build_testing(plan, evidence, destination):
-    encoded = json.dumps(plan, sort_keys=True, separators=(',', ':'), allow_nan=False).encode()
-    if evidence is not None and evidence.get('planDigest') != hashlib.sha256(encoded).hexdigest():
-        raise ValueError('Coverage evidence is stale for this plan')
-    if evidence is not None and set(evidence['projects']) != set(plan['projects']):
-        raise ValueError('Coverage evidence must address every planned project')
+def prepare_testing(plan, evidence):
+    """Render and serialize every testing resource before any output mutation."""
+    validate_coverage_audit(plan, evidence)
     rows = []
     pages = {}
     for name, project in sorted(plan['projects'].items()):
@@ -83,19 +124,28 @@ def build_testing(plan, evidence, destination):
              '| Project | Required checks | Applicability reviews | Recorded contexts | Assertions passed |\n'
              '|---|---:|---:|---:|---:|\n' + '\n'.join(rows) + '\n')
     text += downloads([('full plan', 'plan.json')] + ([('execution audit', 'audit.json')] if evidence is not None else []))
+    resources = {'index.md': text, 'plan.json': json.dumps(plan, indent=2) + '\n'}
+    if evidence is not None:
+        resources['audit.json'] = json.dumps(evidence, indent=2) + '\n'
+    for name, project in plan['projects'].items():
+        exported = {'plan': project, 'execution': evidence['projects'][name] if evidence is not None else None}
+        resources['projects/' + name + '.json'] = json.dumps(exported, indent=2) + '\n'
+        resources['projects/' + name + '.md'] = pages[name]
+    return {relative: text.encode('utf-8') for relative, text in resources.items()}
+
+
+def write_testing(resources, destination):
     target = destination / 'testing'
     (target / 'projects').mkdir(parents=True, exist_ok=True)
     for pattern in ('*.json', '*.md'):
         for previous in (target / 'projects').glob(pattern):
-            if previous.stem not in plan['projects']:
+            if 'projects/' + previous.name not in resources:
                 previous.unlink()
-    (target / 'index.md').write_text(text)
-    (target / 'plan.json').write_text(json.dumps(plan, indent=2) + '\n')
-    if evidence is None:
+    if 'audit.json' not in resources:
         (target / 'audit.json').unlink(missing_ok=True)
-    else:
-        (target / 'audit.json').write_text(json.dumps(evidence, indent=2) + '\n')
-    for name, project in plan['projects'].items():
-        exported = {'plan': project, 'execution': evidence['projects'][name] if evidence is not None else None}
-        (target / 'projects' / (name + '.json')).write_text(json.dumps(exported, indent=2) + '\n')
-        (target / 'projects' / (name + '.md')).write_text(pages[name])
+    for relative, data in resources.items():
+        (target / relative).write_bytes(data)
+
+
+def build_testing(plan, evidence, destination):
+    write_testing(prepare_testing(plan, evidence), destination)

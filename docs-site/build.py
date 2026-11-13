@@ -8,13 +8,15 @@ import subprocess
 from content import audit, feature_matrix, render_overview, source_links
 from theme import install_theme
 from reference import guide_plan, reference_text
-from testing import build_testing
+from testing import canonical_coverage_plan, prepare_testing, write_testing
 from quality import registry, render_tiers, homepage
 from authority import project_root, canonicalize, entry, validate_inputs
 
 
-def build(documentation, destination):
+def build(documentation, destination, *, coverage_plan=None, coverage_audit=None):
     """Validate every record before writing any output files."""
+    plan = canonical_coverage_plan(documentation, coverage_plan)
+    testing_resources = prepare_testing(plan, coverage_audit)
     validate_inputs(documentation)
     contract = documentation['contract']
     catalog = documentation['catalog']
@@ -86,17 +88,16 @@ def build(documentation, destination):
             canonicalize(source_links(reference_text('nix-purifiers/purifier', library.read_text()), 'nix-purifiers/purifier'), names))
         (destination / 'purifier').mkdir(exist_ok=True)
         (destination / 'purifier/index.md').write_text(entry('nix-purifiers/purifier'))
+    write_testing(testing_resources, destination)
 
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--output', type=Path, default=Path('.catalog-source'))
     parser.add_argument('--export', type=Path, help='Use an already evaluated documentation JSON export')
-    parser.add_argument('--coverage-plan', type=Path, help='Coverage obligations exported from .#coveragePlan')
+    parser.add_argument('--coverage-plan', type=Path, help='Optional confirmation of the canonical export plan; mismatches are rejected')
     parser.add_argument('--coverage-audit', type=Path, help='Context-bound audit from harness/coverage.py')
     args = parser.parse_args()
-    if args.coverage_audit and not args.coverage_plan:
-        parser.error('--coverage-audit requires --coverage-plan')
     if args.export:
         documentation = json.loads(args.export.read_text())
     else:
@@ -105,13 +106,6 @@ if __name__ == '__main__':
             cwd=Path(__file__).resolve().parent.parent, check=True,
             capture_output=True, text=True)
         documentation = json.loads(result.stdout)
-    build(documentation, args.output)
     plan = json.loads(args.coverage_plan.read_text()) if args.coverage_plan else None
-    if plan is None and not args.export:
-        result = subprocess.run(['nix', 'eval', '--json', '.#coveragePlan'],
-                                cwd=Path(__file__).resolve().parent.parent, check=True,
-                                capture_output=True, text=True)
-        plan = json.loads(result.stdout)
-    if plan is not None:
-        audit = json.loads(args.coverage_audit.read_text()) if args.coverage_audit else None
-        build_testing(plan, audit, args.output)
+    evidence = json.loads(args.coverage_audit.read_text()) if args.coverage_audit else None
+    build(documentation, args.output, coverage_plan=plan, coverage_audit=evidence)

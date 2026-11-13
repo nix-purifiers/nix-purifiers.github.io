@@ -16,10 +16,8 @@ jobs:
       - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
       - uses: cachix/install-nix-action@13d8dd58da0234aa297dedd986986ccb8e7f3e24
       - run: python3 docs-site/export.py --check
-      - name: Export coverage obligations and build the family site
-        run: |
-          nix eval --json '.#coveragePlan' > .coverage-plan.json
-          python3 docs-site/build.py --export docs-site/catalog.json --coverage-plan .coverage-plan.json
+      - name: Build the family site from the canonical export
+        run: python3 docs-site/build.py --export docs-site/catalog.json
       - uses: actions/jekyll-build-pages@44a6e6beabd48582f863aeeb6cb2151cc1716697
         with:
           source: .catalog-source
