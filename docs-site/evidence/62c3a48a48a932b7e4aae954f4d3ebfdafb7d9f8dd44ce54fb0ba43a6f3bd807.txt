@@ -1,0 +1,43 @@
+from pathlib import Path
+import argparse,collections,hashlib,json,subprocess
+p=argparse.ArgumentParser();p.add_argument('root',type=Path);p.add_argument('head');p.add_argument('output',type=Path);a=p.parse_args()
+s=Path('/home/chris/.codex/state/purifier-toolchains/swiftpm-audit');g='/nix/store/xgw813vgzl2q0696sq45adpj0xd690jq-git-2.56.0/bin/git';repo=s/'source01'
+def git(*args):return subprocess.check_output([g,'-C',str(repo),*args])
+def sha(raw):return hashlib.sha256(raw).hexdigest()
+tracked={}
+for x in git('ls-tree','-r','-z',a.head).split(b'\0'):
+ if x:
+  info,name=x.split(b'\t');mode,kind,blob=info.decode().split();assert kind=='blob';tracked[name.decode()]=sha(git('cat-file','blob',blob))
+root=a.root;native=root/'checkout3-swift525-native';r=json.loads((native/'receipt.json').read_bytes());assert r['complete'] and r['compilerObserved']=='5.2.5' and r['packageManagerObserved']=='5.2.0';assert r['hostCLI']['portableVersion']==9 and r['hostCLI']['originalPinsRestored']
+observed={x['path']:x['sha256'] for x in r['implementationFiles']};assert all(observed.get(n)==h for n,h in tracked.items()),'source differs from requested head'
+streams=0
+def commands(d,logs):
+ global streams
+ for c in d['commands']:
+  assert c['exit']==0,c['label']
+  for suffix,key in [('stdout','stdoutSHA256'),('stderr','stderrSHA256')]:
+   expected=c.get(key,c.get(key.replace('SHA','Sha')));assert expected;f=logs/(c['label']+'.'+suffix);assert sha(f.read_bytes())==expected,str(f);streams+=1
+commands(r,native/'logs');project=0;diagnostic=0
+for x in r['runtimeCapsules']:
+ # Hosted receipt paths are absolute runner temp paths; use only fixed recorded capsule basename under the known owned registry.
+ name=Path(x['path']).parent.name;assert name.startswith('swiftpm-purifier-dependencies-v1-') and '/' not in name
+ f=native/'host-state/swiftpm-purifier/dependencies-v1'/name/'receipt.json';assert sha(f.read_bytes())==x['sha256'];d=json.loads(f.read_bytes());assert d['complete'];commands(d,f.parent/'logs')
+ if d.get('protocol')=='dependencies-state-v3':
+  assert d['sourceBefore']==d['sourceAfter'] and d['callerBefore']==d['callerAfter'];project+=1
+ else:
+  assert d.get('candidate') is False and d.get('scope');diagnostic+=1
+u=r['installedUpdate'];assert u['before']['version']=='1.0.0' and u['after']['version']=='1.0.1';assert u['before']['revision']!=u['after']['revision'] and u['before']['hash']!=u['after']['hash'];assert r['installedExecutionRequests']['before']==r['installedExecutionRequests']['after'];assert len(r['pureOutputs'])==6
+headers=json.loads((root/'checkout3-swift525-headers/receipt.json').read_bytes());constraint=json.loads((root/'checkout3-swift525-constraint/receipt.json').read_bytes());assert headers['complete'] and constraint['complete'];assert constraint['cleanErrorExit'] and constraint['nativeDiagnosticObserved'] and not constraint['signal']
+auxStreams=0
+for c in headers['commands']:
+ assert c['exit']==0 and c['assertionsPassed'];base=root/'checkout3-swift525-headers'/c['label'];assert sha((base/'control.swift').read_bytes())==c['scriptSHA256']
+ for suffix in ['stdout','stderr']:
+  assert sha((base/'logs'/(c['label']+'.'+suffix)).read_bytes())==c[suffix+'Sha256'];auxStreams+=1
+assert len(headers['commands'])==4 and len(constraint['commands'])==1
+assert sha((root/'checkout3-swift525-constraint/project/Package.swift').read_bytes())==constraint['manifestSHA256']
+for c in constraint['commands']:
+ assert c['exit']==1
+ for suffix in ['stdout','stderr']:
+  assert sha((root/'checkout3-swift525-constraint/logs'/(c['label']+'.'+suffix)).read_bytes())==c[suffix+'Sha256'];auxStreams+=1
+seals={str(f.relative_to(root)):sha(f.read_bytes()) for f in root.rglob('*') if f.is_file()}
+proof={'scope':'Offline hosted positive artifact verification against explicitly requested exact Git head; no CI eligibility/run identity/release/main/catalog claim by this verifier','head':a.head,'root':str(root),'sourceGitFilesMatched':len(tracked),'commandsZero':len(r['commands']),'projectSessions':project,'diagnosticSessions':diagnostic,'rawStreamsMatched':streams,'auxiliaryRawStreamsMatched':auxStreams,'installedUpdate':u,'installedExecutionRequests':r['installedExecutionRequests'],'pureOutputs':r['pureOutputs'],'headersComplete':True,'constraintCleanError':True,'seals':seals};a.output.write_text(json.dumps(proof,indent=2)+'\n');print(json.dumps({k:v for k,v in proof.items() if k not in ['seals','installedUpdate','pureOutputs']}))

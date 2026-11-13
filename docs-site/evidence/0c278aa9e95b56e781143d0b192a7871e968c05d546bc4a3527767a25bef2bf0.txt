@@ -1,0 +1,38 @@
+from pathlib import Path,PurePosixPath
+import argparse,gzip,hashlib,io,json,re,subprocess,tarfile
+p=argparse.ArgumentParser();p.add_argument('assets',type=Path);p.add_argument('tag');p.add_argument('head');p.add_argument('output',type=Path);p.add_argument('--extract-root',type=Path);a=p.parse_args()
+s=Path('/home/chris/.codex/state/purifier-toolchains/swiftpm-audit');git='/nix/store/xgw813vgzl2q0696sq45adpj0xd690jq-git-2.56.0/bin/git';repo=s/'source01'
+def sha(raw):return hashlib.sha256(raw).hexdigest()
+def g(*argv):return subprocess.check_output([git,'-C',str(repo),*argv])
+assert re.fullmatch(r'v0\.1\.\d+',a.tag) and re.fullmatch(r'[0-9a-f]{40}',a.head)
+assert {x.name for x in a.assets.iterdir()}=={'release-manifest.json','source.tar.gz','SHA256SUMS'}
+checks={}
+for line in (a.assets/'SHA256SUMS').read_text().splitlines():
+ m=re.fullmatch(r'([0-9a-f]{64})  (release-manifest\.json|source\.tar\.gz)',line);assert m;digest,name=m.groups();assert name not in checks;assert sha((a.assets/name).read_bytes())==digest;checks[name]=digest
+assert set(checks)=={'release-manifest.json','source.tar.gz'}
+manifest=json.loads((a.assets/'release-manifest.json').read_bytes());assert set(manifest)=={'version','series','commit','fingerprint','kind'};assert manifest['commit']==a.head and manifest['version']==a.tag[1:] and manifest['series']=='0.1' and manifest['kind']=='source'
+entries=[];tracked={}
+for item in g('ls-tree','-r','-z',a.head).split(b'\0'):
+ if not item:continue
+ info,name=item.split(b'\t',1);name=name.decode();mode,kind,blob=info.decode().split();assert kind=='blob' and mode in {'100644','100755'};tracked[name]=(mode,g('cat-file','blob',blob))
+ if not name.startswith(('tests/','docs/','.github/')) and name not in {'README.md','.gitignore'}:entries.append(item)
+fingerprint=sha(b'\0'.join(entries));assert manifest['fingerprint']==fingerprint
+compressed=(a.assets/'source.tar.gz').read_bytes();assert len(compressed)<=10*1024*1024
+with gzip.GzipFile(fileobj=io.BytesIO(compressed)) as z:raw=z.read(100*1024*1024+1)
+assert len(raw)<=100*1024*1024
+seen=set()
+with tarfile.open(fileobj=io.BytesIO(raw),mode='r:') as tar:
+ for member in tar:
+  path=PurePosixPath(member.name);assert not path.is_absolute() and '..' not in path.parts and path.parts[0]=='swiftpm-purifier'
+  if member.isdir():continue
+  assert member.isfile() and not member.issym() and not member.islnk();name=str(PurePosixPath(*path.parts[1:]));assert name in tracked and name not in seen;seen.add(name);mode,data=tracked[name];assert member.size==len(data) and member.size<=10*1024*1024;assert tar.extractfile(member).read()==data;assert bool(member.mode&0o111)==(mode=='100755')
+assert seen==set(tracked)
+extracted=None
+if a.extract_root is not None:
+ assert not a.extract_root.exists();a.extract_root.mkdir()
+ for name,(mode,data) in tracked.items():
+  f=a.extract_root/name;f.parent.mkdir(parents=True,exist_ok=True);f.write_bytes(data);f.chmod(0o755 if mode=='100755' else 0o644)
+ nar=subprocess.check_output(['/nix/store/3x16p9yylwijl4k8ba7bnidhkgbqasdx-nix-2.34.9/bin/nix','hash','path',str(a.extract_root)],text=True).strip()
+ extracted={'root':str(a.extract_root),'narHash':nar,'scope':'Archive verified byteforbyte/mode againstGit; copied those verified bytes into newownedroot thenhashed'}
+proof={'scope':'Downloaded source-release bytes/manifest/checksums join exactGit runtime/source only; publisher execution/tag/release API/mainCI separately required','tag':a.tag,'head':a.head,'tree':g('rev-parse',a.head+'^{tree}').decode().strip(),'sourceFilesMatched':len(seen),'runtimeFingerprint':fingerprint,'manifest':manifest,'SHA256SUMS':checks,'extracted':extracted,'assetSeals':{f.name:sha(f.read_bytes()) for f in a.assets.iterdir()}}
+a.output.write_text(json.dumps(proof,indent=2)+'\n');print(json.dumps(proof))
