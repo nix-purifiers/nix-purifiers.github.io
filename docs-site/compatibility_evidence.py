@@ -1,9 +1,11 @@
 """Bind curated compatibility points to tested inputs; never infer new support."""
 import hashlib
+import io
 import json
-from pathlib import Path
+from pathlib import Path, PurePosixPath
 import re
 import subprocess
+import tarfile
 from datetime import datetime, timedelta
 
 from compatibility import EMPTY, validate
@@ -95,6 +97,66 @@ def retained_publication_asset(url, directory, extension='json'):
     return raw
 
 
+def publication_archive_fingerprint(raw, reviewed_files, repository):
+    """Reconstruct Git identities from retained bodies, never from supplied IDs."""
+    def require(value, message):
+        if not value:
+            raise ValueError('runtime publication: ' + message)
+    prefix = repository.rsplit('/', 1)[-1]
+    expected_directories = {prefix}
+    for path in reviewed_files:
+        expected_directories.update(prefix + '/' + str(parent)
+                                    for parent in PurePosixPath(path).parents if str(parent) != '.')
+    directories = set()
+    inventory = {}
+    git_entries = {}
+    try:
+        with tarfile.open(fileobj=io.BytesIO(raw), mode='r|gz') as archive:
+            for member in archive:
+                path = PurePosixPath(member.name)
+                require(not path.is_absolute() and '..' not in path.parts
+                        and bool(path.parts) and path.parts[0] == prefix
+                        and member.name.rstrip('/') == path.as_posix(), 'unsafe released archive path')
+                name = path.as_posix()
+                if member.isdir():
+                    require(name in expected_directories and name not in directories,
+                            'unexpected or duplicate released archive directory')
+                    directories.add(name)
+                    continue
+                require(len(path.parts) > 1 and member.name == name, 'invalid released archive file')
+                relative = PurePosixPath(*path.parts[1:]).as_posix()
+                require(relative in reviewed_files and relative not in inventory,
+                        'unexpected or duplicate released archive file')
+                if member.issym():
+                    mode = '120000'
+                    body = member.linkname.encode('utf-8', 'surrogateescape')
+                    digest = hashlib.sha256(mode.encode() + b'\0symlink:' + body).hexdigest()
+                    blob = hashlib.sha1(b'blob ' + str(len(body)).encode() + b'\0' + body).hexdigest()
+                else:
+                    require(member.type in (tarfile.REGTYPE, tarfile.AREGTYPE),
+                            'unsupported released archive file type')
+                    mode = '100755' if member.mode & 0o111 else '100644'
+                    digest_hash = hashlib.sha256(mode.encode() + b'\0')
+                    blob_hash = hashlib.sha1(b'blob ' + str(member.size).encode() + b'\0')
+                    stream = archive.extractfile(member)
+                    size = 0
+                    while chunk := stream.read(65536):
+                        digest_hash.update(chunk)
+                        blob_hash.update(chunk)
+                        size += len(chunk)
+                    require(size == member.size, 'truncated released archive file')
+                    digest, blob = digest_hash.hexdigest(), blob_hash.hexdigest()
+                inventory[relative] = digest
+                git_entries[relative] = mode + ' blob ' + blob + '\t' + relative
+    except (tarfile.TarError, OSError, EOFError) as error:
+        raise ValueError('runtime publication: invalid released source archive') from error
+    require(inventory == reviewed_files and directories == expected_directories,
+            'released archive differs from the complete reviewed runtime inventory')
+    eligible = publication_inputs_1f49(reviewed_files)
+    rows = [git_entries[path].encode('utf-8') for path in sorted(eligible, key=lambda p: p.encode('utf-8'))]
+    return hashlib.sha256(b'\0'.join(rows)).hexdigest()
+
+
 def validate_runtime_publication(point, entry, repository, directory):
     """Bind a fixture-only check to an unchanged, already published runtime."""
     publication = point['runtimePublication']
@@ -113,7 +175,8 @@ def validate_runtime_publication(point, entry, repository, directory):
     fields = {'version', 'repository', 'testedSourceRevision', 'runtimeSourceRevision',
               'releasedVersion', 'publication', 'newSourceArchivePublished',
               'policyRevision', 'policySource', 'testedInputDigest', 'runtimeInputDigest',
-              'equivalentInputs', 'runtimeFingerprint', 'releaseManifest', 'publicationRun', 'publicationJobs',
+              'equivalentInputs', 'runtimeFingerprint', 'releaseManifest', 'runtimeArchive',
+              'releaseChecksums', 'publicationRun', 'publicationJobs',
               'publicationLog'}
     require(isinstance(proof, dict) and set(proof) == fields, 'invalid proof fields')
     require(type(proof['version']) is int and proof['version'] == 1
@@ -149,6 +212,22 @@ def validate_runtime_publication(point, entry, repository, directory):
             and isinstance(proof['runtimeFingerprint'], str)
             and re.fullmatch('[0-9a-f]{64}', proof['runtimeFingerprint'])
             and manifest.get('fingerprint') == proof['runtimeFingerprint'], 'wrong released manifest')
+    try:
+        sums = asset(proof['releaseChecksums'], 'txt').decode('ascii').splitlines()
+    except UnicodeError as error:
+        raise ValueError('runtime publication: invalid released checksums') from error
+    matches = [re.fullmatch(r'([0-9a-f]{64})  (release-manifest\.json|source\.tar\.gz)', line)
+               for line in sums]
+    require(len(matches) == 2 and all(matches), 'invalid released checksum entries')
+    checksums = {match[2]: match[1] for match in matches}
+    require(set(checksums) == {'release-manifest.json', 'source.tar.gz'}, 'missing released checksums')
+    archive = asset(proof['runtimeArchive'], 'bin')
+    require(checksums['source.tar.gz'] == hashlib.sha256(archive).hexdigest()
+            and checksums['release-manifest.json'] == hashlib.sha256(asset(proof['releaseManifest'])).hexdigest(),
+            'released archive or manifest checksum differs')
+    expected_fingerprint = publication_archive_fingerprint(archive, runtime, repository)
+    require(expected_fingerprint == proof['runtimeFingerprint'] == manifest['fingerprint'],
+            'recomputed runtime fingerprint differs')
     run = record(proof['publicationRun'])
     require(isinstance(run, dict) and run.get('head_sha') == point['sourceRevision']
             and type(run.get('id')) is int and run['id'] > 0

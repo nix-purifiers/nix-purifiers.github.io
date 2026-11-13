@@ -1,13 +1,17 @@
 import copy
 import hashlib
+import gzip
+import io
 import json
 from pathlib import Path
 import tempfile
+import subprocess
+import tarfile
 import unittest
 
 from compatibility import validate, EMPTY
 from compatibility_evidence import (input_digest, publication_inputs_1f49,
-    validate_runtime_publication, PINNED_PUBLICATION_SCRIPT_SHA256)
+    validate_runtime_publication, publication_archive_fingerprint, inputs, PINNED_PUBLICATION_SCRIPT_SHA256)
 
 ROOT = Path(__file__).resolve().parents[1]
 PUBLIC = 'https://nix-purifiers.github.io/evidence/'
@@ -25,7 +29,8 @@ class RuntimePublicationTests(unittest.TestCase):
         self.repository = 'nix-purifiers/swiftpm-purifier'
         self.proof = self.read_original(self.point['runtimePublication']['proof'])
         urls = [self.point['runtimePublication']['proof']] + [self.proof[k] for k in
-            ('policySource', 'releaseManifest', 'publicationRun', 'publicationJobs', 'publicationLog')]
+            ('policySource', 'releaseManifest', 'runtimeArchive', 'releaseChecksums',
+             'publicationRun', 'publicationJobs', 'publicationLog')]
         for url in urls:
             name = url.rsplit('/', 1)[1]
             (self.directory / name).write_bytes((ROOT / 'docs-site/evidence' / name).read_bytes())
@@ -47,6 +52,93 @@ class RuntimePublicationTests(unittest.TestCase):
         value = self.read_original(self.proof[key])
         mutation(value)
         self.proof[key] = self.retain(value)
+
+    def update_checksums(self):
+        def digest(key):
+            return hashlib.sha256((self.directory / self.proof[key].rsplit('/', 1)[1]).read_bytes()).hexdigest()
+        raw = (digest('releaseManifest') + '  release-manifest.json\n'
+               + digest('runtimeArchive') + '  source.tar.gz\n').encode('ascii')
+        self.proof['releaseChecksums'] = self.retain(raw, 'txt')
+
+    def changed_archive(self, mutation):
+        raw = (self.directory / self.proof['runtimeArchive'].rsplit('/', 1)[1]).read_bytes()
+        output = io.BytesIO()
+        with tarfile.open(fileobj=io.BytesIO(raw), mode='r:gz') as original, \
+                tarfile.open(fileobj=output, mode='w:gz') as changed:
+            for member in original:
+                member = copy.copy(member)
+                body = original.extractfile(member).read() if member.isfile() else None
+                if member.name == 'swiftpm-purifier/LICENSE':
+                    if mutation == 'missing':
+                        continue
+                    if mutation == 'body':
+                        body += b'changed\n'
+                        member.size = len(body)
+                    elif mutation == 'mode':
+                        member.mode ^= 0o111
+                    elif mutation == 'hardlink':
+                        member.type, member.linkname, member.size, body = tarfile.LNKTYPE, 'LICENSE', 0, None
+                    elif mutation == 'duplicate':
+                        changed.addfile(member, io.BytesIO(body))
+                changed.addfile(member, io.BytesIO(body) if body is not None else None)
+            if mutation in ('extra', 'traversal'):
+                member = tarfile.TarInfo('swiftpm-purifier/extra' if mutation == 'extra' else '../escape')
+                member.size = 3
+                changed.addfile(member, io.BytesIO(b'bad'))
+        self.proof['runtimeArchive'] = self.retain(output.getvalue(), 'bin')
+        self.update_checksums()
+
+    def test_coherent_wrong_proof_manifest_and_checksums_fingerprint_is_rejected(self):
+        self.proof['runtimeFingerprint'] = 'f'*64
+        self.change_record('releaseManifest', lambda record: record.update(fingerprint='f'*64))
+        self.update_checksums()
+        with self.assertRaisesRegex(ValueError, 'recomputed runtime fingerprint differs'):
+            self.check()
+
+    def test_modified_archive_body_or_mode_with_coherent_checksums_is_rejected(self):
+        original = copy.deepcopy(self.proof)
+        for mutation in ('body', 'mode'):
+            with self.subTest(mutation=mutation), self.assertRaisesRegex(ValueError, 'complete reviewed runtime inventory'):
+                self.proof = copy.deepcopy(original)
+                self.changed_archive(mutation)
+                self.check()
+
+    def test_archive_rejects_missing_extra_duplicate_unsafe_and_hardlinked_files(self):
+        original = copy.deepcopy(self.proof)
+        for mutation in ('missing', 'extra', 'duplicate', 'traversal', 'hardlink'):
+            with self.subTest(mutation=mutation), self.assertRaisesRegex(ValueError, 'archive'):
+                self.proof = copy.deepcopy(original)
+                self.changed_archive(mutation)
+                self.check()
+
+    def test_manifest_and_archive_are_bound_to_retained_release_checksums(self):
+        self.proof['releaseChecksums'] = self.retain(
+            ('0'*64 + '  release-manifest.json\n' + '0'*64 + '  source.tar.gz\n').encode(), 'txt')
+        with self.assertRaisesRegex(ValueError, 'checksum differs'):
+            self.check()
+
+    def test_archive_git_identity_matches_git_for_symlinks_executables_and_path_order(self):
+        checkout = self.directory / 'git-reference'
+        checkout.mkdir()
+        subprocess.run(['git', 'init', '-q', str(checkout)], check=True)
+        bodies = {'README.md': b'ignored by historical policy\n', 'a.bar': b'first\n',
+                  'a/file': b'nested\n', 'sub/run': b'#!/bin/sh\nexit 0\n', 'sub/λ.txt': b'utf8 path\n'}
+        for name, raw in bodies.items():
+            path = checkout / name
+            path.parent.mkdir(parents=True, exist_ok=True)
+            path.write_bytes(raw)
+        (checkout / 'sub/run').chmod(0o755)
+        (checkout / 'current').symlink_to('sub/run')
+        subprocess.run(['git', '-C', str(checkout), '-c', 'core.autocrlf=false',
+                        '-c', 'core.filemode=true', 'add', '--all'], check=True)
+        tree = subprocess.check_output(['git', '-C', str(checkout), 'write-tree'], text=True).strip()
+        raw = subprocess.check_output(['git', '-C', str(checkout), 'archive', '--format=tar', '--prefix=demo/', tree])
+        reviewed = inputs(checkout, tree)
+        actual = publication_archive_fingerprint(gzip.compress(raw, mtime=0), reviewed, 'example/demo')
+        wanted = {'a.bar', 'a/file', 'sub/run', 'sub/λ.txt', 'current'}
+        entries = subprocess.check_output(['git', '-C', str(checkout), 'ls-tree', '-r', '-z', tree]).split(b'\0')
+        selected = [entry for entry in entries if entry and entry.split(b'\t', 1)[1].decode() in wanted]
+        self.assertEqual(actual, hashlib.sha256(b'\0'.join(selected)).hexdigest())
 
     def test_actual_dual_provenance_is_valid_without_relabeling_tested_source(self):
         self.check()
