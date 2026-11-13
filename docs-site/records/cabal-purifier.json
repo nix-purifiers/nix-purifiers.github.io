@@ -2,7 +2,7 @@
   "summary": "Locked, Nix-resolved dependencies for Cabal.",
   "values": {
     "quickstart": "nix shell 'github:nix-purifiers/cabal-purifier'\ncabal-purifier lock\neval \"$(cabal-purifier prefetch)\"\ncabal build\ncabal test",
-    "language_tooling_setup": "`prefetch` puts the `haskell-language-server` of the toolchain and the `cabal`\nshim first on `PATH`. An editor started from that shell, or with that\n`PATH`, loads the project through the shim, so the build tool calls of the\nlanguage server go to the locked sources and nothing is downloaded.\nA `.envrc` with the `eval` line from [Working offline](reference.html#working-offline) does\nthe same for direnv."
+    "language_tooling_setup": "`prefetch` preserves your existing GHC, Cabal and language server. It puts a Cabal shim first on `PATH` so build-tool calls use the prefetched locked sources. Start the editor from that environment, or use its `PATH`, and use a language server compatible with your chosen GHC. A `.envrc` with the `eval` line from [Working offline](reference.html#working-offline) supplies the same environment through direnv.\n\nUse `cabal-purifier prefetch --with-toolchain` to explicitly request packaged GHC matching the lock, packaged Cabal, and matching HLS when available. The default CLI and dependency-only prefetch preserve host tools; `cliWithToolchain` is the separate packaged-GHC CLI output."
   },
   "sections": {
     "editor": {}

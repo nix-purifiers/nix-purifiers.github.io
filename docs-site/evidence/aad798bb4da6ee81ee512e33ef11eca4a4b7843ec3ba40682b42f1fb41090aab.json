@@ -1,0 +1,25 @@
+{
+  "argv": [
+    "nix",
+    "--option",
+    "allow-import-from-derivation",
+    "false",
+    "--option",
+    "max-jobs",
+    "0",
+    "--option",
+    "builders",
+    "",
+    "eval",
+    "--offline",
+    "--json",
+    "--expr",
+    "let f=builtins.getFlake \"git+file:///home/chris/.codex/worktrees/cabal-tier2?rev=7b3361a93fc229547d5ab66afe9994448b63455b\"; in builtins.listToAttrs (map (system: { name=system; value=let p=import f.inputs.nixpkgs { inherit system; config.allowUnfree=true; overlays=[f.overlays.default]; }; in { GHC=p.ghc.version; cabal-install=p.cabal-install.version; Python=p.python3.version; }; }) (builtins.attrNames f.packages))"
+  ],
+  "exitCode": 0,
+  "elapsedSeconds": 0.3546597957611084,
+  "controllerAffinity": [
+    27
+  ],
+  "scope": "Pure offline package-version metadata evaluation only; IFD false, max-jobs0, no builders. No compiler/SDK build, target execution or builder affinity claim."
+}
