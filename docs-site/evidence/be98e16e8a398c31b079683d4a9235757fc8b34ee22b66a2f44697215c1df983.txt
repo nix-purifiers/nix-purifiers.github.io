@@ -1,0 +1,62 @@
+from pathlib import Path,PurePosixPath
+import hashlib,json,re,sys
+S=Path('/home/chris/.codex/state/purifier-toolchains/swiftpm-audit');W=S/'swift533-036-implementation';sys.path.insert(0,str(W/'pkgs/cli'))
+import workspace_v4_path as codec
+HEAD='9fb681c5db89d82bfac346ac4c5d85b5a24b1904';rows=json.loads((S/'swift533-137-corrected-source-proof.json').read_text())['files'];expected={r['path']:(r['bytes'],r['sha256']) for r in rows}
+proof={'scope':'Actual merged main9fb own terminal CI source/native/Git-NAR/HTTP-FOD/pureconsumer evidence; Linux point only, no merge/release/interval claim','head':HEAD,'base':'4abf86f38defbe0e3a928b532921202ce3e0dcc5','run':43407089929,'checks':'23SUCCESS','selectors':[],'seals':[]}
+def digest(p):return hashlib.sha256(p.read_bytes()).hexdigest()
+def logs(record,directory):
+ for stream in ['stdout','stderr']:
+  value=record.get(stream+'SHA256',record.get(stream+'Sha256'));assert value is not None
+  assert digest(directory/(record['label']+'.'+stream))==value
+for mode in ['default','external']:
+ root=S/'swift533-167-main-ci-artifacts'/mode;native=root/'workspace4-path-swift533-native';top=json.loads((native/'receipt.json').read_text());assert top['complete'];assert top['compilerObserved']=='5.3.3' and top['packageManagerObserved']=='5.3.0';assert top['sdkEpoch']=='swift533'
+ assert {r['path']:(r['bytes'],r['sha256']) for r in top['implementationFiles']}==expected
+ assert len(top['commands'])==35 and all(c['exit']==0 for c in top['commands'])
+ for c in top['commands']:logs(c,native/'logs')
+ before,after=top['installedUpdate']['before'],top['installedUpdate']['after'];assert before['version']=='1.0.0' and after['version']=='1.0.1';assert before['revision']!=after['revision'];assert before['sourceLocation']==after['sourceLocation'];assert before['hash']!=after['hash'];assert top['installedExecutionRequests']['before']==top['installedExecutionRequests']['after'];assert top['hostCLI']['portableVersion']==10 and top['hostCLI']['originalPinsRestored']
+ source=native/'pure-source';lock=json.loads((source/'swiftpm-purifier.lock.json').read_text());assert lock['version']==10 and lock['workspaceStateVersion']==4;assert len(lock['localDependencies'])==1;assert lock['localDependencies'][0]['packageRef']['path']=='@root@/LocalPkg';assert {p['name'] for p in lock['products']}=={'Static','Dynamic','Automatic','PureApp'}
+ def mapped(value):
+  parts=PurePosixPath(value).parts;index=parts.index('workspace4-path-swift533-native');return native.joinpath(*parts[index+1:])
+ command=next(c for c in top['commands'] if c['label']=='host-relock')['argv'];selected=mapped(command[command.index('--tool-lockfile')+1]) if mode=='external' else source/'Package.resolved'
+ codec.validate_raw((source/'swiftpm-purifier.lock.json').read_bytes(),selected.read_bytes(),source)
+ capture_joins=[];inner_count=0;typed_count=0;probe_count=0
+ for entry in top['runtimeCapsules']:
+  receipt=mapped(entry['path']);assert digest(receipt)==entry['sha256'];capsule=json.loads(receipt.read_text());assert capsule['complete']
+  if 'protocol' in capsule:
+   assert capsule['protocol']=='workspace-state-v4-path';assert capsule['sourceBefore']==capsule['sourceAfter'] and capsule['callerBefore']==capsule['callerAfter'];typed_count+=1
+  else:
+   assert capsule['candidate'] is False and capsule['scope']=='Owned local-Git native cache protocol discriminator only; not portable local-source support';probe_count+=1
+  for c in capsule['commands']:assert c['exit']==0;logs(c,receipt.parent/'logs');inner_count+=1
+  if capsule.get('sources'):
+   assert capsule['publication']=='committed'
+   commands={c['label']:c for c in capsule['commands']}
+   for label,c in commands.items():
+    match=re.fullmatch(r'native-v3-source-(\d+)-fetch',label)
+    if not match:continue
+    index=match[1];data=json.loads((receipt.parent/'logs'/(label+'.stdout')).read_text());identity=next(key for key,path in capsule['sources'].items() if path==data['path']);pin=before if identity=='beta' and data['rev']==before['revision'] else lock['pins'][identity];assert data['url']==pin['sourceLocation'] and data['rev']==pin['revision'] and data['hash']==pin['hash']
+    hashes=[]
+    for part in ['inventory-hash','checkout-hash','fetch-hash']:
+     path=receipt.parent/'logs'/f'native-v3-source-{index}-{part}.stdout';hashes.append(path.read_text().strip())
+    assert hashes==[pin['hash']]*3
+    assert any(c['label'].endswith('-HEAD') and (receipt.parent/'logs'/(c['label']+'.stdout')).read_text().strip()==pin['revision'] for c in capsule['commands'])
+    capture_joins.append({'identity':identity,'revision':pin['revision'],'hash':pin['hash'],'source':data['path'],'threeNARHashesAgree':True})
+ assert len(top['runtimeCapsules'])==14 and typed_count==13 and probe_count==1 and len(capture_joins)==4
+ log=(native/'logs/pure-selected.stderr').read_text()
+ transport=[]
+ for identity,pin in lock['pins'].items():
+  name=pin['name']+'-swift533-pure-consumer';assert f'{name}> exporting {pin["sourceLocation"]} (rev {pin["revision"]})' in log;assert f'{name}> remote: Total ' in log;assert f'{name}> Unpacking objects: 100%' in log;transport.append({'identity':identity,'url':pin['sourceLocation'],'revision':pin['revision'],'builder':name,'remotePackAndUnpackObserved':True})
+ assert 'Executed 1 test, with 0 failures' in log
+ for label,value in [('pure-executable-PureApp',b'ANSWER|42\n'),('consumer-run-Static',b'42\n'),('consumer-run-Dynamic',b'42\n')]:assert (native/'logs'/(label+'.stdout')).read_bytes()==value
+ sdk=root/'workspace4-path-swift533-sdk-metadata'
+ for file in ['original-tool-bytes.json','original-runtime-bytes.json','original-header-relocations.json']:assert (sdk/file).read_bytes()==(Path('/nix/store/ss1g51b1miqb3869xjzglkw512cx36my-original-swift-sdk-5.3.3')/file).read_bytes()
+ headers=root/'workspace4-path-swift533-headers';h=json.loads((headers/'receipt.json').read_text());assert h['complete'] and all(c['exit']==0 and c['assertionsPassed'] for c in h['commands'])
+ for c in h['commands']:logs(c,headers/c['label']/'logs');assert digest(headers/c['label']/'control.swift')==c['scriptSHA256']
+ constraint=root/'workspace4-path-swift533-constraint';c=json.loads((constraint/'receipt.json').read_text());assert c['complete'] and c['nativeDiagnosticObserved'] and c['cleanErrorExit'];assert c['commands'][0]['exit']==1;logs(c['commands'][0],constraint/'logs')
+ proof['selectors'].append({'mode':mode,'sourceFilesJoined':len(expected),'outerCommands':35,'receiptCapsules':14,'typedCurrencyCapsules':typed_count,'finiteDiscriminatorProbes':probe_count,'innerCommands':inner_count,'captureSourceJoins':capture_joins,'installedRequestCounts':top['installedExecutionRequests'],'HTTPPureFODDownloads':transport,'XCTest':'1test0failures','consumers':'PureApp ANSWER|42;Static/Dynamic42;Automaticsourcearchive','originalSDKMetadataByteEqualToReviewed073':True,'headerControls':len(h['commands']),'nativeMinimumToolsDiagnosticExit':1,'externalReadonlyAssertions':'Executed in exact source testcase; receiptcomplete implies byte/inode/mode/parent assertions passed' if mode=='external' else None})
+ for p in root.rglob('*'):
+  if p.is_file():proof['seals'].append({'path':str(p),'bytes':p.stat().st_size,'sha256':digest(p)})
+for pat in ['swift533-163-*json','swift533-164-*json','swift533-165-*.zip','swift533-168-validate-main-ci.py']:
+ for p in S.glob(pat):
+  if p.is_file():proof['seals'].append({'path':str(p),'bytes':p.stat().st_size,'sha256':digest(p)})
+path=S/'swift533-168-main-ci-proof.json';path.write_text(json.dumps(proof,indent=2)+'\n');print(json.dumps({'proof':str(path),'sha256':digest(path),'selectors':proof['selectors'],'seals':len(proof['seals'])},indent=2))
