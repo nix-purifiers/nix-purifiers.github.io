@@ -1,0 +1,168 @@
+{
+  "cLanguageStandard" : null,
+  "cxxLanguageStandard" : null,
+  "dependencies" : [
+    {
+      "name" : "LocalPkg",
+      "requirement" : {
+        "localPackage" : null
+      },
+      "url" : "\/home\/runner\/work\/_temp\/checkout3-swift525-native\/host-state\/swiftpm-purifier\/dependencies-v1\/native3-capture-dhlvgluj\/project\/LocalPkg"
+    },
+    {
+      "name" : "Alpha",
+      "requirement" : {
+        "range" : [
+          {
+            "lowerBound" : "1.0.0",
+            "upperBound" : "2.0.0"
+          }
+        ]
+      },
+      "url" : "http:\/\/127.0.0.1:44483\/Alpha.git"
+    }
+  ],
+  "name" : "PureRoot",
+  "pkgConfig" : null,
+  "platforms" : [
+    
+  ],
+  "products" : [
+    {
+      "name" : "Static",
+      "targets" : [
+        "Core"
+      ],
+      "type" : {
+        "library" : [
+          "static"
+        ]
+      }
+    },
+    {
+      "name" : "Dynamic",
+      "targets" : [
+        "Core"
+      ],
+      "type" : {
+        "library" : [
+          "dynamic"
+        ]
+      }
+    },
+    {
+      "name" : "Automatic",
+      "targets" : [
+        "Core"
+      ],
+      "type" : {
+        "library" : [
+          "automatic"
+        ]
+      }
+    },
+    {
+      "name" : "PureApp",
+      "targets" : [
+        "Run"
+      ],
+      "type" : {
+        "executable" : null
+      }
+    }
+  ],
+  "providers" : null,
+  "swiftLanguageVersions" : null,
+  "targets" : [
+    {
+      "dependencies" : [
+        {
+          "product" : [
+            "AlphaLib",
+            "AlphaPkg"
+          ]
+        },
+        {
+          "product" : [
+            "LocalLib",
+            "LocalPkg"
+          ]
+        }
+      ],
+      "exclude" : [
+        
+      ],
+      "name" : "Core",
+      "resources" : [
+        
+      ],
+      "settings" : [
+        
+      ],
+      "type" : "regular"
+    },
+    {
+      "dependencies" : [
+        {
+          "byName" : [
+            "Core"
+          ]
+        }
+      ],
+      "exclude" : [
+        
+      ],
+      "name" : "Run",
+      "resources" : [
+        
+      ],
+      "settings" : [
+        
+      ],
+      "type" : "regular"
+    },
+    {
+      "dependencies" : [
+        {
+          "byName" : [
+            "Core"
+          ]
+        }
+      ],
+      "exclude" : [
+        
+      ],
+      "name" : "Extra",
+      "resources" : [
+        
+      ],
+      "settings" : [
+        
+      ],
+      "type" : "regular"
+    },
+    {
+      "dependencies" : [
+        {
+          "byName" : [
+            "Core"
+          ]
+        }
+      ],
+      "exclude" : [
+        
+      ],
+      "name" : "CoreTests",
+      "resources" : [
+        
+      ],
+      "settings" : [
+        
+      ],
+      "type" : "test"
+    }
+  ],
+  "toolsVersion" : {
+    "_version" : "4.2.0"
+  }
+}

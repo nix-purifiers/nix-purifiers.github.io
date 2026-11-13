@@ -14,10 +14,11 @@ class CompatibilityTests(unittest.TestCase):
     def test_swift_points_keep_runtime_origins_protocols_and_tool_versions_distinct(self):
         page = self.documentation['catalog']['swiftpm-purifier']
         points = page['compatibility']['testedPoints']
-        self.assertEqual(len(points), 10)
+        self.assertEqual(len(points), 11)
         self.assertEqual({p['system'] for p in points}, {'x86_64-linux'})
         self.assertEqual(page['compatibility']['supportedRanges'], [])
-        expected = {'5.1.5': ('5.1.0', 'local', 'local-fixture', 4, None),
+        expected = {'5.2.5': ('5.2.0', 'local', 'local-fixture', 9, None),
+                    '5.1.5': ('5.1.0', 'local', 'local-fixture', 4, None),
                     '5.0.3': ('5.0.0', 'local', 'local-fixture', 4, None),
                     '4.1.3': ('4.1.0', 'local', 'local-fixture', 4, None),
                     '3.0.2': ('3.0.2', 'local', 'local-fixture', 7, None),
@@ -37,6 +38,11 @@ class CompatibilityTests(unittest.TestCase):
             if version in ('3.0.2', '4.0.3'):
                 self.assertEqual(components['native-format', 'SwiftPM state protocol'],
                                  'pre-workspace-git' if version == '3.0.2' else 'dependencies-state-v1')
+            elif version == '5.2.5':
+                self.assertEqual(components['native-format', 'SwiftPM dependencies state'], '3')
+                self.assertEqual(components['native-format', 'Package.resolved'], '1')
+                self.assertNotIn('runtimePublication', point)
+                self.assertEqual(point['sourceRevision'], '4abf86f38defbe0e3a928b532921202ce3e0dcc5')
             elif version in ('4.1.3', '5.0.3', '5.1.5'):
                 self.assertEqual(components['native-format', 'SwiftPM dependencies state'], '2')
                 self.assertEqual(components['native-format', 'Package.resolved'], '1')
@@ -55,10 +61,10 @@ class CompatibilityTests(unittest.TestCase):
             else:
                 self.assertIn('pure-build', point['operations'])
         body = render_compatibility(page, self.contract)
-        self.assertIn('| SwiftPM | 6.3.3 (SDK toolchain) | 3.0.2, 3.1.0, 4.0.0-dev, 4.1.0, 4.2.0, 5.0.0, 5.1.0, 5.5.3, 6.3.3, 6.4.2 |', body)
-        self.assertIn('| Swift | 6.3.3 (SDK toolchain) | 3.0.2, 3.1.1, 4.0.3, 4.1.3, 4.2.4, 5.0.3, 5.1.5, 5.5.3, 6.3.3, 6.4.2 |', body)
+        self.assertIn('| SwiftPM | 6.3.3 (SDK toolchain) | 3.0.2, 3.1.0, 4.0.0-dev, 4.1.0, 4.2.0, 5.0.0, 5.1.0, 5.2.0, 5.5.3, 6.3.3, 6.4.2 |', body)
+        self.assertIn('| Swift | 6.3.3 (SDK toolchain) | 3.0.2, 3.1.1, 4.0.3, 4.1.3, 4.2.4, 5.0.3, 5.1.5, 5.2.5, 5.5.3, 6.3.3, 6.4.2 |', body)
         self.assertIn('Default local commands use the existing Swift/SwiftPM toolset', body)
-        self.assertEqual(feature_matrix(page, self.contract).count('<ul class="tested-operations">'), 10)
+        self.assertEqual(feature_matrix(page, self.contract).count('<ul class="tested-operations">'), 11)
 
 
     def test_deno_url_points_keep_helper_separate_and_do_not_expand_workflow_scope(self):
