@@ -103,9 +103,21 @@ def validate(data):
             raise ValueError('packaged versions require a toolchain selection and platform scope')
     ids = set()
     for point in data['testedPoints']:
-        if set(point) != {'id', 'components', 'system', 'operations', 'sourceRevision', 'evidence', 'notes'}:
+        fields = {'id', 'components', 'system', 'operations', 'sourceRevision', 'evidence', 'notes'}
+        if set(point) not in (fields, fields | {'runtimePublication'}):
             raise ValueError('invalid tested version combination')
         proof(point)
+        if 'runtimePublication' in point:
+            publication = point['runtimePublication']
+            if (not isinstance(publication, dict)
+                    or set(publication) != {'sourceRevision', 'version', 'proof'}
+                    or not text(publication.get('sourceRevision'))
+                    or not re.fullmatch(r'[a-f0-9]{40}', publication.get('sourceRevision', ''))
+                    or not text(publication.get('version'))
+                    or not re.fullmatch(r'[0-9]+\.[0-9]+\.[0-9]+', publication.get('version', ''))
+                    or not text(publication.get('proof'))
+                    or not re.fullmatch(r'https://[^\s]+', publication.get('proof', ''))):
+                raise ValueError('runtime publication needs an exact source, version and proof')
         if not text(point['id']) or point['id'] in ids or not text(point['system']) or not texts(point['operations']):
             raise ValueError('tested version combinations need unique IDs, a system and operations')
         if not isinstance(point['notes'], list) or any(not text(x) for x in point['notes']):
@@ -438,6 +450,11 @@ def tested_combinations(points, packaged=()):
                                  for op in point['operations']) + '</ul>',
                        '<details markdown="1">\n<summary>Limits and source evidence</summary>\n']
             output += ['- ' + cell(note) for note in point['notes']]
+            if 'runtimePublication' in point:
+                publication = point['runtimePublication']
+                output += ['Released purifier runtime ' + publication['version'] + ' at `'
+                           + publication['sourceRevision'] + '` ([provenance]('
+                           + publication['proof'] + ')).']
             output += ['Source revision `' + point['sourceRevision'] + '`.',
                        ' · '.join('[' + ('CI run' if '/actions/runs/' in url else 'Source')
                                   + '](' + url + ')' for url in point['evidence']), '</details>']

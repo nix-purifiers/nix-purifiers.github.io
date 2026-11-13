@@ -1,0 +1,140 @@
+{
+  "cLanguageStandard" : null,
+  "cxxLanguageStandard" : null,
+  "dependencies" : [
+    {
+      "requirement" : {
+        "range" : [
+          {
+            "lowerBound" : "1.0.0",
+            "upperBound" : "2.0.0"
+          }
+        ]
+      },
+      "url" : "http:\/\/127.0.0.1:43179\/Alpha.git"
+    }
+  ],
+  "manifestVersion" : "v4",
+  "name" : "PureRoot",
+  "pkgConfig" : null,
+  "platforms" : [
+    
+  ],
+  "products" : [
+    {
+      "name" : "Static",
+      "targets" : [
+        "Core"
+      ],
+      "type" : {
+        "library" : [
+          "static"
+        ]
+      }
+    },
+    {
+      "name" : "Dynamic",
+      "targets" : [
+        "Core"
+      ],
+      "type" : {
+        "library" : [
+          "dynamic"
+        ]
+      }
+    },
+    {
+      "name" : "Automatic",
+      "targets" : [
+        "Core"
+      ],
+      "type" : {
+        "library" : [
+          "automatic"
+        ]
+      }
+    },
+    {
+      "name" : "PureApp",
+      "targets" : [
+        "Run"
+      ],
+      "type" : {
+        "executable" : null
+      }
+    }
+  ],
+  "providers" : null,
+  "swiftLanguageVersions" : null,
+  "targets" : [
+    {
+      "dependencies" : [
+        {
+          "product" : [
+            "AlphaLib",
+            "Alpha"
+          ]
+        }
+      ],
+      "exclude" : [
+        
+      ],
+      "name" : "Core",
+      "settings" : [
+        
+      ],
+      "type" : "regular"
+    },
+    {
+      "dependencies" : [
+        {
+          "byName" : [
+            "Core"
+          ]
+        }
+      ],
+      "exclude" : [
+        
+      ],
+      "name" : "Run",
+      "settings" : [
+        
+      ],
+      "type" : "regular"
+    },
+    {
+      "dependencies" : [
+        {
+          "byName" : [
+            "Core"
+          ]
+        }
+      ],
+      "exclude" : [
+        
+      ],
+      "name" : "Extra",
+      "settings" : [
+        
+      ],
+      "type" : "regular"
+    },
+    {
+      "dependencies" : [
+        {
+          "byName" : [
+            "Core"
+          ]
+        }
+      ],
+      "exclude" : [
+        
+      ],
+      "name" : "CoreTests",
+      "settings" : [
+        
+      ],
+      "type" : "test"
+    }
+  ]
+}

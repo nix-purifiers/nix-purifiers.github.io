@@ -25,6 +25,16 @@ let
       system = mkOption { type = text; };
       operations = mkOption { type = nonempty text; };
       notes = mkOption { type = types.listOf text; default = []; };
+      runtimePublication = mkOption {
+        default = null;
+        type = types.nullOr (types.submodule {
+          options = {
+            sourceRevision = mkOption { type = revision; };
+            version = mkOption { type = types.strMatching "[0-9]+\\.[0-9]+\\.[0-9]+"; };
+            proof = mkOption { type = types.strMatching "https://[^ ]+"; };
+          };
+        });
+      };
     };
   };
 in {
@@ -48,7 +58,11 @@ in {
             };
           });
         };
-        testedPoints = mkOption { default = []; type = types.listOf point; };
+        testedPoints = mkOption {
+          default = []; type = types.listOf point;
+          apply = points: map (p: if p.runtimePublication == null
+            then builtins.removeAttrs p [ "runtimePublication" ] else p) points;
+        };
         supportedRanges = mkOption {
           default = [];
           type = types.listOf (types.submodule {
