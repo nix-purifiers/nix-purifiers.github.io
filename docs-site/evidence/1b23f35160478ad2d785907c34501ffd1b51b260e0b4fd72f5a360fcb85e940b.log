@@ -1,0 +1,116 @@
+{
+  "cLanguageStandard": null,
+  "cxxLanguageStandard": null,
+  "dependencies": [
+    {
+      "requirement": {
+        "lowerBound": "1.0.0",
+        "type": "range",
+        "upperBound": "2.0.0"
+      },
+      "url": "http://127.0.0.1:35989/Alpha.git"
+    }
+  ],
+  "name": "PureRoot",
+  "products": [
+    {
+      "name": "Static",
+      "product_type": "library",
+      "targets": [
+        "Core"
+      ],
+      "type": "static"
+    },
+    {
+      "name": "Dynamic",
+      "product_type": "library",
+      "targets": [
+        "Core"
+      ],
+      "type": "dynamic"
+    },
+    {
+      "name": "Automatic",
+      "product_type": "library",
+      "targets": [
+        "Core"
+      ],
+      "type": null
+    },
+    {
+      "name": "PureApp",
+      "product_type": "executable",
+      "targets": [
+        "Run"
+      ]
+    }
+  ],
+  "targets": [
+    {
+      "dependencies": [
+        {
+          "name": "AlphaLib",
+          "package": "Alpha",
+          "type": "product"
+        }
+      ],
+      "exclude": [
+
+      ],
+      "isTest": false,
+      "name": "Core",
+      "path": null,
+      "publicHeadersPath": null,
+      "sources": null
+    },
+    {
+      "dependencies": [
+        {
+          "name": "Core",
+          "type": "byname"
+        }
+      ],
+      "exclude": [
+
+      ],
+      "isTest": false,
+      "name": "Run",
+      "path": null,
+      "publicHeadersPath": null,
+      "sources": null
+    },
+    {
+      "dependencies": [
+        {
+          "name": "Core",
+          "type": "byname"
+        }
+      ],
+      "exclude": [
+
+      ],
+      "isTest": false,
+      "name": "Extra",
+      "path": null,
+      "publicHeadersPath": null,
+      "sources": null
+    },
+    {
+      "dependencies": [
+        {
+          "name": "Core",
+          "type": "byname"
+        }
+      ],
+      "exclude": [
+
+      ],
+      "isTest": true,
+      "name": "CoreTests",
+      "path": null,
+      "publicHeadersPath": null,
+      "sources": null
+    }
+  ]
+}
+
