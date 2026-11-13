@@ -1,0 +1,3 @@
+// swift-tools-version:4.2
+import PackageDescription
+let package=Package(name:"PureRoot",products:[.library(name:"Static",type:.static,targets:["Core"]),.library(name:"Dynamic",type:.dynamic,targets:["Core"]),.library(name:"Automatic",targets:["Core"]),.executable(name:"PureApp",targets:["Run"])],dependencies:[.package(path:"LocalPkg"),.package(url:"http://127.0.0.1:46381/Alpha.git",from:"1.0.0")],targets:[.target(name:"Core",dependencies:[.product(name:"AlphaLib",package:"AlphaPkg"),.product(name:"LocalLib",package:"LocalPkg")]),.target(name:"Run",dependencies:["Core"]),.target(name:"Extra",dependencies:["Core"]),.testTarget(name:"CoreTests",dependencies:["Core"])])
