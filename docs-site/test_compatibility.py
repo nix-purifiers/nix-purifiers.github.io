@@ -11,6 +11,49 @@ from export import validate_version_coverage
 
 
 class CompatibilityTests(unittest.TestCase):
+    def test_swift_points_keep_runtime_origins_protocols_and_tool_versions_distinct(self):
+        page = self.documentation['catalog']['swiftpm-purifier']
+        points = page['compatibility']['testedPoints']
+        self.assertEqual(len(points), 7)
+        self.assertEqual({p['system'] for p in points}, {'x86_64-linux'})
+        self.assertEqual(page['compatibility']['supportedRanges'], [])
+        expected = {'3.0.2': ('3.0.2', 'local', 'local-fixture', 7, None),
+                    '4.0.3': ('4.0.0-dev', 'local', 'local-fixture-and-host', 8, 1),
+                    '3.1.1': ('3.1.0', 'local', 'local-fixture', 6, 1),
+                    '4.2.4': ('4.2.0', 'local', 'local-fixture', 4, 2),
+                    '5.5.3': ('5.5.3', 'sdk', 'sdk', 5, 4),
+                    '6.3.3': ('6.3.3', 'sdk', 'sdk', 5, 7),
+                    '6.4.2': ('6.4.2', 'local', 'host', 4, 7)}
+        for point in points:
+            components = {(c['role'], c['name']): c['version'] for c in point['components']}
+            version = components['compiler', 'Swift']
+            pm, mode, origin, lock, workspace = expected[version]
+            self.assertEqual(components['native-tool', 'SwiftPM'], pm)
+            self.assertNotIn(('project-runtime', 'Swift'), components)
+            self.assertEqual(components['native-format', 'swiftpm-purifier.lock.json'], str(lock))
+            if version in ('3.0.2', '4.0.3'):
+                self.assertEqual(components['native-format', 'SwiftPM state protocol'],
+                                 'pre-workspace-git' if version == '3.0.2' else 'dependencies-state-v1')
+            else:
+                self.assertEqual(components['native-format', 'SwiftPM workspace state'], str(workspace))
+            evidence = []
+            for url in point['evidence']:
+                if url.startswith('https://nix-purifiers.github.io/evidence/') and url.endswith('.json'):
+                    evidence.append(json.loads((Path(__file__).with_name('evidence') / url.rsplit('/', 1)[1]).read_text()))
+            observed = next(e for e in evidence if 'cliMode' in e and 'runtimeOrigin' in e)
+            self.assertEqual((observed['cliMode'], observed['runtimeOrigin']), (mode, origin))
+            self.assertEqual((observed['purifierLockFormat'], observed['nativeWorkspaceState']), (lock, workspace))
+            self.assertEqual(observed['sourceRevision'], point['sourceRevision'])
+            if origin == 'host':
+                self.assertNotIn('pure-build', point['operations'])
+            else:
+                self.assertIn('pure-build', point['operations'])
+        body = render_compatibility(page, self.contract)
+        self.assertIn('| SwiftPM | 6.3.3 (SDK toolchain) | 3.0.2, 3.1.0, 4.0.0-dev, 4.2.0, 5.5.3, 6.3.3, 6.4.2 |', body)
+        self.assertIn('| Swift | 6.3.3 (SDK toolchain) | 3.0.2, 3.1.1, 4.0.3, 4.2.4, 5.5.3, 6.3.3, 6.4.2 |', body)
+        self.assertIn('Default local commands use the existing Swift/SwiftPM toolset', body)
+        self.assertEqual(feature_matrix(page, self.contract).count('<ul class="tested-operations">'), 7)
+
 
     def test_deno_url_points_keep_helper_separate_and_do_not_expand_workflow_scope(self):
         root = Path(__file__).resolve().parents[1]

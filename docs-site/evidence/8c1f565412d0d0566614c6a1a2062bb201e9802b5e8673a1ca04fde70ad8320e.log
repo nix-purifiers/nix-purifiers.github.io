@@ -1,0 +1,54 @@
+this derivation will be built:
+  /nix/store/k290dr5gswm3q948qw86p8fk0v5w7blf-NativeApp-locked.drv
+building '/nix/store/k290dr5gswm3q948qw86p8fk0v5w7blf-NativeApp-locked.drv'...
+NativeApp-locked> Running phase: unpackPhase
+NativeApp-locked> unpacking source archive /nix/store/vfnvdvh1pg1hlwdphkpdg5hhlk4kgr9d-native-project
+NativeApp-locked> source root is native-project
+NativeApp-locked> Running phase: patchPhase
+NativeApp-locked> Running phase: updateAutotoolsGnuConfigScriptsPhase
+NativeApp-locked> Running phase: configurePhase
+NativeApp-locked> swiftpm-purifier: verifying selected native SDK
+NativeApp-locked> Traceback (most recent call last):
+NativeApp-locked>   File "/nix/store/1b750p6p46ka131vz96p3xzjdq0355fq-cli/verify_sdk.py", line 41, in <module>
+NativeApp-locked>     main()
+NativeApp-locked>     ~~~~^^
+NativeApp-locked>   File "/nix/store/1b750p6p46ka131vz96p3xzjdq0355fq-cli/verify_sdk.py", line 25, in main
+NativeApp-locked>     native_sdk.check_build_bindings(descriptor)
+NativeApp-locked>     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^
+NativeApp-locked>   File "/nix/store/1b750p6p46ka131vz96p3xzjdq0355fq-cli/native_sdk.py", line 223, in check_build_bindings
+NativeApp-locked>     check_compiler_overrides(descriptor)
+NativeApp-locked>     ~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^
+NativeApp-locked>   File "/nix/store/1b750p6p46ka131vz96p3xzjdq0355fq-cli/native_sdk.py", line 216, in check_compiler_overrides
+NativeApp-locked>     raise SDKError(
+NativeApp-locked>         "native compiler override disagrees with selected SDK: " + name
+NativeApp-locked>     )
+NativeApp-locked> native_sdk.SDKError: native compiler override disagrees with selected SDK: SWIFT_DRIVER_SWIFT_FRONTEND_EXEC
+error: Cannot build '/nix/store/k290dr5gswm3q948qw86p8fk0v5w7blf-NativeApp-locked.drv'.
+       Reason: builder failed with exit code 1.
+       Output paths:
+         /nix/store/jph83i1xbkhf91n53dsw0z397w3b9s9m-NativeApp-locked
+       Last 22 log lines:
+       > Running phase: unpackPhase
+       > unpacking source archive /nix/store/vfnvdvh1pg1hlwdphkpdg5hhlk4kgr9d-native-project
+       > source root is native-project
+       > Running phase: patchPhase
+       > Running phase: updateAutotoolsGnuConfigScriptsPhase
+       > Running phase: configurePhase
+       > swiftpm-purifier: verifying selected native SDK
+       > Traceback (most recent call last):
+       >   File "/nix/store/1b750p6p46ka131vz96p3xzjdq0355fq-cli/verify_sdk.py", line 41, in <module>
+       >     main()
+       >     ~~~~^^
+       >   File "/nix/store/1b750p6p46ka131vz96p3xzjdq0355fq-cli/verify_sdk.py", line 25, in main
+       >     native_sdk.check_build_bindings(descriptor)
+       >     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^
+       >   File "/nix/store/1b750p6p46ka131vz96p3xzjdq0355fq-cli/native_sdk.py", line 223, in check_build_bindings
+       >     check_compiler_overrides(descriptor)
+       >     ~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^
+       >   File "/nix/store/1b750p6p46ka131vz96p3xzjdq0355fq-cli/native_sdk.py", line 216, in check_compiler_overrides
+       >     raise SDKError(
+       >         "native compiler override disagrees with selected SDK: " + name
+       >     )
+       > native_sdk.SDKError: native compiler override disagrees with selected SDK: SWIFT_DRIVER_SWIFT_FRONTEND_EXEC
+       For full logs, run:
+         nix log /nix/store/k290dr5gswm3q948qw86p8fk0v5w7blf-NativeApp-locked.drv
