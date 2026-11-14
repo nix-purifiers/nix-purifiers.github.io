@@ -1,6 +1,11 @@
 { lib }:
 catalog:
 let
+  # Bind the generated obligations to behavior, not presentation or test results.
+  catalogInputs = lib.mapAttrs (_: model: {
+    inherit (model) repository facts operations;
+    reviewedRevision = model.reviewedRevision or null;
+  }) catalog;
   known = model: name: (model.facts.${name}.state or "unknown") == "known";
   value = model: name: fallback: if known model name then model.facts.${name}.value else fallback;
   projection = model: direction:
@@ -88,6 +93,7 @@ let
 in {
   version = 1;
   scope = "coverage-obligations";
+  catalogDigest = builtins.hashString "sha256" (builtins.toJSON catalogInputs);
   projects = lib.mapAttrs (_: perProject) catalog;
   projectionCandidates = edges;
   formatPolicies.maven = {

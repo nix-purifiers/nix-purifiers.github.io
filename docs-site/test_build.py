@@ -11,6 +11,7 @@ from build import build
 from content import render
 from authority import canonicalize
 from quality import homepage, registry
+from testing import catalog_digest
 
 
 @unittest.skipUnless(shutil.which('nix'), 'Nix is needed for model integration tests')
@@ -78,6 +79,8 @@ class CatalogTests(unittest.TestCase):
             audit = json.loads((output / 'content-variations.json').read_text())
             self.assertEqual(audit['ant-purifier']['unresolved']['credentials']['state'], 'unknown')
             self.assertEqual(json.loads((output / 'catalog.json').read_text()), self.documentation)
+            self.assertEqual(json.loads((output / 'testing/plan.json').read_text()),
+                             self.documentation['coveragePlan'])
 
     def test_rebuild_removes_the_previous_generated_tracking_landing_page(self):
         with tempfile.TemporaryDirectory() as directory:
@@ -106,10 +109,30 @@ class CatalogTests(unittest.TestCase):
     def test_contradictory_copy_rejected_before_output(self):
         documentation = copy.deepcopy(self.documentation)
         documentation['catalog']['ant-purifier']['facts']['relock']['value'] = 're-resolves'
+        # Exercise the copy contradiction independently of the plan-input guard.
+        documentation['coveragePlan']['catalogDigest'] = catalog_digest(documentation['catalog'])
         with tempfile.TemporaryDirectory() as directory:
             output = Path(directory) / 'site'
             with self.assertRaisesRegex(ValueError, 'relock'):
                 build(documentation, output)
+            self.assertFalse(output.exists())
+
+    def test_cli_rejects_retained_previous_source_plan_before_output(self):
+        retained = json.loads((self.root / 'docs-site/fixtures/stale-coverage-plan-cabal.json').read_text())
+        stale = copy.deepcopy(self.documentation['coveragePlan'])
+        stale['projects']['cabal-purifier'] = retained['before']['project']
+        self.assertNotEqual(stale, self.documentation['coveragePlan'])
+        with tempfile.TemporaryDirectory() as directory:
+            base = Path(directory)
+            export, plan, output = base / 'catalog.json', base / 'plan.json', base / 'site'
+            export.write_text(json.dumps(self.documentation))
+            plan.write_text(json.dumps(stale))
+            result = subprocess.run(
+                [sys.executable, str(self.root / 'docs-site/build.py'),
+                 '--export', str(export), '--coverage-plan', str(plan), '--output', str(output)],
+                capture_output=True, text=True)
+            self.assertNotEqual(result.returncode, 0)
+            self.assertIn('Supplied coverage plan differs from the canonical export', result.stderr)
             self.assertFalse(output.exists())
 
     def test_shared_variant_tracks_different_behavior(self):

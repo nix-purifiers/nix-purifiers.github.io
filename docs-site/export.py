@@ -7,6 +7,7 @@ from reference import guide_plan
 from inventory import validate_coverage
 from compatibility_evidence import validate_registry
 from quality import registry, homepage
+from testing import canonical_coverage_plan
 
 
 def validate_version_coverage(catalog):
@@ -24,6 +25,7 @@ if __name__ == '__main__':
     result = subprocess.run(['nix', 'eval', '--json', '.#documentation'], cwd=root,
                             check=True, capture_output=True, text=True)
     documentation = json.loads(result.stdout)
+    canonical_coverage_plan(documentation)
     quality = registry()
     if not set(documentation['catalog']) <= set(quality['projects']):
         raise SystemExit('Every modeled purifier needs a tier assessment')
