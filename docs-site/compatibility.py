@@ -309,9 +309,10 @@ def render_compatibility(page, contract, heading=True):
     if systems:
         lines += ['### Operating systems and architectures', '| OS | CPU architecture | Packaged toolchain | Recorded workflow |', '|---|---|---|---|']
         packaged = {s for c in visible_defaults for s in c['systems']}
+        project_selected = not visible_defaults and any(c['role'] in USER_ROLES for c in data['projectSelections'])
         for system in systems:
             arch, _, os = system.partition('-')
-            packaged_status = 'Yes' if system in packaged else 'Not recorded'
+            packaged_status = 'Yes' if system in packaged else 'Project-selected' if project_selected else 'Not recorded'
             workflow_status = 'Tested' if system in checked else 'Not recorded'
             lines.append('| ' + cell({'linux': 'Linux', 'darwin': 'macOS'}.get(os, os))
                          + ' | ' + cell({'x86_64': 'x86-64', 'aarch64': 'ARM64'}.get(arch, arch)) + ' | ' + packaged_status + ' | ' + workflow_status + ' |')

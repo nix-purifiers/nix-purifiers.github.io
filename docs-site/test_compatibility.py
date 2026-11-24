@@ -11,6 +11,24 @@ from export import validate_version_coverage
 
 
 class CompatibilityTests(unittest.TestCase):
+    def test_project_selected_toolchain_is_distinct_from_unrecorded_packaging(self):
+        page = copy.deepcopy(self.documentation['catalog']['bundler-purifier'])
+        root = Path(__file__).resolve().parents[1]
+        page['compatibility']['defaults'] = json.loads((root / 'model/toolchain-defaults.json').read_text())['projects']['bundler-purifier']
+        page['compatibility']['projectSelections'] = json.loads((root / 'model/version-requirements.json').read_text())['projects']['bundler-purifier']['projectSelections']
+        body = render_compatibility(page, self.contract)
+        self.assertIn('| Bundler | Project-selected |', body)
+        self.assertIn('| Linux | x86-64 | Project-selected | Tested |', body)
+        control = copy.deepcopy(page)
+        control['compatibility']['projectSelections'] = []
+        self.assertIn('| Linux | x86-64 | Not recorded | Tested |', render_compatibility(control, self.contract))
+        point = page['compatibility']['testedPoints'][0]
+        page['compatibility']['defaults'].append({
+            'role': 'native-tool', 'name': 'Bundler', 'version': point['components'][0]['version'],
+            'selection': 'default', 'systems': ['x86_64-linux'],
+            'sourceRevision': point['sourceRevision'], 'evidence': point['evidence']})
+        self.assertIn('| Linux | x86-64 | Yes | Tested |', render_compatibility(page, self.contract))
+
     def test_swift_points_keep_runtime_origins_protocols_and_tool_versions_distinct(self):
         page = self.documentation['catalog']['swiftpm-purifier']
         points = page['compatibility']['testedPoints']
