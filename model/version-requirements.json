@@ -737,6 +737,54 @@
         }
       ],
       "limitations": []
+    },
+    "bundler-purifier": {
+      "projectSelections": [
+        {
+          "role": "project-runtime",
+          "name": "Ruby",
+          "kind": "environment",
+          "inputs": [
+            "PATH",
+            "projectRuby",
+            ".ruby-version",
+            "Gemfile.lock: RUBY VERSION",
+            "ruby"
+          ],
+          "description": "Modern Gemfile.lock workflows select the installed Ruby on PATH, or an explicit projectRuby SDK, and validate the requested major/minor from .ruby-version or Gemfile.lock. These files do not install or automatically choose a replacement Ruby. Sandboxed builds select the recorded SDK, a compatible producing SDK or an explicit ruby argument.",
+          "sourceRevision": "6d5b4768f23faf468882aabad9db5dc7c31719b5",
+          "evidence": [
+            "https://github.com/nix-purifiers/bundler-purifier/blob/6d5b4768f23faf468882aabad9db5dc7c31719b5/bin/bundler-purifier",
+            "https://github.com/nix-purifiers/bundler-purifier/blob/6d5b4768f23faf468882aabad9db5dc7c31719b5/pkgs/build-bundler-project/default.nix"
+          ]
+        },
+        {
+          "role": "native-tool",
+          "name": "Bundler",
+          "kind": "lockfile",
+          "inputs": [
+            "Gemfile.lock: BUNDLED WITH",
+            "bundler-purifier.lock.json: bundlerVersion"
+          ],
+          "description": "The native lock and recorded SDK identify the Bundler version for the selected project runtime. Compatibility constraints are checked; the purifier CLI helper Ruby is a separate implementation dependency.",
+          "sourceRevision": "6d5b4768f23faf468882aabad9db5dc7c31719b5",
+          "evidence": [
+            "https://github.com/nix-purifiers/bundler-purifier/blob/6d5b4768f23faf468882aabad9db5dc7c31719b5/lib-overlays/default/read-lock.nix",
+            "https://github.com/nix-purifiers/bundler-purifier/blob/6d5b4768f23faf468882aabad9db5dc7c31719b5/bin/bundler-purifier"
+          ]
+        }
+      ],
+      "limitations": [
+        {
+          "text": "Pre-lockfile capture still requires an immutable, attested SDK. Support for an installed caller Ruby in modern Gemfile.lock workflows does not establish mutable-host adoption for legacy native-environment capture.",
+          "sourceRevision": "6d5b4768f23faf468882aabad9db5dc7c31719b5",
+          "evidence": [
+            "https://github.com/nix-purifiers/bundler-purifier/blob/6d5b4768f23faf468882aabad9db5dc7c31719b5/pkgs/cli/tools/native_environment_frontend.rb",
+            "https://github.com/nix-purifiers/bundler-purifier/blob/6d5b4768f23faf468882aabad9db5dc7c31719b5/bin/bundler-purifier"
+          ]
+        }
+      ],
+      "supportedRanges": []
     }
   }
 }

@@ -1,6 +1,6 @@
 {
   "repository": "nix-purifiers/bundler-purifier",
-  "reviewedRevision": "67ddb584b8270db7bcbf9cdc7a415d86255447bc",
+  "reviewedRevision": "6d5b4768f23faf468882aabad9db5dc7c31719b5",
   "facts": {
     "tool": {
       "state": "known",
@@ -21,7 +21,8 @@
       "state": "known",
       "value": [
         "x86_64-linux",
-        "aarch64-linux"
+        "aarch64-linux",
+        "aarch64-darwin"
       ]
     },
     "nix_builder": {
@@ -101,6 +102,15 @@
     "editor_offline": {
       "state": "known",
       "value": true
+    },
+    "runtime_requirements": {
+      "state": "known",
+      "value": [
+        "an installed project Ruby on PATH, or an explicitly configured projectRuby SDK, satisfying the project runtime constraints"
+      ],
+      "sources": [
+        "https://github.com/nix-purifiers/bundler-purifier/blob/6d5b4768f23faf468882aabad9db5dc7c31719b5/bin/bundler-purifier"
+      ]
     }
   },
   "operations": {
@@ -110,7 +120,7 @@
         "lock"
       ],
       "sources": [
-        "https://github.com/nix-purifiers/bundler-purifier/blob/67ddb584b8270db7bcbf9cdc7a415d86255447bc/nix/lib/build-bundler-project.nix"
+        "https://github.com/nix-purifiers/bundler-purifier/blob/6d5b4768f23faf468882aabad9db5dc7c31719b5/bin/bundler-purifier"
       ],
       "minimumArguments": 0
     },
@@ -120,13 +130,19 @@
         "prefetch"
       ],
       "sources": [
-        "https://github.com/nix-purifiers/bundler-purifier/blob/67ddb584b8270db7bcbf9cdc7a415d86255447bc/nix/lib/build-bundler-project.nix"
+        "https://github.com/nix-purifiers/bundler-purifier/blob/6d5b4768f23faf468882aabad9db5dc7c31719b5/bin/bundler-purifier"
       ],
       "minimumArguments": 0
     },
     "update": {
-      "state": "unknown",
-      "reason": "The native update selector and invocation have not been normalized; use the reference workflow."
+      "capability": "bundler-purifier",
+      "arguments": [
+        "update"
+      ],
+      "minimumArguments": 0,
+      "sources": [
+        "https://github.com/nix-purifiers/bundler-purifier/blob/6d5b4768f23faf468882aabad9db5dc7c31719b5/bin/bundler-purifier"
+      ]
     },
     "run": {
       "capability": "bundle",
@@ -135,7 +151,7 @@
         "rake"
       ],
       "sources": [
-        "https://github.com/nix-purifiers/bundler-purifier/blob/67ddb584b8270db7bcbf9cdc7a415d86255447bc/nix/lib/build-bundler-project.nix"
+        "https://github.com/nix-purifiers/bundler-purifier/blob/6d5b4768f23faf468882aabad9db5dc7c31719b5/bin/bundle"
       ]
     }
   }

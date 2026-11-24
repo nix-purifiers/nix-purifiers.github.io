@@ -5784,76 +5784,93 @@
       }
     },
     "bundler-purifier": {
-      "tier": 3,
-      "reviewedRevision": "bd48bb6b1c1fe893899a301e5c55fc7cc8e92310",
-      "reviewedAt": "2026-11-06",
-      "rationale": "A human contributor reports scoped firsthand local use. The retained technical review meets Tier 3 requirements; Tier 2 gaps remain in Darwin execution. Ongoing maintainer use with two qualifying open-source consumer projects is not established.",
+      "tier": 2,
+      "reviewedRevision": "6d5b4768f23faf468882aabad9db5dc7c31719b5",
+      "reviewedAt": "2026-11-24",
+      "rationale": "Current native Linux and Apple Silicon Darwin execution, exact maintained toolchain points, substantive tests and the existing scoped contributor report meet Tier 2. One independent upstream application does not establish Tier 1 sample breadth, and ongoing qualifying adoption remains unestablished.",
       "criteria": {
         "evaluation": {
           "state": "met",
-          "summary": "All 35 executable checks.x86_64-linux attributes evaluate and realize successfully at bd48bb6b1c1fe893899a301e5c55fc7cc8e92310. Exact derivations, native outputs and NAR hashes are in the packet; native aarch64-linux CI independently succeeds.",
+          "summary": "The exact reviewed 6d5 source has 15 successful CI checks and 12 retained native derivation executions with output and NAR identities on x86_64-linux, aarch64-linux and aarch64-darwin.",
           "evidence": [
-            "https://github.com/nix-purifiers/bundler-purifier/actions/runs/42008521132/job/127181292088",
-            "https://nix-purifiers.github.io/evidence/b8267b7999536021fd31ecdd1eb0767d5751fc824c4552bbd690f75c71e07b5b.json"
+            "https://nix-purifiers.github.io/evidence/23a9839be3496f3d39f5f7b966a5f2f307808c14f00c4473d35d993ea9fd136b.json",
+            "https://nix-purifiers.github.io/evidence/33c2fdece54530edd81aa5d805cb6698de3842753db494d7c88786b3e852d7e8.json",
+            "https://nix-purifiers.github.io/evidence/25f6e88af91e3fccf96045e18d5111a65e3c86c997455337df6d93ba0774faee.json",
+            "https://nix-purifiers.github.io/evidence/926617c86575685e652d0b29c46a12b43ec0a5c2caf602cb90af38d66b4ff20d.json"
           ]
         },
         "goodTests": {
           "state": "met",
-          "summary": "Executable checks cover Ruby unit tests, tampered/stale/missing/malformed/external locks, a workspace app, local path gem, library tests, gem packaging and executable loading. Lobsters loads Rails and libvips from its offline bundle. Historical compiled-extension consumers and SDK composition exercise real ABI-sensitive behavior.",
+          "summary": "Current CI covers hostile and invalid locks, native composition, fixtures, library tests and the independent Lobsters application. The retained native checks execute the app/library fixtures and build and run Lobsters on all three recorded systems.",
           "evidence": [
-            "https://github.com/nix-purifiers/bundler-purifier/actions/runs/42008521132/job/127181292088",
-            "https://nix-purifiers.github.io/evidence/b8267b7999536021fd31ecdd1eb0767d5751fc824c4552bbd690f75c71e07b5b.json"
+            "https://nix-purifiers.github.io/evidence/23a9839be3496f3d39f5f7b966a5f2f307808c14f00c4473d35d993ea9fd136b.json",
+            "https://nix-purifiers.github.io/evidence/33c2fdece54530edd81aa5d805cb6698de3842753db494d7c88786b3e852d7e8.json",
+            "https://nix-purifiers.github.io/evidence/25f6e88af91e3fccf96045e18d5111a65e3c86c997455337df6d93ba0774faee.json",
+            "https://nix-purifiers.github.io/evidence/926617c86575685e652d0b29c46a12b43ec0a5c2caf602cb90af38d66b4ff20d.json",
+            "https://github.com/nix-purifiers/bundler-purifier/actions/runs/43756678227/job/132942181579",
+            "https://nix-purifiers.github.io/evidence/b06f252f5eaa2a5ce4dade013f9cc5bc03884395d5934b9b326bcb10c172151c.json",
+            "https://nix-purifiers.github.io/evidence/1edb54a33b36e4aaf8a7af6f4f3276ad180bc486e4c4f73c2b3241900460ff90.json"
           ]
         },
         "linux": {
           "state": "met",
-          "summary": "Native aarch64-linux CI builds the required sample/check derivations successfully at the exact reviewed revision; local x86_64-linux checks also realize successfully. Neither result is cross-evaluation.",
+          "summary": "Current native x86_64-linux and aarch64-linux receipts bind actual fixture and Lobsters derivation executions and realized outputs to the reviewed source; these are not cross-evaluation results.",
           "evidence": [
-            "https://github.com/nix-purifiers/bundler-purifier/actions/runs/42008521132/job/127181292088",
-            "https://nix-purifiers.github.io/evidence/b8267b7999536021fd31ecdd1eb0767d5751fc824c4552bbd690f75c71e07b5b.json"
+            "https://nix-purifiers.github.io/evidence/23a9839be3496f3d39f5f7b966a5f2f307808c14f00c4473d35d993ea9fd136b.json",
+            "https://nix-purifiers.github.io/evidence/33c2fdece54530edd81aa5d805cb6698de3842753db494d7c88786b3e852d7e8.json"
           ]
         },
         "darwin": {
-          "state": "not-met",
-          "summary": "The inspected .github/workflows/check.yml and successful native jobs cover ubuntu-latest and ubuntu-24.04-arm only. The flake declares aarch64-darwin, which is not execution. No successful native Darwin sample derivation/SDK/output receipt is available; this Linux review host cannot execute it.",
+          "state": "met",
+          "summary": "Native Apple Silicon aarch64-darwin receipts bind fixture and Lobsters executions, realized outputs and exact toolchains to the reviewed source. Intel macOS and untested SDK/platform combinations are not inferred.",
           "evidence": [
-            "https://github.com/nix-purifiers/bundler-purifier/actions/runs/42008521132/job/127181292088",
-            "https://nix-purifiers.github.io/evidence/b8267b7999536021fd31ecdd1eb0767d5751fc824c4552bbd690f75c71e07b5b.json"
+            "https://nix-purifiers.github.io/evidence/25f6e88af91e3fccf96045e18d5111a65e3c86c997455337df6d93ba0774faee.json"
           ]
         },
         "oneVersion": {
           "state": "met",
-          "summary": "Actual native sample execution demonstrates Ruby 3.4.11 and 4.0.9; historical Ruby 2.5.8 and 1.8.7-p374 with Bundler 1.17.3. Scope is the exact executed version point(s), not a version range.",
+          "summary": "The independent Lobsters sample runs Ruby 4.0.9 and Bundler 4.0.3 with Rails 8.1.3.1 and libvips 8.18.7 on each of the three recorded systems.",
           "evidence": [
-            "https://github.com/nix-purifiers/bundler-purifier/actions/runs/42008521132/job/127181292088",
-            "https://nix-purifiers.github.io/evidence/b8267b7999536021fd31ecdd1eb0767d5751fc824c4552bbd690f75c71e07b5b.json"
+            "https://nix-purifiers.github.io/evidence/23a9839be3496f3d39f5f7b966a5f2f307808c14f00c4473d35d993ea9fd136b.json",
+            "https://nix-purifiers.github.io/evidence/33c2fdece54530edd81aa5d805cb6698de3842753db494d7c88786b3e852d7e8.json",
+            "https://nix-purifiers.github.io/evidence/25f6e88af91e3fccf96045e18d5111a65e3c86c997455337df6d93ba0774faee.json"
           ]
         },
         "nonEolVersions": {
           "state": "met",
-          "summary": "The successful independent Lobsters sample executes Ruby 4.0.9 and the lock-selected Bundler 4.0.3. Ruby 4.0 is in normal maintenance. The official RubyGems compatibility policy identifies the current Bundler 4.0 series, requiring Ruby >=3.2 and RubyGems >=3.4.1; Ruby 4.0 ships a matching RubyGems/Bundler 4.0 pair. This is an actually tested maintained manager/runtime pair. Ruby 3.4.11 is also demonstrated by fixture-app; missing maintained Ruby 3.3 does not invalidate this bounded judgment. No untested version or all-patch range is claimed.",
+          "summary": "The reviewed current upstream policy is covered by exact executions: Bundler 4.0.3 in Lobsters on all three systems, 2.6.9 actually loaded by the x86_64-linux app fixture, and 2.7.2 with Ruby 3.4.11 plus 2.5.22 with Ruby 3.3.8 in x86_64-linux composition checks. No all-patch interval or cross-platform Cartesian product is asserted.",
           "evidence": [
-            "https://github.com/nix-purifiers/bundler-purifier/actions/runs/42008521132/job/127181292088",
-            "https://www.ruby-lang.org/en/downloads/branches/",
-            "https://nix-purifiers.github.io/evidence/b8267b7999536021fd31ecdd1eb0767d5751fc824c4552bbd690f75c71e07b5b.json",
+            "https://nix-purifiers.github.io/evidence/926617c86575685e652d0b29c46a12b43ec0a5c2caf602cb90af38d66b4ff20d.json",
+            "https://github.com/nix-purifiers/bundler-purifier/actions/runs/43756678227/job/132942181579",
+            "https://nix-purifiers.github.io/evidence/b06f252f5eaa2a5ce4dade013f9cc5bc03884395d5934b9b326bcb10c172151c.json",
+            "https://nix-purifiers.github.io/evidence/1edb54a33b36e4aaf8a7af6f4f3276ad180bc486e4c4f73c2b3241900460ff90.json",
+            "https://nix-purifiers.github.io/evidence/23a9839be3496f3d39f5f7b966a5f2f307808c14f00c4473d35d993ea9fd136b.json",
+            "https://nix-purifiers.github.io/evidence/33c2fdece54530edd81aa5d805cb6698de3842753db494d7c88786b3e852d7e8.json",
+            "https://nix-purifiers.github.io/evidence/25f6e88af91e3fccf96045e18d5111a65e3c86c997455337df6d93ba0774faee.json",
             "https://guides.rubygems.org/bundler-compatibility/",
-            "https://nix-purifiers.github.io/evidence/23e3dcacdd3659d7ec2d9002b85b2a8ddb98741f033e4a76deb0235b56d75c94.json"
+            "https://www.ruby-lang.org/en/downloads/branches/"
           ]
         },
         "manySamples": {
           "state": "not-met",
-          "summary": "Lobsters is one independent upstream application. App/library/submodule and historical-greeting fixtures give meaningful scenario coverage, but are authored here and do not establish many independent upstream application builds.",
+          "summary": "Lobsters is one independent upstream application; owned fixtures and historical greeting/composition tests do not establish many independent upstream applications.",
           "evidence": [
-            "https://github.com/nix-purifiers/bundler-purifier/actions/runs/42008521132/job/127181292088",
-            "https://nix-purifiers.github.io/evidence/b8267b7999536021fd31ecdd1eb0767d5751fc824c4552bbd690f75c71e07b5b.json"
+            "https://nix-purifiers.github.io/evidence/23a9839be3496f3d39f5f7b966a5f2f307808c14f00c4473d35d993ea9fd136b.json",
+            "https://nix-purifiers.github.io/evidence/33c2fdece54530edd81aa5d805cb6698de3842753db494d7c88786b3e852d7e8.json",
+            "https://nix-purifiers.github.io/evidence/25f6e88af91e3fccf96045e18d5111a65e3c86c997455337df6d93ba0774faee.json"
           ]
         },
         "longCompatibility": {
           "state": "met",
-          "summary": "Successful x86_64-linux check/consumer derivations execute Ruby 1.8.7-p374 with RubyGems 2.6.14/Bundler 1.17.3 and a compiled json 1.8.6 extension; another exact tuple uses Ruby 2.5.8/Bundler 1.17.3. Ordinary consumers load the projected gem and compiled extension. Together with Ruby 3.4.11/4.0.9 sample execution, these are substantive historical compatibility points spanning old and modern toolchains. Intermediate versions and Darwin history are not inferred.",
+          "summary": "Separate current x86_64-linux CI observations execute historical Ruby/Bundler combinations including Ruby 1.8.4/Bundler 0.9.9, 1.8.6/1.0.22, 1.8.7/1.17.3, 1.9.x/1.17.3, 2.2.7/1.17.3, 2.5.8/2.0.2 and 2.7.1/2.1.4. The matching source asserts runtime versions, compiled origin, archive identity, unchanged inputs and negative cases before PASS. These observations are separate from the 12 current native derivation records; historical output/NAR identities are not invented, and old bd48 records retain their original revision.",
           "evidence": [
-            "https://github.com/nix-purifiers/bundler-purifier/actions/runs/42008521132/job/127181292088",
-            "https://nix-purifiers.github.io/evidence/b8267b7999536021fd31ecdd1eb0767d5751fc824c4552bbd690f75c71e07b5b.json"
+            "https://nix-purifiers.github.io/evidence/926617c86575685e652d0b29c46a12b43ec0a5c2caf602cb90af38d66b4ff20d.json",
+            "https://github.com/nix-purifiers/bundler-purifier/actions/runs/43756678227/job/132942181579",
+            "https://nix-purifiers.github.io/evidence/b06f252f5eaa2a5ce4dade013f9cc5bc03884395d5934b9b326bcb10c172151c.json",
+            "https://nix-purifiers.github.io/evidence/1edb54a33b36e4aaf8a7af6f4f3276ad180bc486e4c4f73c2b3241900460ff90.json",
+            "https://github.com/nix-purifiers/bundler-purifier/blob/6d5b4768f23faf468882aabad9db5dc7c31719b5/tests/historical-composition.py",
+            "https://github.com/nix-purifiers/bundler-purifier/blob/6d5b4768f23faf468882aabad9db5dc7c31719b5/tests/default.nix",
+            "https://nix-purifiers.github.io/evidence/dd682cb75d63ae015b0949560ca920c44b14d1fa0b4639b6db77277f27be04ef.json"
           ]
         },
         "firsthandUse": {
@@ -5869,1183 +5886,286 @@
           "evidence": []
         }
       },
-      "sampleBuilds": [
-        {
-          "name": "Independent lobsters/lobsters cb2b28371dbf5549b6fad293a6c2dfc8ec7a0320 (NAR sha256-MidCtPYmp91ADKj1GK0aH+XcYJUToADOY0RydBITQ+0=); owned app/library/submodule/historical fixtures are separate from this upstream sample.",
-          "evidence": [
-            "https://github.com/nix-purifiers/bundler-purifier/actions/runs/42008521132/job/127181292088",
-            "https://nix-purifiers.github.io/evidence/b8267b7999536021fd31ecdd1eb0767d5751fc824c4552bbd690f75c71e07b5b.json"
-          ]
-        }
-      ],
       "derivationReview": {
         "criteria": {
-          "darwin": {
-            "derivations": [],
-            "gap": "The inspected .github/workflows/check.yml and successful native jobs cover ubuntu-latest and ubuntu-24.04-arm only. The flake declares aarch64-darwin, which is not execution. No successful native Darwin sample derivation/SDK/output receipt is available; this Linux review host cannot execute it.",
-            "sources": [
-              "https://github.com/nix-purifiers/bundler-purifier/actions/runs/42008521132/job/127181292088",
-              "https://nix-purifiers.github.io/evidence/b8267b7999536021fd31ecdd1eb0767d5751fc824c4552bbd690f75c71e07b5b.json"
-            ],
-            "state": "not-met",
-            "summary": "The inspected .github/workflows/check.yml and successful native jobs cover ubuntu-latest and ubuntu-24.04-arm only. The flake declares aarch64-darwin, which is not execution. No successful native Darwin sample derivation/SDK/output receipt is available; this Linux review host cannot execute it."
-          },
           "evaluation": {
-            "derivations": [
-              "bundler-purifier:local:cli",
-              "bundler-purifier:local:composition-default-json",
-              "bundler-purifier:local:composition-native",
-              "bundler-purifier:local:conformance-external",
-              "bundler-purifier:local:conformance-malformed",
-              "bundler-purifier:local:conformance-missing",
-              "bundler-purifier:local:conformance-stale",
-              "bundler-purifier:local:conformance-tampered",
-              "bundler-purifier:local:fixture-app",
-              "bundler-purifier:local:fixture-app-helper-gem",
-              "bundler-purifier:local:fixture-library",
-              "bundler-purifier:local:fixture-library-app",
-              "bundler-purifier:local:fixture-library-executable",
-              "bundler-purifier:local:fixture-library-gem",
-              "bundler-purifier:local:fixture-library-tests",
-              "bundler-purifier:local:fixture-submodules",
-              "bundler-purifier:local:historical-ruby-app",
-              "bundler-purifier:local:historical-ruby-cli",
-              "bundler-purifier:local:historical-ruby-input-composition",
-              "bundler-purifier:local:historical-ruby-native-extension",
-              "bundler-purifier:local:historical-ruby-ordinary-consumer",
-              "bundler-purifier:local:historical-ruby-release",
-              "bundler-purifier:local:historical-ruby-repository",
-              "bundler-purifier:local:historical-ruby-tools",
-              "bundler-purifier:local:real-lobsters",
-              "bundler-purifier:local:real-lobsters-shell",
-              "bundler-purifier:local:ruby18-app",
-              "bundler-purifier:local:ruby18-cli",
-              "bundler-purifier:local:ruby18-native-extension",
-              "bundler-purifier:local:ruby18-ordinary-consumer",
-              "bundler-purifier:local:ruby18-release",
-              "bundler-purifier:local:ruby18-repository",
-              "bundler-purifier:local:ruby18-sdk",
-              "bundler-purifier:local:treefmt",
-              "bundler-purifier:local:unit"
-            ],
-            "gap": null,
-            "sources": [
-              "https://github.com/nix-purifiers/bundler-purifier/actions/runs/42008521132/job/127181292088",
-              "https://nix-purifiers.github.io/evidence/b8267b7999536021fd31ecdd1eb0767d5751fc824c4552bbd690f75c71e07b5b.json"
-            ],
             "state": "met",
-            "summary": "All 35 executable checks.x86_64-linux attributes evaluate and realize successfully at bd48bb6b1c1fe893899a301e5c55fc7cc8e92310. Exact derivations, native outputs and NAR hashes are in the packet; native aarch64-linux CI independently succeeds."
+            "summary": "The exact reviewed 6d5 source has 15 successful CI checks and 12 retained native derivation executions with output and NAR identities on x86_64-linux, aarch64-linux and aarch64-darwin.",
+            "derivations": [
+              "bundler-purifier:6d5:x86_64-linux:fixture-app",
+              "bundler-purifier:6d5:x86_64-linux:fixture-library-tests",
+              "bundler-purifier:6d5:x86_64-linux:real-lobsters-app",
+              "bundler-purifier:6d5:x86_64-linux:real-lobsters",
+              "bundler-purifier:6d5:aarch64-linux:fixture-app",
+              "bundler-purifier:6d5:aarch64-linux:fixture-library-tests",
+              "bundler-purifier:6d5:aarch64-linux:real-lobsters-app",
+              "bundler-purifier:6d5:aarch64-linux:real-lobsters",
+              "bundler-purifier:6d5:aarch64-darwin:fixture-app",
+              "bundler-purifier:6d5:aarch64-darwin:fixture-library-tests",
+              "bundler-purifier:6d5:aarch64-darwin:real-lobsters-app",
+              "bundler-purifier:6d5:aarch64-darwin:real-lobsters"
+            ],
+            "sources": [
+              "https://nix-purifiers.github.io/evidence/23a9839be3496f3d39f5f7b966a5f2f307808c14f00c4473d35d993ea9fd136b.json",
+              "https://nix-purifiers.github.io/evidence/33c2fdece54530edd81aa5d805cb6698de3842753db494d7c88786b3e852d7e8.json",
+              "https://nix-purifiers.github.io/evidence/25f6e88af91e3fccf96045e18d5111a65e3c86c997455337df6d93ba0774faee.json",
+              "https://nix-purifiers.github.io/evidence/926617c86575685e652d0b29c46a12b43ec0a5c2caf602cb90af38d66b4ff20d.json"
+            ],
+            "gap": null
           },
           "goodTests": {
-            "derivations": [
-              "bundler-purifier:local:cli",
-              "bundler-purifier:local:composition-default-json",
-              "bundler-purifier:local:composition-native",
-              "bundler-purifier:local:conformance-external",
-              "bundler-purifier:local:conformance-malformed",
-              "bundler-purifier:local:conformance-missing",
-              "bundler-purifier:local:conformance-stale",
-              "bundler-purifier:local:conformance-tampered",
-              "bundler-purifier:local:fixture-app",
-              "bundler-purifier:local:fixture-app-helper-gem",
-              "bundler-purifier:local:fixture-library",
-              "bundler-purifier:local:fixture-library-app",
-              "bundler-purifier:local:fixture-library-executable",
-              "bundler-purifier:local:fixture-library-gem",
-              "bundler-purifier:local:fixture-library-tests",
-              "bundler-purifier:local:fixture-submodules",
-              "bundler-purifier:local:historical-ruby-app",
-              "bundler-purifier:local:historical-ruby-cli",
-              "bundler-purifier:local:historical-ruby-input-composition",
-              "bundler-purifier:local:historical-ruby-native-extension",
-              "bundler-purifier:local:historical-ruby-ordinary-consumer",
-              "bundler-purifier:local:historical-ruby-release",
-              "bundler-purifier:local:historical-ruby-repository",
-              "bundler-purifier:local:historical-ruby-tools",
-              "bundler-purifier:local:real-lobsters",
-              "bundler-purifier:local:real-lobsters-shell",
-              "bundler-purifier:local:ruby18-app",
-              "bundler-purifier:local:ruby18-cli",
-              "bundler-purifier:local:ruby18-native-extension",
-              "bundler-purifier:local:ruby18-ordinary-consumer",
-              "bundler-purifier:local:ruby18-release",
-              "bundler-purifier:local:ruby18-repository",
-              "bundler-purifier:local:ruby18-sdk",
-              "bundler-purifier:local:treefmt",
-              "bundler-purifier:local:unit"
-            ],
-            "gap": null,
-            "sources": [
-              "https://github.com/nix-purifiers/bundler-purifier/actions/runs/42008521132/job/127181292088",
-              "https://nix-purifiers.github.io/evidence/b8267b7999536021fd31ecdd1eb0767d5751fc824c4552bbd690f75c71e07b5b.json"
-            ],
             "state": "met",
-            "summary": "Executable checks cover Ruby unit tests, tampered/stale/missing/malformed/external locks, a workspace app, local path gem, library tests, gem packaging and executable loading. Lobsters loads Rails and libvips from its offline bundle. Historical compiled-extension consumers and SDK composition exercise real ABI-sensitive behavior."
+            "summary": "Current CI covers hostile and invalid locks, native composition, fixtures, library tests and the independent Lobsters application. The retained native checks execute the app/library fixtures and build and run Lobsters on all three recorded systems.",
+            "derivations": [
+              "bundler-purifier:6d5:x86_64-linux:fixture-app",
+              "bundler-purifier:6d5:x86_64-linux:fixture-library-tests",
+              "bundler-purifier:6d5:x86_64-linux:real-lobsters-app",
+              "bundler-purifier:6d5:x86_64-linux:real-lobsters",
+              "bundler-purifier:6d5:aarch64-linux:fixture-app",
+              "bundler-purifier:6d5:aarch64-linux:fixture-library-tests",
+              "bundler-purifier:6d5:aarch64-linux:real-lobsters-app",
+              "bundler-purifier:6d5:aarch64-linux:real-lobsters",
+              "bundler-purifier:6d5:aarch64-darwin:fixture-app",
+              "bundler-purifier:6d5:aarch64-darwin:fixture-library-tests",
+              "bundler-purifier:6d5:aarch64-darwin:real-lobsters-app",
+              "bundler-purifier:6d5:aarch64-darwin:real-lobsters"
+            ],
+            "sources": [
+              "https://nix-purifiers.github.io/evidence/23a9839be3496f3d39f5f7b966a5f2f307808c14f00c4473d35d993ea9fd136b.json",
+              "https://nix-purifiers.github.io/evidence/33c2fdece54530edd81aa5d805cb6698de3842753db494d7c88786b3e852d7e8.json",
+              "https://nix-purifiers.github.io/evidence/25f6e88af91e3fccf96045e18d5111a65e3c86c997455337df6d93ba0774faee.json",
+              "https://nix-purifiers.github.io/evidence/926617c86575685e652d0b29c46a12b43ec0a5c2caf602cb90af38d66b4ff20d.json",
+              "https://github.com/nix-purifiers/bundler-purifier/actions/runs/43756678227/job/132942181579",
+              "https://nix-purifiers.github.io/evidence/b06f252f5eaa2a5ce4dade013f9cc5bc03884395d5934b9b326bcb10c172151c.json",
+              "https://nix-purifiers.github.io/evidence/1edb54a33b36e4aaf8a7af6f4f3276ad180bc486e4c4f73c2b3241900460ff90.json"
+            ],
+            "gap": null
           },
           "linux": {
-            "derivations": [
-              "bundler-purifier:local:cli",
-              "bundler-purifier:local:composition-default-json",
-              "bundler-purifier:local:composition-native",
-              "bundler-purifier:local:conformance-external",
-              "bundler-purifier:local:conformance-malformed",
-              "bundler-purifier:local:conformance-missing",
-              "bundler-purifier:local:conformance-stale",
-              "bundler-purifier:local:conformance-tampered",
-              "bundler-purifier:local:fixture-app",
-              "bundler-purifier:local:fixture-app-helper-gem",
-              "bundler-purifier:local:fixture-library",
-              "bundler-purifier:local:fixture-library-app",
-              "bundler-purifier:local:fixture-library-executable",
-              "bundler-purifier:local:fixture-library-gem",
-              "bundler-purifier:local:fixture-library-tests",
-              "bundler-purifier:local:fixture-submodules",
-              "bundler-purifier:local:historical-ruby-app",
-              "bundler-purifier:local:historical-ruby-cli",
-              "bundler-purifier:local:historical-ruby-input-composition",
-              "bundler-purifier:local:historical-ruby-native-extension",
-              "bundler-purifier:local:historical-ruby-ordinary-consumer",
-              "bundler-purifier:local:historical-ruby-release",
-              "bundler-purifier:local:historical-ruby-repository",
-              "bundler-purifier:local:historical-ruby-tools",
-              "bundler-purifier:local:real-lobsters",
-              "bundler-purifier:local:real-lobsters-shell",
-              "bundler-purifier:local:ruby18-app",
-              "bundler-purifier:local:ruby18-cli",
-              "bundler-purifier:local:ruby18-native-extension",
-              "bundler-purifier:local:ruby18-ordinary-consumer",
-              "bundler-purifier:local:ruby18-release",
-              "bundler-purifier:local:ruby18-repository",
-              "bundler-purifier:local:ruby18-sdk",
-              "bundler-purifier:local:treefmt",
-              "bundler-purifier:local:unit"
-            ],
-            "gap": null,
-            "sources": [
-              "https://github.com/nix-purifiers/bundler-purifier/actions/runs/42008521132/job/127181292088",
-              "https://nix-purifiers.github.io/evidence/b8267b7999536021fd31ecdd1eb0767d5751fc824c4552bbd690f75c71e07b5b.json"
-            ],
             "state": "met",
-            "summary": "Native aarch64-linux CI builds the required sample/check derivations successfully at the exact reviewed revision; local x86_64-linux checks also realize successfully. Neither result is cross-evaluation."
-          },
-          "longCompatibility": {
+            "summary": "Current native x86_64-linux and aarch64-linux receipts bind actual fixture and Lobsters derivation executions and realized outputs to the reviewed source; these are not cross-evaluation results.",
             "derivations": [
-              "bundler-purifier:local:historical-ruby-native-extension",
-              "bundler-purifier:local:ruby18-native-extension",
-              "bundler-purifier:local:fixture-app",
-              "bundler-purifier:local:real-lobsters"
+              "bundler-purifier:6d5:x86_64-linux:fixture-app",
+              "bundler-purifier:6d5:x86_64-linux:fixture-library-tests",
+              "bundler-purifier:6d5:x86_64-linux:real-lobsters-app",
+              "bundler-purifier:6d5:x86_64-linux:real-lobsters",
+              "bundler-purifier:6d5:aarch64-linux:fixture-app",
+              "bundler-purifier:6d5:aarch64-linux:fixture-library-tests",
+              "bundler-purifier:6d5:aarch64-linux:real-lobsters-app",
+              "bundler-purifier:6d5:aarch64-linux:real-lobsters"
             ],
-            "gap": null,
             "sources": [
-              "https://github.com/nix-purifiers/bundler-purifier/actions/runs/42008521132/job/127181292088",
-              "https://nix-purifiers.github.io/evidence/b8267b7999536021fd31ecdd1eb0767d5751fc824c4552bbd690f75c71e07b5b.json",
-              "https://nix-purifiers.github.io/evidence/24ff2fce1593e82e40ef4db0b9d2f6ee6687d229d73eaba161233b064aeabab5.json"
+              "https://nix-purifiers.github.io/evidence/23a9839be3496f3d39f5f7b966a5f2f307808c14f00c4473d35d993ea9fd136b.json",
+              "https://nix-purifiers.github.io/evidence/33c2fdece54530edd81aa5d805cb6698de3842753db494d7c88786b3e852d7e8.json"
             ],
-            "state": "met",
-            "summary": "Successful x86_64-linux check/consumer derivations execute Ruby 1.8.7-p374 with RubyGems 2.6.14/Bundler 1.17.3 and a compiled json 1.8.6 extension; another exact tuple uses Ruby 2.5.8/Bundler 1.17.3. Ordinary consumers load the projected gem and compiled extension. Together with Ruby 3.4.11/4.0.9 sample execution, these are substantive historical compatibility points spanning old and modern toolchains. Intermediate versions and Darwin history are not inferred."
+            "gap": null
           },
-          "manySamples": {
-            "derivations": [],
-            "gap": "Lobsters is one independent upstream application. App/library/submodule and historical-greeting fixtures give meaningful scenario coverage, but are authored here and do not establish many independent upstream application builds.",
-            "sources": [
-              "https://github.com/nix-purifiers/bundler-purifier/actions/runs/42008521132/job/127181292088",
-              "https://nix-purifiers.github.io/evidence/b8267b7999536021fd31ecdd1eb0767d5751fc824c4552bbd690f75c71e07b5b.json"
-            ],
-            "state": "not-met",
-            "summary": "Lobsters is one independent upstream application. App/library/submodule and historical-greeting fixtures give meaningful scenario coverage, but are authored here and do not establish many independent upstream application builds."
-          },
-          "nonEolVersions": {
+          "darwin": {
             "state": "met",
-            "summary": "The successful independent Lobsters sample executes Ruby 4.0.9 and the lock-selected Bundler 4.0.3. Ruby 4.0 is in normal maintenance. The official RubyGems compatibility policy identifies the current Bundler 4.0 series, requiring Ruby >=3.2 and RubyGems >=3.4.1; Ruby 4.0 ships a matching RubyGems/Bundler 4.0 pair. This is an actually tested maintained manager/runtime pair. Ruby 3.4.11 is also demonstrated by fixture-app; missing maintained Ruby 3.3 does not invalidate this bounded judgment. No untested version or all-patch range is claimed.",
+            "summary": "Native Apple Silicon aarch64-darwin receipts bind fixture and Lobsters executions, realized outputs and exact toolchains to the reviewed source. Intel macOS and untested SDK/platform combinations are not inferred.",
             "derivations": [
-              "bundler-purifier:local:real-lobsters"
+              "bundler-purifier:6d5:aarch64-darwin:fixture-app",
+              "bundler-purifier:6d5:aarch64-darwin:fixture-library-tests",
+              "bundler-purifier:6d5:aarch64-darwin:real-lobsters-app",
+              "bundler-purifier:6d5:aarch64-darwin:real-lobsters"
             ],
             "sources": [
-              "https://www.ruby-lang.org/en/downloads/branches/",
-              "https://guides.rubygems.org/bundler-compatibility/",
-              "https://nix-purifiers.github.io/evidence/23e3dcacdd3659d7ec2d9002b85b2a8ddb98741f033e4a76deb0235b56d75c94.json"
+              "https://nix-purifiers.github.io/evidence/25f6e88af91e3fccf96045e18d5111a65e3c86c997455337df6d93ba0774faee.json"
             ],
             "gap": null
           },
           "oneVersion": {
-            "derivations": [
-              "bundler-purifier:local:real-lobsters"
-            ],
-            "gap": null,
-            "sources": [
-              "https://github.com/nix-purifiers/bundler-purifier/actions/runs/42008521132/job/127181292088",
-              "https://nix-purifiers.github.io/evidence/b8267b7999536021fd31ecdd1eb0767d5751fc824c4552bbd690f75c71e07b5b.json"
-            ],
             "state": "met",
-            "summary": "Actual native sample execution demonstrates Ruby 3.4.11 and 4.0.9; historical Ruby 2.5.8 and 1.8.7-p374 with Bundler 1.17.3. Scope is the exact executed version point(s), not a version range."
+            "summary": "The independent Lobsters sample runs Ruby 4.0.9 and Bundler 4.0.3 with Rails 8.1.3.1 and libvips 8.18.7 on each of the three recorded systems.",
+            "derivations": [
+              "bundler-purifier:6d5:x86_64-linux:real-lobsters-app",
+              "bundler-purifier:6d5:x86_64-linux:real-lobsters",
+              "bundler-purifier:6d5:aarch64-linux:real-lobsters-app",
+              "bundler-purifier:6d5:aarch64-linux:real-lobsters",
+              "bundler-purifier:6d5:aarch64-darwin:real-lobsters-app",
+              "bundler-purifier:6d5:aarch64-darwin:real-lobsters"
+            ],
+            "sources": [
+              "https://nix-purifiers.github.io/evidence/23a9839be3496f3d39f5f7b966a5f2f307808c14f00c4473d35d993ea9fd136b.json",
+              "https://nix-purifiers.github.io/evidence/33c2fdece54530edd81aa5d805cb6698de3842753db494d7c88786b3e852d7e8.json",
+              "https://nix-purifiers.github.io/evidence/25f6e88af91e3fccf96045e18d5111a65e3c86c997455337df6d93ba0774faee.json"
+            ],
+            "gap": null
+          },
+          "nonEolVersions": {
+            "state": "met",
+            "summary": "The reviewed current upstream policy is covered by exact executions: Bundler 4.0.3 in Lobsters on all three systems, 2.6.9 actually loaded by the x86_64-linux app fixture, and 2.7.2 with Ruby 3.4.11 plus 2.5.22 with Ruby 3.3.8 in x86_64-linux composition checks. No all-patch interval or cross-platform Cartesian product is asserted.",
+            "derivations": [
+              "bundler-purifier:6d5:x86_64-linux:real-lobsters-app",
+              "bundler-purifier:6d5:x86_64-linux:real-lobsters",
+              "bundler-purifier:6d5:aarch64-linux:real-lobsters-app",
+              "bundler-purifier:6d5:aarch64-linux:real-lobsters",
+              "bundler-purifier:6d5:aarch64-darwin:real-lobsters-app",
+              "bundler-purifier:6d5:aarch64-darwin:real-lobsters"
+            ],
+            "sources": [
+              "https://nix-purifiers.github.io/evidence/926617c86575685e652d0b29c46a12b43ec0a5c2caf602cb90af38d66b4ff20d.json",
+              "https://github.com/nix-purifiers/bundler-purifier/actions/runs/43756678227/job/132942181579",
+              "https://nix-purifiers.github.io/evidence/b06f252f5eaa2a5ce4dade013f9cc5bc03884395d5934b9b326bcb10c172151c.json",
+              "https://nix-purifiers.github.io/evidence/1edb54a33b36e4aaf8a7af6f4f3276ad180bc486e4c4f73c2b3241900460ff90.json",
+              "https://nix-purifiers.github.io/evidence/23a9839be3496f3d39f5f7b966a5f2f307808c14f00c4473d35d993ea9fd136b.json",
+              "https://nix-purifiers.github.io/evidence/33c2fdece54530edd81aa5d805cb6698de3842753db494d7c88786b3e852d7e8.json",
+              "https://nix-purifiers.github.io/evidence/25f6e88af91e3fccf96045e18d5111a65e3c86c997455337df6d93ba0774faee.json",
+              "https://guides.rubygems.org/bundler-compatibility/",
+              "https://www.ruby-lang.org/en/downloads/branches/"
+            ],
+            "gap": null
+          },
+          "manySamples": {
+            "state": "not-met",
+            "summary": "Lobsters is one independent upstream application; owned fixtures and historical greeting/composition tests do not establish many independent upstream applications.",
+            "derivations": [
+              "bundler-purifier:6d5:x86_64-linux:real-lobsters-app",
+              "bundler-purifier:6d5:x86_64-linux:real-lobsters",
+              "bundler-purifier:6d5:aarch64-linux:real-lobsters-app",
+              "bundler-purifier:6d5:aarch64-linux:real-lobsters",
+              "bundler-purifier:6d5:aarch64-darwin:real-lobsters-app",
+              "bundler-purifier:6d5:aarch64-darwin:real-lobsters"
+            ],
+            "sources": [
+              "https://nix-purifiers.github.io/evidence/23a9839be3496f3d39f5f7b966a5f2f307808c14f00c4473d35d993ea9fd136b.json",
+              "https://nix-purifiers.github.io/evidence/33c2fdece54530edd81aa5d805cb6698de3842753db494d7c88786b3e852d7e8.json",
+              "https://nix-purifiers.github.io/evidence/25f6e88af91e3fccf96045e18d5111a65e3c86c997455337df6d93ba0774faee.json"
+            ],
+            "gap": "Lobsters is one independent upstream application; owned fixtures and historical greeting/composition tests do not establish many independent upstream applications."
+          },
+          "longCompatibility": {
+            "state": "met",
+            "summary": "Separate current x86_64-linux CI observations execute historical Ruby/Bundler combinations including Ruby 1.8.4/Bundler 0.9.9, 1.8.6/1.0.22, 1.8.7/1.17.3, 1.9.x/1.17.3, 2.2.7/1.17.3, 2.5.8/2.0.2 and 2.7.1/2.1.4. The matching source asserts runtime versions, compiled origin, archive identity, unchanged inputs and negative cases before PASS. These observations are separate from the 12 current native derivation records; historical output/NAR identities are not invented, and old bd48 records retain their original revision.",
+            "derivations": [
+              "bundler-purifier:6d5:x86_64-linux:real-lobsters-app",
+              "bundler-purifier:6d5:x86_64-linux:real-lobsters",
+              "bundler-purifier:6d5:aarch64-linux:real-lobsters-app",
+              "bundler-purifier:6d5:aarch64-linux:real-lobsters",
+              "bundler-purifier:6d5:aarch64-darwin:real-lobsters-app",
+              "bundler-purifier:6d5:aarch64-darwin:real-lobsters"
+            ],
+            "sources": [
+              "https://nix-purifiers.github.io/evidence/926617c86575685e652d0b29c46a12b43ec0a5c2caf602cb90af38d66b4ff20d.json",
+              "https://github.com/nix-purifiers/bundler-purifier/actions/runs/43756678227/job/132942181579",
+              "https://nix-purifiers.github.io/evidence/b06f252f5eaa2a5ce4dade013f9cc5bc03884395d5934b9b326bcb10c172151c.json",
+              "https://nix-purifiers.github.io/evidence/1edb54a33b36e4aaf8a7af6f4f3276ad180bc486e4c4f73c2b3241900460ff90.json",
+              "https://github.com/nix-purifiers/bundler-purifier/blob/6d5b4768f23faf468882aabad9db5dc7c31719b5/tests/historical-composition.py",
+              "https://github.com/nix-purifiers/bundler-purifier/blob/6d5b4768f23faf468882aabad9db5dc7c31719b5/tests/default.nix",
+              "https://nix-purifiers.github.io/evidence/dd682cb75d63ae015b0949560ca920c44b14d1fa0b4639b6db77277f27be04ef.json"
+            ],
+            "gap": null
           }
         },
         "derivations": {
-          "bundler-purifier:local:cli": {
-            "build": {
-              "artifactSha256": "91dd59ae43b8f90f0cb90df9cd7764df31556903f3b528f4511879809fdc1e99",
-              "drvPath": "/nix/store/wwyvq63b01ncqrv77lfwbsxi39ji8zva-bundler-purifier-0.1.0.drv",
-              "executedSystem": "x86_64-linux",
-              "outputNarHashes": {
-                "out": "sha256-UIPM+O9QLcyx32tciOtQSvt77vznl6HiSF5xkZNf1EY="
-              },
-              "outputs": {
-                "out": "/nix/store/vvavc56jl4fgqys5qy5z1n30qkiagrh4-bundler-purifier-0.1.0"
-              },
-              "receipt": "https://nix-purifiers.github.io/evidence/91dd59ae43b8f90f0cb90df9cd7764df31556903f3b528f4511879809fdc1e99.json",
-              "sampleSources": [],
-              "sdkVersions": {},
-              "sourceNarHash": "sha256-O1+sSynjzbzSC/Xezm2AV95vFwdGB5ksWV0314u00GM=",
-              "sourceRevision": "bd48bb6b1c1fe893899a301e5c55fc7cc8e92310",
-              "status": "success"
-            },
-            "check": {
-              "kind": "flake-attribute",
-              "replay": null,
-              "value": "checks.x86_64-linux.cli"
-            },
-            "drvPath": "/nix/store/wwyvq63b01ncqrv77lfwbsxi39ji8zva-bundler-purifier-0.1.0.drv",
-            "evaluation": null,
-            "outputNarHashes": {
-              "out": "sha256-UIPM+O9QLcyx32tciOtQSvt77vznl6HiSF5xkZNf1EY="
-            },
-            "outputs": {
-              "out": "/nix/store/vvavc56jl4fgqys5qy5z1n30qkiagrh4-bundler-purifier-0.1.0"
-            },
+          "bundler-purifier:6d5:x86_64-linux:fixture-app": {
             "repository": "nix-purifiers/bundler-purifier",
-            "revision": "bd48bb6b1c1fe893899a301e5c55fc7cc8e92310",
-            "sampleSources": [],
-            "sdkVersions": {},
-            "sourceNarHash": "sha256-O1+sSynjzbzSC/Xezm2AV95vFwdGB5ksWV0314u00GM=",
-            "system": "x86_64-linux"
-          },
-          "bundler-purifier:local:composition-default-json": {
-            "build": {
-              "artifactSha256": "91dd59ae43b8f90f0cb90df9cd7764df31556903f3b528f4511879809fdc1e99",
-              "drvPath": "/nix/store/y97pjdqyymdiwh891954apvxifinrfx4-bundler-default-json-composition.drv",
-              "executedSystem": "x86_64-linux",
-              "outputNarHashes": {
-                "out": "sha256-d6xi4mKdjkX2JFicDIv5niSzpyI0m/Hnm8GGAIU04kY="
-              },
-              "outputs": {
-                "out": "/nix/store/0kfaivc1ihi22ljxgsjs0hwmrzsrk44j-bundler-default-json-composition"
-              },
-              "receipt": "https://nix-purifiers.github.io/evidence/91dd59ae43b8f90f0cb90df9cd7764df31556903f3b528f4511879809fdc1e99.json",
-              "sampleSources": [],
-              "sdkVersions": {},
-              "sourceNarHash": "sha256-O1+sSynjzbzSC/Xezm2AV95vFwdGB5ksWV0314u00GM=",
-              "sourceRevision": "bd48bb6b1c1fe893899a301e5c55fc7cc8e92310",
-              "status": "success"
-            },
+            "revision": "6d5b4768f23faf468882aabad9db5dc7c31719b5",
+            "system": "x86_64-linux",
             "check": {
-              "kind": "flake-attribute",
-              "replay": null,
-              "value": "checks.x86_64-linux.composition-default-json"
+              "kind": "expression",
+              "value": "(builtins.getFlake \"/nix/store/79jrac44w35w49awkhgm9s5rhbs4axrn-source\").checks.x86_64-linux.fixture-app.overrideAttrs (_: { tier2ExecutionId = \"803b4ecf84e04a569671af25a6c581cb\"; })",
+              "replay": {
+                "artifactUrl": "https://nix-purifiers.github.io/evidence/23a9839be3496f3d39f5f7b966a5f2f307808c14f00c4473d35d993ea9fd136b.json",
+                "artifactSha256": "23a9839be3496f3d39f5f7b966a5f2f307808c14f00c4473d35d993ea9fd136b",
+                "expressionSha256": "0e1f6b827c05b25d5ecac467f3aae03661088b625df29f5c7ff7b80335aa6244",
+                "arguments": {}
+              }
             },
-            "drvPath": "/nix/store/y97pjdqyymdiwh891954apvxifinrfx4-bundler-default-json-composition.drv",
-            "evaluation": null,
+            "drvPath": "/nix/store/3bkjswpglha41hxd41rz8g3hnihsnr35-fixture-app-runs.drv",
+            "outputs": {
+              "out": "/nix/store/bc0f9zrabnfxd3b8f9lhqc23hrfrk23z-fixture-app-runs"
+            },
+            "sdkVersions": {},
+            "sampleSources": [],
+            "sourceNarHash": "sha256-Y4zVHT+JgLG0M8SMOLIlM4MmpIqoMB90N7Cx23MTOgk=",
             "outputNarHashes": {
               "out": "sha256-d6xi4mKdjkX2JFicDIv5niSzpyI0m/Hnm8GGAIU04kY="
             },
-            "outputs": {
-              "out": "/nix/store/0kfaivc1ihi22ljxgsjs0hwmrzsrk44j-bundler-default-json-composition"
-            },
-            "repository": "nix-purifiers/bundler-purifier",
-            "revision": "bd48bb6b1c1fe893899a301e5c55fc7cc8e92310",
-            "sampleSources": [],
-            "sdkVersions": {},
-            "sourceNarHash": "sha256-O1+sSynjzbzSC/Xezm2AV95vFwdGB5ksWV0314u00GM=",
-            "system": "x86_64-linux"
-          },
-          "bundler-purifier:local:composition-native": {
+            "evaluation": null,
             "build": {
-              "artifactSha256": "91dd59ae43b8f90f0cb90df9cd7764df31556903f3b528f4511879809fdc1e99",
-              "drvPath": "/nix/store/9vkdzap9abi7py3yj2gsxcfy6xgvymy4-bundler-native-projection-consumer.drv",
+              "status": "success",
               "executedSystem": "x86_64-linux",
+              "sourceRevision": "6d5b4768f23faf468882aabad9db5dc7c31719b5",
+              "drvPath": "/nix/store/3bkjswpglha41hxd41rz8g3hnihsnr35-fixture-app-runs.drv",
+              "outputs": {
+                "out": "/nix/store/bc0f9zrabnfxd3b8f9lhqc23hrfrk23z-fixture-app-runs"
+              },
+              "sourceNarHash": "sha256-Y4zVHT+JgLG0M8SMOLIlM4MmpIqoMB90N7Cx23MTOgk=",
               "outputNarHashes": {
                 "out": "sha256-d6xi4mKdjkX2JFicDIv5niSzpyI0m/Hnm8GGAIU04kY="
               },
-              "outputs": {
-                "out": "/nix/store/yq0h6s5jnxmndp30mrdwshjsc70vblkx-bundler-native-projection-consumer"
-              },
-              "receipt": "https://nix-purifiers.github.io/evidence/91dd59ae43b8f90f0cb90df9cd7764df31556903f3b528f4511879809fdc1e99.json",
-              "sampleSources": [],
               "sdkVersions": {},
-              "sourceNarHash": "sha256-O1+sSynjzbzSC/Xezm2AV95vFwdGB5ksWV0314u00GM=",
-              "sourceRevision": "bd48bb6b1c1fe893899a301e5c55fc7cc8e92310",
-              "status": "success"
-            },
-            "check": {
-              "kind": "flake-attribute",
-              "replay": null,
-              "value": "checks.x86_64-linux.composition-native"
-            },
-            "drvPath": "/nix/store/9vkdzap9abi7py3yj2gsxcfy6xgvymy4-bundler-native-projection-consumer.drv",
-            "evaluation": null,
-            "outputNarHashes": {
-              "out": "sha256-d6xi4mKdjkX2JFicDIv5niSzpyI0m/Hnm8GGAIU04kY="
-            },
-            "outputs": {
-              "out": "/nix/store/yq0h6s5jnxmndp30mrdwshjsc70vblkx-bundler-native-projection-consumer"
-            },
+              "sampleSources": [],
+              "receipt": "https://nix-purifiers.github.io/evidence/23a9839be3496f3d39f5f7b966a5f2f307808c14f00c4473d35d993ea9fd136b.json",
+              "artifactSha256": "23a9839be3496f3d39f5f7b966a5f2f307808c14f00c4473d35d993ea9fd136b"
+            }
+          },
+          "bundler-purifier:6d5:x86_64-linux:fixture-library-tests": {
             "repository": "nix-purifiers/bundler-purifier",
-            "revision": "bd48bb6b1c1fe893899a301e5c55fc7cc8e92310",
-            "sampleSources": [],
+            "revision": "6d5b4768f23faf468882aabad9db5dc7c31719b5",
+            "system": "x86_64-linux",
+            "check": {
+              "kind": "expression",
+              "value": "(builtins.getFlake \"/nix/store/79jrac44w35w49awkhgm9s5rhbs4axrn-source\").checks.x86_64-linux.fixture-library-tests.overrideAttrs (_: { tier2ExecutionId = \"99d0f918691447adae73e8855a862a6f\"; })",
+              "replay": {
+                "artifactUrl": "https://nix-purifiers.github.io/evidence/23a9839be3496f3d39f5f7b966a5f2f307808c14f00c4473d35d993ea9fd136b.json",
+                "artifactSha256": "23a9839be3496f3d39f5f7b966a5f2f307808c14f00c4473d35d993ea9fd136b",
+                "expressionSha256": "05df1fd3f5650607e24c496fedfc2c574a2262d09541d94cf0487be4d1c71268",
+                "arguments": {}
+              }
+            },
+            "drvPath": "/nix/store/m4vxhlfq74p5cs7mq1d88gy26k9gjb0l-fixture-library-tests.drv",
+            "outputs": {
+              "out": "/nix/store/zcp84xj84wsk0qwsxnahs3k60vh171aj-fixture-library-tests"
+            },
             "sdkVersions": {},
-            "sourceNarHash": "sha256-O1+sSynjzbzSC/Xezm2AV95vFwdGB5ksWV0314u00GM=",
-            "system": "x86_64-linux"
-          },
-          "bundler-purifier:local:conformance-external": {
-            "build": {
-              "artifactSha256": "91dd59ae43b8f90f0cb90df9cd7764df31556903f3b528f4511879809fdc1e99",
-              "drvPath": "/nix/store/h35ss2vspl4mrg0yjch1bz3ddgprxk01-conformance-external.drv",
-              "executedSystem": "x86_64-linux",
-              "outputNarHashes": {
-                "out": "sha256-d6xi4mKdjkX2JFicDIv5niSzpyI0m/Hnm8GGAIU04kY="
-              },
-              "outputs": {
-                "out": "/nix/store/pjdrm85m7gripb339kffrasab69qw516-conformance-external"
-              },
-              "receipt": "https://nix-purifiers.github.io/evidence/91dd59ae43b8f90f0cb90df9cd7764df31556903f3b528f4511879809fdc1e99.json",
-              "sampleSources": [],
-              "sdkVersions": {},
-              "sourceNarHash": "sha256-O1+sSynjzbzSC/Xezm2AV95vFwdGB5ksWV0314u00GM=",
-              "sourceRevision": "bd48bb6b1c1fe893899a301e5c55fc7cc8e92310",
-              "status": "success"
-            },
-            "check": {
-              "kind": "flake-attribute",
-              "replay": null,
-              "value": "checks.x86_64-linux.conformance-external"
-            },
-            "drvPath": "/nix/store/h35ss2vspl4mrg0yjch1bz3ddgprxk01-conformance-external.drv",
-            "evaluation": null,
-            "outputNarHashes": {
-              "out": "sha256-d6xi4mKdjkX2JFicDIv5niSzpyI0m/Hnm8GGAIU04kY="
-            },
-            "outputs": {
-              "out": "/nix/store/pjdrm85m7gripb339kffrasab69qw516-conformance-external"
-            },
-            "repository": "nix-purifiers/bundler-purifier",
-            "revision": "bd48bb6b1c1fe893899a301e5c55fc7cc8e92310",
             "sampleSources": [],
-            "sdkVersions": {},
-            "sourceNarHash": "sha256-O1+sSynjzbzSC/Xezm2AV95vFwdGB5ksWV0314u00GM=",
-            "system": "x86_64-linux"
-          },
-          "bundler-purifier:local:conformance-malformed": {
-            "build": {
-              "artifactSha256": "91dd59ae43b8f90f0cb90df9cd7764df31556903f3b528f4511879809fdc1e99",
-              "drvPath": "/nix/store/lgpfcbrp384zbijyrk1ran957m7xrg5q-conformance-malformed.drv",
-              "executedSystem": "x86_64-linux",
-              "outputNarHashes": {
-                "out": "sha256-d6xi4mKdjkX2JFicDIv5niSzpyI0m/Hnm8GGAIU04kY="
-              },
-              "outputs": {
-                "out": "/nix/store/iylrwpsl09kx670xdff75gfifpv70y51-conformance-malformed"
-              },
-              "receipt": "https://nix-purifiers.github.io/evidence/91dd59ae43b8f90f0cb90df9cd7764df31556903f3b528f4511879809fdc1e99.json",
-              "sampleSources": [],
-              "sdkVersions": {},
-              "sourceNarHash": "sha256-O1+sSynjzbzSC/Xezm2AV95vFwdGB5ksWV0314u00GM=",
-              "sourceRevision": "bd48bb6b1c1fe893899a301e5c55fc7cc8e92310",
-              "status": "success"
-            },
-            "check": {
-              "kind": "flake-attribute",
-              "replay": null,
-              "value": "checks.x86_64-linux.conformance-malformed"
-            },
-            "drvPath": "/nix/store/lgpfcbrp384zbijyrk1ran957m7xrg5q-conformance-malformed.drv",
-            "evaluation": null,
-            "outputNarHashes": {
-              "out": "sha256-d6xi4mKdjkX2JFicDIv5niSzpyI0m/Hnm8GGAIU04kY="
-            },
-            "outputs": {
-              "out": "/nix/store/iylrwpsl09kx670xdff75gfifpv70y51-conformance-malformed"
-            },
-            "repository": "nix-purifiers/bundler-purifier",
-            "revision": "bd48bb6b1c1fe893899a301e5c55fc7cc8e92310",
-            "sampleSources": [],
-            "sdkVersions": {},
-            "sourceNarHash": "sha256-O1+sSynjzbzSC/Xezm2AV95vFwdGB5ksWV0314u00GM=",
-            "system": "x86_64-linux"
-          },
-          "bundler-purifier:local:conformance-missing": {
-            "build": {
-              "artifactSha256": "91dd59ae43b8f90f0cb90df9cd7764df31556903f3b528f4511879809fdc1e99",
-              "drvPath": "/nix/store/y5qizsaji77wqn32b9n0pia4aidk3d56-conformance-missing.drv",
-              "executedSystem": "x86_64-linux",
-              "outputNarHashes": {
-                "out": "sha256-d6xi4mKdjkX2JFicDIv5niSzpyI0m/Hnm8GGAIU04kY="
-              },
-              "outputs": {
-                "out": "/nix/store/y3jzrb6bkdjji40pc1ab7abyzkkyrhaj-conformance-missing"
-              },
-              "receipt": "https://nix-purifiers.github.io/evidence/91dd59ae43b8f90f0cb90df9cd7764df31556903f3b528f4511879809fdc1e99.json",
-              "sampleSources": [],
-              "sdkVersions": {},
-              "sourceNarHash": "sha256-O1+sSynjzbzSC/Xezm2AV95vFwdGB5ksWV0314u00GM=",
-              "sourceRevision": "bd48bb6b1c1fe893899a301e5c55fc7cc8e92310",
-              "status": "success"
-            },
-            "check": {
-              "kind": "flake-attribute",
-              "replay": null,
-              "value": "checks.x86_64-linux.conformance-missing"
-            },
-            "drvPath": "/nix/store/y5qizsaji77wqn32b9n0pia4aidk3d56-conformance-missing.drv",
-            "evaluation": null,
-            "outputNarHashes": {
-              "out": "sha256-d6xi4mKdjkX2JFicDIv5niSzpyI0m/Hnm8GGAIU04kY="
-            },
-            "outputs": {
-              "out": "/nix/store/y3jzrb6bkdjji40pc1ab7abyzkkyrhaj-conformance-missing"
-            },
-            "repository": "nix-purifiers/bundler-purifier",
-            "revision": "bd48bb6b1c1fe893899a301e5c55fc7cc8e92310",
-            "sampleSources": [],
-            "sdkVersions": {},
-            "sourceNarHash": "sha256-O1+sSynjzbzSC/Xezm2AV95vFwdGB5ksWV0314u00GM=",
-            "system": "x86_64-linux"
-          },
-          "bundler-purifier:local:conformance-stale": {
-            "build": {
-              "artifactSha256": "91dd59ae43b8f90f0cb90df9cd7764df31556903f3b528f4511879809fdc1e99",
-              "drvPath": "/nix/store/vsh25c7m2gc2slpah2p2vrmb90sh5qvs-conformance-stale.drv",
-              "executedSystem": "x86_64-linux",
-              "outputNarHashes": {
-                "out": "sha256-d6xi4mKdjkX2JFicDIv5niSzpyI0m/Hnm8GGAIU04kY="
-              },
-              "outputs": {
-                "out": "/nix/store/9c0g8gmpyng8nv49m14dygi5psjihjq6-conformance-stale"
-              },
-              "receipt": "https://nix-purifiers.github.io/evidence/91dd59ae43b8f90f0cb90df9cd7764df31556903f3b528f4511879809fdc1e99.json",
-              "sampleSources": [],
-              "sdkVersions": {},
-              "sourceNarHash": "sha256-O1+sSynjzbzSC/Xezm2AV95vFwdGB5ksWV0314u00GM=",
-              "sourceRevision": "bd48bb6b1c1fe893899a301e5c55fc7cc8e92310",
-              "status": "success"
-            },
-            "check": {
-              "kind": "flake-attribute",
-              "replay": null,
-              "value": "checks.x86_64-linux.conformance-stale"
-            },
-            "drvPath": "/nix/store/vsh25c7m2gc2slpah2p2vrmb90sh5qvs-conformance-stale.drv",
-            "evaluation": null,
-            "outputNarHashes": {
-              "out": "sha256-d6xi4mKdjkX2JFicDIv5niSzpyI0m/Hnm8GGAIU04kY="
-            },
-            "outputs": {
-              "out": "/nix/store/9c0g8gmpyng8nv49m14dygi5psjihjq6-conformance-stale"
-            },
-            "repository": "nix-purifiers/bundler-purifier",
-            "revision": "bd48bb6b1c1fe893899a301e5c55fc7cc8e92310",
-            "sampleSources": [],
-            "sdkVersions": {},
-            "sourceNarHash": "sha256-O1+sSynjzbzSC/Xezm2AV95vFwdGB5ksWV0314u00GM=",
-            "system": "x86_64-linux"
-          },
-          "bundler-purifier:local:conformance-tampered": {
-            "build": {
-              "artifactSha256": "91dd59ae43b8f90f0cb90df9cd7764df31556903f3b528f4511879809fdc1e99",
-              "drvPath": "/nix/store/bgn1q6vah4mk0by538fwjnfj59fjip6w-conformance-tampered.drv",
-              "executedSystem": "x86_64-linux",
-              "outputNarHashes": {
-                "out": "sha256-d6xi4mKdjkX2JFicDIv5niSzpyI0m/Hnm8GGAIU04kY="
-              },
-              "outputs": {
-                "out": "/nix/store/fz7xh7qw8k2bah8rwy0f0l731694iqqq-conformance-tampered"
-              },
-              "receipt": "https://nix-purifiers.github.io/evidence/91dd59ae43b8f90f0cb90df9cd7764df31556903f3b528f4511879809fdc1e99.json",
-              "sampleSources": [],
-              "sdkVersions": {},
-              "sourceNarHash": "sha256-O1+sSynjzbzSC/Xezm2AV95vFwdGB5ksWV0314u00GM=",
-              "sourceRevision": "bd48bb6b1c1fe893899a301e5c55fc7cc8e92310",
-              "status": "success"
-            },
-            "check": {
-              "kind": "flake-attribute",
-              "replay": null,
-              "value": "checks.x86_64-linux.conformance-tampered"
-            },
-            "drvPath": "/nix/store/bgn1q6vah4mk0by538fwjnfj59fjip6w-conformance-tampered.drv",
-            "evaluation": null,
-            "outputNarHashes": {
-              "out": "sha256-d6xi4mKdjkX2JFicDIv5niSzpyI0m/Hnm8GGAIU04kY="
-            },
-            "outputs": {
-              "out": "/nix/store/fz7xh7qw8k2bah8rwy0f0l731694iqqq-conformance-tampered"
-            },
-            "repository": "nix-purifiers/bundler-purifier",
-            "revision": "bd48bb6b1c1fe893899a301e5c55fc7cc8e92310",
-            "sampleSources": [],
-            "sdkVersions": {},
-            "sourceNarHash": "sha256-O1+sSynjzbzSC/Xezm2AV95vFwdGB5ksWV0314u00GM=",
-            "system": "x86_64-linux"
-          },
-          "bundler-purifier:local:fixture-app": {
-            "build": {
-              "artifactSha256": "91dd59ae43b8f90f0cb90df9cd7764df31556903f3b528f4511879809fdc1e99",
-              "drvPath": "/nix/store/4bv6xz4gr7zvqn928mkh7p2ndv4xvfhm-fixture-app-runs.drv",
-              "executedSystem": "x86_64-linux",
-              "outputNarHashes": {
-                "out": "sha256-d6xi4mKdjkX2JFicDIv5niSzpyI0m/Hnm8GGAIU04kY="
-              },
-              "outputs": {
-                "out": "/nix/store/fga3bxhh677qdwi67xbghmzr34g5dahs-fixture-app-runs"
-              },
-              "receipt": "https://nix-purifiers.github.io/evidence/91dd59ae43b8f90f0cb90df9cd7764df31556903f3b528f4511879809fdc1e99.json",
-              "sampleSources": [],
-              "sdkVersions": {
-                "Ruby": "3.4.11"
-              },
-              "sourceNarHash": "sha256-O1+sSynjzbzSC/Xezm2AV95vFwdGB5ksWV0314u00GM=",
-              "sourceRevision": "bd48bb6b1c1fe893899a301e5c55fc7cc8e92310",
-              "status": "success"
-            },
-            "check": {
-              "kind": "flake-attribute",
-              "replay": null,
-              "value": "checks.x86_64-linux.fixture-app"
-            },
-            "drvPath": "/nix/store/4bv6xz4gr7zvqn928mkh7p2ndv4xvfhm-fixture-app-runs.drv",
-            "evaluation": null,
-            "outputNarHashes": {
-              "out": "sha256-d6xi4mKdjkX2JFicDIv5niSzpyI0m/Hnm8GGAIU04kY="
-            },
-            "outputs": {
-              "out": "/nix/store/fga3bxhh677qdwi67xbghmzr34g5dahs-fixture-app-runs"
-            },
-            "repository": "nix-purifiers/bundler-purifier",
-            "revision": "bd48bb6b1c1fe893899a301e5c55fc7cc8e92310",
-            "sampleSources": [],
-            "sdkVersions": {
-              "Ruby": "3.4.11"
-            },
-            "sourceNarHash": "sha256-O1+sSynjzbzSC/Xezm2AV95vFwdGB5ksWV0314u00GM=",
-            "system": "x86_64-linux"
-          },
-          "bundler-purifier:local:fixture-app-helper-gem": {
-            "build": {
-              "artifactSha256": "91dd59ae43b8f90f0cb90df9cd7764df31556903f3b528f4511879809fdc1e99",
-              "drvPath": "/nix/store/4mvajn9r8ylzlyyrfz6vjip22qzxfx2g-fixture-app-helper-gem.drv",
-              "executedSystem": "x86_64-linux",
-              "outputNarHashes": {
-                "out": "sha256-d6xi4mKdjkX2JFicDIv5niSzpyI0m/Hnm8GGAIU04kY="
-              },
-              "outputs": {
-                "out": "/nix/store/8r73h6n7y86ap3116yiv92z82cb4krvv-fixture-app-helper-gem"
-              },
-              "receipt": "https://nix-purifiers.github.io/evidence/91dd59ae43b8f90f0cb90df9cd7764df31556903f3b528f4511879809fdc1e99.json",
-              "sampleSources": [],
-              "sdkVersions": {},
-              "sourceNarHash": "sha256-O1+sSynjzbzSC/Xezm2AV95vFwdGB5ksWV0314u00GM=",
-              "sourceRevision": "bd48bb6b1c1fe893899a301e5c55fc7cc8e92310",
-              "status": "success"
-            },
-            "check": {
-              "kind": "flake-attribute",
-              "replay": null,
-              "value": "checks.x86_64-linux.fixture-app-helper-gem"
-            },
-            "drvPath": "/nix/store/4mvajn9r8ylzlyyrfz6vjip22qzxfx2g-fixture-app-helper-gem.drv",
-            "evaluation": null,
-            "outputNarHashes": {
-              "out": "sha256-d6xi4mKdjkX2JFicDIv5niSzpyI0m/Hnm8GGAIU04kY="
-            },
-            "outputs": {
-              "out": "/nix/store/8r73h6n7y86ap3116yiv92z82cb4krvv-fixture-app-helper-gem"
-            },
-            "repository": "nix-purifiers/bundler-purifier",
-            "revision": "bd48bb6b1c1fe893899a301e5c55fc7cc8e92310",
-            "sampleSources": [],
-            "sdkVersions": {},
-            "sourceNarHash": "sha256-O1+sSynjzbzSC/Xezm2AV95vFwdGB5ksWV0314u00GM=",
-            "system": "x86_64-linux"
-          },
-          "bundler-purifier:local:fixture-library": {
-            "build": {
-              "artifactSha256": "91dd59ae43b8f90f0cb90df9cd7764df31556903f3b528f4511879809fdc1e99",
-              "drvPath": "/nix/store/6wjp5dsgyayfscjfhr6qyrxkfldwhgdm-fixture-library-gem.drv",
-              "executedSystem": "x86_64-linux",
-              "outputNarHashes": {
-                "out": "sha256-d6xi4mKdjkX2JFicDIv5niSzpyI0m/Hnm8GGAIU04kY="
-              },
-              "outputs": {
-                "out": "/nix/store/mkn85rvvmsc38hq7cdyvzdvpr3q2w9hy-fixture-library-gem"
-              },
-              "receipt": "https://nix-purifiers.github.io/evidence/91dd59ae43b8f90f0cb90df9cd7764df31556903f3b528f4511879809fdc1e99.json",
-              "sampleSources": [],
-              "sdkVersions": {},
-              "sourceNarHash": "sha256-O1+sSynjzbzSC/Xezm2AV95vFwdGB5ksWV0314u00GM=",
-              "sourceRevision": "bd48bb6b1c1fe893899a301e5c55fc7cc8e92310",
-              "status": "success"
-            },
-            "check": {
-              "kind": "flake-attribute",
-              "replay": null,
-              "value": "checks.x86_64-linux.fixture-library"
-            },
-            "drvPath": "/nix/store/6wjp5dsgyayfscjfhr6qyrxkfldwhgdm-fixture-library-gem.drv",
-            "evaluation": null,
-            "outputNarHashes": {
-              "out": "sha256-d6xi4mKdjkX2JFicDIv5niSzpyI0m/Hnm8GGAIU04kY="
-            },
-            "outputs": {
-              "out": "/nix/store/mkn85rvvmsc38hq7cdyvzdvpr3q2w9hy-fixture-library-gem"
-            },
-            "repository": "nix-purifiers/bundler-purifier",
-            "revision": "bd48bb6b1c1fe893899a301e5c55fc7cc8e92310",
-            "sampleSources": [],
-            "sdkVersions": {},
-            "sourceNarHash": "sha256-O1+sSynjzbzSC/Xezm2AV95vFwdGB5ksWV0314u00GM=",
-            "system": "x86_64-linux"
-          },
-          "bundler-purifier:local:fixture-library-app": {
-            "build": {
-              "artifactSha256": "91dd59ae43b8f90f0cb90df9cd7764df31556903f3b528f4511879809fdc1e99",
-              "drvPath": "/nix/store/vxyk2hja2x15lsqwsf2acjhcphh99fz6-fixture-library.drv",
-              "executedSystem": "x86_64-linux",
-              "outputNarHashes": {
-                "out": "sha256-ESJlNCyQ3Jw6gu+kRzCHM9Z12odMBf5op6pjE56kj50="
-              },
-              "outputs": {
-                "out": "/nix/store/1drgqcgfj09m42qmz2519i7ib7kp1cwc-fixture-library"
-              },
-              "receipt": "https://nix-purifiers.github.io/evidence/91dd59ae43b8f90f0cb90df9cd7764df31556903f3b528f4511879809fdc1e99.json",
-              "sampleSources": [],
-              "sdkVersions": {},
-              "sourceNarHash": "sha256-O1+sSynjzbzSC/Xezm2AV95vFwdGB5ksWV0314u00GM=",
-              "sourceRevision": "bd48bb6b1c1fe893899a301e5c55fc7cc8e92310",
-              "status": "success"
-            },
-            "check": {
-              "kind": "flake-attribute",
-              "replay": null,
-              "value": "checks.x86_64-linux.fixture-library-app"
-            },
-            "drvPath": "/nix/store/vxyk2hja2x15lsqwsf2acjhcphh99fz6-fixture-library.drv",
-            "evaluation": null,
+            "sourceNarHash": "sha256-Y4zVHT+JgLG0M8SMOLIlM4MmpIqoMB90N7Cx23MTOgk=",
             "outputNarHashes": {
               "out": "sha256-ESJlNCyQ3Jw6gu+kRzCHM9Z12odMBf5op6pjE56kj50="
             },
-            "outputs": {
-              "out": "/nix/store/1drgqcgfj09m42qmz2519i7ib7kp1cwc-fixture-library"
-            },
-            "repository": "nix-purifiers/bundler-purifier",
-            "revision": "bd48bb6b1c1fe893899a301e5c55fc7cc8e92310",
-            "sampleSources": [],
-            "sdkVersions": {},
-            "sourceNarHash": "sha256-O1+sSynjzbzSC/Xezm2AV95vFwdGB5ksWV0314u00GM=",
-            "system": "x86_64-linux"
-          },
-          "bundler-purifier:local:fixture-library-executable": {
-            "build": {
-              "artifactSha256": "91dd59ae43b8f90f0cb90df9cd7764df31556903f3b528f4511879809fdc1e99",
-              "drvPath": "/nix/store/qz8lxwlwhpkxc1zrzlkffplr1xbf78f7-fixture-library-executable.drv",
-              "executedSystem": "x86_64-linux",
-              "outputNarHashes": {
-                "out": "sha256-d6xi4mKdjkX2JFicDIv5niSzpyI0m/Hnm8GGAIU04kY="
-              },
-              "outputs": {
-                "out": "/nix/store/radynxrd5i4sjwax7g21xdyjfgpm8djg-fixture-library-executable"
-              },
-              "receipt": "https://nix-purifiers.github.io/evidence/91dd59ae43b8f90f0cb90df9cd7764df31556903f3b528f4511879809fdc1e99.json",
-              "sampleSources": [],
-              "sdkVersions": {},
-              "sourceNarHash": "sha256-O1+sSynjzbzSC/Xezm2AV95vFwdGB5ksWV0314u00GM=",
-              "sourceRevision": "bd48bb6b1c1fe893899a301e5c55fc7cc8e92310",
-              "status": "success"
-            },
-            "check": {
-              "kind": "flake-attribute",
-              "replay": null,
-              "value": "checks.x86_64-linux.fixture-library-executable"
-            },
-            "drvPath": "/nix/store/qz8lxwlwhpkxc1zrzlkffplr1xbf78f7-fixture-library-executable.drv",
             "evaluation": null,
-            "outputNarHashes": {
-              "out": "sha256-d6xi4mKdjkX2JFicDIv5niSzpyI0m/Hnm8GGAIU04kY="
-            },
-            "outputs": {
-              "out": "/nix/store/radynxrd5i4sjwax7g21xdyjfgpm8djg-fixture-library-executable"
-            },
-            "repository": "nix-purifiers/bundler-purifier",
-            "revision": "bd48bb6b1c1fe893899a301e5c55fc7cc8e92310",
-            "sampleSources": [],
-            "sdkVersions": {},
-            "sourceNarHash": "sha256-O1+sSynjzbzSC/Xezm2AV95vFwdGB5ksWV0314u00GM=",
-            "system": "x86_64-linux"
-          },
-          "bundler-purifier:local:fixture-library-gem": {
             "build": {
-              "artifactSha256": "91dd59ae43b8f90f0cb90df9cd7764df31556903f3b528f4511879809fdc1e99",
-              "drvPath": "/nix/store/cv66j4zv7b6k3rld5x25bddlb9ydzm45-greeting-0.2.0.drv",
+              "status": "success",
               "executedSystem": "x86_64-linux",
-              "outputNarHashes": {
-                "out": "sha256-5BzHpIWkcoGKA9ZbrN5dJKlRMYKjzCxpNX65igk7OXQ="
-              },
+              "sourceRevision": "6d5b4768f23faf468882aabad9db5dc7c31719b5",
+              "drvPath": "/nix/store/m4vxhlfq74p5cs7mq1d88gy26k9gjb0l-fixture-library-tests.drv",
               "outputs": {
-                "out": "/nix/store/3vq31wm8ayxjrx8dnp9qyjx7h8xz1c13-greeting-0.2.0"
+                "out": "/nix/store/zcp84xj84wsk0qwsxnahs3k60vh171aj-fixture-library-tests"
               },
-              "receipt": "https://nix-purifiers.github.io/evidence/91dd59ae43b8f90f0cb90df9cd7764df31556903f3b528f4511879809fdc1e99.json",
-              "sampleSources": [],
-              "sdkVersions": {},
-              "sourceNarHash": "sha256-O1+sSynjzbzSC/Xezm2AV95vFwdGB5ksWV0314u00GM=",
-              "sourceRevision": "bd48bb6b1c1fe893899a301e5c55fc7cc8e92310",
-              "status": "success"
-            },
-            "check": {
-              "kind": "flake-attribute",
-              "replay": null,
-              "value": "checks.x86_64-linux.fixture-library-gem"
-            },
-            "drvPath": "/nix/store/cv66j4zv7b6k3rld5x25bddlb9ydzm45-greeting-0.2.0.drv",
-            "evaluation": null,
-            "outputNarHashes": {
-              "out": "sha256-5BzHpIWkcoGKA9ZbrN5dJKlRMYKjzCxpNX65igk7OXQ="
-            },
-            "outputs": {
-              "out": "/nix/store/3vq31wm8ayxjrx8dnp9qyjx7h8xz1c13-greeting-0.2.0"
-            },
-            "repository": "nix-purifiers/bundler-purifier",
-            "revision": "bd48bb6b1c1fe893899a301e5c55fc7cc8e92310",
-            "sampleSources": [],
-            "sdkVersions": {},
-            "sourceNarHash": "sha256-O1+sSynjzbzSC/Xezm2AV95vFwdGB5ksWV0314u00GM=",
-            "system": "x86_64-linux"
-          },
-          "bundler-purifier:local:fixture-library-tests": {
-            "build": {
-              "artifactSha256": "91dd59ae43b8f90f0cb90df9cd7764df31556903f3b528f4511879809fdc1e99",
-              "drvPath": "/nix/store/8fqlyxryd0qy95lipqvw7ifbif29rx13-fixture-library-tests.drv",
-              "executedSystem": "x86_64-linux",
+              "sourceNarHash": "sha256-Y4zVHT+JgLG0M8SMOLIlM4MmpIqoMB90N7Cx23MTOgk=",
               "outputNarHashes": {
                 "out": "sha256-ESJlNCyQ3Jw6gu+kRzCHM9Z12odMBf5op6pjE56kj50="
               },
-              "outputs": {
-                "out": "/nix/store/wjv1g4zqd3isbpcvlb7gbmyp3f3pzc7i-fixture-library-tests"
-              },
-              "receipt": "https://nix-purifiers.github.io/evidence/91dd59ae43b8f90f0cb90df9cd7764df31556903f3b528f4511879809fdc1e99.json",
-              "sampleSources": [],
               "sdkVersions": {},
-              "sourceNarHash": "sha256-O1+sSynjzbzSC/Xezm2AV95vFwdGB5ksWV0314u00GM=",
-              "sourceRevision": "bd48bb6b1c1fe893899a301e5c55fc7cc8e92310",
-              "status": "success"
-            },
-            "check": {
-              "kind": "flake-attribute",
-              "replay": null,
-              "value": "checks.x86_64-linux.fixture-library-tests"
-            },
-            "drvPath": "/nix/store/8fqlyxryd0qy95lipqvw7ifbif29rx13-fixture-library-tests.drv",
-            "evaluation": null,
-            "outputNarHashes": {
-              "out": "sha256-ESJlNCyQ3Jw6gu+kRzCHM9Z12odMBf5op6pjE56kj50="
-            },
-            "outputs": {
-              "out": "/nix/store/wjv1g4zqd3isbpcvlb7gbmyp3f3pzc7i-fixture-library-tests"
-            },
-            "repository": "nix-purifiers/bundler-purifier",
-            "revision": "bd48bb6b1c1fe893899a301e5c55fc7cc8e92310",
-            "sampleSources": [],
-            "sdkVersions": {},
-            "sourceNarHash": "sha256-O1+sSynjzbzSC/Xezm2AV95vFwdGB5ksWV0314u00GM=",
-            "system": "x86_64-linux"
-          },
-          "bundler-purifier:local:fixture-submodules": {
-            "build": {
-              "artifactSha256": "91dd59ae43b8f90f0cb90df9cd7764df31556903f3b528f4511879809fdc1e99",
-              "drvPath": "/nix/store/6vk4yjd3ck3c9bz934hds2caw4la9wcp-fixture-submodules-runs.drv",
-              "executedSystem": "x86_64-linux",
-              "outputNarHashes": {
-                "out": "sha256-d6xi4mKdjkX2JFicDIv5niSzpyI0m/Hnm8GGAIU04kY="
-              },
-              "outputs": {
-                "out": "/nix/store/yyccg08n0fjazv3svgn27agchgsgl0ha-fixture-submodules-runs"
-              },
-              "receipt": "https://nix-purifiers.github.io/evidence/91dd59ae43b8f90f0cb90df9cd7764df31556903f3b528f4511879809fdc1e99.json",
               "sampleSources": [],
-              "sdkVersions": {},
-              "sourceNarHash": "sha256-O1+sSynjzbzSC/Xezm2AV95vFwdGB5ksWV0314u00GM=",
-              "sourceRevision": "bd48bb6b1c1fe893899a301e5c55fc7cc8e92310",
-              "status": "success"
-            },
-            "check": {
-              "kind": "flake-attribute",
-              "replay": null,
-              "value": "checks.x86_64-linux.fixture-submodules"
-            },
-            "drvPath": "/nix/store/6vk4yjd3ck3c9bz934hds2caw4la9wcp-fixture-submodules-runs.drv",
-            "evaluation": null,
-            "outputNarHashes": {
-              "out": "sha256-d6xi4mKdjkX2JFicDIv5niSzpyI0m/Hnm8GGAIU04kY="
-            },
-            "outputs": {
-              "out": "/nix/store/yyccg08n0fjazv3svgn27agchgsgl0ha-fixture-submodules-runs"
-            },
-            "repository": "nix-purifiers/bundler-purifier",
-            "revision": "bd48bb6b1c1fe893899a301e5c55fc7cc8e92310",
-            "sampleSources": [],
-            "sdkVersions": {},
-            "sourceNarHash": "sha256-O1+sSynjzbzSC/Xezm2AV95vFwdGB5ksWV0314u00GM=",
-            "system": "x86_64-linux"
+              "receipt": "https://nix-purifiers.github.io/evidence/23a9839be3496f3d39f5f7b966a5f2f307808c14f00c4473d35d993ea9fd136b.json",
+              "artifactSha256": "23a9839be3496f3d39f5f7b966a5f2f307808c14f00c4473d35d993ea9fd136b"
+            }
           },
-          "bundler-purifier:local:historical-ruby-app": {
-            "build": {
-              "artifactSha256": "91dd59ae43b8f90f0cb90df9cd7764df31556903f3b528f4511879809fdc1e99",
-              "drvPath": "/nix/store/hbj84fx3pzkrlcczaqd5g16fpzp1wa34-bundler-app.drv",
-              "executedSystem": "x86_64-linux",
-              "outputNarHashes": {
-                "out": "sha256-gnQEfqL7dtbmQkGiUvj+okE13NyWW7sleCr4guYgsg8="
-              },
-              "outputs": {
-                "out": "/nix/store/pwbjw0f1ml0s3qazrm5qvy9ng7jhqr3k-bundler-app"
-              },
-              "receipt": "https://nix-purifiers.github.io/evidence/91dd59ae43b8f90f0cb90df9cd7764df31556903f3b528f4511879809fdc1e99.json",
-              "sampleSources": [],
-              "sdkVersions": {},
-              "sourceNarHash": "sha256-O1+sSynjzbzSC/Xezm2AV95vFwdGB5ksWV0314u00GM=",
-              "sourceRevision": "bd48bb6b1c1fe893899a301e5c55fc7cc8e92310",
-              "status": "success"
-            },
-            "check": {
-              "kind": "flake-attribute",
-              "replay": null,
-              "value": "checks.x86_64-linux.historical-ruby-app"
-            },
-            "drvPath": "/nix/store/hbj84fx3pzkrlcczaqd5g16fpzp1wa34-bundler-app.drv",
-            "evaluation": null,
-            "outputNarHashes": {
-              "out": "sha256-gnQEfqL7dtbmQkGiUvj+okE13NyWW7sleCr4guYgsg8="
-            },
-            "outputs": {
-              "out": "/nix/store/pwbjw0f1ml0s3qazrm5qvy9ng7jhqr3k-bundler-app"
-            },
+          "bundler-purifier:6d5:x86_64-linux:real-lobsters-app": {
             "repository": "nix-purifiers/bundler-purifier",
-            "revision": "bd48bb6b1c1fe893899a301e5c55fc7cc8e92310",
-            "sampleSources": [],
-            "sdkVersions": {},
-            "sourceNarHash": "sha256-O1+sSynjzbzSC/Xezm2AV95vFwdGB5ksWV0314u00GM=",
-            "system": "x86_64-linux"
-          },
-          "bundler-purifier:local:historical-ruby-cli": {
-            "build": {
-              "artifactSha256": "91dd59ae43b8f90f0cb90df9cd7764df31556903f3b528f4511879809fdc1e99",
-              "drvPath": "/nix/store/r974fs8rib2cf903vliqrbdwaw3199w8-bundler-purifier-0.1.0.drv",
-              "executedSystem": "x86_64-linux",
-              "outputNarHashes": {
-                "out": "sha256-m3rXyBq54F+M7bM+vwDgA2sQMzMSp3R1B6kJXe39uas="
-              },
-              "outputs": {
-                "out": "/nix/store/csdmxx6zv9gnqgp3zvcl3m9y36q09dcy-bundler-purifier-0.1.0"
-              },
-              "receipt": "https://nix-purifiers.github.io/evidence/91dd59ae43b8f90f0cb90df9cd7764df31556903f3b528f4511879809fdc1e99.json",
-              "sampleSources": [],
-              "sdkVersions": {},
-              "sourceNarHash": "sha256-O1+sSynjzbzSC/Xezm2AV95vFwdGB5ksWV0314u00GM=",
-              "sourceRevision": "bd48bb6b1c1fe893899a301e5c55fc7cc8e92310",
-              "status": "success"
-            },
+            "revision": "6d5b4768f23faf468882aabad9db5dc7c31719b5",
+            "system": "x86_64-linux",
             "check": {
-              "kind": "flake-attribute",
-              "replay": null,
-              "value": "checks.x86_64-linux.historical-ruby-cli"
+              "kind": "expression",
+              "value": "(builtins.getFlake \"/nix/store/79jrac44w35w49awkhgm9s5rhbs4axrn-source\").checks.x86_64-linux.real-lobsters-app.overrideAttrs (_: { tier2ExecutionId = \"ef7c7ff2edf24bbd9d35305f21dc25b3\"; })",
+              "replay": {
+                "artifactUrl": "https://nix-purifiers.github.io/evidence/23a9839be3496f3d39f5f7b966a5f2f307808c14f00c4473d35d993ea9fd136b.json",
+                "artifactSha256": "23a9839be3496f3d39f5f7b966a5f2f307808c14f00c4473d35d993ea9fd136b",
+                "expressionSha256": "842dc7a870949434f1a5ac062dd006b33bc913a0da9692628835a42ac3507144",
+                "arguments": {}
+              }
             },
-            "drvPath": "/nix/store/r974fs8rib2cf903vliqrbdwaw3199w8-bundler-purifier-0.1.0.drv",
-            "evaluation": null,
-            "outputNarHashes": {
-              "out": "sha256-m3rXyBq54F+M7bM+vwDgA2sQMzMSp3R1B6kJXe39uas="
-            },
+            "drvPath": "/nix/store/pai0a5wlpz6z0gb5k7j1xd65cjzzjy40-lobsters.drv",
             "outputs": {
-              "out": "/nix/store/csdmxx6zv9gnqgp3zvcl3m9y36q09dcy-bundler-purifier-0.1.0"
+              "out": "/nix/store/yd32c28vmmfw5rd2x237dscgm89bz0ms-lobsters"
             },
-            "repository": "nix-purifiers/bundler-purifier",
-            "revision": "bd48bb6b1c1fe893899a301e5c55fc7cc8e92310",
-            "sampleSources": [],
-            "sdkVersions": {},
-            "sourceNarHash": "sha256-O1+sSynjzbzSC/Xezm2AV95vFwdGB5ksWV0314u00GM=",
-            "system": "x86_64-linux"
-          },
-          "bundler-purifier:local:historical-ruby-input-composition": {
-            "build": {
-              "artifactSha256": "91dd59ae43b8f90f0cb90df9cd7764df31556903f3b528f4511879809fdc1e99",
-              "drvPath": "/nix/store/2kg40dwzzvpylkjhfj2spggndcbhvxcn-bundler117-input-composition.drv",
-              "executedSystem": "x86_64-linux",
-              "outputNarHashes": {
-                "out": "sha256-d6xi4mKdjkX2JFicDIv5niSzpyI0m/Hnm8GGAIU04kY="
-              },
-              "outputs": {
-                "out": "/nix/store/zfjp8ha5801iqy4prk7l6wqwhw1wmw6h-bundler117-input-composition"
-              },
-              "receipt": "https://nix-purifiers.github.io/evidence/91dd59ae43b8f90f0cb90df9cd7764df31556903f3b528f4511879809fdc1e99.json",
-              "sampleSources": [],
-              "sdkVersions": {},
-              "sourceNarHash": "sha256-O1+sSynjzbzSC/Xezm2AV95vFwdGB5ksWV0314u00GM=",
-              "sourceRevision": "bd48bb6b1c1fe893899a301e5c55fc7cc8e92310",
-              "status": "success"
-            },
-            "check": {
-              "kind": "flake-attribute",
-              "replay": null,
-              "value": "checks.x86_64-linux.historical-ruby-input-composition"
-            },
-            "drvPath": "/nix/store/2kg40dwzzvpylkjhfj2spggndcbhvxcn-bundler117-input-composition.drv",
-            "evaluation": null,
-            "outputNarHashes": {
-              "out": "sha256-d6xi4mKdjkX2JFicDIv5niSzpyI0m/Hnm8GGAIU04kY="
-            },
-            "outputs": {
-              "out": "/nix/store/zfjp8ha5801iqy4prk7l6wqwhw1wmw6h-bundler117-input-composition"
-            },
-            "repository": "nix-purifiers/bundler-purifier",
-            "revision": "bd48bb6b1c1fe893899a301e5c55fc7cc8e92310",
-            "sampleSources": [],
-            "sdkVersions": {},
-            "sourceNarHash": "sha256-O1+sSynjzbzSC/Xezm2AV95vFwdGB5ksWV0314u00GM=",
-            "system": "x86_64-linux"
-          },
-          "bundler-purifier:local:historical-ruby-native-extension": {
-            "build": {
-              "artifactSha256": "91dd59ae43b8f90f0cb90df9cd7764df31556903f3b528f4511879809fdc1e99",
-              "drvPath": "/nix/store/28g59dw3qqq761g0ydqrqh60hl3c9iyy-bundler-app-tests.drv",
-              "executedSystem": "x86_64-linux",
-              "outputNarHashes": {
-                "out": "sha256-WHXmMtOKiWrh8Jrs1KqOThfiHblLhkD6DAvO6ONQClc="
-              },
-              "outputs": {
-                "out": "/nix/store/ccf637dr4fxh2fj4szr6qgzx83s6x9rj-bundler-app-tests"
-              },
-              "receipt": "https://nix-purifiers.github.io/evidence/91dd59ae43b8f90f0cb90df9cd7764df31556903f3b528f4511879809fdc1e99.json",
-              "sampleSources": [],
-              "sdkVersions": {
-                "Bundler": "1.17.3",
-                "JSON native extension": "1.8.6",
-                "Ruby": "2.5.8"
-              },
-              "sourceNarHash": "sha256-O1+sSynjzbzSC/Xezm2AV95vFwdGB5ksWV0314u00GM=",
-              "sourceRevision": "bd48bb6b1c1fe893899a301e5c55fc7cc8e92310",
-              "status": "success"
-            },
-            "check": {
-              "kind": "flake-attribute",
-              "replay": null,
-              "value": "checks.x86_64-linux.historical-ruby-native-extension"
-            },
-            "drvPath": "/nix/store/28g59dw3qqq761g0ydqrqh60hl3c9iyy-bundler-app-tests.drv",
-            "evaluation": null,
-            "outputNarHashes": {
-              "out": "sha256-WHXmMtOKiWrh8Jrs1KqOThfiHblLhkD6DAvO6ONQClc="
-            },
-            "outputs": {
-              "out": "/nix/store/ccf637dr4fxh2fj4szr6qgzx83s6x9rj-bundler-app-tests"
-            },
-            "repository": "nix-purifiers/bundler-purifier",
-            "revision": "bd48bb6b1c1fe893899a301e5c55fc7cc8e92310",
-            "sampleSources": [],
             "sdkVersions": {
-              "Bundler": "1.17.3",
-              "JSON native extension": "1.8.6",
-              "Ruby": "2.5.8"
+              "Ruby": "4.0.9",
+              "Bundler": "4.0.3"
             },
-            "sourceNarHash": "sha256-O1+sSynjzbzSC/Xezm2AV95vFwdGB5ksWV0314u00GM=",
-            "system": "x86_64-linux"
-          },
-          "bundler-purifier:local:historical-ruby-ordinary-consumer": {
-            "build": {
-              "artifactSha256": "91dd59ae43b8f90f0cb90df9cd7764df31556903f3b528f4511879809fdc1e99",
-              "drvPath": "/nix/store/9akcphmpcsxjxrdv88aywmdlcwyyjqd9-ruby25-ordinary-projected-consumer.drv",
-              "executedSystem": "x86_64-linux",
-              "outputNarHashes": {
-                "out": "sha256-d6xi4mKdjkX2JFicDIv5niSzpyI0m/Hnm8GGAIU04kY="
-              },
-              "outputs": {
-                "out": "/nix/store/hkq2jp0srq3cxaw5kc79530gqfyg1rn6-ruby25-ordinary-projected-consumer"
-              },
-              "receipt": "https://nix-purifiers.github.io/evidence/91dd59ae43b8f90f0cb90df9cd7764df31556903f3b528f4511879809fdc1e99.json",
-              "sampleSources": [],
-              "sdkVersions": {},
-              "sourceNarHash": "sha256-O1+sSynjzbzSC/Xezm2AV95vFwdGB5ksWV0314u00GM=",
-              "sourceRevision": "bd48bb6b1c1fe893899a301e5c55fc7cc8e92310",
-              "status": "success"
-            },
-            "check": {
-              "kind": "flake-attribute",
-              "replay": null,
-              "value": "checks.x86_64-linux.historical-ruby-ordinary-consumer"
-            },
-            "drvPath": "/nix/store/9akcphmpcsxjxrdv88aywmdlcwyyjqd9-ruby25-ordinary-projected-consumer.drv",
-            "evaluation": null,
-            "outputNarHashes": {
-              "out": "sha256-d6xi4mKdjkX2JFicDIv5niSzpyI0m/Hnm8GGAIU04kY="
-            },
-            "outputs": {
-              "out": "/nix/store/hkq2jp0srq3cxaw5kc79530gqfyg1rn6-ruby25-ordinary-projected-consumer"
-            },
-            "repository": "nix-purifiers/bundler-purifier",
-            "revision": "bd48bb6b1c1fe893899a301e5c55fc7cc8e92310",
-            "sampleSources": [],
-            "sdkVersions": {},
-            "sourceNarHash": "sha256-O1+sSynjzbzSC/Xezm2AV95vFwdGB5ksWV0314u00GM=",
-            "system": "x86_64-linux"
-          },
-          "bundler-purifier:local:historical-ruby-release": {
-            "build": {
-              "artifactSha256": "91dd59ae43b8f90f0cb90df9cd7764df31556903f3b528f4511879809fdc1e99",
-              "drvPath": "/nix/store/aqqir1bd1kkmjz5pqdph2q47cb72mkrp-historical_greeting-1.0.0.drv",
-              "executedSystem": "x86_64-linux",
-              "outputNarHashes": {
-                "out": "sha256-c3DBMCExF48pwPXjpgrlu1s0MKpuXnHMhFA/5TbyG24="
-              },
-              "outputs": {
-                "out": "/nix/store/hkdgszc4klp740mqccdhjhvgiy3q8c2r-historical_greeting-1.0.0"
-              },
-              "receipt": "https://nix-purifiers.github.io/evidence/91dd59ae43b8f90f0cb90df9cd7764df31556903f3b528f4511879809fdc1e99.json",
-              "sampleSources": [],
-              "sdkVersions": {},
-              "sourceNarHash": "sha256-O1+sSynjzbzSC/Xezm2AV95vFwdGB5ksWV0314u00GM=",
-              "sourceRevision": "bd48bb6b1c1fe893899a301e5c55fc7cc8e92310",
-              "status": "success"
-            },
-            "check": {
-              "kind": "flake-attribute",
-              "replay": null,
-              "value": "checks.x86_64-linux.historical-ruby-release"
-            },
-            "drvPath": "/nix/store/aqqir1bd1kkmjz5pqdph2q47cb72mkrp-historical_greeting-1.0.0.drv",
-            "evaluation": null,
-            "outputNarHashes": {
-              "out": "sha256-c3DBMCExF48pwPXjpgrlu1s0MKpuXnHMhFA/5TbyG24="
-            },
-            "outputs": {
-              "out": "/nix/store/hkdgszc4klp740mqccdhjhvgiy3q8c2r-historical_greeting-1.0.0"
-            },
-            "repository": "nix-purifiers/bundler-purifier",
-            "revision": "bd48bb6b1c1fe893899a301e5c55fc7cc8e92310",
-            "sampleSources": [],
-            "sdkVersions": {},
-            "sourceNarHash": "sha256-O1+sSynjzbzSC/Xezm2AV95vFwdGB5ksWV0314u00GM=",
-            "system": "x86_64-linux"
-          },
-          "bundler-purifier:local:historical-ruby-repository": {
-            "build": {
-              "artifactSha256": "91dd59ae43b8f90f0cb90df9cd7764df31556903f3b528f4511879809fdc1e99",
-              "drvPath": "/nix/store/9jf8b3aa3s5dhxir6kj39kfdrh0jg8hd-bundler-app-rubygems-repository.drv",
-              "executedSystem": "x86_64-linux",
-              "outputNarHashes": {
-                "out": "sha256-nBuAaCCkMV0F05sQ0TOxFOeijLQFo8AsV3SIqPF2n8I="
-              },
-              "outputs": {
-                "out": "/nix/store/cx3cp8jqfgfcjkjz4vd2dw3nyclbg0gb-bundler-app-rubygems-repository"
-              },
-              "receipt": "https://nix-purifiers.github.io/evidence/91dd59ae43b8f90f0cb90df9cd7764df31556903f3b528f4511879809fdc1e99.json",
-              "sampleSources": [],
-              "sdkVersions": {},
-              "sourceNarHash": "sha256-O1+sSynjzbzSC/Xezm2AV95vFwdGB5ksWV0314u00GM=",
-              "sourceRevision": "bd48bb6b1c1fe893899a301e5c55fc7cc8e92310",
-              "status": "success"
-            },
-            "check": {
-              "kind": "flake-attribute",
-              "replay": null,
-              "value": "checks.x86_64-linux.historical-ruby-repository"
-            },
-            "drvPath": "/nix/store/9jf8b3aa3s5dhxir6kj39kfdrh0jg8hd-bundler-app-rubygems-repository.drv",
-            "evaluation": null,
-            "outputNarHashes": {
-              "out": "sha256-nBuAaCCkMV0F05sQ0TOxFOeijLQFo8AsV3SIqPF2n8I="
-            },
-            "outputs": {
-              "out": "/nix/store/cx3cp8jqfgfcjkjz4vd2dw3nyclbg0gb-bundler-app-rubygems-repository"
-            },
-            "repository": "nix-purifiers/bundler-purifier",
-            "revision": "bd48bb6b1c1fe893899a301e5c55fc7cc8e92310",
-            "sampleSources": [],
-            "sdkVersions": {},
-            "sourceNarHash": "sha256-O1+sSynjzbzSC/Xezm2AV95vFwdGB5ksWV0314u00GM=",
-            "system": "x86_64-linux"
-          },
-          "bundler-purifier:local:historical-ruby-tools": {
-            "build": {
-              "artifactSha256": "91dd59ae43b8f90f0cb90df9cd7764df31556903f3b528f4511879809fdc1e99",
-              "drvPath": "/nix/store/ywjl581ldiy1i3z9bjvcrsiynffzgfsx-ruby25-bundler117-tools.drv",
-              "executedSystem": "x86_64-linux",
-              "outputNarHashes": {
-                "out": "sha256-LW5l8p+LZYpGBZPiyBlHDqYJOtIlSG0IZSajBNgIKRw="
-              },
-              "outputs": {
-                "out": "/nix/store/8cdf4q7k02f15aajk585hlfbxa755d9v-ruby25-bundler117-tools"
-              },
-              "receipt": "https://nix-purifiers.github.io/evidence/91dd59ae43b8f90f0cb90df9cd7764df31556903f3b528f4511879809fdc1e99.json",
-              "sampleSources": [],
-              "sdkVersions": {},
-              "sourceNarHash": "sha256-O1+sSynjzbzSC/Xezm2AV95vFwdGB5ksWV0314u00GM=",
-              "sourceRevision": "bd48bb6b1c1fe893899a301e5c55fc7cc8e92310",
-              "status": "success"
-            },
-            "check": {
-              "kind": "flake-attribute",
-              "replay": null,
-              "value": "checks.x86_64-linux.historical-ruby-tools"
-            },
-            "drvPath": "/nix/store/ywjl581ldiy1i3z9bjvcrsiynffzgfsx-ruby25-bundler117-tools.drv",
-            "evaluation": null,
-            "outputNarHashes": {
-              "out": "sha256-LW5l8p+LZYpGBZPiyBlHDqYJOtIlSG0IZSajBNgIKRw="
-            },
-            "outputs": {
-              "out": "/nix/store/8cdf4q7k02f15aajk585hlfbxa755d9v-ruby25-bundler117-tools"
-            },
-            "repository": "nix-purifiers/bundler-purifier",
-            "revision": "bd48bb6b1c1fe893899a301e5c55fc7cc8e92310",
-            "sampleSources": [],
-            "sdkVersions": {},
-            "sourceNarHash": "sha256-O1+sSynjzbzSC/Xezm2AV95vFwdGB5ksWV0314u00GM=",
-            "system": "x86_64-linux"
-          },
-          "bundler-purifier:local:real-lobsters": {
-            "build": {
-              "artifactSha256": "91dd59ae43b8f90f0cb90df9cd7764df31556903f3b528f4511879809fdc1e99",
-              "drvPath": "/nix/store/y00bg3154a0x7qrlpbnj4nnm3zk6qkvy-real-lobsters.drv",
-              "executedSystem": "x86_64-linux",
-              "outputNarHashes": {
-                "out": "sha256-ThSkDm0U0lysECsboUK31zYBXaAbMUijt6HD2cYBl/Y="
-              },
-              "outputs": {
-                "out": "/nix/store/ibvjszijykfn360yz2xy9zk2ycg4365n-real-lobsters"
-              },
-              "receipt": "https://nix-purifiers.github.io/evidence/91dd59ae43b8f90f0cb90df9cd7764df31556903f3b528f4511879809fdc1e99.json",
-              "sampleSources": [
-                {
-                  "repository": "https://github.com/lobsters/lobsters",
-                  "revision": "cb2b28371dbf5549b6fad293a6c2dfc8ec7a0320",
-                  "sourceNarHash": "sha256-MidCtPYmp91ADKj1GK0aH+XcYJUToADOY0RydBITQ+0="
-                }
-              ],
-              "sdkVersions": {
-                "Ruby": "4.0.9"
-              },
-              "sourceNarHash": "sha256-O1+sSynjzbzSC/Xezm2AV95vFwdGB5ksWV0314u00GM=",
-              "sourceRevision": "bd48bb6b1c1fe893899a301e5c55fc7cc8e92310",
-              "status": "success"
-            },
-            "check": {
-              "kind": "flake-attribute",
-              "replay": null,
-              "value": "checks.x86_64-linux.real-lobsters"
-            },
-            "drvPath": "/nix/store/y00bg3154a0x7qrlpbnj4nnm3zk6qkvy-real-lobsters.drv",
-            "evaluation": null,
-            "outputNarHashes": {
-              "out": "sha256-ThSkDm0U0lysECsboUK31zYBXaAbMUijt6HD2cYBl/Y="
-            },
-            "outputs": {
-              "out": "/nix/store/ibvjszijykfn360yz2xy9zk2ycg4365n-real-lobsters"
-            },
-            "repository": "nix-purifiers/bundler-purifier",
-            "revision": "bd48bb6b1c1fe893899a301e5c55fc7cc8e92310",
             "sampleSources": [
               {
                 "repository": "https://github.com/lobsters/lobsters",
@@ -7053,414 +6173,532 @@
                 "sourceNarHash": "sha256-MidCtPYmp91ADKj1GK0aH+XcYJUToADOY0RydBITQ+0="
               }
             ],
-            "sdkVersions": {
-              "Ruby": "4.0.9"
-            },
-            "sourceNarHash": "sha256-O1+sSynjzbzSC/Xezm2AV95vFwdGB5ksWV0314u00GM=",
-            "system": "x86_64-linux"
-          },
-          "bundler-purifier:local:real-lobsters-shell": {
-            "build": {
-              "artifactSha256": "91dd59ae43b8f90f0cb90df9cd7764df31556903f3b528f4511879809fdc1e99",
-              "drvPath": "/nix/store/ff8v13ds8vk1l4n4li58x8i98c5zvqzm-nix-shell.drv",
-              "executedSystem": "x86_64-linux",
-              "outputNarHashes": {
-                "out": "sha256-BVZvh9cRvH9yE/WU1tWKp0FLAgUEn0bYEj5Zg/JUVsA="
-              },
-              "outputs": {
-                "out": "/nix/store/hwjncyfd76crmax53mc31xxbq0kmmswd-nix-shell"
-              },
-              "receipt": "https://nix-purifiers.github.io/evidence/91dd59ae43b8f90f0cb90df9cd7764df31556903f3b528f4511879809fdc1e99.json",
-              "sampleSources": [],
-              "sdkVersions": {},
-              "sourceNarHash": "sha256-O1+sSynjzbzSC/Xezm2AV95vFwdGB5ksWV0314u00GM=",
-              "sourceRevision": "bd48bb6b1c1fe893899a301e5c55fc7cc8e92310",
-              "status": "success"
-            },
-            "check": {
-              "kind": "flake-attribute",
-              "replay": null,
-              "value": "checks.x86_64-linux.real-lobsters-shell"
-            },
-            "drvPath": "/nix/store/ff8v13ds8vk1l4n4li58x8i98c5zvqzm-nix-shell.drv",
-            "evaluation": null,
+            "sourceNarHash": "sha256-Y4zVHT+JgLG0M8SMOLIlM4MmpIqoMB90N7Cx23MTOgk=",
             "outputNarHashes": {
-              "out": "sha256-BVZvh9cRvH9yE/WU1tWKp0FLAgUEn0bYEj5Zg/JUVsA="
+              "out": "sha256-4oll2eyqqz4IcKzlg6I2sbK3L5Dk8GGl5OgOCAY6E/4="
             },
-            "outputs": {
-              "out": "/nix/store/hwjncyfd76crmax53mc31xxbq0kmmswd-nix-shell"
-            },
-            "repository": "nix-purifiers/bundler-purifier",
-            "revision": "bd48bb6b1c1fe893899a301e5c55fc7cc8e92310",
-            "sampleSources": [],
-            "sdkVersions": {},
-            "sourceNarHash": "sha256-O1+sSynjzbzSC/Xezm2AV95vFwdGB5ksWV0314u00GM=",
-            "system": "x86_64-linux"
-          },
-          "bundler-purifier:local:ruby18-app": {
-            "build": {
-              "artifactSha256": "91dd59ae43b8f90f0cb90df9cd7764df31556903f3b528f4511879809fdc1e99",
-              "drvPath": "/nix/store/xwffj6ymry2qmargmsnnr9irwbkvvzab-bundler-app.drv",
-              "executedSystem": "x86_64-linux",
-              "outputNarHashes": {
-                "out": "sha256-FWUaMpGXVBcF+E6YejrkxUpEymyDDnMbuPHgmZIMgE0="
-              },
-              "outputs": {
-                "out": "/nix/store/6fwv0sglsa0n07vaw071a91g5wr8g93d-bundler-app"
-              },
-              "receipt": "https://nix-purifiers.github.io/evidence/91dd59ae43b8f90f0cb90df9cd7764df31556903f3b528f4511879809fdc1e99.json",
-              "sampleSources": [],
-              "sdkVersions": {},
-              "sourceNarHash": "sha256-O1+sSynjzbzSC/Xezm2AV95vFwdGB5ksWV0314u00GM=",
-              "sourceRevision": "bd48bb6b1c1fe893899a301e5c55fc7cc8e92310",
-              "status": "success"
-            },
-            "check": {
-              "kind": "flake-attribute",
-              "replay": null,
-              "value": "checks.x86_64-linux.ruby18-app"
-            },
-            "drvPath": "/nix/store/xwffj6ymry2qmargmsnnr9irwbkvvzab-bundler-app.drv",
             "evaluation": null,
-            "outputNarHashes": {
-              "out": "sha256-FWUaMpGXVBcF+E6YejrkxUpEymyDDnMbuPHgmZIMgE0="
-            },
-            "outputs": {
-              "out": "/nix/store/6fwv0sglsa0n07vaw071a91g5wr8g93d-bundler-app"
-            },
-            "repository": "nix-purifiers/bundler-purifier",
-            "revision": "bd48bb6b1c1fe893899a301e5c55fc7cc8e92310",
-            "sampleSources": [],
-            "sdkVersions": {},
-            "sourceNarHash": "sha256-O1+sSynjzbzSC/Xezm2AV95vFwdGB5ksWV0314u00GM=",
-            "system": "x86_64-linux"
-          },
-          "bundler-purifier:local:ruby18-cli": {
             "build": {
-              "artifactSha256": "91dd59ae43b8f90f0cb90df9cd7764df31556903f3b528f4511879809fdc1e99",
-              "drvPath": "/nix/store/841wabgrh36zf4n1sqi6rqlp5fkx61x4-bundler-purifier-0.1.0.drv",
+              "status": "success",
               "executedSystem": "x86_64-linux",
-              "outputNarHashes": {
-                "out": "sha256-bVjDXhg1ORYLGE9kDKUKrprrOB/M5I5yp2Ce0FvXFRc="
-              },
+              "sourceRevision": "6d5b4768f23faf468882aabad9db5dc7c31719b5",
+              "drvPath": "/nix/store/pai0a5wlpz6z0gb5k7j1xd65cjzzjy40-lobsters.drv",
               "outputs": {
-                "out": "/nix/store/qvy33zkvwzn8f7wpv09513m88ibnax6n-bundler-purifier-0.1.0"
+                "out": "/nix/store/yd32c28vmmfw5rd2x237dscgm89bz0ms-lobsters"
               },
-              "receipt": "https://nix-purifiers.github.io/evidence/91dd59ae43b8f90f0cb90df9cd7764df31556903f3b528f4511879809fdc1e99.json",
-              "sampleSources": [],
-              "sdkVersions": {},
-              "sourceNarHash": "sha256-O1+sSynjzbzSC/Xezm2AV95vFwdGB5ksWV0314u00GM=",
-              "sourceRevision": "bd48bb6b1c1fe893899a301e5c55fc7cc8e92310",
-              "status": "success"
-            },
-            "check": {
-              "kind": "flake-attribute",
-              "replay": null,
-              "value": "checks.x86_64-linux.ruby18-cli"
-            },
-            "drvPath": "/nix/store/841wabgrh36zf4n1sqi6rqlp5fkx61x4-bundler-purifier-0.1.0.drv",
-            "evaluation": null,
-            "outputNarHashes": {
-              "out": "sha256-bVjDXhg1ORYLGE9kDKUKrprrOB/M5I5yp2Ce0FvXFRc="
-            },
-            "outputs": {
-              "out": "/nix/store/qvy33zkvwzn8f7wpv09513m88ibnax6n-bundler-purifier-0.1.0"
-            },
-            "repository": "nix-purifiers/bundler-purifier",
-            "revision": "bd48bb6b1c1fe893899a301e5c55fc7cc8e92310",
-            "sampleSources": [],
-            "sdkVersions": {},
-            "sourceNarHash": "sha256-O1+sSynjzbzSC/Xezm2AV95vFwdGB5ksWV0314u00GM=",
-            "system": "x86_64-linux"
-          },
-          "bundler-purifier:local:ruby18-native-extension": {
-            "build": {
-              "artifactSha256": "91dd59ae43b8f90f0cb90df9cd7764df31556903f3b528f4511879809fdc1e99",
-              "drvPath": "/nix/store/4kb8cyrkkijnny6l56xrm3ph42k7nbk8-bundler-app-tests.drv",
-              "executedSystem": "x86_64-linux",
+              "sourceNarHash": "sha256-Y4zVHT+JgLG0M8SMOLIlM4MmpIqoMB90N7Cx23MTOgk=",
               "outputNarHashes": {
-                "out": "sha256-a13owpaIit4LFGaW5KPTBr0hc51EtBS6pO37ZlwP1Q8="
+                "out": "sha256-4oll2eyqqz4IcKzlg6I2sbK3L5Dk8GGl5OgOCAY6E/4="
               },
-              "outputs": {
-                "out": "/nix/store/iyjjpkd21hbifbsqmcc5r7vjp8bwn4as-bundler-app-tests"
-              },
-              "receipt": "https://nix-purifiers.github.io/evidence/91dd59ae43b8f90f0cb90df9cd7764df31556903f3b528f4511879809fdc1e99.json",
-              "sampleSources": [],
               "sdkVersions": {
-                "Bundler": "1.17.3",
-                "JSON native extension": "1.8.6",
-                "Ruby": "1.8.7-p374",
-                "RubyGems": "2.6.14"
+                "Ruby": "4.0.9",
+                "Bundler": "4.0.3"
               },
-              "sourceNarHash": "sha256-O1+sSynjzbzSC/Xezm2AV95vFwdGB5ksWV0314u00GM=",
-              "sourceRevision": "bd48bb6b1c1fe893899a301e5c55fc7cc8e92310",
-              "status": "success"
-            },
-            "check": {
-              "kind": "flake-attribute",
-              "replay": null,
-              "value": "checks.x86_64-linux.ruby18-native-extension"
-            },
-            "drvPath": "/nix/store/4kb8cyrkkijnny6l56xrm3ph42k7nbk8-bundler-app-tests.drv",
-            "evaluation": null,
-            "outputNarHashes": {
-              "out": "sha256-a13owpaIit4LFGaW5KPTBr0hc51EtBS6pO37ZlwP1Q8="
-            },
-            "outputs": {
-              "out": "/nix/store/iyjjpkd21hbifbsqmcc5r7vjp8bwn4as-bundler-app-tests"
-            },
+              "sampleSources": [
+                {
+                  "repository": "https://github.com/lobsters/lobsters",
+                  "revision": "cb2b28371dbf5549b6fad293a6c2dfc8ec7a0320",
+                  "sourceNarHash": "sha256-MidCtPYmp91ADKj1GK0aH+XcYJUToADOY0RydBITQ+0="
+                }
+              ],
+              "receipt": "https://nix-purifiers.github.io/evidence/23a9839be3496f3d39f5f7b966a5f2f307808c14f00c4473d35d993ea9fd136b.json",
+              "artifactSha256": "23a9839be3496f3d39f5f7b966a5f2f307808c14f00c4473d35d993ea9fd136b"
+            }
+          },
+          "bundler-purifier:6d5:x86_64-linux:real-lobsters": {
             "repository": "nix-purifiers/bundler-purifier",
-            "revision": "bd48bb6b1c1fe893899a301e5c55fc7cc8e92310",
-            "sampleSources": [],
+            "revision": "6d5b4768f23faf468882aabad9db5dc7c31719b5",
+            "system": "x86_64-linux",
+            "check": {
+              "kind": "expression",
+              "value": "(builtins.getFlake \"/nix/store/79jrac44w35w49awkhgm9s5rhbs4axrn-source\").checks.x86_64-linux.real-lobsters.overrideAttrs (_: { tier2ExecutionId = \"b6a26e26ffb44191a63e53b2db412edf\"; })",
+              "replay": {
+                "artifactUrl": "https://nix-purifiers.github.io/evidence/23a9839be3496f3d39f5f7b966a5f2f307808c14f00c4473d35d993ea9fd136b.json",
+                "artifactSha256": "23a9839be3496f3d39f5f7b966a5f2f307808c14f00c4473d35d993ea9fd136b",
+                "expressionSha256": "8977fd4cb3cac575c69cc1cdac2fae293cd39495a95bd2d3e684852f2cf61f38",
+                "arguments": {}
+              }
+            },
+            "drvPath": "/nix/store/q5jdhc06jz85dfhwm9n9mjbp1x41h2ay-real-lobsters.drv",
+            "outputs": {
+              "out": "/nix/store/ccrmz32x2wyg71qnk34x4fsll1krr2bv-real-lobsters"
+            },
             "sdkVersions": {
-              "Bundler": "1.17.3",
-              "JSON native extension": "1.8.6",
-              "Ruby": "1.8.7-p374",
-              "RubyGems": "2.6.14"
+              "Ruby": "4.0.9",
+              "Bundler": "4.0.3"
             },
-            "sourceNarHash": "sha256-O1+sSynjzbzSC/Xezm2AV95vFwdGB5ksWV0314u00GM=",
-            "system": "x86_64-linux"
-          },
-          "bundler-purifier:local:ruby18-ordinary-consumer": {
-            "build": {
-              "artifactSha256": "91dd59ae43b8f90f0cb90df9cd7764df31556903f3b528f4511879809fdc1e99",
-              "drvPath": "/nix/store/c0g0q6l0h4kb6g4kd2dkja44274jhp2g-ruby187-ordinary-compiled-consumer.drv",
-              "executedSystem": "x86_64-linux",
-              "outputNarHashes": {
-                "out": "sha256-d6xi4mKdjkX2JFicDIv5niSzpyI0m/Hnm8GGAIU04kY="
-              },
-              "outputs": {
-                "out": "/nix/store/28h3f8x4q9kcgsmm4hnwq5lj6f5kpwwc-ruby187-ordinary-compiled-consumer"
-              },
-              "receipt": "https://nix-purifiers.github.io/evidence/91dd59ae43b8f90f0cb90df9cd7764df31556903f3b528f4511879809fdc1e99.json",
-              "sampleSources": [],
-              "sdkVersions": {},
-              "sourceNarHash": "sha256-O1+sSynjzbzSC/Xezm2AV95vFwdGB5ksWV0314u00GM=",
-              "sourceRevision": "bd48bb6b1c1fe893899a301e5c55fc7cc8e92310",
-              "status": "success"
+            "sampleSources": [
+              {
+                "repository": "https://github.com/lobsters/lobsters",
+                "revision": "cb2b28371dbf5549b6fad293a6c2dfc8ec7a0320",
+                "sourceNarHash": "sha256-MidCtPYmp91ADKj1GK0aH+XcYJUToADOY0RydBITQ+0="
+              }
+            ],
+            "sourceNarHash": "sha256-Y4zVHT+JgLG0M8SMOLIlM4MmpIqoMB90N7Cx23MTOgk=",
+            "outputNarHashes": {
+              "out": "sha256-M2YmTzHNhA8V7bO6tSx21ZVutpoNQIlepWA8Pt/xg5A="
             },
-            "check": {
-              "kind": "flake-attribute",
-              "replay": null,
-              "value": "checks.x86_64-linux.ruby18-ordinary-consumer"
-            },
-            "drvPath": "/nix/store/c0g0q6l0h4kb6g4kd2dkja44274jhp2g-ruby187-ordinary-compiled-consumer.drv",
             "evaluation": null,
+            "build": {
+              "status": "success",
+              "executedSystem": "x86_64-linux",
+              "sourceRevision": "6d5b4768f23faf468882aabad9db5dc7c31719b5",
+              "drvPath": "/nix/store/q5jdhc06jz85dfhwm9n9mjbp1x41h2ay-real-lobsters.drv",
+              "outputs": {
+                "out": "/nix/store/ccrmz32x2wyg71qnk34x4fsll1krr2bv-real-lobsters"
+              },
+              "sourceNarHash": "sha256-Y4zVHT+JgLG0M8SMOLIlM4MmpIqoMB90N7Cx23MTOgk=",
+              "outputNarHashes": {
+                "out": "sha256-M2YmTzHNhA8V7bO6tSx21ZVutpoNQIlepWA8Pt/xg5A="
+              },
+              "sdkVersions": {
+                "Ruby": "4.0.9",
+                "Bundler": "4.0.3"
+              },
+              "sampleSources": [
+                {
+                  "repository": "https://github.com/lobsters/lobsters",
+                  "revision": "cb2b28371dbf5549b6fad293a6c2dfc8ec7a0320",
+                  "sourceNarHash": "sha256-MidCtPYmp91ADKj1GK0aH+XcYJUToADOY0RydBITQ+0="
+                }
+              ],
+              "receipt": "https://nix-purifiers.github.io/evidence/23a9839be3496f3d39f5f7b966a5f2f307808c14f00c4473d35d993ea9fd136b.json",
+              "artifactSha256": "23a9839be3496f3d39f5f7b966a5f2f307808c14f00c4473d35d993ea9fd136b"
+            }
+          },
+          "bundler-purifier:6d5:aarch64-linux:fixture-app": {
+            "repository": "nix-purifiers/bundler-purifier",
+            "revision": "6d5b4768f23faf468882aabad9db5dc7c31719b5",
+            "system": "aarch64-linux",
+            "check": {
+              "kind": "expression",
+              "value": "(builtins.getFlake \"/nix/store/79jrac44w35w49awkhgm9s5rhbs4axrn-source\").checks.aarch64-linux.fixture-app.overrideAttrs (_: { tier2ExecutionId = \"83637c0dc7984fecb05a5c970c5a1da6\"; })",
+              "replay": {
+                "artifactUrl": "https://nix-purifiers.github.io/evidence/33c2fdece54530edd81aa5d805cb6698de3842753db494d7c88786b3e852d7e8.json",
+                "artifactSha256": "33c2fdece54530edd81aa5d805cb6698de3842753db494d7c88786b3e852d7e8",
+                "expressionSha256": "c9cf172953e0812b04b3046a65b2270bc7002bf3119f0300c6e69242adec546a",
+                "arguments": {}
+              }
+            },
+            "drvPath": "/nix/store/ckgahv4fgpap5vvjwnnmgqdcqrhm3mxa-fixture-app-runs.drv",
+            "outputs": {
+              "out": "/nix/store/5d2rn9yal0hr1pq44bknd78741c517jq-fixture-app-runs"
+            },
+            "sdkVersions": {},
+            "sampleSources": [],
+            "sourceNarHash": "sha256-Y4zVHT+JgLG0M8SMOLIlM4MmpIqoMB90N7Cx23MTOgk=",
             "outputNarHashes": {
               "out": "sha256-d6xi4mKdjkX2JFicDIv5niSzpyI0m/Hnm8GGAIU04kY="
             },
-            "outputs": {
-              "out": "/nix/store/28h3f8x4q9kcgsmm4hnwq5lj6f5kpwwc-ruby187-ordinary-compiled-consumer"
-            },
-            "repository": "nix-purifiers/bundler-purifier",
-            "revision": "bd48bb6b1c1fe893899a301e5c55fc7cc8e92310",
-            "sampleSources": [],
-            "sdkVersions": {},
-            "sourceNarHash": "sha256-O1+sSynjzbzSC/Xezm2AV95vFwdGB5ksWV0314u00GM=",
-            "system": "x86_64-linux"
-          },
-          "bundler-purifier:local:ruby18-release": {
-            "build": {
-              "artifactSha256": "91dd59ae43b8f90f0cb90df9cd7764df31556903f3b528f4511879809fdc1e99",
-              "drvPath": "/nix/store/wddzrxp345y1fl42k0mln5q5r378h0vp-historical_greeting-1.0.0.drv",
-              "executedSystem": "x86_64-linux",
-              "outputNarHashes": {
-                "out": "sha256-r+2rrsoRMRvUCwGz685sQ32n42Z/CETbThaIwKisROg="
-              },
-              "outputs": {
-                "out": "/nix/store/ajv50r1h607cmdblyb57yp3hlsvgv7h6-historical_greeting-1.0.0"
-              },
-              "receipt": "https://nix-purifiers.github.io/evidence/91dd59ae43b8f90f0cb90df9cd7764df31556903f3b528f4511879809fdc1e99.json",
-              "sampleSources": [],
-              "sdkVersions": {},
-              "sourceNarHash": "sha256-O1+sSynjzbzSC/Xezm2AV95vFwdGB5ksWV0314u00GM=",
-              "sourceRevision": "bd48bb6b1c1fe893899a301e5c55fc7cc8e92310",
-              "status": "success"
-            },
-            "check": {
-              "kind": "flake-attribute",
-              "replay": null,
-              "value": "checks.x86_64-linux.ruby18-release"
-            },
-            "drvPath": "/nix/store/wddzrxp345y1fl42k0mln5q5r378h0vp-historical_greeting-1.0.0.drv",
             "evaluation": null,
-            "outputNarHashes": {
-              "out": "sha256-r+2rrsoRMRvUCwGz685sQ32n42Z/CETbThaIwKisROg="
-            },
-            "outputs": {
-              "out": "/nix/store/ajv50r1h607cmdblyb57yp3hlsvgv7h6-historical_greeting-1.0.0"
-            },
-            "repository": "nix-purifiers/bundler-purifier",
-            "revision": "bd48bb6b1c1fe893899a301e5c55fc7cc8e92310",
-            "sampleSources": [],
-            "sdkVersions": {},
-            "sourceNarHash": "sha256-O1+sSynjzbzSC/Xezm2AV95vFwdGB5ksWV0314u00GM=",
-            "system": "x86_64-linux"
-          },
-          "bundler-purifier:local:ruby18-repository": {
             "build": {
-              "artifactSha256": "91dd59ae43b8f90f0cb90df9cd7764df31556903f3b528f4511879809fdc1e99",
-              "drvPath": "/nix/store/gkaxa0klg493izvkyqll8j84daw1h1ld-bundler-app-rubygems-repository.drv",
-              "executedSystem": "x86_64-linux",
-              "outputNarHashes": {
-                "out": "sha256-jLyhud49HGa5aRH/zhXaxn/MFjeTTJ4sWVEJzmoqp1E="
-              },
+              "status": "success",
+              "executedSystem": "aarch64-linux",
+              "sourceRevision": "6d5b4768f23faf468882aabad9db5dc7c31719b5",
+              "drvPath": "/nix/store/ckgahv4fgpap5vvjwnnmgqdcqrhm3mxa-fixture-app-runs.drv",
               "outputs": {
-                "out": "/nix/store/11mbibnqq61ym9waws0jf847qdimbspz-bundler-app-rubygems-repository"
+                "out": "/nix/store/5d2rn9yal0hr1pq44bknd78741c517jq-fixture-app-runs"
               },
-              "receipt": "https://nix-purifiers.github.io/evidence/91dd59ae43b8f90f0cb90df9cd7764df31556903f3b528f4511879809fdc1e99.json",
-              "sampleSources": [],
-              "sdkVersions": {},
-              "sourceNarHash": "sha256-O1+sSynjzbzSC/Xezm2AV95vFwdGB5ksWV0314u00GM=",
-              "sourceRevision": "bd48bb6b1c1fe893899a301e5c55fc7cc8e92310",
-              "status": "success"
-            },
-            "check": {
-              "kind": "flake-attribute",
-              "replay": null,
-              "value": "checks.x86_64-linux.ruby18-repository"
-            },
-            "drvPath": "/nix/store/gkaxa0klg493izvkyqll8j84daw1h1ld-bundler-app-rubygems-repository.drv",
-            "evaluation": null,
-            "outputNarHashes": {
-              "out": "sha256-jLyhud49HGa5aRH/zhXaxn/MFjeTTJ4sWVEJzmoqp1E="
-            },
-            "outputs": {
-              "out": "/nix/store/11mbibnqq61ym9waws0jf847qdimbspz-bundler-app-rubygems-repository"
-            },
-            "repository": "nix-purifiers/bundler-purifier",
-            "revision": "bd48bb6b1c1fe893899a301e5c55fc7cc8e92310",
-            "sampleSources": [],
-            "sdkVersions": {},
-            "sourceNarHash": "sha256-O1+sSynjzbzSC/Xezm2AV95vFwdGB5ksWV0314u00GM=",
-            "system": "x86_64-linux"
-          },
-          "bundler-purifier:local:ruby18-sdk": {
-            "build": {
-              "artifactSha256": "91dd59ae43b8f90f0cb90df9cd7764df31556903f3b528f4511879809fdc1e99",
-              "drvPath": "/nix/store/pyklyxq2irhvgqjlknqgqpcdnxwcpp5i-ruby187-rubygems2614-sdk.drv",
-              "executedSystem": "x86_64-linux",
-              "outputNarHashes": {
-                "out": "sha256-DkYjoEtI330H4AH/9Fw8AMHBOTdG11ltYldl+FtReLU="
-              },
-              "outputs": {
-                "out": "/nix/store/xy1kq79xcal30g0rzqp69mclagcl9d92-ruby187-rubygems2614-sdk"
-              },
-              "receipt": "https://nix-purifiers.github.io/evidence/91dd59ae43b8f90f0cb90df9cd7764df31556903f3b528f4511879809fdc1e99.json",
-              "sampleSources": [],
-              "sdkVersions": {},
-              "sourceNarHash": "sha256-O1+sSynjzbzSC/Xezm2AV95vFwdGB5ksWV0314u00GM=",
-              "sourceRevision": "bd48bb6b1c1fe893899a301e5c55fc7cc8e92310",
-              "status": "success"
-            },
-            "check": {
-              "kind": "flake-attribute",
-              "replay": null,
-              "value": "checks.x86_64-linux.ruby18-sdk"
-            },
-            "drvPath": "/nix/store/pyklyxq2irhvgqjlknqgqpcdnxwcpp5i-ruby187-rubygems2614-sdk.drv",
-            "evaluation": null,
-            "outputNarHashes": {
-              "out": "sha256-DkYjoEtI330H4AH/9Fw8AMHBOTdG11ltYldl+FtReLU="
-            },
-            "outputs": {
-              "out": "/nix/store/xy1kq79xcal30g0rzqp69mclagcl9d92-ruby187-rubygems2614-sdk"
-            },
-            "repository": "nix-purifiers/bundler-purifier",
-            "revision": "bd48bb6b1c1fe893899a301e5c55fc7cc8e92310",
-            "sampleSources": [],
-            "sdkVersions": {},
-            "sourceNarHash": "sha256-O1+sSynjzbzSC/Xezm2AV95vFwdGB5ksWV0314u00GM=",
-            "system": "x86_64-linux"
-          },
-          "bundler-purifier:local:treefmt": {
-            "build": {
-              "artifactSha256": "91dd59ae43b8f90f0cb90df9cd7764df31556903f3b528f4511879809fdc1e99",
-              "drvPath": "/nix/store/s84j141kl5l589s7ybink8ig27h5skwv-treefmt-check.drv",
-              "executedSystem": "x86_64-linux",
+              "sourceNarHash": "sha256-Y4zVHT+JgLG0M8SMOLIlM4MmpIqoMB90N7Cx23MTOgk=",
               "outputNarHashes": {
                 "out": "sha256-d6xi4mKdjkX2JFicDIv5niSzpyI0m/Hnm8GGAIU04kY="
               },
-              "outputs": {
-                "out": "/nix/store/hbmqf502qyp6pg555jb7l4bp8lbn4sap-treefmt-check"
-              },
-              "receipt": "https://nix-purifiers.github.io/evidence/91dd59ae43b8f90f0cb90df9cd7764df31556903f3b528f4511879809fdc1e99.json",
-              "sampleSources": [],
               "sdkVersions": {},
-              "sourceNarHash": "sha256-O1+sSynjzbzSC/Xezm2AV95vFwdGB5ksWV0314u00GM=",
-              "sourceRevision": "bd48bb6b1c1fe893899a301e5c55fc7cc8e92310",
-              "status": "success"
-            },
+              "sampleSources": [],
+              "receipt": "https://nix-purifiers.github.io/evidence/33c2fdece54530edd81aa5d805cb6698de3842753db494d7c88786b3e852d7e8.json",
+              "artifactSha256": "33c2fdece54530edd81aa5d805cb6698de3842753db494d7c88786b3e852d7e8"
+            }
+          },
+          "bundler-purifier:6d5:aarch64-linux:fixture-library-tests": {
+            "repository": "nix-purifiers/bundler-purifier",
+            "revision": "6d5b4768f23faf468882aabad9db5dc7c31719b5",
+            "system": "aarch64-linux",
             "check": {
-              "kind": "flake-attribute",
-              "replay": null,
-              "value": "checks.x86_64-linux.treefmt"
+              "kind": "expression",
+              "value": "(builtins.getFlake \"/nix/store/79jrac44w35w49awkhgm9s5rhbs4axrn-source\").checks.aarch64-linux.fixture-library-tests.overrideAttrs (_: { tier2ExecutionId = \"0ae335fc5cf94694b0f839c5651007cf\"; })",
+              "replay": {
+                "artifactUrl": "https://nix-purifiers.github.io/evidence/33c2fdece54530edd81aa5d805cb6698de3842753db494d7c88786b3e852d7e8.json",
+                "artifactSha256": "33c2fdece54530edd81aa5d805cb6698de3842753db494d7c88786b3e852d7e8",
+                "expressionSha256": "d294db3bfe7184b86457db4a80de748c232f553f51721b0e24f68c83235d4ba2",
+                "arguments": {}
+              }
             },
-            "drvPath": "/nix/store/s84j141kl5l589s7ybink8ig27h5skwv-treefmt-check.drv",
+            "drvPath": "/nix/store/l6r0qnanndwcrl209xrxza13is343i36-fixture-library-tests.drv",
+            "outputs": {
+              "out": "/nix/store/im5kjdl7306dc8pg6lhbyq3ckv4s198s-fixture-library-tests"
+            },
+            "sdkVersions": {},
+            "sampleSources": [],
+            "sourceNarHash": "sha256-Y4zVHT+JgLG0M8SMOLIlM4MmpIqoMB90N7Cx23MTOgk=",
+            "outputNarHashes": {
+              "out": "sha256-cRB2BlZ9dR0STsfdMRnlFgUMvaRXX3iVT8C3poG5T0w="
+            },
             "evaluation": null,
+            "build": {
+              "status": "success",
+              "executedSystem": "aarch64-linux",
+              "sourceRevision": "6d5b4768f23faf468882aabad9db5dc7c31719b5",
+              "drvPath": "/nix/store/l6r0qnanndwcrl209xrxza13is343i36-fixture-library-tests.drv",
+              "outputs": {
+                "out": "/nix/store/im5kjdl7306dc8pg6lhbyq3ckv4s198s-fixture-library-tests"
+              },
+              "sourceNarHash": "sha256-Y4zVHT+JgLG0M8SMOLIlM4MmpIqoMB90N7Cx23MTOgk=",
+              "outputNarHashes": {
+                "out": "sha256-cRB2BlZ9dR0STsfdMRnlFgUMvaRXX3iVT8C3poG5T0w="
+              },
+              "sdkVersions": {},
+              "sampleSources": [],
+              "receipt": "https://nix-purifiers.github.io/evidence/33c2fdece54530edd81aa5d805cb6698de3842753db494d7c88786b3e852d7e8.json",
+              "artifactSha256": "33c2fdece54530edd81aa5d805cb6698de3842753db494d7c88786b3e852d7e8"
+            }
+          },
+          "bundler-purifier:6d5:aarch64-linux:real-lobsters-app": {
+            "repository": "nix-purifiers/bundler-purifier",
+            "revision": "6d5b4768f23faf468882aabad9db5dc7c31719b5",
+            "system": "aarch64-linux",
+            "check": {
+              "kind": "expression",
+              "value": "(builtins.getFlake \"/nix/store/79jrac44w35w49awkhgm9s5rhbs4axrn-source\").checks.aarch64-linux.real-lobsters-app.overrideAttrs (_: { tier2ExecutionId = \"26610da2d4e940bc91111a2cb967d863\"; })",
+              "replay": {
+                "artifactUrl": "https://nix-purifiers.github.io/evidence/33c2fdece54530edd81aa5d805cb6698de3842753db494d7c88786b3e852d7e8.json",
+                "artifactSha256": "33c2fdece54530edd81aa5d805cb6698de3842753db494d7c88786b3e852d7e8",
+                "expressionSha256": "20eb3a28bcba15bbf18ad5ff077a2e15fe45490145c7d79bc3fe8908202bfe39",
+                "arguments": {}
+              }
+            },
+            "drvPath": "/nix/store/afjwahn7z5l5xnj73xr0nwnrr8xzs5kb-lobsters.drv",
+            "outputs": {
+              "out": "/nix/store/77a5pva5livv8mld9c5f17ippxq87dp7-lobsters"
+            },
+            "sdkVersions": {
+              "Ruby": "4.0.9",
+              "Bundler": "4.0.3"
+            },
+            "sampleSources": [
+              {
+                "repository": "https://github.com/lobsters/lobsters",
+                "revision": "cb2b28371dbf5549b6fad293a6c2dfc8ec7a0320",
+                "sourceNarHash": "sha256-MidCtPYmp91ADKj1GK0aH+XcYJUToADOY0RydBITQ+0="
+              }
+            ],
+            "sourceNarHash": "sha256-Y4zVHT+JgLG0M8SMOLIlM4MmpIqoMB90N7Cx23MTOgk=",
+            "outputNarHashes": {
+              "out": "sha256-HRCGtDUvOuh4hHoUCVWwnlFXm28AT9eviqf/NXOYn8c="
+            },
+            "evaluation": null,
+            "build": {
+              "status": "success",
+              "executedSystem": "aarch64-linux",
+              "sourceRevision": "6d5b4768f23faf468882aabad9db5dc7c31719b5",
+              "drvPath": "/nix/store/afjwahn7z5l5xnj73xr0nwnrr8xzs5kb-lobsters.drv",
+              "outputs": {
+                "out": "/nix/store/77a5pva5livv8mld9c5f17ippxq87dp7-lobsters"
+              },
+              "sourceNarHash": "sha256-Y4zVHT+JgLG0M8SMOLIlM4MmpIqoMB90N7Cx23MTOgk=",
+              "outputNarHashes": {
+                "out": "sha256-HRCGtDUvOuh4hHoUCVWwnlFXm28AT9eviqf/NXOYn8c="
+              },
+              "sdkVersions": {
+                "Ruby": "4.0.9",
+                "Bundler": "4.0.3"
+              },
+              "sampleSources": [
+                {
+                  "repository": "https://github.com/lobsters/lobsters",
+                  "revision": "cb2b28371dbf5549b6fad293a6c2dfc8ec7a0320",
+                  "sourceNarHash": "sha256-MidCtPYmp91ADKj1GK0aH+XcYJUToADOY0RydBITQ+0="
+                }
+              ],
+              "receipt": "https://nix-purifiers.github.io/evidence/33c2fdece54530edd81aa5d805cb6698de3842753db494d7c88786b3e852d7e8.json",
+              "artifactSha256": "33c2fdece54530edd81aa5d805cb6698de3842753db494d7c88786b3e852d7e8"
+            }
+          },
+          "bundler-purifier:6d5:aarch64-linux:real-lobsters": {
+            "repository": "nix-purifiers/bundler-purifier",
+            "revision": "6d5b4768f23faf468882aabad9db5dc7c31719b5",
+            "system": "aarch64-linux",
+            "check": {
+              "kind": "expression",
+              "value": "(builtins.getFlake \"/nix/store/79jrac44w35w49awkhgm9s5rhbs4axrn-source\").checks.aarch64-linux.real-lobsters.overrideAttrs (_: { tier2ExecutionId = \"cfcf333a6b3141e5823cb7cf40f2a880\"; })",
+              "replay": {
+                "artifactUrl": "https://nix-purifiers.github.io/evidence/33c2fdece54530edd81aa5d805cb6698de3842753db494d7c88786b3e852d7e8.json",
+                "artifactSha256": "33c2fdece54530edd81aa5d805cb6698de3842753db494d7c88786b3e852d7e8",
+                "expressionSha256": "74c6c1c9dc8fac9d4284b87e61019a30e54639c8d8fa19c666185b4920ab55b7",
+                "arguments": {}
+              }
+            },
+            "drvPath": "/nix/store/69wchaili5pl8cky1ab0hxrlynd87rz0-real-lobsters.drv",
+            "outputs": {
+              "out": "/nix/store/1c3xydj73r5jrl22xndcjang2fdyv5ar-real-lobsters"
+            },
+            "sdkVersions": {
+              "Ruby": "4.0.9",
+              "Bundler": "4.0.3"
+            },
+            "sampleSources": [
+              {
+                "repository": "https://github.com/lobsters/lobsters",
+                "revision": "cb2b28371dbf5549b6fad293a6c2dfc8ec7a0320",
+                "sourceNarHash": "sha256-MidCtPYmp91ADKj1GK0aH+XcYJUToADOY0RydBITQ+0="
+              }
+            ],
+            "sourceNarHash": "sha256-Y4zVHT+JgLG0M8SMOLIlM4MmpIqoMB90N7Cx23MTOgk=",
+            "outputNarHashes": {
+              "out": "sha256-Q9x4JG5Cq0rfxe8ezPFbfmA7Ybliu0jrd5a63imgHz0="
+            },
+            "evaluation": null,
+            "build": {
+              "status": "success",
+              "executedSystem": "aarch64-linux",
+              "sourceRevision": "6d5b4768f23faf468882aabad9db5dc7c31719b5",
+              "drvPath": "/nix/store/69wchaili5pl8cky1ab0hxrlynd87rz0-real-lobsters.drv",
+              "outputs": {
+                "out": "/nix/store/1c3xydj73r5jrl22xndcjang2fdyv5ar-real-lobsters"
+              },
+              "sourceNarHash": "sha256-Y4zVHT+JgLG0M8SMOLIlM4MmpIqoMB90N7Cx23MTOgk=",
+              "outputNarHashes": {
+                "out": "sha256-Q9x4JG5Cq0rfxe8ezPFbfmA7Ybliu0jrd5a63imgHz0="
+              },
+              "sdkVersions": {
+                "Ruby": "4.0.9",
+                "Bundler": "4.0.3"
+              },
+              "sampleSources": [
+                {
+                  "repository": "https://github.com/lobsters/lobsters",
+                  "revision": "cb2b28371dbf5549b6fad293a6c2dfc8ec7a0320",
+                  "sourceNarHash": "sha256-MidCtPYmp91ADKj1GK0aH+XcYJUToADOY0RydBITQ+0="
+                }
+              ],
+              "receipt": "https://nix-purifiers.github.io/evidence/33c2fdece54530edd81aa5d805cb6698de3842753db494d7c88786b3e852d7e8.json",
+              "artifactSha256": "33c2fdece54530edd81aa5d805cb6698de3842753db494d7c88786b3e852d7e8"
+            }
+          },
+          "bundler-purifier:6d5:aarch64-darwin:fixture-app": {
+            "repository": "nix-purifiers/bundler-purifier",
+            "revision": "6d5b4768f23faf468882aabad9db5dc7c31719b5",
+            "system": "aarch64-darwin",
+            "check": {
+              "kind": "expression",
+              "value": "(builtins.getFlake \"/nix/store/79jrac44w35w49awkhgm9s5rhbs4axrn-source\").checks.aarch64-darwin.fixture-app.overrideAttrs (_: { tier2ExecutionId = \"dd7df8762ed44a0b91c968d55c4e2b3d\"; })",
+              "replay": {
+                "artifactUrl": "https://nix-purifiers.github.io/evidence/25f6e88af91e3fccf96045e18d5111a65e3c86c997455337df6d93ba0774faee.json",
+                "artifactSha256": "25f6e88af91e3fccf96045e18d5111a65e3c86c997455337df6d93ba0774faee",
+                "expressionSha256": "479f50c796ea02226f0a3ad71ac5c31e73e93cadddde48aa6d57b99f31628e8b",
+                "arguments": {}
+              }
+            },
+            "drvPath": "/nix/store/3avzx3hr7vhadh9s866vqqq1680dcyg8-fixture-app-runs.drv",
+            "outputs": {
+              "out": "/nix/store/hfs4d6hncm3bb5447k5mv9sww9zqbsbh-fixture-app-runs"
+            },
+            "sdkVersions": {},
+            "sampleSources": [],
+            "sourceNarHash": "sha256-Y4zVHT+JgLG0M8SMOLIlM4MmpIqoMB90N7Cx23MTOgk=",
             "outputNarHashes": {
               "out": "sha256-d6xi4mKdjkX2JFicDIv5niSzpyI0m/Hnm8GGAIU04kY="
             },
-            "outputs": {
-              "out": "/nix/store/hbmqf502qyp6pg555jb7l4bp8lbn4sap-treefmt-check"
-            },
-            "repository": "nix-purifiers/bundler-purifier",
-            "revision": "bd48bb6b1c1fe893899a301e5c55fc7cc8e92310",
-            "sampleSources": [],
-            "sdkVersions": {},
-            "sourceNarHash": "sha256-O1+sSynjzbzSC/Xezm2AV95vFwdGB5ksWV0314u00GM=",
-            "system": "x86_64-linux"
-          },
-          "bundler-purifier:local:unit": {
+            "evaluation": null,
             "build": {
-              "artifactSha256": "91dd59ae43b8f90f0cb90df9cd7764df31556903f3b528f4511879809fdc1e99",
-              "drvPath": "/nix/store/xj3c4yka7ysfla3j35nzyrr1fsz7lzya-bundler-purifier-unit-tests.drv",
-              "executedSystem": "x86_64-linux",
+              "status": "success",
+              "executedSystem": "aarch64-darwin",
+              "sourceRevision": "6d5b4768f23faf468882aabad9db5dc7c31719b5",
+              "drvPath": "/nix/store/3avzx3hr7vhadh9s866vqqq1680dcyg8-fixture-app-runs.drv",
+              "outputs": {
+                "out": "/nix/store/hfs4d6hncm3bb5447k5mv9sww9zqbsbh-fixture-app-runs"
+              },
+              "sourceNarHash": "sha256-Y4zVHT+JgLG0M8SMOLIlM4MmpIqoMB90N7Cx23MTOgk=",
               "outputNarHashes": {
                 "out": "sha256-d6xi4mKdjkX2JFicDIv5niSzpyI0m/Hnm8GGAIU04kY="
               },
-              "outputs": {
-                "out": "/nix/store/97dhi4hm0rad7jb1pbhqb7cn9g8my3yz-bundler-purifier-unit-tests"
-              },
-              "receipt": "https://nix-purifiers.github.io/evidence/91dd59ae43b8f90f0cb90df9cd7764df31556903f3b528f4511879809fdc1e99.json",
-              "sampleSources": [],
               "sdkVersions": {},
-              "sourceNarHash": "sha256-O1+sSynjzbzSC/Xezm2AV95vFwdGB5ksWV0314u00GM=",
-              "sourceRevision": "bd48bb6b1c1fe893899a301e5c55fc7cc8e92310",
-              "status": "success"
-            },
-            "check": {
-              "kind": "flake-attribute",
-              "replay": null,
-              "value": "checks.x86_64-linux.unit"
-            },
-            "drvPath": "/nix/store/xj3c4yka7ysfla3j35nzyrr1fsz7lzya-bundler-purifier-unit-tests.drv",
-            "evaluation": null,
-            "outputNarHashes": {
-              "out": "sha256-d6xi4mKdjkX2JFicDIv5niSzpyI0m/Hnm8GGAIU04kY="
-            },
-            "outputs": {
-              "out": "/nix/store/97dhi4hm0rad7jb1pbhqb7cn9g8my3yz-bundler-purifier-unit-tests"
-            },
+              "sampleSources": [],
+              "receipt": "https://nix-purifiers.github.io/evidence/25f6e88af91e3fccf96045e18d5111a65e3c86c997455337df6d93ba0774faee.json",
+              "artifactSha256": "25f6e88af91e3fccf96045e18d5111a65e3c86c997455337df6d93ba0774faee"
+            }
+          },
+          "bundler-purifier:6d5:aarch64-darwin:fixture-library-tests": {
             "repository": "nix-purifiers/bundler-purifier",
-            "revision": "bd48bb6b1c1fe893899a301e5c55fc7cc8e92310",
-            "sampleSources": [],
+            "revision": "6d5b4768f23faf468882aabad9db5dc7c31719b5",
+            "system": "aarch64-darwin",
+            "check": {
+              "kind": "expression",
+              "value": "(builtins.getFlake \"/nix/store/79jrac44w35w49awkhgm9s5rhbs4axrn-source\").checks.aarch64-darwin.fixture-library-tests.overrideAttrs (_: { tier2ExecutionId = \"98f378390dc04b89acb0696b6727e0ff\"; })",
+              "replay": {
+                "artifactUrl": "https://nix-purifiers.github.io/evidence/25f6e88af91e3fccf96045e18d5111a65e3c86c997455337df6d93ba0774faee.json",
+                "artifactSha256": "25f6e88af91e3fccf96045e18d5111a65e3c86c997455337df6d93ba0774faee",
+                "expressionSha256": "7b042098981326bf3a22be9b2705caad35459cd52a5dfbb7a80bdf477ed9185a",
+                "arguments": {}
+              }
+            },
+            "drvPath": "/nix/store/i34ygs9xv762xrl10rsr35ki9pr0g880-fixture-library-tests.drv",
+            "outputs": {
+              "out": "/nix/store/q1agpzhxhr12pvsqvv7v29sl4y42w68w-fixture-library-tests"
+            },
             "sdkVersions": {},
-            "sourceNarHash": "sha256-O1+sSynjzbzSC/Xezm2AV95vFwdGB5ksWV0314u00GM=",
-            "system": "x86_64-linux"
+            "sampleSources": [],
+            "sourceNarHash": "sha256-Y4zVHT+JgLG0M8SMOLIlM4MmpIqoMB90N7Cx23MTOgk=",
+            "outputNarHashes": {
+              "out": "sha256-Cktqyl+wzyoXCejHPs5yTWEIq9MboxxDI/Z2H4pOsJc="
+            },
+            "evaluation": null,
+            "build": {
+              "status": "success",
+              "executedSystem": "aarch64-darwin",
+              "sourceRevision": "6d5b4768f23faf468882aabad9db5dc7c31719b5",
+              "drvPath": "/nix/store/i34ygs9xv762xrl10rsr35ki9pr0g880-fixture-library-tests.drv",
+              "outputs": {
+                "out": "/nix/store/q1agpzhxhr12pvsqvv7v29sl4y42w68w-fixture-library-tests"
+              },
+              "sourceNarHash": "sha256-Y4zVHT+JgLG0M8SMOLIlM4MmpIqoMB90N7Cx23MTOgk=",
+              "outputNarHashes": {
+                "out": "sha256-Cktqyl+wzyoXCejHPs5yTWEIq9MboxxDI/Z2H4pOsJc="
+              },
+              "sdkVersions": {},
+              "sampleSources": [],
+              "receipt": "https://nix-purifiers.github.io/evidence/25f6e88af91e3fccf96045e18d5111a65e3c86c997455337df6d93ba0774faee.json",
+              "artifactSha256": "25f6e88af91e3fccf96045e18d5111a65e3c86c997455337df6d93ba0774faee"
+            }
+          },
+          "bundler-purifier:6d5:aarch64-darwin:real-lobsters-app": {
+            "repository": "nix-purifiers/bundler-purifier",
+            "revision": "6d5b4768f23faf468882aabad9db5dc7c31719b5",
+            "system": "aarch64-darwin",
+            "check": {
+              "kind": "expression",
+              "value": "(builtins.getFlake \"/nix/store/79jrac44w35w49awkhgm9s5rhbs4axrn-source\").checks.aarch64-darwin.real-lobsters-app.overrideAttrs (_: { tier2ExecutionId = \"aaad4447fdaf4ea89818cc5ec7c5662b\"; })",
+              "replay": {
+                "artifactUrl": "https://nix-purifiers.github.io/evidence/25f6e88af91e3fccf96045e18d5111a65e3c86c997455337df6d93ba0774faee.json",
+                "artifactSha256": "25f6e88af91e3fccf96045e18d5111a65e3c86c997455337df6d93ba0774faee",
+                "expressionSha256": "a150d75735fec17b3fa32105a1be16110726513c233118536537576ef879a429",
+                "arguments": {}
+              }
+            },
+            "drvPath": "/nix/store/ipq7k70zd6yrrx3v6dvw1h8a191yiyza-lobsters.drv",
+            "outputs": {
+              "out": "/nix/store/dzj3j9kfpd0770zdxdhvb3wp50s4r1rr-lobsters"
+            },
+            "sdkVersions": {
+              "Ruby": "4.0.9",
+              "Bundler": "4.0.3"
+            },
+            "sampleSources": [
+              {
+                "repository": "https://github.com/lobsters/lobsters",
+                "revision": "cb2b28371dbf5549b6fad293a6c2dfc8ec7a0320",
+                "sourceNarHash": "sha256-MidCtPYmp91ADKj1GK0aH+XcYJUToADOY0RydBITQ+0="
+              }
+            ],
+            "sourceNarHash": "sha256-Y4zVHT+JgLG0M8SMOLIlM4MmpIqoMB90N7Cx23MTOgk=",
+            "outputNarHashes": {
+              "out": "sha256-EsT3+y66dODsrk6xuGN64ATn2pk36+eXYxGLFDiwTlw="
+            },
+            "evaluation": null,
+            "build": {
+              "status": "success",
+              "executedSystem": "aarch64-darwin",
+              "sourceRevision": "6d5b4768f23faf468882aabad9db5dc7c31719b5",
+              "drvPath": "/nix/store/ipq7k70zd6yrrx3v6dvw1h8a191yiyza-lobsters.drv",
+              "outputs": {
+                "out": "/nix/store/dzj3j9kfpd0770zdxdhvb3wp50s4r1rr-lobsters"
+              },
+              "sourceNarHash": "sha256-Y4zVHT+JgLG0M8SMOLIlM4MmpIqoMB90N7Cx23MTOgk=",
+              "outputNarHashes": {
+                "out": "sha256-EsT3+y66dODsrk6xuGN64ATn2pk36+eXYxGLFDiwTlw="
+              },
+              "sdkVersions": {
+                "Ruby": "4.0.9",
+                "Bundler": "4.0.3"
+              },
+              "sampleSources": [
+                {
+                  "repository": "https://github.com/lobsters/lobsters",
+                  "revision": "cb2b28371dbf5549b6fad293a6c2dfc8ec7a0320",
+                  "sourceNarHash": "sha256-MidCtPYmp91ADKj1GK0aH+XcYJUToADOY0RydBITQ+0="
+                }
+              ],
+              "receipt": "https://nix-purifiers.github.io/evidence/25f6e88af91e3fccf96045e18d5111a65e3c86c997455337df6d93ba0774faee.json",
+              "artifactSha256": "25f6e88af91e3fccf96045e18d5111a65e3c86c997455337df6d93ba0774faee"
+            }
+          },
+          "bundler-purifier:6d5:aarch64-darwin:real-lobsters": {
+            "repository": "nix-purifiers/bundler-purifier",
+            "revision": "6d5b4768f23faf468882aabad9db5dc7c31719b5",
+            "system": "aarch64-darwin",
+            "check": {
+              "kind": "expression",
+              "value": "(builtins.getFlake \"/nix/store/79jrac44w35w49awkhgm9s5rhbs4axrn-source\").checks.aarch64-darwin.real-lobsters.overrideAttrs (_: { tier2ExecutionId = \"f26ae3f087164db783957f59bcf33290\"; })",
+              "replay": {
+                "artifactUrl": "https://nix-purifiers.github.io/evidence/25f6e88af91e3fccf96045e18d5111a65e3c86c997455337df6d93ba0774faee.json",
+                "artifactSha256": "25f6e88af91e3fccf96045e18d5111a65e3c86c997455337df6d93ba0774faee",
+                "expressionSha256": "be31f0333c9e650d5d000dfd5029c41b1a848ee30d075ab32397b7a69b8273e6",
+                "arguments": {}
+              }
+            },
+            "drvPath": "/nix/store/74vlaq1k4wsk6v8bv8wzpcmfr4q5f038-real-lobsters.drv",
+            "outputs": {
+              "out": "/nix/store/d0xm2kndx3b5cifamy2bys6g91nw9aga-real-lobsters"
+            },
+            "sdkVersions": {
+              "Ruby": "4.0.9",
+              "Bundler": "4.0.3"
+            },
+            "sampleSources": [
+              {
+                "repository": "https://github.com/lobsters/lobsters",
+                "revision": "cb2b28371dbf5549b6fad293a6c2dfc8ec7a0320",
+                "sourceNarHash": "sha256-MidCtPYmp91ADKj1GK0aH+XcYJUToADOY0RydBITQ+0="
+              }
+            ],
+            "sourceNarHash": "sha256-Y4zVHT+JgLG0M8SMOLIlM4MmpIqoMB90N7Cx23MTOgk=",
+            "outputNarHashes": {
+              "out": "sha256-xM0W32ZUXDztju0hRPRRDfzETt+gWI7EHA8h8b5xTjY="
+            },
+            "evaluation": null,
+            "build": {
+              "status": "success",
+              "executedSystem": "aarch64-darwin",
+              "sourceRevision": "6d5b4768f23faf468882aabad9db5dc7c31719b5",
+              "drvPath": "/nix/store/74vlaq1k4wsk6v8bv8wzpcmfr4q5f038-real-lobsters.drv",
+              "outputs": {
+                "out": "/nix/store/d0xm2kndx3b5cifamy2bys6g91nw9aga-real-lobsters"
+              },
+              "sourceNarHash": "sha256-Y4zVHT+JgLG0M8SMOLIlM4MmpIqoMB90N7Cx23MTOgk=",
+              "outputNarHashes": {
+                "out": "sha256-xM0W32ZUXDztju0hRPRRDfzETt+gWI7EHA8h8b5xTjY="
+              },
+              "sdkVersions": {
+                "Ruby": "4.0.9",
+                "Bundler": "4.0.3"
+              },
+              "sampleSources": [
+                {
+                  "repository": "https://github.com/lobsters/lobsters",
+                  "revision": "cb2b28371dbf5549b6fad293a6c2dfc8ec7a0320",
+                  "sourceNarHash": "sha256-MidCtPYmp91ADKj1GK0aH+XcYJUToADOY0RydBITQ+0="
+                }
+              ],
+              "receipt": "https://nix-purifiers.github.io/evidence/25f6e88af91e3fccf96045e18d5111a65e3c86c997455337df6d93ba0774faee.json",
+              "artifactSha256": "25f6e88af91e3fccf96045e18d5111a65e3c86c997455337df6d93ba0774faee"
+            }
           }
         },
         "sampleBuilds": [
           {
-            "derivations": [
-              "bundler-purifier:local:real-lobsters"
-            ],
-            "name": "Independent lobsters/lobsters cb2b28371dbf5549b6fad293a6c2dfc8ec7a0320 (NAR sha256-MidCtPYmp91ADKj1GK0aH+XcYJUToADOY0RydBITQ+0=); owned app/library/submodule/historical fixtures are separate from this upstream sample.",
+            "name": "Independent lobsters/lobsters cb2b28371dbf5549b6fad293a6c2dfc8ec7a0320",
             "upstream": {
               "repository": "https://github.com/lobsters/lobsters",
               "revision": "cb2b28371dbf5549b6fad293a6c2dfc8ec7a0320",
               "sourceNarHash": "sha256-MidCtPYmp91ADKj1GK0aH+XcYJUToADOY0RydBITQ+0="
-            }
+            },
+            "derivations": [
+              "bundler-purifier:6d5:x86_64-linux:real-lobsters-app",
+              "bundler-purifier:6d5:x86_64-linux:real-lobsters",
+              "bundler-purifier:6d5:aarch64-linux:real-lobsters-app",
+              "bundler-purifier:6d5:aarch64-linux:real-lobsters",
+              "bundler-purifier:6d5:aarch64-darwin:real-lobsters-app",
+              "bundler-purifier:6d5:aarch64-darwin:real-lobsters"
+            ]
           }
         ]
       },
@@ -7512,7 +6750,17 @@
             "consumerProjects": []
           }
         }
-      }
+      },
+      "sampleBuilds": [
+        {
+          "name": "Independent lobsters/lobsters cb2b28371dbf5549b6fad293a6c2dfc8ec7a0320",
+          "evidence": [
+            "https://nix-purifiers.github.io/evidence/23a9839be3496f3d39f5f7b966a5f2f307808c14f00c4473d35d993ea9fd136b.json",
+            "https://nix-purifiers.github.io/evidence/33c2fdece54530edd81aa5d805cb6698de3842753db494d7c88786b3e852d7e8.json",
+            "https://nix-purifiers.github.io/evidence/25f6e88af91e3fccf96045e18d5111a65e3c86c997455337df6d93ba0774faee.json"
+          ]
+        }
+      ]
     },
     "cabal-purifier": {
       "tier": 2,

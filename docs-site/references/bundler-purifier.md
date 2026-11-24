@@ -4,7 +4,8 @@ bundler-purifier keeps Bundler's development workflow on locked,
 Nix-resolved dependencies.
 
 The shared [purifier](https://github.com/nix-purifiers/purifier) library
-fetches the downloads. It builds on x86_64-linux and aarch64-linux.
+fetches the downloads. It builds on x86_64-linux, aarch64-linux and
+aarch64-darwin.
 
 ## Quickstart
 
@@ -39,10 +40,14 @@ every gem, or the named ones, with `bundle update`, and then locks.
 
 `lock` relocks only when the Gemfile, `Gemfile.lock` or a gemspec changed,
 and `lock --force` relocks regardless; a relock of an unchanged project
-writes the same lockfile byte for byte. The lock run uses the Ruby the
-project asks for, in `.ruby-version` or in the `RUBY VERSION` section of
-`Gemfile.lock`, and builds nixpkgs' Ruby of that minor version when it
-differs from the Ruby the command runs on. The project's `.bundle/config`
+writes the same lockfile byte for byte. Local locking and development use
+the installed Ruby on your PATH, or the runtime you explicitly selected.
+That Ruby must satisfy the project's `.ruby-version`, `Gemfile.lock`, and
+dependency requirements. Missing or incompatible runtimes produce an
+error instead of installing a replacement interpreter. Nix fetches the
+locked dependency artifacts; local installation and execution keep your
+Ruby. Full sandboxed builds select a packaged or explicitly supplied SDK.
+The project's `.bundle/config`
 applies to the lock run, except the settings that would narrow what is
 locked (groups, path, frozen and deployment). The builds keep the
 committed `.bundle/config` too, so settings such as compile flags for a
@@ -143,7 +148,7 @@ The builder takes what it needs from the package set by name: `stdenv`,
 the packages the shared library's fetchers build with. It takes no
 `pkgs`. `bundler-purifier.buildBundlerProject.override` replaces any of
 them for one builder, and `bundler-purifier.overrideScope` replaces what
-the whole scope holds. `nix/lib/build-bundler-project.nix` documents the
+the whole scope holds. Public lock readers live in `lib-overlays/default`; the command owns its private runtime under `pkgs/cli`. `pkgs/build-bundler-project/default.nix` documents the
 builder's own arguments. A build runs on the Ruby of the minor version the
 lock was made with, and `ruby` replaces it, as it must for a version the
 builder has no Ruby for. `nativeBuildInputs` and `buildInputs` give native extensions what
@@ -154,6 +159,123 @@ that open one through FFI, such as ruby-vips. `without` leaves Bundler
 groups out of `app`. `fetchers` replaces nixpkgs' `fetchurl` or `fetchgit`,
 for a gem server or a git repository that needs credentials, or a mirror.
 `externalPaths` gives the trees of path sources outside the project.
+
+For an SDK outside the default nixpkgs Ruby set, select it independently
+for the CLI with `cli.override { projectRuby = old.ruby_2_5;
+projectNativeBuildInputs = [ old.stdenv.cc ]; }`. The CLI keeps its helper
+Ruby while lock capture and child builds use the selected project Ruby
+and compiler. Pass the same `ruby` and `nativeBuildInputs` to a pure build.
+
+The historical C-extension fixtures use Bundler 1.17.3 and JSON 1.8.6 on
+x86_64 Linux, with these independently selected components:
+
+| Project Ruby | RubyGems codec | Compiler | Index helper |
+| --- | --- | --- | --- |
+| 1.8.7p374 | 2.6.14 | GCC 4.8.3 | Ruby 3.4.11 |
+| 2.5.8p224 | 3.1.2 | GCC 9.2.0 | Project Ruby |
+
+Checks cover compilation and execution of JSON's C extension, native lock
+capture, SDK/compiler propagation, prefetch/offline execution, publication
+matching pure native release bytes, and ordinary registry-index resolution,
+installation and execution of projected compiled gems. Historical native
+checks use the C locale so old glibc does not read a newer host locale archive.
+Native package creation uses RubyGems' package API on codecs without
+`gem build --output`.
+
+The CLI keeps its helper Ruby independent of these project SDKs. `indexRuby`
+can select an independent native index encoder. The post-lockfile MRI 1.8
+fixtures use the available Ruby 3.4 helper. The released shared Core is
+pinned explicitly in `flake.lock`; its compatibility codec retains native
+encoding while making package metadata reproducible.
+Stable native gem requirements accept both RubyGems' patchlevel representation
+and the resolver's bare representation of the same Ruby release point.
+Existing exact preview requirements remain unchanged.
+
+The Ruby 2.5 native input check also binds an unreachable ordinary source to
+a Nix-provided graph, installs it offline and executes the compiled extension.
+Additional earlier and preview SDK combinations are exercised by the native
+integration checks in `tests/default.nix` and CI. Support is recorded as exact
+tested points and operations; it does not establish an intervening version
+interval.
+
+### Pre-lockfile Bundler SDKs
+
+Select these SDKs explicitly through their CLI variants on x86_64-linux:
+
+| CLI check attribute | Project Ruby | RubyGems | Bundler artifact | Native JSON |
+| --- | --- | --- | --- | --- |
+| `ruby183-bundler031-cli` | 1.8.3 | 1.0.1 | 0.3.1 | 1.1.3 |
+| `ruby183-gem095-bundler031-cli` | 1.8.3 | 0.9.5 | 0.3.1 | 1.1.3 |
+| `ruby184-bundler08-cli` | 1.8.4 | 1.3.5 | 0.8.1 | 1.8.6 |
+
+Both Ruby releases lack `RUBY_PATCHLEVEL`; neither is p0. The original
+Bundler 0.3.1 artifact reports `Bundler::VERSION` as `0.5.0`.
+
+For example, run the selected CLI from your project directory:
+
+```sh
+purifier=github:nix-purifiers/bundler-purifier
+nix shell "$purifier#checks.x86_64-linux.ruby183-bundler031-cli"
+bundler-purifier lock
+bundler-purifier prefetch
+bundler-purifier shell ruby -Ilib your_program.rb
+```
+
+This path resolves the default context from pure-Ruby or precompiled gem
+archives from `vendor/cache`, an existing native cache, or declared Nix
+inputs. It does not compile source
+extensions during resolution. `lock --input REFERENCE` declares a Nix input.
+Commit `bundler-purifier.lock.json` and the required vendored archives.
+These SDKs have no native `Gemfile.lock`; the purifier record captures the
+manifest, SDK identity, selected graph and generated-state evidence.
+`prefetch` regenerates the environment in a Nix builder, and `shell` uses
+the SDK's public environment setup. Original `gem exec` equivalence is not
+claimed. The generic helper CLI does not infer these pre-lockfile SDKs;
+use the explicit variant or `cli.override { projectRuby = sdk; }`.
+
+The 0.3.1 profile selects Core's `legacy-numeric-v1` projection scheme and
+the genuine RubyGems 1.0.1 index encoder. Direct
+`purifier.rubygemsProjections` callers supply `versionScheme`,
+`nativeSdkIdentity` and `legacyIndexRuby`. Provided entries require the same
+SDK identity and exact index-runtime Nix dependency context. Preserve the
+SDK recipe/reference form across producer and consumer: a derivation and
+`builtins.storePath` of the same SDK bytes carry different dependency
+contexts and cannot reuse each other's numeric catalog entries. Other
+profiles retain the default version scheme.
+
+The RubyGems 0.9.5 variant uses the same explicit pre-lockfile workflow.
+Its original installer requires executable payloads under `bin`; projects
+and input archives with another executable directory are rejected. It has
+no generated `.require_paths` marker. Packaging converts an installed
+platform string through the SDK's public `Gem::Platform.new` API, preserving
+the exact coordinate and requiring a matching native target.
+
+For publication from this variant, select an independent original RubyGems
+1.0.1 index SDK. The project remains identified as RubyGems 0.9.5:
+
+```sh
+purifier=github:nix-purifiers/bundler-purifier
+index_sdk="$(nix build --no-link --print-out-paths \
+  "$purifier#checks.x86_64-linux.ruby183-bundler031-sdk")"
+export BUNDLER_PURIFIER_LEGACY_INDEX_RUBY_EXPRESSION="builtins.storePath \"$index_sdk\""
+```
+
+Nix builder callers pass `legacyIndexRuby = indexSdk;`. The existing
+RubyGems 1.0.1 variant continues to use its project SDK by default.
+
+RubyGems 1.0.1 cannot run the original Gemcutter publisher. Select its
+separately attested Ruby 1.8.4 / RubyGems 1.3.5 SDK when publishing:
+
+```sh
+purifier=github:nix-purifiers/bundler-purifier
+publisher_sdk="$(nix build --no-link --print-out-paths \
+  "$purifier#checks.x86_64-linux.ruby184-bundler08-sdk")"
+bundler-purifier publish --publisher-sdk "$publisher_sdk"
+```
+
+The publisher uses Gemcutter 0.3.0 and publisher-only `json_pure` 1.8.6.
+Its identity is recorded separately from the project's SDK in the local
+publication receipt.
 
 ### An external build
 
